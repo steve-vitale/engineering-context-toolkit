@@ -25,6 +25,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 
 **About:** AC-501  
 
+**Finding reference (JSON string):** `"E19@AC-501"`
+**Asset IDs (JSON array):** `["AC-501", "PIC-202", "PIC-203", "PIC-501"]`
+
 **Evidence on the drawing / model**
 
 - equipment AC-501 reads "AC-501 Instrument air compressor" (`units[AC-501]`)
@@ -47,6 +50,9 @@ IAC/ITAC recommendation code: 2.4231 (IAC/ITAC browse page: 6,522 recommendation
 
 **About:** AC-501  
 
+**Finding reference (JSON string):** `"E22@AC-501"`
+**Asset IDs (JSON array):** `["AC-501"]`
+
 **Evidence on the drawing / model**
 
 - equipment AC-501 reads "AC-501 Instrument air compressor" (`units[AC-501]`)
@@ -67,6 +73,9 @@ IAC/ITAC recommendation code: 2.422x (category only) (IAC/ITAC browse page: 8,58
 
 **About:** AC-501  
 
+**Finding reference (JSON string):** `"E23@AC-501"`
+**Asset IDs (JSON array):** `["AC-501"]`
+
 **Evidence on the drawing / model**
 
 - equipment AC-501 reads "AC-501 Instrument air compressor" (`units[AC-501]`)
@@ -83,6 +92,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 ### E27: Is this refrigeration condenser train's head pressure appropriate for its weather, operating limits and actual reset coverage?
 
 **About:** C-201  
+
+**Finding reference (JSON string):** `"E27@C-201"`
+**Asset IDs (JSON array):** `["C-201", "PT-203", "PIC-203", "K-201", "K-202", "K-203", "JT-201"]`
 
 **Evidence on the drawing / model**
 
@@ -111,6 +123,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 ### E28: Does each refrigeration suction level match the conditions required by every coincident load it serves?
 
 **About:** K-201, K-202, K-203  
+
+**Finding reference (JSON string):** `"E28@model"`
+**Asset IDs (JSON array):** `["K-201", "K-202", "K-203", "PT-201", "PT-202", "EV-201", "EV-202", "CS-201", "TT-205", "TT-206", "JT-201"]`
 
 **Evidence on the drawing / model**
 
@@ -143,6 +158,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 
 **About:** K-201  
 
+**Finding reference (JSON string):** `"E29@K-201"`
+**Asset IDs (JSON array):** `["K-201", "JT-201"]`
+
 **Evidence on the drawing / model**
 
 - equipment K-201 reads "K-201 Ammonia (R-717) screw compressor, low stage (booster)" (`units[K-201]`)
@@ -164,6 +182,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 ### E29: Does this refrigeration compressor carry part load on its slide valve (or hot gas bypass) with no speed control?
 
 **About:** K-202  
+
+**Finding reference (JSON string):** `"E29@K-202"`
+**Asset IDs (JSON array):** `["K-202", "ZT-202"]`
 
 **Evidence on the drawing / model**
 
@@ -187,6 +208,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 
 **About:** EV-201  
 
+**Finding reference (JSON string):** `"E30@EV-201"`
+**Asset IDs (JSON array):** `["EV-201", "HGV-201", "TT-205"]`
+
 **Evidence on the drawing / model**
 
 - equipment EV-201 reads "EV-201 Spiral freezer evaporator (ammonia, hot gas defrost)" (`units[EV-201]`)
@@ -209,6 +233,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 ### E31: Does this oven, dryer or fryer send its hot exhaust to atmosphere with no heat recovery on it?
 
 **About:** D-301  
+
+**Finding reference (JSON string):** `"E31@D-301"`
+**Asset IDs (JSON array):** `["D-301", "stream:S1", "TT-304", "stream:U1", "FT-301", "TV-301"]`
 
 **Evidence on the drawing / model**
 
@@ -237,6 +264,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 
 **About:** O-302  
 
+**Finding reference (JSON string):** `"E31@O-302"`
+**Asset IDs (JSON array):** `["O-302", "stream:S2", "TT-305", "AT-302", "stream:U2", "TV-302"]`
+
 **Evidence on the drawing / model**
 
 - equipment O-302 reads "O-302 Gas-fired tunnel oven" (`units[O-302]`)
@@ -264,6 +294,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 
 **About:** D-301  
 
+**Finding reference (JSON string):** `"E32@D-301"`
+**Asset IDs (JSON array):** `["D-301", "stream:U1", "FT-301", "TV-301"]`
+
 **Evidence on the drawing / model**
 
 - equipment D-301 reads "D-301 Gas-fired product dryer (continuous belt)" (`units[D-301]`)
@@ -288,6 +321,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 ### E32: Is the burner air-fuel ratio on this oven, dryer or fryer checked and set, with no flue O2 measurement drawn?
 
 **About:** F-303  
+
+**Finding reference (JSON string):** `"E32@F-303"`
+**Asset IDs (JSON array):** `["F-303", "stream:U3", "TV-303"]`
 
 **Evidence on the drawing / model**
 
@@ -314,6 +350,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 ### H5: Is refrigeration condenser heat rejected while a low-grade heating duty nearby is met with fuel or steam?
 
 **About:** K-201, K-202, K-203, C-201  
+
+**Finding reference (JSON string):** `"H5@model"`
+**Asset IDs (JSON array):** `["K-201", "K-202", "K-203", "C-201", "WH-401", "stream:W2", "TT-202", "PT-203", "JT-201"]`
 
 **Evidence on the drawing / model**
 
@@ -345,6 +384,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 
 **About:** D-301  
 
+**Finding reference (JSON string):** `"H6@D-301"`
+**Asset IDs (JSON array):** `["D-301", "WH-401", "stream:W2", "stream:S1", "TT-304"]`
+
 **Evidence on the drawing / model**
 
 - equipment D-301 reads "D-301 Gas-fired product dryer (continuous belt)" (`units[D-301]`)
@@ -369,6 +411,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 ### H6: Could this oven's, dryer's or fryer's exhaust heat serve a low-grade heating duty elsewhere (hot water, CIP, space heating)?
 
 **About:** O-302  
+
+**Finding reference (JSON string):** `"H6@O-302"`
+**Asset IDs (JSON array):** `["O-302", "WH-401", "stream:W2", "stream:S2", "TT-305", "AT-302"]`
 
 **Evidence on the drawing / model**
 
@@ -398,6 +443,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 
 **About:** O-302  
 
+**Finding reference (JSON string):** `"C1@O-302"`
+**Asset IDs (JSON array):** `["O-302", "stream:U2", "TV-302"]`
+
 **Evidence on the drawing / model**
 
 - stream U2 (asset stream:U2) reads "Natural gas to the oven burners" at O-302 (`streams[U2]`)
@@ -419,6 +467,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 ### C1: Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?
 
 **About:** F-303  
+
+**Finding reference (JSON string):** `"C1@F-303"`
+**Asset IDs (JSON array):** `["F-303", "stream:U3", "TV-303"]`
 
 **Evidence on the drawing / model**
 
@@ -442,6 +493,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 
 **About:** WH-401  
 
+**Finding reference (JSON string):** `"C1@WH-401"`
+**Asset IDs (JSON array):** `["WH-401", "stream:U4", "TV-401"]`
+
 **Evidence on the drawing / model**
 
 - stream U4 (asset stream:U4) reads "Natural gas to the water heater" at WH-401 (`streams[U4]`)
@@ -463,6 +517,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 ### C12: Is representative real input power available for each refrigeration compressor, with a usable coincident load and operating basis?
 
 **About:** K-201, K-202, K-203  
+
+**Finding reference (JSON string):** `"C12@model"`
+**Asset IDs (JSON array):** `["K-201", "K-202", "K-203", "PT-201", "PT-202", "JT-201"]`
 
 **Evidence on the drawing / model**
 
@@ -491,6 +548,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 ### C2: Which measurements have no controller (read by people, or by nothing)?
 
 **About:** PT-201, JT-201, TT-202, TT-205, TT-206, PDT-206 and 4 more  
+
+**Finding reference (JSON string):** `"C2@model"`
+**Asset IDs (JSON array):** `["PT-201", "JT-201", "TT-202", "TT-205", "TT-206", "PDT-206", "TT-304", "FT-301", "TT-305", "AT-302"]`
 
 **Evidence on the drawing / model**
 
@@ -521,6 +581,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 
 **About:** TV-301, TV-302, TV-303, TV-401, PV-501  
 
+**Finding reference (JSON string):** `"C3@model"`
+**Asset IDs (JSON array):** `["TV-301", "TV-302", "TV-303", "TV-401", "PV-501"]`
+
 **Evidence on the drawing / model**
 
 - valve TV-301 reads "TV-301 Dryer burner natural gas control valve" at D-301 (`final_elements[TV-301]`)
@@ -545,6 +608,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 
 **About:** D-301  
 
+**Finding reference (JSON string):** `"C11@D-301"`
+**Asset IDs (JSON array):** `["D-301", "TT-304", "HV-304"]`
+
 **Evidence on the drawing / model**
 
 - equipment D-301 reads "D-301 Gas-fired product dryer (continuous belt)" (`units[D-301]`)
@@ -567,6 +633,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 ### C11: Is this dryer's or oven's exhaust (and make-up air) rate set by hand rather than by exhaust humidity?
 
 **About:** O-302  
+
+**Finding reference (JSON string):** `"C11@O-302"`
+**Asset IDs (JSON array):** `["O-302", "TT-305", "AT-302"]`
 
 **Evidence on the drawing / model**
 
@@ -592,6 +661,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 ### C9: What source-labelled trip or interlock records apply to each rotating or fired machine, and what remains unverified?
 
 **About:** K-201, K-202, K-203, AC-501  
+
+**Finding reference (JSON string):** `"C9@model"`
+**Asset IDs (JSON array):** `["K-201", "K-202", "K-203", "AC-501"]`
 
 **Evidence on the drawing / model**
 

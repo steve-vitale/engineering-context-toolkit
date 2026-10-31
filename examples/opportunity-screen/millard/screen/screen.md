@@ -25,6 +25,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 
 **About:** EVAP-GROUP  
 
+**Finding reference (JSON string):** `"E30@EVAP-GROUP"`
+**Asset IDs (JSON array):** `["EVAP-GROUP", "HG-MAIN"]`
+
 **Evidence on the drawing / model**
 
 - equipment EVAP-GROUP reads "EVAP-GROUP Ammonia blast freezer evaporator group" (`units[EVAP-GROUP]`)

@@ -25,6 +25,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 
 **About:** P-1\
 
+**Finding reference (JSON string):** `"E1@P-1"`
+**Asset IDs (JSON array):** `["P-1", "FV-101", "FT-101"]`
+
 **Evidence on the drawing / model**
 
 - equipment P-1 reads "P-1 Water pump" (`units[P-1]`)
@@ -55,6 +58,9 @@ IAC/ITAC recommendation code: 2.4146 (IAC/ITAC browse page: 5,227 recommendation
 
 **About:** FV-101\
 
+**Finding reference (JSON string):** `"C3@model"`
+**Asset IDs (JSON array):** `["FV-101"]`
+
 **Evidence on the drawing / model**
 
 - valve FV-101 reads "FV-101 Discharge flow control valve" at P-1 (`final_elements[FV-101]`)
@@ -76,6 +82,9 @@ IAC/ITAC recommendation code: 2.4146 (IAC/ITAC browse page: 5,227 recommendation
 ### C9: What source-labelled trip or interlock records apply to each rotating or fired machine, and what remains unverified?
 
 **About:** P-1\
+
+**Finding reference (JSON string):** `"C9@model"`
+**Asset IDs (JSON array):** `["P-1"]`
 
 **Evidence on the drawing / model**
 

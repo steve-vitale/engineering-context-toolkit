@@ -6004,3 +6004,39 @@ message and agent instructions are corrected to disclose that service; source-on
 The correction changes diagnostic text and documentation, not test selection or service behavior. Targeted runner
 and metadata checks follow separately; no second local full run is implied. Committed-tree and exact-head CI
 verification remain separate publication gates.
+
+## 130. Carry complete finding identities into readable handoffs
+
+**A270 / N101.** An author-led audit from three reader perspectives found a concrete screen-to-brief mismatch:
+the first-question guide requires the complete finding ID, but readable screens showed only the catalog rule.
+Three actual old CLI runs retain 12 missing full references, including distinct TE findings under the same H4
+and C1 headings. The JSON already had the right IDs. This is a presentation defect, not evidence that the questions
+were missing, useful to an engineer or accepted by a company.
+
+Each readable finding now carries its exact existing finding reference and ordered asset IDs, explicitly encoded
+as a JSON string and array. Backtick-safe code spans and JSON escapes preserve punctuation, Unicode and whitespace.
+Rule headings and all existing prose remain. These are local model/screen references, not global company identities;
+the guide retains source/model and catalog-version requirements and the manual no-model starting route.
+
+Matched actual production runs cover all 13 committed screens: 13 baseline and 13 candidate commands retain 90
+complete files per role. Independently frozen whole-screen expectations verify 99 finding/asset references. The
+zero-finding MGPI screen stays exact. Complete question JSON, rules, evidence, requests, ordering, graphs, context
+histories and answers stay unchanged. Two actual description builds update their receipts: only the question-engine
+code hashes and the assisted screen's artifact hash change. Other description artifacts remain raw-byte exact.
+No saved hash is manually restamped. Ordinary stdout and the separate roll-up retain their own matched controls.
+
+A new regression checks both current published description bundles against their five declared producer hashes,
+complete artifact sets, raw artifact hashes and retained source/answer bindings. It passes on the old baseline,
+rejects both stale receipts after the renderer changes, and passes after actual rebuilds. This checks the declared
+publication contract, not transitive dependencies, interpretation accuracy or engineering acceptance.
+
+The shipping tests require whole current goldens, with no fallback to old screens. Targeted private validation
+passes 121 question-engine methods with one symlink case skipped, plus all 13 description-workflow methods and
+nine independent encoding controls. The nonverbose question-suite log does not retain the skipped OS exception.
+An initial regression launch from the scripts directory produced two failures and five errors in repo-relative
+fixture paths; that complete failure is retained. Correcting only the caller to the repository root produces the
+reported result. Test-oracle and producer-specific Markdown preparation corrections are retained separately.
+
+The current corpus matrix and configured pipeline have no question-engine code binding, so no cells, criteria or
+stage records are restamped. No model calls, new source family, measured review time, company transfer or general
+question-usefulness result is claimed. Full public-suite, committed-tree and exact-head CI checks remain separate.

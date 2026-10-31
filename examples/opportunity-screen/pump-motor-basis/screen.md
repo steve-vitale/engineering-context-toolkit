@@ -25,6 +25,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 
 **About:** P-900  
 
+**Finding reference (JSON string):** `"E1@P-900"`
+**Asset IDs (JSON array):** `["P-900", "FV-900"]`
+
 **Evidence on the drawing / model**
 
 - equipment P-900 reads "P-900 Water transfer pump" (`units[P-900]`)
@@ -58,6 +61,9 @@ IAC/ITAC recommendation code: 2.4146 (IAC/ITAC browse page: 5,227 recommendation
 
 **About:** P-900  
 
+**Finding reference (JSON string):** `"E2@P-900"`
+**Asset IDs (JSON array):** `["P-900", "HV-900"]`
+
 **Evidence on the drawing / model**
 
 - equipment P-900 reads "P-900 Water transfer pump" (`units[P-900]`)
@@ -84,6 +90,9 @@ IAC/ITAC recommendation code: 2.4146 (IAC/ITAC browse page: 5,227 recommendation
 
 **About:** P-900  
 
+**Finding reference (JSON string):** `"E4@P-900"`
+**Asset IDs (JSON array):** `["P-900"]`
+
 **Evidence on the drawing / model**
 
 - equipment P-900 reads "P-900 Water transfer pump" (`units[P-900]`)
@@ -108,6 +117,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 ### H4: Is heat rejected to cooling water at a temperature another user could use?
 
 **About:** E-900  
+
+**Finding reference (JSON string):** `"H4@E-900"`
+**Asset IDs (JSON array):** `["E-900"]`
 
 **Evidence on the drawing / model**
 

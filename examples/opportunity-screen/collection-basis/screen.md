@@ -25,6 +25,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 
 **About:** F-1  
 
+**Finding reference (JSON string):** `"E5@F-1"`
+**Asset IDs (JSON array):** `["F-1", "DMP-1"]`
+
 **Evidence on the drawing / model**
 
 - equipment F-1 reads "F-1 Ventilation fan" (`units[F-1]`)
@@ -52,6 +55,9 @@ IAC/ITAC recommendation code: 2.4146 (by description).
 ### H3: Is electric resistance heat serving a low-temperature load another heat source could carry?
 
 **About:** EH-1  
+
+**Finding reference (JSON string):** `"H3@EH-1"`
+**Asset IDs (JSON array):** `["EH-1"]`
 
 **Evidence on the drawing / model**
 

@@ -33,6 +33,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 
 **About:** K-201  
 
+**Finding reference (JSON string):** `"E29@K-201"`
+**Asset IDs (JSON array):** `["K-201"]`
+
 **Evidence on the drawing / model**
 
 - equipment K-201 reads "K-201 Ammonia (R-717) screw compressor, low stage (booster)" (`units[K-201]`)
@@ -53,6 +56,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 ### E29: Does this refrigeration compressor carry part load on its slide valve (or hot gas bypass) with no speed control?
 
 **About:** K-202  
+
+**Finding reference (JSON string):** `"E29@K-202"`
+**Asset IDs (JSON array):** `["K-202", "ZT-202"]`
 
 **Evidence on the drawing / model**
 
@@ -76,6 +82,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 
 **About:** K-203  
 
+**Finding reference (JSON string):** `"E29@K-203"`
+**Asset IDs (JSON array):** `["K-203"]`
+
 **Evidence on the drawing / model**
 
 - equipment K-203 reads "K-203 Ammonia (R-717) screw compressor, high stage (trim)" (`units[K-203]`)
@@ -96,6 +105,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 ### E31: Does this oven, dryer or fryer send its hot exhaust to atmosphere with no heat recovery on it?
 
 **About:** D-301  
+
+**Finding reference (JSON string):** `"E31@D-301"`
+**Asset IDs (JSON array):** `["D-301", "stream:S1", "TT-304", "stream:U1", "FT-301", "TV-301"]`
 
 **Evidence on the drawing / model**
 
@@ -124,6 +136,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 
 **About:** O-302  
 
+**Finding reference (JSON string):** `"E31@O-302"`
+**Asset IDs (JSON array):** `["O-302", "stream:S2", "TT-305", "AT-302", "stream:U2", "TV-302"]`
+
 **Evidence on the drawing / model**
 
 - equipment O-302 reads "O-302 Gas-fired tunnel oven" (`units[O-302]`)
@@ -150,6 +165,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 ### E31: Does this oven, dryer or fryer send its hot exhaust to atmosphere with no heat recovery on it?
 
 **About:** F-303  
+
+**Finding reference (JSON string):** `"E31@F-303"`
+**Asset IDs (JSON array):** `["F-303", "stream:S3", "stream:U3", "TV-303"]`
 
 **Evidence on the drawing / model**
 
@@ -178,6 +196,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 
 **About:** D-301  
 
+**Finding reference (JSON string):** `"H6@D-301"`
+**Asset IDs (JSON array):** `["D-301", "WH-401", "stream:W2", "stream:S1", "TT-304"]`
+
 **Evidence on the drawing / model**
 
 - equipment D-301 reads "D-301 Gas-fired product dryer (continuous belt)" (`units[D-301]`)
@@ -202,6 +223,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 ### H6: Could this oven's, dryer's or fryer's exhaust heat serve a low-grade heating duty elsewhere (hot water, CIP, space heating)?
 
 **About:** O-302  
+
+**Finding reference (JSON string):** `"H6@O-302"`
+**Asset IDs (JSON array):** `["O-302", "WH-401", "stream:W2", "stream:S2", "TT-305", "AT-302"]`
 
 **Evidence on the drawing / model**
 
@@ -229,6 +253,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 
 **About:** F-303  
 
+**Finding reference (JSON string):** `"H6@F-303"`
+**Asset IDs (JSON array):** `["F-303", "WH-401", "stream:W2", "stream:S3"]`
+
 **Evidence on the drawing / model**
 
 - equipment F-303 reads "F-303 Gas-fired continuous fryer" (`units[F-303]`)
@@ -254,6 +281,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 ### C12: Is representative real input power available for each refrigeration compressor, with a usable coincident load and operating basis?
 
 **About:** K-201, K-202, K-203  
+
+**Finding reference (JSON string):** `"C12@model"`
+**Asset IDs (JSON array):** `["K-201", "K-202", "K-203", "PT-201", "PT-202"]`
 
 **Evidence on the drawing / model**
 
