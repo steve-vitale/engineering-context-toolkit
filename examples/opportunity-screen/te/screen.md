@@ -25,6 +25,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 
 **About:** K-101  
 
+**Finding reference (JSON string):** `"E6@K-101"`
+**Asset IDs (JSON array):** `["K-101", "FV-105", "JT-120"]`
+
 **Evidence on the drawing / model**
 
 - equipment K-101 reads "K-101 Recycle Compressor" (`units[K-101]`)
@@ -46,6 +49,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 ### E18: Is heat rejected to cooling water in one place while steam heats a colder stream in another (a heat-integration question)?
 
 **About:** TT-121, TT-122, TV-121, FV-117  
+
+**Finding reference (JSON string):** `"E18@model"`
+**Asset IDs (JSON array):** `["TT-121", "TT-122", "TV-121", "FV-117", "FT-119", "FV-119"]`
 
 **Evidence on the drawing / model**
 
@@ -75,6 +81,9 @@ IAC/ITAC recommendation code: 2.243x; 2.244x (IAC/ITAC browse page: 2.243x: 3,67
 
 **About:** C-101  
 
+**Finding reference (JSON string):** `"H2@C-101"`
+**Asset IDs (JSON array):** `["C-101", "FV-119", "TT-118", "FIC-119"]`
+
 **Evidence on the drawing / model**
 
 - valve FV-119 reads "FV-119 Stripper steam valve" at C-101 (`final_elements[FV-119]`)
@@ -98,6 +107,9 @@ IAC/ITAC recommendation code: 2.243x; 2.244x (IAC/ITAC browse page: 2.243x: 3,67
 ### H4: Is heat rejected to cooling water at a temperature another user could use?
 
 **About:** R-101  
+
+**Finding reference (JSON string):** `"H4@R-101"`
+**Asset IDs (JSON array):** `["R-101", "TT-121", "TV-121", "TT-109"]`
 
 **Evidence on the drawing / model**
 
@@ -124,6 +136,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 ### H4: Is heat rejected to cooling water at a temperature another user could use?
 
 **About:** E-101  
+
+**Finding reference (JSON string):** `"H4@E-101"`
+**Asset IDs (JSON array):** `["E-101", "TT-122", "FV-117"]`
 
 **Evidence on the drawing / model**
 
@@ -152,6 +167,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 
 **About:** R-101  
 
+**Finding reference (JSON string):** `"C1@R-101"`
+**Asset IDs (JSON array):** `["R-101", "TV-121", "TT-121"]`
+
 **Evidence on the drawing / model**
 
 - valve TV-121 reads "TV-121 Reactor cooling water flow valve" at R-101 (`final_elements[TV-121]`)
@@ -173,6 +191,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 ### C1: Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?
 
 **About:** E-101  
+
+**Finding reference (JSON string):** `"C1@E-101"`
+**Asset IDs (JSON array):** `["E-101", "FV-117", "TT-122"]`
 
 **Evidence on the drawing / model**
 
@@ -197,6 +218,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 ### C2: Which measurements have no controller (read by people, or by nothing)?
 
 **About:** FT-106, PT-107, TT-111, PT-113, FT-114, PT-116 and 2 more  
+
+**Finding reference (JSON string):** `"C2@model"`
+**Asset IDs (JSON array):** `["FT-106", "PT-107", "TT-111", "PT-113", "FT-114", "PT-116", "JT-120", "TT-122"]`
 
 **Evidence on the drawing / model**
 
@@ -224,6 +248,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 ### C3: Do these control valves lack position feedback?
 
 **About:** FV-102, FV-103, FV-101, FV-104, FV-105, FV-110 and 5 more  
+
+**Finding reference (JSON string):** `"C3@model"`
+**Asset IDs (JSON array):** `["FV-102", "FV-103", "FV-101", "FV-104", "FV-105", "FV-110", "LV-112", "LV-115", "FV-119", "TV-121", "FV-117"]`
 
 **Evidence on the drawing / model**
 
@@ -256,6 +283,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 ### C9: What source-labelled trip or interlock records apply to each rotating or fired machine, and what remains unverified?
 
 **About:** K-101  
+
+**Finding reference (JSON string):** `"C9@model"`
+**Asset IDs (JSON array):** `["K-101"]`
 
 **Evidence on the drawing / model**
 

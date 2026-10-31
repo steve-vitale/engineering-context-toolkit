@@ -4069,6 +4069,25 @@
         "NOTICE.md",
         "docs/WORKFLOWS.md"
       ]
+    },
+    {
+      "id": "A270",
+      "function": "review_loop",
+      "date": "2026-10-31",
+      "change": "Carry complete local finding and ordered asset references into readable screening handoffs; verify current published description-bundle receipts (N101).",
+      "hypothesis": "A reader should be able to copy the exact existing investigation and asset keys required by the first-question brief without inferring a catalog rule or parsing evidence prose, while all machine findings and prior decisions stay unchanged.",
+      "evidence": "Three original actual CLIs retain12missing full references. Independent prospective and actual receiving verifies26matched producers,13whole readable screens/99existing finding references, complete questionJSON and unchanged evidence/requests/order/graphs/context/history; zero-findingMGPI MD exact. Two actual description builds change only3predeclared receipt hash leaves. Private shipping7 and fullQE121methods pass with1symlinkcase skipped; Description13 and9independent literal controls pass. New published-bundle guard passesbaseline, catches2stale producer receipts and passesafteractualbuilds. Original wrong-cwd121run/2FAIL5ERROR is retained; caller-only root correction changes no product/test/oracle. Full public-suite/commit/CI gates are separate.",
+      "runs": "Offline public/synthetic software fidelity and publication checks; no provider/model call, new heldout family, human usability/time or company acceptance trial.",
+      "verdict": "kept",
+      "why": "Close a demonstrated readable-screen-to-brief identity loss without changing question selection, JSON schema, engineering meaning or company governance scope. References stay local and source/model/catalog versions remain required.",
+      "source": [
+        "docs/JOURNAL.md#130-carry-complete-finding-identities-into-readable-handoffs",
+        "scripts/question_engine.py",
+        "scripts/test_question_engine.py",
+        "scripts/test_description_workflow.py",
+        "examples/first-pilot/README.md",
+        "docs/OPPORTUNITY_SCREEN.md"
+      ]
     }
   ],
   "not_tried": [
@@ -5179,6 +5198,18 @@
       "why_not_yet": "Completed A268 with UTF-8/key/integer-domain preflight and independent93refusal controls; original mutation-before-encoding failures are preserved. No general transaction, rollback or concurrent-writer claim.",
       "source": [
         "docs/JOURNAL.md#127-preserve-structured-source-evidence-only-when-explicitly-requested",
+        "docs/STATUS.md"
+      ]
+    },
+    {
+      "id": "N101",
+      "function": "review_loop",
+      "status": "done",
+      "idea": "Expose complete existing finding and asset references in readable screens required by the first-question handoff, and keep current published description receipts tied to declared producers/artifacts.",
+      "why_not_yet": "Completed A270 with exact JSON-encoded local references, unchanged machine findings/decisions, matched complete screen reproduction and current published-bundle checks. Human usefulness, company identities/authority and real handoff acceptance remain separate.",
+      "source": [
+        "docs/JOURNAL.md#130-carry-complete-finding-identities-into-readable-handoffs",
+        "examples/first-pilot/README.md",
         "docs/STATUS.md"
       ]
     }

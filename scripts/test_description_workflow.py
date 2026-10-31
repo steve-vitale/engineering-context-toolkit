@@ -4,6 +4,7 @@ Uses authored illustrative fixtures, Pillow and native generators; no model call
 """
 import copy
 import csv
+import hashlib
 import io
 import json
 from pathlib import Path
@@ -21,6 +22,39 @@ SCRIPT = ROOT / 'scripts/description_workflow.py'
 
 
 class DescriptionWorkflowTests(unittest.TestCase):
+    def test_committed_bundles_bind_current_producers_and_complete_artifacts(self):
+        """Current published bundles need an actual rebuild when a declared producer changes.
+
+        This checks recorded identity/freshness, not transitive dependencies or engineering truth.
+        """
+        producers = {'description_workflow.py', 'draw_pid_from_model.py', 'generate.py',
+                     'question_engine.py', 'graph_export.py'}
+        for case in ('assisted', 'mgpi'):
+            with self.subTest(case=case):
+                result = ROOT / 'examples/from-description' / case / 'result'
+                receipt = json.loads((result / 'build.json').read_bytes())
+                self.assertEqual(set(receipt['code_sha256']), producers,
+                                 f'{case}: declared producer basenames differ')
+                for name in sorted(producers):
+                    # Producer policy canonicalizes only code CRLF; artifact/source bytes stay raw.
+                    code = (ROOT / 'scripts' / name).read_bytes().replace(b'\r\n', b'\n')
+                    self.assertEqual(receipt['code_sha256'][name], hashlib.sha256(code).hexdigest(),
+                                     f'{case}: stale code_sha256[{name}]; rebuild the bundle')
+                artifacts = {p.relative_to(result).as_posix(): p for p in result.rglob('*')
+                             if p.is_file() and p.relative_to(result).as_posix() != 'build.json'}
+                self.assertEqual(set(receipt['files_sha256']), set(artifacts),
+                                 f'{case}: complete artifact path set differs')
+                for name, path in sorted(artifacts.items()):
+                    self.assertEqual(receipt['files_sha256'][name],
+                                     hashlib.sha256(path.read_bytes()).hexdigest(),
+                                     f'{case}: artifact bytes differ: {name}')
+                self.assertEqual(receipt['source_sha256'],
+                                 hashlib.sha256((result / 'source.txt').read_bytes()).hexdigest(),
+                                 f'{case}: retained source binding differs')
+                self.assertEqual(receipt['answer_sha256'],
+                                 hashlib.sha256((result / 'answer.json').read_bytes()).hexdigest(),
+                                 f'{case}: retained answer binding differs')
+
     def test_mgpi_source_adaptation_preserves_aliases_evidence_and_scoring_limit(self):
         import benchmark
         case = ROOT / 'examples/from-description/mgpi'

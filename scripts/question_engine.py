@@ -1174,6 +1174,13 @@ def request_progress(r):
     return " ".join(p for p in parts if p)
 
 
+def _markdown_json(value):
+    """Show exact IDs as ASCII-escaped JSON inside a backtick-safe Markdown code span."""
+    text = json.dumps(value, ensure_ascii=True)
+    fence = "`" * (1 + max((len(m.group()) for m in re.finditer(r"`+", text)), default=0))
+    return fence + text + fence
+
+
 def render_md(model, catalog, doc):
     title = (f"extracted drawing set, {len(model.m.get('systems', []))} sheets" if model.twin
              else model.m.get("meta", {}).get("title", doc["source_model"]))
@@ -1219,6 +1226,8 @@ def render_md(model, catalog, doc):
         L += [f"## {fams[fam]}", ""]
         for f in fs:
             L += [f"### {f['question_id']}: {f['question']}", "", f"**About:** {f['about']}  ", "",
+                  "**Finding reference (JSON string):** " + _markdown_json(f["id"]),
+                  "**Asset IDs (JSON array):** " + _markdown_json([a["id"] for a in f["assets"]]), "",
                   "**Evidence on the drawing / model**", ""]
             L += [f"- Caveat: {e['text']}" if e["role"] == "caveat" else
                   f"- {'' if e['role'] == 'trigger' else e['role'].capitalize() + ': '}{e['text']} (`{e['field']}`)"

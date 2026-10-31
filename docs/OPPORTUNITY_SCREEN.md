@@ -272,7 +272,9 @@ level-indicator rule, broad source-comprehension score or measured usefulness re
   When applicable, `review_exclusions` records explicit model rejections and `loop_rows_rejected` names supplemental
   controller rows excluded by those decisions. Empty fields are omitted, preserving older unreviewed examples.
 - `screen.md`: the same, grouped by family, readable on its own, with a "how to read this" note at the top and the
-  cited sources with their licenses at the bottom.
+  cited sources with their licenses at the bottom. Each finding includes its complete local finding reference and
+  ordered asset IDs as JSON-encoded values for the [handoff brief](../examples/first-pilot/README.md); retain the
+  selected model/screen and catalog versions with them. These are not global company asset identities.
 
 ## Several sites: the roll-up
 

@@ -49,6 +49,12 @@ data or provide company authentication, release, latest-version checking, atomic
 editing. Graph/context/MCP consumers do not expose the captured packet. Ongoing identity, access, review and
 decisions belong in the company-managed receiving system.
 
+**N101 — readable finding references.** Generated screens now expose each complete local finding ID and ordered
+asset IDs as JSON-encoded values for the [first-question handoff](../examples/first-pilot/README.md). Keep them with
+the selected model/screen and catalog revisions; they are not company-wide identities. Published description
+bundles also have a regression for their declared producer and artifact hashes. These changes preserve the
+existing findings and evidence; question usefulness and real recipient acceptance remain unmeasured.
+
 **N088 — bounded E27 repair.** The original thirteen matched runs preserve eight scope failures. A local,
 shared, unrelated, unknown or negated reset label now stays a candidate while each applicable condenser retains
 train/operating-basis review. Source pointers and complete selected graph/context history stay bound; old catalog

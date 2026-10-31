@@ -2242,5 +2242,136 @@ class CatalogHandoff(unittest.TestCase):
             self.refuse(base, load("bayer"), catalog=path, message="conflicting instructions for the same request item")
 
 
+class ReadableFindingReferences(unittest.TestCase):
+    """Readable references are copyable exact identities, not new findings or company asset aliases."""
+
+    @staticmethod
+    def render_saved(relative):
+        doc = json.loads((ROOT / relative / "questions.json").read_text(encoding="utf-8"))
+        model = qe.Model(ROOT / doc["source_model"])
+        before = json.dumps(doc, ensure_ascii=False)
+        text = qe.render_md(model, CAT, doc)
+        if json.dumps(doc, ensure_ascii=False) != before:
+            raise AssertionError("render changed finding, evidence, request, or key/list order")
+        return text, doc
+
+    def test_bayer_model_reference_and_exact_stream_assets(self):
+        text, doc = self.render_saved("examples/context-register/bayer/screen")
+        self.assertIn('**Finding reference (JSON string):** `"E18@model"`', text)
+        self.assertIn('**Asset IDs (JSON array):** `["stream:U2", "HV-112", "stream:U1", "FT-106", "TV-104C", "HV-108"]`', text)
+        self.assertEqual(doc["questions"][0]["id"], "E18@model")
+
+    def test_te_repeated_rules_have_distinct_literal_references(self):
+        text, _ = self.render_saved("examples/opportunity-screen/te")
+        expected = (
+            ('"H4@R-101"', '["R-101", "TT-121", "TV-121", "TT-109"]'),
+            ('"H4@E-101"', '["E-101", "TT-122", "FV-117"]'),
+            ('"C1@R-101"', '["R-101", "TV-121", "TT-121"]'),
+            ('"C1@E-101"', '["E-101", "FV-117", "TT-122"]'),
+        )
+        for reference, assets in expected:
+            with self.subTest(reference=reference):
+                block = '**Finding reference (JSON string):** `' + reference + '`\n**Asset IDs (JSON array):** `' + assets + '`'
+                self.assertEqual(text.count(block), 1)
+
+    def test_ascii_json_and_backtick_safe_literal_display(self):
+        # Independent literal expectations: JSON escapes encode exact data; backtick runs cannot close the span.
+        vectors = (
+            ("plain", '`"plain"`'),
+            ("  A  ", '`"  A  "`'),
+            ("a\nb\tc\r", r'`"a\nb\tc\r"`'),
+            ("雪\u00a0Ω", r'`"\u96ea\u00a0\u03a9"`'),
+            ("`", '``"`"``'),
+            ("a``b", '```"a``b"```'),
+            ('P|[a]<b>&"\\', r'`"P|[a]<b>&\"\\"`'),
+            ([], '`[]`'),
+            (["stream:S1", "雪", "`"], '``["stream:S1", "\\u96ea", "`"]``'),
+        )
+        for value, expected in vectors:
+            with self.subTest(value=value):
+                actual = qe._markdown_json(value)
+                self.assertEqual(actual, expected)
+                self.assertTrue(actual.isascii())
+                fence = re.match(r"`+", actual).group()
+                self.assertTrue(actual.endswith(fence))
+                self.assertEqual(json.loads(actual[len(fence):-len(fence)]), value)
+
+    def test_render_keeps_exact_encoded_identity_and_empty_assets(self):
+        doc = load("te")
+        doc["questions"] = [copy.deepcopy(doc["questions"][0])]
+        q = doc["questions"][0]
+        q["id"] = "  雪`\n  "
+        q["assets"] = []
+        before = copy.deepcopy(doc)
+        model = qe.Model(ROOT / "data/te_process_model.json")
+        text = qe.render_md(model, CAT, doc)
+        self.assertIn('**Finding reference (JSON string):** ``"  \\u96ea`\\n  "``', text)
+        self.assertIn('**Asset IDs (JSON array):** `[]`', text)
+        self.assertEqual(doc, before)
+        q["assets"] = [{"id": "  stream:S1  "}, {"id": "Ω|[x]"}, {"id": "a``b"}]
+        text = qe.render_md(model, CAT, doc)
+        self.assertIn('**Asset IDs (JSON array):** ```["  stream:S1  ", "\\u03a9|[x]", "a``b"]```', text)
+
+    def test_complete_published_markdown_matches_rendered_references(self):
+        # Parse actual references independently, then require the entire currently published screen.
+        def decode(line, label):
+            self.assertTrue(line.startswith(label))
+            code = line[len(label):].removesuffix("\n")
+            match = re.match(r"`+", code)
+            self.assertIsNotNone(match)
+            fence = match.group()
+            self.assertTrue(code.endswith(fence))
+            payload = code[len(fence):-len(fence)]
+            self.assertNotIn(fence, payload)
+            return json.loads(payload)
+
+        for relative in ("examples/context-register/bayer/screen", "examples/opportunity-screen/te",
+                         "examples/opportunity-screen/millard/screen"):
+            with self.subTest(relative=relative):
+                text, doc = self.render_saved(relative)
+                lines = text.splitlines(keepends=True)
+                i, count = 0, 0
+                while i < len(lines):
+                    if lines[i].startswith("**Finding reference (JSON string):** "):
+                        self.assertLess(count, len(doc["questions"]))
+                        q = doc["questions"][count]
+                        self.assertEqual(decode(lines[i], "**Finding reference (JSON string):** "), q["id"])
+                        self.assertEqual(decode(lines[i + 1], "**Asset IDs (JSON array):** "),
+                                         [a["id"] for a in q["assets"]])
+                        self.assertEqual(lines[i + 2], "\n")
+                        count += 1
+                        i += 3
+                    else:
+                        i += 1
+                self.assertEqual(count, len(doc["questions"]))
+                self.assertEqual(text, (ROOT / relative / "screen.md").read_text(encoding="utf-8"))
+
+    def test_zero_finding_screen_remains_exact(self):
+        class EmptyModel:
+            twin = False
+            m = {"meta": {"title": "Empty screen"}}
+        doc = {"source_model": "empty.json", "catalog": "questions.json", "loops": None, "schedules": [],
+               "counts": {"by_family": {}}, "questions": [], "not_checked": [], "did_not_fire": [], "left_out": {}}
+        expected = "\n".join(["# Opportunity screen: Empty screen", "",
+                              "Model: `empty.json`. Questions: `questions.json`.", "", qe.HOW_TO_READ, "",
+                              "| Family | Findings |", "|---|---|", "| Energy | 0 |", ""])
+        self.assertEqual(qe.render_md(EmptyModel(), {"families": {"energy": "Energy"}, "sources": {}}, doc), expected)
+
+    def test_actual_cli_json_bytes_remain_exact(self):
+        """Complete JSON text/order stays exact under the existing CRLF-to-LF text policy, not raw-byte identity."""
+        cases = (
+            (["--model", "data/bayer_rt/process_model.json", "--question", "E18"], "examples/context-register/bayer/screen"),
+            (RUNS["te"], "examples/opportunity-screen/te"),
+        )
+        for args, relative in cases:
+            with self.subTest(relative=relative), tempfile.TemporaryDirectory() as tmp:
+                result = subprocess.run([sys.executable, "-B", "-S", str(ROOT / "scripts/question_engine.py"),
+                                         *args, "--out", tmp], cwd=ROOT, capture_output=True, text=True, encoding="utf-8")
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertEqual((Path(tmp) / "questions.json").read_text(encoding="utf-8"),
+                                 (ROOT / relative / "questions.json").read_text(encoding="utf-8"))
+                self.assertIn("**Finding reference (JSON string):**", (Path(tmp) / "screen.md").read_text(encoding="utf-8"))
+
+
 if __name__ == "__main__":
     unittest.main()

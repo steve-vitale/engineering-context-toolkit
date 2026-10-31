@@ -20,6 +20,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 
 **About:** HYPO_BULK  
 
+**Finding reference (JSON string):** `"MGPI-NOTIFY@HYPO_BULK"`
+**Asset IDs (JSON array):** `["HYPO_BULK"]`
+
 **Evidence on the drawing / model**
 
 - equipment HYPO_BULK reads "HYPO_BULK Sodium hypochlorite bulk tank" (`units[HYPO_BULK]`)
@@ -38,6 +41,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 ### MGPI-ENDPOINT: If this example applies to a receiving installation, which current approved remote/emergency action actually affects unloading-to-bulk transfer, separately from bulk-to-day-tank or downstream processes?
 
 **About:** HYPO_BULK  
+
+**Finding reference (JSON string):** `"MGPI-ENDPOINT@HYPO_BULK"`
+**Asset IDs (JSON array):** `["HYPO_BULK"]`
 
 **Evidence on the drawing / model**
 

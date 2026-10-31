@@ -25,6 +25,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 
 **About:** P-1  
 
+**Finding reference (JSON string):** `"E1@P-1"`
+**Asset IDs (JSON array):** `["P-1", "LV-102", "TV-104A", "TV-104B", "FT-103"]`
+
 **Evidence on the drawing / model**
 
 - equipment P-1 reads "P-1 Recirculation pump" (`units[P-1]`)
@@ -55,6 +58,9 @@ IAC/ITAC recommendation code: 2.4146 (IAC/ITAC browse page: 5,227 recommendation
 
 **About:** S1  
 
+**Finding reference (JSON string):** `"E11@stream:S1"`
+**Asset IDs (JSON array):** `["stream:S1"]`
+
 **Evidence on the drawing / model**
 
 - stream S1 (asset stream:S1) reads "Flasher bottoms feed (methomyl-solvent liquid)" (`streams[S1]`)
@@ -78,6 +84,9 @@ IAC/ITAC recommendation code: 2.2136 (IAC/ITAC browse page: 1,647 recommendation
 
 **About:** U1  
 
+**Finding reference (JSON string):** `"E11@stream:U1"`
+**Asset IDs (JSON array):** `["stream:U1"]`
+
 **Evidence on the drawing / model**
 
 - stream U1 (asset stream:U1) reads "Steam supply to the heater" at E-2 (`streams[U1]`)
@@ -99,6 +108,9 @@ IAC/ITAC recommendation code: 2.2136 (IAC/ITAC browse page: 1,647 recommendation
 ### E18: Is heat rejected to cooling water in one place while steam heats a colder stream in another (a heat-integration question)?
 
 **About:** U2, HV-112  
+
+**Finding reference (JSON string):** `"E18@model"`
+**Asset IDs (JSON array):** `["stream:U2", "HV-112", "stream:U1", "FT-106", "TV-104C", "HV-108"]`
 
 **Evidence on the drawing / model**
 
@@ -128,6 +140,9 @@ IAC/ITAC recommendation code: 2.243x; 2.244x (IAC/ITAC browse page: 2.243x: 3,67
 
 **About:** E-2  
 
+**Finding reference (JSON string):** `"H2@E-2"`
+**Asset IDs (JSON array):** `["E-2", "stream:U1", "TV-104C", "TIC-104"]`
+
 **Evidence on the drawing / model**
 
 - stream U1 (asset stream:U1) reads "Steam supply to the heater" at E-2 (`streams[U1]`)
@@ -151,6 +166,9 @@ IAC/ITAC recommendation code: 2.243x; 2.244x (IAC/ITAC browse page: 2.243x: 3,67
 ### H4: Is heat rejected to cooling water at a temperature another user could use?
 
 **About:** E-3  
+
+**Finding reference (JSON string):** `"H4@E-3"`
+**Asset IDs (JSON array):** `["E-3", "stream:U2", "HV-112"]`
 
 **Evidence on the drawing / model**
 
@@ -179,6 +197,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 
 **About:** E-3  
 
+**Finding reference (JSON string):** `"C1@E-3"`
+**Asset IDs (JSON array):** `["E-3", "stream:U2", "HV-112"]`
+
 **Evidence on the drawing / model**
 
 - stream U2 (asset stream:U2) reads "Cooling water (80 C) supply to the cooler" at E-3 (`streams[U2]`)
@@ -202,6 +223,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 ### C2: Which measurements have no controller (read by people, or by nothing)?
 
 **About:** PT-101, FT-103, TT-105, FT-106  
+
+**Finding reference (JSON string):** `"C2@model"`
+**Asset IDs (JSON array):** `["PT-101", "FT-103", "TT-105", "FT-106", "IL-2", "IL-3"]`
 
 **Evidence on the drawing / model**
 
@@ -228,6 +252,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 
 **About:** FV-107, LV-102, TV-104A, TV-104B, TV-104C  
 
+**Finding reference (JSON string):** `"C3@model"`
+**Asset IDs (JSON array):** `["FV-107", "LV-102", "TV-104A", "TV-104B", "TV-104C"]`
+
 **Evidence on the drawing / model**
 
 - valve FV-107 reads "FV-107 Feed control valve (flasher bottoms)" at RT-1 (`final_elements[FV-107]`)
@@ -251,6 +278,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 ### C6: Does a temperature controller write straight to a steam valve with no flow controller underneath (a cascade candidate)?
 
 **About:** TV-104C  
+
+**Finding reference (JSON string):** `"C6@TV-104C"`
+**Asset IDs (JSON array):** `["TV-104C", "TIC-104", "FT-106"]`
 
 **Evidence on the drawing / model**
 
@@ -276,6 +306,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 
 **About:** S8, S9, S11  
 
+**Finding reference (JSON string):** `"E26@model"`
+**Asset IDs (JSON array):** `["stream:S8", "stream:S9", "stream:S11", "PSV-101", "PSV-102"]`
+
 **Evidence on the drawing / model**
 
 - stream S8 (asset stream:S8) reads "Condenser vent to the process vent (flare)" (`streams[S8]`)
@@ -300,6 +333,9 @@ IAC/ITAC recommendation code: 2.243x (by description).
 ### C9: What source-labelled trip or interlock records apply to each rotating or fired machine, and what remains unverified?
 
 **About:** P-1  
+
+**Finding reference (JSON string):** `"C9@model"`
+**Asset IDs (JSON array):** `["P-1", "IL-1", "IL-2", "IL-3"]`
 
 **Evidence on the drawing / model**
 

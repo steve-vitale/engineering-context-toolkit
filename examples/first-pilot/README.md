@@ -29,9 +29,11 @@ occurred. The template does not validate its completion, authenticate an approva
 | [NIST configuration question](../context-register/nist-smstestbed/first-question.md) | A published identifier-meaning change and the missing deployment/mapping evidence. |
 | [Millard generated question](../opportunity-screen/millard/first-question.md) | A model-based collection request kept separate from a manually authored controls question. |
 
-If using the question engine, retain the complete finding ID, asset IDs and exact catalog revision/content hash
-with the source/model references. A rule ID or catalog filename alone is insufficient. If rules change, regenerate
-the screen. A manual document question needs a labelled local reference, not an invented model or finding ID.
+If using the question engine, copy the complete **Finding reference** and **Asset IDs** from the selected readable
+screen. They are shown as a JSON string and array to preserve exact spelling and escapes; use the decoded values
+when a tool requests an ID. These references are local to that model/screen. Retain the source/model references
+and exact catalog revision/content hash; a rule ID or catalog filename alone is insufficient. If rules change,
+regenerate the screen. A manual document question needs a labelled local reference, not an invented model or finding ID.
 
 ## If the team chooses a measured pilot
 

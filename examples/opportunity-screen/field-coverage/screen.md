@@ -25,6 +25,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 
 **About:** H-1  
 
+**Finding reference (JSON string):** `"H2@H-1"`
+**Asset IDs (JSON array):** `["H-1", "TV-101", "TV-102"]`
+
 **Evidence on the drawing / model**
 
 - valve TV-101 reads "TV-101 Steam supply from independent header A" at H-1 (`final_elements[TV-101]`)

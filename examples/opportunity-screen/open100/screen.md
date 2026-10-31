@@ -33,6 +33,9 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 
 **About:** CND-PU-162  
 
+**Finding reference (JSON string):** `"E1@S2-PU001"`
+**Asset IDs (JSON array):** `["S2-PU001", "S2-IN022", "S2-IN015", "S2-IN018", "S2-IN019", "S2-IN020", "S2-IN021"]`
+
 **Evidence on the drawing / model**
 
 - equipment CND-PU-162 (asset S2-PU001) reads "CND-PU-162 CONDENSATE PUMP" on sheet 2 (`units[S2-PU001]`)
@@ -65,6 +68,9 @@ IAC/ITAC recommendation code: 2.4146 (IAC/ITAC browse page: 5,227 recommendation
 ### E1: Is this pump throttled by a control valve when it could run on a variable speed drive?
 
 **About:** CND-PU-163  
+
+**Finding reference (JSON string):** `"E1@S2-PU002"`
+**Asset IDs (JSON array):** `["S2-PU002", "S2-IN022", "S2-IN015", "S2-IN018", "S2-IN019", "S2-IN020", "S2-IN021"]`
 
 **Evidence on the drawing / model**
 
@@ -99,6 +105,9 @@ IAC/ITAC recommendation code: 2.4146 (IAC/ITAC browse page: 5,227 recommendation
 
 **About:** CND-PU-164  
 
+**Finding reference (JSON string):** `"E1@S2-PU003"`
+**Asset IDs (JSON array):** `["S2-PU003", "S2-IN022", "S2-IN015", "S2-IN018", "S2-IN019", "S2-IN020", "S2-IN021"]`
+
 **Evidence on the drawing / model**
 
 - equipment CND-PU-164 (asset S2-PU003) reads "CND-PU-164 CONDENSATE PUMP" on sheet 2 (`units[S2-PU003]`)
@@ -132,6 +141,9 @@ IAC/ITAC recommendation code: 2.4146 (IAC/ITAC browse page: 5,227 recommendation
 
 **About:** FWS-PU-170A  
 
+**Finding reference (JSON string):** `"E1@S3-PU001"`
+**Asset IDs (JSON array):** `["S3-PU001", "S3-IN006", "S3-IN029"]`
+
 **Evidence on the drawing / model**
 
 - equipment FWS-PU-170A (asset S3-PU001) reads "FWS-PU-170A FEEDWATER PUMP" on sheet 3 (`units[S3-PU001]`)
@@ -160,6 +172,9 @@ IAC/ITAC recommendation code: 2.4146 (IAC/ITAC browse page: 5,227 recommendation
 ### E1: Is this pump throttled by a control valve when it could run on a variable speed drive?
 
 **About:** FWS-PU-170B  
+
+**Finding reference (JSON string):** `"E1@S3-PU002"`
+**Asset IDs (JSON array):** `["S3-PU002", "S3-IN006", "S3-IN029"]`
 
 **Evidence on the drawing / model**
 
@@ -190,6 +205,9 @@ IAC/ITAC recommendation code: 2.4146 (IAC/ITAC browse page: 5,227 recommendation
 
 **About:** ACC-PU-151  
 
+**Finding reference (JSON string):** `"E4@S1-PU013"`
+**Asset IDs (JSON array):** `["S1-PU013"]`
+
 **Evidence on the drawing / model**
 
 - equipment ACC-PU-151 (asset S1-PU013) reads "ACC-PU-151 AIR COOLED CONDENSER PUMP" on sheet 1 (`units[S1-PU013]`)
@@ -210,6 +228,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 ### E4: Is this motor oversized for its load?
 
 **About:** ACC-PU-152  
+
+**Finding reference (JSON string):** `"E4@S1-PU014"`
+**Asset IDs (JSON array):** `["S1-PU014"]`
 
 **Evidence on the drawing / model**
 
@@ -232,6 +253,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 
 **About:** ACC-PU-153  
 
+**Finding reference (JSON string):** `"E4@S1-PU015"`
+**Asset IDs (JSON array):** `["S1-PU015"]`
+
 **Evidence on the drawing / model**
 
 - equipment ACC-PU-153 (asset S1-PU015) reads "ACC-PU-153 AIR COOLED CONDENSER PUMP" on sheet 1 (`units[S1-PU015]`)
@@ -252,6 +276,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 ### E4: Is this motor oversized for its load?
 
 **About:** CND-PU-162  
+
+**Finding reference (JSON string):** `"E4@S2-PU001"`
+**Asset IDs (JSON array):** `["S2-PU001"]`
 
 **Evidence on the drawing / model**
 
@@ -274,6 +301,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 
 **About:** CND-PU-163  
 
+**Finding reference (JSON string):** `"E4@S2-PU002"`
+**Asset IDs (JSON array):** `["S2-PU002"]`
+
 **Evidence on the drawing / model**
 
 - equipment CND-PU-163 (asset S2-PU002) reads "CND-PU-163 CONDENSATE PUMP" on sheet 2 (`units[S2-PU002]`)
@@ -294,6 +324,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 ### E4: Is this motor oversized for its load?
 
 **About:** CND-PU-164  
+
+**Finding reference (JSON string):** `"E4@S2-PU003"`
+**Asset IDs (JSON array):** `["S2-PU003"]`
 
 **Evidence on the drawing / model**
 
@@ -316,6 +349,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 
 **About:** FWS-PU-170A  
 
+**Finding reference (JSON string):** `"E4@S3-PU001"`
+**Asset IDs (JSON array):** `["S3-PU001"]`
+
 **Evidence on the drawing / model**
 
 - equipment FWS-PU-170A (asset S3-PU001) reads "FWS-PU-170A FEEDWATER PUMP" on sheet 3 (`units[S3-PU001]`)
@@ -336,6 +372,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 ### E4: Is this motor oversized for its load?
 
 **About:** FWS-PU-170B  
+
+**Finding reference (JSON string):** `"E4@S3-PU002"`
+**Asset IDs (JSON array):** `["S3-PU002"]`
 
 **Evidence on the drawing / model**
 
@@ -358,6 +397,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 
 **About:** ACW-PU-211A  
 
+**Finding reference (JSON string):** `"E4@S7-PU001"`
+**Asset IDs (JSON array):** `["S7-PU001"]`
+
 **Evidence on the drawing / model**
 
 - equipment ACW-PU-211A (asset S7-PU001) reads "ACW-PU-211A AUX COOLING WATER PUMP" on sheet 7 (`units[S7-PU001]`)
@@ -379,6 +421,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 
 **About:** ACW-PU-211B  
 
+**Finding reference (JSON string):** `"E4@S7-PU002"`
+**Asset IDs (JSON array):** `["S7-PU002"]`
+
 **Evidence on the drawing / model**
 
 - equipment ACW-PU-211B (asset S7-PU002) reads "ACW-PU-211B AUX COOLING WATER PUMP" on sheet 7 (`units[S7-PU002]`)
@@ -399,6 +444,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 ### E4: Is this motor oversized for its load?
 
 **About:** ACW-PU-211C  
+
+**Finding reference (JSON string):** `"E4@S7-PU003"`
+**Asset IDs (JSON array):** `["S7-PU003"]`
 
 **Evidence on the drawing / model**
 
@@ -422,6 +470,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 ### H1: Is high-grade steam let down, bypassed or desuperheated for a duty a lower grade could serve?
 
 **About:** ESS-HTR-180  
+
+**Finding reference (JSON string):** `"H1@S4-TK001"`
+**Asset IDs (JSON array):** `["S4-TK001", "S4-IN001", "S4-IN014", "S4-IN016", "S4-OP005", "S4-OP001"]`
 
 **Evidence on the drawing / model**
 
@@ -450,6 +501,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 
 **About:** "MAIN STEAM BY-PASS" (S0-OP005)  
 
+**Finding reference (JSON string):** `"H1@S0-OP005"`
+**Asset IDs (JSON array):** `["S0-OP005", "S0-IN034", "S0-IN035", "S0-OP006"]`
+
 **Evidence on the drawing / model**
 
 - offpage "MAIN STEAM BY-PASS" (S0-OP005) on sheet 0 at MSS-XSS-140 (by the extraction's attribution) (`offpage_connectors[S0-OP005].text`)
@@ -475,6 +529,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 
 **About:** "MSS PID 140-1 (E-1) MAIN STEAM BYPASS" (S1-OP002)  
 
+**Finding reference (JSON string):** `"H1@S1-OP002"`
+**Asset IDs (JSON array):** `["S1-OP002"]`
+
 **Evidence on the drawing / model**
 
 - offpage "MSS PID 140-1 (E-1) MAIN STEAM BYPASS" (S1-OP002) on sheet 1 at ACC-AC-150 (by the extraction's attribution) (`offpage_connectors[S1-OP002].text`)
@@ -496,6 +553,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 ### H2: Is high-grade (or unknown-grade) steam doing a low-temperature job?
 
 **About:** "MSS PID 140-1 PEGGING STEAM" (S4-OP005)  
+
+**Finding reference (JSON string):** `"H2@S4-OP005"`
+**Asset IDs (JSON array):** `["S4-OP005"]`
 
 **Evidence on the drawing / model**
 
@@ -520,6 +580,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 
 **About:** "EXTRACTION STEAM ES PID 180-1" (S0-OP001)  
 
+**Finding reference (JSON string):** `"C1@S0-OP001"`
+**Asset IDs (JSON array):** `["S0-OP001"]`
+
 **Evidence on the drawing / model**
 
 - offpage "EXTRACTION STEAM ES PID 180-1" (S0-OP001) on sheet 0 at MSS-XSS-140 (by the extraction's attribution) (`offpage_connectors[S0-OP001].text`)
@@ -539,6 +602,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 ### C1: Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?
 
 **About:** "WTS PID 200-4 MAKE-UP WATER" (S2-OP003)  
+
+**Finding reference (JSON string):** `"C1@S2-OP003"`
+**Asset IDs (JSON array):** `["S2-OP003"]`
 
 **Evidence on the drawing / model**
 
@@ -560,6 +626,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 
 **About:** "WTS PID 200-4 MAKE-UP WATER" (S4-OP004)  
 
+**Finding reference (JSON string):** `"C1@S4-OP004"`
+**Asset IDs (JSON array):** `["S4-OP004"]`
+
 **Evidence on the drawing / model**
 
 - offpage "WTS PID 200-4 MAKE-UP WATER" (S4-OP004) on sheet 4 (`offpage_connectors[S4-OP004].text`)
@@ -579,6 +648,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 ### C1: Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?
 
 **About:** "MSS PID 140-1 PEGGING STEAM" (S4-OP005)  
+
+**Finding reference (JSON string):** `"C1@S4-OP005"`
+**Asset IDs (JSON array):** `["S4-OP005"]`
 
 **Evidence on the drawing / model**
 
@@ -600,6 +672,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 
 **About:** "TBS PID 240-1 (E-1) LP EXTRACTION STEAM" (S4-OP006)  
 
+**Finding reference (JSON string):** `"C1@S4-OP006"`
+**Asset IDs (JSON array):** `["S4-OP006"]`
+
 **Evidence on the drawing / model**
 
 - offpage "TBS PID 240-1 (E-1) LP EXTRACTION STEAM" (S4-OP006) on sheet 4 at CND-HTR-166 (by the extraction's attribution) (`offpage_connectors[S4-OP006].text`)
@@ -620,6 +695,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 
 **About:** "TBS PID 240-1 (D-1) HP EXTRACTION STEAM" (S4-OP008)  
 
+**Finding reference (JSON string):** `"C1@S4-OP008"`
+**Asset IDs (JSON array):** `["S4-OP008"]`
+
 **Evidence on the drawing / model**
 
 - offpage "TBS PID 240-1 (D-1) HP EXTRACTION STEAM" (S4-OP008) on sheet 4 (`offpage_connectors[S4-OP008].text`)
@@ -639,6 +717,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 ### C1: Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?
 
 **About:** "WTS PID 160-1 MAKE-UP WATER" (S7-OP001)  
+
+**Finding reference (JSON string):** `"C1@S7-OP001"`
+**Asset IDs (JSON array):** `["S7-OP001"]`
 
 **Evidence on the drawing / model**
 
@@ -661,6 +742,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 ### C3: Do these control valves lack position feedback?
 
 **About:** TCV-1401, TCV-1402, TCV-1403, TCV-1406, TCV-1408, TCV-1409 and 21 more  
+
+**Finding reference (JSON string):** `"C3@model"`
+**Asset IDs (JSON array):** `["S0-IN001", "S0-IN013", "S0-IN024", "S0-IN031", "S0-IN035", "S0-IN036", "S1-IN001", "S1-IN007", "S2-IN011", "S2-IN012", "S2-IN013", "S2-IN022", "S3-IN006", "S3-IN019", "S3-IN029", "S4-IN001", "S4-IN006", "S4-IN007", "S4-IN011", "S4-IN012", "S4-IN013", "S4-IN014", "S4-IN016", "S7-IN001", "S7-IN009", "S7-IN010", "S7-IN024"]`
 
 **Evidence on the drawing / model**
 
@@ -709,6 +793,9 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 ### C9: What source-labelled trip or interlock records apply to each rotating or fired machine, and what remains unverified?
 
 **About:** ACC-PU-151, ACC-PU-152, ACC-PU-153, CND-PU-162, CND-PU-163, CND-PU-164 and 5 more  
+
+**Finding reference (JSON string):** `"C9@model"`
+**Asset IDs (JSON array):** `["S1-PU013", "S1-PU014", "S1-PU015", "S2-PU001", "S2-PU002", "S2-PU003", "S3-PU001", "S3-PU002", "S7-PU001", "S7-PU002", "S7-PU003"]`
 
 **Evidence on the drawing / model**
 
