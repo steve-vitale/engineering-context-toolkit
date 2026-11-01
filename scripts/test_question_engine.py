@@ -2786,5 +2786,171 @@ class ExplicitHeatingRoles(unittest.TestCase):
             self.assertIn("HX-303", {a["id"] for f in found if f["id"] == fid for a in f["assets"]})
 
 
+
+
+class CombustionControlBasis(unittest.TestCase):
+    """Exposed fictional source-policy controls; emission is not engineering acceptance."""
+    BASE = EX / "combustion-control-basis"
+
+    def _cases(self):
+        data = json.loads((self.BASE / "expected/cases.json").read_text(encoding="utf-8"))
+        self.assertEqual(data["schema"], "combustion-control-basis-cases-1")
+        self.assertGreaterEqual(len(data["cases"]), 10)
+        self.assertEqual(len({c["id"] for c in data["cases"]}), len(data["cases"]))
+        return data["cases"]
+
+    def _assert_typed_literal(self, question, vector):
+        rows = [e for e in question["evidence"] if e.get("role") == "supplied candidate field"
+                and e.get("id") == vector["item_id"] and e.get("field") == vector["where"]]
+        self.assertEqual(len(rows), 1, vector)
+        _, marker, tail = rows[0]["text"].partition(" = ")
+        self.assertTrue(marker, rows[0])
+        value, end = json.JSONDecoder().raw_decode(tail)
+        self.assertIs(type(value), type(vector["value"]), vector)
+        self.assertEqual(value, vector["value"], vector)
+        self.assertTrue(tail[end:].startswith("; " + vector["state"] + ";"), rows[0])
+        self.assertIn("unverified", tail[end:])
+
+    def _assert_markdown_readback(self, doc, markdown):
+        # Decode actual code spans; do not call the product's Markdown formatter as an oracle.
+        rows = [e for q in doc["questions"] for e in q["evidence"]
+                if e.get("role") == "supplied candidate field"]
+        prefix = "- Supplied candidate field: "
+        lines = [line[len(prefix):] for line in markdown.splitlines() if line.startswith(prefix)]
+        self.assertEqual(len(lines), len(rows))
+        def decode_span(text):
+            count = len(text) - len(text.lstrip("`"))
+            self.assertGreater(count, 0)
+            end = text.find("`" * count, count)
+            self.assertGreaterEqual(end, count)
+            return json.loads(text[count:end]), text[end + count:]
+        for row, line in zip(rows, lines):
+            text, rest = decode_span(line)
+            self.assertTrue(rest.startswith(" ("))
+            field, suffix = decode_span(rest[2:])
+            self.assertEqual(suffix, ")")
+            self.assertEqual((text, field), (row["text"], row["field"]))
+
+    def test_source_cases_keep_minimum_scope_candidates_and_conditional_literals(self):
+        import hashlib
+        literals = json.loads((self.BASE / "expected/literals.json").read_text(encoding="utf-8"))
+        self.assertEqual(literals["schema"], "combustion-control-candidate-literals-1")
+        self.assertGreaterEqual(len(literals["rows"]), 197)
+        assessed = 0
+        for case in self._cases():
+            model = (self.BASE / case["model"]).resolve()
+            self.assertTrue(model.is_relative_to(self.BASE.resolve()))
+            self.assertEqual(hashlib.sha256(model.read_bytes()).hexdigest(), case["model_sha256_raw"])
+            for qid, policy in case["rules"].items():
+                with self.subTest(case=case["id"], question=qid), tempfile.TemporaryDirectory() as tmp:
+                    rc, doc = run(["--model", str(model), "--question", qid], tmp)
+                    self.assertEqual(rc, 0)
+                    self.assertTrue(all(q["question_id"] == qid for q in doc["questions"]))
+                    by_subject = {q["about"]: q for q in doc["questions"]}
+                    self.assertEqual(len(by_subject), len(doc["questions"]))
+                    self.assertLessEqual(set(policy["minimum_subjects"]), set(by_subject))
+                    self.assertLessEqual(set(by_subject), set(policy["allowed_subjects"]))
+                    for subject in policy.get("review_or_named_not_checked_subjects", []):
+                        explicit_reason = any(n.get("question_id") == qid and subject in n.get("reason", "")
+                                              for n in doc.get("not_checked", []) if isinstance(n, dict))
+                        self.assertTrue(subject in by_subject or explicit_reason, (case["id"], subject))
+                    for subject, question in by_subject.items():
+                        assets = {a["id"] for a in question["assets"]}
+                        self.assertIn(subject, assets, "every finding must retain its primary subject")
+                        self.assertFalse(assets & set(policy["forbidden_candidate_ids"]))
+                        self.assertLessEqual(set(policy["required_candidates_if_subject_shown"].get(subject, [])), assets)
+                        requests = question["data_requests"]
+                        self.assertEqual(len(requests), 2)
+                        self.assertTrue(all(r["state"] == "not_on_drawing" and r["where"] for r in requests))
+                        self.assertTrue(requests[0]["where"][0].startswith("site records: "))
+                        definition = next(q for q in CAT["questions"] if q["id"] == qid)
+                        self.assertEqual(len(requests), len(definition["data_requests"]))
+                        for request_definition, request in zip(definition["data_requests"], requests):
+                            if request_definition.get("show_fields"):
+                                self.assertIn("candidate_scope", request)
+                                self.assertEqual(request["candidate_scope"], "unit")
+                                self.assertIn("candidate_facts", request)
+                                self.assertIsInstance(request["candidate_facts"], list)
+                                self.assertTrue(all(f["id"] == subject for f in request["candidate_facts"]))
+                            self.assertNotIn("already_on_drawing", request)
+                        for candidate in policy.get("unclassified_if_shown", []):
+                            if candidate in assets:
+                                evidence = [e for e in question["evidence"] if e.get("id") == candidate
+                                            and e.get("role") != "supplied candidate field"]
+                                self.assertTrue(evidence)
+                                self.assertTrue(all(re.search(r"unclassified|candidate|context", e["role"], re.I)
+                                                    for e in evidence))
+                        for vector in literals["rows"]:
+                            if (vector["case"], vector["question_id"], vector["subject_id"]) != (case["id"], qid, subject):
+                                continue
+                            if vector["item_id"] in assets:
+                                self._assert_typed_literal(question, vector)
+                                assessed += 1
+                    # An optional quiet owner contributes no literal-display credit or completion assertion.
+                    self._assert_markdown_readback(doc, (Path(tmp) / "screen.md").read_text(encoding="utf-8"))
+        self.assertGreater(assessed, 0)
+
+    def test_catalog_keeps_function_sources_and_records_requests_separate_from_project_benefit(self):
+        questions = {q["id"]: q for q in CAT["questions"]}
+        for qid, required_source in (("E16", "S27"), ("C5", "S8")):
+            with self.subTest(question=qid):
+                q = questions[qid]
+                self.assertIn(required_source, q["typical_benefit"]["source"])
+                self.assertIn(required_source, CAT["sources"])
+                # This structural guard is not a semantic/source review of arbitrary replacement prose.
+                self.assertRegex(q["typical_benefit"]["wording"].lower(), r"\b(no|not|neither)\b")
+                self.assertEqual(len(q["data_requests"]), 2)
+                self.assertEqual(q["data_requests"][0]["where"][0]["place"], "records")
+                self.assertTrue(q["evidence_show_fields"])
+                for request in q["data_requests"]:
+                    self.assertFalse(request.get("fields"), "candidate fields must not discharge this records review")
+                    if request.get("show_fields"):
+                        self.assertEqual(request["field_scope"], "unit")
+
+    def test_present_unit_candidates_do_not_complete_the_records_review(self):
+        case = next(c for c in self._cases() if c["id"] == "COMB-04-supplied-qualified-flue-record")
+        original = json.loads((self.BASE / case["model"]).read_text(encoding="utf-8"))
+        definitions = {q["id"]: q for q in CAT["questions"]}
+        for qid in ("E16", "C5"):
+            with self.subTest(question=qid), tempfile.TemporaryDirectory() as tmp:
+                model = copy.deepcopy(original)
+                names = {n for r in definitions[qid]["data_requests"] for n in r.get("show_fields", [])}
+                self.assertTrue(names)
+                for unit in model["units"]:
+                    unit.setdefault("facts", {}).update({n: "fictional supplied candidate" for n in names})
+                path = Path(tmp) / "candidate-only.json"
+                path.write_text(json.dumps(model, ensure_ascii=True), encoding="utf-8")
+                out = Path(tmp) / "screen"
+                out.mkdir()
+                rc, doc = run(["--model", str(path), "--question", qid], out)
+                self.assertEqual(rc, 0)
+                self.assertTrue(doc["questions"])
+                for question in doc["questions"]:
+                    self.assertEqual(len(question["data_requests"]), 2)
+                    self.assertTrue(all(r["state"] == "not_on_drawing" for r in question["data_requests"]))
+                    self.assertTrue(any(r.get("candidate_facts") for r in question["data_requests"]))
+
+
+    def test_post_static_boiler_selector_controls_keep_declared_roles_separate(self):
+        import hashlib
+        folder = self.BASE / "selector-controls"
+        data = json.loads((folder / "cases.json").read_text(encoding="utf-8"))
+        self.assertEqual(data["schema"], "combustion-control-selector-cases-1")
+        self.assertEqual(len(data["controls"]), 8)
+        for case in data["controls"]:
+            with self.subTest(selector=case["id"]):
+                path = (folder / case["model"]).resolve()
+                self.assertTrue(path.is_relative_to(folder.resolve()))
+                self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), case["sha256_raw"])
+                questions, not_checked, _, _ = qe.screen(qe.Model(path), CAT, ["C5"])
+                self.assertEqual(not_checked, [])
+                self.assertEqual([q["id"] for q in questions], case["expected_C5_findings"])
+                for question in questions:
+                    for vector in case["conditional_literals"]:
+                        self._assert_typed_literal(question, vector)
+                    self.assertEqual(len(question["data_requests"]), 2)
+                    self.assertTrue(all(r["state"] == "not_on_drawing" for r in question["data_requests"]))
+
+
 if __name__ == "__main__":
     unittest.main()

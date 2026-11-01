@@ -1,0 +1,205 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/combustion-control-basis/models/COMB-06-drum-boiler-versus-dry-furnace.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "C5"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "controls": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "C5@F-A",
+   "question_id": "C5",
+   "family": "controls",
+   "question": "What boiler service and control functions apply, and what do existing records establish about any applicable steam-water level-control basis?",
+   "about": "F-A",
+   "assets": [
+    {
+     "id": "F-A",
+     "tag": "F-A"
+    },
+    {
+     "id": "LT-A",
+     "tag": "LT-A"
+    },
+    {
+     "id": "FT-WATER-A",
+     "tag": "FT-WATER-A"
+    },
+    {
+     "id": "FT-STEAM-A",
+     "tag": "FT-STEAM-A"
+    },
+    {
+     "id": "stream:FUEL-A",
+     "tag": "FUEL-A"
+    },
+    {
+     "id": "stream:FLUE-A",
+     "tag": "FLUE-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "F-A",
+     "tag": "F-A",
+     "text": "equipment F-A reads \"F-A Steam drum boiler A\"",
+     "field": "units[F-A]"
+    },
+    {
+     "role": "unclassified level or water/steam-flow indication candidate",
+     "id": "LT-A",
+     "tag": "LT-A",
+     "text": "instrument LT-A reads \"LT-A Steam drum level indication A\" at F-A",
+     "field": "instruments[LT-A]"
+    },
+    {
+     "role": "unclassified level or water/steam-flow indication candidate",
+     "id": "FT-WATER-A",
+     "tag": "FT-WATER-A",
+     "text": "instrument FT-WATER-A reads \"FT-WATER-A Boiler feedwater-flow indication A\" at F-A",
+     "field": "instruments[FT-WATER-A]"
+    },
+    {
+     "role": "unclassified level or water/steam-flow indication candidate",
+     "id": "FT-STEAM-A",
+     "tag": "FT-STEAM-A",
+     "text": "instrument FT-STEAM-A reads \"FT-STEAM-A Steam-flow indication A\" at F-A",
+     "field": "instruments[FT-STEAM-A]"
+    },
+    {
+     "role": "represented fuel, air or flue stream context",
+     "id": "stream:FUEL-A",
+     "tag": "FUEL-A",
+     "text": "stream FUEL-A (asset stream:FUEL-A) reads \"Natural gas fuel A\" at F-A",
+     "field": "streams[FUEL-A]"
+    },
+    {
+     "role": "represented fuel, air or flue stream context",
+     "id": "stream:FLUE-A",
+     "tag": "FLUE-A",
+     "text": "stream FLUE-A (asset stream:FLUE-A) reads \"Flue gas A\"",
+     "field": "streams[FLUE-A]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-A",
+     "tag": "F-A",
+     "text": "F-A fuel_service = \"natural gas\"; present; meaning and suitability unverified",
+     "field": "units[F-A].facts.fuel_service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-A",
+     "tag": "F-A",
+     "text": "F-A operating_basis = \"unknown\"; blank; meaning and suitability unverified",
+     "field": "units[F-A].facts.operating_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-A",
+     "tag": "F-A",
+     "text": "F-A steam_service = \"steam drum boiler\"; present; meaning and suitability unverified",
+     "field": "units[F-A].facts.steam_service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-A",
+     "tag": "F-A",
+     "text": "F-A drum_present = true; present; meaning and suitability unverified",
+     "field": "units[F-A].facts.drum_present"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A fuel_service = natural gas",
+     "field": "units[F-A].facts.fuel_service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A steam_service = steam drum boiler",
+     "field": "units[F-A].facts.steam_service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A drum_present = True",
+     "field": "units[F-A].facts.drum_present"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing service and control-applicability basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: permitted existing equipment/service description and design/control narrative identifying heat source, water/steam service, drum or no-drum configuration, intended operating modes and source revision/owner"
+     ],
+     "how": "Establish boiler service and applicability before any drum task. A boiler name alone does not establish a steam-water drum. For supplied hot-water or other no-drum service, acknowledge the applicable scope instead of imposing drum-control work. Unknown service requires clarification, not an inferred missing controller. Unfired waste-heat steam-drum equipment may still need level-control review despite having no fuel or combustion scope.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "fuel_service",
+       "value": "natural gas",
+       "where": "units[F-A].facts.fuel_service"
+      },
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "steam_service",
+       "value": "steam drum boiler",
+       "where": "units[F-A].facts.steam_service"
+      },
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "drum_present",
+       "value": true,
+       "where": "units[F-A].facts.drum_present"
+      }
+     ]
+    },
+    {
+     "item": "Applicable control configuration, operating modes and review disposition",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: existing design/control narratives and operating evidence for the functions actually applicable to this boiler; where steam-water level control applies, retain level, steam-flow and feedwater-flow relationships and normal/startup/low-load modes",
+      "DCS/PLC configuration: applicable approved existing controller, measurement/output and mode records, through the company-approved access route"
+     ],
+     "how": "Keep indication labels distinct from configured and active control. S8 describes level-only and additional steam/feedwater-flow inputs, including response to abrupt load changes; it does not mandate three-element control on every boiler. Review intended normal/startup/low-load modes and relevant load/feedwater conditions without declaring a single-element mode faulty. Adequate existing evidence may settle or defer the job without a project; new work belongs to the responsible company reviewer.",
+     "candidate_scope": "unit",
+     "candidate_facts": []
+    }
+   ],
+   "decision_rule": "First establish service and applicable control functions. Review combustion only where relevant; review steam-water level control only where that service applies, including waste-heat steam-drum equipment without a burner. Three depicted measurements do not prove an active three-element loop, and a missing depicted element does not establish an upgrade need. Existing supported design/mode and operating records may answer or defer the investigation; retain unresolved evidence and next owner.",
+   "typical_benefit": {
+    "wording": "S8 describes boiler combustion and water-level control functions and differing levels of control complexity. S19’s historical broad boiler process-control estimate is not a three-element drum-control gain; no percentage or payback is assigned to this applicability review.",
+    "source": [
+     "S8",
+     "S19",
+     "S24"
+    ],
+    "arc": "2.121x (category only)",
+    "source_titles": [
+     "S8: Improving Steam System Performance: A Sourcebook for Industry, 2nd ed. (DOE/GO-102012-3423, rev. Oct 2012)",
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "C5 uses S8 printed6–7/PDFindices11–12 explicitly for boiler functional/service review. The boiler selector does not infer a drum, combustion or missing control; dry furnaces/kilns are outside this boiler-specific question and may use E16 where eligible. Unfired waste-heat steam-drum equipment remains eligible without fuel evidence. S19/S24 do not establish a universal three-element requirement or drum-specific benefit. Supplied Boolean/service/qualification fields are literal claims, not installed-state, adequate performance or company authority.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

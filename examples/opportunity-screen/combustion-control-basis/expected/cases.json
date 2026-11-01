@@ -1,0 +1,449 @@
+{
+  "schema": "combustion-control-basis-cases-1",
+  "evidence_class": "fictional-exposed-development",
+  "source_policy": "Minimum and allowed scopes derive pre-call primary contracts; exact current 19/17 acknowledgment choice is a separate method trace, not a permanent always-open source mandate. Optional quiet owners receive zero literal-display/completion credit.",
+  "source_contract_sha256_raw": "dbf2616f3563fe9b6448e50d709c29ba78a10a3e57582a3afa33807efb96a93d",
+  "supplement_sha256_raw": {
+    "S03": "c55aa05676e499d771719fbb8691cc86ce87cd5c0e9a2f7a4d64ee05e9420d78",
+    "S04": "189ffbc6cc7137a15bbcd057283918453bf5da8d18179eece07a320073c22d65"
+  },
+  "request_policy": "Two existing-record-first requests for emitted findings; candidate-only show_fields have unit scope and do not satisfy records review. Source meaning, conditional NA and benefit framing need separate primary review.",
+  "cases": [
+    {
+      "id": "COMB-01-no-oxygen-record",
+      "model": "models/COMB-01-no-oxygen-record.json",
+      "model_sha256_raw": "f6d1cc509cc8a60b1674e7afa5cf207ed1cdf3ceb1f04788be7e12837ff65049",
+      "exposure_group": "initial_six_prebaseline",
+      "rules": {
+        "E16": {
+          "minimum_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "allowed_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "required_candidates_if_subject_shown": {},
+          "forbidden_candidate_ids": [
+            "AI-X"
+          ],
+          "unclassified_if_shown": [],
+          "content_policy": "Service/applicability first; supplied records/fields are candidates, not completion or authority. Conditional/NA wording requires primary review, not keyword-only acceptance."
+        },
+        "C5": {
+          "minimum_subjects": [],
+          "allowed_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "required_candidates_if_subject_shown": {},
+          "forbidden_candidate_ids": [
+            "AI-X"
+          ],
+          "unclassified_if_shown": [],
+          "content_policy": "Service/applicability first; supplied records/fields are candidates, not completion or authority. Conditional/NA wording requires primary review, not keyword-only acceptance."
+        }
+      }
+    },
+    {
+      "id": "COMB-02-product-headspace-oxygen",
+      "model": "models/COMB-02-product-headspace-oxygen.json",
+      "model_sha256_raw": "5adb6ae0383173a0422d10ca8118d025a4f0b22b37ce7d8200cefcf3fb912111",
+      "exposure_group": "initial_six_prebaseline",
+      "rules": {
+        "E16": {
+          "minimum_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "allowed_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "required_candidates_if_subject_shown": {},
+          "forbidden_candidate_ids": [
+            "AI-X"
+          ],
+          "unclassified_if_shown": [
+            "AI-A"
+          ],
+          "content_policy": "Service/applicability first; supplied records/fields are candidates, not completion or authority. Conditional/NA wording requires primary review, not keyword-only acceptance."
+        },
+        "C5": {
+          "minimum_subjects": [],
+          "allowed_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "required_candidates_if_subject_shown": {},
+          "forbidden_candidate_ids": [
+            "AI-X"
+          ],
+          "unclassified_if_shown": [
+            "AI-A"
+          ],
+          "content_policy": "Service/applicability first; supplied records/fields are candidates, not completion or authority. Conditional/NA wording requires primary review, not keyword-only acceptance."
+        }
+      }
+    },
+    {
+      "id": "COMB-03-foreign-flue-oxygen",
+      "model": "models/COMB-03-foreign-flue-oxygen.json",
+      "model_sha256_raw": "1fbc36188bc2a994ed97a1b91ae19add01e58dddbd06e975f782f8ab94399c3c",
+      "exposure_group": "initial_six_prebaseline",
+      "rules": {
+        "E16": {
+          "minimum_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "allowed_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "required_candidates_if_subject_shown": {},
+          "forbidden_candidate_ids": [
+            "AI-X"
+          ],
+          "unclassified_if_shown": [],
+          "content_policy": "Service/applicability first; supplied records/fields are candidates, not completion or authority. Conditional/NA wording requires primary review, not keyword-only acceptance."
+        },
+        "C5": {
+          "minimum_subjects": [],
+          "allowed_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "required_candidates_if_subject_shown": {},
+          "forbidden_candidate_ids": [
+            "AI-X"
+          ],
+          "unclassified_if_shown": [],
+          "content_policy": "Service/applicability first; supplied records/fields are candidates, not completion or authority. Conditional/NA wording requires primary review, not keyword-only acceptance."
+        }
+      }
+    },
+    {
+      "id": "COMB-04-supplied-qualified-flue-record",
+      "model": "models/COMB-04-supplied-qualified-flue-record.json",
+      "model_sha256_raw": "1a654910c356998ac69d7f3f21fbb61baf5d8b7680e6d8fc62cb84957fcb9f1b",
+      "exposure_group": "initial_six_prebaseline",
+      "rules": {
+        "E16": {
+          "minimum_subjects": [
+            "F-B"
+          ],
+          "allowed_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "required_candidates_if_subject_shown": {
+            "F-A": [
+              "AI-A"
+            ]
+          },
+          "forbidden_candidate_ids": [
+            "AI-X"
+          ],
+          "unclassified_if_shown": [],
+          "content_policy": "Service/applicability first; supplied records/fields are candidates, not completion or authority. Conditional/NA wording requires primary review, not keyword-only acceptance."
+        },
+        "C5": {
+          "minimum_subjects": [],
+          "allowed_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "required_candidates_if_subject_shown": {},
+          "forbidden_candidate_ids": [
+            "AI-X"
+          ],
+          "unclassified_if_shown": [],
+          "content_policy": "Service/applicability first; supplied records/fields are candidates, not completion or authority. Conditional/NA wording requires primary review, not keyword-only acceptance."
+        }
+      }
+    },
+    {
+      "id": "COMB-05-air-fuel-metering-record",
+      "model": "models/COMB-05-air-fuel-metering-record.json",
+      "model_sha256_raw": "ef942e4bf726780147e8b32e2d740be6774eda5c5180e8069e194f4a30dabcc4",
+      "exposure_group": "initial_six_prebaseline",
+      "rules": {
+        "E16": {
+          "minimum_subjects": [
+            "F-B"
+          ],
+          "allowed_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "required_candidates_if_subject_shown": {
+            "F-A": [
+              "FT-FUEL-A",
+              "FT-AIR-A"
+            ]
+          },
+          "forbidden_candidate_ids": [
+            "AI-X"
+          ],
+          "unclassified_if_shown": [],
+          "content_policy": "Service/applicability first; supplied records/fields are candidates, not completion or authority. Conditional/NA wording requires primary review, not keyword-only acceptance."
+        },
+        "C5": {
+          "minimum_subjects": [],
+          "allowed_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "required_candidates_if_subject_shown": {},
+          "forbidden_candidate_ids": [
+            "AI-X"
+          ],
+          "unclassified_if_shown": [],
+          "content_policy": "Service/applicability first; supplied records/fields are candidates, not completion or authority. Conditional/NA wording requires primary review, not keyword-only acceptance."
+        }
+      }
+    },
+    {
+      "id": "COMB-06-drum-boiler-versus-dry-furnace",
+      "model": "models/COMB-06-drum-boiler-versus-dry-furnace.json",
+      "model_sha256_raw": "43abc80ac5fcf6a9a4414a282378b887a6d8f3aded42a53a2ab113472c9c62a7",
+      "exposure_group": "initial_six_prebaseline",
+      "rules": {
+        "E16": {
+          "minimum_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "allowed_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "required_candidates_if_subject_shown": {},
+          "forbidden_candidate_ids": [
+            "AI-X"
+          ],
+          "unclassified_if_shown": [],
+          "content_policy": "Service/applicability first; supplied records/fields are candidates, not completion or authority. Conditional/NA wording requires primary review, not keyword-only acceptance."
+        },
+        "C5": {
+          "minimum_subjects": [
+            "F-A"
+          ],
+          "allowed_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "required_candidates_if_subject_shown": {
+            "F-A": [
+              "LT-A",
+              "FT-WATER-A",
+              "FT-STEAM-A"
+            ]
+          },
+          "forbidden_candidate_ids": [
+            "AI-X"
+          ],
+          "unclassified_if_shown": [],
+          "content_policy": "Service/applicability first; supplied records/fields are candidates, not completion or authority. Conditional/NA wording requires primary review, not keyword-only acceptance."
+        }
+      }
+    },
+    {
+      "id": "COMB-S01-hot-water-boiler",
+      "model": "models/COMB-S01-hot-water-boiler.json",
+      "model_sha256_raw": "ce5f6140382c156b881dde0d656190de6e456745b7ed970640456bc053286e2b",
+      "exposure_group": "additive_applicability_prebaseline",
+      "rules": {
+        "E16": {
+          "minimum_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "allowed_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "required_candidates_if_subject_shown": {},
+          "forbidden_candidate_ids": [
+            "AI-X"
+          ],
+          "unclassified_if_shown": [],
+          "content_policy": "Service/applicability first; supplied records/fields are candidates, not completion or authority. Conditional/NA wording requires primary review, not keyword-only acceptance."
+        },
+        "C5": {
+          "minimum_subjects": [
+            "F-B"
+          ],
+          "allowed_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "required_candidates_if_subject_shown": {},
+          "forbidden_candidate_ids": [
+            "AI-X"
+          ],
+          "unclassified_if_shown": [],
+          "content_policy": "Service/applicability first; supplied records/fields are candidates, not completion or authority. Conditional/NA wording requires primary review, not keyword-only acceptance."
+        }
+      }
+    },
+    {
+      "id": "COMB-S02-once-through-steam-generator",
+      "model": "models/COMB-S02-once-through-steam-generator.json",
+      "model_sha256_raw": "bef3ce1116d534064ae2eae042f22367ba036edd505ef324242ca0bb77acb139",
+      "exposure_group": "additive_applicability_prebaseline",
+      "rules": {
+        "E16": {
+          "minimum_subjects": [
+            "F-B"
+          ],
+          "allowed_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "required_candidates_if_subject_shown": {},
+          "forbidden_candidate_ids": [
+            "AI-X"
+          ],
+          "unclassified_if_shown": [],
+          "content_policy": "Service/applicability first; supplied records/fields are candidates, not completion or authority. Conditional/NA wording requires primary review, not keyword-only acceptance."
+        },
+        "C5": {
+          "minimum_subjects": [
+            "F-B"
+          ],
+          "allowed_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "required_candidates_if_subject_shown": {},
+          "forbidden_candidate_ids": [
+            "AI-X"
+          ],
+          "unclassified_if_shown": [],
+          "content_policy": "Service/applicability first; supplied records/fields are candidates, not completion or authority. Conditional/NA wording requires primary review, not keyword-only acceptance."
+        }
+      }
+    },
+    {
+      "id": "COMB-S03-unfired-services",
+      "model": "models/COMB-S03-unfired-services.json",
+      "model_sha256_raw": "2c2aa4038282f8b8dcf04ad7f7a00b4a176d39bbee3d4206333b4dec9f93e9c3",
+      "exposure_group": "post-original16 explicit-unfired supplement",
+      "rules": {
+        "E16": {
+          "minimum_subjects": [],
+          "allowed_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "required_candidates_if_subject_shown": {},
+          "forbidden_candidate_ids": [
+            "AI-X"
+          ],
+          "unclassified_if_shown": [],
+          "content_policy": {
+            "minimum_subjects": [],
+            "quiet_or_clear_not_applicable_or_conditional_service_acknowledgement": [
+              "F-A",
+              "F-B"
+            ],
+            "forbidden": [
+              "Unconditional flue-O2/CO field-acquisition or automatic-trim task for either explicit nonfuel-fired suppliedscope",
+              "Treating fuel_fired:false or lackofnewfuelstream as sourceauthenticated truth or generalized absenceproof",
+              "Universal electric/unfired classification beyond explicitsuppliedfacts"
+            ]
+          }
+        },
+        "C5": {
+          "minimum_subjects": [
+            "F-B"
+          ],
+          "allowed_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "required_candidates_if_subject_shown": {},
+          "forbidden_candidate_ids": [
+            "AI-X"
+          ],
+          "unclassified_if_shown": [],
+          "content_policy": {
+            "minimum_known_drum_review_subjects": [
+              "F-B"
+            ],
+            "quiet_or_acknowledged_no_drum_subjects": [
+              "F-A"
+            ],
+            "forbidden_unconditional_drum_obligation": [
+              "F-A"
+            ],
+            "combustion_limb": "Notapplicable to suppliednofiring scopes A/B; do not forceO2trim. B retains independentwater/drum configurationreview evenwithoutfuel.",
+            "water_limb": "F-B supplieddrumtrue/configunknown warrantsrecordsfunctionreview; not automaticallymissing3element/retrofit. F-A suppliedhotwater/drumfalse doesnotwarrant3element."
+          }
+        }
+      }
+    },
+    {
+      "id": "COMB-S04-unknown-fuel-basis",
+      "model": "models/COMB-S04-unknown-fuel-basis.json",
+      "model_sha256_raw": "8054e6a288e3ce5f6a14cffa803a5b91c2d481fecaa6e942ccdc9cafd7626bae",
+      "exposure_group": "post-original18 unknown-fuel supplement",
+      "rules": {
+        "E16": {
+          "minimum_subjects": [],
+          "allowed_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "required_candidates_if_subject_shown": {},
+          "forbidden_candidate_ids": [
+            "AI-X"
+          ],
+          "unclassified_if_shown": [],
+          "content_policy": {
+            "subjects_requiring_conditional_review_or_explicit_per_subject_notchecked_basis": [
+              "F-A",
+              "F-B"
+            ],
+            "silent_quiet_unacceptable": [
+              "F-A",
+              "F-B"
+            ],
+            "policy": "Nofuelstream/record is unknownbasis,notexplicitunfired proof. Askexistingservice/fuel/operatingbasis or retainclear per-subjectscope/notcheckedreason; do not requirenewflueanalysis ortrimproject.",
+            "minimum_unconditional_firing_or_trim_tasks": []
+          },
+          "review_or_named_not_checked_subjects": [
+            "F-A",
+            "F-B"
+          ]
+        },
+        "C5": {
+          "minimum_subjects": [],
+          "allowed_subjects": [
+            "F-A",
+            "F-B"
+          ],
+          "required_candidates_if_subject_shown": {},
+          "forbidden_candidate_ids": [
+            "AI-X"
+          ],
+          "unclassified_if_shown": [],
+          "content_policy": {
+            "optional_conditional_service_and_waterlevel_review_subjects": [
+              "F-A",
+              "F-B"
+            ],
+            "forbidden_unconditional_drum_obligation_subjects": [
+              "F-A",
+              "F-B"
+            ],
+            "policy": "Bothdrumapplicability suppliednull/unknown; neitherabsence nor presence inferred. FiredheaterB doesnotestablishsteamdrum; fuelbasisandwatercontrolfunction remainseparate."
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "combustion-control-basis-sources-1",
+  "sources": {
+    "S8": {
+      "title": "Improving Steam System Performance: A Sourcebook for Industry, 2nd ed. (DOE/GO-102012-3423, rev. Oct 2012)",
+      "url": "https://www.energy.gov/sites/prod/files/2014/05/f15/steamsourcebook.pdf",
+      "license": "Public domain"
+    },
+    "S19": {
+      "title": "Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+      "url": "https://www.osti.gov/servlets/purl/862119",
+      "license": "DOE-lab (contractor) report: unclear, but freely citable. Its tables quote older secondary sources, so figures are cited as reported in LBNL-56183"
+    },
+    "S24": {
+      "title": "DOE IAC/ITAC database: browse pages, download, schema document",
+      "url": "https://itac.university/index/arc/2.",
+      "license": "No license or terms stated: unclear"
+    },
+    "S27": {
+      "title": "DOE Industrial Technologies Program, Process Heating Tip Sheet #2, Check Burner Air to Fuel Ratios (Nov 2007)",
+      "url": "https://www1.eere.energy.gov/manufacturing/tech_assistance/pdfs/42110.pdf",
+      "license": "Public domain (US federal)",
+      "checked": "Quotes checked 2026-10-29 word for word against a text extract (pdftotext) of the PDF at the URL, SHA-256 bc541d8b0b3fe511bad519b65073afbe092872e4d2902f199b1311662d5b786a. Page numbers are PDF pages."
+    }
+  },
+  "reviewed_primary_routes": [
+    {
+      "id": "S19",
+      "url": "https://www.energystar.gov/sites/default/files/buildings/tools/ES_Petroleum_Energy_Guide.pdf",
+      "version": "LBNL-56183 February2005, official122-page distribution",
+      "locator": "Section8.1 printed37–39/PDFindices44–46",
+      "scope": "Combustion/excess-air operating review and historical table attribution, not trim/drum retrofit benefit."
+    },
+    {
+      "id": "S8",
+      "url": "https://www.energy.gov/sites/prod/files/2014/05/f15/steamsourcebook.pdf",
+      "locator": "Printed4–5/PDFindices9–10, web320–324 and398–415 for combustion/process-waste-heat and unfired/supplementary-fired generation; printed6–7/PDFindices11–12, web467–481 and504–511 for combustion/water-level functions",
+      "scope": "Boiler combustion and water-level functions/modes; not a mandatory three-element design on every boiler."
+    },
+    {
+      "id": "S27",
+      "url": "https://www1.eere.energy.gov/manufacturing/tech_assistance/pdfs/42110.pdf",
+      "scope": "Air/fuel metering or flue analysis alternatives and conditional process/operating basis.",
+      "locator": "PDFpage1/index0, web0–21 and29–51; PDFpage2/index1, web152–168"
+    }
+  ],
+  "acquisition_limits": "Official primary PDF web text was reviewed; no new raw PDF was downloaded or redistributed by this packet. S19 uses the canonical official ENERGY STAR122-page distribution and its own printed/physical locators; no mixing with the120-page LBL mirror and no byte-equivalence claim for either or the catalog OSTI route. The sources entries reproduce existing catalog declarations: S27.checked and its SHA are a retained2026-10-29 declaration, not a newly verified raw-PDF fingerprint. S24 is category context, not a unit-specific engineering authority or benefit.",
+  "authorship": "Source-informed authored software collection policy, not a quoted universal per-machine mandate or customer approval.",
+  "recorded_run_evidence": {
+    "path": "history/PROVENANCE.json",
+    "role": "Portable records of the original and matched candidate phases: actual selected source/model/catalog/engine identities, outcomes and raw report hashes. These identify the run evidence; they do not authenticate source authority, installed function or a company decision.",
+    "scope": "Reports are retained intact; the original catalog’s source/benefit wording remains historical evidence, not a current endorsement."
+  }
+}

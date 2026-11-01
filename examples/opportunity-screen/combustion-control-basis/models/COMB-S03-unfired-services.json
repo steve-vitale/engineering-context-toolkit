@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "model_id": "COMB-S03-unfired-services",
+    "title": "FICTIONAL electric hot-water and unfired waste-heat boiler applicability control",
+    "illustrative": true,
+    "authorship": "Coding-agent authored synthetic declarations; no plant records, engineering approval or actual operating observations.",
+    "exposure": "Additive applicability countercontrol authored AFTER the original16 baseline calls and BEFORE any candidate call. Not blind or held out."
+  },
+  "units": [
+    {
+      "id": "F-A",
+      "name": "Electric hot-water boiler A",
+      "type": "boiler",
+      "facts": {
+        "heat_source": "electric resistance",
+        "fuel_fired": false,
+        "water_service": "hot-water heating only",
+        "steam_water_drum_present": false,
+        "steam_export_present": false,
+        "source_document": "FICT-UNFIRED-SERVICES",
+        "source_revision": "R1",
+        "underlying_claim_verified": false
+      }
+    },
+    {
+      "id": "F-B",
+      "name": "Unfired waste-heat steam-drum boiler B",
+      "type": "boiler",
+      "facts": {
+        "heat_source": "recovered process heat; unfired waste-heat recovery",
+        "fuel_fired": false,
+        "auxiliary_burner_present": false,
+        "water_service": "steam generation with a steam-water drum",
+        "steam_water_drum_present": true,
+        "steam_export_present": true,
+        "water_level_control_configuration": "unknown",
+        "source_document": "FICT-UNFIRED-SERVICES",
+        "source_revision": "R1",
+        "underlying_claim_verified": false
+      }
+    }
+  ],
+  "streams": [
+    {
+      "id": "HOT-WATER-A",
+      "name": "Hot-water supply A",
+      "from": "F-A",
+      "to": "HOT-WATER-USER-A"
+    },
+    {
+      "id": "WATER-RETURN-A",
+      "name": "Hot-water return A",
+      "from": "HOT-WATER-USER-A",
+      "to": "F-A"
+    },
+    {
+      "id": "RECOVERED-HEAT-B",
+      "name": "Hot process gas supplied for waste-heat recovery B; no auxiliary firing represented",
+      "from": "PROCESS-HEAT-BOUNDARY",
+      "to": "F-B"
+    },
+    {
+      "id": "PROCESS-RETURN-B",
+      "name": "Cooled process gas return B",
+      "from": "F-B",
+      "to": "PROCESS-RETURN-BOUNDARY"
+    },
+    {
+      "id": "FEEDWATER-B",
+      "name": "Boiler feedwater B",
+      "from": "WATER-BOUNDARY-B",
+      "to": "F-B"
+    },
+    {
+      "id": "STEAM-B",
+      "name": "Steam export B",
+      "from": "F-B",
+      "to": "STEAM-BOUNDARY-B"
+    }
+  ],
+  "instruments": [],
+  "controllers": [],
+  "interlocks": [],
+  "final_elements": [],
+  "manual_valves": []
+}

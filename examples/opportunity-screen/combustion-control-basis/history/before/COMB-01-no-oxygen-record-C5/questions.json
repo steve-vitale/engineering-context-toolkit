@@ -1,0 +1,117 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/combustion-control-basis/models/COMB-01-no-oxygen-record.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "C5"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "controls": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "C5@F-A",
+   "question_id": "C5",
+   "family": "controls",
+   "question": "Does the boiler lack O2 trim or three-element drum level control?",
+   "about": "F-A",
+   "assets": [
+    {
+     "id": "F-A",
+     "tag": "F-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "F-A",
+     "tag": "F-A",
+     "text": "equipment F-A reads \"F-A Fired unit A\"",
+     "field": "units[F-A]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Control narrative",
+     "state": "not_on_drawing",
+     "where": [
+      "DCS/PLC configuration: combustion and drum level configuration"
+     ],
+     "how": "Note O2 trim and level control elements."
+    }
+   ],
+   "decision_rule": "Worth an upgrade where O2 trim or feed/steam flow in the level loop is missing on a large boiler.",
+   "typical_benefit": {
+    "wording": "LBNL boiler table (as reported in LBNL-56183): \"Improved Process Control 3%\", 0.6 yr payback.",
+    "source": [
+     "S19",
+     "S24"
+    ],
+    "arc": "2.121x (category only)",
+    "source_titles": [
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": null,
+   "status": "asked"
+  },
+  {
+   "id": "C5@F-B",
+   "question_id": "C5",
+   "family": "controls",
+   "question": "Does the boiler lack O2 trim or three-element drum level control?",
+   "about": "F-B",
+   "assets": [
+    {
+     "id": "F-B",
+     "tag": "F-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "equipment F-B reads \"F-B Fired unit B\"",
+     "field": "units[F-B]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Control narrative",
+     "state": "not_on_drawing",
+     "where": [
+      "DCS/PLC configuration: combustion and drum level configuration"
+     ],
+     "how": "Note O2 trim and level control elements."
+    }
+   ],
+   "decision_rule": "Worth an upgrade where O2 trim or feed/steam flow in the level loop is missing on a large boiler.",
+   "typical_benefit": {
+    "wording": "LBNL boiler table (as reported in LBNL-56183): \"Improved Process Control 3%\", 0.6 yr payback.",
+    "source": [
+     "S19",
+     "S24"
+    ],
+    "arc": "2.121x (category only)",
+    "source_titles": [
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": null,
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

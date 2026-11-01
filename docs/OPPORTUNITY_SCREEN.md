@@ -77,9 +77,9 @@ readings has nobody automated? Is this utility metered? The engine asks those qu
 collection list.
 
 It is a screen, not an audit. A finding means the drawing shows a pattern worth a question. It never means the
-plant wastes energy, and the engine never computes savings, dollars or energy for your plant. Each question carries
-what a public source says about the typical benefit, quoted as written, with the source and its license. Those
-are general figures for plants in general.
+plant wastes energy, and the engine never computes savings, dollars or energy for your plant. Where a question carries a public benefit figure, read its cited source and applicability limits; it is not
+a site estimate. E16/C5 retain scoped source context without presenting broad boiler figures as savings from
+a trim or drum-control upgrade.
 
 **What it covers, and what it doesn't yet.**
 - The 50 questions cover pumps, fans, steam, boilers and fired heaters, compressed air, cooling water, heat grade,
@@ -201,8 +201,19 @@ new field collection or operating changes require a separate qualified decision.
 [function-basis guide](../examples/opportunity-screen/function-basis/README.md) separates the original 25 cases
 from these 18 heating development cases; neither cohort represents plants or measured engineer usefulness.
 
-The catalog has 50 rules and 124 collection requests. Twenty rules have bounded source-informed collection
-reviews; the other 30 still need original-source adequacy review. These controls do not establish whole-catalog
+E16 first establishes heat source and combustion service, then reviews applicable air/fuel metering or flue-analysis
+records; C5 establishes boiler/drum applicability before reviewing water-level function records. Unknown service
+stays unknown; electric/unfired service does not require trim, and an unfired drum boiler can still need level
+control review. Existing coverage is evidence to review, not a compulsory project. The
+[combustion-control tutorial](../examples/opportunity-screen/combustion-control-basis/README.md) shows own-model
+substitution and four before/after comparisons, with the full retained reports and [source map](../examples/opportunity-screen/combustion-control-basis/SOURCES.json)
+for [S19 boiler context](https://www.energystar.gov/sites/default/files/buildings/tools/ES_Petroleum_Energy_Guide.pdf),
+[S8 water-level applicability](https://www.energy.gov/sites/prod/files/2014/05/f15/steamsourcebook.pdf),
+[S27 air/fuel alternatives](https://www1.eere.energy.gov/manufacturing/tech_assistance/pdfs/42110.pdf) and
+[S24 assessment category](https://itac.university/index/arc/2.12). These sources do not authenticate supplied records.
+
+The catalog has 50 rules and 126 collection requests. Twenty-two rules have bounded source-informed collection
+reviews; the other 28 still need original-source adequacy review. These controls do not establish whole-catalog
 engineering correctness or human usefulness. The [worked food screen](../examples/opportunity-screen/food/screen.md)
 shows the retained candidates and open coverage tasks.
 

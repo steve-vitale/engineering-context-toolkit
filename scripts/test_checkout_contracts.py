@@ -24,6 +24,8 @@ TARGETS += ['scripts/draw_pid_from_model.py', 'data/bayer_rt/process_model.json'
             'data/bayer_rt/pid_layout.json', 'data/te_process_model.json', 'data/te_pid_layout.json', 'data/questions.json']
 TARGETS += ['scripts/import_site_drawing.py', 'scripts/build_twin.py', 'scripts/generate.py', 'scripts/pi_mapping.py']
 TARGETS += ['examples/own-drawing/manifest.json']
+TARGETS += ['examples/opportunity-screen/combustion-control-basis/models/COMB-S04-unknown-fuel-basis.json',
+            'examples/opportunity-screen/combustion-control-basis/README.md']
 RAW_FAMILIES = ('out/review_kit', 'examples/review-and-mapping',
                 'examples/own-drawing/deliverable', 'examples/from-description/assisted',
                 'examples/from-description/mgpi', 'examples/pump-revision/inputs',
@@ -74,7 +76,7 @@ class CheckoutContracts(unittest.TestCase):
     def test_git_filters_retain_lf_contracts_and_existing_raw_packets(self):
         self.assertIsNotNone(shutil.which('git'), 'Git is required for checkout-contract controls')
         targets = {path: (ROOT / path).read_bytes() for path in TARGETS}
-        self.assertEqual(len(targets), 26)
+        self.assertEqual(len(targets), 28)
         for path, raw in targets.items():
             self.assertNotIn(b'\r', raw, path + ' must materialize as committed LF bytes')
         protected = {}
@@ -132,8 +134,8 @@ class CheckoutContracts(unittest.TestCase):
                     expected = b'ordinary LF control\r\n' if checkout == 'true' else synthetic['checkout-control.txt']
                     self.assertEqual((folder / 'checkout-control.txt').read_bytes(), expected,
                                      'The negative control must actually exercise the selected Git text filter')
-        self.assertEqual((clean_count, checkout_count), (52, 104))
-        print('Git byte contracts: 52 indexed + 104 checkout target comparisons; '
+        self.assertEqual((clean_count, checkout_count), (56, 112))
+        print('Git byte contracts: 56 indexed + 112 checkout target comparisons; '
               + str(len(protected)) + ' existing raw-packet files retained per configuration')
 
     def test_current_drawing_manifests_match_exact_working_bytes(self):

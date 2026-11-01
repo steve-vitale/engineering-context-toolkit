@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "model_id": "COMB-06-drum-boiler-versus-dry-furnace",
+    "title": "FICTIONAL paired combustion/control collection development fixture",
+    "illustrative": true,
+    "authorship": "Coding-agent authored synthetic data; no plant records, human approval or actual operating evidence.",
+    "exposure": "Prepared before any baseline/candidate call; useful-question oracle pending independent primary-source contract."
+  },
+  "units": [
+    {
+      "id": "F-A",
+      "name": "Steam drum boiler A",
+      "type": "boiler",
+      "facts": {
+        "fuel_service": "natural gas",
+        "operating_basis": "unknown",
+        "steam_service": "steam drum boiler",
+        "drum_present": true
+      }
+    },
+    {
+      "id": "F-B",
+      "name": "Dry process furnace B",
+      "type": "furnace",
+      "facts": {
+        "fuel_service": "natural gas",
+        "operating_basis": "unknown",
+        "steam_service": "dry process heating; no steam-water drum in supplied fixture",
+        "drum_present": false
+      }
+    }
+  ],
+  "streams": [
+    {
+      "id": "FUEL-A",
+      "name": "Natural gas fuel A",
+      "from": "BL",
+      "to": "F-A",
+      "utility": true
+    },
+    {
+      "id": "FUEL-B",
+      "name": "Natural gas fuel B",
+      "from": "BL",
+      "to": "F-B",
+      "utility": true
+    },
+    {
+      "id": "FLUE-A",
+      "name": "Flue gas A",
+      "from": "F-A",
+      "to": "ATM-A"
+    },
+    {
+      "id": "FLUE-B",
+      "name": "Flue gas B",
+      "from": "F-B",
+      "to": "ATM-B"
+    },
+    {
+      "id": "FEEDWATER-A",
+      "name": "Boiler feedwater A",
+      "from": "WATER-BOUNDARY-A",
+      "to": "F-A"
+    },
+    {
+      "id": "STEAM-A",
+      "name": "Steam export A",
+      "from": "F-A",
+      "to": "STEAM-BOUNDARY-A"
+    }
+  ],
+  "instruments": [
+    {
+      "tag": "LT-A",
+      "description": "Steam drum level indication A",
+      "unit": "F-A",
+      "stream": "FEEDWATER-A"
+    },
+    {
+      "tag": "FT-WATER-A",
+      "description": "Boiler feedwater-flow indication A",
+      "unit": "F-A",
+      "stream": "FEEDWATER-A"
+    },
+    {
+      "tag": "FT-STEAM-A",
+      "description": "Steam-flow indication A",
+      "unit": "F-A",
+      "stream": "STEAM-A"
+    }
+  ],
+  "controllers": [],
+  "interlocks": [],
+  "final_elements": [],
+  "manual_valves": []
+}

@@ -1,0 +1,73 @@
+# Opportunity screen: FICTIONAL paired combustion/control collection development fixture
+
+Model: `examples/opportunity-screen/combustion-control-basis/models/COMB-06-drum-boiler-versus-dry-furnace.json`. Questions: `data/questions.json`.
+
+**How to read this.** This is a screen, not an audit. Each finding is a question the drawing or model
+raises, with the evidence found, what to collect (and exactly where), and how the collected data settles it. Nothing
+here says the plant wastes energy, and no savings are computed: the "what the source says" lines are the cited
+sources' general figures for plants in general, quoted as written, never an estimate for this plant. Data requests
+are in one of three states: **on drawing** (the value is on the drawing or model and is quoted as evidence),
+**blank on drawing** (the drawing prints a field for it but leaves it empty, so fill that field), and **not on
+drawing** (collect it from the place named). Systems listed under "Left out" were not screened.
+
+| Family | Findings |
+|---|---|
+| Energy | 2 |
+| Heat grade (high-grade heat for low-grade duty) | 0 |
+| Metering | 0 |
+| Controls and automation | 0 |
+| Emissions | 0 |
+| Safety questions to verify | 0 |
+
+## Energy
+
+### E16: Does this boiler or fired heater run without O2 trim?
+
+**About:** F-A  
+
+**Finding reference (JSON string):** `"E16@F-A"`
+**Asset IDs (JSON array):** `["F-A"]`
+
+**Evidence on the drawing / model**
+
+- equipment F-A reads "F-A Steam drum boiler A" (`units[F-A]`)
+- Checked, none found: no O2 analyzer near the fired equipment (`applies_when.without`)
+
+**Data to collect**
+
+- Flue O2 and CO [not on drawing]. Where: a walkdown: portable combustion analyzer at several firing rates. How: Record O2 and CO across the firing range.
+
+**How it is decided:** Worth trim when excess air is well above what the burner needs across the firing range.
+
+**What the source says (S19, S24):** LBNL boiler table (as reported in LBNL-56183): "1% improvement for each 15% less excess air."
+IAC/ITAC recommendation code: 2.12xx / 2.121x (category only) (IAC/ITAC browse page: boilers: 4,622 recommendations, 1.3 yr average payback, 56.5% implemented; average dollar figure omitted).
+
+**Limits:** IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.
+
+### E16: Does this boiler or fired heater run without O2 trim?
+
+**About:** F-B  
+
+**Finding reference (JSON string):** `"E16@F-B"`
+**Asset IDs (JSON array):** `["F-B"]`
+
+**Evidence on the drawing / model**
+
+- equipment F-B reads "F-B Dry process furnace B" (`units[F-B]`)
+- Checked, none found: no O2 analyzer near the fired equipment (`applies_when.without`)
+
+**Data to collect**
+
+- Flue O2 and CO [not on drawing]. Where: a walkdown: portable combustion analyzer at several firing rates. How: Record O2 and CO across the firing range.
+
+**How it is decided:** Worth trim when excess air is well above what the burner needs across the firing range.
+
+**What the source says (S19, S24):** LBNL boiler table (as reported in LBNL-56183): "1% improvement for each 15% less excess air."
+IAC/ITAC recommendation code: 2.12xx / 2.121x (category only) (IAC/ITAC browse page: boilers: 4,622 recommendations, 1.3 yr average payback, 56.5% implemented; average dollar figure omitted).
+
+**Limits:** IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.
+
+## Sources cited above
+
+- S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005). https://www.osti.gov/servlets/purl/862119 (license: DOE-lab (contractor) report: unclear, but freely citable. Its tables quote older secondary sources, so figures are cited as reported in LBNL-56183)
+- S24: DOE IAC/ITAC database: browse pages, download, schema document. https://itac.university/index/arc/2. (license: No license or terms stated: unclear)

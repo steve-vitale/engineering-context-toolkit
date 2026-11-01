@@ -1,0 +1,1924 @@
+{
+  "schema": "combustion-control-basis-produced-reports-1",
+  "evidence_class": "fictional-exposed-development",
+  "description": "Complete40original and40candidate JSON/Markdown files copied from20intended baseline and20candidate focusedCLI sessions; no selected-sample omission or hand-edited report.",
+  "count_profile": {
+    "core_models": 10,
+    "baseline_CLI_calls": 20,
+    "candidate_CLI_calls": 20,
+    "before_files": 40,
+    "after_files": 40,
+    "total_report_files": 80
+  },
+  "encoding": "All retained80reports were already UTF8LF. Copies preserve exact raw bytes; the narrow new-corpusLF checkout policy preserves their identities.",
+  "exposure_groups": [
+    {
+      "models": 6,
+      "label": "Initial paired controls before baseline"
+    },
+    {
+      "models": 2,
+      "label": "Hot-water/once-through supplements before baseline"
+    },
+    {
+      "models": 1,
+      "label": "Explicit-unfired supplement after original16, before candidate"
+    },
+    {
+      "models": 1,
+      "label": "Unknown-fuel supplement after original18, before candidate"
+    }
+  ],
+  "candidate_method_trace": "Observed19E16 and17C5 acknowledgments, not a universal source minimum/always-open mandate. Permanent cases separately state minimum/allowed scope; quiet is not a literal-display/completion pass.",
+  "selector_controls_separate": {
+    "old_API_evaluations": 8,
+    "candidate_API_evaluations": 8,
+    "CLI_calls": 0,
+    "scope": "Eight post-static declared-role/spelling controls, not eight plants or extra model trials."
+  },
+  "retained_caller_failures": "A wrong-model caller CLI exited2 with no reports, followed by a zero-child evidence-path guard stop. Both are preserved privately and are not counted among20intended baseline calls or as model failures.",
+  "proofs": {
+    "original20_handoff_sha256_raw": "d0b2dec51ed86182b7c1a0412ad312c39e4840ac971880ca180802a5707c4a37",
+    "candidate_final_receipt_sha256_raw": "ad3524eec1fc4f1e1b2a1ccad1522f1ed5daf285500fff5a6f433bde7bed8d49",
+    "candidate_independent_receiving_sha256_raw": "934fd1dacadd5a270f929a2335c980574f439dd99318da4e8a33f118c0186a22",
+    "focused_old_new_receipt_sha256_raw": "09b659b6d07dfa9d7058cbee63bf4945306cfdf60e20b55a6589abb8c6127cd5"
+  },
+  "receipts": [
+    {
+      "phase": "before",
+      "case": "COMB-01-no-oxygen-record",
+      "question_id": "E16",
+      "exposure_group": "original_six_plus_two",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-01-no-oxygen-record.json",
+      "model_sha256_raw": "f6d1cc509cc8a60b1674e7afa5cf207ed1cdf3ceb1f04788be7e12837ff65049",
+      "catalog_sha256_raw": "efed5d4eb9b0c4c89b615a4856b6d6621e9309013c3de203ba14ccdf45f3f242",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:00:07.994675+00:00",
+      "end_utc": "2026-11-01T10:00:08.204163+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ],
+      "reports": [
+        "history/before/COMB-01-no-oxygen-record-E16/questions.json",
+        "history/before/COMB-01-no-oxygen-record-E16/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "16c8de98f0140989daacd1c1aa18054dde247d88dc627409f65b2f3180073289",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-01-no-oxygen-record.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "E16",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "before",
+      "case": "COMB-01-no-oxygen-record",
+      "question_id": "C5",
+      "exposure_group": "original_six_plus_two",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-01-no-oxygen-record.json",
+      "model_sha256_raw": "f6d1cc509cc8a60b1674e7afa5cf207ed1cdf3ceb1f04788be7e12837ff65049",
+      "catalog_sha256_raw": "efed5d4eb9b0c4c89b615a4856b6d6621e9309013c3de203ba14ccdf45f3f242",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:00:08.255819+00:00",
+      "end_utc": "2026-11-01T10:00:08.420565+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ],
+      "reports": [
+        "history/before/COMB-01-no-oxygen-record-C5/questions.json",
+        "history/before/COMB-01-no-oxygen-record-C5/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "179c69a67956daefa89ba1f709a76be60ed7e332aa3eb55fc62ac470b5ac5d72",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-01-no-oxygen-record.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "C5",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "before",
+      "case": "COMB-02-product-headspace-oxygen",
+      "question_id": "E16",
+      "exposure_group": "original_six_plus_two",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-02-product-headspace-oxygen.json",
+      "model_sha256_raw": "5adb6ae0383173a0422d10ca8118d025a4f0b22b37ce7d8200cefcf3fb912111",
+      "catalog_sha256_raw": "efed5d4eb9b0c4c89b615a4856b6d6621e9309013c3de203ba14ccdf45f3f242",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:00:08.456940+00:00",
+      "end_utc": "2026-11-01T10:00:08.590520+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "E16@F-B"
+      ],
+      "reports": [
+        "history/before/COMB-02-product-headspace-oxygen-E16/questions.json",
+        "history/before/COMB-02-product-headspace-oxygen-E16/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "636d9484f8432690e77de39df7d399b323fb75b5ac7acac5d5507c0e32b825fa",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-02-product-headspace-oxygen.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "E16",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "before",
+      "case": "COMB-02-product-headspace-oxygen",
+      "question_id": "C5",
+      "exposure_group": "original_six_plus_two",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-02-product-headspace-oxygen.json",
+      "model_sha256_raw": "5adb6ae0383173a0422d10ca8118d025a4f0b22b37ce7d8200cefcf3fb912111",
+      "catalog_sha256_raw": "efed5d4eb9b0c4c89b615a4856b6d6621e9309013c3de203ba14ccdf45f3f242",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:00:08.625743+00:00",
+      "end_utc": "2026-11-01T10:00:08.771752+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ],
+      "reports": [
+        "history/before/COMB-02-product-headspace-oxygen-C5/questions.json",
+        "history/before/COMB-02-product-headspace-oxygen-C5/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "5712a42d48c1168c8112abf2a13905aa4b92c81684004a8f2571f0c6574d4277",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-02-product-headspace-oxygen.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "C5",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "before",
+      "case": "COMB-03-foreign-flue-oxygen",
+      "question_id": "E16",
+      "exposure_group": "original_six_plus_two",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-03-foreign-flue-oxygen.json",
+      "model_sha256_raw": "1fbc36188bc2a994ed97a1b91ae19add01e58dddbd06e975f782f8ab94399c3c",
+      "catalog_sha256_raw": "efed5d4eb9b0c4c89b615a4856b6d6621e9309013c3de203ba14ccdf45f3f242",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:00:08.798615+00:00",
+      "end_utc": "2026-11-01T10:00:08.942131+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ],
+      "reports": [
+        "history/before/COMB-03-foreign-flue-oxygen-E16/questions.json",
+        "history/before/COMB-03-foreign-flue-oxygen-E16/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "2926b318603fc5eac9726e68ce2a62e8781bba04279f7f83124494d14341e68e",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-03-foreign-flue-oxygen.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "E16",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "before",
+      "case": "COMB-03-foreign-flue-oxygen",
+      "question_id": "C5",
+      "exposure_group": "original_six_plus_two",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-03-foreign-flue-oxygen.json",
+      "model_sha256_raw": "1fbc36188bc2a994ed97a1b91ae19add01e58dddbd06e975f782f8ab94399c3c",
+      "catalog_sha256_raw": "efed5d4eb9b0c4c89b615a4856b6d6621e9309013c3de203ba14ccdf45f3f242",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:00:08.972033+00:00",
+      "end_utc": "2026-11-01T10:00:09.102172+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ],
+      "reports": [
+        "history/before/COMB-03-foreign-flue-oxygen-C5/questions.json",
+        "history/before/COMB-03-foreign-flue-oxygen-C5/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "53637c4215ba13bd58e5968f6c8beb38b293cdc0d5a3b94ef03a4c51da5b3a45",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-03-foreign-flue-oxygen.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "C5",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "before",
+      "case": "COMB-04-supplied-qualified-flue-record",
+      "question_id": "E16",
+      "exposure_group": "original_six_plus_two",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-04-supplied-qualified-flue-record.json",
+      "model_sha256_raw": "1a654910c356998ac69d7f3f21fbb61baf5d8b7680e6d8fc62cb84957fcb9f1b",
+      "catalog_sha256_raw": "efed5d4eb9b0c4c89b615a4856b6d6621e9309013c3de203ba14ccdf45f3f242",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:00:09.133514+00:00",
+      "end_utc": "2026-11-01T10:00:09.269510+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "E16@F-B"
+      ],
+      "reports": [
+        "history/before/COMB-04-supplied-qualified-flue-record-E16/questions.json",
+        "history/before/COMB-04-supplied-qualified-flue-record-E16/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "36e826549fd032f9737dca99fc3602c8fb0bc6359952fbae3ce351b06d3cc6ef",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-04-supplied-qualified-flue-record.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "E16",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "before",
+      "case": "COMB-04-supplied-qualified-flue-record",
+      "question_id": "C5",
+      "exposure_group": "original_six_plus_two",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-04-supplied-qualified-flue-record.json",
+      "model_sha256_raw": "1a654910c356998ac69d7f3f21fbb61baf5d8b7680e6d8fc62cb84957fcb9f1b",
+      "catalog_sha256_raw": "efed5d4eb9b0c4c89b615a4856b6d6621e9309013c3de203ba14ccdf45f3f242",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:00:09.299545+00:00",
+      "end_utc": "2026-11-01T10:00:09.453345+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ],
+      "reports": [
+        "history/before/COMB-04-supplied-qualified-flue-record-C5/questions.json",
+        "history/before/COMB-04-supplied-qualified-flue-record-C5/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "c9fbe25230b019d4846fa9ed86dde31cbfa5fc9fd8a12e0bab5b351e437351b5",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-04-supplied-qualified-flue-record.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "C5",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "before",
+      "case": "COMB-05-air-fuel-metering-record",
+      "question_id": "E16",
+      "exposure_group": "original_six_plus_two",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-05-air-fuel-metering-record.json",
+      "model_sha256_raw": "ef942e4bf726780147e8b32e2d740be6774eda5c5180e8069e194f4a30dabcc4",
+      "catalog_sha256_raw": "efed5d4eb9b0c4c89b615a4856b6d6621e9309013c3de203ba14ccdf45f3f242",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:00:09.481292+00:00",
+      "end_utc": "2026-11-01T10:00:09.627350+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ],
+      "reports": [
+        "history/before/COMB-05-air-fuel-metering-record-E16/questions.json",
+        "history/before/COMB-05-air-fuel-metering-record-E16/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "bcc092ec21ac7fadcfeea1ff646c09619ecbd3ca297df2539c14ee17a367cd74",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-05-air-fuel-metering-record.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "E16",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "before",
+      "case": "COMB-05-air-fuel-metering-record",
+      "question_id": "C5",
+      "exposure_group": "original_six_plus_two",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-05-air-fuel-metering-record.json",
+      "model_sha256_raw": "ef942e4bf726780147e8b32e2d740be6774eda5c5180e8069e194f4a30dabcc4",
+      "catalog_sha256_raw": "efed5d4eb9b0c4c89b615a4856b6d6621e9309013c3de203ba14ccdf45f3f242",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:00:09.659147+00:00",
+      "end_utc": "2026-11-01T10:00:09.797288+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ],
+      "reports": [
+        "history/before/COMB-05-air-fuel-metering-record-C5/questions.json",
+        "history/before/COMB-05-air-fuel-metering-record-C5/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "faab4236f3222b95a91107e7aaecd3e1d17180c73f812f3db357cd1736f0a485",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-05-air-fuel-metering-record.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "C5",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "before",
+      "case": "COMB-06-drum-boiler-versus-dry-furnace",
+      "question_id": "E16",
+      "exposure_group": "original_six_plus_two",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-06-drum-boiler-versus-dry-furnace.json",
+      "model_sha256_raw": "43abc80ac5fcf6a9a4414a282378b887a6d8f3aded42a53a2ab113472c9c62a7",
+      "catalog_sha256_raw": "efed5d4eb9b0c4c89b615a4856b6d6621e9309013c3de203ba14ccdf45f3f242",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:00:09.825132+00:00",
+      "end_utc": "2026-11-01T10:00:09.978032+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ],
+      "reports": [
+        "history/before/COMB-06-drum-boiler-versus-dry-furnace-E16/questions.json",
+        "history/before/COMB-06-drum-boiler-versus-dry-furnace-E16/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "da95fb555453df03b7392b428b0feaa7eb01300734ebea31adbef855779f15c5",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-06-drum-boiler-versus-dry-furnace.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "E16",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "before",
+      "case": "COMB-06-drum-boiler-versus-dry-furnace",
+      "question_id": "C5",
+      "exposure_group": "original_six_plus_two",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-06-drum-boiler-versus-dry-furnace.json",
+      "model_sha256_raw": "43abc80ac5fcf6a9a4414a282378b887a6d8f3aded42a53a2ab113472c9c62a7",
+      "catalog_sha256_raw": "efed5d4eb9b0c4c89b615a4856b6d6621e9309013c3de203ba14ccdf45f3f242",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:00:10.007035+00:00",
+      "end_utc": "2026-11-01T10:00:10.153729+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ],
+      "reports": [
+        "history/before/COMB-06-drum-boiler-versus-dry-furnace-C5/questions.json",
+        "history/before/COMB-06-drum-boiler-versus-dry-furnace-C5/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "ba2eca6a0384b0b507158f96f94f1960e53c8f77f8923d0785baabb306866922",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-06-drum-boiler-versus-dry-furnace.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "C5",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "before",
+      "case": "COMB-S01-hot-water-boiler",
+      "question_id": "E16",
+      "exposure_group": "original_six_plus_two",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-S01-hot-water-boiler.json",
+      "model_sha256_raw": "ce5f6140382c156b881dde0d656190de6e456745b7ed970640456bc053286e2b",
+      "catalog_sha256_raw": "efed5d4eb9b0c4c89b615a4856b6d6621e9309013c3de203ba14ccdf45f3f242",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:00:10.184902+00:00",
+      "end_utc": "2026-11-01T10:00:10.339948+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ],
+      "reports": [
+        "history/before/COMB-S01-hot-water-boiler-E16/questions.json",
+        "history/before/COMB-S01-hot-water-boiler-E16/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "5885797eac771e6c58828390919094f12467854d82ae3eacf604ab58fa3e1c44",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-S01-hot-water-boiler.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "E16",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "before",
+      "case": "COMB-S01-hot-water-boiler",
+      "question_id": "C5",
+      "exposure_group": "original_six_plus_two",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-S01-hot-water-boiler.json",
+      "model_sha256_raw": "ce5f6140382c156b881dde0d656190de6e456745b7ed970640456bc053286e2b",
+      "catalog_sha256_raw": "efed5d4eb9b0c4c89b615a4856b6d6621e9309013c3de203ba14ccdf45f3f242",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:00:10.373326+00:00",
+      "end_utc": "2026-11-01T10:00:10.520060+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ],
+      "reports": [
+        "history/before/COMB-S01-hot-water-boiler-C5/questions.json",
+        "history/before/COMB-S01-hot-water-boiler-C5/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "a62db6fc90b989ab2ae85825a2a27e30b2d007e0ce9aa584ff92e57c83c9f4f6",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-S01-hot-water-boiler.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "C5",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "before",
+      "case": "COMB-S02-once-through-steam-generator",
+      "question_id": "E16",
+      "exposure_group": "original_six_plus_two",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-S02-once-through-steam-generator.json",
+      "model_sha256_raw": "bef3ce1116d534064ae2eae042f22367ba036edd505ef324242ca0bb77acb139",
+      "catalog_sha256_raw": "efed5d4eb9b0c4c89b615a4856b6d6621e9309013c3de203ba14ccdf45f3f242",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:00:10.548666+00:00",
+      "end_utc": "2026-11-01T10:00:10.689766+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "E16@F-B"
+      ],
+      "reports": [
+        "history/before/COMB-S02-once-through-steam-generator-E16/questions.json",
+        "history/before/COMB-S02-once-through-steam-generator-E16/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "c1b855495b8fd349d63e2df3348098d06d0f19740026dcbeed5ce6838d1f26b6",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-S02-once-through-steam-generator.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "E16",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "before",
+      "case": "COMB-S02-once-through-steam-generator",
+      "question_id": "C5",
+      "exposure_group": "original_six_plus_two",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-S02-once-through-steam-generator.json",
+      "model_sha256_raw": "bef3ce1116d534064ae2eae042f22367ba036edd505ef324242ca0bb77acb139",
+      "catalog_sha256_raw": "efed5d4eb9b0c4c89b615a4856b6d6621e9309013c3de203ba14ccdf45f3f242",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:00:10.720329+00:00",
+      "end_utc": "2026-11-01T10:00:10.855364+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "C5@F-B"
+      ],
+      "reports": [
+        "history/before/COMB-S02-once-through-steam-generator-C5/questions.json",
+        "history/before/COMB-S02-once-through-steam-generator-C5/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "5d5efc7e330cdc83d99956e6d450052140af589cad3c256c26a8769be9328786",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-S02-once-through-steam-generator.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "C5",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "before",
+      "case": "COMB-S03-unfired-services",
+      "question_id": "E16",
+      "exposure_group": "post_original16_unfired",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-S03-unfired-services.json",
+      "model_sha256_raw": "2c2aa4038282f8b8dcf04ad7f7a00b4a176d39bbee3d4206333b4dec9f93e9c3",
+      "catalog_sha256_raw": "efed5d4eb9b0c4c89b615a4856b6d6621e9309013c3de203ba14ccdf45f3f242",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:06:23.508597+00:00",
+      "end_utc": "2026-11-01T10:06:23.642819+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ],
+      "reports": [
+        "history/before/COMB-S03-unfired-services-E16/questions.json",
+        "history/before/COMB-S03-unfired-services-E16/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "0da60ec0588436549bf8b2aebc841e945eb50a88315b2a6e7c2e6691e6f23b4e",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-S03-unfired-services.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "E16",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "before",
+      "case": "COMB-S03-unfired-services",
+      "question_id": "C5",
+      "exposure_group": "post_original16_unfired",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-S03-unfired-services.json",
+      "model_sha256_raw": "2c2aa4038282f8b8dcf04ad7f7a00b4a176d39bbee3d4206333b4dec9f93e9c3",
+      "catalog_sha256_raw": "efed5d4eb9b0c4c89b615a4856b6d6621e9309013c3de203ba14ccdf45f3f242",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:06:23.696138+00:00",
+      "end_utc": "2026-11-01T10:06:23.830605+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ],
+      "reports": [
+        "history/before/COMB-S03-unfired-services-C5/questions.json",
+        "history/before/COMB-S03-unfired-services-C5/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "fdaa2b44a8831583ba8fd92a0e8c7cb5db808966ca1bb433763d467609a8f423",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-S03-unfired-services.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "C5",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "before",
+      "case": "COMB-S04-unknown-fuel-basis",
+      "question_id": "E16",
+      "exposure_group": "post_original18_unknown",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-S04-unknown-fuel-basis.json",
+      "model_sha256_raw": "8054e6a288e3ce5f6a14cffa803a5b91c2d481fecaa6e942ccdc9cafd7626bae",
+      "catalog_sha256_raw": "efed5d4eb9b0c4c89b615a4856b6d6621e9309013c3de203ba14ccdf45f3f242",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:11:35.781181+00:00",
+      "end_utc": "2026-11-01T10:11:35.936190+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ],
+      "reports": [
+        "history/before/COMB-S04-unknown-fuel-basis-E16/questions.json",
+        "history/before/COMB-S04-unknown-fuel-basis-E16/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "12374e1a24525ab2222943d690a7abb830ae6578b23ca1dbf54f2b5d5e8adf13",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-S04-unknown-fuel-basis.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "E16",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "before",
+      "case": "COMB-S04-unknown-fuel-basis",
+      "question_id": "C5",
+      "exposure_group": "post_original18_unknown",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-S04-unknown-fuel-basis.json",
+      "model_sha256_raw": "8054e6a288e3ce5f6a14cffa803a5b91c2d481fecaa6e942ccdc9cafd7626bae",
+      "catalog_sha256_raw": "efed5d4eb9b0c4c89b615a4856b6d6621e9309013c3de203ba14ccdf45f3f242",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:11:35.999034+00:00",
+      "end_utc": "2026-11-01T10:11:36.138859+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ],
+      "reports": [
+        "history/before/COMB-S04-unknown-fuel-basis-C5/questions.json",
+        "history/before/COMB-S04-unknown-fuel-basis-C5/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "afbc5f3d1426358a606b2c52cee31d1886ac9fb5f32f72b5db9d1bf65e01abed",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-S04-unknown-fuel-basis.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "C5",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "after",
+      "case": "COMB-01-no-oxygen-record",
+      "question_id": "E16",
+      "exposure_group": "candidate_all10",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-01-no-oxygen-record.json",
+      "model_sha256_raw": "f6d1cc509cc8a60b1674e7afa5cf207ed1cdf3ceb1f04788be7e12837ff65049",
+      "catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:23:48.106627+00:00",
+      "end_utc": "2026-11-01T10:23:48.265261+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ],
+      "reports": [
+        "expected/after/COMB-01-no-oxygen-record-E16/questions.json",
+        "expected/after/COMB-01-no-oxygen-record-E16/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "83020e6fef5864d3066898e83581dc3801f5438cad6c31eae3fa376f961244b5",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-01-no-oxygen-record.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "E16",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "after",
+      "case": "COMB-01-no-oxygen-record",
+      "question_id": "C5",
+      "exposure_group": "candidate_all10",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-01-no-oxygen-record.json",
+      "model_sha256_raw": "f6d1cc509cc8a60b1674e7afa5cf207ed1cdf3ceb1f04788be7e12837ff65049",
+      "catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:23:48.306291+00:00",
+      "end_utc": "2026-11-01T10:23:48.471187+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ],
+      "reports": [
+        "expected/after/COMB-01-no-oxygen-record-C5/questions.json",
+        "expected/after/COMB-01-no-oxygen-record-C5/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "2a2975ea26bad8adbd37b725acd8025ad628a77aa41d436306b3c5c39e3a06e0",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-01-no-oxygen-record.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "C5",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "after",
+      "case": "COMB-02-product-headspace-oxygen",
+      "question_id": "E16",
+      "exposure_group": "candidate_all10",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-02-product-headspace-oxygen.json",
+      "model_sha256_raw": "5adb6ae0383173a0422d10ca8118d025a4f0b22b37ce7d8200cefcf3fb912111",
+      "catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:23:48.512056+00:00",
+      "end_utc": "2026-11-01T10:23:48.663680+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ],
+      "reports": [
+        "expected/after/COMB-02-product-headspace-oxygen-E16/questions.json",
+        "expected/after/COMB-02-product-headspace-oxygen-E16/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "1b194eb3060d34381d9ff0c464df3fbcadefe3fd89419b462d1a5706f0d7cc34",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-02-product-headspace-oxygen.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "E16",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "after",
+      "case": "COMB-02-product-headspace-oxygen",
+      "question_id": "C5",
+      "exposure_group": "candidate_all10",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-02-product-headspace-oxygen.json",
+      "model_sha256_raw": "5adb6ae0383173a0422d10ca8118d025a4f0b22b37ce7d8200cefcf3fb912111",
+      "catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:23:48.698863+00:00",
+      "end_utc": "2026-11-01T10:23:48.833642+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ],
+      "reports": [
+        "expected/after/COMB-02-product-headspace-oxygen-C5/questions.json",
+        "expected/after/COMB-02-product-headspace-oxygen-C5/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "57ce0b2ba8b9838ae90559a45305a65593d02dfbd6067d5c576b0f85a12865ee",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-02-product-headspace-oxygen.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "C5",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "after",
+      "case": "COMB-03-foreign-flue-oxygen",
+      "question_id": "E16",
+      "exposure_group": "candidate_all10",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-03-foreign-flue-oxygen.json",
+      "model_sha256_raw": "1fbc36188bc2a994ed97a1b91ae19add01e58dddbd06e975f782f8ab94399c3c",
+      "catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:23:48.869368+00:00",
+      "end_utc": "2026-11-01T10:23:49.013972+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ],
+      "reports": [
+        "expected/after/COMB-03-foreign-flue-oxygen-E16/questions.json",
+        "expected/after/COMB-03-foreign-flue-oxygen-E16/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "3a8c29a600a75b1a425e68b1f93cb043a641820c11ea9e8cf001fbaf17a4dfb1",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-03-foreign-flue-oxygen.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "E16",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "after",
+      "case": "COMB-03-foreign-flue-oxygen",
+      "question_id": "C5",
+      "exposure_group": "candidate_all10",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-03-foreign-flue-oxygen.json",
+      "model_sha256_raw": "1fbc36188bc2a994ed97a1b91ae19add01e58dddbd06e975f782f8ab94399c3c",
+      "catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:23:49.050059+00:00",
+      "end_utc": "2026-11-01T10:23:49.217073+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ],
+      "reports": [
+        "expected/after/COMB-03-foreign-flue-oxygen-C5/questions.json",
+        "expected/after/COMB-03-foreign-flue-oxygen-C5/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "041fdedf032b1bb4cac5419d14f4ecbf57bebb1fd5038c87e33a1d33527ce525",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-03-foreign-flue-oxygen.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "C5",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "after",
+      "case": "COMB-04-supplied-qualified-flue-record",
+      "question_id": "E16",
+      "exposure_group": "candidate_all10",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-04-supplied-qualified-flue-record.json",
+      "model_sha256_raw": "1a654910c356998ac69d7f3f21fbb61baf5d8b7680e6d8fc62cb84957fcb9f1b",
+      "catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:23:49.262574+00:00",
+      "end_utc": "2026-11-01T10:23:49.441075+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ],
+      "reports": [
+        "expected/after/COMB-04-supplied-qualified-flue-record-E16/questions.json",
+        "expected/after/COMB-04-supplied-qualified-flue-record-E16/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "51bfb26a27e4d66eb5eb2e21096402c54ed70837ab6b617110ee14dccfb12fc7",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-04-supplied-qualified-flue-record.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "E16",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "after",
+      "case": "COMB-04-supplied-qualified-flue-record",
+      "question_id": "C5",
+      "exposure_group": "candidate_all10",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-04-supplied-qualified-flue-record.json",
+      "model_sha256_raw": "1a654910c356998ac69d7f3f21fbb61baf5d8b7680e6d8fc62cb84957fcb9f1b",
+      "catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:23:49.481938+00:00",
+      "end_utc": "2026-11-01T10:23:49.652307+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ],
+      "reports": [
+        "expected/after/COMB-04-supplied-qualified-flue-record-C5/questions.json",
+        "expected/after/COMB-04-supplied-qualified-flue-record-C5/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "2bb61aa7b87538b5f65e4009dac1a6f025695ebcbcca2845e20d1d69cbe9dd07",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-04-supplied-qualified-flue-record.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "C5",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "after",
+      "case": "COMB-05-air-fuel-metering-record",
+      "question_id": "E16",
+      "exposure_group": "candidate_all10",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-05-air-fuel-metering-record.json",
+      "model_sha256_raw": "ef942e4bf726780147e8b32e2d740be6774eda5c5180e8069e194f4a30dabcc4",
+      "catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:23:49.688831+00:00",
+      "end_utc": "2026-11-01T10:23:49.831659+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ],
+      "reports": [
+        "expected/after/COMB-05-air-fuel-metering-record-E16/questions.json",
+        "expected/after/COMB-05-air-fuel-metering-record-E16/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "de2fc3ff65ffbc622baf9104f14b8d079fc22a91b31f9f939db42d2c41d6153d",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-05-air-fuel-metering-record.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "E16",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "after",
+      "case": "COMB-05-air-fuel-metering-record",
+      "question_id": "C5",
+      "exposure_group": "candidate_all10",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-05-air-fuel-metering-record.json",
+      "model_sha256_raw": "ef942e4bf726780147e8b32e2d740be6774eda5c5180e8069e194f4a30dabcc4",
+      "catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:23:49.866240+00:00",
+      "end_utc": "2026-11-01T10:23:49.996028+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ],
+      "reports": [
+        "expected/after/COMB-05-air-fuel-metering-record-C5/questions.json",
+        "expected/after/COMB-05-air-fuel-metering-record-C5/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "7b7c973e450fab72b3c122ad2f1ca98bacdbc865b217682a6ccd02d0fd2a27fb",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-05-air-fuel-metering-record.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "C5",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "after",
+      "case": "COMB-06-drum-boiler-versus-dry-furnace",
+      "question_id": "E16",
+      "exposure_group": "candidate_all10",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-06-drum-boiler-versus-dry-furnace.json",
+      "model_sha256_raw": "43abc80ac5fcf6a9a4414a282378b887a6d8f3aded42a53a2ab113472c9c62a7",
+      "catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:23:50.029139+00:00",
+      "end_utc": "2026-11-01T10:23:50.170025+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ],
+      "reports": [
+        "expected/after/COMB-06-drum-boiler-versus-dry-furnace-E16/questions.json",
+        "expected/after/COMB-06-drum-boiler-versus-dry-furnace-E16/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "9ba2c180bf9ca40a10d0a9670650e08b7e9e1114b6c2c14e32bba7641feff5b4",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-06-drum-boiler-versus-dry-furnace.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "E16",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "after",
+      "case": "COMB-06-drum-boiler-versus-dry-furnace",
+      "question_id": "C5",
+      "exposure_group": "candidate_all10",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-06-drum-boiler-versus-dry-furnace.json",
+      "model_sha256_raw": "43abc80ac5fcf6a9a4414a282378b887a6d8f3aded42a53a2ab113472c9c62a7",
+      "catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:23:50.213589+00:00",
+      "end_utc": "2026-11-01T10:23:50.374912+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "C5@F-A"
+      ],
+      "reports": [
+        "expected/after/COMB-06-drum-boiler-versus-dry-furnace-C5/questions.json",
+        "expected/after/COMB-06-drum-boiler-versus-dry-furnace-C5/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "fd4b013ffc5e356ae4a02fc9143d9ef324a57a329259f100bd41511ed6f2ad34",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-06-drum-boiler-versus-dry-furnace.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "C5",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "after",
+      "case": "COMB-S01-hot-water-boiler",
+      "question_id": "E16",
+      "exposure_group": "candidate_all10",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-S01-hot-water-boiler.json",
+      "model_sha256_raw": "ce5f6140382c156b881dde0d656190de6e456745b7ed970640456bc053286e2b",
+      "catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:23:50.420528+00:00",
+      "end_utc": "2026-11-01T10:23:50.627939+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ],
+      "reports": [
+        "expected/after/COMB-S01-hot-water-boiler-E16/questions.json",
+        "expected/after/COMB-S01-hot-water-boiler-E16/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "2793fe7b03126b92528888e29f51ec3f3944ee8b7c8f7f48eb920a031e3ccef8",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-S01-hot-water-boiler.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "E16",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "after",
+      "case": "COMB-S01-hot-water-boiler",
+      "question_id": "C5",
+      "exposure_group": "candidate_all10",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-S01-hot-water-boiler.json",
+      "model_sha256_raw": "ce5f6140382c156b881dde0d656190de6e456745b7ed970640456bc053286e2b",
+      "catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:23:50.670630+00:00",
+      "end_utc": "2026-11-01T10:23:50.819846+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ],
+      "reports": [
+        "expected/after/COMB-S01-hot-water-boiler-C5/questions.json",
+        "expected/after/COMB-S01-hot-water-boiler-C5/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "0cad8202a07752d67f02d6acc9ac0553db3334ce29e9533892aec3a58ef726c4",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-S01-hot-water-boiler.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "C5",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "after",
+      "case": "COMB-S02-once-through-steam-generator",
+      "question_id": "E16",
+      "exposure_group": "candidate_all10",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-S02-once-through-steam-generator.json",
+      "model_sha256_raw": "bef3ce1116d534064ae2eae042f22367ba036edd505ef324242ca0bb77acb139",
+      "catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:23:50.861728+00:00",
+      "end_utc": "2026-11-01T10:23:51.009553+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "E16@F-B"
+      ],
+      "reports": [
+        "expected/after/COMB-S02-once-through-steam-generator-E16/questions.json",
+        "expected/after/COMB-S02-once-through-steam-generator-E16/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "22639e0c421700d4205bf644e9b4f4d141cea6d320df5e6fcf5e5748ed0c7aef",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-S02-once-through-steam-generator.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "E16",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "after",
+      "case": "COMB-S02-once-through-steam-generator",
+      "question_id": "C5",
+      "exposure_group": "candidate_all10",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-S02-once-through-steam-generator.json",
+      "model_sha256_raw": "bef3ce1116d534064ae2eae042f22367ba036edd505ef324242ca0bb77acb139",
+      "catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:23:51.045380+00:00",
+      "end_utc": "2026-11-01T10:23:51.192957+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "C5@F-B"
+      ],
+      "reports": [
+        "expected/after/COMB-S02-once-through-steam-generator-C5/questions.json",
+        "expected/after/COMB-S02-once-through-steam-generator-C5/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "7e1b4a0b371458af50f692bf4e0809a9202bd5e6b8cba28a2af09e65543ec29b",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-S02-once-through-steam-generator.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "C5",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "after",
+      "case": "COMB-S03-unfired-services",
+      "question_id": "E16",
+      "exposure_group": "candidate_all10",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-S03-unfired-services.json",
+      "model_sha256_raw": "2c2aa4038282f8b8dcf04ad7f7a00b4a176d39bbee3d4206333b4dec9f93e9c3",
+      "catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:23:51.229881+00:00",
+      "end_utc": "2026-11-01T10:23:51.367264+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ],
+      "reports": [
+        "expected/after/COMB-S03-unfired-services-E16/questions.json",
+        "expected/after/COMB-S03-unfired-services-E16/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "92f053953d077084beae104578062fb406e8f0dda19ec8761ad7c32b850fba6c",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-S03-unfired-services.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "E16",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "after",
+      "case": "COMB-S03-unfired-services",
+      "question_id": "C5",
+      "exposure_group": "candidate_all10",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-S03-unfired-services.json",
+      "model_sha256_raw": "2c2aa4038282f8b8dcf04ad7f7a00b4a176d39bbee3d4206333b4dec9f93e9c3",
+      "catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:23:51.403034+00:00",
+      "end_utc": "2026-11-01T10:23:51.634240+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ],
+      "reports": [
+        "expected/after/COMB-S03-unfired-services-C5/questions.json",
+        "expected/after/COMB-S03-unfired-services-C5/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "725cd9b6eeeb94e87ff06fc36c58507a288552d30741ba03e0212901570108b2",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-S03-unfired-services.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "C5",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "after",
+      "case": "COMB-S04-unknown-fuel-basis",
+      "question_id": "E16",
+      "exposure_group": "candidate_all10",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-S04-unknown-fuel-basis.json",
+      "model_sha256_raw": "8054e6a288e3ce5f6a14cffa803a5b91c2d481fecaa6e942ccdc9cafd7626bae",
+      "catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:23:51.687079+00:00",
+      "end_utc": "2026-11-01T10:23:52.207085+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ],
+      "reports": [
+        "expected/after/COMB-S04-unknown-fuel-basis-E16/questions.json",
+        "expected/after/COMB-S04-unknown-fuel-basis-E16/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "eee0ca18426e1b91a7396a9a55ca57ecc980adadf472503b9a034a35a2b91728",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-S04-unknown-fuel-basis.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "E16",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    },
+    {
+      "phase": "after",
+      "case": "COMB-S04-unknown-fuel-basis",
+      "question_id": "C5",
+      "exposure_group": "candidate_all10",
+      "model": "examples/opportunity-screen/combustion-control-basis/models/COMB-S04-unknown-fuel-basis.json",
+      "model_sha256_raw": "8054e6a288e3ce5f6a14cffa803a5b91c2d481fecaa6e942ccdc9cafd7626bae",
+      "catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+      "question_engine_sha256_raw": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+      "method_commit": "cbc98ee9a9f5d974ad647403d78b8c6654d83d13",
+      "method_commit_does_not_identify_candidate_catalog": true,
+      "start_utc": "2026-11-01T10:23:52.249129+00:00",
+      "end_utc": "2026-11-01T10:23:52.435794+00:00",
+      "exit": 0,
+      "finding_ids": [
+        "C5@F-A"
+      ],
+      "reports": [
+        "expected/after/COMB-S04-unknown-fuel-basis-C5/questions.json",
+        "expected/after/COMB-S04-unknown-fuel-basis-C5/screen.md"
+      ],
+      "private_process_receipt_sha256_raw": "98f46e972d85fd02f89b237027714ce2f2f0fb745129c238113f451468e24554",
+      "portable_equivalent_recipe_not_original_argv": [
+        "python",
+        "-B",
+        "-S",
+        "scripts/question_engine.py",
+        "--model",
+        "examples/opportunity-screen/combustion-control-basis/models/COMB-S04-unknown-fuel-basis.json",
+        "--catalog",
+        "<approved-local-catalog-matching-recorded-sha256>",
+        "--question",
+        "C5",
+        "--out",
+        "<fresh-private-output-folder>"
+      ],
+      "recipe_limit": "Select the recorded method/catalog explicitly before historical replay; placeholders are not runnable commands. No source/tool auto-fetch, original private argv, path or environment is disclosed."
+    }
+  ],
+  "files": {
+    "history/before/COMB-01-no-oxygen-record-E16/questions.json": {
+      "sha256_raw": "fa47db715b0492094341e024d97f64a61756bd8513aa942b4c3004eef4bdb933",
+      "bytes": 4120
+    },
+    "history/before/COMB-01-no-oxygen-record-E16/screen.md": {
+      "sha256_raw": "11bac30483adb33f5752aca07abf45f3460278da2f5b2a2e37fcf396e4af2dee",
+      "bytes": 4023
+    },
+    "history/before/COMB-01-no-oxygen-record-C5/questions.json": {
+      "sha256_raw": "909adb01e3af402b3ac24c26708614624a231feec0b36e44756fde50fe0ac384",
+      "bytes": 3285
+    },
+    "history/before/COMB-01-no-oxygen-record-C5/screen.md": {
+      "sha256_raw": "b398013a93199118cde79b638c5e1ec6f6a992f61849134f90c022d6efa62b38",
+      "bytes": 3276
+    },
+    "history/before/COMB-02-product-headspace-oxygen-E16/questions.json": {
+      "sha256_raw": "1d6925cf72f92c9fe37c7dd15cf547160abd85f32b62898e2dac3087c55dcfb6",
+      "bytes": 2370
+    },
+    "history/before/COMB-02-product-headspace-oxygen-E16/screen.md": {
+      "sha256_raw": "2ccc23f59a58b8b136584107e4e5478d2ec6434d1dd323f85298aeeb56558797",
+      "bytes": 2890
+    },
+    "history/before/COMB-02-product-headspace-oxygen-C5/questions.json": {
+      "sha256_raw": "bb576c993c181a4f71502356bcb36b90b3374bc76a76ea5fc6169652d7ff1d99",
+      "bytes": 3293
+    },
+    "history/before/COMB-02-product-headspace-oxygen-C5/screen.md": {
+      "sha256_raw": "b858bb0f1a1d4a6ecadcbf56585afc747b9368bb4096ca092e7cd95476b37c26",
+      "bytes": 3284
+    },
+    "history/before/COMB-03-foreign-flue-oxygen-E16/questions.json": {
+      "sha256_raw": "d76e6d9837dd769a9559ed873495c96cc4e3f0a5bcd62ff82e77a2ecd63dc565",
+      "bytes": 4123
+    },
+    "history/before/COMB-03-foreign-flue-oxygen-E16/screen.md": {
+      "sha256_raw": "343d576e090fcaa49e2457cd06f8701d0ba0357c30af045ff5108da3177fa5be",
+      "bytes": 4026
+    },
+    "history/before/COMB-03-foreign-flue-oxygen-C5/questions.json": {
+      "sha256_raw": "656dc2c91e791827deb63b00bb4b759a686b7e1d9023977651e1187295ad1e13",
+      "bytes": 3288
+    },
+    "history/before/COMB-03-foreign-flue-oxygen-C5/screen.md": {
+      "sha256_raw": "bdaf24241bf96888e8af9b4788a7d312e3e4f000e0755eb52a6a0c769098ef6c",
+      "bytes": 3279
+    },
+    "history/before/COMB-04-supplied-qualified-flue-record-E16/questions.json": {
+      "sha256_raw": "335664982e145b6d5d56dcb421ae46a65890ef1d4b8f53ed2b663bf2303744bc",
+      "bytes": 2376
+    },
+    "history/before/COMB-04-supplied-qualified-flue-record-E16/screen.md": {
+      "sha256_raw": "aa389e43e259ccf94bbfc29f731ad329a72eb5e85101e82bbc82f8e85eaaf328",
+      "bytes": 2896
+    },
+    "history/before/COMB-04-supplied-qualified-flue-record-C5/questions.json": {
+      "sha256_raw": "1eb380ae7133211b678f1798e11f8de4266551341232ab58f98754bb5ca50d61",
+      "bytes": 3299
+    },
+    "history/before/COMB-04-supplied-qualified-flue-record-C5/screen.md": {
+      "sha256_raw": "cd17164c4c499ba39d41a9266b5e5d5a574cae559897fac4b7797cae2e649f34",
+      "bytes": 3290
+    },
+    "history/before/COMB-05-air-fuel-metering-record-E16/questions.json": {
+      "sha256_raw": "b65f6e4359d62f94c82f35919a156346bf5020979b6f1aa5e491a1c105d72a1e",
+      "bytes": 4128
+    },
+    "history/before/COMB-05-air-fuel-metering-record-E16/screen.md": {
+      "sha256_raw": "b2af01334b574e7e5835e53208c1fdc7f3f6e40db7bf453da70ad3d28a0a6d44",
+      "bytes": 4031
+    },
+    "history/before/COMB-05-air-fuel-metering-record-C5/questions.json": {
+      "sha256_raw": "9c22ee34559b356ac6e06f81f02967db63d530ee724003b6a9cf4e1d85b7cb26",
+      "bytes": 3293
+    },
+    "history/before/COMB-05-air-fuel-metering-record-C5/screen.md": {
+      "sha256_raw": "cd1fbace99e88c5a79b68c994e055fa8b30ac9a3830f4ea6cd54d593b8fa02f0",
+      "bytes": 3284
+    },
+    "history/before/COMB-06-drum-boiler-versus-dry-furnace-E16/questions.json": {
+      "sha256_raw": "2d33911548bfbf0aceb503777b09fc375edf7cca8086e228874b955440074458",
+      "bytes": 4150
+    },
+    "history/before/COMB-06-drum-boiler-versus-dry-furnace-E16/screen.md": {
+      "sha256_raw": "710cee689bc1f961fc64556bdfb90bb2e67e9a8a0a88feab29a763500b05e07b",
+      "bytes": 4053
+    },
+    "history/before/COMB-06-drum-boiler-versus-dry-furnace-C5/questions.json": {
+      "sha256_raw": "27037400193449d50cbea77aab0fea9d3590869739aaceaa01fc9da49ac34187",
+      "bytes": 3315
+    },
+    "history/before/COMB-06-drum-boiler-versus-dry-furnace-C5/screen.md": {
+      "sha256_raw": "46cf3bff06b75e934382bc1a09026a5c802c076ed2713b949090e38b0eca1263",
+      "bytes": 3306
+    },
+    "history/before/COMB-S01-hot-water-boiler-E16/questions.json": {
+      "sha256_raw": "fb313b0406e6b1c8c8997c573d76db043f08456e620341656c7cbd42d6740300",
+      "bytes": 4134
+    },
+    "history/before/COMB-S01-hot-water-boiler-E16/screen.md": {
+      "sha256_raw": "9200070fe8872ccf4eb321e488dc9af126bad4e17703e407169cb3bcc9a1eeef",
+      "bytes": 4037
+    },
+    "history/before/COMB-S01-hot-water-boiler-C5/questions.json": {
+      "sha256_raw": "9b59f6fbbaf6a1d22d2930d03a0d56003104ae97a5fc85753aaffbe0869c52c6",
+      "bytes": 3299
+    },
+    "history/before/COMB-S01-hot-water-boiler-C5/screen.md": {
+      "sha256_raw": "385a74911fc89b721b9923b89304a5de825ff3f03dd6e6ee86d3a5f2c61a434c",
+      "bytes": 3290
+    },
+    "history/before/COMB-S02-once-through-steam-generator-E16/questions.json": {
+      "sha256_raw": "2103603be7b924eec781609b68cc5a8a7dc1b014d41b41413afae8bf140b8232",
+      "bytes": 2382
+    },
+    "history/before/COMB-S02-once-through-steam-generator-E16/screen.md": {
+      "sha256_raw": "c42d0f5859bc17e5b861e0ad167532ddd0858ed7623fb5b7b0b51d7cec7b8287",
+      "bytes": 2902
+    },
+    "history/before/COMB-S02-once-through-steam-generator-C5/questions.json": {
+      "sha256_raw": "2d43b94f4020f3ddf9acc23f75e1ae1727b88b4dd7aa011e73e06e714abb9124",
+      "bytes": 1965
+    },
+    "history/before/COMB-S02-once-through-steam-generator-C5/screen.md": {
+      "sha256_raw": "53770f34e4874dabe2370578a6b17ea812ee3b13875074fee6a7905b262b9893",
+      "bytes": 2537
+    },
+    "history/before/COMB-S03-unfired-services-E16/questions.json": {
+      "sha256_raw": "0a17ff1beec8352c237174d0fd46802894c325d6b5a4571eb551936e00081971",
+      "bytes": 4162
+    },
+    "history/before/COMB-S03-unfired-services-E16/screen.md": {
+      "sha256_raw": "b1c53b087dbecc22446f0ea70fa0d0980f220a81612fb14cc50f5d7578f8c14b",
+      "bytes": 4079
+    },
+    "history/before/COMB-S03-unfired-services-C5/questions.json": {
+      "sha256_raw": "0c350dcf8fb90e96fc79df2b858bd6fdb8875982c58cc15a68544bf5e73fb964",
+      "bytes": 3327
+    },
+    "history/before/COMB-S03-unfired-services-C5/screen.md": {
+      "sha256_raw": "546b10f2c8f97a49aa6417c194177c9464e5c046b191bcc0aca24e93813e3777",
+      "bytes": 3332
+    },
+    "history/before/COMB-S04-unknown-fuel-basis-E16/questions.json": {
+      "sha256_raw": "4f8578e415f5ec4a02d86f20b8108e82d33e12d698537bb3ca7339c4f5baa395",
+      "bytes": 4145
+    },
+    "history/before/COMB-S04-unknown-fuel-basis-E16/screen.md": {
+      "sha256_raw": "b240f6874b314fb5868edf530203699b52ee6841f40895597138d2bf2d1a1c65",
+      "bytes": 4045
+    },
+    "history/before/COMB-S04-unknown-fuel-basis-C5/questions.json": {
+      "sha256_raw": "5ce7786d0b03ff97b38c6ca6ee8c09c0d7e3a7daeeb9a6d26bdefbd07a4a31c6",
+      "bytes": 3310
+    },
+    "history/before/COMB-S04-unknown-fuel-basis-C5/screen.md": {
+      "sha256_raw": "2d44a755fada52c19cca45f4ab949d8bff347dd00319a285047d64590a320a8b",
+      "bytes": 3298
+    },
+    "expected/after/COMB-01-no-oxygen-record-E16/questions.json": {
+      "sha256_raw": "eb2a5a1a2b3571b4ddd219b1a57d13ade5705979b0eb16ff39df6b9e456d4855",
+      "bytes": 12948
+    },
+    "expected/after/COMB-01-no-oxygen-record-E16/screen.md": {
+      "sha256_raw": "30e887b2d24b393df26dd3b1327803b6baf34f3c885d9a8b6636fec1bd4f1a63",
+      "bytes": 11775
+    },
+    "expected/after/COMB-01-no-oxygen-record-C5/questions.json": {
+      "sha256_raw": "2ea99f9c05ddf253a32311152aa3b24dc83d41f9e2c3954d027f311cc510afbd",
+      "bytes": 12383
+    },
+    "expected/after/COMB-01-no-oxygen-record-C5/screen.md": {
+      "sha256_raw": "89cf1d1da4ae45046e0d1b3c9de5c214a051f913daec2d0a14640bdb58e38c3f",
+      "bytes": 11453
+    },
+    "expected/after/COMB-02-product-headspace-oxygen-E16/questions.json": {
+      "sha256_raw": "03b0035793ad3cc3c729d34b81ba48ea4519cbc8d0670efdcbbbeee96f35c6b2",
+      "bytes": 14033
+    },
+    "expected/after/COMB-02-product-headspace-oxygen-E16/screen.md": {
+      "sha256_raw": "ce3c1a30731c25c12c9c0e62522d8c3b226b8a19cb381a8e2d853737bf107984",
+      "bytes": 12461
+    },
+    "expected/after/COMB-02-product-headspace-oxygen-C5/questions.json": {
+      "sha256_raw": "bcfe4b91c992417f04da22e922db225114e6764c7e728072195c1e543c2263a0",
+      "bytes": 13468
+    },
+    "expected/after/COMB-02-product-headspace-oxygen-C5/screen.md": {
+      "sha256_raw": "9deeabe8bc42394b343c414a6f23b40e73016a7fb69f33b3c986905fb6d86060",
+      "bytes": 12139
+    },
+    "expected/after/COMB-03-foreign-flue-oxygen-E16/questions.json": {
+      "sha256_raw": "bfb917345ab71e0f7a7ba5c4f898c4cdccac1195c585bcaf21d10205b8c4c553",
+      "bytes": 12951
+    },
+    "expected/after/COMB-03-foreign-flue-oxygen-E16/screen.md": {
+      "sha256_raw": "fb571fe6067b876a364ff6bf2b87fe5dbb3fba74108dffabb8ad7e52f5f08712",
+      "bytes": 11778
+    },
+    "expected/after/COMB-03-foreign-flue-oxygen-C5/questions.json": {
+      "sha256_raw": "cb6fee429988d181531ab5778e8752e403427b897b992a3594ee14a3df571744",
+      "bytes": 12386
+    },
+    "expected/after/COMB-03-foreign-flue-oxygen-C5/screen.md": {
+      "sha256_raw": "8444fa29c7f0613daf11a009bb36300768c7d1fcf888ccd10849805a1572991a",
+      "bytes": 11456
+    },
+    "expected/after/COMB-04-supplied-qualified-flue-record-E16/questions.json": {
+      "sha256_raw": "ceb6fd18759efdde1da754ebe11a77c2ce693637c382b3b1d0a5c11b3fcebced",
+      "bytes": 15962
+    },
+    "expected/after/COMB-04-supplied-qualified-flue-record-E16/screen.md": {
+      "sha256_raw": "e193dc87e2183a81665fd38176b48b7ea9b9e3937e022e7120d3ea1cffc4595d",
+      "bytes": 13781
+    },
+    "expected/after/COMB-04-supplied-qualified-flue-record-C5/questions.json": {
+      "sha256_raw": "91fee05970e8ef1cceb610f75a2b6bd9142de165d8b83b1237fb1acf1417a1d3",
+      "bytes": 15397
+    },
+    "expected/after/COMB-04-supplied-qualified-flue-record-C5/screen.md": {
+      "sha256_raw": "f6c79fe2139579a3161328d49057c97d456efd0af648b3d090d7fe17388e5772",
+      "bytes": 13459
+    },
+    "expected/after/COMB-05-air-fuel-metering-record-E16/questions.json": {
+      "sha256_raw": "c4aee4b647f0bf2d4b2933060a8474660e7e15e6c36cd6504545bc97ddeca028",
+      "bytes": 17210
+    },
+    "expected/after/COMB-05-air-fuel-metering-record-E16/screen.md": {
+      "sha256_raw": "c619a5d3311765ab70f4a52355319329029703b9c59493aaea50d0a98dcbc640",
+      "bytes": 14434
+    },
+    "expected/after/COMB-05-air-fuel-metering-record-C5/questions.json": {
+      "sha256_raw": "3aa0c17e2c2c57ea962b7402cbba6fb417dfae11a0316a376cf16b46fa8ec8dd",
+      "bytes": 16645
+    },
+    "expected/after/COMB-05-air-fuel-metering-record-C5/screen.md": {
+      "sha256_raw": "1ad8a5e471e981777af3a26f446bf228b6881b664d6b8992621ee8714cbcfeca",
+      "bytes": 14112
+    },
+    "expected/after/COMB-06-drum-boiler-versus-dry-furnace-E16/questions.json": {
+      "sha256_raw": "0d81c88b7e93407878274829ce073906338a1580643e1d384e59d124b1906af0",
+      "bytes": 13948
+    },
+    "expected/after/COMB-06-drum-boiler-versus-dry-furnace-E16/screen.md": {
+      "sha256_raw": "1a7f324d85556ecb97b3951ce16cd094274cfa11026a701e8f95208b66cc2bab",
+      "bytes": 12435
+    },
+    "expected/after/COMB-06-drum-boiler-versus-dry-furnace-C5/questions.json": {
+      "sha256_raw": "e9902b4b2e5facf351988e2885378b57dce33bd64b6d468f2b4e6116e36ec4fd",
+      "bytes": 8644
+    },
+    "expected/after/COMB-06-drum-boiler-versus-dry-furnace-C5/screen.md": {
+      "sha256_raw": "2afeca1e04f4ce60283d3e123462e9a15df87e25aa337eb5b19d80734e65e71c",
+      "bytes": 7937
+    },
+    "expected/after/COMB-S01-hot-water-boiler-E16/questions.json": {
+      "sha256_raw": "d0ddf1cee1df749657aa933ba48c0e80c140213cacce20a116cdf370ca806ad8",
+      "bytes": 14762
+    },
+    "expected/after/COMB-S01-hot-water-boiler-E16/screen.md": {
+      "sha256_raw": "8f8b881fda3a25d5a2e84e66a61baf777a387abc1669e5492f95b634479980a0",
+      "bytes": 12994
+    },
+    "expected/after/COMB-S01-hot-water-boiler-C5/questions.json": {
+      "sha256_raw": "ec34f48ca414c36cd5faee2755b7824946619bdd068b8e033ab34ab051c28a89",
+      "bytes": 16975
+    },
+    "expected/after/COMB-S01-hot-water-boiler-C5/screen.md": {
+      "sha256_raw": "fdfa5a139cbb19264f7698529715b6024cc9897299fdaa20e89e83343fc88d25",
+      "bytes": 14386
+    },
+    "expected/after/COMB-S02-once-through-steam-generator-E16/questions.json": {
+      "sha256_raw": "0d83a77920ee45bfd27e51c6ecc570c55b4266f78e5b9ecafb999b44f28103f2",
+      "bytes": 7574
+    },
+    "expected/after/COMB-S02-once-through-steam-generator-E16/screen.md": {
+      "sha256_raw": "f7a84934071356109fc3b76e23b513604acdf6fcc23deceb6aca95f08221e057",
+      "bytes": 7416
+    },
+    "expected/after/COMB-S02-once-through-steam-generator-C5/questions.json": {
+      "sha256_raw": "fb52f6b6e9780aef08006ad17ba0daae7a5fe8537e8f2bd3507d6575642e5428",
+      "bytes": 8494
+    },
+    "expected/after/COMB-S02-once-through-steam-generator-C5/screen.md": {
+      "sha256_raw": "f82b02c2eff0c3d55c1940a8f079e1ca18d74615a852378399faad8abc816456",
+      "bytes": 8000
+    },
+    "expected/after/COMB-S03-unfired-services-E16/questions.json": {
+      "sha256_raw": "c4fd3e11fdce9971dee8a81c14c6039e6f9e8b913e9c2c158ce29356f1428e6e",
+      "bytes": 18584
+    },
+    "expected/after/COMB-S03-unfired-services-E16/screen.md": {
+      "sha256_raw": "fafc23dcd1b6355ffe31042b6d8f79fd77768fa0f9bdf8e4efe03f74bee43854",
+      "bytes": 15471
+    },
+    "expected/after/COMB-S03-unfired-services-C5/questions.json": {
+      "sha256_raw": "2954299b41e530eb862eb6b955c241d9dbedb31ee8eadb9fa064a823f777cff5",
+      "bytes": 20283
+    },
+    "expected/after/COMB-S03-unfired-services-C5/screen.md": {
+      "sha256_raw": "0b4b1e975af4030fa9d21b1431dc84ab7165f39a60fc1f53ed3e7bbc41491899",
+      "bytes": 16501
+    },
+    "expected/after/COMB-S04-unknown-fuel-basis-E16/questions.json": {
+      "sha256_raw": "4526493cdb5efc78fd165a907a2351d31bc5f52c4eee30596ff077a759a54f6c",
+      "bytes": 17389
+    },
+    "expected/after/COMB-S04-unknown-fuel-basis-E16/screen.md": {
+      "sha256_raw": "566b6873de8989571a9d9f0ee192cd169a8fafc6650ba2dc04ebd99d1e910272",
+      "bytes": 14715
+    },
+    "expected/after/COMB-S04-unknown-fuel-basis-C5/questions.json": {
+      "sha256_raw": "bef3ede8e4ddcaa336a574fdb0d5e031901a8ed654597ff0452483bb709d8ba1",
+      "bytes": 8303
+    },
+    "expected/after/COMB-S04-unknown-fuel-basis-C5/screen.md": {
+      "sha256_raw": "6c25becb463f7db5f01d83b8c350978f357e84f1ce5483a6a8af77fb08a1b258",
+      "bytes": 7920
+    }
+  },
+  "limitations": "Source-informed authored software controls, not10plants, model-reading accuracy, measured engineer usefulness, installed-state/authority or company acceptance. Original stdout/stderr/START/runtime path records remain private; no RPC or human review transcript is claimed.",
+  "packaging_author_role": "Source-fixture author/baseline and candidate operator; this copy map is not independent packaging acceptance."
+}

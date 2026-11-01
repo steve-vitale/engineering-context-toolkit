@@ -1,0 +1,85 @@
+{
+  "meta": {
+    "model_id": "COMB-03-foreign-flue-oxygen",
+    "title": "FICTIONAL paired combustion/control collection development fixture",
+    "illustrative": true,
+    "authorship": "Coding-agent authored synthetic data; no plant records, human approval or actual operating evidence.",
+    "exposure": "Prepared before any baseline/candidate call; useful-question oracle pending independent primary-source contract."
+  },
+  "units": [
+    {
+      "id": "F-A",
+      "name": "Fired unit A",
+      "type": "boiler",
+      "facts": {
+        "fuel_service": "natural gas",
+        "operating_basis": "unknown"
+      }
+    },
+    {
+      "id": "F-B",
+      "name": "Fired unit B",
+      "type": "boiler",
+      "facts": {
+        "fuel_service": "natural gas",
+        "operating_basis": "unknown"
+      }
+    },
+    {
+      "id": "U-X",
+      "name": "Separate third-service package",
+      "type": "utility package"
+    }
+  ],
+  "streams": [
+    {
+      "id": "FUEL-A",
+      "name": "Natural gas fuel A",
+      "from": "BL",
+      "to": "F-A",
+      "utility": true
+    },
+    {
+      "id": "FUEL-B",
+      "name": "Natural gas fuel B",
+      "from": "BL",
+      "to": "F-B",
+      "utility": true
+    },
+    {
+      "id": "FLUE-A",
+      "name": "Flue gas A",
+      "from": "F-A",
+      "to": "ATM-A"
+    },
+    {
+      "id": "FLUE-B",
+      "name": "Flue gas B",
+      "from": "F-B",
+      "to": "ATM-B"
+    },
+    {
+      "id": "FLUE-X",
+      "name": "Separate package flue gas",
+      "from": "U-X",
+      "to": "ATM-X"
+    }
+  ],
+  "instruments": [
+    {
+      "tag": "AI-X",
+      "description": "O2 analyzer on separate package flue; no A/B association",
+      "unit": "U-X",
+      "stream": "FLUE-X",
+      "facts": {
+        "sample_service": "foreign flue",
+        "source_revision": "FICT-X-R1",
+        "underlying_claim_verified": false
+      }
+    }
+  ],
+  "controllers": [],
+  "interlocks": [],
+  "final_elements": [],
+  "manual_valves": []
+}

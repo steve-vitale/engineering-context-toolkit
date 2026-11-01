@@ -1464,9 +1464,8 @@
     {
       "id": "E16",
       "family": "energy",
-      "question": "Does this boiler or fired heater run without O2 trim?",
+      "question": "What heat source and combustion service apply to this unit, and what do existing records establish about any applicable air/fuel operating basis?",
       "applies_when": {
-        "absent_note": "no O2 analyzer near the fired equipment",
         "anchor": {
           "kind": [
             "equipment"
@@ -1475,43 +1474,118 @@
           "not_text": "STEAM GENERATOR|REACTOR"
         },
         "group_by": "unit",
-        "without": [
+        "also_show": [
           {
             "select": {
-              "isa": "^A",
-              "text": "O2|OXYGEN"
+              "kind": [
+                "instrument"
+              ],
+              "text": "\\bO2\\b|OXYGEN|COMBUSTION ANALY|FLUE.*ANALY|EXCESS AIR"
             },
-            "relation": "near",
-            "max_hops": 3
+            "relation": "same_unit",
+            "as": "unclassified oxygen or analysis record candidate"
+          },
+          {
+            "select": {
+              "kind": [
+                "instrument"
+              ],
+              "text": "COMBUSTION AIR|BURNER (AIR|FUEL)|FLOW.*(AIR|FUEL)|(AIR|FUEL).*FLOW"
+            },
+            "relation": "same_unit",
+            "as": "represented air or fuel metering record candidate"
+          },
+          {
+            "select": {
+              "kind": [
+                "stream"
+              ],
+              "text": "FUEL|NATURAL GAS|PROPANE|\\bLPG\\b|COMBUSTION AIR|FLUE"
+            },
+            "relation": "linked",
+            "as": "represented fuel, air or flue stream context"
           }
         ]
       },
       "evidence_fields": [
-        "fired equipment",
-        "no O2 analyzer on the flue"
+        "the represented equipment and supplied heat-source/fuel-service claims, including unknown or non-combustion service",
+        "same-unit oxygen, analysis and metering candidates, with their supplied scope and qualification",
+        "existing operating, method and control evidence requiring review"
       ],
       "data_requests": [
         {
-          "item": "Flue O2 and CO",
+          "item": "Existing heat-source and combustion-applicability basis",
           "where": [
             {
-              "place": "walkdown",
-              "what": "portable combustion analyzer at several firing rates"
+              "place": "records",
+              "what": "permitted existing equipment/service description, heat-source/fuel and operating records with source/revision, asset scope and responsible owner; establish whether combustion applies before any gas-analysis request"
             }
           ],
-          "how": "Record O2 and CO across the firing range."
+          "how": "A boiler or heater label and a missing fuel stream do not establish either combustion or non-combustion service. Review the existing source basis first. If the supplied scope is electric or unfired with no relevant burner, acknowledge that scope as not applicable to combustion review; do not impose flue/O2/trim work. Unknown heat/fuel service remains a qualification question, not a quiet completed result.",
+          "show_fields": [
+            "heat_source",
+            "fuel_fired",
+            "auxiliary_burner_present",
+            "fuel_service",
+            "operating_basis",
+            "source_document",
+            "source_revision",
+            "underlying_claim_verified"
+          ],
+          "field_scope": "unit"
+        },
+        {
+          "item": "Applicable existing analysis, metering, control and constraint records",
+          "where": [
+            {
+              "place": "records",
+              "what": "only where combustion applies: existing tuning, paired air/fuel-flow or flue-analysis records, appropriate calibration/method and representative firing/load basis, current control purpose/configuration/modes and equipment/process constraints"
+            },
+            {
+              "place": "dcs",
+              "what": "only applicable permitted existing configuration records for the identified unit; this request grants no access, measurement or execution permission"
+            }
+          ],
+          "how": "For applicable combustion service, use suitable existing air/fuel metering, flue analysis or both; permanent O2 hardware and new portable analysis are not mandatory. Preserve supplied record scope, false and unknown qualifiers. Product/headspace or foreign oxygen is not this unit’s combustion basis; analysis is not enabled feedback trim. Adequate records or documented non-applicability may settle or defer the job without new collection or a project. Do not prescribe operating settings or adjustment."
         }
       ],
-      "decision_rule": "Worth trim when excess air is well above what the burner needs across the firing range.",
+      "decision_rule": "Establish heat source and combustion applicability from qualified existing records before evaluating the operating/control basis. Explicit electric or unfired scope does not create O2/trim work; unknown fuel service is not evidence of non-applicability. Where combustion applies, acknowledge existing analysis/metering and modes, then review unresolved evidence. Adequate coverage may answer or defer the job without a project. This screen neither declares installed control nor tracks completed investigation/work status.",
       "typical_benefit": {
-        "wording": "LBNL boiler table (as reported in LBNL-56183): \"1% improvement for each 15% less excess air.\"",
+        "wording": "S19 Section8.1/Table6 reports historical boiler combustion/excess-air measures, not a guaranteed benefit from adding O2 trim. S27 supports reviewing air/fuel-flow or flue-analysis methods and equipment/process constraints. No quantified benefit is assigned to this records-review question.",
         "source": [
           "S19",
+          "S27",
           "S24"
         ],
-        "arc": "2.12xx / 2.121x (category only) (IAC/ITAC browse page: boilers: 4,622 recommendations, 1.3 yr average payback, 56.5% implemented; average dollar figure omitted)"
+        "arc": "2.12xx / 2.121x (category only)"
       },
-      "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers."
+      "limits": "This screen covers represented boilers, fired heaters, furnaces and kilns; steam generators and reactors are outside this route’s current scope. Those exclusions do not establish whether combustion review is useful for excluded equipment. Incomplete fuel records remain reviewable; missing fuel context is not proof of non-combustion service. Supplied qualifications/Booleans are not installed-state or company acceptance. S19 reviewed official ENERGY STAR122-page edition, printed37–39/PDFindices44–46, https://www.energystar.gov/sites/default/files/buildings/tools/ES_Petroleum_Energy_Guide.pdf; byte equality with the OSTI route is unverified. S27 supports alternative methods and conditional operating bases. Historical boiler figures and ARC aggregates do not establish all-fired savings or control deficiencies.",
+      "evidence_show_fields": [
+        "fuel_service",
+        "operating_basis",
+        "sample_service",
+        "source_document",
+        "source_revision",
+        "equipment_scope",
+        "operating_range_basis",
+        "method_basis",
+        "supplied_qualification",
+        "automatic_trim_enabled",
+        "current_configuration_status",
+        "underlying_claim_verified",
+        "record_service",
+        "association_claim",
+        "steam_service",
+        "drum_present",
+        "water_service",
+        "steam_water_drum_present",
+        "steam_export_present",
+        "basis_status",
+        "heat_source",
+        "fuel_fired",
+        "auxiliary_burner_present",
+        "water_level_control_configuration"
+      ]
     },
     {
       "id": "E17",
@@ -2887,43 +2961,149 @@
     {
       "id": "C5",
       "family": "controls",
-      "question": "Does the boiler lack O2 trim or three-element drum level control?",
+      "question": "What boiler service and control functions apply, and what do existing records establish about any applicable steam-water level-control basis?",
       "applies_when": {
         "anchor": {
           "kind": [
             "equipment"
           ],
-          "type_text": "BOILER|FIRED HEATER|FURNACE|\\bKILN\\b",
-          "not_text": "STEAM GENERATOR|REACTOR"
+          "type_text": "(?<![A-Z0-9])BOILERS?(?![A-Z0-9])",
+          "not_text": "REACTOR",
+          "not_type_text": "^(?:PUMPS?|(?:HEAT[ _-]*)?EXCHANGERS?)\\Z"
         },
-        "group_by": "unit"
+        "group_by": "unit",
+        "also_show": [
+          {
+            "select": {
+              "kind": [
+                "instrument"
+              ],
+              "text": "\\bO2\\b|OXYGEN|COMBUSTION ANALY|FLUE.*ANALY|EXCESS AIR"
+            },
+            "relation": "same_unit",
+            "as": "unclassified oxygen or analysis record candidate"
+          },
+          {
+            "select": {
+              "kind": [
+                "instrument"
+              ],
+              "text": "COMBUSTION AIR|BURNER (AIR|FUEL)|FLOW.*(AIR|FUEL)|(AIR|FUEL).*FLOW"
+            },
+            "relation": "same_unit",
+            "as": "represented air or fuel metering record candidate"
+          },
+          {
+            "select": {
+              "kind": [
+                "instrument"
+              ],
+              "text": "\\bDRUM\\b|LEVEL|FEEDWATER|STEAM.*FLOW|FLOW.*STEAM|BOILER.*WATER"
+            },
+            "relation": "same_unit",
+            "as": "unclassified level or water/steam-flow indication candidate"
+          },
+          {
+            "select": {
+              "kind": [
+                "stream"
+              ],
+              "text": "FUEL|NATURAL GAS|PROPANE|\\bLPG\\b|COMBUSTION AIR|FLUE"
+            },
+            "relation": "linked",
+            "as": "represented fuel, air or flue stream context"
+          }
+        ]
       },
       "evidence_fields": [
-        "boiler",
-        "its combustion and level control"
+        "the represented boiler and its supplied heat-source, water/steam and drum/no-drum service",
+        "same-unit analysis, metering and level/flow indications as unclassified record candidates",
+        "supplied configuration, scope and operating qualifiers requiring review"
       ],
       "data_requests": [
         {
-          "item": "Control narrative",
+          "item": "Existing service and control-applicability basis",
           "where": [
             {
-              "place": "dcs",
-              "what": "combustion and drum level configuration"
+              "place": "records",
+              "what": "permitted existing equipment/service description and design/control narrative identifying heat source, water/steam service, drum or no-drum configuration, intended operating modes and source revision/owner"
             }
           ],
-          "how": "Note O2 trim and level control elements."
+          "how": "Establish boiler service and applicability before any drum task. A boiler name alone does not establish a steam-water drum. For supplied hot-water or other no-drum service, acknowledge the applicable scope instead of imposing drum-control work. Unknown service requires clarification, not an inferred missing controller. Unfired waste-heat steam-drum equipment may still need level-control review despite having no fuel or combustion scope.",
+          "show_fields": [
+            "heat_source",
+            "fuel_fired",
+            "auxiliary_burner_present",
+            "fuel_service",
+            "water_service",
+            "steam_service",
+            "drum_present",
+            "steam_water_drum_present",
+            "steam_export_present",
+            "basis_status",
+            "source_document",
+            "source_revision",
+            "underlying_claim_verified"
+          ],
+          "field_scope": "unit"
+        },
+        {
+          "item": "Applicable control configuration, operating modes and review disposition",
+          "where": [
+            {
+              "place": "records",
+              "what": "existing design/control narratives and operating evidence for the functions actually applicable to this boiler; where steam-water level control applies, retain level, steam-flow and feedwater-flow relationships and normal/startup/low-load modes"
+            },
+            {
+              "place": "dcs",
+              "what": "applicable approved existing controller, measurement/output and mode records, through the company-approved access route"
+            }
+          ],
+          "how": "Keep indication labels distinct from configured and active control. S8 describes level-only and additional steam/feedwater-flow inputs, including response to abrupt load changes; it does not mandate three-element control on every boiler. Review intended normal/startup/low-load modes and relevant load/feedwater conditions without declaring a single-element mode faulty. Adequate existing evidence may settle or defer the job without a project; new work belongs to the responsible company reviewer.",
+          "show_fields": [
+            "operating_basis",
+            "water_level_control_configuration"
+          ],
+          "field_scope": "unit"
         }
       ],
-      "decision_rule": "Worth an upgrade where O2 trim or feed/steam flow in the level loop is missing on a large boiler.",
+      "decision_rule": "First establish service and applicable control functions. Review combustion only where relevant; review steam-water level control only where that service applies, including waste-heat steam-drum equipment without a burner. Three depicted measurements do not prove an active three-element loop, and a missing depicted element does not establish an upgrade need. Existing supported design/mode and operating records may answer or defer the investigation; retain unresolved evidence and next owner.",
       "typical_benefit": {
-        "wording": "LBNL boiler table (as reported in LBNL-56183): \"Improved Process Control 3%\", 0.6 yr payback.",
+        "wording": "S8 describes boiler combustion and water-level control functions and differing levels of control complexity. S19’s historical broad boiler process-control estimate is not a three-element drum-control gain; no percentage or payback is assigned to this applicability review.",
         "source": [
+          "S8",
           "S19",
           "S24"
         ],
         "arc": "2.121x (category only)"
       },
-      "limits": null
+      "limits": "C5 uses S8 printed6–7/PDFindices11–12 explicitly for boiler functional/service review. The boiler selector does not infer a drum, combustion or missing control; dry furnaces/kilns are outside this boiler-specific question and may use E16 where eligible. Unfired waste-heat steam-drum equipment remains eligible without fuel evidence. S19/S24 do not establish a universal three-element requirement or drum-specific benefit. Supplied Boolean/service/qualification fields are literal claims, not installed-state, adequate performance or company authority.",
+      "evidence_show_fields": [
+        "fuel_service",
+        "operating_basis",
+        "sample_service",
+        "source_document",
+        "source_revision",
+        "equipment_scope",
+        "operating_range_basis",
+        "method_basis",
+        "supplied_qualification",
+        "automatic_trim_enabled",
+        "current_configuration_status",
+        "underlying_claim_verified",
+        "record_service",
+        "association_claim",
+        "steam_service",
+        "drum_present",
+        "water_service",
+        "steam_water_drum_present",
+        "steam_export_present",
+        "basis_status",
+        "heat_source",
+        "fuel_fired",
+        "auxiliary_burner_present",
+        "water_level_control_configuration"
+      ]
     },
     {
       "id": "C6",

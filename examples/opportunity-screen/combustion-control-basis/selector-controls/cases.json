@@ -1,0 +1,285 @@
+{
+  "schema": "combustion-control-selector-cases-1",
+  "evidence_class": "fictional-exposed-post-static-development",
+  "chronology": "Eight spelling/declared-role controls added after static candidate review and before any selector/candidate calls. Separate from the10 core paired models and20 planned CLI cases.",
+  "source_oracle_sha256_raw": "7a7525294229ddef486c335572b6df81bba335c5d19a83f1a601dd4f500c5d05",
+  "controls": [
+    {
+      "id": "BND-01-steam-class",
+      "model": "models/BND-01-steam-class.json",
+      "sha256_raw": "0f956f625d1d4fdf4ea8421184ff4ce3ba21d1471e3ff6becfe4313a55933bfb",
+      "unit_id": "B-A",
+      "type": "steam_boiler",
+      "name": "B-1",
+      "expected_C5_findings": [
+        "C5@B-A"
+      ],
+      "conditional_literals": [
+        {
+          "item_id": "B-A",
+          "field": "heat_source",
+          "value": "unknown",
+          "state": "blank",
+          "where": "units[B-A].facts.heat_source"
+        },
+        {
+          "item_id": "B-A",
+          "field": "water_service",
+          "value": "unknown",
+          "state": "blank",
+          "where": "units[B-A].facts.water_service"
+        },
+        {
+          "item_id": "B-A",
+          "field": "underlying_claim_verified",
+          "value": false,
+          "state": "present",
+          "where": "units[B-A].facts.underlying_claim_verified"
+        }
+      ],
+      "source_job": "Boiler-only applicability review; no drum or operating-function conclusion. Helper name is not equipment role; combined boiler/pump remains eligible."
+    },
+    {
+      "id": "BND-02-waste-heat-class",
+      "model": "models/BND-02-waste-heat-class.json",
+      "sha256_raw": "a6403062266d654496eb2342afde39372baf95ef220642ae8717dbb95b14a8a1",
+      "unit_id": "B-A",
+      "type": "waste_heat_boiler",
+      "name": "B-1",
+      "expected_C5_findings": [
+        "C5@B-A"
+      ],
+      "conditional_literals": [
+        {
+          "item_id": "B-A",
+          "field": "heat_source",
+          "value": "unknown",
+          "state": "blank",
+          "where": "units[B-A].facts.heat_source"
+        },
+        {
+          "item_id": "B-A",
+          "field": "water_service",
+          "value": "unknown",
+          "state": "blank",
+          "where": "units[B-A].facts.water_service"
+        },
+        {
+          "item_id": "B-A",
+          "field": "underlying_claim_verified",
+          "value": false,
+          "state": "present",
+          "where": "units[B-A].facts.underlying_claim_verified"
+        }
+      ],
+      "source_job": "Boiler-only applicability review; no drum or operating-function conclusion. Helper name is not equipment role; combined boiler/pump remains eligible."
+    },
+    {
+      "id": "BND-03-hot-water-class",
+      "model": "models/BND-03-hot-water-class.json",
+      "sha256_raw": "c09974dd6c216b0d381fdb30b157b4dd0985554c84081125cb265c10244c5b3d",
+      "unit_id": "B-A",
+      "type": "hot-water-boiler",
+      "name": "B-1",
+      "expected_C5_findings": [
+        "C5@B-A"
+      ],
+      "conditional_literals": [
+        {
+          "item_id": "B-A",
+          "field": "heat_source",
+          "value": "unknown",
+          "state": "blank",
+          "where": "units[B-A].facts.heat_source"
+        },
+        {
+          "item_id": "B-A",
+          "field": "water_service",
+          "value": "unknown",
+          "state": "blank",
+          "where": "units[B-A].facts.water_service"
+        },
+        {
+          "item_id": "B-A",
+          "field": "underlying_claim_verified",
+          "value": false,
+          "state": "present",
+          "where": "units[B-A].facts.underlying_claim_verified"
+        }
+      ],
+      "source_job": "Boiler-only applicability review; no drum or operating-function conclusion. Helper name is not equipment role; combined boiler/pump remains eligible."
+    },
+    {
+      "id": "BND-04-unknown-name-fallback",
+      "model": "models/BND-04-unknown-name-fallback.json",
+      "sha256_raw": "c660755033618025db67e8c8ad5863e9edd68c8b751144167492660e58616594",
+      "unit_id": "B-A",
+      "type": "unknown",
+      "name": "Boiler 7",
+      "expected_C5_findings": [
+        "C5@B-A"
+      ],
+      "conditional_literals": [
+        {
+          "item_id": "B-A",
+          "field": "heat_source",
+          "value": "unknown",
+          "state": "blank",
+          "where": "units[B-A].facts.heat_source"
+        },
+        {
+          "item_id": "B-A",
+          "field": "water_service",
+          "value": "unknown",
+          "state": "blank",
+          "where": "units[B-A].facts.water_service"
+        },
+        {
+          "item_id": "B-A",
+          "field": "underlying_claim_verified",
+          "value": false,
+          "state": "present",
+          "where": "units[B-A].facts.underlying_claim_verified"
+        }
+      ],
+      "source_job": "Boiler-only applicability review; no drum or operating-function conclusion. Helper name is not equipment role; combined boiler/pump remains eligible."
+    },
+    {
+      "id": "BND-05-reboiler",
+      "model": "models/BND-05-reboiler.json",
+      "sha256_raw": "cd405f060daa5a34c234f7163908f9aba65fdd3ac6755ea9103d8113f7a235b1",
+      "unit_id": "B-A",
+      "type": "reboiler",
+      "name": "B-1",
+      "expected_C5_findings": [],
+      "conditional_literals": [
+        {
+          "item_id": "B-A",
+          "field": "heat_source",
+          "value": "unknown",
+          "state": "blank",
+          "where": "units[B-A].facts.heat_source"
+        },
+        {
+          "item_id": "B-A",
+          "field": "water_service",
+          "value": "unknown",
+          "state": "blank",
+          "where": "units[B-A].facts.water_service"
+        },
+        {
+          "item_id": "B-A",
+          "field": "underlying_claim_verified",
+          "value": false,
+          "state": "present",
+          "where": "units[B-A].facts.underlying_claim_verified"
+        }
+      ],
+      "source_job": "Boiler-only applicability review; no drum or operating-function conclusion. Helper name is not equipment role; combined boiler/pump remains eligible."
+    },
+    {
+      "id": "BND-06-pump-name",
+      "model": "models/BND-06-pump-name.json",
+      "sha256_raw": "3e69792a5848590d4becbf26ebdef1789929912173016b6743612e81ce07e5a7",
+      "unit_id": "B-A",
+      "type": "pump",
+      "name": "Boiler feedwater pump",
+      "expected_C5_findings": [],
+      "conditional_literals": [
+        {
+          "item_id": "B-A",
+          "field": "heat_source",
+          "value": "unknown",
+          "state": "blank",
+          "where": "units[B-A].facts.heat_source"
+        },
+        {
+          "item_id": "B-A",
+          "field": "water_service",
+          "value": "unknown",
+          "state": "blank",
+          "where": "units[B-A].facts.water_service"
+        },
+        {
+          "item_id": "B-A",
+          "field": "underlying_claim_verified",
+          "value": false,
+          "state": "present",
+          "where": "units[B-A].facts.underlying_claim_verified"
+        }
+      ],
+      "source_job": "Boiler-only applicability review; no drum or operating-function conclusion. Helper name is not equipment role; combined boiler/pump remains eligible."
+    },
+    {
+      "id": "BND-07-exchanger-name",
+      "model": "models/BND-07-exchanger-name.json",
+      "sha256_raw": "2b8acbd77d0900643518024a70cfb1b728718e70b9be780a05807b3b01326fd1",
+      "unit_id": "B-A",
+      "type": "heat_exchanger",
+      "name": "Boiler feedwater preheater",
+      "expected_C5_findings": [],
+      "conditional_literals": [
+        {
+          "item_id": "B-A",
+          "field": "heat_source",
+          "value": "unknown",
+          "state": "blank",
+          "where": "units[B-A].facts.heat_source"
+        },
+        {
+          "item_id": "B-A",
+          "field": "water_service",
+          "value": "unknown",
+          "state": "blank",
+          "where": "units[B-A].facts.water_service"
+        },
+        {
+          "item_id": "B-A",
+          "field": "underlying_claim_verified",
+          "value": false,
+          "state": "present",
+          "where": "units[B-A].facts.underlying_claim_verified"
+        }
+      ],
+      "source_job": "Boiler-only applicability review; no drum or operating-function conclusion. Helper name is not equipment role; combined boiler/pump remains eligible."
+    },
+    {
+      "id": "BND-08-combined-package",
+      "model": "models/BND-08-combined-package.json",
+      "sha256_raw": "a96447e30f185dea534b8a46c97889388d1478693b6dbc7c2006e3f752128175",
+      "unit_id": "B-A",
+      "type": "boiler/pump",
+      "name": "Boiler package",
+      "expected_C5_findings": [
+        "C5@B-A"
+      ],
+      "conditional_literals": [
+        {
+          "item_id": "B-A",
+          "field": "heat_source",
+          "value": "unknown",
+          "state": "blank",
+          "where": "units[B-A].facts.heat_source"
+        },
+        {
+          "item_id": "B-A",
+          "field": "water_service",
+          "value": "unknown",
+          "state": "blank",
+          "where": "units[B-A].facts.water_service"
+        },
+        {
+          "item_id": "B-A",
+          "field": "underlying_claim_verified",
+          "value": false,
+          "state": "present",
+          "where": "units[B-A].facts.underlying_claim_verified"
+        }
+      ],
+      "source_job": "Boiler-only applicability review; no drum or operating-function conclusion. Helper name is not equipment role; combined boiler/pump remains eligible."
+    }
+  ],
+  "positive_cases": 5,
+  "negative_cases": 3,
+  "scope": "C5 named-boiler subject admission only; no actual drum, control-function or plant truth. Negative quiet owners are not counted as literal-display success."
+}
