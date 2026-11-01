@@ -33,6 +33,8 @@ For a client that supports local stdio servers, configure its executable and arg
 python scripts/serve_snapshot.py --graph examples/graph-export/bayer_graph.json
 ```
 
+For retained answers, [select the matching graph/register pair](#read-the-complete-context-packet); a graph-only start does not provide full answer history.
+
 The client starts this process and communicates over stdin/stdout; it does not need a listening network port.
 Commands here assume the repository root. In the client's own configuration, use absolute paths to the approved
 Python executable, server script and selected snapshot; configuration syntax depends on the client.
@@ -94,7 +96,9 @@ Bare `S1` is not guessed as a stream alias. Node/virtual-stream identity collisi
 
 ## Read the complete context packet
 
-An enriched graph alone contains answer IDs and freshness, not full answers. Select its matching register explicitly:
+The [retained-source tutorial](../opportunity-screen/mapping-descriptions/retained-answer/README.md) follows a
+source question through a partial response and revision. An enriched graph alone contains answer IDs and
+freshness, not full answers. Select its matching register explicitly:
 
 ```sh
 python scripts/serve_snapshot.py --graph examples/context-register/bayer/expected/enriched_graph.json --context examples/context-register/bayer/expected/context.json

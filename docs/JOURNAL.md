@@ -6819,3 +6819,34 @@ remain separate gates. The three new public files replace no history and commit 
 This is instrumented software work, not elapsed-time speed, memory, engineering usefulness, new model results
 or supported company capacity. The catalog remains unchanged: 50 rules/126 requests, 22 bounded source reviews
 and 28 remaining. An index does not strengthen source authority, historical identity or installed signal truth.
+
+## 144. Carry a source question through review and MCP readback
+
+The own-record reader walk joined the question screen, retained answers and selected MCP access. Its first
+relocated-schedule call correctly refused stale source choices: copying the schedules changed their displayed
+file identities. An optional top-level `source_label` now lets a working copy preserve its supplied logical
+identity. It is not a path to open, an authority claim or permission to reuse changed rows. Actual input paths
+remain protected; duplicate labels and stale choices refuse. Default source labels and complete outputs remain
+unchanged. Literal Unicode and Markdown punctuation survive field locations and saved-screen rollup.
+
+Independent controls pass 48 checks in eight groups. The unfiltered question module runs 153 tests: 152 pass
+and one unnamed test is skipped. All 149 earlier methods remain AST-identical. Three actual normal producers
+retain 69 artifacts byte-for-byte; the two actual description build receipts change only the engine identity.
+
+The final public-input/fictional-note exercise completes ten CLI steps with 22 checks. H1/C3 select four findings,
+including two unmapped H1 findings. Seven mapping-source carriers retain their qualifications. Changing only
+the selected CSV fingerprint in those questions makes the accepted partial H1 answer stale and its current
+state unanswered; both decisions and both ownership records remain intact. C3 and the other H1 findings stay
+unanswered. A valve-position description never becomes evidence of steam flow.
+
+Three actual SDK stdio sessions make 50 tool calls, retaining complete response envelopes. Readback stays at A
+after the selected files are replaced; restart loads B with its stale answer and unchanged history. Graph-only
+access retains questions but cannot supply the full register. A mismatched graph/context startup refuses with
+exit 2 and empty stdout. No MCP network listener or plant connection is configured for this route. These are
+local software checks, not company Copilot, IT/OT, reviewer authority or engineering acceptance.
+
+Earlier observations remain retained: the original relocation refusal, a ten-command intermediate run followed
+by a checker error that wrongly assumed only two findings, and an independent caller's incorrect module-root
+binding. The final cohort keeps all four findings. N110 closes this bounded portability and reader handoff;
+the [own-record tutorial](../examples/opportunity-screen/mapping-descriptions/retained-answer/README.md) explains
+the transferable method. Company systems still own maintained records, permissions and release decisions.

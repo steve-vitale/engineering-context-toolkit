@@ -4527,6 +4527,24 @@
         "scripts/question_engine.py",
         "scripts/test_question_engine.py"
       ]
+    },
+    {
+      "id": "A296",
+      "function": "intake_and_reuse",
+      "date": "2026-11-01",
+      "change": "Keep relocated schedule identities explicit and trace a source question through retained review and stdio readback.",
+      "hypothesis": "An engineer should move a working packet without invalidating unchanged source joins, then inherit qualified answers and notice a changed evidence basis.",
+      "evidence": "Independent source-label controls pass 48 checks in eight groups; 153 question tests report 152 passed and one unnamed skip. Ten final CLI steps pass 22 checks, retaining all four findings and seven qualified source carriers. Accepted partial H1 becomes stale on source-fingerprint change while two decisions and two owners remain exact. Three SDK stdio sessions retain 50 tool-call envelopes; restart loads the revised pair, graph-only lacks full history and mismatched startup refuses. Three normal producers retain 69 raw-exact artifacts and two actual engine-leaf receipt updates.",
+      "runs": "Public-input/fictional-note local software exercise. The original relocation refusal, intermediate ten-command success/checker failure and independent caller-root failure remain retained. No model/provider, company or plant call.",
+      "verdict": "kept",
+      "why": "N110 closes bounded source-label portability and the complete local reader handoff. Actual paths and stale-choice guards remain; company clients, authority, shared governance and engineering usefulness need their own evidence.",
+      "source": [
+        "docs/JOURNAL.md#144-carry-a-source-question-through-review-and-mcp-readback",
+        "docs/OPPORTUNITY_SCREEN.md",
+        "examples/opportunity-screen/mapping-descriptions/retained-answer/README.md",
+        "scripts/question_engine.py",
+        "scripts/test_question_engine.py"
+      ]
     }
   ],
   "not_tried": [
@@ -5765,6 +5783,20 @@
         "docs/OPPORTUNITY_SCREEN.md#retain-the-io-source-behind-a-mapped-signal",
         "examples/opportunity-screen/mapping-descriptions/lookup-scaling/README.md",
         "examples/opportunity-screen/mapping-descriptions/lookup-scaling/observations.json",
+        "scripts/question_engine.py",
+        "scripts/test_question_engine.py"
+      ]
+    },
+    {
+      "id": "N110",
+      "function": "intake_and_reuse",
+      "status": "done",
+      "idea": "Carry a relocated own-record source question into a qualified retained answer and complete selected MCP readback.",
+      "why_not_yet": "Completed A296 for optional stable logical schedule labels and the bounded question/context/stdio reader walk. Full source qualifications and decision/owner history survive refresh and restart. No company client, source authority, installed signal or shared organizational service is established.",
+      "source": [
+        "docs/JOURNAL.md#144-carry-a-source-question-through-review-and-mcp-readback",
+        "docs/OPPORTUNITY_SCREEN.md",
+        "examples/opportunity-screen/mapping-descriptions/retained-answer/README.md",
         "scripts/question_engine.py",
         "scripts/test_question_engine.py"
       ]

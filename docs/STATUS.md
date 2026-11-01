@@ -1,6 +1,6 @@
 # State of the toolkit
 
-Holistic audit: **2026-11-01, Central time**, with the latest source-lookup follow-up starting from released commit `8c7d8d1`.
+Holistic audit: **2026-11-01, Central time**, with the latest source-to-context reader follow-up starting from released commit `b4f4c2e`.
 The public name is **Engineering Context Toolkit**. The jumpstart is its first-assignment path; modeling,
 review, analysis and evaluation can be used independently. Earlier failures and original evidence remain
 in the [journal](JOURNAL.md) and [attempt ledger](TRIED.md).
@@ -12,7 +12,7 @@ The public tutorials teach those steps; case studies and evaluations retain what
 inputs. Engineering review and company acceptance determine what becomes an authoritative maintained twin or record.
 
 The [script registry](SCRIPTS.md) classifies 136 scripts: 33 tools, 12 checks, 15 support modules and 76 research
-scripts; tests are separate. Twenty-two [feature groups](FEATURES.md) register 472 distinct example files, including
+scripts; tests are separate. Twenty-two [feature groups](FEATURES.md) register 473 distinct example files, including
 inputs, generated outputs and retained history. Shared files can appear under more than one group; feature-file
 references are not additional unique examples. Their evidence is bounded. A reviewed
 example does not certify every input, current implementation or engineering conclusion.
@@ -48,6 +48,12 @@ Captured I/O rows now use their recorded locators without repeated whole-CSV sca
 qualified descriptions and graph/context content. The [small generated diagnostic](../examples/opportunity-screen/mapping-descriptions/lookup-scaling/README.md)
 records bounded work, not plant capacity or timing; reload read-only captures to refresh them. Source-file
 selection and plain-dictionary fallback still scan, and additional index memory is unmeasured (A295/N109).
+
+Relocated schedule working copies can declare stable logical source labels without bypassing source-choice
+checks. The [own-record handoff tutorial](../examples/opportunity-screen/mapping-descriptions/retained-answer/README.md)
+connects question screening, partial answers, source revision and paired read-only MCP access. A local fictional
+exercise preserves qualifications and history through refresh/restart; company clients and engineering acceptance
+remain separate. See [the bounded checks and retained failures](JOURNAL.md#144-carry-a-source-question-through-review-and-mcp-readback) (A296/N110).
 
 | Reproduced gap | Required behavior and bounded repair |
 |---|---|

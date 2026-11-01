@@ -3287,5 +3287,160 @@ class MappingDescriptionLookupWork(unittest.TestCase):
             self.assertNotIn("description", ambiguous)
 
 
+class PortableScheduleLabels(unittest.TestCase):
+    """Working-copy logical identities; labels do not authenticate schedules or select revisions."""
+
+    cli = ServiceReconciliation.cli
+    intake = ServiceReconciliation.intake
+    schedule = ServiceReconciliation.schedule
+    sources = ServiceReconciliation.sources
+    declaration = ServiceReconciliation.declaration
+    attach = ServiceReconciliation.attach
+
+    def copied_sources(self, base):
+        model, first, second = self.sources(base)
+        labels = ("../not-opened/水 [draft] `A`.json", "site records/refrigeration B.json")
+        self.attach(second, self.declaration(first=labels[0], second=labels[1]))
+        originals = {first: first.read_bytes(), second: second.read_bytes()}
+        copies = []
+        for number, (source, label) in enumerate(zip((first, second), labels)):
+            folder = base / f"relocated-{number}"
+            folder.mkdir()
+            target = folder / "schedule.json"
+            data = json.loads(source.read_bytes())
+            data["source_label"] = label
+            target.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+            self.assertEqual({key: value for key, value in data.items() if key != "source_label"},
+                             json.loads(originals[source]))
+            copies.append(target)
+        return model, copies, labels, originals
+
+    def test_distinct_labels_relocate_same_basename_and_preserve_complete_choice(self):
+        with tempfile.TemporaryDirectory() as temp:
+            base = Path(temp)
+            model, (first, second), labels, originals = self.copied_sources(base)
+            expected = self.declaration(first=labels[0], second=labels[1])
+            resolutions = []
+            for paths in ((first, second), (second, first)):
+                merged = qe.load_schedule(paths)
+                entry = merged[("1", "P-1")]
+                resolution = entry["service_reconciliation"]
+                self.assertEqual(resolution["candidates"], sorted(expected["candidates"], key=lambda x: (x["file"], x["row"], x["service"])))
+                self.assertEqual(resolution["selected"], expected["selected"])
+                self.assertEqual(resolution["declarations"], [{"file": labels[1], "row": 1,
+                    "status": "draft", "basis": expected["basis"], "selected": expected["selected"]}])
+                self.assertIn("organizational approval unverified", resolution["authority"])
+                self.assertEqual(entry["fields"], {"HP": 10})
+                self.assertEqual(entry["field_sources"], {"HP": sorted(labels)})
+                resolutions.append(copy.deepcopy(resolution))
+                loaded = qe.Model(model, schedule_paths=paths)
+                self.assertEqual(loaded.schedule_sources, sorted(labels))
+                self.assertTrue(set(map(Path, paths)) <= loaded.source_paths)
+            self.assertEqual(resolutions[0], resolutions[1])
+            self.assertTrue(all(path.read_bytes() == raw for path, raw in originals.items()))
+            # The path-shaped logical label above does not exist and must never be opened as input.
+
+    def test_invalid_duplicate_labels_and_changed_candidates_refuse(self):
+        invalid = (None, False, 7, [], {}, "", " ", " label", "label ", "a\x00b", "a\x1fb",
+                   "a\x7fb", "a\x85b", "a\u2028b", "a\u2029b", "a\ud800b", "a\udfffb")
+        for label in invalid:
+            with self.subTest(label=repr(label)), tempfile.TemporaryDirectory() as temp:
+                path = Path(temp) / "empty.json"
+                path.write_text(json.dumps({"source_label": label, "sheets": {}}), encoding="utf-8")
+                before = path.read_bytes()
+                with self.assertRaises(qe.InputError):
+                    qe.load_schedule([path])
+                self.assertEqual(path.read_bytes(), before)
+        with tempfile.TemporaryDirectory() as temp:
+            base = Path(temp)
+            first, second = base / "a.json", base / "b.json"
+            for path in (first, second):
+                path.write_text(json.dumps({"source_label": "same opaque ID", "sheets": {}}), encoding="utf-8")
+            with self.assertRaises(qe.InputError):
+                qe.load_schedule([first, second])
+        for change in ("service", "row"):
+            with self.subTest(change=change), tempfile.TemporaryDirectory() as temp:
+                base = Path(temp)
+                _, (first, second), _, originals = self.copied_sources(base)
+                value = json.loads(first.read_bytes())
+                if change == "service":
+                    value["sheets"]["1"][0]["service"] = "Changed source service"
+                else:
+                    value["sheets"]["1"].insert(0, {"tag": "OTHER", "service": "Other service"})
+                first.write_text(json.dumps(value), encoding="utf-8")
+                with self.assertRaisesRegex(qe.InputError, "stale or mismatched service_resolution"):
+                    qe.load_schedule([first, second])
+                self.assertTrue(all(path.read_bytes() == raw for path, raw in originals.items()))
+
+    def test_logical_labels_do_not_replace_actual_path_output_protection(self):
+        with tempfile.TemporaryDirectory() as temp:
+            base = Path(temp)
+            model, (first, second), _, _ = self.copied_sources(base)
+            output = base / "reports"
+            output.mkdir()
+            os.link(first, output / "screen.md")
+            (output / "questions.json").write_bytes(b"prior report")
+            before = {path.relative_to(base).as_posix(): path.read_bytes() for path in base.rglob('*') if path.is_file()}
+            result = self.cli(["--model", model, "--schedule", first, "--schedule", second, "--out", output], 2)
+            self.assertIn("overlaps input", result.stderr)
+            self.assertEqual({path.relative_to(base).as_posix(): path.read_bytes() for path in base.rglob('*') if path.is_file()}, before)
+
+
+    def test_explicit_label_field_locations_survive_screen_and_saved_rollup(self):
+        with tempfile.TemporaryDirectory() as temp:
+            base = Path(temp)
+            model, first, second = self.sources(base)
+            labels = ("Ω source `A`, field invented.json", "records/B [draft], field `x`.json")
+            for path, label in zip((first, second), labels):
+                value = json.loads(path.read_bytes())
+                value.update(source_label=label)
+                value["sheets"]["1"][0]["fields"] = {"HP": 10, "RPM": None}
+                path.write_text(json.dumps(value, ensure_ascii=False), encoding="utf-8")
+            self.attach(second, self.declaration(first=labels[0], second=labels[1]))
+            loaded = qe.Model(model, schedule_paths=[first, second])
+            self.assertEqual(loaded.schedule[("1", "P-1")]["field_sources"],
+                             {"HP": sorted(labels), "RPM": sorted(labels)})
+            catalog = {"families": {"metering": "Metering"}, "sources": {}, "questions": [{
+                "id": "SL01", "family": "metering", "question": "Fictional schedule-location control.",
+                "applies_when": {"anchor": {"kind": ["equipment"]}, "group_by": "item"},
+                "evidence_fields": ["tag"], "data_requests": [{"item": "Supplied rating fields",
+                    "fields": ["HP", "RPM"], "where": [{"place": "records", "what": "selected schedule"}],
+                    "how": "Review the supplied field locations; no engineering conclusion."}],
+                "decision_rule": "Review source context only.", "limits": "Fictional software control.",
+                "typical_benefit": {"wording": "No benefit claimed.", "source": [], "arc": None}}]}
+            catalog_path = base / "catalog.json"
+            catalog_path.write_text(json.dumps(catalog), encoding="utf-8")
+            found, nc, quiet, excluded = qe.screen(loaded, catalog)
+            self.assertEqual([q["id"] for q in found], ["SL01@P1"])
+            self.assertEqual(found[0]["assets"], [{"id": "P1", "tag": "P-1"}])
+            present = next(e for e in found[0]["evidence"] if e["role"] == "on drawing")
+            request = found[0]["data_requests"][0]
+            blank_location = next(where for where in request["where"] if "blank RPM" in where)
+            self.assertIn(", field HP (source: ", present["field"])
+            self.assertIn(", field RPM (source: ", blank_location)
+            quoted_labels = ["``" + json.dumps(label, ensure_ascii=True) + "``" for label in labels]
+            for literal in quoted_labels:
+                self.assertIn(literal, present["field"])
+                self.assertIn(literal, blank_location)
+            output = base / "screen"
+            doc = qe.write_outputs(loaded, catalog, found, nc, quiet, excluded, output,
+                                   catalog_path=catalog_path)
+            saved = json.loads((output / "questions.json").read_bytes())
+            self.assertEqual(saved, doc)
+            self.assertEqual(saved["schedules"], sorted(labels))
+            self.assertEqual(saved["service_reconciliations"][0]["selected"]["file"], labels[0])
+            readable = (output / "screen.md").read_text(encoding="utf-8")
+            whole_literal = "```" + json.dumps(present["field"], ensure_ascii=True) + "```"
+            self.assertIn("(" + whole_literal + ")", readable)
+            self.assertNotIn("(`" + present["field"] + "`)", readable)
+            self.assertIn(blank_location, readable)
+            rolled = qe.rollup(["fixture=" + str(output)], catalog, catalog_path=catalog_path)
+            rollup_text = qe.render_rollup_md(rolled, catalog)
+            self.assertIn(blank_location, rollup_text)
+            for literal in quoted_labels:
+                self.assertIn(literal, rollup_text)
+            self.assertEqual(json.loads((output / "questions.json").read_bytes()), saved)
+
+
 if __name__ == "__main__":
     unittest.main()
