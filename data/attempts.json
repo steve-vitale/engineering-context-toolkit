@@ -4588,6 +4588,30 @@
         "scripts/test_checkout_contracts.py",
         ".gitattributes"
       ]
+    },
+    {
+      "id": "A299",
+      "function": "intake_and_reuse",
+      "date": "2026-11-01",
+      "change": "Keep canonical JSON evidence changes from inheriting an old accepted answer, and reject inconsistent selected context views.",
+      "hypothesis": "A no-answer refresh and selected-pair validator must use the same typed JSON binding semantics as their fingerprints; Python false/0 equality must not preserve a different evidence basis.",
+      "evidence": "Four typed evidence changes alter canonical fingerprints but the original method incorrectly keeps answers current; V01/V02 inconsistent views are also admitted. The matched candidate reopens all affected answers and gives four specific InputError refusals, preserving complete histories and 23 positive files raw-exact. Original and candidate cohorts each use 14 context CLI calls. Six permanent methods fail the old method with six assertions and no errors, then six pass the candidate. Actual public modules pass 59 context + 19 snapshot + 2 team-context + 7 context-example + 3 checkout methods: 90 tests, no skips. The separate documented default reproducer passes 14 child CLI calls, seven complete typed readbacks and four specific pair refusals; its replay inside the new integration test is a separate additional 14 child calls. Independent receiving verifies the retained inputs, complete results and public source guards.",
+      "runs": "Original 14 CLI, matched candidate 14 CLI and standalone public default 14 CLI are separate cohorts; the new context-example integration method separately replays 14 child CLI calls. Six old-method expected failures and six candidate focused passes are separate tests, outside the 90 public module methods. Fictional software records only; no SDK transport, provider/model, company or plant call.",
+      "verdict": "kept",
+      "why": "N113 closes only canonical typed freshness and derived-view consistency through the existing local context route. Three comparisons reuse existing canonical semantics; no numeric/unit interpretation, schema/source/history, state precedence, question catalog or shared governance change. Full repository/exact-head CI and human/company acceptance remain separate.",
+      "source": [
+        "docs/JOURNAL.md#147-keep-typed-evidence-changes-from-inheriting-an-old-answer",
+        "docs/CONTEXT_REGISTER.md",
+        "examples/context-register/typed-evidence/README.md",
+        "examples/context-register/typed-evidence/PROVENANCE.json",
+        "examples/context-register/typed-evidence/observations.json",
+        "scripts/context_register.py",
+        "scripts/test_context_register.py",
+        "scripts/test_context_examples.py",
+        "scripts/test_snapshot_packet.py",
+        "scripts/test_checkout_contracts.py",
+        ".gitattributes"
+      ]
     }
   ],
   "not_tried": [
@@ -5461,8 +5485,8 @@
       "id": "N082",
       "function": "intake_and_reuse",
       "status": "not-done",
-      "idea": "Source-review the remaining 28 catalog rules within the 50-rule/126-request inventory with prospective expected/unacceptable questions, exact collection scope and independent source review.",
-      "why_not_yet": "Twenty-two named rules have bounded source-informed collection reviews after A293, including service-first E16/C5; 28 remain. This is not whole-catalog engineering adequacy, safety validation or usefulness. N065 and real engineer/recipient acceptance remain open.",
+      "idea": "Source-review the remaining 27 catalog rules within the 50-rule/126-request inventory with prospective expected/unacceptable questions, exact collection scope and independent source review.",
+      "why_not_yet": "Twenty-three named rules have bounded source-informed collection reviews after A297, including service-first E16/C5 and scoped C3 valve feedback; 27 remain. This is not whole-catalog engineering adequacy, safety validation or usefulness. N065 and real engineer/recipient acceptance remain open.",
       "source": [
         "docs/JOURNAL.md#115-repair-the-audit-gaps-with-owned-workstreams-and-independent-handoffs",
         "docs/STATUS.md",
@@ -5471,7 +5495,8 @@
         "docs/JOURNAL.md#120-keep-qualified-private-fields-and-condenser-train-review-at-their-source-boundaries",
         "docs/JOURNAL.md#134-make-own-plant-transfer-explicit-and-retain-function-evidence",
         "docs/JOURNAL.md#135-keep-heating-investigations-grounded-in-existing-records",
-        "docs/JOURNAL.md#141-investigate-combustion-and-drum-control-from-service-and-existing-records"
+        "docs/JOURNAL.md#141-investigate-combustion-and-drum-control-from-service-and-existing-records",
+        "docs/JOURNAL.md#145-review-valve-feedback-from-existing-records"
       ]
     },
     {
@@ -5877,6 +5902,51 @@
         "scripts/test_snapshot_packet.py",
         "scripts/test_checkout_contracts.py",
         ".gitattributes"
+      ]
+    },
+    {
+      "id": "N113",
+      "function": "intake_and_reuse",
+      "status": "done",
+      "idea": "Reopen retained answers after typed JSON evidence changes and refuse conflicting typed current/context views under the existing canonical binding policy.",
+      "why_not_yet": "Completed A299 for the bounded false/0, true/1, integer/float and signed-zero controls, with intact history, selective staleness/reversion and exact specific validator refusals. Ninety public module methods pass without skips; the documented public default and its integration replay retain complete typed readback. A representation change still needs engineering interpretation. No source/reviewer authentication or operating approval follows; full repository and exact-head CI are separate gates.",
+      "source": [
+        "docs/JOURNAL.md#147-keep-typed-evidence-changes-from-inheriting-an-old-answer",
+        "docs/CONTEXT_REGISTER.md",
+        "examples/context-register/typed-evidence/README.md",
+        "examples/context-register/typed-evidence/PROVENANCE.json",
+        "examples/context-register/typed-evidence/observations.json",
+        "scripts/context_register.py",
+        "scripts/test_context_register.py",
+        "scripts/test_context_examples.py",
+        "scripts/test_snapshot_packet.py",
+        "scripts/test_checkout_contracts.py",
+        ".gitattributes"
+      ]
+    },
+    {
+      "id": "N114",
+      "function": "intake_and_reuse",
+      "status": "not-done",
+      "idea": "Establish a useful source-qualified question/handoff route for explicitly unplaced DEXPI instruments and final elements without inventing owning equipment.",
+      "why_not_yet": "A201 and the committed unplaced-DEXPI graph packet preserve supplied roles and explicit FT-04/FIC-04/FV-04 relationships, not equipment placement. A source-informed prospective question contract, matched input/control results and useful receiving handoff are still needed; the graph repair is not a question-route completion claim. No new XML/source download or question evaluation is recorded here.",
+      "source": [
+        "docs/JOURNAL.md#69-preserve-known-engineering-meaning-and-retained-review-history",
+        "examples/graph-export/unplaced-dexpi/README.md",
+        "docs/OPPORTUNITY_SCREEN.md",
+        "docs/GRAPH_EXPORT.md"
+      ]
+    },
+    {
+      "id": "N115",
+      "function": "intake_and_reuse",
+      "status": "not-done",
+      "idea": "Group latest retained context answers once per question instead of sorting and scanning every latest answer for each question.",
+      "why_not_yet": "The current-state loop still repeats the latest-answer scan. The typed-freshness correctness repair deliberately leaves this separate algorithm unchanged. Freeze full-output/history/order oracles and count complete grouping/construction plus answer visits on bounded fictional packets before changing it. No timing, memory, team capacity or performance result has been measured.",
+      "source": [
+        "scripts/context_register.py",
+        "docs/CONTEXT_REGISTER.md",
+        "docs/JOURNAL.md#147-keep-typed-evidence-changes-from-inheriting-an-old-answer"
       ]
     }
   ]

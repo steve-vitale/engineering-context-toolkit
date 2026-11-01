@@ -12,7 +12,7 @@ The public tutorials teach those steps; case studies and evaluations retain what
 inputs. Engineering review and company acceptance determine what becomes an authoritative maintained twin or record.
 
 The [script registry](SCRIPTS.md) classifies 136 scripts: 33 tools, 12 checks, 15 support modules and 76 research
-scripts; tests are separate. Twenty-two [feature groups](FEATURES.md) register 522 distinct example files, including
+scripts; tests are separate. Twenty-two [feature groups](FEATURES.md) register 536 distinct example files, including
 inputs, generated outputs and retained history. Shared files can appear under more than one group; feature-file
 references are not additional unique examples. Their evidence is bounded. A reviewed
 example does not certify every input, current implementation or engineering conclusion.
@@ -64,6 +64,12 @@ The C3 review CI exposed a stale whole-graph MCP sample fingerprint even though 
 unchanged. A298/N112 recaptures the actual SDK stdio response and retains strict comparison, source-qualified
 provenance and narrow LF checkout. Snapshot19 and checkout3 pass without skips; the failed C2 CI remains
 failed, and full integration/successor CI are separate gates. See [the failure and repair](JOURNAL.md#146-recapture-the-whole-graph-mcp-sample-after-a-source-policy-change).
+
+Typed evidence revisions now reopen affected answers under the existing canonical JSON binding, including
+boolean/integer and signed-zero changes; conflicting derived context views refuse. Complete history and
+unaffected answers remain. The [fictional typed-evidence route](../examples/context-register/typed-evidence/README.md)
+and 90 public module methods pass without skips (A299/N113). This is local consistency, not source authority,
+plant truth or company acceptance; full repository and exact-head CI are separate gates.
 
 | Reproduced gap | Required behavior and bounded repair |
 |---|---|

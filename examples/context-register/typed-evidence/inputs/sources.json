@@ -1,0 +1,33 @@
+{
+  "schema": "context-sources-1",
+  "documents": [
+    {
+      "id": "MANUAL",
+      "revision": "A",
+      "path": "manual.txt",
+      "locators": [
+        {
+          "id": "basis",
+          "locator": "line 2, fictional basis",
+          "questions": [
+            "Q1@P-1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SCHEDULE",
+      "revision": "A",
+      "path": "schedule.txt",
+      "locators": [
+        {
+          "id": "service",
+          "locator": "line 2, fictional service",
+          "questions": [
+            "Q2@P-2"
+          ]
+        }
+      ]
+    }
+  ]
+}

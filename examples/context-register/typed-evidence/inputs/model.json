@@ -1,0 +1,73 @@
+{
+  "schema": "twin-graph-1",
+  "title": "FICTIONAL typed freshness controls",
+  "nodes": [
+    {
+      "id": "PLANT",
+      "kind": "plant",
+      "name": "FICTIONAL training packet",
+      "status": "unverified"
+    },
+    {
+      "id": "P-1",
+      "kind": "equipment",
+      "name": "FICTIONAL P-1",
+      "status": "unverified",
+      "attributes": [
+        {
+          "name": "declared_flag",
+          "value": false,
+          "status": "unverified",
+          "source": {
+            "kind": "illustrative fixture",
+            "document": "FICTIONAL training data, not plant evidence"
+          }
+        }
+      ]
+    },
+    {
+      "id": "P-2",
+      "kind": "equipment",
+      "name": "FICTIONAL P-2",
+      "status": "unverified",
+      "attributes": [
+        {
+          "name": "declared_service",
+          "value": "water",
+          "status": "unverified",
+          "source": {
+            "kind": "illustrative fixture",
+            "document": "FICTIONAL training data, not plant evidence"
+          }
+        }
+      ]
+    },
+    {
+      "id": "P-3",
+      "kind": "equipment",
+      "name": "FICTIONAL unqueried neighbor",
+      "status": "unverified"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E1",
+      "type": "contains",
+      "from": "P-1",
+      "to": "P-3",
+      "status": "unverified",
+      "attributes": [
+        {
+          "name": "declared_count",
+          "value": 1,
+          "status": "unverified",
+          "source": {
+            "kind": "illustrative fixture",
+            "document": "FICTIONAL training data, not plant evidence"
+          }
+        }
+      ]
+    }
+  ],
+  "questions": []
+}

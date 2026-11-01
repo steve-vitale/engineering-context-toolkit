@@ -1,0 +1,287 @@
+{
+  "schema": "context-register-1",
+  "decisions": [
+    {
+      "question_id": "Q1@P-1",
+      "answer_id": "answer-1",
+      "claim_key": "fictional-basis",
+      "value": "FICTIONAL recorded answer",
+      "answer": "FICTIONAL training answer; not plant knowledge.",
+      "answer_state": "answered",
+      "decision": "accepted",
+      "reviewer": "fictional-reviewer",
+      "reviewed_on": "2026-11-01",
+      "source_match": "match",
+      "plant_truth": "unknown",
+      "note": "Authored software control only.",
+      "evidence_fingerprint": "a1563d30d1c10868b60ea45d14baa401672c8c6ca38042def6f7347ada0e8c60",
+      "owner": "fictional-owner-Q1@P-1",
+      "evidence": {
+        "question": {
+          "id": "Q1@P-1",
+          "question": "What does the fictional record declare for P-1?",
+          "assets": [
+            {
+              "id": "P-1"
+            }
+          ],
+          "data_requests": [
+            {
+              "item": "Review the fictional supplied record",
+              "how": "Records only; no operating action.",
+              "candidate_scope": "anchors",
+              "candidate_facts": [
+                {
+                  "id": "P-1",
+                  "label": "P-1",
+                  "name": "declared_ready",
+                  "where": "fictional.P-1.declared_ready",
+                  "value": true
+                },
+                {
+                  "id": "P-1",
+                  "label": "P-1",
+                  "name": "declared_zero",
+                  "where": "fictional.P-1.declared_zero",
+                  "value": {
+                    "signed": 0.0
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "assets": [
+          {
+            "id": "P-1",
+            "content": {
+              "id": "P-1",
+              "kind": "equipment",
+              "name": "FICTIONAL P-1",
+              "attributes": [
+                {
+                  "name": "declared_flag",
+                  "value": false,
+                  "source": {
+                    "kind": "illustrative fixture",
+                    "document": "FICTIONAL training data, not plant evidence"
+                  }
+                }
+              ]
+            },
+            "relations": [
+              {
+                "type": "contains",
+                "from": "P-1",
+                "to": "P-3",
+                "attributes": [
+                  {
+                    "name": "declared_count",
+                    "value": 1,
+                    "source": {
+                      "kind": "illustrative fixture",
+                      "document": "FICTIONAL training data, not plant evidence"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "source": {
+          "id": "MANUAL",
+          "revision": "A",
+          "sha256": "87ae84e022d4243fd9878aa5c8041f373ed4029e240edeb9789f887097b07907",
+          "locator_id": "basis",
+          "locator": "line 2, fictional basis"
+        }
+      },
+      "previous": null,
+      "id": "d-41143626b9ccb3b59157853ce11e3ad0957ba8d956dfcb9db243c7b065e9be67"
+    },
+    {
+      "question_id": "Q2@P-2",
+      "answer_id": "answer-1",
+      "claim_key": "fictional-basis",
+      "value": "FICTIONAL recorded answer",
+      "answer": "FICTIONAL training answer; not plant knowledge.",
+      "answer_state": "answered",
+      "decision": "accepted",
+      "reviewer": "fictional-reviewer",
+      "reviewed_on": "2026-11-01",
+      "source_match": "match",
+      "plant_truth": "unknown",
+      "note": "Authored software control only.",
+      "evidence_fingerprint": "eacb2402c47eaf41b4742309b51e9438fc6da482668b1a303a47e2852f1bc928",
+      "owner": "fictional-owner-Q2@P-2",
+      "evidence": {
+        "question": {
+          "id": "Q2@P-2",
+          "question": "What does the fictional record declare for P-2?",
+          "assets": [
+            {
+              "id": "P-2"
+            }
+          ]
+        },
+        "assets": [
+          {
+            "id": "P-2",
+            "content": {
+              "id": "P-2",
+              "kind": "equipment",
+              "name": "FICTIONAL P-2",
+              "attributes": [
+                {
+                  "name": "declared_service",
+                  "value": "water",
+                  "source": {
+                    "kind": "illustrative fixture",
+                    "document": "FICTIONAL training data, not plant evidence"
+                  }
+                }
+              ]
+            },
+            "relations": []
+          }
+        ],
+        "source": {
+          "id": "SCHEDULE",
+          "revision": "A",
+          "sha256": "f7e2286a6a1b509e754290d79cc86378e57f6a641167ae0d8463d80b165606b7",
+          "locator_id": "service",
+          "locator": "line 2, fictional service"
+        }
+      },
+      "previous": null,
+      "id": "d-f925cf9a0592fa31d0da4e9a32ff01dbc11bb30689431fe5cdea2171484a2dae"
+    }
+  ],
+  "ownership_history": [
+    {
+      "question_id": "Q1@P-1",
+      "owner": "fictional-owner-Q1@P-1",
+      "by": "fictional-coordinator",
+      "on": "2026-11-01",
+      "previous": null,
+      "id": "o-00af8edf89a4cded0de701980f84a91b28cae9f8b5098bb3d2c68d50eee272dd"
+    },
+    {
+      "question_id": "Q2@P-2",
+      "owner": "fictional-owner-Q2@P-2",
+      "by": "fictional-coordinator",
+      "on": "2026-11-01",
+      "previous": null,
+      "id": "o-7edc05ff3f0b02d970942eb2cc8550f3ec9c67606de76626060749156ef106e2"
+    }
+  ],
+  "current": {
+    "Q1@P-1": {
+      "present": true,
+      "question": {
+        "id": "Q1@P-1",
+        "question": "What does the fictional record declare for P-1?",
+        "assets": [
+          {
+            "id": "P-1"
+          }
+        ],
+        "data_requests": [
+          {
+            "item": "Review the fictional supplied record",
+            "how": "Records only; no operating action.",
+            "candidate_scope": "anchors",
+            "candidate_facts": [
+              {
+                "id": "P-1",
+                "label": "P-1",
+                "name": "declared_ready",
+                "where": "fictional.P-1.declared_ready",
+                "value": true
+              },
+              {
+                "id": "P-1",
+                "label": "P-1",
+                "name": "declared_zero",
+                "where": "fictional.P-1.declared_zero",
+                "value": {
+                  "signed": 0.0
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "owner": "fictional-owner-Q1@P-1",
+      "ownership": "assigned",
+      "assigned_by": "fictional-coordinator",
+      "assigned_on": "2026-11-01",
+      "state": "answered",
+      "disputed_claims": [],
+      "answers": [
+        {
+          "decision_id": "d-41143626b9ccb3b59157853ce11e3ad0957ba8d956dfcb9db243c7b065e9be67",
+          "answer_id": "answer-1",
+          "freshness": "current",
+          "changed": []
+        }
+      ]
+    },
+    "Q2@P-2": {
+      "present": true,
+      "question": {
+        "id": "Q2@P-2",
+        "question": "What does the fictional record declare for P-2?",
+        "assets": [
+          {
+            "id": "P-2"
+          }
+        ]
+      },
+      "owner": "fictional-owner-Q2@P-2",
+      "ownership": "assigned",
+      "assigned_by": "fictional-coordinator",
+      "assigned_on": "2026-11-01",
+      "state": "answered",
+      "disputed_claims": [],
+      "answers": [
+        {
+          "decision_id": "d-f925cf9a0592fa31d0da4e9a32ff01dbc11bb30689431fe5cdea2171484a2dae",
+          "answer_id": "answer-1",
+          "freshness": "current",
+          "changed": []
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "MANUAL",
+      "revision": "A",
+      "sha256": "87ae84e022d4243fd9878aa5c8041f373ed4029e240edeb9789f887097b07907",
+      "locators": [
+        {
+          "id": "basis",
+          "locator": "line 2, fictional basis",
+          "questions": [
+            "Q1@P-1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SCHEDULE",
+      "revision": "A",
+      "sha256": "f7e2286a6a1b509e754290d79cc86378e57f6a641167ae0d8463d80b165606b7",
+      "locators": [
+        {
+          "id": "service",
+          "locator": "line 2, fictional service",
+          "questions": [
+            "Q2@P-2"
+          ]
+        }
+      ]
+    }
+  ]
+}

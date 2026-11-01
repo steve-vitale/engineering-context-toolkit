@@ -240,5 +240,63 @@ class WorkedContext(unittest.TestCase):
             self.assertEqual(prior.read_bytes(), prior_bytes)
 
 
+    def test_typed_evidence_recipe_retains_sources_history_and_refusals(self):
+        packet = ROOT / 'examples/context-register/typed-evidence'
+        before = {p.relative_to(packet).as_posix(): p.read_bytes()
+                  for p in packet.rglob('*') if p.is_file() and '__pycache__' not in p.parts}
+        provenance = json.loads((packet / 'PROVENANCE.json').read_bytes())
+        for name, declared in provenance['files'].items():
+            raw = (packet / name).read_bytes()
+            self.assertEqual(declared, {'sha256_raw': hashlib.sha256(raw).hexdigest(), 'bytes': len(raw)}, name)
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            out = folder / 'typed-current'
+            command = [sys.executable, '-S', str(packet / 'reproduce.py'), '--out', str(out)]
+            result = subprocess.run(command, cwd=ROOT, env=ENV, capture_output=True, timeout=90)
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            observed = json.loads((out / 'observed.json').read_bytes())
+            self.assertTrue(observed['pass'])
+            self.assertEqual(observed['expectation'], 'repaired')
+            self.assertTrue(observed['captured_sources_unchanged'])
+            self.assertTrue(observed['copied_seed_inputs_unchanged'])
+            self.assertEqual([job['exit_code'] for job in observed['jobs']].count(0), 9)
+            self.assertEqual([job['exit_code'] for job in observed['jobs']].count(2), 5)
+            self.assertEqual(len(observed['jobs']), 14)
+            self.assertTrue(observed['seed_valid_readback']['current_and_full_history_typed_exact'])
+            self.assertEqual([case['case'] for case in observed['cases']],
+                             ['TF01', 'TF02', 'TF03', 'TF04', 'TF05', 'TF06'])
+            for case in observed['cases']:
+                self.assertTrue(case['history_typed_exact'])
+                self.assertTrue(case['valid_readback']['current_and_full_history_typed_exact'])
+            self.assertEqual(set(observed['validators']), {'V01', 'V02'})
+            for name, verdict in observed['validators'].items():
+                self.assertEqual(verdict['admitted'], [False, False], name)
+                self.assertEqual(len(verdict['refusals']), 2, name)
+                for refusal in verdict['refusals']:
+                    self.assertEqual(refusal['type'], 'InputError', name)
+                    self.assertIn('current state' if name == 'V01' else 'question context', refusal['message'])
+            outputs_before = {p.relative_to(out).as_posix(): p.read_bytes()
+                              for p in out.rglob('*') if p.is_file()}
+            refused = subprocess.run(command, cwd=ROOT, env=ENV, capture_output=True, timeout=30)
+            self.assertEqual(refused.returncode, 2, refused.stdout + refused.stderr)
+            self.assertIn(b'--out must not exist', refused.stderr)
+            self.assertEqual(outputs_before, {p.relative_to(out).as_posix(): p.read_bytes()
+                                             for p in out.rglob('*') if p.is_file()})
+            copied = folder / 'copied-example'
+            import shutil
+            shutil.copytree(packet, copied)
+            case_file = copied / 'cases.json'
+            case_file.write_bytes(case_file.read_bytes() + b' ')
+            rejected = folder / 'stale-provenance-refused'
+            bad = subprocess.run([sys.executable, '-S', str(copied / 'reproduce.py'), '--root', str(ROOT),
+                                  '--out', str(rejected)], cwd=ROOT, env=ENV,
+                                 capture_output=True, timeout=30)
+            self.assertEqual(bad.returncode, 2, bad.stdout + bad.stderr)
+            self.assertIn(b'provenance', bad.stderr.lower())
+            self.assertFalse(rejected.exists())
+        self.assertEqual(before, {p.relative_to(packet).as_posix(): p.read_bytes()
+                                  for p in packet.rglob('*') if p.is_file() and '__pycache__' not in p.parts})
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -226,6 +226,9 @@ identities outside the question's asset set; the historical snapshot does not cl
 
 ## Incoming revisions reopen affected answers
 
+The [typed-evidence regression example](../examples/context-register/typed-evidence/README.md) shows why
+changed JSON value types reopen answers while unaffected decisions and complete history remain retained.
+
 Refresh currentness without submitting answers:
 
 If the new screen no longer contains a finding, first preserve the previous packet and source manifest. In the

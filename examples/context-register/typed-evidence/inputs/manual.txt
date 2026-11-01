@@ -1,0 +1,2 @@
+FICTIONAL training only
+P-1 basis: supplied training declaration

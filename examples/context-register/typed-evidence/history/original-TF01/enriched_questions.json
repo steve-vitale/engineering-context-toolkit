@@ -1,0 +1,132 @@
+{
+  "schema": "opportunity-questions-1",
+  "questions": [
+    {
+      "id": "Q1@P-1",
+      "question": "What does the fictional record declare for P-1?",
+      "assets": [
+        {
+          "id": "P-1"
+        }
+      ],
+      "status": "asked",
+      "data_requests": [
+        {
+          "item": "Review the fictional supplied record",
+          "how": "Records only; no operating action.",
+          "candidate_scope": "anchors",
+          "candidate_facts": [
+            {
+              "id": "P-1",
+              "label": "P-1",
+              "name": "declared_ready",
+              "where": "fictional.P-1.declared_ready",
+              "value": true
+            },
+            {
+              "id": "P-1",
+              "label": "P-1",
+              "name": "declared_zero",
+              "where": "fictional.P-1.declared_zero",
+              "value": {
+                "signed": 0.0
+              }
+            }
+          ]
+        }
+      ],
+      "context": {
+        "present": true,
+        "question": {
+          "id": "Q1@P-1",
+          "question": "What does the fictional record declare for P-1?",
+          "assets": [
+            {
+              "id": "P-1"
+            }
+          ],
+          "data_requests": [
+            {
+              "item": "Review the fictional supplied record",
+              "how": "Records only; no operating action.",
+              "candidate_scope": "anchors",
+              "candidate_facts": [
+                {
+                  "id": "P-1",
+                  "label": "P-1",
+                  "name": "declared_ready",
+                  "where": "fictional.P-1.declared_ready",
+                  "value": true
+                },
+                {
+                  "id": "P-1",
+                  "label": "P-1",
+                  "name": "declared_zero",
+                  "where": "fictional.P-1.declared_zero",
+                  "value": {
+                    "signed": 0.0
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "owner": "fictional-owner-Q1@P-1",
+        "ownership": "assigned",
+        "assigned_by": "fictional-coordinator",
+        "assigned_on": "2026-11-01",
+        "state": "answered",
+        "disputed_claims": [],
+        "answers": [
+          {
+            "decision_id": "d-41143626b9ccb3b59157853ce11e3ad0957ba8d956dfcb9db243c7b065e9be67",
+            "answer_id": "answer-1",
+            "freshness": "current",
+            "changed": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "Q2@P-2",
+      "question": "What does the fictional record declare for P-2?",
+      "assets": [
+        {
+          "id": "P-2"
+        }
+      ],
+      "status": "asked",
+      "context": {
+        "present": true,
+        "question": {
+          "id": "Q2@P-2",
+          "question": "What does the fictional record declare for P-2?",
+          "assets": [
+            {
+              "id": "P-2"
+            }
+          ]
+        },
+        "owner": "fictional-owner-Q2@P-2",
+        "ownership": "assigned",
+        "assigned_by": "fictional-coordinator",
+        "assigned_on": "2026-11-01",
+        "state": "answered",
+        "disputed_claims": [],
+        "answers": [
+          {
+            "decision_id": "d-f925cf9a0592fa31d0da4e9a32ff01dbc11bb30689431fe5cdea2171484a2dae",
+            "answer_id": "answer-1",
+            "freshness": "current",
+            "changed": []
+          }
+        ]
+      }
+    }
+  ],
+  "context_register": {
+    "schema": "context-register-1",
+    "sidecar": "context.json",
+    "content_sha256": "edb36f990d0ceaa996f8c65a10c793b50893aca72ed842d7273da14c7fdca1c7"
+  }
+}
