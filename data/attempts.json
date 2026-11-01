@@ -4508,6 +4508,25 @@
         "scripts/context_register.py",
         "scripts/test_question_engine.py"
       ]
+    },
+    {
+      "id": "A295",
+      "function": "intake_and_reuse",
+      "date": "2026-11-01",
+      "change": "Index captured I/O rows while preserving source qualifications and exact output.",
+      "hypothesis": "Many mapped assets should reuse a captured row locator without rescanning its entire CSV.",
+      "evidence": "Matched fictional record visits fall 1056→64, 16512→256, 262656→1024 and 24832→448; all 28 artifacts remain raw-exact. Independent measurements and 10-seed/84-check semantics pass. Old focused controls fail three assertions without errors; two new methods pass. Full module: 148 passed, one unnamed skip; 147 original methods remain AST-exact. Three received producers preserve 69 artifacts and update two actual engine-leaf receipts. Portable replay passes two CLI/eight additional Model calls and independent receiving.",
+      "runs": "Twelve original/corrected/indexed Model API calls retain the first counter overcount. Exposed fictional inputs; no model/provider/plant calls or capacity measurement.",
+      "verdict": "kept",
+      "why": "N109 closes bounded record lookup only. Source selection remains O(S); ordinary dictionaries scan. Captured contexts are read-only/reload; added O(N) index memory is unmeasured. Raw identity is not authority. Full integration/CI remain separate.",
+      "source": [
+        "docs/JOURNAL.md#143-index-retained-io-rows-without-changing-source-meaning",
+        "docs/OPPORTUNITY_SCREEN.md#retain-the-io-source-behind-a-mapped-signal",
+        "examples/opportunity-screen/mapping-descriptions/lookup-scaling/README.md",
+        "examples/opportunity-screen/mapping-descriptions/lookup-scaling/observations.json",
+        "scripts/question_engine.py",
+        "scripts/test_question_engine.py"
+      ]
     }
   ],
   "not_tried": [
@@ -5732,6 +5751,21 @@
         "examples/opportunity-screen/mapping-descriptions/cases.json",
         "scripts/question_engine.py",
         "scripts/context_register.py",
+        "scripts/test_question_engine.py"
+      ]
+    },
+    {
+      "id": "N109",
+      "function": "intake_and_reuse",
+      "status": "done",
+      "idea": "Resolve captured I/O descriptions by recorded physical span or legacy logical row without rescanning the whole retained CSV for each mapped item.",
+      "why_not_yet": "Completed A295 for bounded parser-owned row lookup: independently received matched record counts and 10-seed semantic controls retain exact source/status/order/ambiguity behavior; full149 reports148 passed and one unnamed skip. Plain source dictionaries retain the scan fallback, captured contexts are read-only/reload and source collection selection remains O(S). Extra O(N) index memory is unmeasured; no company capacity, wall-time speed or installed-state claim. Portable replay is independently received; full integration/exact-head CI remain separate gates.",
+      "source": [
+        "docs/JOURNAL.md#143-index-retained-io-rows-without-changing-source-meaning",
+        "docs/OPPORTUNITY_SCREEN.md#retain-the-io-source-behind-a-mapped-signal",
+        "examples/opportunity-screen/mapping-descriptions/lookup-scaling/README.md",
+        "examples/opportunity-screen/mapping-descriptions/lookup-scaling/observations.json",
+        "scripts/question_engine.py",
         "scripts/test_question_engine.py"
       ]
     }

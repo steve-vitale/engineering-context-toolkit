@@ -526,7 +526,10 @@
     "examples/opportunity-screen/mapping-descriptions/cases.json",
     "examples/opportunity-screen/mapping-descriptions/legacy-model.json",
     "examples/opportunity-screen/mapping-descriptions/revision-a/io.csv",
-    "examples/opportunity-screen/mapping-descriptions/revision-b/io.csv"
+    "examples/opportunity-screen/mapping-descriptions/revision-b/io.csv",
+    "examples/opportunity-screen/mapping-descriptions/lookup-scaling/README.md",
+    "examples/opportunity-screen/mapping-descriptions/lookup-scaling/observations.json",
+    "examples/opportunity-screen/mapping-descriptions/lookup-scaling/reproduce.py"
    ],
    "tests": [
     "scripts/test_question_engine.py"

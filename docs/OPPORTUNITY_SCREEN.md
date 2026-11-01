@@ -73,6 +73,11 @@ receipts, selected catalog and reports; use the reviewed mapper workflow for sou
 [small fictional tutorial](../examples/opportunity-screen/mapping-descriptions/README.md) explains the legacy
 and modern routes without a plant connection.
 
+For local API callers, treat contexts returned by `load_io_sources` as read-only captured snapshots. Do not edit
+their records or locators in place; select/reload the original CSV to refresh. Plain caller-supplied source
+dictionaries remain supported without indexed lookup. Selected-source discovery still scales with the number
+of supplied files; the row lookup optimization is not a plant-capacity guarantee.
+
 ## Refresh after reviewing the model
 
 Apply your decisions with `apply_review.py`, then run the screen again with the same loop list, schedules and

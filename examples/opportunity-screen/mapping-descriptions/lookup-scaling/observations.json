@@ -1,0 +1,159 @@
+{
+  "schema": "io-lookup-record-visits-1",
+  "evidence_class": "exposed fictional software-development diagnostic",
+  "original_method": {
+    "commit": "8c7d8d1502f5ceca3a4d7ee095373baa7129f80c",
+    "sha256_raw": "c875cbba8a3607c03a8ff3fc08a9c3e5319fd6d9ba7d42cc3a825d42100c3796"
+  },
+  "indexed_method": {
+    "sha256_raw": "a14a3917e00d0e90d9e3f809d068822c11b0cbddea269bb5ebc763e7eff1b63a",
+    "commit": "not recorded by this pre-adoption study"
+  },
+  "original_worker_sha256_raw": "4cfdd062993b2097e3a39e1307e2d26de3523156fb569c9dbbaba03183d9fdf9",
+  "original_fixture_freeze_sha256_raw": "e2d6a4b4a496a1a987e4b3ad28200aedcd80b05c30cfcdebae7ffb87be7e2550",
+  "original_results_sha256_raw": "64a3e3402bdd720ea60810ea519d19b527615e569202da6ff78caaa6827eaf16",
+  "indexed_results_sha256_raw": "5cab601edce80d10e792cabe0b281227b9f756ddd2394805bacc8961c547a44f",
+  "generated_input_sha256_raw": {
+    "catalog.json": "db57c242cb3a0e217172bf87aa14a034743e44a7bed81916403fdd1b5af6b3e5",
+    "n0032-modern/expected.json": "f014fc160df806906d7cc967a43ce279d7898795e93a19d81c2ba4ebb86a1dcb",
+    "n0032-modern/model.json": "028ac18204283678964e93414513f8f54fdfdfe92a54303729c7b27e340edafc",
+    "n0128-mixed-two-sources/expected.json": "da19c3fea94568d408dd8d96e4a2989ada7062586f3b38870cd46dc5c638500a",
+    "n0128-mixed-two-sources/model.json": "81de1c50faa768451a2d9c48d2db2c72b92ae976dfd74be8a962113567f6137c",
+    "n0128-modern/expected.json": "e639970a83dd96013d632ea692e91b26244ad7ed5fdc0129e773ff83066e6d69",
+    "n0128-modern/model.json": "164cf0f4abf1ecdf71d531d12d619c3dae997b8bf445ff55beb8581055601ee8",
+    "n0512-modern/expected.json": "541282f8f8add967b6ba2375e92271ad652b69e523d73f8e7084a0b57a1489f8",
+    "n0512-modern/model.json": "4b82f20fde807c49ecb340c781ec19acba0febfaf823510fa1e4b08aff047563",
+    "n0512-modern/a/io.csv": "021f1af7ea355e29d909835cfb41a5b2159667c6a6b4027c2b8c931aeade6266",
+    "n0128-modern/a/io.csv": "a3fd21791bbad86e70a78910900a1e3bbd187c963530e815295766f24f14057e",
+    "n0128-mixed-two-sources/a/io.csv": "a3fd21791bbad86e70a78910900a1e3bbd187c963530e815295766f24f14057e",
+    "n0128-mixed-two-sources/b/io.csv": "9c08cf7b19a92b5a1017dcb414b0a8bc1ce1eef2a51cb907fa7183925e23c366",
+    "n0032-modern/a/io.csv": "39a065b9e48bb192492f85fc0c89ae5f8200c6076e0142a92e64b186147f1b8e"
+  },
+  "cases": [
+    {
+      "case": "n0032-modern",
+      "original_counts": {
+        "capture_record_visits": 32,
+        "lookup_record_visits": 1024,
+        "selected_source_reads": 1,
+        "total_record_visits": 1056
+      },
+      "indexed_counts": {
+        "capture_record_visits": 32,
+        "lookup_record_visits": 32,
+        "selected_source_reads": 1,
+        "total_record_visits": 64
+      },
+      "whole_production_artifacts_raw_equal": 7,
+      "artifact_sha256_raw": {
+        "context-basis.json": "ed8fa779ed8cebf9cc00987bf22fde94438f41eff0628f730e779a71efa8df9b",
+        "descriptions.json": "faaab6740d2193e76c6b227ca82dbc8d307bbc8966670671aa7044355fa6182b",
+        "graph-core.json": "d2230a7630c43aec726efc7ccaf331413ec147e85ab3f423332ff7ebffb41348",
+        "graph-full.json": "c792e2b14f7a3d2335fcb804493362bd378f5bbbbc14113f49e58200fe8e4922",
+        "signals.json": "24e942bead1ca5dd639075110f150d34bca33218e734a870c9c32f379dbaa751",
+        "screen/questions.json": "e7c2a6242c15d242c25ffc2d0d9187c866151f60793259f9c66159eca349c9b6",
+        "screen/screen.md": "ea8fa27697f0a845598e857fedba7d082e18366e91ae220bb631a68efb9512bb"
+      }
+    },
+    {
+      "case": "n0128-modern",
+      "original_counts": {
+        "capture_record_visits": 128,
+        "lookup_record_visits": 16384,
+        "selected_source_reads": 1,
+        "total_record_visits": 16512
+      },
+      "indexed_counts": {
+        "capture_record_visits": 128,
+        "lookup_record_visits": 128,
+        "selected_source_reads": 1,
+        "total_record_visits": 256
+      },
+      "whole_production_artifacts_raw_equal": 7,
+      "artifact_sha256_raw": {
+        "context-basis.json": "e062b559f7e436e48d5ca3a62e0b502b7dbc250f2c1eb6dc83f7a3f7b0701c5f",
+        "descriptions.json": "774d229da8cc1ccbbd312d9a92d276f179ccc49942f1771cb25432923af25715",
+        "graph-core.json": "66cdb6b401de1471e8476f929e63efb5d297571a176e8c918e21ca914bb5a228",
+        "graph-full.json": "95db8c238ce701cf1771359da4f673635582134b35166afa9b4ddb7f7dcd9018",
+        "signals.json": "9d57d557481bba00a5ceedf277d01d9c5e815c6167adf7cac345e3a9d68738bf",
+        "screen/questions.json": "ac261cbd9050c6c04593de7f3adae4388ffc8445955cbcc8c92b0bc2210749c7",
+        "screen/screen.md": "dadabbde4d42b32969737b7022ce173b422ce9f1563392386102436b23f701ea"
+      }
+    },
+    {
+      "case": "n0512-modern",
+      "original_counts": {
+        "capture_record_visits": 512,
+        "lookup_record_visits": 262144,
+        "selected_source_reads": 1,
+        "total_record_visits": 262656
+      },
+      "indexed_counts": {
+        "capture_record_visits": 512,
+        "lookup_record_visits": 512,
+        "selected_source_reads": 1,
+        "total_record_visits": 1024
+      },
+      "whole_production_artifacts_raw_equal": 7,
+      "artifact_sha256_raw": {
+        "context-basis.json": "6f0ea77400d5e9341db65909ee52223552518cc4a6e3d2648bf0a681ab0e4b29",
+        "descriptions.json": "2c8c51b7aabf650a19d14789a5badbc320b2b5ece7cfd87197efbad5dbcdf705",
+        "graph-core.json": "5dd2bf93332a545b5df317a2bc8a1c06c63d74be04e13f93434f005d7695536c",
+        "graph-full.json": "96f46b9d48450e251454654df2976cd3e664c8d1fa2d00432312999e82c43e33",
+        "signals.json": "65dc4ded43a8042d4a630056f46c18942cb4b0c55091451cf3301ea9f81c1cad",
+        "screen/questions.json": "359a33fc15f74747e696cbcd66df85d2125e1bddbd1a523c5f51284a268e7529",
+        "screen/screen.md": "bb9ef1e6aab62424e30fd015471a0fd251522c3846724e2a38f65c03f1110cb5"
+      }
+    },
+    {
+      "case": "n0128-mixed-two-sources",
+      "original_counts": {
+        "capture_record_visits": 256,
+        "lookup_record_visits": 24576,
+        "selected_source_reads": 2,
+        "total_record_visits": 24832
+      },
+      "indexed_counts": {
+        "capture_record_visits": 256,
+        "lookup_record_visits": 192,
+        "selected_source_reads": 2,
+        "total_record_visits": 448
+      },
+      "whole_production_artifacts_raw_equal": 7,
+      "artifact_sha256_raw": {
+        "context-basis.json": "29cb7de68b7a2efb10e18cf3dfa957a0ea49cd323d2b993e356ac63b94f826d5",
+        "descriptions.json": "343a7351af92ea1a825129e67975c56573501364715e133a8fb895db15ed136b",
+        "graph-core.json": "230ddbf0e0df7091fc4bda25cf5bc3af1e3d6e0af96d4bbef1f77ba041c7d493",
+        "graph-full.json": "5de9a95c859360f6b760af7e991b75d2c4f077d912351ef6114395643cf86197",
+        "signals.json": "94e74a54cfa42e85081c622e3e24d0b708a520c71892c6d6f0cde74c945f81eb",
+        "screen/questions.json": "780ae2df1c0db762392751946fdb74a04d634cc3e1f8bb8202da33462da2f824",
+        "screen/screen.md": "4327137e6b1b3e5dfed1a7e1ebb33d52df44b6f2bf53bfe9cb471ce5dd57ddc5"
+      }
+    }
+  ],
+  "metric": "Capture record registration: sys.setprofile c_call records.append by receiver identity; lookup visits: actual resolver record-loop body line. Index creation must share capture iteration, with no separate full-record pass (source audited). Query count/read-once separate. Instrumented time not throughput.",
+  "chronology": {
+    "initial_original_API_Model_runs": 4,
+    "corrected_original_API_Model_runs": 4,
+    "indexed_API_Model_runs": 4,
+    "initial_capture_counter": "Invalid overcount: multiline records.append produced two traced line events per record; corrected using CPython C-call profile of records.append; all 28 functional outputs unchanged",
+    "portable_harness": "Subsequently executed once per method as two CLI invocations/eight additional Model API calls. Generated input pins, all28 production artifact hashes and all four count rows match this original study exactly. This is portable-harness verification, not a new source family or model trial."
+  },
+  "limits": [
+    "Not a wall-time speed, memory, throughput or plant-capacity result",
+    "O(selected sources) selection remains per lookup",
+    "Ordinary unindexed caller dictionaries keep scan fallback",
+    "Read-only captured contexts; reload original CSV for refresh",
+    "Original worker results received here as retained data, not independently rerun or engineering accepted"
+  ],
+  "portable_verification": {
+    "harness_sha256_raw": "ca8ff421f05959d570a68191057cde245d07d864e39433b3cfdd2b4d56069cad",
+    "CLI_invocations": 2,
+    "additional_Model_API_calls": 8,
+    "generated_raw_input_pins_per_method": 14,
+    "production_artifacts_per_method": 28,
+    "all_input_and_artifact_hashes_match_original": true,
+    "all_count_rows_match_original": true,
+    "private_receipt_sha256": "d10ad825aa48ab6c3955d6208ad432147c0e45ba30db1346634c6134acd73348"
+  }
+}
