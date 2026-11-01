@@ -6789,3 +6789,33 @@ separate gates.
 Five small exposed fictional tutorial/input files add no plants, held-out model trial or performance result.
 The catalog remains unchanged: 50 rules, 126 requests, 22 bounded source reviews and 28 remaining. Engineering
 interpretation, authorized source revisions, signal checks and ongoing company ownership remain external.
+
+## 143. Index retained I/O rows without changing source meaning
+
+Repeated row scans made question-source lookup revisit the same captured CSV for each mapped asset. Parser-owned
+physical-span and logical-row indexes now retain references to the original records; source selection, row
+identity/address checks, ambiguity and supplied/unverified qualifications stay unchanged. Captured contexts are
+read-only: reload to refresh. Plain dictionaries retain their scan fallback and selected-source collection
+lookup remains O(S). Additional O(N) index memory was not measured.
+
+The [generated-input diagnostic](../examples/opportunity-screen/mapping-descriptions/lookup-scaling/README.md)
+retains original/indexed capture-plus-lookup visits of 1,056→64, 16,512→256 and 262,656→1,024 for 32/128/512
+fictional records, plus 24,832→448 for a separate 128-record/two-source mixed case. All 28 production artifacts
+remain raw-exact, with the same one/two source reads. The original four, corrected four and candidate four are
+12 Model API runs, not CLI/model trials. The first counter overcounted a multiline append twice per record;
+the corrected C-call hook retained all functional outputs. Independent measurement receiving and separately
+frozen 10-seed/84-check controls confirm the bounded work and unchanged semantic behavior.
+
+Two focused regressions fail on the old method with three assertion events and no errors, then both pass on
+the indexed method. All 147 earlier methods remain AST-identical. The full module reports 149 tests: 148 passed
+and one unnamed skip, not an executed branch. Independent receiving verifies three actual producers: OPEN100's
+two files and 67 description artifacts remain raw-exact; two actual build receipts change only the engine leaf.
+
+The portable public harness subsequently passes two CLI invocations/eight additional Model calls. Both methods
+reproduce 14 generated-input pins, 28 complete artifacts and all four count rows exactly. Independent receiving
+confirms the replay and public protocol. N109 closes bounded record lookup; full integration and exact-head CI
+remain separate gates. The three new public files replace no history and commit no large CSV fixtures.
+
+This is instrumented software work, not elapsed-time speed, memory, engineering usefulness, new model results
+or supported company capacity. The catalog remains unchanged: 50 rules/126 requests, 22 bounded source reviews
+and 28 remaining. An index does not strengthen source authority, historical identity or installed signal truth.

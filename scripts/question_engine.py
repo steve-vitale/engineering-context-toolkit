@@ -526,6 +526,10 @@ def from_twin(m, schedule, source_paths=None, io_sources=(), description_records
     return items
 
 
+class _IndexedIOSource(dict):
+    """Parser-owned lookup indexes, excluded from JSON. Treat captured records as read-only; reload to refresh."""
+
+
 def load_io_sources(paths):
     """Read only explicitly selected CSVs, once each; hash and parse the same raw snapshot.
 
@@ -542,6 +546,7 @@ def load_io_sources(paths):
                     or len(fields) != len(set(fields)) or any(not f for f in fields)):
                 raise ValueError("expected unique tag, server, base_path and point columns")
             records, logical_row = [], 1
+            row_records, line_records = {}, {}
             while True:
                 start = reader.line_num + 1
                 try:
@@ -553,10 +558,17 @@ def load_io_sources(paths):
                     continue
                 if len(values) > len(fields):
                     raise ValueError("record has more fields than the header")
-                records.append({"fields": dict(zip(fields, values)), "source_lines": [start, reader.line_num],
-                                "logical_row": logical_row})
-            sources.append({"file": Path(path).name, "sha256": hashlib.sha256(raw).hexdigest(),
-                            "bytes": len(raw), "records": records})
+                record = {"fields": dict(zip(fields, values)), "source_lines": [start, reader.line_num],
+                          "logical_row": logical_row}
+                records.append(record)
+                # Both locators are unique in this parser's ordered snapshot.
+                # Populate indexes during capture, without another record pass.
+                row_records[logical_row] = record
+                line_records[(start, reader.line_num)] = record
+            captured = _IndexedIOSource(file=Path(path).name, sha256=hashlib.sha256(raw).hexdigest(),
+                                        bytes=len(raw), records=records)
+            captured._row_records, captured._line_records = row_records, line_records
+            sources.append(captured)
         except (OSError, UnicodeError, ValueError, csv.Error) as exc:
             raise InputError(f"cannot read selected I/O list {shown_path(path)}: "
                              f"{getattr(exc, 'strerror', None) or exc}") from exc
@@ -600,7 +612,12 @@ def point_description(dp, asset, sources=()):
     candidates = []
     norm = lambda tag: re.sub(r"[\s_\-./]+", "", (tag or "").upper())
     for selected_source in selected:
-        for record in selected_source["records"]:
+        records = selected_source["records"]
+        if isinstance(selected_source, _IndexedIOSource):
+            index = selected_source._row_records if kind == "row" else selected_source._line_records
+            record = index.get(first if kind == "row" else tuple(span))
+            records = (record,) if record is not None else ()
+        for record in records:
             if kind == "row" and record["logical_row"] != first:
                 continue
             if (kind != "row" or span is not None) and record["source_lines"] != (span or [first, last]):

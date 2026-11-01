@@ -3204,5 +3204,88 @@ class MappingDescriptionSources(unittest.TestCase):
                 self.assertEqual(len(original_raw), source_case["bytes"])
 
 
+class MappingDescriptionLookupWork(unittest.TestCase):
+    """Generated fictional records; bounded traversal work, no clock or plant-scale claim."""
+
+    class VisitRecords(list):
+        def __init__(self, records):
+            super().__init__(records)
+            self.__dict__.update(getattr(records, "__dict__", {}))
+            self.visits = 0
+
+        def __iter__(self):
+            for record in super().__iter__():
+                self.visits += 1
+                yield record
+
+    def source(self, folder, count, name="io.csv", suffix=""):
+        raw = ("tag,server,base_path,point,description\n" + "".join(
+            f"FT-{n},SYNTHETIC-OPC,basis,P{n},supplied {n}{suffix}\n" for n in range(1, count + 1))).encode()
+        path = folder / name
+        path.write_bytes(raw)
+        return path, qe.load_io_sources([path])[0]
+
+    def mapping(self, source, row, *, legacy=False):
+        dp = {"server": "SYNTHETIC-OPC", "base_path": "basis", "point": f"P{row}",
+              "source": f"io.csv {'row' if legacy else 'line'} {row + 1}"}
+        if not legacy:
+            dp.update(source_sha256=source["sha256"], source_lines=[row + 1, row + 1])
+        return dp, {"id": f"I-{row}", "tag": f"FT-{row}"}
+
+    def test_captured_lookup_work_does_not_scan_all_rows_for_each_asset(self):
+        observed = []
+        for count in (64, 256):
+            with self.subTest(records=count), tempfile.TemporaryDirectory() as temp:
+                _, source = self.source(Path(temp), count)
+                records = self.VisitRecords(source["records"])
+                source["records"] = records
+                lookup_rows = (1, count // 2, count, count + 1) * 2
+                for row in lookup_rows:
+                    dp, asset = self.mapping(source, row)
+                    result = qe.point_description(dp, asset, [source])
+                    if row <= count:
+                        self.assertEqual(result["status"], "matched")
+                        self.assertEqual(result["description"], f"supplied {row}")
+                        self.assertEqual(result["selected_source"]["source_lines"], [row + 1, row + 1])
+                        self.assertEqual(result["selected_source"]["logical_row"], row + 1)
+                    else:
+                        self.assertEqual(result["status"], "unavailable")
+                        self.assertNotIn("description", result)
+                # Bound exposed-record traversal per lookup, rather than elapsed time or an index layout.
+                observed.append(records.visits)
+                self.assertLessEqual(records.visits, 2 * len(lookup_rows))
+        self.assertLessEqual(observed[1], max(observed[0], 16))
+
+    def test_lookup_indexes_preserve_duplicate_order_ambiguity_and_plain_context(self):
+        with tempfile.TemporaryDirectory() as temp:
+            folder = Path(temp)
+            first_path, first = self.source(folder, 4)
+            renamed_path = folder / "renamed.csv"
+            renamed_path.write_bytes(first_path.read_bytes())
+            renamed = qe.load_io_sources([renamed_path])[0]
+            dp, asset = self.mapping(first, 4)
+            expected = qe.point_description(dp, asset, [first])
+            self.assertEqual(expected["status"], "matched")
+            self.assertEqual(qe.point_description(dp, asset, [first, renamed]), expected)
+            reversed_result = qe.point_description(dp, asset, [renamed, first])
+            renamed_expected = copy.deepcopy(expected)
+            renamed_expected["selected_source"]["file"] = "renamed.csv"
+            self.assertEqual(reversed_result, renamed_expected)
+            plain = {key: copy.deepcopy(first[key]) for key in ("file", "sha256", "bytes", "records")}
+            plain["records"] = list(plain["records"])
+            self.assertEqual(qe.point_description(dp, asset, [plain]), expected)
+            # Source contexts remain ordinary JSON content; index internals must not leak into its keys.
+            self.assertEqual(json.loads(json.dumps(first)), plain)
+            other = folder / "other"
+            other.mkdir()
+            _, revised = self.source(other, 4, suffix=" revised")
+            legacy_dp, legacy_asset = self.mapping(first, 4, legacy=True)
+            self.assertEqual(qe.point_description(legacy_dp, legacy_asset, [first])["status"],
+                             "unverified_legacy")
+            ambiguous = qe.point_description(legacy_dp, legacy_asset, [first, revised])
+            self.assertEqual(ambiguous["status"], "unavailable")
+            self.assertNotIn("description", ambiguous)
+
+
 if __name__ == "__main__":
     unittest.main()

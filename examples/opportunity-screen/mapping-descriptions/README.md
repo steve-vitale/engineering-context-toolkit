@@ -45,3 +45,6 @@ The [case expectations](cases.json) and two byte-pinned CSV revisions are regres
 claimed generated output or accepted engineering conclusion. The regression produces modern mappings through
 the actual mapper parser/planner, rather than hand-authoring their source evidence. See the
 [question guide](../../../docs/OPPORTUNITY_SCREEN.md) and [mapping-source contract](../../../docs/REVIEW_LOOP.md).
+
+Maintainers can [reproduce lookup work](lookup-scaling/README.md) with generated fictional inputs and inspect
+the diagnostic's record-count metric and limits.
