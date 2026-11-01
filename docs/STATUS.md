@@ -27,6 +27,10 @@ Own-plant receipt follow-up (A289/N105): `map_points.py --record-dir` keeps sele
 working packet; the omitted default remains `out/mapping/`. The [own-P&ID guide](../examples/own-drawing/README.md#4-review-then-map-to-real-signals)
 now carries private review/mapping folders through to generation and lab import.
 
+N106 now refuses known Native process models before I/O reading or mapping, with a clear path back to
+`generate.py MODEL --out PRIVATE_FOLDER`. The independently received mapper module passes 36 methods without
+skips. This is a CLI format boundary, not a Native OPC adapter or a native-platform acceptance result.
+
 | Reproduced gap | Required behavior and bounded repair |
 |---|---|
 | Review summaries accepted changed packet evidence or non-review queue fields under the old bundle identity. | Recheck drawing, overlay, base queue and manifest digest; permit changes only in the declared `OPS_` columns of the submitted review copy. Hash agreement is integrity, not source authority or reviewer authentication. |
@@ -90,7 +94,7 @@ actual participant, recipient, native-system and tenant observations remain **no
 | Engineering question quality | N065/N082: source adequacy and useful questions. Of 50 rules/124 request bundles, 20 rules have bounded collection reviews; 30 still await original-source adequacy review. Scoped MGPI is development evidence; default MGPI still produces zero findings. | Prospective expected/unacceptable questions, source/key review and actual engineer/recipient usefulness observations. |
 | Evaluation and transfer | N086 original-source/key engineering acceptance, Native placement gaps, existing matrix failures, unfamiliar-source coverage, scorer limits and five missing historical prediction tables. | Matched experiments with frozen criteria, retained failures, exposure/split labels and independent source/key review. More files or rerunning familiar inputs is not generalization. |
 | Optional adapters and receiving projections | General inverse graph conversion, captured-source consumers, managed-section merging and particular incumbent-system connectors are not implemented. Test changed/removed identifiers and complete retained history for the selected route. | A demonstrated engineering job, explicit supported contract, source preservation and subsequent-revision readback. Add only the adapter that job needs. |
-| Own-input receiving contracts | N106/N107: clear Native-input diagnostic in the extracted-twin OPC mapper and source/model/revision-bound graph review events. Both are source-derived, not yet runtime-reproduced. Current guides state model-kind limits and require audited per-model review directories. | Retained failing cases, explicit refusal/history criteria and independent actual receiving; no invented identities or discarded earlier decisions. |
+| Own-input receiving contracts | N107 remains open: original graph CLI controls confirm foreign review events can attach through colliding local IDs; a countercontrol retains genuine earlier history after relocation and renaming. Current guides require an audited per-model review directory; it is not model binding. | A model/revision-bound receiving contract must refuse foreign association while retaining legitimate earlier decisions. No repair or company authentication is claimed. |
 | Company acceptance and benefit | N062/N063: real engineer/recipient investigation, authorized company import/readback, client permissions and a subsequent revision. | Actual observations from the [acceptance exercise](ACCEPTANCE.md), not an agent simulation. Native PI/gateway acceptance, accepted Copilot tenant and operational benefit remain unverified. |
 
 The company retains authority over accepted context, access, controlled documents, work execution and ownership.

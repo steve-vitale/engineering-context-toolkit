@@ -4411,6 +4411,23 @@
         "examples/own-drawing/README.md",
         "docs/GRAPH_EXPORT.md"
       ]
+    },
+    {
+      "id": "A290",
+      "function": "review_loop",
+      "date": "2026-11-01",
+      "change": "Refuse known Native process-model input clearly before OPC mapping reads I/O or writes files, while preserving extracted-model and receipt-directory behavior.",
+      "hypothesis": "An engineer should retain the useful Native staging path without a traceback, invented instrument IDs or a false Native mapping success.",
+      "evidence": "Two preserved original b75 CLI calls show Native exit1/KeyError id and healthy extracted dry-run0 with no writes. One independently received 36-method candidate module passes with zero skips: all 33 earlier methods remain AST exact and three new controls cover Native apply/dry, empty/auxiliary-ID shapes and supported extracted-marker/legacy-ID forms. Four frozen workspace files and original baseline sentinels stay exact.",
+      "runs": "Fictional local development/software controls and independent saved-actual receiving; no Native generator, model/provider, company or operational trial.",
+      "verdict": "kept",
+      "why": "Close bounded N106 known-Native CLI admission only. No Native OPC adapter or planner API expansion; N107 foreign review-event receiving remains open after original failure/history controls.",
+      "source": [
+        "docs/JOURNAL.md#138-explain-the-native-model-boundary-before-point-mapping",
+        "scripts/map_points.py",
+        "scripts/test_map_points.py",
+        "docs/WORKFLOWS.md"
+      ]
     }
   ],
   "not_tried": [
@@ -5591,13 +5608,15 @@
     {
       "id": "N106",
       "function": "review_loop",
-      "status": "not-done",
+      "status": "done",
       "idea": "Give tag-keyed Native process-model inputs a clear early unsupported-input diagnostic in the extracted-twin OPC mapper, or implement a separately validated Native adapter.",
-      "why_not_yet": "Source-derived gap: Native instruments can lack the id required by plan_mapping outside the CLI input handler. No runtime case or repair yet. Preserve useful Native staging and reviewed target-field configuration; do not invent IDs or imply universal mapping. Next work requires a retained failing case, no-write refusal controls and independent receiving.",
+      "why_not_yet": "Completed A290 for bounded known-Native CLI admission: a plain early unsupported-input exit2 replaces the retained original KeyError without file changes. Explicit extracted-marker precedence and legacy instrument-ID inputs remain supported; 36 mapper methods pass with zero skips under independent actual receiving. This does not implement a Native OPC adapter, invent IDs, change planner API behavior or validate Native signal configuration.",
       "source": [
         "docs/JOURNAL.md#137-keep-own-plant-review-and-mapping-records-with-the-plant-packet",
         "scripts/map_points.py",
-        "docs/WORKFLOWS.md"
+        "docs/WORKFLOWS.md",
+        "docs/JOURNAL.md#138-explain-the-native-model-boundary-before-point-mapping",
+        "scripts/test_map_points.py"
       ]
     },
     {
@@ -5605,11 +5624,12 @@
       "function": "review_loop",
       "status": "not-done",
       "idea": "Bind imported graph review events to their actual source model and revision lineage instead of relying on directory selection or colliding item IDs.",
-      "why_not_yet": "Source-derived receiving gap: --reviews reads every JSON event without model binding; not runtime-reproduced or repaired here. Current guide requires an audited per-model directory. Define lineage/earlier-history acceptance and foreign-record no-overwrite controls before implementing a binding mechanism; do not discard history or claim company authentication.",
+      "why_not_yet": "Two retained original graph CLI cases now characterize the receiving gap: three foreign review events can attach to a different model when local IDs collide; a separate countercontrol preserves genuine earlier history after relocation and renamed current identities. Both original CLI calls exit0; no binding repair is implemented. Keep an audited per-model review directory meanwhile. Any repair must refuse foreign association without discarding legitimate earlier decisions or claiming company authentication.",
       "source": [
         "docs/JOURNAL.md#137-keep-own-plant-review-and-mapping-records-with-the-plant-packet",
         "scripts/graph_export.py",
-        "docs/GRAPH_EXPORT.md"
+        "docs/GRAPH_EXPORT.md",
+        "docs/JOURNAL.md#138-explain-the-native-model-boundary-before-point-mapping"
       ]
     }
   ]
