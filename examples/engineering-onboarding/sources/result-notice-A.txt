@@ -1,0 +1,6 @@
+ILLUSTRATIVE TRAINING DATA; no company or plant record.
+Document: ENG-RESULT-17
+Revision: A
+Reported result: 250
+Displayed unit: kPa
+The record describes an export label, not a verified installed measurement.

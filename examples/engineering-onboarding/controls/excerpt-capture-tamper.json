@@ -1,0 +1,824 @@
+{
+  "schema": "engineering-onboarding-1",
+  "packet_id": "training:engineering-services",
+  "revision": "C-unknown-originals",
+  "scope": "fictional engineering record-review training",
+  "title": "A first engineering evidence note",
+  "landing_record_id": "start_here",
+  "selected_sources": {
+    "ENG-RESULT-17": "source:result-A",
+    "TRAINING-REVIEW-ROUTE": "source:review-route",
+    "TRAINING-PEER-NOTE": "source:peer-note",
+    "TRAINING-UNKNOWN-EXCERPT": "source:unknown-excerpt",
+    "TRAINING-UNKNOWN-REFERENCE": "source:unknown-reference"
+  },
+  "records": [
+    {
+      "id": "source:result-A",
+      "kind": "source",
+      "title": "result-notice-A.txt",
+      "summary": "result-notice-A.txt",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "example",
+      "audience_hints": [
+        "new engineer",
+        "engineering leader"
+      ],
+      "owner_roles": [
+        "role:document-steward"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": [],
+      "data": {
+        "document_id": "ENG-RESULT-17",
+        "source_revision": "A",
+        "original_reference": "fictional training source result-notice-A.txt",
+        "original_raw_sha256": "b55c5761cd6c2cb24bddae87edd9e630231ad9aea8d8d078e76a86f69b3b09a3",
+        "original_size_bytes": 209,
+        "capture_kind": "complete-utf8-text",
+        "capture_sha256": "b55c5761cd6c2cb24bddae87edd9e630231ad9aea8d8d078e76a86f69b3b09a3",
+        "captured_text": "ILLUSTRATIVE TRAINING DATA; no company or plant record.\nDocument: ENG-RESULT-17\nRevision: A\nReported result: 250\nDisplayed unit: kPa\nThe record describes an export label, not a verified installed measurement.\n",
+        "capture_complete": true,
+        "acquisition_time": null,
+        "original_reverified_at_runtime": false,
+        "source_authority": "unverified training source"
+      }
+    },
+    {
+      "id": "source:result-B",
+      "kind": "source",
+      "title": "result-notice-B.txt",
+      "summary": "result-notice-B.txt",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "example",
+      "audience_hints": [
+        "new engineer",
+        "engineering leader"
+      ],
+      "owner_roles": [
+        "role:document-steward"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": [],
+      "data": {
+        "document_id": "ENG-RESULT-17",
+        "source_revision": "B",
+        "original_reference": "fictional training source result-notice-B.txt",
+        "original_raw_sha256": "5713bc9eb7b078a8b11fbcd971ddad53eb4ceb00f2e5079f5109ce42eae06270",
+        "original_size_bytes": 248,
+        "capture_kind": "complete-utf8-text",
+        "capture_sha256": "5713bc9eb7b078a8b11fbcd971ddad53eb4ceb00f2e5079f5109ce42eae06270",
+        "captured_text": "ILLUSTRATIVE TRAINING DATA; no company or plant record.\nDocument: ENG-RESULT-17\nRevision: B\nReported result: 2.5\nDisplayed unit: bar\nChange note: the display unit changed. Deployment date, full mapping and decision rationale are not recorded here.\n",
+        "capture_complete": true,
+        "acquisition_time": null,
+        "original_reverified_at_runtime": false,
+        "source_authority": "unverified training source"
+      }
+    },
+    {
+      "id": "source:review-route",
+      "kind": "source",
+      "title": "review-route.txt",
+      "summary": "review-route.txt",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "example",
+      "audience_hints": [
+        "new engineer",
+        "engineering leader"
+      ],
+      "owner_roles": [
+        "role:document-steward"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": [],
+      "data": {
+        "document_id": "TRAINING-REVIEW-ROUTE",
+        "source_revision": "1",
+        "original_reference": "fictional training source review-route.txt",
+        "original_raw_sha256": "619747ef9a93436989cf709a0e8cb18efc786fc7e114bb6ee047316281f91045",
+        "original_size_bytes": 467,
+        "capture_kind": "complete-utf8-text",
+        "capture_sha256": "619747ef9a93436989cf709a0e8cb18efc786fc7e114bb6ee047316281f91045",
+        "captured_text": "ILLUSTRATIVE TRAINING DATA; not an authorization or real company procedure.\nDocument: TRAINING-REVIEW-ROUTE\nRevision: 1\nEngineering methods reviewer checks source locations, revisions, reported facts and unresolved claims.\nDocument steward identifies the existing controlled review queue; its real address and access rules must be supplied by the company.\nNew engineers submit a draft evidence note for review; they do not change source records or operating systems.\n",
+        "capture_complete": true,
+        "acquisition_time": null,
+        "original_reverified_at_runtime": false,
+        "source_authority": "unverified training source"
+      }
+    },
+    {
+      "id": "source:peer-note",
+      "kind": "source",
+      "title": "peer-note.txt",
+      "summary": "peer-note.txt",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "example",
+      "audience_hints": [
+        "new engineer",
+        "engineering leader"
+      ],
+      "owner_roles": [
+        "role:document-steward"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": [],
+      "data": {
+        "document_id": "TRAINING-PEER-NOTE",
+        "source_revision": "unknown",
+        "original_reference": "fictional training source peer-note.txt",
+        "original_raw_sha256": "efa957578f7878836b0940fff4c6ae17f4fd4978487a47de8010c080f6271c2c",
+        "original_size_bytes": 366,
+        "capture_kind": "complete-utf8-text",
+        "capture_sha256": "efa957578f7878836b0940fff4c6ae17f4fd4978487a47de8010c080f6271c2c",
+        "captured_text": "ILLUSTRATIVE ATTRIBUTED MEMORY, not a verified explanation.\nDocument: TRAINING-PEER-NOTE\nRevision: unknown\nA fictional peer-role recollection says the unit change may have been requested by an import tool.\nAttribution: fictional peer role; actual author/date/decision record unknown.\nThis note does not establish the reason for the change or which revision governs.\n",
+        "capture_complete": true,
+        "acquisition_time": null,
+        "original_reverified_at_runtime": false,
+        "source_authority": "unverified training source"
+      }
+    },
+    {
+      "id": "role:methods-reviewer",
+      "kind": "role_reference",
+      "title": "Engineering methods reviewer",
+      "summary": "Engineering methods reviewer",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "example",
+      "audience_hints": [
+        "new engineer",
+        "engineering leader"
+      ],
+      "owner_roles": [
+        "role:methods-reviewer"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [
+        {
+          "source_record_id": "source:review-route",
+          "document_id": "TRAINING-REVIEW-ROUTE",
+          "revision": "1",
+          "raw_sha256": "619747ef9a93436989cf709a0e8cb18efc786fc7e114bb6ee047316281f91045",
+          "locator": "L4-L6",
+          "currency_requirement": "snapshot_evidence"
+        }
+      ],
+      "depends_on": [],
+      "known_unknowns": [],
+      "data": {
+        "responsibility": "Review a draft source-qualified evidence note.",
+        "authenticated_identity": null,
+        "assignment_authority": "company-managed; not supplied"
+      }
+    },
+    {
+      "id": "role:document-steward",
+      "kind": "role_reference",
+      "title": "Document steward",
+      "summary": "Document steward",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "example",
+      "audience_hints": [
+        "new engineer",
+        "engineering leader"
+      ],
+      "owner_roles": [
+        "role:methods-reviewer"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [
+        {
+          "source_record_id": "source:review-route",
+          "document_id": "TRAINING-REVIEW-ROUTE",
+          "revision": "1",
+          "raw_sha256": "619747ef9a93436989cf709a0e8cb18efc786fc7e114bb6ee047316281f91045",
+          "locator": "L4-L6",
+          "currency_requirement": "snapshot_evidence"
+        }
+      ],
+      "depends_on": [],
+      "known_unknowns": [],
+      "data": {
+        "responsibility": "Identify the company review queue and governing record owner.",
+        "authenticated_identity": null,
+        "assignment_authority": "company-managed; not supplied"
+      }
+    },
+    {
+      "id": "term:revision",
+      "kind": "term",
+      "title": "Revision",
+      "summary": "Revision",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "example",
+      "audience_hints": [
+        "new engineer",
+        "engineering leader"
+      ],
+      "owner_roles": [
+        "role:methods-reviewer"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [
+        {
+          "source_record_id": "source:result-A",
+          "document_id": "ENG-RESULT-17",
+          "revision": "A",
+          "raw_sha256": "b55c5761cd6c2cb24bddae87edd9e630231ad9aea8d8d078e76a86f69b3b09a3",
+          "locator": "L2-L3",
+          "currency_requirement": "snapshot_evidence"
+        },
+        {
+          "source_record_id": "source:result-B",
+          "document_id": "ENG-RESULT-17",
+          "revision": "B",
+          "raw_sha256": "5713bc9eb7b078a8b11fbcd971ddad53eb4ceb00f2e5079f5109ce42eae06270",
+          "locator": "L2-L3",
+          "currency_requirement": "snapshot_evidence"
+        }
+      ],
+      "depends_on": [],
+      "known_unknowns": [
+        "Which revision governs a real task is not established."
+      ],
+      "data": {
+        "definition": "A supplied record version label; not proof of governing or latest company release."
+      }
+    },
+    {
+      "id": "term:reported-unit",
+      "kind": "term",
+      "title": "Reported unit",
+      "summary": "Reported unit",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "example",
+      "audience_hints": [
+        "new engineer",
+        "engineering leader"
+      ],
+      "owner_roles": [
+        "role:methods-reviewer"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [
+        {
+          "source_record_id": "source:result-A",
+          "document_id": "ENG-RESULT-17",
+          "revision": "A",
+          "raw_sha256": "b55c5761cd6c2cb24bddae87edd9e630231ad9aea8d8d078e76a86f69b3b09a3",
+          "locator": "L4-L6",
+          "currency_requirement": "snapshot_evidence"
+        },
+        {
+          "source_record_id": "source:result-B",
+          "document_id": "ENG-RESULT-17",
+          "revision": "B",
+          "raw_sha256": "5713bc9eb7b078a8b11fbcd971ddad53eb4ceb00f2e5079f5109ce42eae06270",
+          "locator": "L4-L6",
+          "currency_requirement": "snapshot_evidence"
+        }
+      ],
+      "depends_on": [],
+      "known_unknowns": [],
+      "data": {
+        "definition": "A unit label stated by the supplied source; not a verified installed quantity or validated conversion."
+      }
+    },
+    {
+      "id": "system:review-queue",
+      "kind": "system_reference",
+      "title": "Existing company review queue",
+      "summary": "Existing company review queue",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "example",
+      "audience_hints": [
+        "new engineer",
+        "engineering leader"
+      ],
+      "owner_roles": [
+        "role:document-steward"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [
+        {
+          "source_record_id": "source:review-route",
+          "document_id": "TRAINING-REVIEW-ROUTE",
+          "revision": "1",
+          "raw_sha256": "619747ef9a93436989cf709a0e8cb18efc786fc7e114bb6ee047316281f91045",
+          "locator": "L4-L6",
+          "currency_requirement": "snapshot_evidence"
+        }
+      ],
+      "depends_on": [],
+      "known_unknowns": [
+        "Actual address, permitted users and governing process are not provided."
+      ],
+      "data": {
+        "reference": "company-system:review-queue-not-configured",
+        "availability": "not_connected",
+        "purpose": "Return draft evidence to the company process.",
+        "source_access": "external company policy"
+      }
+    },
+    {
+      "id": "claim:selected-label",
+      "kind": "claim",
+      "title": "Selected result label",
+      "summary": "Selected result label",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "example",
+      "audience_hints": [
+        "new engineer",
+        "engineering leader"
+      ],
+      "owner_roles": [
+        "role:methods-reviewer"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [
+        {
+          "source_record_id": "source:result-A",
+          "document_id": "ENG-RESULT-17",
+          "revision": "A",
+          "raw_sha256": "b55c5761cd6c2cb24bddae87edd9e630231ad9aea8d8d078e76a86f69b3b09a3",
+          "locator": "L3-L6",
+          "currency_requirement": "selected_basis"
+        }
+      ],
+      "depends_on": [],
+      "known_unknowns": [
+        "Current deployment and governing revision are unknown."
+      ],
+      "data": {
+        "basis": "cited_record",
+        "statement": "The selected revision A notice reports 250 with displayed unit kPa.",
+        "interpretation_limit": "This is a source statement, not installed state or approval to use the value."
+      }
+    },
+    {
+      "id": "claim:peer-rationale",
+      "kind": "claim",
+      "title": "Possible reason recalled by a peer",
+      "summary": "Possible reason recalled by a peer",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "example",
+      "audience_hints": [
+        "new engineer",
+        "engineering leader"
+      ],
+      "owner_roles": [
+        "role:methods-reviewer"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [
+        {
+          "source_record_id": "source:peer-note",
+          "document_id": "TRAINING-PEER-NOTE",
+          "revision": "unknown",
+          "raw_sha256": "efa957578f7878836b0940fff4c6ae17f4fd4978487a47de8010c080f6271c2c",
+          "locator": "L4-L6",
+          "currency_requirement": "snapshot_evidence"
+        }
+      ],
+      "depends_on": [],
+      "known_unknowns": [
+        "Decision rationale and supporting change record are missing."
+      ],
+      "data": {
+        "basis": "attributed_memory",
+        "statement": "A fictional peer role recalled that an import tool may have requested the unit change.",
+        "attribution": "fictional peer role; actual identity and date unknown",
+        "underlying_claim_verified": false
+      }
+    },
+    {
+      "id": "workflow:source-reconciliation",
+      "kind": "workflow",
+      "title": "Prepare a source-qualified review note",
+      "summary": "Prepare a source-qualified review note",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "example",
+      "audience_hints": [
+        "new engineer",
+        "engineering leader"
+      ],
+      "owner_roles": [
+        "role:methods-reviewer"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [
+        {
+          "source_record_id": "source:review-route",
+          "document_id": "TRAINING-REVIEW-ROUTE",
+          "revision": "1",
+          "raw_sha256": "619747ef9a93436989cf709a0e8cb18efc786fc7e114bb6ee047316281f91045",
+          "locator": "L4-L6",
+          "currency_requirement": "snapshot_evidence"
+        }
+      ],
+      "depends_on": [
+        "claim:selected-label",
+        "system:review-queue"
+      ],
+      "known_unknowns": [],
+      "data": {
+        "purpose": "Help another engineer reconstruct what two versions support and what remains unknown.",
+        "prerequisites": [
+          "term:revision",
+          "term:reported-unit",
+          "system:review-queue"
+        ],
+        "steps": [
+          {
+            "id": "read-versions",
+            "description": "Read the supplied A and B source records; retain exact revision, unit and locator.",
+            "inputs": [
+              "source:result-A",
+              "source:result-B"
+            ],
+            "draft_output": "Two cited source observations."
+          },
+          {
+            "id": "separate-memory",
+            "description": "Keep the peer recollection attributed and unverified; name the missing decision record.",
+            "inputs": [
+              "claim:peer-rationale"
+            ],
+            "draft_output": "One qualified explanation or explicit unknown."
+          },
+          {
+            "id": "request-review",
+            "description": "Prepare the draft note for the named reviewer through the existing company process.",
+            "inputs": [
+              "system:review-queue",
+              "role:methods-reviewer"
+            ],
+            "draft_output": "Draft handoff; needs owner until accepted."
+          }
+        ],
+        "stop_or_review_conditions": [
+          "A source cannot be located or its revision differs.",
+          "A step would require real record edits, additional access or operational action."
+        ],
+        "review_handoff": {
+          "reviewer_role": "role:methods-reviewer",
+          "system_reference": "system:review-queue",
+          "deliverables": [
+            "Source IDs/revisions/hashes/locators",
+            "Facts vs memory vs unknowns",
+            "Next evidence request and receiving role"
+          ],
+          "acceptance": "Company reviewer decides; retrieval does not accept or execute the work."
+        },
+        "execution": "template_data_only"
+      }
+    },
+    {
+      "id": "practice:first-note",
+      "kind": "practice",
+      "title": "First safe document-only assignment",
+      "summary": "First safe document-only assignment",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "example",
+      "audience_hints": [
+        "new engineer",
+        "engineering leader"
+      ],
+      "owner_roles": [
+        "role:methods-reviewer"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [
+        {
+          "source_record_id": "source:review-route",
+          "document_id": "TRAINING-REVIEW-ROUTE",
+          "revision": "1",
+          "raw_sha256": "619747ef9a93436989cf709a0e8cb18efc786fc7e114bb6ee047316281f91045",
+          "locator": "L4-L6",
+          "currency_requirement": "snapshot_evidence"
+        }
+      ],
+      "depends_on": [
+        "workflow:source-reconciliation"
+      ],
+      "known_unknowns": [],
+      "data": {
+        "purpose": "Reconstruct the recorded unit-label change and ask for the missing decision basis.",
+        "exercise_scope": "Read fictional supplied records and draft one evidence note only.",
+        "inputs": [
+          "source:result-A",
+          "source:result-B",
+          "claim:peer-rationale",
+          "workflow:source-reconciliation"
+        ],
+        "expected_draft_fields": [
+          "Reported A and B values/units with exact locators",
+          "What the sources do not establish",
+          "Peer recollection attribution and uncertainty",
+          "Question for the document owner",
+          "Reviewer/next role; needs owner until actual acceptance"
+        ],
+        "reviewer_role": "role:methods-reviewer",
+        "excluded_real_work": [
+          "No production/system/source record changes",
+          "No authority or access grants",
+          "No operating/setpoint recommendation"
+        ],
+        "completion_tracking": "external company system; no write operation here"
+      }
+    },
+    {
+      "id": "start_here",
+      "kind": "landing",
+      "title": "Start with one source-qualified contribution",
+      "summary": "Start with one source-qualified contribution",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "example",
+      "audience_hints": [
+        "new engineer",
+        "engineering leader"
+      ],
+      "owner_roles": [
+        "role:methods-reviewer"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [
+        {
+          "source_record_id": "source:review-route",
+          "document_id": "TRAINING-REVIEW-ROUTE",
+          "revision": "1",
+          "raw_sha256": "619747ef9a93436989cf709a0e8cb18efc786fc7e114bb6ee047316281f91045",
+          "locator": "L4-L6",
+          "currency_requirement": "snapshot_evidence"
+        }
+      ],
+      "depends_on": [],
+      "known_unknowns": [],
+      "data": {
+        "start_here": [
+          {
+            "record_id": "practice:first-note",
+            "reason": "One bounded document-only contribution."
+          },
+          {
+            "record_id": "workflow:source-reconciliation",
+            "reason": "Read the review steps as data."
+          },
+          {
+            "record_id": "term:revision",
+            "reason": "Know what a revision label means."
+          },
+          {
+            "record_id": "system:review-queue",
+            "reason": "Find the existing handoff home; real route unknown."
+          }
+        ],
+        "leader_preparation": [
+          "Choose permitted source scope",
+          "Name the reviewer/next role",
+          "Choose stop/success criteria in the company process"
+        ],
+        "new_engineer_outcome": "A draft another engineer can reconstruct, not automatic approval or completed onboarding."
+      }
+    },
+    {
+      "id": "source:unknown-excerpt",
+      "kind": "source",
+      "title": "Unknown original excerpt",
+      "summary": "Explicitly incomplete original excerpt",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "example",
+      "audience_hints": [
+        "new engineer",
+        "engineering leader"
+      ],
+      "owner_roles": [
+        "role:document-steward"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": [],
+      "data": {
+        "document_id": "TRAINING-UNKNOWN-EXCERPT",
+        "source_revision": "unknown",
+        "original_reference": null,
+        "original_raw_sha256": null,
+        "original_size_bytes": null,
+        "capture_kind": "excerpt-utf8-text",
+        "capture_sha256": "f7de5c738b9b48141ff5e507cc646c2ab07c7246fce53b9ec3cdbf6b9de7f4bd",
+        "captured_text": "Fictional excerpt: a reviewer requested a source-qualified note.\nThe full original and its governing revision have not been supplied.\n changed",
+        "capture_complete": false,
+        "acquisition_time": null,
+        "original_reverified_at_runtime": false,
+        "source_authority": "unverified fictional training reference",
+        "original_status": "unavailable",
+        "capture_size_bytes": 134
+      }
+    },
+    {
+      "id": "claim:unknown-excerpt",
+      "kind": "claim",
+      "title": "Read the excerpt without inventing the original",
+      "summary": "Unknown original provenance remains explicit",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "example",
+      "audience_hints": [
+        "new engineer",
+        "engineering leader"
+      ],
+      "owner_roles": [
+        "role:methods-reviewer"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [
+        {
+          "source_record_id": "source:unknown-excerpt",
+          "document_id": "TRAINING-UNKNOWN-EXCERPT",
+          "revision": "unknown",
+          "raw_sha256": null,
+          "locator": "captured excerpt lines 1-2",
+          "currency_requirement": "selected_basis",
+          "capture_sha256": "f7de5c738b9b48141ff5e507cc646c2ab07c7246fce53b9ec3cdbf6b9de7f4bd"
+        }
+      ],
+      "depends_on": [],
+      "known_unknowns": [
+        "Full original, governing revision, author and decision basis are not supplied."
+      ],
+      "data": {
+        "basis": "cited_record",
+        "statement": "A supplied excerpt is available; the original fingerprint and governing revision are unknown.",
+        "interpretation_limit": "This does not establish the complete original or the truth of its contents."
+      }
+    },
+    {
+      "id": "source:unknown-reference",
+      "kind": "source",
+      "title": "Unknown original reference",
+      "summary": "Explicitly incomplete original reference",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "example",
+      "audience_hints": [
+        "new engineer",
+        "engineering leader"
+      ],
+      "owner_roles": [
+        "role:document-steward"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": [],
+      "data": {
+        "document_id": "TRAINING-UNKNOWN-REFERENCE",
+        "source_revision": "unknown",
+        "original_reference": "company-reference:unavailable-original",
+        "original_raw_sha256": null,
+        "original_size_bytes": null,
+        "capture_kind": "reference-only",
+        "capture_sha256": null,
+        "captured_text": null,
+        "capture_complete": false,
+        "acquisition_time": null,
+        "original_reverified_at_runtime": false,
+        "source_authority": "unverified fictional training reference",
+        "original_status": "unavailable",
+        "capture_size_bytes": null
+      }
+    },
+    {
+      "id": "claim:unknown-reference",
+      "kind": "claim",
+      "title": "Read the reference without inventing the original",
+      "summary": "Unknown original provenance remains explicit",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "example",
+      "audience_hints": [
+        "new engineer",
+        "engineering leader"
+      ],
+      "owner_roles": [
+        "role:methods-reviewer"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [
+        {
+          "source_record_id": "source:unknown-reference",
+          "document_id": "TRAINING-UNKNOWN-REFERENCE",
+          "revision": "unknown",
+          "raw_sha256": null,
+          "locator": "reference only; original unavailable",
+          "currency_requirement": "selected_basis",
+          "capture_sha256": null
+        }
+      ],
+      "depends_on": [],
+      "known_unknowns": [
+        "Full original, governing revision, author and decision basis are not supplied."
+      ],
+      "data": {
+        "basis": "cited_record",
+        "statement": "A supplied reference is available; the original fingerprint and governing revision are unknown.",
+        "interpretation_limit": "This does not establish the complete original or the truth of its contents."
+      }
+    }
+  ]
+}

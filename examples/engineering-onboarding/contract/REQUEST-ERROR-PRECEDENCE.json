@@ -1,0 +1,27 @@
+{
+  "status": "NORMATIVE append-only request error precedence clarification; no implementation or runtime acceptance",
+  "parent_freeze_sha256": "6dcd4988bc3278000c228cac5b36995b3ac0e8c2305f1ef8de8cb6f5a3d56a69",
+  "parent_manifest_sha256": "53fe460ed9152acf49b974db057bb2f044c53cf16c420385e4f5b461ee627702",
+  "scope": "This rule resolves only request-parameter error precedence. All43 frozen files, schemas, packet fields, A/B/C data and expected vectors remain byte-exact. No API name, reason enum, successful result, source rule or packet-field error classification changes.",
+  "request_admission_order": [
+    "Require a well-formed argument object with exactly the method's declared keys; missing required record_id or extra keys gives invalid_argument/invalid_schema at the empty root JSON Pointer, message Invalid onboarding request. No parameter lookup or source I/O occurs.",
+    "For list_onboarding_records, apply existing defaults for omitted optional parameters, then validate kind, query, limit, offset in that order. Each named parameter's existing reason takes precedence over generic invalid_type or invalid_schema, including wrong builtin type, subclass, encoding, enum and range failures. After those checks and filtering, an out-of-result-set offset also uses invalid_offset.",
+    "For get_onboarding_record, validate the supplied record_id before exact lookup as below. No lookup happens on invalid input; no path/URL is ever interpreted or opened."
+  ],
+  "list_parameter_error_table": [
+    {"parameter": "kind", "code": "invalid_argument", "reason": "invalid_kind", "path": "/kind", "message": "Invalid onboarding request."},
+    {"parameter": "query", "code": "invalid_argument", "reason": "invalid_query", "path": "/query", "message": "Invalid onboarding request."},
+    {"parameter": "limit", "code": "invalid_argument", "reason": "invalid_limit", "path": "/limit", "message": "Invalid onboarding request."},
+    {"parameter": "offset", "code": "invalid_argument", "reason": "invalid_offset", "path": "/offset", "message": "Invalid onboarding request."}
+  ],
+  "get_record_id": {
+    "invalid": "Not a plain builtin str, empty string, or not strictly UTF8-encodable: code invalid_argument, reason invalid_type, path /record_id, message Invalid onboarding request. No coercion, callback, trimming or lookup.",
+    "admissible": "Any nonempty plain builtin UTF8-encodable string proceeds to exact packet-local lookup without trimming, aliasing, normalization or interpreting the value as a path/URL. This includes whitespace-only strings, leading/trailing whitespace, punctuation, path-like and URL-like values; they are not automatically syntax failures.",
+    "unmatched": {"code": "unknown_record", "reason": "unknown_record", "path": "/record_id", "message": "Unknown onboarding record."},
+    "matched": "Return the unchanged existing full record plus diagnostics, subject to the unchanged result bounds. No parameter admission or lookup grants permissions or executes source/workflow content."
+  },
+  "unchanged_packet_rule": "Generic wrong primitive packet-field types still use invalid_packet/invalid_type, except already frozen specific packet constraints. This addendum gives list request parameters priority only; it does not reinterpret packet fields or weaken strict UTF8/schema/source validation.",
+  "preserved_oracles": "EXPECTED-REQUEST-VECTORS.json remains unchanged: true/list/null/etc for each list parameter uses its existing invalid_kind, invalid_query, invalid_limit or invalid_offset. Exact nonempty unknown IDs retain unknown_record. All original independent and author source/query/paging/get oracles remain required.",
+  "safe_errors": "Every error remains exactly the existing four-field object code/reason/path/message, with fixed messages and no raw request, identifier, source content, file path or underlying exception echoed. Existing graph/context contracts remain unchanged.",
+  "authorization": "Finite root-authorized contract clarification only. No reader/provider/server/SDK/test/model execution and no public or tag-candidate writes. Independent prospective receiving and separate root body authorization remain required."
+}

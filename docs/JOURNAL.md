@@ -6104,3 +6104,31 @@ claim's line locator change. Independent receiving first stops on the unanticipa
 admits only line 150 to 155 after checking the identical source passage. The strict scratch check verifies
 all 95 source bindings. Affected-test and final metadata receiving remain separate; the original full run
 is not relabelled a pass, and no model or other corpus cell is rerun for this correction.
+
+## 132. Give engineers a sourced starting map without an asset model
+
+**A272 / N103.** A newcomer can use a selected knowledge packet for a landing map, glossary, source records,
+reviewer roles, a starter workflow and one document-only assignment. Three read-only operations work without
+an equipment graph and can share the existing MCP entry point with graph/context. Workflow steps remain
+reference data. Supplied source-basis agreement is not source truth, permission or acceptance.
+
+Before any producer execution, independent static review froze four cases where early duplicate record/step
+checks could mask later local errors or the required record-order tie. The successor validates local/profile
+and companion fields first, then record/step uniqueness in original record/schema order. Original body and
+controls remain preserved. A separate concern about JSON-looking text being coerced was disproved by the
+pinned SDK source: string-annotated fields skip that preparse. Five literal strings became positive controls;
+no SDK defect is claimed.
+
+One authorized private run completes eight commands. Four suites report 134 methods: 133 execute and pass;
+one existing graph filesystem case skips, with its exact identity absent from the nonverbose log. Three
+standalone CLI outputs match independently frozen complete typed/order expectations except runtime load time.
+The copied stdout files retain their actual clocks and bytes, separately from fixed-clock test oracles.
+Local SDK auto/legacy checks exercise the A/B/C records, complete pages, source qualifiers, raw argument errors,
+size guards and old graph/context values. Coverage comes from retained helper assertions and logs, not
+fabricated raw RPC transcripts.
+
+The exercise is fictional software evidence, not a customer, source-authority or employee-onboarding trial.
+Unknown originals retain null fingerprints; capturing peer memory does not verify its explanation. Company
+systems retain identity/access, controlled records, accepted decisions and work execution. Human benefit and
+organization-scale capacity are unmeasured. Current-base integration, public review rows, full-suite and
+exact-head CI gates remain separate from this private result.

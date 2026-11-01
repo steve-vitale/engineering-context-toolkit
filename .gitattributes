@@ -56,3 +56,6 @@ data/te_pid_layout.json text eol=lf
 /scripts/source_evidence.py text eol=lf
 /scripts/test_source_handoff.py text eol=lf
 /.gitattributes text eol=lf
+
+# Onboarding packet/source raw identities must be stable across operating systems.
+/examples/engineering-onboarding/** text eol=lf

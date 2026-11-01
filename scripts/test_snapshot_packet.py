@@ -221,6 +221,33 @@ class SnapshotControls(unittest.TestCase):
         with self.assertRaisesRegex(server.InputError, 'collide'):
             self.load(collision)
 
+class OnboardingFrontdoorControls(unittest.TestCase):
+    def test_graph_snapshot_methods_remain_usable_without_knowledge_import(self):
+        # No SDK import or server is needed to exercise the existing pure graph route.
+        path = ROOT / 'examples/graph-export/bayer_graph.json'
+        with patch.dict('sys.modules', {'knowledge_snapshot': None}):
+            packet = server.Snapshot(path)
+            self.assertEqual(packet.asset('P-1')['result']['id'], 'P-1')
+            self.assertEqual(packet.summary()['snapshot_sha256'], hashlib.sha256(path.read_bytes()).hexdigest())
+
+    def test_optional_cli_rejects_missing_scope_and_context_without_graph_before_sdk(self):
+        with patch.object(server, 'create_server', side_effect=AssertionError('Must not load a provider')):
+            for argv in [[], ['--knowledge', 'example.json', '--context', 'context.json']]:
+                with self.subTest(argv=argv), self.assertRaises(SystemExit) as raised:
+                    server.main(argv)
+                self.assertEqual(raised.exception.code, 2)
+
+    def test_knowledge_cli_retains_stdio_and_loopback_transport_selection(self):
+        from unittest.mock import Mock
+        service = Mock()
+        with patch.object(server, 'create_server', return_value=service) as create:
+            self.assertEqual(server.main(['--knowledge', 'knowledge.json']), 0)
+            create.assert_called_once_with(None, None, Path('knowledge.json'))
+            service.run.assert_called_once_with()
+        service = Mock()
+        with patch.object(server, 'create_server', return_value=service):
+            self.assertEqual(server.main(['--knowledge', 'knowledge.json', '--transport', 'streamable-http', '--port', '8123']), 0)
+            service.run.assert_called_once_with(transport='streamable-http', host='127.0.0.1', port=8123, stateless_http=True, json_response=True)
 
 if __name__ == '__main__':
     unittest.main()

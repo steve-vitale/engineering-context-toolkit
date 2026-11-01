@@ -1,0 +1,6 @@
+ILLUSTRATIVE TRAINING DATA; no company or plant record.
+Document: ENG-RESULT-17
+Revision: B
+Reported result: 2.5
+Displayed unit: bar
+Change note: the display unit changed. Deployment date, full mapping and decision rationale are not recorded here.

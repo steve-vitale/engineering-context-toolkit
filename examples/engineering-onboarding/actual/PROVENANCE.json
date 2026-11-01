@@ -1,0 +1,127 @@
+{
+  "schema": "onboarding-actual-readback-provenance-1",
+  "about": "Exact copies of three standalone CLI stdout envelopes observed on fictional repository-authored training packets. These are actual local readbacks, separate from the synthetic fixed-clock expected/* oracles.",
+  "recording_policy": "Copied raw bytes with their original runtime loaded_at and no final LF; never reformatted, regenerated or presented as live/current company data. loaded_at is local process load time, not source acquisition, effective date or governing release.",
+  "recipe_policy": "Recipes below are relative equivalents for a reader at the repository root, NOT verbatim original argv/cwd. Machine-private executable/script/input paths and full process START payloads stay private.",
+  "producing_method": {
+    "repository_path": "scripts/knowledge_snapshot.py",
+    "raw_sha256": "f1631e6fe4be39a0925bdfffed98801a295ef7ab5a7a5c6e947c6c5373d7d524",
+    "size_bytes": 33212,
+    "scope": "The standalone CLI consumes the selected packet only. Referenced originals and source files are not reopened or fetched."
+  },
+  "related_optional_mcp_method": {
+    "repository_path": "scripts/serve_snapshot.py",
+    "raw_sha256": "d2db1d659a718e66cee71347e40f9508f491bbe49dc3a43b26de1a1e7c704b08",
+    "size_bytes": 24227,
+    "scope": "The optional selected MCP route; it did not produce these standalone CLI stdout files."
+  },
+  "readbacks": {
+    "A-overview.json": {
+      "public_stdout_path": "examples/engineering-onboarding/actual/A-overview.json",
+      "stdout_raw_sha256": "13280a7162e07d304573ab9627b2ca09b21d7bc9bf602b1c4678c73e89c12fc2",
+      "stdout_size_bytes": 3011,
+      "packet": {
+        "repository_path": "examples/engineering-onboarding/knowledge-A.json",
+        "raw_sha256": "da773aed2f9c9bc0058fa447cfaf0127f6a1d534c56f84c405be9c51b577e841",
+        "size_bytes": 22337
+      },
+      "observed_process_start_utc": "2026-11-01T00:20:43.893717+00:00",
+      "observed_process_end_utc": "2026-11-01T00:20:44.078538+00:00",
+      "runtime_loaded_at": "2026-11-01T00:20:44.061812+00:00",
+      "relative_equivalent_recipe": {
+        "working_directory": "repository root",
+        "command": [
+          "python",
+          "-B",
+          "-S",
+          "scripts/knowledge_snapshot.py",
+          "--knowledge",
+          "examples/engineering-onboarding/knowledge-A.json",
+          "overview"
+        ],
+        "status": "Equivalent public relative recipe; NOT the original recorded argv, executable path or cwd."
+      },
+      "opaque_private_process_start_sha256": "93dafb13af065f819099a910611bc86ae4beafd73e5985adf9bce051b14b299d",
+      "opaque_private_process_end_sha256": "c2cd7fc3877f115f95679eac71efdf8cf0d000c9411ce5347f6c1f8c2c68af81"
+    },
+    "B-workflow.json": {
+      "public_stdout_path": "examples/engineering-onboarding/actual/B-workflow.json",
+      "stdout_raw_sha256": "84a141c78f301901876b9be092b62a4095405ba9e3e2cd80f3848726d56b1270",
+      "stdout_size_bytes": 3183,
+      "packet": {
+        "repository_path": "examples/engineering-onboarding/knowledge-B.json",
+        "raw_sha256": "626ec4427b87e4b158ea526df7a6285b37ced956b043fc8bf2bce7b95d8e61a1",
+        "size_bytes": 22337
+      },
+      "observed_process_start_utc": "2026-11-01T00:20:44.943330+00:00",
+      "observed_process_end_utc": "2026-11-01T00:20:45.162620+00:00",
+      "runtime_loaded_at": "2026-11-01T00:20:45.144533+00:00",
+      "relative_equivalent_recipe": {
+        "working_directory": "repository root",
+        "command": [
+          "python",
+          "-B",
+          "-S",
+          "scripts/knowledge_snapshot.py",
+          "--knowledge",
+          "examples/engineering-onboarding/knowledge-B.json",
+          "get",
+          "--record-id",
+          "workflow:source-reconciliation"
+        ],
+        "status": "Equivalent public relative recipe; NOT the original recorded argv, executable path or cwd."
+      },
+      "opaque_private_process_start_sha256": "2af728c8f55bb20fd7d9002b9337ad6a20f196db0beb8b358ec5a4e8a0fd97c6",
+      "opaque_private_process_end_sha256": "9c7c8173823fbd5a097cd63efee963b1df8ffbaaf890221d515288d30a8d3d75"
+    },
+    "C-sources.json": {
+      "public_stdout_path": "examples/engineering-onboarding/actual/C-sources.json",
+      "stdout_raw_sha256": "a3daa03e4681bf397f3165ed91fb928ebed80df6fee63f36873711ea3ee26aa5",
+      "stdout_size_bytes": 2680,
+      "packet": {
+        "repository_path": "examples/engineering-onboarding/knowledge-C.json",
+        "raw_sha256": "cd5a2ff9779476528f30146ebceee3954094ec43318406036fc8421baa7e06fc",
+        "size_bytes": 27861
+      },
+      "observed_process_start_utc": "2026-11-01T00:20:45.928951+00:00",
+      "observed_process_end_utc": "2026-11-01T00:20:46.112412+00:00",
+      "runtime_loaded_at": "2026-11-01T00:20:46.092708+00:00",
+      "relative_equivalent_recipe": {
+        "working_directory": "repository root",
+        "command": [
+          "python",
+          "-B",
+          "-S",
+          "scripts/knowledge_snapshot.py",
+          "--knowledge",
+          "examples/engineering-onboarding/knowledge-C.json",
+          "list",
+          "--kind",
+          "source"
+        ],
+        "status": "Equivalent public relative recipe; NOT the original recorded argv, executable path or cwd."
+      },
+      "opaque_private_process_start_sha256": "c0c29e8e76e5c76335df421fe9d8549da31cb3770a6d07752efef6d6db91a520",
+      "opaque_private_process_end_sha256": "1258072fe591830d324231970d2acd815246e1ba0629743d8f3432ef9d9e1464"
+    }
+  },
+  "optional_sdk_observation": {
+    "package": "mcp",
+    "version": "2.3.0",
+    "protocol_modes": [
+      "2025-11-25",
+      "2026-07-28"
+    ],
+    "scope": "Local helper assertions and retained logs for graph/context and knowledge-only/composed/stdio readback, errors and serialization. These three CLI files are NOT raw MCP/RPC transcripts.",
+    "stdout_raw_sha256": "da3570e9076ed9739b93e85156b51b81b120603183f2abd294367ad851901a6b",
+    "stderr_raw_sha256": "7cc14b22d0eb98081e3332b211a4036aca5dec77ef6712608a791b0703de3503"
+  },
+  "opaque_retained_proof_sha256": {
+    "author_actual_result": "073600273c753594c48d9ac05cd1ef4b572389de2becafdbbe26ae79f50667f0",
+    "author_actual_freeze": "314135ca5fa9e1a31b25d1ba828285815c3155b41441aa27b38f057ea5578ac5",
+    "independent_actual_acceptance": "6e63c27fc1a20269e0b9a3c4468cca8f4c2c4255792c012be70d38cfcc009cd9"
+  },
+  "proof_limit": "Opaque hashes identify retained private receipts; their contents are not published here. The public packets, producing methods and tests support independent software reproduction. No private paths, START payload, source fetch or fabricated RPC dump is included.",
+  "engineering_limit": "Supplied-basis agreement and byte integrity do not prove source meaning, governing revision, installed state, company approval, permissions or onboarding benefit. A reports 250 kPa and B reports 2.5 bar; these are equivalent pressure labels; workflows are reference data and peer memory stays qualified.",
+  "company_scope": "No customer, company tenant, employee, production data, operational connection or authenticated shared service was used. Company systems retain record authority, identity/access, accepted decisions and execution."
+}

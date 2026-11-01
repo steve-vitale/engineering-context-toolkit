@@ -1,0 +1,90 @@
+{
+  "status": "NORMATIVE finite prospective interface; no reader or MCP execution",
+  "tools": {
+    "onboarding_overview": {
+      "request": "No arguments; extra keys invalid.",
+      "result": "Complete API-SCHEMA overview inside envelope; landing is complete original record plus separate landing_diagnostics. All8 count keys including zeros."
+    },
+    "list_onboarding_records": {
+      "defaults": {
+        "kind": "",
+        "query": "",
+        "limit": 20,
+        "offset": 0
+      },
+      "arguments": "Exact builtin strings for kind/query. kind is one of8 enums or empty. query.strip() then length<=200 Python code points, then casefold substring over id,title,summary,aliases,audience_hints ONLY. No data.statement/body/captured_text/fulltext query, stemming, inferred aliases or fetch. limit exact builtin int1..50; offset exact builtin int0..9223372036854775807; bool/subclasses/coercion refused. Unknown keys refuse.",
+      "ordering": "Filter then sort by exact record id using Python Unicode code point ordering; no casefold sort. One summary per record, including withdrawn/rejected.",
+      "paging": "total counts all filtered records; end=min(offset+limit,total); next_offset=end iff end<total else null; truncated=(offset>0 or end<total). offset>total OR offset==total when total>0 refuses. Empty results with offset0 valid and untruncated. Summary shape exact in API-SCHEMA. Traversal with next_offset covers every ID exactly once."
+    },
+    "get_onboarding_record": {
+      "request": "Exactly record_id required as builtin string; no trim, path/URL interpretation, aliases or fallback. Any nonempty unmatched string is unknown_record, including path/URL-looking values. Empty/non-string is invalid_argument.",
+      "result": "Complete original record deep copy plus exact separate diagnostics. No omission of source payload, memory qualifiers, workflow steps, supplied status or null. Too large refuses as whole result; list summaries do not substitute."
+    }
+  },
+  "envelope": "Exact fields/order: knowledge_sha256,selection_sha256,loaded_at,live,source_currency,reference_data_only,result. loaded_at one UTC runtime startup time in datetime.isoformat(timespec=microseconds) form ending +00:00, reused by all calls; not source capture/acquisition/freshness. Fixed-clock expectations are synthetic test clocks, not actual runtime claims.",
+  "ordering": "New result objects follow schema property insertion order; count kinds follow kind enum order; selected_sources, complete original record objects/arrays and source strings preserve supplied insertion/order/content. Selection preimage digest independently uses recursive sorted keys. List results sort records only. No arbitrary input JSON byte/lexeme roundtrip claimed.",
+  "serialization_and_bounds": "New application success encoding uses json.dumps(payload,ensure_ascii=False,allow_nan=False,separators=(comma,colon)) strict UTF8 with no finalLF. Admit if encoded size<=2097152. Future MCP wrapper uses exact same compact JSON as one TextContent text and the same payload as structuredContent; actual pinned SDK CallToolResult.model_dump_json(by_alias=True,exclude_none=True) UTF8 encoded size PLUS4096 must be<=2097152. Both JSON copies and escaping count. Equality at cap allowed; cap+1 refused. An arbitrary outer RPC request ID/frame is outside this bound. Error is bounded fixed four-field data and never echoes content. No partial record/field/page clipping to fit; callers choose a smaller page explicitly.",
+  "startup": "Future optional --knowledge PATH chosen by operator, not a tool request. At least knowledge or existing graph required. Context requires existing validated graph. New tools exist only when knowledge selected. Required companion_bindings graph/context schema+raw hashes must match explicitly selected roles; no autoload/follow. All selected packet/profile/FK/binding and one-full-get-per-record, complete overview and minimum one-summary page result-size admission precede publishing tools. Loaded snapshots immutable; reads never reopen sources. Selected role acquisition bound33554432, per-read requests positive<=65536 and remaining cap+1, short reads continue, exact cap accepted and cap+1 refuses. A close/open/read failure during startup refuses publication.",
+  "error_shape": "Exactly {code,reason,path,message}; path is RFC6901 into packet/request or null for raw input/runtime size/selection. Pure reader later raises a bounded OnboardingError carrying these fields; str(error) is message only. Existing graph/context error classes and response behavior are untouched. No user strings, IDs, text, filepaths or underlying exception repr in messages. New MCP error wrapping needs separately gated integration; this is not a new fourth read tool.",
+  "error_codes": {
+    "invalid_packet": {
+      "message": "Invalid onboarding packet.",
+      "reasons": [
+        "input_too_large",
+        "input_unavailable",
+        "invalid_utf8",
+        "invalid_json",
+        "invalid_type",
+        "invalid_schema",
+        "invalid_date",
+        "duplicate_record_id",
+        "duplicate_step_id",
+        "unknown_reference",
+        "wrong_reference_kind",
+        "citation_mismatch",
+        "selected_document_mismatch",
+        "missing_selected_basis",
+        "source_profile_mismatch",
+        "capture_mismatch",
+        "memory_contradiction",
+        "dependency_cycle"
+      ]
+    },
+    "invalid_selection": {
+      "message": "Invalid component selection.",
+      "reasons": [
+        "missing_required_companion",
+        "companion_mismatch",
+        "invalid_schema"
+      ]
+    },
+    "invalid_argument": {
+      "message": "Invalid onboarding request.",
+      "reasons": [
+        "invalid_type",
+        "invalid_schema",
+        "invalid_kind",
+        "invalid_query",
+        "invalid_limit",
+        "invalid_offset"
+      ]
+    },
+    "unknown_record": {
+      "message": "Unknown onboarding record.",
+      "reasons": [
+        "unknown_record"
+      ],
+      "path": "/record_id"
+    },
+    "result_too_large": {
+      "message": "Onboarding result exceeds 2 MiB.",
+      "reasons": [
+        "result_too_large"
+      ],
+      "path": null
+    }
+  },
+  "specific_constraint_reasons": "Classify a known schema constraint before generic invalid_schema: attributed_memory underlying_claim_verified != false => memory_contradiction at that field; source profile null/type/condition mismatch => source_profile_mismatch at first conflicting field; validated captured UTF8 hash mismatch => capture_mismatch at capture_sha256; length-only mismatch => capture_mismatch at capture_size_bytes if supplied, else original_size_bytes. Missing required/extra fields not covered by a specific rule => invalid_schema at object pointer; wrong primitive type => invalid_type at field. Citation mismatch at first source_record/document/revision/raw/capture field that differs. Typed FK unknown_reference versus wrong_reference_kind are distinct. Date invalid_date. Cycles dependency_cycle at first closing /depends_on/i edge by original record/edge traversal order. Input encoding/duplicate member/nonfinite/parse errors use null path and invalid_utf8/invalid_json respectively; unpaired decoded surrogate uses invalid_utf8 and null path. Strict UTF8 encodability preflight never mutates/publishes state.",
+  "old_contract": "Graph-only and bound graph/context tool lists/responses/hash meanings/default transport/errors unchanged. This contract creates no role filter, user identity query, grant, write, workflow execution, provider/source fetching, queue update or semantic merge.",
+  "limitations": "Source content and workflows are data, not instructions to execute. Local stdio opening no port does not mean the consuming AI is offline. Enterprise identity/access/approval/source release and actual tenant acceptance stay with company systems/IT."
+}

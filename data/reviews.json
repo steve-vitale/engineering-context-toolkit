@@ -14872,6 +14872,273 @@
     "strict95_tool_record_sha256": "20d8a50dcb7f1621a3db42d8c1a6a3125db2477f6bb94df7efc0f7f71d65ded7",
     "independent_actual_receiving_sha256": "d8def0dd965febbb3b44aaa027c3b347bda235b2b05b199a2e4169bdc38a6010"
    }
+  },
+  {
+   "feature": "engineering-onboarding",
+   "reviewer": "Independent AI review: selected knowledge-only packet and actual complete CLI readbacks",
+   "date": "2026-11-01",
+   "verdict": "pass",
+   "file_hash_method": "SHA256 after CRLF-to-LF normalization for catalog bindings; separate raw hashes preserve exact packets, source fixtures and actual stdout bytes.",
+   "registered_output_count": 3,
+   "files": {
+    "examples/engineering-onboarding/actual/A-overview.json": "13280a7162e07d304573ab9627b2ca09b21d7bc9bf602b1c4678c73e89c12fc2",
+    "examples/engineering-onboarding/actual/B-workflow.json": "84a141c78f301901876b9be092b62a4095405ba9e3e2cd80f3848726d56b1270",
+    "examples/engineering-onboarding/actual/C-sources.json": "a3daa03e4681bf397f3165ed91fb928ebed80df6fee63f36873711ea3ee26aa5"
+   },
+   "freshly_reproduced_or_validated_files": {
+    "examples/engineering-onboarding/actual/A-overview.json": "13280a7162e07d304573ab9627b2ca09b21d7bc9bf602b1c4678c73e89c12fc2",
+    "examples/engineering-onboarding/actual/B-workflow.json": "84a141c78f301901876b9be092b62a4095405ba9e3e2cd80f3848726d56b1270",
+    "examples/engineering-onboarding/actual/C-sources.json": "a3daa03e4681bf397f3165ed91fb928ebed80df6fee63f36873711ea3ee26aa5"
+   },
+   "inherited_unchanged_files": {},
+   "raw_registered_outputs": {
+    "examples/engineering-onboarding/actual/A-overview.json": {
+     "raw_sha256": "13280a7162e07d304573ab9627b2ca09b21d7bc9bf602b1c4678c73e89c12fc2",
+     "LF_sha256": "13280a7162e07d304573ab9627b2ca09b21d7bc9bf602b1c4678c73e89c12fc2",
+     "size_bytes": 3011,
+     "observed_clock_retained": true,
+     "complete_own_oracle_comparison": "previously independently received in 6e63, raw copied output now exact"
+    },
+    "examples/engineering-onboarding/actual/B-workflow.json": {
+     "raw_sha256": "84a141c78f301901876b9be092b62a4095405ba9e3e2cd80f3848726d56b1270",
+     "LF_sha256": "84a141c78f301901876b9be092b62a4095405ba9e3e2cd80f3848726d56b1270",
+     "size_bytes": 3183,
+     "observed_clock_retained": true,
+     "complete_own_oracle_comparison": "previously independently received in 6e63, raw copied output now exact"
+    },
+    "examples/engineering-onboarding/actual/C-sources.json": {
+     "raw_sha256": "a3daa03e4681bf397f3165ed91fb928ebed80df6fee63f36873711ea3ee26aa5",
+     "LF_sha256": "a3daa03e4681bf397f3165ed91fb928ebed80df6fee63f36873711ea3ee26aa5",
+     "size_bytes": 2680,
+     "observed_clock_retained": true,
+     "complete_own_oracle_comparison": "previously independently received in 6e63, raw copied output now exact"
+    }
+   },
+   "supporting_files": {
+    "scripts/knowledge_snapshot.py": "f1631e6fe4be39a0925bdfffed98801a295ef7ab5a7a5c6e947c6c5373d7d524",
+    "scripts/serve_snapshot.py": "d2db1d659a718e66cee71347e40f9508f491bbe49dc3a43b26de1a1e7c704b08",
+    "scripts/test_knowledge_snapshot.py": "f24d5aa822f0066d0d8a7272ebe4832f04953bc4df08f9c28bf22f12fc10cf92",
+    "scripts/test_snapshot_packet.py": "8379ae9bf4e66e235ebc627db0a5d259d167da1e36abf9e0402e8d5cfd5cb3a6",
+    "scripts/check_snapshot_mcp.py": "ac23b739a48fcee9288784ec25edc2290c8dc9e2aa9e8ec329509778f76c030c",
+    "scripts/graph_export.py": "156af52fde88d47169dc84344f6082fcba6cfcfcc2e3813648a1339dfc791bd9",
+    "scripts/context_register.py": "da0fbde2a1100b02b82bd1380ce6bc64d3106ed57c39108235da73e7cf7a32bb",
+    "scripts/output_paths.py": "16ace3cf89be6baffcac1be804ea4917c9db10caffe2b58c11ee0b9acd4d2939",
+    "requirements-mcp.txt": "5d6679369dad83b8981b6593e12c4e2f6567d7d5cf258c1ac7186fe17e7ca674",
+    "examples/engineering-onboarding/README.md": "184d90a0d55ee8592dc16891cf6b9acf20e3882ae9f2f6b4dedeaab4ccb4dfd6",
+    "examples/internal-mcp/README.md": "ea556e5060e202f846599675902f589faede5a9e028b7c8288fa66724a7ef266",
+    "docs/ENGINEERING_ONBOARDING.md": "f9f59d189c4ee6650caeaaf4f7c4cecf406a43b4cd286b508582bc492127b9e5",
+    "docs/INTERNAL_CONNECTIVITY.md": "94d2c77ba41cf77ba6f641a8fdd6373d8da9c636fca48470af14bd30712d21d1",
+    "docs/WORKFLOWS.md": "0b78b986c1aa218c3c693441ebf23a38b5cc7a5e7c2ee9cbab69a195b8e6620b",
+    "examples/engineering-onboarding/actual/PROVENANCE.json": "740d6adccb82cf9b278cc5b88329d81ed31a3b4777b3fbadbe8d219e10c44270"
+   },
+   "additional_reviewed_files": {
+    "examples/engineering-onboarding/PROVENANCE.json": "c71e07e5600dd662fba48476df234940a1b20b03ba838d172d192fb919d36298",
+    "examples/engineering-onboarding/contract/API-RULES.json": "57c9365e36664b2be3cdaf8091608d01308454e0f096fa8977fb222eb8ed1ffd",
+    "examples/engineering-onboarding/contract/API-SCHEMA.json": "63e568cc0f49fe9021a190876132b0065c96ae430585bd23aea1ca5478682674",
+    "examples/engineering-onboarding/contract/DIAGNOSTIC-RULES.json": "96038396aa43fa0a5fc3e71128c78c2097c9e27c69eedc1c31975291108b4450",
+    "examples/engineering-onboarding/contract/PACKET-SCHEMA.json": "0b77151137e143cc61807a1c2f8f83c83b7d77dda5933d7e6469bf535b85be4d",
+    "examples/engineering-onboarding/contract/REQUEST-ERROR-PRECEDENCE.json": "9467adf80a0b541c6bc0152af636b92c9df64ae94614e68c33c5b2d351658f15",
+    "examples/engineering-onboarding/contract/SEMANTIC-RULES.json": "4982a7bc2557bee042f75fd9c50d66687f6d8540314f59665b7ef6ff3afbe9d9",
+    "examples/engineering-onboarding/controls/ORDER-COMPANION-LOCAL-BEFORE-UNIQUENESS.json": "7c851cbd43dc6b0fbf47db885f0f24ef0d816c48cfa8e79c28b5d3c6daa9ffec",
+    "examples/engineering-onboarding/controls/ORDER-RECORD-BEFORE-LATE-LOCAL.json": "16fb7bf5373b097f0db35c98fc2b04acbebe4d8bf7f4e76f1fc14254d840ef9b",
+    "examples/engineering-onboarding/controls/ORDER-SAME-STAGE-RECORD-STEP-TIE.json": "5b1c42b0c9195ca90bbd189fffe1150864b501ded3902c85d0d3f1fce3e7240e",
+    "examples/engineering-onboarding/controls/ORDER-STEP-BEFORE-LATE-LOCAL.json": "b0f30703e979b74a0892d2b7e4f4ec9bbdfcf5896eaaffd38189080b51933295",
+    "examples/engineering-onboarding/controls/capture-tamper.json": "9b99acb7c1180e9b390ce4bef4dffa5a7f61b900bee6c702ef354e293ab04256",
+    "examples/engineering-onboarding/controls/dependency-cycle.negative.json": "dfd69bbfba9b1e20c4858f4f74922bd546293706103e1bde74f4b8b904f1a18a",
+    "examples/engineering-onboarding/controls/duplicate-id.negative.json": "98f676f63121d1194dfd6aa4fe22edd7713e236b1fcfa9882c475dc84b52a47e",
+    "examples/engineering-onboarding/controls/excerpt-capture-tamper.json": "184f2d553658f95dbbc9b3ae856a1514cf88544f634cd8756cc994d254bd3852",
+    "examples/engineering-onboarding/controls/memory-verified-contradiction.json": "01f3f2ffde4effa74269278c080d652ac7a0047663170dbe26cb778aefc8b71b",
+    "examples/engineering-onboarding/controls/navigation-self-positive.json": "d5e86c0b6b30757ed869cc75f0c2d9c4069cb23001ab2bfee168e1cfc2e06972",
+    "examples/engineering-onboarding/controls/owner-wrong-kind.json": "447f16e577f4407d9bfb482ffcbc83d106a10a28225f24d1328665612fa7e5f7",
+    "examples/engineering-onboarding/controls/record-vs-source-revision.json": "bdf638af87b5091070ac5e37436b8db54e9a6e886a06f0c41dc83855dc5ac3ce",
+    "examples/engineering-onboarding/controls/required-companion-mismatch.negative.json": "589481403523470739bb347253a1b32e42202cda74f77249e7963084e2f2d1a8",
+    "examples/engineering-onboarding/controls/selected-document-mismatch.json": "d179ca120074ad4643281a820767b6b462cc46195854820eec3a54a899744742",
+    "examples/engineering-onboarding/controls/step-input-dangling.json": "69a439d07479346d81a65a10acb40a7f561744eac47f27d125c38cf28f450a08",
+    "examples/engineering-onboarding/controls/unknown-original-fake-hash.json": "34cedbe4f39b86745a6505b265398ec2eb4eacc0d754937148f2ffb11bc293a1",
+    "examples/engineering-onboarding/controls/unknown-owner.negative.json": "8d0b2af028066aa1e481d0b1ed9cd522fb52d9c67a58386709abfda1431d248d",
+    "examples/engineering-onboarding/controls/unsupported-relabel-structurally-valid.json": "7b57d4bcf04c3dd8a12b5116cddc5a9bd0c1daa545af11e0f9a0e751e165933d",
+    "examples/engineering-onboarding/controls/untrusted-source.positive-data-control.json": "c4b2579c6aa72613ff1bd0614c29c922c7fb9c2fde03629360096d16cb7b73bd",
+    "examples/engineering-onboarding/controls/withdrawn-rejected-readable.json": "e645d52b23683a302f74bd2e62309d26158926fd7cee9f6657ef6536d18e704f",
+    "examples/engineering-onboarding/expected/A-READBACK.json": "75871af58991695232c2b9cc338ac832954d8d510fcfeee618d87e0297d328df",
+    "examples/engineering-onboarding/expected/B-READBACK.json": "f156ebf4120ffcd14ab5fae5bc6971c3a0c94be314350d2acb9270719167304c",
+    "examples/engineering-onboarding/expected/C-READBACK.json": "204e1540fd0ca61037f4a3f4da3da5b532517c90d9b72d44cc66238d1bbfd365",
+    "examples/engineering-onboarding/knowledge-A.json": "da773aed2f9c9bc0058fa447cfaf0127f6a1d534c56f84c405be9c51b577e841",
+    "examples/engineering-onboarding/knowledge-B.json": "626ec4427b87e4b158ea526df7a6285b37ced956b043fc8bf2bce7b95d8e61a1",
+    "examples/engineering-onboarding/knowledge-C.json": "cd5a2ff9779476528f30146ebceee3954094ec43318406036fc8421baa7e06fc",
+    "examples/engineering-onboarding/sources/peer-note.txt": "efa957578f7878836b0940fff4c6ae17f4fd4978487a47de8010c080f6271c2c",
+    "examples/engineering-onboarding/sources/result-notice-A.txt": "b55c5761cd6c2cb24bddae87edd9e630231ad9aea8d8d078e76a86f69b3b09a3",
+    "examples/engineering-onboarding/sources/result-notice-B.txt": "5713bc9eb7b078a8b11fbcd971ddad53eb4ceb00f2e5079f5109ce42eae06270",
+    "examples/engineering-onboarding/sources/review-route.txt": "619747ef9a93436989cf709a0e8cb18efc786fc7e114bb6ee047316281f91045",
+    "examples/engineering-onboarding/sources/unknown-original-excerpt.txt": "f7de5c738b9b48141ff5e507cc646c2ab07c7246fce53b9ec3cdbf6b9de7f4bd"
+   },
+   "scope": "Three observed fictional CLI outputs with exact source-qualified overview, fully readable stale workflow and explicit unknown-original summaries; current selected knowledge CLI/MCP and graph/context coexistence compatibility. This is a thin read-only onboarding scaffold, not a company governance service.",
+   "checks": [
+    "Own complete A/B/C literal readback/page/digest oracles were frozen before producer implementation and compared independently. Actual three CLI stdout recursively typed/ordered values agree in full excluding runtime loaded_at alone; original clocks and no-final-LF bytes remain intact.",
+    "All eight authorized author commands exit 0. Four suites report 26 knowledge, 16 snapshot, 40 graph (one skip) and 52 context methods. Four frozen validation-order cases check local/profile and companion validation before original-record/schema-order record/step uniqueness.",
+    "Frozen SDK helper assertions validate 148 full-get responses across 46 distinct A/B/C versioned records, complete pages, source qualifiers and stale record readability, both auto/legacy, selected composition and stdio. Five literal JSON-looking strings remain valid queries; no SDK defect is claimed.",
+    "Raw argument validation, closed request errors, selection identities, no file/URL fetching, startup immutability and dual serialized size controls are exercised. Existing nine graph/context tool values and resource remain compatible in auto/legacy modes.",
+    "Public provenance binds exact packets/methods/stdout/UTC and explicitly labels relative recipes as equivalents, load time as local observation, and private proof hashes as opaque. Unknown originals keep null fingerprint/size; 250 kPa and 2.5 bar are equivalent labels, not evidence of an installed setting change.",
+    "Manual/approved-Copilot first route stays available; the configured-client prompt asks for exact IDs, cited facts versus attributed memory/unknowns and a draft review handoff. It is proposed prose, not a human/tenant acceptance test."
+   ],
+   "limits": [
+    "Private local fictional software evidence; company source authority, governing revision, identity/ACLs, accepted decisions, work execution and measured onboarding or organizational benefit are not established.",
+    "The four suites report 134 methods: 133 execute and pass and one existing graph filesystem skip whose exact identity is not retained by nonverbose output. No complete-all-check claim.",
+    "SDK evidence comprises frozen executed assertions and retained stdout/stderr, not full per-RPC payload dumps. The three registered CLI readbacks are retained complete stdout bytes.",
+    "Current-base public full suite, repository-checks renewal, committed blobs and exact-head CI remain separate gates.",
+    "Syntactically valid unsupported relabeling can be structurally admitted; captured text integrity and selected-basis matches do not prove semantic engineering truth."
+   ],
+   "private_proofs": {
+    "independent_actual_acceptance_sha256": "6e63c27fc1a20269e0b9a3c4468cca8f4c2c4255792c012be70d38cfcc009cd9",
+    "static_execute_readiness_sha256": "5af0abcb3838bd42d87be374fd9b97b17552287bcffcc0d77bd907acd6f9f45e",
+    "independent_prospective_contract_sha256": "5085c35ba5d363a4263a5fc2f466db0b28123e831a46c3a9ba0a5a7c95afe652",
+    "whole_readback_oracle_freeze_sha256": "35f0ad61dc8d5054916c6844e061df012f7d7d3a4b987da05fbb0186b22a5c5d",
+    "author_actual_seal_sha256": "314135ca5fa9e1a31b25d1ba828285815c3155b41441aa27b38f057ea5578ac5",
+    "doc_proposal_review_sha256": "798baaf610fc69aff5cc3af1e532e3840d8f8892bd604d13e52167c96c037bfd",
+    "workflow_map_review_sha256": "b8cea5db577a507041ae09bd2246b8e52ac632fbf43de90c6894a9b8932e9756"
+   }
+  },
+  {
+   "feature": "snapshot-mcp",
+   "reviewer": "Independent AI review: unchanged registered sample and current selected-knowledge composition compatibility",
+   "date": "2026-11-01",
+   "verdict": "pass",
+   "file_hash_method": "SHA256 after CRLF-to-LF normalization for registered/supporting catalog identities; raw private proofs remain distinct.",
+   "registered_output_count": 1,
+   "files": {
+    "examples/internal-mcp/sample_asset.json": "579c07335926ff35ff8e0fbd085597dd6fb1d52dde7b6a253ccd1e29fc19515a"
+   },
+   "freshly_reproduced_or_validated_files": {},
+   "inherited_unchanged_files": {
+    "examples/internal-mcp/sample_asset.json": "579c07335926ff35ff8e0fbd085597dd6fb1d52dde7b6a253ccd1e29fc19515a"
+   },
+   "inheritance": {
+    "prior_review_index": 157,
+    "prior_review_canonical_sha256": "2fa65847c1f7d95d9b598af3dd86de99885b501e016c39b562644d7bb62ec2ef",
+    "scope": "Only exact unchanged registered sample bytes and their prior bounded acceptance are inherited. The sample was not freshly regenerated by this review."
+   },
+   "supporting_files": {
+    "scripts/knowledge_snapshot.py": "f1631e6fe4be39a0925bdfffed98801a295ef7ab5a7a5c6e947c6c5373d7d524",
+    "scripts/serve_snapshot.py": "d2db1d659a718e66cee71347e40f9508f491bbe49dc3a43b26de1a1e7c704b08",
+    "scripts/test_knowledge_snapshot.py": "f24d5aa822f0066d0d8a7272ebe4832f04953bc4df08f9c28bf22f12fc10cf92",
+    "scripts/test_snapshot_packet.py": "8379ae9bf4e66e235ebc627db0a5d259d167da1e36abf9e0402e8d5cfd5cb3a6",
+    "scripts/check_snapshot_mcp.py": "ac23b739a48fcee9288784ec25edc2290c8dc9e2aa9e8ec329509778f76c030c",
+    "scripts/graph_export.py": "156af52fde88d47169dc84344f6082fcba6cfcfcc2e3813648a1339dfc791bd9",
+    "scripts/context_register.py": "da0fbde2a1100b02b82bd1380ce6bc64d3106ed57c39108235da73e7cf7a32bb",
+    "scripts/output_paths.py": "16ace3cf89be6baffcac1be804ea4917c9db10caffe2b58c11ee0b9acd4d2939",
+    "requirements-mcp.txt": "5d6679369dad83b8981b6593e12c4e2f6567d7d5cf258c1ac7186fe17e7ca674",
+    "examples/engineering-onboarding/README.md": "184d90a0d55ee8592dc16891cf6b9acf20e3882ae9f2f6b4dedeaab4ccb4dfd6",
+    "examples/internal-mcp/README.md": "ea556e5060e202f846599675902f589faede5a9e028b7c8288fa66724a7ef266",
+    "docs/ENGINEERING_ONBOARDING.md": "f9f59d189c4ee6650caeaaf4f7c4cecf406a43b4cd286b508582bc492127b9e5",
+    "docs/INTERNAL_CONNECTIVITY.md": "94d2c77ba41cf77ba6f641a8fdd6373d8da9c636fca48470af14bd30712d21d1",
+    "docs/WORKFLOWS.md": "0b78b986c1aa218c3c693441ebf23a38b5cc7a5e7c2ee9cbab69a195b8e6620b",
+    "examples/engineering-onboarding/actual/PROVENANCE.json": "740d6adccb82cf9b278cc5b88329d81ed31a3b4777b3fbadbe8d219e10c44270"
+   },
+   "scope": "Renew current selected snapshot method compatibility with optional knowledge-only/composed mode; one registered asset sample inherits unchanged prior output evidence. No new sample reproduction or graph accuracy claim.",
+   "checks": [
+    "Inherited registered sample hash exactly matches the most recent prior snapshot-MCP review; all 176 old public review objects remain untouched before these proposed appends.",
+    "Pretest source/AST conservation preserves existing graph Snapshot, nested tools/resources and old test bodies. Optional Extension raw argument checks affect only three new knowledge tools when knowledge is selected; old graph-only API behavior remains unchanged.",
+    "Fresh actual frozen SDK helper checks all nine old graph/context values and summary resource in both auto/legacy modes, excluding separately loaded runtime loaded_at only. Existing stdio/loopback and error/size checks complete.",
+    "Knowledge-only, composed graph/context/knowledge and knowledge stdio checks exercise A/B/C records, exact paging, startup/selection bindings, raw argument errors and five valid JSON-looking query strings. No source fetch, identity merge or workflow execution is introduced."
+   ],
+   "limits": [
+    "Private local fictional software evidence; company source authority, governing revision, identity/ACLs, accepted decisions, work execution and measured onboarding or organizational benefit are not established.",
+    "The four suites report 134 methods: 133 execute and pass and one existing graph filesystem skip whose exact identity is not retained by nonverbose output. No complete-all-check claim.",
+    "SDK evidence comprises frozen executed assertions and retained stdout/stderr, not full per-RPC payload dumps. The three registered CLI readbacks are retained complete stdout bytes.",
+    "Current-base public full suite, repository-checks renewal, committed blobs and exact-head CI remain separate gates.",
+    "The inherited sample remains one generated Bayer application response with its original local timestamp/source scope; current compatibility assertions do not make it new corpus, plant, acquisition or human acceptance evidence."
+   ],
+   "private_proofs": {
+    "independent_actual_acceptance_sha256": "6e63c27fc1a20269e0b9a3c4468cca8f4c2c4255792c012be70d38cfcc009cd9",
+    "static_execute_readiness_sha256": "5af0abcb3838bd42d87be374fd9b97b17552287bcffcc0d77bd907acd6f9f45e",
+    "independent_prospective_contract_sha256": "5085c35ba5d363a4263a5fc2f466db0b28123e831a46c3a9ba0a5a7c95afe652",
+    "whole_readback_oracle_freeze_sha256": "35f0ad61dc8d5054916c6844e061df012f7d7d3a4b987da05fbb0186b22a5c5d",
+    "author_actual_seal_sha256": "314135ca5fa9e1a31b25d1ba828285815c3155b41441aa27b38f057ea5578ac5",
+    "doc_proposal_review_sha256": "798baaf610fc69aff5cc3af1e532e3840d8f8892bd604d13e52167c96c037bfd",
+    "workflow_map_review_sha256": "b8cea5db577a507041ae09bd2246b8e52ac632fbf43de90c6894a9b8932e9756"
+   }
+  },
+  {
+   "feature": "repo-checks",
+   "reviewer": "Independent AI review: current public test-runner registration and received offline full suite",
+   "date": "2026-11-01",
+   "verdict": "pass",
+   "file_hash_method": "SHA256 after CRLF-to-LF normalization for registered and supporting files; full-run inputs and logs require separate exact raw receipts.",
+   "registered_output_count": 2,
+   "files": {
+    "out/claims_check.md": "dfb114b5097655f7005c45401a58bfa424e3d00f39f4fc8343d534d46eacdb1f",
+    "examples/test-coverage/expected.json": "c3f9c317aec4b9b5dfe3f9cdf1461a08c376f0f15fcff0eb0a5a3c0b099215d4"
+   },
+   "freshly_reproduced_or_validated_files": {},
+   "inherited_unchanged_files": {
+    "out/claims_check.md": "dfb114b5097655f7005c45401a58bfa424e3d00f39f4fc8343d534d46eacdb1f",
+    "examples/test-coverage/expected.json": "c3f9c317aec4b9b5dfe3f9cdf1461a08c376f0f15fcff0eb0a5a3c0b099215d4"
+   },
+   "changed_registered_outputs": [],
+   "supporting_files": {
+    "scripts/run_tests.py": "cfc86110d7cf68fa80b171daa56ac59d7783184d4975a076a2ccf23840d96388",
+    "scripts/test_run_tests.py": "b59c7db5edf0e1111f98dbba39b816fe7ee2b8c1dd6232f628efdfdf3a49c671",
+    "scripts/test_knowledge_snapshot.py": "f24d5aa822f0066d0d8a7272ebe4832f04953bc4df08f9c28bf22f12fc10cf92",
+    "scripts/test_snapshot_packet.py": "8379ae9bf4e66e235ebc627db0a5d259d167da1e36abf9e0402e8d5cfd5cb3a6",
+    "data/script_index.json": "d0df42d7139609df6a90a7f967c5795b813fdfe0171336174f6bb0cccc8c7865",
+    "data/features.json": "78c73d15c1731f1bb737c93076876727cfe750b3e9c25a2d2c0384f9846a9ecf",
+    "requirements.txt": "a7e58f9cdc7b395e162ab27f61b2eac1ff74abcd6c495c3abcea55237268bdbf"
+   },
+   "scope": "Current repository runner/registration and a separately received current-base offline full run; the two illustrative registered outputs inherit exact prior output evidence and are not fresh claim-check/coverage artifacts.",
+   "comparison_notes": {
+    "inherited_outputs": "Both registered outputs match exact prior accepted normalized hashes. No regeneration or new claims-file certification is implied.",
+    "registration": "55 source-only and 16 full-only scripts, total 71. Entire runner AST recovers cf7b after removing exactly one source test entry and 27 explicit source prerequisite constants; functions, skip accounting, modes and full-only scripts remain unchanged.",
+    "actual_full_run": "One authorized current-base offline full run exits 0 in 524.8647751 seconds: 71/71 script programs pass, with 6 unittest case skips, 3 platform notices and no additional skipped-check notices. All 2,973 public input bytes, sizes and path set remain exact by independent receiving.",
+    "future_metadata": "Only this 179th review append and deterministic FEATURES regeneration are planned after the run; all 178 prior review objects and other public inputs must remain exact. This acceptance does not predict committed or CI outcomes."
+   },
+   "limits": [
+    "Source-only mode is not a full-suite pass. This actual full-mode script success includes explicit missing checks; platform notices are not added to unittest case skips.",
+    "The runner retains successful child output tails and skip notices, not complete per-method transcripts. Do not infer unnamed skip identities, including the graph case, or equate its branch with the earlier private graph skip.",
+    "The two registered illustrative outputs inherit exact prior evidence; neither a new claim-check artifact nor a new coverage example was produced by receiving.",
+    "Offline cached/public software evidence does not establish provider/model reproduction, human review time, source engineering truth, gateway/plant/tenant/company deployment or organizational benefit. Committed blobs and exact-head CI remain separate."
+   ],
+   "private_proofs": {
+    "current_core_static_acceptance_sha256": "e44667a86982f45f971208af20e0bdf8df9dae3e4cbe2b7edb690906ce7e3b8f",
+    "pre_full_working_acceptance_sha256": "6b20e6b1ae76dc5e4b4f713b28b0c0e1e92ac2c67deb2bf116a92e1f4ecaef97",
+    "full_input_manifest_sha256": "b8754e7433bea247344bac519b92798824b2c90b0e6270e3ae0c758065b5f7a0",
+    "full_result_sha256": "0dda30ce6597d764cd2da063a357e1e6edb219e4926dc8f59bcb8ba976a549c9",
+    "independent_terminal_receiving_sha256": "19b72c6646e452aa87c3feffba3b4ccec88c167c4b5c1bb93299a8165742d3e6",
+    "full_stdout_sha256": "8ace51607b8da11b628e64e89732c6cedae04e6037ebf0752d3674f8a745fdcd",
+    "full_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "coverage_receiving_sha256": "699525689d4d2a912171126f2f0838115e9db65086780cf045b072ddc810f40d"
+   },
+   "unittest_skip_counts_by_reported_script": {
+    "scripts/test_benchmark.py": 1,
+    "scripts/test_dexpi_to_twin.py": 1,
+    "scripts/test_site_extraction_workflow.py": 1,
+    "scripts/test_gateway_acceptance_preflight.py": 1,
+    "scripts/test_graph_export.py": 1,
+    "scripts/test_question_engine.py": 1
+   },
+   "platform_notices": [
+    {
+     "script": "scripts/test_source_handoff.py",
+     "scope": "PT08 escaping-symlink creation unavailable; WinError 1314."
+    },
+    {
+     "script": "scripts/test_site_extraction_workflow.py",
+     "scope": "WorkflowControls.test_symlink_outputs_rejected unavailable; WinError 1314."
+    },
+    {
+     "script": "scripts/test_gateway_acceptance_preflight.py",
+     "scope": "AcceptancePreflightControls.test_paths_reject_external_symlinks unavailable; WinError 1314."
+    }
+   ],
+   "checks": [
+    "Independent receiving verifies the single terminal argv, PID, UTC order, elapsed time, controlled temporary directory, exit 0 and complete retained stdout/stderr raw hashes. No reviewer tests, SDK or producers were rerun.",
+    "All 71 reported script rows match current SOURCE_TESTS plus FULL_ONLY_TESTS in exact order; every script exits successfully. The complete runner summary reconciles 6 unittest case skips, 3 platform notices and 0 additional skipped-check notices. These are explicit coverage omissions, not complete-all-check acceptance.",
+    "All 2,973 tested public paths independently rehash to exact frozen raw SHA256 and size. Runner/supporting bindings and both inherited illustrative outputs still match; all 178 current review objects remain unchanged before this proposed append.",
+    "The optional MCP SDK is outside this full runner. Its separately accepted private eight-command evidence is not rerun or upgraded here; exact-head CI remains a distinct gate."
+   ],
+   "inherited_prior_review": {
+    "index": 165,
+    "canonical_sha256": "374a757bd8c1c78ad2240119188563a9edfe38bdec565b8ed9aee93a7d2b56a3",
+    "scope": "Exact two registered output hashes only; no new certification of prior broad raw-source contract inventories."
+   }
   }
  ]
 }

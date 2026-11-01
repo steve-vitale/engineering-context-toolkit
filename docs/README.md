@@ -35,7 +35,8 @@ benefit. Proposed episodes have no runnable packet yet.
 | Investigate a reported failure and missing follow-up | **Available:** [MetroPT-3 maintenance questions](../examples/context-register/metropt3/README.md); reported records do not establish a successful intervention. |
 | Exchange a published dependency and preserve disagreement | **Available:** [four owned packets](../examples/team-context/README.md) and [source revision](../examples/pump-revision/README.md); fictional local exercises, no shared company service. |
 | Connect drawings, models and investigation questions | **Available:** [one pump walkthrough](../examples/from-description/assisted/PUMP_WALKTHROUGH.md) and the [input guides](../README.md#start-wherever-you-are); a specialist branch with engineering review. |
-| Prepare a design review, supplier handoff or test-results comparison | **Proposed worked episodes:** use the [onboarding guide's manual starters](ENGINEERING_ONBOARDING.md#choose-a-starter-workflow) now; no dedicated runnable fixtures or generic knowledge/MCP catalogue are released. |
+| Reconstruct a record revision and prepare a first review note | **Available:** [knowledge-only onboarding packet](../examples/engineering-onboarding/README.md), with fictional sources, glossary, review workflow and a document-only assignment; Python standard library or optional approved MCP. |
+| Prepare a design review or supplier handoff | **Proposed worked episodes:** use the [onboarding guide's manual starters](ENGINEERING_ONBOARDING.md#choose-a-starter-workflow); dedicated packets for these jobs are not supplied. |
 
 ## Continue a task
 

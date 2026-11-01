@@ -1,0 +1,25 @@
+{
+  "meaning": "Supplied source-basis and declared dependency agreement only; never semantic correctness, permission, approval, operating readiness or completion.",
+  "basis_priority": [
+    "stale",
+    "unknown",
+    "matches"
+  ],
+  "reason_order": [
+    "selected_basis_changed",
+    "original_fingerprint_unavailable",
+    "capture_not_supplied",
+    "no_evidence_declared"
+  ],
+  "pointers": "RFC6901 pointer into ORIGINAL packet. Original record/array order retained; ~ escapes ~0 and / escapes ~1. Paths contain field names/indices or escaped selected_sources document key, never an echoed value. Evidence diagnostic evidence_path ends /evidence/i; its reason paths identify the relevant child field.",
+  "source_record": "basis_state unknown if original_raw_sha256 null, else matches. source_capture.capture_integrity matches if captured_text exact UTF8/hash/length validation passed, not_supplied only reference-only. original_status complete default fingerprint_supplied is DIAGNOSTIC ONLY, never inserted into returned original record. original_verified always false. Unknown original adds original_fingerprint_unavailable at /records/i/data/original_raw_sha256; reference-only also adds capture_not_supplied at /records/i/data/capture_sha256. Their source_record_id is that source; selected_source_record_id is selected_sources.get(document_id), possibly null. Source evidence rows, if supplied, are also evaluated; aggregate state uses priority. source known fingerprint does not manufacture no_evidence_declared.",
+  "evidence_rows": "Exactly one row per supplied evidence entry in original order, preserving source/document/pinned revision/raw hash and selected_sources.get(document_id) even for snapshot_evidence. Internal FK/document/revision/raw/capture mismatch refuses startup, not a diagnostic. With valid pins: selected_basis whose source_record_id differs from selected_sources[document_id] adds selected_basis_changed at /records/i/evidence/j/source_record_id. Null original raw pin adds original_fingerprint_unavailable at /records/i/evidence/j/raw_sha256. Reference-only adds capture_not_supplied at /records/i/evidence/j/capture_sha256. Reason arrays in reason_order; state stale if first condition, else unknown if null-original or no-capture, else matches. Snapshot_evidence never becomes stale merely because selected source changed.",
+  "non_source_basis": "At least one evidence row: aggregate all evidence states using basis_priority. No evidence: unknown and one no_evidence_declared reason at /records/i/evidence with source_record_id null and selected_source_record_id null. source_capture null. Do not inspect prose or supplied review state to derive basis.",
+  "basis_reasons": "One reason object per triggered reason, ordered first by original evidence index (source-own reasons before source evidence, if both), then reason_order. Each has code/path/source_record_id/selected_source_record_id, no extra fields. All triggered reasons retained even if another reason dominates state.",
+  "dependencies": "Only depends_on edges participate. Empty direct list => dependency_state not_declared and empty reasons. Otherwise inspect every transitively reachable record once: all reachable own basis_state matches => dependency_state matches; any stale/unknown reachable own basis => needs_review. Do not treat supplied rejection/status or navigation as dependency freshness. For every reachable nonmatching record, return exactly one shortest edge path from current record inclusive to that record; equal shortest paths choose lexicographically smallest tuple of exact IDs. Sort reason entries by path tuples. This is bounded to one row per reachable record, not all exponentially many paths. Each row basis_state is that destination own basis and reason_codes the unique destination basis reason codes in reason_order. A reachable record whose own basis matches but dependency is needs_review does not add a duplicate row.",
+  "notice": "basis_state != matches OR dependency_state == needs_review => basis_review_notice review_supplied_basis and exact next_review_step Review the supplied source basis and record any decision in the existing company process. Otherwise notice none and next_review_step null.",
+  "full_readback": "All admitted states remain listable and fully gettable, with complete source text/nulls/workflow steps/supplied statuses/qualifiers unchanged. Diagnostics are separate deep copies. They are not written back to records.",
+  "A_literal": "All14 own basis matches. workflow/practice dependency matches; all others not_declared. Notices none.",
+  "B_literal": "Only claim:selected-label own basis stale; workflow:source-reconciliation and practice:first-note own basis matches but dependency needs_review. Exactly those3 notices request supplied basis review; peer memory remains unchanged/unverified. All14 record payloads identical to A.",
+  "C_literal": "Original14 diagnostics as A; both new sources and both new cited claims own basis unknown with review notices; capture integrity matches for excerpt, not_supplied for reference-only; original_verified false for both."
+}
