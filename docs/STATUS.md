@@ -16,9 +16,9 @@ review kit and 3D case. The own-P&ID tutorial now gives the model/questions-to-g
 and DEXPI guides link the Native OPC binding and manual PI reconciliation steps. Reported counts, drawing images
 and recorded decisions remain the supplied examples' evidence; refreshed prose does not add plant acceptance.
 
-The [script registry](SCRIPTS.md) classifies 136 scripts: 32 tools, 12 checks, 15 support modules and 77 research
-scripts; tests are separate. Twenty-two [feature groups](FEATURES.md) register 536 distinct example files, including
-inputs, generated outputs and retained history. Shared files can appear under more than one group; feature-file
+The [script registry](SCRIPTS.md) distinguishes tools for your inputs from repository checks, support modules
+and research runners; tests are separate. The [feature reference](FEATURES.md) lists each feature and its current
+registered example files, including inputs, generated outputs and retained history. Shared files can appear under more than one group; feature-file
 references are not additional unique examples. Their evidence is bounded. A reviewed
 example does not certify every input, current implementation or engineering conclusion.
 
