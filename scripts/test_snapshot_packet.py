@@ -249,5 +249,91 @@ class OnboardingFrontdoorControls(unittest.TestCase):
             self.assertEqual(server.main(['--knowledge', 'knowledge.json', '--transport', 'streamable-http', '--port', '8123']), 0)
             service.run.assert_called_once_with(transport='streamable-http', host='127.0.0.1', port=8123, stateless_http=True, json_response=True)
 
+
+class SampleCaptureControls(unittest.TestCase):
+    def test_shared_recipe_and_stdio_capture_keep_exact_packet_identity(self):
+        import asyncio
+        from unittest.mock import AsyncMock, Mock
+        import check_snapshot_mcp as checker
+        graph = {'nodes': [{'id': 'P-1', 'label': 'fictional μ'}], 'questions': []}
+        sample = {'result': graph['nodes'][0], 'loaded_at': 'fixture'}
+        client = Mock()
+        client.__aenter__ = AsyncMock(return_value=client)
+        client.__aexit__ = AsyncMock(return_value=False)
+        Client, Parameters = Mock(return_value=client), Mock()
+        with tempfile.TemporaryDirectory() as folder:
+            folder = Path(folder)
+            with patch.object(checker.graph_export, 'build', return_value=graph) as build, \
+                 patch.object(checker, 'exercise', new=AsyncMock(return_value=sample)) as exercise, \
+                 patch.object(checker, 'run', side_effect=AssertionError('Full suite must not run')):
+                self.assertEqual(asyncio.run(checker.capture_sample(Client, Parameters, folder)), sample)
+            build.assert_called_once_with(checker.ROOT/'data/bayer_rt/process_model.json',
+                                          questions=checker.ROOT/'examples/opportunity-screen/bayer/questions.json')
+            raw = (json.dumps(graph, ensure_ascii=False, indent=1)+'\n').encode('utf-8')
+            self.assertEqual((folder/'graph.json').read_bytes(), raw)
+            exercise.assert_awaited_once_with(client, graph, hashlib.sha256(raw).hexdigest(), 'capture-stdio-only')
+            Client.assert_called_once_with(Parameters.return_value, mode='auto', read_timeout_seconds=15)
+            self.assertEqual(Parameters.call_args.kwargs['args'],
+                             ['-u', str(checker.ROOT/'scripts/serve_snapshot.py'), '--graph', str(folder/'graph.json'), '--transport', 'stdio'])
+            # The full route must enter the very same builder before its first client.
+            with patch.object(checker, 'canonical_packet', return_value=(graph, folder/'graph.json', 'digest')) as recipe, \
+                 patch.object(checker.serve_snapshot, 'create_server', side_effect=RuntimeError('after recipe')):
+                with self.assertRaisesRegex(RuntimeError, 'after recipe'):
+                    asyncio.run(checker.run(Client, Parameters, folder))
+            recipe.assert_called_once_with(folder)
+
+    def test_capture_requires_new_destination_before_sdk_and_never_replaces_a_race(self):
+        from unittest.mock import AsyncMock, Mock
+        import check_snapshot_mcp as checker
+        with tempfile.TemporaryDirectory() as folder:
+            folder = Path(folder)
+            existing = folder/'existing.json'
+            existing.write_bytes(b'keep original')
+            for target in (existing, folder, folder/'missing-parent'/'sample.json'):
+                with self.subTest(target=target), patch.object(checker, 'load_sdk') as sdk, \
+                     self.assertRaises(SystemExit) as raised:
+                    checker.main(['--capture-sample', str(target)])
+                self.assertEqual(raised.exception.code, 2)
+                sdk.assert_not_called()
+            self.assertEqual(existing.read_bytes(), b'keep original')
+            destination = folder/'raced.json'
+            async def race(*args):
+                destination.write_bytes(b'other writer')
+                return {'result': 'verified fixture'}
+            with patch.object(checker, 'load_sdk', return_value=(Mock(), Mock())), \
+                 patch.object(checker, 'capture_sample', new=AsyncMock(side_effect=race)), \
+                 patch.object(checker, 'run', side_effect=AssertionError('Full suite must not run')):
+                with self.assertRaises(FileExistsError):
+                    checker.main(['--capture-sample', str(destination)])
+            self.assertEqual(destination.read_bytes(), b'other writer')
+
+    def test_capture_writes_only_returned_payload_and_default_still_checks_sample(self):
+        from unittest.mock import AsyncMock, Mock
+        import check_snapshot_mcp as checker
+        sample = {'result': {'id': 'P-1', 'note': 'fictional μ'}, 'loaded_at': 'new', 'snapshot_sha256': 'current'}
+        with tempfile.TemporaryDirectory() as folder:
+            folder = Path(folder)
+            destination = folder/'fresh.json'
+            with patch.object(checker, 'load_sdk', return_value=(Mock(), Mock())), \
+                 patch.object(checker, 'capture_sample', new=AsyncMock(return_value=sample)) as capture, \
+                 patch.object(checker, 'run', side_effect=AssertionError('Full suite must not run')), \
+                 patch('builtins.print'):
+                self.assertEqual(checker.main(['--capture-sample', str(destination)]), 0)
+            capture.assert_awaited_once()
+            self.assertEqual(destination.read_bytes(),
+                             (json.dumps(sample, ensure_ascii=False, indent=2, allow_nan=False)+'\n').encode('utf-8'))
+            committed = folder/'examples/internal-mcp/sample_asset.json'
+            committed.parent.mkdir(parents=True)
+            committed.write_text(json.dumps(dict(sample, loaded_at='old')), encoding='utf-8')
+            with patch.object(checker, 'ROOT', folder), \
+                 patch.object(checker, 'load_sdk', return_value=(Mock(), Mock())), \
+                 patch.object(checker, 'capture_sample', side_effect=AssertionError('Capture must be explicit')), \
+                 patch.object(checker, 'run', new=AsyncMock(return_value=sample)) as full, patch('builtins.print'):
+                self.assertEqual(checker.main([]), 0)
+                full.assert_awaited_once()
+                committed.write_text(json.dumps(dict(sample, snapshot_sha256='stale')), encoding='utf-8')
+                with self.assertRaises(AssertionError):
+                    checker.main([])
+
 if __name__ == '__main__':
     unittest.main()

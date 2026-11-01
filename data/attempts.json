@@ -4567,6 +4567,27 @@
         "scripts/test_checkout_contracts.py",
         ".gitattributes"
       ]
+    },
+    {
+      "id": "A298",
+      "function": "intake_and_reuse",
+      "date": "2026-11-01",
+      "change": "Recapture the actual selected-graph MCP sample through an explicit SDK stdio path after a question-policy change invalidated its whole-graph fingerprint.",
+      "hypothesis": "An unchanged asset payload can still have a stale sample fingerprint when its selected graph questions change; retain strict comparison and capture the actual response instead of editing the hash.",
+      "evidence": "Review CI at c2bbe0 fails both jobs: 70 of 71 test programs pass, the saved benchmark step is skipped, and the MCP job prints 27 PASS lines before the strict sample assertion. The missed dependency is the hash of the entire graph, not a changed P-1 asset. Independent prospective and actual receiving accepts one real SDK stdio session with 15 tool calls, one tool listing and one resource read. Only snapshot_sha256 and loaded_at change; complete P-1/source/status fields remain exact. The actual canonical graph bytes are retained and independently hashed. The unfiltered snapshot module passes 19 tests and checkout passes 3, with no skips; all 3235 then-current public files remain raw-exact.",
+      "runs": "One approved SDK 2.3.0 auto stdio capture with six expected tool errors; 19 snapshot tests and 3 checkout tests. No repeated capture, model/provider/source fetch, full SDK suite or failed-CI rerun.",
+      "verdict": "kept",
+      "why": "N112 closes the stale sample scalar dependency with a maintainable explicit capture command, two typed-leaf allowance, provenance and narrow LF checkout. Historical C2 failure remains failed; full repository and successor exact-head CI are separate gates. This is not source authority, company-client acceptance or an engineering result.",
+      "source": [
+        "docs/JOURNAL.md#146-recapture-the-whole-graph-mcp-sample-after-a-source-policy-change",
+        "examples/internal-mcp/README.md",
+        "examples/internal-mcp/sample_asset.json",
+        "examples/internal-mcp/sample_provenance.json",
+        "scripts/check_snapshot_mcp.py",
+        "scripts/test_snapshot_packet.py",
+        "scripts/test_checkout_contracts.py",
+        ".gitattributes"
+      ]
     }
   ],
   "not_tried": [
@@ -5837,6 +5858,23 @@
         "examples/opportunity-screen/valve-feedback-basis/history/PROVENANCE.json",
         "data/questions.json",
         "scripts/test_question_engine.py",
+        "scripts/test_checkout_contracts.py",
+        ".gitattributes"
+      ]
+    },
+    {
+      "id": "N112",
+      "function": "intake_and_reuse",
+      "status": "done",
+      "idea": "Refresh a committed MCP example from the actual selected graph when a source-policy change invalidates its whole-graph fingerprint without changing the returned asset.",
+      "why_not_yet": "Completed A298 after the failed C2 review CI exposed the missed scalar dependency. One real SDK stdio capture preserves the full response except its measured graph fingerprint and local load time; strict default checking remains. The 19-test snapshot module and 3 checkout tests pass. Full integration and exact-head CI remain separate; no company/client, source-authentication or operating acceptance follows.",
+      "source": [
+        "docs/JOURNAL.md#146-recapture-the-whole-graph-mcp-sample-after-a-source-policy-change",
+        "examples/internal-mcp/README.md",
+        "examples/internal-mcp/sample_asset.json",
+        "examples/internal-mcp/sample_provenance.json",
+        "scripts/check_snapshot_mcp.py",
+        "scripts/test_snapshot_packet.py",
         "scripts/test_checkout_contracts.py",
         ".gitattributes"
       ]

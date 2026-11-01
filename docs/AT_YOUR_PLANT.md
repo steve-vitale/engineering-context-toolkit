@@ -130,12 +130,15 @@ test that claim; count both effort and remaining errors.
 ## 5. Safety and security in a production environment
 
 **Safety**
-- **The drawing of record doesn't change.**
+- **Preserve the source and route proposed corrections through document control.**
   - For processes covered by OSHA PSM, P&IDs are part of process safety information; applicable changes require
     the site's update and change procedures. See [29 CFR 1910.119(d)(3) and (l)](https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.119).
-  - A twin built from them is a *derived* view, not the record. Mark generated graphics and asset models as
-    derived/not for construction.
-  - When a drawing changes through MOC, rebuild or re-check the twin. Never update the twin in place of the drawing.
+  - Drawing-derived models and generated drafts preserve a separate revision basis. Mark draft graphics and
+    asset models as derived/not for construction. Findings can support a proposed source correction; local model
+    edits do not automatically release or overwrite the source document.
+  - When a source changes, review its effect on the model, related answers and exports. For drawings, follow the
+    issued revision; for description/model work, retain the corresponding source and model history. The
+    [maintenance reference](FROM_DEMO_TO_A_REAL_SITE.md#28-keep-the-twin-true-after-go-live) explains this return path.
 - **Monitoring, not control.**
   - These outputs are for visualization and analytics.
   - Operator control graphics follow your HMI standard (e.g. ISA-101) and alarm philosophy (ISA-18.2), and go through

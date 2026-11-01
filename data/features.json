@@ -718,7 +718,8 @@
    ],
    "guide": "examples/internal-mcp/README.md",
    "example_outputs": [
-    "examples/internal-mcp/sample_asset.json"
+    "examples/internal-mcp/sample_asset.json",
+    "examples/internal-mcp/sample_provenance.json"
    ],
    "tests": [
     "scripts/test_snapshot_packet.py",

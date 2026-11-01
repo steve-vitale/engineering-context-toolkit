@@ -1,10 +1,16 @@
 # A real unit from the public record: the Bayer CropScience residue treater
 
-**Status, 2026-10-29:** built: a sourced process model checked against the report's own drawing (Figure 10), a
+**Public-source case study.** Learn how to turn a process description, drawing and trend into a sourced model,
+draft P&ID and checked replay. Apply the method to your approved plant records through the
+[description/model tutorial](../examples/from-description/README.md), or start with the
+[own-P&ID intake](../examples/own-drawing/README.md) when your drawing is the primary input. The Bayer model,
+timeline, replay and screens below are the assembled example; the linked tool routes accept your inputs.
+
+**Case status, 2026-10-29:** built: a sourced process model checked against the report's own drawing (Figure 10), a
 generated P&ID of the unit checked against the same figure, and a checked digitization of the published trend
 (Figure 11), replayed through the model's interlocks and limits and checked against the report's account of the
 evening, and shown on a generated overview screen of the unit (proof of concept) with the report's timeline as a
-walk-through beside it. The steps planned for this unit are done; what comes next is a decision, not a build.
+walk-through beside it. These are the completed steps for this public case, with the source and review limits below.
 Why this unit: [REAL_UNIT_SELECTION.md](REAL_UNIT_SELECTION.md).
 
 On August 28, 2008, the residue treater in Bayer CropScience's methomyl unit in Institute, West Virginia, ruptured
@@ -16,7 +22,7 @@ public report. It shows what the published data showed and when. It does not jud
 
 ## Why this unit belongs in this project
 
-This project builds operator screens from a process model and checks the model against what the plant publishes.
+This case builds operator screens from a process model and checks the model against the published source record.
 Among the report's findings, several are about exactly that (it found many other causes too):
 
 - **The unit was restarted on a new control system that operators hadn't been trained on.** "Operations personnel

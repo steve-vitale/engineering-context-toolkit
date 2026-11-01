@@ -20231,6 +20231,102 @@
     "Generic Z labels/candidate flags are not installed function, source authority, diagnosis, testing permission or automatic task completion.",
     "Full local156/checkout3 evidence and earlier focused originals remain scoped; full repository and exact-head CI are separate gates."
    ]
+  },
+  {
+   "feature": "snapshot-mcp",
+   "date": "2026-11-01",
+   "reviewer": "Independent coding-agent prospective/static/capture and saved-test receiving; integrated by the capture/test operator with explicit inherited evidence",
+   "verdict": "pass",
+   "scope": "Two registered files are fresh: actual P-1 application response plus its public provenance. One SDK stdio session makes 15 tool calls, one tool listing and one resource read. Only the measured whole-graph fingerprint and local load time differ from the stale sample; all other wrapper/P-1 fields and text/structured forms agree with the independent literal key. The 19 snapshot and 3 checkout tests pass with no skips. This is not a full protocol rerun or a replacement for failed C2 CI.",
+   "files": {
+    "examples/internal-mcp/sample_asset.json": "228df64435ca7c96dc82cdf3db8fbf684b2ed054e961d26983a32567a5b50b13",
+    "examples/internal-mcp/sample_provenance.json": "ef484d2408643dba8314cb684ae0aeaade57141962dd59cdb540f994a910e392"
+   },
+   "fresh_registered_outputs": {
+    "examples/internal-mcp/sample_asset.json": "228df64435ca7c96dc82cdf3db8fbf684b2ed054e961d26983a32567a5b50b13",
+    "examples/internal-mcp/sample_provenance.json": "ef484d2408643dba8314cb684ae0aeaade57141962dd59cdb540f994a910e392"
+   },
+   "inherited_registered_outputs": {},
+   "supporting_files": {
+    "scripts/check_snapshot_mcp.py": "a2247439da3d4b62dd47bb39c0f5f563dada0aba8b203c5618aa10be9ec76d67",
+    "scripts/test_snapshot_packet.py": "80f847fceee2eef45970ca18ee87eb62a5735a434d7352e20f067c0d0941bce9",
+    "scripts/test_checkout_contracts.py": "409ab6aa458897da162faf285324650c71ee146880e7be8776995db5b3cbfdc2",
+    ".gitattributes": "11fa58243d7e84a0355b56ca538e700c8ef4ced7d21d77418ca7a3cfa9f382f9",
+    "scripts/graph_export.py": "502ef69cdfa387cc99082b026964e45bb7ed409bb4674d4f6e4fd41a042e182d",
+    "scripts/serve_snapshot.py": "d2db1d659a718e66cee71347e40f9508f491bbe49dc3a43b26de1a1e7c704b08",
+    "scripts/context_register.py": "8dac788bf2b7a9c734ce1520110bdc277e77b88efd38a4347739ed09e1dbeabc",
+    "scripts/knowledge_snapshot.py": "6b88d2508a514e60c80a70d885c5e7fa3ff8068770dbe2ede053feacf0f906bb",
+    "scripts/test_knowledge_snapshot.py": "da623b7d6ed061ec9b8c6a79999198d5c5d272316f4bd16915bd489eceb190ea",
+    "scripts/output_paths.py": "16ace3cf89be6baffcac1be804ea4917c9db10caffe2b58c11ee0b9acd4d2939",
+    "scripts/graph_review_records.py": "404cffabf1028eff9f05d3ad76a93c86f4c699ba7a508b1626253de0951ac4aa",
+    "requirements-mcp.txt": "5d6679369dad83b8981b6593e12c4e2f6567d7d5cf258c1ac7186fe17e7ca674",
+    "examples/internal-mcp/README.md": "ca531c890f2e8220142612b6879e3f8052ecb3945b93b6a4135612db2db904c1",
+    "data/bayer_rt/process_model.json": "171fd1d3c1b7ac7fa2a69b57197317a48978d545d61e4a4d8fec714225782928",
+    "examples/opportunity-screen/bayer/questions.json": "3845e6c42623730f4f027083899bf09aac9c1b8a28adcc848e67f587ceafdeaa"
+   },
+   "private_proofs_sha256": {
+    "prospective_contract_freeze": "6cbb8ab0cf9cb35d6bcfa2a19fe9abf51f300d1b8155e03648d16f04b770f098",
+    "independent_static_acceptance": "62099ccd6a7876cce059a399b0b684a28f63c71bf39485e79b19f83d387751ab",
+    "actual_stdio_capture": "4c1b23ee27b927f827f8a7cfbc1680688151111d4b01ba76d0fddca160e3d40c",
+    "independent_capture_receiving": "05f5bc7d1c82b137bb249326f80f3851807da9a6376b6d4d11c066c5b1e7489a",
+    "snapshot19_checkout3_actual": "d16d38d93a1b1fe8fb6561579be29c0bd7c539f55839c0e0bc370bf4e550b558",
+    "failed_c2_ci_acceptance": "fc7b55cdbbcbc76a6948f077a74694c5dde52ba9bcdc0781af855f96673c945d",
+    "independent_snapshot19_checkout3_receiving": "7934de2c9272395e73495c931c1f43eed814a43d640b45ab7a11b4f763986c2c"
+   },
+   "limits": [
+    "The complete graph fingerprint covers questions as well as assets; it is not source authority or current installed truth.",
+    "Snapshot load time is not source acquisition time. No source fetch, company/OT connection, human approval or measured benefit.",
+    "Source-capture and test operator authored this integration; independent acceptance is supplied by the separate receipts."
+   ]
+  },
+  {
+   "feature": "engineering-onboarding",
+   "date": "2026-11-01",
+   "reviewer": "Independent coding-agent prospective/static/capture and saved-test receiving; integrated by the capture/test operator with explicit inherited evidence",
+   "verdict": "pass",
+   "scope": "All three registered A/B/C readbacks inherit exact prior bytes. This renewal records the changed shared checker and its explicit stdio-only capture route; the default full-check path and knowledge exercise are preserved by static review. Snapshot19 and checkout3 pass, but no new knowledge-reader, full SDK, company-client or onboarding-benefit run is claimed. Failed C2 CI remains failed; successor exact-head CI is separate.",
+   "files": {
+    "examples/engineering-onboarding/actual/A-overview.json": "13280a7162e07d304573ab9627b2ca09b21d7bc9bf602b1c4678c73e89c12fc2",
+    "examples/engineering-onboarding/actual/B-workflow.json": "84a141c78f301901876b9be092b62a4095405ba9e3e2cd80f3848726d56b1270",
+    "examples/engineering-onboarding/actual/C-sources.json": "a3daa03e4681bf397f3165ed91fb928ebed80df6fee63f36873711ea3ee26aa5"
+   },
+   "fresh_registered_outputs": {},
+   "inherited_registered_outputs": {
+    "examples/engineering-onboarding/actual/A-overview.json": "13280a7162e07d304573ab9627b2ca09b21d7bc9bf602b1c4678c73e89c12fc2",
+    "examples/engineering-onboarding/actual/B-workflow.json": "84a141c78f301901876b9be092b62a4095405ba9e3e2cd80f3848726d56b1270",
+    "examples/engineering-onboarding/actual/C-sources.json": "a3daa03e4681bf397f3165ed91fb928ebed80df6fee63f36873711ea3ee26aa5"
+   },
+   "supporting_files": {
+    "scripts/check_snapshot_mcp.py": "a2247439da3d4b62dd47bb39c0f5f563dada0aba8b203c5618aa10be9ec76d67",
+    "scripts/test_snapshot_packet.py": "80f847fceee2eef45970ca18ee87eb62a5735a434d7352e20f067c0d0941bce9",
+    "scripts/test_checkout_contracts.py": "409ab6aa458897da162faf285324650c71ee146880e7be8776995db5b3cbfdc2",
+    ".gitattributes": "11fa58243d7e84a0355b56ca538e700c8ef4ced7d21d77418ca7a3cfa9f382f9",
+    "scripts/graph_export.py": "502ef69cdfa387cc99082b026964e45bb7ed409bb4674d4f6e4fd41a042e182d",
+    "scripts/serve_snapshot.py": "d2db1d659a718e66cee71347e40f9508f491bbe49dc3a43b26de1a1e7c704b08",
+    "scripts/context_register.py": "8dac788bf2b7a9c734ce1520110bdc277e77b88efd38a4347739ed09e1dbeabc",
+    "scripts/knowledge_snapshot.py": "6b88d2508a514e60c80a70d885c5e7fa3ff8068770dbe2ede053feacf0f906bb",
+    "scripts/test_knowledge_snapshot.py": "da623b7d6ed061ec9b8c6a79999198d5c5d272316f4bd16915bd489eceb190ea",
+    "scripts/output_paths.py": "16ace3cf89be6baffcac1be804ea4917c9db10caffe2b58c11ee0b9acd4d2939",
+    "scripts/graph_review_records.py": "404cffabf1028eff9f05d3ad76a93c86f4c699ba7a508b1626253de0951ac4aa",
+    "requirements-mcp.txt": "5d6679369dad83b8981b6593e12c4e2f6567d7d5cf258c1ac7186fe17e7ca674",
+    "examples/internal-mcp/README.md": "ca531c890f2e8220142612b6879e3f8052ecb3945b93b6a4135612db2db904c1",
+    "data/bayer_rt/process_model.json": "171fd1d3c1b7ac7fa2a69b57197317a48978d545d61e4a4d8fec714225782928",
+    "examples/opportunity-screen/bayer/questions.json": "3845e6c42623730f4f027083899bf09aac9c1b8a28adcc848e67f587ceafdeaa"
+   },
+   "private_proofs_sha256": {
+    "prospective_contract_freeze": "6cbb8ab0cf9cb35d6bcfa2a19fe9abf51f300d1b8155e03648d16f04b770f098",
+    "independent_static_acceptance": "62099ccd6a7876cce059a399b0b684a28f63c71bf39485e79b19f83d387751ab",
+    "actual_stdio_capture": "4c1b23ee27b927f827f8a7cfbc1680688151111d4b01ba76d0fddca160e3d40c",
+    "independent_capture_receiving": "05f5bc7d1c82b137bb249326f80f3851807da9a6376b6d4d11c066c5b1e7489a",
+    "snapshot19_checkout3_actual": "d16d38d93a1b1fe8fb6561579be29c0bd7c539f55839c0e0bc370bf4e550b558",
+    "failed_c2_ci_acceptance": "fc7b55cdbbcbc76a6948f077a74694c5dde52ba9bcdc0781af855f96673c945d",
+    "independent_snapshot19_checkout3_receiving": "7934de2c9272395e73495c931c1f43eed814a43d640b45ab7a11b4f763986c2c"
+   },
+   "limits": [
+    "The complete graph fingerprint covers questions as well as assets; it is not source authority or current installed truth.",
+    "Snapshot load time is not source acquisition time. No source fetch, company/OT connection, human approval or measured benefit.",
+    "Source-capture and test operator authored this integration; independent acceptance is supplied by the separate receipts."
+   ]
   }
  ]
 }

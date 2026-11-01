@@ -11,8 +11,11 @@ pins the backup and current model, source columns and units. Historical names su
 such as `PT-107` read the same recorded channel; this is not a company tag resolver or an upgrade of the old
 drawing's topology. `SC-212` remains deliberately unfed. Running the replay without that flag adds no old names.
 
-This runs the whole twin on your computer: Ignition, the Tennessee Eastman plant replayed from recorded data, and the
-extracted drawings.
+This runs the assembled public case on your computer: Ignition, Tennessee Eastman recorded-data replay and the
+extracted OPEN100 drawings. Use it to inspect the model-to-display architecture and the difference between mapped
+and missing data. To build the corresponding structure from your plant records, follow the
+[own-P&ID tools and tutorial](../examples/own-drawing/README.md), then supply your reviewed mappings and target
+configuration; restoring this backup loads the public example.
 You don't need Python, settings or keys. It's an extra option. If you'd rather not install Docker, the
 [15-minute quickstart](../docs/IGNITION_QUICKSTART.md) does the same thing with an Ignition you install yourself.
 

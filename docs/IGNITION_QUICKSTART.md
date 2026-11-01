@@ -36,8 +36,11 @@ build only. Tested on Ignition 8.3.10 only.
 | [`scripts/ignition/te_sim_server.py`](../scripts/ignition/te_sim_server.py) | Small OPC UA server replaying the open TE simulation data, read-only, standing in for a plant's PLC/OPC server |
 | [`scripts/fetch_te_data.py`](../scripts/fetch_te_data.py) | Downloads the two TE runs it replays (normal operation and fault 6), with checksums |
 
-`out/ignition/te_tags.json` is a different, older file: the generic generator export, not wired to the replay. Use
-`twin_provider.json`.
+**Choose files for the job.** For this replay tutorial, use the matched `twin_provider.json` and project from
+the same case build. `out/ignition/te_tags.json` is the generic TE-model export; it is not wired to this replay.
+For your plant, import your reviewed model's generated tag file instead (the drawing intake writes
+`ignition/tags.json`), supply the reviewed connections and author the displays you need. Follow the
+[own-model import steps](../examples/own-drawing/README.md#5-into-ignition), then verify the receiving system.
 
 ## Steps
 

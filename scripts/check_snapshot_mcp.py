@@ -2,7 +2,8 @@
 
 Install requirements-mcp.txt separately in an approved environment. Uses public fixtures, disposable files,
 stdio and one temporary loopback HTTP listener; never contacts a company service or model API.
-The committed sample is checked against the actual P-1 response; no output is published by this checker.
+The default checks the committed sample against the actual P-1 response without publishing output.
+Explicit --capture-sample writes a fresh response file after only the stdio exercise, for maintainer review.
 """
 import argparse
 import asyncio
@@ -349,11 +350,28 @@ async def check_onboarding(Client, StdioServerParameters, folder):
         else: raise AssertionError('SDK limit was ignored')
     print('PASS onboarding local SDK controls; no company, tenant, ACL, workflow execution or human acceptance claimed.', flush=True)
 
-async def run(Client, StdioServerParameters, folder):
+def canonical_packet(folder):
+    """Materialize the same current Bayer graph for full checks and explicit capture."""
     graph=graph_export.build(ROOT/'data/bayer_rt/process_model.json',questions=ROOT/'examples/opportunity-screen/bayer/questions.json')
     packet=folder/'graph.json'
     packet.write_text(json.dumps(graph,ensure_ascii=False,indent=1)+'\n',encoding='utf-8',newline='\n')
     digest=hashlib.sha256(packet.read_bytes()).hexdigest()
+    return graph,packet,digest
+
+
+async def capture_sample(Client, StdioServerParameters, folder):
+    graph,packet,digest=canonical_packet(folder)
+    command=[sys.executable,'-u',str(ROOT/'scripts/serve_snapshot.py'),'--graph',str(packet),'--transport','stdio']
+    params=StdioServerParameters(command=sys.executable,args=command[1:],
+                                 env=dict(os.environ,NO_PROXY='127.0.0.1,localhost'))
+    async with Client(params,mode='auto',read_timeout_seconds=15) as client:
+        sample=await exercise(client,graph,digest,'capture-stdio-only')
+    assert hashlib.sha256(packet.read_bytes()).hexdigest()==digest
+    return sample
+
+
+async def run(Client, StdioServerParameters, folder):
+    graph,packet,digest=canonical_packet(folder)
     sample=None
     for mode in ('auto','legacy'):
         server=serve_snapshot.create_server(packet)
@@ -400,15 +418,37 @@ async def run(Client, StdioServerParameters, folder):
     return sample
 
 
+def load_sdk():
+    from mcp import Client
+    from mcp.client.stdio import StdioServerParameters
+    return Client,StdioServerParameters
+
+
 def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.parse_args(argv)
+    parser.add_argument('--capture-sample',type=Path,metavar='NEW_JSON_PATH',
+                        help='Capture a fresh P-1 response using only the SDK stdio exercise; refuse existing files')
+    args=parser.parse_args(argv)
+    destination=args.capture_sample
+    if destination is not None:
+        # Existing files, directories, hard links and dangling symlinks are never capture targets.
+        if os.path.lexists(destination):
+            parser.error('--capture-sample requires a new destination; existing paths are not overwritten')
+        if not destination.parent.is_dir():
+            parser.error('--capture-sample requires an existing parent directory')
     try:
-        from mcp import Client
-        from mcp.client.stdio import StdioServerParameters
+        Client,StdioServerParameters=load_sdk()
     except ImportError:
         parser.error('Install requirements-mcp.txt separately in the approved developer environment')
     with tempfile.TemporaryDirectory(prefix='snapshot-mcp-check-') as folder:
+        if destination is not None:
+            sample=asyncio.run(capture_sample(Client,StdioServerParameters,Path(folder)))
+            raw=(json.dumps(sample,ensure_ascii=False,indent=2,allow_nan=False)+'\n').encode('utf-8')
+            # Recheck atomically at publication if another process created the destination meanwhile.
+            with destination.open('xb') as output:
+                output.write(raw)
+            print('PASS stdio-only sample capture; full protocol suite and company/Copilot/OT acceptance not checked.',flush=True)
+            return 0
         sample=asyncio.run(run(Client,StdioServerParameters,Path(folder)))
     committed=ROOT/'examples/internal-mcp/sample_asset.json'
     prior=json.loads(committed.read_text(encoding='utf-8'))
