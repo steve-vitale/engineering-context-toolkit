@@ -1,5 +1,9 @@
 # Operator screens: what a first pass can infer
 
+**Case-study design and evaluation.** These screens belong to the Tennessee Eastman demonstration. Reuse
+the design ideas with your reviewed model and operating evidence; your application needs its own authored
+displays and acceptance. Start with the [own-model route](../examples/own-drawing/README.md#5-into-ignition).
+
 The first Ignition screens were the drawing with a value label on each instrument: correct, verified, and close to
 useless for running a plant. A screen like that shows every number with the same weight and says nothing about
 whether a number is good. These screens are a first pass at what an operator actually needs, generated from the

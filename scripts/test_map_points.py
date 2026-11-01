@@ -418,5 +418,139 @@ class MappingTests(unittest.TestCase):
         self.assertIn('logical rows', report['row_locator_kind'])
 
 
+class MappingRecordDirectoryTests(unittest.TestCase):
+    """Synthetic private-site inputs; receipt placement, not native OPC acceptance."""
+
+    def create_case(self):
+        import shutil
+        tmp = tempfile.TemporaryDirectory(prefix='opc-records-')
+        self.addCleanup(tmp.cleanup)
+        home = Path(tmp.name)
+        checkout = home / 'toolkit'
+        (checkout / 'scripts').mkdir(parents=True)
+        source = Path(map_points.__file__).resolve().parent
+        for name in ('map_points.py', 'output_paths.py'):
+            shutil.copyfile(source / name, checkout / 'scripts' / name)
+        site = home / 'private-site'
+        site.mkdir()
+        model = site / 'plant_model.json'
+        model.write_text(json.dumps({'instruments': [instrument('I1', 'FT-1')]}, indent=2) + '\n',
+                         encoding='utf-8', newline='\n')
+        csv_path = site / 'io.csv'
+        csv_path.write_bytes(b'tag,server,base_path,point\nFT-1,SYNTHETIC-OPC,ns=1;s=SYNTHETIC,PV\n')
+        return home, checkout, model, csv_path
+
+    def invoke(self, checkout, model, csv_path, *args):
+        import os
+        import subprocess
+        env = dict(os.environ, PYTHONUTF8='1', PYTHONDONTWRITEBYTECODE='1')
+        return subprocess.run([sys.executable, '-B', 'scripts/map_points.py', str(model), str(csv_path),
+                               '--json', *map(str, args)], cwd=checkout, env=env, capture_output=True)
+
+    def snapshot(self, root):
+        return ({p.relative_to(root).as_posix(): p.read_bytes() for p in root.rglob('*') if p.is_file()},
+                {p.relative_to(root).as_posix() for p in root.rglob('*') if p.is_dir()})
+
+    def stem(self, model, csv_path):
+        return f'{model.parent.parent.name}-{model.parent.name}-{csv_path.stem}'
+
+    def test_explicit_private_absolute_and_relative_directories(self):
+        for relative in (False, True):
+            with self.subTest(relative=relative):
+                home, checkout, model, csv_path = self.create_case()
+                original_csv = csv_path.read_bytes()
+                original_checkout = self.snapshot(checkout)
+                selected = home / 'private records Î© `' / 'version-1'
+                argument = Path('..') / selected.relative_to(home) if relative else selected
+                proc = self.invoke(checkout, model, csv_path, '--record-dir', argument)
+                self.assertEqual(proc.returncode, 0, proc.stderr)
+                self.assertTrue(json.loads(proc.stdout)['valid'])
+                self.assertEqual(self.snapshot(checkout), original_checkout)
+                self.assertEqual(csv_path.read_bytes(), original_csv)
+                files = {p.name for p in selected.iterdir()}
+                stem = self.stem(model, csv_path)
+                self.assertEqual(files, {stem + '.json', stem + '.md'})
+                receipt = json.loads((selected / (stem + '.json')).read_bytes())
+                self.assertEqual(receipt, json.loads(proc.stdout))
+                point = json.loads(model.read_bytes())['instruments'][0]['data_point']
+                self.assertEqual((point['server'], point['base_path'], point['point']),
+                                 ('SYNTHETIC-OPC', 'ns=1;s=SYNTHETIC', 'PV'))
+
+    def test_selected_directory_dry_run_writes_nothing(self):
+        home, checkout, model, csv_path = self.create_case()
+        selected = home / 'not-created'
+        before = self.snapshot(home)
+        proc = self.invoke(checkout, model, csv_path, '--record-dir', selected, '--dry-run')
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        self.assertTrue(json.loads(proc.stdout)['dry_run'])
+        self.assertEqual(self.snapshot(home), before)
+
+    def test_invalid_mapping_does_not_create_selected_or_default_receipts(self):
+        home, checkout, model, csv_path = self.create_case()
+        csv_path.write_bytes(csv_path.read_bytes() + b'FT-1,SYNTHETIC-OPC,ns=1;s=SYNTHETIC,OTHER\n')
+        selected = home / 'not-created'
+        before = self.snapshot(home)
+        proc = self.invoke(checkout, model, csv_path, '--record-dir', selected)
+        self.assertEqual(proc.returncode, 1, proc.stderr)
+        self.assertFalse(json.loads(proc.stdout)['valid'])
+        self.assertEqual(self.snapshot(home), before)
+
+    def test_invalid_selected_targets_refuse_before_any_writes(self):
+        for kind in ('directory-is-file', 'ancestor-is-file', 'receipt-is-directory'):
+            with self.subTest(kind=kind):
+                home, checkout, model, csv_path = self.create_case()
+                selected = home / 'records'
+                if kind == 'directory-is-file':
+                    selected.write_bytes(b'KEEP DIRECTORY SENTINEL')
+                elif kind == 'ancestor-is-file':
+                    selected.write_bytes(b'KEEP ANCESTOR SENTINEL')
+                    selected = selected / 'child'
+                else:
+                    (selected / (self.stem(model, csv_path) + '.json')).mkdir(parents=True)
+                before = self.snapshot(home)
+                proc = self.invoke(checkout, model, csv_path, '--record-dir', selected)
+                self.assertEqual(proc.returncode, 2, proc.stderr)
+                self.assertEqual(self.snapshot(home), before)
+
+    def test_selected_receipt_input_and_sibling_aliases_refuse(self):
+        import os
+        for kind in ('io', 'model', 'siblings'):
+            with self.subTest(kind=kind):
+                home, checkout, model, csv_path = self.create_case()
+                selected = home / 'records'
+                selected.mkdir()
+                stem = self.stem(model, csv_path)
+                md, js = selected / (stem + '.md'), selected / (stem + '.json')
+                try:
+                    if kind == 'siblings':
+                        md.write_bytes(b'KEEP SHARED SENTINEL')
+                        os.link(md, js)
+                    else:
+                        os.link(csv_path if kind == 'io' else model, md)
+                except OSError as exc:
+                    self.skipTest(f'Hardlink controls unavailable: {exc}')
+                before = self.snapshot(home)
+                proc = self.invoke(checkout, model, csv_path, '--record-dir', selected)
+                self.assertEqual(proc.returncode, 2, proc.stderr)
+                self.assertEqual(self.snapshot(home), before)
+
+    def test_omitted_and_explicit_legacy_default_preserve_complete_bytes(self):
+        home, checkout, model, csv_path = self.create_case()
+        original = model.read_bytes()
+        first = self.invoke(checkout, model, csv_path)
+        self.assertEqual(first.returncode, 0, first.stderr)
+        model_after = model.read_bytes()
+        selected = checkout / 'out/mapping'
+        receipts = {p.name: p.read_bytes() for p in selected.iterdir()}
+        self.assertEqual(len(receipts), 2)
+        model.write_bytes(original)
+        second = self.invoke(checkout, model, csv_path, '--record-dir', selected)
+        self.assertEqual(second.returncode, 0, second.stderr)
+        self.assertEqual(second.stdout, first.stdout)
+        self.assertEqual(model.read_bytes(), model_after)
+        self.assertEqual({p.name: p.read_bytes() for p in selected.iterdir()}, receipts)
+
+
+
 if __name__ == '__main__':
     unittest.main()

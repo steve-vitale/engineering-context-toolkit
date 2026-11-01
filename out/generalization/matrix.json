@@ -1,12 +1,14 @@
 {
  "about": "Generalization matrix written by scripts/corpus_matrix.py; rendered as docs/GENERALIZATION.md.",
- "ran_at": "2026-11-01 06:17 UTC",
- "seconds": 1643.6,
+ "ran_at": "2026-11-01 06:53 UTC",
+ "seconds": 1645.5,
  "rows_run_this_time": [
-  5
+  3,
+  6
  ],
  "inputs_run_this_time": [
-  "bayer-model"
+  "own-drawing-extraction",
+  "te-braatz-runs"
  ],
  "tracer_pass_f1": 0.88,
  "pipe_pass_f1": 0.88,
@@ -4968,8 +4970,8 @@
      "agrees": true
     }
    ],
-   "seconds": 0.5,
-   "ran_at": "2026-11-01 03:30 UTC",
+   "seconds": 0.8,
+   "ran_at": "2026-11-01 06:53 UTC",
    "tool_files": {
     "scripts/build_twin.py": "sha256:8e9a5e26b9938a8a",
     "scripts/confidence.py": "sha256:0fc9948199d89edf",
@@ -5007,7 +5009,7 @@
       "exists": true,
       "directory": false,
       "files": {
-       "examples/own-drawing/README.md": "sha256:aac51acdf39fbe41894ec97c754b891a474b4feaf6898ca0c9c6ac067e8c1604"
+       "examples/own-drawing/README.md": "sha256:253d953f859b6f1c9697fa5214e5e674451f53e2c840dab89ca48c5a8ab15033"
       }
      },
      {
@@ -8838,7 +8840,7 @@
    "published": [
     {
      "file": "docs/OPERATOR_SCREENS.md",
-     "line": 60,
+     "line": 64,
      "says": "17 of 21 flagged on 52 channels; misses 3, 9, 15, 19",
      "ours": "14 of 21 flagged on XMEAS 1-22; misses 3, 4, 9, 11, 14, 15, 19",
      "agrees": false
@@ -8851,8 +8853,8 @@
      "agrees": true
     }
    ],
-   "seconds": 2.7,
-   "ran_at": "2026-11-01 01:42 UTC",
+   "seconds": 4.3,
+   "ran_at": "2026-11-01 06:53 UTC",
    "tool_files": {
     "scripts/csv_normal_bands.py": "sha256:88baa8aa94fd2900",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf"
@@ -8925,7 +8927,7 @@
       "exists": true,
       "directory": false,
       "files": {
-       "docs/OPERATOR_SCREENS.md": "sha256:bd4ff463f00eb241efdf2ab4ff80df3ddd33d5804f666c9659e730c063a4e191"
+       "docs/OPERATOR_SCREENS.md": "sha256:add29e32d726af1049af62c093b26a83463b6e36da3eab56a1ed5a0b6587b299"
       }
      },
      {

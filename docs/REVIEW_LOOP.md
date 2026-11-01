@@ -79,8 +79,8 @@ python scripts/generate.py                                  # or: generate.py <t
   a new decision. Controllers/manual valves/relief/unplaced records are not newly editable collections here.
 - **Decisions are written onto each item** as `ops_review`: status, reviewer, date, notes, screen and alarm choices.
   Each correction keeps the old value in the item's history. The model file is updated in place, so the git diff is
-  exactly the review. A dated change record goes to `out/review/`; `Record:` identifies the selected JSON/Markdown
-  pair. Different results on the same date get a fingerprint suffix. Earlier records stay intact; identical
+  exactly the review. A dated change record goes to `--record-dir` when supplied, otherwise the legacy
+  `out/review/` default; `Record:` identifies the selected JSON/Markdown pair. Different results on the same date get a fingerprint suffix. Earlier records stay intact; identical
   replay reuses its own record. These local checks do not provide filesystem locking or concurrent publication.
 - **Re-applying the same sheet changes nothing.** The regenerated sheet prints earlier decisions back into the
   `OPS_` columns, so a reviewer can stop and resume.
@@ -142,7 +142,10 @@ shows the exact TE companion correction and its limits. Retain actual signal add
 - `base_path`: the OPC UA namespace and prefix (`nsu=<uri>;s=<prefix>`);
 - `point`: the node under it.
 
-A real site exports this from its control-system or historian database. **Work on a private copy, back it up and preview with `--dry-run` before applying.** Default mapping is a partial update: unrelated mappings remain. The preview includes complete before/after mapping snapshots and every added, changed or removed mapping; `--json` selects machine-readable output. `--sheets` limits eligible targets and replacement scope, but does not resolve globally ambiguous tags. A resolved out-of-scope row rejects the update.
+This OPC mapper accepts extracted-twin instrument IDs. Native process models from descriptions or DEXPI need
+separately reviewed target-field authoring/configuration; this command does not supply a universal Native adapter.
+A real site supplies the I/O list from its control-system or historian records. **Work on a private copy, back it
+up and preview with `--dry-run` before applying.** Default mapping is a partial update: unrelated mappings remain. The preview includes complete before/after mapping snapshots and every added, changed or removed mapping; `--json` selects machine-readable output. `--sheets` limits eligible targets and replacement scope, but does not resolve globally ambiguous tags. A resolved out-of-scope row rejects the update.
 
 Use `--replace-all` only for an explicitly approved authoritative replacement in that scope (all sheets if omitted). Replacement refuses unmatched, ambiguous or blocked rows. Unknown/rejected explicit IDs never fall back to tags; duplicate target rows, invalid scopes or empty addresses reject the whole transaction without model/report writes. Partial mode reports ambiguous/unmatched/callout rows without assigning them, preserves existing mappings, and may still apply other valid rows. Have the qualified reviewer inspect the complete diff and approve application; inspect the report, not just the exit code. Nonempty address checks do not prove valid OPC syntax, connectivity or signal identity. Validate units, types, scaling and ranges separately: optional CSV units/description do not validate or populate those model properties. This is OPC mapping; the PI exporter still emits placeholder PI point references.
 
@@ -153,10 +156,27 @@ python scripts/generate.py out/twin/r2-tiles-trace/codex/plant_model.json
 # Gateway import is a separate, approved isolated-lab step; see IGNITION_ACCEPTANCE.md.
 ```
 
+For your own records, keep both review and mapping receipts with the private working model. Substitute your
+approved folder for the illustrative sibling location:
+
+```sh
+python scripts/apply_review.py ../approved-work/unit-47/plant_model.json ../approved-work/unit-47/reviewed.csv --reviewer "Name, role" --record-dir ../approved-work/unit-47/review-records --dry-run
+python scripts/map_points.py ../approved-work/unit-47/plant_model.json ../approved-work/unit-47/reviewed_io.csv --record-dir ../approved-work/unit-47/mapping-records --dry-run
+```
+
+After inspecting each plan, repeat the accepted command without `--dry-run`, retaining the same explicit paths.
+When exporting review events, pass only that model's audited review-record directory to `graph_export.py
+--reviews`; it reads every JSON file in the selected directory without checking model binding. Keep OPC mapping
+receipts separate. See the [paired review/export example](GRAPH_EXPORT.md).
+
 **Gateway caution:** `build_gateway.py --fresh` deletes/recreates the lab provider and configures gateway resources; it is not a file-only regeneration command. Runtime import and verification require a separately approved isolated lab, not production. See [native acceptance page](IGNITION_ACCEPTANCE.md).
 
 **Matching never guesses.** Tags match after separators and case are normalized, so `FT 1401`, `FT-1401` and
-`ft_1401` are the same tag. `asset_id` pins a row when needed. An applied report is saved under `out/mapping/`; dry-run only prints it. In addition to errors and the complete mapping diff, it retains four worklists:
+`ft_1401` are the same tag. `asset_id` pins a row when needed. An applied report is saved in `--record-dir` when
+supplied; omitting it retains the legacy `out/mapping/` destination. Dry-run only prints the plan and creates no
+receipt directory. The reports contain supplied addresses, source rows and before/after mappings; select an
+approved private folder for company records. Same-name mapping reports are replaced there as well, so retain
+accepted versions explicitly. In addition to errors and the complete mapping diff, it retains four worklists:
 
 | List | What it usually means at a site |
 |---|---|

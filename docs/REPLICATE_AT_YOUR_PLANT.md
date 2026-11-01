@@ -155,7 +155,9 @@ The selected recipe is `synthetic-adaptation-whole-sheet-v1`: GPT `gpt-6.1-sol`,
 
 ## 4. Review and map on copies
 
-Once an adapted model exists, copy it into a private working location, back it up, and have a qualified reviewer fill the generated `OPS_` columns. For the public learning copy above, copy its review queue to `runs/plant-learning/reviewed.csv`, complete actual decisions, then preview:
+Once an adapted model exists, keep the complete bundle in a private working location, back it up, and have a
+qualified reviewer fill a separate copy of the generated `OPS_` sheet. Select model-specific private receipt
+directories too; moving only the model does not move legacy default report destinations. For the public learning copy above, copy its review queue to `runs/plant-learning/reviewed.csv`, complete actual decisions, then preview:
 
 ```sh
 python scripts/apply_review.py runs/plant-learning/plant_model.json runs/plant-learning/reviewed.csv --reviewer "Name, role" --dry-run
@@ -172,6 +174,27 @@ python scripts/map_points.py runs/plant-learning/plant_model.json data/io_lists/
 **Mapping defaults to a partial update.** Existing unrelated mappings are preserved. `--sheets` restricts eligible targets; an out-of-scope resolved target rejects the whole update. Tags remain globally ambiguity-checked, so a sheet filter does not settle duplicate identity. To intentionally replace all non-rejected mappings within the selected sheets (all sheets if omitted), use `--replace-all` only with the complete authoritative list for that scope and separately approve any removals. Replacement refuses unresolved, ambiguous or blocked rows rather than clearing mappings around them. The synthetic demo CSV deliberately contains unresolved rows and is not a valid replacement list.
 
 Dry-run writes nothing and displays every added, changed and removed mapping with before/after values plus complete mapping snapshots. Add `--json` for a machine-readable report. Have the qualified reviewer inspect the complete diff and approve application before repeating without `--dry-run`. Unknown or rejected explicit `asset_id` values never fall back to tag matching; duplicate target rows, empty addresses and invalid sheet scopes reject the whole update without model/report writes. Required CSV columns remain `tag,server,base_path,point`; optional `asset_id` pins an explicitly reviewed target. Ambiguous tags, unmatched tags and reviewed valve callouts are reported but receive no new assignment in partial mode; existing mappings are preserved. A successful partial plan does not mean every row matched. The mapper checks nonempty address fields, not OPC syntax, connectivity or signal identity. It does not validate units, types, scaling or ranges; optional `units`/`description` do not establish those properties in the model. Never resolve a duplicate merely to make it connect.
+
+For an own-plant extracted model, the corresponding private commands are:
+
+```sh
+python scripts/apply_review.py ../approved-work/unit-47/plant_model.json ../approved-work/unit-47/reviewed.csv --reviewer "Name, role" --record-dir ../approved-work/unit-47/review-records --dry-run
+python scripts/map_points.py ../approved-work/unit-47/plant_model.json ../approved-work/unit-47/reviewed_io.csv --record-dir ../approved-work/unit-47/mapping-records --dry-run
+```
+
+Substitute permitted folders and reviewed inputs. Inspect both diffs, then repeat only accepted plans without
+`--dry-run` and regenerate the private model's exports. `apply_review.py` retains its legacy `out/review/` default
+when `--record-dir` is omitted; `map_points.py` similarly defaults to `out/mapping/`. Its same-name receipts replace
+earlier copies in the selected directory. Keep accepted versions and original sources with the company record.
+Ignoring a checkout folder does not secure or relocate its contents.
+
+Keep review records for this model separate from mapping receipts and other models. If you export review events,
+use the same explicit review directory with `graph_export.py --reviews`; that loader reads all JSON files there
+and does not verify model binding. Shared item IDs are not evidence that a record belongs to this model/revision.
+
+The OPC mapper above uses extracted-twin instrument IDs. Native process models from description or DEXPI routes
+still generate staging, with target fields/connections separately authored and reviewed; a universal Native
+mapping adapter is not supplied.
 
 ### Separately reviewed PI references
 

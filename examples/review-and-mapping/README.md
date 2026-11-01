@@ -71,8 +71,12 @@ and earlier source evidence of omitted mappings. Older mappings without a finger
 explicitly reassigned; their evidence is not reconstructed automatically.
 
 Dry-run prints the proposed model snapshots without writing them. A successful apply writes the current model
-and replaces its same-name mapping reports under `out/mapping/`; archive the reviewed plan and originals with
-the investigation or company record if they need to survive later runs. This is source traceability for a
+and saves its mapping reports in `--record-dir` when supplied; omitting it preserves the legacy `out/mapping/`
+default. Same-name mapping reports are replaced in the selected directory. For your own I/O list, use an approved
+private directory, for example `--record-dir ../approved-work/unit-47/mapping-records`, and keep accepted versions
+with the original CSV and model. Review decisions have their separate `apply_review.py --record-dir`; use only
+that model's audited review directory for `graph_export.py --reviews`. The exporter imports every JSON record
+there without checking model binding, so keep mapping receipts and other models' reviews separate. This is source traceability for a
 specialist tool, not a company decision-history service. The PI mapper keeps its separate existing contract.
 
 The [mapping tests](../../scripts/test_map_points.py) include an explicitly illustrative CRLF CSV with a blank

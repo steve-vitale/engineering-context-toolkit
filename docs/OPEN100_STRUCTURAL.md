@@ -1,5 +1,9 @@
 # OPEN100 without process data: what the drawings alone support
 
+**Public-drawing case study.** This page reports what was assembled from OPEN100. Follow the
+[own-P&ID tutorial](../examples/own-drawing/README.md) to build from your records, and use this case to plan
+additional structure, visualization and review work. Case-specific assembly scripts need adaptation.
+
 The OPEN100 track is 12 real P&IDs, extracted and scored, with **no process data**: no historian, no I/O list, no
 setpoints. Until this page, its only screens were the greyed drawings with "not connected" beside each instrument,
 while the Tennessee Eastman track (process knowledge, no drawing) got the mimic, the 3D tour, the purpose cards and

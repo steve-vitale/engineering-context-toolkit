@@ -183,11 +183,25 @@ exist yet, so don't reuse `my-bundle` from the example). The bundle always calls
 
 ## 4. Review, then map to real signals
 
-A qualified reviewer fills the `OPS_` columns in `review_queue.csv`. Then preview and apply the decisions with
-`apply_review.py`, and regenerate the exports with `generate.py`. Mapping instruments to real signals needs your
-I/O list (`map_points.py` for OPC addresses, `map_pi_points.py` for reviewed PI references). The commands, and what
-each one refuses, are in [REPLICATE_AT_YOUR_PLANT.md §4](../../docs/REPLICATE_AT_YOUR_PLANT.md#4-review-and-map-on-copies).
-Nothing here derives an I/O list from a drawing.
+Keep the complete bundle and a separate filled review sheet in an approved private working folder. A qualified
+reviewer fills the `OPS_` columns; preview the model corrections and supplied OPC mapping before applying them.
+These illustrative sibling-folder paths keep the model, I/O list and both kinds of receipts outside the checkout:
+
+```sh
+python scripts/apply_review.py ../approved-work/unit-47/plant_model.json ../approved-work/unit-47/reviewed.csv --reviewer "Name, role" --record-dir ../approved-work/unit-47/review-records --dry-run
+python scripts/map_points.py ../approved-work/unit-47/plant_model.json ../approved-work/unit-47/reviewed_io.csv --record-dir ../approved-work/unit-47/mapping-records --dry-run
+```
+
+Substitute your permitted locations and inspect the complete diffs. After review, remove only `--dry-run` to apply
+each accepted plan with the same private receipt paths, then regenerate the model's exports with `generate.py`.
+Keep earlier models, filled sheets, I/O originals and accepted receipts with the investigation. Mapping receipts
+with the same generated name replace earlier ones in the selected folder; use a new version folder to retain them.
+
+The OPC mapper uses this route's extracted-twin instrument IDs. Native process models from descriptions or DEXPI
+can generate staging too, but need separately reviewed target-field authoring/configuration; this mapper does
+not provide a universal Native signal adapter. Reviewed PI references have their separate `map_pi_points.py`
+contract. The [review and mapping commands](../../docs/REPLICATE_AT_YOUR_PLANT.md#4-review-and-map-on-copies)
+explain refusals and scope. Nothing here derives an I/O list from a drawing.
 
 **If an item or line is missing:** the review CSV edits existing records only; it cannot add a symbol or link.
 Record the omission with its sheet, crop or box, tag, both link endpoints where applicable, reviewer and date.
@@ -199,10 +213,12 @@ reconcile those decisions explicitly and retain both review records. Adding a CS
 
 ## 5. Into Ignition
 
-Import `ignition/tags.json` into a tag provider in a **lab** gateway: Designer, Tag Browser, Import Tags. That
-gives you the asset hierarchy with placeholder values. `scripts/ignition/build_gateway.py` is not for this: it
-builds this repository's Tennessee Eastman demo (its model, replay connection, screens and historian) and bolts an
-extracted twin onto it.
+Import the reviewed working model's regenerated `ignition/tags.json` into a tag provider in an approved **lab**
+gateway: Designer, Tag Browser, Import Tags. Your model supplies the asset hierarchy; unmapped values remain
+placeholders. Supplied mappings still need actual signal, unit, quality and timestamp readback in that environment.
+This is the starting structure for your connected application; author and review the target connections and
+screens your job needs. `scripts/ignition/build_gateway.py` assembles the separate Tennessee Eastman/OPEN100 case
+with its fixed model, replay, screens and historian; it is not the own-model import command.
 
 ## What carries over to your plant, and what doesn't
 
