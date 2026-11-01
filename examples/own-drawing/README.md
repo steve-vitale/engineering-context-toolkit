@@ -88,6 +88,22 @@ information unknown. The [guide](../first-pilot/README.md)
 explains that first investigation and the subsequent handoff into a shared company home for context and decisions.
 This step uses existing tools; it does not create a shared system or connect to plant operations.
 
+### Carry your model and questions into shared context
+
+To keep the represented assets, source references and questions together in a portable graph, continue from
+the bundle and question output above:
+
+```sh
+python -S scripts/graph_export.py my-bundle/plant_model.json --questions my-questions/questions.json --out my-graph.json
+python -S scripts/graph_export.py --check my-graph.json
+```
+
+Open `my-graph.json` to inspect asset identities, relationships, sourced claims and question references. The
+[context-register guide](../../docs/CONTEXT_REGISTER.md) shows how to add your actual source manifest, retained
+answers and review history. The [read-only MCP starter](../internal-mcp/README.md) can expose a selected graph or
+matching graph/register pair to an approved client. Those later steps use your selected records and company
+access path; the graph export itself needs no server or plant connection.
+
 ## 1. Your sheet as a PNG
 
 Export one approved revision of one sheet to PNG. PDFs aren't read directly. Keep the drawing private: decide first

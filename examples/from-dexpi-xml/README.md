@@ -124,6 +124,9 @@ python -S scripts/graph_export.py my-model/unit-47.model.json --out unit-47.grap
 
 These are draft staging files and a portable graph. Organizational acceptance, reviewed signal mapping and any
 receiving-system integration remain separate work; generating a file does not complete the company handoff.
+Use the [Native staging continuation](../../docs/REVIEW_LOOP.md#native-models-continue-from-generated-staging)
+for the generated OPC binding convention and manual PI reconciliation. Review the conversion report first:
+retained source roles and unplaced records are not automatically represented by every platform generator.
 
 ## This folder (public example C01)
 

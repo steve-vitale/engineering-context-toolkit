@@ -7,15 +7,24 @@ match establishes operational readiness.
 Both are files that operations and controls people already know: a review spreadsheet and an I/O list. Both flow
 back into the draft through code, with attributed review records and source-referenced address assignments.
 
-```
-review sheet (spreadsheet) ──► apply_review.py ──► asset model ──► generate.py ──► Ignition / PI AF / screens
-I/O list (spreadsheet)     ──► map_points.py   ──►      │                              │
-                                                  change records                 build_gateway.py
-                                                  (out/review, out/mapping)      verify_gateway.py
+```mermaid
+flowchart LR
+    R[Review spreadsheet] --> A[apply_review.py]
+    A --> M[Your working asset model]
+    I[Reviewed I/O list] --> P[map_points.py: extracted-twin instruments]
+    P --> M
+    M --> G[generate.py]
+    G --> E[Logical SVG, review material and Ignition / PI staging]
+    E --> T[Your receiving-system configuration and readback]
+    M --> Q[Questions, graph and retained context]
 ```
 
-The gateway scripts in this diagram build and check this repository's demo. A different plant needs its own
-receiving-system adaptation and acceptance; generic file generation does not perform that work.
+Start with the [own-P&ID review and mapping steps](../examples/own-drawing/README.md#4-review-then-map-to-real-signals).
+The OPC mapper shown accepts extracted-twin instrument IDs; Native process models use separately authored target
+configuration, and [PI references](PI_MAPPING.md) have their own contract. Generate staging from your reviewed
+model, then configure and verify the application in your receiving environment. The
+[TE gateway case study](IGNITION_BUILD.md) illustrates an assembled screen/replay application; its builder and
+verifier are separate case commands.
 
 ## 1. The operations review
 
@@ -137,6 +146,11 @@ shows the exact TE companion correction and its limits. Retain actual signal add
 
 ## 2. Mapping instruments to data points
 
+Choose the continuation for your model: the CSV mapper below is for drawing-extracted twins. Description and
+direct DEXPI models use the [Native staging continuation](#native-models-continue-from-generated-staging).
+
+### Extracted twins: use the supplied I/O list
+
 **The I/O list.** A CSV with `tag, server, base_path, point` (plus optional `asset_id, units, description`):
 - `server`: the Ignition OPC connection name;
 - `base_path`: the OPC UA namespace and prefix (`nsu=<uri>;s=<prefix>`);
@@ -208,6 +222,30 @@ points that aren't on the drawing. It also hits one real ambiguity: the drawing 
 The historical runtime receipt showed 24 mapped tags Good and 335 placeholders Bad. The current reviewed model has 334 placeholder PVs plus the metadata-only MS 14010 valve callout; in the 2026-10-13 native run of the current project, the gateway read 24 mapped points Good and all 334 placeholders Bad, with 0 false-good ([native acceptance page](IGNITION_ACCEPTANCE.md)).
 
 ![OPEN100 sheet 0 in Ignition: mapped points live, the rest not connected](screenshots/ignition-open100-sheet0-mapped.png)
+
+### Native models: continue from generated staging
+
+Your authored description model or direct DEXPI model can generate the starting files for your connected
+application. After reviewing its supported assets, generate into a dedicated folder:
+
+```sh
+python -S scripts/generate.py PRIVATE/model.json --out PRIVATE/generated
+```
+
+Substitute your approved private paths. Keep generated originals and prepare a separate receiving copy for
+site-specific edits; regeneration checks its inventory and refuses edits to generated files.
+
+| Target | Existing generated contract | Your continuation |
+|---|---|---|
+| Ignition | `ignition/tags.json` has a UDT type and instance per retained unit. Instrument/final-element members bind their server to `{OPCServer}` and address to `{BasePath}.<exact model tag>`. Each instance starts with a generated namespace/prefix. | In the receiving copy, set the reviewed `OPCServer` type default and each instance's `BasePath` to match your supplied address inventory. This convention works when members share that prefix and exact tag suffix. Otherwise author reviewed per-member bindings or an adapter. Record the edits for repeatable regeneration. |
+| PI AF | `pi/` contains hierarchy/attribute staging and placeholder point references, unit definitions and import notes. Native attribute rows start selected even with placeholder references. | Reconcile real archive/point references, attribute types and units in copied staging against your receiving system; resolve or deselect placeholders before import. Native models do not accept the extracted-twin `pi_point` mapping record; the generator refuses it. Keep that manual mapping with the source revision and receiving files. |
+
+The extracted-twin CSV mappers do not configure this Native route, and adding `data_point` metadata does not
+change Native OPC bindings. All generated Native OPC members start as read-only `Float8`; review types, units,
+scaling and valve/state meanings before using them. Test your receiving copy in the approved lab target, retain
+actual signal/quality/timestamp readback and then author the displays your job needs. The TE case illustrates
+that additional application work; its replay addresses are not your plant's mappings. Follow the
+[IT/OT path](INTERNAL_CONNECTIVITY.md) appropriate to the records and environment you are permitted to use.
 
 ## Status
 

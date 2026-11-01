@@ -1,6 +1,6 @@
 # State of the toolkit
 
-Holistic audit: **2026-11-01, Central time**, with the latest valve-feedback collection follow-up starting from released commit `3288c10`.
+Holistic audit: **2026-11-01, Central time**, with the latest own-plant reader-path follow-up starting from released commit `f9d08f6`.
 The public name is **Engineering Context Toolkit**. The jumpstart is its first-assignment path; modeling,
 review, analysis and evaluation can be used independently. Earlier failures and original evidence remain
 in the [journal](JOURNAL.md) and [attempt ledger](TRIED.md).
@@ -11,7 +11,12 @@ staging. Supply reviewed signal identities and verify receiving-system behavior 
 The public tutorials teach those steps; case studies and evaluations retain what was built or measured on their
 inputs. Engineering review and company acceptance determine what becomes an authoritative maintained twin or record.
 
-The [script registry](SCRIPTS.md) classifies 136 scripts: 33 tools, 12 checks, 15 support modules and 76 research
+The reader-path follow-up carries that distinction into the generated client reports, manual Bayer tutorial,
+review kit and 3D case. The own-P&ID tutorial now gives the model/questions-to-graph continuation; description
+and DEXPI guides link the Native OPC binding and manual PI reconciliation steps. Reported counts, drawing images
+and recorded decisions remain the supplied examples' evidence; refreshed prose does not add plant acceptance.
+
+The [script registry](SCRIPTS.md) classifies 136 scripts: 32 tools, 12 checks, 15 support modules and 77 research
 scripts; tests are separate. Twenty-two [feature groups](FEATURES.md) register 536 distinct example files, including
 inputs, generated outputs and retained history. Shared files can appear under more than one group; feature-file
 references are not additional unique examples. Their evidence is bounded. A reviewed

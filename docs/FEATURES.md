@@ -79,7 +79,7 @@ Example review: **reviewed example**
 
 - **Registered example files:** [`dexpi-c01.prediction.json`](../examples/from-dexpi/c01/dexpi-c01.prediction.json), [`REPORT.html`](../examples/from-dexpi/c01/REPORT.html)
 - **Tests:** `test_dexpi_to_twin.py`
-- **Independent review:** independent Claude agent (fresh context, round 4: every earlier finding reproduced, outputs and tests re-run), 2026-10-29: pass (1 finding(s); All earlier findings verified fixed; outputs reproduce; tests pass.)
+- **Independent review:** Coding-agent reader/source and saved-artifact reviewer; prior recommendations and N107 authorship disclosed; current report/doc implementation authored separately, 2026-11-01: pass
 
 </details>
 
@@ -167,11 +167,11 @@ Example review: **reviewed example**
 
 Example review: **reviewed example**
 
-**Why it matters:** Whoever approves the work needs one page that says what was found and what is still unchecked, without opening a spreadsheet of 445 rows.
+**Why it matters:** The receiving engineer needs to see what was found, what is still unchecked and how to build on the model without tracing every generated file.
 
-**Inputs:** A review bundle from the step above
+**Inputs:** A review bundle from import_site_drawing.py
 
-**Outputs:** One page: the drawing with every item boxed, item and review status, what a person has already decided (shown with the decision and left out of the to-check list), next steps, limits. Refuses if any generated column of the review sheet doesn't match what the model gives now; the reviewer's OPS_ entries aren't checked, so decisions not yet applied with apply_review.py don't appear
+**Outputs:** One page: the drawing with every item boxed, item and review status, supplied applied review records with recorded reviewer/date, next steps toward questions/context or data-connected staging, and limits. Refuses if any generated column of the review sheet doesn't match what the model gives now; the reviewer's OPS_ entries aren't checked, so decisions not yet applied with apply_review.py don't appear
 
 **Time:** Under a second
 
@@ -183,7 +183,7 @@ Example review: **reviewed example**
 
 - **Registered example files:** [`REPORT.html`](../examples/own-drawing/deliverable/REPORT.html)
 - **Tests:** `test_own_drawing_example.py`, `test_deliverable_report.py`
-- **Independent review:** Independent coding-agent source/receipt receiving; integrated with explicit inherited evidence, 2026-11-01: pass
+- **Independent review:** Coding-agent reader/source and saved-artifact reviewer; prior recommendations and N107 authorship disclosed; current report/doc implementation authored separately, 2026-11-01: pass
 
 </details>
 
@@ -410,7 +410,7 @@ Example review: **reviewed example**
 
 - **Registered example files:** [`GENERALIZATION.md`](../docs/GENERALIZATION.md), [`matrix.json`](../out/generalization/matrix.json), [`corpus.json`](../data/corpus.json)
 - **Tests:** `test_corpus_matrix.py`
-- **Independent review:** Independent coding-agent static/oracle and retained-actual receiving; implementation/producer and reviewer roles separate. Not human, company or native-platform approval., 2026-11-01: pass
+- **Independent review:** Independent coding-agent saved-evidence and source-binding review; renewal operator and receiver roles separate. Not human or plant acceptance., 2026-11-01: pass
 
 </details>
 
@@ -512,7 +512,7 @@ Example review: **reviewed example**
 
 - **Registered example files:** [`reviewed_sheet0.csv`](../examples/review-and-mapping/reviewed_sheet0.csv), [`2026-10-29-bundle.md`](../examples/review-and-mapping/records/2026-10-29-bundle.md), [`mapping_dry_run.md`](../examples/review-and-mapping/mapping_dry_run.md), [`graph_after_review.json`](../examples/review-and-mapping/graph_after_review.json), [`REPORT_after_review.html`](../examples/review-and-mapping/REPORT_after_review.html), [`pi_mapping_dry_run.txt`](../examples/review-and-mapping/pi_mapping_dry_run.txt), [`README.md`](../out/review_kit/sheet-8/README.md), [`model.json`](../examples/review-and-mapping/native-identity/expected/model.json), [`change_record.json`](../examples/review-and-mapping/native-identity/expected/change_record.json), [`change_record.md`](../examples/review-and-mapping/native-identity/expected/change_record.md), [`review_associations.json`](../examples/review-and-mapping/review_associations.json)
 - **Tests:** `test_apply_review.py`, `test_map_points.py`, `test_pi_mapping.py`, `test_review_kit.py`, `test_deliverable_report.py`, `test_review_identity.py`
-- **Independent review:** Independent coding-agent static/oracle and retained-actual receiving; implementation/producer and reviewer roles separate. Not human, company or native-platform approval., 2026-11-01: pass
+- **Independent review:** Coding-agent reader/source and saved-artifact reviewer; prior recommendations and N107 authorship disclosed; current report/doc implementation authored separately, 2026-11-01: pass
 
 </details>
 

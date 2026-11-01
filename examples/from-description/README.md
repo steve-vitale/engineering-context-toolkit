@@ -152,10 +152,14 @@ setup in the [MCP guide](../internal-mcp/README.md), select it with
 snapshot interface, using stdio by default. It starts no listener in that mode and supplies no shared company
 authentication or live process connection. Source/OT boundaries and client approval still apply.
 
-The sections below retain the older Bayer worked example and direct commands for engineers who already have a
-model or need the standalone tools.
+## Manual model route: Bayer worked case
 
-## 1. Write the model, citing every item
+This alternative component tutorial starts with an explicitly authored model. Use it to understand and reuse
+the model, screen, exporter and drawing tools individually. If you already used `prepare`, `check` and `build`
+above, those commands have assembled the connected bundle; the numbered sections below are not additional
+required steps. Substitute your own supported model and layout to use these same components on your records.
+
+### 1. Write the model, citing every item
 
 `data/bayer_rt/process_model.json` is the worked example: an agent wrote it from the report's text, with a page or
 figure on every item. The fields the generators need:
@@ -178,14 +182,14 @@ on one unit whose names would come out the same get their tag appended (`..._TI_
 collide, structural validation refuses the model and names both tags. A missing required field is refused with the
 item and field named (`unit RT-1: missing name`).
 
-## 2. Check it against something it wasn't written from
+### 2. Check it against something it wasn't written from
 
 This step tests the interpretation. The Bayer model, written from the report's text, got the report's own piping
 figure wrong in four places (10 of 21 checks at first; 20 of 21 after correcting from the figure):
 `scripts/compare_bayer_fig10.py`, [BAYER_RT.md](../../docs/BAYER_RT.md). For your unit the second source might be an
 old drawing, a walkdown, the DCS configuration ([loop list check](../loop-audit/README.md)) or the I/O list.
 
-## Use the model for one engineering question
+### Use the model for one engineering question
 
 The existing question engine reads this process-model format directly, offline and with the standard library:
 
@@ -209,7 +213,7 @@ Follow the [first-question guide](../first-pilot/README.md) for source review an
 ownership and acceptance visible. As the work becomes shared, the company needs a maintained home for the evidence,
 decisions and history. Continue below when the investigation actually needs generated platform files or a drawing.
 
-## 3. Platform files straight from the model
+### 3. Platform files straight from the model
 
 ```sh
 python scripts/generate.py data/bayer_rt/process_model.json --out my-exports
@@ -221,7 +225,11 @@ Units with no screen position are placed automatically in flow order from the ma
 links between them are logical, not pipe routes. On the Bayer model it writes 5 units, 15 streams, 6 instruments
 and 5 valves, and passes structural validation (which is not engineering approval).
 
-## 4. A P&ID from the model, when needed
+For your description model, follow the [Native staging continuation](../../docs/REVIEW_LOOP.md#native-models-continue-from-generated-staging)
+to configure supplied OPC addresses or reconcile PI references in a receiving copy. It explains the actual
+generated bindings and which mapping steps are manual for this model kind.
+
+### 4. A P&ID from the model, when needed
 
 The drawing needs a manually authored drafting layout (`data/bayer_rt/pid_layout.json`). It places modeled items;
 validation refuses missing, duplicated or unknown model references. A layout can also declare drafting additions,

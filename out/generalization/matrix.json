@@ -1,22 +1,12 @@
 {
  "about": "Generalization matrix written by scripts/corpus_matrix.py; rendered as docs/GENERALIZATION.md.",
- "ran_at": "2026-11-01 09:24 UTC",
- "seconds": 1384.1,
+ "ran_at": "2026-11-01 17:59 UTC",
+ "seconds": 1383.8,
  "rows_run_this_time": [
-  8
+  5
  ],
  "inputs_run_this_time": [
-  "bayer-rt1",
-  "commons-pid-sheets",
-  "dexpi",
-  "dexpi-1.2-vendor-renders",
-  "omre-1958-pid",
-  "open100-dev",
-  "open100-holdout",
-  "pronto-fig1",
-  "te-rev-a",
-  "te-rev-c",
-  "te-rev-d"
+  "bayer-model"
  ],
  "tracer_pass_f1": 0.88,
  "pipe_pass_f1": 0.88,
@@ -4019,12 +4009,12 @@
     "report_written": true
    },
    "published": [],
-   "seconds": 0.7,
-   "ran_at": "2026-11-01 09:20 UTC",
+   "seconds": 0.6,
+   "ran_at": "2026-11-01 17:59 UTC",
    "tool_files": {
     "scripts/build_twin.py": "sha256:8e9a5e26b9938a8a",
     "scripts/confidence.py": "sha256:0fc9948199d89edf",
-    "scripts/deliverable_report.py": "sha256:6df4ee498e6544d8",
+    "scripts/deliverable_report.py": "sha256:253e65c119ea6237",
     "scripts/generate.py": "sha256:729c3081be3e1ec3",
     "scripts/import_site_drawing.py": "sha256:5a214b340518fa41",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
@@ -4110,11 +4100,11 @@
    },
    "published": [],
    "seconds": 0.3,
-   "ran_at": "2026-11-01 09:20 UTC",
+   "ran_at": "2026-11-01 17:59 UTC",
    "tool_files": {
     "scripts/build_twin.py": "sha256:8e9a5e26b9938a8a",
     "scripts/confidence.py": "sha256:0fc9948199d89edf",
-    "scripts/deliverable_report.py": "sha256:6df4ee498e6544d8",
+    "scripts/deliverable_report.py": "sha256:253e65c119ea6237",
     "scripts/generate.py": "sha256:729c3081be3e1ec3",
     "scripts/import_site_drawing.py": "sha256:5a214b340518fa41",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
@@ -4202,11 +4192,11 @@
    "key_only_duplicate_of": "open100-holdout",
    "note": "key-only input: this row reads only the answer key, which is open100-holdout's, so the cell is the same computation as open100-holdout and carries no scan-specific information (the scan pixels are not exercised here)",
    "seconds": 0.3,
-   "ran_at": "2026-11-01 09:20 UTC",
+   "ran_at": "2026-11-01 17:59 UTC",
    "tool_files": {
     "scripts/build_twin.py": "sha256:8e9a5e26b9938a8a",
     "scripts/confidence.py": "sha256:0fc9948199d89edf",
-    "scripts/deliverable_report.py": "sha256:6df4ee498e6544d8",
+    "scripts/deliverable_report.py": "sha256:253e65c119ea6237",
     "scripts/generate.py": "sha256:729c3081be3e1ec3",
     "scripts/import_site_drawing.py": "sha256:5a214b340518fa41",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
@@ -4294,11 +4284,11 @@
    "key_only_duplicate_of": "open100-holdout",
    "note": "key-only input: this row reads only the answer key, which is open100-holdout's, so the cell is the same computation as open100-holdout and carries no scan-specific information (the scan pixels are not exercised here)",
    "seconds": 0.3,
-   "ran_at": "2026-11-01 09:20 UTC",
+   "ran_at": "2026-11-01 17:59 UTC",
    "tool_files": {
     "scripts/build_twin.py": "sha256:8e9a5e26b9938a8a",
     "scripts/confidence.py": "sha256:0fc9948199d89edf",
-    "scripts/deliverable_report.py": "sha256:6df4ee498e6544d8",
+    "scripts/deliverable_report.py": "sha256:253e65c119ea6237",
     "scripts/generate.py": "sha256:729c3081be3e1ec3",
     "scripts/import_site_drawing.py": "sha256:5a214b340518fa41",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
@@ -4385,12 +4375,12 @@
    "published": [],
    "key_only_duplicate_of": "open100-holdout",
    "note": "key-only input: this row reads only the answer key, which is open100-holdout's, so the cell is the same computation as open100-holdout and carries no scan-specific information (the scan pixels are not exercised here)",
-   "seconds": 0.4,
-   "ran_at": "2026-11-01 09:20 UTC",
+   "seconds": 0.3,
+   "ran_at": "2026-11-01 17:59 UTC",
    "tool_files": {
     "scripts/build_twin.py": "sha256:8e9a5e26b9938a8a",
     "scripts/confidence.py": "sha256:0fc9948199d89edf",
-    "scripts/deliverable_report.py": "sha256:6df4ee498e6544d8",
+    "scripts/deliverable_report.py": "sha256:253e65c119ea6237",
     "scripts/generate.py": "sha256:729c3081be3e1ec3",
     "scripts/import_site_drawing.py": "sha256:5a214b340518fa41",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
@@ -4476,11 +4466,11 @@
    },
    "published": [],
    "seconds": 0.8,
-   "ran_at": "2026-11-01 09:20 UTC",
+   "ran_at": "2026-11-01 17:59 UTC",
    "tool_files": {
     "scripts/build_twin.py": "sha256:8e9a5e26b9938a8a",
     "scripts/confidence.py": "sha256:0fc9948199d89edf",
-    "scripts/deliverable_report.py": "sha256:6df4ee498e6544d8",
+    "scripts/deliverable_report.py": "sha256:253e65c119ea6237",
     "scripts/generate.py": "sha256:729c3081be3e1ec3",
     "scripts/import_site_drawing.py": "sha256:5a214b340518fa41",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
@@ -4585,12 +4575,12 @@
     "report_written": true
    },
    "published": [],
-   "seconds": 0.3,
-   "ran_at": "2026-11-01 09:20 UTC",
+   "seconds": 0.2,
+   "ran_at": "2026-11-01 17:59 UTC",
    "tool_files": {
     "scripts/build_twin.py": "sha256:8e9a5e26b9938a8a",
     "scripts/confidence.py": "sha256:0fc9948199d89edf",
-    "scripts/deliverable_report.py": "sha256:6df4ee498e6544d8",
+    "scripts/deliverable_report.py": "sha256:253e65c119ea6237",
     "scripts/generate.py": "sha256:729c3081be3e1ec3",
     "scripts/import_site_drawing.py": "sha256:5a214b340518fa41",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
@@ -4665,11 +4655,11 @@
    },
    "published": [],
    "seconds": 0.2,
-   "ran_at": "2026-11-01 09:20 UTC",
+   "ran_at": "2026-11-01 17:59 UTC",
    "tool_files": {
     "scripts/build_twin.py": "sha256:8e9a5e26b9938a8a",
     "scripts/confidence.py": "sha256:0fc9948199d89edf",
-    "scripts/deliverable_report.py": "sha256:6df4ee498e6544d8",
+    "scripts/deliverable_report.py": "sha256:253e65c119ea6237",
     "scripts/generate.py": "sha256:729c3081be3e1ec3",
     "scripts/import_site_drawing.py": "sha256:5a214b340518fa41",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
@@ -4743,11 +4733,11 @@
    },
    "published": [],
    "seconds": 0.2,
-   "ran_at": "2026-11-01 09:20 UTC",
+   "ran_at": "2026-11-01 17:59 UTC",
    "tool_files": {
     "scripts/build_twin.py": "sha256:8e9a5e26b9938a8a",
     "scripts/confidence.py": "sha256:0fc9948199d89edf",
-    "scripts/deliverable_report.py": "sha256:6df4ee498e6544d8",
+    "scripts/deliverable_report.py": "sha256:253e65c119ea6237",
     "scripts/generate.py": "sha256:729c3081be3e1ec3",
     "scripts/import_site_drawing.py": "sha256:5a214b340518fa41",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
@@ -4820,12 +4810,12 @@
     "report_written": true
    },
    "published": [],
-   "seconds": 0.3,
-   "ran_at": "2026-11-01 09:20 UTC",
+   "seconds": 0.2,
+   "ran_at": "2026-11-01 17:59 UTC",
    "tool_files": {
     "scripts/build_twin.py": "sha256:8e9a5e26b9938a8a",
     "scripts/confidence.py": "sha256:0fc9948199d89edf",
-    "scripts/deliverable_report.py": "sha256:6df4ee498e6544d8",
+    "scripts/deliverable_report.py": "sha256:253e65c119ea6237",
     "scripts/generate.py": "sha256:729c3081be3e1ec3",
     "scripts/import_site_drawing.py": "sha256:5a214b340518fa41",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
@@ -4899,11 +4889,11 @@
    },
    "published": [],
    "seconds": 0.2,
-   "ran_at": "2026-11-01 09:20 UTC",
+   "ran_at": "2026-11-01 17:59 UTC",
    "tool_files": {
     "scripts/build_twin.py": "sha256:8e9a5e26b9938a8a",
     "scripts/confidence.py": "sha256:0fc9948199d89edf",
-    "scripts/deliverable_report.py": "sha256:6df4ee498e6544d8",
+    "scripts/deliverable_report.py": "sha256:253e65c119ea6237",
     "scripts/generate.py": "sha256:729c3081be3e1ec3",
     "scripts/import_site_drawing.py": "sha256:5a214b340518fa41",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
@@ -4979,11 +4969,11 @@
     }
    ],
    "seconds": 0.3,
-   "ran_at": "2026-11-01 09:20 UTC",
+   "ran_at": "2026-11-01 17:59 UTC",
    "tool_files": {
     "scripts/build_twin.py": "sha256:8e9a5e26b9938a8a",
     "scripts/confidence.py": "sha256:0fc9948199d89edf",
-    "scripts/deliverable_report.py": "sha256:6df4ee498e6544d8",
+    "scripts/deliverable_report.py": "sha256:253e65c119ea6237",
     "scripts/generate.py": "sha256:729c3081be3e1ec3",
     "scripts/import_site_drawing.py": "sha256:5a214b340518fa41",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
@@ -5017,7 +5007,7 @@
       "exists": true,
       "directory": false,
       "files": {
-       "examples/own-drawing/README.md": "sha256:531789297bca1507c1ea05d5859dddb971e689e2c9be0ae01af7e5acf7b50acb"
+       "examples/own-drawing/README.md": "sha256:29a21aa8feee52cccfb986f53daf3131fb7f3fc173f32b58b2698c408763c0ee"
       }
      },
      {
@@ -5084,12 +5074,12 @@
    },
    "published": [],
    "key": "agent-made",
-   "seconds": 0.9,
-   "ran_at": "2026-11-01 09:20 UTC",
+   "seconds": 1.1,
+   "ran_at": "2026-11-01 17:59 UTC",
    "tool_files": {
     "scripts/build_twin.py": "sha256:8e9a5e26b9938a8a",
     "scripts/confidence.py": "sha256:0fc9948199d89edf",
-    "scripts/deliverable_report.py": "sha256:6df4ee498e6544d8",
+    "scripts/deliverable_report.py": "sha256:253e65c119ea6237",
     "scripts/generate.py": "sha256:729c3081be3e1ec3",
     "scripts/import_site_drawing.py": "sha256:5a214b340518fa41",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
@@ -5183,12 +5173,12 @@
    },
    "published": [],
    "key": "agent-made",
-   "seconds": 0.9,
-   "ran_at": "2026-11-01 09:20 UTC",
+   "seconds": 1.0,
+   "ran_at": "2026-11-01 17:59 UTC",
    "tool_files": {
     "scripts/build_twin.py": "sha256:8e9a5e26b9938a8a",
     "scripts/confidence.py": "sha256:0fc9948199d89edf",
-    "scripts/deliverable_report.py": "sha256:6df4ee498e6544d8",
+    "scripts/deliverable_report.py": "sha256:253e65c119ea6237",
     "scripts/generate.py": "sha256:729c3081be3e1ec3",
     "scripts/import_site_drawing.py": "sha256:5a214b340518fa41",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
@@ -5328,11 +5318,11 @@
    "published": [],
    "key": "agent-made",
    "seconds": 0.3,
-   "ran_at": "2026-11-01 09:20 UTC",
+   "ran_at": "2026-11-01 17:59 UTC",
    "tool_files": {
     "scripts/build_twin.py": "sha256:8e9a5e26b9938a8a",
     "scripts/confidence.py": "sha256:0fc9948199d89edf",
-    "scripts/deliverable_report.py": "sha256:6df4ee498e6544d8",
+    "scripts/deliverable_report.py": "sha256:253e65c119ea6237",
     "scripts/generate.py": "sha256:729c3081be3e1ec3",
     "scripts/import_site_drawing.py": "sha256:5a214b340518fa41",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
@@ -7621,14 +7611,14 @@
    "published": [
     {
      "file": "examples/from-description/README.md",
-     "line": 221,
+     "line": 225,
      "says": "5 units, 15 streams, 6 instruments and 5 valves",
      "ours": "5 units, 15 streams, 6 instruments, 5 final elements",
      "agrees": true
     }
    ],
-   "seconds": 0.4,
-   "ran_at": "2026-11-01 06:17 UTC",
+   "seconds": 0.2,
+   "ran_at": "2026-11-01 17:59 UTC",
    "tool_files": {
     "scripts/generate.py": "sha256:729c3081be3e1ec3",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
@@ -7658,7 +7648,7 @@
       "exists": true,
       "directory": false,
       "files": {
-       "examples/from-description/README.md": "sha256:2d5dde30d36431a4e06e3c2c37ed06925fd7e4a62b2184df1cca7503d1d4519e"
+       "examples/from-description/README.md": "sha256:aacf2eafbfb323467c571c38414154118cb1f05ebb7538b6cbe6efaacd43776b"
       }
      }
     ]

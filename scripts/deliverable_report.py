@@ -10,8 +10,8 @@ own, and every number in it comes from the bundle's files. With Pillow installed
 reduced JPEG; without it, as the original PNG.
 
 It refuses a review_queue.csv that doesn't describe plant_model.json as it is now: every column but the reviewer's
-OPS_ ones is rewritten from the model by the sheet's own writer and must match. Items a person has decided are listed
-with their decision and left out of the items to check first.
+OPS_ ones is rewritten from the model by the sheet's own writer and must match. Applied review records are listed
+with their supplied attribution and left out of the items to check first.
 """
 import argparse
 import base64
@@ -170,7 +170,7 @@ def build(bundle):
     s = model["summary"]
     meta = model["meta"]
     limits = [ln for ln in (bundle / "READ_ME.txt").read_text(encoding="utf-8").splitlines()[1:] if ln.strip()]
-    # A person's decision settles an item: it leaves the to-check list and is shown, with the decision, under
+    # An applied review record removes an item from the to-check list and is shown, with its attribution, under
     # "Reviewed so far". The sheet's model_status is the model's own (consistency() checked it).
     decided = {r["item_id"]: r for r in rows if r["model_status"] != "unverified"}
     open_rows = [r for r in rows if r["item_id"] not in decided]
@@ -218,10 +218,14 @@ ol li,ul li{{margin:3px 0}}
 <div class=sub>Revision {e(str(drawing.get('revision', '?')))}, page {e(str(drawing.get('page', '?')))} ·
 {e(meta.get('title', ''))} · extraction: {e(producer.get('method', 'not stated'))}
 {('(' + e(producer.get('model')) + ')') if producer.get('model') else ''}</div>
-{('<div class=draft><b>Draft, unverified.</b> Every item below was read off the drawing by software and has not '
-  'been checked by a person. Nothing here is approved for operational use.</div>') if not reviewed else
- ('<div class=draft><b>Draft, partly reviewed.</b> ' + f'{len(reviewed)} of {len(rows)} items have a person&#39;s '
-  'decision (listed below); the rest were read off the drawing by software and not checked. Nothing here is '
+<p>This bundle is a structural starting point for a digital twin of the process represented by the drawing:
+assets, represented connections and their source locations, ready for engineering review. Use the same intake
+and review tools with your approved P&amp;ID and extraction to build from your plant's records. Add operating
+knowledge, retained decisions and reviewed signal mappings as the application develops.</p>
+{('<div class=draft><b>Draft, unverified.</b> Items were imported from the supplied extraction; no completed '
+  'review is recorded here. Nothing here is approved for operational use.</div>') if not reviewed else
+ ('<div class=draft><b>Draft, partly reviewed.</b> ' + f'{len(reviewed)} of {len(rows)} items carry supplied '
+  'review records (listed below); the remainder have no completed review recorded here. Nothing here is '
   'approved for operational use.</div>')}
 
 <h2>What was extracted</h2>
@@ -252,12 +256,19 @@ by a drawn link and {s['instrument_parent_method'].get('geometry_nearest', 0)} b
 <h2>What's in the package</h2>
 <div class=scroll><table><tbody>{files}</tbody></table></div>
 
-<h2>Next steps</h2>
+<h2>Build on this model</h2>
 <ol><li>A reviewer who knows the unit works through <code>review_queue.csv</code>, starting with the rows above, and
 fills the <code>OPS_</code> columns.</li>
-<li>The decisions are applied with <code>apply_review.py</code> and the exports regenerated.</li>
-<li>Instruments are mapped to real signals from the plant's I/O list (<code>map_points.py</code>).</li>
-<li><code>ignition/tags.json</code> is imported into a lab gateway and checked before anything goes further.</li></ol>
+<li>Apply supported corrections with <code>apply_review.py</code>, inspect the change record and regenerate exports
+with <code>generate.py</code>. Missing items need a corrected extraction and a new bundle.</li>
+<li>For an investigation, run <code>question_engine.py</code> on <code>plant_model.json</code> and choose a relevant
+question. Export the model and questions with <code>graph_export.py</code>; the context-register tools can retain
+source revisions and reviewed answers. These are optional next outputs, not files already in this bundle.</li>
+<li>For a data-connected application, supply an authoritative I/O list to <code>map_points.py</code> or reviewed
+PI references to <code>map_pi_points.py</code>, then regenerate. Import the selected staging files into the approved
+lab target and verify signal identity, values, units and quality. Author the displays and connections the job needs.</li></ol>
+<p class=sub>The repository's <code>examples/own-drawing/README.md</code> gives the commands and own-input steps.
+The assembled public replay and screen projects illustrate further application work.</p>
 
 <h2>What this package does not establish</h2>
 <ul>{''.join(f'<li>{e(x)}</li>' for x in limits)}</ul>
@@ -267,7 +278,7 @@ fills the <code>OPS_</code> columns.</li>
 
 
 def reviewed_html(reviewed, decided):
-    """Items with a person's decision: the decision, who and when, and what the sheet now says about the item."""
+    """Items with applied review records: decision, supplied attribution and what the sheet now says."""
     if not reviewed:
         return ""
     e = html.escape
@@ -276,8 +287,9 @@ def reviewed_html(reviewed, decided):
                    f"<td>{e(str(it['ops_review'].get('on') or ''))}</td><td>{e(str(it['ops_review'].get('notes') or ''))}</td>"
                    f"<td>{e(decided[it['id']]['why_check_this'])}</td></tr>"
                    for it in reviewed)
-    return (f"<h2>Reviewed so far ({len(reviewed)})</h2><p class=sub>A person decided these; they are left out of the "
-            "list to check below.</p><div class=scroll><table><thead><tr><th>Item</th><th>Tag now</th>"
+    return (f"<h2>Reviewed so far ({len(reviewed)})</h2><p class=sub>These recorded decisions are shown with their "
+            "supplied reviewer and date; attribution is not authentication. They are left out of the list to check "
+            "below.</p><div class=scroll><table><thead><tr><th>Item</th><th>Tag now</th>"
             "<th>Decision</th><th>By</th><th>On</th><th>Notes</th><th>The sheet now says</th></tr></thead>"
             f"<tbody>{rows}</tbody></table></div>")
 
