@@ -4088,6 +4088,23 @@
         "examples/first-pilot/README.md",
         "docs/OPPORTUNITY_SCREEN.md"
       ]
+    },
+    {
+      "id": "A271",
+      "function": "tag_reading",
+      "date": "2026-10-31",
+      "change": "Register the frozen tag scorer as an offline contributor task, with exact attributed cache fixtures, separate geometry/list rate cohorts, full provenance admission and compact reports; give leaders and new engineers a broader source-first onboarding path.",
+      "hypothesis": "Engineers can compare saved tag readings without confusing partial-list coverage with symbol-matched text accuracy or requiring new provider calls.",
+      "evidence": "50 historical trace answers on five exposed DEXPI sheets;33geometry labels and145partial-list identifiers. Root30shipping methods pass; independent53groups+6raw-source controls pass with one physical-symlink variant unavailable on Windows. A formatting-only successor preserves every typed score/count/status field and24displayed rates;2focused methods pass and1physical-symlink case skips. Four older suites retain strict typed semantics under new implementation IDs; all old reports remain.",
+      "runs": "Offline saved-answer rescoring and synthetic software controls; no new model calls, held-out family, human usefulness or company deployment.",
+      "verdict": "kept",
+      "why": "Adds a reproducible contribution path and reviewed onboarding documentation. Current cache keys are frozen now; original historical key bytes/producing converter remain unauthenticated. Company context permissions, governance and a generic onboarding MCP reader remain separate work.",
+      "source": [
+        "docs/JOURNAL.md#131-make-tag-reading-comparable-and-give-new-engineers-a-starting-path",
+        "benchmarks/README.md",
+        "benchmarks/results/tag-reading-development.md",
+        "docs/ENGINEERING_ONBOARDING.md"
+      ]
     }
   ],
   "not_tried": [
@@ -5211,6 +5228,17 @@
         "docs/JOURNAL.md#130-carry-complete-finding-identities-into-readable-handoffs",
         "examples/first-pilot/README.md",
         "docs/STATUS.md"
+      ]
+    },
+    {
+      "id": "N102",
+      "function": "tag_reading",
+      "status": "done",
+      "idea": "Expose the existing geometry and partial-list tag scorer as a contributor benchmark with saved model metadata, exact inputs and distinct rate cohorts.",
+      "why_not_yet": "Completed A271 with current frozen attributed DEXPI fixtures, raw-byte admission, whole saved-answer reports and matched old-task conservation. Real scans/handwriting(N022), revision-D model readback(N023), source/key engineering acceptance and human usefulness remain open.",
+      "source": [
+        "docs/JOURNAL.md#131-make-tag-reading-comparable-and-give-new-engineers-a-starting-path",
+        "benchmarks/README.md"
       ]
     }
   ]

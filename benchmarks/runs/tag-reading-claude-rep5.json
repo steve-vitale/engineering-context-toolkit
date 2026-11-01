@@ -1,0 +1,61 @@
+{
+  "id": "tag-reading-claude-r5-dx-rep5-trace",
+  "model": {
+    "provider": "Anthropic",
+    "id": "claude-opus-5-5[1m]",
+    "version": "provider build not recorded beyond the saved model identifier"
+  },
+  "recorded_tool": "claude",
+  "interface": "Claude Code CLI",
+  "method": "historical 2x2 tiled model extraction + deterministic trace replacement",
+  "configuration": {
+    "tiles": "2x2",
+    "overlap": 0.15,
+    "trace": "replace",
+    "temperature": "not recorded",
+    "reasoning_effort": "not recorded"
+  },
+  "ran_at": "2026-10-13T11:27:49+00:00",
+  "provenance": "Retrospective exposed historical/development registration of saved 2026-10-13 calls; current frozen cache keys, original producing key/converter identity unknown. Per-case original dates/resources remain in the saved envelopes. Not a new model trial, provider attestation or independent source family. Tiles-only diagnostic views are not additional replicas.",
+  "recipe": [
+    {
+      "path": "extraction/prompt_v2.md",
+      "sha256": "d98a6475c284b889be863b68fe09453f2aa8923954eee990bca21dc7aa600c65",
+      "role": "main_prompt"
+    },
+    {
+      "path": "extraction/tile_preface.md",
+      "sha256": "642aec003b66a89e9d6bac72e65d1a6ec50cbf05831ed389284b7376f2dab4d3",
+      "role": "tile_preface"
+    }
+  ],
+  "cases": [
+    "dexpi-c01",
+    "dexpi-c02",
+    "dexpi-c03",
+    "dexpi-c08a",
+    "dexpi-c08b"
+  ],
+  "predictions": {
+    "dexpi-c01": {
+      "path": "predictions/r5-dx-rep5-trace/claude/dexpi-c01.json",
+      "sha256": "55aa7957a0469488ce1331333cc4ef5004192d7e2194ac347a58311518cb8d2b"
+    },
+    "dexpi-c02": {
+      "path": "predictions/r5-dx-rep5-trace/claude/dexpi-c02.json",
+      "sha256": "44caa8930ec5f9ff52f9453026486cc54bc15871729e119337cf6255fc5d0495"
+    },
+    "dexpi-c03": {
+      "path": "predictions/r5-dx-rep5-trace/claude/dexpi-c03.json",
+      "sha256": "cd2af9b6a5b533ea5181f5030542454e7de6962916b9c043723e315dce3e48d9"
+    },
+    "dexpi-c08a": {
+      "path": "predictions/r5-dx-rep5-trace/claude/dexpi-c08a.json",
+      "sha256": "614344106f7e039c14a474a9a7b2de7366abe7746978fa4d3d08529b51491577"
+    },
+    "dexpi-c08b": {
+      "path": "predictions/r5-dx-rep5-trace/claude/dexpi-c08b.json",
+      "sha256": "33f736558dd3e036b0466b33df86e4c4791291b7f733dde685322057bf83facb"
+    }
+  }
+}

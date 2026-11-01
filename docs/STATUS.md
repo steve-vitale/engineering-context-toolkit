@@ -8,7 +8,7 @@ their original evidence remain in the journal and attempt ledger.
 source-backed question and a packet another engineer can reconstruct. This is a foundation for maintained
 engineering context; it is not a turnkey digital twin, process audit or company governance service.
 
-The [script registry](SCRIPTS.md) classifies 133 scripts: 32 tools, 12 checks, 13 support modules and 76 research
+The [script registry](SCRIPTS.md) classifies 134 scripts: 32 tools, 12 checks, 14 support modules and 76 research
 scripts; tests are separate. Twenty-one [feature groups](FEATURES.md) have bounded example evidence. A reviewed
 example does not certify every input, current implementation or engineering conclusion.
 
@@ -99,7 +99,7 @@ The [workflow map](WORKFLOWS.md) owns exact format contracts; [FEATURES.md](FEAT
 | Historian CSV and impact tools | Analyze supplied observations and calculate from supplied measurements/constants. | Qualified baseline, quality/time metadata, causal evidence and live connectors remain separate. |
 | Question engine | Catalog screens produce investigations and collection requests; source-scoped recipes retain known answers. | No arbitrary natural-language diagnosis or broad usefulness/coverage benchmark. |
 | Context register and snapshot MCP | Preserve supplied answers/history, explicitly refresh dependencies and retrieve selected snapshots. | No source watcher, shared authority/authentication, live process connector or accepted Copilot tenant. |
-| Checks, matrix and task/model benchmarks | Reproduce claims/results and exercise selected workflows with failures visible. | Three task adapters; selected facts and fixed labels do not grade arbitrary engineering meaning. Different evidence scopes are not a whole-toolkit completion percentage or general model ranking. |
+| Checks, matrix and task/model benchmarks | Reproduce claims/results and exercise selected workflows with failures visible. | Four task adapters, including `tag-reading` / `tag-text-v1` with separate geometry and partial-list modes, raw fixture checks and offline saved-answer reports. Selected facts, fixed labels and tag coverage do not grade arbitrary engineering meaning or company asset identity. See the [task scope](../benchmarks/README.md#current-reproducible-tasks); these are not a whole-toolkit completion percentage or general model ranking. |
 
 ## Demonstrations are a separate track
 

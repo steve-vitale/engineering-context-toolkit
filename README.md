@@ -1,15 +1,16 @@
-# P&ID → Digital Twin Jumpstart
+# Engineering Context Jumpstart
 
 [![tests](https://github.com/steve-vitale/pid-to-digital-twin/actions/workflows/tests.yml/badge.svg)](https://github.com/steve-vitale/pid-to-digital-twin/actions/workflows/tests.yml)
 
-**Turn engineering records into a starting point your team can inspect and build on.**
+**Help engineers understand existing work, ask better questions and contribute knowledge others can use.**
 
-Start with one equipment question and the documents you already have. Use the toolkit to organize draft assets
-and connections, trace claims to their sources, and identify the evidence still needed. The result is a small
-engineering packet: source references, draft outputs, open questions and a clear next step.
+Start with one engineering question, the records already available and a reviewer who knows the work. Use the
+first brief to connect a qualified answer to its sources, missing evidence and next owner. Where asset models
+are useful, the tools add draft identities, connections, investigation questions and portable snapshots.
 
-This is one foundation for future digital twins and manufacturing applications: a shared understanding of what
-equipment exists, how it connects, what the records support and what remains unknown. A drawing is one view of it.
+This is a starting point for maintained engineering context: what exists, why a choice was made, what the records
+support and what still needs review. P&IDs and process models are one specialist branch, and one foundation for
+future digital twins and manufacturing applications.
 
 ## Start with one question
 
@@ -17,12 +18,22 @@ equipment exists, how it connects, what the records support and what remains unk
 [first-question brief](examples/first-pilot/README.md), select permitted sources and check the cited evidence.
 You can begin with a document clarification; no asset model or custom agent is required.
 
+**For leaders and managers:** use the [engineering onboarding guide](docs/ENGINEERING_ONBOARDING.md) to give an
+engineer or intern one useful assignment, approved sources, a mentor/reviewer and a clear handoff. New engineers
+can follow the same guide to reconstruct prior reasoning and return a source-backed contribution. No local
+installation is required for the manual or company-approved Copilot path.
+
+<details>
+<summary>Manufacturing example: follow a pump from description to evidence request</summary>
+
 **Want to see the tools connect?** [Follow one pump through the actual files](examples/from-description/assisted/PUMP_WALKTHROUGH.md):
 description → authored model → draft drawing → investigation question → evidence request.
 The example is illustrative. The [description guide](examples/from-description/README.md#try-the-connected-route-offline)
 has the commands to build it offline with Python and the drawing dependencies; no model account is needed.
 
 ![Illustrative pump and tank draft produced by the description workflow](examples/from-description/assisted/result/pid/D1.png)
+
+</details>
 
 ## Start wherever you are
 
@@ -50,20 +61,13 @@ The [feature reference](docs/FEATURES.md) lists the individual tools and reviewe
 For structured XML evidence, the optional [DEXPI source capture and local handoff](examples/from-dexpi-xml/README.md#optional-capture-structured-source-evidence)
 keeps a complete policy-filtered packet beside the Native interpretation; capture is explicit and the default is unchanged.
 
-## From a first packet to company context
+## From a first assignment to shared engineering context
 
-Use the packet to make one investigation understandable to another engineer. As people rely on it, the company
-needs clear record owners, published revisions and explicit dependencies between departments. Process, controls
-and maintenance can own separate scopes while referring to the same reviewed engineering identities. Equal tags
-at different sites must stay distinct; conflicting proposals need review before a new version is released.
-The toolkit supplies the starting workflow and portable files. Company-system adapters and continuing document
-updates require separate integration and acceptance. See the [handoff and lifecycle](docs/CONTEXT_LIFECYCLE.md).
-
-[Follow a source revision](examples/pump-revision/README.md) through a complete local example: the affected answer
-reopens, an independently sourced answer stays current, earlier decisions remain, and selected MCP readback
-changes only after restart. This is the local foundation for the cross-team handoff, using fictional records.
-[Follow four owned scopes](examples/team-context/README.md) to see a Process publication reach controls while
-independent maintenance and second-site work stay current, with conflicting proposals kept for review.
+The intended next step is one approved entry point to the knowledge and workflows a person may use. The current
+[MCP starter](examples/internal-mcp/README.md) reads a selected engineering snapshot; a general onboarding
+knowledge/workflow catalogue and shared company access service are not implemented. Existing company systems
+retain source authority, permissions, accepted decisions and continuing ownership. See the
+[lifecycle](docs/CONTEXT_LIFECYCLE.md) and [example series](docs/README.md#engineering-work-examples).
 
 ## Status
 
@@ -87,6 +91,10 @@ Read the [state of the toolkit](docs/STATUS.md) for working parts, open defects 
 ### Results (held-out drawings, and how they were used)
 
 Moved to [results and interpretation](docs/RESULTS.md#results-held-out-drawings-and-how-they-were-used).
+
+### From a first packet to company context
+
+See [from a first assignment to shared engineering context](#from-a-first-assignment-to-shared-engineering-context).
 
 ### Drawings only, process knowledge only, or both
 

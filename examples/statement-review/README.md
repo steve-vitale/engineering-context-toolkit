@@ -6,6 +6,9 @@ page of a report, a field of a model). Checking a random, stratified sample of t
 JSON. Two verdicts are kept apart: **matches its source** (anyone can check) and **true in the plant** (only an
 operator, a walkdown or live data, and only for statements that matched). Guide: [`docs/STATEMENT_REVIEW.md`](../../docs/STATEMENT_REVIEW.md).
 
+**Try the workflow:** jump to [how to use the review sheet](#how-an-operator-uses-the-sheet) or
+[reproduce the example files](#reproduce-it). The dated reviews below retain the evidence and earlier failures.
+
 ## First sampled review (2026-10-29): what it measured
 
 An independent agent with fresh context checked each sample against its source: the Bayer statements against the

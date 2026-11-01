@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns">
+  <key id="d0" for="node" attr.name="label" attr.type="string" />
+  <key id="d1" for="node" attr.name="xmin" attr.type="double" />
+  <key id="d2" for="node" attr.name="xmax" attr.type="double" />
+  <key id="d3" for="node" attr.name="ymin" attr.type="double" />
+  <key id="d4" for="node" attr.name="ymax" attr.type="double" />
+  <graph edgedefault="undirected">
+    <node id="PipeReducer-1"><data key="d0">general</data><data key="d1">1492.95</data><data key="d2">1508.95</data><data key="d3">376.00</data><data key="d4">395.05</data></node>
+    <node id="FlowOutPipeOffPageConnector-1"><data key="d0">inlet/outlet</data><data key="d1">2160.00</data><data key="d2">2201.90</data><data key="d3">302.86</data><data key="d4">344.76</data></node>
+    <node id="PipeTee-1"><data key="d0">connector</data><data key="d1">1492.95</data><data key="d2">1508.95</data><data key="d3">1774.86</data><data key="d4">1790.86</data></node>
+    <node id="OperatedValve-1"><data key="d0">valve</data><data key="d1">1419.05</data><data key="d2">1438.10</data><data key="d3">1774.86</data><data key="d4">1790.86</data></node>
+    <node id="BlindFlange-1"><data key="d0">general</data><data key="d1">1185.14</data><data key="d2">1201.14</data><data key="d3">497.52</data><data key="d4">513.52</data></node>
+    <node id="OperatedValve-2"><data key="d0">valve</data><data key="d1">1185.14</data><data key="d2">1201.14</data><data key="d3">461.33</data><data key="d4">480.38</data></node>
+    <node id="BlindFlange-2"><data key="d0">general</data><data key="d1">1185.14</data><data key="d2">1201.14</data><data key="d3">450.29</data><data key="d4">466.29</data></node>
+    <node id="BlindFlange-3"><data key="d0">general</data><data key="d1">1329.14</data><data key="d2">1345.14</data><data key="d3">497.52</data><data key="d4">513.52</data></node>
+    <node id="OperatedValve-3"><data key="d0">valve</data><data key="d1">1329.14</data><data key="d2">1345.14</data><data key="d3">461.33</data><data key="d4">480.38</data></node>
+    <node id="BlindFlange-4"><data key="d0">general</data><data key="d1">1329.14</data><data key="d2">1345.14</data><data key="d3">450.29</data><data key="d4">466.29</data></node>
+    <node id="ProcessInstrumentationFunction-1"><data key="d0">instrumentation</data><data key="d1">827.43</data><data key="d2">909.71</data><data key="d3">386.29</data><data key="d4">427.43</data></node>
+    <node id="ProcessInstrumentationFunction-2"><data key="d0">instrumentation</data><data key="d1">1152.00</data><data key="d2">1234.29</data><data key="d3">386.29</data><data key="d4">427.43</data></node>
+    <node id="ProcessInstrumentationFunction-3"><data key="d0">instrumentation</data><data key="d1">1296.00</data><data key="d2">1378.29</data><data key="d3">386.29</data><data key="d4">427.43</data></node>
+    <node id="ProcessColumn-1"><data key="d0">tank</data><data key="d1">1419.05</data><data key="d2">1582.86</data><data key="d3">447.24</data><data key="d4">1719.62</data></node>
+    <edge id="e0" source="BlindFlange-1" target="OperatedValve-2" />
+    <edge id="e1" source="BlindFlange-1" target="ProcessColumn-1" />
+    <edge id="e2" source="BlindFlange-2" target="OperatedValve-2" />
+    <edge id="e3" source="BlindFlange-2" target="ProcessInstrumentationFunction-2" />
+    <edge id="e4" source="BlindFlange-3" target="OperatedValve-3" />
+    <edge id="e5" source="BlindFlange-3" target="ProcessColumn-1" />
+    <edge id="e6" source="BlindFlange-4" target="OperatedValve-3" />
+    <edge id="e7" source="BlindFlange-4" target="ProcessInstrumentationFunction-3" />
+    <edge id="e8" source="FlowOutPipeOffPageConnector-1" target="PipeReducer-1" />
+    <edge id="e9" source="OperatedValve-1" target="PipeTee-1" />
+    <edge id="e10" source="PipeReducer-1" target="ProcessColumn-1" />
+    <edge id="e11" source="PipeTee-1" target="ProcessColumn-1" />
+    <edge id="e12" source="ProcessInstrumentationFunction-1" target="ProcessInstrumentationFunction-2" />
+    <edge id="e13" source="ProcessInstrumentationFunction-1" target="ProcessInstrumentationFunction-3" />
+  </graph>
+</graphml>

@@ -6040,3 +6040,67 @@ reported result. Test-oracle and producer-specific Markdown preparation correcti
 The current corpus matrix and configured pipeline have no question-engine code binding, so no cells, criteria or
 stage records are restamped. No model calls, new source family, measured review time, company transfer or general
 question-usefulness result is claimed. Full public-suite, committed-tree and exact-head CI checks remain separate.
+
+
+## 131. Make tag reading comparable and give new engineers a starting path
+
+**A271 / N102.** The contributor guide named tag reading as a missing task adapter. The existing scorer already
+defines two different jobs: strict/lenient text on geometrically matched labelled symbols, and substring recall
+against partial identifier lists. The new `tag-reading` task preserves those rules and keeps mode, family,
+source/key/protocol and model/method identities separate. It reports counts, real rate denominators and defined
+versus total repeats; it does not manufacture tag precision or F1.
+
+The portable example copies thirteen existing DEXPI adaptations and their original license with attribution:
+five PNGs, three GraphML keys, three tag keys and two partial lists. All original-source/image pins match the
+cache, and all fifty main saved predictions retain their exact image/prompt/method/model/date/resource metadata.
+Current converted keys are frozen for exposed development. Matching earlier metric vectors does not authenticate
+the exact original historical key bytes or producing converter. No new model run, source family or blind trial
+is claimed. The source/provenance manifest is validated on the actual benchmark path, including raw artifact and
+license hashes and sizes; ordinary LF fingerprints alone cannot hide fixture corruption.
+
+Independent prospective controls were frozen before implementation. The unchanged scorer reproduces two
+identity defects: duplicate IDs can lend text from an ineligible symbol, and an empty matched ID loses its tag.
+Only the new geometry task rejects ambiguous IDs across every supplied row, counting the entire invalid answer
+as empty. Partial lists retain their existing substring rule without imposing geometry IDs. The old scorer,
+predictions and three earlier tasks remain unchanged. Invalid keys and conflicting provenance refuse before
+answers are considered; failed/missing attempted answers retain the full truth denominator.
+
+Actual validation retains thirty passing shipping methods, fifty whole saved answers, and independent fifty-three
+control groups plus six raw-source controls. The physical escaping-symlink variant could not be created on this
+Windows host. A persistent regression now makes that capability skip explicit and can exercise the branch in CI.
+A pre-run Git control originally put space-before-tab in the middle of a line; the corrected leading-indent
+control and every earlier draft are retained. No failing candidate run is hidden by that correction.
+
+The compact report states metadata once per mode/model/cohort group and uses five-column rate tables. All twenty-four
+displayed rates and complete counts/status/limits survive. A formatting-only run matches independently frozen
+whole JSON and Markdown; two focused methods pass and the physical-symlink method skips on Windows. Four older
+suites were actually re-scored to new prefixes. Independent canonical serialization proves all typed semantic
+values unchanged apart from measured implementation fingerprints and their derived IDs/order. Earlier reports
+remain unchanged. The root's initial Python equality comparison alone was insufficient to prove numeric type
+identity; the independent receiving check closes that proof limitation without repeating producers.
+
+The entry documentation also broadens from an equipment question to an engineering assignment. Leaders can
+prepare approved sources, a mentor, a starter workflow and a reviewable first contribution; engineers and interns
+can reuse the source-first brief. P&IDs remain a labelled manufacturing branch. The new onboarding guide and
+example-series map distinguish working routes from proposals. A generic knowledge/workflow MCP catalogue is
+still separate implementation work; the current reader serves selected engineering graphs/context. Company
+systems retain identity, permissions, accepted decisions and record authority. No onboarding or productivity
+benefit has been measured. Public full-suite, committed-byte and exact-head CI gates remain separate.
+
+A bounded reader audit also checks the task routes and eighteen top-level example guides. The historian
+walkthrough now separates offline analysis from optional OPC UA replay and explicitly binds its example
+listener to loopback; the replay tool's default is unchanged. Statement review links current steps before
+dated results. Three guides distinguish contributor fixture regeneration from a separate working output.
+The script-index generator retains complete first sentences rather than clipping three descriptions mid-word.
+The contribution guide records the what/why/how standard and keeps unpublished LinkedIn copy in an external
+private folder or the ignored local publishing folder; tracked tutorial visualizations remain public.
+
+The public full run finishes with 69 of 70 programs passing, six unittest skips and three platform notices.
+Its single failure is the matrix freshness check: the clarified historian guide is a declared input to
+row 6 / te-braatz-runs. That dependency was missed during the documentation follow-up. The failed run and all
+unchanged input hashes are retained. Reproducing only that cell keeps all 94 other cells and all outcomes
+exact: 64 pass, 23 fail and 8 not applicable. Its guide fingerprint, measured timings and the same published
+claim's line locator change. Independent receiving first stops on the unanticipated locator shift, then
+admits only line 150 to 155 after checking the identical source passage. The strict scratch check verifies
+all 95 source bindings. Affected-test and final metadata receiving remain separate; the original full run
+is not relabelled a pass, and no model or other corpus cell is rerun for this correction.

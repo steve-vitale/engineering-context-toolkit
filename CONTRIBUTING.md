@@ -97,8 +97,18 @@ python scripts/benchmark.py --registry benchmarks/registry.json
 ```
 
 Output parents must exist. Use a new output prefix; the writer refuses existing reports. `--registry` checks the
-committed reports without rewriting them. `--root` selects a separate private corpus root when needed.
-To add a public report, register its suite and report prefix in `benchmarks/registry.json`.
+committed reports without rewriting them. `--root` selects a separate private corpus root when needed. For example,
+`python scripts/benchmark.py --root ../private-corpus --suite ../private-corpus/suite.json --out ../private-corpus/results/new-comparison`
+runs from the toolkit root; create the private `results/` folder first. `--root` scopes files referenced by a
+manifest; `--suite` and `--out` are explicit paths relative to your current working directory.
+
+For the `tag-reading` task, select `geometry` or `taglist` explicitly and preserve their separate cohorts.
+Only the image and declared task instructions belong in a model's input packet; keys, reference answers and
+scoring reports stay separate. A manual/Copilot workflow may save the answer JSON for someone else to score;
+record actual conversion and exposure rather than claiming an unseen key. Use only company-approved data access
+and clients, and keep private materials out of public contributions. See the [task table](benchmarks/README.md#current-reproducible-tasks)
+for the distinct tag metrics and current registration. To add a public report, first obtain source/license/key
+and evaluator review, then register its suite and new report prefix in `benchmarks/registry.json`.
 
 ## Propose an improvement
 
@@ -128,3 +138,13 @@ owns the registered research claims. Put commands in the guide that owns the tas
 generated references; update their registries or generators rather than copying their tables into other pages.
 Keep dated plans and experiment history as records. Update a canonical statement instead of adding a second
 competing explanation, and check its inbound links and source/evidence bindings after a move.
+
+Each tool or tutorial guide should explain **what it does, why someone would use it and how to try it**:
+the starting input and prerequisites, the shortest runnable or manual path, expected output, review steps and
+known limits. Label examples, reusable tools and proposed work explicitly. Link the guide from the input selector
+or documentation map; adding another script alone does not make its workflow discoverable.
+
+Keep LinkedIn post copy, campaign plans and unpublished promotional assets in a private folder outside the
+checkout, or in the Git-ignored `local/linkedin/` folder. Ignore rules do not remove already tracked content or
+provide access control. Public diagrams, tutorial screenshots and their verification belong with the example
+they explain; `drafts/` contains tracked visualization prototypes, not a private publishing workspace.

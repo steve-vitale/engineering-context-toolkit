@@ -1,0 +1,61 @@
+{
+  "id": "tag-reading-codex-r5-dx-rep5-trace",
+  "model": {
+    "provider": "OpenAI",
+    "id": "gpt-6.1-sol",
+    "version": "provider build not recorded beyond the saved model identifier"
+  },
+  "recorded_tool": "codex",
+  "interface": "Codex CLI",
+  "method": "historical 2x2 tiled model extraction + deterministic trace replacement",
+  "configuration": {
+    "tiles": "2x2",
+    "overlap": 0.15,
+    "trace": "replace",
+    "temperature": "not recorded",
+    "reasoning_effort": "not recorded"
+  },
+  "ran_at": "2026-10-13T11:33:27+00:00",
+  "provenance": "Retrospective exposed historical/development registration of saved 2026-10-13 calls; current frozen cache keys, original producing key/converter identity unknown. Per-case original dates/resources remain in the saved envelopes. Not a new model trial, provider attestation or independent source family. Tiles-only diagnostic views are not additional replicas.",
+  "recipe": [
+    {
+      "path": "extraction/prompt_v2.md",
+      "sha256": "d98a6475c284b889be863b68fe09453f2aa8923954eee990bca21dc7aa600c65",
+      "role": "main_prompt"
+    },
+    {
+      "path": "extraction/tile_preface.md",
+      "sha256": "642aec003b66a89e9d6bac72e65d1a6ec50cbf05831ed389284b7376f2dab4d3",
+      "role": "tile_preface"
+    }
+  ],
+  "cases": [
+    "dexpi-c01",
+    "dexpi-c02",
+    "dexpi-c03",
+    "dexpi-c08a",
+    "dexpi-c08b"
+  ],
+  "predictions": {
+    "dexpi-c01": {
+      "path": "predictions/r5-dx-rep5-trace/codex/dexpi-c01.json",
+      "sha256": "421c44835693d1908ddf8954c26819e652e5ee03825c3502ec4f5cad9e0e4141"
+    },
+    "dexpi-c02": {
+      "path": "predictions/r5-dx-rep5-trace/codex/dexpi-c02.json",
+      "sha256": "4a966101f2ad8711360fc79452031c15a47781dbf1770d94e09bd2eed4c5c083"
+    },
+    "dexpi-c03": {
+      "path": "predictions/r5-dx-rep5-trace/codex/dexpi-c03.json",
+      "sha256": "2e9436d94138100221e8185c1d1dfe660f57ba27f39381921302e85f1fd3a75b"
+    },
+    "dexpi-c08a": {
+      "path": "predictions/r5-dx-rep5-trace/codex/dexpi-c08a.json",
+      "sha256": "c05e6d9a1e001064f4152ee5923590ce33df588f70993bc6494ed031254edef9"
+    },
+    "dexpi-c08b": {
+      "path": "predictions/r5-dx-rep5-trace/codex/dexpi-c08b.json",
+      "sha256": "f9317b7615dbbced44c7b0f88e832619aea78abc70524e172c79f65941e96c03"
+    }
+  }
+}

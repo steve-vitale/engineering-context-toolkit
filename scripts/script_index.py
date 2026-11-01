@@ -42,7 +42,7 @@ def first_sentence(path, override=None):
     if not doc:
         return ""
     m = re.match(r"(.+?[.!?])(\s|$)", doc)  # a colon introduces the rest of the sentence; it doesn't end it
-    return (m.group(1) if m else doc)[:220]
+    return m.group(1) if m else doc
 
 
 def problems(reg, found):

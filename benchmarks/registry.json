@@ -3,19 +3,23 @@
   "reports": [
     {
       "suite": "benchmarks/open100-validation.json",
-      "report": "benchmarks/results/open100-validation-report-clarified-source-preserved"
+      "report": "benchmarks/results/open100-validation-tag-adapter"
     },
     {
       "suite": "benchmarks/description-controls-recipe-preserved.json",
-      "report": "benchmarks/results/description-controls-recipe-preserved"
+      "report": "benchmarks/results/description-controls-tag-adapter"
     },
     {
       "suite": "benchmarks/mgpi-development-recipe-preserved.json",
-      "report": "benchmarks/results/mgpi-development-recipe-preserved"
+      "report": "benchmarks/results/mgpi-development-tag-adapter"
     },
     {
       "suite": "benchmarks/source-support-development.json",
-      "report": "benchmarks/results/source-support-development"
+      "report": "benchmarks/results/source-support-development-tag-adapter"
+    },
+    {
+      "suite": "benchmarks/tag-reading-development.json",
+      "report": "benchmarks/results/tag-reading-development"
     }
   ]
 }

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns">
+  <key id="d0" for="node" attr.name="label" attr.type="string" />
+  <key id="d1" for="node" attr.name="xmin" attr.type="double" />
+  <key id="d2" for="node" attr.name="xmax" attr.type="double" />
+  <key id="d3" for="node" attr.name="ymin" attr.type="double" />
+  <key id="d4" for="node" attr.name="ymax" attr.type="double" />
+  <graph edgedefault="undirected">
+    <node id="FlowInPipeOffPageConnector-1"><data key="d0">inlet/outlet</data><data key="d1">236.19</data><data key="d2">289.52</data><data key="d3">1146.67</data><data key="d4">1200.00</data></node>
+    <node id="GlobeValve-2"><data key="d0">valve</data><data key="d1">1211.05</data><data key="d2">1227.05</data><data key="d3">891.43</data><data key="d4">921.90</data></node>
+    <node id="ButterflyValve-1"><data key="d0">valve</data><data key="d1">1470.10</data><data key="d2">1486.10</data><data key="d3">1028.57</data><data key="d4">1059.05</data></node>
+    <node id="SwingCheckValve-1"><data key="d0">valve</data><data key="d1">1527.62</data><data key="d2">1561.90</data><data key="d3">1161.90</data><data key="d4">1180.95</data></node>
+    <node id="PipeReducer-1"><data key="d0">general</data><data key="d1">1638.10</data><data key="d2">1668.57</data><data key="d3">1165.33</data><data key="d4">1181.33</data></node>
+    <node id="BallValve-1"><data key="d0">valve</data><data key="d1">1744.76</data><data key="d2">1775.24</data><data key="d3">1165.33</data><data key="d4">1181.33</data></node>
+    <node id="SpringLoadedGlobeSafetyValve-1"><data key="d0">valve</data><data key="d1">2041.90</data><data key="d2">2064.76</data><data key="d3">700.95</data><data key="d4">754.29</data></node>
+    <node id="PipeTee-2"><data key="d0">connector</data><data key="d1">2011.05</data><data key="d2">2027.05</data><data key="d3">1165.34</data><data key="d4">1181.34</data></node>
+    <node id="BallValve-2"><data key="d0">valve</data><data key="d1">2011.05</data><data key="d2">2027.05</data><data key="d3">1203.81</data><data key="d4">1234.29</data></node>
+    <node id="PipeTee-1"><data key="d0">connector</data><data key="d1">2041.52</data><data key="d2">2057.52</data><data key="d3">1165.33</data><data key="d4">1181.33</data></node>
+    <node id="PipeTee-3"><data key="d0">connector</data><data key="d1">2132.95</data><data key="d2">2148.95</data><data key="d3">1165.33</data><data key="d4">1181.33</data></node>
+    <node id="BallValve-3"><data key="d0">valve</data><data key="d1">2132.95</data><data key="d2">2148.95</data><data key="d3">1112.38</data><data key="d4">1142.86</data></node>
+    <node id="BlindFlange-1"><data key="d0">general</data><data key="d1">2132.95</data><data key="d2">2148.95</data><data key="d3">1098.29</data><data key="d4">1114.29</data></node>
+    <node id="BallValve-4"><data key="d0">valve</data><data key="d1">2186.67</data><data key="d2">2217.14</data><data key="d3">1165.33</data><data key="d4">1181.33</data></node>
+    <node id="PipeTee-4"><data key="d0">connector</data><data key="d1">2456.76</data><data key="d2">2472.76</data><data key="d3">1165.33</data><data key="d4">1181.33</data></node>
+    <node id="PipeTee-5"><data key="d0">connector</data><data key="d1">2772.95</data><data key="d2">2788.95</data><data key="d3">1165.33</data><data key="d4">1181.33</data></node>
+    <node id="BallValve-5"><data key="d0">valve</data><data key="d1">2772.95</data><data key="d2">2788.95</data><data key="d3">1112.38</data><data key="d4">1142.86</data></node>
+    <node id="BlindFlange-2"><data key="d0">general</data><data key="d1">2772.95</data><data key="d2">2788.95</data><data key="d3">1098.29</data><data key="d4">1114.29</data></node>
+    <node id="FlowOutPipeOffPageConnector-1"><data key="d0">inlet/outlet</data><data key="d1">2880.00</data><data key="d2">2933.33</data><data key="d3">1146.67</data><data key="d4">1200.00</data></node>
+    <node id="GlobeValve-1"><data key="d0">valve</data><data key="d1">2456.76</data><data key="d2">2472.76</data><data key="d3">731.43</data><data key="d4">761.90</data></node>
+    <node id="GlobeValve-3"><data key="d0">valve</data><data key="d1">2579.05</data><data key="d2">2609.52</data><data key="d3">852.95</data><data key="d4">868.95</data></node>
+    <node id="ProcessInstrumentationFunction-1"><data key="d0">instrumentation</data><data key="d1">2089.52</data><data key="d2">2192.38</data><data key="d3">977.14</data><data key="d4">1034.29</data></node>
+    <node id="ProcessInstrumentationFunction-2"><data key="d0">instrumentation</data><data key="d1">2729.52</data><data key="d2">2832.38</data><data key="d3">977.14</data><data key="d4">1034.29</data></node>
+    <node id="ProcessInstrumentationFunction-3"><data key="d0">instrumentation</data><data key="d1">992.38</data><data key="d2">1095.24</data><data key="d3">878.10</data><data key="d4">935.24</data></node>
+    <node id="ProcessInstrumentationFunction-4"><data key="d0">instrumentation</data><data key="d1">1502.86</data><data key="d2">1605.71</data><data key="d3">436.19</data><data key="d4">493.33</data></node>
+    <node id="PlateHeatExchanger-1"><data key="d0">tank</data><data key="d1">1036.19</data><data key="d2">1097.14</data><data key="d3">996.19</data><data key="d4">1190.48</data></node>
+    <node id="TubularHeatExchanger-1"><data key="d0">tank</data><data key="d1">2451.43</data><data key="d2">2638.10</data><data key="d3">963.81</data><data key="d4">1017.14</data></node>
+    <node id="CentrifugalPump-1"><data key="d0">pump</data><data key="d1">600.00</data><data key="d2">680.00</data><data key="d3">1133.33</data><data key="d4">1213.33</data></node>
+    <node id="ReciprocatingPump-1"><data key="d0">pump</data><data key="d1">1872.38</data><data key="d2">1952.38</data><data key="d3">1133.33</data><data key="d4">1213.33</data></node>
+    <node id="Tank-1"><data key="d0">tank</data><data key="d1">1363.81</data><data key="d2">1592.38</data><data key="d3">560.27</data><data key="d4">948.30</data></node>
+    <edge id="e0" source="BallValve-1" target="PipeReducer-1" />
+    <edge id="e1" source="BallValve-1" target="ReciprocatingPump-1" />
+    <edge id="e2" source="BallValve-2" target="PipeTee-2" />
+    <edge id="e3" source="BallValve-3" target="BlindFlange-1" />
+    <edge id="e4" source="BallValve-3" target="PipeTee-3" />
+    <edge id="e5" source="BallValve-4" target="PipeTee-3" />
+    <edge id="e6" source="BallValve-4" target="PipeTee-4" />
+    <edge id="e7" source="BallValve-5" target="BlindFlange-2" />
+    <edge id="e8" source="BallValve-5" target="PipeTee-5" />
+    <edge id="e9" source="BlindFlange-1" target="ProcessInstrumentationFunction-1" />
+    <edge id="e10" source="BlindFlange-2" target="ProcessInstrumentationFunction-2" />
+    <edge id="e11" source="ButterflyValve-1" target="SwingCheckValve-1" />
+    <edge id="e12" source="ButterflyValve-1" target="Tank-1" />
+    <edge id="e13" source="CentrifugalPump-1" target="FlowInPipeOffPageConnector-1" />
+    <edge id="e14" source="CentrifugalPump-1" target="PlateHeatExchanger-1" />
+    <edge id="e15" source="FlowOutPipeOffPageConnector-1" target="PipeTee-5" />
+    <edge id="e16" source="GlobeValve-1" target="ProcessInstrumentationFunction-2" />
+    <edge id="e17" source="GlobeValve-1" target="Tank-1" />
+    <edge id="e18" source="GlobeValve-1" target="TubularHeatExchanger-1" />
+    <edge id="e19" source="GlobeValve-2" target="PlateHeatExchanger-1" />
+    <edge id="e20" source="GlobeValve-2" target="ProcessInstrumentationFunction-3" />
+    <edge id="e21" source="GlobeValve-2" target="Tank-1" />
+    <edge id="e22" source="GlobeValve-3" target="ProcessInstrumentationFunction-4" />
+    <edge id="e23" source="GlobeValve-3" target="TubularHeatExchanger-1" />
+    <edge id="e24" source="PipeReducer-1" target="SwingCheckValve-1" />
+    <edge id="e25" source="PipeTee-1" target="PipeTee-2" />
+    <edge id="e26" source="PipeTee-1" target="PipeTee-3" />
+    <edge id="e27" source="PipeTee-1" target="SpringLoadedGlobeSafetyValve-1" />
+    <edge id="e28" source="PipeTee-2" target="ReciprocatingPump-1" />
+    <edge id="e29" source="PipeTee-4" target="PipeTee-5" />
+    <edge id="e30" source="PipeTee-4" target="TubularHeatExchanger-1" />
+    <edge id="e31" source="ProcessInstrumentationFunction-4" target="Tank-1" />
+    <edge id="e32" source="SpringLoadedGlobeSafetyValve-1" target="Tank-1" />
+  </graph>
+</graphml>

@@ -9,10 +9,12 @@ There is no universal best-model score.
 
 | Task | What is scored | Current evidence | Results |
 |---|---|---|---|
-| `drawing-extraction`, `pid2graph-v1` | Rough/strict six-class symbol F1 and asset-network F1 using the unchanged scorer | Existing five replicates each for Claude and Codex on six OPEN100 validation drawings. The method includes tiling and deterministic tracing. This is retrospective registration of saved runs; validation also informed method selection. | [Model comparison](results/open100-validation-report-clarified-source-preserved.md), [JSON](results/open100-validation-report-clarified-source-preserved.json), [suite](open100-validation.json) |
-| `description-facts`, `native-facts-v1` | Literal selected equipment/type, stream endpoints, instrument/valve placement and controller relations against explicit fact atoms | Two authored synthetic cases with reference, empty and wrong-endpoint controls. Keys come from those same references. **Scorer development only: no AI interpretation benchmark.** | [Scorer controls](results/description-controls-recipe-preserved.md), [JSON](results/description-controls-recipe-preserved.json), [suite](description-controls-recipe-preserved.json) |
-| `description-facts`, `native-facts-v1`, source review | The same selected fields against separately prepared original-source keys | [MGPI source-adapted development case](../examples/from-description/mgpi/README.md), with retained unsupported initial adaptation and an explicit source/key expansion. No held-out or original-text model trial. A planted false-shutdown claim still scores perfectly and exposes a scorer blindspot. | [Development artifacts and controls](results/mgpi-development-recipe-preserved.md), [suite](mgpi-development-recipe-preserved.json) |
-| `source-support`, `claim-judgments-v1` | Labels for fixed supplied claims against a bounded key; missing claims stay in the accuracy denominator | Twelve MGPI/NIST development claims using explicit project paraphrases. Synthetic scorer controls only; reasons and source validity unscored. | [Control results](results/source-support-development.md), [suite](source-support-development.json) |
+| `drawing-extraction`, `pid2graph-v1` | Rough/strict six-class symbol F1 and asset-network F1 using the unchanged scorer | Existing five replicates each for Claude and Codex on six OPEN100 validation drawings. The method includes tiling and deterministic tracing. This is retrospective registration of saved runs; validation also informed method selection. | [Model comparison](results/open100-validation-tag-adapter.md), [JSON](results/open100-validation-tag-adapter.json), [suite](open100-validation.json) |
+| `description-facts`, `native-facts-v1` | Literal selected equipment/type, stream endpoints, instrument/valve placement and controller relations against explicit fact atoms | Two authored synthetic cases with reference, empty and wrong-endpoint controls. Keys come from those same references. **Scorer development only: no AI interpretation benchmark.** | [Scorer controls](results/description-controls-tag-adapter.md), [JSON](results/description-controls-tag-adapter.json), [suite](description-controls-recipe-preserved.json) |
+| `description-facts`, `native-facts-v1`, source review | The same selected fields against separately prepared original-source keys | [MGPI source-adapted development case](../examples/from-description/mgpi/README.md), with retained unsupported initial adaptation and an explicit source/key expansion. No held-out or original-text model trial. A planted false-shutdown claim still scores perfectly and exposes a scorer blindspot. | [Development artifacts and controls](results/mgpi-development-tag-adapter.md), [suite](mgpi-development-recipe-preserved.json) |
+| `source-support`, `claim-judgments-v1` | Labels for fixed supplied claims against a bounded key; missing claims stay in the accuracy denominator | Twelve MGPI/NIST development claims using explicit project paraphrases. Synthetic scorer controls only; reasons and source validity unscored. | [Control results](results/source-support-development-tag-adapter.md), [suite](source-support-development.json) |
+| `tag-reading`, `tag-text-v1`: `geometry` | Strict tag recall over labelled scored symbols, plus accuracy on geometrically found symbols; lenient text rates are companion diagnostics. No tag precision/F1. | Saved attempts, current frozen source-derived keys and labelled-symbol projection. Exposed development evidence; offline adapter and saved-answer registration, not a new trial. | [Tag report](results/tag-reading-development.md), [JSON](results/tag-reading-development.json), [suite](tag-reading-development.json). No new model trials. |
+| The same tag task: `taglist` | Lenient substring recall over listed identifiers. This is upper-bound partial-list coverage, with no box/location assignment or precision/F1. | Saved attempts and current frozen partial lists. Separate mode/cohort from geometry; partial-list coverage does not establish correct item assignment. | [The same report](results/tag-reading-development.md#partial-list-identifier-rates), with a separate mode/cohort. No ranking across modes. |
 
 The third adapter, `source-support` / `claim-judgments-v1`, grades **fixed supplied claims** as supported,
 contradicted or insufficient-evidence. Its [development suite](source-support-development.json) has twelve
@@ -24,7 +26,7 @@ The [prompt](source-support/prompt.md), [full review key](source-support/review_
 retain dates, locators and multi-source joins. Source hashes are declared metadata; this scorer does not fetch
 or revalidate the original files.
 
-[Results](results/source-support-development.md) show synthetic controls only: reference 12/12, empty 0/12,
+[Results](results/source-support-development-tag-adapter.md) show synthetic controls only: reference 12/12, empty 0/12,
 and each uniform-label control 4/12. These validate scorer behavior, not model capability. Primary accuracy is
 correct/expected claims; missing decisions remain in the denominator. Per-label F1 is diagnostic and can differ
 from accuracy on incomplete answers. Citation IDs must be admitted and reasons nonempty, but **reason quality
@@ -36,6 +38,18 @@ Drawing cases pair a PNG input with a PID2Graph GraphML key; answers use `symbol
 saved prediction envelope. Description cases pair UTF-8 source text, a JSON `facts` key and an expected native
 model for the positive control. Submitted answers can be a native process model or the description workflow's
 `model`/`layout`/`evidence` wrapper. Keep evaluation keys/reference models out of the inference packet.
+
+The tag task declares `tag_key_kind` on every case. `geometry` uses the PNG, GraphML and separate tag key;
+existing rough one-to-one symbol matching precedes text scoring. Strict recall is correct tags / labelled truth;
+accuracy on found symbols is correct tags / found labelled symbols. An unfound symbol remains a recall miss.
+`taglist` uses the PNG and a partial identifier list: a normalized identifier can match anywhere inside a predicted
+tag, so one concatenated tag can satisfy several rows. Its class-agreement share is diagnostic, not precision.
+Undefined rates stay null. Neither mode resolves a tag to a company asset or establishes engineering validity.
+
+The offline fixture contains 13 exact cached adapted files, with a copied license and source/derivation
+provenance. Current key bytes are frozen for development; original historical converted-key bytes and the
+producing converter/version are not authenticated by those freezes. Retain that uncertainty. Five sheets from
+one publisher and generated/degraded variants are not new independent source families or held-out tests.
 
 The fact task grades identities and the fields in `benchmark.FIELDS`, plus controller output targets. It does not
 grade names, narrative equivalence, source support, physical dimensions, operating limits, interlocks, drawing
@@ -50,16 +64,16 @@ provides separate structure/quotation/drawing checks; those are not substituted 
 
 | Function family | Existing evidence | Next benchmark contribution |
 |---|---|---|
-| Drawing reading, tags and topology | Saved predictions, frozen geometry/tag scorers, replicate analysis and corpus matrix | More independent styles, tag truth and model/version runs; add a tag-task adapter using the existing tag scorer |
+| Drawing reading, tags and topology | Saved predictions, frozen geometry/tag scorers, replicate analysis and corpus matrix; the registered tag task above | Independently reviewed tag truth, real scans/handwriting/dense archives and new model/version runs; registration alone adds no reading capability |
 | Description/model generation and detailed drafting | Assisted workflow fixtures; selected fact-task adapter; TE/Bayer worked examples | Independently keyed unfamiliar descriptions, missing/unsupported facts and separately reviewed rendered layouts |
 | Questions and evidence/decision packets | Feature tests, sourced worked examples and independent software reviews | A reviewed question/grounding rubric with source-backed expected and unacceptable claims; keep usefulness separate from format checks |
 | Graph/export/CAD/platform preservation | Corpus matrix and native-field regression checks | Semantic fidelity cases for each format, including omissions, unknowns, ownership and source/status preservation |
 | Historian analysis and impact estimates | Separate public-data matrix runs and calculation tests | Labelled detection conditions, false alarms, measurement uncertainty and calculation truth; distinguish deterministic methods from AI models |
 | MCP, maintenance and other integrations | Bounded protocol/feature tests and selected lab acceptance | Task-specific retrieval/coverage and compatibility tests; no performance claim about an untested company deployment |
 
-These rows identify work to add. Only the three task adapters above are implemented in this runner; every feature
-does not yet have a generalization benchmark. New tasks require a tested evaluator contract and known-answer
-controls, rather than importing an arbitrary score column into a leaderboard. See the full
+These rows identify work to add. Four task adapters are implemented. `tag-reading` is one adapter with
+two modes; each keeps its own counts, rates and comparison cohorts. Not every feature has a generalization benchmark. New tasks require a tested evaluator
+contract and known-answer controls, rather than importing an arbitrary score column into a leaderboard. See the full
 [feature inventory](../docs/FEATURES.md) and [eight-workflow matrix](../docs/GENERALIZATION.md).
 
 ## Reproduce or extend
@@ -69,8 +83,24 @@ python scripts/benchmark.py --registry benchmarks/registry.json
 python scripts/test_benchmark.py
 ```
 
-No models, subscriptions, downloads or servers are used. Registered files and saved model identities/prompts are
-checked before scoring. Changed source/key/prediction fingerprints fail validation; they are not counted as a
+These scoring commands use no models, subscriptions, downloads or servers. Registered files and saved model
+identities/prompts are checked before scoring.
+
+**Collecting tag-reading answers with approved Copilot or manual saved JSON:** choose the declared tag mode and
+exact image before collecting an answer. Give only that input image and task instructions to an approved client; keep keys and reference answers
+out of that packet. Keep company documents, answers and metadata in approved private storage. No cloud model
+integration is required, and this example does not establish approval of a Copilot tenant or connector. You can
+save answers without installing this scorer; another approved workstation can score them offline.
+
+**Comparing models or vendors:** freeze cases, keys and source provenance first, then retain each attempted
+answer, failures included, with its model/version/interface, prompt, settings and any answer conversion. Use the
+[contribution steps](../CONTRIBUTING.md#submit-model-and-method-results) for manifests and private `--root` scoring.
+For tag geometry, symbol IDs must be exact unique nonempty, non-whitespace strings across all rows; invalid IDs fail the whole
+answer rather than being repaired. This geometry-only policy does not apply to tag-list matching or older tasks.
+Compare like-mode cohorts and counts, keeping model/method rows separate. Saved model metadata is a contributor
+declaration, not provider attestation. The [tag suite](tag-reading-development.json) and [report](results/tag-reading-development.md) are registered for offline checks.
+
+Changed source/key/prediction fingerprints fail validation; they are not counted as a
 model's failure. Python scoring-code fingerprints normalize CRLF to LF, so equivalent Windows/Linux checkouts
 share a cohort; actual source edits still change it. Other declared text extensions use the same normalization.
 Missing/invalid attempted answers remain scored failures. New unattempted cases remain a visible
@@ -82,22 +112,21 @@ the category scores and missing/unexpected facts; execution failures and semanti
 
 The machine-readable [registry](registry.json) lists the current reproducible snapshots. Their JSON retains exact
 counts, failed answers, coverage, dates, model/configuration declarations, recipe hashes and optional reported
-resources. Mean F1 pools counts within each replicate, then averages across repeats. Range/SD describe those
+resources. Each replicate pools task counts before computing its metrics. Summaries average replicate metrics; tag rates also report how many repeats have a defined denominator. Range/SD describe those
 repeats; they do not establish statistical significance or a winner. Unknown model builds, cost and timing stay
 unknown. For a new method, retain the old answer artifacts and score both on the same baseline before expanding
 the corpus. This makes improvements inspectable and keeps failures useful to the next contributor.
 
 ## Report implementation revisions
 
-The registry selects new offline scores of the three earlier suites after the source-preservation and
-fixed-claim adapter edits. Counts, metrics, controls, source/key/prediction/recipe bindings and model declarations
-are unchanged. Implementation fingerprints and cohort/group identities change because the evaluator changed;
-these are not new model trials or performance improvements.
+The current registry selects actual `*-tag-adapter` re-scores of the four existing suites and the new tag
+suite. Registering the adapter changes the shared implementation fingerprint and derived comparison IDs. The
+older tasks retain their exact typed counts, statuses, controls, model/recipe metadata and diagnostics. These are
+not new model trials or measured improvements in interpretation.
 
-All eight earlier JSON/Markdown files remain byte-identical historical snapshots, including the earlier
-vendor-interpretation revision. They are outside the current registry and do not byte-reproduce under the
-changed implementation. The source-preserved report pairs are actual re-scores, not hand-rehashed receipts.
-Retain previous reports and register a new prefix whenever the implementation changes.
+Every earlier suite, run and report remains unchanged as a historical snapshot. Use the registry for current
+reproduction, and inspect its selected report prefix before comparing implementations. Earlier source-preserved
+and recipe-preserved reports retain their own code and provenance identities.
 
 The current description-control and MGPI suites separately preserve their historical recipes after the live
 description guide and workflow gained interpretation-review sheets. The exact guide and code bytes from

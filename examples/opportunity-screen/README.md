@@ -24,7 +24,9 @@ motor efficiency and actual heat duty. The [source-investigation recipe](source-
 retains the MGPI historical answer while asking conditional receiving-installation questions; it is an
 authored source-specific catalog, not a new default rule or usefulness score.
 
-Regenerate (the test checks these outputs byte for byte):
+The commands below regenerate tracked example outputs for contributors; the test checks them byte for byte.
+For a personal run, use a separate `--out` folder such as `../engineering-work/screen-te`. For a roll-up, point
+each `--rollup` at the corresponding working output folder.
 
 ```sh
 python -S scripts/question_engine.py --model data/te_process_model.json --loops examples/loop-audit/te_loops.csv --out examples/opportunity-screen/te

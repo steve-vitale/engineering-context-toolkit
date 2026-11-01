@@ -302,5 +302,323 @@ class BenchmarkTests(unittest.TestCase):
             self.assertEqual(row['counts']['symbols_rough']['tp'], expected['rough']['classified']['tp'])
 
 
+class TagBenchmarkTests(unittest.TestCase):
+    """New task controls; legacy benchmark tests above remain unchanged."""
+
+    def setUp(self):
+        import struct
+        self.tmp = tempfile.TemporaryDirectory(prefix='tag-benchmark-')
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        (self.root / 'input.png').write_bytes(b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR' + struct.pack('>II', 1000, 1000))
+        (self.root / 'LICENSE').write_bytes(b'Synthetic software-control material.\r\n')
+        (self.root / 'recipe.txt').write_bytes(b'Synthetic fixture; no inference.\n')
+        head = '<graphml xmlns="http://graphml.graphdrawing.org/xmlns">'
+        head += ''.join(f'<key id="{k}" for="node" attr.name="{k}"/>' for k in ('label','xmin','xmax','ymin','ymax')) + '<graph>'
+        self.symbols = [('V1','valve',[10,10,20,20],'FV-101'), ('I1','instrumentation',[100,10,110,20],'FIC 101'),
+                        ('P1','pump',[200,10,210,20],'P4711')]
+        nodes = ''
+        for ident, cls, box, tag in self.symbols:
+            fields = dict(label=cls,xmin=box[0],ymin=box[1],xmax=box[2],ymax=box[3])
+            nodes += f'<node id="{ident}">' + ''.join(f'<data key="{k}">{v}</data>' for k,v in fields.items()) + '</node>'
+        (self.root / 'key.graphml').write_text(head + nodes + '</graph></graphml>',encoding='utf-8')
+        self.save('tags.json', {'tags': {ident:tag for ident,cls,box,tag in self.symbols}})
+        self.save('list.json', {'items': [{'identifier':'P0020','class':'instrumentation','list':'instrument'},
+            {'identifier':'AB020','class':'valve','list':'valve'}, {'identifier':'BA100','class':'tank','list':'equipment'}]})
+        self.answer = {'symbols':[{'id':ident,'class':cls,'box':box,'tag':tag} for ident,cls,box,tag in self.symbols]}
+        self.save('answer.json',self.answer)
+        self.case = {'id':'one','family':'synthetic','split':'synthetic-control','evidence':'authored software control',
+            'source_url':'repository:synthetic','license':'synthetic','key_author':'explicit synthetic boxes/text',
+            'tag_key_kind':'geometry','files':{role:self.ref(name) for role,name in [('input','input.png'),('key','key.graphml'),('tags','tags.json')]}}
+        self.run = {'id':'one','model':{'provider':'none','id':'fixture','version':'1'},'interface':'saved fixture',
+            'method':'synthetic reference','configuration':{},'ran_at':'2026-10-31','provenance':'No model call.',
+            'recipe':[dict(self.ref('recipe.txt'),role='main_prompt')],'cases':['one'],'predictions':{'one':self.ref('answer.json')}}
+        self.suite = {'id':'tags','version':'1','task':'tag-reading','protocol':'Synthetic fixed controls',
+            'registration':'synthetic-control, no model capability claim','cases':[self.case],'runs':['run.json']}
+        self.refresh()
+
+    def save(self,name,value):
+        path=self.root/name;path.write_bytes(b.encoded(value));return path
+
+    def ref(self,name):
+        return {'path':name,'sha256':b.file_hash(self.root/name)}
+
+    def refresh(self):
+        import hashlib
+        artifacts=[]
+        for role,ref in self.case['files'].items():
+            ref['sha256']=b.file_hash(self.root/ref['path'])
+            raw=(self.root/ref['path']).read_bytes()
+            artifacts.append({'path':ref['path'],'role':role,'raw_sha256':hashlib.sha256(raw).hexdigest(),
+                'size_bytes':len(raw),'source_paths':['synthetic-source']})
+        raw=(self.root/'LICENSE').read_bytes()
+        self.provenance={'schema':'tag-source-provenance-1','source':{'repository':'repository:synthetic','revision':'1',
+            'license':'synthetic','attribution':'Authored fixture, not a model result.','originals':[{'path':'synthetic-source',
+                'url':'repository:synthetic','raw_sha256':'0'*64,'size_bytes':0}]},
+            'license':{'path':'LICENSE','raw_sha256':hashlib.sha256(raw).hexdigest(),'size_bytes':len(raw)},
+            'artifacts':artifacts,'derivation':{'historical_producing_converter':'not applicable, synthetic',
+                'original_historical_key_bytes':'not applicable, synthetic','limits':'Software controls only.',
+                'render_parameters':{'dimensions':[1000,1000]},'current_associated_files':[self.ref('recipe.txt')]}}
+        self.save('provenance.json',self.provenance)
+        self.case['source_provenance']=self.ref('provenance.json')
+
+    def evaluate(self):
+        self.save('run.json',self.run)
+        return b.evaluate(self.save('suite.json',self.suite),self.root)
+
+    def replace_answer(self,value):
+        self.save('answer.json',value);self.run['predictions']['one']=self.ref('answer.json')
+
+    def use_list(self):
+        self.case['tag_key_kind']='taglist'
+        self.case['files']={role:self.ref(name) for role,name in [('input','input.png'),('key','list.json')]}
+        self.refresh()
+
+    def test_geometry_exact_counts_and_null_found_accuracy(self):
+        row=self.evaluate()['results'][0]
+        self.assertEqual(row['counts']['strict'],{'correct':3,'wrong':0,'no_tag':0,'missed':0,'found':3,'with_truth':3})
+        self.assertEqual(row['metrics']['strict_end_to_end_recall'],1)
+        self.run['predictions']={}
+        row=self.evaluate()['results'][0]
+        self.assertEqual(row['rows'][0]['status'],'missing')
+        self.assertEqual(row['counts']['strict']['missed'],3)
+        self.assertIsNone(row['metrics']['strict_accuracy_on_found'])
+        values=self.evaluate()['summary'][0]['metrics']['strict_accuracy_on_found']
+        self.assertIsNone(values['mean']);self.assertEqual((values['defined_replicates'],values['total_replicates']),(0,1))
+
+    def test_wrong_no_tag_and_class_agnostic_matching(self):
+        answer=copy.deepcopy(self.answer)
+        answer['symbols'][0]['tag']='FV-999'
+        answer['symbols'][1]['tag']=None
+        answer['symbols'][2]['class']='tank'
+        self.replace_answer(answer)
+        row=self.evaluate()['results'][0]
+        self.assertEqual((row['counts']['strict']['correct'],row['counts']['strict']['wrong'],row['counts']['strict']['no_tag']),(1,1,1))
+
+    def test_geometry_ids_refuse_across_all_rows_without_repair(self):
+        for extra in ({'id':'V1','class':'connector','tag':'FV-101'}, {'id':1,'tag':'FV-101'},
+                      {'id':'','tag':'FV-101'}, {'id':'  ','tag':'FV-101'}, {'class':'connector'}):
+            with self.subTest(extra=extra):
+                answer=copy.deepcopy(self.answer);answer['symbols'].append(extra);self.replace_answer(answer)
+                raw=(self.root/'answer.json').read_bytes();row=self.evaluate()['results'][0]
+                self.assertEqual(row['rows'][0]['status'],'invalid-answer')
+                self.assertEqual(row['counts']['strict']['missed'],3)
+                self.assertEqual((self.root/'answer.json').read_bytes(),raw)
+
+    def test_taglist_substring_class_share_and_no_id_restriction(self):
+        self.use_list()
+        self.replace_answer({'symbols':[{'id':'','tag':'PI P0020 AB-020 BA100','class':'general'},
+                                       {'id':'','tag':None,'class':'tank'}]})
+        row=self.evaluate()['results'][0]
+        self.assertEqual(row['counts']['all'],{'listed':3,'found':3,'found_with_list_class':0})
+        self.assertEqual(row['metrics'],{'identifier_recall':1,'found_identifier_class_agreement':0})
+        text=b.markdown(self.evaluate())
+        self.assertNotIn('Mean F1',text);self.assertNotIn('precision',row['metrics'])
+
+    def test_pooled_rates_and_mode_buckets_never_mix(self):
+        import benchmark_tags as tag
+        first={'strict':dict(correct=1,wrong=0,no_tag=0,missed=0,found=1,with_truth=1),
+               'lenient':dict(correct=1,wrong=0,no_tag=0,missed=0,found=1,with_truth=1)}
+        second={'strict':dict(correct=0,wrong=0,no_tag=0,missed=3,found=0,with_truth=3),
+                'lenient':dict(correct=0,wrong=0,no_tag=0,missed=3,found=0,with_truth=3)}
+        rates,_=tag.rates('geometry',tag.pooled('geometry',[first,second]))
+        self.assertEqual(rates['strict_end_to_end_recall'],0.25)
+        self.assertEqual(rates['strict_accuracy_on_found'],1)
+        suite=b.read_json(ROOT/'benchmarks/tag-reading-development.json')
+        self.assertEqual({case['tag_key_kind'] for case in suite['cases']},{'geometry','taglist'})
+
+    def test_keys_validate_before_any_model_answer(self):
+        from unittest.mock import patch
+        for value in (17,{},'   '):
+            with self.subTest(value=value):
+                self.save('tags.json',{'tags':{'V1':value}});self.refresh()
+                self.run['predictions']={}
+                with self.assertRaises(ValueError):self.evaluate()
+        self.save('tags.json',{'tags':{'V1':'FV-101','I1':None,'P1':'','missing':'OUTSIDE'}});self.refresh()
+        report=self.evaluate()
+        self.assertEqual(report['controls']['one']['key_admission']['eligible_truth'],1)
+        self.assertEqual(len(report['controls']['one']['key_admission']['excluded_truth']),3)
+
+    def test_non_scored_zero_area_does_not_enter_truth(self):
+        path=self.root/'key.graphml';text=path.read_text()
+        connector='<node id="J"><data key="label">connector</data><data key="xmin">0</data><data key="ymin">0</data><data key="xmax">0</data><data key="ymax">0</data></node>'
+        path.write_text(text.replace('</graph>',connector+'</graph>'))
+        self.refresh()
+        row=self.evaluate()['results'][0]
+        self.assertEqual(row['counts']['strict']['correct'],3)
+
+    def test_list_bad_keys_and_explicit_cross_list_overlap(self):
+        self.use_list()
+        for items in ([],[{'identifier':'---','list':'x','class':'valve'}],
+                      [{'identifier':'A','list':'x','class':'valve'}]*2):
+            self.save('list.json',{'items':items});self.refresh()
+            with self.assertRaises(ValueError):self.evaluate()
+        self.save('list.json',{'items':[{'identifier':'AB001','class':'valve','list':'valve'},
+                                      {'identifier':'AB001','class':'instrumentation','list':'instrument'}]})
+        self.refresh()
+        with self.assertRaises(ValueError):self.evaluate()
+        self.case['taglist_overlap_note']='Explicit same identifier in two sourced list roles; not two physical assets.'
+        self.replace_answer({'symbols':[{'tag':'AB001','class':'valve'}]})
+        self.assertEqual(self.evaluate()['results'][0]['counts']['all'],{'listed':2,'found':2,'found_with_list_class':1})
+
+    def test_failed_and_malformed_attempts_keep_truth_denominators(self):
+        for answer,status in (({'prediction':self.answer,'error':'failed'},'failed'),
+                              ({'prediction':None,'parse_error':'unreadable'},'failed'),
+                              ({'symbols':[None]},'invalid-answer'),({'symbols':'bad'},'invalid-answer')):
+            self.replace_answer(answer)
+            row=self.evaluate()['results'][0]
+            self.assertEqual(row['rows'][0]['status'],status)
+            self.assertEqual(row['counts']['strict']['missed'],3)
+        (self.root/'answer.json').write_bytes(b'{"symbols":[],"symbols":[]}')
+        self.run['predictions']['one']=self.ref('answer.json')
+        self.assertEqual(self.evaluate()['results'][0]['rows'][0]['status'],'invalid-answer')
+
+    def test_flat_unknown_schema_metadata_is_still_bound(self):
+        for schema in (None,'unrecognized'):
+            value=dict(self.answer,model='other',schema=schema)
+            self.replace_answer(value)
+            with self.assertRaisesRegex(b.ProvenanceError,'Saved model'):self.evaluate()
+
+    def test_raw_license_and_key_corruption_cannot_hide_behind_LF_refs(self):
+        for name in ('LICENSE','tags.json'):
+            raw=(self.root/name).read_bytes()
+            if b'\r\n' not in raw:
+                raw=raw.replace(b'\n',b'\r\n');(self.root/name).write_bytes(raw);self.refresh()
+            (self.root/name).write_bytes(raw.replace(b'\r\n',b'\n'))
+            for role,ref in self.case['files'].items():ref['sha256']=b.file_hash(self.root/ref['path'])
+            with self.assertRaisesRegex(ValueError,'Raw source artifact'):self.evaluate()
+            (self.root/name).write_bytes(raw);self.refresh()
+
+    def test_source_provenance_reference_and_case_roles_are_required(self):
+        ref=self.case.pop('source_provenance')
+        with self.assertRaises(ValueError):self.evaluate()
+        self.case['source_provenance']=ref
+        self.provenance['artifacts'][0]['role']='key';self.save('provenance.json',self.provenance)
+        self.case['source_provenance']=self.ref('provenance.json')
+        with self.assertRaisesRegex(ValueError,'role mismatch'):self.evaluate()
+
+    def test_adding_unattempted_case_preserves_selected_cohort(self):
+        old=self.evaluate()['results'][0]
+        other=copy.deepcopy(self.case);other['id']='two';self.suite['cases'].append(other)
+        new=self.evaluate()['results'][0]
+        self.assertEqual(old['cohort'],new['cohort']);self.assertEqual(new['not_attempted'],['two'])
+
+    def test_no_answers_or_references_are_mutated(self):
+        original=self.evaluate()
+        before={p.name:p.read_bytes() for p in self.root.iterdir() if p.is_file()}
+        b.evaluate(self.root/'suite.json',self.root)
+        self.assertEqual(before,{p.name:p.read_bytes() for p in self.root.iterdir() if p.is_file()})
+
+    def test_real_frozen_raw_fixture_set_and_historical_modes(self):
+        import hashlib
+        manifest=b.read_json(ROOT/'benchmarks/tag-reading/PROVENANCE.json')
+        self.assertEqual(len(manifest['artifacts']),13)
+        for row in [*manifest['artifacts'],manifest['license']]:
+            raw=(ROOT/row['path']).read_bytes()
+            self.assertEqual((hashlib.sha256(raw).hexdigest(),len(raw)),(row['raw_sha256'],row['size_bytes']))
+        report=b.evaluate(ROOT/'benchmarks/tag-reading-development.json',ROOT)
+        self.assertEqual(len(report['results']),20);self.assertEqual(len(report['summary']),4)
+        for row in report['results']:
+            self.assertTrue(all(r['status']=='ok' for r in row['rows']))
+            if row['tag_key_kind']=='geometry':
+                self.assertEqual(row['counts']['strict']['with_truth'],33)
+                self.assertEqual(row['counts']['strict']['correct'],28 if row['model']['provider']=='Anthropic' else 29)
+            else:self.assertEqual(row['counts']['all']['listed'],145)
+
+    def test_source_provenance_refuses_physical_escaping_symlink(self):
+        import errno
+        external = tempfile.TemporaryDirectory(prefix='tag-external-')
+        self.addCleanup(external.cleanup)
+        original = self.root / 'provenance.json'
+        target = Path(external.name) / 'provenance.json'
+        target.write_bytes(original.read_bytes())
+        alias = self.root / 'outside-provenance.json'
+        try:
+            alias.symlink_to(target)
+        except (OSError, NotImplementedError) as exc:
+            if isinstance(exc, NotImplementedError) or getattr(exc, 'winerror', None) == 1314 or \
+                    getattr(exc, 'errno', None) in (errno.EPERM, errno.EACCES, errno.ENOSYS, errno.ENOTSUP):
+                self.skipTest('File symlinks unavailable: ' + str(exc))
+            raise
+        self.case['source_provenance'] = {'path': alias.name, 'sha256': b.file_hash(original)}
+        with self.assertRaisesRegex(ValueError, 'escapes'):
+            self.evaluate()
+        self.assertEqual(target.read_bytes(), original.read_bytes())
+
+    def test_compact_markdown_retains_nulls_groups_and_escaped_metadata(self):
+        self.run['predictions'] = {}
+        report = self.evaluate()
+        first = report['summary'][0]
+        first['model']['id'] = 'model|name\nnext'
+        first['method'] = 'read|only\nmethod'
+        first['configuration'] = {'variant': 'one'}
+        second = copy.deepcopy(first)
+        second['configuration'] = {'variant': 'two'}
+        second['group'] = 'f' * 64
+        report['summary'].append(second)
+        original = b.encoded(report)
+        text = b.markdown(report)
+        self.assertEqual(b.encoded(report), original)
+        self.assertEqual(text.count('| Rate | Mean | Range | SD | Defined / total |'), 2)
+        self.assertNotIn('| Model / version | Method / interface |', text)
+        self.assertIn('model\\|name next', text)
+        self.assertIn('read\\|only method', text)
+        self.assertIn('**Configuration:** {"variant": "one"}', text)
+        self.assertIn('**Configuration:** {"variant": "two"}', text)
+        self.assertEqual(text.count('| strict_accuracy_on_found | undefined | undefined–undefined | undefined | 0 / 1 |'), 2)
+        self.assertEqual(text.count('| strict_end_to_end_recall | 0.0000 | 0.0000–0.0000 | undefined | 1 / 1 |'), 2)
+        self.assertIn('one: missing', text)
+        self.assertIn('Per-run counts and coverage (1 run/cohort records)', text)
+        self.assertIn('## Limits', text)
+
+
+    def test_git_exact_raw_fixture_checkout_and_narrow_whitespace_policy(self):
+        import shutil
+        import subprocess
+        self.assertIsNotNone(shutil.which('git'),'Git is required for raw fixture checkout controls')
+        rows=b.read_json(ROOT/'benchmarks/tag-reading/PROVENANCE.json')
+        def command(cwd,*args):
+            return subprocess.run(['git',*args],cwd=cwd,capture_output=True)
+        for setting in ('true','false'):
+            repo=self.root/setting;repo.mkdir()
+            self.assertEqual(command(repo,'init').returncode,0)
+            for key,value in (('user.name','Fixture control'),('user.email','fixture@example.invalid'),('core.autocrlf',setting)):
+                self.assertEqual(command(repo,'config',key,value).returncode,0)
+            (repo/'.gitattributes').write_bytes((ROOT/'.gitattributes').read_bytes())
+            for row in [*rows['artifacts'],rows['license']]:
+                dst=repo/row['path'];dst.parent.mkdir(parents=True,exist_ok=True);dst.write_bytes((ROOT/row['path']).read_bytes())
+            for suffix in ('.json','.md','.py'):
+                (repo/('benchmarks/probe'+suffix)).write_bytes(b'{"line":1}\r\n')
+            ordinary_paths=['benchmarks/probe.json','benchmarks/probe.md','benchmarks/probe.py',
+                            'examples/source-handoff/fixture/preserved.xml','examples/source-handoff/worked/native.model.json']
+            candidate_attrs=(ROOT/'.gitattributes').read_bytes()
+            rule=b'/benchmarks/tag-reading/fixtures/dexpi/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol\n'
+            (repo/'.gitattributes').write_bytes(candidate_attrs.replace(rule,b''))
+            before_attrs=command(repo,'check-attr','text','eol','--',*ordinary_paths).stdout
+            (repo/'.gitattributes').write_bytes(candidate_attrs)
+            self.assertEqual(command(repo,'check-attr','text','eol','--',*ordinary_paths).stdout,before_attrs)
+            sample=rows['artifacts'][0]['path']
+            attrs=command(repo,'check-attr','text','eol','--',sample).stdout.decode('utf-8')
+            self.assertIn(sample+': text: unset',attrs)
+            self.assertIn(sample+': eol: lf',attrs)
+            self.assertEqual(command(repo,'add','.').returncode,0)
+            self.assertEqual(command(repo,'diff','--cached','--check').returncode,0)
+            self.assertEqual(command(repo,'commit','-m','raw fixture control').returncode,0)
+            target=self.root/('checkout-'+setting)
+            self.assertEqual(command(self.root,'-c','core.autocrlf='+setting,'clone','--no-local',str(repo),str(target)).returncode,0)
+            for row in [*rows['artifacts'],rows['license']]:
+                expected=(ROOT/row['path']).read_bytes()
+                self.assertEqual(command(repo,'cat-file','blob','HEAD:'+row['path']).stdout,expected)
+                self.assertEqual((target/row['path']).read_bytes(),expected)
+            for suffix in ('.json','.md','.py'):
+                self.assertEqual(command(repo,'cat-file','blob','HEAD:benchmarks/probe'+suffix).stdout,b'{"line":1}\n')
+            for i,(content,should_pass) in enumerate(((b'good\r\n',True),(b'bad \n',False),(b'bad\t\n',False),(b' \tX\n',False),(b'line\n\n',False))):
+                bad=self.root/(setting+'-whitespace-'+str(i));bad.mkdir();command(bad,'init')
+                (bad/'.gitattributes').write_bytes((ROOT/'.gitattributes').read_bytes())
+                file=bad/'benchmarks/tag-reading/fixtures/dexpi/probe.txt';file.parent.mkdir(parents=True);file.write_bytes(content)
+                self.assertEqual(command(bad,'add','.').returncode,0)
+                self.assertEqual(command(bad,'diff','--cached','--check').returncode==0,should_pass)
+
+
 if __name__ == '__main__':
     unittest.main()
