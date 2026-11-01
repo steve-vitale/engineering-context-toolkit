@@ -626,7 +626,9 @@
     "examples/from-description/assisted/result/interpretation_review.csv",
     "examples/from-description/assisted/result/source_coverage.csv",
     "examples/from-description/mgpi/result/interpretation_review.csv",
-    "examples/from-description/mgpi/result/source_coverage.csv"
+    "examples/from-description/mgpi/result/source_coverage.csv",
+    "examples/from-description/assisted/result/question_catalog.json",
+    "examples/from-description/mgpi/result/question_catalog.json"
    ],
    "tests": [
     "scripts/test_description_workflow.py"

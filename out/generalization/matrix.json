@@ -1,12 +1,12 @@
 {
  "about": "Generalization matrix written by scripts/corpus_matrix.py; rendered as docs/GENERALIZATION.md.",
- "ran_at": "2026-11-01 03:30 UTC",
- "seconds": 1643.5,
+ "ran_at": "2026-11-01 06:17 UTC",
+ "seconds": 1643.6,
  "rows_run_this_time": [
-  3
+  5
  ],
  "inputs_run_this_time": [
-  "own-drawing-extraction"
+  "bayer-model"
  ],
  "tracer_pass_f1": 0.88,
  "pipe_pass_f1": 0.88,
@@ -7611,14 +7611,14 @@
    "published": [
     {
      "file": "examples/from-description/README.md",
-     "line": 186,
+     "line": 221,
      "says": "5 units, 15 streams, 6 instruments and 5 valves",
      "ours": "5 units, 15 streams, 6 instruments, 5 final elements",
      "agrees": true
     }
    ],
-   "seconds": 0.3,
-   "ran_at": "2026-11-01 03:24 UTC",
+   "seconds": 0.4,
+   "ran_at": "2026-11-01 06:17 UTC",
    "tool_files": {
     "scripts/generate.py": "sha256:729c3081be3e1ec3",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
@@ -7648,7 +7648,7 @@
       "exists": true,
       "directory": false,
       "files": {
-       "examples/from-description/README.md": "sha256:8e6f0b45de44ec481b5c22eb08ff3f0582357430f027549af5b69db414a97bee"
+       "examples/from-description/README.md": "sha256:2d5dde30d36431a4e06e3c2c37ed06925fd7e4a62b2184df1cca7503d1d4519e"
       }
      }
     ]

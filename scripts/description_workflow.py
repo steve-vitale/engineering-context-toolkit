@@ -21,6 +21,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT/'scripts'))
 MAX_SOURCE = 1024 * 1024
 MAX_ANSWER = 8 * 1024 * 1024
+MAX_CATALOG = 8 * 1024 * 1024
 IDENTITY = re.compile(r'[A-Za-z][A-Za-z0-9_-]{0,63}\Z')
 RESERVED = {'CON','PRN','AUX','NUL'} | {f'{p}{i}' for p in ('COM','LPT') for i in range(1,10)}
 CITATION = re.compile(r'source\.txt:L([1-9][0-9]*)-L([1-9][0-9]*)\Z')
@@ -666,8 +667,36 @@ def interpretation_review(model, source_raw):
              for n,line in enumerate(lines,1)])}
 
 
-def build(packet,answer,out):
+def read_question_catalog(path):
+    """Capture bounded raw UTF-8 rules once; the retained copy is the generator input."""
+    chunks=[]
+    remaining=MAX_CATALOG+1
+    try:
+        with Path(path).open('rb') as stream:
+            while remaining:
+                chunk=stream.read(min(65536,remaining))
+                if not chunk:break
+                chunks.append(chunk)
+                remaining-=len(chunk)
+    except (OSError,ValueError,UnicodeError):
+        raise InputError('Cannot read the selected question catalog; check the file and permissions') from None
+    raw=b''.join(chunks)
+    if len(raw)>MAX_CATALOG:
+        raise InputError('Question catalog exceeds the input limit (8388608 bytes)')
+    if raw.startswith(b'\xef\xbb\xbf'):
+        raise InputError('Question catalog must be UTF-8 without a BOM')
+    try:
+        catalog=parse(raw)
+    except (ValueError,UnicodeError,RecursionError,OverflowError):
+        raise InputError('Question catalog must contain valid finite UTF-8 JSON') from None
+    if not isinstance(catalog,dict):
+        raise InputError('Question catalog must be a JSON object')
+    return raw
+
+
+def build(packet,answer,out,*,catalog=None):
     out=fresh(out)
+    catalog_raw=read_question_catalog(ROOT/'data/questions.json' if catalog is None else catalog)
     with tempfile.TemporaryDirectory(prefix='description-build-') as folder:
         scratch=Path(folder)
         assert scratch.resolve().parent==Path(tempfile.gettempdir()).resolve()
@@ -677,10 +706,11 @@ def build(packet,answer,out):
         (scratch/'source_numbered.txt').write_text('\n'.join(f'L{i}: {line}' for i,line in enumerate(data['source_raw'].decode('utf-8-sig').splitlines(),1))+'\n',encoding='utf-8',newline='\n')
         (scratch/'packet.json').write_bytes(json_bytes(data['packet']))
         (scratch/'answer.json').write_bytes(data['answer_raw'])
+        (scratch/'question_catalog.json').write_bytes(catalog_raw)
         import draw_pid_from_model as renderer
         renderer.generate(scratch/'model.json',scratch/'layout.json',scratch/'pid',register=scratch/'pid/sheet_register.csv')
         commands=[['generate.py',str(scratch/'model.json'),'--out',str(scratch/'exports')],
-                  ['question_engine.py','--model',str(scratch/'model.json'),'--out',str(scratch/'questions')],
+                  ['question_engine.py','--model',str(scratch/'model.json'),'--catalog',str(scratch/'question_catalog.json'),'--out',str(scratch/'questions')],
                   ['graph_export.py',str(scratch/'model.json'),'--questions',str(scratch/'questions/questions.json'),
                    '--out',str(scratch/'graph.json')]]
         for command in commands:
@@ -694,7 +724,7 @@ def build(packet,answer,out):
         # Native text writers use platform newlines. Package canonical generated text while
         # preserving the exact selected evidence and authored response. Their raw hashes matter.
         for name,raw in list(files.items()):
-            if name not in ('source.txt','answer.json') and not name.endswith('.png'):
+            if name not in ('source.txt','answer.json','question_catalog.json') and not name.endswith('.png'):
                 raw=raw.replace(b'\r\n',b'\n')
                 if name.endswith('.md'):raw=raw.replace(b'  \n',b'\\\n')
                 files[name]=raw
@@ -709,11 +739,16 @@ def build(packet,answer,out):
             'JSON text columns preserve exact values; a cited line is not a verified claim and an uncited line is not proof of an omission. '
             'Retain filled review copies outside this immutable bundle and use the separate model-review route for supported corrections. '
             'Then inspect model.json, source_numbered.txt, graph.json and questions/screen.md. '
+            'question_catalog.json retains the exact question rules used; build.json records its raw hash and '
+            'default/custom selection. Review their applicability and authority with the company owner; '
+            'the retained snapshot is not a claim that the original rules are still current. '
             'The existing validation only checks quotations, structure and drawing consistency. Check every engineering '
             'claim, pipe/signal join and label against the source. Unknowns/assumptions remain in model.meta. '
             'Geometry and size/spec placeholders are drafts. Platform files in exports are staging, with no live signals. '
             'Return a reviewed first finding through the company process; this bundle accepts no operating decision.\n').encode('utf-8')
         inventory={'mode':'assisted_draft','source_sha256':report['source_sha256'],'answer_sha256':report['answer_sha256'],
+                   'question_catalog':{'path':'question_catalog.json','sha256_raw':digest(catalog_raw),
+                                       'selection':'default' if catalog is None else 'custom'},
                    'code_sha256':{p.name:digest(p.read_bytes().replace(b'\r\n',b'\n')) for p in code},
                    'files_sha256':{p:digest(raw) for p,raw in files.items()},'source_acquisition_time':None,
                    'limits':report['limits']}
@@ -728,12 +763,14 @@ def main(argv=None):
     p=sub.add_parser('prepare');p.add_argument('--source',type=Path,required=True);p.add_argument('--out',type=Path,required=True)
     for action in ('check','build'):
         p=sub.add_parser(action);p.add_argument('--packet',type=Path,required=True);p.add_argument('--answer',type=Path,required=True)
-        if action=='build':p.add_argument('--out',type=Path,required=True)
+        if action=='build':
+            p.add_argument('--out',type=Path,required=True)
+            p.add_argument('--catalog',type=Path)
     args=parser.parse_args(argv)
     try:
         if args.action=='prepare':result={'ok':True,'packet':prepare(args.source,args.out)}
         elif args.action=='check':result=check(args.packet,args.answer)
-        else:result=build(args.packet,args.answer,args.out)
+        else:result=build(args.packet,args.answer,args.out,catalog=args.catalog)
     except subprocess.TimeoutExpired:
         result={'ok':False,'errors':['A native generation step exceeded 60 seconds; no output was published.']}
     except ImportError:

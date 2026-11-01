@@ -54,6 +54,17 @@ class DescriptionWorkflowTests(unittest.TestCase):
                 self.assertEqual(receipt['answer_sha256'],
                                  hashlib.sha256((result / 'answer.json').read_bytes()).hexdigest(),
                                  f'{case}: retained answer binding differs')
+                catalog = receipt['question_catalog']
+                self.assertEqual(set(catalog), {'path', 'sha256_raw', 'selection'},
+                                 f'{case}: catalog identity fields differ')
+                self.assertEqual(catalog['path'], 'question_catalog.json')
+                self.assertEqual(catalog['selection'], 'default')
+                snapshot = (result / catalog['path']).read_bytes()
+                self.assertEqual(catalog['sha256_raw'], hashlib.sha256(snapshot).hexdigest(),
+                                 f'{case}: retained question catalog binding differs')
+                self.assertEqual(receipt['files_sha256'][catalog['path']], catalog['sha256_raw'])
+                self.assertEqual(snapshot, (ROOT / 'data/questions.json').read_bytes(),
+                                 f'{case}: stale question catalog; rebuild against current default rules')
 
     def test_mgpi_source_adaptation_preserves_aliases_evidence_and_scoring_limit(self):
         import benchmark
@@ -278,6 +289,337 @@ class DescriptionWorkflowTests(unittest.TestCase):
         self.packet = self.folder / 'packet'
         offpage['layout']['sheets'][1]['routes'][0].update(to={'flag': 'IN'}, **{'from': {'unit': 'P-1'}})
         self.assertFalse(self.check_value(offpage)['ok'])
+
+
+class CatalogProvenanceTests(unittest.TestCase):
+    """Synthetic rule copies test provenance, not source authority or engineering adequacy."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory(prefix='catalog-controls-')
+        self.addCleanup(self.tmp.cleanup)
+        self.folder = Path(self.tmp.name)
+        self.packet = self.folder / 'packet'
+        workflow.prepare(EXAMPLE / 'source.txt', self.packet)
+        self.answer = EXAMPLE / 'result/answer.json'
+        self.controls = ROOT / 'examples/from-description/assisted/catalog-controls'
+
+    def catalog(self, label='A', raw=None, name='selected.json'):
+        path = self.folder / name
+        path.write_bytes((self.controls / f'catalog-{label}.json').read_bytes() if raw is None else raw)
+        return path
+
+    def build(self, name, catalog=None):
+        out = self.folder / name
+        report = workflow.build(self.packet, self.answer, out, catalog=catalog)
+        self.assertTrue(report['ok'], report)
+        return out
+
+    def snapshot(self, out, raw, selection):
+        receipt = json.loads((out / 'build.json').read_bytes())
+        sha = hashlib.sha256(raw).hexdigest()
+        self.assertEqual(receipt['question_catalog'], {
+            'path': 'question_catalog.json', 'sha256_raw': sha, 'selection': selection})
+        self.assertEqual((out / 'question_catalog.json').read_bytes(), raw)
+        self.assertEqual(receipt['files_sha256']['question_catalog.json'], sha)
+        doc = json.loads((out / 'questions/questions.json').read_bytes())
+        # shown_path is ROOT-relative for an in-ROOT temp profile, basename otherwise.
+        self.assertEqual(Path(doc['catalog']).name, 'question_catalog.json')
+        self.assertIn(f"Questions: `{doc['catalog']}`", (out / 'questions/screen.md').read_text(encoding='utf-8'))
+        return doc
+
+    def typed(self, value):
+        return json.dumps(value, ensure_ascii=True, allow_nan=False, sort_keys=True, separators=(',', ':'))
+
+    def without_path_labels(self, doc):
+        return {key: value for key, value in doc.items() if key not in ('catalog', 'source_model')}
+
+    def test_default_snapshot_identity_and_complete_inventory(self):
+        raw = (ROOT / 'data/questions.json').read_bytes()
+        out = self.build('default')
+        self.snapshot(out, raw, 'default')
+        receipt = json.loads((out / 'build.json').read_bytes())
+        actual = {p.relative_to(out).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+                  for p in out.rglob('*') if p.is_file() and p.name != 'build.json'}
+        self.assertEqual(receipt['files_sha256'], actual)
+        self.assertEqual((ROOT / 'data/questions.json').read_bytes(), raw)
+
+    def test_custom_catalog_revision_and_retained_replay(self):
+        selected = self.catalog()
+        a_raw = selected.read_bytes()
+        a = self.build('A', selected)
+        a_doc = self.snapshot(a, a_raw, 'custom')
+        b_raw = (self.controls / 'catalog-B.json').read_bytes()
+        selected.write_bytes(b_raw)
+        b = self.build('B', selected)
+        b_doc = self.snapshot(b, b_raw, 'custom')
+        self.assertNotEqual(hashlib.sha256(a_raw).digest(), hashlib.sha256(b_raw).digest())
+        e1_a = [q for q in a_doc['questions'] if q['question_id'] == 'E1']
+        self.assertTrue(e1_a)
+        self.assertTrue(all(q['question'] == 'N104 synthetic catalog A: review the pump basis?' for q in e1_a))
+        expected = copy.deepcopy(self.without_path_labels(a_doc))
+        for q in expected['questions']:
+            if q['question_id'] == 'E1':
+                q['question'] = 'N104 synthetic catalog B: review the pump basis?'
+        self.assertEqual(self.typed(expected), self.typed(self.without_path_labels(b_doc)))
+        selected.unlink()
+        replay = self.folder / 'replay'
+        proc = subprocess.run([sys.executable, '-B', '-S', str(ROOT / 'scripts/question_engine.py'),
+                               '--model', str(a / 'model.json'), '--catalog', str(a / 'question_catalog.json'),
+                               '--out', str(replay)], cwd=ROOT, capture_output=True)
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        replay_doc = json.loads((replay / 'questions.json').read_bytes())
+        self.assertEqual(self.typed(self.without_path_labels(replay_doc)),
+                         self.typed(self.without_path_labels(a_doc)))
+        old_header = f"Model: `{a_doc['source_model']}`. Questions: `{a_doc['catalog']}`."
+        new_header = f"Model: `{replay_doc['source_model']}`. Questions: `{replay_doc['catalog']}`."
+        screen = (a / 'questions/screen.md').read_text(encoding='utf-8')
+        self.assertEqual(screen.count(old_header), 1)
+        # Apply exactly the existing bundle's two packaging transforms, not arbitrary cleanup.
+        replay_md = (replay / 'screen.md').read_bytes().replace(b'\r\n', b'\n')
+        replay_md = replay_md.replace(b'  \n', b'\\\n').decode('utf-8')
+        self.assertEqual(screen.replace(old_header, new_header, 1), replay_md)
+        self.snapshot(a, a_raw, 'custom')
+
+    def test_crlf_catalog_is_preserved_raw(self):
+        raw = (self.controls / 'catalog-A.json').read_bytes().replace(b'\r\n', b'\n')
+        crlf = raw.replace(b'\n', b'\r\n')
+        self.assertNotEqual(raw, crlf)
+        self.assertEqual(self.typed(json.loads(raw)), self.typed(json.loads(crlf)))
+        out = self.build('crlf', self.catalog(raw=crlf))
+        self.snapshot(out, crlf, 'custom')
+        self.assertIn(b'\r\n', (out / 'question_catalog.json').read_bytes())
+        self.assertNotIn(b'\r\n', (out / 'questions/screen.md').read_bytes())
+
+    def test_upstream_swap_or_removal_does_not_change_consumed_snapshot(self):
+        from unittest.mock import patch
+        original_inspect = workflow.inspect_answer
+        for remove in (False, True):
+            with self.subTest(remove=remove):
+                selected = self.catalog(name=f'upstream-{remove}.json')
+                a_raw = selected.read_bytes()
+                def change_upstream(*args):
+                    if remove:
+                        selected.unlink()
+                    else:
+                        selected.write_bytes((self.controls / 'catalog-B.json').read_bytes())
+                    return original_inspect(*args)
+                with patch.object(workflow, 'inspect_answer', side_effect=change_upstream) as inspected:
+                    out = self.build(f'snapshot-{remove}', selected)
+                self.assertEqual(inspected.call_count, 1)
+                doc = self.snapshot(out, a_raw, 'custom')
+                self.assertTrue(any(q['question'] == 'N104 synthetic catalog A: review the pump basis?'
+                                    for q in doc['questions']))
+
+    def test_invalid_catalogs_refuse_before_inspection_without_path_or_payload(self):
+        from unittest.mock import patch
+        invalid = [
+            (b'{"SENSITIVE-CONTENT":', 'Question catalog must contain valid finite UTF-8 JSON'),
+            (b'{"x":{"a":1,"a":2}}', 'Question catalog must contain valid finite UTF-8 JSON'),
+            (b'{"x":NaN}', 'Question catalog must contain valid finite UTF-8 JSON'),
+            (b'{"x":1e9999}', 'Question catalog must contain valid finite UTF-8 JSON'),
+            (b'{"x":"\xff"}', 'Question catalog must contain valid finite UTF-8 JSON'),
+            (b'{"x":"\\ud800"}', 'Question catalog must contain valid finite UTF-8 JSON'),
+            (b'\xef\xbb\xbf{}', 'Question catalog must be UTF-8 without a BOM'),
+            (b'[]', 'Question catalog must be a JSON object'),
+            (b'null', 'Question catalog must be a JSON object'),
+            (b'false', 'Question catalog must be a JSON object'),
+            (b'0', 'Question catalog must be a JSON object')]
+        for i, (raw, message) in enumerate(invalid):
+            with self.subTest(i=i):
+                selected = self.catalog(raw=raw, name='PRIVATE-SOURCE-NAME.json')
+                out = self.folder / f'invalid-{i}'
+                with patch.object(workflow, 'inspect_answer') as inspected:
+                    with self.assertRaises(workflow.InputError) as raised:
+                        workflow.build(self.packet, self.answer, out, catalog=selected)
+                    inspected.assert_not_called()
+                self.assertEqual(str(raised.exception), message)
+                self.assertNotIn('PRIVATE-SOURCE-NAME', str(raised.exception))
+                self.assertNotIn(str(self.folder), str(raised.exception))
+                self.assertFalse(out.exists())
+                self.assertEqual(selected.read_bytes(), raw)
+
+    def test_acquisition_failures_are_safe_before_inspection(self):
+        from unittest.mock import patch
+        selected = self.catalog(name='PRIVATE-SOURCE-NAME.json')
+        original_open = Path.open
+        message = 'Cannot read the selected question catalog; check the file and permissions'
+        class BrokenRead(io.BytesIO):
+            def __init__(self, payload):
+                super().__init__(payload)
+                self.reads = 0
+            def read(self, size=-1):
+                self.reads += 1
+                if self.reads == 1:
+                    return b'{'
+                raise OSError('PRIVATE-MIDREAD-PAYLOAD')
+        def failed_open(path, *args, **kwargs):
+            if Path(path) == selected:
+                raise PermissionError('PRIVATE-PERMISSION-PAYLOAD')
+            return original_open(path, *args, **kwargs)
+        def broken_open(path, *args, **kwargs):
+            return BrokenRead(b'{') if Path(path) == selected else original_open(path, *args, **kwargs)
+        for kind in ('missing', 'directory', 'permission', 'read'):
+            with self.subTest(kind=kind):
+                path = self.folder / 'missing-PRIVATE.json' if kind == 'missing' else selected
+                if kind == 'directory':
+                    path = self.folder
+                opener = failed_open if kind == 'permission' else broken_open if kind == 'read' else original_open
+                out = self.folder / f'acquisition-{kind}'
+                with patch.object(Path, 'open', opener), patch.object(workflow, 'inspect_answer') as inspected:
+                    with self.assertRaises(workflow.InputError) as raised:
+                        workflow.build(self.packet, self.answer, out, catalog=path)
+                    inspected.assert_not_called()
+                self.assertEqual(str(raised.exception), message)
+                self.assertIsNone(raised.exception.__cause__)
+                self.assertTrue(raised.exception.__suppress_context__)
+                self.assertFalse(out.exists())
+
+    def test_catalog_limit_positive_short_reads_and_eof(self):
+        from unittest.mock import patch
+        cap = 8 * 1024 * 1024
+        selected = self.catalog()
+        raw = selected.read_bytes()
+        original_open = Path.open
+        class InspectionReached(Exception):
+            pass
+        class ShortRead(io.BytesIO):
+            def __init__(self, payload):
+                super().__init__(payload)
+                self.requests = []
+                self.delivered = 0
+                self.eof_seen = False
+            def read(stream, size=-1):
+                self.assertGreater(size, 0)
+                self.assertLessEqual(size, 65536)
+                stream.requests.append(size)
+                result = super(ShortRead, stream).read(min(size, 17003))
+                stream.delivered += len(result)
+                stream.eof_seen |= result == b''
+                return result
+        for size in (len(raw), cap, cap + 1):
+            with self.subTest(size=size):
+                payload = raw + b' ' * (size - len(raw))
+                reader = ShortRead(payload)
+                opens = []
+                def selected_open(path, *args, **kwargs):
+                    if Path(path) == selected:
+                        opens.append(path)
+                        return reader
+                    return original_open(path, *args, **kwargs)
+                out = self.folder / f'limit-{size}'
+                with patch.object(Path, 'open', selected_open), patch.object(
+                        workflow, 'inspect_answer', side_effect=InspectionReached) as inspected:
+                    if size > cap:
+                        with self.assertRaisesRegex(workflow.InputError, '^Question catalog exceeds the input limit \\(8388608 bytes\\)$'):
+                            workflow.build(self.packet, self.answer, out, catalog=selected)
+                        inspected.assert_not_called()
+                    else:
+                        with self.assertRaises(InspectionReached):
+                            workflow.build(self.packet, self.answer, out, catalog=selected)
+                        self.assertEqual(inspected.call_count, 1)
+                self.assertEqual(len(opens), 1)
+                self.assertEqual(reader.delivered, size)
+                self.assertEqual(reader.eof_seen, size <= cap)
+                self.assertFalse(out.exists())
+
+    def test_build_cli_custom_catalog_and_early_refusal(self):
+        selected = self.catalog(name='PRIVATE-SOURCE-NAME space Ω `.json')
+        raw = selected.read_bytes()
+        out = self.folder / 'cli-result'
+        args = [sys.executable, '-B', str(SCRIPT), 'build', '--packet', str(self.packet),
+                '--answer', str(self.answer), '--catalog', str(selected), '--out', str(out)]
+        proc = subprocess.run(args, cwd=ROOT, capture_output=True)
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        self.assertTrue(json.loads(proc.stdout)['ok'])
+        self.snapshot(out, raw, 'custom')
+        for relative in ('build.json', 'questions/questions.json', 'questions/screen.md', 'REVIEW.md'):
+            text = (out / relative).read_text(encoding='utf-8')
+            if relative.endswith('.json'):
+                # Check decoded JSON strings too: escaped spelling must not hide source-path metadata.
+                text = json.dumps(json.loads(text), ensure_ascii=False)
+            self.assertNotIn(selected.name, text, relative)
+            self.assertNotIn(str(selected), text, relative)
+        selected.write_bytes(b'\xef\xbb\xbf{}')
+        failed = self.folder / 'cli-refused'
+        proc = subprocess.run([*args[:-1], str(failed)], cwd=ROOT, capture_output=True)
+        self.assertEqual(proc.returncode, 2, proc.stderr)
+        report = json.loads(proc.stdout)
+        self.assertFalse(report['ok'])
+        self.assertEqual(report['errors'], ['Question catalog must be UTF-8 without a BOM'])
+        self.assertNotIn(b'PRIVATE-SOURCE-NAME', proc.stdout + proc.stderr)
+        self.assertFalse(failed.exists())
+        import contextlib
+        for action, extra in (
+                ('prepare', ['--source', str(EXAMPLE / 'source.txt'), '--out', str(self.folder / 'unused-prepare')]),
+                ('check', ['--packet', str(self.packet), '--answer', str(self.answer)])):
+            with self.subTest(action=action), contextlib.redirect_stderr(io.StringIO()):
+                with self.assertRaises(SystemExit) as refused:
+                    workflow.main([action, *extra, '--catalog', str(selected)])
+                self.assertEqual(refused.exception.code, 2)
+        self.assertFalse((self.folder / 'unused-prepare').exists())
+
+    def test_native_refusal_and_existing_destination_preserve_inputs(self):
+        from unittest.mock import patch
+        selected = self.catalog()
+        before = {p: p.read_bytes() for p in (selected, self.answer, self.packet / 'source.txt')}
+        out = self.folder / 'native-refused'
+        results = [subprocess.CompletedProcess([], 0, b'', b''),
+                   subprocess.CompletedProcess([], 2, b'Controlled native refusal', b'')]
+        with patch.object(workflow.subprocess, 'run', side_effect=results):
+            report = workflow.build(self.packet, self.answer, out, catalog=selected)
+        self.assertFalse(report['ok'])
+        self.assertFalse(out.exists())
+        import contextlib
+        timeout_out = self.folder / 'timeout-refused'
+        captured = io.StringIO()
+        with patch.object(workflow.subprocess, 'run', side_effect=subprocess.TimeoutExpired(['synthetic'], 60)):
+            with contextlib.redirect_stdout(captured):
+                rc = workflow.main(['build', '--packet', str(self.packet), '--answer', str(self.answer),
+                                    '--catalog', str(selected), '--out', str(timeout_out)])
+        self.assertEqual(rc, 2)
+        self.assertEqual(json.loads(captured.getvalue()), {'ok': False, 'errors': [
+            'A native generation step exceeded 60 seconds; no output was published.']})
+        self.assertFalse(timeout_out.exists())
+        existing = self.folder / 'existing'
+        existing.mkdir()
+        sentinel = existing / 'sentinel.bin'
+        sentinel.write_bytes(b'KEEP EXISTING DESTINATION')
+        with patch.object(workflow, 'inspect_answer') as inspected:
+            with self.assertRaises(workflow.InputError):
+                workflow.build(self.packet, self.answer, existing, catalog=selected)
+            inspected.assert_not_called()
+        self.assertEqual({p.name: p.read_bytes() for p in existing.iterdir()},
+                         {'sentinel.bin': b'KEEP EXISTING DESTINATION'})
+        for path, raw in before.items():
+            self.assertEqual(path.read_bytes(), raw)
+
+    def test_current_default_freshness_and_snapshot_tampering(self):
+        from unittest.mock import patch
+        import shutil
+        out = self.build('default-for-freshness')
+        shadow = self.folder / 'publication-control'
+        (shadow / 'scripts').mkdir(parents=True)
+        (shadow / 'data').mkdir()
+        # Synthetic checker fixture: the same self-consistent bundle fills both named slots.
+        # It is not represented as a new actual MGPI build.
+        for name in ('description_workflow.py', 'draw_pid_from_model.py', 'generate.py',
+                     'question_engine.py', 'graph_export.py'):
+            shutil.copyfile(ROOT / 'scripts' / name, shadow / 'scripts' / name)
+        shutil.copyfile(ROOT / 'data/questions.json', shadow / 'data/questions.json')
+        for case in ('assisted', 'mgpi'):
+            shutil.copytree(out, shadow / 'examples/from-description' / case / 'result')
+        validator = DescriptionWorkflowTests('test_committed_bundles_bind_current_producers_and_complete_artifacts')
+        with patch.dict(globals(), {'ROOT': shadow}):
+            validator.test_committed_bundles_bind_current_producers_and_complete_artifacts()
+            (shadow / 'data/questions.json').write_bytes((self.controls / 'catalog-B.json').read_bytes())
+            with self.assertRaisesRegex(AssertionError, 'stale question catalog'):
+                validator.test_committed_bundles_bind_current_producers_and_complete_artifacts()
+            shutil.copyfile(out / 'question_catalog.json', shadow / 'data/questions.json')
+            artifact = shadow / 'examples/from-description/assisted/result/question_catalog.json'
+            artifact.write_bytes(artifact.read_bytes() + b' ')
+            with self.assertRaises(AssertionError):
+                validator.test_committed_bundles_bind_current_producers_and_complete_artifacts()
+
 
 
 if __name__ == '__main__':

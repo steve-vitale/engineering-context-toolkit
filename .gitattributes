@@ -62,3 +62,6 @@ data/te_pid_layout.json text eol=lf
 
 # Synthetic function-basis inputs, oracles and retained reports have declared LF identities.
 /examples/opportunity-screen/function-basis/** text eol=lf
+
+# Description bundle freshness binds the default question catalog raw bytes.
+/data/questions.json text eol=lf
