@@ -7,6 +7,10 @@ Python, an asset model or a custom agent. The [MCP starter](../examples/internal
 
 ## For leaders and managers
 
+For responsibilities beyond one assignment, the [scaling guide](SCALING_ENGINEERING_CONTEXT.md) explains when
+team coordination needs site or organization-level ownership, publication and service support. Name a backup
+owner and reserve review time before expanding the number of contributors.
+
 Choose a useful first assignment before collecting more documents or configuring an agent:
 
 | Agree before the assignment | Record in the brief or existing team record |

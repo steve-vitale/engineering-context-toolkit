@@ -80,6 +80,9 @@ Keep the selected records and the reasons behind changes together as more people
 [source-revision tutorial](examples/pump-revision/README.md) and [owned-team tutorial](examples/team-context/README.md)
 show how supplied evidence reopens affected answers while preserving history and independent context.
 Use the [lifecycle guide](docs/CONTEXT_LIFECYCLE.md) to plan the handoff into your company's maintained home.
+For a small team, a whole site or a global network of 50–100 plants, use the
+[scaling guide](docs/SCALING_ENGINEERING_CONTEXT.md): failure modes, upgrade signals, robustness checks and when
+to evaluate a managed context/governance service alongside existing company systems.
 
 ## Status
 
