@@ -239,8 +239,15 @@ for [S19 boiler context](https://www.energystar.gov/sites/default/files/building
 [S27 air/fuel alternatives](https://www1.eere.energy.gov/manufacturing/tech_assistance/pdfs/42110.pdf) and
 [S24 assessment category](https://itac.university/index/arc/2.12). These sources do not authenticate supplied records.
 
-The catalog has 50 rules and 126 collection requests. Twenty-two rules have bounded source-informed collection
-reviews; the other 28 still need original-source adequacy review. These controls do not establish whole-catalog
+C3 reviews existing valve/loop feedback and diagnostic records. Command, local positioner feedback, control-room
+return, endpoint indication and usable performance history remain distinct; a nearby Z tag does not settle the
+valve association. Supplied fields retain their qualifications and cannot complete either records-review task.
+The [valve-feedback tutorial](../examples/opportunity-screen/valve-feedback-basis/README.md) explains the useful
+per-valve handoff and its [primary-source boundaries](../examples/opportunity-screen/valve-feedback-basis/SOURCES.json).
+Further tests or changes require a separate company decision.
+
+The catalog has 50 rules and 126 collection requests. Twenty-three rules have bounded source-informed collection
+reviews; the other 27 still need original-source adequacy review. These controls do not establish whole-catalog
 engineering correctness or human usefulness. The [worked food screen](../examples/opportunity-screen/food/screen.md)
 shows the retained candidates and open coverage tasks.
 

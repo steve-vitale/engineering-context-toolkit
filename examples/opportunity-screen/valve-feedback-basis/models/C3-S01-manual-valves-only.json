@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "model_id": "C3-S01-manual-valves-only",
+    "title": "FICTIONAL valve feedback/source-adequacy development control",
+    "illustrative": true,
+    "authorship": "Coding-agent materialization of independent pre-call source specification; no plant data, physical verification or engineering approval.",
+    "exposure": "Original six paired cases plus two separate selector controls; no optional revision supplement. Materialized before original/candidate calls."
+  },
+  "units": [
+    {
+      "id": "U-A",
+      "name": "Fictional process unit A",
+      "type": "process_unit"
+    },
+    {
+      "id": "U-B",
+      "name": "Fictional process unit B",
+      "type": "process_unit"
+    }
+  ],
+  "streams": [
+    {
+      "id": "S-A",
+      "name": "Fictional process stream A",
+      "from": "BL",
+      "to": "U-A"
+    },
+    {
+      "id": "S-B",
+      "name": "Fictional process stream B",
+      "from": "BL",
+      "to": "U-B"
+    }
+  ],
+  "instruments": [],
+  "final_elements": [],
+  "controllers": [],
+  "manual_valves": [
+    {
+      "tag": "HV-A",
+      "unit": "U-A",
+      "stream": "S-A",
+      "description": "Fictional manual isolation valve, not an automatic control-valve subject",
+      "facts": {
+        "source_kind": "fictional record",
+        "record_revision": "A",
+        "underlying_claim_verified": false
+      }
+    },
+    {
+      "tag": "HV-B",
+      "unit": "U-B",
+      "stream": "S-B",
+      "description": "Fictional manual isolation valve, not an automatic control-valve subject",
+      "facts": {
+        "source_kind": "fictional record",
+        "record_revision": "A",
+        "underlying_claim_verified": false
+      }
+    }
+  ],
+  "interlocks": []
+}

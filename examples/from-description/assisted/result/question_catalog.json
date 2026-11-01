@@ -163,9 +163,29 @@
       "url": "https://www1.eere.energy.gov/manufacturing/tech_assistance/pdfs/38853.pdf",
       "license": "Public domain (US federal)",
       "checked": "Quotes checked 2026-10-29 word for word against a text extract (pdftotext) of the PDF at the URL, SHA-256 5a22ead317624a47b4bb731f274d63ff1cbd37283cd03ad207ed7aa7597a36f2. Page numbers are PDF pages."
+    },
+    "S29": {
+      "title": "Emerson Automation Experts, Providing Operators Process Control Valve Position Feedback (2014-01-10; vendor guidance)",
+      "url": "https://www.emersonautomationexperts.com/2014/valves-actuators-regulators/providing-operators-process-control-valve-position-feedback/",
+      "license": "Copyright Emerson; source link and bounded paraphrase only. No source text or PDF redistributed."
+    },
+    "S30": {
+      "title": "Emerson, Valve Positioners (product overview and digital-controller FAQ; vendor-specific)",
+      "url": "https://www.emerson.com/en/final-control/catalog/products-and-software/valve-actuator-regulator-instrumentation/valve-positioners",
+      "license": "Copyright Emerson; source link and bounded paraphrase only. No source text or PDF redistributed."
+    },
+    "S31": {
+      "title": "Emerson, Control Valve Diagnostics (product capabilities and status monitor; vendor-specific)",
+      "url": "https://www.emerson.com/en/final-control/catalog/products-and-software/valve-software/control-valve-diagnostics",
+      "license": "Copyright Emerson; source link and bounded paraphrase only. No source text or PDF redistributed."
+    },
+    "S32": {
+      "title": "Emerson Automation Experts, Impacts of Control Valve Diagnostics (2011-02-14; vendor guidance)",
+      "url": "https://www.emersonautomationexperts.com/2011/asset-management/impacts_of_cont/",
+      "license": "Copyright Emerson; source link and bounded paraphrase only. No source text or PDF redistributed."
     }
   },
-  "source_notes": "S12 is not used (no citable sheet survived review). Figures marked 'as reported in LBNL-56183' come from that report's tables, which quote older secondary sources. Where a source quotes dollar figures they are deliberately not copied: they assume one plant's prices and hours.\n\nCollection-contract review (2026-10-30): E1/E2 distinguish generic ratings from matched curves and BEP; E4 retains efficiency and measured-input basis; H4 keeps generic CAPACITY separate from heat duty. Supplied candidate facts cannot close those collection/review tasks. DOE pumping sourcebook S13, printed pp.37-39 and55-61; S14 p.1; DOE Determining Electric Motor Load and Efficiency, https://www.energy.gov/sites/default/files/2014/04/f15/10097517.pdf, printed pp.3-4. This is source-informed development review, not whole-catalog engineering validation.\n\nCollection follow-up (2026-10-30): E11 separates stated process/design temperature from applicable surface/insulation evidence; H1 separates generic capacity, matched steam-throughput rating and actual duration; H2 retains source/reference/state/location/period review beyond named pressure/temperature fields. Source-informed development contract: S1 pp.1-2, S6 pp.1-2 and S8 printed pp.5,9,18-19,54. No additional rule/source-family accuracy or human usefulness result is claimed.",
+  "source_notes": "S12 is not used (no citable sheet survived review). Figures marked 'as reported in LBNL-56183' come from that report's tables, which quote older secondary sources. Where a source quotes dollar figures they are deliberately not copied: they assume one plant's prices and hours.\n\nCollection-contract review (2026-10-30): E1/E2 distinguish generic ratings from matched curves and BEP; E4 retains efficiency and measured-input basis; H4 keeps generic CAPACITY separate from heat duty. Supplied candidate facts cannot close those collection/review tasks. DOE pumping sourcebook S13, printed pp.37-39 and55-61; S14 p.1; DOE Determining Electric Motor Load and Efficiency, https://www.energy.gov/sites/default/files/2014/04/f15/10097517.pdf, printed pp.3-4. This is source-informed development review, not whole-catalog engineering validation.\n\nCollection follow-up (2026-10-30): E11 separates stated process/design temperature from applicable surface/insulation evidence; H1 separates generic capacity, matched steam-throughput rating and actual duration; H2 retains source/reference/state/location/period review beyond named pressure/temperature fields. Source-informed development contract: S1 pp.1-2, S6 pp.1-2 and S8 printed pp.5,9,18-19,54. No additional rule/source-family accuracy or human usefulness result is claimed.\n\nC3 collection review (2026-11-01): review existing named-valve/loop configuration, feedback and performance records before proposing work. Command, local positioner feedback, control-room return, endpoint indication and usable history remain distinct. S13 printed p.26 supports pumping-system variability context; S29-S32 provide scoped vendor examples, not universal capability, quantified benefit or permission for a test/change. Supplied candidate facts do not settle source authority, association or engineering suitability.",
   "questions": [
     {
       "id": "E1",
@@ -2827,16 +2847,15 @@
     {
       "id": "C3",
       "family": "controls",
-      "question": "Do these control valves lack position feedback?",
+      "question": "What valve-position feedback and diagnostic records are available for these control valves?",
       "applies_when": {
-        "absent_note": "no position transmitter or indicator (ZT, ZI) drawn on these valves",
         "anchor": {
           "kind": [
             "valve"
           ]
         },
         "group_by": "model",
-        "without": [
+        "also_show": [
           {
             "select": {
               "kind": [
@@ -2845,7 +2864,8 @@
               "isa": "^Z"
             },
             "relation": "near",
-            "max_hops": 1
+            "max_hops": 1,
+            "as": "supplied position-tag candidate; valve/function association unverified"
           },
           {
             "select": {
@@ -2854,30 +2874,98 @@
               ],
               "isa": "^Z"
             },
-            "relation": "same_stream"
+            "relation": "same_stream",
+            "as": "supplied position-tag candidate; valve/function association unverified"
+          },
+          {
+            "select": {
+              "kind": [
+                "instrument"
+              ],
+              "text": "positioner|feedback|diagnostic|(?:stem|shaft).{0,16}travel|travel.{0,12}(?:setpoint|command)"
+            },
+            "relation": "near",
+            "max_hops": 1,
+            "as": "supplied feedback/diagnostic record candidate; association and suitability unverified"
+          },
+          {
+            "select": {
+              "kind": [
+                "instrument"
+              ],
+              "text": "positioner|feedback|diagnostic|(?:stem|shaft).{0,16}travel|travel.{0,12}(?:setpoint|command)"
+            },
+            "relation": "same_stream",
+            "as": "supplied feedback/diagnostic record candidate; association and suitability unverified"
+          },
+          {
+            "select": {
+              "kind": [
+                "controller"
+              ]
+            },
+            "relation": "drives",
+            "as": "controller-command candidate; not measured valve travel"
           }
         ]
       },
       "evidence_fields": [
-        "control valve tags with no ZT/ZI or positioner feedback drawn"
+        "named control-valve records",
+        "supplied feedback, command and diagnostic candidates with unverified association"
       ],
       "data_requests": [
         {
-          "item": "Positioner type and diagnostics available",
+          "item": "Existing valve/loop feedback and diagnostic records",
+          "field_scope": "anchors",
+          "show_fields": [
+            "local_positioner_present",
+            "control_room_feedback_available",
+            "control_room_return_verified",
+            "endpoint_return_available",
+            "continuous_travel_available",
+            "measured_travel_available",
+            "feedback_enabled",
+            "declared_duty",
+            "signal_quantity",
+            "positioner_type",
+            "feedback_units",
+            "loop_id",
+            "record_ref",
+            "record_revision",
+            "record_locator",
+            "record_readable"
+          ],
           "where": [
             {
               "place": "dcs",
-              "what": "valve positioner configuration (smart positioner? HART/fieldbus diagnostics?)"
+              "what": "approved existing valve/positioner configuration and point definitions for each named valve and loop"
             },
             {
               "place": "maintenance",
-              "what": "valve records"
+              "what": "existing valve, positioner and calibration records"
+            },
+            {
+              "place": "records",
+              "what": "approved loop drawings, I/O mappings, source revisions and locators"
             }
           ],
-          "how": "List which valves report position."
+          "how": "For each named valve/loop, review the record target, revision/locator, declared signal function, units, enabled return path and diagnostic capability. Keep command/current/travel setpoint separate from measured stem or shaft travel; local positioner feedback does not establish control-room or historian availability. Nearby Z tags and shared unit/stream membership do not establish valve association. Acknowledge appropriate existing coverage, including endpoint indication for an on/off duty, and retain unresolved source questions. Supplied fields do not complete this review."
         },
         {
-          "item": "Valve stiction or backlash",
+          "item": "Existing valve performance and diagnostic history",
+          "field_scope": "anchors",
+          "show_fields": [
+            "in_service_diagnostics_available",
+            "diagnostic_record",
+            "operating_period",
+            "quality",
+            "calibration_record",
+            "reported_condition",
+            "record_owner",
+            "command_value",
+            "value",
+            "endpoint_state"
+          ],
           "where": [
             {
               "place": "historian",
@@ -2885,22 +2973,65 @@
               "quantity": "position"
             },
             {
-              "place": "walkdown",
-              "what": "a small step test on each loop in manual"
+              "place": "maintenance",
+              "what": "existing diagnostic, inspection and work-order reports for the named valve"
+            },
+            {
+              "place": "records",
+              "what": "previously acquired command, measured-travel and process-response history with its operating basis"
             }
           ],
-          "how": "Compare controller output with measured response."
+          "how": "Review available history first. Retain valve/loop identity, source revision/locator, time and operating conditions, enabled state, quality/calibration and readability. Where suitable, compare command, independently described travel and process response over coincident periods. Position indication, endpoint states or oscillation alone do not diagnose stiction or its cause. Keep disabled, bad-quality, unavailable, foreign and unknown records as qualified candidates; ask the responsible record owner for the missing basis. This screen specifies no new manual step test, loop-mode change or operating experiment."
         }
       ],
-      "decision_rule": "Add feedback or diagnostics first on valves in energy- or safety-significant loops that show stiction or hunting.",
+      "decision_rule": "Record appropriate existing feedback/diagnostics as coverage with its source scope and remaining gaps. Route a named valve/loop request to the responsible record owner where function, association, availability or performance evidence is unresolved. Configuration, tuning, process and assembly causes remain open when investigating reported behavior. Any further test or change requires a separate company-approved method and operating/outage decision; this finding prescribes no retrofit, retune, new connection or mode change.",
       "typical_benefit": {
-        "wording": "\"Control valve backlash and stiction... are major contributors to process variability.\" No % stated.",
+        "wording": "S13 discusses backlash/stiction and variability in highly throttled/oversized pumping systems, not a universal feedback retrofit. S29-S32 distinguish feedback routes and vendor-specific diagnostic/history examples. They establish no quantified benefit for this investigation or the supplied plant.",
         "source": [
-          "S13"
+          "S13",
+          "S29",
+          "S30",
+          "S31",
+          "S32"
         ],
         "arc": null
       },
-      "limits": "P&IDs often omit positioners; the model saying 'none drawn' does not mean none fitted."
+      "limits": "P&IDs can omit fitted positioners. Drawing omission, local feedback, an enabled control-room return, historian availability and verified plant conditions are separate claims. Discrete endpoint feedback is not a continuous travel trace and is not automatically unsuitable for an on/off duty. Supplied source/quality flags and reported abnormalities are unverified evidence, not installed-state checks, unique diagnoses or permission to test/change equipment.",
+      "evidence_show_fields": [
+        "association_status",
+        "calibration_record",
+        "command_value",
+        "continuous_travel_available",
+        "control_room_feedback_available",
+        "control_room_return_verified",
+        "declared_duty",
+        "diagnostic_record",
+        "endpoint_return_available",
+        "endpoint_state",
+        "feedback_enabled",
+        "feedback_units",
+        "id",
+        "in_service_diagnostics_available",
+        "local_positioner_present",
+        "loop_id",
+        "measured_travel_available",
+        "measures_valve",
+        "operating_period",
+        "positioner_type",
+        "quality",
+        "record_locator",
+        "record_owner",
+        "record_readable",
+        "record_ref",
+        "record_revision",
+        "reported_condition",
+        "signal_quantity",
+        "source_kind",
+        "stream",
+        "underlying_claim_verified",
+        "unit",
+        "value"
+      ]
     },
     {
       "id": "C4",

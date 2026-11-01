@@ -1,0 +1,114 @@
+{
+  "meta": {
+    "model_id": "C3-01-omission-local",
+    "title": "FICTIONAL valve feedback/source-adequacy development control",
+    "illustrative": true,
+    "authorship": "Coding-agent materialization of independent pre-call source specification; no plant data, physical verification or engineering approval.",
+    "exposure": "Original six paired cases plus two separate selector controls; no optional revision supplement. Materialized before original/candidate calls."
+  },
+  "units": [
+    {
+      "id": "U-A",
+      "name": "Fictional process unit A",
+      "type": "process_unit"
+    },
+    {
+      "id": "U-B",
+      "name": "Fictional process unit B",
+      "type": "process_unit"
+    }
+  ],
+  "streams": [
+    {
+      "id": "S-A",
+      "name": "Fictional process stream A",
+      "from": "BL",
+      "to": "U-A"
+    },
+    {
+      "id": "S-B",
+      "name": "Fictional process stream B",
+      "from": "BL",
+      "to": "U-B"
+    }
+  ],
+  "instruments": [
+    {
+      "tag": "POS-B",
+      "description": "Supplied valve feedback/diagnostic record; declared quantity=\"local_positioner_feedback\"; declared target=\"FCV-B\"",
+      "variable": "local_positioner_feedback",
+      "facts": {
+        "source_kind": "fictional record",
+        "record_revision": "A",
+        "underlying_claim_verified": false,
+        "id": "POS-B",
+        "measures_valve": "FCV-B",
+        "signal_quantity": "local_positioner_feedback",
+        "record_ref": "POS-B-fictional-record",
+        "control_room_return_verified": false
+      },
+      "unit": "U-B",
+      "stream": "S-B"
+    }
+  ],
+  "final_elements": [
+    {
+      "tag": "FCV-A",
+      "unit": "U-A",
+      "stream": "S-A",
+      "description": "Fictional control-valve subject A",
+      "facts": {
+        "source_kind": "fictional record",
+        "record_revision": "A",
+        "underlying_claim_verified": false,
+        "local_positioner_present": null,
+        "control_room_feedback_available": null
+      }
+    },
+    {
+      "tag": "FCV-B",
+      "unit": "U-B",
+      "stream": "S-B",
+      "description": "Fictional control-valve subject B",
+      "facts": {
+        "source_kind": "fictional record",
+        "record_revision": "A",
+        "underlying_claim_verified": false,
+        "local_positioner_present": true,
+        "control_room_feedback_available": null
+      }
+    }
+  ],
+  "controllers": [
+    {
+      "tag": "FIC-A",
+      "unit": "U-A",
+      "measurement": null,
+      "output": {
+        "final_element": "FCV-A"
+      },
+      "description": "Fictional controller command target, not measured valve travel",
+      "facts": {
+        "source_kind": "fictional record",
+        "record_revision": "A",
+        "underlying_claim_verified": false
+      }
+    },
+    {
+      "tag": "FIC-B",
+      "unit": "U-B",
+      "measurement": null,
+      "output": {
+        "final_element": "FCV-B"
+      },
+      "description": "Fictional controller command target, not measured valve travel",
+      "facts": {
+        "source_kind": "fictional record",
+        "record_revision": "A",
+        "underlying_claim_verified": false
+      }
+    }
+  ],
+  "manual_valves": [],
+  "interlocks": []
+}

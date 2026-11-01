@@ -1,0 +1,473 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/valve-feedback-basis/models/C3-02-command-travel.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "C3"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "controls": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "C3@model",
+   "question_id": "C3",
+   "family": "controls",
+   "question": "What valve-position feedback and diagnostic records are available for these control valves?",
+   "about": "FCV-A, FCV-B",
+   "assets": [
+    {
+     "id": "FCV-A",
+     "tag": "FCV-A"
+    },
+    {
+     "id": "FCV-B",
+     "tag": "FCV-B"
+    },
+    {
+     "id": "ZT-B",
+     "tag": "ZT-B"
+    },
+    {
+     "id": "AO-A",
+     "tag": "AO-A"
+    },
+    {
+     "id": "FIC-A",
+     "tag": "FIC-A"
+    },
+    {
+     "id": "FIC-B",
+     "tag": "FIC-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "FCV-A",
+     "tag": "FCV-A",
+     "text": "valve FCV-A reads \"FCV-A Fictional control-valve subject A\" at U-A",
+     "field": "final_elements[FCV-A]"
+    },
+    {
+     "role": "trigger",
+     "id": "FCV-B",
+     "tag": "FCV-B",
+     "text": "valve FCV-B reads \"FCV-B Fictional control-valve subject B\" at U-B",
+     "field": "final_elements[FCV-B]"
+    },
+    {
+     "role": "supplied position-tag candidate; valve/function association unverified",
+     "id": "ZT-B",
+     "tag": "ZT-B",
+     "text": "instrument ZT-B reads \"ZT-B Supplied valve feedback/diagnostic record; declared quantity=\"measured_stem_travel\"; declared target=\"FCV-B\"\" at U-B",
+     "field": "instruments[ZT-B]"
+    },
+    {
+     "role": "supplied feedback/diagnostic record candidate; association and suitability unverified",
+     "id": "AO-A",
+     "tag": "AO-A",
+     "text": "instrument AO-A reads \"AO-A Supplied valve feedback/diagnostic record; declared quantity=\"command_setpoint\"; declared target=\"FCV-A\"\" at U-A",
+     "field": "instruments[AO-A]"
+    },
+    {
+     "role": "controller-command candidate; not measured valve travel",
+     "id": "FIC-A",
+     "tag": "FIC-A",
+     "text": "controller FIC-A reads \"FIC-A Fictional controller command target, not measured valve travel\" at U-A",
+     "field": "controllers[FIC-A]"
+    },
+    {
+     "role": "controller-command candidate; not measured valve travel",
+     "id": "FIC-B",
+     "tag": "FIC-B",
+     "text": "controller FIC-B reads \"FIC-B Fictional controller command target, not measured valve travel\" at U-B",
+     "field": "controllers[FIC-B]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FCV-A",
+     "tag": "FCV-A",
+     "text": "FCV-A command_value = 0; present; meaning and suitability unverified",
+     "field": "final_elements[FCV-A].facts.command_value"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FCV-A",
+     "tag": "FCV-A",
+     "text": "FCV-A measured_travel_available = null; blank; meaning and suitability unverified",
+     "field": "final_elements[FCV-A].facts.measured_travel_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FCV-A",
+     "tag": "FCV-A",
+     "text": "FCV-A record_revision = \"A\"; present; meaning and suitability unverified",
+     "field": "final_elements[FCV-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FCV-A",
+     "tag": "FCV-A",
+     "text": "FCV-A signal_quantity = \"command_setpoint\"; present; meaning and suitability unverified",
+     "field": "final_elements[FCV-A].facts.signal_quantity"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FCV-A",
+     "tag": "FCV-A",
+     "text": "FCV-A source_kind = \"fictional record\"; present; meaning and suitability unverified",
+     "field": "final_elements[FCV-A].facts.source_kind"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FCV-A",
+     "tag": "FCV-A",
+     "text": "FCV-A underlying_claim_verified = false; present; meaning and suitability unverified",
+     "field": "final_elements[FCV-A].facts.underlying_claim_verified"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FCV-B",
+     "tag": "FCV-B",
+     "text": "FCV-B control_room_feedback_available = true; present; meaning and suitability unverified",
+     "field": "final_elements[FCV-B].facts.control_room_feedback_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FCV-B",
+     "tag": "FCV-B",
+     "text": "FCV-B local_positioner_present = true; present; meaning and suitability unverified",
+     "field": "final_elements[FCV-B].facts.local_positioner_present"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FCV-B",
+     "tag": "FCV-B",
+     "text": "FCV-B record_revision = \"A\"; present; meaning and suitability unverified",
+     "field": "final_elements[FCV-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FCV-B",
+     "tag": "FCV-B",
+     "text": "FCV-B source_kind = \"fictional record\"; present; meaning and suitability unverified",
+     "field": "final_elements[FCV-B].facts.source_kind"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FCV-B",
+     "tag": "FCV-B",
+     "text": "FCV-B underlying_claim_verified = false; present; meaning and suitability unverified",
+     "field": "final_elements[FCV-B].facts.underlying_claim_verified"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ZT-B",
+     "tag": "ZT-B",
+     "text": "ZT-B calibration_record = \"fictional-calibration-B-A\"; present; meaning and suitability unverified",
+     "field": "instruments[ZT-B].facts.calibration_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ZT-B",
+     "tag": "ZT-B",
+     "text": "ZT-B feedback_enabled = true; present; meaning and suitability unverified",
+     "field": "instruments[ZT-B].facts.feedback_enabled"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ZT-B",
+     "tag": "ZT-B",
+     "text": "ZT-B id = \"ZT-B\"; present; meaning and suitability unverified",
+     "field": "instruments[ZT-B].facts.id"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ZT-B",
+     "tag": "ZT-B",
+     "text": "ZT-B measures_valve = \"FCV-B\"; present; meaning and suitability unverified",
+     "field": "instruments[ZT-B].facts.measures_valve"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ZT-B",
+     "tag": "ZT-B",
+     "text": "ZT-B operating_period = \"fictional current period\"; present; meaning and suitability unverified",
+     "field": "instruments[ZT-B].facts.operating_period"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ZT-B",
+     "tag": "ZT-B",
+     "text": "ZT-B quality = \"supplied_good\"; present; meaning and suitability unverified",
+     "field": "instruments[ZT-B].facts.quality"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ZT-B",
+     "tag": "ZT-B",
+     "text": "ZT-B record_ref = \"ZT-B-fictional-record\"; present; meaning and suitability unverified",
+     "field": "instruments[ZT-B].facts.record_ref"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ZT-B",
+     "tag": "ZT-B",
+     "text": "ZT-B record_revision = \"A\"; present; meaning and suitability unverified",
+     "field": "instruments[ZT-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ZT-B",
+     "tag": "ZT-B",
+     "text": "ZT-B signal_quantity = \"measured_stem_travel\"; present; meaning and suitability unverified",
+     "field": "instruments[ZT-B].facts.signal_quantity"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ZT-B",
+     "tag": "ZT-B",
+     "text": "ZT-B source_kind = \"fictional record\"; present; meaning and suitability unverified",
+     "field": "instruments[ZT-B].facts.source_kind"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ZT-B",
+     "tag": "ZT-B",
+     "text": "ZT-B underlying_claim_verified = false; present; meaning and suitability unverified",
+     "field": "instruments[ZT-B].facts.underlying_claim_verified"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AO-A",
+     "tag": "AO-A",
+     "text": "AO-A id = \"AO-A\"; present; meaning and suitability unverified",
+     "field": "instruments[AO-A].facts.id"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AO-A",
+     "tag": "AO-A",
+     "text": "AO-A measures_valve = \"FCV-A\"; present; meaning and suitability unverified",
+     "field": "instruments[AO-A].facts.measures_valve"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AO-A",
+     "tag": "AO-A",
+     "text": "AO-A record_ref = \"AO-A-fictional-record\"; present; meaning and suitability unverified",
+     "field": "instruments[AO-A].facts.record_ref"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AO-A",
+     "tag": "AO-A",
+     "text": "AO-A record_revision = \"A\"; present; meaning and suitability unverified",
+     "field": "instruments[AO-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AO-A",
+     "tag": "AO-A",
+     "text": "AO-A signal_quantity = \"command_setpoint\"; present; meaning and suitability unverified",
+     "field": "instruments[AO-A].facts.signal_quantity"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AO-A",
+     "tag": "AO-A",
+     "text": "AO-A source_kind = \"fictional record\"; present; meaning and suitability unverified",
+     "field": "instruments[AO-A].facts.source_kind"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AO-A",
+     "tag": "AO-A",
+     "text": "AO-A underlying_claim_verified = false; present; meaning and suitability unverified",
+     "field": "instruments[AO-A].facts.underlying_claim_verified"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AO-A",
+     "tag": "AO-A",
+     "text": "AO-A value = 0; present; meaning and suitability unverified",
+     "field": "instruments[AO-A].facts.value"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FIC-A",
+     "tag": "FIC-A",
+     "text": "FIC-A record_revision = \"A\"; present; meaning and suitability unverified",
+     "field": "controllers[FIC-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FIC-A",
+     "tag": "FIC-A",
+     "text": "FIC-A source_kind = \"fictional record\"; present; meaning and suitability unverified",
+     "field": "controllers[FIC-A].facts.source_kind"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FIC-A",
+     "tag": "FIC-A",
+     "text": "FIC-A underlying_claim_verified = false; present; meaning and suitability unverified",
+     "field": "controllers[FIC-A].facts.underlying_claim_verified"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FIC-B",
+     "tag": "FIC-B",
+     "text": "FIC-B record_revision = \"A\"; present; meaning and suitability unverified",
+     "field": "controllers[FIC-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FIC-B",
+     "tag": "FIC-B",
+     "text": "FIC-B source_kind = \"fictional record\"; present; meaning and suitability unverified",
+     "field": "controllers[FIC-B].facts.source_kind"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FIC-B",
+     "tag": "FIC-B",
+     "text": "FIC-B underlying_claim_verified = false; present; meaning and suitability unverified",
+     "field": "controllers[FIC-B].facts.underlying_claim_verified"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FCV-B local_positioner_present = True",
+     "field": "final_elements[FCV-B].facts.local_positioner_present"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FCV-B control_room_feedback_available = True",
+     "field": "final_elements[FCV-B].facts.control_room_feedback_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FCV-A signal_quantity = command_setpoint",
+     "field": "final_elements[FCV-A].facts.signal_quantity"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FCV-A record_revision = A",
+     "field": "final_elements[FCV-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FCV-B record_revision = A",
+     "field": "final_elements[FCV-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FCV-A command_value = 0",
+     "field": "final_elements[FCV-A].facts.command_value"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing valve/loop feedback and diagnostic records",
+     "state": "not_on_drawing",
+     "where": [
+      "DCS/PLC configuration: approved existing valve/positioner configuration and point definitions for each named valve and loop",
+      "maintenance records: existing valve, positioner and calibration records",
+      "site records: approved loop drawings, I/O mappings, source revisions and locators"
+     ],
+     "how": "For each named valve/loop, review the record target, revision/locator, declared signal function, units, enabled return path and diagnostic capability. Keep command/current/travel setpoint separate from measured stem or shaft travel; local positioner feedback does not establish control-room or historian availability. Nearby Z tags and shared unit/stream membership do not establish valve association. Acknowledge appropriate existing coverage, including endpoint indication for an on/off duty, and retain unresolved source questions. Supplied fields do not complete this review.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "FCV-B",
+       "label": "FCV-B",
+       "name": "local_positioner_present",
+       "value": true,
+       "where": "final_elements[FCV-B].facts.local_positioner_present"
+      },
+      {
+       "id": "FCV-B",
+       "label": "FCV-B",
+       "name": "control_room_feedback_available",
+       "value": true,
+       "where": "final_elements[FCV-B].facts.control_room_feedback_available"
+      },
+      {
+       "id": "FCV-A",
+       "label": "FCV-A",
+       "name": "signal_quantity",
+       "value": "command_setpoint",
+       "where": "final_elements[FCV-A].facts.signal_quantity"
+      },
+      {
+       "id": "FCV-A",
+       "label": "FCV-A",
+       "name": "record_revision",
+       "value": "A",
+       "where": "final_elements[FCV-A].facts.record_revision"
+      },
+      {
+       "id": "FCV-B",
+       "label": "FCV-B",
+       "name": "record_revision",
+       "value": "A",
+       "where": "final_elements[FCV-B].facts.record_revision"
+      }
+     ]
+    },
+    {
+     "item": "Existing valve performance and diagnostic history",
+     "state": "not_on_drawing",
+     "where": [
+      "historian or DCS trend for FCV-A, FCV-B (no historian tag is mapped in this model for these)",
+      "maintenance records: existing diagnostic, inspection and work-order reports for the named valve",
+      "site records: previously acquired command, measured-travel and process-response history with its operating basis"
+     ],
+     "how": "Review available history first. Retain valve/loop identity, source revision/locator, time and operating conditions, enabled state, quality/calibration and readability. Where suitable, compare command, independently described travel and process response over coincident periods. Position indication, endpoint states or oscillation alone do not diagnose stiction or its cause. Keep disabled, bad-quality, unavailable, foreign and unknown records as qualified candidates; ask the responsible record owner for the missing basis. This screen specifies no new manual step test, loop-mode change or operating experiment.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "FCV-A",
+       "label": "FCV-A",
+       "name": "command_value",
+       "value": 0,
+       "where": "final_elements[FCV-A].facts.command_value"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Record appropriate existing feedback/diagnostics as coverage with its source scope and remaining gaps. Route a named valve/loop request to the responsible record owner where function, association, availability or performance evidence is unresolved. Configuration, tuning, process and assembly causes remain open when investigating reported behavior. Any further test or change requires a separate company-approved method and operating/outage decision; this finding prescribes no retrofit, retune, new connection or mode change.",
+   "typical_benefit": {
+    "wording": "S13 discusses backlash/stiction and variability in highly throttled/oversized pumping systems, not a universal feedback retrofit. S29-S32 distinguish feedback routes and vendor-specific diagnostic/history examples. They establish no quantified benefit for this investigation or the supplied plant.",
+    "source": [
+     "S13",
+     "S29",
+     "S30",
+     "S31",
+     "S32"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S13: Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079)",
+     "S29: Emerson Automation Experts, Providing Operators Process Control Valve Position Feedback (2014-01-10; vendor guidance)",
+     "S30: Emerson, Valve Positioners (product overview and digital-controller FAQ; vendor-specific)",
+     "S31: Emerson, Control Valve Diagnostics (product capabilities and status monitor; vendor-specific)",
+     "S32: Emerson Automation Experts, Impacts of Control Valve Diagnostics (2011-02-14; vendor guidance)"
+    ]
+   },
+   "limits": "P&IDs can omit fitted positioners. Drawing omission, local feedback, an enabled control-room return, historian availability and verified plant conditions are separate claims. Discrete endpoint feedback is not a continuous travel trace and is not automatically unsuitable for an on/off duty. Supplied source/quality flags and reported abnormalities are unverified evidence, not installed-state checks, unique diagnoses or permission to test/change equipment.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

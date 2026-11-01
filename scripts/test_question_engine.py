@@ -156,20 +156,97 @@ class Examples(unittest.TestCase):
                 self.assertEqual(fd["typical_benefit"]["wording"], wording[fd["question_id"]])
                 self.assertEqual(fd["status"], "asked")
 
-    def test_engine_adds_no_figures_of_its_own(self):
-        """Strip every string the catalog supplies; what the engine wrote itself must carry no energy, money or
-        savings figure (numbers in tags, sheet numbers and model facts are fine)."""
-        figure = re.compile(r"\d[\d,.]*\s*(%|kWh|MWh|MMBtu|Btu|kW\b|hp\b|lb/hr|per year|/yr|years?\b|yr\b)", re.I)
+    @staticmethod
+    def _first_unattributed_figure(markdown, doc, model, catalog):
+        """Exempt only an exact sourced controller setpoint token on its own evidence line."""
+        import math
+        controllers = {}
+        for controller in model.get("controllers", []):
+            controllers.setdefault(controller.get("tag"), []).append(controller)
+        allowed_lines = {}
+        for question in doc["questions"]:
+            for evidence in question["evidence"]:
+                identifier = evidence.get("id")
+                records = controllers.get(identifier, [])
+                if len(records) != 1 or evidence.get("field") != f"controllers[{identifier}]":
+                    continue
+                if evidence.get("tag") != identifier:
+                    continue
+                controller = records[0]
+                setpoint = controller.get("setpoint") or {}
+                value, unit = setpoint.get("value"), setpoint.get("uom")
+                source = setpoint.get("source") or controller.get("source")
+                if (type(value) not in (int, float) or not math.isfinite(value)
+                        or not isinstance(unit, str) or not isinstance(source, str) or not source.strip()):
+                    continue
+                token = f"(setpoint {value} {unit})"
+                if evidence["text"].count(token) != 1:
+                    continue
+                prefix = "" if evidence["role"] == "trigger" else evidence["role"].capitalize() + ": "
+                line = f"- {prefix}{evidence['text']} (`{evidence['field']}`)"
+                allowed_lines.setdefault(line, set()).add(token)
+        lines = []
+        for line in markdown.splitlines(keepends=True):
+            bare = line.rstrip("\r\n")
+            tokens = allowed_lines.get(bare, set())
+            if len(tokens) == 1:
+                line = line.replace(next(iter(tokens)), "(declared controller setpoint)", 1)
+            lines.append(line)
+        text = "".join(lines)
         strings = []
-        for q in CAT["questions"]:
-            strings += [q["typical_benefit"]["wording"], q["decision_rule"], q.get("limits") or "",
-                        q["typical_benefit"].get("arc") or ""]
-        for name in RUNS:
-            text = (EX / name / "screen.md").read_text(encoding="utf-8")
-            for s in sorted(strings, key=len, reverse=True):
-                if s:
-                    text = text.replace(s, "")
-            self.assertIsNone(figure.search(text), (name, figure.search(text) and figure.search(text).group(0)))
+        for question in catalog["questions"]:
+            strings += [question["typical_benefit"]["wording"], question["decision_rule"],
+                        question.get("limits") or "", question["typical_benefit"].get("arc") or ""]
+        for supplied in sorted(strings, key=len, reverse=True):
+            if supplied:
+                text = text.replace(supplied, "")
+        figure = re.compile(r"\d[\d,.]*\s*(%|kWh|MWh|MMBtu|Btu|kW\b|hp\b|lb/hr|per year|/yr|years?\b|yr\b)", re.I)
+        return figure.search(text)
+
+    def test_engine_adds_no_figures_of_its_own(self):
+        """Catalog wording and exact attributable setpoint tokens are exempt; remaining figures still fail."""
+        for name, arguments in RUNS.items():
+            with self.subTest(model=name):
+                raw_model = (ROOT / arguments[arguments.index("--model") + 1]).read_bytes()
+                model = json.loads(raw_model)
+                doc = load(name)
+                markdown = (EX / name / "screen.md").read_text(encoding="utf-8")
+                match = self._first_unattributed_figure(markdown, doc, model, CAT)
+                self.assertIsNone(match, (name, match and match.group(0)))
+        # Negative controls change saved output only; the declared original model stays unchanged.
+        model = json.loads((ROOT / "data/bayer_rt/process_model.json").read_bytes())
+        original = copy.deepcopy(model)
+        doc, markdown = load("bayer"), (EX / "bayer/screen.md").read_text(encoding="utf-8")
+        controller = next(row for row in model["controllers"] if row["tag"] == "LIC-102")
+        point = controller["setpoint"]
+        token = f"(setpoint {point['value']} {point['uom']})"
+        for mode in ("changed-value", "wrong-id", "wrong-field", "wrong-tag", "missing-tag", "appended-saving", "same-value-elsewhere"):
+            with self.subTest(control=mode):
+                changed, text = copy.deepcopy(doc), markdown
+                row = next(e for q in changed["questions"] for e in q["evidence"]
+                           if e.get("id") == "LIC-102" and e.get("field") == "controllers[LIC-102]")
+                if mode == "changed-value":
+                    old_text = row["text"]
+                    row["text"] = old_text.replace(token, f"(setpoint {point['value'] + 1} {point['uom']})", 1)
+                    self.assertNotEqual(row["text"], old_text)
+                    text = text.replace(old_text, row["text"], 1)
+                elif mode == "wrong-id":
+                    row["id"] = "unrelated-controller"
+                elif mode == "wrong-field":
+                    old_field = row["field"]
+                    row["field"] = "controllers[unrelated-controller]"
+                    text = text.replace(f"(`{old_field}`)", f"(`{row['field']}`)", 1)
+                elif mode == "wrong-tag":
+                    row["tag"] = "unrelated-controller"
+                elif mode == "missing-tag":
+                    row.pop("tag")
+                elif mode == "appended-saving":
+                    text += "\nInvented local saving: 7.25 % per year.\n"
+                else:
+                    text += f"\nUnattributed percentage: {point['value']} {point['uom']}\n"
+                self.assertIsNotNone(self._first_unattributed_figure(text, changed, model, CAT), mode)
+        self.assertEqual(model, original)
+
 
     def test_graph_export_accepts_each_questions_file(self):
         models = {"te": "data/te_process_model.json", "bayer": "data/bayer_rt/process_model.json",
@@ -3441,6 +3518,152 @@ class PortableScheduleLabels(unittest.TestCase):
                 self.assertIn(literal, rollup_text)
             self.assertEqual(json.loads((output / "questions.json").read_bytes()), saved)
 
+
+class ValveFeedbackBasis(unittest.TestCase):
+    """Frozen source-policy/software controls; not installed-state or human-usefulness acceptance."""
+    BASE = EX / "valve-feedback-basis"
+
+    def inputs(self):
+        expected = json.loads((self.BASE / "expected/source-cases.json").read_bytes())
+        inventory = json.loads((self.BASE / "expected/model-inventory.json").read_bytes())
+        vectors = json.loads((self.BASE / "expected/input-vectors.json").read_bytes())
+        self.assertEqual(expected["schema"], "c3-source-cases-1")
+        self.assertGreaterEqual(len(expected["cases"]), 6)
+        self.assertGreaterEqual(len(inventory), 8)
+        self.assertGreaterEqual(len(vectors), 189)
+        return {case["id"]: case for case in expected["cases"]}, inventory, vectors
+
+    def model_path(self, case):
+        import hashlib
+        path = (ROOT / case["model"]).resolve()
+        self.assertTrue(path.is_relative_to(self.BASE.resolve()))
+        self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), case["sha256_raw"])
+        return path
+
+    def questions(self, case):
+        path = self.model_path(case)
+        model = qe.Model(path)
+        questions, not_checked, quiet, _ = qe.screen(model, CAT, ["C3"])
+        return path, model, questions, not_checked, quiet
+
+    def subjects(self, questions):
+        return {e["id"] for q in questions for e in q["evidence"]
+                if e.get("role") == "trigger" and e.get("id") in {"FCV-A", "FCV-B"}}
+
+    def assert_literal(self, questions, vector):
+        where = f"{vector['section']}[{vector['id']}].facts.{vector['name']}"
+        matches = [e for q in questions for e in q["evidence"]
+                   if e.get("role") == "supplied candidate field"
+                   and e.get("id") == vector["id"] and e.get("field") == where]
+        self.assertEqual(len(matches), 1, vector)
+        _, separator, tail = matches[0]["text"].partition(" = ")
+        self.assertTrue(separator, matches[0])
+        value, end = json.JSONDecoder().raw_decode(tail)
+        self.assertIs(type(value), type(vector["value"]), vector)
+        self.assertEqual(type(value).__name__, vector["type"], vector)
+        self.assertEqual(json.dumps(value, ensure_ascii=True, sort_keys=True),
+                         json.dumps(vector["value"], ensure_ascii=True, sort_keys=True), vector)
+        # These frozen inputs use only null/'unknown' placeholders; preserve their exact JSON values.
+        state = "blank" if vector["value"] is None or vector["value"] == "unknown" else "present"
+        self.assertTrue(tail[end:].startswith("; " + state + ";"), matches[0])
+        self.assertIn("unverified", tail[end:])
+
+    def test_source_pairs_selectors_and_all_active_typed_input_facts(self):
+        policies, inventory, vectors = self.inputs()
+        assessed, unshown = 0, 0
+        for case in inventory:
+            with self.subTest(case=case["id"]):
+                path, _, questions, not_checked, quiet = self.questions(case)
+                shown = self.subjects(questions)
+                minimum, allowed = set(case["minimum_subjects"]), set(case["allowed_subjects"])
+                self.assertLessEqual(shown, allowed)
+                for subject in minimum - shown:
+                    self.assertTrue(any(row.get("question_id") == "C3" and subject in row.get("reason", "")
+                                        for row in not_checked), (case["id"], subject))
+                if not allowed:
+                    self.assertEqual(questions, [])
+                    self.assertTrue("C3" in quiet or any(r.get("question_id") == "C3" for r in not_checked))
+                    continue
+                policy = policies[case["id"]]
+                self.assertEqual(minimum, set(policy["minimum_subjects"]))
+                self.assertEqual(allowed, set(policy["allowed_subjects"]))
+                self.assertTrue(all(q["id"] == policy["expected_finding_id_if_shown"] for q in questions))
+                assets = {a["id"] for q in questions for a in q["assets"]}
+                for record in policy["records"]:
+                    target = record.get("measures_valve")
+                    relevant = target in shown or target not in allowed and bool(shown)
+                    if relevant and record["id"] in policy["required_record_ids_if_relevant_subject_shown"]:
+                        self.assertIn(record["id"], assets)
+                for vector in (v for v in vectors if v["case"] == case["id"]):
+                    if vector["id"] in assets:
+                        self.assert_literal(questions, vector)
+                        assessed += 1
+                    else:
+                        unshown += 1  # Optional quiet is not assessed as a literal-display pass.
+                # Controller qualifier facts are separate source carriers, never anchor completion fields.
+                source = json.loads(path.read_bytes())
+                selected = next(q for q in CAT["questions"] if q["id"] == "C3")["evidence_show_fields"]
+                for controller in source.get("controllers", []):
+                    if controller["tag"] not in assets:
+                        continue
+                    for name, value in (controller.get("facts") or {}).items():
+                        if name in selected:
+                            self.assert_literal(questions, {"section": "controllers", "id": controller["tag"],
+                                "name": name, "value": value, "type": type(value).__name__})
+        self.assertEqual(assessed + unshown, len(vectors))
+        self.assertGreater(assessed, 0)
+
+    def test_both_records_reviews_stay_open_and_candidates_do_not_complete_other_anchors(self):
+        policies, inventory, _ = self.inputs()
+        definition = next(q for q in CAT["questions"] if q["id"] == "C3")
+        self.assertEqual(len(definition["data_requests"]), 2)
+        for request in definition["data_requests"]:
+            self.assertEqual(request.get("field_scope", "anchors"), "anchors")
+            self.assertFalse(request.get("fields"))
+            self.assertTrue(request.get("show_fields"))
+            self.assertTrue(all(place["place"] in {"dcs", "maintenance", "records", "historian"}
+                                for place in request["where"]))
+        candidates = 0
+        for case in (c for c in inventory if c["id"] in policies):
+            with self.subTest(case=case["id"]):
+                _, _, questions, _, _ = self.questions(case)
+                for question in questions:
+                    anchors = self.subjects([question])
+                    nonanchors = {a["id"] for a in question["assets"]} - anchors
+                    self.assertEqual(len(question["data_requests"]), 2)
+                    for request in question["data_requests"]:
+                        self.assertEqual(request["state"], "not_on_drawing")
+                        self.assertEqual(request["candidate_scope"], "anchors")
+                        self.assertIsInstance(request["candidate_facts"], list)
+                        self.assertTrue(request["where"])
+                        self.assertFalse(any(location.startswith("a walkdown:") for location in request["where"]))
+                        self.assertNotIn("already_on_drawing", request)
+                        for fact in request["candidate_facts"]:
+                            self.assertIn(fact["id"], anchors)
+                            self.assertNotIn(fact["id"], nonanchors)
+                            self.assertTrue(fact["where"].startswith(f"final_elements[{fact['id']}].facts."))
+                            candidates += 1
+        self.assertGreater(candidates, 0)
+
+    def test_complete_generated_c3_question_survives_full_and_core_graph(self):
+        _, inventory, _ = self.inputs()
+        case = next(c for c in inventory if c["id"] == "C3-01-omission-local")
+        path, _, questions, not_checked, _ = self.questions(case)
+        self.assertEqual(not_checked, [])
+        self.assertEqual([q["id"] for q in questions], ["C3@model"])
+        expected = json.dumps(questions, ensure_ascii=True, sort_keys=True)
+        with tempfile.TemporaryDirectory() as temp:
+            question_path = Path(temp) / "questions.json"
+            question_path.write_text(json.dumps({"questions": questions}, ensure_ascii=False), encoding="utf-8")
+            before = question_path.read_bytes()
+            graph = gx.build(path, questions=question_path)
+            for profile in ("full", "core"):
+                with self.subTest(profile=profile):
+                    result = gx.apply_profile(graph, profile)
+                    self.assertEqual(json.dumps(result["questions"], ensure_ascii=True, sort_keys=True), expected)
+                    self.assertEqual(result["counts"]["questions"], 1)
+                    self.assertEqual(gx.problems(result), [])
+            self.assertEqual(question_path.read_bytes(), before)
 
 if __name__ == "__main__":
     unittest.main()

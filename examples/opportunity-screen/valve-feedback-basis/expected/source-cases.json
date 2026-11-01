@@ -1,0 +1,421 @@
+{
+  "schema": "c3-source-cases-1",
+  "state": "Pre-baseline source/fixture specification only; rootwillmaterializeexactNativeJSONandfreezeinputpins beforecalls",
+  "exposure": "Fictional development controls, independent sourceoracle before anynewproductoutputs; reader8scenarioaudit consulted onlyasreaderproposal, notprimarysource",
+  "common": {
+    "subjects": [
+      "FCV-A",
+      "FCV-B"
+    ],
+    "units": [
+      "U-A",
+      "U-B"
+    ],
+    "streams": [
+      "S-A",
+      "S-B"
+    ],
+    "controllers": [
+      {
+        "id": "FIC-A",
+        "output_final_element": "FCV-A"
+      },
+      {
+        "id": "FIC-B",
+        "output_final_element": "FCV-B"
+      }
+    ],
+    "facts_role": "supplied sourceclaims, notinstalledverification orselectortruth",
+    "source_qualifiers": {
+      "source_kind": "fictional record",
+      "record_revision": "A",
+      "underlying_claim_verified": false
+    },
+    "model_grouping_allowed": true
+  },
+  "minimum_subject_occurrences": 10,
+  "optional_subject_occurrences": 2,
+  "cases": [
+    {
+      "id": "C3-01-omission-local",
+      "minimum_subjects": [
+        "FCV-A",
+        "FCV-B"
+      ],
+      "optional_subjects": [],
+      "valve_facts": {
+        "FCV-A": {
+          "local_positioner_present": null,
+          "control_room_feedback_available": null
+        },
+        "FCV-B": {
+          "local_positioner_present": true,
+          "control_room_feedback_available": null
+        }
+      },
+      "records": [
+        {
+          "id": "POS-B",
+          "measures_valve": "FCV-B",
+          "signal_quantity": "local_positioner_feedback",
+          "record_ref": "POS-B-fictional-record",
+          "record_revision": "A",
+          "underlying_claim_verified": false,
+          "control_room_return_verified": false
+        }
+      ],
+      "unacceptable": [
+        "A/B installedabsence fromdrawing omission",
+        "B local feedback absent",
+        "B DCSavailability inferred frompositioner"
+      ],
+      "allowed_subjects": [
+        "FCV-A",
+        "FCV-B"
+      ],
+      "expected_finding_id_if_shown": "C3@model",
+      "mandatory_behavior": "Scoped records/applicability/performance investigation or explicit notchecked reason retaining unresolved valve; no silentdisappearance.",
+      "optional_behavior": "Quiet or neutral acknowledgement of supplied coverage with unresolvedqualifiers. Quietnotassessedforliteralvisibility.",
+      "required_record_ids_if_relevant_subject_shown": [
+        "POS-B"
+      ],
+      "conditional_literal_fields": "All listed fields on active/shown records and valvefacts retain exact values/types/targets; wrongscope can appearonlyas explicitlyunqualified context, neverqualifiedfunction."
+    },
+    {
+      "id": "C3-02-command-travel",
+      "minimum_subjects": [
+        "FCV-A"
+      ],
+      "optional_subjects": [
+        "FCV-B"
+      ],
+      "valve_facts": {
+        "FCV-A": {
+          "signal_quantity": "command_setpoint",
+          "command_value": 0,
+          "measured_travel_available": null
+        },
+        "FCV-B": {
+          "local_positioner_present": true,
+          "control_room_feedback_available": true
+        }
+      },
+      "records": [
+        {
+          "id": "AO-A",
+          "measures_valve": "FCV-A",
+          "signal_quantity": "command_setpoint",
+          "record_ref": "AO-A-fictional-record",
+          "record_revision": "A",
+          "underlying_claim_verified": false,
+          "value": 0
+        },
+        {
+          "id": "ZT-B",
+          "measures_valve": "FCV-B",
+          "signal_quantity": "measured_stem_travel",
+          "record_ref": "ZT-B-fictional-record",
+          "record_revision": "A",
+          "underlying_claim_verified": false,
+          "feedback_enabled": true,
+          "quality": "supplied_good",
+          "calibration_record": "fictional-calibration-B-A",
+          "operating_period": "fictional current period"
+        }
+      ],
+      "unacceptable": [
+        "command0 usedas actualmeasuredtravel",
+        "B automaticallyengineeringcomplete",
+        "quietB countedliteralpass"
+      ],
+      "allowed_subjects": [
+        "FCV-A",
+        "FCV-B"
+      ],
+      "expected_finding_id_if_shown": "C3@model",
+      "mandatory_behavior": "Scoped records/applicability/performance investigation or explicit notchecked reason retaining unresolved valve; no silentdisappearance.",
+      "optional_behavior": "Quiet or neutral acknowledgement of supplied coverage with unresolvedqualifiers. Quietnotassessedforliteralvisibility.",
+      "required_record_ids_if_relevant_subject_shown": [
+        "AO-A",
+        "ZT-B"
+      ],
+      "conditional_literal_fields": "All listed fields on active/shown records and valvefacts retain exact values/types/targets; wrongscope can appearonlyas explicitlyunqualified context, neverqualifiedfunction."
+    },
+    {
+      "id": "C3-03-foreign-own-uncertain",
+      "minimum_subjects": [
+        "FCV-A",
+        "FCV-B"
+      ],
+      "optional_subjects": [],
+      "valve_facts": {
+        "FCV-A": {
+          "control_room_feedback_available": null
+        },
+        "FCV-B": {
+          "control_room_feedback_available": null
+        }
+      },
+      "records": [
+        {
+          "id": "ZT-X",
+          "measures_valve": "FCV-X",
+          "signal_quantity": "measured_stem_travel",
+          "record_ref": "ZT-X-fictional-record",
+          "record_revision": "A",
+          "underlying_claim_verified": false,
+          "stream": "S-A",
+          "unit": "U-X"
+        },
+        {
+          "id": "ZT-B",
+          "measures_valve": "FCV-B",
+          "signal_quantity": "measured_stem_travel",
+          "record_ref": "ZT-B-fictional-record",
+          "record_revision": "A",
+          "underlying_claim_verified": false,
+          "stream": "S-B",
+          "unit": "U-B",
+          "quality": "unknown",
+          "calibration_record": null
+        }
+      ],
+      "forbidden_qualified_associations": [
+        {
+          "subject": "FCV-A",
+          "record": "ZT-X",
+          "function": "actual travel/feedback for FCV-A"
+        }
+      ],
+      "unacceptable": [
+        "foreign/sharedstream suppressesA",
+        "B unknownquality/calibration treatedcomplete"
+      ],
+      "allowed_subjects": [
+        "FCV-A",
+        "FCV-B"
+      ],
+      "expected_finding_id_if_shown": "C3@model",
+      "mandatory_behavior": "Scoped records/applicability/performance investigation or explicit notchecked reason retaining unresolved valve; no silentdisappearance.",
+      "optional_behavior": "Quiet or neutral acknowledgement of supplied coverage with unresolvedqualifiers. Quietnotassessedforliteralvisibility.",
+      "required_record_ids_if_relevant_subject_shown": [
+        "ZT-B"
+      ],
+      "conditional_literal_fields": "All listed fields on active/shown records and valvefacts retain exact values/types/targets; wrongscope can appearonlyas explicitlyunqualified context, neverqualifiedfunction."
+    },
+    {
+      "id": "C3-04-unknown-endpoints",
+      "minimum_subjects": [
+        "FCV-A",
+        "FCV-B"
+      ],
+      "optional_subjects": [],
+      "valve_facts": {
+        "FCV-A": {
+          "control_room_feedback_available": null
+        },
+        "FCV-B": {
+          "declared_duty": "modulating control",
+          "continuous_travel_available": false
+        }
+      },
+      "records": [
+        {
+          "id": "ZI-U",
+          "measures_valve": null,
+          "signal_quantity": null,
+          "record_ref": "ZI-U-fictional-record",
+          "record_revision": "A",
+          "underlying_claim_verified": false,
+          "stream": "S-A",
+          "association_status": "unknown"
+        },
+        {
+          "id": "ZSO-B",
+          "measures_valve": "FCV-B",
+          "signal_quantity": "discrete_open_limit",
+          "record_ref": "ZSO-B-fictional-record",
+          "record_revision": "A",
+          "underlying_claim_verified": false,
+          "endpoint_state": false
+        },
+        {
+          "id": "ZSC-B",
+          "measures_valve": "FCV-B",
+          "signal_quantity": "discrete_closed_limit",
+          "record_ref": "ZSC-B-fictional-record",
+          "record_revision": "A",
+          "underlying_claim_verified": false,
+          "endpoint_state": false
+        }
+      ],
+      "unacceptable": [
+        "genericZ settlesA",
+        "endpoints callednofeedback",
+        "endpoint states diagnosedfault",
+        "discrete endpoint treatedcontinuoustravel"
+      ],
+      "allowed_subjects": [
+        "FCV-A",
+        "FCV-B"
+      ],
+      "expected_finding_id_if_shown": "C3@model",
+      "mandatory_behavior": "Scoped records/applicability/performance investigation or explicit notchecked reason retaining unresolved valve; no silentdisappearance.",
+      "optional_behavior": "Quiet or neutral acknowledgement of supplied coverage with unresolvedqualifiers. Quietnotassessedforliteralvisibility.",
+      "required_record_ids_if_relevant_subject_shown": [
+        "ZSO-B",
+        "ZSC-B"
+      ],
+      "conditional_literal_fields": "All listed fields on active/shown records and valvefacts retain exact values/types/targets; wrongscope can appearonlyas explicitlyunqualified context, neverqualifiedfunction."
+    },
+    {
+      "id": "C3-05-disabled-history",
+      "minimum_subjects": [
+        "FCV-A",
+        "FCV-B"
+      ],
+      "optional_subjects": [],
+      "valve_facts": {
+        "FCV-A": {
+          "control_room_feedback_available": true,
+          "feedback_enabled": false
+        },
+        "FCV-B": {
+          "local_positioner_present": true,
+          "control_room_feedback_available": false,
+          "in_service_diagnostics_available": true
+        }
+      },
+      "records": [
+        {
+          "id": "ZT-A",
+          "measures_valve": "FCV-A",
+          "signal_quantity": "measured_stem_travel",
+          "record_ref": "ZT-A-fictional-record",
+          "record_revision": "A",
+          "underlying_claim_verified": false,
+          "feedback_enabled": false,
+          "quality": "bad_no_data",
+          "operating_period": "fictional historical period"
+        },
+        {
+          "id": "DIAG-B",
+          "measures_valve": "FCV-B",
+          "signal_quantity": "in_service_diagnostic_history",
+          "record_ref": "DIAG-B-fictional-record",
+          "record_revision": "A",
+          "underlying_claim_verified": false,
+          "diagnostic_record": "fictional-DIAG-B-A",
+          "operating_period": "fictional historical period",
+          "reported_condition": "friction trend noted; cause unverified"
+        }
+      ],
+      "unacceptable": [
+        "disabled return calledcurrentgood",
+        "diagnostics assumedDCSreturn",
+        "newmanualtestbeforeavailablehistoryreview",
+        "reportedconditionconfirmedfault"
+      ],
+      "allowed_subjects": [
+        "FCV-A",
+        "FCV-B"
+      ],
+      "expected_finding_id_if_shown": "C3@model",
+      "mandatory_behavior": "Scoped records/applicability/performance investigation or explicit notchecked reason retaining unresolved valve; no silentdisappearance.",
+      "optional_behavior": "Quiet or neutral acknowledgement of supplied coverage with unresolvedqualifiers. Quietnotassessedforliteralvisibility.",
+      "required_record_ids_if_relevant_subject_shown": [
+        "ZT-A",
+        "DIAG-B"
+      ],
+      "conditional_literal_fields": "All listed fields on active/shown records and valvefacts retain exact values/types/targets; wrongscope can appearonlyas explicitlyunqualified context, neverqualifiedfunction."
+    },
+    {
+      "id": "C3-06-working-performance",
+      "minimum_subjects": [
+        "FCV-B"
+      ],
+      "optional_subjects": [
+        "FCV-A"
+      ],
+      "valve_facts": {
+        "FCV-A": {
+          "declared_duty": "on/off control",
+          "endpoint_return_available": true,
+          "control_room_feedback_available": true
+        },
+        "FCV-B": {
+          "control_room_feedback_available": true,
+          "feedback_enabled": true
+        }
+      },
+      "records": [
+        {
+          "id": "ZSO-A",
+          "measures_valve": "FCV-A",
+          "signal_quantity": "discrete_open_limit",
+          "record_ref": "ZSO-A-fictional-record",
+          "record_revision": "A",
+          "underlying_claim_verified": false,
+          "quality": "supplied_good",
+          "endpoint_state": true
+        },
+        {
+          "id": "ZSC-A",
+          "measures_valve": "FCV-A",
+          "signal_quantity": "discrete_closed_limit",
+          "record_ref": "ZSC-A-fictional-record",
+          "record_revision": "A",
+          "underlying_claim_verified": false,
+          "quality": "supplied_good",
+          "endpoint_state": false
+        },
+        {
+          "id": "ZT-B",
+          "measures_valve": "FCV-B",
+          "signal_quantity": "measured_stem_travel",
+          "record_ref": "ZT-B-fictional-record",
+          "record_revision": "A",
+          "underlying_claim_verified": false,
+          "feedback_enabled": true,
+          "quality": "supplied_good"
+        },
+        {
+          "id": "HIST-B",
+          "measures_valve": "FCV-B",
+          "signal_quantity": "command_travel_process_history",
+          "record_ref": "HIST-B-fictional-record",
+          "record_revision": "A",
+          "underlying_claim_verified": false,
+          "operating_period": "fictional steady-production interval",
+          "reported_condition": "oscillation observed in report; cause unverified",
+          "record_owner": "fictional maintenance role"
+        }
+      ],
+      "unacceptable": [
+        "A mandatorycontinuoustravelretrofit",
+        "B quietsolelyZTpresence despiteperformancegap",
+        "oscillationdiagnosedstictionwithoutbasis",
+        "automaticretune/manualtest/hardwareaddition"
+      ],
+      "allowed_subjects": [
+        "FCV-A",
+        "FCV-B"
+      ],
+      "expected_finding_id_if_shown": "C3@model",
+      "mandatory_behavior": "Scoped records/applicability/performance investigation or explicit notchecked reason retaining unresolved valve; no silentdisappearance.",
+      "optional_behavior": "Quiet or neutral acknowledgement of supplied coverage with unresolvedqualifiers. Quietnotassessedforliteralvisibility.",
+      "required_record_ids_if_relevant_subject_shown": [
+        "ZSO-A",
+        "ZSC-A",
+        "ZT-B",
+        "HIST-B"
+      ],
+      "conditional_literal_fields": "All listed fields on active/shown records and valvefacts retain exact values/types/targets; wrongscope can appearonlyas explicitlyunqualified context, neverqualifiedfunction."
+    }
+  ],
+  "unexercised_policy_boundaries": [
+    "Noeligiblecontrolvalve givesquiet/notapplicable; no inventedvalve fromunrelatedZ.",
+    "Noautomaticnewnetworkconnection/wirelessapproval, universaltestamplitude/threshold or safety-priorityretrofit.",
+    "Per-valve association/function/sourceuncertainty andrecordrecipients remain distinct inside model-grouped question; no siblingclosure."
+  ]
+}

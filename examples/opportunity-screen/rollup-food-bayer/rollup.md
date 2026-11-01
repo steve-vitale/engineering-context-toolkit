@@ -11,7 +11,7 @@
 |---|---|---|---|
 | C1: Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user? | Metering | food, bayer | 4 |
 | C2: Which measurements have no controller (read by people, or by nothing)? | Controls and automation | food, bayer | 2 |
-| C3: Do these control valves lack position feedback? | Controls and automation | food, bayer | 2 |
+| C3: What valve-position feedback and diagnostic records are available for these control valves? | Controls and automation | food, bayer | 2 |
 | C9: What source-labelled trip or interlock records apply to each rotating or fired machine, and what remains unverified? | Safety questions to verify | food, bayer | 2 |
 | E29: What records support this refrigeration compressor's part-load control, sequencing and real-input basis? | Energy | food | 3 |
 | E31: What do existing records establish about this oven, dryer or fryer exhaust routing, recovery already provided and any unresolved own-inlet or process-use basis? | Energy | food | 3 |
@@ -76,25 +76,29 @@ Fired at 2 of 2 sites.
 
 **What the source says (S19):** "energy and cost savings are around 5% or more for many industrial applications of process control systems" (for plants without updated controls). Process control: "Typically 2-18% savings." The source says these figures "cannot be added".
 
-## C3: Do these control valves lack position feedback?
+## C3: What valve-position feedback and diagnostic records are available for these control valves?
 
 Fired at 2 of 2 sites.
 
-- **food**, TV-301, TV-302, TV-303, TV-401, PV-501 (`C3@model`): PV-501, TV-301, TV-302, TV-303, TV-401
-- **bayer**, FV-107, LV-102, TV-104A, TV-104B, TV-104C (`C3@model`): FV-107, LV-102, TV-104A, TV-104B, TV-104C
+- **food**, TV-301, TV-302, TV-303, TV-401, PV-501 (`C3@model`): PIC-501, PV-501, TIC-301, TIC-302, TIC-303, TIC-401, TV-301, TV-302, TV-303, TV-401
+- **bayer**, FV-107, LV-102, TV-104A, TV-104B, TV-104C (`C3@model`): FV-107, LIC-102, LV-102, TIC-104, TV-104A, TV-104B, TV-104C
 
 **Data to collect**
 
-- Positioner type and diagnostics available. How: List which valves report position.
-  - food [not on drawing]: DCS/PLC configuration: valve positioner configuration (smart positioner? HART/fieldbus diagnostics?); then maintenance records: valve records
-  - bayer [not on drawing]: DCS/PLC configuration: valve positioner configuration (smart positioner? HART/fieldbus diagnostics?); then maintenance records: valve records
-- Valve stiction or backlash. How: Compare controller output with measured response.
-  - food [not on drawing]: historian or DCS trend for PV-501, TV-301, TV-302, TV-303, TV-401 (no historian tag is mapped in this model for these); then a walkdown: a small step test on each loop in manual
-  - bayer [not on drawing]: historian or DCS trend for FV-107, LV-102, TV-104A, TV-104B, TV-104C (no historian tag is mapped in this model for these); then a walkdown: a small step test on each loop in manual
+- Existing valve/loop feedback and diagnostic records. How: For each named valve/loop, review the record target, revision/locator, declared signal function, units, enabled return path and diagnostic capability. Keep command/current/travel setpoint separate from measured stem or shaft travel; local positioner feedback does not establish control-room or historian availability. Nearby Z tags and shared unit/stream membership do not establish valve association. Acknowledge appropriate existing coverage, including endpoint indication for an on/off duty, and retain unresolved source questions. Supplied fields do not complete this review.
+  - food [not on drawing]: DCS/PLC configuration: approved existing valve/positioner configuration and point definitions for each named valve and loop; then maintenance records: existing valve, positioner and calibration records; then site records: approved loop drawings, I/O mappings, source revisions and locators
+    - For `C3@model`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
+  - bayer [not on drawing]: DCS/PLC configuration: approved existing valve/positioner configuration and point definitions for each named valve and loop; then maintenance records: existing valve, positioner and calibration records; then site records: approved loop drawings, I/O mappings, source revisions and locators
+    - For `C3@model`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
+- Existing valve performance and diagnostic history. How: Review available history first. Retain valve/loop identity, source revision/locator, time and operating conditions, enabled state, quality/calibration and readability. Where suitable, compare command, independently described travel and process response over coincident periods. Position indication, endpoint states or oscillation alone do not diagnose stiction or its cause. Keep disabled, bad-quality, unavailable, foreign and unknown records as qualified candidates; ask the responsible record owner for the missing basis. This screen specifies no new manual step test, loop-mode change or operating experiment.
+  - food [not on drawing]: historian or DCS trend for PV-501, TV-301, TV-302, TV-303, TV-401 (no historian tag is mapped in this model for these); then maintenance records: existing diagnostic, inspection and work-order reports for the named valve; then site records: previously acquired command, measured-travel and process-response history with its operating basis
+    - For `C3@model`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
+  - bayer [not on drawing]: historian or DCS trend for FV-107, LV-102, TV-104A, TV-104B, TV-104C (no historian tag is mapped in this model for these); then maintenance records: existing diagnostic, inspection and work-order reports for the named valve; then site records: previously acquired command, measured-travel and process-response history with its operating basis
+    - For `C3@model`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
 
-**How it is decided:** Add feedback or diagnostics first on valves in energy- or safety-significant loops that show stiction or hunting.
+**How it is decided:** Record appropriate existing feedback/diagnostics as coverage with its source scope and remaining gaps. Route a named valve/loop request to the responsible record owner where function, association, availability or performance evidence is unresolved. Configuration, tuning, process and assembly causes remain open when investigating reported behavior. Any further test or change requires a separate company-approved method and operating/outage decision; this finding prescribes no retrofit, retune, new connection or mode change.
 
-**What the source says (S13):** "Control valve backlash and stiction... are major contributors to process variability." No % stated.
+**What the source says (S13, S29, S30, S31, S32):** S13 discusses backlash/stiction and variability in highly throttled/oversized pumping systems, not a universal feedback retrofit. S29-S32 distinguish feedback routes and vendor-specific diagnostic/history examples. They establish no quantified benefit for this investigation or the supplied plant.
 
 ## C9: What source-labelled trip or interlock records apply to each rotating or fired machine, and what remains unverified?
 
@@ -543,3 +547,7 @@ Not a clean bill of health: the models may not show what these questions look fo
 - S26: Masanet, Worrell, Graus and Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for the Fruit and Vegetable Processing Industry: An ENERGY STAR Guide for Energy and Plant Managers (LBNL-59289-Revision, Mar 2008). https://eta-publications.lbl.gov/sites/default/files/lbnl-59289-rev.pdf (license: DOE-lab report sponsored by US EPA: unclear, freely citable; its figures from older sources are quoted as reported there)
 - S27: DOE Industrial Technologies Program, Process Heating Tip Sheet #2, Check Burner Air to Fuel Ratios (Nov 2007). https://www1.eere.energy.gov/manufacturing/tech_assistance/pdfs/42110.pdf (license: Public domain (US federal))
 - S28: DOE Industrial Technologies Program, Process Heating Tip Sheet #10, Using Waste Heat for External Processes (DOE/GO-102006-2225, Jan 2006). https://www1.eere.energy.gov/manufacturing/tech_assistance/pdfs/38853.pdf (license: Public domain (US federal))
+- S29: Emerson Automation Experts, Providing Operators Process Control Valve Position Feedback (2014-01-10; vendor guidance). https://www.emersonautomationexperts.com/2014/valves-actuators-regulators/providing-operators-process-control-valve-position-feedback/ (license: Copyright Emerson; source link and bounded paraphrase only. No source text or PDF redistributed.)
+- S30: Emerson, Valve Positioners (product overview and digital-controller FAQ; vendor-specific). https://www.emerson.com/en/final-control/catalog/products-and-software/valve-actuator-regulator-instrumentation/valve-positioners (license: Copyright Emerson; source link and bounded paraphrase only. No source text or PDF redistributed.)
+- S31: Emerson, Control Valve Diagnostics (product capabilities and status monitor; vendor-specific). https://www.emerson.com/en/final-control/catalog/products-and-software/valve-software/control-valve-diagnostics (license: Copyright Emerson; source link and bounded paraphrase only. No source text or PDF redistributed.)
+- S32: Emerson Automation Experts, Impacts of Control Valve Diagnostics (2011-02-14; vendor guidance). https://www.emersonautomationexperts.com/2011/asset-management/impacts_of_cont/ (license: Copyright Emerson; source link and bounded paraphrase only. No source text or PDF redistributed.)

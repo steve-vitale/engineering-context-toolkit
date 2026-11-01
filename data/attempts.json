@@ -4545,6 +4545,28 @@
         "scripts/question_engine.py",
         "scripts/test_question_engine.py"
       ]
+    },
+    {
+      "id": "A297",
+      "function": "intake_and_reuse",
+      "date": "2026-11-01",
+      "change": "Review C3 valve/loop feedback and diagnostic records before proposing tests or changes; preserve unverified source candidates.",
+      "hypothesis": "A generic position tag must not hide an unresolved valve investigation, and command, local feedback, control-room return, endpoint indication and usable history need separate evidence.",
+      "evidence": "Eight original CLI screens show only4/10 source-required valve occurrences while matching the old predicate. Eight matched candidate calls retain all10 plus2optional working acknowledgements; two no-eligible controls stay quiet. All189 core typed input fields and36 controller qualifiers survive JSON and decoded Markdown. Independent source, original/candidate, whole79producer, corpus and reader receiving pass. Three new focused methods fail the original with8assertion events/no errors and pass the candidate. Full156 reports155passed/one unnamed skip after a source-aware figure guard preserves an exact supplied controller setpoint and rejects seven unsupported-output variants. Checkout3 passes60indexed/120materialization comparisons, retaining277existingrawpacket files per configuration.",
+      "runs": "Six fictional paired models plus two separate selector controls;8original+8candidate CLI calls and7normalproducers. Candidate3+5 worker chronology and grader correction retained without repeated screen calls. No provider/model/plant call or measured human benefit.",
+      "verdict": "kept",
+      "why": "N111 closes this bounded C3 collection/source contract. Other49 whole rules/shared sources remain unchanged; source_notes andS29-S32 additions are explicit. Company engineering, tests, source authority and operational acceptance remain separate.23rules now have bounded source-informed reviews;27remain.",
+      "source": [
+        "docs/JOURNAL.md#145-review-valve-feedback-from-existing-records",
+        "docs/OPPORTUNITY_SCREEN.md",
+        "examples/opportunity-screen/valve-feedback-basis/README.md",
+        "examples/opportunity-screen/valve-feedback-basis/SOURCES.json",
+        "examples/opportunity-screen/valve-feedback-basis/history/PROVENANCE.json",
+        "data/questions.json",
+        "scripts/test_question_engine.py",
+        "scripts/test_checkout_contracts.py",
+        ".gitattributes"
+      ]
     }
   ],
   "not_tried": [
@@ -5799,6 +5821,24 @@
         "examples/opportunity-screen/mapping-descriptions/retained-answer/README.md",
         "scripts/question_engine.py",
         "scripts/test_question_engine.py"
+      ]
+    },
+    {
+      "id": "N111",
+      "function": "intake_and_reuse",
+      "status": "done",
+      "idea": "Keep C3 valve feedback and diagnostic investigations scoped to existing named-valve/loop records instead of generic Z-tag quiet or a blanket test/retrofit.",
+      "why_not_yet": "Completed A297 with independent primary-source criteria, original failures, matched fictional controls, full typed/readable evidence retention and actual producer regeneration. Working records can be acknowledged without a compulsory project; unknown/foreign/disabled indications remain reviewable. No source/reviewer authentication, installed truth, human usefulness or company operating permission is established.",
+      "source": [
+        "docs/JOURNAL.md#145-review-valve-feedback-from-existing-records",
+        "docs/OPPORTUNITY_SCREEN.md",
+        "examples/opportunity-screen/valve-feedback-basis/README.md",
+        "examples/opportunity-screen/valve-feedback-basis/SOURCES.json",
+        "examples/opportunity-screen/valve-feedback-basis/history/PROVENANCE.json",
+        "data/questions.json",
+        "scripts/test_question_engine.py",
+        "scripts/test_checkout_contracts.py",
+        ".gitattributes"
       ]
     }
   ]
