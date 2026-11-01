@@ -1,0 +1,271 @@
+{
+  "schema": "valve-feedback-produced-reports-1",
+  "evidence_class": "fictional-exposed-development",
+  "counts": {
+    "paired_models": 6,
+    "separate_selector_controls": 2,
+    "original_CLI_calls": 8,
+    "candidate_CLI_calls": 8,
+    "before_reports": 16,
+    "after_reports": 16,
+    "source_minimum_subject_occurrences": 10,
+    "optional_working_occurrences": 2,
+    "original_minimum_subjects_shown": 4,
+    "candidate_minimum_subjects_shown": 10,
+    "candidate_optional_acknowledgements": 2,
+    "core_typed_input_rows": 189,
+    "candidate_field_rows_with_controller_qualifiers": 225
+  },
+  "method": {
+    "engine_sha256_raw": "97dd9491ecdf87e67325d6fd60d5b9888fd5ee9da611210769fe48293fd94e17",
+    "original_catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+    "candidate_catalog_sha256_raw": "0f2c9e6dd62e9e3c523f866eeb3bc8edcc0189d93f93981fb5d877f7c24bf9ed",
+    "original_commit": "3288c10871269efab785944c835935d06c6c6e1e",
+    "candidate_rule": "Only C3 and collection source notes changed; S29-S32 appended. Other49 whole rules and all shared sources unchanged for this comparison."
+  },
+  "chronology": [
+    "Independent primary-source criteria frozen before materialization and runs. Exact six paired models plus two separate eligibility controls accepted before calls.",
+    "Eight original CLI calls completed; detector conformance and source-job adequacy graded separately.",
+    "Candidate authored after original reports. First candidate worker completed three CLI calls then stopped on its grader treating unknown as present rather than the existing blank placeholder state. Actual literal was retained.",
+    "Original grader/stop/three reports preserved. Corrected external grader re-read saved case03 without a product call; a second worker executed only the five uncalled cases. No method/model/oracle change and no first-three rerun.",
+    "All16 candidate reports are complete actual outputs; 189 core source values and36 additional controller qualifiers retain exact typed JSON and decoded readable evidence."
+  ],
+  "reports": {
+    "history/before/C3-01-omission-local/questions.json": {
+      "sha256_raw": "794dbd735d991f4e4764f747f7351bc36381dd8154030f7d4de8d09ceeaeacbd",
+      "bytes": 2810,
+      "case": "C3-01-omission-local",
+      "phase": "before",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "history/before/C3-01-omission-local/screen.md": {
+      "sha256_raw": "445a25d4a730877a8aaf0da7515ba0d496b12ec286df05f0fca9d266a3de3ecd",
+      "bytes": 2922,
+      "case": "C3-01-omission-local",
+      "phase": "before",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "expected/after/C3-01-omission-local/questions.json": {
+      "sha256_raw": "a989be6d0861c8b99a1519c1c2860c99f05ba9a0bb9ca86bfe79e88ea4573448",
+      "bytes": 14100,
+      "case": "C3-01-omission-local",
+      "phase": "after",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "expected/after/C3-01-omission-local/screen.md": {
+      "sha256_raw": "d37c30f3953a69bf3828cba9e15a181ee5bc18ed86ff375f6030003cb0f4db3b",
+      "bytes": 12327,
+      "case": "C3-01-omission-local",
+      "phase": "after",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "history/before/C3-02-command-travel/questions.json": {
+      "sha256_raw": "c1eb9a044326b40c9e29eac48a835796c13fe4c58c073ef79f7159526bff6345",
+      "bytes": 2542,
+      "case": "C3-02-command-travel",
+      "phase": "before",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "history/before/C3-02-command-travel/screen.md": {
+      "sha256_raw": "e57311adffe6cb412671889dc21d56cfaa561659dee6c05de046a6c91d36d21b",
+      "bytes": 2804,
+      "case": "C3-02-command-travel",
+      "phase": "before",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "expected/after/C3-02-command-travel/questions.json": {
+      "sha256_raw": "bb23b565de57a72583d19cb2e796e4ef2b07a02cde40b0ce7b1377b6c3efb7fb",
+      "bytes": 18517,
+      "case": "C3-02-command-travel",
+      "phase": "after",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "expected/after/C3-02-command-travel/screen.md": {
+      "sha256_raw": "d115e17f60cba9334d9f0c0421594616d5ab7e08fb5a9904cfe1fced3b705efe",
+      "bytes": 15120,
+      "case": "C3-02-command-travel",
+      "phase": "after",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "history/before/C3-03-foreign-own-uncertain/questions.json": {
+      "sha256_raw": "352a000f6582ae29557664f93e31cd8e09d1315e5183f6e204f5a44c4e82f7ae",
+      "bytes": 592,
+      "case": "C3-03-foreign-own-uncertain",
+      "phase": "before",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "history/before/C3-03-foreign-own-uncertain/screen.md": {
+      "sha256_raw": "4c1b82622add7c9a02981ef2d641f6014854ffdded76c021978620af59979e81",
+      "bytes": 1387,
+      "case": "C3-03-foreign-own-uncertain",
+      "phase": "before",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "expected/after/C3-03-foreign-own-uncertain/questions.json": {
+      "sha256_raw": "6910e2d5631e7cfe61c4cc301e41342c242a2cab860649c2430d6d7cc4164cae",
+      "bytes": 16298,
+      "case": "C3-03-foreign-own-uncertain",
+      "phase": "after",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "expected/after/C3-03-foreign-own-uncertain/screen.md": {
+      "sha256_raw": "d0e8fb094e6808453bf4bff93c2ac343f1c0d108ec91d5c7badf91aed9ab063a",
+      "bytes": 13688,
+      "case": "C3-03-foreign-own-uncertain",
+      "phase": "after",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "history/before/C3-04-unknown-endpoints/questions.json": {
+      "sha256_raw": "f2985ebdb0dcef7257c4a1e186d54cb63a601b58d1965ebe798d9811627760ed",
+      "bytes": 588,
+      "case": "C3-04-unknown-endpoints",
+      "phase": "before",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "history/before/C3-04-unknown-endpoints/screen.md": {
+      "sha256_raw": "280aa1522a31b3ac3fb4822be7ae96f13f6ac797feb53fef8e53454e5c937a74",
+      "bytes": 1383,
+      "case": "C3-04-unknown-endpoints",
+      "phase": "before",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "expected/after/C3-04-unknown-endpoints/questions.json": {
+      "sha256_raw": "c8b2b4dea768f4e522d7caa442d0813e0ca0220913a513c6a0a5671f59bdfd51",
+      "bytes": 19080,
+      "case": "C3-04-unknown-endpoints",
+      "phase": "after",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "expected/after/C3-04-unknown-endpoints/screen.md": {
+      "sha256_raw": "db2cf30f834ea6fa2f366942c5f482bb2be03cc5634190d8f4fbe5ba0fe5b485",
+      "bytes": 15466,
+      "case": "C3-04-unknown-endpoints",
+      "phase": "after",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "history/before/C3-05-disabled-history/questions.json": {
+      "sha256_raw": "8dcca7672dd38492f5c7ba499fa98467d6b7c0ac7400f342365cadf808a3408b",
+      "bytes": 2544,
+      "case": "C3-05-disabled-history",
+      "phase": "before",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "history/before/C3-05-disabled-history/screen.md": {
+      "sha256_raw": "9b4465d5f5809bf3d9e7b1f437065d46cb6df43a3ee3e5c23ee893e9ff7fccb2",
+      "bytes": 2806,
+      "case": "C3-05-disabled-history",
+      "phase": "before",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "expected/after/C3-05-disabled-history/questions.json": {
+      "sha256_raw": "f40dad2bbc1d7defcf0906abb10e7c1627c301a555bf99cdde2db2d9d7706ead",
+      "bytes": 19511,
+      "case": "C3-05-disabled-history",
+      "phase": "after",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "expected/after/C3-05-disabled-history/screen.md": {
+      "sha256_raw": "9222abb6130aa0d3151c63de3017f2e2d4211e7fbc6bedd82d2be8a620a35242",
+      "bytes": 15829,
+      "case": "C3-05-disabled-history",
+      "phase": "after",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "history/before/C3-06-working-performance/questions.json": {
+      "sha256_raw": "3f4eedde6d3964e3230490725ee139dae57b9ff9779281886d58de34ef063bce",
+      "bytes": 590,
+      "case": "C3-06-working-performance",
+      "phase": "before",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "history/before/C3-06-working-performance/screen.md": {
+      "sha256_raw": "2c2eda5649ce4a6246536ac265c1a40f21941357d8d802d37855f987ca1c558d",
+      "bytes": 1385,
+      "case": "C3-06-working-performance",
+      "phase": "before",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "expected/after/C3-06-working-performance/questions.json": {
+      "sha256_raw": "23b5f5b5e1969d84a50f13327101dc98c62bce01d2ba7ece449a749864dfc628",
+      "bytes": 24415,
+      "case": "C3-06-working-performance",
+      "phase": "after",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "expected/after/C3-06-working-performance/screen.md": {
+      "sha256_raw": "eff6a0cee63ad6e288dd515e0e9ad428ce23002ee32c02841d3ef89b4edef3e0",
+      "bytes": 18927,
+      "case": "C3-06-working-performance",
+      "phase": "after",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "history/before/C3-S01-manual-valves-only/questions.json": {
+      "sha256_raw": "01ccfa51b07488b53e91a844eed9e16990489a82c3bc25d839fe0e2e8b82a264",
+      "bytes": 590,
+      "case": "C3-S01-manual-valves-only",
+      "phase": "before",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "history/before/C3-S01-manual-valves-only/screen.md": {
+      "sha256_raw": "8c96a0e3a701d7bddf3d050d1be6ffa9c7c85e77ba3c3476a29a21fe29186f35",
+      "bytes": 1385,
+      "case": "C3-S01-manual-valves-only",
+      "phase": "before",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "expected/after/C3-S01-manual-valves-only/questions.json": {
+      "sha256_raw": "01ccfa51b07488b53e91a844eed9e16990489a82c3bc25d839fe0e2e8b82a264",
+      "bytes": 590,
+      "case": "C3-S01-manual-valves-only",
+      "phase": "after",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "expected/after/C3-S01-manual-valves-only/screen.md": {
+      "sha256_raw": "8c96a0e3a701d7bddf3d050d1be6ffa9c7c85e77ba3c3476a29a21fe29186f35",
+      "bytes": 1385,
+      "case": "C3-S01-manual-valves-only",
+      "phase": "after",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "history/before/C3-S02-instruments-only/questions.json": {
+      "sha256_raw": "4b597a78e815f7dc998d39e1081fd6f836f3f1ca2d0857f83ff6be66a78dd2fd",
+      "bytes": 588,
+      "case": "C3-S02-instruments-only",
+      "phase": "before",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "history/before/C3-S02-instruments-only/screen.md": {
+      "sha256_raw": "a5021acce22756ecfe4258ad3835bb0940f3374d694dd4fb907a17127cca7e4d",
+      "bytes": 1383,
+      "case": "C3-S02-instruments-only",
+      "phase": "before",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "expected/after/C3-S02-instruments-only/questions.json": {
+      "sha256_raw": "4b597a78e815f7dc998d39e1081fd6f836f3f1ca2d0857f83ff6be66a78dd2fd",
+      "bytes": 588,
+      "case": "C3-S02-instruments-only",
+      "phase": "after",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    },
+    "expected/after/C3-S02-instruments-only/screen.md": {
+      "sha256_raw": "a5021acce22756ecfe4258ad3835bb0940f3374d694dd4fb907a17127cca7e4d",
+      "bytes": 1383,
+      "case": "C3-S02-instruments-only",
+      "phase": "after",
+      "origin": "Complete actual CLI-produced report; no selected excerpts or hand edits."
+    }
+  },
+  "private_receipt_sha256": {
+    "source_contract": "0180ba410dd3e47fa8ed9caa796511b3dfa964d5dbb8f5dc4fb2a0aa865e7bd1",
+    "input_acceptance": "e91c9e26bdb45ee2acc12ce7b14e1a36fc7d4e492584bd5aa9bf458bff1e3986",
+    "original_runs": "a56093a9e29c8099743ecbf4b5e3ca87ee4dd789c06645fdc37f8896c8a4dc65",
+    "candidate_aggregate": "353c4f7307bc14158ed4eeac41586eb53e34c3e0858fdb38f553c004edb9d485"
+  },
+  "limits": [
+    "These are software/source controls, not plants, held-out model trials, a measured engineer benefit, a diagnosis, company approval or operational acceptance.",
+    "Optional quiet subjects are not literal-visibility passes; this selected candidate acknowledges both optional subjects. More findings are not a performance gain.",
+    "Original source-cases.json is the preserved prospective oracle: its preparation-time state/unexercised labels are historical. The two subsequently materialized eligibility controls are explicitly counted here.",
+    "Question ownership remains per question; per-valve source recipients belong in a qualified answer/brief unless separately scoped questions are authored."
+  ]
+}

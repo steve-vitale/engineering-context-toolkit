@@ -1,0 +1,83 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/valve-feedback-basis/models/C3-05-disabled-history.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "C3"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "controls": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "C3@model",
+   "question_id": "C3",
+   "family": "controls",
+   "question": "Do these control valves lack position feedback?",
+   "about": "FCV-B",
+   "assets": [
+    {
+     "id": "FCV-B",
+     "tag": "FCV-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "FCV-B",
+     "tag": "FCV-B",
+     "text": "valve FCV-B reads \"FCV-B Fictional control-valve subject B\" at U-B",
+     "field": "final_elements[FCV-B]"
+    },
+    {
+     "role": "checked, none found",
+     "text": "no position transmitter or indicator (ZT, ZI) drawn on these valves",
+     "field": "applies_when.without"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Positioner type and diagnostics available",
+     "state": "not_on_drawing",
+     "where": [
+      "DCS/PLC configuration: valve positioner configuration (smart positioner? HART/fieldbus diagnostics?)",
+      "maintenance records: valve records"
+     ],
+     "how": "List which valves report position."
+    },
+    {
+     "item": "Valve stiction or backlash",
+     "state": "not_on_drawing",
+     "where": [
+      "historian or DCS trend for FCV-B (no historian tag is mapped in this model for these)",
+      "a walkdown: a small step test on each loop in manual"
+     ],
+     "how": "Compare controller output with measured response."
+    }
+   ],
+   "decision_rule": "Add feedback or diagnostics first on valves in energy- or safety-significant loops that show stiction or hunting.",
+   "typical_benefit": {
+    "wording": "\"Control valve backlash and stiction... are major contributors to process variability.\" No % stated.",
+    "source": [
+     "S13"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S13: Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079)"
+    ]
+   },
+   "limits": "P&IDs often omit positioners; the model saying 'none drawn' does not mean none fitted.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

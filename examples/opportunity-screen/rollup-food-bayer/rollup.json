@@ -372,7 +372,7 @@
   },
   {
    "question_id": "C3",
-   "question": "Do these control valves lack position feedback?",
+   "question": "What valve-position feedback and diagnostic records are available for these control valves?",
    "family": "controls",
    "sites": [
     {
@@ -401,6 +401,26 @@
         {
          "id": "PV-501",
          "tag": "PV-501"
+        },
+        {
+         "id": "TIC-301",
+         "tag": "TIC-301"
+        },
+        {
+         "id": "TIC-302",
+         "tag": "TIC-302"
+        },
+        {
+         "id": "TIC-303",
+         "tag": "TIC-303"
+        },
+        {
+         "id": "TIC-401",
+         "tag": "TIC-401"
+        },
+        {
+         "id": "PIC-501",
+         "tag": "PIC-501"
         }
        ]
       }
@@ -432,6 +452,14 @@
         {
          "id": "TV-104C",
          "tag": "TV-104C"
+        },
+        {
+         "id": "LIC-102",
+         "tag": "LIC-102"
+        },
+        {
+         "id": "TIC-104",
+         "tag": "TIC-104"
         }
        ]
       }
@@ -444,17 +472,25 @@
    "not_run_at": [],
    "data_requests": [
     {
-     "item": "Positioner type and diagnostics available",
-     "how": "List which valves report position.",
+     "item": "Existing valve/loop feedback and diagnostic records",
+     "how": "For each named valve/loop, review the record target, revision/locator, declared signal function, units, enabled return path and diagnostic capability. Keep command/current/travel setpoint separate from measured stem or shaft travel; local positioner feedback does not establish control-room or historian availability. Nearby Z tags and shared unit/stream membership do not establish valve association. Acknowledge appropriate existing coverage, including endpoint indication for an on/off duty, and retain unresolved source questions. Supplied fields do not complete this review.",
      "sites": [
       {
        "site": "food",
        "states": [
         "not_on_drawing"
        ],
+       "coverage_by_finding": [
+        {
+         "finding_id": "C3@model",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        }
+       ],
        "where": [
-        "DCS/PLC configuration: valve positioner configuration (smart positioner? HART/fieldbus diagnostics?)",
-        "maintenance records: valve records"
+        "DCS/PLC configuration: approved existing valve/positioner configuration and point definitions for each named valve and loop",
+        "maintenance records: existing valve, positioner and calibration records",
+        "site records: approved loop drawings, I/O mappings, source revisions and locators"
        ],
        "where_by_finding": []
       },
@@ -463,26 +499,42 @@
        "states": [
         "not_on_drawing"
        ],
+       "coverage_by_finding": [
+        {
+         "finding_id": "C3@model",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        }
+       ],
        "where": [
-        "DCS/PLC configuration: valve positioner configuration (smart positioner? HART/fieldbus diagnostics?)",
-        "maintenance records: valve records"
+        "DCS/PLC configuration: approved existing valve/positioner configuration and point definitions for each named valve and loop",
+        "maintenance records: existing valve, positioner and calibration records",
+        "site records: approved loop drawings, I/O mappings, source revisions and locators"
        ],
        "where_by_finding": []
       }
      ]
     },
     {
-     "item": "Valve stiction or backlash",
-     "how": "Compare controller output with measured response.",
+     "item": "Existing valve performance and diagnostic history",
+     "how": "Review available history first. Retain valve/loop identity, source revision/locator, time and operating conditions, enabled state, quality/calibration and readability. Where suitable, compare command, independently described travel and process response over coincident periods. Position indication, endpoint states or oscillation alone do not diagnose stiction or its cause. Keep disabled, bad-quality, unavailable, foreign and unknown records as qualified candidates; ask the responsible record owner for the missing basis. This screen specifies no new manual step test, loop-mode change or operating experiment.",
      "sites": [
       {
        "site": "food",
        "states": [
         "not_on_drawing"
        ],
+       "coverage_by_finding": [
+        {
+         "finding_id": "C3@model",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        }
+       ],
        "where": [
         "historian or DCS trend for PV-501, TV-301, TV-302, TV-303, TV-401 (no historian tag is mapped in this model for these)",
-        "a walkdown: a small step test on each loop in manual"
+        "maintenance records: existing diagnostic, inspection and work-order reports for the named valve",
+        "site records: previously acquired command, measured-travel and process-response history with its operating basis"
        ],
        "where_by_finding": []
       },
@@ -491,24 +543,40 @@
        "states": [
         "not_on_drawing"
        ],
+       "coverage_by_finding": [
+        {
+         "finding_id": "C3@model",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        }
+       ],
        "where": [
         "historian or DCS trend for FV-107, LV-102, TV-104A, TV-104B, TV-104C (no historian tag is mapped in this model for these)",
-        "a walkdown: a small step test on each loop in manual"
+        "maintenance records: existing diagnostic, inspection and work-order reports for the named valve",
+        "site records: previously acquired command, measured-travel and process-response history with its operating basis"
        ],
        "where_by_finding": []
       }
      ]
     }
    ],
-   "decision_rule": "Add feedback or diagnostics first on valves in energy- or safety-significant loops that show stiction or hunting.",
+   "decision_rule": "Record appropriate existing feedback/diagnostics as coverage with its source scope and remaining gaps. Route a named valve/loop request to the responsible record owner where function, association, availability or performance evidence is unresolved. Configuration, tuning, process and assembly causes remain open when investigating reported behavior. Any further test or change requires a separate company-approved method and operating/outage decision; this finding prescribes no retrofit, retune, new connection or mode change.",
    "typical_benefit": {
-    "wording": "\"Control valve backlash and stiction... are major contributors to process variability.\" No % stated.",
+    "wording": "S13 discusses backlash/stiction and variability in highly throttled/oversized pumping systems, not a universal feedback retrofit. S29-S32 distinguish feedback routes and vendor-specific diagnostic/history examples. They establish no quantified benefit for this investigation or the supplied plant.",
     "source": [
-     "S13"
+     "S13",
+     "S29",
+     "S30",
+     "S31",
+     "S32"
     ],
     "arc": null,
     "source_titles": [
-     "S13: Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079)"
+     "S13: Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079)",
+     "S29: Emerson Automation Experts, Providing Operators Process Control Valve Position Feedback (2014-01-10; vendor guidance)",
+     "S30: Emerson, Valve Positioners (product overview and digital-controller FAQ; vendor-specific)",
+     "S31: Emerson, Control Valve Diagnostics (product capabilities and status monitor; vendor-specific)",
+     "S32: Emerson Automation Experts, Impacts of Control Valve Diagnostics (2011-02-14; vendor guidance)"
     ]
    }
   },

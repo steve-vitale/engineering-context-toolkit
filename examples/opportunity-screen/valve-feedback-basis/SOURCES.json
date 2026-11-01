@@ -1,0 +1,61 @@
+{
+  "schema": "valve-feedback-source-review-1",
+  "reviewed_on": "2026-11-01",
+  "sources": {
+    "S13": {
+      "title": "Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079)",
+      "url": "https://www.energy.gov/sites/prod/files/2014/05/f16/pump.pdf",
+      "license": "Federal, co-developed with HI: unclear for HI content"
+    },
+    "S29": {
+      "title": "Emerson Automation Experts, Providing Operators Process Control Valve Position Feedback (2014-01-10; vendor guidance)",
+      "url": "https://www.emersonautomationexperts.com/2014/valves-actuators-regulators/providing-operators-process-control-valve-position-feedback/",
+      "license": "Copyright Emerson; source link and bounded paraphrase only. No source text or PDF redistributed."
+    },
+    "S30": {
+      "title": "Emerson, Valve Positioners (product overview and digital-controller FAQ; vendor-specific)",
+      "url": "https://www.emerson.com/en/final-control/catalog/products-and-software/valve-actuator-regulator-instrumentation/valve-positioners",
+      "license": "Copyright Emerson; source link and bounded paraphrase only. No source text or PDF redistributed."
+    },
+    "S31": {
+      "title": "Emerson, Control Valve Diagnostics (product capabilities and status monitor; vendor-specific)",
+      "url": "https://www.emerson.com/en/final-control/catalog/products-and-software/valve-software/control-valve-diagnostics",
+      "license": "Copyright Emerson; source link and bounded paraphrase only. No source text or PDF redistributed."
+    },
+    "S32": {
+      "title": "Emerson Automation Experts, Impacts of Control Valve Diagnostics (2011-02-14; vendor guidance)",
+      "url": "https://www.emersonautomationexperts.com/2011/asset-management/impacts_of_cont/",
+      "license": "Copyright Emerson; source link and bounded paraphrase only. No source text or PDF redistributed."
+    }
+  },
+  "reading": [
+    {
+      "source": "S13",
+      "locator": "Printed p.26 / PDF index29, Indications of Oversized Pumps",
+      "scope": "Highly throttled/oversized pumping variability and pump/valve sizing; not a feedback-retrofit priority or manual-step procedure."
+    },
+    {
+      "source": "S29",
+      "locator": "2014-01-10, command/travel and return-route paragraphs; web lines58–72",
+      "scope": "Independent feedback routes and brownfield constraints; not installed-site evidence or wireless/network permission."
+    },
+    {
+      "source": "S30",
+      "locator": "What Is a Valve Positioner? and digital-controller FAQ; web lines97–112,198–204",
+      "scope": "Local stem/shaft feedback and product-dependent communication are distinct from a configured control-room return."
+    },
+    {
+      "source": "S31",
+      "locator": "Control Valve Diagnostics and Status Monitor; web lines97–100,128–133",
+      "scope": "Vendor-specific diagnostics and separate current/setpoint/travel/pressure information; not universal channel availability."
+    },
+    {
+      "source": "S32",
+      "locator": "2011-02-14, diagnostics and history discussion; web lines62–74",
+      "scope": "Alternative performance explanations, offline/in-service distinction and available history; not an operating/test procedure."
+    }
+  ],
+  "acquisition": "Official primary web text/HTML reviewed. No new raw PDF downloaded or redistributed; no original source-byte authenticity claim. Web line numbers are retrieval locators.",
+  "authorship": "Source-informed authored record-review policy, not a universal vendor mandate, engineering standard, human/site validation or verified source authority.",
+  "recorded_run_evidence": "history/PROVENANCE.json"
+}

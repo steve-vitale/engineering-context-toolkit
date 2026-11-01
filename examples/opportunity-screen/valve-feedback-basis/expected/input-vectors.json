@@ -1,0 +1,1514 @@
+[
+  {
+    "case": "C3-01-omission-local",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-01-omission-local",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-01-omission-local",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-01-omission-local",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "local_positioner_present",
+    "value": null,
+    "type": "NoneType"
+  },
+  {
+    "case": "C3-01-omission-local",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "control_room_feedback_available",
+    "value": null,
+    "type": "NoneType"
+  },
+  {
+    "case": "C3-01-omission-local",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-01-omission-local",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-01-omission-local",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-01-omission-local",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "local_positioner_present",
+    "value": true,
+    "type": "bool"
+  },
+  {
+    "case": "C3-01-omission-local",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "control_room_feedback_available",
+    "value": null,
+    "type": "NoneType"
+  },
+  {
+    "case": "C3-01-omission-local",
+    "section": "instruments",
+    "id": "POS-B",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-01-omission-local",
+    "section": "instruments",
+    "id": "POS-B",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-01-omission-local",
+    "section": "instruments",
+    "id": "POS-B",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-01-omission-local",
+    "section": "instruments",
+    "id": "POS-B",
+    "name": "id",
+    "value": "POS-B",
+    "type": "str"
+  },
+  {
+    "case": "C3-01-omission-local",
+    "section": "instruments",
+    "id": "POS-B",
+    "name": "measures_valve",
+    "value": "FCV-B",
+    "type": "str"
+  },
+  {
+    "case": "C3-01-omission-local",
+    "section": "instruments",
+    "id": "POS-B",
+    "name": "signal_quantity",
+    "value": "local_positioner_feedback",
+    "type": "str"
+  },
+  {
+    "case": "C3-01-omission-local",
+    "section": "instruments",
+    "id": "POS-B",
+    "name": "record_ref",
+    "value": "POS-B-fictional-record",
+    "type": "str"
+  },
+  {
+    "case": "C3-01-omission-local",
+    "section": "instruments",
+    "id": "POS-B",
+    "name": "control_room_return_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "signal_quantity",
+    "value": "command_setpoint",
+    "type": "str"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "command_value",
+    "value": 0,
+    "type": "int"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "measured_travel_available",
+    "value": null,
+    "type": "NoneType"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "local_positioner_present",
+    "value": true,
+    "type": "bool"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "control_room_feedback_available",
+    "value": true,
+    "type": "bool"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "instruments",
+    "id": "AO-A",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "instruments",
+    "id": "AO-A",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "instruments",
+    "id": "AO-A",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "instruments",
+    "id": "AO-A",
+    "name": "id",
+    "value": "AO-A",
+    "type": "str"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "instruments",
+    "id": "AO-A",
+    "name": "measures_valve",
+    "value": "FCV-A",
+    "type": "str"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "instruments",
+    "id": "AO-A",
+    "name": "signal_quantity",
+    "value": "command_setpoint",
+    "type": "str"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "instruments",
+    "id": "AO-A",
+    "name": "record_ref",
+    "value": "AO-A-fictional-record",
+    "type": "str"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "instruments",
+    "id": "AO-A",
+    "name": "value",
+    "value": 0,
+    "type": "int"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "id",
+    "value": "ZT-B",
+    "type": "str"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "measures_valve",
+    "value": "FCV-B",
+    "type": "str"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "signal_quantity",
+    "value": "measured_stem_travel",
+    "type": "str"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "record_ref",
+    "value": "ZT-B-fictional-record",
+    "type": "str"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "feedback_enabled",
+    "value": true,
+    "type": "bool"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "quality",
+    "value": "supplied_good",
+    "type": "str"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "calibration_record",
+    "value": "fictional-calibration-B-A",
+    "type": "str"
+  },
+  {
+    "case": "C3-02-command-travel",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "operating_period",
+    "value": "fictional current period",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "control_room_feedback_available",
+    "value": null,
+    "type": "NoneType"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "control_room_feedback_available",
+    "value": null,
+    "type": "NoneType"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "instruments",
+    "id": "ZT-X",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "instruments",
+    "id": "ZT-X",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "instruments",
+    "id": "ZT-X",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "instruments",
+    "id": "ZT-X",
+    "name": "id",
+    "value": "ZT-X",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "instruments",
+    "id": "ZT-X",
+    "name": "measures_valve",
+    "value": "FCV-X",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "instruments",
+    "id": "ZT-X",
+    "name": "signal_quantity",
+    "value": "measured_stem_travel",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "instruments",
+    "id": "ZT-X",
+    "name": "record_ref",
+    "value": "ZT-X-fictional-record",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "instruments",
+    "id": "ZT-X",
+    "name": "stream",
+    "value": "S-A",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "instruments",
+    "id": "ZT-X",
+    "name": "unit",
+    "value": "U-X",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "id",
+    "value": "ZT-B",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "measures_valve",
+    "value": "FCV-B",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "signal_quantity",
+    "value": "measured_stem_travel",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "record_ref",
+    "value": "ZT-B-fictional-record",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "stream",
+    "value": "S-B",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "unit",
+    "value": "U-B",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "quality",
+    "value": "unknown",
+    "type": "str"
+  },
+  {
+    "case": "C3-03-foreign-own-uncertain",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "calibration_record",
+    "value": null,
+    "type": "NoneType"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "control_room_feedback_available",
+    "value": null,
+    "type": "NoneType"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "declared_duty",
+    "value": "modulating control",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "continuous_travel_available",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZI-U",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZI-U",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZI-U",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZI-U",
+    "name": "id",
+    "value": "ZI-U",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZI-U",
+    "name": "measures_valve",
+    "value": null,
+    "type": "NoneType"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZI-U",
+    "name": "signal_quantity",
+    "value": null,
+    "type": "NoneType"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZI-U",
+    "name": "record_ref",
+    "value": "ZI-U-fictional-record",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZI-U",
+    "name": "stream",
+    "value": "S-A",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZI-U",
+    "name": "association_status",
+    "value": "unknown",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZSO-B",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZSO-B",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZSO-B",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZSO-B",
+    "name": "id",
+    "value": "ZSO-B",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZSO-B",
+    "name": "measures_valve",
+    "value": "FCV-B",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZSO-B",
+    "name": "signal_quantity",
+    "value": "discrete_open_limit",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZSO-B",
+    "name": "record_ref",
+    "value": "ZSO-B-fictional-record",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZSO-B",
+    "name": "endpoint_state",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZSC-B",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZSC-B",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZSC-B",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZSC-B",
+    "name": "id",
+    "value": "ZSC-B",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZSC-B",
+    "name": "measures_valve",
+    "value": "FCV-B",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZSC-B",
+    "name": "signal_quantity",
+    "value": "discrete_closed_limit",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZSC-B",
+    "name": "record_ref",
+    "value": "ZSC-B-fictional-record",
+    "type": "str"
+  },
+  {
+    "case": "C3-04-unknown-endpoints",
+    "section": "instruments",
+    "id": "ZSC-B",
+    "name": "endpoint_state",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "control_room_feedback_available",
+    "value": true,
+    "type": "bool"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "feedback_enabled",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "local_positioner_present",
+    "value": true,
+    "type": "bool"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "control_room_feedback_available",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "in_service_diagnostics_available",
+    "value": true,
+    "type": "bool"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "instruments",
+    "id": "ZT-A",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "instruments",
+    "id": "ZT-A",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "instruments",
+    "id": "ZT-A",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "instruments",
+    "id": "ZT-A",
+    "name": "id",
+    "value": "ZT-A",
+    "type": "str"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "instruments",
+    "id": "ZT-A",
+    "name": "measures_valve",
+    "value": "FCV-A",
+    "type": "str"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "instruments",
+    "id": "ZT-A",
+    "name": "signal_quantity",
+    "value": "measured_stem_travel",
+    "type": "str"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "instruments",
+    "id": "ZT-A",
+    "name": "record_ref",
+    "value": "ZT-A-fictional-record",
+    "type": "str"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "instruments",
+    "id": "ZT-A",
+    "name": "feedback_enabled",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "instruments",
+    "id": "ZT-A",
+    "name": "quality",
+    "value": "bad_no_data",
+    "type": "str"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "instruments",
+    "id": "ZT-A",
+    "name": "operating_period",
+    "value": "fictional historical period",
+    "type": "str"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "instruments",
+    "id": "DIAG-B",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "instruments",
+    "id": "DIAG-B",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "instruments",
+    "id": "DIAG-B",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "instruments",
+    "id": "DIAG-B",
+    "name": "id",
+    "value": "DIAG-B",
+    "type": "str"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "instruments",
+    "id": "DIAG-B",
+    "name": "measures_valve",
+    "value": "FCV-B",
+    "type": "str"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "instruments",
+    "id": "DIAG-B",
+    "name": "signal_quantity",
+    "value": "in_service_diagnostic_history",
+    "type": "str"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "instruments",
+    "id": "DIAG-B",
+    "name": "record_ref",
+    "value": "DIAG-B-fictional-record",
+    "type": "str"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "instruments",
+    "id": "DIAG-B",
+    "name": "diagnostic_record",
+    "value": "fictional-DIAG-B-A",
+    "type": "str"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "instruments",
+    "id": "DIAG-B",
+    "name": "operating_period",
+    "value": "fictional historical period",
+    "type": "str"
+  },
+  {
+    "case": "C3-05-disabled-history",
+    "section": "instruments",
+    "id": "DIAG-B",
+    "name": "reported_condition",
+    "value": "friction trend noted; cause unverified",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "declared_duty",
+    "value": "on/off control",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "endpoint_return_available",
+    "value": true,
+    "type": "bool"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "final_elements",
+    "id": "FCV-A",
+    "name": "control_room_feedback_available",
+    "value": true,
+    "type": "bool"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "control_room_feedback_available",
+    "value": true,
+    "type": "bool"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "final_elements",
+    "id": "FCV-B",
+    "name": "feedback_enabled",
+    "value": true,
+    "type": "bool"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZSO-A",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZSO-A",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZSO-A",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZSO-A",
+    "name": "id",
+    "value": "ZSO-A",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZSO-A",
+    "name": "measures_valve",
+    "value": "FCV-A",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZSO-A",
+    "name": "signal_quantity",
+    "value": "discrete_open_limit",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZSO-A",
+    "name": "record_ref",
+    "value": "ZSO-A-fictional-record",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZSO-A",
+    "name": "quality",
+    "value": "supplied_good",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZSO-A",
+    "name": "endpoint_state",
+    "value": true,
+    "type": "bool"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZSC-A",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZSC-A",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZSC-A",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZSC-A",
+    "name": "id",
+    "value": "ZSC-A",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZSC-A",
+    "name": "measures_valve",
+    "value": "FCV-A",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZSC-A",
+    "name": "signal_quantity",
+    "value": "discrete_closed_limit",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZSC-A",
+    "name": "record_ref",
+    "value": "ZSC-A-fictional-record",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZSC-A",
+    "name": "quality",
+    "value": "supplied_good",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZSC-A",
+    "name": "endpoint_state",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "id",
+    "value": "ZT-B",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "measures_valve",
+    "value": "FCV-B",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "signal_quantity",
+    "value": "measured_stem_travel",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "record_ref",
+    "value": "ZT-B-fictional-record",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "feedback_enabled",
+    "value": true,
+    "type": "bool"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "ZT-B",
+    "name": "quality",
+    "value": "supplied_good",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "HIST-B",
+    "name": "source_kind",
+    "value": "fictional record",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "HIST-B",
+    "name": "record_revision",
+    "value": "A",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "HIST-B",
+    "name": "underlying_claim_verified",
+    "value": false,
+    "type": "bool"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "HIST-B",
+    "name": "id",
+    "value": "HIST-B",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "HIST-B",
+    "name": "measures_valve",
+    "value": "FCV-B",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "HIST-B",
+    "name": "signal_quantity",
+    "value": "command_travel_process_history",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "HIST-B",
+    "name": "record_ref",
+    "value": "HIST-B-fictional-record",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "HIST-B",
+    "name": "operating_period",
+    "value": "fictional steady-production interval",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "HIST-B",
+    "name": "reported_condition",
+    "value": "oscillation observed in report; cause unverified",
+    "type": "str"
+  },
+  {
+    "case": "C3-06-working-performance",
+    "section": "instruments",
+    "id": "HIST-B",
+    "name": "record_owner",
+    "value": "fictional maintenance role",
+    "type": "str"
+  }
+]

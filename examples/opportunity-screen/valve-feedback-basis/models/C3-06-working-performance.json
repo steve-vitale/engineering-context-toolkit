@@ -1,0 +1,171 @@
+{
+  "meta": {
+    "model_id": "C3-06-working-performance",
+    "title": "FICTIONAL valve feedback/source-adequacy development control",
+    "illustrative": true,
+    "authorship": "Coding-agent materialization of independent pre-call source specification; no plant data, physical verification or engineering approval.",
+    "exposure": "Original six paired cases plus two separate selector controls; no optional revision supplement. Materialized before original/candidate calls."
+  },
+  "units": [
+    {
+      "id": "U-A",
+      "name": "Fictional process unit A",
+      "type": "process_unit"
+    },
+    {
+      "id": "U-B",
+      "name": "Fictional process unit B",
+      "type": "process_unit"
+    }
+  ],
+  "streams": [
+    {
+      "id": "S-A",
+      "name": "Fictional process stream A",
+      "from": "BL",
+      "to": "U-A"
+    },
+    {
+      "id": "S-B",
+      "name": "Fictional process stream B",
+      "from": "BL",
+      "to": "U-B"
+    }
+  ],
+  "instruments": [
+    {
+      "tag": "ZSO-A",
+      "description": "Supplied valve feedback/diagnostic record; declared quantity=\"discrete_open_limit\"; declared target=\"FCV-A\"",
+      "variable": "discrete_open_limit",
+      "facts": {
+        "source_kind": "fictional record",
+        "record_revision": "A",
+        "underlying_claim_verified": false,
+        "id": "ZSO-A",
+        "measures_valve": "FCV-A",
+        "signal_quantity": "discrete_open_limit",
+        "record_ref": "ZSO-A-fictional-record",
+        "quality": "supplied_good",
+        "endpoint_state": true
+      },
+      "unit": "U-A",
+      "stream": "S-A"
+    },
+    {
+      "tag": "ZSC-A",
+      "description": "Supplied valve feedback/diagnostic record; declared quantity=\"discrete_closed_limit\"; declared target=\"FCV-A\"",
+      "variable": "discrete_closed_limit",
+      "facts": {
+        "source_kind": "fictional record",
+        "record_revision": "A",
+        "underlying_claim_verified": false,
+        "id": "ZSC-A",
+        "measures_valve": "FCV-A",
+        "signal_quantity": "discrete_closed_limit",
+        "record_ref": "ZSC-A-fictional-record",
+        "quality": "supplied_good",
+        "endpoint_state": false
+      },
+      "unit": "U-A",
+      "stream": "S-A"
+    },
+    {
+      "tag": "ZT-B",
+      "description": "Supplied valve feedback/diagnostic record; declared quantity=\"measured_stem_travel\"; declared target=\"FCV-B\"",
+      "variable": "measured_stem_travel",
+      "facts": {
+        "source_kind": "fictional record",
+        "record_revision": "A",
+        "underlying_claim_verified": false,
+        "id": "ZT-B",
+        "measures_valve": "FCV-B",
+        "signal_quantity": "measured_stem_travel",
+        "record_ref": "ZT-B-fictional-record",
+        "feedback_enabled": true,
+        "quality": "supplied_good"
+      },
+      "unit": "U-B",
+      "stream": "S-B"
+    },
+    {
+      "tag": "HIST-B",
+      "description": "Supplied valve feedback/diagnostic record; declared quantity=\"command_travel_process_history\"; declared target=\"FCV-B\"",
+      "variable": "command_travel_process_history",
+      "facts": {
+        "source_kind": "fictional record",
+        "record_revision": "A",
+        "underlying_claim_verified": false,
+        "id": "HIST-B",
+        "measures_valve": "FCV-B",
+        "signal_quantity": "command_travel_process_history",
+        "record_ref": "HIST-B-fictional-record",
+        "operating_period": "fictional steady-production interval",
+        "reported_condition": "oscillation observed in report; cause unverified",
+        "record_owner": "fictional maintenance role"
+      },
+      "unit": "U-B",
+      "stream": "S-B"
+    }
+  ],
+  "final_elements": [
+    {
+      "tag": "FCV-A",
+      "unit": "U-A",
+      "stream": "S-A",
+      "description": "Fictional control-valve subject A",
+      "facts": {
+        "source_kind": "fictional record",
+        "record_revision": "A",
+        "underlying_claim_verified": false,
+        "declared_duty": "on/off control",
+        "endpoint_return_available": true,
+        "control_room_feedback_available": true
+      }
+    },
+    {
+      "tag": "FCV-B",
+      "unit": "U-B",
+      "stream": "S-B",
+      "description": "Fictional control-valve subject B",
+      "facts": {
+        "source_kind": "fictional record",
+        "record_revision": "A",
+        "underlying_claim_verified": false,
+        "control_room_feedback_available": true,
+        "feedback_enabled": true
+      }
+    }
+  ],
+  "controllers": [
+    {
+      "tag": "FIC-A",
+      "unit": "U-A",
+      "measurement": null,
+      "output": {
+        "final_element": "FCV-A"
+      },
+      "description": "Fictional controller command target, not measured valve travel",
+      "facts": {
+        "source_kind": "fictional record",
+        "record_revision": "A",
+        "underlying_claim_verified": false
+      }
+    },
+    {
+      "tag": "FIC-B",
+      "unit": "U-B",
+      "measurement": null,
+      "output": {
+        "final_element": "FCV-B"
+      },
+      "description": "Fictional controller command target, not measured valve travel",
+      "facts": {
+        "source_kind": "fictional record",
+        "record_revision": "A",
+        "underlying_claim_verified": false
+      }
+    }
+  ],
+  "manual_valves": [],
+  "interlocks": []
+}

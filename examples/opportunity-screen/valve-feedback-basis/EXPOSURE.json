@@ -1,0 +1,15 @@
+{
+  "schema": "valve-feedback-exposure-1",
+  "status": "Exposed fictional development controls; no hidden holdout or new source-family model result.",
+  "paired_models": 6,
+  "selector_controls": 2,
+  "independent_expectations_before_outputs": true,
+  "input_vectors_before_original_calls": true,
+  "raw_original_catalog_snapshot": "history/catalog-before.json",
+  "oracle": "expected/source-cases.json",
+  "model_pins": "expected/model-inventory.json",
+  "literal_pins": "expected/input-vectors.json",
+  "actual_report_evidence": "history/PROVENANCE.json",
+  "unexercised_supplements": "Optional conflicting-revision and unreadable-record extensions discussed before calls were not added to these six original models.",
+  "fictional_record_carriers": "Native instrument entries carry declared fictional feedback/configuration/diagnostic records for these software controls. They do not verify installed instruments or process quantities."
+}

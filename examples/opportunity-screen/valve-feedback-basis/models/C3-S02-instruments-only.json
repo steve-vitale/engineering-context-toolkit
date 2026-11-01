@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "model_id": "C3-S02-instruments-only",
+    "title": "FICTIONAL valve feedback/source-adequacy development control",
+    "illustrative": true,
+    "authorship": "Coding-agent materialization of independent pre-call source specification; no plant data, physical verification or engineering approval.",
+    "exposure": "Original six paired cases plus two separate selector controls; no optional revision supplement. Materialized before original/candidate calls."
+  },
+  "units": [],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "ZI-ONLY",
+      "description": "Fictional unrelated instrument-only selector control; no control valve supplied",
+      "variable": "unknown",
+      "facts": {
+        "source_kind": "fictional record",
+        "record_revision": "A",
+        "underlying_claim_verified": false,
+        "measures_valve": null,
+        "signal_quantity": null
+      }
+    }
+  ],
+  "final_elements": [],
+  "controllers": [],
+  "manual_valves": [],
+  "interlocks": []
+}

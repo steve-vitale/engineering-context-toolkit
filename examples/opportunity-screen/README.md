@@ -30,6 +30,11 @@ Supplied working coverage is acknowledged without declaring a retrofit necessary
 do not prove their suitability. These are authored software controls, not 43 plants or model-extraction trials.
 The food and roll-up reports above were regenerated with the current catalog; their totals count questions, not demonstrated deficiencies or projects.
 
+The [valve-feedback investigation](valve-feedback-basis/README.md) turns the screen into a per-valve map of
+existing records, declared function, uncertainty and next recipient. Its six fictional source-review pairs and
+two eligibility controls are distinct from these public/illustrative model applications. The current reports
+were regenerated; questions and supplied records are not installed deficiencies or compulsory projects.
+
 The commands below regenerate tracked example outputs for contributors; the test checks them byte for byte.
 For a personal run, use a separate `--out` folder such as `../engineering-work/screen-te`. For a roll-up, point
 each `--rollup` at the corresponding working output folder.
@@ -80,12 +85,14 @@ safety-design or operating instruction.
 
 ## How the findings were checked
 
-Every finding below was checked against the model it cites (field by field) and, for OPEN100, against the drawing
-image as well. **True** means the evidence quoted is what the model or drawing shows. A finding can be true and
-still not worth much; those are marked **low value**. **Duplicate** means another finding covers the same physical
-thing. No finding was judged false after the fixes listed under "Triggers tightened".
+The retained baseline findings were checked against their models (field by field) and, for OPEN100, against the
+drawing image. Current C3 rows describe source-informed records-review scope and regenerated output; they do
+not establish installed feedback or measured usefulness. For the retained baseline judgements, **True** means
+the quoted evidence is what the model or drawing shows; **low value** qualifies usefulness and **Duplicate**
+means another finding covers the same physical thing. No baseline finding was judged false after the fixes
+listed under "Triggers tightened".
 
-### Tennessee Eastman (10 findings, 10 true)
+### Tennessee Eastman (10 findings)
 
 | Finding | Judgement |
 |---|---|
@@ -95,13 +102,13 @@ thing. No finding was judged false after the fixes listed under "Triggers tighte
 | H4 R-101 and H4 E-101: heat rejected to cooling water, outlet temperatures TT-121 and TT-122 | True. TT-122's source name is "Separator Cooling Water Outlet Temp"; the model places it on the condenser E-101 |
 | C1 R-101 and C1 E-101: cooling water to the reactor and condenser has no flow measurement | True: none of TE's measurements is a cooling water flow. The stripper steam (FT-119) is metered, so C-101 correctly does not fire |
 | C2 model: FT-106, PT-107, TT-111, PT-113, FT-114, PT-116, JT-120, TT-122 read by no loop | True against the model and the 19-loop list |
-| C3 model: no valve shows position feedback | True of the model; **low value** (the model has no positioners at all, so this is a blanket question) |
+| C3 model: valve/loop function and performance records | Records-first review: retain command/feedback distinctions and available history, with per-valve uncertainty and next record request. no installed absence or retrofit is inferred. |
 | C9 model: K-101 machine/function record review | Source scope remains incomplete: simulator shutdown limits are not fully represented here. Retain current cause/effect and configuration questions; no installed-protection conclusion follows. |
 
 Not found and why: no pumps are modeled, so the pump questions (E1-E4) are silent; K-101 is a process recycle
 compressor, so the compressed-air questions (E19-E23, C7) are silent too.
 
-### Bayer residue treater (12 findings, 12 true)
+### Bayer residue treater (12 findings)
 
 | Finding | Judgement |
 |---|---|
@@ -112,12 +119,12 @@ compressor, so the compressed-air questions (E19-E23, C7) are silent too.
 | C1 E-3: 80 C cooling water to E-3 unmetered | True. E-2's steam is metered (FT-106), so it correctly does not fire |
 | E26 model: vent to the flare (S8) and reliefs to the vent header (S9, S11) carry no flow meter | True of the model |
 | C2 model: PT-101, FT-103, TT-105, FT-106 read by no controller (IL-2 and IL-3 interlocks shown) | True |
-| C3 model: five control valves, no position feedback | True of the model; **low value** (a report reconstruction, not a P&ID) |
+| C3 model: valve/loop record review | The report reconstruction leaves present function and availability unresolved. Review existing configuration/maintenance evidence for the intended valves. |
 | E1 P-1: LV-102 on the discharge branch, TV-104A/B on the heater and cooler legs, no drive | True of the model; **low value**: P-1 serves a 4,500-gallon vessel with batch transfers, and the split valves route flow rather than throttle it |
 | E11 S1 (80 C feed) and E11 U1 (steam supply): no insulation recorded | True but **low value**: the model is built from an investigation report that never records insulation. Kept because the rule is right; the limit says "not recorded, not bare" |
 | C9 model: P-1 with supplied interlock records retained as candidates | Applicability to P-1 and current requirements remain unverified; another function's trip cannot settle this machine's review. |
 
-### OPEN100 twin (29 findings, 29 true; 3 duplicates)
+### OPEN100 twin (29 findings)
 
 | Finding | Judgement |
 |---|---|
@@ -130,7 +137,7 @@ compressor, so the compressed-air questions (E19-E23, C7) are silent too.
 | E4 ACC-PU-151..153, CND-PU-162..164, FWS-PU-170A/B, ACW-PU-211A..C (11): blank HP field | True, every schedule checked by eye. The ACC "pumps" are drawn venting to the silencer ACC-SX-154 (vacuum pumps); they still have motors, so the question stands |
 | C1 makeup water (sheet 2 to CND-TK-160, sheet 4 via LCV-5509, sheet 7 via FCV-XXX), LP and HP extraction steam (sheet 4), pegging steam (sheet 4) | True: no flow element within three drawn links of each, checked on the images |
 | C1 "EXTRACTION STEAM ES PID 180-1" (sheet 0) | True; **duplicate**: the pegging steam line seen from the main steam sheet |
-| C3 model: 27 control-valve records, none with ZT/ZI drawn | True of the drawings; **low value** (P&IDs often omit positioners). The 27 records are 20 distinct numbered tags, one duplicate extraction (LCV-1501 twice) and 6 placeholder tags (FCV-XXX four times, TCV-XXX twice), which the evidence marks as placeholders |
+| C3 model: control-valve record/function review | Existing valve identities, feedback/diagnostic context and source qualifiers are candidates. Preserve extraction duplicates/placeholders and per-valve gaps; the drawing does not establish installed absence. |
 | C9 model: tagged rotating equipment and any supplied indications | Machine/function associations, current records and shared or unknown scope remain questions; drawing presence or absence does not establish installed adequacy. |
 
 C2 and C6 are reported as "not checked": an extracted drawing has no controllers, and no loop list was given.
@@ -173,7 +180,8 @@ raise; **legit** means an older question fired on the new equipment and is a fai
 | C12 model: K-201, K-202, K-203, with JT-201 retained as a supplied power candidate | Expected. Real-input quantity, attribution, time/conversion basis and usable coincident operation stay open even when a power instrument is drawn. |
 | E19, E22, E23 AC-501 (instrument air compressor) | Legit. E19 also lists the refrigeration pressure controllers PIC-202 and PIC-203 as "pressure control" because its clause looks anywhere: **low value** in that part |
 | C1 O-302, F-303, WH-401: gas with no meter | Legit; the dryer's gas is metered (FT-301), so it is quiet |
-| C2, C3 model | Legit; **low value** as in the other examples |
+| C2 model | Legit; **low value** as in the other examples |
+| C3 model: supplied valve/function records | Proposed records-first review retains the intended valve, actual declared function and unresolved source basis. a supplied label is not a diagnosis or a mandatory project. |
 | C9 model: K-201, K-202, K-203, AC-501 record review | Each machine retains cause/effect and current association questions, including when a switch or trip is supplied. No protection, test or acceptance is inferred. |
 
 **Remaining scope exclusions:** instrument air compressor AC-501 and refrigerated air dryer AD-502 stay outside
@@ -207,7 +215,7 @@ TE and Bayer E18 data requests, where a valve beside a drawn flow meter is no lo
 
 ### Roll-up: food and Bayer as two sites
 
-The current roll-up has 41 findings across 24 question types; four types appear at both sites (C1, C2, C3, C9).
+The current roll-up has 41 findings across 24 question types, with four types at both sites (C1, C2, C3, C9).
 The roll-up lists each screen's findings once, names the sites
 where each question was asked or quiet, and merges data requests
 by item: C1's "utility flow to this user" shows the shared places (temporary meter, site meter readings) once for the

@@ -1,6 +1,6 @@
 # State of the toolkit
 
-Holistic audit: **2026-11-01, Central time**, with the latest source-to-context reader follow-up starting from released commit `b4f4c2e`.
+Holistic audit: **2026-11-01, Central time**, with the latest valve-feedback collection follow-up starting from released commit `3288c10`.
 The public name is **Engineering Context Toolkit**. The jumpstart is its first-assignment path; modeling,
 review, analysis and evaluation can be used independently. Earlier failures and original evidence remain
 in the [journal](JOURNAL.md) and [attempt ledger](TRIED.md).
@@ -12,7 +12,7 @@ The public tutorials teach those steps; case studies and evaluations retain what
 inputs. Engineering review and company acceptance determine what becomes an authoritative maintained twin or record.
 
 The [script registry](SCRIPTS.md) classifies 136 scripts: 33 tools, 12 checks, 15 support modules and 76 research
-scripts; tests are separate. Twenty-two [feature groups](FEATURES.md) register 473 distinct example files, including
+scripts; tests are separate. Twenty-two [feature groups](FEATURES.md) register 521 distinct example files, including
 inputs, generated outputs and retained history. Shared files can appear under more than one group; feature-file
 references are not additional unique examples. Their evidence is bounded. A reviewed
 example does not certify every input, current implementation or engineering conclusion.
@@ -54,6 +54,11 @@ checks. The [own-record handoff tutorial](../examples/opportunity-screen/mapping
 connects question screening, partial answers, source revision and paired read-only MCP access. A local fictional
 exercise preserves qualifications and history through refresh/restart; company clients and engineering acceptance
 remain separate. See [the bounded checks and retained failures](JOURNAL.md#144-carry-a-source-question-through-review-and-mcp-readback) (A296/N110).
+
+C3 now retains each eligible valve for a neutral review of existing feedback/diagnostic records, including
+foreign, unknown and disabled position-tag context. The [valve/loop handoff tutorial](../examples/opportunity-screen/valve-feedback-basis/README.md)
+separates command, local feedback, control-room return, endpoint indication and performance history. The paired
+fictional controls establish software/source behavior, not an installed-state finding or retrofit benefit (A297/N111).
 
 | Reproduced gap | Required behavior and bounded repair |
 |---|---|
@@ -120,7 +125,7 @@ actual participant, recipient, native-system and tenant observations remain **no
 
 | Work category | Remaining work | Completion evidence |
 |---|---|---|
-| Engineering question quality | N065/N082: source adequacy and useful questions. Of 50 rules/126 request bundles, 22 rules have bounded collection reviews; 28 still await original-source adequacy review. Scoped MGPI is development evidence; default MGPI still produces zero findings. | Prospective expected/unacceptable questions, source/key review and actual engineer/recipient usefulness observations. |
+| Engineering question quality | N065/N082: source adequacy and useful questions. Of 50 rules/126 request bundles, 23 rules have bounded collection reviews; 27 still await original-source adequacy review. Scoped MGPI is development evidence; default MGPI still produces zero findings. | Prospective expected/unacceptable questions, source/key review and actual engineer/recipient usefulness observations. |
 | Evaluation and transfer | N086 original-source/key engineering acceptance, Native placement gaps, existing matrix failures, unfamiliar-source coverage, scorer limits and five missing historical prediction tables. | Matched experiments with frozen criteria, retained failures, exposure/split labels and independent source/key review. More files or rerunning familiar inputs is not generalization. |
 | Optional adapters and receiving projections | General inverse graph conversion, captured-source consumers, managed-section merging and particular incumbent-system connectors are not implemented. Test changed/removed identifiers and complete retained history for the selected route. | A demonstrated engineering job, explicit supported contract, source preservation and subsequent-revision readback. Add only the adapter that job needs. |
 | Review-history handoff | N107 now preserves selected JSON intact and unbound, then attaches events only through [individual supplied associations](REVIEW_HISTORY.md) to exact model/record bytes. Complete earlier history remains readable; full/core retain its qualifications. | Review the source/revision relationship in the company process. Matching hashes cannot detect a false supplied basis or establish writer lineage, reviewer authority, approval or permission to share. |
@@ -225,7 +230,7 @@ controls. Keep the remaining source-adequacy and external-acceptance work separa
 | **Model review — N072/N077** | Supplied alarm metadata and old receipts survive. Supported native tag corrections migrate live references; separate layouts, mappings and snapshots still need reconciliation. [Worked correction](../examples/review-and-mapping/native-identity/README.md). |
 | **Schedule choices — N079** | Contradictory service declarations refuse in either input order. Exact source-bound selections retain candidates and supplied qualifiers; existing spelling choices remain drafts. No choice grants organizational approval. |
 | **Description review — N078** | Every supplied record value and source line is exposed for review; all rows start unreviewed. Structural validity does not decide whether the interpretation is correct. [Description guide](../examples/from-description/README.md). |
-| **Collection contracts — N071/N073/N080/N084/N085/N088/N082** | Twenty-two named rules keep candidate fields, electrical quantities, measurements, machine/function association and actual coverage distinct from suitable evidence. E16/C5 first establish heat/water service and applicable existing function records; an oxygen label or boiler name does not require a control retrofit. The other 28 rules still need source-adequacy review; no whole-catalog correctness or usefulness is established. [Collection limits](OPPORTUNITY_SCREEN.md). |
+| **Collection contracts — N071/N073/N080/N084/N085/N088/N082** | Twenty-three named rules keep candidate fields, electrical quantities, measurements, machine/function association and actual coverage distinct from suitable evidence. E16/C5 first establish heat/water service and applicable existing function records; an oxygen label or boiler name does not require a control retrofit. The other 27 rules still need source-adequacy review; no whole-catalog correctness or usefulness is established. [Collection limits](OPPORTUNITY_SCREEN.md). |
 | **Context and readback — N075/N076/N083** | Rejected evidence changes dependent-answer freshness; validated selected packets serve full retained sources, values, decisions and ownership. Bound enriched-question re-export refuses: use the complete graph/context pair or explicitly refresh the preserved register. No automatic source fetching, rebinding, authentication or company authority. [Context guide](CONTEXT_REGISTER.md). |
 | **Matrix provenance — N074** | Actual runs bind declared inputs/keys, inventories, registry, runner and code. Changed/missing required inputs refuse; absent optional caches are explicitly unverified. Strict input mode still requires them. Bindings are conservative declarations, not operating-system read tracing. |
 | **Benchmark recipes — N081** | Re-scores retain exact historical recipe snapshots, attempts, predictions and reports. New provenance identities are not new model performance. |

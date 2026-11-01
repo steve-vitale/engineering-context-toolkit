@@ -81,3 +81,10 @@ data/te_pid_layout.json text eol=lf
 # These fictional I/O snapshots deliberately retain BOM/CRLF as raw source revisions.
 /examples/opportunity-screen/mapping-descriptions/revision-a/io.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 /examples/opportunity-screen/mapping-descriptions/revision-b/io.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Fictional valve-feedback source/model/oracle/report identities are already LF; retain those bytes.
+/examples/opportunity-screen/valve-feedback-basis/** text eol=lf
+
+# Captured screens retain the renderer's intentional Markdown hardbreaks; keep evidence bytes unchanged.
+/examples/opportunity-screen/valve-feedback-basis/history/before/**/screen.md whitespace=-blank-at-eol
+/examples/opportunity-screen/valve-feedback-basis/expected/after/**/screen.md whitespace=-blank-at-eol

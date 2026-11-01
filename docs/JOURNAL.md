@@ -6850,3 +6850,42 @@ by a checker error that wrongly assumed only two findings, and an independent ca
 binding. The final cohort keeps all four findings. N110 closes this bounded portability and reader handoff;
 the [own-record tutorial](../examples/opportunity-screen/mapping-descriptions/retained-answer/README.md) explains
 the transferable method. Company systems still own maintained records, permissions and release decisions.
+
+## 145. Review valve feedback from existing records
+
+C3 already warned that drawings can omit fitted positioners. Its generic Z-tag suppression nevertheless hid
+unresolved valves, while its requests offered a new manual step test and its decision prioritized added feedback.
+Independent primary-source review confirms S13's quoted pumping-variability context, but not those blanket actions.
+S29–S32 add scoped vendor examples for command/local/returned feedback, endpoint indication and existing diagnostics.
+The [tutorial](../examples/opportunity-screen/valve-feedback-basis/README.md) teaches an own-model valve/loop map:
+existing source and declared function, uncertainty, and the next record recipient. Company systems own the result.
+
+Six paired fictional models and two separate eligibility controls were pinned before original calls. Eight
+original screens match the old predicate but retain only four of ten mandatory source-review occurrences.
+Eight matched candidate screens retain all ten and acknowledge two optional working cases; both eligibility
+controls stay quiet. All 189 core typed inputs and 36 controller qualifiers survive JSON and decoded Markdown.
+Foreign/unknown targets and null/false/zero remain supplied, unverified context. Both per-anchor record reviews
+stay open. More findings are not a performance gain, unique diagnosis or engineering acceptance.
+
+The [complete reports and provenance](../examples/opportunity-screen/valve-feedback-basis/history/PROVENANCE.json)
+retain the first candidate worker's three successful calls and its external grader failure: it misclassified
+the preserved string "unknown" as present rather than the existing blank placeholder state. A saved-data regrade
+and five uncalled cases complete the cohort without repeating those three calls or changing the method/oracle.
+Other 49 whole rules and all shared sources remain exact. Seven actual producers retain 79 artifacts; 17 actual
+files change, including the assisted description's C3 questions/graph and both default catalog snapshots/receipts.
+All non-C3 questions and their Markdown blocks remain exact; historical catalogs/decisions are not refreshed.
+
+Three focused methods produce eight assertion events on the old catalog, with no errors, then all three pass.
+The first full 156-method run finds one old guard false positive: the newly shown LIC-102 setpoint 50% is supplied
+in the unchanged Bayer model. A test-only provenance check now permits only that exact declared token on its
+matching controller evidence line; seven negatives still reject altered/unsupported values or references.
+The successor full module reports 155 passed and one unnamed skip; 152 earlier methods and all three new methods
+remain AST-identical. Checkout controls pass three methods, 60 indexed/120 materialization target comparisons and
+277 existing raw-packet files per configuration. All 48 new case files were already LF; one narrow Git policy
+preserves their recorded identities, without normalization or global configuration changes. Captured screens
+retain their intentional Markdown hardbreaks through two narrowly scoped whitespace attributes.
+
+Original preparation/receiver/observer stops remain separately recorded. N111 closes this bounded source/software
+repair, not source authentication, installed-state verification, company acceptance or measured engineer benefit.
+The catalog remains 50 rules/126 requests: 23 bounded source-informed collection reviews and 27 still awaiting
+original-source adequacy review. Full repository and exact-head CI remain separate integration gates.

@@ -245,12 +245,12 @@ IAC/ITAC recommendation code: 2.243x (by description).
 
 **Limits:** The model or loop list may be incomplete; an uncontrolled reading may be read by logic not in the model.
 
-### C3: Do these control valves lack position feedback?
+### C3: What valve-position feedback and diagnostic records are available for these control valves?
 
 **About:** FV-102, FV-103, FV-101, FV-104, FV-105, FV-110 and 5 more  
 
 **Finding reference (JSON string):** `"C3@model"`
-**Asset IDs (JSON array):** `["FV-102", "FV-103", "FV-101", "FV-104", "FV-105", "FV-110", "LV-112", "LV-115", "FV-119", "TV-121", "FV-117"]`
+**Asset IDs (JSON array):** `["FV-102", "FV-103", "FV-101", "FV-104", "FV-105", "FV-110", "LV-112", "LV-115", "FV-119", "TV-121", "FV-117", "FIC-102", "FIC-103", "FIC-101", "FIC-104", "FIC-105", "FIC-110", "LIC-112", "LIC-115", "FIC-119", "TIC-121", "FIC-117"]`
 
 **Evidence on the drawing / model**
 
@@ -265,18 +265,28 @@ IAC/ITAC recommendation code: 2.243x (by description).
 - valve FV-119 reads "FV-119 Stripper steam valve" at C-101 (`final_elements[FV-119]`)
 - valve TV-121 reads "TV-121 Reactor cooling water flow valve" at R-101 (`final_elements[TV-121]`)
 - valve FV-117 reads "FV-117 Condenser cooling water flow valve" at E-101 (`final_elements[FV-117]`)
-- Checked, none found: no position transmitter or indicator (ZT, ZI) drawn on these valves (`applies_when.without`)
+- Controller-command candidate; not measured valve travel: controller FIC-102 reads "FIC-102 D feed flow controller" at U-100 (`controllers[FIC-102]`)
+- Controller-command candidate; not measured valve travel: controller FIC-103 reads "FIC-103 E feed flow controller" at U-100 (`controllers[FIC-103]`)
+- Controller-command candidate; not measured valve travel: controller FIC-101 reads "FIC-101 A feed flow controller" at U-100 (`controllers[FIC-101]`)
+- Controller-command candidate; not measured valve travel: controller FIC-104 reads "FIC-104 A and C feed flow controller" at C-101 (`controllers[FIC-104]`)
+- Controller-command candidate; not measured valve travel: controller FIC-105 reads "FIC-105 Recycle flow controller" at K-101 (`controllers[FIC-105]`)
+- Controller-command candidate; not measured valve travel: controller FIC-110 reads "FIC-110 Purge rate controller" at V-101 (`controllers[FIC-110]`)
+- Controller-command candidate; not measured valve travel: controller LIC-112 reads "LIC-112 Separator level controller" at V-101 (`controllers[LIC-112]`)
+- Controller-command candidate; not measured valve travel: controller LIC-115 reads "LIC-115 Stripper level controller" at C-101 (`controllers[LIC-115]`)
+- Controller-command candidate; not measured valve travel: controller FIC-119 reads "FIC-119 Stripper steam flow controller" at C-101 (`controllers[FIC-119]`)
+- Controller-command candidate; not measured valve travel: controller TIC-121 reads "TIC-121 Reactor cooling water outlet temperature controller" at R-101 (`controllers[TIC-121]`)
+- Controller-command candidate; not measured valve travel: controller FIC-117 reads "FIC-117 Stripper underflow (product) controller" at C-101 (`controllers[FIC-117]`)
 
 **Data to collect**
 
-- Positioner type and diagnostics available [not on drawing]. Where: DCS/PLC configuration: valve positioner configuration (smart positioner? HART/fieldbus diagnostics?); then maintenance records: valve records. How: List which valves report position.
-- Valve stiction or backlash [not on drawing]. Where: historian / recorded data: FV-101: recorded signal XMV(3) in the TE data files; FV-102: recorded signal XMV(1) in the TE data files; FV-103: recorded signal XMV(2) in the TE data files; FV-104: recorded signal XMV(4) in the TE data files; FV-105: recorded signal XMV(5) in the TE data files; FV-110: recorded signal XMV(6) in the TE data files; FV-117: recorded signal XMV(11) in the TE data files; FV-119: recorded signal XMV(9) in the TE data files; LV-112: recorded signal XMV(7) in the TE data files; LV-115: recorded signal XMV(8) in the TE data files; TV-121: recorded signal XMV(10) in the TE data files; then a walkdown: a small step test on each loop in manual. How: Compare controller output with measured response.
+- Existing valve/loop feedback and diagnostic records [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: DCS/PLC configuration: approved existing valve/positioner configuration and point definitions for each named valve and loop; then maintenance records: existing valve, positioner and calibration records; then site records: approved loop drawings, I/O mappings, source revisions and locators. How: For each named valve/loop, review the record target, revision/locator, declared signal function, units, enabled return path and diagnostic capability. Keep command/current/travel setpoint separate from measured stem or shaft travel; local positioner feedback does not establish control-room or historian availability. Nearby Z tags and shared unit/stream membership do not establish valve association. Acknowledge appropriate existing coverage, including endpoint indication for an on/off duty, and retain unresolved source questions. Supplied fields do not complete this review.
+- Existing valve performance and diagnostic history [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: historian / recorded data: FV-101: recorded signal XMV(3) in the TE data files; FV-102: recorded signal XMV(1) in the TE data files; FV-103: recorded signal XMV(2) in the TE data files; FV-104: recorded signal XMV(4) in the TE data files; FV-105: recorded signal XMV(5) in the TE data files; FV-110: recorded signal XMV(6) in the TE data files; FV-117: recorded signal XMV(11) in the TE data files; FV-119: recorded signal XMV(9) in the TE data files; LV-112: recorded signal XMV(7) in the TE data files; LV-115: recorded signal XMV(8) in the TE data files; TV-121: recorded signal XMV(10) in the TE data files; then maintenance records: existing diagnostic, inspection and work-order reports for the named valve; then site records: previously acquired command, measured-travel and process-response history with its operating basis. How: Review available history first. Retain valve/loop identity, source revision/locator, time and operating conditions, enabled state, quality/calibration and readability. Where suitable, compare command, independently described travel and process response over coincident periods. Position indication, endpoint states or oscillation alone do not diagnose stiction or its cause. Keep disabled, bad-quality, unavailable, foreign and unknown records as qualified candidates; ask the responsible record owner for the missing basis. This screen specifies no new manual step test, loop-mode change or operating experiment.
 
-**How it is decided:** Add feedback or diagnostics first on valves in energy- or safety-significant loops that show stiction or hunting.
+**How it is decided:** Record appropriate existing feedback/diagnostics as coverage with its source scope and remaining gaps. Route a named valve/loop request to the responsible record owner where function, association, availability or performance evidence is unresolved. Configuration, tuning, process and assembly causes remain open when investigating reported behavior. Any further test or change requires a separate company-approved method and operating/outage decision; this finding prescribes no retrofit, retune, new connection or mode change.
 
-**What the source says (S13):** "Control valve backlash and stiction... are major contributors to process variability." No % stated.
+**What the source says (S13, S29, S30, S31, S32):** S13 discusses backlash/stiction and variability in highly throttled/oversized pumping systems, not a universal feedback retrofit. S29-S32 distinguish feedback routes and vendor-specific diagnostic/history examples. They establish no quantified benefit for this investigation or the supplied plant.
 
-**Limits:** P&IDs often omit positioners; the model saying 'none drawn' does not mean none fitted.
+**Limits:** P&IDs can omit fitted positioners. Drawing omission, local feedback, an enabled control-room return, historian availability and verified plant conditions are separate claims. Discrete endpoint feedback is not a continuous travel trace and is not automatically unsuitable for an on/off duty. Supplied source/quality flags and reported abnormalities are unverified evidence, not installed-state checks, unique diagnoses or permission to test/change equipment.
 
 ## Safety questions to verify
 
@@ -314,3 +324,7 @@ No item in this model matched these questions' triggers. That is not a clean bil
 - S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005). https://www.osti.gov/servlets/purl/862119 (license: DOE-lab (contractor) report: unclear, but freely citable. Its tables quote older secondary sources, so figures are cited as reported in LBNL-56183)
 - S22: FEMP Metering Best Practices: A Guide to Achieving Utility Resource Efficiency, Release 3.0 (PNNL-23892, Mar 2015). https://www.wbdg.org/FFC/DOE/NLCRIT/mbpg_2015.pdf (license: Contractor-prepared federal guide: unclear. Its savings figures are buildings-focused)
 - S24: DOE IAC/ITAC database: browse pages, download, schema document. https://itac.university/index/arc/2. (license: No license or terms stated: unclear)
+- S29: Emerson Automation Experts, Providing Operators Process Control Valve Position Feedback (2014-01-10; vendor guidance). https://www.emersonautomationexperts.com/2014/valves-actuators-regulators/providing-operators-process-control-valve-position-feedback/ (license: Copyright Emerson; source link and bounded paraphrase only. No source text or PDF redistributed.)
+- S30: Emerson, Valve Positioners (product overview and digital-controller FAQ; vendor-specific). https://www.emerson.com/en/final-control/catalog/products-and-software/valve-actuator-regulator-instrumentation/valve-positioners (license: Copyright Emerson; source link and bounded paraphrase only. No source text or PDF redistributed.)
+- S31: Emerson, Control Valve Diagnostics (product capabilities and status monitor; vendor-specific). https://www.emerson.com/en/final-control/catalog/products-and-software/valve-software/control-valve-diagnostics (license: Copyright Emerson; source link and bounded paraphrase only. No source text or PDF redistributed.)
+- S32: Emerson Automation Experts, Impacts of Control Valve Diagnostics (2011-02-14; vendor guidance). https://www.emersonautomationexperts.com/2011/asset-management/impacts_of_cont/ (license: Copyright Emerson; source link and bounded paraphrase only. No source text or PDF redistributed.)

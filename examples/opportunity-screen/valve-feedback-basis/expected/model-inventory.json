@@ -1,0 +1,112 @@
+[
+  {
+    "id": "C3-01-omission-local",
+    "model": "examples/opportunity-screen/valve-feedback-basis/models/C3-01-omission-local.json",
+    "sha256_raw": "f6699f218507b89d74722a8f2f23311712f36005dfcdd05b506f5c5b7e0a0ee8",
+    "cohort": "six-paired-source-development",
+    "minimum_subjects": [
+      "FCV-A",
+      "FCV-B"
+    ],
+    "optional_subjects": [],
+    "allowed_subjects": [
+      "FCV-A",
+      "FCV-B"
+    ]
+  },
+  {
+    "id": "C3-02-command-travel",
+    "model": "examples/opportunity-screen/valve-feedback-basis/models/C3-02-command-travel.json",
+    "sha256_raw": "9503c59ebec43ba4dadb328126d79798d4ff628ec26cd0259d192efa5fb81377",
+    "cohort": "six-paired-source-development",
+    "minimum_subjects": [
+      "FCV-A"
+    ],
+    "optional_subjects": [
+      "FCV-B"
+    ],
+    "allowed_subjects": [
+      "FCV-A",
+      "FCV-B"
+    ]
+  },
+  {
+    "id": "C3-03-foreign-own-uncertain",
+    "model": "examples/opportunity-screen/valve-feedback-basis/models/C3-03-foreign-own-uncertain.json",
+    "sha256_raw": "9b844cf7955ff5493241e6c83459ca8f6564cac9ffdfa7f7b9cc7b88270853bb",
+    "cohort": "six-paired-source-development",
+    "minimum_subjects": [
+      "FCV-A",
+      "FCV-B"
+    ],
+    "optional_subjects": [],
+    "allowed_subjects": [
+      "FCV-A",
+      "FCV-B"
+    ]
+  },
+  {
+    "id": "C3-04-unknown-endpoints",
+    "model": "examples/opportunity-screen/valve-feedback-basis/models/C3-04-unknown-endpoints.json",
+    "sha256_raw": "3cae51ffa6c0cf1c659d9dc0ba9e23699419c7303f0201fc91a04a9149db4372",
+    "cohort": "six-paired-source-development",
+    "minimum_subjects": [
+      "FCV-A",
+      "FCV-B"
+    ],
+    "optional_subjects": [],
+    "allowed_subjects": [
+      "FCV-A",
+      "FCV-B"
+    ]
+  },
+  {
+    "id": "C3-05-disabled-history",
+    "model": "examples/opportunity-screen/valve-feedback-basis/models/C3-05-disabled-history.json",
+    "sha256_raw": "63483bc2cf1177d3f57de49b33f997c70f4170b6667fb55a15e97fc3d75dedbc",
+    "cohort": "six-paired-source-development",
+    "minimum_subjects": [
+      "FCV-A",
+      "FCV-B"
+    ],
+    "optional_subjects": [],
+    "allowed_subjects": [
+      "FCV-A",
+      "FCV-B"
+    ]
+  },
+  {
+    "id": "C3-06-working-performance",
+    "model": "examples/opportunity-screen/valve-feedback-basis/models/C3-06-working-performance.json",
+    "sha256_raw": "9008cd1c9fb4106d6c27b72e575e893e8254f5a8e9cf1498d444259ed15b5d09",
+    "cohort": "six-paired-source-development",
+    "minimum_subjects": [
+      "FCV-B"
+    ],
+    "optional_subjects": [
+      "FCV-A"
+    ],
+    "allowed_subjects": [
+      "FCV-A",
+      "FCV-B"
+    ]
+  },
+  {
+    "id": "C3-S01-manual-valves-only",
+    "model": "examples/opportunity-screen/valve-feedback-basis/models/C3-S01-manual-valves-only.json",
+    "sha256_raw": "4fbd857329ad8dc849e360803f2980b085abb0a5384c0116e9a38db1a2489da5",
+    "cohort": "two-selector-controls-not-paired-models-or-plants",
+    "minimum_subjects": [],
+    "optional_subjects": [],
+    "allowed_subjects": []
+  },
+  {
+    "id": "C3-S02-instruments-only",
+    "model": "examples/opportunity-screen/valve-feedback-basis/models/C3-S02-instruments-only.json",
+    "sha256_raw": "2e225af1f1bed7cc6d5ced122aeaa285609d4b15a163179ad520ac1c0411b800",
+    "cohort": "two-selector-controls-not-paired-models-or-plants",
+    "minimum_subjects": [],
+    "optional_subjects": [],
+    "allowed_subjects": []
+  }
+]
