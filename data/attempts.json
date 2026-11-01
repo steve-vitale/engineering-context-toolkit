@@ -4359,6 +4359,21 @@
         "scripts/question_engine.py",
         "scripts/test_question_engine.py"
       ]
+    },
+    {
+      "id": "A287",
+      "function": "intake_and_reuse",
+      "date": "2026-11-01",
+      "change": "Align the remaining linked-recovery regression with records review and retain explicit unit isolation.",
+      "hypothesis": "The same two-dryer fixture should retain both investigations and show HX-1 only for its own dryer; changing the old quiet assertion must not admit cross-unit evidence.",
+      "evidence": "0884 local full70/71 in481.100s and CI70/71 fail exactly the old linked-recovery suppression assertion. All3064 local inputs raw-exact; local6case skips/3platform/0additional, CI18case/0platform/0additional. Corrected fixture and CLI exact, other134methods exact; independent policy/static receiving, one private methodPASS, affected public135-test modulePASS with1skip. No engine/catalog/output changes.",
+      "runs": "Retained initial full/CI; one private targeted method and one affected135-method module. Other70 local programs not repeated; new committed-version CI remains separate.",
+      "verdict": "kept",
+      "why": "Correct a missed legacy expectation from the documented policy expansion, retain the observed failures and strengthen candidate ownership checks without changing the engineering oracle or model.",
+      "source": [
+        "docs/JOURNAL.md#135-keep-heating-investigations-grounded-in-existing-records",
+        "scripts/test_question_engine.py"
+      ]
     }
   ],
   "not_tried": [
