@@ -4447,6 +4447,26 @@
         "scripts/test_graph_export.py",
         "examples/review-and-mapping/README.md"
       ]
+    },
+    {
+      "id": "A292",
+      "function": "review_loop",
+      "date": "2026-11-01",
+      "change": "Make newly generated intake JSON and the committed illustrative intake manifest byte-stable for exact review-association replay across operating systems.",
+      "hypothesis": "An engineer should reproduce the same individually associated review packet from the same declared inputs without platform-specific manifests or weakening raw source/model/record checks.",
+      "evidence": "Exact Linux CI at 3100959 retained a real 70/71 program result: the nine-method report module failed its README graph step on model raw-hash mismatch; all five registry suites were skipped. A focused original-importer Windows regression then failed once on generated CRLF as expected. The corrected unfiltered intake and checkout modules pass 18 plus 3 methods with zero skips, including exact LF JSON, preserved CRLF/Unicode/control-containing originals, and 26 targets with 52 indexed/104 checkout comparisons. Genuine A4 runs seven creation commands successfully and separately refuses the retained A3 association without replacing a sentinel. Model/source0/intake typed metadata change only importer_sha256 and manifest_sha256; five older non-graph files remain raw-exact. A separate private-overlay README/report replay passes all nine methods without skips and reproduces seven retained files through eight recipe commands. Five actual matrix CLI runs refresh 42 cells; the other 53 whole cell records remain exact, preserving 64 pass, 23 fail and 8 n/a across 95 cells.",
+      "runs": "Existing public/fictional software fixtures; one retained expected baseline failure, 21 positive candidate methods, eight actual A4 producer/control calls, a separate nine-method report replay and five matrix CLI runs for 42 selected cells. Independent saved-evidence receiving is recorded separately; no new source corpus, model/provider call, company connection or human usefulness trial.",
+      "verdict": "kept",
+      "why": "Follow-up to A291/N107 repairs deterministic generated-byte and illustrative checkout policy, while preserving raw originals, apply_review incoming-model formatting, strict supplied association and earlier history. The original Linux failure remains a failure. README replay and the scoped matrix refresh supply bounded local integration evidence; corrected exact-head Linux CI remains a separate gate, not inferred from Windows success.",
+      "source": [
+        "docs/JOURNAL.md#140-make-generated-intake-json-portable-without-normalizing-originals",
+        "scripts/import_site_drawing.py",
+        "scripts/test_site_drawing_intake.py",
+        "scripts/test_checkout_contracts.py",
+        ".gitattributes",
+        "examples/own-drawing/manifest.json",
+        "examples/review-and-mapping/review_associations.json"
+      ]
     }
   ],
   "not_tried": [

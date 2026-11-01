@@ -32,6 +32,12 @@ N106 now refuses known Native process models before I/O reading or mapping, with
 `generate.py MODEL --out PRIVATE_FOLDER`. The independently received mapper module passes 36 methods without
 skips. This is a CLI format boundary, not a Native OPC adapter or a native-platform acceptance result.
 
+Review-history portability (A292/N107): newly generated intake JSON uses explicit LF, and the committed
+illustrative intake manifest has a narrow LF checkout contract. Company source originals, exact raw association
+checks and the review command's preservation of supplied model formatting remain unchanged. The retained
+`3100959` Linux failure is not upgraded by local success; corrected exact-head CI remains a separate gate.
+See [the failure and bounded repair](JOURNAL.md#140-make-generated-intake-json-portable-without-normalizing-originals).
+
 | Reproduced gap | Required behavior and bounded repair |
 |---|---|
 | Review summaries accepted changed packet evidence or non-review queue fields under the old bundle identity. | Recheck drawing, overlay, base queue and manifest digest; permit changes only in the declared `OPS_` columns of the submitted review copy. Hash agreement is integrity, not source authority or reviewer authentication. |

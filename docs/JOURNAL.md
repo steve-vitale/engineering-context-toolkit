@@ -6663,3 +6663,38 @@ N107 is closed only for unbound custody and supplied-association admission. Auto
 company source/reviewer authority and continuing organizational ownership remain external. The 30 remaining question
 source reviews, 23 matrix failures, five historical prediction gaps and unrun human/company acceptance remain open.
 Whole-repository integration and exact-head CI are separate release checks.
+
+
+## 140. Make generated intake JSON portable without normalizing originals
+
+Exact Linux CI at `3100959` failed: 70 of 71 programs passed, and the nine-method report module stopped in its
+README graph step because the supplied association did not match the rebuilt model's raw hash. All five
+registry suites were skipped after that failure. The earlier local A3 success and its "portable" wording do
+not establish cross-platform reproduction; the failed run and its logs remain retained.
+
+Four LF-pinned code inputs were insufficient. The intake writer still emitted platform-default newlines, and
+the committed intake manifest had different raw checkout bytes. New intake JSON now uses explicit LF; only
+that public example manifest gains a narrow LF checkout rule. Original source bytes are still copied and
+fingerprinted exactly. The review command still preserves its supplied model's formatting, and association
+checks still require exact captured model/record bytes. No company input is silently normalized.
+
+The extended real-CLI regression first fails once against the original Windows importer on generated CRLF.
+The corrected unfiltered intake and checkout modules then pass all 18 plus 3 methods without skips. They check
+three exact LF JSON outputs, unchanged originals including Unicode/control-containing CRLF extraction data,
+and 26 checkout targets: 52 indexed and 104 materialization comparisons, with 275 raw-packet files retained per
+configuration. These are actual software controls, not observations of Linux output or plant data.
+
+Genuine A4 creation completes seven commands and separately refuses the retained A3 association, leaving an
+existing sentinel unchanged. Model, normalized source-record and intake metadata differ from A3 only in
+`importer_sha256` and `manifest_sha256`. The three generated JSON files are LF; copied originals equal the
+actual selected inputs. Five older non-graph files, including both dated records, remain raw-exact. A fresh
+individual supplied manifest binds the actual new model; the graph retains the four original qualified events.
+All 22 frozen source/input files and 3,071 public file hashes remain unchanged during this producer run.
+
+A separate private-overlay run of the unfiltered nine-method report module passes without skips. Its README
+recipe reproduces all seven retained files through eight commands. Five actual matrix CLI runs refresh 42
+selected cells; the other 53 whole records remain exact. All 95 cells retain their prior status and metrics:
+64 pass, 23 fail and 8 n/a. This is a producer/source-binding refresh, not new corpus or model performance.
+
+Corrected exact-head Linux CI remains a separate gate; the retained failed Linux run is not upgraded by these
+local results. No native connection, company approval or measured engineering benefit is claimed.

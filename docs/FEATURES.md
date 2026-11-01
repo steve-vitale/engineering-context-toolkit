@@ -208,7 +208,7 @@ Example review: **reviewed example**
 
 - **Registered example files:** [`te_graph.json`](../examples/graph-export/te_graph.json), [`bayer_graph.json`](../examples/graph-export/bayer_graph.json), [`sheet0_graph.json`](../examples/graph-export/sheet0_graph.json), [`sheet0_graph_core.json`](../examples/graph-export/sheet0_graph_core.json), [`source_key.json`](../examples/graph-export/unplaced-dexpi/source_key.json), [`i04.model.json`](../examples/graph-export/unplaced-dexpi/i04.model.json), [`i04.graph.json`](../examples/graph-export/unplaced-dexpi/i04.graph.json), [`i01.model.json`](../examples/graph-export/unplaced-dexpi/i01.model.json), [`i01.graph.json`](../examples/graph-export/unplaced-dexpi/i01.graph.json), [`source.json`](../examples/graph-export/multi-appearance/source.json), [`model.json`](../examples/graph-export/multi-appearance/model.json), [`full.graph.json`](../examples/graph-export/multi-appearance/full.graph.json), [`core.graph.json`](../examples/graph-export/multi-appearance/core.graph.json), [`statements.json`](../examples/graph-export/multi-appearance/review/statements.json), [`review_sheet.csv`](../examples/graph-export/multi-appearance/review/review_sheet.csv), [`review.html`](../examples/graph-export/multi-appearance/review/review.html), [`review_associations.json`](../examples/review-and-mapping/review_associations.json), [`graph_after_review.json`](../examples/review-and-mapping/graph_after_review.json)
 - **Tests:** `test_graph_export.py`, `test_line_layers.py`, `test_graph_provenance.py`
-- **Independent review:** Independent coding-agent source/static/oracle and retained-actual receiving, with separate implementation/producer and reviewer roles; not human/company engineering approval., 2026-11-01: pass
+- **Independent review:** Independent coding-agent static/oracle and retained-actual receiving; implementation/producer and reviewer roles separate. Not human, company or native-platform approval., 2026-11-01: pass
 
 </details>
 
@@ -410,7 +410,7 @@ Example review: **reviewed example**
 
 - **Registered example files:** [`GENERALIZATION.md`](../docs/GENERALIZATION.md), [`matrix.json`](../out/generalization/matrix.json), [`corpus.json`](../data/corpus.json)
 - **Tests:** `test_corpus_matrix.py`
-- **Independent review:** Independent coding-agent source/static/oracle and retained-actual receiving, with separate implementation/producer and reviewer roles; not human/company engineering approval., 2026-11-01: pass
+- **Independent review:** Independent coding-agent static/oracle and retained-actual receiving; implementation/producer and reviewer roles separate. Not human, company or native-platform approval., 2026-11-01: pass
 
 </details>
 
@@ -512,7 +512,7 @@ Example review: **reviewed example**
 
 - **Registered example files:** [`reviewed_sheet0.csv`](../examples/review-and-mapping/reviewed_sheet0.csv), [`2026-10-29-bundle.md`](../examples/review-and-mapping/records/2026-10-29-bundle.md), [`mapping_dry_run.md`](../examples/review-and-mapping/mapping_dry_run.md), [`graph_after_review.json`](../examples/review-and-mapping/graph_after_review.json), [`REPORT_after_review.html`](../examples/review-and-mapping/REPORT_after_review.html), [`pi_mapping_dry_run.txt`](../examples/review-and-mapping/pi_mapping_dry_run.txt), [`README.md`](../out/review_kit/sheet-8/README.md), [`model.json`](../examples/review-and-mapping/native-identity/expected/model.json), [`change_record.json`](../examples/review-and-mapping/native-identity/expected/change_record.json), [`change_record.md`](../examples/review-and-mapping/native-identity/expected/change_record.md), [`review_associations.json`](../examples/review-and-mapping/review_associations.json)
 - **Tests:** `test_apply_review.py`, `test_map_points.py`, `test_pi_mapping.py`, `test_review_kit.py`, `test_deliverable_report.py`, `test_review_identity.py`
-- **Independent review:** Independent coding-agent source/static/oracle and retained-actual receiving, with separate implementation/producer and reviewer roles; not human/company engineering approval., 2026-11-01: pass
+- **Independent review:** Independent coding-agent static/oracle and retained-actual receiving; implementation/producer and reviewer roles separate. Not human, company or native-platform approval., 2026-11-01: pass
 
 </details>
 

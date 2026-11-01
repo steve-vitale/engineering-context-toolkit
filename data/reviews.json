@@ -6492,9 +6492,9 @@
     },
     {
      "path": "README.md",
-     "selector": "Complete Description → process model and review bundle route row plus one LF",
+     "selector": "Complete Description \u2192 process model and review bundle route row plus one LF",
      "sha256_lf": "04899cf541ad39ccc6e59b5e5feedc4c6e63d129fcdd65109662b3883a022cbf",
-     "text": "| **Description → process model and review bundle** | [Prepare → approved assistant → check → build](examples/from-description/README.md#try-the-connected-route-offline) packages numbered text, a complete answer contract, validation feedback, draft sheets, questions, graph and platform staging. It calls no model API. | The engineer or assistant authors the interpretation and layout. Local checks locate quotations and check structure/consistency; they cannot establish engineering truth. Copilot tenant support and unfamiliar-description accuracy are untested. |\n"
+     "text": "| **Description \u2192 process model and review bundle** | [Prepare \u2192 approved assistant \u2192 check \u2192 build](examples/from-description/README.md#try-the-connected-route-offline) packages numbered text, a complete answer contract, validation feedback, draft sheets, questions, graph and platform staging. It calls no model API. | The engineer or assistant authors the interpretation and layout. Local checks locate quotations and check structure/consistency; they cannot establish engineering truth. Copilot tenant support and unfamiliar-description accuracy are untested. |\n"
     }
    ],
    "findings": [],
@@ -17270,6 +17270,198 @@
    "limits": [
     "Fictional/public software development controls, not new engineering accuracy, plant/source truth, an authenticated owner, proven historical transitions, timed human benefit or company/native-platform acceptance.",
     "Supplied associations qualify selected bytes; full/core preserve complete selected content. Standalone checking establishes internal consistency, not original source completeness or ownership. Existing Snapshot limits and unserved review payloads remain explicit."
+   ]
+  },
+  {
+   "feature": "graph-export",
+   "date": "2026-11-01",
+   "reviewer": "Independent coding-agent static/oracle and retained-actual receiving; implementation/producer and reviewer roles separate. Not human, company or native-platform approval.",
+   "verdict": "pass",
+   "findings": [],
+   "file_hash_method": "SHA256 with CRLF folded to LF for the feature registry; raw input/output/code/log identities remain separately bound in the actual receipts.",
+   "files": {
+    "examples/graph-export/te_graph.json": "e66095faf972fbe6c20313455211c6518a731a35a6971dc350023f5e96d9b4f4",
+    "examples/graph-export/bayer_graph.json": "131f2d627c670096ee7facc1912cbb4a5d0caf8c717d1a7bb0c6807653686cb1",
+    "examples/graph-export/sheet0_graph.json": "1ff6b7f4123d74256d874e74d0a87c9ab4d2a43e09b2e8eba58b5ee0cac08b09",
+    "examples/graph-export/sheet0_graph_core.json": "33efd37ad6179f09c295967cf8183c460440ad8eb172426afadc62fe724bea21",
+    "examples/graph-export/unplaced-dexpi/source_key.json": "35036f712486f92fa8b782a92f3bfe573a423060d6b17f6b8a6c497af6f695b4",
+    "examples/graph-export/unplaced-dexpi/i04.model.json": "d45563c5804f465ac8fb557c4180cc9eca5577cce5d5a2074078fde357962746",
+    "examples/graph-export/unplaced-dexpi/i04.graph.json": "4e88eb067b2bc5ee1b24b12251c89aeb312018c13dc384a7c554b58dc66ea7d6",
+    "examples/graph-export/unplaced-dexpi/i01.model.json": "4c7820115e4c3a08df900154565a8db54a72684b302e645407cf1f6881dbd28f",
+    "examples/graph-export/unplaced-dexpi/i01.graph.json": "7c147f9da3cf17b6f206b00bca7d505c605cb3a4cb34743234acaaa79a338085",
+    "examples/graph-export/multi-appearance/source.json": "1a8f030d640b8976a9231248d5ba1445107eb0be21aa10f05f255c31e3c6350e",
+    "examples/graph-export/multi-appearance/model.json": "c9b26b07876b6ab0df5578ea23d9319ecc2bcdc7ff129ed84eb9bf06edf06a9c",
+    "examples/graph-export/multi-appearance/full.graph.json": "d76a00eeb8ea5e0b46ea193791e271e24f74170324358c0aa77d8052cca77f85",
+    "examples/graph-export/multi-appearance/core.graph.json": "00b73210f7071e3d7455a20daffa1a9c3d8fdc49b42adfb947e918cab8120e70",
+    "examples/graph-export/multi-appearance/review/statements.json": "a8781ca1061aef9920df4e97dc2bdebeed6589740aba5814813b741db01ba83d",
+    "examples/graph-export/multi-appearance/review/review_sheet.csv": "621b357c7ac0d1aaa69285cbf76b9219217cdd091a48f1c685746f79f87f0b10",
+    "examples/graph-export/multi-appearance/review/review.html": "a6afaa1fec34a2f25df9b4ef054ce1e96d02113c37dfb9f6b95f21b71ca9f67d",
+    "examples/review-and-mapping/review_associations.json": "2c6bb0d50f5e469b0bb57e0319e69f4565e915c3ff4e14ce073bbfd7e962048f",
+    "examples/review-and-mapping/graph_after_review.json": "d35ca08a3a30a027d73a3ca5f79137b6bbaa9d5bec5d9e7dc3147b391fa0632b"
+   },
+   "freshly_reproduced_or_validated_files": {
+    "examples/review-and-mapping/graph_after_review.json": "d35ca08a3a30a027d73a3ca5f79137b6bbaa9d5bec5d9e7dc3147b391fa0632b",
+    "examples/review-and-mapping/review_associations.json": "2c6bb0d50f5e469b0bb57e0319e69f4565e915c3ff4e14ce073bbfd7e962048f"
+   },
+   "inherited_unchanged_files": {
+    "examples/graph-export/te_graph.json": "e66095faf972fbe6c20313455211c6518a731a35a6971dc350023f5e96d9b4f4",
+    "examples/graph-export/bayer_graph.json": "131f2d627c670096ee7facc1912cbb4a5d0caf8c717d1a7bb0c6807653686cb1",
+    "examples/graph-export/sheet0_graph.json": "1ff6b7f4123d74256d874e74d0a87c9ab4d2a43e09b2e8eba58b5ee0cac08b09",
+    "examples/graph-export/sheet0_graph_core.json": "33efd37ad6179f09c295967cf8183c460440ad8eb172426afadc62fe724bea21",
+    "examples/graph-export/unplaced-dexpi/source_key.json": "35036f712486f92fa8b782a92f3bfe573a423060d6b17f6b8a6c497af6f695b4",
+    "examples/graph-export/unplaced-dexpi/i04.model.json": "d45563c5804f465ac8fb557c4180cc9eca5577cce5d5a2074078fde357962746",
+    "examples/graph-export/unplaced-dexpi/i04.graph.json": "4e88eb067b2bc5ee1b24b12251c89aeb312018c13dc384a7c554b58dc66ea7d6",
+    "examples/graph-export/unplaced-dexpi/i01.model.json": "4c7820115e4c3a08df900154565a8db54a72684b302e645407cf1f6881dbd28f",
+    "examples/graph-export/unplaced-dexpi/i01.graph.json": "7c147f9da3cf17b6f206b00bca7d505c605cb3a4cb34743234acaaa79a338085",
+    "examples/graph-export/multi-appearance/source.json": "1a8f030d640b8976a9231248d5ba1445107eb0be21aa10f05f255c31e3c6350e",
+    "examples/graph-export/multi-appearance/model.json": "c9b26b07876b6ab0df5578ea23d9319ecc2bcdc7ff129ed84eb9bf06edf06a9c",
+    "examples/graph-export/multi-appearance/full.graph.json": "d76a00eeb8ea5e0b46ea193791e271e24f74170324358c0aa77d8052cca77f85",
+    "examples/graph-export/multi-appearance/core.graph.json": "00b73210f7071e3d7455a20daffa1a9c3d8fdc49b42adfb947e918cab8120e70",
+    "examples/graph-export/multi-appearance/review/statements.json": "a8781ca1061aef9920df4e97dc2bdebeed6589740aba5814813b741db01ba83d",
+    "examples/graph-export/multi-appearance/review/review_sheet.csv": "621b357c7ac0d1aaa69285cbf76b9219217cdd091a48f1c685746f79f87f0b10",
+    "examples/graph-export/multi-appearance/review/review.html": "a6afaa1fec34a2f25df9b4ef054ce1e96d02113c37dfb9f6b95f21b71ca9f67d"
+   },
+   "supporting_files": {
+    ".gitattributes": "6d50bf5b4bf6dda4910760eee74390fbf934c961c9a26a8ff905355ab8562069",
+    "data/features.json": "ce0c1b24322267799f52572cb912c55593b02433149aec05b0465f3c5feedb29",
+    "data/script_index.json": "c695ebe8fc594963d4b04eab29ba5cd0e92b83d6cdeee26f298b72e2f1449be4",
+    "docs/GRAPH_EXPORT.md": "706dc7a96a2562132c11279b8ba0c32905afa34d12c7e659f629eba09d0ad58a",
+    "docs/JOURNAL.md": "be4d82e43c210afafe1a881a2fc53048353b62b70155e06c0c667edb0a060db0",
+    "docs/REVIEW_HISTORY.md": "926b2ac3eb9d736e1a49fd34a3c12287e33afffb0be824f7f0eb5fbc073e94f3",
+    "docs/STATUS.md": "929911d69826b325277eeb4340f5aeb3bebc0251f6a99e9bf046751562129434",
+    "examples/own-drawing/manifest.json": "fb92b0ad0194687c1872cc35c06bdc5aea4b1382e87a5e7218072758e707f0df",
+    "examples/review-and-mapping/README.md": "1b08931151fb16e7923f1e116e6ec2f12e83ce665dccd2b35de32675da0923cf",
+    "scripts/graph_export.py": "502ef69cdfa387cc99082b026964e45bb7ed409bb4674d4f6e4fd41a042e182d",
+    "scripts/graph_review_records.py": "404cffabf1028eff9f05d3ad76a93c86f4c699ba7a508b1626253de0951ac4aa",
+    "scripts/import_site_drawing.py": "5a214b340518fa4159db359592b194f656aed12f1fd3013d8414354825b8471d",
+    "scripts/test_checkout_contracts.py": "d02c670187538912402e098262f5d1957d69a93208b4479b41556d61701ee61f",
+    "scripts/test_graph_export.py": "d8183624ecfbf3b51538ab45944487bc4f7ef9fe44fe19a4a3d8e8918ffcc039",
+    "scripts/test_site_drawing_intake.py": "e302296d61af882cecacf8a25eef5400e57e8f202454f2cdfa99d739305bd565"
+   },
+   "scope": "Actual A4 seven creation commands and one retained-A3 manifest refusal produce the current full graph and individually supplied association. Three importer-generated JSON files have exact UTF-8 LF bytes; model/source-record/intake typed content changes only importer and selected-manifest raw identities. Five older non-graph files and the four original decisions remain exact; full historical graph content is inherited after only model/manifest bindings and event qualifications. Earlier unchanged full/core admission controls remain inherited. This review does not infer original-model ownership or Linux execution.",
+   "private_proofs": {
+    "independent_intake_checkout_receiving_sha256": "6d91a6b9c4638c8755f81c8bfd547a4701acf30b7f35f5380ba7ee6f935c9fa7",
+    "independent_A4_receiving_sha256": "0800dd4f75fbe373ca700d8d92e8988f8507ea41e335bbe9405c56ecdf9fa9d3",
+    "independent_B4_receiving_sha256": "20842139a27e76f302a3ec2472e8a2b65f131d4c9b4d0897c27ec75875bc5417",
+    "independent_matrix42_receiving_sha256": "0469aa27ac134a07d618fe848bbdf86291826ab0dc2edcde5173cdf034cc6049",
+    "retained_failed_linux_CI310_sha256": "77d190e8af1c36d37544b099cbad5368ef31e6d2698e2dd73f2bb52c90d261eb"
+   },
+   "limits": [
+    "Bounded saved public/fictional software examples. The failed Linux CI310 remains failed; corrected exact-head CI is a separate gate. No new model/provider run, source family, human timing, plant accuracy or company/native acceptance.",
+    "Raw supplied company originals and exact association admission are preserved. Matching hashes and supplied labels do not prove reviewer authority, ownership, historical transitions or permission to share. Full/core retain selected complete content; MCP limits remain separate."
+   ]
+  },
+  {
+   "feature": "review-and-mapping",
+   "date": "2026-11-01",
+   "reviewer": "Independent coding-agent static/oracle and retained-actual receiving; implementation/producer and reviewer roles separate. Not human, company or native-platform approval.",
+   "verdict": "pass",
+   "findings": [],
+   "file_hash_method": "SHA256 with CRLF folded to LF for the feature registry; raw input/output/code/log identities remain separately bound in the actual receipts.",
+   "files": {
+    "examples/review-and-mapping/reviewed_sheet0.csv": "d8159f4fb4c8d8ca3497f5d0985298ed2000610efd29ab5f2d7be1595a3d0c15",
+    "examples/review-and-mapping/records/2026-10-29-bundle.md": "8ee42f4d23643b7d2f37e92769adffa20d04875bc4ac65db186fcdcaad0e53c3",
+    "examples/review-and-mapping/mapping_dry_run.md": "0a1055bd00dba08fadd5544b37dabec4009a04004925a26e63e991d49dee9205",
+    "examples/review-and-mapping/graph_after_review.json": "d35ca08a3a30a027d73a3ca5f79137b6bbaa9d5bec5d9e7dc3147b391fa0632b",
+    "examples/review-and-mapping/REPORT_after_review.html": "33e641c1c5b7d718034671829b0575b927848d1d947636c1c94d3e08775b3b88",
+    "examples/review-and-mapping/pi_mapping_dry_run.txt": "5dd633a14b312e17dc7fd574f9a86866e593f3577d3f565e39b3485cbcbdd47d",
+    "out/review_kit/sheet-8/README.md": "d2a74ba7a4adbb214ab8c549b183f1d1558d4b5a687811faf258a6a30b89987c",
+    "examples/review-and-mapping/native-identity/expected/model.json": "f9f28f256b962414d3c865f9cd3a414654f1f2499546ba48f03789ea15056c44",
+    "examples/review-and-mapping/native-identity/expected/change_record.json": "b471c67b2b61a67c8da4b8e755a64a36978f9acd07ae6315330b192efd0d3d02",
+    "examples/review-and-mapping/native-identity/expected/change_record.md": "529d077d7a16630bb5aafebfd329671849e4e6e3b119e911204ebcd26a77bf26",
+    "examples/review-and-mapping/review_associations.json": "2c6bb0d50f5e469b0bb57e0319e69f4565e915c3ff4e14ce073bbfd7e962048f"
+   },
+   "freshly_reproduced_or_validated_files": {
+    "examples/review-and-mapping/graph_after_review.json": "d35ca08a3a30a027d73a3ca5f79137b6bbaa9d5bec5d9e7dc3147b391fa0632b",
+    "examples/review-and-mapping/review_associations.json": "2c6bb0d50f5e469b0bb57e0319e69f4565e915c3ff4e14ce073bbfd7e962048f"
+   },
+   "inherited_unchanged_files": {
+    "examples/review-and-mapping/reviewed_sheet0.csv": "d8159f4fb4c8d8ca3497f5d0985298ed2000610efd29ab5f2d7be1595a3d0c15",
+    "examples/review-and-mapping/records/2026-10-29-bundle.md": "8ee42f4d23643b7d2f37e92769adffa20d04875bc4ac65db186fcdcaad0e53c3",
+    "examples/review-and-mapping/mapping_dry_run.md": "0a1055bd00dba08fadd5544b37dabec4009a04004925a26e63e991d49dee9205",
+    "examples/review-and-mapping/REPORT_after_review.html": "33e641c1c5b7d718034671829b0575b927848d1d947636c1c94d3e08775b3b88",
+    "examples/review-and-mapping/pi_mapping_dry_run.txt": "5dd633a14b312e17dc7fd574f9a86866e593f3577d3f565e39b3485cbcbdd47d",
+    "out/review_kit/sheet-8/README.md": "d2a74ba7a4adbb214ab8c549b183f1d1558d4b5a687811faf258a6a30b89987c",
+    "examples/review-and-mapping/native-identity/expected/model.json": "f9f28f256b962414d3c865f9cd3a414654f1f2499546ba48f03789ea15056c44",
+    "examples/review-and-mapping/native-identity/expected/change_record.json": "b471c67b2b61a67c8da4b8e755a64a36978f9acd07ae6315330b192efd0d3d02",
+    "examples/review-and-mapping/native-identity/expected/change_record.md": "529d077d7a16630bb5aafebfd329671849e4e6e3b119e911204ebcd26a77bf26"
+   },
+   "supporting_files": {
+    ".gitattributes": "6d50bf5b4bf6dda4910760eee74390fbf934c961c9a26a8ff905355ab8562069",
+    "data/features.json": "ce0c1b24322267799f52572cb912c55593b02433149aec05b0465f3c5feedb29",
+    "data/script_index.json": "c695ebe8fc594963d4b04eab29ba5cd0e92b83d6cdeee26f298b72e2f1449be4",
+    "docs/GRAPH_EXPORT.md": "706dc7a96a2562132c11279b8ba0c32905afa34d12c7e659f629eba09d0ad58a",
+    "docs/JOURNAL.md": "be4d82e43c210afafe1a881a2fc53048353b62b70155e06c0c667edb0a060db0",
+    "docs/REVIEW_HISTORY.md": "926b2ac3eb9d736e1a49fd34a3c12287e33afffb0be824f7f0eb5fbc073e94f3",
+    "docs/STATUS.md": "929911d69826b325277eeb4340f5aeb3bebc0251f6a99e9bf046751562129434",
+    "examples/own-drawing/manifest.json": "fb92b0ad0194687c1872cc35c06bdc5aea4b1382e87a5e7218072758e707f0df",
+    "examples/review-and-mapping/README.md": "1b08931151fb16e7923f1e116e6ec2f12e83ce665dccd2b35de32675da0923cf",
+    "scripts/apply_review.py": "22abfde579415d35a04a6e274803d5440ad238ffaa9bb62b82a8703a1a058fe9",
+    "scripts/graph_export.py": "502ef69cdfa387cc99082b026964e45bb7ed409bb4674d4f6e4fd41a042e182d",
+    "scripts/graph_review_records.py": "404cffabf1028eff9f05d3ad76a93c86f4c699ba7a508b1626253de0951ac4aa",
+    "scripts/import_site_drawing.py": "5a214b340518fa4159db359592b194f656aed12f1fd3013d8414354825b8471d",
+    "scripts/map_pi_points.py": "39caad8b1e5c24a8c74d6e692dbeb3dd5dcb1e3e479a7ca247d3355c1598080b",
+    "scripts/map_points.py": "ceda7aa64d12b683595ad79f2a2975ceb5318915216f16874b2ed537c3303431",
+    "scripts/test_checkout_contracts.py": "d02c670187538912402e098262f5d1957d69a93208b4479b41556d61701ee61f",
+    "scripts/test_deliverable_report.py": "e69823963af48148abcf912165c21d94ca82c6dc9e21bcc29cfafdae5bd80059",
+    "scripts/test_graph_export.py": "d8183624ecfbf3b51538ab45944487bc4f7ef9fe44fe19a4a3d8e8918ffcc039",
+    "scripts/test_site_drawing_intake.py": "e302296d61af882cecacf8a25eef5400e57e8f202454f2cdfa99d739305bd565"
+   },
+   "scope": "Actual A4 retains the five dated/non-graph outputs byte-for-byte and replaces only graph/association from the genuinely regenerated model. Independent one-module B4 runs all nine existing methods without skips and reproduces seven retained files through all eight README commands in an isolated current-source tree with the two exact A4 expected overlays. The public tree stays unchanged during that proof. Original failure, old A3 packet and refused stale association are retained; this is software reproduction, not a real engineering review or installed-address acceptance.",
+   "private_proofs": {
+    "independent_intake_checkout_receiving_sha256": "6d91a6b9c4638c8755f81c8bfd547a4701acf30b7f35f5380ba7ee6f935c9fa7",
+    "independent_A4_receiving_sha256": "0800dd4f75fbe373ca700d8d92e8988f8507ea41e335bbe9405c56ecdf9fa9d3",
+    "independent_B4_receiving_sha256": "20842139a27e76f302a3ec2472e8a2b65f131d4c9b4d0897c27ec75875bc5417",
+    "independent_matrix42_receiving_sha256": "0469aa27ac134a07d618fe848bbdf86291826ab0dc2edcde5173cdf034cc6049",
+    "retained_failed_linux_CI310_sha256": "77d190e8af1c36d37544b099cbad5368ef31e6d2698e2dd73f2bb52c90d261eb"
+   },
+   "limits": [
+    "Bounded saved public/fictional software examples. The failed Linux CI310 remains failed; corrected exact-head CI is a separate gate. No new model/provider run, source family, human timing, plant accuracy or company/native acceptance.",
+    "Raw supplied company originals and exact association admission are preserved. Matching hashes and supplied labels do not prove reviewer authority, ownership, historical transitions or permission to share. Full/core retain selected complete content; MCP limits remain separate."
+   ]
+  },
+  {
+   "feature": "generalization-matrix",
+   "date": "2026-11-01",
+   "reviewer": "Independent coding-agent static/oracle and retained-actual receiving; implementation/producer and reviewer roles separate. Not human, company or native-platform approval.",
+   "verdict": "pass",
+   "findings": [],
+   "file_hash_method": "SHA256 with CRLF folded to LF for the feature registry; raw input/output/code/log identities remain separately bound in the actual receipts.",
+   "files": {
+    "docs/GENERALIZATION.md": "7942156d01723ec3da972c61ff9cfa217dba1ef96e2f903a58b6b3647862e4c3",
+    "out/generalization/matrix.json": "68ec8ce280eacd2e5e0edb837a8f5e37fb1c21c0a4a37cfb5b6c18393a7c6f24",
+    "data/corpus.json": "0f02e9434b490769619d14f0440fe737e925b239a2633b70a0851bd154114e9c"
+   },
+   "freshly_reproduced_or_validated_files": {
+    "docs/GENERALIZATION.md": "7942156d01723ec3da972c61ff9cfa217dba1ef96e2f903a58b6b3647862e4c3",
+    "out/generalization/matrix.json": "68ec8ce280eacd2e5e0edb837a8f5e37fb1c21c0a4a37cfb5b6c18393a7c6f24"
+   },
+   "inherited_unchanged_files": {
+    "data/corpus.json": "0f02e9434b490769619d14f0440fe737e925b239a2633b70a0851bd154114e9c"
+   },
+   "supporting_files": {
+    ".gitattributes": "6d50bf5b4bf6dda4910760eee74390fbf934c961c9a26a8ff905355ab8562069",
+    "data/corpus.json": "0f02e9434b490769619d14f0440fe737e925b239a2633b70a0851bd154114e9c",
+    "docs/JOURNAL.md": "be4d82e43c210afafe1a881a2fc53048353b62b70155e06c0c667edb0a060db0",
+    "docs/STATUS.md": "929911d69826b325277eeb4340f5aeb3bebc0251f6a99e9bf046751562129434",
+    "examples/own-drawing/README.md": "531789297bca1507c1ea05d5859dddb971e689e2c9be0ae01af7e5acf7b50acb",
+    "examples/own-drawing/manifest.json": "fb92b0ad0194687c1872cc35c06bdc5aea4b1382e87a5e7218072758e707f0df",
+    "scripts/corpus_matrix.py": "5407cd2daf752b48385e5226680f0b440d708e1ff55913bc081d159263a0f0ed",
+    "scripts/import_site_drawing.py": "5a214b340518fa4159db359592b194f656aed12f1fd3013d8414354825b8471d",
+    "scripts/test_checkout_contracts.py": "d02c670187538912402e098262f5d1957d69a93208b4479b41556d61701ee61f",
+    "scripts/test_site_drawing_intake.py": "e302296d61af882cecacf8a25eef5400e57e8f202454f2cdfa99d739305bd565"
+   },
+   "scope": "Five actual normal corpus-matrix CLI invocations refresh exactly 42 cells whose declared method closure contains the changed importer. All 53 other complete cells are inherited unchanged. All criteria, status, values, diagnostics, engineering metrics and source bindings remain exact; only the 42 importer bindings, run timings and invocation metadata change. The 95 configured cells still contain 64 pass, 23 fail and 8 not applicable. No new source family, model call, accuracy improvement or plant acceptance is inferred.",
+   "private_proofs": {
+    "independent_intake_checkout_receiving_sha256": "6d91a6b9c4638c8755f81c8bfd547a4701acf30b7f35f5380ba7ee6f935c9fa7",
+    "independent_A4_receiving_sha256": "0800dd4f75fbe373ca700d8d92e8988f8507ea41e335bbe9405c56ecdf9fa9d3",
+    "independent_B4_receiving_sha256": "20842139a27e76f302a3ec2472e8a2b65f131d4c9b4d0897c27ec75875bc5417",
+    "independent_matrix42_receiving_sha256": "0469aa27ac134a07d618fe848bbdf86291826ab0dc2edcde5173cdf034cc6049",
+    "retained_failed_linux_CI310_sha256": "77d190e8af1c36d37544b099cbad5368ef31e6d2698e2dd73f2bb52c90d261eb"
+   },
+   "limits": [
+    "Bounded saved public/fictional software examples. The failed Linux CI310 remains failed; corrected exact-head CI is a separate gate. No new model/provider run, source family, human timing, plant accuracy or company/native acceptance.",
+    "Raw supplied company originals and exact association admission are preserved. Matching hashes and supplied labels do not prove reviewer authority, ownership, historical transitions or permission to share. Full/core retain selected complete content; MCP limits remain separate."
    ]
   }
  ]
