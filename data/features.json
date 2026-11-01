@@ -155,7 +155,9 @@
     "examples/graph-export/multi-appearance/core.graph.json",
     "examples/graph-export/multi-appearance/review/statements.json",
     "examples/graph-export/multi-appearance/review/review_sheet.csv",
-    "examples/graph-export/multi-appearance/review/review.html"
+    "examples/graph-export/multi-appearance/review/review.html",
+    "examples/review-and-mapping/review_associations.json",
+    "examples/review-and-mapping/graph_after_review.json"
    ],
    "tests": [
     "scripts/test_graph_export.py",
@@ -165,8 +167,8 @@
    "job": "Load the model into an asset register, graph database or change system",
    "you_need": "Any model this repository produces",
    "time": "Seconds",
-   "you_get": "One open JSON graph: assets, typed links in three layers (pipe segments and tees, line networks, and network pairs), every attribute with its source and status; plus a smaller core profile (identity, settings, impact relations and sources) for loading into another system, with everything it leaves out counted",
-   "why": "A plant model is a web of relationships: this transmitter measures that line, this controller moves that valve. Kept as a graph, it answers questions a flat tag list can't, like what a valve's failure affects or which instruments nobody has checked, and other systems can load it without retyping."
+   "you_get": "Portable JSON of assets, three link layers and sourced claims, with full/core profiles. Selected review records remain complete and unbound; explicit supplied associations add qualified events.",
+   "why": "Keep relationships, source qualifications and supplied review history together for another engineer to inspect or an explicitly implemented receiving adapter to preserve."
   },
   {
    "id": "platform-exports",
@@ -322,7 +324,8 @@
     "out/review_kit/sheet-8/README.md",
     "examples/review-and-mapping/native-identity/expected/model.json",
     "examples/review-and-mapping/native-identity/expected/change_record.json",
-    "examples/review-and-mapping/native-identity/expected/change_record.md"
+    "examples/review-and-mapping/native-identity/expected/change_record.md",
+    "examples/review-and-mapping/review_associations.json"
    ],
    "tests": [
     "scripts/test_apply_review.py",
@@ -335,7 +338,7 @@
    "job": "Apply review decisions and assign supplied OPC or PI addresses",
    "you_need": "A filled review sheet; the plant's I/O list",
    "time": "Seconds per apply; the review itself is people's time",
-   "you_get": "An updated draft model and dated review record; OPC assignments retain CSV fingerprints and physical line spans, while PI keeps its separate reviewed-point contract",
+   "you_get": "An updated draft model and dated review record; source-referenced OPC/PI assignments and an optional graph handoff with complete review evidence and supplied association qualifications",
    "why": "Source-referenced corrections and addresses make a draft easier to check and hand off. Source records and address assignments do not establish plant truth, connectivity or signal identity."
   },
   {

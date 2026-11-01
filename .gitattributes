@@ -65,3 +65,9 @@ data/te_pid_layout.json text eol=lf
 
 # Description bundle freshness binds the default question catalog raw bytes.
 /data/questions.json text eol=lf
+
+# Own-drawing models retain these raw implementation identities; keep repository code stable across checkouts.
+/scripts/import_site_drawing.py text eol=lf
+/scripts/build_twin.py text eol=lf
+/scripts/generate.py text eol=lf
+/scripts/pi_mapping.py text eol=lf

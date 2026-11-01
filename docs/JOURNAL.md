@@ -6631,3 +6631,35 @@ per-model directory is a documented interim practice, not authenticated model/re
 All ten review/mapping example files are inherited unchanged. No new corpus, model call, engineering
 performance, company approval or human benefit is inferred. Current integration and exact-version CI
 remain separate release checks.
+
+## 139. Preserve review records before associating their events
+
+A folder and matching item IDs do not establish that a review belongs to the selected model. The original
+foreign-event case and genuine earlier-history countercontrol remain retained. The local graph route now
+[captures records unbound](REVIEW_HISTORY.md), then attaches only individually supplied associations to exact
+model/record bytes. Earlier identifiers, duplicate actions, reviewer fields and unknown content stay intact.
+Full and core retain the complete context. A supplied basis is not authenticated ownership or transition proof;
+the tool cannot detect a false engineering explanation merely because its hashes match.
+
+The independently received v4 cohort has 13 top-level jobs: 58 unit methods reported, with 57 passed and one
+unnamed skip; four no-review outputs match the original raw bytes; six full/core outputs match frozen independent
+data oracles; and real 8 MiB/plus-one records verify complete capture and refusal with an unchanged sentinel.
+The unnamed skip is not counted as an executed filesystem branch. No original baseline was rerun to refresh it.
+
+The first example-creation attempt stopped because its private workspace omitted dynamically loaded confidence.py.
+That harness failure remains preserved. The corrected A2 creation passed, but its model included raw fingerprints
+of four CRLF working-code files. Four narrow repository LF pins make those source bytes match Git across checkouts;
+they change no code AST or company data. Portable A3 completes seven creation calls and separately refuses the old
+A2 manifest against its changed model bytes without replacing output. Five older non-graph files, including both dated records,
+remain raw-exact; only the qualified graph and its supplied illustrative association are new example artifacts.
+
+The adopted README then reproduces seven retained files through eight commands in the unfiltered nine-method
+report module. It and the three checkout methods pass all 12 tests without skips. Checkout checks cover 25 targets,
+50 indexed and 100 checkout comparisons, retaining 275 existing raw-packet files per configuration. Two actual
+description builds retain all 67 other complete artifacts; only their two actual graph-producer receipt hashes change.
+These are local software checks, not a new corpus, model result, plant acceptance or measured engineering benefit.
+
+N107 is closed only for unbound custody and supplied-association admission. Automatic writer lineage, authenticated
+company source/reviewer authority and continuing organizational ownership remain external. The 30 remaining question
+source reviews, 23 matrix failures, five historical prediction gaps and unrun human/company acceptance remain open.
+Whole-repository integration and exact-head CI are separate release checks.

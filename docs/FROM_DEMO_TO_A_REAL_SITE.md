@@ -36,8 +36,9 @@ Each row needs its own countermeasure. They're below, roughly in pipeline order.
   and date from its title block. AI is good at reading title blocks.
 - **Pick the revision of record per sheet,** and record why. If document control can't say which revision is
   current, that is the first finding of the project, not a detail.
-- **Classify the document type:** P&ID vs PFD vs isometric vs loop sheet vs vendor drawing. Only the P&IDs (and
-  the vendor P&IDs inside skid packages) feed the twin.
+- **Classify the document type:** P&ID, PFD, isometric, loop sheet or vendor drawing. For this image-extraction
+  branch, select P&IDs and vendor P&IDs. Use process descriptions/PFD notes through the authored-model route,
+  and reconcile loop, instrument and other records as independent context.
 - **Link each sheet to its legend:** every era and contractor has its own symbols. Keep a legend library and
   attach the right legend to every extraction request.
 
@@ -56,11 +57,11 @@ Each row needs its own countermeasure. They're below, roughly in pipeline order.
 At a real site there's no answer key. There are several partial ones, and they disagree. That disagreement is the
 most valuable output of the whole project:
 
-| Source | What it confirms |
+| Source | What it can help cross-check |
 |---|---|
-| DCS / PLC configuration export | Which instrument tags are actually live |
-| Historian point list (PI, Ignition) | Which tags are archived, with units and ranges |
-| Maintenance asset register (SAP PM, Maximo) | Which equipment exists, with equipment numbers and criticality |
+| DCS / PLC configuration export | Configured tag identities/settings at the captured revision; confirm deployment and observed signal behavior separately |
+| Historian point list (PI, Ignition) | Recorded point definitions, units/ranges and archive configuration; inspect actual time coverage separately |
+| Maintenance asset register (SAP PM, Maximo) | Recorded equipment identities and criticality; reconcile active status and field presence |
 | Instrument index, loop sheets | Instrument types, ranges, loop membership |
 | PSM records (PHA, MOC history) | Safety-critical items and recent changes |
 
@@ -92,10 +93,12 @@ documentation drift, mismatched identities or different source scope. These cros
   "review load" is the lab version of it).
 
 ### 2.8 Keep the twin true after go-live
-- **The drawing of record never changes because of the twin.** The twin is derived from it.
-- **Re-extract on every revision:** when an MOC issues a new P&ID revision, re-extract that sheet, diff it against
-  the twin, and route the differences through the same review. The twin's version history then mirrors the
-  drawing's.
+- **Route proposed source corrections through document control.** Model review or field findings may justify
+  updating a drawing or other source record; they do not automatically overwrite it.
+- **Refresh against revised sources:** for a drawing-derived model, an MOC-issued P&ID revision triggers
+  rereading/re-extracting the affected sheet and reviewing its model diff. For other starting records, revisit
+  the changed basis through the corresponding model workflow. Retain the relevant source and model revisions
+  with their review history; the model's history need not mirror a single drawing.
 - **Re-run the evaluation for every model or prompt change** on the site's own sealed sample sheets. The
   scorecards are the change record for the AI tooling itself.
 

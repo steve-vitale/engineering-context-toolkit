@@ -49,6 +49,7 @@
   "scripts/corpus_matrix.py": {"kind": "check", "guide": "docs/GENERALIZATION.md"},
   "scripts/fetch_corpus.py": {"kind": "check", "guide": "docs/CORPUS_FETCH.md"},
   "scripts/graph_export.py": {"kind": "tool", "guide": "docs/GRAPH_EXPORT.md", "purpose": "Export a supported model as portable twin-graph-1 JSON with typed relationships and sourced claims; external systems need a receiving adapter."},
+  "scripts/graph_review_records.py": {"kind": "support", "guide": "docs/REVIEW_HISTORY.md", "purpose": "Retain review-source bytes and check supplied graph associations for graph_export.py."},
   "scripts/question_engine.py": {"kind": "tool", "guide": "docs/OPPORTUNITY_SCREEN.md"},
   "scripts/estimate_impact.py": {"kind": "tool", "guide": "docs/IMPACT_ESTIMATE.md"},
   "scripts/statements.py": {"kind": "tool", "guide": "docs/STATEMENT_REVIEW.md"},

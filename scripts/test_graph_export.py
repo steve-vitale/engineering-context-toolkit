@@ -616,5 +616,307 @@ class OutputPaths(unittest.TestCase):
                 protect_outputs(["out.json"], ["source.json"])
 
 
+import base64
+import hashlib
+import graph_review_records as gr
+
+
+class ReviewRecordReceiving(unittest.TestCase):
+    """Fictional source association, preservation and refusal; no company authority."""
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.folder = Path(self.temp.name)
+        self.model = self.folder / 'model.json'
+        self.reviews = self.folder / 'records'
+        self.reviews.mkdir()
+        self.record = self.reviews / 'a.JSON'
+        self.manifest = self.folder / 'associations.json'
+        self.document = hand_built(units=[{'id': 'T-1', 'name': 'Fictional selected vessel', 'type': 'vessel'}],
+            instruments=[{'tag': 'PT-NEW', 'unit': 'T-1', 'description': 'Fictional pressure', 'uom': 'kPa',
+                          'ops_review': {'history': [{'by': 'Fictional reviewer', 'on': '2026-01-01',
+                          'decision': 'corrected', 'changes': {'tag': ['PT-OLD', 'PT-NEW']}}]}}])
+        self.model.write_text(json.dumps(self.document), encoding='utf-8')
+        action = {'item': 'PT-OLD', 'decision': 'corrected', 'changes': {'tag': ['PT-OLD', 'PT-NEW']},
+                  'notes': 'Earlier literal identity, not a current-node assertion'}
+        self.payload = {'model': 'another/location/model.json', 'reviewer': 'Fictional reviewer', 'date': '2026-01-01',
+                        'applied': [action, copy.deepcopy(action)], 'needs_moc': [{'item': 'PT-OLD', 'request': 'review source', 'why': 'unknown'}],
+                        'unknown_fields': {'bool': False, 'int': 0, 'float': 0.0, 'signed': -0.0, 'address': 'supplied-private-example'}}
+        self.raw = (json.dumps(self.payload, ensure_ascii=False, indent=1) + '\n').replace('\n', '\r\n').encode()
+        self.record.write_bytes(self.raw)
+
+    def associate(self, entries=None, model_hash=None):
+        entry = {'name': self.record.name, 'sha256_raw': hashlib.sha256(self.raw).hexdigest(),
+                 'relationship': 'historical', 'basis': 'Fictional supplied earlier-source association; not authenticated approval'}
+        doc = {'schema': 'graph-review-associations-1', 'model_sha256_raw': model_hash or hashlib.sha256(self.model.read_bytes()).hexdigest(),
+               'records': [entry] if entries is None else entries}
+        self.manifest.write_text(json.dumps(doc), encoding='utf-8')
+        return doc
+
+    def associated(self):
+        self.associate()
+        return gx.build(self.model, self.reviews, review_associations=self.manifest)
+
+    def test_default_unbound_retains_complete_raw_and_typed_content_in_both_profiles(self):
+        graph = gx.build(self.model, self.reviews)
+        for profile in ('full', 'core'):
+            result = gx.apply_profile(graph, profile)
+            self.assertEqual(result['events'], [])
+            record = result['review_context']['records'][0]
+            self.assertEqual(record['name'], 'a.JSON')
+            self.assertEqual(base64.b64decode(record['raw_base64']), self.raw)
+            self.assertEqual(record['sha256_raw'], hashlib.sha256(self.raw).hexdigest())
+            self.assertEqual(json.dumps(record['payload'], sort_keys=True), json.dumps(self.payload, sort_keys=True))
+            self.assertEqual(record['association'], {'status': 'unbound'})
+            self.assertEqual(gx.problems(result), [])
+        self.assertEqual(graph['review_context'], gx.apply_profile(graph, 'core')['review_context'])
+        self.assertEqual(json.loads(self.model.read_bytes()), self.document)
+
+    def test_supplied_historical_keeps_original_identity_duplicate_actions_and_qualifications(self):
+        graph = self.associated()
+        self.assertEqual([e['type'] for e in graph['events']], ['review_decision', 'review_decision', 'change_review_needed'])
+        self.assertEqual([e['item'] for e in graph['events']], ['PT-OLD'] * 3)
+        self.assertEqual(graph['events'][0], graph['events'][1])
+        self.assertNotIn('PT-OLD', {n['id'] for n in graph['nodes']})
+        self.assertTrue(all(e['association']['status'] == 'supplied' and e['association']['relationship'] == 'historical' for e in graph['events']))
+        self.assertEqual(base64.b64decode(graph['review_context']['association_manifest']['raw_base64']), self.manifest.read_bytes())
+        self.assertEqual(gx.problems(graph), [])
+        self.assertEqual(gx.apply_profile(graph, 'core')['events'], graph['events'])
+
+    def test_mixed_uppercase_selection_preserves_unlisted_nonreview_and_malformed_actions(self):
+        (self.reviews / 'B.json').write_text('{"supplied":false,"address":"unknown"}', encoding='utf-8')
+        (self.reviews / 'c.JSON').write_text('{"applied":"not an array","unknown":[1,2]}', encoding='utf-8')
+        (self.reviews / 'same.json').write_bytes(self.raw)
+        graph = self.associated()
+        records = graph['review_context']['records']
+        self.assertEqual([r['name'] for r in records], ['B.json', 'a.JSON', 'c.JSON', 'same.json'])
+        self.assertEqual([r['association']['status'] for r in records], ['unbound', 'supplied', 'unbound', 'unbound'])
+        self.assertEqual(records[0]['payload'], {'supplied': False, 'address': 'unknown'})
+        self.assertEqual(records[2]['payload']['applied'], 'not an array')
+        self.assertEqual(records[1]['raw_base64'], records[3]['raw_base64'])
+        self.assertEqual(len(graph['events']), 3)
+
+    def test_explicit_empty_directory_has_context_but_no_review_route_has_none(self):
+        self.record.unlink()
+        graph = gx.build(self.model, self.reviews)
+        self.assertEqual(graph['review_context']['records'], [])
+        self.assertEqual(graph['events'], [])
+        self.assertEqual(gx.problems(gx.apply_profile(graph, 'core')), [])
+        self.assertNotIn('review_context', gx.build(self.model))
+        self.associate(entries=[])
+        self.assertEqual(gx.build(self.model, self.reviews, review_associations=self.manifest)['events'], [])
+
+    def test_association_mismatches_refuse_without_replacing_output(self):
+        base = self.associate()
+        changes = [lambda d: d.update(model_sha256_raw='0' * 64),
+                   lambda d: d['records'][0].update(sha256_raw='0' * 64),
+                   lambda d: d['records'][0].update(name='missing.json'),
+                   lambda d: d['records'].append(copy.deepcopy(d['records'][0])),
+                   lambda d: d['records'].append({**d['records'][0], 'name': 'A.json'}),
+                   lambda d: d['records'][0].update(relationship='inferred'),
+                   lambda d: d['records'][0].update(basis='  '),
+                   lambda d: d['records'][0].update(name='../a.JSON'),
+                   lambda d: d.update(unknown=True)]
+        out = self.folder / 'prior.json'
+        for index, change in enumerate(changes):
+            with self.subTest(case=index):
+                bad = copy.deepcopy(base); change(bad)
+                self.manifest.write_text(json.dumps(bad), encoding='utf-8')
+                out.write_bytes(b'PRESERVE PRIOR')
+                originals = {p: p.read_bytes() for p in (self.model, self.record, self.manifest)}
+                code, text = run_cli(self.model, '--reviews', self.reviews, '--review-associations', self.manifest, '--out', out)
+                self.assertEqual(code, 1, text)
+                self.assertEqual(out.read_bytes(), b'PRESERVE PRIOR')
+                self.assertEqual(originals, {p: p.read_bytes() for p in originals})
+
+    def test_changed_missing_and_nonreview_listed_records_refuse(self):
+        self.associate()
+        self.record.write_bytes(self.raw + b' ')
+        with self.assertRaisesRegex(ValueError, 'raw hash'):
+            gx.build(self.model, self.reviews, review_associations=self.manifest)
+        self.record.unlink()
+        with self.assertRaisesRegex(ValueError, 'missing'):
+            gx.build(self.model, self.reviews, review_associations=self.manifest)
+        for raw in (b'{"supplied":true}', b'{"applied":{}}', b'{"applied":[{"item":"X"}]}'):
+            self.record.write_bytes(raw); self.raw = raw; self.associate()
+            with self.assertRaisesRegex(ValueError, 'admitted review'):
+                gx.build(self.model, self.reviews, review_associations=self.manifest)
+
+    def test_strict_record_json_refuses_before_output_changes(self):
+        invalid = [b'[]', b'{"a":1,"a":2}', b'{"n":NaN}', b'{"n":1e999}', b'\xef\xbb\xbf{}', rb'{"x":"\ud800"}', b'\xff']
+        out = self.folder / 'prior.json'
+        for raw in invalid:
+            with self.subTest(raw=raw):
+                self.record.write_bytes(raw); out.write_bytes(b'KEEP')
+                code, text = run_cli(self.model, '--reviews', self.reviews, '--out', out)
+                self.assertEqual(code, 1, text)
+                self.assertEqual(out.read_bytes(), b'KEEP')
+                self.assertEqual(self.record.read_bytes(), raw)
+
+    def test_checker_requires_complete_ordered_events_and_exact_integer_count(self):
+        graph = self.associated()
+        changes = [lambda g: g['events'].pop(), lambda g: g['events'].append(copy.deepcopy(g['events'][0])),
+                   lambda g: g['events'].reverse(), lambda g: g['events'].pop(0),
+                   lambda g: g['events'][0]['association'].update(status='verified'),
+                   lambda g: g['events'][0]['association'].update(basis='different basis'),
+                   lambda g: g['counts'].update(events=True), lambda g: g['counts'].update(events=3.0),
+                   lambda g: g.update(counts=[]), lambda g: g.update(counts=None),
+                   lambda g: g.update(counts=False)]
+        for index, change in enumerate(changes):
+            with self.subTest(case=index):
+                bad = json.loads(json.dumps(graph)); change(bad)
+                self.assertTrue(any('review_context:' in x for x in gx.problems(bad)))
+
+    def test_checker_distinguishes_bool_int_float_and_float_signed_zero(self):
+        graph = self.associated()
+        for key, value in [('bool', 0), ('int', False), ('int', 0.0), ('float', 0), ('signed', 0.0)]:
+            with self.subTest(key=key, value=value):
+                bad = json.loads(json.dumps(graph))
+                bad['review_context']['records'][0]['payload']['unknown_fields'][key] = value
+                self.assertTrue(gx.problems(bad))
+        bad = json.loads(json.dumps(graph))
+        bad['review_context']['records'][0]['raw_base64'] = base64.b64encode(self.raw + b' ').decode()
+        self.assertTrue(gx.problems(bad))
+        bad = json.loads(json.dumps(graph))
+        bad['review_context']['records'][0]['association'] = {'status': 'unbound'}
+        self.assertTrue(gx.problems(bad))
+
+    def test_standalone_checker_validates_internal_identity_not_original_model_derivation(self):
+        graph = self.associated()
+        graph['review_context']['model_sha256_raw'] = '1' * 64
+        manifest = graph['review_context']['association_manifest']
+        manifest['payload']['model_sha256_raw'] = '1' * 64
+        raw = json.dumps(manifest['payload']).encode()
+        manifest['raw_base64'] = base64.b64encode(raw).decode()
+        manifest['sha256_raw'] = hashlib.sha256(raw).hexdigest()
+        self.assertEqual(gx.problems(graph), [])
+        self.assertNotEqual(hashlib.sha256(self.model.read_bytes()).hexdigest(), '1' * 64)
+
+    def test_event_edits_do_not_mutate_retained_source_payload(self):
+        graph = self.associated()
+        preserved = json.dumps(graph['review_context'], sort_keys=True)
+        graph['events'][0]['changes']['tag'][0] = 'changed event only'
+        self.assertEqual(json.dumps(graph['review_context'], sort_keys=True), preserved)
+        persisted = json.loads(json.dumps(graph))
+        self.assertTrue(any('complete ordered' in issue for issue in gx.problems(persisted)))
+
+    def test_model_record_and_manifest_use_captured_bytes_after_upstream_changes(self):
+        self.associate()
+        original_model = self.model.read_bytes(); original_manifest = self.manifest.read_bytes()
+        capture = gr.capture; pack = gr.envelope
+        for remove in (False, True):
+            self.model.write_bytes(original_model); self.record.write_bytes(self.raw); self.manifest.write_bytes(original_manifest)
+            selected = {'done': False}
+            def mutate_record(raw):
+                result = pack(raw)
+                if raw == self.raw and not selected['done']:
+                    selected['done'] = True
+                    self.record.unlink() if remove else self.record.write_bytes(b'{"other":"later revision"}')
+                return result
+            def mutate_model(*args, **kwargs):
+                self.model.write_bytes(b'{"meta":{"later":true}}')
+                return capture(*args, **kwargs)
+            with mock.patch.object(gr, 'envelope', side_effect=mutate_record), mock.patch.object(gr, 'capture', side_effect=mutate_model):
+                graph = gx.build(self.model, self.reviews, review_associations=self.manifest)
+            self.assertEqual(graph['review_context']['model_sha256_raw'], hashlib.sha256(original_model).hexdigest())
+            self.assertEqual(base64.b64decode(graph['review_context']['records'][0]['raw_base64']), self.raw)
+            self.assertEqual(len(graph['events']), 3)
+            self.assertEqual(gx.problems(graph), [])
+
+    def test_alias_preflight_uses_consumed_inventory_after_original_disappears(self):
+        capture = gr.capture
+        def disappear(*args, **kwargs):
+            result = capture(*args, **kwargs)
+            self.record.unlink()
+            return result
+        with mock.patch.object(gr, 'capture', side_effect=disappear):
+            code, text = run_cli(self.model, '--reviews', self.reviews, '--out', self.record)
+        self.assertEqual(code, 1, text)
+        self.assertIn('output aliases an input', text)
+        self.assertFalse(self.record.exists())
+
+    def test_manifest_record_and_model_output_aliases_refuse(self):
+        self.associate()
+        originals = {p: p.read_bytes() for p in (self.model, self.record, self.manifest)}
+        for out in originals:
+            code, text = run_cli(self.model, '--reviews', self.reviews, '--review-associations', self.manifest, '--out', out)
+            self.assertEqual(code, 1, text)
+            self.assertIn('output aliases an input', text)
+        self.assertEqual(originals, {p: p.read_bytes() for p in originals})
+
+    def test_nonregular_selected_record_and_manifest_refuse_before_output(self):
+        out = self.folder / 'prior.json'; out.write_bytes(b'KEEP')
+        self.record.unlink(); self.record.mkdir()
+        code, text = run_cli(self.model, '--reviews', self.reviews, '--out', out)
+        self.assertEqual(code, 1, text)
+        self.assertIn('not a regular file', text)
+        self.assertEqual(out.read_bytes(), b'KEEP')
+        self.record.rmdir(); self.record.write_bytes(self.raw)
+        self.manifest.mkdir()
+        code, text = run_cli(self.model, '--reviews', self.reviews, '--review-associations', self.manifest, '--out', out)
+        self.assertEqual(code, 1, text)
+        self.assertIn('not a regular file', text)
+        self.assertEqual(out.read_bytes(), b'KEEP')
+
+    def test_input_grammar_and_casefold_collisions_refuse(self):
+        self.associate()
+        self.assertEqual(run_cli(self.model, '--review-associations', self.manifest)[0], 2)
+        self.assertEqual(run_cli('--check', self.model, '--reviews', self.reviews, '--review-associations', self.manifest)[0], 2)
+        # Flag presence is prohibited even when its supplied string is empty.
+        out = self.folder / 'empty-check-refused.json'; out.write_bytes(b'KEEP PRIOR')
+        originals = {p: p.read_bytes() for p in (self.model, self.record, self.manifest, out)}
+        stdout, stderr = io.StringIO(), io.StringIO()
+        with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+            with self.assertRaises(SystemExit) as refused:
+                gx.main([str(self.model), '--reviews', str(self.reviews), '--review-associations',
+                         str(self.manifest), '--check', '', '--out', str(out)])
+        self.assertEqual(refused.exception.code, 2)
+        self.assertEqual(stdout.getvalue(), '')
+        self.assertEqual(originals, {p: p.read_bytes() for p in originals})
+        with self.assertRaises(ValueError):
+            gx.build(self.model, review_associations=self.manifest)
+        # Simulated directory inventory covers a collision even on case-insensitive Windows.
+        with mock.patch.object(Path, 'iterdir', return_value=iter([self.reviews / 'A.json', self.reviews / 'a.JSON'])):
+            with self.assertRaisesRegex(ValueError, 'case folding'):
+                gx.build(self.model, self.reviews)
+
+    def test_bounded_short_reads_and_selected_packet_budgets(self):
+        class ShortReader(io.BytesIO):
+            def __init__(self, data):
+                super().__init__(data); self.requests = []
+            def read(self, size):
+                self.requests.append(size)
+                return super().read(min(size, 3))
+        self.assertEqual((gr.MAX_RECORDS, gr.MAX_RECORD_BYTES, gr.MAX_TOTAL_BYTES, gr.MAX_MANIFEST_BYTES, gr.READ_CHUNK),
+                         (128, 8*1024*1024, 32*1024*1024, 1024*1024, 64*1024))
+        for size in (63, 64):
+            stream = ShortReader(b'x' * size)
+            self.assertEqual(gr.read_stream(stream, 64), b'x' * size)
+            self.assertTrue(all(0 < n <= 64*1024 for n in stream.requests))
+        stream = ShortReader(b'x' * 65)
+        with self.assertRaises(ValueError): gr.read_stream(stream, 64)
+        self.assertEqual(stream.tell(), 65)
+        # Tiny declared-budget controls exercise boundary semantics without huge output allocations.
+        self.record.write_bytes(b'{}' + b' ' * 62)
+        with mock.patch.object(gr, 'MAX_RECORD_BYTES', 64), mock.patch.object(gr, 'MAX_TOTAL_BYTES', 64):
+            self.assertEqual(gx.problems(gx.build(self.model, self.reviews)), [])
+            (self.reviews / 'b.json').write_bytes(b'{}')
+            with self.assertRaises(ValueError): gx.build(self.model, self.reviews)
+        with mock.patch.object(gr, 'MAX_RECORDS', 1):
+            with self.assertRaisesRegex(ValueError, 'Too many'): gx.build(self.model, self.reviews)
+        self.associate()
+        with mock.patch.object(gr, 'MAX_MANIFEST_BYTES', 2):
+            with self.assertRaises(ValueError): gx.build(self.model, self.reviews, review_associations=self.manifest)
+
+    def test_small_existing_snapshot_consumer_health_without_serving_record_payloads(self):
+        import serve_snapshot
+        graph = self.associated()
+        out = self.folder / 'graph.json'; out.write_text(json.dumps(graph), encoding='utf-8')
+        snapshot = serve_snapshot.Snapshot(out)
+        self.assertEqual(snapshot.summary()['result']['unserved_review_events'], 3)
+        self.assertEqual(snapshot.asset('PT-NEW')['result']['id'], 'PT-NEW')
+
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=1)

@@ -2,7 +2,7 @@
 claim, open questions and review events, for loading into any asset register, graph database or change system.
 
     python scripts/graph_export.py data/te_process_model.json --out te_graph.json
-    python scripts/graph_export.py my-bundle/plant_model.json --reviews out/review --out my_graph.json
+    python scripts/graph_export.py ../approved-work/unit-47/plant_model.json --reviews ../approved-work/unit-47/review-records --review-associations ../approved-work/unit-47/associations.json --out ../approved-work/unit-47/reviewed.graph.json
     python scripts/graph_export.py --check te_graph.json            # validate a file against twin-graph-1
 
 Works on both model kinds this repository writes: a hand-built process model (data/te_process_model.json,
@@ -402,14 +402,19 @@ def check_model(m, extracted):
                     raise ValueError(f"{label} has no '{k}'")
 
 
-def build(model_path, reviews=None, questions=None):
-    m = json.loads(Path(model_path).read_text(encoding="utf-8"))
+def build(model_path, reviews=None, questions=None, *, review_associations=None):
+    return _build_snapshot(model_path, reviews, questions, review_associations=review_associations)[0]
+
+
+def _build_snapshot(model_path, reviews=None, questions=None, *, review_associations=None):
+    if review_associations is not None and reviews is None:
+        raise ValueError('review associations require an explicitly selected review directory')
+    model_raw = Path(model_path).read_bytes()
+    m = json.loads(model_raw.decode('utf-8'))
     if not isinstance(m, dict) or not isinstance(m.get("meta"), dict):
         raise ValueError("not a plant model: no 'meta' section")
     extracted = m.get("meta", {}).get("model_kind") == "extracted_twin"
     check_model(m, extracted)
-    if reviews and not Path(reviews).is_dir():
-        raise ValueError(f"--reviews {reviews}: not a folder (give the folder apply_review.py wrote its records to)")
     handled = EXTRACTED_SECTIONS if extracted else HAND_BUILT_SECTIONS
     not_exported = [{"section": k, "items": len(v) if isinstance(v, (list, dict)) else 1,
                      "why": "left out on purpose" if k in NOT_EXPORTED else "no export rule for this section yet"}
@@ -444,16 +449,12 @@ def build(model_path, reviews=None, questions=None):
         elif typ in LINE_EDGES:
             e["attributes"] = claims(item, src, CONSUMED["segments"])
         edges.append(e)
-    events = []
-    for rec in sorted(Path(reviews).glob("*.json")) if reviews else []:
-        r = json.loads(rec.read_text(encoding="utf-8"))
-        for a in r.get("applied", []):
-            events.append({"type": "review_decision", "item": a["item"], "decision": a["decision"],
-                           "changes": a.get("changes"), "notes": a.get("notes"), "by": r.get("reviewer"),
-                           "on": r.get("date"), "record": rec.name})
-        for x in r.get("needs_moc", []):
-            events.append({"type": "change_review_needed", "item": x["item"], "request": x["request"],
-                           "why": x["why"], "by": r.get("reviewer"), "on": r.get("date"), "record": rec.name})
+    events, context = [], None
+    consumed = [model_path, questions]
+    if reviews is not None:
+        from graph_review_records import capture
+        context, events, review_paths = capture(model_path, model_raw, reviews, review_associations)
+        consumed.extend(review_paths)
     qdoc = json.loads(Path(questions).read_text(encoding="utf-8")) if questions else {}
     if "context_register" in qdoc:
         raise ValueError("bound enriched questions require their complete context packet; use the existing "
@@ -462,12 +463,15 @@ def build(model_path, reviews=None, questions=None):
     qs = qdoc.get("questions", [])
     mp = Path(model_path).resolve()
     shown = mp.relative_to(ROOT).as_posix() if mp.is_relative_to(ROOT) else mp.name  # never a local absolute path
-    return {"schema": SCHEMA, "source_model": shown, "model_kind":
+    graph = {"schema": SCHEMA, "source_model": shown, "model_kind":
             "extracted_twin" if extracted else "hand_built", "title": m.get("meta", {}).get("title"),
             "nodes": nodes, "edges": edges, "questions": qs, "events": events, "not_exported": not_exported,
             "counts": {"nodes": len(nodes), "edges": len(edges),
                        "claims": sum(len(n["attributes"]) for n in nodes) + sum(len(e.get("attributes", [])) for e in edges),
                        "questions": len(qs), "events": len(events)}}
+    if context is not None:
+        graph['review_context'] = context
+    return graph, consumed
 
 
 # Export profiles. "full" is everything the model holds. "core" is what a system that governs changes to the plant
@@ -632,6 +636,12 @@ def problems(g):
             stream_ref = str(end).startswith("stream:") and str(end)[len("stream:"):] in streams
             if end not in known and not stream_ref:
                 out.append(f"edge {e.get('id')}: end {end!r} is not a node")
+    if 'review_context' in g:
+        from graph_review_records import validate_graph
+        try:
+            validate_graph(g)
+        except (ValueError, TypeError, KeyError, UnicodeError, RecursionError, OverflowError) as exc:
+            out.append('review_context: ' + str(exc))
     return out
 
 
@@ -639,13 +649,16 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("model", nargs="?")
     ap.add_argument("--out")
-    ap.add_argument("--reviews", help="folder of apply_review.py change records (*.json) to export as events")
+    ap.add_argument("--reviews", help="folder of JSON source records to retain unbound unless explicitly associated")
+    ap.add_argument("--review-associations", help="supplied model/record association manifest; requires --reviews")
     ap.add_argument("--questions", help="a questions file (question engine output) to attach")
     ap.add_argument("--check", metavar="GRAPH", help="validate an exported graph file and exit")
     ap.add_argument("--profile", choices=PROFILES, default="full",
                     help="full (default): everything; core: identity, configuration, impact relations and sources, "
                          "without extraction internals or all-pairs network links")
     a = ap.parse_args(argv)
+    if a.review_associations is not None and (a.reviews is None or a.check is not None):
+        ap.error('--review-associations requires --reviews and cannot be combined with --check')
     if a.check:
         try:
             text = Path(a.check).read_text(encoding="utf-8")
@@ -669,10 +682,8 @@ def main(argv=None):
     if not a.model:
         ap.error("give a model, or --check GRAPH")
     try:
-        sources = [a.model, a.questions]
-        if a.reviews:
-            sources.extend(sorted(Path(a.reviews).glob("*.json")))
-        g = build(a.model, a.reviews, a.questions)
+        g, sources = _build_snapshot(a.model, a.reviews, a.questions,
+                                     review_associations=a.review_associations)
         if a.out:
             protect_outputs([a.out], sources)
     except (OSError, ValueError, KeyError, TypeError) as exc:
