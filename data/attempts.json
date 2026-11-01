@@ -4467,6 +4467,26 @@
         "examples/own-drawing/manifest.json",
         "examples/review-and-mapping/review_associations.json"
       ]
+    },
+    {
+      "id": "A293",
+      "function": "intake_and_reuse",
+      "date": "2026-11-01",
+      "change": "Source-review E16/C5 as service-first investigations of existing combustion and boiler water-level records, retaining qualified candidates without compulsory retrofit or field work.",
+      "hypothesis": "An engineer should establish the heat source, applicable service and existing function records before treating an oxygen label, boiler name or absent model field as an instruction to install controls.",
+      "evidence": "Twenty original and twenty matched candidate CLI calls retain all 80 whole JSON/Markdown reports on ten fictional paired models. Independent candidate receiving checks 197 scoped typed literal rows, with 19 E16 and 17 C5 acknowledgements. Eight separate selector controls distinguish boiler types, named helpers and combined roles. Four focused regression methods fail against the original catalog with 33 assertion/subtest failures and no errors, then all four pass against the candidate. Seven affected producer routes retain 79 complete artifacts: 72 raw-exact, three exact CRLF-to-LF canonical JSON comparisons and four actual catalog/build-receipt updates. The first OPEN100 closure failure remains retained. The unfiltered question module reports 139 tests, 138 passed and one unnamed skip; checkout reports three passed without skips, 56 indexed/112 materialization comparisons and 275 raw-packet files per configuration. All 3,177 public file hashes and the path set remain unchanged during those local module runs.",
+      "runs": "Exposed fictional development records, twenty original and twenty matched candidate calls, separate eight-vector selector controls, focused old/new regressions, seven affected producer routes and two local test modules. The original baseline caller exit 2 and zero-child preflight stop are retained separately. No new model/provider call, plant data, company connection or measured human usefulness.",
+      "verdict": "kept",
+      "why": "E16 keeps incomplete or unknown fuel/service records reviewable and separates air/fuel or flue-analysis records from active trim. C5 establishes boiler/drum applicability independently of fuel and does not turn a boiler name into a three-element requirement. Remove the two inapplicable benefit-number presentations and cite S8/S27 explicitly beside scoped S19 context and S24 category evidence. Other 48 whole question objects, all source objects and the engine remain unchanged. N082 remains open: 22 rules now have bounded source-informed collection reviews, 28 remain; the catalog has 50 rules and 126 requests. Local results are not full-suite CI, engineering acceptance or a usefulness benchmark.",
+      "source": [
+        "docs/JOURNAL.md#141-investigate-combustion-and-drum-control-from-service-and-existing-records",
+        "docs/OPPORTUNITY_SCREEN.md",
+        "examples/opportunity-screen/combustion-control-basis/README.md",
+        "examples/opportunity-screen/combustion-control-basis/SOURCES.json",
+        "examples/opportunity-screen/combustion-control-basis/history/PROVENANCE.json",
+        "data/questions.json",
+        "scripts/test_question_engine.py"
+      ]
     }
   ],
   "not_tried": [
@@ -5340,8 +5360,8 @@
       "id": "N082",
       "function": "intake_and_reuse",
       "status": "not-done",
-      "idea": "Source-review the remaining30 catalog rules and124-request inventory with prospective expected/unacceptable questions, exact collection scope and independent source review.",
-      "why_not_yet": "Twenty named rules have bounded source-informed collection reviews after A285;30 remain. This is not whole-catalog engineering adequacy, safety validation or usefulness. N065 and real engineer/recipient acceptance remain open.",
+      "idea": "Source-review the remaining 28 catalog rules within the 50-rule/126-request inventory with prospective expected/unacceptable questions, exact collection scope and independent source review.",
+      "why_not_yet": "Twenty-two named rules have bounded source-informed collection reviews after A293, including service-first E16/C5; 28 remain. This is not whole-catalog engineering adequacy, safety validation or usefulness. N065 and real engineer/recipient acceptance remain open.",
       "source": [
         "docs/JOURNAL.md#115-repair-the-audit-gaps-with-owned-workstreams-and-independent-handoffs",
         "docs/STATUS.md",
@@ -5349,7 +5369,8 @@
         "docs/JOURNAL.md#118-keep-machine-specific-record-review-open-and-make-the-receiving-packet-current",
         "docs/JOURNAL.md#120-keep-qualified-private-fields-and-condenser-train-review-at-their-source-boundaries",
         "docs/JOURNAL.md#134-make-own-plant-transfer-explicit-and-retain-function-evidence",
-        "docs/JOURNAL.md#135-keep-heating-investigations-grounded-in-existing-records"
+        "docs/JOURNAL.md#135-keep-heating-investigations-grounded-in-existing-records",
+        "docs/JOURNAL.md#141-investigate-combustion-and-drum-control-from-service-and-existing-records"
       ]
     },
     {

@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "model_id": "COMB-S04-unknown-fuel-basis",
+    "title": "FICTIONAL unknown fuel records are not declared unfired service",
+    "illustrative": true,
+    "authorship": "Coding-agent authored incomplete Native records, no actual plant evidence or approval.",
+    "exposure": "Supplement authored after original16 and S03 original2 baseline calls, before any candidate call. Exposed development, not held out."
+  },
+  "units": [
+    {
+      "id": "F-A",
+      "name": "Unknown-service boiler A",
+      "type": "boiler",
+      "facts": {
+        "heat_source": null,
+        "fuel_service": "unknown",
+        "fuel_fired": null,
+        "water_service": "unknown",
+        "steam_water_drum_present": null,
+        "operating_basis": "unknown",
+        "source_document": "FICT-PARTIAL-FUEL-BASIS",
+        "source_revision": "R1",
+        "underlying_claim_verified": false
+      }
+    },
+    {
+      "id": "F-B",
+      "name": "Fired process heater B",
+      "type": "fired heater",
+      "facts": {
+        "heat_source": "fired process heating declared; fuel supply record not supplied",
+        "fuel_service": null,
+        "fuel_fired": true,
+        "water_service": "unknown",
+        "steam_water_drum_present": null,
+        "operating_basis": "unknown",
+        "source_document": "FICT-PARTIAL-FUEL-BASIS",
+        "source_revision": "R1",
+        "underlying_claim_verified": false
+      }
+    }
+  ],
+  "streams": [
+    {
+      "id": "PROCESS-IN-B",
+      "name": "Process feed B",
+      "from": "PROCESS-FEED-BOUNDARY",
+      "to": "F-B"
+    },
+    {
+      "id": "PROCESS-OUT-B",
+      "name": "Heated process product B",
+      "from": "F-B",
+      "to": "PROCESS-USER-BOUNDARY"
+    }
+  ],
+  "instruments": [],
+  "controllers": [],
+  "interlocks": [],
+  "final_elements": [],
+  "manual_valves": []
+}

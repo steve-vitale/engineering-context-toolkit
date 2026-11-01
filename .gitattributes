@@ -74,3 +74,6 @@ data/te_pid_layout.json text eol=lf
 
 # The committed intake manifest raw hash is retained in the generated example model.
 /examples/own-drawing/manifest.json text eol=lf
+
+# Fictional combustion-control input/oracle identities must be stable across operating systems.
+/examples/opportunity-screen/combustion-control-basis/** text eol=lf

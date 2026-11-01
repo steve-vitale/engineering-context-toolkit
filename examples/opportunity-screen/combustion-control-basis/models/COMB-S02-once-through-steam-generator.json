@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "model_id": "COMB-S02-once-through-steam-generator",
+    "title": "FICTIONAL paired combustion/control collection development fixture",
+    "illustrative": true,
+    "authorship": "Coding-agent authored synthetic data; no plant records, human approval or actual operating evidence.",
+    "exposure": "Additive applicability countercontrol requested before any product baseline/candidate call; original six-case cohort unchanged."
+  },
+  "units": [
+    {
+      "id": "F-A",
+      "name": "Once-through steam generator A",
+      "type": "steam generator",
+      "facts": {
+        "fuel_service": "natural gas",
+        "operating_basis": "unknown",
+        "water_service": "once-through steam generation",
+        "steam_water_drum_present": false,
+        "steam_export_present": true,
+        "basis_status": "fictional supplied service declaration; authenticity not established"
+      }
+    },
+    {
+      "id": "F-B",
+      "name": "Steam drum boiler B",
+      "type": "boiler",
+      "facts": {
+        "fuel_service": "natural gas",
+        "operating_basis": "unknown",
+        "water_service": "steam drum boiler",
+        "steam_water_drum_present": true,
+        "basis_status": "fictional supplied service declaration; control configuration unknown"
+      }
+    }
+  ],
+  "streams": [
+    {
+      "id": "FUEL-A",
+      "name": "Natural gas fuel A",
+      "from": "BL",
+      "to": "F-A",
+      "utility": true
+    },
+    {
+      "id": "FUEL-B",
+      "name": "Natural gas fuel B",
+      "from": "BL",
+      "to": "F-B",
+      "utility": true
+    },
+    {
+      "id": "FLUE-A",
+      "name": "Flue gas A",
+      "from": "F-A",
+      "to": "ATM-A"
+    },
+    {
+      "id": "FLUE-B",
+      "name": "Flue gas B",
+      "from": "F-B",
+      "to": "ATM-B"
+    }
+  ],
+  "instruments": [],
+  "controllers": [],
+  "interlocks": [],
+  "final_elements": [],
+  "manual_valves": []
+}

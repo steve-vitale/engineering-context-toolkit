@@ -1,0 +1,25 @@
+{
+  "meta": {
+    "model_id": "BND-04-unknown-name-fallback",
+    "title": "Fictional C5 boiler selector development control",
+    "illustrative": true,
+    "source": "Authored prospectively after static boundary review and before selector/candidate calls; no plant, source drawing or installed function claim."
+  },
+  "units": [
+    {
+      "id": "B-A",
+      "name": "Boiler 7",
+      "type": "unknown",
+      "facts": {
+        "heat_source": "unknown",
+        "water_service": "unknown",
+        "underlying_claim_verified": false
+      }
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "controllers": [],
+  "final_elements": [],
+  "manual_valves": []
+}

@@ -1,0 +1,75 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/combustion-control-basis/models/COMB-S02-once-through-steam-generator.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E16"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "energy": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E16@F-B",
+   "question_id": "E16",
+   "family": "energy",
+   "question": "Does this boiler or fired heater run without O2 trim?",
+   "about": "F-B",
+   "assets": [
+    {
+     "id": "F-B",
+     "tag": "F-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "equipment F-B reads \"F-B Steam drum boiler B\"",
+     "field": "units[F-B]"
+    },
+    {
+     "role": "checked, none found",
+     "text": "no O2 analyzer near the fired equipment",
+     "field": "applies_when.without"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Flue O2 and CO",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: portable combustion analyzer at several firing rates"
+     ],
+     "how": "Record O2 and CO across the firing range."
+    }
+   ],
+   "decision_rule": "Worth trim when excess air is well above what the burner needs across the firing range.",
+   "typical_benefit": {
+    "wording": "LBNL boiler table (as reported in LBNL-56183): \"1% improvement for each 15% less excess air.\"",
+    "source": [
+     "S19",
+     "S24"
+    ],
+    "arc": "2.12xx / 2.121x (category only) (IAC/ITAC browse page: boilers: 4,622 recommendations, 1.3 yr average payback, 56.5% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

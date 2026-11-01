@@ -6698,3 +6698,46 @@ selected cells; the other 53 whole records remain exact. All 95 cells retain the
 
 Corrected exact-head Linux CI remains a separate gate; the retained failed Linux run is not upgraded by these
 local results. No native connection, company approval or measured engineering benefit is claimed.
+
+## 141. Investigate combustion and drum control from service and existing records
+
+An oxygen label does not establish flue-analysis or active trim; a boiler name does not establish a steam-water
+drum or require three-element control. Source review of E16/C5 now starts with applicable heat/water service,
+existing operating and function records, and the owner of unresolved evidence. Missing fuel records stay
+unknown rather than becoming evidence of an unfired unit. Explicit electric/unfired service does not create
+compulsory combustion work; an unfired waste-heat boiler can still need drum-level record review.
+
+The [combustion-control tutorial and retained cases](../examples/opportunity-screen/combustion-control-basis/README.md)
+show how to substitute the reader's own supported model and take findings, source revisions, uncertainty and
+next-owner requests into the company's existing context system. S19's historical boiler figures are not trim
+hardware or drum-control upgrade savings. The two rules remove those inapplicable numeric presentations;
+DOE's steam sourcebook (S8) supplies the water-level function/applicability basis, and the process-heating tip
+(S27) supports alternative air/fuel metering or flue-analysis records. S24 supports the assessment category,
+not newly verified exact statistics. The [source map](../examples/opportunity-screen/combustion-control-basis/SOURCES.json)
+keeps canonical document locators and raw-byte verification limits explicit.
+
+All 40 original and 40 candidate JSON/Markdown reports remain raw-exact in the cohort. Ten paired fictional
+models were authored in stages (six, then two applicability cases, then unfired and unknown-fuel cases); eight
+selector controls are separate. Independent candidate receiving checks 197 scoped typed literal rows and
+19 E16/17 C5 acknowledgements. These are exposed development controls, not 20 plants or held-out performance.
+Supplied false, null, unknown and qualified function claims remain candidates, not accepted installed facts.
+Four focused regression methods first fail on the original catalog with 33 assertion/subtest failures and
+zero errors, then pass on the candidate with zero skips. One original caller CLI exit 2 and a zero-child
+preflight stop remain preserved separately from the intended baseline reports.
+
+Seven affected producer routes retain 79 complete artifacts: 72 raw-exact, three exact whole CRLF-to-LF
+canonical JSON comparisons and four actual description catalog/build-receipt updates. The first OPEN100
+comparison failure omitted the lazily read I/O-description CSV from its private caller closure; that failed
+attempt remains retained. The corrected closure succeeds without repeating the already successful TE/Bayer
+routes. These are source-binding refreshes, not new model or corpus-performance results.
+
+The unfiltered question module reports 139 tests: 138 passed, one unnamed skip and zero failures. The checkout
+module passes three methods without skips, with 56 indexed and 112 materialization comparisons and 275 existing
+raw-packet files retained per configuration. All 3,177 public file hashes and the path set remain unchanged
+during these local runs. The skip is not counted as an executed branch; full-repository integration and
+exact-head CI remain separate gates. No new MCP runtime, plant connection or human-usefulness trial is claimed.
+
+The engine, other 48 whole question objects and all source objects remain unchanged. The catalog now has
+50 rules and 126 collection requests; 22 rules have bounded source-informed collection reviews and 28 still
+await original-source adequacy review. Existing function records can be acknowledged without a mandatory
+project. Company decisions, approval, installed-state verification and continuing ownership remain external.

@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "model_id": "COMB-05-air-fuel-metering-record",
+    "title": "FICTIONAL paired combustion/control collection development fixture",
+    "illustrative": true,
+    "authorship": "Coding-agent authored synthetic data; no plant records, human approval or actual operating evidence.",
+    "exposure": "Prepared before any baseline/candidate call; useful-question oracle pending independent primary-source contract."
+  },
+  "units": [
+    {
+      "id": "F-A",
+      "name": "Fired unit A",
+      "type": "boiler",
+      "facts": {
+        "fuel_service": "natural gas",
+        "operating_basis": "unknown"
+      }
+    },
+    {
+      "id": "F-B",
+      "name": "Fired unit B",
+      "type": "boiler",
+      "facts": {
+        "fuel_service": "natural gas",
+        "operating_basis": "unknown"
+      }
+    }
+  ],
+  "streams": [
+    {
+      "id": "FUEL-A",
+      "name": "Natural gas fuel A",
+      "from": "BL",
+      "to": "F-A",
+      "utility": true
+    },
+    {
+      "id": "FUEL-B",
+      "name": "Natural gas fuel B",
+      "from": "BL",
+      "to": "F-B",
+      "utility": true
+    },
+    {
+      "id": "FLUE-A",
+      "name": "Flue gas A",
+      "from": "F-A",
+      "to": "ATM-A"
+    },
+    {
+      "id": "FLUE-B",
+      "name": "Flue gas B",
+      "from": "F-B",
+      "to": "ATM-B"
+    },
+    {
+      "id": "AIR-A",
+      "name": "Combustion air A",
+      "from": "AIR-BOUNDARY-A",
+      "to": "F-A"
+    }
+  ],
+  "instruments": [
+    {
+      "tag": "FT-FUEL-A",
+      "description": "Fuel-flow indication for fired unit A",
+      "unit": "F-A",
+      "stream": "FUEL-A",
+      "facts": {
+        "record_service": "combustion fuel flow",
+        "source_document": "FICT-AIR-FUEL-A",
+        "source_revision": "R1",
+        "equipment_scope": "F-A only",
+        "operating_range_basis": "fictional low/high firing paired flow records",
+        "underlying_claim_verified": false
+      }
+    },
+    {
+      "tag": "FT-AIR-A",
+      "description": "Combustion-air-flow indication for fired unit A",
+      "unit": "F-A",
+      "stream": "AIR-A",
+      "facts": {
+        "record_service": "combustion air flow",
+        "source_document": "FICT-AIR-FUEL-A",
+        "source_revision": "R1",
+        "equipment_scope": "F-A only",
+        "association_claim": "paired with FT-FUEL-A in fictional record",
+        "underlying_claim_verified": false
+      }
+    }
+  ],
+  "controllers": [],
+  "interlocks": [],
+  "final_elements": [],
+  "manual_valves": []
+}

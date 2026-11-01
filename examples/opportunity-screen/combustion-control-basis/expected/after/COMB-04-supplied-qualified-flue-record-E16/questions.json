@@ -1,0 +1,322 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/combustion-control-basis/models/COMB-04-supplied-qualified-flue-record.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E16"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E16@F-A",
+   "question_id": "E16",
+   "family": "energy",
+   "question": "What heat source and combustion service apply to this unit, and what do existing records establish about any applicable air/fuel operating basis?",
+   "about": "F-A",
+   "assets": [
+    {
+     "id": "F-A",
+     "tag": "F-A"
+    },
+    {
+     "id": "AI-A",
+     "tag": "AI-A"
+    },
+    {
+     "id": "stream:FUEL-A",
+     "tag": "FUEL-A"
+    },
+    {
+     "id": "stream:FLUE-A",
+     "tag": "FLUE-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "F-A",
+     "tag": "F-A",
+     "text": "equipment F-A reads \"F-A Fired unit A\"",
+     "field": "units[F-A]"
+    },
+    {
+     "role": "unclassified oxygen or analysis record candidate",
+     "id": "AI-A",
+     "tag": "AI-A",
+     "text": "instrument AI-A reads \"AI-A Represented flue O2/CO analysis record for fired unit A\" at F-A",
+     "field": "instruments[AI-A]"
+    },
+    {
+     "role": "represented fuel, air or flue stream context",
+     "id": "stream:FUEL-A",
+     "tag": "FUEL-A",
+     "text": "stream FUEL-A (asset stream:FUEL-A) reads \"Natural gas fuel A\" at F-A",
+     "field": "streams[FUEL-A]"
+    },
+    {
+     "role": "represented fuel, air or flue stream context",
+     "id": "stream:FLUE-A",
+     "tag": "FLUE-A",
+     "text": "stream FLUE-A (asset stream:FLUE-A) reads \"Flue gas A\"",
+     "field": "streams[FLUE-A]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-A",
+     "tag": "F-A",
+     "text": "F-A fuel_service = \"natural gas\"; present; meaning and suitability unverified",
+     "field": "units[F-A].facts.fuel_service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-A",
+     "tag": "F-A",
+     "text": "F-A operating_basis = \"unknown\"; blank; meaning and suitability unverified",
+     "field": "units[F-A].facts.operating_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AI-A",
+     "tag": "AI-A",
+     "text": "AI-A sample_service = \"flue gas\"; present; meaning and suitability unverified",
+     "field": "instruments[AI-A].facts.sample_service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AI-A",
+     "tag": "AI-A",
+     "text": "AI-A source_document = \"FICT-COMB-A-REPORT\"; present; meaning and suitability unverified",
+     "field": "instruments[AI-A].facts.source_document"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AI-A",
+     "tag": "AI-A",
+     "text": "AI-A source_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "instruments[AI-A].facts.source_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AI-A",
+     "tag": "AI-A",
+     "text": "AI-A equipment_scope = \"F-A only\"; present; meaning and suitability unverified",
+     "field": "instruments[AI-A].facts.equipment_scope"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AI-A",
+     "tag": "AI-A",
+     "text": "AI-A operating_range_basis = \"fictional low/high firing service-record claim\"; present; meaning and suitability unverified",
+     "field": "instruments[AI-A].facts.operating_range_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AI-A",
+     "tag": "AI-A",
+     "text": "AI-A method_basis = \"fictional calibrated portable combustion analysis record\"; present; meaning and suitability unverified",
+     "field": "instruments[AI-A].facts.method_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AI-A",
+     "tag": "AI-A",
+     "text": "AI-A supplied_qualification = \"fictional combustion-review role supplied qualification; authenticity not established\"; present; meaning and suitability unverified",
+     "field": "instruments[AI-A].facts.supplied_qualification"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AI-A",
+     "tag": "AI-A",
+     "text": "AI-A automatic_trim_enabled = false; present; meaning and suitability unverified",
+     "field": "instruments[AI-A].facts.automatic_trim_enabled"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AI-A",
+     "tag": "AI-A",
+     "text": "AI-A current_configuration_status = \"unknown\"; blank; meaning and suitability unverified",
+     "field": "instruments[AI-A].facts.current_configuration_status"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AI-A",
+     "tag": "AI-A",
+     "text": "AI-A underlying_claim_verified = false; present; meaning and suitability unverified",
+     "field": "instruments[AI-A].facts.underlying_claim_verified"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A fuel_service = natural gas",
+     "field": "units[F-A].facts.fuel_service"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing heat-source and combustion-applicability basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: permitted existing equipment/service description, heat-source/fuel and operating records with source/revision, asset scope and responsible owner; establish whether combustion applies before any gas-analysis request"
+     ],
+     "how": "A boiler or heater label and a missing fuel stream do not establish either combustion or non-combustion service. Review the existing source basis first. If the supplied scope is electric or unfired with no relevant burner, acknowledge that scope as not applicable to combustion review; do not impose flue/O2/trim work. Unknown heat/fuel service remains a qualification question, not a quiet completed result.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "fuel_service",
+       "value": "natural gas",
+       "where": "units[F-A].facts.fuel_service"
+      }
+     ]
+    },
+    {
+     "item": "Applicable existing analysis, metering, control and constraint records",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: only where combustion applies: existing tuning, paired air/fuel-flow or flue-analysis records, appropriate calibration/method and representative firing/load basis, current control purpose/configuration/modes and equipment/process constraints",
+      "DCS/PLC configuration: only applicable permitted existing configuration records for the identified unit; this request grants no access, measurement or execution permission"
+     ],
+     "how": "For applicable combustion service, use suitable existing air/fuel metering, flue analysis or both; permanent O2 hardware and new portable analysis are not mandatory. Preserve supplied record scope, false and unknown qualifiers. Product/headspace or foreign oxygen is not this unit’s combustion basis; analysis is not enabled feedback trim. Adequate records or documented non-applicability may settle or defer the job without new collection or a project. Do not prescribe operating settings or adjustment."
+    }
+   ],
+   "decision_rule": "Establish heat source and combustion applicability from qualified existing records before evaluating the operating/control basis. Explicit electric or unfired scope does not create O2/trim work; unknown fuel service is not evidence of non-applicability. Where combustion applies, acknowledge existing analysis/metering and modes, then review unresolved evidence. Adequate coverage may answer or defer the job without a project. This screen neither declares installed control nor tracks completed investigation/work status.",
+   "typical_benefit": {
+    "wording": "S19 Section8.1/Table6 reports historical boiler combustion/excess-air measures, not a guaranteed benefit from adding O2 trim. S27 supports reviewing air/fuel-flow or flue-analysis methods and equipment/process constraints. No quantified benefit is assigned to this records-review question.",
+    "source": [
+     "S19",
+     "S27",
+     "S24"
+    ],
+    "arc": "2.12xx / 2.121x (category only)",
+    "source_titles": [
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S27: DOE Industrial Technologies Program, Process Heating Tip Sheet #2, Check Burner Air to Fuel Ratios (Nov 2007)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "This screen covers represented boilers, fired heaters, furnaces and kilns; steam generators and reactors are outside this route’s current scope. Those exclusions do not establish whether combustion review is useful for excluded equipment. Incomplete fuel records remain reviewable; missing fuel context is not proof of non-combustion service. Supplied qualifications/Booleans are not installed-state or company acceptance. S19 reviewed official ENERGY STAR122-page edition, printed37–39/PDFindices44–46, https://www.energystar.gov/sites/default/files/buildings/tools/ES_Petroleum_Energy_Guide.pdf; byte equality with the OSTI route is unverified. S27 supports alternative methods and conditional operating bases. Historical boiler figures and ARC aggregates do not establish all-fired savings or control deficiencies.",
+   "status": "asked"
+  },
+  {
+   "id": "E16@F-B",
+   "question_id": "E16",
+   "family": "energy",
+   "question": "What heat source and combustion service apply to this unit, and what do existing records establish about any applicable air/fuel operating basis?",
+   "about": "F-B",
+   "assets": [
+    {
+     "id": "F-B",
+     "tag": "F-B"
+    },
+    {
+     "id": "stream:FUEL-B",
+     "tag": "FUEL-B"
+    },
+    {
+     "id": "stream:FLUE-B",
+     "tag": "FLUE-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "equipment F-B reads \"F-B Fired unit B\"",
+     "field": "units[F-B]"
+    },
+    {
+     "role": "represented fuel, air or flue stream context",
+     "id": "stream:FUEL-B",
+     "tag": "FUEL-B",
+     "text": "stream FUEL-B (asset stream:FUEL-B) reads \"Natural gas fuel B\" at F-B",
+     "field": "streams[FUEL-B]"
+    },
+    {
+     "role": "represented fuel, air or flue stream context",
+     "id": "stream:FLUE-B",
+     "tag": "FLUE-B",
+     "text": "stream FLUE-B (asset stream:FLUE-B) reads \"Flue gas B\"",
+     "field": "streams[FLUE-B]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "F-B fuel_service = \"natural gas\"; present; meaning and suitability unverified",
+     "field": "units[F-B].facts.fuel_service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "F-B operating_basis = \"unknown\"; blank; meaning and suitability unverified",
+     "field": "units[F-B].facts.operating_basis"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-B fuel_service = natural gas",
+     "field": "units[F-B].facts.fuel_service"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing heat-source and combustion-applicability basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: permitted existing equipment/service description, heat-source/fuel and operating records with source/revision, asset scope and responsible owner; establish whether combustion applies before any gas-analysis request"
+     ],
+     "how": "A boiler or heater label and a missing fuel stream do not establish either combustion or non-combustion service. Review the existing source basis first. If the supplied scope is electric or unfired with no relevant burner, acknowledge that scope as not applicable to combustion review; do not impose flue/O2/trim work. Unknown heat/fuel service remains a qualification question, not a quiet completed result.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "F-B",
+       "label": "F-B",
+       "name": "fuel_service",
+       "value": "natural gas",
+       "where": "units[F-B].facts.fuel_service"
+      }
+     ]
+    },
+    {
+     "item": "Applicable existing analysis, metering, control and constraint records",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: only where combustion applies: existing tuning, paired air/fuel-flow or flue-analysis records, appropriate calibration/method and representative firing/load basis, current control purpose/configuration/modes and equipment/process constraints",
+      "DCS/PLC configuration: only applicable permitted existing configuration records for the identified unit; this request grants no access, measurement or execution permission"
+     ],
+     "how": "For applicable combustion service, use suitable existing air/fuel metering, flue analysis or both; permanent O2 hardware and new portable analysis are not mandatory. Preserve supplied record scope, false and unknown qualifiers. Product/headspace or foreign oxygen is not this unit’s combustion basis; analysis is not enabled feedback trim. Adequate records or documented non-applicability may settle or defer the job without new collection or a project. Do not prescribe operating settings or adjustment."
+    }
+   ],
+   "decision_rule": "Establish heat source and combustion applicability from qualified existing records before evaluating the operating/control basis. Explicit electric or unfired scope does not create O2/trim work; unknown fuel service is not evidence of non-applicability. Where combustion applies, acknowledge existing analysis/metering and modes, then review unresolved evidence. Adequate coverage may answer or defer the job without a project. This screen neither declares installed control nor tracks completed investigation/work status.",
+   "typical_benefit": {
+    "wording": "S19 Section8.1/Table6 reports historical boiler combustion/excess-air measures, not a guaranteed benefit from adding O2 trim. S27 supports reviewing air/fuel-flow or flue-analysis methods and equipment/process constraints. No quantified benefit is assigned to this records-review question.",
+    "source": [
+     "S19",
+     "S27",
+     "S24"
+    ],
+    "arc": "2.12xx / 2.121x (category only)",
+    "source_titles": [
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S27: DOE Industrial Technologies Program, Process Heating Tip Sheet #2, Check Burner Air to Fuel Ratios (Nov 2007)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "This screen covers represented boilers, fired heaters, furnaces and kilns; steam generators and reactors are outside this route’s current scope. Those exclusions do not establish whether combustion review is useful for excluded equipment. Incomplete fuel records remain reviewable; missing fuel context is not proof of non-combustion service. Supplied qualifications/Booleans are not installed-state or company acceptance. S19 reviewed official ENERGY STAR122-page edition, printed37–39/PDFindices44–46, https://www.energystar.gov/sites/default/files/buildings/tools/ES_Petroleum_Energy_Guide.pdf; byte equality with the OSTI route is unverified. S27 supports alternative methods and conditional operating bases. Historical boiler figures and ARC aggregates do not establish all-fired savings or control deficiencies.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

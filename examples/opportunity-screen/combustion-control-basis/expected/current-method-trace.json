@@ -1,0 +1,166 @@
+{
+  "schema": "combustion-control-basis-method-trace-1",
+  "status": "Prospective candidate acknowledgment choice frozen before candidate calls; not an actual output or permanent source minimum.",
+  "catalog_sha256_raw": "efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258",
+  "rows": [
+    {
+      "case": "COMB-01-no-oxygen-record",
+      "question_id": "E16",
+      "expected_finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ]
+    },
+    {
+      "case": "COMB-01-no-oxygen-record",
+      "question_id": "C5",
+      "expected_finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ]
+    },
+    {
+      "case": "COMB-02-product-headspace-oxygen",
+      "question_id": "E16",
+      "expected_finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ]
+    },
+    {
+      "case": "COMB-02-product-headspace-oxygen",
+      "question_id": "C5",
+      "expected_finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ]
+    },
+    {
+      "case": "COMB-03-foreign-flue-oxygen",
+      "question_id": "E16",
+      "expected_finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ]
+    },
+    {
+      "case": "COMB-03-foreign-flue-oxygen",
+      "question_id": "C5",
+      "expected_finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ]
+    },
+    {
+      "case": "COMB-04-supplied-qualified-flue-record",
+      "question_id": "E16",
+      "expected_finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ]
+    },
+    {
+      "case": "COMB-04-supplied-qualified-flue-record",
+      "question_id": "C5",
+      "expected_finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ]
+    },
+    {
+      "case": "COMB-05-air-fuel-metering-record",
+      "question_id": "E16",
+      "expected_finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ]
+    },
+    {
+      "case": "COMB-05-air-fuel-metering-record",
+      "question_id": "C5",
+      "expected_finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ]
+    },
+    {
+      "case": "COMB-06-drum-boiler-versus-dry-furnace",
+      "question_id": "E16",
+      "expected_finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ]
+    },
+    {
+      "case": "COMB-06-drum-boiler-versus-dry-furnace",
+      "question_id": "C5",
+      "expected_finding_ids": [
+        "C5@F-A"
+      ]
+    },
+    {
+      "case": "COMB-S01-hot-water-boiler",
+      "question_id": "E16",
+      "expected_finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ]
+    },
+    {
+      "case": "COMB-S01-hot-water-boiler",
+      "question_id": "C5",
+      "expected_finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ]
+    },
+    {
+      "case": "COMB-S02-once-through-steam-generator",
+      "question_id": "E16",
+      "expected_finding_ids": [
+        "E16@F-B"
+      ]
+    },
+    {
+      "case": "COMB-S02-once-through-steam-generator",
+      "question_id": "C5",
+      "expected_finding_ids": [
+        "C5@F-B"
+      ]
+    },
+    {
+      "case": "COMB-S03-unfired-services",
+      "question_id": "E16",
+      "expected_finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ]
+    },
+    {
+      "case": "COMB-S03-unfired-services",
+      "question_id": "C5",
+      "expected_finding_ids": [
+        "C5@F-A",
+        "C5@F-B"
+      ]
+    },
+    {
+      "case": "COMB-S04-unknown-fuel-basis",
+      "question_id": "E16",
+      "expected_finding_ids": [
+        "E16@F-A",
+        "E16@F-B"
+      ]
+    },
+    {
+      "case": "COMB-S04-unknown-fuel-basis",
+      "question_id": "C5",
+      "expected_finding_ids": [
+        "C5@F-A"
+      ]
+    }
+  ],
+  "role": "Audit-only trace; permanent tests read source minimum/allowed bounds, not this exact19/17 choice.",
+  "prior_candidate_trace_catalog_sha256_raw": "81e4af4801480852e36767a4a40d44d85a25215c0aa3a33d1f388080e4058e91",
+  "qualification": "Current core19/17 acknowledgment choice remains unchanged after declared-role correction; prospective, not produced or a permanent minimum. Eight selector controls are separately exposed."
+}

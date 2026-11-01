@@ -1,0 +1,63 @@
+{
+  "evidence_class": "fictional-exposed-development",
+  "groups": [
+    {
+      "models": 6,
+      "when": "Initial paired cases before original baseline"
+    },
+    {
+      "models": 2,
+      "when": "Hot-water/once-through applicability additions before original baseline"
+    },
+    {
+      "models": 1,
+      "when": "Explicit electric/unfired scope after original16 calls, before candidate"
+    },
+    {
+      "models": 1,
+      "when": "Unknown fuel basis after original18 calls, before candidate"
+    }
+  ],
+  "models": 10,
+  "original_intended_baseline_calls": 20,
+  "caller_failures_separate": "One erroneous --model CLI exit2/no reports and one zero-child guard stop preserved privately; neither is a model trial.",
+  "not_claimed": [
+    "10 independent plants",
+    "model accuracy/generalization benchmark",
+    "timed engineer usefulness",
+    "installed control/function acceptance",
+    "company approval or permission for field work"
+  ],
+  "original_baseline_handoff_sha256_raw": "d0b2dec51ed86182b7c1a0412ad312c39e4840ac971880ca180802a5707c4a37",
+  "candidate_outputs": "All40 actual candidate reports and40 actual original reports are retained as exact raw copies, with no reruns or rewrites. The expectations and197 conditional input literals preceded candidate calls; report counts are software observations, not engineering acceptance.",
+  "selector_controls": {
+    "models": 8,
+    "when": "Post-static candidate boundary review, before selector calls",
+    "separate_from_core10": true,
+    "not_new_plants_or_blind_cases": true,
+    "not_in_core_run_counts": true,
+    "result_scope": "Separate eight-vector role/spelling controls; not additional paired models or part of the20 original/20 candidate core-call counts. Their validation is recorded separately."
+  },
+  "historical_model_metadata": "Preparation-time meta.exposure statements, including oracle-pending text, remain unchanged as historical authored records. Current oracle/method status belongs to the expected files and separately recorded validation, not a rewrite of those models.",
+  "reader_roles": "The reusable question engine accepts the documented own-model contract. This packet is a fictional tutorial and exposed development contribution; its10 paired-subject models and8 separate selector controls are not independent plants or held-out evaluation.",
+  "retained_runs": {
+    "provenance": "history/PROVENANCE.json",
+    "original": {
+      "calls": 20,
+      "reports": 40,
+      "path": "history/before/",
+      "chronology": "Original16 calls on initial6+2 models, then2 calls on S03 and2 intended calls on S04; earlier caller failures remain separately qualified."
+    },
+    "candidate": {
+      "calls": 20,
+      "reports": 40,
+      "path": "expected/after/",
+      "finding_totals": {
+        "E16": 19,
+        "C5": 17
+      },
+      "scope": "Same10 paired-subject models; chosen acknowledgement behavior, not a mandate to keep every investigation open."
+    },
+    "raw_retention": "JSON and Markdown bytes copied exactly from saved actual outputs. Portable replay instructions in provenance are labelled separately from original argv."
+  }
+}
