@@ -403,7 +403,16 @@
     "examples/opportunity-screen/function-basis/expected/after/E30-S02-indicator-not-initiation/questions.json",
     "examples/opportunity-screen/function-basis/expected/after/E30-S02-indicator-not-initiation/screen.md",
     "examples/opportunity-screen/function-basis/expected/after/C11-02-exhaust-indication-only/questions.json",
-    "examples/opportunity-screen/function-basis/expected/after/C11-02-exhaust-indication-only/screen.md"
+    "examples/opportunity-screen/function-basis/expected/after/C11-02-exhaust-indication-only/screen.md",
+    "examples/opportunity-screen/function-basis/expected/heating-cases.json",
+    "examples/opportunity-screen/function-basis/expected/heating-literal-supplement.json",
+    "examples/opportunity-screen/function-basis/expected/heating-after/E31-03-disabled-A/questions.json",
+    "examples/opportunity-screen/function-basis/expected/heating-after/E31-03-disabled-A/screen.md",
+    "examples/opportunity-screen/function-basis/expected/heating-after/H6-04-shared-unqualified-timing/questions.json",
+    "examples/opportunity-screen/function-basis/expected/heating-after/H6-04-shared-unqualified-timing/screen.md",
+    "examples/opportunity-screen/function-basis/expected/heating-after/E32-03-flue-analyser-unqualified/questions.json",
+    "examples/opportunity-screen/function-basis/expected/heating-after/E32-03-flue-analyser-unqualified/screen.md",
+    "examples/opportunity-screen/function-basis/role-controls/cases.json"
    ],
    "tests": [
     "scripts/test_question_engine.py"

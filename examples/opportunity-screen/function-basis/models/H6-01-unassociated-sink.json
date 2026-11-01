@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "model_id": "H6-01-unassociated-sink",
+    "title": "ILLUSTRATIVE source-informed exhaust recovery development case",
+    "illustrative": true
+  },
+  "units": [
+    {
+      "id": "D-A",
+      "name": "Product dryer A",
+      "type": "dryer",
+      "facts": {
+        "exhaust_temperature_C": 130,
+        "exhaust_flow_basis": "unknown",
+        "operating_period": "unknown",
+        "contaminants": "unknown"
+      }
+    },
+    {
+      "id": "D-B",
+      "name": "Product dryer B",
+      "type": "dryer"
+    },
+    {
+      "id": "W-1",
+      "name": "Facility wash hot water",
+      "type": "water_heater",
+      "facts": {
+        "required_temperature_C": 60,
+        "duty_basis": "unknown",
+        "coincident_demand": "unknown"
+      }
+    }
+  ],
+  "streams": [
+    {
+      "id": "EX-A",
+      "name": "Dryer A exhaust",
+      "from": "D-A",
+      "to": "ATM"
+    },
+    {
+      "id": "EX-B",
+      "name": "Dryer B exhaust",
+      "from": "D-B",
+      "to": "ATM"
+    }
+  ],
+  "instruments": [],
+  "controllers": [],
+  "interlocks": [],
+  "final_elements": [],
+  "manual_valves": []
+}

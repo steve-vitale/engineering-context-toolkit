@@ -1,0 +1,65 @@
+{
+  "meta": {
+    "model_id": "typed-helper-vs-process",
+    "illustrative": true,
+    "purpose": "Authored prospective role-filter control, not source/plant data or a model benchmark"
+  },
+  "units": [
+    {
+      "id": "D-A",
+      "name": "Product dryer with heat recovery",
+      "type": "dryer"
+    },
+    {
+      "id": "HX-A",
+      "name": "Fryer exhaust vapour condenser (heat recovery)",
+      "type": "heat_exchanger"
+    },
+    {
+      "id": "HX-U",
+      "name": "Unrelated oven heat recovery exchanger",
+      "type": "Heat-Exchanger"
+    },
+    {
+      "id": "U-P",
+      "name": "Wash pump",
+      "type": "pump"
+    },
+    {
+      "id": "W-1",
+      "name": "Facility hot water",
+      "type": "water_heater"
+    }
+  ],
+  "streams": [
+    {
+      "id": "EX-A",
+      "name": "Dryer exhaust",
+      "from": "D-A",
+      "to": "HX-A"
+    },
+    {
+      "id": "WASH",
+      "name": "Separate wash service",
+      "from": "U-P",
+      "to": "HX-U"
+    }
+  ],
+  "instruments": [
+    {
+      "tag": "F-A",
+      "unit": "D-A",
+      "variable": "flow",
+      "description": "Natural gas burner fuel supply; actual basis unknown"
+    },
+    {
+      "tag": "F-H",
+      "unit": "HX-A",
+      "variable": "flow",
+      "description": "Natural gas burner fuel supply; actual basis unknown"
+    }
+  ],
+  "controllers": [],
+  "final_elements": [],
+  "manual_valves": []
+}

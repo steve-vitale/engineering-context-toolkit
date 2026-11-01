@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "model_id": "E32-03-flue-analyser-unqualified",
+    "title": "Fictional E32 source-adequacy development control",
+    "illustrative": true,
+    "source": "Authored synthetic Native fixture; no source drawing, plant record or measurement. Frozen before any baseline call."
+  },
+  "units": [
+    {
+      "id": "O-A",
+      "name": "Batch product oven A",
+      "type": "oven"
+    }
+  ],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "F-A",
+      "unit": "O-A",
+      "variable": "flow",
+      "description": "Natural gas burner fuel supply; installed ratio and operating basis unknown"
+    },
+    {
+      "tag": "O2-A",
+      "unit": "O-A",
+      "variable": "composition",
+      "description": "Flue oxygen analyser candidate; as-operated suitability unresolved",
+      "facts": {
+        "enabled": false,
+        "calibration_current": "unknown",
+        "last_verified_load_basis": "unknown",
+        "reported_oxygen_percent": 0
+      }
+    }
+  ],
+  "final_elements": [],
+  "manual_valves": [],
+  "controllers": []
+}

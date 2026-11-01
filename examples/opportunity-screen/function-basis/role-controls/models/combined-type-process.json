@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "model_id": "combined-type-process",
+    "illustrative": true,
+    "purpose": "Authored prospective role-filter control, not source/plant data or a model benchmark"
+  },
+  "units": [
+    {
+      "id": "D-A",
+      "name": "Product dryer with heat recovery",
+      "type": "dryer_with_heat_recovery"
+    },
+    {
+      "id": "W-1",
+      "name": "Facility hot water",
+      "type": "water_heater"
+    }
+  ],
+  "streams": [
+    {
+      "id": "EX-A",
+      "name": "Dryer exhaust",
+      "from": "D-A",
+      "to": "ATM"
+    }
+  ],
+  "instruments": [
+    {
+      "tag": "F-A",
+      "unit": "D-A",
+      "variable": "flow",
+      "description": "Natural gas burner fuel supply; actual basis unknown"
+    }
+  ],
+  "controllers": [],
+  "final_elements": [],
+  "manual_valves": []
+}

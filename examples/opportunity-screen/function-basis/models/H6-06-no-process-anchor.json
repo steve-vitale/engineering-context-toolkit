@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "model_id": "H6-06-no-process-anchor",
+    "title": "ILLUSTRATIVE source-informed exhaust recovery development case",
+    "illustrative": true
+  },
+  "units": [
+    {
+      "id": "AD-A",
+      "name": "Refrigerated compressed air dryer A",
+      "type": "dryer"
+    },
+    {
+      "id": "AD-B",
+      "name": "Instrument air desiccant dryer B",
+      "type": "dryer"
+    },
+    {
+      "id": "W-1",
+      "name": "Facility wash hot water",
+      "type": "water_heater",
+      "facts": {
+        "required_temperature_C": 60,
+        "duty_basis": "unknown",
+        "coincident_demand": "unknown"
+      }
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "controllers": [],
+  "interlocks": [],
+  "final_elements": [],
+  "manual_valves": []
+}

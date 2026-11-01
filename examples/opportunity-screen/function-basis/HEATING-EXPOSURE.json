@@ -1,0 +1,87 @@
+{
+  "schema": "function-basis-heating-exposure-1",
+  "existing_cases": 25,
+  "new_cases": 18,
+  "total_authored_inputs": 43,
+  "new_source_documents": 0,
+  "source_routes": [
+    "S25",
+    "S26",
+    "S27",
+    "S28"
+  ],
+  "chronology": [
+    {
+      "group": "Original25",
+      "scope": "21initialsource-preregistered+4explicitpost-observationE30controls; unchanged history and expected/cases.json."
+    },
+    {
+      "group": "E31/H6 twelve",
+      "scope": "Author source-text/staticcatalog expectations frozen62d1 before12baseline calls; rootindependently accepted expandedjob/minimum+quiet policy."
+    },
+    {
+      "group": "E32 six",
+      "scope": "Independentauthor source-text/staticcatalog expectations andfuel-pairing frozen before6baseline calls; case06quiet precedence clarified beforecalls."
+    },
+    {
+      "group": "Portableheatingprojection",
+      "scope": "Preparedafter18baseline observations; no newcandidatecall beforepackagingfreeze. Allinputs/criteria exposeddevelopment,not blind/heldout."
+    },
+    {
+      "group": "Ten supplemental E32 literal controls",
+      "scope": "After baseline observations, before any candidate call: independently frozen literal values/states/locators/subject scope. Portable supplement is an unchanged copy of those controls, not a newly fitted oracle."
+    }
+  ],
+  "literal_counts": {
+    "original_exhaust_source_literals": 73,
+    "original_E32_literals": 4,
+    "original_contract_inputs": 77,
+    "additional_E32_display_controls": 10,
+    "combined_input_literals": 87,
+    "unshown_unrelated_or_no_anchor_inputs": 4,
+    "active_source_literals": 83,
+    "scope_expanded_subject_rows_if_working_A_shown": 108,
+    "not_independent_observations": true
+  },
+  "limits": "43 authoredinputs are not43plants, independentoriginals or modelaccuracytrials. Source-supported methods and authored collectionpolicy are distinct. No timed engineer/recipient acceptance, companytenant permission,installedfunction,safetyfinding,savings or viableproject established.",
+  "literal_supplement": "expected/heating-literal-supplement.json",
+  "original_cohort_snapshot": {
+    "files": 45,
+    "git_revision": "037c5235429172e5a4df4e7e4f5e8a695d8ac869",
+    "snapshot_preserved": true,
+    "current_original_files_raw_exact": 44,
+    "intentional_replacements": [
+      "README.md"
+    ],
+    "policy": "Original models,oracles,before/after reports and source records remain byte-identical. The current two-cohort guide intentionally replaces the original README; do not claim all45current files are raw-identical."
+  },
+  "core_input_scope": "Original 25 function-basis inputs plus 18 heating inputs; the three separately documented post-food-failure role-control inputs are additional.",
+  "initial_candidate_receiving": {
+    "candidate_calls": 18,
+    "exit0": 18,
+    "complete_reports": 36,
+    "findings": 24,
+    "minimum_subjects": 22,
+    "optional_working_coverage_A_shown": 2,
+    "quiet_cases": 4,
+    "typed_field_rows": 108,
+    "representative_after_files_copied_from_same_calls": 6,
+    "no_extra_representative_calls": true,
+    "independent_receiving_sha256": "f57c712ce7322abcaf4a1cb82a9765fba92517989bca3b152c6a407d4f82e077",
+    "scope": "Finite software controls on exposed authored inputs, not plant truth, project feasibility, new source families or measured engineer usefulness.",
+    "method_scope": "Initial engine 713d6d and catalog 9eb4d3, before the integrated food role-filter failure; retained historical evidence."
+  },
+  "role_filter_successor": {
+    "engine_sha256": "5d588da99ccf0a1256b8aad7ab74da7a5d697d7e09be8d63075cd3df06b8ae24",
+    "catalog_sha256": "efed5d4eb9b0c4c89b615a4856b6d6621e9309013c3de203ba14ccdf45f3f242",
+    "core_heating_calls": 18,
+    "whole_core_reports_raw_unchanged": 36,
+    "typed_scoped_literal_rows": 108,
+    "post_food_failure_matcher_vectors": 26,
+    "additional_native_role_inputs": 3,
+    "focused_test_methods_passed": 4,
+    "controls": "role-controls/cases.json",
+    "independent_actual_receiving_sha256": "9c6b3045c3abee26172c108c0d9f64dc374963b3b22fdc95cb6b95e1c7ca0547",
+    "scope": "Exposed development controls; the original 31-versus-29 food failure and qualified aggregate-wrapper failure remain recorded in the journal. No new plant, source-family, model-accuracy or human-usefulness result."
+  }
+}

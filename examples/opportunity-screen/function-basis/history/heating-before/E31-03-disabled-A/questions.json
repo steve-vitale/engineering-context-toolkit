@@ -1,0 +1,113 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "E31-03-disabled-A.json",
+ "catalog": "questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E31"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "energy": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E31@D-B",
+   "question_id": "E31",
+   "family": "energy",
+   "question": "Does this oven, dryer or fryer send its hot exhaust to atmosphere with no heat recovery on it?",
+   "about": "D-B",
+   "assets": [
+    {
+     "id": "D-B",
+     "tag": "D-B"
+    },
+    {
+     "id": "stream:EX-B",
+     "tag": "EX-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "D-B",
+     "tag": "D-B",
+     "text": "equipment D-B reads \"D-B Product dryer B\"",
+     "field": "units[D-B]"
+    },
+    {
+     "role": "exhaust",
+     "id": "stream:EX-B",
+     "tag": "EX-B",
+     "text": "stream EX-B (asset stream:EX-B) reads \"Dryer B exhaust\"",
+     "field": "streams[EX-B]"
+    },
+    {
+     "role": "checked, none found",
+     "text": "no heat recovery exchanger, recuperator, run-around coil or exhaust recirculation on this unit or on a stream drawn from it",
+     "field": "applies_when.without"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Exhaust temperature and flow",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: thermometer and a pitot or anemometer traverse in the exhaust duct, at normal production"
+     ],
+     "how": "Record both at normal production; heat on offer = mass flow x specific heat x (exhaust temperature minus the temperature it could be cooled to)."
+    },
+    {
+     "item": "Exhaust moisture and contaminants",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: humidity or dew point probe in the exhaust; note fat, flour, sugar or product dust",
+      "maintenance records: duct and stack cleaning history"
+     ],
+     "how": "Moist exhaust carries latent heat but condenses; fat and dust foul exchangers unless filtered or washed."
+    },
+    {
+     "item": "Fuel or heat input and operating hours",
+     "state": "not_on_drawing",
+     "where": [
+      "utility bills or the site energy report: gas sub-meter readings for this line",
+      "site records: production schedule: hours per week the line runs"
+     ],
+     "how": "A month of input at a known production rate."
+    },
+    {
+     "item": "Where the heat could go in the unit itself",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: inlet (drying or combustion) air temperature and flow",
+      "a walkdown: room next to the unit for ductwork or a run-around coil"
+     ],
+     "how": "Preheating the unit's own inlet air comes first; H6 asks about users elsewhere."
+    }
+   ],
+   "decision_rule": "Worth a study when the exhaust leaves hot, the line runs long hours, and the exhaust is clean enough or can be filtered or washed. Close it for short or intermittent runs, or when there is no room for the ductwork.",
+   "typical_benefit": {
+    "wording": "Dryers (S26, p. 104): \"A simple form of heat recovery in retrofit applications is to utilize the exhaust air of a dryer to preheat the inlet air stream, thereby saving energy.\" Spray dryers (S25, p. 90): \"It is estimated that up to 30% of the heat from the dryer exhaust can be recovered.\" Fryers (S26, p. 107): \"Conditioning of the exhaust gas is required, however, to remove fats and to reduce fouling of the heat exchange system.\" No source in this set gives a figure for ovens.",
+    "source": [
+     "S26",
+     "S25"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S26: Masanet, Worrell, Graus and Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for the Fruit and Vegetable Processing Industry: An ENERGY STAR Guide for Energy and Plant Managers (LBNL-59289-Revision, Mar 2008)",
+     "S25: Brush, Masanet and Worrell, Energy Efficiency Improvement and Cost Saving Opportunities for the Dairy Processing Industry: An ENERGY STAR Guide for Energy and Plant Managers (LBNL-6261E, Oct 2011)"
+    ]
+   },
+   "limits": "S26 (p. 104) notes that recirculating saturated exhaust can raise the inlet humidity and cut drying capacity. A heat recovery item on the unit, or at the other end of a stream drawn from it, quiets the question; recovery drawn elsewhere does not. Ovens and dryers that drive off solvents, or carry combustible dust, need a safety review before any exhaust change.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

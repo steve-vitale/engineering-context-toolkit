@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "model_id": "E31-04-shared-partial",
+    "title": "ILLUSTRATIVE source-informed exhaust recovery development case",
+    "illustrative": true
+  },
+  "units": [
+    {
+      "id": "D-A",
+      "name": "Product dryer A",
+      "type": "dryer"
+    },
+    {
+      "id": "D-B",
+      "name": "Product dryer B",
+      "type": "dryer"
+    },
+    {
+      "id": "HX-S",
+      "name": "Exhaust heat recovery exchanger",
+      "type": "heat_exchanger",
+      "facts": {
+        "enabled": true,
+        "source_revision": "B",
+        "coverage_claim": {
+          "D-A": "partial",
+          "D-B": "unknown"
+        },
+        "residual_exhaust": "unknown",
+        "observed_duty": "unknown",
+        "cleaning_basis": "unknown"
+      }
+    }
+  ],
+  "streams": [
+    {
+      "id": "EX-A",
+      "name": "Dryer A exhaust",
+      "from": "D-A",
+      "to": "HX-S"
+    },
+    {
+      "id": "EX-B",
+      "name": "Dryer B exhaust",
+      "from": "D-B",
+      "to": "HX-S"
+    },
+    {
+      "id": "OUT-HX-S",
+      "name": "Conditioned exhaust discharge",
+      "from": "HX-S",
+      "to": "ATM"
+    }
+  ],
+  "instruments": [],
+  "controllers": [],
+  "interlocks": [],
+  "final_elements": [],
+  "manual_valves": []
+}

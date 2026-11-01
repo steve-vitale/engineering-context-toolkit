@@ -1,0 +1,25 @@
+{
+  "meta": {
+    "model_id": "E31-06-no-process-anchor",
+    "title": "ILLUSTRATIVE source-informed exhaust recovery development case",
+    "illustrative": true
+  },
+  "units": [
+    {
+      "id": "AD-A",
+      "name": "Refrigerated compressed air dryer A",
+      "type": "dryer"
+    },
+    {
+      "id": "AD-B",
+      "name": "Instrument air desiccant dryer B",
+      "type": "dryer"
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "controllers": [],
+  "interlocks": [],
+  "final_elements": [],
+  "manual_valves": []
+}

@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "model_id": "E32-05-drying-air-and-two-subjects",
+    "title": "Fictional E32 source-adequacy development control",
+    "illustrative": true,
+    "source": "Authored synthetic Native fixture; no source drawing, plant record or measurement. Frozen before any baseline call."
+  },
+  "units": [
+    {
+      "id": "D-A",
+      "name": "Direct-fired product dryer A",
+      "type": "dryer"
+    },
+    {
+      "id": "D-B",
+      "name": "Direct-fired product dryer B",
+      "type": "dryer"
+    }
+  ],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "F-A",
+      "unit": "D-A",
+      "variable": "flow",
+      "description": "Natural gas burner fuel supply; installed ratio and operating basis unknown"
+    },
+    {
+      "tag": "F-B",
+      "unit": "D-B",
+      "variable": "flow",
+      "description": "Natural gas burner fuel supply; installed ratio and operating basis unknown"
+    },
+    {
+      "tag": "O2-A",
+      "unit": "D-A",
+      "variable": "composition",
+      "description": "Flue oxygen analyser candidate for dryer A only"
+    },
+    {
+      "tag": "EX-A",
+      "unit": "D-A",
+      "variable": "composition",
+      "description": "Drying exhaust and dilution-air basis record candidate",
+      "facts": {
+        "minimum_process_air_basis": "manufacturer record unverified",
+        "solvent_service": "unknown",
+        "LEL_basis": "unknown"
+      }
+    }
+  ],
+  "final_elements": [],
+  "manual_valves": [],
+  "controllers": []
+}

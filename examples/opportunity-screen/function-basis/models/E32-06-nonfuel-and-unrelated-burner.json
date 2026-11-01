@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "model_id": "E32-06-nonfuel-and-unrelated-burner",
+    "title": "Fictional E32 source-adequacy development control",
+    "illustrative": true,
+    "source": "Authored synthetic Native fixture; no source drawing, plant record or measurement. Frozen before any baseline call."
+  },
+  "units": [
+    {
+      "id": "ST-A",
+      "name": "Steam dryer A",
+      "type": "dryer"
+    },
+    {
+      "id": "AIR-A",
+      "name": "Compressed air dryer A",
+      "type": "air dryer"
+    },
+    {
+      "id": "EL-A",
+      "name": "Electric product oven A",
+      "type": "oven"
+    },
+    {
+      "id": "U-X",
+      "name": "Utility burner test rack",
+      "type": "utility"
+    }
+  ],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "F-X",
+      "unit": "U-X",
+      "variable": "flow",
+      "description": "Natural gas burner fuel supply; installed ratio and operating basis unknown"
+    }
+  ],
+  "final_elements": [],
+  "manual_valves": [],
+  "controllers": []
+}

@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "model_id": "E31-05-ductspace-and-unrelated",
+    "title": "ILLUSTRATIVE source-informed exhaust recovery development case",
+    "illustrative": true
+  },
+  "units": [
+    {
+      "id": "D-A",
+      "name": "Product dryer A",
+      "type": "dryer",
+      "facts": {
+        "direct_duct_space": false,
+        "runaround_assessment": "unknown",
+        "exhaust_moisture": "unknown",
+        "contaminants": "product dust"
+      }
+    },
+    {
+      "id": "D-B",
+      "name": "Product dryer B",
+      "type": "dryer"
+    },
+    {
+      "id": "P-U",
+      "name": "Wash circulation pump",
+      "type": "pump"
+    },
+    {
+      "id": "HX-U",
+      "name": "Heat recovery on unrelated wash service",
+      "type": "heat_exchanger",
+      "facts": {
+        "enabled": true
+      }
+    }
+  ],
+  "streams": [
+    {
+      "id": "EX-A",
+      "name": "Dryer A exhaust",
+      "from": "D-A",
+      "to": "ATM"
+    },
+    {
+      "id": "EX-B",
+      "name": "Dryer B exhaust",
+      "from": "D-B",
+      "to": "ATM"
+    },
+    {
+      "id": "U-1",
+      "name": "Wash service",
+      "from": "P-U",
+      "to": "HX-U"
+    }
+  ],
+  "instruments": [],
+  "controllers": [],
+  "interlocks": [],
+  "final_elements": [],
+  "manual_valves": []
+}
