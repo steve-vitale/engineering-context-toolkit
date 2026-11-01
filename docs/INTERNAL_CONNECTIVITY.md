@@ -190,9 +190,10 @@ released engineering finding. Missing access remains missing evidence; a central
 
 See the [four owned packets](../examples/team-context/README.md) and
 [context lifecycle](CONTEXT_LIFECYCLE.md). The local register has no concurrent-write protection; do not put
-every department into one shared writable JSON file. The MCP starter serves one selected packet, has no company
-authentication and does not route user permissions across team scopes. Its limits are **32 MiB per graph/context
-input and 2 MiB per serialized result**. They are bounds, not proof of large-team capacity. Moving it to a VM
+every department into one shared writable JSON file. The MCP starter serves explicitly selected startup packets,
+has no company authentication and does not route user permissions across team scopes. Its limits are **32 MiB per
+selected knowledge/graph/context input and 2 MiB per serialized result**. They are bounds, not proof of large-team
+capacity. Moving it to a VM
 or container does not supply authorization, high availability, release management or live refresh.
 
 ## MCP implementation reference for IT/OT
@@ -238,14 +239,14 @@ promising an internal-only service will work with a cloud-hosted client; do not 
 as a workaround. Verify tools, resource handling and end-user authorization in the actual published Copilot
 channel, not only a developer test client. No such end-to-end Copilot test has been performed here.
 
-An IT developer can first run the [snapshot starter](../examples/internal-mcp/README.md) over the public example
-or a cleared graph packet with the pinned MCP SDK and a test client. It exposes nine bounded tools for snapshot
-identity, asset/stream search and readback, typed relations, existing questions, and complete answer/ownership
-history from an explicitly selected, hash-bound context sidecar, plus a summary resource. It reads the
-selected files once; sources are returned as references and are not fetched. Graph-only use explicitly reports
-that complete context is unavailable. A new source revision needs a preserved-register refresh, explicit review
-and [snapshot restart/readback](CONTEXT_LIFECYCLE.md#maintain-one-local-packet-between-reviews). Its local transport tests are
-separate from the default Copilot-only reader path and a company shared deployment.
+An IT developer can first run the [snapshot starter](../examples/internal-mcp/README.md) with the pinned MCP SDK
+and a test client. Graph/context mode retains nine tools and a summary resource. The
+[knowledge-only onboarding example](../examples/engineering-onboarding/README.md) adds three read-only tools for
+a landing map, metadata lookup and complete sourced records/workflow templates; it needs no asset model and can
+share the same entry point with graph/context. Captured text is returned only when supplied in the selected packet,
+not fetched from an original. All selected files are held at startup; a revised packet needs review and explicit
+restart/readback. The graph/context [refresh lifecycle](CONTEXT_LIFECYCLE.md#maintain-one-local-packet-between-reviews)
+stays separate. None of these local checks supplies a shared company service or a validated Copilot tenant.
 
 Future source-document and process-data connectors could add `search_sources`, `get_source` and
 `get_history_window`; those operations are not implemented. They should return source identity, revision or

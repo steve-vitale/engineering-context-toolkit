@@ -74,8 +74,8 @@ accepted decisions and ownership; a role label, completed brief or captured acco
 |---|---|---|
 | Manual or approved Copilot with selected documents | Brief, source index, review and handoff pattern. | People check citations and use the existing review process. |
 | Local graph/context packet | Authored questions, supplied answers, source pins, explicit refresh and history for supported engineering models. | Selected local files, without concurrent editing or a general document/workflow catalogue. |
-| Selected read-only snapshot MCP | Selected graph and optional bound context/history. | No arbitrary document fetching, generic knowledge search, team routing, company SSO or per-user source permissions. |
-| General onboarding packet and shared front door | **Proposed; not implemented or accepted here.** | No runnable setup or company deployment claimed. |
+| Selected read-only snapshot MCP | [Knowledge/workflow packet](../examples/engineering-onboarding/README.md), also readable with the standard library, and/or existing graph with optional bound context/history. | Metadata lookup and complete records; no full-text search, source fetching, workflow execution or per-user permissions. |
+| Company shared front door | **Proposed company integration.** | Identity/ACLs, permission-preserving routing, release and service operations are not supplied by this scaffold. |
 
 Workflow starters are documents, not an execution engine. Interview ingestion, personal-data clearance and
 automatic source-authority decisions are not provided. Choose the client with IT:

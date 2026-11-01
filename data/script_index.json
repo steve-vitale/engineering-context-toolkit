@@ -11,6 +11,7 @@
   "scripts/source_support.py": {"kind": "support", "guide": "benchmarks/README.md"},
   "scripts/benchmark.py": {"kind": "tool", "guide": "CONTRIBUTING.md"},
   "scripts/description_workflow.py": {"kind": "tool", "guide": "examples/from-description/README.md"},
+  "scripts/knowledge_snapshot.py": {"kind": "tool", "guide": "examples/engineering-onboarding/README.md"},
   "scripts/serve_snapshot.py": {"kind": "tool", "guide": "examples/internal-mcp/README.md"},
   "scripts/check_snapshot_mcp.py": {"kind": "check", "guide": "examples/internal-mcp/README.md"},
   "scripts/run_extraction.py": {"kind": "tool", "guide": "examples/own-drawing/README.md"},

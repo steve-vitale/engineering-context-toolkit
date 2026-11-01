@@ -63,11 +63,12 @@ keeps a complete policy-filtered packet beside the Native interpretation; captur
 
 ## From a first assignment to shared engineering context
 
-The intended next step is one approved entry point to the knowledge and workflows a person may use. The current
-[MCP starter](examples/internal-mcp/README.md) reads a selected engineering snapshot; a general onboarding
-knowledge/workflow catalogue and shared company access service are not implemented. Existing company systems
-retain source authority, permissions, accepted decisions and continuing ownership. See the
-[lifecycle](docs/CONTEXT_LIFECYCLE.md) and [example series](docs/README.md#engineering-work-examples).
+The [onboarding packet](examples/engineering-onboarding/README.md) gives engineers a selected landing map,
+source-qualified records and starter workflows, without an asset model. Its three read-only tools can share
+the [MCP entry point](examples/internal-mcp/README.md) with existing graph/context tools. This is a local snapshot
+scaffold; shared company access and permissions remain integration work. Existing company systems retain
+source authority, accepted decisions and continuing ownership. See the [lifecycle](docs/CONTEXT_LIFECYCLE.md)
+and [example series](docs/README.md#engineering-work-examples).
 
 ## Status
 

@@ -8,8 +8,8 @@ their original evidence remain in the journal and attempt ledger.
 source-backed question and a packet another engineer can reconstruct. This is a foundation for maintained
 engineering context; it is not a turnkey digital twin, process audit or company governance service.
 
-The [script registry](SCRIPTS.md) classifies 134 scripts: 32 tools, 12 checks, 14 support modules and 76 research
-scripts; tests are separate. Twenty-one [feature groups](FEATURES.md) have bounded example evidence. A reviewed
+The [script registry](SCRIPTS.md) classifies 135 scripts: 33 tools, 12 checks, 14 support modules and 76 research
+scripts; tests are separate. Twenty-two [feature groups](FEATURES.md) have bounded example evidence. A reviewed
 example does not certify every input, current implementation or engineering conclusion.
 
 ## Known defects
@@ -98,7 +98,7 @@ The [workflow map](WORKFLOWS.md) owns exact format contracts; [FEATURES.md](FEAT
 | Loop audit and vendor evaluation | Compare supplied loop truth or saved drawing answers with bounded scorers. | No installed safeguard/wiring acceptance or measured review-time result. |
 | Historian CSV and impact tools | Analyze supplied observations and calculate from supplied measurements/constants. | Qualified baseline, quality/time metadata, causal evidence and live connectors remain separate. |
 | Question engine | Catalog screens produce investigations and collection requests; source-scoped recipes retain known answers. | No arbitrary natural-language diagnosis or broad usefulness/coverage benchmark. |
-| Context register and snapshot MCP | Preserve supplied answers/history, explicitly refresh dependencies and retrieve selected snapshots. | No source watcher, shared authority/authentication, live process connector or accepted Copilot tenant. |
+| Context register and snapshot MCP | Preserve supplied answers/history and explicitly refresh graph/context dependencies; [read a selected knowledge/workflow packet](../examples/engineering-onboarding/README.md) without an asset model. | Supplied-basis agreement does not establish engineering correctness or permission. No source watcher, full-text/source fetching, workflow execution, shared authentication, live process connector or accepted Copilot tenant. |
 | Checks, matrix and task/model benchmarks | Reproduce claims/results and exercise selected workflows with failures visible. | Four task adapters, including `tag-reading` / `tag-text-v1` with separate geometry and partial-list modes, raw fixture checks and offline saved-answer reports. Selected facts, fixed labels and tag coverage do not grade arbitrary engineering meaning or company asset identity. See the [task scope](../benchmarks/README.md#current-reproducible-tasks); these are not a whole-toolkit completion percentage or general model ranking. |
 
 ## Demonstrations are a separate track
@@ -145,13 +145,13 @@ exact; only the frozen timing fields, reader binding and conservative static sou
 The other 82 complete cell objects stay exact. The static dependency is not evidence of Source-enabled execution.
 Criteria, source/key inputs and historical failures are retained; no binding is backfilled. These failures remain
 research work, not failing unit tests.
-All **70/70 local test scripts exit zero**, with five Windows unittest case skips, three platform notices and
+All **71/71 local test scripts exit zero**, with six Windows unittest case skips, three platform notices and
 zero additional skipped-check notices. Those counts are distinct; the handoff's unavailable native-symlink
 subcheck is a platform notice without a skipped unittest case. This is not a complete runtime pass. Targeted CLI
 controls, source-preservation checks, full-value reproductions and independent cross-reviews support the bounded repairs.
 
 The publication check matches 41 numerical claims and identifies one prose-only claim; all 52 configured pipeline
-stages are fresh. Four current benchmark suites reproduce. Re-scoring saved predictions reproduces 30 tables
+stages are fresh. Five current benchmark suites reproduce. Re-scoring saved predictions reproduces 30 tables
 (23 MATCH, seven MATCH-OLD); five historical tables still report GAP. These checks do not rerun commercial models.
 An initial clean Linux CI run caught two collection-declaration defects after the local suite passed. The
 follow-up separates an absent selected collection from committed siblings and binds exactly the TE files its

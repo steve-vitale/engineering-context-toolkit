@@ -1,8 +1,9 @@
 # Read an approved engineering snapshot through MCP
 
-This starter lets an approved local MCP client search one supplied graph and read assets, typed relationships
-and investigation questions. The source claims and their statuses remain attached. It is an access layer for a
-first evidence packet; the company's existing systems retain ongoing ownership, permissions and decisions.
+This starter gives an approved local MCP client read-only access to operator-selected engineering snapshots.
+Use the [knowledge-only onboarding example](../engineering-onboarding/README.md) for a landing map, sourced records
+and workflow templates without an asset model. The graph/context route below reads assets, relationships,
+questions and supplied history. Company systems retain ongoing ownership, permissions and decisions.
 
 The default reader still uses [approved Copilot with selected documents](../../docs/INTERNAL_CONNECTIVITY.md).
 The steps below are for an IT developer with installation rights in an approved environment. They are tested
@@ -51,6 +52,13 @@ handle the selected content; a local listener does not isolate it from other use
 
 ## What each piece contributes
 
+Selecting `--knowledge` exposes `onboarding_overview`, `list_onboarding_records` and `get_onboarding_record`.
+Knowledge can run alone or beside the unchanged graph/context tools. The
+[worked example](../engineering-onboarding/README.md) covers setup, metadata lookup and complete records.
+Workflow templates stay data for review; matching supplied evidence pins establishes no authority or readiness.
+
+The table below describes graph/context mode.
+
 | Tool or resource | Contribution | Boundary |
 |---|---|---|
 | `snapshot_summary` | Identifies the loaded file by SHA-256, load time and section counts. | Load time is not the acquisition time or effective date of a source. Review events are counted but not served. |
@@ -64,7 +72,7 @@ handle the selected content; a local listener does not isolate it from other use
 | `list_decisions(question_id, limit, offset)` | Returns complete immutable decisions, including answer text, canonical value, verdicts, reviewer, predecessor and the original evidence snapshot. Omit the question ID to traverse all history. | Includes superseded, rejected and stale decisions. Their original verdicts are historical records, not new approval or plant checks. |
 | `engineering://snapshot/summary` | Offers the same summary as an MCP resource. | Client support for resources varies; the summary tool is available separately. |
 
-The server reads existing [twin-graph-1](../../docs/GRAPH_EXPORT.md) JSON. The standalone commands above use
+In graph mode, the server reads existing [twin-graph-1](../../docs/GRAPH_EXPORT.md) JSON. The standalone commands above use
 `examples/graph-export/bayer_graph.json`, which has no attached questions and has a different fingerprint from
 the checker snapshot. To include questions, export them with the graph rather than assuming every graph
 already contains them:
@@ -112,7 +120,7 @@ visible with their original verdicts and exact source/revision/hash/locator. An 
 be stale or refer to a removed question. This readback does not upgrade source match, plant truth or release state.
 The readable `context.md` and exact `context.json` remain usable without an MCP client.
 
-Search, question, context-question and decision pages allow 1–50 results; relationships allow 1–100. Start at `offset=0` and follow
+Graph/context search, question, context-question and decision pages allow 1–50 results; relationships allow 1–100. Start at `offset=0` and follow
 `next_offset` until it is `null`. Ordering is stable within the loaded snapshot. Keep pages only when their
 `snapshot_sha256` values agree. Invalid offsets and unknown IDs return errors; an empty first page is valid.
 `truncated` means the page does not contain the entire matching set, including when it is a later page.
@@ -155,6 +163,8 @@ and runs those protocol checks separately from the base toolkit suite. Local dev
 negotiated `2025-11-25` and `2026-07-28` protocol modes; this does not establish compatibility with every client.
 The checker also uses fictional context records to compare every returned decision field through in-memory,
 stdio and loopback clients in both protocol modes. It retains a stale accepted answer after explicit rejection
-and a removed question's history; these are software controls, not company decisions.
-Company authentication, Copilot channels, historian connections, native imports and operational value remain
+and a removed question's history. Knowledge controls exercise the fictional A/B/C records, complete pages,
+source qualifiers and stale workflows through local SDK clients. These are software checks, not company decisions
+or measured onboarding outcomes. Company authentication, Copilot channels, historian connections, native imports
+and operational value remain
 unvalidated. This feature adds snapshot access, not additional corpus cells or description-to-P&ID accuracy.

@@ -1,0 +1,165 @@
+{
+  "schema": "onboarding-example-provenance-1",
+  "origin": "Repository-authored fictional engineering-services document-review training. No company, employee, plant, operational or model-generated observation used.",
+  "license": "Repository LICENSE applies to this authored example.",
+  "source_originals": "Four authored complete UTF8 source files are supplied. The fifth text file is an excerpt ONLY; its full original and fingerprint are unavailable. Reference-only source has no original bytes or capture.",
+  "A_B": "Same14 complete records; only packet revision and selected ENG-RESULT-17 source differs. A250kPa and B2.5bar are equivalent pressure, not evidence of installed-state change.",
+  "C": "A original14 records plus two unavailable original source profiles and two claims; nulls retained.",
+  "expected": "Prospective literal data oracles under an explicit synthetic fixed clock, not measured human/company/model results. Tests compare complete readback.",
+  "artifacts": {
+    "knowledge-A.json": {
+      "size_bytes": 22337,
+      "sha256": "da773aed2f9c9bc0058fa447cfaf0127f6a1d534c56f84c405be9c51b577e841"
+    },
+    "knowledge-B.json": {
+      "size_bytes": 22337,
+      "sha256": "626ec4427b87e4b158ea526df7a6285b37ced956b043fc8bf2bce7b95d8e61a1"
+    },
+    "knowledge-C.json": {
+      "size_bytes": 27861,
+      "sha256": "cd5a2ff9779476528f30146ebceee3954094ec43318406036fc8421baa7e06fc"
+    },
+    "contract/PACKET-SCHEMA.json": {
+      "size_bytes": 31182,
+      "sha256": "0b77151137e143cc61807a1c2f8f83c83b7d77dda5933d7e6469bf535b85be4d"
+    },
+    "contract/SEMANTIC-RULES.json": {
+      "size_bytes": 8435,
+      "sha256": "4982a7bc2557bee042f75fd9c50d66687f6d8540314f59665b7ef6ff3afbe9d9"
+    },
+    "contract/API-SCHEMA.json": {
+      "size_bytes": 69807,
+      "sha256": "63e568cc0f49fe9021a190876132b0065c96ae430585bd23aea1ca5478682674"
+    },
+    "contract/API-RULES.json": {
+      "size_bytes": 7892,
+      "sha256": "57c9365e36664b2be3cdaf8091608d01308454e0f096fa8977fb222eb8ed1ffd"
+    },
+    "contract/DIAGNOSTIC-RULES.json": {
+      "size_bytes": 5139,
+      "sha256": "96038396aa43fa0a5fc3e71128c78c2097c9e27c69eedc1c31975291108b4450"
+    },
+    "contract/REQUEST-ERROR-PRECEDENCE.json": {
+      "size_bytes": 4193,
+      "sha256": "9467adf80a0b541c6bc0152af636b92c9df64ae94614e68c33c5b2d351658f15"
+    },
+    "expected/A-READBACK.json": {
+      "size_bytes": 55850,
+      "sha256": "75871af58991695232c2b9cc338ac832954d8d510fcfeee618d87e0297d328df"
+    },
+    "expected/B-READBACK.json": {
+      "size_bytes": 57174,
+      "sha256": "f156ebf4120ffcd14ab5fae5bc6971c3a0c94be314350d2acb9270719167304c"
+    },
+    "expected/C-READBACK.json": {
+      "size_bytes": 71692,
+      "sha256": "204e1540fd0ca61037f4a3f4da3da5b532517c90d9b72d44cc66238d1bbfd365"
+    },
+    "sources/peer-note.txt": {
+      "size_bytes": 366,
+      "sha256": "efa957578f7878836b0940fff4c6ae17f4fd4978487a47de8010c080f6271c2c"
+    },
+    "sources/result-notice-A.txt": {
+      "size_bytes": 209,
+      "sha256": "b55c5761cd6c2cb24bddae87edd9e630231ad9aea8d8d078e76a86f69b3b09a3"
+    },
+    "sources/result-notice-B.txt": {
+      "size_bytes": 248,
+      "sha256": "5713bc9eb7b078a8b11fbcd971ddad53eb4ceb00f2e5079f5109ce42eae06270"
+    },
+    "sources/review-route.txt": {
+      "size_bytes": 467,
+      "sha256": "619747ef9a93436989cf709a0e8cb18efc786fc7e114bb6ee047316281f91045"
+    },
+    "sources/unknown-original-excerpt.txt": {
+      "size_bytes": 134,
+      "sha256": "f7de5c738b9b48141ff5e507cc646c2ab07c7246fce53b9ec3cdbf6b9de7f4bd"
+    },
+    "controls/owner-wrong-kind.json": {
+      "size_bytes": 22329,
+      "sha256": "447f16e577f4407d9bfb482ffcbc83d106a10a28225f24d1328665612fa7e5f7"
+    },
+    "controls/step-input-dangling.json": {
+      "size_bytes": 22336,
+      "sha256": "69a439d07479346d81a65a10acb40a7f561744eac47f27d125c38cf28f450a08"
+    },
+    "controls/record-vs-source-revision.json": {
+      "size_bytes": 22337,
+      "sha256": "bdf638af87b5091070ac5e37436b8db54e9a6e886a06f0c41dc83855dc5ac3ce"
+    },
+    "controls/capture-tamper.json": {
+      "size_bytes": 22338,
+      "sha256": "9b99acb7c1180e9b390ce4bef4dffa5a7f61b900bee6c702ef354e293ab04256"
+    },
+    "controls/selected-document-mismatch.json": {
+      "size_bytes": 22341,
+      "sha256": "d179ca120074ad4643281a820767b6b462cc46195854820eec3a54a899744742"
+    },
+    "controls/memory-verified-contradiction.json": {
+      "size_bytes": 22336,
+      "sha256": "01f3f2ffde4effa74269278c080d652ac7a0047663170dbe26cb778aefc8b71b"
+    },
+    "controls/navigation-self-positive.json": {
+      "size_bytes": 22460,
+      "sha256": "d5e86c0b6b30757ed869cc75f0c2d9c4069cb23001ab2bfee168e1cfc2e06972"
+    },
+    "controls/unsupported-relabel-structurally-valid.json": {
+      "size_bytes": 22319,
+      "sha256": "7b57d4bcf04c3dd8a12b5116cddc5a9bd0c1daa545af11e0f9a0e751e165933d"
+    },
+    "controls/withdrawn-rejected-readable.json": {
+      "size_bytes": 22364,
+      "sha256": "e645d52b23683a302f74bd2e62309d26158926fd7cee9f6657ef6536d18e704f"
+    },
+    "controls/unknown-original-fake-hash.json": {
+      "size_bytes": 27923,
+      "sha256": "34cedbe4f39b86745a6505b265398ec2eb4eacc0d754937148f2ffb11bc293a1"
+    },
+    "controls/excerpt-capture-tamper.json": {
+      "size_bytes": 27869,
+      "sha256": "184f2d553658f95dbbc9b3ae856a1514cf88544f634cd8756cc994d254bd3852"
+    },
+    "controls/duplicate-id.negative.json": {
+      "size_bytes": 23716,
+      "sha256": "98f676f63121d1194dfd6aa4fe22edd7713e236b1fcfa9882c475dc84b52a47e"
+    },
+    "controls/dependency-cycle.negative.json": {
+      "size_bytes": 22305,
+      "sha256": "dfd69bbfba9b1e20c4858f4f74922bd546293706103e1bde74f4b8b904f1a18a"
+    },
+    "controls/unknown-owner.negative.json": {
+      "size_bytes": 22333,
+      "sha256": "8d0b2af028066aa1e481d0b1ed9cd522fb52d9c67a58386709abfda1431d248d"
+    },
+    "controls/required-companion-mismatch.negative.json": {
+      "size_bytes": 22508,
+      "sha256": "589481403523470739bb347253a1b32e42202cda74f77249e7963084e2f2d1a8"
+    },
+    "controls/untrusted-source.positive-data-control.json": {
+      "size_bytes": 23821,
+      "sha256": "c4b2579c6aa72613ff1bd0614c29c922c7fb9c2fde03629360096d16cb7b73bd"
+    }
+  },
+  "test_only_validation_order_controls": {
+    "controls/ORDER-RECORD-BEFORE-LATE-LOCAL.json": {
+      "size_bytes": 23729,
+      "sha256": "16fb7bf5373b097f0db35c98fc2b04acbebe4d8bf7f4e76f1fc14254d840ef9b",
+      "purpose": "Independent test-only multi-fault validation-order control; not a real engineering record or model observation."
+    },
+    "controls/ORDER-STEP-BEFORE-LATE-LOCAL.json": {
+      "size_bytes": 22293,
+      "sha256": "b0f30703e979b74a0892d2b7e4f4ec9bbdfcf5896eaaffd38189080b51933295",
+      "purpose": "Independent test-only multi-fault validation-order control; not a real engineering record or model observation."
+    },
+    "controls/ORDER-COMPANION-LOCAL-BEFORE-UNIQUENESS.json": {
+      "size_bytes": 22452,
+      "sha256": "7c851cbd43dc6b0fbf47db885f0f24ef0d816c48cfa8e79c28b5d3c6daa9ffec",
+      "purpose": "Independent test-only multi-fault validation-order control; not a real engineering record or model observation."
+    },
+    "controls/ORDER-SAME-STAGE-RECORD-STEP-TIE.json": {
+      "size_bytes": 24203,
+      "sha256": "5b1c42b0c9195ca90bbd189fffe1150864b501ded3902c85d0d3f1fce3e7240e",
+      "purpose": "Independent test-only multi-fault validation-order control; not a real engineering record or model observation."
+    }
+  }
+}

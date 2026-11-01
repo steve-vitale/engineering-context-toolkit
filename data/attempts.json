@@ -4105,6 +4105,24 @@
         "benchmarks/results/tag-reading-development.md",
         "docs/ENGINEERING_ONBOARDING.md"
       ]
+    },
+    {
+      "id": "A272",
+      "function": "intake_and_reuse",
+      "date": "2026-10-31",
+      "change": "Add a selected knowledge-only onboarding packet and three bounded read operations beside the existing graph/context MCP route, with fictional landing, sources, glossary, reviewer roles, starter workflow and first assignment.",
+      "hypothesis": "An engineer can find sourced starting records and draft a qualified first review note without manufacturing an equipment model or introducing a company governance backend.",
+      "evidence": "Four independently frozen validation-order cases correct local/profile and companion admission before original-order record/step uniqueness, before any producer execution. One authorized private run passes all eight commands:133 executed methods pass, one existing graph filesystem case skips with identity unretained by nonverbose output. Three actual CLI stdout envelopes match complete independent expected values/order apart from runtime loaded_at. Retained helper/log assertions cover complete 14/14/18-record A/B/C readbacks and five JSON-looking query strings across local SDK modes; no raw RPC transcript claimed.",
+      "runs": "Fictional offline packets, stdlib CLI/tests and approved local SDK auto/legacy in-memory/stdio/loopback software checks; no model, company/tenant, employee onboarding or operational trial.",
+      "verdict": "kept",
+      "why": "Adds a reusable graph-free starting map and workflow catalogue while source authority, identity/access, accepted decisions and ongoing governance remain with company systems. Unknown originals keep null fingerprints; captured memory does not become true. A proposed SDK string-coercion defect was disproved by primary source and retained as positive controls. Current-base public integration and CI remain separate gates.",
+      "source": [
+        "docs/JOURNAL.md#132-give-engineers-a-sourced-starting-map-without-an-asset-model",
+        "examples/engineering-onboarding/README.md",
+        "examples/engineering-onboarding/actual/PROVENANCE.json",
+        "scripts/test_knowledge_snapshot.py",
+        "scripts/check_snapshot_mcp.py"
+      ]
     }
   ],
   "not_tried": [
@@ -5239,6 +5257,18 @@
       "source": [
         "docs/JOURNAL.md#131-make-tag-reading-comparable-and-give-new-engineers-a-starting-path",
         "benchmarks/README.md"
+      ]
+    },
+    {
+      "id": "N103",
+      "function": "intake_and_reuse",
+      "status": "done",
+      "idea": "Provide a knowledge-only read-only onboarding packet with sourced records, glossary, role/system references, starter workflows and a safe first assignment through one selected local entry point.",
+      "why_not_yet": "Completed A272 for the bounded fictional stdlib/selected-MCP scaffold with independently frozen types, source profiles, complete readback, validation-order and local SDK controls. Shared company SSO/ACLs, permission-preserving federation, record authority, execution, human onboarding benefit and accepted company clients remain separate and unestablished.",
+      "source": [
+        "docs/JOURNAL.md#132-give-engineers-a-sourced-starting-map-without-an-asset-model",
+        "examples/engineering-onboarding/README.md",
+        "examples/engineering-onboarding/actual/PROVENANCE.json"
       ]
     }
   ]

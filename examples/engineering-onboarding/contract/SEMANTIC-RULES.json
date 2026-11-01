@@ -1,0 +1,167 @@
+{
+  "status": "NORMATIVE prospective data; no validator executed",
+  "foreign_keys": [
+    {
+      "target_kinds": [
+        "landing"
+      ],
+      "nullable": false,
+      "path_pattern": "/landing_record_id",
+      "when_record_kind": null
+    },
+    {
+      "target_kinds": [
+        "source"
+      ],
+      "nullable": false,
+      "path_pattern": "/selected_sources/*",
+      "when_record_kind": null
+    },
+    {
+      "target_kinds": [
+        "role_reference"
+      ],
+      "nullable": false,
+      "path_pattern": "/records/*/owner_roles/*",
+      "when_record_kind": null
+    },
+    {
+      "target_kinds": [
+        "role_reference"
+      ],
+      "nullable": true,
+      "path_pattern": "/records/*/review/reviewer_role",
+      "when_record_kind": null
+    },
+    {
+      "target_kinds": [
+        "source"
+      ],
+      "nullable": false,
+      "path_pattern": "/records/*/evidence/*/source_record_id",
+      "when_record_kind": null
+    },
+    {
+      "target_kinds": [
+        "source",
+        "landing",
+        "term",
+        "system_reference",
+        "role_reference",
+        "claim",
+        "workflow",
+        "practice"
+      ],
+      "nullable": false,
+      "path_pattern": "/records/*/depends_on/*",
+      "when_record_kind": null
+    },
+    {
+      "target_kinds": [
+        "source",
+        "landing",
+        "term",
+        "system_reference",
+        "role_reference",
+        "claim",
+        "workflow",
+        "practice"
+      ],
+      "nullable": false,
+      "path_pattern": "/records/*/data/start_here/*/record_id",
+      "when_record_kind": "landing"
+    },
+    {
+      "target_kinds": [
+        "source",
+        "landing",
+        "term",
+        "system_reference",
+        "role_reference",
+        "claim",
+        "workflow",
+        "practice"
+      ],
+      "nullable": false,
+      "path_pattern": "/records/*/data/prerequisites/*",
+      "when_record_kind": "workflow"
+    },
+    {
+      "target_kinds": [
+        "source",
+        "landing",
+        "term",
+        "system_reference",
+        "role_reference",
+        "claim",
+        "workflow",
+        "practice"
+      ],
+      "nullable": false,
+      "path_pattern": "/records/*/data/steps/*/inputs/*",
+      "when_record_kind": "workflow"
+    },
+    {
+      "target_kinds": [
+        "role_reference"
+      ],
+      "nullable": false,
+      "path_pattern": "/records/*/data/review_handoff/reviewer_role",
+      "when_record_kind": "workflow"
+    },
+    {
+      "target_kinds": [
+        "system_reference"
+      ],
+      "nullable": false,
+      "path_pattern": "/records/*/data/review_handoff/system_reference",
+      "when_record_kind": "workflow"
+    },
+    {
+      "target_kinds": [
+        "source",
+        "landing",
+        "term",
+        "system_reference",
+        "role_reference",
+        "claim",
+        "workflow",
+        "practice"
+      ],
+      "nullable": false,
+      "path_pattern": "/records/*/data/inputs/*",
+      "when_record_kind": "practice"
+    },
+    {
+      "target_kinds": [
+        "role_reference"
+      ],
+      "nullable": false,
+      "path_pattern": "/records/*/data/reviewer_role",
+      "when_record_kind": "practice"
+    }
+  ],
+  "identity": {
+    "record_ids": "Unique exact strings; no trimming, alias substitution, Unicode normalization, path/URL interpretation or cross-packet joins.",
+    "step_ids": "Unique within that workflow only; not global record references.",
+    "document_ids": "Selected map key must exactly equal target source.data.document_id. Duplicate source document IDs with different source record IDs/revisions are admitted.",
+    "selection": "A selected_basis evidence document_id must have a selected_sources entry; a different selected source record ID derives stale, not malformed."
+  },
+  "json": "Strict UTF8, no BOM, duplicate object members, NaN, Infinity, float overflow, unpaired surrogate or non-JSON values. Strings must encode strictly to UTF8; source/reference values are never executed. Plain builtin types only in the in-memory API; bool is not an integer. Closed schemas plus this file are jointly normative. Object/array insertion order and all null/false/empty values admitted by schema are retained. JSON lexemes/whitespace are not reconstructed.",
+  "strings": "IDs are exact nonempty strings with value == value.strip() under the supported Python runtime, preserving all interior punctuation/Unicode/whitespace; no normalization. Other schema minLength1 text must contain a non-whitespace character under the same str.strip test and is preserved exactly. captured_text is exempt from this nonblank rule: complete may be empty or whitespace, excerpt must have at least one code point (whitespace allowed). JSON Schema patterns are shape aids; this exact rule is also required.",
+  "ranges": {
+    "original_size_bytes": "plain integer 0..9223372036854775807 or null per profile",
+    "capture_size_bytes": "plain integer 0..33554432 or null per profile",
+    "offset": "plain integer 0..9223372036854775807",
+    "limit": "plain integer 1..50"
+  },
+  "date_rules": "reviewed_on is null or a real calendar YYYY-MM-DD. acquisition_time is null or valid RFC3339 with explicit Z or numeric offset, no leap second, preserved lexically. reviewed_on and reviewer_role must be both null or both nonnull. source_matched/rejected/disputed requires nonnull pair. These are supplied declarations, not authenticated actions.",
+  "revision": "record.revision versions the packet record. evidence.revision MUST equal referenced source.data.source_revision, never source record.revision. document_id and raw_sha256 MUST also equal that source data. If capture_sha256 supplied it MUST equal source.capture_sha256; it is REQUIRED (possibly null for reference-only) for excerpt/reference-only evidence.",
+  "capture": "Hash decoded captured_text.encode(UTF8, strict) exactly: no BOM insertion, trim, newline conversion, normalization or final-LF addition. complete profile requires capture hash=original hash and encoded length=original_size_bytes; optional capture_size_bytes must match. excerpt requires exact capture hash and capture_size_bytes, never equality to original hash. reference-only requires all capture payload/hash/size null. No original file is opened, followed or reverified.",
+  "profiles": "complete-utf8-text retains original12-field profile unchanged; missing original_status means fingerprint_supplied. excerpt/reference-only requires explicit original_status and capture_size_bytes. unavailable requires original hash AND size null; declared_not_reverified requires both supplied. Known source hash is a contributor pin, not verification of original authenticity, completeness or permission.",
+  "claim_rules": "attributed_memory requires attribution and underlying_claim_verified=false. Other basis values disallow both memory-only fields. cited_record/interpretation/attributed_memory requires at least one evidence row. unknown permits empty evidence. No validation of prose meaning, entailment, causality, governing revision or correct contributor relabelling.",
+  "cycles": "Only depends_on must be acyclic, including no self-edge. All other typed navigation/owner/source references may cycle and are never recursively expanded. No FK invents a depends_on edge.",
+  "statuses": "No record_state/review.state filters, permissions, decision acceptance or semantic truth inference. Rejected/disputed/superseded/withdrawn records remain returned unchanged in lists and full gets.",
+  "validation_order": "Before publishing any reader: strict input/type/required-field admission; local scalar/date/profile constraints (with specialized reason classification in API-RULES); unique record and step IDs; typed FKs; evidence pin consistency; selected map consistency and required selected_basis presence; depends_on DAG; selected companion pair; complete response size admission. For multiple failures use this order, then original record order and schema property order; specialized reason codes identify the failed constraint, not implementation validator text. Single-fault frozen fixtures must match their literal reason/path.",
+  "foreign_key_pattern_notation": "path_pattern is an RFC6901-like location pattern: * matches a single array index/object member; when_record_kind applies to the enclosing record or null means all kinds/top-level. Actual diagnostics use concrete RFC6901 indices/escaped keys, never patterns."
+}

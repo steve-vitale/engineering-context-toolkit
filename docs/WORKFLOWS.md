@@ -7,21 +7,29 @@ connects after that choice. It describes existing tool contracts, not one univer
 
 - **Document clarification:** keep the question and source evidence in the [plain brief](../examples/first-pilot/README.md).
   No model, drawing, graph or server is required.
+- **Shared learning and starter workflows:** author a selected [onboarding packet](../examples/engineering-onboarding/README.md)
+  with permitted sources, qualifications and workflow instructions. Read it with Python or an approved MCP client;
+  no asset model is required.
 - **Equipment identities or connections:** use the matching description, image or DEXPI guide to prepare a draft
   model, then check it against independent evidence.
 - **Controls/history question:** use loop records or historian CSVs directly. Relate results to assets only after
   reviewing the identity mapping. A CSV does not automatically create a process model.
 
-## Three files with different jobs
+## Files with different jobs
+
+<a id="three-files-with-different-jobs"></a>
 
 | File shape | Role | Important boundary |
 |---|---|---|
+| **Onboarding packet (`engineering-onboarding-1`)** | Authored sources, roles, glossary, system references, claims and workflow/practice records for a selected assignment. | Supplied source pins and review states do not establish truth, authority or permissions. It does not convert into a process model or graph. |
 | **Process model** | Equipment, streams, instruments and controls, authored from sources or read from supported DEXPI XML; for example `data/te_process_model.json`. | Authored or reader-derived interpretation needs review. Detailed P&ID sheets also require a separate authored layout. |
 | **Extracted twin** | Assets and connections read from a drawing; for example the own-drawing bundle's `plant_model.json`. | Interpretation, source revision, identities and connections need review. Its logical SVG is not a detailed P&ID. |
 | **Portable graph (`twin-graph-1`)** | Exported identities, typed relationships, sourced claims and optional questions for review/access. | It is a snapshot and a one-way export. No general graph-to-generator-model inverse exists. |
 
 ```mermaid
 flowchart LR
+    A[Authored engineering records] --> K[Knowledge/workflow packet]
+    K --> M[Read-only MCP entry point]
     D[Description] -.->|Engineer or approved assistant authors| P[Process model]
     I[P&ID image] -->|Extraction plus review| T[Extracted twin]
     X[Supported DEXPI XML] -->|Reader plus review| P
@@ -30,7 +38,8 @@ flowchart LR
     T --> Q
     P --> G[Portable graph snapshot]
     T --> G
-    G --> R[Source review, context packet, read-only MCP]
+    G --> R[Source review, context packet]
+    G --> M
 ```
 
 The diagram omits setup and optional evidence inputs; the table below states each contract. Image extraction
@@ -55,7 +64,8 @@ converted-key DEXPI adapter produces an extracted twin through its separate cont
 | `apply_review.py`, then `generate.py` | A supported working model and its engineer-filled `OPS_` review sheet | The existing [local model-correction route](REVIEW_LOOP.md): preview with `--dry-run`, apply whitelisted corrections with old values and review history, then regenerate. Apply updates that working model in place; valid rows may persist when other rows refuse. Preserve the base and inspect its diff/change record. A hub integration must stage the resulting changes under its authority rather than treating local CSV entries as organizational acceptance. |
 | `statements.py` | `twin-graph-1`, with supplied source images/report and optional machine-check model | Statements, samples and review material. Applied reviews change statuses and add review events; they do not change engineering values or authenticate the reviewer. See the current [binding and application rules](STATEMENT_REVIEW.md). |
 | `context_register.py` | Process model, extracted twin or graph, questions and a manifest of actual local source documents | `context-register-1` and enriched graph/questions. Treat local answers and ownership history as a review packet when transferring into an organizational authority. It does not update the original working model. |
-| `serve_snapshot.py` | One selected `twin-graph-1` startup snapshot; optional explicitly selected, hash-bound `context-register-1` sidecar | Bounded read-only assets (including virtual streams), relations and questions; the selected sidecar adds complete retained decision/answer/source readback. Restart to load a new version. No automatic sidecar/source fetching, analysis execution or shared company authentication. |
+| `knowledge_snapshot.py` | One explicitly selected `engineering-onboarding-1` JSON packet | Three standard-library reads: overview, metadata lookup and complete records, including workflow instructions and their source qualifications. Source references are not fetched; workflow steps are data. No company authentication, source-authority decision or graph conversion. |
+| `serve_snapshot.py` | Selected onboarding packet and/or `twin-graph-1` graph; the graph may have an explicitly selected, hash-bound `context-register-1` sidecar | Three knowledge reads when selected; existing graph/context tools retain bounded asset, relation, question and complete history readback. Scopes coexist without merging record identities. Restart to load a reviewed version. No automatic source fetching, workflow execution or shared company authentication. |
 | Historian CSV tools | Recorded data in the documented CSV shape | Analysis and replay of the supplied history. Joining channels to canonical plant assets is a separate mapping task; an unusual trend is not a validated diagnosis. |
 | `estimate_impact.py` | A strict JSON specification containing measurements and site constants, or explicitly requested public defaults | A first-draft calculation with assumptions and source notes. The model alone does not supply the measurements; generator provenance belongs in a sidecar rather than unrecognized calculation fields. |
 | `pipeline.py` | The repository's declared stages, inputs, code and configuration | Freshness and rebuilds for its configured research demonstrations. An organization's own recipes and service orchestration need an explicit implementation; the existing stage list is not a universal plant integration. |
@@ -109,7 +119,8 @@ refuses that input before writing. For changed sources, model or questions, expl
 For continuing company use, [the lifecycle](CONTEXT_LIFECYCLE.md) owns the intended responsibility and return
 path. [Connectivity](INTERNAL_CONNECTIVITY.md) owns client approval, deployment and network boundaries.
 Company authentication, accepted imports, live process-data connectors and automatic document updates are
-separate integration work. The shipped MCP starter reads one selected snapshot.
+separate integration work. The MCP starter holds the explicitly selected knowledge and/or graph/context files
+at startup; it does not provide a shared company knowledge service.
 
 For individual tool evidence use [FEATURES.md](FEATURES.md). For results use [RESULTS.md](RESULTS.md).
 The [demo deliverables](DELIVERABLES.md) compare TE and OPEN100 research outputs; they do not promise those

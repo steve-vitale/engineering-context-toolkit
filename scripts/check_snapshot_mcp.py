@@ -223,6 +223,131 @@ async def check_sizes(Client, path, base):
                 assert not (await client.call_tool('find_assets',{'query':'P-1','limit':1})).is_error
         print(f'PASS in-memory-{mode}: six actual serialized result-size controls',flush=True)
 
+async def exercise_onboarding(client, example, label, graph_tools=False):
+    expected = json.loads((ROOT/'examples/engineering-onboarding/expected'/(example+'-READBACK.json')).read_text('utf-8'))
+    known = {'onboarding_overview', 'list_onboarding_records', 'get_onboarding_record'}
+    tools = (await client.list_tools()).tools
+    assert {t.name for t in tools} >= known
+    assert len(tools) == (12 if graph_tools else 3)
+    assert all(t.annotations.read_only_hint and not t.annotations.open_world_hint for t in tools)
+    if not graph_tools:
+        assert not (await client.list_resources()).resources
+    overview = await client.call_tool('onboarding_overview')
+    assert not overview.is_error
+    payload = overview.structured_content
+    for key in ('knowledge_sha256', 'live', 'source_currency', 'reference_data_only'):
+        assert payload[key] == expected['overview_envelope_fixed_clock'][key]
+    assert payload['result']['landing_record'] == expected['overview_envelope_fixed_clock']['result']['landing_record']
+    assert payload['result']['record_count'] == len(expected['all_complete_get_results'])
+    seen = []; offset = 0
+    while True:
+        response = await client.call_tool('list_onboarding_records', {'limit': 3, 'offset': offset})
+        assert not response.is_error and json.loads(response.content[0].text) == response.structured_content
+        page = response.structured_content['result']
+        assert page == expected['complete_limit3_pages'][offset//3]
+        seen.extend(r['id'] for r in page['records'])
+        offset = page['next_offset']
+        if offset is None: break
+    assert seen == list(expected['all_complete_get_results']) and len(seen) == len(set(seen))
+    for rid, record in expected['all_complete_get_results'].items():
+        response = await client.call_tool('get_onboarding_record', {'record_id': rid})
+        assert not response.is_error and response.structured_content['result'] == record
+        assert json.loads(response.content[0].text) == response.structured_content
+        assert len(response.model_dump_json(by_alias=True, exclude_none=True).encode('utf-8')) <= serve_snapshot.MAX_RESPONSE_BYTES
+    # Valid JSON-looking strings stay literal text across SDK argument processing.
+    for raw_query, expected_page in [('["revision"]', {'total': 0, 'offset': 0, 'limit': 20, 'next_offset': None, 'truncated': False, 'records': []}), ('{"term":"revision"}', {'total': 0, 'offset': 0, 'limit': 20, 'next_offset': None, 'truncated': False, 'records': []}), ('"revision"', {'total': 0, 'offset': 0, 'limit': 20, 'next_offset': None, 'truncated': False, 'records': []}), ('null', {'total': 0, 'offset': 0, 'limit': 20, 'next_offset': None, 'truncated': False, 'records': []}), ('true', {'total': 0, 'offset': 0, 'limit': 20, 'next_offset': None, 'truncated': False, 'records': []})]:
+        response = await client.call_tool('list_onboarding_records', {'query': raw_query})
+        assert not response.is_error and response.structured_content['result'] == expected_page
+        assert json.loads(response.content[0].text) == response.structured_content
+    negatives = [
+        ('onboarding_overview', {'unexpected': 'MUST-NOT-ECHO'}, 'invalid_argument', 'invalid_schema', ''),
+        ('list_onboarding_records', {'kind': True}, 'invalid_argument', 'invalid_kind', '/kind'),
+        ('list_onboarding_records', {'query': ['revision']}, 'invalid_argument', 'invalid_query', '/query'),
+        ('list_onboarding_records', {'query': 1}, 'invalid_argument', 'invalid_query', '/query'),
+        ('list_onboarding_records', {'limit': True}, 'invalid_argument', 'invalid_limit', '/limit'),
+        ('list_onboarding_records', {'limit': '1'}, 'invalid_argument', 'invalid_limit', '/limit'),
+        ('list_onboarding_records', {'offset': True}, 'invalid_argument', 'invalid_offset', '/offset'),
+        ('list_onboarding_records', {'unexpected': True, 'kind': True}, 'invalid_argument', 'invalid_schema', ''),
+        ('get_onboarding_record', {}, 'invalid_argument', 'invalid_schema', ''),
+        ('get_onboarding_record', {'record_id': ''}, 'invalid_argument', 'invalid_type', '/record_id'),
+        ('get_onboarding_record', {'record_id': True}, 'invalid_argument', 'invalid_type', '/record_id'),
+        ('get_onboarding_record', {'record_id': '../MUST-NOT-ECHO'}, 'unknown_record', 'unknown_record', '/record_id'),
+        ('get_onboarding_record', {'record_id': 'https://MUST-NOT-ECHO.invalid'}, 'unknown_record', 'unknown_record', '/record_id')]
+    for name, arguments, code, reason, path in negatives:
+        response = await client.call_tool(name, arguments)
+        assert response.is_error
+        error = json.loads(response.content[0].text)
+        assert set(error) == {'code', 'reason', 'path', 'message'}
+        assert (error['code'], error['reason'], error['path']) == (code, reason, path)
+        assert 'MUST-NOT-ECHO' not in response.content[0].text
+    print(f'PASS {label}: {len(seen)} complete knowledge records, exact pages and raw argument errors; protocol {client.protocol_version}', flush=True)
+    return payload
+
+
+async def check_onboarding(Client, StdioServerParameters, folder):
+    import knowledge_snapshot
+    from unittest.mock import patch
+    example = ROOT/'examples/engineering-onboarding'
+    selected = folder/'knowledge.json'
+    # Knowledge-only needs no plant graph and exposes exactly three read-only tools.
+    for letter in ('A', 'B', 'C'):
+        selected.write_bytes((example/('knowledge-'+letter+'.json')).read_bytes())
+        for mode in ('auto', 'legacy'):
+            service = serve_snapshot.create_server(knowledge_path=selected)
+            async with Client(service, mode=mode) as client:
+                prior = await exercise_onboarding(client, letter, 'knowledge-in-memory-'+letter+'-'+mode)
+                selected.write_bytes((example/'knowledge-B.json').read_bytes())
+                assert (await client.call_tool('onboarding_overview')).structured_content == prior
+            selected.write_bytes((example/('knowledge-'+letter+'.json')).read_bytes())
+    # Exact existing graph/context calls and resource values coexist; no identity merge.
+    graph_path = ROOT/'examples/context-register/bayer/expected/enriched_graph.json'
+    context_path = ROOT/'examples/context-register/bayer/expected/context.json'
+    selected.write_bytes((example/'knowledge-A.json').read_bytes())
+    graph = json.loads(graph_path.read_text('utf-8')); context = json.loads(context_path.read_text('utf-8'))
+    qid = graph['questions'][0]['id']; context_id = next(iter(context['current']))
+    old_calls = [('snapshot_summary', {}), ('find_assets', {'query': 'P-1'}), ('get_asset', {'asset_id': 'P-1'}),
+                 ('get_relations', {'asset_id': 'P-1'}), ('list_questions', {}), ('get_question', {'question_id': qid}),
+                 ('list_context_questions', {}), ('get_context', {'question_id': context_id}), ('list_decisions', {})]
+    without_time = lambda value: {k:v for k,v in value.items() if k != 'loaded_at'}
+    for mode in ('auto', 'legacy'):
+        async with Client(serve_snapshot.create_server(graph_path, context_path), mode=mode) as old:
+            baseline = [(await old.call_tool(name, args)).structured_content for name, args in old_calls]
+            old_resource = json.loads((await old.read_resource('engineering://snapshot/summary')).contents[0].text)
+        async with Client(serve_snapshot.create_server(graph_path, context_path, selected), mode=mode) as current:
+            await exercise_onboarding(current, 'A', 'knowledge-composed-'+mode, graph_tools=True)
+            for (name,args), expected in zip(old_calls, baseline):
+                response = await current.call_tool(name,args)
+                assert not response.is_error and without_time(response.structured_content) == without_time(expected)
+            resource = json.loads((await current.read_resource('engineering://snapshot/summary')).contents[0].text)
+            assert without_time(resource) == without_time(old_resource)
+            overview = (await current.call_tool('onboarding_overview')).structured_content
+            components = overview['result']['selection']['components']
+            assert components['graph'] == {'schema': 'twin-graph-1', 'raw_sha256': hashlib.sha256(graph_path.read_bytes()).hexdigest()}
+            assert components['context'] == {'schema': 'context-register-1', 'raw_sha256': hashlib.sha256(context_path.read_bytes()).hexdigest()}
+    # Actual stdio children use the approved SDK interpreter, not a guessed Python path.
+    command = [str(ROOT/'scripts/serve_snapshot.py'), '--knowledge', str(selected)]
+    for mode in ('auto', 'legacy'):
+        params = StdioServerParameters(command=sys.executable, args=['-B', '-u']+command, env=dict(os.environ))
+        async with Client(params, mode=mode, read_timeout_seconds=15) as client:
+            await exercise_onboarding(client, 'A', 'knowledge-stdio-'+mode)
+    # Actual SDK serialization admission counts both result copies and escaping, before publication.
+    for text in ('x'*1100000, '\\'*400000):
+        value = json.loads((example/'knowledge-A.json').read_text('utf-8'))
+        next(r for r in value['records'] if r['id']=='term:revision')['data']['definition'] = text
+        selected.write_text(json.dumps(value, ensure_ascii=False), encoding='utf-8')
+        try:
+            serve_snapshot.create_server(knowledge_path=selected)
+        except knowledge_snapshot.OnboardingError as exc:
+            assert exc.code == 'result_too_large' and text not in str(exc)
+        else:
+            raise AssertionError('Oversized dual-serialized complete record was published')
+    # A tiny SDK boundary can also be tested without changing the pure application cap.
+    selected.write_bytes((example/'knowledge-A.json').read_bytes())
+    with patch.object(serve_snapshot, 'MAX_RESPONSE_BYTES', 128):
+        try: serve_snapshot.create_server(knowledge_path=selected)
+        except knowledge_snapshot.OnboardingError as exc: assert exc.code == 'result_too_large'
+        else: raise AssertionError('SDK limit was ignored')
+    print('PASS onboarding local SDK controls; no company, tenant, ACL, workflow execution or human acceptance claimed.', flush=True)
 
 async def run(Client, StdioServerParameters, folder):
     graph=graph_export.build(ROOT/'data/bayer_rt/process_model.json',questions=ROOT/'examples/opportunity-screen/bayer/questions.json')
@@ -271,6 +396,7 @@ async def run(Client, StdioServerParameters, folder):
     await check_pages(Client,folder/'pages.json',graph)
     await check_sizes(Client,folder/'sizes.json',graph)
     await check_context(Client, StdioServerParameters, folder)
+    await check_onboarding(Client, StdioServerParameters, folder)
     return sample
 
 
