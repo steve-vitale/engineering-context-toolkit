@@ -1,0 +1,30 @@
+{
+ "sheet": "dexpi-c03",
+ "rule": "visible label text; see scripts/adapt_dexpi.py docstring",
+ "tags": {
+  "PipeFitting-1": null,
+  "BlindFlange-1": null,
+  "Flange-1": null,
+  "Flange-2": null,
+  "OperatedValve-1": "ESV 3712",
+  "Flange-3": null,
+  "RestrictionOrifice-1": null,
+  "BallValve-1": null,
+  "PipeReducer-1": "0200x0800",
+  "FlowOutPipeOffPageConnector-1": null,
+  "ProcessInstrumentationFunction-1": "ESV 3712"
+ },
+ "dexpi_class": {
+  "PipeFitting-1": "PipeFitting",
+  "BlindFlange-1": "BlindFlange",
+  "Flange-1": "Flange",
+  "Flange-2": "Flange",
+  "OperatedValve-1": "OperatedValve",
+  "Flange-3": "Flange",
+  "RestrictionOrifice-1": "RestrictionOrifice",
+  "BallValve-1": "BallValve",
+  "PipeReducer-1": "PipeReducer",
+  "FlowOutPipeOffPageConnector-1": "FlowOutPipeOffPageConnector",
+  "ProcessInstrumentationFunction-1": "ProcessInstrumentationFunction"
+ }
+}

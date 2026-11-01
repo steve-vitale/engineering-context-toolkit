@@ -1,0 +1,242 @@
+{
+  "schema": "tag-source-provenance-1",
+  "source": {
+    "repository": "https://gitlab.com/dexpi/TrainingTestCases",
+    "revision": "a23d61e2e089eb2ca464cd552f9ae580a2785963",
+    "license": "CC-BY-4.0",
+    "attribution": "DEXPI example P&IDs from the DEXPI TrainingTestCases repository (DEXPI initiative and its contributing members), licensed CC BY 4.0. Rendered to PNG and converted to the repository's answer-key format by scripts/adapt_dexpi.py; the converted files are adaptations under the same license.",
+    "originals": [
+      {
+        "path": "dexpi 1.3/example pids/C01 DEXPI Reference P&ID/C01V04-VER.EX01.xml",
+        "url": "https://gitlab.com/dexpi/TrainingTestCases/-/raw/a23d61e2e089eb2ca464cd552f9ae580a2785963/dexpi%201.3/example%20pids/C01%20DEXPI%20Reference%20P%26ID/C01V04-VER.EX01.xml",
+        "raw_sha256": "a2b172f04e0dcf9a668e158c6dee3b5fd0dd4e9027b572dc39e54470562b809c",
+        "size_bytes": 445726
+      },
+      {
+        "path": "dexpi 1.3/example pids/C01 DEXPI Reference P&ID/C01V04-VER.EX01.svg",
+        "url": "https://gitlab.com/dexpi/TrainingTestCases/-/raw/a23d61e2e089eb2ca464cd552f9ae580a2785963/dexpi%201.3/example%20pids/C01%20DEXPI%20Reference%20P%26ID/C01V04-VER.EX01.svg",
+        "raw_sha256": "49696872639b2f99a9da72cd83adb0ae29e427c24c75ad374d33e3382e1db047",
+        "size_bytes": 79543
+      },
+      {
+        "path": "dexpi 1.3/example pids/C02 Process Column (BASF)/C02V03-VER.EX02.xml",
+        "url": "https://gitlab.com/dexpi/TrainingTestCases/-/raw/a23d61e2e089eb2ca464cd552f9ae580a2785963/dexpi%201.3/example%20pids/C02%20Process%20Column%20%28BASF%29/C02V03-VER.EX02.xml",
+        "raw_sha256": "dfe4323c18d018caa4b28ec789b3dbee21be73c6a07c7cbd0791ceebd322113b",
+        "size_bytes": 157666
+      },
+      {
+        "path": "dexpi 1.3/example pids/C02 Process Column (BASF)/C02V03-VER.EX02.svg",
+        "url": "https://gitlab.com/dexpi/TrainingTestCases/-/raw/a23d61e2e089eb2ca464cd552f9ae580a2785963/dexpi%201.3/example%20pids/C02%20Process%20Column%20%28BASF%29/C02V03-VER.EX02.svg",
+        "raw_sha256": "a2e5f4e740ab203213ca9e697956b3a10d7603ffe4d1239158e077cd4cc260a9",
+        "size_bytes": 36988
+      },
+      {
+        "path": "dexpi 1.3/example pids/C03 Piping (Equinor)/C03V04-VER.EX02.xml",
+        "url": "https://gitlab.com/dexpi/TrainingTestCases/-/raw/a23d61e2e089eb2ca464cd552f9ae580a2785963/dexpi%201.3/example%20pids/C03%20Piping%20%28Equinor%29/C03V04-VER.EX02.xml",
+        "raw_sha256": "a1c892f3bc21338c2546baf71e10abf11e3653b7cd6956b1a24bcfab0db88f14",
+        "size_bytes": 68507
+      },
+      {
+        "path": "dexpi 1.3/example pids/C03 Piping (Equinor)/C03V04-VER.EX02.svg",
+        "url": "https://gitlab.com/dexpi/TrainingTestCases/-/raw/a23d61e2e089eb2ca464cd552f9ae580a2785963/dexpi%201.3/example%20pids/C03%20Piping%20%28Equinor%29/C03V04-VER.EX02.svg",
+        "raw_sha256": "6c0dacb00362dba4261b6b752b3b9e73ad9ac952bb7d6fac068fe1a37540d18d",
+        "size_bytes": 13397
+      },
+      {
+        "path": "dexpi 1.3/example pids/C08 Two connected P&IDs (Covestro)/C08V01/COV Equipment List.xlsm",
+        "url": "https://gitlab.com/dexpi/TrainingTestCases/-/raw/a23d61e2e089eb2ca464cd552f9ae580a2785963/dexpi%201.3/example%20pids/C08%20Two%20connected%20P%26IDs%20%28Covestro%29/C08V01/COV%20Equipment%20List.xlsm",
+        "raw_sha256": "afdf56ceaf1b4c37753c3db64089474b591c7c2f4aad611d1d27e551cccc2756",
+        "size_bytes": 70620
+      },
+      {
+        "path": "dexpi 1.3/example pids/C08 Two connected P&IDs (Covestro)/C08V01/COV Instrument List.xlsm",
+        "url": "https://gitlab.com/dexpi/TrainingTestCases/-/raw/a23d61e2e089eb2ca464cd552f9ae580a2785963/dexpi%201.3/example%20pids/C08%20Two%20connected%20P%26IDs%20%28Covestro%29/C08V01/COV%20Instrument%20List.xlsm",
+        "raw_sha256": "b3efe5b9938846c667962a6129c8c2a11a95c9b8d314c5d6243c489d2fd1326f",
+        "size_bytes": 60373
+      },
+      {
+        "path": "dexpi 1.3/example pids/C08 Two connected P&IDs (Covestro)/C08V01/COV Valve List.xlsm",
+        "url": "https://gitlab.com/dexpi/TrainingTestCases/-/raw/a23d61e2e089eb2ca464cd552f9ae580a2785963/dexpi%201.3/example%20pids/C08%20Two%20connected%20P%26IDs%20%28Covestro%29/C08V01/COV%20Valve%20List.xlsm",
+        "raw_sha256": "382ac22ad1f5091f9a4764347c544b19e8afa11916b4c6bf24759797e1216cc9",
+        "size_bytes": 63990
+      },
+      {
+        "path": "dexpi 1.3/example pids/C08 Two connected P&IDs (Covestro)/C08V01/UER-1234567_bw.pdf",
+        "url": "https://gitlab.com/dexpi/TrainingTestCases/-/raw/a23d61e2e089eb2ca464cd552f9ae580a2785963/dexpi%201.3/example%20pids/C08%20Two%20connected%20P%26IDs%20%28Covestro%29/C08V01/UER-1234567_bw.pdf",
+        "raw_sha256": "c4184cab8538f728f1ab23787415ad90076582d50f8039509c384a2398bf8ccf",
+        "size_bytes": 108694
+      },
+      {
+        "path": "dexpi 1.3/example pids/C08 Two connected P&IDs (Covestro)/C08V01/UER-2345678_bw.pdf",
+        "url": "https://gitlab.com/dexpi/TrainingTestCases/-/raw/a23d61e2e089eb2ca464cd552f9ae580a2785963/dexpi%201.3/example%20pids/C08%20Two%20connected%20P%26IDs%20%28Covestro%29/C08V01/UER-2345678_bw.pdf",
+        "raw_sha256": "a9bfe903a2a8ba07eea128190f6332239790d3246aaeef498b761a8c0e5ff622",
+        "size_bytes": 69751
+      },
+      {
+        "path": "LICENSE",
+        "url": "https://gitlab.com/dexpi/TrainingTestCases/-/raw/a23d61e2e089eb2ca464cd552f9ae580a2785963/LICENSE",
+        "raw_sha256": "7e7170e3cebf88a9f60c7b8421418323c09304da1af4d5e90f4da1dc1c8a2661",
+        "size_bytes": 18650
+      }
+    ]
+  },
+  "license": {
+    "path": "benchmarks/tag-reading/fixtures/dexpi/LICENSE",
+    "raw_sha256": "7e7170e3cebf88a9f60c7b8421418323c09304da1af4d5e90f4da1dc1c8a2661",
+    "size_bytes": 18650
+  },
+  "artifacts": [
+    {
+      "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c01.graphml",
+      "role": "key",
+      "raw_sha256": "f72a66b0132f2beb43e802335026043f5d48b317d051194d05882d3e970966e3",
+      "size_bytes": 8487,
+      "source_paths": [
+        "dexpi 1.3/example pids/C01 DEXPI Reference P&ID/C01V04-VER.EX01.xml"
+      ]
+    },
+    {
+      "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c01.tags.json",
+      "role": "tags",
+      "raw_sha256": "b97f1d7169c8d2c6144bda7c70b8a7efc6cb0668465073d75e72a8ca5cef1049",
+      "size_bytes": 2333,
+      "source_paths": [
+        "dexpi 1.3/example pids/C01 DEXPI Reference P&ID/C01V04-VER.EX01.xml"
+      ]
+    },
+    {
+      "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c01.png",
+      "role": "input",
+      "raw_sha256": "69a14663282407f55794594d1c45f2ae2ec7ed1466566fc7af70bfb790fcfcea",
+      "size_bytes": 367949,
+      "source_paths": [
+        "dexpi 1.3/example pids/C01 DEXPI Reference P&ID/C01V04-VER.EX01.svg"
+      ]
+    },
+    {
+      "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c02.graphml",
+      "role": "key",
+      "raw_sha256": "27a7509b3ac92f843b5b7baa89809c8fb91ae057a173264a582db14e4c7bd3c2",
+      "size_bytes": 4220,
+      "source_paths": [
+        "dexpi 1.3/example pids/C02 Process Column (BASF)/C02V03-VER.EX02.xml"
+      ]
+    },
+    {
+      "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c02.tags.json",
+      "role": "tags",
+      "raw_sha256": "a79231eaaa53a156161c5792c8cf5ecb5095f8924ba7c1b8c38d49c694f4abc4",
+      "size_bytes": 1275,
+      "source_paths": [
+        "dexpi 1.3/example pids/C02 Process Column (BASF)/C02V03-VER.EX02.xml"
+      ]
+    },
+    {
+      "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c02.png",
+      "role": "input",
+      "raw_sha256": "ca9d9901e4fd4ad5b7e72c095a14f9b438f643203539fde1ee4703134f3acbcf",
+      "size_bytes": 114401,
+      "source_paths": [
+        "dexpi 1.3/example pids/C02 Process Column (BASF)/C02V03-VER.EX02.svg"
+      ]
+    },
+    {
+      "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c03.graphml",
+      "role": "key",
+      "raw_sha256": "8ae933e3d78d709e302836b9feffa3b77d9676ad6f83e76c4d79bfb8bf6511a3",
+      "size_bytes": 3205,
+      "source_paths": [
+        "dexpi 1.3/example pids/C03 Piping (Equinor)/C03V04-VER.EX02.xml"
+      ]
+    },
+    {
+      "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c03.tags.json",
+      "role": "tags",
+      "raw_sha256": "de4e8646376c291a25245bf97c0a773d0dab1e4cec43525f19ac77d21154da4b",
+      "size_bytes": 907,
+      "source_paths": [
+        "dexpi 1.3/example pids/C03 Piping (Equinor)/C03V04-VER.EX02.xml"
+      ]
+    },
+    {
+      "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c03.png",
+      "role": "input",
+      "raw_sha256": "307a3fb5636bf7423b5f3a84a131f238e04f187407994be665d131a00c582003",
+      "size_bytes": 126143,
+      "source_paths": [
+        "dexpi 1.3/example pids/C03 Piping (Equinor)/C03V04-VER.EX02.svg"
+      ]
+    },
+    {
+      "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c08a.taglist.json",
+      "role": "key",
+      "raw_sha256": "d6034a44eb072e24e0a191f299a0b1c312aa33795945b7ac1e98d38f8bc21e34",
+      "size_bytes": 11187,
+      "source_paths": [
+        "dexpi 1.3/example pids/C08 Two connected P&IDs (Covestro)/C08V01/UER-1234567_bw.pdf",
+        "dexpi 1.3/example pids/C08 Two connected P&IDs (Covestro)/C08V01/COV Equipment List.xlsm",
+        "dexpi 1.3/example pids/C08 Two connected P&IDs (Covestro)/C08V01/COV Instrument List.xlsm",
+        "dexpi 1.3/example pids/C08 Two connected P&IDs (Covestro)/C08V01/COV Valve List.xlsm"
+      ]
+    },
+    {
+      "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c08a.png",
+      "role": "input",
+      "raw_sha256": "91af950809b11157cb248dbf6eee5d7a87dc7c81aaf14141a8094d7ed524f58c",
+      "size_bytes": 774521,
+      "source_paths": [
+        "dexpi 1.3/example pids/C08 Two connected P&IDs (Covestro)/C08V01/UER-1234567_bw.pdf"
+      ]
+    },
+    {
+      "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c08b.taglist.json",
+      "role": "key",
+      "raw_sha256": "7482ee7f07ad8769f2c3586c7052290ec1e3b380f6ae16d5b3753db8435345b3",
+      "size_bytes": 1490,
+      "source_paths": [
+        "dexpi 1.3/example pids/C08 Two connected P&IDs (Covestro)/C08V01/UER-2345678_bw.pdf",
+        "dexpi 1.3/example pids/C08 Two connected P&IDs (Covestro)/C08V01/COV Equipment List.xlsm",
+        "dexpi 1.3/example pids/C08 Two connected P&IDs (Covestro)/C08V01/COV Instrument List.xlsm",
+        "dexpi 1.3/example pids/C08 Two connected P&IDs (Covestro)/C08V01/COV Valve List.xlsm"
+      ]
+    },
+    {
+      "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c08b.png",
+      "role": "input",
+      "raw_sha256": "0c19cf50550878d5c73e3b6aaf843377f8e5c74d5403accf3b518596e44fdcc9",
+      "size_bytes": 244855,
+      "source_paths": [
+        "dexpi 1.3/example pids/C08 Two connected P&IDs (Covestro)/C08V01/UER-2345678_bw.pdf"
+      ]
+    }
+  ],
+  "derivation": {
+    "historical_producing_converter": "unknown; original producing converter/version was not recorded with converted key hashes",
+    "original_historical_key_bytes": "unknown; CURRENT exposed cached key bytes are frozen here, not authenticated as original historical outputs",
+    "current_associated_files": [
+      {
+        "path": "scripts/adapt_dexpi.py",
+        "sha256": "519025621ad2df4af5d0850d869fe3eff23ff33f609e5a0e5bc4a2a59371e9ce",
+        "role": "current_associated_converter"
+      },
+      {
+        "path": "data/dataset_adapters/dexpi_examples.json",
+        "sha256": "23228640937e468099918af66de52b9e3c66d7d80ce79cc931a080e1821b6706",
+        "role": "current_associated_source_configuration"
+      },
+      {
+        "path": "docs/GOAL.md",
+        "sha256": "68b6abcb2542048fb09bc1c2929dbe34c00487d19aca1b8c36c403791eb45cd7",
+        "role": "current_associated_rules_and_historical_result_record"
+      }
+    ],
+    "render_parameters": {
+      "long_side_px": 3200,
+      "min_box_side_frac": 0.005,
+      "background": "white",
+      "tool": "PyMuPDF (MuPDF) rasterising the published SVG or PDF"
+    },
+    "historical_render_tool_version": "unknown; render configuration names MuPDF but records no original executing version",
+    "limits": "Copied existing adapted cache files only; no fetch/rerender. Geometry labels use the declared eligible projection; partial lists cannot establish precision or item assignment. Original SVG/PDF/XLSM are not copied. Current hashes do not authenticate original source truth."
+  }
+}

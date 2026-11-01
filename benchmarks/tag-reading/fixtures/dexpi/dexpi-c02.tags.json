@@ -1,0 +1,35 @@
+{
+ "sheet": "dexpi-c02",
+ "rule": "visible label text; see scripts/adapt_dexpi.py docstring",
+ "tags": {
+  "PipeReducer-1": "200/150",
+  "FlowOutPipeOffPageConnector-1": null,
+  "OperatedValve-1": "H672B1V",
+  "BlindFlange-1": "80/25",
+  "OperatedValve-2": "H658B1UV",
+  "BlindFlange-2": null,
+  "BlindFlange-3": "80/25",
+  "OperatedValve-3": "H658B1UV",
+  "BlindFlange-4": null,
+  "ProcessInstrumentationFunction-1": "PIS\u207aZ\u207aA 275003",
+  "ProcessInstrumentationFunction-2": "PI(Z) 275003A",
+  "ProcessInstrumentationFunction-3": "PI(Z) 275003B",
+  "ProcessColumn-1": "K 2750"
+ },
+ "dexpi_class": {
+  "PipeReducer-1": "PipeReducer",
+  "FlowOutPipeOffPageConnector-1": "FlowOutPipeOffPageConnector",
+  "PipeTee-1": "PipeTee",
+  "OperatedValve-1": "OperatedValve",
+  "BlindFlange-1": "BlindFlange",
+  "OperatedValve-2": "OperatedValve",
+  "BlindFlange-2": "BlindFlange",
+  "BlindFlange-3": "BlindFlange",
+  "OperatedValve-3": "OperatedValve",
+  "BlindFlange-4": "BlindFlange",
+  "ProcessInstrumentationFunction-1": "ProcessInstrumentationFunction",
+  "ProcessInstrumentationFunction-2": "ProcessInstrumentationFunction",
+  "ProcessInstrumentationFunction-3": "ProcessInstrumentationFunction",
+  "ProcessColumn-1": "ProcessColumn"
+ }
+}

@@ -1,0 +1,658 @@
+{
+ "sheet": "dexpi-c08a",
+ "drawing_name": "UER-1234567",
+ "items": [
+  {
+   "identifier": "BA100",
+   "class": "tank",
+   "list": "equipment"
+  },
+  {
+   "identifier": "BA101",
+   "class": "tank",
+   "list": "equipment"
+  },
+  {
+   "identifier": "BA102",
+   "class": "tank",
+   "list": "equipment"
+  },
+  {
+   "identifier": "BA103",
+   "class": "tank",
+   "list": "equipment"
+  },
+  {
+   "identifier": "KA002",
+   "class": "tank",
+   "list": "equipment"
+  },
+  {
+   "identifier": "PA100",
+   "class": "pump",
+   "list": "equipment"
+  },
+  {
+   "identifier": "PA101",
+   "class": "pump",
+   "list": "equipment"
+  },
+  {
+   "identifier": "PA102",
+   "class": "pump",
+   "list": "equipment"
+  },
+  {
+   "identifier": "PA103",
+   "class": "pump",
+   "list": "equipment"
+  },
+  {
+   "identifier": "PA104",
+   "class": "pump",
+   "list": "equipment"
+  },
+  {
+   "identifier": "PA105",
+   "class": "pump",
+   "list": "equipment"
+  },
+  {
+   "identifier": "WA006",
+   "class": "tank",
+   "list": "equipment"
+  },
+  {
+   "identifier": "WA007",
+   "class": "tank",
+   "list": "equipment"
+  },
+  {
+   "identifier": "WA008",
+   "class": "tank",
+   "list": "equipment"
+  },
+  {
+   "identifier": "WA009",
+   "class": "tank",
+   "list": "equipment"
+  },
+  {
+   "identifier": "WA010",
+   "class": "tank",
+   "list": "equipment"
+  },
+  {
+   "identifier": "F0017",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "F0018",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "F0023",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "F0024",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "F0025",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "F0026",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "L0008",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "L0009",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "L0010",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "L0011",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "L0012",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "P0016",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "P0017",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "P0018",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "P0019",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "P0020",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "P0021",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "P0022",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "P0023",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "P0024",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "T0021",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "T0022",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "T0023",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "T0025",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "T0026",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "T0027",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "T0028",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "T0029",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "T0030",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "T0031",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "T0032",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "U0020",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "Y0008",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "Y0009",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "Y0010",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "Y0011",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "Y0012",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "Y0013",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "Y0014",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "Y0015",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "AB020",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB032",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB009",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB065",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB022",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB025",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB029",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB059",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB004",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB016",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB037",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB063",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB046",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB010",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB005",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB012",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB011",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB026",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB021",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB039",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB035",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB047",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB055",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB051",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB048",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB013",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB036",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB008",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB027",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB061",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB054",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB003",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB002",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB057",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB030",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB043",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB040",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB064",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB045",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB023",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB038",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB018",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB060",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB041",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB058",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB019",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AH003",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB034",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AG002",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB014",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AH002",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AH004",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB050",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB007",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AS001",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AH001",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB024",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB006",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB056",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB044",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB028",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB033",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB049",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AK001",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB053",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AR001",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB042",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB062",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB017",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AG001",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB015",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB031",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB052",
+   "class": "valve",
+   "list": "valve"
+  }
+ ],
+ "excluded_not_printed": [
+  {
+   "identifier": "AB001",
+   "list": "valve",
+   "reason": "not printed in the PDF text layer"
+  }
+ ]
+}

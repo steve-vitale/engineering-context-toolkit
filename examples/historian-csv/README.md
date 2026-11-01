@@ -32,7 +32,8 @@ historian-style CSV, so a plant can try them on its own export:
     It reproduces the TE scripts exactly (section (a) below), and on real data it flags normal running long before
     any fault, because real plants drift and a short normal window cannot see it.
 
-Both are stdlib plus `asyncua` (for the server only). Nothing here uses a model.
+Band analysis uses Python's standard library and runs offline. Optional OPC UA replay needs `asyncua` and opens
+a listener; the command below binds it to this computer only. Nothing here uses a model.
 
 The band CLI checks both report destinations before writing: neither may alias the normal CSV, the scoring CSV
 or the other report, including through directory links or existing hardlinks. Use a separate output folder and
@@ -105,6 +106,9 @@ It compares the existing method on fixed earlier/recent windows from public reco
 results worse, and shows which operating and configuration evidence remains to request. A `Normal` label,
 greater recency or a longer window alone does not qualify a baseline.
 
+The first command reproduces a tracked result for contributors. To try it without changing published evidence,
+replace its `--out` value with a separate working folder, for example `../engineering-work/historian-bands`.
+
 ```sh
 # Bands: fit on the normal export, score the fault export (labelled fault start = data row 160)
 python scripts/csv_normal_bands.py --normal examples/historian-csv/te_normal_d00.csv \
@@ -115,8 +119,8 @@ python scripts/csv_normal_bands.py --normal examples/historian-csv/te_normal_d00
     --score examples/historian-csv/te_fault6_d06.csv --fault-start 160 --units minutes \
     --method level --out out/csv_normal_bands_level
 
-# Replay over OPC UA (Ctrl+C to stop). Node ids: ns=2;s=CSV/<column>, plus CSV/_sample and CSV/_time
-python scripts/csv_replay_server.py --csv examples/historian-csv/te_fault6_d06.csv --port 4871 --rate 1 --loop
+# Optional local replay (Ctrl+C to stop). Node ids: ns=2;s=CSV/<column>, plus CSV/_sample and CSV/_time
+python scripts/csv_replay_server.py --csv examples/historian-csv/te_fault6_d06.csv --host 127.0.0.1 --port 4871 --rate 1 --loop
 
 # Tests (synthetic CSVs; TE agreement when the TE cache is present; a live OPC UA smoke when asyncua is installed)
 python scripts/test_csv_tools.py
@@ -140,7 +144,8 @@ running in those pre-fault windows, so a flag is not evidence that the method lo
 `--fault-start` takes a 0-based data-row number (an integer, `160`), or a first-column value: a timestamp
 (`"2026-10-01 09:40:00"`) or a number with a decimal point (`480.0`) picks the first row at or after it. With timestamps, delays are in seconds. `--k 5` fixes K instead of choosing it;
 `--fit-fraction` changes the fit share (default 0.5). If the fit rows, or the held-out rows K is chosen on, number fewer than 30 (or a tag has fewer than 30 good fit values), the .md and .json carry a small-sample warning: below that a band's sd is a rough estimate, and with fewer than 200 held-out rows one false flag already exceeds the 0.5% K target. The TE example (480 + 480 rows) has none. For an Ignition OPC UA connection to the replay, point it at
-`opc.tcp://<host>:<port>/csv-replay` with no security, as for the TE server.
+`opc.tcp://127.0.0.1:4871/csv-replay` from a client on the same computer. This example has no transport security;
+any cross-machine deployment needs a separately approved network and security configuration.
 
 ## Results on the TE export
 

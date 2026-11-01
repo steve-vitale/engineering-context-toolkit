@@ -8,6 +8,11 @@ manual bridges and the recommended order of work. Numerical research evidence li
 
 ## Follow one path
 
+| Your role | Start here |
+|---|---|
+| Leader or manager assigning work to an engineer or intern | [Scope an onboarding assignment](ENGINEERING_ONBOARDING.md#for-leaders-and-managers) |
+| Engineer or intern learning how the team works | [Complete a first contribution](ENGINEERING_ONBOARDING.md#for-engineers-and-interns) |
+
 1. **Frame a question.** Use the [first-question brief](../examples/first-pilot/README.md), including the
    company-approved Copilot/manual route without a local installation.
 2. **Choose the starting records.** The [README selector](../README.md#start-wherever-you-are) links the input guides.
@@ -16,6 +21,21 @@ manual bridges and the recommended order of work. Numerical research evidence li
    model, the [question engine](OPPORTUNITY_SCREEN.md) can suggest investigations; it does not perform a process audit.
 4. **Hand off one finding.** Keep the sources, qualifications and next owner together in the brief.
    [Company pilot guidance](AT_YOUR_PLANT.md) explains how to evaluate practical value and access at your site.
+
+## Engineering work examples
+
+Use the same pattern across the series: one job, cited records, a qualified answer, a reviewer and a next step.
+Available examples are public software/source exercises; they do not establish company acceptance or onboarding
+benefit. Proposed episodes have no runnable packet yet.
+
+| Engineering job | Status and starting point |
+|---|---|
+| Explain a record before proposing a change | **Available:** [first-question brief](../examples/first-pilot/README.md) and its source-question examples; manual or approved Copilot, no installation. |
+| Understand a configuration identifier across revisions | **Available:** [NIST packet and plain brief](../examples/context-register/nist-smstestbed/README.md); optional local reproduction needs its pinned cached originals. |
+| Investigate a reported failure and missing follow-up | **Available:** [MetroPT-3 maintenance questions](../examples/context-register/metropt3/README.md); reported records do not establish a successful intervention. |
+| Exchange a published dependency and preserve disagreement | **Available:** [four owned packets](../examples/team-context/README.md) and [source revision](../examples/pump-revision/README.md); fictional local exercises, no shared company service. |
+| Connect drawings, models and investigation questions | **Available:** [one pump walkthrough](../examples/from-description/assisted/PUMP_WALKTHROUGH.md) and the [input guides](../README.md#start-wherever-you-are); a specialist branch with engineering review. |
+| Prepare a design review, supplier handoff or test-results comparison | **Proposed worked episodes:** use the [onboarding guide's manual starters](ENGINEERING_ONBOARDING.md#choose-a-starter-workflow) now; no dedicated runnable fixtures or generic knowledge/MCP catalogue are released. |
 
 ## Continue a task
 

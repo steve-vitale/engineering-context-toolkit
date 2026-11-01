@@ -1,0 +1,87 @@
+{
+ "sheet": "dexpi-c08b",
+ "drawing_name": "UER-2345678",
+ "items": [
+  {
+   "identifier": "BA001",
+   "class": "tank",
+   "list": "equipment"
+  },
+  {
+   "identifier": "PA001",
+   "class": "pump",
+   "list": "equipment"
+  },
+  {
+   "identifier": "PA002",
+   "class": "pump",
+   "list": "equipment"
+  },
+  {
+   "identifier": "RA001",
+   "class": "tank",
+   "list": "equipment"
+  },
+  {
+   "identifier": "F0001",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "L0001",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "M0001",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "P0001",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "U0001",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "Y0001",
+   "class": "instrumentation",
+   "list": "instrument"
+  },
+  {
+   "identifier": "AB003",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB001",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB005",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB006",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB002",
+   "class": "valve",
+   "list": "valve"
+  },
+  {
+   "identifier": "AB004",
+   "class": "valve",
+   "list": "valve"
+  }
+ ],
+ "excluded_not_printed": []
+}

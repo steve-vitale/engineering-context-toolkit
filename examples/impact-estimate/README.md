@@ -31,6 +31,8 @@ illustrative 78 to 82% test.
 ## Regenerate
 
 The test (`scripts/test_estimate_impact.py`) checks these outputs byte for byte and recomputes every total by hand.
+The commands below regenerate tracked fixtures for contributors. For a personal run, replace each `--out`
+with a separate working folder, for example `../engineering-work/impact-pump`.
 
 ```sh
 python -S scripts/estimate_impact.py --estimate examples/impact-estimate/pump_vfd_site.json --out examples/impact-estimate/pump-vfd-site

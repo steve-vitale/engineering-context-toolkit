@@ -1,0 +1,153 @@
+{
+  "id": "dexpi-tag-reading-exposed-development",
+  "version": "1",
+  "task": "tag-reading",
+  "protocol": "tag-text-v1: frozen score_tags geometry or taglist semantics; distinct explicit modes/denominators; geometry-only unique nonempty exact string ID admission",
+  "registration": "Retrospective exposed historical/development registration using CURRENT frozen cache keys. Five sheets from one DEXPI publisher; saved 2026-10-13 model dates; no new trial, blindness or independent source families.",
+  "cases": [
+    {
+      "id": "dexpi-c01",
+      "tag_key_kind": "geometry",
+      "family": "dexpi-trainingtestcases",
+      "split": "development",
+      "evidence": "exposed historical model answers; CURRENT frozen derived cache keys, original producing key/converter identity unknown",
+      "source_url": "https://gitlab.com/dexpi/TrainingTestCases/-/tree/a23d61e2e089eb2ca464cd552f9ae580a2785963",
+      "license": "CC BY 4.0; copied adaptations and original LICENSE with DEXPI attribution",
+      "key_author": "Project conversion from published DEXPI XML labels/geometry or partial item lists; independently source-inspected, not human-rekeyed geometry",
+      "source_provenance": {
+        "path": "benchmarks/tag-reading/PROVENANCE.json",
+        "sha256": "7a10c171d7c47fb3702f2007d08889ad38b012e30a8bf5c95fcebce0161f9aaf"
+      },
+      "files": {
+        "key": {
+          "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c01.graphml",
+          "sha256": "2fd53195265009a9c856add4708ce017e9695945f1d2536efb947ed27bb22407"
+        },
+        "tags": {
+          "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c01.tags.json",
+          "sha256": "864d4bfe1d862b30305fa59d9fbb1ccf74df3dec140aa3b27476d3f6d1c84b6b"
+        },
+        "input": {
+          "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c01.png",
+          "sha256": "69a14663282407f55794594d1c45f2ae2ec7ed1466566fc7af70bfb790fcfcea"
+        }
+      }
+    },
+    {
+      "id": "dexpi-c02",
+      "tag_key_kind": "geometry",
+      "family": "dexpi-trainingtestcases",
+      "split": "development",
+      "evidence": "exposed historical model answers; CURRENT frozen derived cache keys, original producing key/converter identity unknown",
+      "source_url": "https://gitlab.com/dexpi/TrainingTestCases/-/tree/a23d61e2e089eb2ca464cd552f9ae580a2785963",
+      "license": "CC BY 4.0; copied adaptations and original LICENSE with DEXPI attribution",
+      "key_author": "Project conversion from published DEXPI XML labels/geometry or partial item lists; independently source-inspected, not human-rekeyed geometry",
+      "source_provenance": {
+        "path": "benchmarks/tag-reading/PROVENANCE.json",
+        "sha256": "7a10c171d7c47fb3702f2007d08889ad38b012e30a8bf5c95fcebce0161f9aaf"
+      },
+      "files": {
+        "key": {
+          "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c02.graphml",
+          "sha256": "f2f36ea0525a5dbbce7a00268add15f6ecf76d1f1afeebaf7f87626803158607"
+        },
+        "tags": {
+          "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c02.tags.json",
+          "sha256": "ccedae5613f8888244c8b688a607dd6cf087cdc2737e48955ec0fc8baab74037"
+        },
+        "input": {
+          "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c02.png",
+          "sha256": "ca9d9901e4fd4ad5b7e72c095a14f9b438f643203539fde1ee4703134f3acbcf"
+        }
+      }
+    },
+    {
+      "id": "dexpi-c03",
+      "tag_key_kind": "geometry",
+      "family": "dexpi-trainingtestcases",
+      "split": "development",
+      "evidence": "exposed historical model answers; CURRENT frozen derived cache keys, original producing key/converter identity unknown",
+      "source_url": "https://gitlab.com/dexpi/TrainingTestCases/-/tree/a23d61e2e089eb2ca464cd552f9ae580a2785963",
+      "license": "CC BY 4.0; copied adaptations and original LICENSE with DEXPI attribution",
+      "key_author": "Project conversion from published DEXPI XML labels/geometry or partial item lists; independently source-inspected, not human-rekeyed geometry",
+      "source_provenance": {
+        "path": "benchmarks/tag-reading/PROVENANCE.json",
+        "sha256": "7a10c171d7c47fb3702f2007d08889ad38b012e30a8bf5c95fcebce0161f9aaf"
+      },
+      "files": {
+        "key": {
+          "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c03.graphml",
+          "sha256": "2987400f1b655608d4d0d5bad27819d420a042b3ab70405b8598476d26a3669b"
+        },
+        "tags": {
+          "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c03.tags.json",
+          "sha256": "28b583287913477957248f3c643bde6f0f885169f21bdc1814bd0148f7a811d6"
+        },
+        "input": {
+          "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c03.png",
+          "sha256": "307a3fb5636bf7423b5f3a84a131f238e04f187407994be665d131a00c582003"
+        }
+      }
+    },
+    {
+      "id": "dexpi-c08a",
+      "tag_key_kind": "taglist",
+      "family": "dexpi-trainingtestcases",
+      "split": "development",
+      "evidence": "exposed historical model answers; CURRENT frozen derived cache keys, original producing key/converter identity unknown",
+      "source_url": "https://gitlab.com/dexpi/TrainingTestCases/-/tree/a23d61e2e089eb2ca464cd552f9ae580a2785963",
+      "license": "CC BY 4.0; copied adaptations and original LICENSE with DEXPI attribution",
+      "key_author": "Project conversion from published DEXPI XML labels/geometry or partial item lists; independently source-inspected, not human-rekeyed geometry",
+      "source_provenance": {
+        "path": "benchmarks/tag-reading/PROVENANCE.json",
+        "sha256": "7a10c171d7c47fb3702f2007d08889ad38b012e30a8bf5c95fcebce0161f9aaf"
+      },
+      "files": {
+        "key": {
+          "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c08a.taglist.json",
+          "sha256": "e03376f1d86e09a3ede38044883297b6bbcda39ae9f44260f9c95dd18eac94a3"
+        },
+        "input": {
+          "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c08a.png",
+          "sha256": "91af950809b11157cb248dbf6eee5d7a87dc7c81aaf14141a8094d7ed524f58c"
+        }
+      }
+    },
+    {
+      "id": "dexpi-c08b",
+      "tag_key_kind": "taglist",
+      "family": "dexpi-trainingtestcases",
+      "split": "development",
+      "evidence": "exposed historical model answers; CURRENT frozen derived cache keys, original producing key/converter identity unknown",
+      "source_url": "https://gitlab.com/dexpi/TrainingTestCases/-/tree/a23d61e2e089eb2ca464cd552f9ae580a2785963",
+      "license": "CC BY 4.0; copied adaptations and original LICENSE with DEXPI attribution",
+      "key_author": "Project conversion from published DEXPI XML labels/geometry or partial item lists; independently source-inspected, not human-rekeyed geometry",
+      "source_provenance": {
+        "path": "benchmarks/tag-reading/PROVENANCE.json",
+        "sha256": "7a10c171d7c47fb3702f2007d08889ad38b012e30a8bf5c95fcebce0161f9aaf"
+      },
+      "files": {
+        "key": {
+          "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c08b.taglist.json",
+          "sha256": "92114edb34e7617272ae73fa10bd586fce574f2e1a727210efc5be123ea8e4f8"
+        },
+        "input": {
+          "path": "benchmarks/tag-reading/fixtures/dexpi/dexpi-c08b.png",
+          "sha256": "0c19cf50550878d5c73e3b6aaf843377f8e5c74d5403accf3b518596e44fdcc9"
+        }
+      }
+    }
+  ],
+  "runs": [
+    "benchmarks/runs/tag-reading-claude-rep1.json",
+    "benchmarks/runs/tag-reading-claude-rep2.json",
+    "benchmarks/runs/tag-reading-claude-rep3.json",
+    "benchmarks/runs/tag-reading-claude-rep4.json",
+    "benchmarks/runs/tag-reading-claude-rep5.json",
+    "benchmarks/runs/tag-reading-codex-rep1.json",
+    "benchmarks/runs/tag-reading-codex-rep2.json",
+    "benchmarks/runs/tag-reading-codex-rep3.json",
+    "benchmarks/runs/tag-reading-codex-rep4.json",
+    "benchmarks/runs/tag-reading-codex-rep5.json"
+  ]
+}

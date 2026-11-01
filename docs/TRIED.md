@@ -24,7 +24,7 @@ Read this before tuning anything: if a variant is listed as rejected, the number
 | [Tiling](#tiling) | 4 | 1 | 0 | 1 | 2 | 2 | 1 |
 | [Risk ranking for review](#risk-ranking-for-review) | 6 | 4 | 2 | 0 | 0 | 4 | 3 |
 | [Robustness to old scans](#robustness-to-old-scans) | 11 | 3 | 3 | 1 | 4 | 10 | 1 |
-| [Tag reading](#tag-reading) | 4 | 0 | 0 | 0 | 4 | 0 | 2 |
+| [Tag reading](#tag-reading) | 5 | 1 | 0 | 0 | 4 | 0 | 2 |
 | [Scoring: the scorer and its controls](#scoring-the-scorer-and-its-controls) | 26 | 18 | 6 | 0 | 2 | 17 | 5 |
 | [Generated P&IDs drawn from a model (loops, stations, style)](#generated-pids-drawn-from-a-model-loops-stations-style) | 10 | 5 | 3 | 2 | 0 | 7 | 4 |
 | [Tennessee Eastman model: source and topology verification, tag conventions](#tennessee-eastman-model-source-and-topology-verification-tag-conventions) | 10 | 6 | 3 | 1 | 0 | 10 | 2 |
@@ -34,7 +34,7 @@ Read this before tuning anything: if a variant is listed as rejected, the number
 | [3D and browser tours](#3d-and-browser-tours) | 7 | 3 | 2 | 2 | 0 | 7 | 4 |
 | [Review loop: operations corrections, mapping, outside review](#review-loop-operations-corrections-mapping-outside-review) | 21 | 17 | 2 | 1 | 1 | 6 | 4 |
 | [Intake and reuse: runbook, DEXPI route, loop audit, CSV tools, vendor kit](#intake-and-reuse-runbook-dexpi-route-loop-audit-csv-tools-vendor-kit) | 63 | 59 | 2 | 0 | 2 | 13 | 4 |
-| **All** | **270** | **158** | **69** | **17** | **26** | **161** | **62** |
+| **All** | **271** | **159** | **69** | **17** | **26** | **161** | **62** |
 
 ## Extraction: models reading symbols and tags
 
@@ -200,11 +200,16 @@ Function id `tag_reading`.
 | A054 | 2026-10-13 | TE revision A round trip, clean sheets: M3 on the generated house-style sheets. | Both models read all 43 printed tags in every run; review load GPT 2.1, Claude 2.2 (2.1-2.6). | 5 per model | **inconclusive** | A round trip on our own drawings: an upper bound, not real-plant accuracy. | [journal 44](../docs/JOURNAL.md#44-one-plant-end-to-end-draw-the-te-model-in-the-house-style-and-read-it-back), [EVALUATION.md: 6. One plant, end to end](../docs/EVALUATION.md#6-one-plant-end-to-end-tennessee-eastman) |
 | A055 | 2026-10-13 | TE revision A round trip on degraded copies L1-L3. | Tags read exactly at L2: GPT 56%, Claude 95%; at L3: GPT 14%, Claude 49%. Review load L3 16.9 / 17.3. | 3 per model per level | **inconclusive** | Text fails before shapes; the models fail differently, no winner called. | [journal 44](../docs/JOURNAL.md#44-one-plant-end-to-end-draw-the-te-model-in-the-house-style-and-read-it-back), [EVALUATION.md: 6. One plant, end to end](../docs/EVALUATION.md#6-one-plant-end-to-end-tennessee-eastman) |
 | A056 | 2026-10-28 | Revision C read-back (controllers, signal lines, valve stations) with the entry-44 protocol. | Clean review load GPT 1.26, Claude 1.38, tags 100%. L2 tags 61% / 89%, L3 9% / 50%. GPT controller tags misread at L2: 51% against 34% for other tags. | 5 clean + 3 per level per model | **inconclusive** | Smaller text inside the DCS symbol costs readability on poor copies; scores kept as measured. | [journal 54](../docs/JOURNAL.md#54-read-revision-c-back-with-the-same-method), [EVALUATION.md: 6. One plant, end to end](../docs/EVALUATION.md#6-one-plant-end-to-end-tennessee-eastman) |
+| A271 | 2026-10-31 | Register the frozen tag scorer as an offline contributor task, with exact attributed cache fixtures, separate geometry/list rate cohorts, full provenance admission and compact reports; give leaders and new engineers a broader source-first onboarding path. *Hypothesis:* Engineers can compare saved tag readings without confusing partial-list coverage with symbol-matched text accuracy or requiring new provider calls. | 50 historical trace answers on five exposed DEXPI sheets;33geometry labels and145partial-list identifiers. Root30shipping methods pass; independent53groups+6raw-source controls pass with one physical-symlink variant unavailable on Windows. A formatting-only successor preserves every typed score/count/status field and24displayed rates;2focused methods pass and1physical-symlink case skips. Four older suites retain strict typed semantics under new implementation IDs; all old reports remain. | Offline saved-answer rescoring and synthetic software controls; no new model calls, held-out family, human usefulness or company deployment. | **kept** | Adds a reproducible contribution path and reviewed onboarding documentation. Current cache keys are frozen now; original historical key bytes/producing converter remain unauthenticated. Company context permissions, governance and a generic onboarding MCP reader remain separate work. | [journal 131](../docs/JOURNAL.md#131-make-tag-reading-comparable-and-give-new-engineers-a-starting-path), [README.md](../benchmarks/README.md), [tag-reading-development.md](../benchmarks/results/tag-reading-development.md), [ENGINEERING_ONBOARDING.md](../docs/ENGINEERING_ONBOARDING.md) |
 
 **Not tried yet**
 
 - N022 *not-done*: Tag reading on real scans, handwriting or dense archives. Only clean vector DEXPI sheets and generated TE sheets have tag truth here. ([GOAL.md: Tag text](../docs/GOAL.md#tag-text-first-measurement-in-this-project))
 - N023 *not-done*: Model read-back of revision D sheets. Revision D changes only tag letters on sheets revision C's runs already read. ([journal 61](../docs/JOURNAL.md#61-tag-the-te-transmitters-as-transmitters-and-let-a-strangers-agent-check-the-readme))
+
+**Completed ideas**
+
+- N102 *done*: Expose the existing geometry and partial-list tag scorer as a contributor benchmark with saved model metadata, exact inputs and distinct rate cohorts. Completed A271 with current frozen attributed DEXPI fixtures, raw-byte admission, whole saved-answer reports and matched old-task conservation. Real scans/handwriting(N022), revision-D model readback(N023), source/key engineering acceptance and human usefulness remain open. ([journal 131](../docs/JOURNAL.md#131-make-tag-reading-comparable-and-give-new-engineers-a-starting-path), [README.md](../benchmarks/README.md))
 
 ## Scoring: the scorer and its controls
 

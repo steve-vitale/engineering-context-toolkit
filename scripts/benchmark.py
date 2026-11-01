@@ -12,7 +12,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parent.parent
 TASKS = {'drawing-extraction': 'pid2graph-v1', 'description-facts': 'native-facts-v1',
-         'source-support': 'claim-judgments-v1'}
+         'source-support': 'claim-judgments-v1', 'tag-reading': 'tag-text-v1'}
 TEXT = {'.json', '.graphml', '.xml', '.md', '.txt', '.csv', '.py'}
 FIELDS = {'units': ('id', ('type',)), 'streams': ('id', ('from', 'to')),
           'instruments': ('tag', ('unit', 'stream', 'variable', 'uom')),
@@ -210,6 +210,9 @@ def evaluate(suite_path, root=ROOT):
     text_fields(suite, ('id', 'version', 'task', 'protocol', 'registration'), 'suite')
     task = suite['task']
     require(task in TASKS, 'Unsupported task; add a tested scorer adapter before registering this task')
+    if task == 'tag-reading':
+        import benchmark_tags
+        return benchmark_tags.evaluate(suite_path, root, sys.modules[__name__], suite)
     sources = ['benchmark.py'] + (['score_pid2graph.py', 'evaluate_vendor.py', 'replicate_stats.py',
                                  'score_tags.py', 'test_scorer_controls.py'] if task == 'drawing-extraction' else [])
     if task == 'source-support':
@@ -368,6 +371,9 @@ def evaluate(suite_path, root=ROOT):
 
 
 def markdown(report):
+    if report['task'] == 'tag-reading':
+        import benchmark_tags
+        return benchmark_tags.markdown(report)
     def safe(value):
         return str(value).replace('|', '\\|').replace('\n', ' ').replace('\r', ' ')
     lines = ['# Task results: ' + safe(report['suite']), '',

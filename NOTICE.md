@@ -60,6 +60,12 @@ them (scores, summaries and any committed review-kit images in `out/`) is shared
 DEXPI initiative and its contributing members. Changes: rasterised to PNG, converted to this repository's
 answer-key format, and scored.
 
+The separately attributed `benchmarks/tag-reading/fixtures/dexpi/` subset contains five existing PNG renders,
+three converted GraphML keys, three tag-text keys and two partial identifier lists. These adaptations are copied
+unchanged from the existing DEXPI cache under CC BY 4.0; the original LICENSE and source/derivation details are
+in `benchmarks/tag-reading/`. This does not redistribute the original SVG, PDF or XLSM files, and does not change
+the historical round-5 staging record.
+
 **AVEVA AF SDK sample**: the unit-of-measure list in `data/pi_builder_reference.json` (`uom_sample.units`: class,
 name and abbreviation) is extracted from `AF Database - Green Power Company.xml` in
 [AVEVA/AF-SDK-Getting-Started-Guide](https://github.com/AVEVA/AF-SDK-Getting-Started-Guide), licensed under the

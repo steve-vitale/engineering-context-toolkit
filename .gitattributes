@@ -27,6 +27,8 @@ examples/statement-review/bound-sheet0/*.html text eol=lf
 examples/from-description/assisted/** -text
 examples/from-description/mgpi/** -text
 benchmarks/** text eol=lf
+# Exact attributed cache artifacts have raw identities in the tag source provenance.
+/benchmarks/tag-reading/fixtures/dexpi/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 
 # Committed statement-review outputs reproduce as LF bytes.
 examples/graph-export/multi-appearance/review/statements.json text eol=lf

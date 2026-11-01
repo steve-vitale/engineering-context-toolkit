@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns">
+  <key id="d0" for="node" attr.name="label" attr.type="string" />
+  <key id="d1" for="node" attr.name="xmin" attr.type="double" />
+  <key id="d2" for="node" attr.name="xmax" attr.type="double" />
+  <key id="d3" for="node" attr.name="ymin" attr.type="double" />
+  <key id="d4" for="node" attr.name="ymax" attr.type="double" />
+  <graph edgedefault="undirected">
+    <node id="PipeFitting-1"><data key="d0">general</data><data key="d1">447.47</data><data key="d2">485.87</data><data key="d3">696.00</data><data key="d4">728.00</data></node>
+    <node id="BlindFlange-1"><data key="d0">general</data><data key="d1">416.67</data><data key="d2">516.67</data><data key="d3">722.67</data><data key="d4">738.67</data></node>
+    <node id="Flange-1"><data key="d0">general</data><data key="d1">416.67</data><data key="d2">516.67</data><data key="d3">738.67</data><data key="d4">754.67</data></node>
+    <node id="Flange-2"><data key="d0">general</data><data key="d1">888.00</data><data key="d2">904.00</data><data key="d3">856.67</data><data key="d4">956.67</data></node>
+    <node id="OperatedValve-1"><data key="d0">valve</data><data key="d1">908.00</data><data key="d2">1028.00</data><data key="d3">846.67</data><data key="d4">966.67</data></node>
+    <node id="Flange-3"><data key="d0">general</data><data key="d1">1032.00</data><data key="d2">1048.00</data><data key="d3">856.67</data><data key="d4">956.67</data></node>
+    <node id="RestrictionOrifice-1"><data key="d0">general</data><data key="d1">1402.00</data><data key="d2">1478.00</data><data key="d3">836.67</data><data key="d4">976.67</data></node>
+    <node id="BallValve-1"><data key="d0">valve</data><data key="d1">1492.00</data><data key="d2">1612.00</data><data key="d3">846.67</data><data key="d4">966.67</data></node>
+    <node id="PipeReducer-1"><data key="d0">general</data><data key="d1">1626.67</data><data key="d2">1706.67</data><data key="d3">846.67</data><data key="d4">926.67</data></node>
+    <node id="FlowOutPipeOffPageConnector-1"><data key="d0">inlet/outlet</data><data key="d1">1733.33</data><data key="d2">2266.67</data><data key="d3">120.00</data><data key="d4">253.33</data></node>
+    <node id="ProcessInstrumentationFunction-1"><data key="d0">instrumentation</data><data key="d1">167.67</data><data key="d2">365.67</data><data key="d3">327.67</data><data key="d4">525.67</data></node>
+    <edge id="e0" source="BallValve-1" target="PipeReducer-1" />
+    <edge id="e1" source="BallValve-1" target="RestrictionOrifice-1" />
+    <edge id="e2" source="BlindFlange-1" target="Flange-1" />
+    <edge id="e3" source="BlindFlange-1" target="PipeFitting-1" />
+    <edge id="e4" source="Flange-1" target="Flange-2" />
+    <edge id="e5" source="Flange-2" target="OperatedValve-1" />
+    <edge id="e6" source="Flange-3" target="OperatedValve-1" />
+    <edge id="e7" source="Flange-3" target="RestrictionOrifice-1" />
+    <edge id="e8" source="FlowOutPipeOffPageConnector-1" target="PipeReducer-1" />
+    <edge id="e9" source="OperatedValve-1" target="ProcessInstrumentationFunction-1" />
+  </graph>
+</graphml>

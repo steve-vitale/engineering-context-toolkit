@@ -1,12 +1,12 @@
 {
  "about": "Generalization matrix written by scripts/corpus_matrix.py; rendered as docs/GENERALIZATION.md.",
- "ran_at": "2026-10-31 20:30 UTC",
- "seconds": 1647.0,
+ "ran_at": "2026-11-01 00:11 UTC",
+ "seconds": 1648.8,
  "rows_run_this_time": [
-  7
+  6
  ],
  "inputs_run_this_time": [
-  "dexpi-1.2-cross-vendor"
+  "te-braatz-runs"
  ],
  "tracer_pass_f1": 0.88,
  "pipe_pass_f1": 0.88,
@@ -8845,14 +8845,14 @@
     },
     {
      "file": "examples/historian-csv/README.md",
-     "line": 150,
+     "line": 155,
      "says": "fault 6 (drift): detection at 18 minutes, 0 of the 160 pre-fault samples flagged",
      "ours": "fault 6 (drift): detection at 18.0 minutes, 0 of 160 pre-fault samples flagged",
      "agrees": true
     }
    ],
-   "seconds": 2.7,
-   "ran_at": "2026-10-31 03:31 UTC",
+   "seconds": 4.5,
+   "ran_at": "2026-11-01 00:11 UTC",
    "tool_files": {
     "scripts/csv_normal_bands.py": "sha256:88baa8aa94fd2900",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf"
@@ -8935,7 +8935,7 @@
       "exists": true,
       "directory": false,
       "files": {
-       "examples/historian-csv/README.md": "sha256:1a202f48f1bff4ce9e25b6b3dbd909190677b0cfbe7597ab6e755e58ef1e8ff3"
+       "examples/historian-csv/README.md": "sha256:c851824438ef1e1847978dc0d333e7ea82383976954164e59dfc5848053a683b"
       }
      },
      {
