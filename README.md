@@ -76,6 +76,12 @@ and review process rather than establishing accuracy on your plant.
 
 ## From a first assignment to shared engineering context
 
+[![Engineering foundations: what each layer unlocks and the managed-product handoff](assets/engineering-foundation.svg)](docs/ENGINEERING_FOUNDATION.md)
+
+The [foundation roadmap](docs/ENGINEERING_FOUNDATION.md) explains the intended end goal, optional RAG/MCP roles,
+and the handoff when shared context needs a sustainably operated company product. No single product must own
+every layer or replace the existing engineering and operations systems.
+
 Keep the selected records and the reasons behind changes together as more people rely on them. The
 [source-revision tutorial](examples/pump-revision/README.md) and [owned-team tutorial](examples/team-context/README.md)
 show how supplied evidence reopens affected answers while preserving history and independent context.

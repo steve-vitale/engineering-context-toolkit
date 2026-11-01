@@ -120,6 +120,10 @@ a policy block. No company content or tenant has been accessed to write this gui
 
 ## Give each interface a job
 
+The [foundation roadmap](ENGINEERING_FOUNDATION.md#teach-rag-now-defer-the-infrastructure-until-there-is-a-job-for-it)
+introduces RAG as an optional use of retrieved evidence. Search/queries find records; RAG helps draft from them;
+MCP exposes declared tools/resources. The local starter supplies bounded snapshot reads, not a RAG backend.
+
 | Interface | Job | Current position here |
 |---|---|---|
 | JSON, CSV and the [typed graph](GRAPH_EXPORT.md) | Carry exact engineering records, identifiers, relationships, evidence and unresolved states between tools. | Existing exports. Import into a company system still needs a checked adapter. |
