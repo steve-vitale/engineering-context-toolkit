@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2000" viewBox="0 0 1600 2000" role="img" aria-labelledby="title desc">
+<title id="title">Engineering foundations: what each capability unlocks and when to hand over service operations</title>
+<desc id="desc">Six capability layers rise from controlled sources, shared meaning and maintained context to authorized retrieval, engineer-reviewed workflows and outcome learning. Ownership, permissions, provenance, uncertainty and validation span every layer. Handoff occurs when other teams rely on current, permission-correct, traceable context and the existing arrangement cannot sustain it. Manual source-question-review work can start early. This is a conceptual roadmap, not a claim that every capability is implemented.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#12696c"/></marker></defs>
+<rect width="1600" height="2000" fill="#f4f7fa"/>
+<text x="80" y="85" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="600" fill="#12696c" text-anchor="start">THE FOUNDATION OF</text>
+<text x="76" y="184" font-family="Segoe UI, Arial, sans-serif" font-size="82" font-weight="600" fill="#12293c" text-anchor="start">modern engineering</text>
+<text x="80" y="242" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="400" fill="#506778" text-anchor="start">What each capability unlocks — and when the work needs a managed home.</text>
+<rect x="80" y="286" width="1440" height="170" rx="24" fill="#12293c"/>
+<text x="116" y="334" font-family="Segoe UI, Arial, sans-serif" font-size="23" font-weight="600" fill="#a8d7d4" text-anchor="start">INTENDED END GOAL</text>
+<text x="116" y="393" font-family="Segoe UI, Arial, sans-serif" font-size="43" font-weight="600" fill="#ffffff" text-anchor="start">An organization that can explain its decisions,</text>
+<text x="116" y="444" font-family="Segoe UI, Arial, sans-serif" font-size="43" font-weight="600" fill="#ffffff" text-anchor="start">coordinate work and learn from results.</text>
+<text x="190" y="498" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="600" fill="#506778" text-anchor="start">CAPABILITY LAYERS</text>
+<text x="1015" y="498" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="600" fill="#12696c" text-anchor="start">UNLOCKS</text>
+<rect x="80" y="510" width="88" height="948" rx="20" fill="#12696c"/>
+<text x="124" y="553" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="600" fill="#ffffff" text-anchor="middle">ALL</text>
+<text x="124" y="580" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="600" fill="#ffffff" text-anchor="middle">LAYERS</text>
+<g transform="translate(124 1000) rotate(-90)" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="600" fill="#ffffff" text-anchor="middle"><text y="-9">OWNERSHIP · ACCESS · PROVENANCE</text><text y="27">UNCERTAINTY · VALIDATION · AUDIT</text></g>
+<rect x="190" y="510" width="1310" height="148" rx="20" fill="#ffffff" stroke="#dde6ed"/>
+<rect x="212" y="533" width="44" height="44" rx="12" fill="#e8f0f5"/>
+<text x="234" y="568" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="600" fill="#12293c" text-anchor="middle">6</text>
+<text x="280" y="565" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#183448" text-anchor="start">Execution evidence &amp; learning</text>
+<text x="280" y="608" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" fill="#506778" text-anchor="start">Recorded execution + qualified observations</text>
+<text x="280" y="641" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" fill="#506778" text-anchor="start">Review effects before sharing lessons</text>
+<path d="M974 532V628" stroke="#dde6ed"/>
+<text x="1015" y="585" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#12696c" text-anchor="start">Learn what actually worked</text>
+<rect x="190" y="670" width="1310" height="148" rx="20" fill="#ffffff" stroke="#dde6ed"/>
+<rect x="212" y="693" width="44" height="44" rx="12" fill="#e8f0f5"/>
+<text x="234" y="728" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="600" fill="#12293c" text-anchor="middle">5</text>
+<text x="280" y="725" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#183448" text-anchor="start">Engineer-reviewed workflows</text>
+<text x="280" y="768" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" fill="#506778" text-anchor="start">Onboarding, analysis and draft generation</text>
+<text x="280" y="801" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" fill="#506778" text-anchor="start">Human review and approved decisions</text>
+<path d="M974 692V788" stroke="#dde6ed"/>
+<text x="1015" y="745" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#12696c" text-anchor="start">Turn context into useful</text>
+<text x="1015" y="786" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#12696c" text-anchor="start">work</text>
+<rect x="190" y="830" width="1310" height="148" rx="20" fill="#ffffff" stroke="#dde6ed"/>
+<rect x="212" y="853" width="44" height="44" rx="12" fill="#e8f0f5"/>
+<text x="234" y="888" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="600" fill="#12293c" text-anchor="middle">4</text>
+<text x="280" y="885" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#183448" text-anchor="start">Authorized access &amp; retrieval</text>
+<text x="280" y="928" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" fill="#506778" text-anchor="start">Find: search and exact queries</text>
+<text x="280" y="961" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" fill="#506778" text-anchor="start">Ground drafts: RAG · Interface: MCP</text>
+<path d="M974 852V948" stroke="#dde6ed"/>
+<text x="1015" y="905" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#12696c" text-anchor="start">Find relevant evidence</text>
+<rect x="190" y="990" width="1310" height="148" rx="20" fill="#ffffff" stroke="#dde6ed"/>
+<rect x="212" y="1013" width="44" height="44" rx="12" fill="#e8f0f5"/>
+<text x="234" y="1048" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="600" fill="#12293c" text-anchor="middle">3</text>
+<text x="280" y="1045" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#183448" text-anchor="start">Maintained context &amp; decisions</text>
+<text x="280" y="1088" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" fill="#506778" text-anchor="start">Claims, decisions, owners and history</text>
+<text x="280" y="1121" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" fill="#506778" text-anchor="start">Versioned sources and dependencies</text>
+<path d="M974 1012V1108" stroke="#dde6ed"/>
+<text x="1015" y="1065" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#12696c" text-anchor="start">Preserve reasoning and</text>
+<text x="1015" y="1106" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#12696c" text-anchor="start">responsibility</text>
+<rect x="190" y="1150" width="1310" height="148" rx="20" fill="#ffffff" stroke="#dde6ed"/>
+<rect x="212" y="1173" width="44" height="44" rx="12" fill="#e8f0f5"/>
+<text x="234" y="1208" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="600" fill="#12293c" text-anchor="middle">2</text>
+<text x="280" y="1205" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#183448" text-anchor="start">Shared engineering meaning</text>
+<text x="280" y="1248" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" fill="#506778" text-anchor="start">Asset identities, relationships and units</text>
+<text x="280" y="1281" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" fill="#506778" text-anchor="start">Site scope and known uncertainties</text>
+<path d="M974 1172V1268" stroke="#dde6ed"/>
+<text x="1015" y="1225" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#12696c" text-anchor="start">Connect records accurately</text>
+<rect x="190" y="1310" width="1310" height="148" rx="20" fill="#ffffff" stroke="#dde6ed"/>
+<rect x="212" y="1333" width="44" height="44" rx="12" fill="#e8f0f5"/>
+<text x="234" y="1368" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="600" fill="#12293c" text-anchor="middle">1</text>
+<text x="280" y="1365" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#183448" text-anchor="start">Controlled sources &amp; observations</text>
+<text x="280" y="1408" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" fill="#506778" text-anchor="start">Drawings, procedures, manuals and data</text>
+<text x="280" y="1441" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" fill="#506778" text-anchor="start">Originals, revisions and source locations</text>
+<path d="M974 1332V1428" stroke="#dde6ed"/>
+<text x="1015" y="1385" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#12696c" text-anchor="start">Start from traceable</text>
+<text x="1015" y="1426" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#12696c" text-anchor="start">evidence</text>
+<path d="M1501 580H1540Q1553 580 1553 594V1363Q1553 1380 1537 1380H1508" fill="none" stroke="#12696c" stroke-width="3" marker-end="url(#arrow)"/>
+<text transform="translate(1583 981) rotate(90)" font-family="Segoe UI, Arial, sans-serif" font-size="23" fill="#12696c" text-anchor="middle">Reviewed outcomes become new evidence</text>
+<rect x="80" y="1510" width="1440" height="270" rx="24" fill="#fff0d9" stroke="#ecd6b6"/>
+<text x="116" y="1565" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="600" fill="#88551a" text-anchor="start">THE HANDOFF LINE</text>
+<text x="116" y="1626" font-family="Segoe UI, Arial, sans-serif" font-size="39" font-weight="600" fill="#12293c" text-anchor="start">Other teams depend on this staying current,</text>
+<text x="116" y="1673" font-family="Segoe UI, Arial, sans-serif" font-size="39" font-weight="600" fill="#12293c" text-anchor="start">permission-correct and traceable.</text>
+<text x="116" y="1723" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" fill="#183448" text-anchor="start">If the current setup cannot sustain that, move context maintenance to a managed product.</text>
+<text x="116" y="1758" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" fill="#183448" text-anchor="start">Company engineers retain engineering decisions and approval authority.</text>
+<text x="80" y="1838" font-family="Segoe UI, Arial, sans-serif" font-size="33" font-weight="600" fill="#12293c" text-anchor="start">Start now: approved records → one question → human review.</text>
+<text x="80" y="1881" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" fill="#506778" text-anchor="start">Graphs, RAG and MCP are optional methods. Controls apply from the first pilot.</text>
+<text x="80" y="1939" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="600" fill="#183448" text-anchor="start">Engineering Context Toolkit  /  A capability roadmap, not a single-product stack.</text>
+<text x="80" y="1974" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="400" fill="#506778" text-anchor="start">Local tools and examples support selected steps; shared services require company integration.</text>
+</svg>

@@ -13,6 +13,8 @@ This is a recommended operating and architecture guide, not a demonstrated capac
 supplies reusable local tools and worked examples; it does not supply the site or global services described below.
 Use [the lifecycle](CONTEXT_LIFECYCLE.md) for record ownership and maintenance, and
 [connectivity](INTERNAL_CONNECTIVITY.md) for the permitted Copilot and IT/OT path at each site.
+The [visual foundation roadmap](ENGINEERING_FOUNDATION.md) shows what each capability unlocks, the managed-product
+handoff line and how a process/ops service can own a bounded context slice within the wider engineering ecosystem.
 
 ## Choose controls for three independent needs
 
