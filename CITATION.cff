@@ -1,14 +1,16 @@
 cff-version: 1.2.0
-message: "If you use this work, please cite it as below."
-title: "P&ID to Digital Twin Jumpstart: AI extraction of P&IDs into Ignition and PI AF, with honest evaluation"
+message: "If you use this toolkit, cite the commit or release tag you used."
+title: "Engineering Context Toolkit"
 authors:
   - family-names: Vitale
     given-names: Steven
-repository-code: "https://github.com/steve-vitale/pid-to-digital-twin"
+repository-code: "https://github.com/steve-vitale/engineering-context-toolkit"
 license: MIT
-version: 1.0.0
-date-released: 2026-10-08
 keywords:
+  - engineering context
+  - knowledge management
+  - onboarding
+  - Model Context Protocol
   - P&ID
   - digital twin
   - Ignition

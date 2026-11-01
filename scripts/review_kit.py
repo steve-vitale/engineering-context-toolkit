@@ -170,12 +170,9 @@ def timer(kit, event, reviewer, note="", now=None):
     if not log.exists():
         raise ValueError(f"{log} not found; run make first")
     rows = read_timer(log)
-    last = rows[-1]["event"] if rows else None
-    allowed = {None: ("start",), "start": ("pause", "stop"), "resume": ("pause", "stop"), "pause": ("resume", "stop"),
-               "stop": ()}
-    if event not in allowed[last]:
-        raise ValueError(f"'{event}' cannot follow '{last or 'nothing'}'")
     stamp = (now or datetime.now(timezone.utc)).isoformat(timespec="seconds")
+    candidate = {"utc": stamp, "event": event, "reviewer": reviewer, "note": note}
+    _timer_analysis([*rows, candidate], complete=False)
     with open(log, "a", encoding="utf-8", newline="") as f:
         csv.writer(f, lineterminator="\n").writerow([stamp, event, reviewer, note])
     return stamp
@@ -183,17 +180,35 @@ def timer(kit, event, reviewer, note="", now=None):
 
 def read_timer(log):
     with open(log, encoding="utf-8", newline="") as f:
-        return list(csv.DictReader(f))
+        reader = csv.DictReader(f)
+        if reader.fieldnames != TIMER_FIELDS:
+            raise ValueError("timer log columns differ from the declared format")
+        return list(reader)
 
 
-def active_minutes(rows):
-    """Sum of start/resume -> pause/stop intervals. Requires a complete, ordered log ending in stop."""
-    if not rows or rows[0]["event"] != "start" or rows[-1]["event"] != "stop":
+def _timer_analysis(rows, complete):
+    """Validate the same event/identity contract for append and imported-log reads."""
+    if complete and not rows:
         raise ValueError("timer log must begin with start and end with stop")
     total, running_since, pauses = 0.0, None, 0
-    previous = None
+    previous, last, reviewer = None, None, None
+    allowed = {None: ("start",), "start": ("pause", "stop"), "resume": ("pause", "stop"),
+               "pause": ("resume", "stop"), "stop": ()}
     for r in rows:
-        t = datetime.fromisoformat(r["utc"])
+        if not isinstance(r, dict) or set(r) != set(TIMER_FIELDS) or \
+                any(not isinstance(r[k], str) for k in TIMER_FIELDS):
+            raise ValueError("timer log has malformed fields")
+        if r["event"] not in allowed[last]:
+            raise ValueError("timer log has an invalid event sequence")
+        if not r["reviewer"].strip() or (reviewer is not None and r["reviewer"] != reviewer):
+            raise ValueError("timer log must retain one nonblank reviewer id")
+        reviewer = r["reviewer"]
+        try:
+            t = datetime.fromisoformat(r["utc"])
+        except ValueError:
+            raise ValueError("timer log has an invalid timestamp") from None
+        if t.tzinfo is None or t.utcoffset() is None:
+            raise ValueError("timer log timestamps must include their UTC offset")
         if previous and t < previous:
             raise ValueError("timer log goes backwards in time")
         previous = t
@@ -207,18 +222,61 @@ def active_minutes(rows):
             if running_since is not None:
                 total += (t - running_since).total_seconds()
             running_since = None
+        last = r["event"]
+    if complete and last != "stop":
+        raise ValueError("timer log must begin with start and end with stop")
     return round(total / 60, 2), pauses
+
+
+def active_minutes(rows):
+    """Sum valid start/resume -> pause/stop intervals for one complete reviewer log."""
+    return _timer_analysis(rows, complete=True)
+
+
+def _summary_packet(kit, manifest):
+    """Check the supplied immutable packet before citing its source-bundle identity."""
+    refusal = "review kit packet differs from its manifest; retain it and use the original packet"
+    if not isinstance(manifest, dict) or set(manifest) != \
+            {"sheet", "source_twin", "rows", "tiers", "item_types", "files", "source_bundle_sha256"}:
+        raise ValueError(refusal)
+    sheet = manifest["sheet"]
+    if not isinstance(sheet, str) or not sheet or sheet in (".", "..") or "/" in sheet or "\\" in sheet:
+        raise ValueError(refusal)
+    expected = {f"review_queue_sheet{sheet}.csv", f"drawing_sheet{sheet}.png",
+                f"extracted_overlay_sheet{sheet}.svg"}
+    if not isinstance(manifest["files"], dict) or set(manifest["files"]) != expected or \
+            any(not (kit / name).is_file() or (kit / name).is_symlink() or
+                sha(kit / name) != digest for name, digest in manifest["files"].items()):
+        raise ValueError(refusal)
+    bundle = hashlib.sha256(json.dumps(manifest["files"], sort_keys=True).encode()).hexdigest()
+    if bundle != manifest["source_bundle_sha256"]:
+        raise ValueError(refusal)
+    fields, rows = read_queue(kit / f"review_queue_sheet{sheet}.csv")
+    if not fields or len(fields) != len(set(fields)) or not {"item_id", "item_type", "tier", *OPS_COLUMNS} <= set(fields) or \
+            any(set(r) != set(fields) or any(not isinstance(v, str) for v in r.values()) for r in rows):
+        raise ValueError(refusal)
+    tiers = {t: sum(r["tier"] == t for r in rows) for t in ("red", "amber", "green")}
+    kinds = {t: sum(r["item_type"] == t for r in rows) for t in sorted({r["item_type"] for r in rows})}
+    if type(manifest["rows"]) is not int or manifest["rows"] != len(rows) or \
+            json.dumps(manifest["tiers"], sort_keys=True) != json.dumps(tiers, sort_keys=True) or \
+            json.dumps(manifest["item_types"], sort_keys=True) != json.dumps(kinds, sort_keys=True):
+        raise ValueError(refusal)
+    return fields, rows
 
 
 def summarize(kit, queue_path):
     kit = Path(kit)
     manifest = json.loads((kit / "manifest.json").read_text(encoding="utf-8"))
-    minutes, pauses = active_minutes(read_timer(kit / "timer_log.csv"))
-    reviewers = sorted({r["reviewer"] for r in read_timer(kit / "timer_log.csv")})
-    _, rows = read_queue(queue_path)
-    _, packet = read_queue(next(kit.glob("review_queue_sheet*.csv")))
-    if [r["item_id"] for r in rows] != [r["item_id"] for r in packet]:
-        raise ValueError("filled queue rows differ from the packet (added, removed or reordered rows)")
+    packet_fields, packet = _summary_packet(kit, manifest)
+    timer_rows = read_timer(kit / "timer_log.csv")
+    minutes, pauses = active_minutes(timer_rows)
+    reviewers = sorted({r["reviewer"] for r in timer_rows})
+    fields, rows = read_queue(queue_path)
+    if not fields or len(fields) != len(set(fields)) or set(fields) != set(packet_fields) or len(rows) != len(packet) or \
+            any(set(r) != set(fields) or any(not isinstance(v, str) for v in r.values()) for r in rows) or \
+            any(any(row[k] != original[k] for k in packet_fields if k not in OPS_COLUMNS)
+                for row, original in zip(rows, packet)):
+        raise ValueError("filled queue rows differ from the packet outside the OPS_ review columns")
     counts = {d: 0 for d in DECISIONS}
     unanswered, unreadable = 0, 0
     for r in rows:

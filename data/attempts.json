@@ -4123,6 +4123,73 @@
         "scripts/test_knowledge_snapshot.py",
         "scripts/check_snapshot_mcp.py"
       ]
+    },
+    {
+      "id": "A273",
+      "function": "review_loop",
+      "date": "2026-10-31",
+      "change": "Verify review-packet integrity and one-reviewer timer state before a summary or append.",
+      "hypothesis": "Changed evidence and invalid histories must not produce a summary citing the original bundle.",
+      "evidence": "Eight previously accepted invalid review CLI cases now refuse;17 module tests pass and four new matched regressions fail against the old method. Valid20-minute and paused-stop2-minute controls retain their summaries.",
+      "runs": "Synthetic offline packet/timer controls; no real reviewer observation.",
+      "verdict": "kept",
+      "why": "Keep immutable packet checks and shared imported/appended log validation; this does not authenticate identities or measure practical benefit.",
+      "source": [
+        "docs/JOURNAL.md#133-audit-the-broader-toolkit-and-preserve-review-evidence",
+        "scripts/review_kit.py",
+        "scripts/test_review_kit.py"
+      ]
+    },
+    {
+      "id": "A274",
+      "function": "scoring",
+      "date": "2026-10-31",
+      "change": "Count an overflowing numeric vendor coordinate as a failed answer instead of aborting the batch.",
+      "hypothesis": "A malformed saved answer must retain its denominator and diagnostic without losing other scored answers.",
+      "evidence": "14 module tests pass; the new regression errors on the old method. The overflow CLI retains review load100 for the failed sheet; valid, non-object and deep-unused-field controls preserve complete prior reports.15 affected matrix cells and the current OPEN100 benchmark are actually reproduced with unchanged substantive scores.",
+      "runs": "Offline saved answers and synthetic controls; no model calls.",
+      "verdict": "kept",
+      "why": "Extend only the existing exception guard. Preserve scoring rules, baseline reports and failures; new implementation cohorts are not new performance.",
+      "source": [
+        "docs/JOURNAL.md#133-audit-the-broader-toolkit-and-preserve-review-evidence",
+        "scripts/evaluate_vendor.py",
+        "scripts/test_evaluate_vendor.py"
+      ]
+    },
+    {
+      "id": "A275",
+      "function": "replay_and_bands",
+      "date": "2026-10-31",
+      "change": "Default CSV replay to loopback and validate rate/start before service initialization.",
+      "hypothesis": "An offline recorded-data lab utility should expose its selected interface accurately and refuse unusable replay parameters before initializing a server.",
+      "evidence": "Baseline probes accepted nan/+inf and reached mocked Server on invalid start.41 targeted tests pass, including finite-rate/start/default-interface regressions and the existing actual loopback read-only smoke.",
+      "runs": "Matched mocked baseline and local loopback smoke; no operational network.",
+      "verdict": "kept",
+      "why": "Keep explicit --host for approved lab access, unchanged namespace/node contract and read-only recorded values; no production security or simulation claim.",
+      "source": [
+        "docs/JOURNAL.md#133-audit-the-broader-toolkit-and-preserve-review-evidence",
+        "scripts/csv_replay_server.py",
+        "scripts/test_csv_tools.py",
+        "examples/historian-csv/README.md"
+      ]
+    },
+    {
+      "id": "A276",
+      "function": "intake_and_reuse",
+      "date": "2026-10-31",
+      "change": "Present the broader toolkit by engineering job and complete a private-copy knowledge-packet authoring path with a worked evidence note.",
+      "hypothesis": "A new engineer should be able to select an existing capability and see the contribution expected without reverse-engineering the large fictional fixture.",
+      "evidence": "A six-record unreviewed starter supports four positive reads, three revision readbacks and five refusals while42 original artifacts remain exact. A fictional before/correction/after note preserves source-qualified uncertainty. Independent local navigation checks resolve122 targets/fragments.",
+      "runs": "Authored template, existing fictional source note and offline CLI/link checks; no human/company trial.",
+      "verdict": "kept",
+      "why": "Keep the broad umbrella and practical starter while company governance, source authority, execution and measured benefit remain external or unrun.",
+      "source": [
+        "docs/JOURNAL.md#133-audit-the-broader-toolkit-and-preserve-review-evidence",
+        "README.md",
+        "docs/README.md",
+        "examples/engineering-onboarding/own-packet/README.md",
+        "examples/engineering-onboarding/own-packet/worked-note.md"
+      ]
     }
   ],
   "not_tried": [

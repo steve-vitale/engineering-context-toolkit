@@ -2,6 +2,10 @@
 
 This fictional engineering-services example gives a newcomer a landing map, glossary, source records, review workflow and first document-only assignment. It works without a drawing or equipment model. A leader supplies permitted sources, a reviewer and the existing company handoff route; the newcomer reconstructs what changed and drafts a cited evidence note.
 
+For your own permitted records, use the [six-record starter and private-copy guide](own-packet/README.md).
+The [worked evidence note](own-packet/worked-note.md) shows a fictional contribution and author-illustrated
+review correction using this example's existing sources; it is separate from the starter's unavailable originals.
+
 From the repository root, use Python 3.10+ and the standard library. No account, model or network is needed:
 
 ```sh

@@ -17,6 +17,8 @@ data/external/pid2graph/PID2Graph/Complete/*
 # Local LinkedIn copy, post plans and unpublished promotional assets.
 # Prefer a private folder outside the checkout; this rule does not protect tracked files.
 /local/linkedin/
+# Browser snapshots and console captures may contain private research/context.
+/.playwright-mcp/
 # The description quickstart's generated local packets are not publication inputs.
 out/description-packet/
 out/description-result/

@@ -6,8 +6,10 @@ The OPC UA part runs the replay server in-process on a free 127.0.0.1 port (a fe
 skipped, with a SKIP line, when asyncua is not installed. No process is left running.
 """
 import asyncio
+import contextlib
 import csv
 import importlib.util
+import io
 import json
 import math
 import random
@@ -627,6 +629,31 @@ def free_port():
 
 @unittest.skipUnless(HAVE_ASYNCUA, "asyncua not installed")
 class ReplayServerTest(unittest.TestCase):
+    def test_default_bind_is_loopback_and_explicit_lab_host_is_retained(self):
+        import csv_replay_server as srv
+        self.assertEqual(srv.parse_args(['--csv', 'unused.csv']).host, '127.0.0.1')
+        self.assertEqual(srv.parse_args(['--csv', 'unused.csv', '--host', '0.0.0.0']).host, '0.0.0.0')
+
+    def test_nonfinite_and_nonpositive_rates_refuse_before_serving(self):
+        import csv_replay_server as srv
+        for value in ('nan', 'inf', '-inf', '0', '-1'):
+            with self.subTest(value=value), contextlib.redirect_stderr(io.StringIO()):
+                with self.assertRaises(SystemExit) as caught:
+                    srv.parse_args(['--csv', 'unused.csv', '--rate=' + value])
+                self.assertEqual(caught.exception.code, 2)
+
+    def test_invalid_start_refuses_before_server_initialization(self):
+        import csv_replay_server as srv
+        with tempfile.TemporaryDirectory() as d:
+            path = write_csv(Path(d) / 'one.csv', ['time', 'A'], [[0, 1]])
+            for value in ('-1', '1'):
+                with self.subTest(start=value):
+                    args = srv.parse_args(['--csv', str(path), '--start=' + value])
+                    with mock.patch.object(srv, 'Server') as constructor:
+                        with self.assertRaisesRegex(SystemExit, 'outside the 1 rows'):
+                            asyncio.run(srv.serve(args))
+                        constructor.assert_not_called()
+
     def test_serves_values_that_move_and_bad_for_blank(self):
         from asyncua import Client
         import csv_replay_server as srv
@@ -670,7 +697,10 @@ class ReplayServerTest(unittest.TestCase):
                     stop.set()
                     await asyncio.wait_for(task, 5)
 
-            seen = asyncio.run(go())
+            output = io.StringIO()
+            with contextlib.redirect_stdout(output):
+                seen = asyncio.run(go())
+            self.assertIn(f'on opc.tcp://127.0.0.1:{port}/csv-replay', output.getvalue())
         # Timing-free: whichever rows the two reads land on (a slow connect can skip some), each value must be
         # that row's value, and a blank cell must read Bad with no value, never a number.
         by_sample = {dv[0].Value.Value: dv for dv in seen}

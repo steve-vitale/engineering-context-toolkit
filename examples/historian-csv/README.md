@@ -35,6 +35,10 @@ historian-style CSV, so a plant can try them on its own export:
 Band analysis uses Python's standard library and runs offline. Optional OPC UA replay needs `asyncua` and opens
 a listener; the command below binds it to this computer only. Nothing here uses a model.
 
+Replay also defaults to `127.0.0.1`. Its startup message shows the selected interface; a cross-machine lab
+connection requires an explicit `--host` and separate network/security approval. The replay has no transport
+security. Invalid start rows and non-finite or non-positive rates refuse before a listener is initialized.
+
 The band CLI checks both report destinations before writing: neither may alias the normal CSV, the scoring CSV
 or the other report, including through directory links or existing hardlinks. Use a separate output folder and
 keep the files stable during the run; this local preflight does not lock them against concurrent changes.

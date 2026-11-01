@@ -1,7 +1,7 @@
 {
  "about": "Generalization matrix written by scripts/corpus_matrix.py; rendered as docs/GENERALIZATION.md.",
- "ran_at": "2026-11-01 00:11 UTC",
- "seconds": 1648.8,
+ "ran_at": "2026-11-01 01:42 UTC",
+ "seconds": 1643.4,
  "rows_run_this_time": [
   6
  ],
@@ -2832,10 +2832,10 @@
     "control_failures": []
    },
    "published": [],
-   "seconds": 1.7,
-   "ran_at": "2026-10-31 03:30 UTC",
+   "seconds": 1.9,
+   "ran_at": "2026-11-01 01:40 UTC",
    "tool_files": {
-    "scripts/evaluate_vendor.py": "sha256:304be06c4a31e852",
+    "scripts/evaluate_vendor.py": "sha256:bce4550e564142d6",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
     "scripts/replicate_stats.py": "sha256:728a69212c6a4055",
     "scripts/score_pid2graph.py": "sha256:decd9b48d8ae85c4",
@@ -2923,10 +2923,10 @@
      "agrees": true
     }
    ],
-   "seconds": 2.4,
-   "ran_at": "2026-10-31 03:30 UTC",
+   "seconds": 2.2,
+   "ran_at": "2026-11-01 01:40 UTC",
    "tool_files": {
-    "scripts/evaluate_vendor.py": "sha256:304be06c4a31e852",
+    "scripts/evaluate_vendor.py": "sha256:bce4550e564142d6",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
     "scripts/replicate_stats.py": "sha256:728a69212c6a4055",
     "scripts/score_pid2graph.py": "sha256:decd9b48d8ae85c4",
@@ -3012,9 +3012,9 @@
    "key_only_duplicate_of": "open100-holdout",
    "note": "key-only input: this row reads only the answer key, which is open100-holdout's, so the cell is the same computation as open100-holdout and carries no scan-specific information (the scan pixels are not exercised here)",
    "seconds": 2.3,
-   "ran_at": "2026-10-31 03:30 UTC",
+   "ran_at": "2026-11-01 01:40 UTC",
    "tool_files": {
-    "scripts/evaluate_vendor.py": "sha256:304be06c4a31e852",
+    "scripts/evaluate_vendor.py": "sha256:bce4550e564142d6",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
     "scripts/replicate_stats.py": "sha256:728a69212c6a4055",
     "scripts/score_pid2graph.py": "sha256:decd9b48d8ae85c4",
@@ -3089,10 +3089,10 @@
    "published": [],
    "key_only_duplicate_of": "open100-holdout",
    "note": "key-only input: this row reads only the answer key, which is open100-holdout's, so the cell is the same computation as open100-holdout and carries no scan-specific information (the scan pixels are not exercised here)",
-   "seconds": 2.1,
-   "ran_at": "2026-10-31 03:30 UTC",
+   "seconds": 2.0,
+   "ran_at": "2026-11-01 01:40 UTC",
    "tool_files": {
-    "scripts/evaluate_vendor.py": "sha256:304be06c4a31e852",
+    "scripts/evaluate_vendor.py": "sha256:bce4550e564142d6",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
     "scripts/replicate_stats.py": "sha256:728a69212c6a4055",
     "scripts/score_pid2graph.py": "sha256:decd9b48d8ae85c4",
@@ -3167,10 +3167,10 @@
    "published": [],
    "key_only_duplicate_of": "open100-holdout",
    "note": "key-only input: this row reads only the answer key, which is open100-holdout's, so the cell is the same computation as open100-holdout and carries no scan-specific information (the scan pixels are not exercised here)",
-   "seconds": 2.2,
-   "ran_at": "2026-10-31 03:30 UTC",
+   "seconds": 1.9,
+   "ran_at": "2026-11-01 01:40 UTC",
    "tool_files": {
-    "scripts/evaluate_vendor.py": "sha256:304be06c4a31e852",
+    "scripts/evaluate_vendor.py": "sha256:bce4550e564142d6",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
     "scripts/replicate_stats.py": "sha256:728a69212c6a4055",
     "scripts/score_pid2graph.py": "sha256:decd9b48d8ae85c4",
@@ -3243,10 +3243,10 @@
     "control_failures": []
    },
    "published": [],
-   "seconds": 10.7,
-   "ran_at": "2026-10-31 03:30 UTC",
+   "seconds": 8.0,
+   "ran_at": "2026-11-01 01:40 UTC",
    "tool_files": {
-    "scripts/evaluate_vendor.py": "sha256:304be06c4a31e852",
+    "scripts/evaluate_vendor.py": "sha256:bce4550e564142d6",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
     "scripts/replicate_stats.py": "sha256:728a69212c6a4055",
     "scripts/score_pid2graph.py": "sha256:decd9b48d8ae85c4",
@@ -3339,10 +3339,10 @@
     "control_failures": []
    },
    "published": [],
-   "seconds": 0.6,
-   "ran_at": "2026-10-31 03:30 UTC",
+   "seconds": 0.5,
+   "ran_at": "2026-11-01 01:40 UTC",
    "tool_files": {
-    "scripts/evaluate_vendor.py": "sha256:304be06c4a31e852",
+    "scripts/evaluate_vendor.py": "sha256:bce4550e564142d6",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
     "scripts/replicate_stats.py": "sha256:728a69212c6a4055",
     "scripts/score_pid2graph.py": "sha256:decd9b48d8ae85c4",
@@ -3405,9 +3405,9 @@
    },
    "published": [],
    "seconds": 0.5,
-   "ran_at": "2026-10-31 03:30 UTC",
+   "ran_at": "2026-11-01 01:40 UTC",
    "tool_files": {
-    "scripts/evaluate_vendor.py": "sha256:304be06c4a31e852",
+    "scripts/evaluate_vendor.py": "sha256:bce4550e564142d6",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
     "scripts/replicate_stats.py": "sha256:728a69212c6a4055",
     "scripts/score_pid2graph.py": "sha256:decd9b48d8ae85c4",
@@ -3468,10 +3468,10 @@
     "control_failures": []
    },
    "published": [],
-   "seconds": 0.7,
-   "ran_at": "2026-10-31 03:30 UTC",
+   "seconds": 0.6,
+   "ran_at": "2026-11-01 01:40 UTC",
    "tool_files": {
-    "scripts/evaluate_vendor.py": "sha256:304be06c4a31e852",
+    "scripts/evaluate_vendor.py": "sha256:bce4550e564142d6",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
     "scripts/replicate_stats.py": "sha256:728a69212c6a4055",
     "scripts/score_pid2graph.py": "sha256:decd9b48d8ae85c4",
@@ -3532,10 +3532,10 @@
     "control_failures": []
    },
    "published": [],
-   "seconds": 0.7,
-   "ran_at": "2026-10-31 03:30 UTC",
+   "seconds": 0.6,
+   "ran_at": "2026-11-01 01:40 UTC",
    "tool_files": {
-    "scripts/evaluate_vendor.py": "sha256:304be06c4a31e852",
+    "scripts/evaluate_vendor.py": "sha256:bce4550e564142d6",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
     "scripts/replicate_stats.py": "sha256:728a69212c6a4055",
     "scripts/score_pid2graph.py": "sha256:decd9b48d8ae85c4",
@@ -3596,10 +3596,10 @@
     "control_failures": []
    },
    "published": [],
-   "seconds": 0.6,
-   "ran_at": "2026-10-31 03:30 UTC",
+   "seconds": 0.8,
+   "ran_at": "2026-11-01 01:40 UTC",
    "tool_files": {
-    "scripts/evaluate_vendor.py": "sha256:304be06c4a31e852",
+    "scripts/evaluate_vendor.py": "sha256:bce4550e564142d6",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
     "scripts/replicate_stats.py": "sha256:728a69212c6a4055",
     "scripts/score_pid2graph.py": "sha256:decd9b48d8ae85c4",
@@ -3660,10 +3660,10 @@
     "control_failures": []
    },
    "published": [],
-   "seconds": 0.4,
-   "ran_at": "2026-10-31 03:30 UTC",
+   "seconds": 0.5,
+   "ran_at": "2026-11-01 01:40 UTC",
    "tool_files": {
-    "scripts/evaluate_vendor.py": "sha256:304be06c4a31e852",
+    "scripts/evaluate_vendor.py": "sha256:bce4550e564142d6",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
     "scripts/replicate_stats.py": "sha256:728a69212c6a4055",
     "scripts/score_pid2graph.py": "sha256:decd9b48d8ae85c4",
@@ -3726,10 +3726,10 @@
    },
    "published": [],
    "key": "agent-made",
-   "seconds": 1.2,
-   "ran_at": "2026-10-31 03:30 UTC",
+   "seconds": 1.4,
+   "ran_at": "2026-11-01 01:40 UTC",
    "tool_files": {
-    "scripts/evaluate_vendor.py": "sha256:304be06c4a31e852",
+    "scripts/evaluate_vendor.py": "sha256:bce4550e564142d6",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
     "scripts/replicate_stats.py": "sha256:728a69212c6a4055",
     "scripts/score_pid2graph.py": "sha256:decd9b48d8ae85c4",
@@ -3811,10 +3811,10 @@
    },
    "published": [],
    "key": "agent-made",
-   "seconds": 2.6,
-   "ran_at": "2026-10-31 03:30 UTC",
+   "seconds": 1.9,
+   "ran_at": "2026-11-01 01:40 UTC",
    "tool_files": {
-    "scripts/evaluate_vendor.py": "sha256:304be06c4a31e852",
+    "scripts/evaluate_vendor.py": "sha256:bce4550e564142d6",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
     "scripts/replicate_stats.py": "sha256:728a69212c6a4055",
     "scripts/score_pid2graph.py": "sha256:decd9b48d8ae85c4",
@@ -3941,10 +3941,10 @@
    },
    "published": [],
    "key": "agent-made",
-   "seconds": 0.6,
-   "ran_at": "2026-10-31 03:30 UTC",
+   "seconds": 0.5,
+   "ran_at": "2026-11-01 01:40 UTC",
    "tool_files": {
-    "scripts/evaluate_vendor.py": "sha256:304be06c4a31e852",
+    "scripts/evaluate_vendor.py": "sha256:bce4550e564142d6",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
     "scripts/replicate_stats.py": "sha256:728a69212c6a4055",
     "scripts/score_pid2graph.py": "sha256:decd9b48d8ae85c4",
@@ -4968,8 +4968,8 @@
      "agrees": true
     }
    ],
-   "seconds": 0.4,
-   "ran_at": "2026-10-31 03:30 UTC",
+   "seconds": 0.5,
+   "ran_at": "2026-11-01 01:42 UTC",
    "tool_files": {
     "scripts/build_twin.py": "sha256:8e9a5e26b9938a8a",
     "scripts/confidence.py": "sha256:0fc9948199d89edf",
@@ -5007,7 +5007,7 @@
       "exists": true,
       "directory": false,
       "files": {
-       "examples/own-drawing/README.md": "sha256:97571e7bd00c621269b096542a9aa01675e4b4a009be2141edcc7b5580baf904"
+       "examples/own-drawing/README.md": "sha256:8353710f9d2933285901efc0aed80341f37307d730fe78df378139ee489fd6ee"
       }
      },
      {
@@ -8845,14 +8845,14 @@
     },
     {
      "file": "examples/historian-csv/README.md",
-     "line": 155,
+     "line": 159,
      "says": "fault 6 (drift): detection at 18 minutes, 0 of the 160 pre-fault samples flagged",
      "ours": "fault 6 (drift): detection at 18.0 minutes, 0 of 160 pre-fault samples flagged",
      "agrees": true
     }
    ],
-   "seconds": 4.5,
-   "ran_at": "2026-11-01 00:11 UTC",
+   "seconds": 2.7,
+   "ran_at": "2026-11-01 01:42 UTC",
    "tool_files": {
     "scripts/csv_normal_bands.py": "sha256:88baa8aa94fd2900",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf"
@@ -8935,7 +8935,7 @@
       "exists": true,
       "directory": false,
       "files": {
-       "examples/historian-csv/README.md": "sha256:c851824438ef1e1847978dc0d333e7ea82383976954164e59dfc5848053a683b"
+       "examples/historian-csv/README.md": "sha256:2f77d1c80e41980802526ed501860f0c62198bef6e10c37fbba92104d236e3f0"
       }
      },
      {

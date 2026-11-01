@@ -22,10 +22,11 @@ the published twin (GPT, method M3). Sheet 8 is the smallest holdout-A sheet, so
 
 ## Before you start (not timed)
 
-1. Open the drawing, the overlay and the CSV in a spreadsheet. Read [REVIEW_LOOP.md](../../../docs/REVIEW_LOOP.md)
-   §1 for what each `OPS_` column means.
+1. Keep the original drawing, overlay and `review_queue_sheet8.csv` unchanged. Save a separate copy as
+   `review_queue_sheet8_filled.csv` **before editing or enabling spreadsheet autosave**. Review that copy and
+   change only its declared `OPS_` columns. Read [REVIEW_LOOP.md](../../../docs/REVIEW_LOOP.md) §1 for their meaning.
 2. Do **not** open the answer key (`8.graphml`). It is for the auditor, not the reviewer.
-3. Pick a pseudonymous id such as `R1`. Never put a name in the log.
+3. Pick one pseudonymous id such as `R1` and keep it for this entire log. Never put a name in the log.
 
 ## The timed review
 
@@ -53,7 +54,10 @@ python scripts/review_kit.py summarize --kit out/review_kit/sheet-8 --queue out/
 
 It prints active minutes, rows decided, decisions by kind, unanswered rows, and minutes per decided row and per
 correction or rejection. It refuses a timer log that isn't complete and in order, and a filled sheet whose rows
-differ from the packet.
+differ outside the review columns. It rechecks the original packet hashes and manifest digest before citing
+the bundle identity. Imported logs must follow the same start/pause/resume/stop rules, keep one nonblank reviewer
+ID and use ordered timestamps with UTC offsets. A reviewer ID is a label, not authentication; hashes cannot
+establish source authority or prevent someone rewriting a whole packet and its manifest.
 
 ## What the number will and won't mean
 
