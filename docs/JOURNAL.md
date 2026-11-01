@@ -6459,3 +6459,22 @@ paths, without another product call or relaxed criterion. Independent receiving 
 inherited metadata labels in the wrapper freeze still name the prior engine/catalog; they remain untouched
 and explicitly qualified. The actual consumed files and outer freeze bind the new method/catalog. Seven
 ordinary JSON files that differed only in line endings keep their earlier public raw bytes.
+
+### Preserve the full-run failure and correct the remaining legacy expectation
+
+Commit `0884b2b` runs all 71 local programs in 481.100 seconds: 70 pass and the question-engine program fails
+one old linked-recovery assertion. Six unittest cases are skipped, with three Windows platform notices and no
+additional skipped-check notices. All 3,064 public files remain raw-exact, with no extra or missing path.
+Exact-head Linux CI also reports 70/71, with 18 unittest skips and no platform or additional notices; its
+benchmark-registry step is skipped after the failure. The separate MCP job records 32 PASS lines, including ten
+knowledge sessions, with no skips. None of these results is relabelled as a passing complete suite.
+
+The missed regression still expects a recovery label to silence D-1's E31 investigation. The accepted policy
+already retains applicable subjects while asking what existing records establish. The same two-dryer fixture
+and CLI now expect both questions and explicitly require HX-1 assets/evidence only for D-1. Independent
+policy/static receiving preserves the other 134 methods and the original fixture/invocation. One private
+corrected-method test passes; the affected public module then runs 135 tests in 40.981 seconds, passes with
+one skip, and leaves all 3,064 inputs raw-exact. Only the test changed before that run; the engine, catalog and
+all generated outputs remain exact. The other 70 local programs are not repeated. New committed-version CI
+provides the separate complete-suite gate, with its actual skips retained. The follow-up review inherits all
+44 opportunity example files and preserves all 195 earlier review records.

@@ -134,6 +134,12 @@ changed criteria. The [journal](JOURNAL.md#135-keep-heating-investigations-groun
 those checks, the six matched context workflows and the two actually rebuilt description receipts. N104 retains
 the missing catalog hash in those product receipts as follow-up work; separate execution pins cover this comparison.
 
+The first `0884b2b` full local and CI runs each report **70/71**, failing an old assertion that a linked recovery
+label silences its unit's question. The fixture and CLI remain unchanged; the corrected test retains both
+investigations and checks candidate evidence stays with its own unit. The affected public module passes
+**135 tests with one skip**; the original local full result stays failed, and the other 70 local programs are not
+repeated. Refer to committed-version CI for the separate complete-suite follow-up.
+
 The publication check matches 41 numerical claims and identifies one prose-only claim. The follow-up currently has
 **50/52 stages fresh**: `te.pid_live` and `te.replay` retain their earlier runtime receipts and are stale after the
 replay implementation change. Offline checks and the historical Docker demonstration do not renew those manual

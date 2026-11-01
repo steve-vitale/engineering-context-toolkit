@@ -311,7 +311,7 @@ class ExpectedFindings(unittest.TestCase):
                          {"E19@K-2", "E22@K-2", "E23@K-2"} & ids(doc))
         self.assertIn("E23@K-2", ids(doc))
 
-    def test_a_linked_heat_recovery_exchanger_only_suppresses_its_own_unit(self):
+    def test_linked_heat_recovery_keeps_both_investigations_and_scopes_the_candidate(self):
         with tempfile.TemporaryDirectory() as tmp:
             m = {"meta": {"title": "two dryers"}, "instruments": [], "final_elements": [],
                  "units": [{"id": "D-1", "name": "Product dryer", "type": "dryer"},
@@ -321,7 +321,14 @@ class ExpectedFindings(unittest.TestCase):
                              {"id": "S2", "name": "Dryer exhaust to atmosphere", "from": "D-2", "to": "ATM"}]}
             (Path(tmp) / "m.json").write_text(json.dumps(m), encoding="utf-8")
             _, doc = run(["--model", str(Path(tmp) / "m.json"), "--question", "E31"], tmp)
-        self.assertEqual(ids(doc), {"E31@D-2"})
+        self.assertEqual(ids(doc), {"E31@D-1", "E31@D-2"})
+        first = finding(doc, "E31@D-1")
+        second = finding(doc, "E31@D-2")
+        self.assertIn("HX-1", {a["id"] for a in first["assets"]})
+        self.assertNotIn("HX-1", {a["id"] for a in second["assets"]})
+        self.assertIn(("HX-1", "represented recovery candidate"),
+                      {(e["id"], e["role"]) for e in first["evidence"]})
+        self.assertNotIn("HX-1", {e["id"] for e in second["evidence"]})
 
 
 class Rollup(unittest.TestCase):
