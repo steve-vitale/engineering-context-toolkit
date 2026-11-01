@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "model_id": "H6-03-disabled-and-partial",
+    "title": "ILLUSTRATIVE source-informed exhaust recovery development case",
+    "illustrative": true
+  },
+  "units": [
+    {
+      "id": "D-A",
+      "name": "Product dryer A",
+      "type": "dryer"
+    },
+    {
+      "id": "D-B",
+      "name": "Product dryer B",
+      "type": "dryer"
+    },
+    {
+      "id": "W-1",
+      "name": "Facility wash hot water",
+      "type": "water_heater",
+      "facts": {
+        "required_temperature_C": 60,
+        "duty_basis": "unknown",
+        "coincident_demand": "unknown"
+      }
+    },
+    {
+      "id": "HX-A",
+      "name": "Exhaust heat recovery exchanger",
+      "type": "heat_exchanger",
+      "facts": {
+        "enabled": false,
+        "observed_hours": 0,
+        "service": "external water",
+        "coverage_claim": "disabled",
+        "source_revision": "A"
+      }
+    },
+    {
+      "id": "HX-B",
+      "name": "Exhaust heat recovery exchanger",
+      "type": "heat_exchanger",
+      "facts": {
+        "enabled": true,
+        "service": "external hot water",
+        "coverage_claim": "partial bypass branch only",
+        "residual_duty": "unknown",
+        "source_revision": "B"
+      }
+    }
+  ],
+  "streams": [
+    {
+      "id": "EX-A",
+      "name": "Dryer A exhaust",
+      "from": "D-A",
+      "to": "HX-A"
+    },
+    {
+      "id": "EX-B",
+      "name": "Dryer B exhaust",
+      "from": "D-B",
+      "to": "HX-B"
+    },
+    {
+      "id": "OUT-HX-A",
+      "name": "Conditioned exhaust discharge",
+      "from": "HX-A",
+      "to": "ATM"
+    },
+    {
+      "id": "OUT-HX-B",
+      "name": "Conditioned exhaust discharge",
+      "from": "HX-B",
+      "to": "ATM"
+    }
+  ],
+  "instruments": [],
+  "controllers": [],
+  "interlocks": [],
+  "final_elements": [],
+  "manual_valves": []
+}

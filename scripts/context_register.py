@@ -605,8 +605,8 @@ def report(register):
                 coverage_subjects(request)
                 if "candidate_facts" in request:
                     lines.append(f"  Candidate scope: {md(request['candidate_scope'])}")
-                    lines.append("  Supplied candidate facts; meaning and suitability unverified. "
-                                 "The collection/review request remains open.")
+                    lines.append("  Screen-time candidate facts; meaning and suitability unverified in the original screen. "
+                                 "Current per-request completion is not tracked here.")
                     for fact in request["candidate_facts"]:
                         lines.append(f"  {md(fact['label'])} ({md(fact['id'])}) {md(fact['name'])} = "
                                      f"{md(json.dumps(fact['value'], ensure_ascii=False))}; source: {md(fact['where'])}")

@@ -192,8 +192,17 @@ policies and their source limits. Optional `evidence_show_fields` quotes selecte
 records, preserving false, zero, unknown and blank values with their locators. Controller/interlock qualifiers
 remain evidence-only and do not activate unrelated selectors or complete requests.
 
-The catalog has 50 rules and 124 collection requests. Seventeen rules have bounded source-informed collection
-reviews; the other 33 still need original-source adequacy review. These controls do not establish whole-catalog
+E31 and H6 distinguish existing recovery from unresolved coverage or residual heat. A working recovery claim
+is acknowledged, not converted into a compulsory retrofit. Internal inlet recovery does not establish an external
+source/sink match, and lack of local duct space does not rule out the indirect option described by the source.
+E32 accepts suitable air/fuel metering, flue analysis or combined records; an oxygen label is unclassified context,
+not proof of combustion function. Start with approved existing records and return gaps to the company reviewer;
+new field collection or operating changes require a separate qualified decision. The same
+[function-basis guide](../examples/opportunity-screen/function-basis/README.md) separates the original 25 cases
+from these 18 heating development cases; neither cohort represents plants or measured engineer usefulness.
+
+The catalog has 50 rules and 124 collection requests. Twenty rules have bounded source-informed collection
+reviews; the other 30 still need original-source adequacy review. These controls do not establish whole-catalog
 engineering correctness or human usefulness. The [worked food screen](../examples/opportunity-screen/food/screen.md)
 shows the retained candidates and open coverage tasks.
 
@@ -346,10 +355,10 @@ the source's URL; each source entry in `data/questions.json` records that file's
 | E28 | Does each suction level meet the conditions required by every coincident served load? | refrigeration compressors, with suction/load records and drawn reset candidates; membership, approaches and coverage stay open | S25 p. 63 (about 8% for a two-stage system raised from -30 °F to -20 °F) |
 | E29 | What supports compressor part-load control, sequencing and real-input basis? | named refrigeration compressors; drive/control labels remain candidates | S25 pp. 59, 62, 63 |
 | E30 | What supports defrost applicability, initiation and termination? | named refrigeration evaporators/coolers; DP and demand labels remain candidates | S25 pp. 59, 66 (no %) |
-| E31 | Does an oven, dryer or fryer send hot exhaust to atmosphere with no heat recovery? | an oven, dryer, fryer, roaster or dehydrator; quiet if a heat recovery item is on it or at the other end of a stream from it | S26 pp. 104, 107; S25 p. 90 (up to 30% of spray dryer exhaust heat) |
-| E32 | Is the burner air-fuel ratio checked, with no flue O2 drawn? | an oven, dryer or fryer with a burner or fuel supply; quiet with an O2 analyser | S27 p. 1 (no %; excess air is part of a drying process) |
+| E31 | What supports existing exhaust recovery and any unresolved own-inlet or process-use basis? | named process ovens/dryers/fryers, with represented recovery and coverage claims retained as candidates; no compulsory retrofit | S26 pp. 104, 107; S25 p. 90 (reported spray-dryer example, not a site estimate) |
+| E32 | What supports the burner operating and process-air basis? | process ovens/dryers/fryers with a separate same-unit burner/fuel record; analysis and metering labels remain unqualified candidates | S27 pp. 1–2 (metering, flue analysis or both; process-air constraints) |
 | H5 | Is refrigeration condenser heat rejected while a low-grade duty is heated another way? | refrigeration plant plus a candidate heating duty; existing recovery remains evidence, with train/sink coverage unresolved | S25 p. 64 (no %) |
-| H6 | Could oven, dryer or fryer exhaust heat serve a low-grade duty elsewhere? | the E31 units, plus a low-grade duty anywhere | S28 p. 1; S26 p. 107 (no %) |
+| H6 | What supports residual exhaust supply for a named external heating-duty lead? | named process ovens/dryers/fryers plus a heating duty somewhere in the model; association, residual supply and coverage remain for review | S28 p. 1; S26 p. 107 (conditional source/sink guidance, no site calculation) |
 | C11 | What supports the exhaust/make-up strategy and product requirements? | named dryers/ovens; supplied measurement/control candidates do not establish suitability | S26 p. 104; dryer guidance, oven extension unvalidated (no %) |
 | C12 | Is representative real input power available with a usable coincident operating basis? | refrigeration compressors, including those with supplied electrical readings; labels do not settle actual collection | S25 p. 58 (3% for monitoring, one winery review as reported there) |
 
@@ -388,6 +397,11 @@ the trigger language covers. `fields_help` in the file documents every key. The 
 
 - An **anchor** is the item that triggers the question (equipment, an instrument, a valve, a stream, an off-page
   connector...). A list of anchors means any of them.
+- **type_text** searches the supplied type and descriptive text. Optional **not_type_text** searches only the
+  supplied type. The heating rules use a full-string expression to exclude explicitly typed recovery helpers
+  from process-equipment anchors; a dryer with recovery in its name remains eligible. Unknown or combined
+  classifications retain the existing name-based behavior and require engineering review. This is selector
+  scope, not proof that the supplied classification is correct.
 - **with** clauses must all find a related item; **without** clauses must find none; **also_show** quotes related
   items as evidence if present. Relations: same unit, same stream, same unit and same utility, another unit, the
   discharge side, near, linked (a stream drawn from or to the unit, an item on that stream, or the equipment at its

@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "model_id": "E31-02-working-covered-A",
+    "title": "ILLUSTRATIVE source-informed exhaust recovery development case",
+    "illustrative": true
+  },
+  "units": [
+    {
+      "id": "D-A",
+      "name": "Product dryer A",
+      "type": "dryer"
+    },
+    {
+      "id": "D-B",
+      "name": "Product dryer B",
+      "type": "dryer"
+    },
+    {
+      "id": "HX-A",
+      "name": "Exhaust heat recovery exchanger",
+      "type": "heat_exchanger",
+      "facts": {
+        "enabled": true,
+        "source_revision": "A",
+        "service": "own inlet air",
+        "coverage_claim": "all named dryerA exhaust/inlet duty covered",
+        "operating_evidence": "owner-supplied current run and cleaning records",
+        "basis_status": "supplied company-review record; authenticity not established",
+        "residual_opportunity": "none asserted"
+      }
+    }
+  ],
+  "streams": [
+    {
+      "id": "EX-A",
+      "name": "Dryer A exhaust",
+      "from": "D-A",
+      "to": "HX-A"
+    },
+    {
+      "id": "EX-B",
+      "name": "Dryer B exhaust",
+      "from": "D-B",
+      "to": "ATM"
+    },
+    {
+      "id": "OUT-HX-A",
+      "name": "Conditioned exhaust discharge",
+      "from": "HX-A",
+      "to": "ATM"
+    }
+  ],
+  "instruments": [],
+  "controllers": [],
+  "interlocks": [],
+  "final_elements": [],
+  "manual_valves": []
+}

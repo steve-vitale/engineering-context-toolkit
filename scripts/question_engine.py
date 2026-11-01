@@ -670,6 +670,8 @@ def matches(item, sel):
         return False
     if sel.get("type") and (item.get("type") or "") not in sel["type"]:
         return False
+    if sel.get("not_type_text") and re.search(sel["not_type_text"], item.get("type") or "", re.I):
+        return False
     if sel.get("type_text") and not re.search(sel["type_text"], " ".join([item.get("type") or "", item["text"]]),
                                               re.I):
         return False

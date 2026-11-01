@@ -6,10 +6,7 @@
     "E31",
     "H6"
   ],
-  "new_findings": [
-    "E31@F-303",
-    "H6@F-303"
-  ],
+  "new_findings": [],
   "C12_model_assets_before": [
     "JT-201",
     "K-201",

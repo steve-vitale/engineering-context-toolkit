@@ -1,8 +1,8 @@
 # Opportunity screen: worked examples and a roll-up
 
-**Why it matters:** the first day of an energy or controls review is mostly asking the same questions of the
-drawings and writing down what to go and measure. These screens do that part, cite where every claim comes from,
-and say what records or measurements are still needed. They are question lists, not audits: nothing here computes a saving.
+**Why use it:** turn a drawing or model into source-qualified questions and requests for the company's approved
+existing records. Keep the exact equipment references, supplied candidates and unknowns together when asking the
+responsible reviewer. These are question lists, not audits or permission for field work; no saving is computed.
 
 How the engine works, the three evidence states and how to add a question: [`docs/OPPORTUNITY_SCREEN.md`](../../docs/OPPORTUNITY_SCREEN.md).
 
@@ -11,9 +11,9 @@ How the engine works, the three evidence states and how to add a question: [`doc
 | [`te/`](te/) | Tennessee Eastman, hand-built (`data/te_process_model.json`) plus its loop list | 10 | [`te/screen.md`](te/screen.md) |
 | [`bayer/`](bayer/) | Bayer residue treater from the CSB report (`data/bayer_rt/process_model.json`) | 12 | [`bayer/screen.md`](bayer/screen.md) |
 | [`open100/`](open100/) | 12 OPEN100 sheets extracted to a twin (`out/twin/r2-tiles-trace/codex/plant_model.json`) plus the equipment schedules | 29 | [`open100/screen.md`](open100/screen.md) |
-| [`food/`](food/) | **ILLUSTRATIVE** synthetic food plant section: ammonia refrigeration, a dryer, an oven, a fryer and utilities ([`food_plant_model.json`](food_plant_model.json)) | 26 | [`food/screen.md`](food/screen.md) |
+| [`food/`](food/) | **ILLUSTRATIVE** synthetic food plant section: ammonia refrigeration, a dryer, an oven, a fryer and utilities ([`food_plant_model.json`](food_plant_model.json)) | 29 | [`food/screen.md`](food/screen.md) |
 | [`millard/`](millard/) | Two source-authored records from a historical refrigeration bulletin; E30 only, deliberately incomplete model | 1 | [Screen and first-question brief](millard/README.md) |
-| [`rollup-food-bayer/`](rollup-food-bayer/) | Roll-up of the `food` and `bayer` screens as two sites | 38 across 24 questions | [`rollup-food-bayer/rollup.md`](rollup-food-bayer/rollup.md) |
+| [`rollup-food-bayer/`](rollup-food-bayer/) | Roll-up of the `food` and `bayer` screens as two sites | 41 across 24 questions | [`rollup-food-bayer/rollup.md`](rollup-food-bayer/rollup.md) |
 
 The separate [two-supply regression](field-coverage/README.md) shows why grouping questions by unit must not
 combine different assets' partial answers. It is a fictional software control, not another public source family.
@@ -24,9 +24,11 @@ motor efficiency and actual heat duty. The [source-investigation recipe](source-
 retains the MGPI historical answer while asking conditional receiving-installation questions; it is an
 authored source-specific catalog, not a new default rule or usefulness score.
 
-The [function-basis regression cases](function-basis/README.md) retain drive, defrost and exhaust-control
-labels as candidates while asking for actual function and operating evidence. These 25 synthetic development
-cases test three rules; they are separate from plant studies and model-extraction benchmarks.
+The [function-basis cases](function-basis/README.md) keep two development cohorts separate: the original 25
+drive/defrost/exhaust-control cases and 18 heating cases for existing recovery and burner operating basis.
+Supplied working coverage is acknowledged without declaring a retrofit necessary; analysis or metering records
+do not prove their suitability. These are authored software controls, not 43 plants or model-extraction trials.
+The food and roll-up reports above were regenerated with the current catalog; their totals count questions, not demonstrated deficiencies or projects.
 
 The commands below regenerate tracked example outputs for contributors; the test checks them byte for byte.
 For a personal run, use a separate `--out` folder such as `../engineering-work/screen-te`. For a roll-up, point
@@ -151,7 +153,7 @@ safety-related design changes go through the licensing basis, not an energy scre
   the rule looks for condensate or trap outlets to drain.
 - The ACC condensate drain through LCV-1501 to the condensate system is not asked about.
 
-### Illustrative food plant section (26 findings)
+### Illustrative food plant section (29 findings)
 
 Checked against the model it was written from. **Expected** means the finding is the question the item was drawn to
 raise; **legit** means an older question fired on the new equipment and is a fair question there.
@@ -162,10 +164,10 @@ raise; **legit** means an older question fired on the new equipment and is a fai
 | E28 model: K-201, K-202, K-203 with suction pressures and candidate loads | Expected. The grouped question keeps suction membership, every coincident load/approach and reset coverage unresolved; grouping does not establish shared topology. |
 | E29 K-201, K-202 and K-203: stated drive/capacity-control records | Expected. The SC-203 drive label remains a candidate; each machine's actual part-load control, sequence and real-input basis stay open. |
 | E30 EV-201 and EV-202: supplied defrost/timer/DP records | Expected. A DP indication does not establish active demand initiation; applicability, initiation, termination and events need review for each unit. |
-| E31 D-301 (exhaust S1, TT-304) and O-302 (exhaust S2, TT-305) | Expected. The fuel request names FT-301 on the dryer and, on the oven, says only a valve is drawn |
-| E32 D-301 and F-303: gas-fired, no flue O2 | Expected; the decision rule and source keep the excess air a drying process needs |
+| E31 D-301, O-302 and F-303: supplied exhaust/recovery records | Expected under the records-review policy. HX-303 remains a recovery candidate for the fryer; existing coverage, availability and any own-inlet/process-use gap need a qualified basis, not an automatic new project. |
+| E32 D-301, O-302 and F-303: burner/fuel context and supplied analysis candidates | Expected under the operating-basis policy. AT-302 does not settle actual combustion, calibration or load coverage; suitable metering or analysis records and process-air constraints remain for review. |
 | H5 model: compressors and condenser, with WH-401 as a candidate heating duty | Expected. Source/sink grade, timing, distance, contamination/isolation, power impact and existing recovery coverage still require review. |
-| H6 D-301 and O-302, with WH-401 | Expected; overlaps E31 by design (E31 asks about the unit's own inlet air first) |
+| H6 D-301, O-302 and F-303, with WH-401 as a named-duty lead | Expected. Own-inlet recovery is distinct from external residual supply. Neither HX-303 nor the site hot-water name establishes a matched duty, timing or feasible connection. |
 | C11 D-301 and O-302: exhaust-control investigation | Expected. HV-304 and the other supplied indications remain candidates; missing humidity does not establish manual control or make humidity universally suitable. |
 | C12 model: K-201, K-202, K-203, with JT-201 retained as a supplied power candidate | Expected. Real-input quantity, attribution, time/conversion basis and usable coincident operation stay open even when a power instrument is drawn. |
 | E19, E22, E23 AC-501 (instrument air compressor) | Legit. E19 also lists the refrigeration pressure controllers PIC-202 and PIC-203 as "pressure control" because its clause looks anywhere: **low value** in that part |
@@ -173,11 +175,9 @@ raise; **legit** means an older question fired on the new equipment and is a fai
 | C2, C3 model | Legit; **low value** as in the other examples |
 | C9 model: K-201, K-202, K-203, AC-501 record review | Each machine retains cause/effect and current association questions, including when a switch or trip is supplied. No protection, test or acceptance is inferred. |
 
-**Anti-triggers, each drawn on purpose and pinned in the test:** the oven has a flue O2
-analyser (AT-302), so E32 is quiet there; the fryer's exhaust
-goes to a vapour condenser heat recovery exchanger (HX-303, the S26 p. 107 arrangement), so E31 and H6 are quiet
-there; and the instrument air compressor AC-501 and its refrigerated air dryer AD-502 get no refrigeration, oven or
-dryer question.
+**Remaining scope exclusions:** instrument air compressor AC-501 and refrigerated air dryer AD-502 stay outside
+the refrigeration/process-heating questions. Recovery and analyser labels are no longer treated as completed
+investigations; the current questions distinguish supplied records from qualified operating or coverage evidence.
 
 JT-201 originally served as a C12 quiet control; that historical purpose remains in the unchanged illustrative
 input metadata. The current collection contract retains it as a candidate and keeps actual real-input suitability
@@ -185,9 +185,9 @@ open. Current-only, voltage-only, apparent/reactive power and bare cumulative-en
 basis. Separate reset/recovery records also cannot erase other trains' requests. These are source-informed
 software controls, not food-plant or human-usefulness validation.
 
-SC-203 and PDT-206 also retain their historical quiet-control purpose in the unchanged input metadata. Current
-E29 and E30 keep the named machines in source review, retaining the supplied labels rather than treating them
-as proof of actual function. The saved historical cases and current regression expectations are kept separately.
+SC-203, PDT-206, AT-302 and HX-303 retain their historical quiet-control purposes in the unchanged input
+metadata. Current function/heating reviews retain relevant supplied records without treating them as proof.
+The saved historical cases and current regression expectations remain separate; the source model is unchanged.
 
 <details>
 <summary>Original food-case result</summary>
@@ -195,7 +195,7 @@ as proof of actual function. The saved historical cases and current regression e
 #### Illustrative food plant section (24 findings)
 
 This retained anchor refers to the [original 24-finding screen at 8313a8e](https://github.com/steve-vitale/engineering-context-toolkit/blob/8313a8e948bc99e6af40293e61f0900a44516644/examples/opportunity-screen/food/screen.md).
-The current 26-finding screen above keeps K-203 and EV-202 in function review. The source model is unchanged.
+The current 29-finding screen keeps K-203 and EV-202 in function review and treats AT-302/HX-303 as supplied heating candidates; the source model is unchanged.
 
 </details>
 
@@ -206,16 +206,17 @@ TE and Bayer E18 data requests, where a valve beside a drawn flow meter is no lo
 
 ### Roll-up: food and Bayer as two sites
 
-24 questions fired across the two; 4 fired at both (C1, C2, C3, C9). The roll-up lists every finding of both screens
-exactly once (the test checks it), names the sites where each question was asked and quiet, and merges data requests
+The current roll-up has 41 findings across 24 question types; four types appear at both sites (C1, C2, C3, C9).
+The roll-up lists each screen's findings once, names the sites
+where each question was asked or quiet, and merges data requests
 by item: C1's "utility flow to this user" shows the shared places (temporary meter, site meter readings) once for the
 food site and each unmetered valve under its own finding. Its order (most sites first) is not a ranking by value.
 
 ## Triggers tightened while checking
 
 For the next iteration after a model review, see the [review-refresh example](review-refresh/README.md). It applies
-fictional decisions to the existing synthetic food model, then checks that rejected items stop triggering or
-suppressing questions. Repeated review is idempotent; explicit reconfirmation restores the questions while retaining
+fictional decisions to the existing synthetic food model, then checks that rejected candidates leave the
+eligible evidence while the machine's relevant investigation can remain open. Repeated review is idempotent; explicit reconfirmation restores the questions while retaining
 history. This adds software evidence, not another plant or a new accuracy score.
 
 Each of these fired wrongly on a first run and was fixed; the test keeps them quiet:

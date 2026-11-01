@@ -1,0 +1,47 @@
+{
+  "schema": "function-basis-heating-history-1",
+  "baseline_head": "037c5235429172e5a4df4e7e4f5e8a695d8ac869",
+  "engine_raw_sha256": "713d6d0327c5daf27bae6a0a39e8d1b8d8a5d981313e343a84c7d1d0506aea85",
+  "catalog_raw_sha256": "0d8523b854d30c855ec088f8f5702fa24372686656fe3fb11201d11c60a8acde",
+  "before_reports": {
+    "history/heating-before/E31-03-disabled-A/questions.json": {
+      "raw_sha256": "bdff728a7189556e54e3734db52f2bea3126132cf8c29da1b9fea9969b287fa5",
+      "LF_sha256": "bdff728a7189556e54e3734db52f2bea3126132cf8c29da1b9fea9969b287fa5",
+      "size_bytes": 4712
+    },
+    "history/heating-before/E31-03-disabled-A/screen.md": {
+      "raw_sha256": "25733b9ecdd9eed6709ed446e7617c333a86c71964045652b5a18027e08b1a07",
+      "LF_sha256": "25733b9ecdd9eed6709ed446e7617c333a86c71964045652b5a18027e08b1a07",
+      "size_bytes": 4909
+    },
+    "history/heating-before/H6-04-shared-unqualified-timing/questions.json": {
+      "raw_sha256": "6820034180ce052c65bd4e0fc6e82fcfe0a0464304086eb93404a2861e96effd",
+      "LF_sha256": "6820034180ce052c65bd4e0fc6e82fcfe0a0464304086eb93404a2861e96effd",
+      "size_bytes": 535
+    },
+    "history/heating-before/H6-04-shared-unqualified-timing/screen.md": {
+      "raw_sha256": "79596abf67f6b54acb46e828d4e6f9f5a3177fd0d156e05edd12c3c1ebc252cd",
+      "LF_sha256": "79596abf67f6b54acb46e828d4e6f9f5a3177fd0d156e05edd12c3c1ebc252cd",
+      "size_bytes": 1332
+    },
+    "history/heating-before/E32-03-flue-analyser-unqualified/questions.json": {
+      "raw_sha256": "b204aaa0435ac14446ec3407610d6e9dfd61ed3dbff04beb5be17cc79892579a",
+      "LF_sha256": "b204aaa0435ac14446ec3407610d6e9dfd61ed3dbff04beb5be17cc79892579a",
+      "size_bytes": 543
+    },
+    "history/heating-before/E32-03-flue-analyser-unqualified/screen.md": {
+      "raw_sha256": "84f303d30125f3cc7e2fb2b4060e67724535f55bd168dbe5489fd655484a9fa7",
+      "LF_sha256": "84f303d30125f3cc7e2fb2b4060e67724535f55bd168dbe5489fd655484a9fa7",
+      "size_bytes": 1326
+    }
+  },
+  "baseline_scope": "Original12exhaustCLI and6burnerCLI observations; oldlabel-baseddetectors behaveasdeclared. Missingexpanded-job subjects are policy/collection gaps,not measured efficiency faults.",
+  "original_freezes": {
+    "exhaust_preregistration": "62d1bb387c08bf071018fe377b5ebad9e7ccf5168fada78a074ce46ea012d9bf",
+    "exhaust_terminal": "a0bac7d888c7d3518fd33bde90dc6cc1f8b9dcec852dfa3c056a2f70bbdc951d",
+    "burner_preregistration": "f1bec41883a79dd8f428961970ef5360234d7540e3634258ecbfb32975f6affe",
+    "burner_terminal": "108b30e9130cfcb8669e1dfa640ea36badf3bc8d261800261c2bb8442d0cafd1"
+  },
+  "path_metadata": "Historicalsource_model values are actual selectedoutside-checkout basenames. HistoricalE31/H6catalog is questions.json (explicitcopiedcatalog); E32catalog is data/questions.json. Futurepublicrelativeinput paths naturally differ. Neverstrip/rebind that metadata to claim fullartifactidentity.",
+  "pending_after": "Three newcomplete afterpairs mustcome from actual authorizedcurrentmethod CLI at declaredpublicrelative paths; noneexists at packagingfreeze."
+}

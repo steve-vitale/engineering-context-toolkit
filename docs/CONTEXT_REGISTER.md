@@ -196,9 +196,12 @@ limits. These are the screen's collection prompts, not per-request completion tr
 recording an answer does not automatically satisfy or clear them. Their exact content remains in the enriched
 question JSON for the engineer to carry forward.
 
-Supplied candidate facts retain their subject, scope, value and locator in both the report and JSON. They remain
-unverified information, without settling the collection/review task. Context checks their shape and referenced
-asset identities; it does not reapply the engine's catalog, decide field meaning or validate document suitability.
+Supplied candidate facts retain their subject, scope, value and locator in both the report and JSON. The report
+labels them as screen-time evidence whose meaning and suitability the original screen did not verify. Later
+answers and source-review verdicts remain separately attributed. Use the current question state and reviewer
+decisions to understand the recorded disposition; individual request completion remains untracked.
+Context checks shape and referenced asset identities; it does not reapply the engine's catalog, decide field
+meaning or validate document suitability.
 Claim values and recorded field/candidate evidence are opaque: qualifiers named `status`, `context` or
 `context_register` inside them remain content, survive the handoff and change the evidence binding when edited.
 An imported `service_reconciliation` in finding evidence is opaque for the same reason: its selected source,

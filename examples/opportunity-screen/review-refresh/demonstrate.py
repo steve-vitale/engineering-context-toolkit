@@ -15,7 +15,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 SOURCE = HERE.parent / "food_plant_model.json"
 QUESTIONS = ("C12", "E29", "E31", "H6")
-ADDED = {"E31@F-303", "H6@F-303"}
+ADDED = set()
 REJECTED = {"JT-201", "SC-203", "HX-303"}
 
 
@@ -70,6 +70,12 @@ def demonstrate(write=False):
         after_ids = {f["id"] for f in after["questions"]}
         assert after_ids - before_ids == ADDED
         assert not before_ids - after_ids
+        assert before_ids == after_ids
+        # Recovery is a represented candidate: review changes its use, not whether F-303 has a question.
+        for fid in ("E31@F-303", "H6@F-303"):
+            assert {"F-303", "HX-303"} <= assets(before, fid)
+            assert "F-303" in assets(after, fid)
+            assert "HX-303" not in assets(after, fid)
         # E29 remains open with a drive label; rejection removes the candidate, not the machine investigation.
         assert {"K-203", "SC-203"} <= assets(before, "E29@K-203")
         assert "K-203" in assets(after, "E29@K-203")

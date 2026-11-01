@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "model_id": "E32-01-fired-no-analysis-drawn",
+    "title": "Fictional E32 source-adequacy development control",
+    "illustrative": true,
+    "source": "Authored synthetic Native fixture; no source drawing, plant record or measurement. Frozen before any baseline call."
+  },
+  "units": [
+    {
+      "id": "O-A",
+      "name": "Batch product oven A",
+      "type": "oven"
+    }
+  ],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "F-A",
+      "unit": "O-A",
+      "variable": "flow",
+      "description": "Natural gas burner fuel supply; installed ratio and operating basis unknown"
+    }
+  ],
+  "final_elements": [],
+  "manual_valves": [],
+  "controllers": []
+}

@@ -4308,6 +4308,57 @@
         "scripts/question_engine.py",
         "scripts/test_question_engine.py"
       ]
+    },
+    {
+      "id": "A284",
+      "function": "intake_and_reuse",
+      "date": "2026-10-31",
+      "change": "Distinguish original screen-time candidate prompts from current retained question answers.",
+      "hypothesis": "A retained original collection prompt must not assert the current request remains open after a later question answer.",
+      "evidence": "Six matched context CLI workflows; all18JSON outputs byte-exact and Markdown changes limited to one explanatory sentence. Public context module53tests pass including a cross-state regression. No per-request completion tracker added.",
+      "runs": "Six matched candidate workflows and one53-test public module run; fictional software dispositions only.",
+      "verdict": "kept",
+      "why": "Resolve a contradictory readout without altering state, source pins, ownership or history, or claiming engineering adequacy.",
+      "source": [
+        "docs/JOURNAL.md#135-keep-heating-investigations-grounded-in-existing-records",
+        "docs/CONTEXT_REGISTER.md",
+        "scripts/context_register.py"
+      ]
+    },
+    {
+      "id": "A285",
+      "function": "intake_and_reuse",
+      "date": "2026-10-31",
+      "change": "Review existing exhaust-recovery and burner operating records instead of closing investigation on drawing labels.",
+      "hypothesis": "Represented recovery and analysis hardware should remain scoped candidate context while source-informed coverage, residual-duty and operating-basis questions are reviewed.",
+      "evidence": "18prospective authored baselines expose12missing subjects under the expanded job. Candidate18calls/36reports/24findings/fourquiet cases independently received;108typed scoped literal rows preserved. Only E31/E32/H6 change; other47rules/all50benefits exact. Original25 plus18heating development inputs have separate exposure/oracles and complete selected before/after pairs.",
+      "runs": "18original baseline calls;18candidate calls, no extra representative calls. Synthetic exposed development, not independent plants or model accuracy trials.",
+      "verdict": "kept",
+      "why": "Existing records first; working coverage acknowledged, foreign/product oxygen not combustion proof, no universal operating target, forced retrofit, field task or automatic no-duct-space closure. This expands collection policy rather than correcting the old documented missing-label predicate.",
+      "source": [
+        "docs/JOURNAL.md#135-keep-heating-investigations-grounded-in-existing-records",
+        "docs/OPPORTUNITY_SCREEN.md",
+        "examples/opportunity-screen/function-basis/README.md",
+        "examples/opportunity-screen/function-basis/HEATING-SOURCES.json",
+        "examples/opportunity-screen/function-basis/HEATING-EXPOSURE.json"
+      ]
+    },
+    {
+      "id": "A286",
+      "function": "intake_and_reuse",
+      "date": "2026-11-01",
+      "change": "Keep explicitly typed recovery helpers out of process-equipment subjects while retaining candidate context.",
+      "hypothesis": "An exchanger name containing Fryer must not override its declared helper type, while real process equipment and unknown/combined name-based eligibility remain reviewable.",
+      "evidence": "Original food receiving stops at31 versus29 findings; only E31/H6 at typed HX-303 are extra. Strict explicit-type-only opt-in selector,26 vectors and3 post-failure Native inputs;4 focused methods pass.18 successor heating calls reproduce36 reports raw-exact/108 scoped rows.10 successor producers pass individually: food29, rollup41, stable review IDs,65 raw-exact description files plus2 actual single-leaf receipts. Aggregate wrapper1 is retained and independently qualified by additive postprocessing, not rerun.",
+      "runs": "Initial7 producer invocations with retained food failure, then10 successor invocations cover14 unique routes.4 earlier screen routes inherited;84 fresh plus8 inherited aggregate files. No commercial model calls.",
+      "verdict": "kept",
+      "why": "Repair the observed role ambiguity without fitting the29/41 oracle, blacklisting recovery names or claiming supplied classifications are plant truth. Preserve all47 other rule objects,50 benefits and N104 receipt-catalog gap.",
+      "source": [
+        "docs/JOURNAL.md#135-keep-heating-investigations-grounded-in-existing-records",
+        "examples/opportunity-screen/function-basis/role-controls/cases.json",
+        "scripts/question_engine.py",
+        "scripts/test_question_engine.py"
+      ]
     }
   ],
   "not_tried": [
@@ -5181,15 +5232,16 @@
       "id": "N082",
       "function": "intake_and_reuse",
       "status": "not-done",
-      "idea": "Source-review the remaining33 catalog rules and124-request inventory with prospective expected/unacceptable questions, exact collection scope and independent source review.",
-      "why_not_yet": "Seventeen named rules have bounded source-informed collection reviews after A277/A279;33 remain. This is not whole-catalog engineering adequacy, safety validation or usefulness. N065 and real engineer/recipient acceptance remain open.",
+      "idea": "Source-review the remaining30 catalog rules and124-request inventory with prospective expected/unacceptable questions, exact collection scope and independent source review.",
+      "why_not_yet": "Twenty named rules have bounded source-informed collection reviews after A285;30 remain. This is not whole-catalog engineering adequacy, safety validation or usefulness. N065 and real engineer/recipient acceptance remain open.",
       "source": [
         "docs/JOURNAL.md#115-repair-the-audit-gaps-with-owned-workstreams-and-independent-handoffs",
         "docs/STATUS.md",
         "docs/JOURNAL.md#117-keep-collection-scope-and-reviewed-context-bound-at-handoff",
         "docs/JOURNAL.md#118-keep-machine-specific-record-review-open-and-make-the-receiving-packet-current",
         "docs/JOURNAL.md#120-keep-qualified-private-fields-and-condenser-train-review-at-their-source-boundaries",
-        "docs/JOURNAL.md#134-make-own-plant-transfer-explicit-and-retain-function-evidence"
+        "docs/JOURNAL.md#134-make-own-plant-transfer-explicit-and-retain-function-evidence",
+        "docs/JOURNAL.md#135-keep-heating-investigations-grounded-in-existing-records"
       ]
     },
     {
@@ -5455,6 +5507,17 @@
         "docs/JOURNAL.md#132-give-engineers-a-sourced-starting-map-without-an-asset-model",
         "examples/engineering-onboarding/README.md",
         "examples/engineering-onboarding/actual/PROVENANCE.json"
+      ]
+    },
+    {
+      "id": "N104",
+      "function": "intake_and_reuse",
+      "status": "not-done",
+      "idea": "Bind the selected question catalog into description build receipts and test a subsequent catalog-only revision.",
+      "why_not_yet": "The current producer comparison separately freezes the catalog and compares complete generated artifacts; build.json itself only pins generator code. Assigned to the source/provenance workstream for a prospective matched receipt change. No receipt-level catalog authority or freshness claim is made.",
+      "source": [
+        "docs/JOURNAL.md#135-keep-heating-investigations-grounded-in-existing-records",
+        "scripts/description_workflow.py"
       ]
     }
   ]

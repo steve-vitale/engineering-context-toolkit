@@ -6366,3 +6366,96 @@ all 3,025 current files raw-exact. The other 70 programs are not repeated to rep
 Current committed-head CI checks the complete suite and optional MCP separately, including their actual skips.
 Three fresh Docker starts check the historical compatibility profile; they do not accept a current plant twin
 or renew the two stale manual replay stages.
+
+## 135. Keep heating investigations grounded in existing records
+
+The reader's job remains building and maintaining useful context for their own plant. Public case studies
+demonstrate the method; reusable tools accept the documented site inputs. This follow-up improves the question
+screen and its handoff rather than adding another company record system.
+
+### Separate original prompts from current answers
+
+A fresh reader audit did not establish that the toolkit forces recollection or prevents an answer from existing
+records. Six matched context workflows exposed a narrower readout problem: retained screen-time candidate
+prompts said the collection request remained open even when the whole question had a later accepted answer.
+The report now labels those original candidate facts and states that per-request completion is not tracked there.
+All 18 matched JSON outputs remain byte-exact; Markdown differs only in the frozen explanatory sentence.
+Question states, source pins, owners and history remain unchanged. The public context-register module passes
+53 tests, including the new cross-state regression. These are fictional software dispositions, not accepted
+engineering answers or evidence that the supplied records actually settle the investigation.
+
+### Define the heating job before changing its rules
+
+Original DOE/LBNL/EPA source text informs prospective cases for exhaust recovery (E31/H6) and burner operating
+basis (E32). The old detectors implement their documented missing-label gates; expanding that job to examine
+function, existing coverage and residual basis is a collection-policy improvement, not proof those predicates
+were coded incorrectly. One concrete source conflict is repaired: no nearby direct-duct space is not universal
+closure when the cited dryer guidance also describes circulating-medium recovery.
+
+Twelve E31/H6 and six E32 cases are frozen before their original baseline calls. The expanded minimum job has
+12 missing subject investigations across those observations. Working coverage may reasonably stay quiet in
+new-project triage; if displayed, it must be acknowledged without calling for a new retrofit. H6 retains the
+named external-duty gate and E32 retains the separate same-unit fuel gate. Product oxygen and foreign-unit
+records do not establish combustion basis. Appropriate air/fuel metering, flue analysis or their combination can
+inform review; the screen supplies no universal operating setting or new measurement authorization.
+
+The candidate changes only three rule objects. All other 47 rules and all 50 original benefit/source objects
+remain exact. E31/E32/H6 retain four/four/three requests, now starting with existing company records and explicit
+scope. Eighteen actual candidate calls produce 36 complete reports, 24 findings (22 required subjects and two
+optional working-coverage acknowledgments) and four quiet cases. Independent receiving checks the complete
+reports, all 108 subject-scoped typed literal rows and the frozen input/method pins without extra product calls.
+
+The portable corpus retains the original 25 function-basis inputs and history and adds 18 heating inputs with a
+separate oracle. Its primary oracle retains 77 input literals; ten extra E32 display controls were frozen after
+baseline observations but before candidate calls. Of 87 combined inputs, four unrelated/no-anchor values stay
+unshown and 83 active values expand to 108 scoped rows. Three after-report pairs are exact copies from those same
+18 sessions. These are 43 exposed authored development cases, not 43 plants, independent source families,
+held-out model trials or measured engineer usefulness. Source routes disclose that historical PDF byte equivalence
+was not established; no original PDF is added. The public guide is intentionally revised while original inputs,
+expectations and historical reports remain intact.
+
+The producer audit also identifies a provenance gap for follow-up: description build receipts hash the generator
+code but not the selected question catalog. The present comparison separately freezes that catalog and checks
+the complete generated bundles; the receipt alone cannot establish which catalog generated their questions.
+N104 retains this as a specific future receipt improvement rather than claiming it was fixed here.
+
+### Retain the first integrated producer failure
+
+The first seven of fourteen planned producer invocations succeed as commands. Six comparisons pass, including
+all 67 complete description artifacts byte-for-byte. The seventh, the illustrative food screen, produces 31
+findings against a prospectively expected 29, so the remaining seven calls are stopped. The two unexpected
+subjects are E31/H6 at HX-303: its explicit Native type is `heat_exchanger`, but its name includes "Fryer".
+The old missing-recovery predicate incidentally suppressed this false process-equipment anchor. The 18-case
+candidate pass did not cover that interaction. The expected 29 food findings, 41 roll-up findings and rejection
+exercise are retained; accepting the extra helper subjects would fit the oracle to a failure.
+
+### Repair the role distinction and complete the producing routes
+
+An optional `not_type_text` selector checks only the explicit type. The three heating anchors use a strict
+full-string pattern for declared standalone helper roles. Actual dryers with recovery in their names remain
+eligible, helpers remain candidate context, and unknown/combined classifications keep the previous name-based
+behavior. This is bounded selector policy, not an authenticated plant taxonomy. Before implementation, an
+independent regex check found that Python's `$` also accepts a final newline; the shipped expression instead
+uses `\Z`. The original proposal/witness remains, with 26 amended vectors and three exact Native controls.
+
+Independent static review accepts the two-line opt-in guard, three anchor fields and one selector-help append.
+The other 47 rules, all 50 benefits and remaining catalog content stay exact. The existing 131 test methods and
+assertions remain, with the declared selector-key allowance; four methods are added. Their focused execution
+passes. Eighteen successor case calls reproduce all 36 earlier reports raw-exact, retaining 108 scoped literal
+rows. The three post-food-failure role inputs are separate from the original 43 core development inputs.
+
+Ten successor producer invocations complete their individual checks: food has 29 findings, the roll-up has
+41 across 24 questions, and the review exercise retains the same finding IDs while withdrawing rejected
+candidates. The food's 20 other findings and roll-up's 21 other question groups remain exact. Two actual
+description builds change only the question-engine code-hash leaf in each receipt; their other 65 complete
+artifacts remain raw-exact. The four earlier successful screen routes are inherited unchanged. Across the
+initial seven and successor ten invocations, 14 unique producing routes are covered with the failed food
+observation retained. The aggregate contains 84 freshly produced files and eight inherited files.
+
+The successor's final aggregate wrapper exits one because its copied seven-path allowance omits the two
+prospectively allowed description receipts. All ten product invocations and individual comparisons have
+already passed. Additive postprocessing checks the retained 92 artifacts and exactly nine declared changed
+paths, without another product call or relaxed criterion. Independent receiving confirms that result. Two
+inherited metadata labels in the wrapper freeze still name the prior engine/catalog; they remain untouched
+and explicitly qualified. The actual consumed files and outer freeze bind the new method/catalog. Seven
+ordinary JSON files that differed only in line endings keep their earlier public raw bytes.

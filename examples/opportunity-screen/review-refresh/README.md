@@ -1,8 +1,9 @@
 # Keep a model correction in the next question screen
 
-An engineer rejects a false-positive meter or heat-recovery unit. The next screen must stop using that item as
-evidence that the corresponding question has already been addressed. The investigation must reflect that
-recorded decision before the engineer continues collecting data.
+A model-review decision can withdraw a supplied meter, drive or recovery candidate while its machine's question
+remains open. The next screen must reflect that decision: retain the investigation, remove the rejected record
+from eligible evidence and keep the source/history for the company reviewer. Rejection does not establish that
+physical equipment is absent.
 
 This example uses the existing [synthetic food model](../food_plant_model.json) and **fictional decisions**.
 Every tag is invented. No person reviewed a plant, no equipment was removed and no savings were established.
@@ -21,13 +22,15 @@ after the named behavior checks pass; the default only checks them.
 |---|---|
 | Reject power meter JT-201 | JT-201 disappears from C12 candidate evidence. K-201 remains in the question before and after rejection because actual real-input suitability stays open even with a supplied power reading. |
 | Reject speed drive SC-203 | E29 retains K-203's function/part-load investigation before and after review; SC-203 disappears as a candidate. A drive label never settled actual function. |
-| Reject recovery exchanger HX-303 | E31 and H6 ask about the fryer's exhaust and potential heat use. |
+| Reject recovery exchanger HX-303 | E31 and H6 retain the fryer's source/coverage questions before and after review; HX-303 disappears from eligible recovery evidence. Its prior label never settled residual supply, availability or a source/sink match. |
 
 The [generated screen](expected/screen.md) and [question JSON](expected/questions.json) run only C12, E29, E31
-and H6. The unchanged source model retains the original purpose of its drawn quiet controls; current C12 and E29
-keep the real-input/function basis open. Repeating the same review changes no model bytes.
-A later explicit confirmation of the three invented items restores the original questions and retains the
-intermediate rejected decisions in model history. Confirmation in this control is not proof of plant truth.
+and H6. The source model retains its historical quiet-control metadata; current collection questions do not
+turn those labels into accepted operating or recovery evidence. The revised check expects the same finding IDs
+before and after these candidate rejections, with the corresponding eligible records removed. The actual exercise checks its regenerated
+expected files with the current catalog.
+Repeating the review changes no model bytes. Explicit reconfirmation restores the candidates and pre-review
+screen while retaining the intermediate decisions in history. This is not proof of plant truth or authority.
 
 ## Apply the same sequence to your private bundle
 

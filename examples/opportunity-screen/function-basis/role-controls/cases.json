@@ -1,0 +1,235 @@
+{
+  "schema": "heating-role-controls-1",
+  "regex": "^(?:HEAT[ _-]+EXCHANGER|EXCHANGER|CONDENSER|RECUPERATOR|ECONOMI[ZS]ER|(?:HEAT[ _-]+)?RECOVERER|HEAT[ _-]+RECOVERY)\\Z",
+  "matcher_vectors": [
+    {
+      "id": "negative-0",
+      "explicit_type": "heat_exchanger",
+      "text": "Fryer exhaust vapour condenser with heat recovery",
+      "without_new_key": true,
+      "with_new_key": false
+    },
+    {
+      "id": "negative-1",
+      "explicit_type": "Heat Exchanger",
+      "text": "Fryer exhaust vapour condenser with heat recovery",
+      "without_new_key": true,
+      "with_new_key": false
+    },
+    {
+      "id": "negative-2",
+      "explicit_type": "HEAT-EXCHANGER",
+      "text": "Fryer exhaust vapour condenser with heat recovery",
+      "without_new_key": true,
+      "with_new_key": false
+    },
+    {
+      "id": "negative-3",
+      "explicit_type": "heat__Exchanger",
+      "text": "Fryer exhaust vapour condenser with heat recovery",
+      "without_new_key": true,
+      "with_new_key": false
+    },
+    {
+      "id": "negative-4",
+      "explicit_type": "exchanger",
+      "text": "Fryer exhaust vapour condenser with heat recovery",
+      "without_new_key": true,
+      "with_new_key": false
+    },
+    {
+      "id": "negative-5",
+      "explicit_type": "Condenser",
+      "text": "Fryer exhaust vapour condenser with heat recovery",
+      "without_new_key": true,
+      "with_new_key": false
+    },
+    {
+      "id": "negative-6",
+      "explicit_type": "RECUPERATOR",
+      "text": "Fryer exhaust vapour condenser with heat recovery",
+      "without_new_key": true,
+      "with_new_key": false
+    },
+    {
+      "id": "negative-7",
+      "explicit_type": "economizer",
+      "text": "Fryer exhaust vapour condenser with heat recovery",
+      "without_new_key": true,
+      "with_new_key": false
+    },
+    {
+      "id": "negative-8",
+      "explicit_type": "economiser",
+      "text": "Fryer exhaust vapour condenser with heat recovery",
+      "without_new_key": true,
+      "with_new_key": false
+    },
+    {
+      "id": "negative-9",
+      "explicit_type": "recoverer",
+      "text": "Fryer exhaust vapour condenser with heat recovery",
+      "without_new_key": true,
+      "with_new_key": false
+    },
+    {
+      "id": "negative-10",
+      "explicit_type": "heat_recoverer",
+      "text": "Fryer exhaust vapour condenser with heat recovery",
+      "without_new_key": true,
+      "with_new_key": false
+    },
+    {
+      "id": "negative-11",
+      "explicit_type": "HEAT RECOVERY",
+      "text": "Fryer exhaust vapour condenser with heat recovery",
+      "without_new_key": true,
+      "with_new_key": false
+    },
+    {
+      "id": "positive-0",
+      "explicit_type": "dryer",
+      "text": "Product dryer with heat recovery",
+      "without_new_key": true,
+      "with_new_key": true
+    },
+    {
+      "id": "positive-1",
+      "explicit_type": "oven",
+      "text": "Product dryer with heat recovery",
+      "without_new_key": true,
+      "with_new_key": true
+    },
+    {
+      "id": "positive-2",
+      "explicit_type": "fryer",
+      "text": "Product dryer with heat recovery",
+      "without_new_key": true,
+      "with_new_key": true
+    },
+    {
+      "id": "positive-3",
+      "explicit_type": null,
+      "text": "Product dryer with heat recovery",
+      "without_new_key": true,
+      "with_new_key": true
+    },
+    {
+      "id": "positive-4",
+      "explicit_type": "",
+      "text": "Product dryer with heat recovery",
+      "without_new_key": true,
+      "with_new_key": true
+    },
+    {
+      "id": "positive-5",
+      "explicit_type": "dryer_with_heat_recovery",
+      "text": "Product dryer with heat recovery",
+      "without_new_key": true,
+      "with_new_key": true
+    },
+    {
+      "id": "positive-6",
+      "explicit_type": "custom_hybrid",
+      "text": "Product dryer with heat recovery",
+      "without_new_key": true,
+      "with_new_key": true
+    },
+    {
+      "id": "positive-7",
+      "explicit_type": "plate_heat_exchanger",
+      "text": "Product dryer with heat recovery",
+      "without_new_key": true,
+      "with_new_key": true
+    },
+    {
+      "id": "positive-8",
+      "explicit_type": "heat_exchanger ",
+      "text": "Product dryer with heat recovery",
+      "without_new_key": true,
+      "with_new_key": true
+    },
+    {
+      "id": "missing-type",
+      "type_key_absent": true,
+      "text": "Product fryer with heat recovery",
+      "without_new_key": true,
+      "with_new_key": true
+    },
+    {
+      "id": "unrelated-helper",
+      "explicit_type": "heat_exchanger",
+      "text": "Unrelated wash exchanger",
+      "without_new_key": false,
+      "with_new_key": false
+    },
+    {
+      "id": "final-LF",
+      "explicit_type": "heat_exchanger\n",
+      "text": "Product fryer with heat recovery",
+      "without_new_key": true,
+      "with_new_key": true
+    },
+    {
+      "id": "final-CRLF",
+      "explicit_type": "heat_exchanger\r\n",
+      "text": "Product fryer with heat recovery",
+      "without_new_key": true,
+      "with_new_key": true
+    },
+    {
+      "id": "leading-space",
+      "explicit_type": " heat_exchanger",
+      "text": "Product fryer with heat recovery",
+      "without_new_key": true,
+      "with_new_key": true
+    }
+  ],
+  "fixture_expectations": [
+    {
+      "model": "models/typed-helper-vs-process.json",
+      "required_ids": [
+        "E31@D-A",
+        "E32@D-A",
+        "H6@D-A"
+      ],
+      "forbidden_subjects": [
+        "HX-A",
+        "HX-U"
+      ],
+      "represented_recovery_candidate_for_D_A": "HX-A",
+      "forbidden_D_A_candidate": "HX-U",
+      "burner_prerequisite_control": "BothD-AandHX-Ahaveownfuel; HX-A exclusion must follow explicit helper type, not missingfuel."
+    },
+    {
+      "model": "models/untyped-process.json",
+      "required_ids": [
+        "E31@D-A",
+        "E32@D-A",
+        "H6@D-A"
+      ]
+    },
+    {
+      "model": "models/combined-type-process.json",
+      "required_ids": [
+        "E31@D-A",
+        "E32@D-A",
+        "H6@D-A"
+      ]
+    }
+  ],
+  "actual_food_expected": {
+    "findings": 29,
+    "forbidden_ids": [
+      "E31@HX-303",
+      "H6@HX-303",
+      "E32@HX-303"
+    ],
+    "rollup_findings": 41,
+    "review_before_after_ids_equal": true
+  },
+  "legacy_policy": "Noopt-in branch preserves oldmatches; no name/source/fact blacklist, no taxonomy inference, no new operational conclusion.",
+  "product_calls": 0,
+  "exposure": "post-food-failure development; not blind, heldout, plant or source-family evidence",
+  "core_case_set": "Separate from the43 core source-collection models; original18primary oracles unchanged."
+}

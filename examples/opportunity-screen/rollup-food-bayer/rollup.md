@@ -4,7 +4,7 @@
 
 | Site | Screen | Model | Findings |
 |---|---|---|---|
-| food | `examples/opportunity-screen/food/questions.json` | `examples/opportunity-screen/food_plant_model.json` | 26 |
+| food | `examples/opportunity-screen/food/questions.json` | `examples/opportunity-screen/food_plant_model.json` | 29 |
 | bayer | `examples/opportunity-screen/bayer/questions.json` | `data/bayer_rt/process_model.json` | 12 |
 
 | Question | Family | Sites | Findings |
@@ -14,11 +14,11 @@
 | C3: Do these control valves lack position feedback? | Controls and automation | food, bayer | 2 |
 | C9: What source-labelled trip or interlock records apply to each rotating or fired machine, and what remains unverified? | Safety questions to verify | food, bayer | 2 |
 | E29: What records support this refrigeration compressor's part-load control, sequencing and real-input basis? | Energy | food | 3 |
+| E31: What do existing records establish about this oven, dryer or fryer exhaust routing, recovery already provided and any unresolved own-inlet or process-use basis? | Energy | food | 3 |
+| E32: What do existing records establish about this represented burner air-fuel operating basis, the supplied analysis or metering candidates and applicable process-air constraints? | Energy | food | 3 |
+| H6: What do existing records establish about this oven, dryer or fryer recovery already provided and any unresolved residual supply for the named external heating-duty lead? | Heat grade (high-grade heat for low-grade duty) | food | 3 |
 | E11: Is this hot line insulated? | Energy | bayer | 2 |
 | E30: What records support this evaporator's defrost applicability, initiation and termination? | Energy | food | 2 |
-| E31: Does this oven, dryer or fryer send its hot exhaust to atmosphere with no heat recovery on it? | Energy | food | 2 |
-| E32: Is the burner air-fuel ratio on this oven, dryer or fryer checked and set, with no flue O2 measurement drawn? | Energy | food | 2 |
-| H6: Could this oven's, dryer's or fryer's exhaust heat serve a low-grade heating duty elsewhere (hot water, CIP, space heating)? | Heat grade (high-grade heat for low-grade duty) | food | 2 |
 | C11: What supports the exhaust/make-up control strategy and product requirements for this dryer or oven? | Controls and automation | food | 2 |
 | E1: Is this pump throttled by a control valve when it could run on a variable speed drive? | Energy | bayer | 1 |
 | E18: Is heat rejected to cooling water in one place while steam heats a colder stream in another (a heat-integration question)? | Energy | bayer | 1 |
@@ -137,6 +137,73 @@ Fired at 1 of 2 sites. Asked and quiet at: bayer.
 
 **What the source says (S25):** Among control strategies that "may compromise system energy efficiency" (S25, p. 59, citing Pearson 2003): "Slide valve unloading of oversized screw compressors." and "Hot gas bypass of compressors." Speed control (S25, p. 63): "ASDs used on compressors below a part-load ratio of about 95% will deliver performance equal to a fixed speed compressor but with lower electricity requirements. However, at near full (i.e., 100%) load, ASDs are approximately 3% less efficient than fixed speed drives".
 
+## E31: What do existing records establish about this oven, dryer or fryer exhaust routing, recovery already provided and any unresolved own-inlet or process-use basis?
+
+Fired at 1 of 2 sites. Asked and quiet at: bayer.
+
+- **food**, D-301 (`E31@D-301`): D-301, FT-301, S1, TT-304, TV-301, U1
+- **food**, O-302 (`E31@O-302`): AT-302, O-302, S2, TT-305, TV-302, U2
+- **food**, F-303 (`E31@F-303`): F-303, HX-303, S3, TV-303, U3
+
+**Data to collect**
+
+- Existing exhaust routing and represented recovery coverage for this unit. How: Distinguish recovery already provided from an unresolved residual question. A represented item, document label or enabled flag is a candidate, not authenticated operation or complete coverage. A shared recoverer does not establish a duty allocation; a missing drawn item does not prove absent hardware.
+  - food [not on drawing]: site records: approved existing drawings, routing/configuration and recovery-purpose records for the identified unit, including revision, source locator, owner and any supplied full, partial, shared or unknown coverage claim; then maintenance records: existing recovery availability, bypass, fault, inspection and cleaning records for the represented equipment
+- Existing exhaust-condition, product and maintenance basis. How: Review whether the available records represent this job. Preserve unknown, zero and disabled qualifiers and product/moisture restrictions. Any missing-data plan belongs to the responsible reviewer; no new measurement task or fixed observation duration is prescribed.
+  - food [not on drawing]: For `E31@D-301`: historian or DCS trend for TT-304 (no historian tag is mapped in this model for these). For `E31@O-302`: historian or DCS trend for TT-305 (no historian tag is mapped in this model for these). Then, for all of them: site records: permitted existing exhaust temperature/flow, moisture, contaminants and representative production records with unit identity, quantity, location, units, method, dates and operating-period basis; then maintenance records: existing product carry-over, filtration, fouling, leakage, cleaning and pressure-loss observations relevant to the identified exhaust path
+- Existing heat-input, operating-period and comparison basis. How: Separate a recorded nameplate/input from actual representative operation. No universal minimum hours, mandatory month, recovery fraction or savings is inferred. Qualified review can decide that existing coverage or documented constraints settle or defer the job.
+  - food [not on drawing]: For `E31@D-301`: historian or DCS trend for FT-301 (no historian tag is mapped in this model for these). For `E31@O-302`: only a valve (TV-302) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve. For `E31@F-303`: only a valve (TV-303) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve. Then, for all of them: site records: approved existing fuel or heat-input and production/run schedules for a justified comparison period, with equipment identity, dates and stated basis; then utility bills or the site energy report: existing identified sub-meter or heat-supply records, if suitable for the selected unit and production basis
+- Own-inlet or process-use alternatives and constraints for qualified review. How: S26 describes indirect circulating-medium/run-around recovery as an option when local duct space is limited; assess applicability rather than treating lack of nearby direct-duct space as universal closure. It is not an automatic recommendation or feasibility result. H6 separately asks about a named external duty.
+  - food [not on drawing]: site records: existing own-inlet/process heat-use, layout/duct/piping space, product quality, moisture, contaminant and operating-constraint records, including options already assessed; then the vendor datasheet: applicable equipment requirements and documented direct/indirect recovery constraints and the receiving engineering owner
+
+**How it is decided:** Use qualified existing records to distinguish working full coverage, unavailable or partial recovery and unresolved own-inlet/process-use questions. A responsible engineer can answer or defer the investigation from an adequate documented basis; no new project is compulsory. Consider applicable direct and indirect alternatives and product, cleanliness, moisture, safety and operating constraints before deciding whether further assessment is worthwhile. Missing local duct space or intermittent operation alone is not an automatic universal closure.
+
+**What the source says (S26, S25):** Dryers (S26, p. 104): "A simple form of heat recovery in retrofit applications is to utilize the exhaust air of a dryer to preheat the inlet air stream, thereby saving energy." Spray dryers (S25, p. 90): "It is estimated that up to 30% of the heat from the dryer exhaust can be recovered." Fryers (S26, p. 107): "Conditioning of the exhaust gas is required, however, to remove fats and to reduce fouling of the heat exchange system." No source in this set gives a figure for ovens.
+
+## E32: What do existing records establish about this represented burner air-fuel operating basis, the supplied analysis or metering candidates and applicable process-air constraints?
+
+Fired at 1 of 2 sites. Asked and quiet at: bayer.
+
+- **food**, D-301 (`E32@D-301`): D-301, FT-301, HV-304, TT-304, TV-301, U1
+- **food**, O-302 (`E32@O-302`): AT-302, O-302, TT-305, TV-302, U2
+- **food**, F-303 (`E32@F-303`): F-303, TV-303, U3
+
+**Data to collect**
+
+- Existing air-fuel or flue-analysis, tuning and calibration records. How: Use an appropriate flow-metering, flue-analysis or combined method; a permanently installed O2 analyser is not mandatory. An oxygen/composition label may refer to product or another purpose and is not a flue-combustion basis. Preserve supplied false, zero and unknown values without qualifying them as actual function, calibration or performance.
+  - food [not on drawing]: site records: approved existing burner tuning, paired air/fuel flow-metering or flue-analysis reports, or their combination, with equipment, author/owner, date, quantity, sampling location, units/basis and high/low-fire or representative load coverage; then maintenance records: existing analyser/meter calibration, maintenance and suitability records and the reported flue oxygen/combustibles and exhaust-temperature context where available
+- Existing ratio-control function and applicable equipment guidance. How: Separate a named ratio, analyser or enabled flag from reviewed as-operated evidence. Compare only on an applicable documented fuel, operating and method basis; this screen supplies no universal O2 target, ratio setting or adjustment permission.
+  - food [not on drawing]: site records: approved existing burner/ratio-control configuration, active/fallback or manual mode, linkage or trim basis, revision and identified responsible owner; then the vendor datasheet: applicable burner/equipment guidance and documented air-fuel/excess-air requirements across its operating range; then DCS/PLC configuration: permitted existing burner-management and ratio-control configuration records, only through the company-approved access route
+- Existing fuel and production records for an appropriate operating basis. How: Keep high/low-fire or other representative load evidence distinct from a nominal rating or an isolated number. No fixed month, new logging task, efficiency result or fuel-saving estimate is inferred.
+  - food [not on drawing]: For `E32@D-301`: historian or DCS trend for FT-301 (no historian tag is mapped in this model for these). For `E32@O-302`: only a valve (TV-302) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve. For `E32@F-303`: only a valve (TV-303) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve. Then, for all of them: site records: approved existing identified fuel/input and production/load records over a justified representative period, including dates, units and relevant conditions; then utility bills or the site energy report: existing identified unit fuel sub-meter records where suitable for the proposed comparison
+- Existing process-air constraints and qualified review disposition. How: Combustion air and process drying/dilution needs are not interchangeable. Review applicable documented limits rather than minimizing air from an O2 label. Return evidence, unresolved basis and next owner; any new measurement or adjustment is separately approved qualified work.
+  - food [not on drawing]: site records: approved existing drying, moisture/solvent removal, dilution/exhaust and product/safety basis, including any applicable flammable-vapour constraints and their revision/owner; then the vendor datasheet: applicable equipment minimum process-air/exhaust requirements and the qualified company burner/process review route
+
+**How it is decided:** Use qualified existing records to establish the applicable combustion and process-air basis and identify unresolved method, calibration, load or constraint evidence. Either appropriate air/fuel metering, flue analysis or a combination can support the review. Neither presence nor absence of a label establishes efficiency, a fault or need for adjustment. A responsible company reviewer can answer from adequate records or define a separately approved follow-up; this screen does not select operating settings.
+
+**What the source says (S27):** S27 (p. 1): "Periodic checking and resetting of air-fuel ratios for burners is one of the simplest ways to get maximum efficiency out of fuel-fired process heating equipment such as furnaces, ovens, heaters, and boilers." And: "Processes that evaporate moisture or solvents need large amounts of excess air to dilute flammable solvents to noncombustible levels, to ensure adequate drying rates, and to carry vapors out of the oven. Lowering excess air to minimal levels can slow down the process and create an explosion hazard." No typical % stated (the sheet's worked example is one furnace).
+
+## H6: What do existing records establish about this oven, dryer or fryer recovery already provided and any unresolved residual supply for the named external heating-duty lead?
+
+Fired at 1 of 2 sites. Asked and quiet at: bayer.
+
+- **food**, D-301 (`H6@D-301`): D-301, S1, TT-304, W2, WH-401
+- **food**, O-302 (`H6@O-302`): AT-302, O-302, S2, TT-305, W2, WH-401
+- **food**, F-303 (`H6@F-303`): F-303, HX-303, S3, W2, WH-401
+
+**Data to collect**
+
+- Existing source routing, recovery-purpose and residual-supply basis. How: Separate own-inlet recovery from external-duty coverage. Retain full, partial, shared, zero and unknown claims literally; a recoverer label or nominal temperature does not establish actual residual transferable heat or allocate shared duty.
+  - food [not on drawing]: For `H6@D-301`: historian or DCS trend for TT-304 (no historian tag is mapped in this model for these). For `H6@O-302`: historian or DCS trend for TT-305 (no historian tag is mapped in this model for these). Then, for all of them: site records: approved existing exhaust routing, current recovery purpose, source revision/locator and coverage/bypass/availability records for this identified source; then maintenance records: existing recovery operation, cleaning, fouling and unavailable/disabled records with equipment and period identity
+- Existing named-duty requirements and source/demand quantity and timing basis. How: The anywhere-found duty is an unassociated lead, not a physical connection, nearby user or suitable sink. Review amount, thermal suitability and timing separately. A pair of nominal temperatures, common name or schedule mismatch does not by itself settle all practical alternatives or establish viability.
+  - food [not on drawing]: site records: approved existing identity/purpose, temperature, heat-demand and operating schedules for the named duty, paired with source-period records where available, including quantities, locations, units, dates and responsible owners
+- Existing route, compatibility and alternative-heat constraints. How: Use the source/sink questions in S28 to identify what existing evidence supports or leaves unresolved. No universal temperature-difference threshold, mandatory field task, fixed sampling period or cost ranking is imposed. Qualified owners decide any further data plan and whether a study should proceed, be answered or be deferred.
+  - food [not on drawing]: site records: existing layout/distance and transport options; cleanliness/corrosion/particulate compatibility; condensation and pressure-loss/ventilation constraints; and the available alternative heating-supply and comparative basis; then the vendor datasheet: applicable documented source and receiving-equipment limits, prior assessments and the qualified engineering review route
+
+**How it is decided:** Review actual residual supply, named-duty amount/thermal requirements and coincident timing together with route losses, compatibility, condensation, pressure resistance and alternative heating basis. Distinguish documented working full coverage from unresolved partial, disabled, shared or internal-only recovery. A qualified company review can answer or defer the question from existing records; unknown evidence is not an automatic otherwise-close result, a feasible project or a mandate for a new project.
+
+**What the source says (S28, S26):** S28 (p. 1): "many companies install heat exchangers on the exhaust stacks of furnaces and ovens to produce hot water or to generate hot air for space heating." The same sheet: "The temperature difference between the primary and secondary process should be high enough (at least 200°F), and there should be a sufficient amount of usable waste heat." Fryers (S26, p. 107): "Heat can be recovered indirectly from a fryer's fat-laden exhaust gases via a heat exchange system and used for pre-heating air and water for use in other facility processes." No % stated.
+
 ## E11: Is this hot line insulated?
 
 Fired at 1 of 2 sites. Asked and quiet at: food.
@@ -178,70 +245,6 @@ Fired at 1 of 2 sites. Asked and quiet at: bayer.
 **How it is decided:** Pursue missing applicability, source/function or representative event evidence. A drawn DP instrument or demand label does not settle whether defrost is initiated by actual need. Close only a qualified source investigation; no installed-control acceptance or operating change follows.
 
 **What the source says (S25):** Demand defrost (S25, p. 66): "Evaporators should be defrosted only when necessary, as opposed to on timed schedules where defrosting occurs regardless of need." "Too frequent defrosts." is listed among control strategies that "may compromise system energy efficiency" (S25, p. 59, citing Pearson 2003). No % stated.
-
-## E31: Does this oven, dryer or fryer send its hot exhaust to atmosphere with no heat recovery on it?
-
-Fired at 1 of 2 sites. Asked and quiet at: bayer.
-
-- **food**, D-301 (`E31@D-301`): D-301, FT-301, S1, TT-304, TV-301, U1
-- **food**, O-302 (`E31@O-302`): AT-302, O-302, S2, TT-305, TV-302, U2
-
-**Data to collect**
-
-- Exhaust temperature and flow. How: Record both at normal production; heat on offer = mass flow x specific heat x (exhaust temperature minus the temperature it could be cooled to).
-  - food [not on drawing]: For `E31@D-301`: historian or DCS trend for TT-304 (no historian tag is mapped in this model for these). For `E31@O-302`: historian or DCS trend for TT-305 (no historian tag is mapped in this model for these). Then, for all of them: a walkdown: thermometer and a pitot or anemometer traverse in the exhaust duct, at normal production
-- Exhaust moisture and contaminants. How: Moist exhaust carries latent heat but condenses; fat and dust foul exchangers unless filtered or washed.
-  - food [not on drawing]: a walkdown: humidity or dew point probe in the exhaust; note fat, flour, sugar or product dust; then maintenance records: duct and stack cleaning history
-- Fuel or heat input and operating hours. How: A month of input at a known production rate.
-  - food [not on drawing]: For `E31@D-301`: historian or DCS trend for FT-301 (no historian tag is mapped in this model for these). For `E31@O-302`: only a valve (TV-302) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve. Then, for all of them: utility bills or the site energy report: gas sub-meter readings for this line; then site records: production schedule: hours per week the line runs
-- Where the heat could go in the unit itself. How: Preheating the unit's own inlet air comes first; H6 asks about users elsewhere.
-  - food [not on drawing]: site records: inlet (drying or combustion) air temperature and flow; then a walkdown: room next to the unit for ductwork or a run-around coil
-
-**How it is decided:** Worth a study when the exhaust leaves hot, the line runs long hours, and the exhaust is clean enough or can be filtered or washed. Close it for short or intermittent runs, or when there is no room for the ductwork.
-
-**What the source says (S26, S25):** Dryers (S26, p. 104): "A simple form of heat recovery in retrofit applications is to utilize the exhaust air of a dryer to preheat the inlet air stream, thereby saving energy." Spray dryers (S25, p. 90): "It is estimated that up to 30% of the heat from the dryer exhaust can be recovered." Fryers (S26, p. 107): "Conditioning of the exhaust gas is required, however, to remove fats and to reduce fouling of the heat exchange system." No source in this set gives a figure for ovens.
-
-## E32: Is the burner air-fuel ratio on this oven, dryer or fryer checked and set, with no flue O2 measurement drawn?
-
-Fired at 1 of 2 sites. Asked and quiet at: bayer.
-
-- **food**, D-301 (`E32@D-301`): D-301, FT-301, TV-301, U1
-- **food**, F-303 (`E32@F-303`): F-303, TV-303, U3
-
-**Data to collect**
-
-- Flue O2 and CO at high and low fire. How: Compare with the burner maker's recommended O2 for this equipment.
-  - food [not on drawing]: a walkdown: portable combustion analyser in the flue or exhaust at high and low fire; then site records: the last burner tuning report
-- Air-fuel ratio settings and how they are held. How: Note whether the ratio is fixed linkage, electronic ratio or trimmed.
-  - food [not on drawing]: DCS/PLC configuration: burner management and ratio control settings; then the vendor datasheet: burner datasheet: recommended excess air across the turndown range
-- Fuel use. How: A month of fuel use at a known production rate.
-  - food [not on drawing]: For `E32@D-301`: historian or DCS trend for FT-301 (no historian tag is mapped in this model for these). For `E32@F-303`: only a valve (TV-303) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve. Then, for all of them: utility bills or the site energy report: gas sub-meter readings for this unit
-- Excess air the process needs. How: This is a floor: the burner may not be tuned below it.
-  - food [not on drawing]: site records: the oven or dryer maker's minimum exhaust and excess air for moisture and solvent removal, and any flammable-vapour (LEL) limit
-
-**How it is decided:** Worth a tune-up when measured flue O2 is above what the burner maker recommends and the process does not need the extra air. On ovens and dryers that drive off water or solvent the dilution and drying air are part of the process: never cut below the maker's or the safety minimum.
-
-**What the source says (S27):** S27 (p. 1): "Periodic checking and resetting of air-fuel ratios for burners is one of the simplest ways to get maximum efficiency out of fuel-fired process heating equipment such as furnaces, ovens, heaters, and boilers." And: "Processes that evaporate moisture or solvents need large amounts of excess air to dilute flammable solvents to noncombustible levels, to ensure adequate drying rates, and to carry vapors out of the oven. Lowering excess air to minimal levels can slow down the process and create an explosion hazard." No typical % stated (the sheet's worked example is one furnace).
-
-## H6: Could this oven's, dryer's or fryer's exhaust heat serve a low-grade heating duty elsewhere (hot water, CIP, space heating)?
-
-Fired at 1 of 2 sites. Asked and quiet at: bayer.
-
-- **food**, D-301 (`H6@D-301`): D-301, S1, TT-304, W2, WH-401
-- **food**, O-302 (`H6@O-302`): AT-302, O-302, S2, TT-305, W2, WH-401
-
-**Data to collect**
-
-- Exhaust temperature, flow and hours. How: At normal production.
-  - food [not on drawing]: For `H6@D-301`: historian or DCS trend for TT-304 (no historian tag is mapped in this model for these). For `H6@O-302`: historian or DCS trend for TT-305 (no historian tag is mapped in this model for these). Then, for all of them: a walkdown: thermometer and a pitot or anemometer traverse in the exhaust duct; then site records: production schedule
-- The low-grade duty: temperature needed, load and hours. How: Match by temperature, hours and distance.
-  - food [not on drawing]: site records: hot water, CIP, wash water and space heating loads by hour
-- Distance and exhaust cleanliness. How: The closer and cleaner, the better.
-  - food [not on drawing]: a walkdown: duct or pipe run from the stack to the user; fat, dust or product carry-over in the exhaust
-
-**How it is decided:** Worth a study when the exhaust is well above the temperature the duty needs, the two run at the same times, and they are close enough to connect. Otherwise close it.
-
-**What the source says (S28, S26):** S28 (p. 1): "many companies install heat exchangers on the exhaust stacks of furnaces and ovens to produce hot water or to generate hot air for space heating." The same sheet: "The temperature difference between the primary and secondary process should be high enough (at least 200°F), and there should be a sufficient amount of usable waste heat." Fryers (S26, p. 107): "Heat can be recovered indirectly from a fryer's fat-laden exhaust gases via a heat exchange system and used for pre-heating air and water for use in other facility processes." No % stated.
 
 ## C11: What supports the exhaust/make-up control strategy and product requirements for this dryer or oven?
 

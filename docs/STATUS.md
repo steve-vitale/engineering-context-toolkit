@@ -1,6 +1,6 @@
 # State of the toolkit
 
-Holistic audit: **2026-10-31, Central time**, with the own-plant transfer follow-up starting from released commit `8313a8e`.
+Holistic audit: **2026-11-01, Central time**, with the latest collection/readout follow-up starting from released commit `037c523`.
 The public name is **Engineering Context Toolkit**. The jumpstart is its first-assignment path; modeling,
 review, analysis and evaluation can be used independently. Earlier failures and original evidence remain
 in the [journal](JOURNAL.md) and [attempt ledger](TRIED.md).
@@ -12,7 +12,7 @@ The public tutorials teach those steps; case studies and evaluations retain what
 inputs. Engineering review and company acceptance determine what becomes an authoritative maintained twin or record.
 
 The [script registry](SCRIPTS.md) classifies 135 scripts: 33 tools, 12 checks, 14 support modules and 76 research
-scripts; tests are separate. Twenty-two [feature groups](FEATURES.md) register 346 example files, including
+scripts; tests are separate. Twenty-two [feature groups](FEATURES.md) register 355 example files, including
 inputs, generated outputs and retained history. Their evidence is bounded. A reviewed
 example does not certify every input, current implementation or engineering conclusion.
 
@@ -30,6 +30,8 @@ engineering task has been tested.
 | An unrepresentable numeric vendor coordinate aborted the batch. | Count that answer as failed/empty, preserve the other answers and retain the diagnostic in the report. This extends the existing malformed-answer guard, not the scoring criteria. |
 | New literal candidate evidence could truncate a report on escaped lone surrogates. | Preserve values as JSON escapes where UTF-8 cannot encode them; reject invalid declared field names before changing either destination. Normal Unicode and legacy no-opt-in output remain unchanged. |
 | All three fresh starts of the frozen Docker demo lost historical TE addresses. | An explicit pinned profile supplies 36 literal aliases beside the current 52 channels, leaving SC-212 unfed. Focused and independent source checks passed; fresh browser acceptance is recorded separately in the [Docker guide](../docker/README.md). |
+| Retained screen-time candidate prompts said the request remained open after a later accepted question answer. | Label the original candidate facts separately from current question disposition. Six matched workflows preserve all 18 JSON outputs; the report does not track individual request completion. |
+| A recovery exchanger named "Fryer exhaust" became a process-equipment subject after the missing-label gate was removed. | Exclude declared standalone helper types from these anchors while keeping them as candidate context. Four new tests retain true process units, name-based fallback and the expected 29-finding food case. |
 
 CSV replay also now defaults to loopback, prints the selected interface, rejects nonfinite rates, and checks the
 start row before server initialization. A different interface requires an explicit `--host`; this remains an
@@ -37,6 +39,14 @@ unauthenticated recorded-data lab service. See the [CSV guide](../examples/histo
 
 Completed historical repairs are grouped [below](#earlier-repairs-and-their-scope). Research failures,
 unimplemented adapters and unrun company acceptance are separate categories, not repaired software defects.
+
+**Collection-policy improvement:** E31/E32/H6 now investigate existing exhaust-recovery coverage, residual
+external-duty basis and burner operating records even when a drawing supplies a recovery or analyzer label.
+Existing records come first; working coverage is acknowledged, and a question does not require a new retrofit
+or field task. The [heating tutorial](../examples/opportunity-screen/function-basis/README.md#extend-the-same-investigation-with-heating-records)
+adds 18 exposed development cases to the original 25, with separate oracles and retained before/after reports.
+Their 18 candidate calls and 108 scoped literal controls establish bounded software behavior, not performance
+on 43 plants, measured engineer usefulness or acceptance of the supplied engineering claims.
 
 ## What exists, and what remains manual
 
@@ -73,7 +83,7 @@ actual participant, recipient, native-system and tenant observations remain **no
 
 | Work category | Remaining work | Completion evidence |
 |---|---|---|
-| Engineering question quality | N065/N082: source adequacy and useful questions. Of 50 rules/124 request bundles, 17 rules have bounded collection reviews; 33 still await original-source adequacy review. Scoped MGPI is development evidence; default MGPI still produces zero findings. | Prospective expected/unacceptable questions, source/key review and actual engineer/recipient usefulness observations. |
+| Engineering question quality | N065/N082: source adequacy and useful questions. Of 50 rules/124 request bundles, 20 rules have bounded collection reviews; 30 still await original-source adequacy review. Scoped MGPI is development evidence; default MGPI still produces zero findings. | Prospective expected/unacceptable questions, source/key review and actual engineer/recipient usefulness observations. |
 | Evaluation and transfer | N086 original-source/key engineering acceptance, Native placement gaps, existing matrix failures, unfamiliar-source coverage, scorer limits and five missing historical prediction tables. | Matched experiments with frozen criteria, retained failures, exposure/split labels and independent source/key review. More files or rerunning familiar inputs is not generalization. |
 | Optional adapters and receiving projections | General inverse graph conversion, captured-source consumers, managed-section merging and particular incumbent-system connectors are not implemented. Test changed/removed identifiers and complete retained history for the selected route. | A demonstrated engineering job, explicit supported contract, source preservation and subsequent-revision readback. Add only the adapter that job needs. |
 | Company acceptance and benefit | N062/N063: real engineer/recipient investigation, authorized company import/readback, client permissions and a subsequent revision. | Actual observations from the [acceptance exercise](ACCEPTANCE.md), not an agent simulation. Native PI/gateway acceptance, accepted Copilot tenant and operational benefit remain unverified. |
@@ -104,17 +114,25 @@ The other 78 complete cell objects stay exact. Criteria, source/key inputs and h
 no binding is backfilled. The own-plant transfer follow-up actually refreshed the own-drawing intake and Bayer
 export guide bindings, preserving the other 93 complete cell objects and all outcomes. These failures remain
 research work, not failing unit tests.
-The prior release's local full run passed **71/71 test scripts**, with six Windows unittest case skips, three platform notices and
+The release before `037c523` passed **71/71 local test scripts**, with six Windows unittest case skips, three platform notices and
 zero additional skipped-check notices. Those counts are distinct; the handoff's unavailable native-symlink
 subcheck is a platform notice without a skipped unittest case. This is not a complete runtime pass. Targeted CLI
 controls, source-preservation checks, full-value reproductions and independent cross-reviews support the bounded repairs.
 
-The follow-up local full run executes all 71 programs: **70 pass**, with one failure caused by placing a new guide
+The `037c523` own-plant follow-up local full run executes all 71 programs: **70 pass**, with one failure caused by placing a new guide
 inside the team example's fixed 97-file packet. The guide now lives [in docs](TEAM_CONTEXT_IMPACT.md); its existing
 two-test module passes after relocation, with the test and 94 evidence files unchanged. Both runs preserve all
 3,025 input files. The original full result remains recorded rather than relabelled 71/71. See
 [committed-version CI](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml)
 for the separate complete-suite and optional MCP results; platform and missing-cache skips remain explicit.
+
+The current heating/context follow-up separately checks four new equipment-role test methods, 18 heating
+cases and 14 unique producing routes. Its original 31-finding food failure remains; the repaired food/roll-up
+have 29/41 findings. The aggregate contains 84 fresh and eight inherited artifacts. A final wrapper bookkeeping
+failure is retained and independently resolved by receipt-only postprocessing, without new product calls or
+changed criteria. The [journal](JOURNAL.md#135-keep-heating-investigations-grounded-in-existing-records) distinguishes
+those checks, the six matched context workflows and the two actually rebuilt description receipts. N104 retains
+the missing catalog hash in those product receipts as follow-up work; separate execution pins cover this comparison.
 
 The publication check matches 41 numerical claims and identifies one prose-only claim. The follow-up currently has
 **50/52 stages fresh**: `te.pid_live` and `te.replay` retain their earlier runtime receipts and are stale after the

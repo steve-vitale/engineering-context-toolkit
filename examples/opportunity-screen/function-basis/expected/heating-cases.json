@@ -1,0 +1,1220 @@
+{
+  "schema": "function-basis-heating-cases-1",
+  "evidence_class": "synthetic-development",
+  "case_count": 18,
+  "original25_oracle_unchanged": "expected/cases.json remains byteexact and retains its separate schema/chronology.",
+  "policy": "E31/H6minimumsubjects and quiet-permitted fullycovered/no-demand controls; E32exactscopedoperating-basisIDs. No implied engineering acceptance,automatic project or universalalwaysopen/source mandate.",
+  "literal_profile": "77 suppliedtyped input literals:73exhaust+4burner. Check present/blank literal value and exact locator only when the record is already legitimately shown. Do not force unrelated/quiet records into findings to satisfy a literal count. Values are candidates, not proof or completeness credit.",
+  "candidate_scope": "Keep per-subject association. A sharedrecoverer/commonpotential sink does not establish physical applicability,allocated duty or coverage. An optional fully-covered row must acknowledge suppliedexistingcoverage and not assert a retrofit need.",
+  "cases": [
+    {
+      "id": "E31-01-two-unknown-exhausts",
+      "question_id": "E31",
+      "model": "models/E31-01-two-unknown-exhausts.json",
+      "subject_policy": "minimum_plus_quiet_permitted",
+      "required_subjects": [
+        "D-A",
+        "D-B"
+      ],
+      "quiet_permitted_subjects": [],
+      "forbidden_subjects": [],
+      "candidate_ids_by_subject_if_shown": {
+        "D-A": [
+          "stream:EX-A"
+        ],
+        "D-B": [
+          "stream:EX-B"
+        ]
+      },
+      "forbidden_candidate_ids_by_subject": {},
+      "forbidden_offsubject_candidate_ids": [],
+      "candidate_fields": [],
+      "source_basis": [
+        "S25p90",
+        "S26p104"
+      ],
+      "expected_job": "Review existing exhaust routing,available records and own-inlet recovery alternatives for each nameddryer. The fixture does not establish actual atmospheric discharge or recoverable duty.",
+      "chronology": "Originalsource expectations12cases frozen before theirfirstbaseline; this portable projection is after observation, with accepted minimum/quiet policy unchanged.",
+      "source_expectations_sha256": "aff4565117a0e6121287ff07cf97b82f650decf6a43abbb16a8b67798ddbb102"
+    },
+    {
+      "id": "E31-02-working-covered-A",
+      "question_id": "E31",
+      "model": "models/E31-02-working-covered-A.json",
+      "subject_policy": "minimum_plus_quiet_permitted",
+      "required_subjects": [
+        "D-B"
+      ],
+      "quiet_permitted_subjects": [
+        "D-A"
+      ],
+      "forbidden_subjects": [],
+      "candidate_ids_by_subject_if_shown": {
+        "D-A": [
+          "stream:EX-A",
+          "HX-A"
+        ],
+        "D-B": [
+          "stream:EX-B"
+        ]
+      },
+      "forbidden_candidate_ids_by_subject": {
+        "D-B": [
+          "HX-A"
+        ]
+      },
+      "forbidden_offsubject_candidate_ids": [],
+      "candidate_fields": [
+        {
+          "id": "HX-A",
+          "name": "enabled",
+          "field": "units[HX-A].facts.enabled",
+          "state": "present",
+          "value": true,
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "source_revision",
+          "field": "units[HX-A].facts.source_revision",
+          "state": "present",
+          "value": "A",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "service",
+          "field": "units[HX-A].facts.service",
+          "state": "present",
+          "value": "own inlet air",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "coverage_claim",
+          "field": "units[HX-A].facts.coverage_claim",
+          "state": "present",
+          "value": "all named dryerA exhaust/inlet duty covered",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "operating_evidence",
+          "field": "units[HX-A].facts.operating_evidence",
+          "state": "present",
+          "value": "owner-supplied current run and cleaning records",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "basis_status",
+          "field": "units[HX-A].facts.basis_status",
+          "state": "present",
+          "value": "supplied company-review record; authenticity not established",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "residual_opportunity",
+          "field": "units[HX-A].facts.residual_opportunity",
+          "state": "present",
+          "value": "none asserted",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        }
+      ],
+      "source_basis": [
+        "S25p90",
+        "S26p104"
+      ],
+      "expected_job": "A new-installation screen may keepAquiet when the supplied scenario expressly covers its own-inlet function; ifAis shown, retain its current recovery claim and avoid asserting no recovery. Bmustnot inheritAcoverage. No mandatory always-open retrofit question.",
+      "chronology": "Originalsource expectations12cases frozen before theirfirstbaseline; this portable projection is after observation, with accepted minimum/quiet policy unchanged.",
+      "source_expectations_sha256": "aff4565117a0e6121287ff07cf97b82f650decf6a43abbb16a8b67798ddbb102"
+    },
+    {
+      "id": "E31-03-disabled-A",
+      "question_id": "E31",
+      "model": "models/E31-03-disabled-A.json",
+      "subject_policy": "minimum_plus_quiet_permitted",
+      "required_subjects": [
+        "D-A",
+        "D-B"
+      ],
+      "quiet_permitted_subjects": [],
+      "forbidden_subjects": [],
+      "candidate_ids_by_subject_if_shown": {
+        "D-A": [
+          "stream:EX-A",
+          "HX-A"
+        ],
+        "D-B": [
+          "stream:EX-B"
+        ]
+      },
+      "forbidden_candidate_ids_by_subject": {
+        "D-B": [
+          "HX-A"
+        ]
+      },
+      "forbidden_offsubject_candidate_ids": [],
+      "candidate_fields": [
+        {
+          "id": "HX-A",
+          "name": "enabled",
+          "field": "units[HX-A].facts.enabled",
+          "state": "present",
+          "value": false,
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "observed_hours",
+          "field": "units[HX-A].facts.observed_hours",
+          "state": "present",
+          "value": 0,
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "source_revision",
+          "field": "units[HX-A].facts.source_revision",
+          "state": "present",
+          "value": "A",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "bypass_status",
+          "field": "units[HX-A].facts.bypass_status",
+          "state": "present",
+          "value": "bypassed",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "coverage_claim",
+          "field": "units[HX-A].facts.coverage_claim",
+          "state": "present",
+          "value": "not operating",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "cause",
+          "field": "units[HX-A].facts.cause",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        }
+      ],
+      "source_basis": [
+        "S25p90",
+        "S26p104"
+      ],
+      "expected_job": "Ahas a drawn but disabled recovery candidate: ask for owner-reviewed availability/function and existing bypass/maintenance records,not installation advice or a claim that no exchanger exists. false/0 must remain distinct fromunknown.",
+      "chronology": "Originalsource expectations12cases frozen before theirfirstbaseline; this portable projection is after observation, with accepted minimum/quiet policy unchanged.",
+      "source_expectations_sha256": "aff4565117a0e6121287ff07cf97b82f650decf6a43abbb16a8b67798ddbb102"
+    },
+    {
+      "id": "E31-04-shared-partial",
+      "question_id": "E31",
+      "model": "models/E31-04-shared-partial.json",
+      "subject_policy": "minimum_plus_quiet_permitted",
+      "required_subjects": [
+        "D-A",
+        "D-B"
+      ],
+      "quiet_permitted_subjects": [],
+      "forbidden_subjects": [],
+      "candidate_ids_by_subject_if_shown": {
+        "D-A": [
+          "stream:EX-A",
+          "HX-S"
+        ],
+        "D-B": [
+          "stream:EX-B",
+          "HX-S"
+        ]
+      },
+      "forbidden_candidate_ids_by_subject": {},
+      "forbidden_offsubject_candidate_ids": [],
+      "candidate_fields": [
+        {
+          "id": "HX-S",
+          "name": "enabled",
+          "field": "units[HX-S].facts.enabled",
+          "state": "present",
+          "value": true,
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-S",
+          "name": "source_revision",
+          "field": "units[HX-S].facts.source_revision",
+          "state": "present",
+          "value": "B",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-S",
+          "name": "coverage_claim",
+          "field": "units[HX-S].facts.coverage_claim",
+          "state": "present",
+          "value": {
+            "D-A": "partial",
+            "D-B": "unknown"
+          },
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-S",
+          "name": "residual_exhaust",
+          "field": "units[HX-S].facts.residual_exhaust",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-S",
+          "name": "observed_duty",
+          "field": "units[HX-S].facts.observed_duty",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-S",
+          "name": "cleaning_basis",
+          "field": "units[HX-S].facts.cleaning_basis",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        }
+      ],
+      "source_basis": [
+        "S25p90",
+        "S26p104"
+      ],
+      "expected_job": "Ashared physical candidate does not establish either complete stream coverage or residual heat. Keep per-source coverage and supplied unknowns; do not allocate a duty or remove the second machine because the first has a branch.",
+      "chronology": "Originalsource expectations12cases frozen before theirfirstbaseline; this portable projection is after observation, with accepted minimum/quiet policy unchanged.",
+      "source_expectations_sha256": "aff4565117a0e6121287ff07cf97b82f650decf6a43abbb16a8b67798ddbb102"
+    },
+    {
+      "id": "E31-05-ductspace-and-unrelated",
+      "question_id": "E31",
+      "model": "models/E31-05-ductspace-and-unrelated.json",
+      "subject_policy": "minimum_plus_quiet_permitted",
+      "required_subjects": [
+        "D-A",
+        "D-B"
+      ],
+      "quiet_permitted_subjects": [],
+      "forbidden_subjects": [],
+      "candidate_ids_by_subject_if_shown": {
+        "D-A": [
+          "stream:EX-A"
+        ],
+        "D-B": [
+          "stream:EX-B"
+        ]
+      },
+      "forbidden_candidate_ids_by_subject": {
+        "D-A": [
+          "HX-U"
+        ],
+        "D-B": [
+          "HX-U"
+        ]
+      },
+      "forbidden_offsubject_candidate_ids": [
+        "HX-U"
+      ],
+      "candidate_fields": [
+        {
+          "id": "D-A",
+          "name": "direct_duct_space",
+          "field": "units[D-A].facts.direct_duct_space",
+          "state": "present",
+          "value": false,
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "D-A",
+          "name": "runaround_assessment",
+          "field": "units[D-A].facts.runaround_assessment",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "D-A",
+          "name": "exhaust_moisture",
+          "field": "units[D-A].facts.exhaust_moisture",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "D-A",
+          "name": "contaminants",
+          "field": "units[D-A].facts.contaminants",
+          "state": "present",
+          "value": "product dust",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-U",
+          "name": "enabled",
+          "field": "units[HX-U].facts.enabled",
+          "state": "present",
+          "value": true,
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        }
+      ],
+      "source_basis": [
+        "S26p104",
+        "S25p90"
+      ],
+      "expected_job": "No nearby direct-duct space is not universal closure: retrieve a prior indirect/run-around option assessment,moisture/product/contaminant constraints and existing layout records. UnrelatedHX-Udoes not supply coverage. Do not require a newsite walkdown.",
+      "chronology": "Originalsource expectations12cases frozen before theirfirstbaseline; this portable projection is after observation, with accepted minimum/quiet policy unchanged.",
+      "source_expectations_sha256": "aff4565117a0e6121287ff07cf97b82f650decf6a43abbb16a8b67798ddbb102"
+    },
+    {
+      "id": "E31-06-no-process-anchor",
+      "question_id": "E31",
+      "model": "models/E31-06-no-process-anchor.json",
+      "subject_policy": "minimum_plus_quiet_permitted",
+      "required_subjects": [],
+      "quiet_permitted_subjects": [],
+      "forbidden_subjects": [
+        "AD-A",
+        "AD-B"
+      ],
+      "candidate_ids_by_subject_if_shown": {},
+      "forbidden_candidate_ids_by_subject": {},
+      "forbidden_offsubject_candidate_ids": [],
+      "candidate_fields": [],
+      "source_basis": [
+        "S26p104"
+      ],
+      "expected_job": "Keep existing process-scope exclusion quiet. A general utility air-dryer opportunity is a different source job,not a reason to relabel these process dryers.",
+      "chronology": "Originalsource expectations12cases frozen before theirfirstbaseline; this portable projection is after observation, with accepted minimum/quiet policy unchanged.",
+      "source_expectations_sha256": "aff4565117a0e6121287ff07cf97b82f650decf6a43abbb16a8b67798ddbb102"
+    },
+    {
+      "id": "H6-01-unassociated-sink",
+      "question_id": "H6",
+      "model": "models/H6-01-unassociated-sink.json",
+      "subject_policy": "minimum_plus_quiet_permitted",
+      "required_subjects": [
+        "D-A",
+        "D-B"
+      ],
+      "quiet_permitted_subjects": [],
+      "forbidden_subjects": [],
+      "candidate_ids_by_subject_if_shown": {
+        "D-A": [
+          "stream:EX-A",
+          "W-1"
+        ],
+        "D-B": [
+          "stream:EX-B",
+          "W-1"
+        ]
+      },
+      "forbidden_candidate_ids_by_subject": {},
+      "forbidden_offsubject_candidate_ids": [],
+      "candidate_fields": [
+        {
+          "id": "D-A",
+          "name": "exhaust_temperature_C",
+          "field": "units[D-A].facts.exhaust_temperature_C",
+          "state": "present",
+          "value": 130,
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "D-A",
+          "name": "exhaust_flow_basis",
+          "field": "units[D-A].facts.exhaust_flow_basis",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "D-A",
+          "name": "operating_period",
+          "field": "units[D-A].facts.operating_period",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "D-A",
+          "name": "contaminants",
+          "field": "units[D-A].facts.contaminants",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "W-1",
+          "name": "required_temperature_C",
+          "field": "units[W-1].facts.required_temperature_C",
+          "state": "present",
+          "value": 60,
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "W-1",
+          "name": "duty_basis",
+          "field": "units[W-1].facts.duty_basis",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "W-1",
+          "name": "coincident_demand",
+          "field": "units[W-1].facts.coincident_demand",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        }
+      ],
+      "source_basis": [
+        "S28p1",
+        "S26p107"
+      ],
+      "expected_job": "W-1is an external-demand lead only,not a matched source-sink route. Ask existingrecords for both source/sinkidentity,duty,temperature,timing,transport/compatibility and alternative heat supply; no computed viability or assumed neighboring location.",
+      "chronology": "Originalsource expectations12cases frozen before theirfirstbaseline; this portable projection is after observation, with accepted minimum/quiet policy unchanged.",
+      "source_expectations_sha256": "aff4565117a0e6121287ff07cf97b82f650decf6a43abbb16a8b67798ddbb102"
+    },
+    {
+      "id": "H6-02-working-external-vs-internal",
+      "question_id": "H6",
+      "model": "models/H6-02-working-external-vs-internal.json",
+      "subject_policy": "minimum_plus_quiet_permitted",
+      "required_subjects": [
+        "D-B"
+      ],
+      "quiet_permitted_subjects": [
+        "D-A"
+      ],
+      "forbidden_subjects": [],
+      "candidate_ids_by_subject_if_shown": {
+        "D-A": [
+          "stream:EX-A",
+          "HX-A",
+          "W-1"
+        ],
+        "D-B": [
+          "stream:EX-B",
+          "HX-B",
+          "W-1"
+        ]
+      },
+      "forbidden_candidate_ids_by_subject": {
+        "D-A": [
+          "HX-B"
+        ],
+        "D-B": [
+          "HX-A"
+        ]
+      },
+      "forbidden_offsubject_candidate_ids": [],
+      "candidate_fields": [
+        {
+          "id": "W-1",
+          "name": "required_temperature_C",
+          "field": "units[W-1].facts.required_temperature_C",
+          "state": "present",
+          "value": 60,
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "W-1",
+          "name": "duty_basis",
+          "field": "units[W-1].facts.duty_basis",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "W-1",
+          "name": "coincident_demand",
+          "field": "units[W-1].facts.coincident_demand",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "enabled",
+          "field": "units[HX-A].facts.enabled",
+          "state": "present",
+          "value": true,
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "source_revision",
+          "field": "units[HX-A].facts.source_revision",
+          "state": "present",
+          "value": "A",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "service",
+          "field": "units[HX-A].facts.service",
+          "state": "present",
+          "value": "external wash hot water W-1",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "coverage_claim",
+          "field": "units[HX-A].facts.coverage_claim",
+          "state": "present",
+          "value": "all available namedAresidual heat matched toW-1",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "operating_evidence",
+          "field": "units[HX-A].facts.operating_evidence",
+          "state": "present",
+          "value": "owner-supplied coincident source/sink record",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "basis_status",
+          "field": "units[HX-A].facts.basis_status",
+          "state": "present",
+          "value": "supplied company-review record; authenticity unverified",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-B",
+          "name": "enabled",
+          "field": "units[HX-B].facts.enabled",
+          "state": "present",
+          "value": true,
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-B",
+          "name": "source_revision",
+          "field": "units[HX-B].facts.source_revision",
+          "state": "present",
+          "value": "A",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-B",
+          "name": "service",
+          "field": "units[HX-B].facts.service",
+          "state": "present",
+          "value": "own inlet air only",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-B",
+          "name": "external_duty_coverage",
+          "field": "units[HX-B].facts.external_duty_coverage",
+          "state": "present",
+          "value": "not asserted",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-B",
+          "name": "residual_heat_basis",
+          "field": "units[HX-B].facts.residual_heat_basis",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        }
+      ],
+      "source_basis": [
+        "S26p104",
+        "S26p107",
+        "S28p1"
+      ],
+      "expected_job": "Fully supplied externalcoverageAcan bequiet in new-opportunity triage without accepting plant truth. Binternal-inlet recovery does not by itself establish absence of residual external opportunity; request residual basis rather than assume there is recoverableheat.",
+      "chronology": "Originalsource expectations12cases frozen before theirfirstbaseline; this portable projection is after observation, with accepted minimum/quiet policy unchanged.",
+      "source_expectations_sha256": "aff4565117a0e6121287ff07cf97b82f650decf6a43abbb16a8b67798ddbb102"
+    },
+    {
+      "id": "H6-03-disabled-and-partial",
+      "question_id": "H6",
+      "model": "models/H6-03-disabled-and-partial.json",
+      "subject_policy": "minimum_plus_quiet_permitted",
+      "required_subjects": [
+        "D-A",
+        "D-B"
+      ],
+      "quiet_permitted_subjects": [],
+      "forbidden_subjects": [],
+      "candidate_ids_by_subject_if_shown": {
+        "D-A": [
+          "stream:EX-A",
+          "HX-A",
+          "W-1"
+        ],
+        "D-B": [
+          "stream:EX-B",
+          "HX-B",
+          "W-1"
+        ]
+      },
+      "forbidden_candidate_ids_by_subject": {
+        "D-A": [
+          "HX-B"
+        ],
+        "D-B": [
+          "HX-A"
+        ]
+      },
+      "forbidden_offsubject_candidate_ids": [],
+      "candidate_fields": [
+        {
+          "id": "W-1",
+          "name": "required_temperature_C",
+          "field": "units[W-1].facts.required_temperature_C",
+          "state": "present",
+          "value": 60,
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "W-1",
+          "name": "duty_basis",
+          "field": "units[W-1].facts.duty_basis",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "W-1",
+          "name": "coincident_demand",
+          "field": "units[W-1].facts.coincident_demand",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "enabled",
+          "field": "units[HX-A].facts.enabled",
+          "state": "present",
+          "value": false,
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "observed_hours",
+          "field": "units[HX-A].facts.observed_hours",
+          "state": "present",
+          "value": 0,
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "service",
+          "field": "units[HX-A].facts.service",
+          "state": "present",
+          "value": "external water",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "coverage_claim",
+          "field": "units[HX-A].facts.coverage_claim",
+          "state": "present",
+          "value": "disabled",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-A",
+          "name": "source_revision",
+          "field": "units[HX-A].facts.source_revision",
+          "state": "present",
+          "value": "A",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-B",
+          "name": "enabled",
+          "field": "units[HX-B].facts.enabled",
+          "state": "present",
+          "value": true,
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-B",
+          "name": "service",
+          "field": "units[HX-B].facts.service",
+          "state": "present",
+          "value": "external hot water",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-B",
+          "name": "coverage_claim",
+          "field": "units[HX-B].facts.coverage_claim",
+          "state": "present",
+          "value": "partial bypass branch only",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-B",
+          "name": "residual_duty",
+          "field": "units[HX-B].facts.residual_duty",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-B",
+          "name": "source_revision",
+          "field": "units[HX-B].facts.source_revision",
+          "state": "present",
+          "value": "B",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        }
+      ],
+      "source_basis": [
+        "S26p107",
+        "S28p1"
+      ],
+      "expected_job": "Do not turn external-recovery labels into complete supply/coverage evidence. Distinguish disabled from partial operation and retain owner-specific records. Ask review/maintenance/duty/timing basis; no automatic modification.",
+      "chronology": "Originalsource expectations12cases frozen before theirfirstbaseline; this portable projection is after observation, with accepted minimum/quiet policy unchanged.",
+      "source_expectations_sha256": "aff4565117a0e6121287ff07cf97b82f650decf6a43abbb16a8b67798ddbb102"
+    },
+    {
+      "id": "H6-04-shared-unqualified-timing",
+      "question_id": "H6",
+      "model": "models/H6-04-shared-unqualified-timing.json",
+      "subject_policy": "minimum_plus_quiet_permitted",
+      "required_subjects": [
+        "D-A",
+        "D-B"
+      ],
+      "quiet_permitted_subjects": [],
+      "forbidden_subjects": [],
+      "candidate_ids_by_subject_if_shown": {
+        "D-A": [
+          "stream:EX-A",
+          "HX-S",
+          "W-1"
+        ],
+        "D-B": [
+          "stream:EX-B",
+          "HX-S",
+          "W-1"
+        ]
+      },
+      "forbidden_candidate_ids_by_subject": {},
+      "forbidden_offsubject_candidate_ids": [],
+      "candidate_fields": [
+        {
+          "id": "D-A",
+          "name": "exhaust_temperature_C",
+          "field": "units[D-A].facts.exhaust_temperature_C",
+          "state": "present",
+          "value": 110,
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "D-A",
+          "name": "operating_window",
+          "field": "units[D-A].facts.operating_window",
+          "state": "present",
+          "value": "night",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "W-1",
+          "name": "required_temperature_C",
+          "field": "units[W-1].facts.required_temperature_C",
+          "state": "present",
+          "value": 50,
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "W-1",
+          "name": "duty_basis",
+          "field": "units[W-1].facts.duty_basis",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "W-1",
+          "name": "coincident_demand",
+          "field": "units[W-1].facts.coincident_demand",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "W-1",
+          "name": "operating_window",
+          "field": "units[W-1].facts.operating_window",
+          "state": "present",
+          "value": "day",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "W-1",
+          "name": "alternative_heat_supply",
+          "field": "units[W-1].facts.alternative_heat_supply",
+          "state": "present",
+          "value": "existing steam supply; comparative basis unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-S",
+          "name": "enabled",
+          "field": "units[HX-S].facts.enabled",
+          "state": "present",
+          "value": true,
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-S",
+          "name": "source_revision",
+          "field": "units[HX-S].facts.source_revision",
+          "state": "present",
+          "value": "C",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-S",
+          "name": "coverage_claim",
+          "field": "units[HX-S].facts.coverage_claim",
+          "state": "present",
+          "value": {
+            "D-A": "unknown",
+            "D-B": "unknown"
+          },
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-S",
+          "name": "gas_compatibility",
+          "field": "units[HX-S].facts.gas_compatibility",
+          "state": "present",
+          "value": "corrosive/particulates unresolved",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "HX-S",
+          "name": "pressure_loss_basis",
+          "field": "units[HX-S].facts.pressure_loss_basis",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        }
+      ],
+      "source_basis": [
+        "S28p1",
+        "S26p107"
+      ],
+      "expected_job": "Sharedlabel and nominal temperatures do not establish delivered heat,coincident operation,condensation or pressure-loss acceptability. Retain day/night mismatch and existingalternative; qualifiedreview may defer or close after evidence. Do not impose200Fas a universal prohibition or inventstorage.",
+      "chronology": "Originalsource expectations12cases frozen before theirfirstbaseline; this portable projection is after observation, with accepted minimum/quiet policy unchanged.",
+      "source_expectations_sha256": "aff4565117a0e6121287ff07cf97b82f650decf6a43abbb16a8b67798ddbb102"
+    },
+    {
+      "id": "H6-05-no-external-duty-lead",
+      "question_id": "H6",
+      "model": "models/H6-05-no-external-duty-lead.json",
+      "subject_policy": "minimum_plus_quiet_permitted",
+      "required_subjects": [],
+      "quiet_permitted_subjects": [
+        "D-A",
+        "D-B"
+      ],
+      "forbidden_subjects": [],
+      "candidate_ids_by_subject_if_shown": {},
+      "forbidden_candidate_ids_by_subject": {},
+      "forbidden_offsubject_candidate_ids": [],
+      "candidate_fields": [],
+      "source_basis": [
+        "S28p1"
+      ],
+      "expected_job": "No named external demand lead exists. H6maystayquiet under its stated source-plus-namedduty screen scope. Do not infer there are no useful sinks plantwide or fabricateW-1. An engineer may separately request a source/demand inventory; this is not a mandatory newfinding.",
+      "chronology": "Originalsource expectations12cases frozen before theirfirstbaseline; this portable projection is after observation, with accepted minimum/quiet policy unchanged.",
+      "source_expectations_sha256": "aff4565117a0e6121287ff07cf97b82f650decf6a43abbb16a8b67798ddbb102"
+    },
+    {
+      "id": "H6-06-no-process-anchor",
+      "question_id": "H6",
+      "model": "models/H6-06-no-process-anchor.json",
+      "subject_policy": "minimum_plus_quiet_permitted",
+      "required_subjects": [],
+      "quiet_permitted_subjects": [],
+      "forbidden_subjects": [
+        "AD-A",
+        "AD-B"
+      ],
+      "candidate_ids_by_subject_if_shown": {},
+      "forbidden_candidate_ids_by_subject": {},
+      "forbidden_offsubject_candidate_ids": [],
+      "candidate_fields": [
+        {
+          "id": "W-1",
+          "name": "required_temperature_C",
+          "field": "units[W-1].facts.required_temperature_C",
+          "state": "present",
+          "value": 60,
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "W-1",
+          "name": "duty_basis",
+          "field": "units[W-1].facts.duty_basis",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "W-1",
+          "name": "coincident_demand",
+          "field": "units[W-1].facts.coincident_demand",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        }
+      ],
+      "source_basis": [
+        "S28p1",
+        "S26p104"
+      ],
+      "expected_job": "Ahotwater lead must not turn excluded utilityairdryers into process ovens/dryers/fryers. Keepnoanchorquiet and do not inventa newsource family.",
+      "chronology": "Originalsource expectations12cases frozen before theirfirstbaseline; this portable projection is after observation, with accepted minimum/quiet policy unchanged.",
+      "source_expectations_sha256": "aff4565117a0e6121287ff07cf97b82f650decf6a43abbb16a8b67798ddbb102"
+    },
+    {
+      "id": "E32-01-fired-no-analysis-drawn",
+      "question_id": "E32",
+      "model": "models/E32-01-fired-no-analysis-drawn.json",
+      "subject_policy": "exact",
+      "expected_subjects": [
+        "O-A"
+      ],
+      "expected_finding_ids": [
+        "E32@O-A"
+      ],
+      "required_candidate_ids_by_subject": {
+        "O-A": [
+          "F-A"
+        ]
+      },
+      "forbidden_combustion_basis_candidate_ids": [],
+      "negative_context_policy": "Product/headspace/unclassified records may be quoted explicitly as negativecontext, but must not be assigned a combustion-function/basis role. Foreignrecords cannot qualify thissubject.",
+      "candidate_fields": [],
+      "collection_topics": [
+        "Existing combustion/air-fuel analysis, maintenance and calibration records with measurement location, units/basis, date and high/low-fire or load coverage where available",
+        "Existing burner-maker/ratio-control/turndown guidance and retained settings/history for the scoped equipment",
+        "Existing fuel/production records if an energy comparison is pursued, without calculating savings from labels",
+        "Existing process exhaust/drying/dilution constraints and qualified site/manufacturer limits; no automatic setting recommendation"
+      ],
+      "expected_disposition": "asked; qualifiedexisting-record review remains open",
+      "chronology": "Originalsixcases and pairingaddendum frozen beforebaseline. Case06quiet clarified append-only beforebaseline; portableprojection preserves that reviewedprecedence.",
+      "source_expectations_sha256": "ecf850aec0fe3be707ea870ff80a0647ed533bf41c5db8167c73085c9c3c252d",
+      "reviewed_clarification_sha256": "311b97c6c666b94a38f221390f68f80668930814641b9d4c2aac3ea93e4d4098"
+    },
+    {
+      "id": "E32-02-product-and-foreign-oxygen",
+      "question_id": "E32",
+      "model": "models/E32-02-product-and-foreign-oxygen.json",
+      "subject_policy": "exact",
+      "expected_subjects": [
+        "O-A"
+      ],
+      "expected_finding_ids": [
+        "E32@O-A"
+      ],
+      "required_candidate_ids_by_subject": {
+        "O-A": [
+          "F-A"
+        ]
+      },
+      "forbidden_combustion_basis_candidate_ids": [
+        "O2-P",
+        "O2-X"
+      ],
+      "negative_context_policy": "Product/headspace/unclassified records may be quoted explicitly as negativecontext, but must not be assigned a combustion-function/basis role. Foreignrecords cannot qualify thissubject.",
+      "candidate_fields": [],
+      "collection_topics": [
+        "Existing combustion/air-fuel analysis, maintenance and calibration records with measurement location, units/basis, date and high/low-fire or load coverage where available",
+        "Existing burner-maker/ratio-control/turndown guidance and retained settings/history for the scoped equipment",
+        "Existing fuel/production records if an energy comparison is pursued, without calculating savings from labels",
+        "Existing process exhaust/drying/dilution constraints and qualified site/manufacturer limits; no automatic setting recommendation"
+      ],
+      "expected_disposition": "asked; qualifiedexisting-record review remains open",
+      "chronology": "Originalsixcases and pairingaddendum frozen beforebaseline. Case06quiet clarified append-only beforebaseline; portableprojection preserves that reviewedprecedence.",
+      "source_expectations_sha256": "ecf850aec0fe3be707ea870ff80a0647ed533bf41c5db8167c73085c9c3c252d",
+      "reviewed_clarification_sha256": "311b97c6c666b94a38f221390f68f80668930814641b9d4c2aac3ea93e4d4098"
+    },
+    {
+      "id": "E32-03-flue-analyser-unqualified",
+      "question_id": "E32",
+      "model": "models/E32-03-flue-analyser-unqualified.json",
+      "subject_policy": "exact",
+      "expected_subjects": [
+        "O-A"
+      ],
+      "expected_finding_ids": [
+        "E32@O-A"
+      ],
+      "required_candidate_ids_by_subject": {
+        "O-A": [
+          "F-A",
+          "O2-A"
+        ]
+      },
+      "forbidden_combustion_basis_candidate_ids": [],
+      "negative_context_policy": "Product/headspace/unclassified records may be quoted explicitly as negativecontext, but must not be assigned a combustion-function/basis role. Foreignrecords cannot qualify thissubject.",
+      "candidate_fields": [
+        {
+          "id": "O2-A",
+          "name": "enabled",
+          "field": "instruments[O2-A].facts.enabled",
+          "state": "present",
+          "value": false,
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "O2-A",
+          "name": "calibration_current",
+          "field": "instruments[O2-A].facts.calibration_current",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "O2-A",
+          "name": "last_verified_load_basis",
+          "field": "instruments[O2-A].facts.last_verified_load_basis",
+          "state": "blank",
+          "value": "unknown",
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        },
+        {
+          "id": "O2-A",
+          "name": "reported_oxygen_percent",
+          "field": "instruments[O2-A].facts.reported_oxygen_percent",
+          "state": "present",
+          "value": 0,
+          "assertion_scope": "only_if_record_is_shown_as_candidate_for_this_subject; not required-field credit or proof"
+        }
+      ],
+      "collection_topics": [
+        "Existing combustion/air-fuel analysis, maintenance and calibration records with measurement location, units/basis, date and high/low-fire or load coverage where available",
+        "Existing burner-maker/ratio-control/turndown guidance and retained settings/history for the scoped equipment",
+        "Existing fuel/production records if an energy comparison is pursued, without calculating savings from labels",
+        "Existing process exhaust/drying/dilution constraints and qualified site/manufacturer limits; no automatic setting recommendation"
+      ],
+      "expected_disposition": "asked; qualifiedexisting-record review remains open",
+      "chronology": "Originalsixcases and pairingaddendum frozen beforebaseline. Case06quiet clarified append-only beforebaseline; portableprojection preserves that reviewedprecedence.",
+      "source_expectations_sha256": "ecf850aec0fe3be707ea870ff80a0647ed533bf41c5db8167c73085c9c3c252d",
+      "reviewed_clarification_sha256": "311b97c6c666b94a38f221390f68f80668930814641b9d4c2aac3ea93e4d4098"
+    },
+    {
+      "id": "E32-04-portable-and-metered-methods",
+      "question_id": "E32",
+      "model": "models/E32-04-portable-and-metered-methods.json",
+      "subject_policy": "exact",
+      "expected_subjects": [
+        "O-A"
+      ],
+      "expected_finding_ids": [
+        "E32@O-A"
+      ],
+      "required_candidate_ids_by_subject": {
+        "O-A": [
+          "F-A",
+          "PORT-A",
+          "AF-A",
+          "FF-A"
+        ]
+      },
+      "forbidden_combustion_basis_candidate_ids": [],
+      "negative_context_policy": "Product/headspace/unclassified records may be quoted explicitly as negativecontext, but must not be assigned a combustion-function/basis role. Foreignrecords cannot qualify thissubject.",
+      "candidate_fields": [],
+      "collection_topics": [
+        "Existing combustion/air-fuel analysis, maintenance and calibration records with measurement location, units/basis, date and high/low-fire or load coverage where available",
+        "Existing burner-maker/ratio-control/turndown guidance and retained settings/history for the scoped equipment",
+        "Existing fuel/production records if an energy comparison is pursued, without calculating savings from labels",
+        "Existing process exhaust/drying/dilution constraints and qualified site/manufacturer limits; no automatic setting recommendation"
+      ],
+      "expected_disposition": "asked; qualifiedexisting-record review remains open",
+      "chronology": "Originalsixcases and pairingaddendum frozen beforebaseline. Case06quiet clarified append-only beforebaseline; portableprojection preserves that reviewedprecedence.",
+      "source_expectations_sha256": "ecf850aec0fe3be707ea870ff80a0647ed533bf41c5db8167c73085c9c3c252d",
+      "reviewed_clarification_sha256": "311b97c6c666b94a38f221390f68f80668930814641b9d4c2aac3ea93e4d4098"
+    },
+    {
+      "id": "E32-05-drying-air-and-two-subjects",
+      "question_id": "E32",
+      "model": "models/E32-05-drying-air-and-two-subjects.json",
+      "subject_policy": "exact",
+      "expected_subjects": [
+        "D-A",
+        "D-B"
+      ],
+      "expected_finding_ids": [
+        "E32@D-A",
+        "E32@D-B"
+      ],
+      "required_candidate_ids_by_subject": {
+        "D-A": [
+          "F-A",
+          "O2-A",
+          "EX-A"
+        ],
+        "D-B": [
+          "F-B"
+        ]
+      },
+      "forbidden_combustion_basis_candidate_ids": [],
+      "negative_context_policy": "Product/headspace/unclassified records may be quoted explicitly as negativecontext, but must not be assigned a combustion-function/basis role. Foreignrecords cannot qualify thissubject.",
+      "candidate_fields": [],
+      "collection_topics": [
+        "Existing combustion/air-fuel analysis, maintenance and calibration records with measurement location, units/basis, date and high/low-fire or load coverage where available",
+        "Existing burner-maker/ratio-control/turndown guidance and retained settings/history for the scoped equipment",
+        "Existing fuel/production records if an energy comparison is pursued, without calculating savings from labels",
+        "Existing process exhaust/drying/dilution constraints and qualified site/manufacturer limits; no automatic setting recommendation"
+      ],
+      "expected_disposition": "asked; qualifiedexisting-record review remains open",
+      "chronology": "Originalsixcases and pairingaddendum frozen beforebaseline. Case06quiet clarified append-only beforebaseline; portableprojection preserves that reviewedprecedence.",
+      "source_expectations_sha256": "ecf850aec0fe3be707ea870ff80a0647ed533bf41c5db8167c73085c9c3c252d",
+      "reviewed_clarification_sha256": "311b97c6c666b94a38f221390f68f80668930814641b9d4c2aac3ea93e4d4098"
+    },
+    {
+      "id": "E32-06-nonfuel-and-unrelated-burner",
+      "question_id": "E32",
+      "model": "models/E32-06-nonfuel-and-unrelated-burner.json",
+      "subject_policy": "exact",
+      "expected_subjects": [],
+      "expected_finding_ids": [],
+      "required_candidate_ids_by_subject": {},
+      "forbidden_combustion_basis_candidate_ids": [
+        "F-X"
+      ],
+      "negative_context_policy": "Product/headspace/unclassified records may be quoted explicitly as negativecontext, but must not be assigned a combustion-function/basis role. Foreignrecords cannot qualify thissubject.",
+      "candidate_fields": [],
+      "collection_topics": [
+        "Existing combustion/air-fuel analysis, maintenance and calibration records with measurement location, units/basis, date and high/low-fire or load coverage where available",
+        "Existing burner-maker/ratio-control/turndown guidance and retained settings/history for the scoped equipment",
+        "Existing fuel/production records if an energy comparison is pursued, without calculating savings from labels",
+        "Existing process exhaust/drying/dilution constraints and qualified site/manufacturer limits; no automatic setting recommendation"
+      ],
+      "expected_disposition": "QUIET",
+      "chronology": "Originalsixcases and pairingaddendum frozen beforebaseline. Case06quiet clarified append-only beforebaseline; portableprojection preserves that reviewedprecedence.",
+      "source_expectations_sha256": "ecf850aec0fe3be707ea870ff80a0647ed533bf41c5db8167c73085c9c3c252d",
+      "reviewed_clarification_sha256": "311b97c6c666b94a38f221390f68f80668930814641b9d4c2aac3ea93e4d4098"
+    }
+  ]
+}

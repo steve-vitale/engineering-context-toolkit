@@ -253,7 +253,7 @@
    "id": "E31@D-301",
    "question_id": "E31",
    "family": "energy",
-   "question": "Does this oven, dryer or fryer send its hot exhaust to atmosphere with no heat recovery on it?",
+   "question": "What do existing records establish about this oven, dryer or fryer exhaust routing, recovery already provided and any unresolved own-inlet or process-use basis?",
    "about": "D-301",
    "assets": [
     {
@@ -323,53 +323,49 @@
      "tag": "TV-301",
      "text": "valve TV-301 reads \"TV-301 Dryer burner natural gas control valve\" at D-301",
      "field": "final_elements[TV-301]"
-    },
-    {
-     "role": "checked, none found",
-     "text": "no heat recovery exchanger, recuperator, run-around coil or exhaust recirculation on this unit or on a stream drawn from it",
-     "field": "applies_when.without"
     }
    ],
    "data_requests": [
     {
-     "item": "Exhaust temperature and flow",
+     "item": "Existing exhaust routing and represented recovery coverage for this unit",
      "state": "not_on_drawing",
      "where": [
-      "historian or DCS trend for TT-304 (no historian tag is mapped in this model for these)",
-      "a walkdown: thermometer and a pitot or anemometer traverse in the exhaust duct, at normal production"
+      "site records: approved existing drawings, routing/configuration and recovery-purpose records for the identified unit, including revision, source locator, owner and any supplied full, partial, shared or unknown coverage claim",
+      "maintenance records: existing recovery availability, bypass, fault, inspection and cleaning records for the represented equipment"
      ],
-     "how": "Record both at normal production; heat on offer = mass flow x specific heat x (exhaust temperature minus the temperature it could be cooled to)."
+     "how": "Distinguish recovery already provided from an unresolved residual question. A represented item, document label or enabled flag is a candidate, not authenticated operation or complete coverage. A shared recoverer does not establish a duty allocation; a missing drawn item does not prove absent hardware."
     },
     {
-     "item": "Exhaust moisture and contaminants",
+     "item": "Existing exhaust-condition, product and maintenance basis",
      "state": "not_on_drawing",
      "where": [
-      "a walkdown: humidity or dew point probe in the exhaust; note fat, flour, sugar or product dust",
-      "maintenance records: duct and stack cleaning history"
+      "site records: permitted existing exhaust temperature/flow, moisture, contaminants and representative production records with unit identity, quantity, location, units, method, dates and operating-period basis",
+      "maintenance records: existing product carry-over, filtration, fouling, leakage, cleaning and pressure-loss observations relevant to the identified exhaust path",
+      "historian or DCS trend for TT-304 (no historian tag is mapped in this model for these)"
      ],
-     "how": "Moist exhaust carries latent heat but condenses; fat and dust foul exchangers unless filtered or washed."
+     "how": "Review whether the available records represent this job. Preserve unknown, zero and disabled qualifiers and product/moisture restrictions. Any missing-data plan belongs to the responsible reviewer; no new measurement task or fixed observation duration is prescribed."
     },
     {
-     "item": "Fuel or heat input and operating hours",
+     "item": "Existing heat-input, operating-period and comparison basis",
      "state": "not_on_drawing",
      "where": [
+      "site records: approved existing fuel or heat-input and production/run schedules for a justified comparison period, with equipment identity, dates and stated basis",
       "historian or DCS trend for FT-301 (no historian tag is mapped in this model for these)",
-      "utility bills or the site energy report: gas sub-meter readings for this line",
-      "site records: production schedule: hours per week the line runs"
+      "utility bills or the site energy report: existing identified sub-meter or heat-supply records, if suitable for the selected unit and production basis"
      ],
-     "how": "A month of input at a known production rate."
+     "how": "Separate a recorded nameplate/input from actual representative operation. No universal minimum hours, mandatory month, recovery fraction or savings is inferred. Qualified review can decide that existing coverage or documented constraints settle or defer the job."
     },
     {
-     "item": "Where the heat could go in the unit itself",
+     "item": "Own-inlet or process-use alternatives and constraints for qualified review",
      "state": "not_on_drawing",
      "where": [
-      "site records: inlet (drying or combustion) air temperature and flow",
-      "a walkdown: room next to the unit for ductwork or a run-around coil"
+      "site records: existing own-inlet/process heat-use, layout/duct/piping space, product quality, moisture, contaminant and operating-constraint records, including options already assessed",
+      "the vendor datasheet: applicable equipment requirements and documented direct/indirect recovery constraints and the receiving engineering owner"
      ],
-     "how": "Preheating the unit's own inlet air comes first; H6 asks about users elsewhere."
+     "how": "S26 describes indirect circulating-medium/run-around recovery as an option when local duct space is limited; assess applicability rather than treating lack of nearby direct-duct space as universal closure. It is not an automatic recommendation or feasibility result. H6 separately asks about a named external duty."
     }
    ],
-   "decision_rule": "Worth a study when the exhaust leaves hot, the line runs long hours, and the exhaust is clean enough or can be filtered or washed. Close it for short or intermittent runs, or when there is no room for the ductwork.",
+   "decision_rule": "Use qualified existing records to distinguish working full coverage, unavailable or partial recovery and unresolved own-inlet/process-use questions. A responsible engineer can answer or defer the investigation from an adequate documented basis; no new project is compulsory. Consider applicable direct and indirect alternatives and product, cleanliness, moisture, safety and operating constraints before deciding whether further assessment is worthwhile. Missing local duct space or intermittent operation alone is not an automatic universal closure.",
    "typical_benefit": {
     "wording": "Dryers (S26, p. 104): \"A simple form of heat recovery in retrofit applications is to utilize the exhaust air of a dryer to preheat the inlet air stream, thereby saving energy.\" Spray dryers (S25, p. 90): \"It is estimated that up to 30% of the heat from the dryer exhaust can be recovered.\" Fryers (S26, p. 107): \"Conditioning of the exhaust gas is required, however, to remove fats and to reduce fouling of the heat exchange system.\" No source in this set gives a figure for ovens.",
     "source": [
@@ -382,14 +378,14 @@
      "S25: Brush, Masanet and Worrell, Energy Efficiency Improvement and Cost Saving Opportunities for the Dairy Processing Industry: An ENERGY STAR Guide for Energy and Plant Managers (LBNL-6261E, Oct 2011)"
     ]
    },
-   "limits": "S26 (p. 104) notes that recirculating saturated exhaust can raise the inlet humidity and cut drying capacity. A heat recovery item on the unit, or at the other end of a stream drawn from it, quiets the question; recovery drawn elsewhere does not. Ovens and dryers that drive off solvents, or carry combustible dust, need a safety review before any exhaust change.",
+   "limits": "S26 printed p.104 discusses dryer recovery options and humidity limits; S25 printed p.90 discusses contaminated dairy-dryer exhaust. Applying these examples to other supplied equipment requires qualified review. Showing represented coverage and retaining unresolved residual/maintenance questions is authored records-review policy, not proof of missing hardware, available heat or a required retrofit. A supplied fully-covered working claim may settle new-opportunity triage after company review; if shown, it is acknowledged as existing coverage, not asserted absent. Company engineering/product/safety review governs any actual exhaust or equipment work.",
    "status": "asked"
   },
   {
    "id": "E31@O-302",
    "question_id": "E31",
    "family": "energy",
-   "question": "Does this oven, dryer or fryer send its hot exhaust to atmosphere with no heat recovery on it?",
+   "question": "What do existing records establish about this oven, dryer or fryer exhaust routing, recovery already provided and any unresolved own-inlet or process-use basis?",
    "about": "O-302",
    "assets": [
     {
@@ -459,53 +455,49 @@
      "tag": "TV-302",
      "text": "valve TV-302 reads \"TV-302 Oven burner natural gas control valve\" at O-302",
      "field": "final_elements[TV-302]"
-    },
-    {
-     "role": "checked, none found",
-     "text": "no heat recovery exchanger, recuperator, run-around coil or exhaust recirculation on this unit or on a stream drawn from it",
-     "field": "applies_when.without"
     }
    ],
    "data_requests": [
     {
-     "item": "Exhaust temperature and flow",
+     "item": "Existing exhaust routing and represented recovery coverage for this unit",
      "state": "not_on_drawing",
      "where": [
-      "historian or DCS trend for TT-305 (no historian tag is mapped in this model for these)",
-      "a walkdown: thermometer and a pitot or anemometer traverse in the exhaust duct, at normal production"
+      "site records: approved existing drawings, routing/configuration and recovery-purpose records for the identified unit, including revision, source locator, owner and any supplied full, partial, shared or unknown coverage claim",
+      "maintenance records: existing recovery availability, bypass, fault, inspection and cleaning records for the represented equipment"
      ],
-     "how": "Record both at normal production; heat on offer = mass flow x specific heat x (exhaust temperature minus the temperature it could be cooled to)."
+     "how": "Distinguish recovery already provided from an unresolved residual question. A represented item, document label or enabled flag is a candidate, not authenticated operation or complete coverage. A shared recoverer does not establish a duty allocation; a missing drawn item does not prove absent hardware."
     },
     {
-     "item": "Exhaust moisture and contaminants",
+     "item": "Existing exhaust-condition, product and maintenance basis",
      "state": "not_on_drawing",
      "where": [
-      "a walkdown: humidity or dew point probe in the exhaust; note fat, flour, sugar or product dust",
-      "maintenance records: duct and stack cleaning history"
+      "site records: permitted existing exhaust temperature/flow, moisture, contaminants and representative production records with unit identity, quantity, location, units, method, dates and operating-period basis",
+      "maintenance records: existing product carry-over, filtration, fouling, leakage, cleaning and pressure-loss observations relevant to the identified exhaust path",
+      "historian or DCS trend for TT-305 (no historian tag is mapped in this model for these)"
      ],
-     "how": "Moist exhaust carries latent heat but condenses; fat and dust foul exchangers unless filtered or washed."
+     "how": "Review whether the available records represent this job. Preserve unknown, zero and disabled qualifiers and product/moisture restrictions. Any missing-data plan belongs to the responsible reviewer; no new measurement task or fixed observation duration is prescribed."
     },
     {
-     "item": "Fuel or heat input and operating hours",
+     "item": "Existing heat-input, operating-period and comparison basis",
      "state": "not_on_drawing",
      "where": [
+      "site records: approved existing fuel or heat-input and production/run schedules for a justified comparison period, with equipment identity, dates and stated basis",
       "only a valve (TV-302) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve",
-      "utility bills or the site energy report: gas sub-meter readings for this line",
-      "site records: production schedule: hours per week the line runs"
+      "utility bills or the site energy report: existing identified sub-meter or heat-supply records, if suitable for the selected unit and production basis"
      ],
-     "how": "A month of input at a known production rate."
+     "how": "Separate a recorded nameplate/input from actual representative operation. No universal minimum hours, mandatory month, recovery fraction or savings is inferred. Qualified review can decide that existing coverage or documented constraints settle or defer the job."
     },
     {
-     "item": "Where the heat could go in the unit itself",
+     "item": "Own-inlet or process-use alternatives and constraints for qualified review",
      "state": "not_on_drawing",
      "where": [
-      "site records: inlet (drying or combustion) air temperature and flow",
-      "a walkdown: room next to the unit for ductwork or a run-around coil"
+      "site records: existing own-inlet/process heat-use, layout/duct/piping space, product quality, moisture, contaminant and operating-constraint records, including options already assessed",
+      "the vendor datasheet: applicable equipment requirements and documented direct/indirect recovery constraints and the receiving engineering owner"
      ],
-     "how": "Preheating the unit's own inlet air comes first; H6 asks about users elsewhere."
+     "how": "S26 describes indirect circulating-medium/run-around recovery as an option when local duct space is limited; assess applicability rather than treating lack of nearby direct-duct space as universal closure. It is not an automatic recommendation or feasibility result. H6 separately asks about a named external duty."
     }
    ],
-   "decision_rule": "Worth a study when the exhaust leaves hot, the line runs long hours, and the exhaust is clean enough or can be filtered or washed. Close it for short or intermittent runs, or when there is no room for the ductwork.",
+   "decision_rule": "Use qualified existing records to distinguish working full coverage, unavailable or partial recovery and unresolved own-inlet/process-use questions. A responsible engineer can answer or defer the investigation from an adequate documented basis; no new project is compulsory. Consider applicable direct and indirect alternatives and product, cleanliness, moisture, safety and operating constraints before deciding whether further assessment is worthwhile. Missing local duct space or intermittent operation alone is not an automatic universal closure.",
    "typical_benefit": {
     "wording": "Dryers (S26, p. 104): \"A simple form of heat recovery in retrofit applications is to utilize the exhaust air of a dryer to preheat the inlet air stream, thereby saving energy.\" Spray dryers (S25, p. 90): \"It is estimated that up to 30% of the heat from the dryer exhaust can be recovered.\" Fryers (S26, p. 107): \"Conditioning of the exhaust gas is required, however, to remove fats and to reduce fouling of the heat exchange system.\" No source in this set gives a figure for ovens.",
     "source": [
@@ -518,14 +510,14 @@
      "S25: Brush, Masanet and Worrell, Energy Efficiency Improvement and Cost Saving Opportunities for the Dairy Processing Industry: An ENERGY STAR Guide for Energy and Plant Managers (LBNL-6261E, Oct 2011)"
     ]
    },
-   "limits": "S26 (p. 104) notes that recirculating saturated exhaust can raise the inlet humidity and cut drying capacity. A heat recovery item on the unit, or at the other end of a stream drawn from it, quiets the question; recovery drawn elsewhere does not. Ovens and dryers that drive off solvents, or carry combustible dust, need a safety review before any exhaust change.",
+   "limits": "S26 printed p.104 discusses dryer recovery options and humidity limits; S25 printed p.90 discusses contaminated dairy-dryer exhaust. Applying these examples to other supplied equipment requires qualified review. Showing represented coverage and retaining unresolved residual/maintenance questions is authored records-review policy, not proof of missing hardware, available heat or a required retrofit. A supplied fully-covered working claim may settle new-opportunity triage after company review; if shown, it is acknowledged as existing coverage, not asserted absent. Company engineering/product/safety review governs any actual exhaust or equipment work.",
    "status": "asked"
   },
   {
    "id": "E31@F-303",
    "question_id": "E31",
    "family": "energy",
-   "question": "Does this oven, dryer or fryer send its hot exhaust to atmosphere with no heat recovery on it?",
+   "question": "What do existing records establish about this oven, dryer or fryer exhaust routing, recovery already provided and any unresolved own-inlet or process-use basis?",
    "about": "F-303",
    "assets": [
     {
@@ -573,52 +565,48 @@
      "tag": "TV-303",
      "text": "valve TV-303 reads \"TV-303 Fryer burner natural gas control valve\" at F-303",
      "field": "final_elements[TV-303]"
-    },
-    {
-     "role": "checked, none found",
-     "text": "no heat recovery exchanger, recuperator, run-around coil or exhaust recirculation on this unit or on a stream drawn from it",
-     "field": "applies_when.without"
     }
    ],
    "data_requests": [
     {
-     "item": "Exhaust temperature and flow",
+     "item": "Existing exhaust routing and represented recovery coverage for this unit",
      "state": "not_on_drawing",
      "where": [
-      "a walkdown: thermometer and a pitot or anemometer traverse in the exhaust duct, at normal production"
+      "site records: approved existing drawings, routing/configuration and recovery-purpose records for the identified unit, including revision, source locator, owner and any supplied full, partial, shared or unknown coverage claim",
+      "maintenance records: existing recovery availability, bypass, fault, inspection and cleaning records for the represented equipment"
      ],
-     "how": "Record both at normal production; heat on offer = mass flow x specific heat x (exhaust temperature minus the temperature it could be cooled to)."
+     "how": "Distinguish recovery already provided from an unresolved residual question. A represented item, document label or enabled flag is a candidate, not authenticated operation or complete coverage. A shared recoverer does not establish a duty allocation; a missing drawn item does not prove absent hardware."
     },
     {
-     "item": "Exhaust moisture and contaminants",
+     "item": "Existing exhaust-condition, product and maintenance basis",
      "state": "not_on_drawing",
      "where": [
-      "a walkdown: humidity or dew point probe in the exhaust; note fat, flour, sugar or product dust",
-      "maintenance records: duct and stack cleaning history"
+      "site records: permitted existing exhaust temperature/flow, moisture, contaminants and representative production records with unit identity, quantity, location, units, method, dates and operating-period basis",
+      "maintenance records: existing product carry-over, filtration, fouling, leakage, cleaning and pressure-loss observations relevant to the identified exhaust path"
      ],
-     "how": "Moist exhaust carries latent heat but condenses; fat and dust foul exchangers unless filtered or washed."
+     "how": "Review whether the available records represent this job. Preserve unknown, zero and disabled qualifiers and product/moisture restrictions. Any missing-data plan belongs to the responsible reviewer; no new measurement task or fixed observation duration is prescribed."
     },
     {
-     "item": "Fuel or heat input and operating hours",
+     "item": "Existing heat-input, operating-period and comparison basis",
      "state": "not_on_drawing",
      "where": [
+      "site records: approved existing fuel or heat-input and production/run schedules for a justified comparison period, with equipment identity, dates and stated basis",
       "only a valve (TV-303) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve",
-      "utility bills or the site energy report: gas sub-meter readings for this line",
-      "site records: production schedule: hours per week the line runs"
+      "utility bills or the site energy report: existing identified sub-meter or heat-supply records, if suitable for the selected unit and production basis"
      ],
-     "how": "A month of input at a known production rate."
+     "how": "Separate a recorded nameplate/input from actual representative operation. No universal minimum hours, mandatory month, recovery fraction or savings is inferred. Qualified review can decide that existing coverage or documented constraints settle or defer the job."
     },
     {
-     "item": "Where the heat could go in the unit itself",
+     "item": "Own-inlet or process-use alternatives and constraints for qualified review",
      "state": "not_on_drawing",
      "where": [
-      "site records: inlet (drying or combustion) air temperature and flow",
-      "a walkdown: room next to the unit for ductwork or a run-around coil"
+      "site records: existing own-inlet/process heat-use, layout/duct/piping space, product quality, moisture, contaminant and operating-constraint records, including options already assessed",
+      "the vendor datasheet: applicable equipment requirements and documented direct/indirect recovery constraints and the receiving engineering owner"
      ],
-     "how": "Preheating the unit's own inlet air comes first; H6 asks about users elsewhere."
+     "how": "S26 describes indirect circulating-medium/run-around recovery as an option when local duct space is limited; assess applicability rather than treating lack of nearby direct-duct space as universal closure. It is not an automatic recommendation or feasibility result. H6 separately asks about a named external duty."
     }
    ],
-   "decision_rule": "Worth a study when the exhaust leaves hot, the line runs long hours, and the exhaust is clean enough or can be filtered or washed. Close it for short or intermittent runs, or when there is no room for the ductwork.",
+   "decision_rule": "Use qualified existing records to distinguish working full coverage, unavailable or partial recovery and unresolved own-inlet/process-use questions. A responsible engineer can answer or defer the investigation from an adequate documented basis; no new project is compulsory. Consider applicable direct and indirect alternatives and product, cleanliness, moisture, safety and operating constraints before deciding whether further assessment is worthwhile. Missing local duct space or intermittent operation alone is not an automatic universal closure.",
    "typical_benefit": {
     "wording": "Dryers (S26, p. 104): \"A simple form of heat recovery in retrofit applications is to utilize the exhaust air of a dryer to preheat the inlet air stream, thereby saving energy.\" Spray dryers (S25, p. 90): \"It is estimated that up to 30% of the heat from the dryer exhaust can be recovered.\" Fryers (S26, p. 107): \"Conditioning of the exhaust gas is required, however, to remove fats and to reduce fouling of the heat exchange system.\" No source in this set gives a figure for ovens.",
     "source": [
@@ -631,14 +619,14 @@
      "S25: Brush, Masanet and Worrell, Energy Efficiency Improvement and Cost Saving Opportunities for the Dairy Processing Industry: An ENERGY STAR Guide for Energy and Plant Managers (LBNL-6261E, Oct 2011)"
     ]
    },
-   "limits": "S26 (p. 104) notes that recirculating saturated exhaust can raise the inlet humidity and cut drying capacity. A heat recovery item on the unit, or at the other end of a stream drawn from it, quiets the question; recovery drawn elsewhere does not. Ovens and dryers that drive off solvents, or carry combustible dust, need a safety review before any exhaust change.",
+   "limits": "S26 printed p.104 discusses dryer recovery options and humidity limits; S25 printed p.90 discusses contaminated dairy-dryer exhaust. Applying these examples to other supplied equipment requires qualified review. Showing represented coverage and retaining unresolved residual/maintenance questions is authored records-review policy, not proof of missing hardware, available heat or a required retrofit. A supplied fully-covered working claim may settle new-opportunity triage after company review; if shown, it is acknowledged as existing coverage, not asserted absent. Company engineering/product/safety review governs any actual exhaust or equipment work.",
    "status": "asked"
   },
   {
    "id": "H6@D-301",
    "question_id": "H6",
    "family": "heat_grade",
-   "question": "Could this oven's, dryer's or fryer's exhaust heat serve a low-grade heating duty elsewhere (hot water, CIP, space heating)?",
+   "question": "What do existing records establish about this oven, dryer or fryer recovery already provided and any unresolved residual supply for the named external heating-duty lead?",
    "about": "D-301",
    "assets": [
     {
@@ -697,42 +685,38 @@
      "tag": "TT-304",
      "text": "instrument TT-304 reads \"TT-304 Dryer exhaust air temperature\" at D-301",
      "field": "instruments[TT-304]"
-    },
-    {
-     "role": "checked, none found",
-     "text": "no heat recovery on this unit or on a stream drawn from it",
-     "field": "applies_when.without"
     }
    ],
    "data_requests": [
     {
-     "item": "Exhaust temperature, flow and hours",
+     "item": "Existing source routing, recovery-purpose and residual-supply basis",
      "state": "not_on_drawing",
      "where": [
-      "historian or DCS trend for TT-304 (no historian tag is mapped in this model for these)",
-      "a walkdown: thermometer and a pitot or anemometer traverse in the exhaust duct",
-      "site records: production schedule"
+      "site records: approved existing exhaust routing, current recovery purpose, source revision/locator and coverage/bypass/availability records for this identified source",
+      "maintenance records: existing recovery operation, cleaning, fouling and unavailable/disabled records with equipment and period identity",
+      "historian or DCS trend for TT-304 (no historian tag is mapped in this model for these)"
      ],
-     "how": "At normal production."
+     "how": "Separate own-inlet recovery from external-duty coverage. Retain full, partial, shared, zero and unknown claims literally; a recoverer label or nominal temperature does not establish actual residual transferable heat or allocate shared duty."
     },
     {
-     "item": "The low-grade duty: temperature needed, load and hours",
+     "item": "Existing named-duty requirements and source/demand quantity and timing basis",
      "state": "not_on_drawing",
      "where": [
-      "site records: hot water, CIP, wash water and space heating loads by hour"
+      "site records: approved existing identity/purpose, temperature, heat-demand and operating schedules for the named duty, paired with source-period records where available, including quantities, locations, units, dates and responsible owners"
      ],
-     "how": "Match by temperature, hours and distance."
+     "how": "The anywhere-found duty is an unassociated lead, not a physical connection, nearby user or suitable sink. Review amount, thermal suitability and timing separately. A pair of nominal temperatures, common name or schedule mismatch does not by itself settle all practical alternatives or establish viability."
     },
     {
-     "item": "Distance and exhaust cleanliness",
+     "item": "Existing route, compatibility and alternative-heat constraints",
      "state": "not_on_drawing",
      "where": [
-      "a walkdown: duct or pipe run from the stack to the user; fat, dust or product carry-over in the exhaust"
+      "site records: existing layout/distance and transport options; cleanliness/corrosion/particulate compatibility; condensation and pressure-loss/ventilation constraints; and the available alternative heating-supply and comparative basis",
+      "the vendor datasheet: applicable documented source and receiving-equipment limits, prior assessments and the qualified engineering review route"
      ],
-     "how": "The closer and cleaner, the better."
+     "how": "Use the source/sink questions in S28 to identify what existing evidence supports or leaves unresolved. No universal temperature-difference threshold, mandatory field task, fixed sampling period or cost ranking is imposed. Qualified owners decide any further data plan and whether a study should proceed, be answered or be deferred."
     }
    ],
-   "decision_rule": "Worth a study when the exhaust is well above the temperature the duty needs, the two run at the same times, and they are close enough to connect. Otherwise close it.",
+   "decision_rule": "Review actual residual supply, named-duty amount/thermal requirements and coincident timing together with route losses, compatibility, condensation, pressure resistance and alternative heating basis. Distinguish documented working full coverage from unresolved partial, disabled, shared or internal-only recovery. A qualified company review can answer or defer the question from existing records; unknown evidence is not an automatic otherwise-close result, a feasible project or a mandate for a new project.",
    "typical_benefit": {
     "wording": "S28 (p. 1): \"many companies install heat exchangers on the exhaust stacks of furnaces and ovens to produce hot water or to generate hot air for space heating.\" The same sheet: \"The temperature difference between the primary and secondary process should be high enough (at least 200°F), and there should be a sufficient amount of usable waste heat.\" Fryers (S26, p. 107): \"Heat can be recovered indirectly from a fryer's fat-laden exhaust gases via a heat exchange system and used for pre-heating air and water for use in other facility processes.\" No % stated.",
     "source": [
@@ -745,14 +729,14 @@
      "S26: Masanet, Worrell, Graus and Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for the Fruit and Vegetable Processing Industry: An ENERGY STAR Guide for Energy and Plant Managers (LBNL-59289-Revision, Mar 2008)"
     ]
    },
-   "limits": "Overlaps E31, which asks about the unit's own inlet air first. The with-clause finds any low-grade duty in the model, not one next to the unit.",
+   "limits": "E31 addresses own-inlet/process-use recovery; it does not establish H6 external residual or duty coverage. The unchanged with-clause requires a named external duty somewhere in the model, not a nearby or connected sink. A supplied fully-covered working external claim may be quiet in new-opportunity triage; when shown here, its literal existing coverage and unverified basis must be acknowledged. The source-informed records-review policy does not impose a universal 200-degree threshold or authenticate supplied claims. Company engineering and safety/quality review govern feasibility and any actual work.",
    "status": "asked"
   },
   {
    "id": "H6@O-302",
    "question_id": "H6",
    "family": "heat_grade",
-   "question": "Could this oven's, dryer's or fryer's exhaust heat serve a low-grade heating duty elsewhere (hot water, CIP, space heating)?",
+   "question": "What do existing records establish about this oven, dryer or fryer recovery already provided and any unresolved residual supply for the named external heating-duty lead?",
    "about": "O-302",
    "assets": [
     {
@@ -822,42 +806,38 @@
      "tag": "AT-302",
      "text": "instrument AT-302 reads \"AT-302 Oven flue O2 analyser\" at O-302",
      "field": "instruments[AT-302]"
-    },
-    {
-     "role": "checked, none found",
-     "text": "no heat recovery on this unit or on a stream drawn from it",
-     "field": "applies_when.without"
     }
    ],
    "data_requests": [
     {
-     "item": "Exhaust temperature, flow and hours",
+     "item": "Existing source routing, recovery-purpose and residual-supply basis",
      "state": "not_on_drawing",
      "where": [
-      "historian or DCS trend for TT-305 (no historian tag is mapped in this model for these)",
-      "a walkdown: thermometer and a pitot or anemometer traverse in the exhaust duct",
-      "site records: production schedule"
+      "site records: approved existing exhaust routing, current recovery purpose, source revision/locator and coverage/bypass/availability records for this identified source",
+      "maintenance records: existing recovery operation, cleaning, fouling and unavailable/disabled records with equipment and period identity",
+      "historian or DCS trend for TT-305 (no historian tag is mapped in this model for these)"
      ],
-     "how": "At normal production."
+     "how": "Separate own-inlet recovery from external-duty coverage. Retain full, partial, shared, zero and unknown claims literally; a recoverer label or nominal temperature does not establish actual residual transferable heat or allocate shared duty."
     },
     {
-     "item": "The low-grade duty: temperature needed, load and hours",
+     "item": "Existing named-duty requirements and source/demand quantity and timing basis",
      "state": "not_on_drawing",
      "where": [
-      "site records: hot water, CIP, wash water and space heating loads by hour"
+      "site records: approved existing identity/purpose, temperature, heat-demand and operating schedules for the named duty, paired with source-period records where available, including quantities, locations, units, dates and responsible owners"
      ],
-     "how": "Match by temperature, hours and distance."
+     "how": "The anywhere-found duty is an unassociated lead, not a physical connection, nearby user or suitable sink. Review amount, thermal suitability and timing separately. A pair of nominal temperatures, common name or schedule mismatch does not by itself settle all practical alternatives or establish viability."
     },
     {
-     "item": "Distance and exhaust cleanliness",
+     "item": "Existing route, compatibility and alternative-heat constraints",
      "state": "not_on_drawing",
      "where": [
-      "a walkdown: duct or pipe run from the stack to the user; fat, dust or product carry-over in the exhaust"
+      "site records: existing layout/distance and transport options; cleanliness/corrosion/particulate compatibility; condensation and pressure-loss/ventilation constraints; and the available alternative heating-supply and comparative basis",
+      "the vendor datasheet: applicable documented source and receiving-equipment limits, prior assessments and the qualified engineering review route"
      ],
-     "how": "The closer and cleaner, the better."
+     "how": "Use the source/sink questions in S28 to identify what existing evidence supports or leaves unresolved. No universal temperature-difference threshold, mandatory field task, fixed sampling period or cost ranking is imposed. Qualified owners decide any further data plan and whether a study should proceed, be answered or be deferred."
     }
    ],
-   "decision_rule": "Worth a study when the exhaust is well above the temperature the duty needs, the two run at the same times, and they are close enough to connect. Otherwise close it.",
+   "decision_rule": "Review actual residual supply, named-duty amount/thermal requirements and coincident timing together with route losses, compatibility, condensation, pressure resistance and alternative heating basis. Distinguish documented working full coverage from unresolved partial, disabled, shared or internal-only recovery. A qualified company review can answer or defer the question from existing records; unknown evidence is not an automatic otherwise-close result, a feasible project or a mandate for a new project.",
    "typical_benefit": {
     "wording": "S28 (p. 1): \"many companies install heat exchangers on the exhaust stacks of furnaces and ovens to produce hot water or to generate hot air for space heating.\" The same sheet: \"The temperature difference between the primary and secondary process should be high enough (at least 200°F), and there should be a sufficient amount of usable waste heat.\" Fryers (S26, p. 107): \"Heat can be recovered indirectly from a fryer's fat-laden exhaust gases via a heat exchange system and used for pre-heating air and water for use in other facility processes.\" No % stated.",
     "source": [
@@ -870,14 +850,14 @@
      "S26: Masanet, Worrell, Graus and Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for the Fruit and Vegetable Processing Industry: An ENERGY STAR Guide for Energy and Plant Managers (LBNL-59289-Revision, Mar 2008)"
     ]
    },
-   "limits": "Overlaps E31, which asks about the unit's own inlet air first. The with-clause finds any low-grade duty in the model, not one next to the unit.",
+   "limits": "E31 addresses own-inlet/process-use recovery; it does not establish H6 external residual or duty coverage. The unchanged with-clause requires a named external duty somewhere in the model, not a nearby or connected sink. A supplied fully-covered working external claim may be quiet in new-opportunity triage; when shown here, its literal existing coverage and unverified basis must be acknowledged. The source-informed records-review policy does not impose a universal 200-degree threshold or authenticate supplied claims. Company engineering and safety/quality review govern feasibility and any actual work.",
    "status": "asked"
   },
   {
    "id": "H6@F-303",
    "question_id": "H6",
    "family": "heat_grade",
-   "question": "Could this oven's, dryer's or fryer's exhaust heat serve a low-grade heating duty elsewhere (hot water, CIP, space heating)?",
+   "question": "What do existing records establish about this oven, dryer or fryer recovery already provided and any unresolved residual supply for the named external heating-duty lead?",
    "about": "F-303",
    "assets": [
     {
@@ -925,41 +905,37 @@
      "tag": "S3",
      "text": "stream S3 (asset stream:S3) reads \"Fryer exhaust vapour\"",
      "field": "streams[S3]"
-    },
-    {
-     "role": "checked, none found",
-     "text": "no heat recovery on this unit or on a stream drawn from it",
-     "field": "applies_when.without"
     }
    ],
    "data_requests": [
     {
-     "item": "Exhaust temperature, flow and hours",
+     "item": "Existing source routing, recovery-purpose and residual-supply basis",
      "state": "not_on_drawing",
      "where": [
-      "a walkdown: thermometer and a pitot or anemometer traverse in the exhaust duct",
-      "site records: production schedule"
+      "site records: approved existing exhaust routing, current recovery purpose, source revision/locator and coverage/bypass/availability records for this identified source",
+      "maintenance records: existing recovery operation, cleaning, fouling and unavailable/disabled records with equipment and period identity"
      ],
-     "how": "At normal production."
+     "how": "Separate own-inlet recovery from external-duty coverage. Retain full, partial, shared, zero and unknown claims literally; a recoverer label or nominal temperature does not establish actual residual transferable heat or allocate shared duty."
     },
     {
-     "item": "The low-grade duty: temperature needed, load and hours",
+     "item": "Existing named-duty requirements and source/demand quantity and timing basis",
      "state": "not_on_drawing",
      "where": [
-      "site records: hot water, CIP, wash water and space heating loads by hour"
+      "site records: approved existing identity/purpose, temperature, heat-demand and operating schedules for the named duty, paired with source-period records where available, including quantities, locations, units, dates and responsible owners"
      ],
-     "how": "Match by temperature, hours and distance."
+     "how": "The anywhere-found duty is an unassociated lead, not a physical connection, nearby user or suitable sink. Review amount, thermal suitability and timing separately. A pair of nominal temperatures, common name or schedule mismatch does not by itself settle all practical alternatives or establish viability."
     },
     {
-     "item": "Distance and exhaust cleanliness",
+     "item": "Existing route, compatibility and alternative-heat constraints",
      "state": "not_on_drawing",
      "where": [
-      "a walkdown: duct or pipe run from the stack to the user; fat, dust or product carry-over in the exhaust"
+      "site records: existing layout/distance and transport options; cleanliness/corrosion/particulate compatibility; condensation and pressure-loss/ventilation constraints; and the available alternative heating-supply and comparative basis",
+      "the vendor datasheet: applicable documented source and receiving-equipment limits, prior assessments and the qualified engineering review route"
      ],
-     "how": "The closer and cleaner, the better."
+     "how": "Use the source/sink questions in S28 to identify what existing evidence supports or leaves unresolved. No universal temperature-difference threshold, mandatory field task, fixed sampling period or cost ranking is imposed. Qualified owners decide any further data plan and whether a study should proceed, be answered or be deferred."
     }
    ],
-   "decision_rule": "Worth a study when the exhaust is well above the temperature the duty needs, the two run at the same times, and they are close enough to connect. Otherwise close it.",
+   "decision_rule": "Review actual residual supply, named-duty amount/thermal requirements and coincident timing together with route losses, compatibility, condensation, pressure resistance and alternative heating basis. Distinguish documented working full coverage from unresolved partial, disabled, shared or internal-only recovery. A qualified company review can answer or defer the question from existing records; unknown evidence is not an automatic otherwise-close result, a feasible project or a mandate for a new project.",
    "typical_benefit": {
     "wording": "S28 (p. 1): \"many companies install heat exchangers on the exhaust stacks of furnaces and ovens to produce hot water or to generate hot air for space heating.\" The same sheet: \"The temperature difference between the primary and secondary process should be high enough (at least 200°F), and there should be a sufficient amount of usable waste heat.\" Fryers (S26, p. 107): \"Heat can be recovered indirectly from a fryer's fat-laden exhaust gases via a heat exchange system and used for pre-heating air and water for use in other facility processes.\" No % stated.",
     "source": [
@@ -972,7 +948,7 @@
      "S26: Masanet, Worrell, Graus and Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for the Fruit and Vegetable Processing Industry: An ENERGY STAR Guide for Energy and Plant Managers (LBNL-59289-Revision, Mar 2008)"
     ]
    },
-   "limits": "Overlaps E31, which asks about the unit's own inlet air first. The with-clause finds any low-grade duty in the model, not one next to the unit.",
+   "limits": "E31 addresses own-inlet/process-use recovery; it does not establish H6 external residual or duty coverage. The unchanged with-clause requires a named external duty somewhere in the model, not a nearby or connected sink. A supplied fully-covered working external claim may be quiet in new-opportunity triage; when shown here, its literal existing coverage and unverified basis must be acknowledged. The source-informed records-review policy does not impose a universal 200-degree threshold or authenticate supplied claims. Company engineering and safety/quality review govern feasibility and any actual work.",
    "status": "asked"
   },
   {

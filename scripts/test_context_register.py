@@ -425,12 +425,86 @@ class ContextRegister(unittest.TestCase):
             self.assertEqual(self.state(register, qid)["ownership"], "needs_owner")
         report = (self.root / "bundle/context.md").read_text(encoding="utf-8")
         self.assertIn("meaning and suitability unverified", report)
-        self.assertIn("collection/review request remains open", report)
+        self.assertIn("Screen-time candidate facts; meaning and suitability unverified in the original screen.", report)
+        self.assertIn("Current per-request completion is not tracked here.", report)
+        self.assertNotIn("The collection/review request remains open.", report)
         self.assertIn("F-1 (F-1) HP = 15; source: units[F-1].facts.HP", report)
         self.assertIn("EH-1 (EH-1) kW = 20; source: units[EH-1].facts.kW", report)
         enriched = self.read("bundle/enriched_questions.json")
         for before, after in zip(self.questions["questions"], enriched["questions"]):
             self.assertEqual(before["data_requests"], after["data_requests"])
+
+    def test_original_screen_candidates_stay_scoped_across_review_states_and_source_change(self):
+        import graph_export
+        example = Path(__file__).resolve().parent.parent / "examples/opportunity-screen/collection-basis"
+        self.graph = graph_export.build(example / "model.json", questions=example / "questions.json")
+        self.questions = json.loads((example / "questions.json").read_text(encoding="utf-8"))
+        original = copy.deepcopy(self.questions)
+        source_a = (b"ILLUSTRATIVE software readout source A; no engineering adequacy or human acceptance.\n"
+                    b"Software-only completed disposition and alternative requiring review.\n"
+                    b"enabled=false; observations=0; applicability=unknown.\n")
+        (self.root / "review.txt").write_bytes(source_a)
+        self.manifest = {"schema": "context-sources-1", "documents": [
+            {"id": "REVIEW", "revision": "A", "path": "review.txt",
+             "sha256": hashlib.sha256(source_a).hexdigest(), "locators": [
+                 {"id": "disposition", "locator": "lines 1-3, fictional software dispositions",
+                  "questions": ["E5@F-1"]}]}]}
+        self.save_inputs()
+        self.prepared()
+        prepared = self.read()
+        independent = copy.deepcopy(prepared["current"]["H3@EH-1"])
+
+        def check_readout(doc, state):
+            self.assertEqual(self.state(doc, "E5@F-1")["state"], state)
+            self.assertEqual(doc["current"]["H3@EH-1"], independent)
+            report = (self.root / "bundle/context.md").read_text(encoding="utf-8")
+            self.assertIn("State: **" + state + "**", report)
+            self.assertIn("not per-request completion records", report)
+            self.assertIn("Screen-time candidate facts; meaning and suitability unverified in the original screen.", report)
+            self.assertIn("Current per-request completion is not tracked here.", report)
+            self.assertNotIn("The collection/review request remains open.", report)
+            self.assertIn("F-1 (F-1) HP = 15; source: units[F-1].facts.HP", report)
+            self.assertIn("EH-1 (EH-1) kW = 20; source: units[EH-1].facts.kW", report)
+            enriched = self.read("bundle/enriched_questions.json")
+            for before, after in zip(original["questions"], enriched["questions"]):
+                for key, value in before.items():
+                    self.assertEqual(after[key], value)
+            self.assertEqual(self.read("questions.json"), original)
+
+        check_readout(prepared, "unanswered")
+        row = self.row(qid="E5@F-1", claim_key="fictional-disposition",
+                       value="software-only complete", source_id="REVIEW", locator_id="disposition",
+                       answer="ILLUSTRATIVE completed software disposition; no actual curve adequacy or plant truth.",
+                       note="enabled=false; observations=0; applicability=unknown; not a human review.")
+        self.answers(row)
+        accepted = self.apply()
+        check_readout(accepted, "answered")
+        self.assertEqual(accepted["decisions"][0]["plant_truth"], "unknown")
+        self.assertEqual(accepted["decisions"][0]["evidence"]["source"]["sha256"], hashlib.sha256(source_a).hexdigest())
+        self.assertIn("enabled=false; observations=0; applicability=unknown", accepted["decisions"][0]["note"])
+
+        self.answers(dict(row, answer_state="partial", value="partial software disposition"))
+        partial = self.apply()
+        check_readout(partial, "partial")
+        self.assertEqual(partial["decisions"][:len(accepted["decisions"])], accepted["decisions"])
+        self.answers(dict(row, answer_id="alternative", answer_state="partial", decision="proposed",
+                          value="further review required", answer="ILLUSTRATIVE unresolved alternative, not plant evidence."))
+        disputed = self.apply()
+        check_readout(disputed, "disputed")
+        self.assertEqual(disputed["decisions"][:len(partial["decisions"])], partial["decisions"])
+
+        source_b = source_a + b"Revision B: source content changed; review the dependent disposition again.\n"
+        (self.root / "review.txt").write_bytes(source_b)
+        self.manifest["documents"][0].update(revision="B", sha256=hashlib.sha256(source_b).hexdigest())
+        self.save_inputs()
+        self.invoke("apply", register="bundle/context.json")
+        refreshed = self.read()
+        check_readout(refreshed, "unanswered")
+        self.assertTrue(all(a["freshness"] == "stale" for a in refreshed["current"]["E5@F-1"]["answers"]))
+        self.assertEqual(refreshed["decisions"], disputed["decisions"])
+        self.assertEqual(refreshed["ownership_history"], disputed["ownership_history"])
+        self.assertEqual(refreshed["sources"][0]["sha256"], hashlib.sha256(source_b).hexdigest())
+
 
     def test_malformed_candidate_facts_refuse_without_changing_prior_packet(self):
         fact = {"id": "P-1", "label": "P-1", "name": "HP", "value": 15, "where": "units[P-1].facts.HP"}

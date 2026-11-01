@@ -1,0 +1,55 @@
+{
+  "schema": "function-basis-heating-source-routes-1",
+  "reading": "Official primary PDF page text only; no new raw PDF, download or visual review claim. The same URL/title does not verify historical PDF hashes.",
+  "raw_original_sha256": null,
+  "sources": [
+    {
+      "catalog": "S25",
+      "title": "Dairy ENERGY STAR Guide,LBNL-6261E,October2011",
+      "url": "https://www.energystar.gov/sites/default/files/buildings/tools/Dairy_Guide_Final_With_LBNL_Number.pdf",
+      "printed_pages": [
+        90
+      ],
+      "pdf_zero_based_indices": [
+        96
+      ],
+      "support": "Dryer exhaust recovery and product particulate/fouling constraints. The EPA route is not established byte-equal to the older OSTI catalog file."
+    },
+    {
+      "catalog": "S26",
+      "title": "Fruit and Vegetable ENERGY STAR Guide, LBNL-59289-Revision, March 2008",
+      "url": "https://eta-publications.lbl.gov/sites/default/files/lbnl-59289-rev.pdf",
+      "printed_pages": [
+        104,
+        107
+      ],
+      "pdf_zero_based_indices": [
+        111,
+        114
+      ],
+      "support": "Own-inlet direct/indirect recovery, humidity/drying effects, a run-around alternative for duct-space limits, and conditioned fryer exhaust with multiple uses."
+    },
+    {
+      "catalog": "S27",
+      "title": "Check Burner Air to Fuel Ratios, DOE/GO-102007-2483, November 2007",
+      "url": "https://www1.eere.energy.gov/manufacturing/tech_assistance/pdfs/42110.pdf",
+      "pdf_pages": [
+        1,
+        2
+      ],
+      "support": "Air/fuel flow metering, flue analysis or a combination; high/low-fire, periodic review and process-air/dilution constraints. No permanent oxygen hardware or universal target is implied."
+    },
+    {
+      "catalog": "S28",
+      "title": "Using Waste Heat for External Processes, DOE/GO-102006-2225, January 2006",
+      "url": "https://www.energy.gov/sites/prod/files/2014/05/f16/using_waste_heat.pdf",
+      "pdf_pages": [
+        1
+      ],
+      "historical_catalog_route": "https://www1.eere.energy.gov/manufacturing/tech_assistance/pdfs/38853.pdf",
+      "historical_route_read_failed": true,
+      "support": "Source/sink suitability, quantity, timing, distance, compatibility, condensation, pressure resistance and alternative heating cost. The official alternate route is not authenticated against historical catalog bytes; contextual temperature guidance is not a new universal operating or safety limit."
+    }
+  ],
+  "policy_boundary": "Keeping unqualified records available for review and starting from approved existing records are authored workflow criteria. Primary guidance does not authenticate supplied claims or mandate a retrofit or new measurement for every record."
+}

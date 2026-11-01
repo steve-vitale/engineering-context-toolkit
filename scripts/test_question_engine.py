@@ -34,7 +34,7 @@ RUNS = {
 ROLLUP = ["examples/opportunity-screen/food", "examples/opportunity-screen/bayer"]
 # Refrigeration, oven, dryer and fryer questions (added 2026-10-29 from a food manufacturer's walkthrough)
 NEW = {"E27", "E28", "E29", "E30", "E31", "E32", "H5", "H6", "C11", "C12"}
-SELECTOR_KEYS = {"kind", "type", "type_text", "isa", "variable", "text", "text_all", "not_text", "tagged",
+SELECTOR_KEYS = {"kind", "type", "type_text", "not_type_text", "isa", "variable", "text", "text_all", "not_text", "tagged",
                  "control_valve", "fact_C_min", "fact_C_max", "schedule_field"}
 CLAUSE_KEYS = {"select", "relation", "max_hops", "as", "twin_only", "hand_only", "anchor_kind"}
 RELATIONS = {"same_unit", "same_stream", "same_unit_same_medium", "other_unit", "discharge_side", "near", "drives",
@@ -264,10 +264,11 @@ class ExpectedFindings(unittest.TestCase):
         # Source-informed collection keeps drive and DP labels as candidates, not proof of actual function.
         for fid in ("E29@K-203", "E30@EV-202"):
             self.assertIn(fid, found)
-        # Remaining anti-triggers: oven flue O2 and fryer exhaust heat recovery retain their prior scope.
+        # Existing oxygen/recovery labels do not settle the scoped burner or residual-heat record review.
+        # These source-informed collection jobs are positive leads, not installed deficiencies/projects.
         # K-201's stated power reading remains a candidate; actual real-input suitability stays open.
         for fid in ("E32@O-302", "E31@F-303", "H6@F-303"):
-            self.assertNotIn(fid, found)
+            self.assertIn(fid, found)
         c12 = {a["id"] for a in finding(doc, "C12@model")["assets"]}
         self.assertEqual(c12 & {"K-201", "K-202", "K-203"}, {"K-201", "K-202", "K-203"})
         self.assertIn("JT-201", c12)
@@ -286,7 +287,7 @@ class ExpectedFindings(unittest.TestCase):
         e30 = " ".join(json.dumps(r) for r in finding(doc, "E30@EV-201")["data_requests"])
         self.assertIn("defrost", e30.lower())
         e31 = {r["item"]: r for r in finding(doc, "E31@D-301")["data_requests"]}
-        self.assertIn("TT-304", " ".join(e31["Exhaust temperature and flow"]["where"]))
+        self.assertIn("TT-304", " ".join(e31["Existing exhaust-condition, product and maintenance basis"]["where"]))
 
     def test_new_triggers_ignore_look_alikes(self):
         """A process condenser on cooling water, a recycle gas compressor, an instrument air compressor, a
@@ -1709,7 +1710,7 @@ class ReviewFixes(unittest.TestCase):
         self.assertNotIn("XMV(9)", where)
         self.assertIn("XMV(10)", where)  # the unmetered cooling water side keeps its caveat
         e31 = {r["item"]: r for r in finding(load("food"), "E31@D-301")["data_requests"]}
-        fuel = " ".join(e31["Fuel or heat input and operating hours"]["where"])
+        fuel = " ".join(e31["Existing heat-input, operating-period and comparison basis"]["where"])
         self.assertIn("FT-301", fuel)
         self.assertNotIn("only a valve", fuel)
 
@@ -2495,6 +2496,87 @@ class FunctionBasisCollection(unittest.TestCase):
                 for field in case["candidate_fields"]:
                     self._assert_field(questions, field)
 
+    def test_heating_development_corpus_preserves_scope_literals_and_records_first_requests(self):
+        oracle = json.loads((self.BASE / "expected/heating-cases.json").read_text(encoding="utf-8"))
+        supplement = json.loads((self.BASE / "expected/heating-literal-supplement.json").read_text(encoding="utf-8"))
+        self.assertEqual(oracle["schema"], "function-basis-heating-cases-1")
+        self.assertEqual(supplement["schema"], "function-basis-heating-literal-supplement-1")
+        self.assertEqual(oracle["evidence_class"], "synthetic-development")
+        self.assertEqual(supplement["evidence_class"], "synthetic-development")
+        self.assertEqual(len(oracle["cases"]), oracle["case_count"])
+        self.assertEqual(len({c["id"] for c in oracle["cases"]}), len(oracle["cases"]))
+        self.assertEqual(sum(len(c.get("candidate_fields", [])) for c in oracle["cases"])
+                         + len(supplement["literals"]), supplement["count_profile"]["combined_inputs"])
+        case_ids = {c["id"] for c in oracle["cases"]}
+        self.assertTrue(all(v["case"] in case_ids for v in supplement["literals"]))
+        checked_supplement = set()
+        # These four quiet controls preserve the accepted bounded trigger scope. The source does not
+        # mandate silence whenever a record is absent, and optional working coverage can be shown or quiet.
+        quiet_controls = {"H6-05-no-external-duty-lead", "E31-06-no-process-anchor",
+                          "H6-06-no-process-anchor", "E32-06-nonfuel-and-unrelated-burner"}
+        for case in oracle["cases"]:
+            with self.subTest(case=case["id"]):
+                path = (self.BASE / case["model"]).resolve()
+                self.assertTrue(path.is_relative_to(self.BASE.resolve()))
+                model = json.loads(path.read_text(encoding="utf-8"))
+                result = self._invoke(model, question_id=case["question_id"])
+                self.assertEqual(result[0], 0, result[2])
+                doc, markdown = result[5], result[6]
+                questions = doc["questions"]
+                self._assert_literal_markdown(doc, markdown)
+                self.assertTrue(all(q["question_id"] == case["question_id"] for q in questions))
+                subjects = {q["about"] for q in questions}
+                self.assertEqual(len(subjects), len(questions))
+                if case["subject_policy"] == "exact":
+                    self.assertEqual([q["about"] for q in questions], case["expected_subjects"])
+                    self.assertEqual([q["id"] for q in questions], case["expected_finding_ids"])
+                else:
+                    self.assertEqual(case["subject_policy"], "minimum_plus_quiet_permitted")
+                    required = set(case["required_subjects"])
+                    self.assertLessEqual(required, subjects)
+                    self.assertLessEqual(subjects, required | set(case["quiet_permitted_subjects"]))
+                    self.assertFalse(subjects & set(case["forbidden_subjects"]))
+                if case["id"] in quiet_controls:
+                    self.assertEqual(questions, [])
+                extra_literals = [(n, v) for n, v in enumerate(supplement["literals"]) if v["case"] == case["id"]]
+                for question in questions:
+                    subject = question["about"]
+                    assets = {a["id"] for a in question["assets"]}
+                    required_candidates = case.get("candidate_ids_by_subject_if_shown",
+                                                   case.get("required_candidate_ids_by_subject", {}))
+                    self.assertLessEqual(set(required_candidates.get(subject, [])), assets)
+                    self.assertFalse(assets & set(case.get("forbidden_candidate_ids_by_subject", {}).get(subject, [])))
+                    self.assertFalse(assets & set(case.get("forbidden_offsubject_candidate_ids", [])))
+                    for entry in question["evidence"]:
+                        if entry.get("id") in case.get("forbidden_combustion_basis_candidate_ids", []):
+                            self.assertTrue(entry["role"].startswith("unclassified"), entry)
+                    if case["id"] == "E32-02-product-and-foreign-oxygen":
+                        # O2-P may be unclassified negative context; foreign O2-X cannot qualify this source.
+                        self.assertNotIn("O2-X", assets)
+                        self.assertFalse(any(e.get("id") == "O2-X" for e in question["evidence"]))
+                    for field in case.get("candidate_fields", []):
+                        if field["id"] in assets:
+                            self._assert_field([question], field)
+                    for index, field in extra_literals:
+                        if subject in field["predicted_shown_subjects"]:
+                            self.assertIn(field["id"], assets)
+                            self._assert_field([question], field)
+                            checked_supplement.add(index)
+                    self.assertTrue(question["data_requests"])
+                    for request in question["data_requests"]:
+                        self.assertEqual(request["state"], "not_on_drawing")
+                        self.assertTrue(request["how"].strip())
+                        self.assertTrue(request["where"])
+                        self.assertTrue(request["where"][0].startswith("site records:"), request)
+                    plan = " ".join(r["how"] + " " + " ".join(r["where"]) for r in question["data_requests"])
+                    self.assertIn("existing", plan.lower())
+                    if subject in case.get("quiet_permitted_subjects", []):
+                        # Retain supplied working coverage without calling it a required new project.
+                        self.assertIn("recovery", plan.lower())
+                        self.assertNotRegex(plan.lower(), r"\b(?:must install|retrofit is required|new recovery is required)\b")
+        self.assertEqual(checked_supplement, set(range(len(supplement["literals"]))))
+
+
     def test_native_controller_and_interlock_qualifiers_do_not_become_screening_truth(self):
         for kind in ("controller", "interlock"):
             with self.subTest(kind=kind):
@@ -2636,6 +2718,65 @@ class FunctionBasisCollection(unittest.TestCase):
         request = result[5]["questions"][0]["data_requests"][0]
         self.assertEqual(request["still_needed"], ["enabled"])
         self.assertEqual(request["field_coverage"][0]["fields"][0]["state"], "absent")
+
+
+class ExplicitHeatingRoles(unittest.TestCase):
+    """Post-food-failure controls, separate from the43 core source-collection models."""
+    def _controls(self):
+        folder = EX / "function-basis" / "role-controls"
+        return folder, json.loads((folder / "cases.json").read_text(encoding="utf-8"))
+
+    def test_portable_role_controls_have_explicit_development_scope(self):
+        folder, controls = self._controls()
+        self.assertEqual(controls["schema"], "heating-role-controls-1")
+        self.assertEqual(controls["exposure"], "post-food-failure development; not blind, heldout, plant or source-family evidence")
+        self.assertEqual(len({v["id"] for v in controls["matcher_vectors"]}), len(controls["matcher_vectors"]))
+        self.assertTrue(controls["regex"].endswith(r"\Z"))
+        for case in controls["fixture_expectations"]:
+            self.assertTrue((folder / case["model"]).is_file())
+        for question in CAT["questions"]:
+            if question["id"] in ("E31", "E32", "H6"):
+                self.assertEqual(question["applies_when"]["anchor"]["not_type_text"], controls["regex"])
+        self.assertIn("not_type_text", CAT["fields_help"]["selector"])
+
+    def test_explicit_type_filter_vectors_keep_legacy_and_name_fallback(self):
+        _, controls = self._controls()
+        anchor = copy.deepcopy(next(q for q in CAT["questions"] if q["id"] == "E31")["applies_when"]["anchor"])
+        legacy = dict(anchor)
+        legacy.pop("not_type_text")
+        for case in controls["matcher_vectors"]:
+            with self.subTest(case=case["id"]):
+                item = {"id": "test-role", "kind": "equipment", "text": case["text"], "facts": {}}
+                if not case.get("type_key_absent"):
+                    item["type"] = case["explicit_type"]
+                self.assertIs(qe.matches(item, legacy), case["without_new_key"])
+                self.assertIs(qe.matches(item, anchor), case["with_new_key"])
+                empty_optin = dict(legacy, not_type_text="")
+                self.assertIs(qe.matches(item, empty_optin), case["without_new_key"])
+
+    def test_native_role_controls_keep_process_and_scoped_recovery_context(self):
+        folder, controls = self._controls()
+        for case in controls["fixture_expectations"]:
+            with self.subTest(model=case["model"]):
+                found, not_checked, _, _ = qe.screen(qe.Model(folder / case["model"]), CAT, ["E31", "E32", "H6"])
+                self.assertEqual(not_checked, [])
+                self.assertEqual({f["id"] for f in found}, set(case["required_ids"]))
+                for f in found:
+                    self.assertNotIn(f["id"].split("@", 1)[1], case.get("forbidden_subjects", []))
+                    candidates = {a["id"] for a in f["assets"]}
+                    self.assertNotIn(case.get("forbidden_D_A_candidate"), candidates)
+                    if case.get("represented_recovery_candidate_for_D_A") and f["question_id"] in ("E31", "H6"):
+                        self.assertIn(case["represented_recovery_candidate_for_D_A"], candidates)
+
+    def test_food_typed_recoverer_is_context_not_another_process_subject(self):
+        _, controls = self._controls()
+        found, not_checked, _, _ = qe.screen(qe.Model(EX / "food_plant_model.json"), CAT)
+        self.assertEqual(not_checked, [])
+        expected = controls["actual_food_expected"]
+        self.assertEqual(len(found), expected["findings"])
+        self.assertFalse({f["id"] for f in found} & set(expected["forbidden_ids"]))
+        for fid in ("E31@F-303", "H6@F-303"):
+            self.assertIn("HX-303", {a["id"] for f in found if f["id"] == fid for a in f["assets"]})
 
 
 if __name__ == "__main__":

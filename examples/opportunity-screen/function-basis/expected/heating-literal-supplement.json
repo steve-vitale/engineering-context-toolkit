@@ -1,0 +1,154 @@
+{
+  "schema": "function-basis-heating-literal-supplement-1",
+  "evidence_class": "synthetic-development",
+  "primary_oracle": "heating-cases.json",
+  "primary_oracle_raw_sha256": "e5484665008057e04a21956ef993003b52c7e100e19dc7603accf407291db313",
+  "literals": [
+    {
+      "case": "E32-04-portable-and-metered-methods",
+      "id": "PORT-A",
+      "name": "method",
+      "field": "instruments[PORT-A].facts.method",
+      "value": "portable analyser",
+      "state": "present",
+      "predicted_shown_subjects": [
+        "O-A"
+      ],
+      "expected_row_occurrences": 1,
+      "chronology": "Additional inputliteral control after originalbaseline, before ANYcandidatecall; original4E32literal expectations unchanged."
+    },
+    {
+      "case": "E32-04-portable-and-metered-methods",
+      "id": "PORT-A",
+      "name": "report_revision",
+      "field": "instruments[PORT-A].facts.report_revision",
+      "value": "draft-A",
+      "state": "present",
+      "predicted_shown_subjects": [
+        "O-A"
+      ],
+      "expected_row_occurrences": 1,
+      "chronology": "Additional inputliteral control after originalbaseline, before ANYcandidatecall; original4E32literal expectations unchanged."
+    },
+    {
+      "case": "E32-04-portable-and-metered-methods",
+      "id": "PORT-A",
+      "name": "high_fire_records",
+      "field": "instruments[PORT-A].facts.high_fire_records",
+      "value": "available, scope unverified",
+      "state": "present",
+      "predicted_shown_subjects": [
+        "O-A"
+      ],
+      "expected_row_occurrences": 1,
+      "chronology": "Additional inputliteral control after originalbaseline, before ANYcandidatecall; original4E32literal expectations unchanged."
+    },
+    {
+      "case": "E32-04-portable-and-metered-methods",
+      "id": "PORT-A",
+      "name": "low_fire_records",
+      "field": "instruments[PORT-A].facts.low_fire_records",
+      "value": "unknown",
+      "state": "blank",
+      "predicted_shown_subjects": [
+        "O-A"
+      ],
+      "expected_row_occurrences": 1,
+      "chronology": "Additional inputliteral control after originalbaseline, before ANYcandidatecall; original4E32literal expectations unchanged."
+    },
+    {
+      "case": "E32-04-portable-and-metered-methods",
+      "id": "PORT-A",
+      "name": "calibration_current",
+      "field": "instruments[PORT-A].facts.calibration_current",
+      "value": "unknown",
+      "state": "blank",
+      "predicted_shown_subjects": [
+        "O-A"
+      ],
+      "expected_row_occurrences": 1,
+      "chronology": "Additional inputliteral control after originalbaseline, before ANYcandidatecall; original4E32literal expectations unchanged."
+    },
+    {
+      "case": "E32-04-portable-and-metered-methods",
+      "id": "AF-A",
+      "name": "flow_basis",
+      "field": "instruments[AF-A].facts.flow_basis",
+      "value": "unknown",
+      "state": "blank",
+      "predicted_shown_subjects": [
+        "O-A"
+      ],
+      "expected_row_occurrences": 1,
+      "chronology": "Additional inputliteral control after originalbaseline, before ANYcandidatecall; original4E32literal expectations unchanged."
+    },
+    {
+      "case": "E32-04-portable-and-metered-methods",
+      "id": "FF-A",
+      "name": "flow_basis",
+      "field": "instruments[FF-A].facts.flow_basis",
+      "value": "unknown",
+      "state": "blank",
+      "predicted_shown_subjects": [
+        "O-A"
+      ],
+      "expected_row_occurrences": 1,
+      "chronology": "Additional inputliteral control after originalbaseline, before ANYcandidatecall; original4E32literal expectations unchanged."
+    },
+    {
+      "case": "E32-05-drying-air-and-two-subjects",
+      "id": "EX-A",
+      "name": "minimum_process_air_basis",
+      "field": "instruments[EX-A].facts.minimum_process_air_basis",
+      "value": "manufacturer record unverified",
+      "state": "present",
+      "predicted_shown_subjects": [
+        "D-A"
+      ],
+      "expected_row_occurrences": 1,
+      "chronology": "Additional inputliteral control after originalbaseline, before ANYcandidatecall; original4E32literal expectations unchanged."
+    },
+    {
+      "case": "E32-05-drying-air-and-two-subjects",
+      "id": "EX-A",
+      "name": "solvent_service",
+      "field": "instruments[EX-A].facts.solvent_service",
+      "value": "unknown",
+      "state": "blank",
+      "predicted_shown_subjects": [
+        "D-A"
+      ],
+      "expected_row_occurrences": 1,
+      "chronology": "Additional inputliteral control after originalbaseline, before ANYcandidatecall; original4E32literal expectations unchanged."
+    },
+    {
+      "case": "E32-05-drying-air-and-two-subjects",
+      "id": "EX-A",
+      "name": "LEL_basis",
+      "field": "instruments[EX-A].facts.LEL_basis",
+      "value": "unknown",
+      "state": "blank",
+      "predicted_shown_subjects": [
+        "D-A"
+      ],
+      "expected_row_occurrences": 1,
+      "chronology": "Additional inputliteral control after originalbaseline, before ANYcandidatecall; original4E32literal expectations unchanged."
+    }
+  ],
+  "provenance": {
+    "phase": "These ten additional E32 display controls were frozen after original baseline observations but BEFORE any candidate call. This portable copy transfers the same values; it is not a new oracle or held-out evaluation.",
+    "source_control_vectors_sha256": "c27b0287b901ad3dadb6c21c89f64c838b866d0f33efdf0311059383bcff39de",
+    "source_independent_static_acceptance_sha256": "8450da684e0509592b59263dfbdc913f70024c9ac2328ef62daefae641106282",
+    "original77_contract_unchanged": true,
+    "not_primary_source_families": "All are typed values in the same six authored E32 Native models; no new source document, plant, model trial or engineering acceptance."
+  },
+  "count_profile": {
+    "original_contracted_inputs": 77,
+    "supplemental_inputs": 10,
+    "combined_inputs": 87,
+    "intentionally_unshown_inputs": 4,
+    "active_source_literal_records": 83,
+    "per_subject_candidate_field_rows_if_working_A_shown": 108,
+    "scope": "Four intentionally unshown inputs are unrelated HX-U.enabled in E31-05 and three W-1fields in no-anchor H6-06. Shared recoverer and common-sink source records repeat across subject rows;108 is not108 independent observations or a claim of current runtime success."
+  }
+}

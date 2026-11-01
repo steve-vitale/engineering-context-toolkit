@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "model_id": "E32-04-portable-and-metered-methods",
+    "title": "Fictional E32 source-adequacy development control",
+    "illustrative": true,
+    "source": "Authored synthetic Native fixture; no source drawing, plant record or measurement. Frozen before any baseline call."
+  },
+  "units": [
+    {
+      "id": "O-A",
+      "name": "Batch product oven A",
+      "type": "oven"
+    }
+  ],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "F-A",
+      "unit": "O-A",
+      "variable": "flow",
+      "description": "Natural gas burner fuel supply; installed ratio and operating basis unknown"
+    },
+    {
+      "tag": "PORT-A",
+      "unit": "O-A",
+      "variable": "composition",
+      "description": "Portable flue gas analysis report record; scope and acceptance awaiting review",
+      "facts": {
+        "method": "portable analyser",
+        "report_revision": "draft-A",
+        "high_fire_records": "available, scope unverified",
+        "low_fire_records": "unknown",
+        "calibration_current": "unknown"
+      }
+    },
+    {
+      "tag": "AF-A",
+      "unit": "O-A",
+      "variable": "flow",
+      "description": "Combustion air flow metering record candidate",
+      "facts": {
+        "flow_basis": "unknown"
+      }
+    },
+    {
+      "tag": "FF-A",
+      "unit": "O-A",
+      "variable": "flow",
+      "description": "Burner fuel flow metering record candidate",
+      "facts": {
+        "flow_basis": "unknown"
+      }
+    }
+  ],
+  "final_elements": [],
+  "manual_valves": [],
+  "controllers": []
+}
