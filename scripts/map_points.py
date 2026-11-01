@@ -210,6 +210,13 @@ def main():
     try:
         raw = model_path.read_text(encoding="utf-8")
         model = json.loads(raw)
+        if (isinstance(model, dict) and isinstance(model.get("units"), list)
+                and isinstance(model.get("streams"), list)
+                and not (isinstance(model.get("meta"), dict)
+                         and model["meta"].get("model_kind") == "extracted_twin")):
+            raise ValueError("This OPC mapper requires extracted-twin instrument IDs and does not support Native process models. "
+                             "Keep the Native model unchanged; use generate.py MODEL --out PRIVATE_FOLDER for staging "
+                             "and review signal references separately.")
         fields, rows, source_rows, io_evidence = read_io_list(a.io_list)
     except (OSError, ValueError, csv.Error) as exc:  # a missing or unreadable file: say which, no traceback
         ap.exit(2, f"point mapping rejected; no model update: {exc}\n")

@@ -16907,6 +16907,60 @@
     "independent_receiving_sha256": "3633611174f68755770bd2ff4085b66f7be023a8fa6b2b7c901c61c3d2b85f7e"
    },
    "limits": "Existing workflow failures remain visible. Independent saved-actual receiving does not renew all performance or company acceptance."
+  },
+  {
+   "feature": "review-and-mapping",
+   "date": "2026-11-01",
+   "reviewer": "Independent coding-agent source and saved-actual receiving; separate method/test authorship and original-failure history retained.",
+   "verdict": "pass",
+   "findings": [],
+   "file_hash_method": "SHA256 after CRLF-to-LF normalization, matching the existing feature registry. Raw candidate/input/log hashes remain in the separately bound private receipts.",
+   "registered_example_file_count": 10,
+   "files": {
+    "examples/review-and-mapping/reviewed_sheet0.csv": "d8159f4fb4c8d8ca3497f5d0985298ed2000610efd29ab5f2d7be1595a3d0c15",
+    "examples/review-and-mapping/records/2026-10-29-bundle.md": "8ee42f4d23643b7d2f37e92769adffa20d04875bc4ac65db186fcdcaad0e53c3",
+    "examples/review-and-mapping/mapping_dry_run.md": "0a1055bd00dba08fadd5544b37dabec4009a04004925a26e63e991d49dee9205",
+    "examples/review-and-mapping/graph_after_review.json": "0abf44119d3bd8c8bf3f90e2eed0f6f61508c7d08e3a246b48fac9c1523cc867",
+    "examples/review-and-mapping/REPORT_after_review.html": "33e641c1c5b7d718034671829b0575b927848d1d947636c1c94d3e08775b3b88",
+    "examples/review-and-mapping/pi_mapping_dry_run.txt": "5dd633a14b312e17dc7fd574f9a86866e593f3577d3f565e39b3485cbcbdd47d",
+    "out/review_kit/sheet-8/README.md": "d2a74ba7a4adbb214ab8c549b183f1d1558d4b5a687811faf258a6a30b89987c",
+    "examples/review-and-mapping/native-identity/expected/model.json": "f9f28f256b962414d3c865f9cd3a414654f1f2499546ba48f03789ea15056c44",
+    "examples/review-and-mapping/native-identity/expected/change_record.json": "b471c67b2b61a67c8da4b8e755a64a36978f9acd07ae6315330b192efd0d3d02",
+    "examples/review-and-mapping/native-identity/expected/change_record.md": "529d077d7a16630bb5aafebfd329671849e4e6e3b119e911204ebcd26a77bf26"
+   },
+   "freshly_reproduced_or_validated_files": {},
+   "inherited_unchanged_files": {
+    "examples/review-and-mapping/reviewed_sheet0.csv": "d8159f4fb4c8d8ca3497f5d0985298ed2000610efd29ab5f2d7be1595a3d0c15",
+    "examples/review-and-mapping/records/2026-10-29-bundle.md": "8ee42f4d23643b7d2f37e92769adffa20d04875bc4ac65db186fcdcaad0e53c3",
+    "examples/review-and-mapping/mapping_dry_run.md": "0a1055bd00dba08fadd5544b37dabec4009a04004925a26e63e991d49dee9205",
+    "examples/review-and-mapping/graph_after_review.json": "0abf44119d3bd8c8bf3f90e2eed0f6f61508c7d08e3a246b48fac9c1523cc867",
+    "examples/review-and-mapping/REPORT_after_review.html": "33e641c1c5b7d718034671829b0575b927848d1d947636c1c94d3e08775b3b88",
+    "examples/review-and-mapping/pi_mapping_dry_run.txt": "5dd633a14b312e17dc7fd574f9a86866e593f3577d3f565e39b3485cbcbdd47d",
+    "out/review_kit/sheet-8/README.md": "d2a74ba7a4adbb214ab8c549b183f1d1558d4b5a687811faf258a6a30b89987c",
+    "examples/review-and-mapping/native-identity/expected/model.json": "f9f28f256b962414d3c865f9cd3a414654f1f2499546ba48f03789ea15056c44",
+    "examples/review-and-mapping/native-identity/expected/change_record.json": "b471c67b2b61a67c8da4b8e755a64a36978f9acd07ae6315330b192efd0d3d02",
+    "examples/review-and-mapping/native-identity/expected/change_record.md": "529d077d7a16630bb5aafebfd329671849e4e6e3b119e911204ebcd26a77bf26"
+   },
+   "supporting_files": {
+    "scripts/map_points.py": "ceda7aa64d12b683595ad79f2a2975ceb5318915216f16874b2ed537c3303431",
+    "scripts/test_map_points.py": "50cb1184bf0d1f3341e107ba6abec9a859836b3c0f2b1190912923838ce29a5d",
+    "scripts/output_paths.py": "16ace3cf89be6baffcac1be804ea4917c9db10caffe2b58c11ee0b9acd4d2939",
+    "scripts/generate.py": "729c3081be3e1ec372d4538175d464eceedc7a6665c82a512728094268914307"
+   },
+   "private_proofs": {
+    "independent_actual_receiving_sha256": "861182479ef111cdc99bd402ce0928c0903c9434f8c71382bbe175b8b8ef5d06",
+    "independent_static_sha256": "5f26e0f9bff2b627bdfeda2fe782cb8eb955dfbe7729e615ae122637d55e6086",
+    "actual_author_receipt_sha256": "7e2c665ed5a222ed6474af3ee9844af47bbbcf116917ffc87d1df0736d3c158e",
+    "original_baseline_receipt_sha256": "5c603912915b5fa2d19a07d98d81125b24c03ee4975f6031c90854a82a717334",
+    "raw_candidate_method_sha256": "bd80ececdeb5d5b7bfdc53e211df8cf7097bfdcd530c8ea1d817bb4fb8b9506c",
+    "raw_candidate_test_sha256": "1f37e9594e0d47ad817c90f2c9dbf037f44d21032893d3151de43fe41f7d7978"
+   },
+   "scope": "N106 known-Native CLI admission and continuation only. One 36-method mapper module passed with zero skips, retaining33 old methods and adding three controls. Native units/streams shapes refuse before I/O acquisition; explicit extracted-marker precedence and legacy ID forms remain supported. No planner/API or mapping-algorithm change. All ten registered example files are inherited unchanged with their earlier review scopes; no examples were newly generated or re-reviewed for engineering meaning in this follow-up.",
+   "limits": [
+    "No Native OPC adapter, invented identity, native staging execution, live point validation, company approval or measured human benefit.",
+    "N107 remains an actual unresolved review-event receiving gap; this bounded mapper acceptance does not validate graph-event model/revision binding.",
+    "Selected receipt directories, legacy overwrite and sequential non-atomic publication retain their existing limits."
+   ]
   }
  ]
 }

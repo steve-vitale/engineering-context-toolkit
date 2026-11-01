@@ -552,5 +552,68 @@ class MappingRecordDirectoryTests(unittest.TestCase):
 
 
 
+    def test_native_original_refuses_apply_and_dry_run_without_writes(self):
+        source = Path(map_points.__file__).resolve().parents[1] / 'examples/from-description/assisted/result/model.json'
+        native = source.read_bytes()
+        for dry in (False, True):
+            with self.subTest(dry=dry):
+                home, checkout, model, csv_path = self.create_case()
+                model.write_bytes(native)
+                csv_path.write_bytes(b'tag,server,base_path,point\nFT-101,SYNTHETIC-OPC,ns=1;s=SYNTHETIC,PV\n')
+                selected = home / 'records'
+                selected.mkdir()
+                (selected / 'sentinel.bin').write_bytes(b'KEEP PRIVATE RECEIPTS')
+                (checkout / 'out/mapping').mkdir(parents=True)
+                (checkout / 'out/mapping/sentinel.bin').write_bytes(b'KEEP DEFAULT RECEIPTS')
+                before = self.snapshot(home)
+                proc = self.invoke(checkout, model, csv_path, '--record-dir', selected,
+                                   *(['--dry-run'] if dry else []))
+                self.assertEqual(proc.returncode, 2, proc.stderr)
+                self.assertEqual(proc.stdout, b'')
+                self.assertIn(b'extracted-twin instrument IDs', proc.stderr)
+                self.assertIn(b'Native process models', proc.stderr)
+                self.assertIn(b'generate.py MODEL --out PRIVATE_FOLDER', proc.stderr)
+                self.assertNotIn(b'Traceback', proc.stderr)
+                self.assertNotIn(b'KeyError', proc.stderr)
+                self.assertNotIn(str(model).encode('utf-8'), proc.stderr)
+                self.assertEqual(self.snapshot(home), before)
+
+    def test_native_empty_and_auxiliary_ids_do_not_enable_mapping(self):
+        source = Path(map_points.__file__).resolve().parents[1] / 'examples/from-description/assisted/result/model.json'
+        for kind in ('empty', 'auxiliary-id'):
+            with self.subTest(kind=kind):
+                home, checkout, model, csv_path = self.create_case()
+                native = json.loads(source.read_bytes())
+                if kind == 'empty':
+                    native['instruments'] = []
+                else:
+                    for index, item in enumerate(native['instruments']):
+                        item['id'] = f'SYNTHETIC-AUX-{index}'
+                model.write_text(json.dumps(native, indent=2) + '\n', encoding='utf-8', newline='\n')
+                before = self.snapshot(home)
+                proc = self.invoke(checkout, model, csv_path, '--record-dir', home / 'not-created')
+                self.assertEqual(proc.returncode, 2, proc.stderr)
+                self.assertIn(b'Native process models', proc.stderr)
+                self.assertNotIn(b'Traceback', proc.stderr)
+                self.assertEqual(self.snapshot(home), before)
+
+    def test_explicit_extracted_marker_and_legacy_id_form_keep_dry_run(self):
+        for explicit in (False, True):
+            with self.subTest(explicit=explicit):
+                home, checkout, model, csv_path = self.create_case()
+                if explicit:
+                    value = json.loads(model.read_bytes())
+                    value.update(meta={'model_kind': 'extracted_twin'}, units=[], streams=[])
+                    model.write_text(json.dumps(value, indent=2) + '\n', encoding='utf-8', newline='\n')
+                before = self.snapshot(home)
+                proc = self.invoke(checkout, model, csv_path, '--record-dir', home / 'not-created', '--dry-run')
+                self.assertEqual(proc.returncode, 0, proc.stderr)
+                report = json.loads(proc.stdout)
+                self.assertTrue(report['valid'])
+                self.assertTrue(report['dry_run'])
+                self.assertEqual(report['mapped'][0]['asset'], 'I1')
+                self.assertEqual(self.snapshot(home), before)
+
+
 if __name__ == '__main__':
     unittest.main()

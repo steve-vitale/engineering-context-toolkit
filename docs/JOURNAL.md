@@ -6602,3 +6602,32 @@ comparison retains its failure (18/21 agree, 14/21 detected against reference 17
 are inherited unchanged; totals stay 64 pass, 23 fail and 8 n/a. Only guide pins, timestamps/durations and
 shifted publication line locators change. No model call, new plant corpus, native import, operational approval,
 measured reviewer benefit or generalization improvement is inferred from these software/reader checks.
+
+## 138. Explain the Native-model boundary before point mapping
+
+An engineer can generate useful staging from an authored Native process model, but the OPC mapper uses
+extracted-twin instrument IDs. The earlier interface exposed that difference as a KeyError rather than a
+usable next step. N106 closes this bounded CLI admission gap; it does not add a Native OPC adapter.
+
+Two isolated original calls preserve the baseline: the committed Native model exits 1 with KeyError `id`,
+while an ID-based extracted control completes a valid dry-run with exit 0. Inputs and existing private/default
+receipt sentinels remain unchanged. These are fictional software controls, not plant connections.
+
+The guard recognizes list-valued units and streams unless metadata explicitly selects extracted_twin.
+It runs immediately after JSON loading, before I/O acquisition or mapping. A plain exit 2 diagnostic retains
+the model and points to generate.py with an explicit private output folder. It invents no IDs or mappings.
+The existing planner, matching, source locators, report routing and serialization remain unchanged.
+
+One private 36-method mapper run passes with zero skips. All 33 earlier test methods remain intact; three
+new methods cover Native apply/dry-run, empty/auxiliary-ID shapes and supported extracted-marker/legacy-ID
+forms. Independent receiving verifies the logs, source pins and unchanged four-file workspace. No Native
+generator is run in this follow-up; its existing staging route is a continuation, not a renewed acceptance.
+
+N107 remains open. Two original graph CLI cases expose foreign-event association through colliding IDs
+and preserve genuine earlier history after relocation and renamed current identities. Both calls exit 0;
+a future binding repair must reject foreign association without dropping legitimate history. A selected
+per-model directory is a documented interim practice, not authenticated model/revision binding.
+
+All ten review/mapping example files are inherited unchanged. No new corpus, model call, engineering
+performance, company approval or human benefit is inferred. Current integration and exact-version CI
+remain separate release checks.

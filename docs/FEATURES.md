@@ -512,7 +512,7 @@ Example review: **reviewed example**
 
 - **Registered example files:** [`reviewed_sheet0.csv`](../examples/review-and-mapping/reviewed_sheet0.csv), [`2026-10-29-bundle.md`](../examples/review-and-mapping/records/2026-10-29-bundle.md), [`mapping_dry_run.md`](../examples/review-and-mapping/mapping_dry_run.md), [`graph_after_review.json`](../examples/review-and-mapping/graph_after_review.json), [`REPORT_after_review.html`](../examples/review-and-mapping/REPORT_after_review.html), [`pi_mapping_dry_run.txt`](../examples/review-and-mapping/pi_mapping_dry_run.txt), [`README.md`](../out/review_kit/sheet-8/README.md), [`model.json`](../examples/review-and-mapping/native-identity/expected/model.json), [`change_record.json`](../examples/review-and-mapping/native-identity/expected/change_record.json), [`change_record.md`](../examples/review-and-mapping/native-identity/expected/change_record.md)
 - **Tests:** `test_apply_review.py`, `test_map_points.py`, `test_pi_mapping.py`, `test_review_kit.py`, `test_deliverable_report.py`, `test_review_identity.py`
-- **Independent review:** Independent coding-agent source/reader and saved-actual receiving; method and tests authored by separate agents with roles stated., 2026-11-01: pass
+- **Independent review:** Independent coding-agent source and saved-actual receiving; separate method/test authorship and original-failure history retained., 2026-11-01: pass
 
 </details>
 
