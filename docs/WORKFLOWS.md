@@ -48,9 +48,11 @@ flowchart LR
 The diagram omits setup and optional evidence inputs; the table below states each contract. Image extraction
 requires an approved model interface. Supplied offline answers let you try the examples without running a model.
 Detailed layout is authored. Neither arrows nor a passing check establish engineering truth.
-Eligibility and represented fields still matter: the valid DEXPI C03 reader output lacks the units/instruments
-needed by the question engine and is refused. Use a plain source-question brief in that case. The older
-converted-key DEXPI adapter produces an extracted twin through its separate contract below.
+Eligibility and represented fields still matter. Known unplaced source roles can support a question while
+equipment placement stays unknown. Public C03 now yields C3 for its retained ESV-3712 final element without
+inventing a controller or owning equipment. The [unplaced-role handoff](../examples/graph-export/unplaced-dexpi/question-handoff/README.md)
+shows the question-to-answer tool path. If no relevant catalog trigger fires, keep a plain source-question brief.
+The older converted-key DEXPI adapter produces an extracted twin through its separate contract below.
 
 ## Tool input and output contracts
 

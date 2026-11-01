@@ -26,6 +26,9 @@ twin (plant_model.json). --loops adds controllers from a loop list CSV (controll
 --schedule adds equipment schedule entries (tag + service per sheet; optional printed fields, null = blank).
 Explicit ops_review rejections are excluded from screening and reported; the source model and history are not
 edited. Other items remain eligible, with references to rejected owners/parents/streams removed for this screen.
+Native unplaced records retain declared roles, source qualifications and unknown equipment ownership. On that
+route loop CSV references use exact IDs; supplemental controller records need an authored/reviewed model update
+before they can be represented by the source graph or handed off as a complete graph/context pair.
 
 Writes questions.json (the graph-export questions shape: scripts/graph_export.py --questions accepts it) and
 screen.md (grouped by family, readable on its own).
@@ -310,7 +313,7 @@ def validate_named_values(values, where):
         seen.add(folded)
 
 
-def load_loops(path):
+def load_loops(path, *, exact=False):
     try:
         with open(path, encoding="utf-8", newline="") as f:
             lines = [ln for ln in f if not ln.lstrip().startswith("#") and ln.strip()]
@@ -324,9 +327,14 @@ def load_loops(path):
                          f"'{','.join(head) or '(empty)'}'. Expected controller,measurement,output[,description]")
     rows = []
     for n, r in enumerate(reader, 1):
-        row = {(k or "").strip(): (v or "").strip() if isinstance(v, str) else "" for k, v in r.items() if k}
+        row = {(k or "").strip(): ((v or "") if exact else (v or "").strip()) if isinstance(v, str) else ""
+               for k, v in r.items() if k}
         if not row.get("controller"):
             raise InputError(f"the loop list {shown_path(path)}: data row {n} has no controller")
+        if exact:
+            for field in ("controller", "measurement", "output"):
+                if row.get(field):
+                    native_exact_id(row[field], f"loop list row {n} {field}")
         rows.append(row)
     return rows
 
@@ -434,7 +442,151 @@ def screening_model(m):
     return active, exclusions
 
 
-def from_hand(m):
+NATIVE_UNPLACED_ROLES = {"equipment": "equipment", "instrument": "instrument", "final_element": "final_element",
+                        "controller": "controller", "line_item": "line_item", "offpage_connector": "offpage",
+                        "manual_valve": "hand_valve", "relief_device": "relief"}
+NATIVE_SOURCE_FIELDS = ("tag", "kind", "unit", "stream", "source", "dexpi_id", "dexpi_class", "tag_basis",
+                        "assigned_tag", "unit_basis", "unplaced_reason", "variable", "part_of", "status")
+NATIVE_VALVE_CLASSES = ("Valve", "ControlValve", "OperatedValve", "GlobeValve", "BallValve", "ButterflyValve",
+                        "GateValve", "DiaphragmValve", "PlugValve", "AngleValve", "NeedleValve", "PinchValve")
+NATIVE_SOURCE_CONTEXT = "native-unplaced-source-context-1"
+
+
+def native_exact_id(value, where):
+    if not isinstance(value, str) or not value or value != value.strip():
+        raise InputError(f"{where} must be nonempty exact identity text; aliases are not resolved")
+    try:
+        value.encode("utf-8")
+    except UnicodeError:
+        raise InputError(f"{where} must be valid UTF-8 identity text") from None
+    return value
+
+
+def native_unplaced_route(m):
+    return bool(m.get("unplaced") or any(c.get(field) is not None and c.get(field) != "" and c.get(field) != []
+                for c in m.get("controllers", []) if isinstance(c, dict)
+                for field in ("measurement_unplaced", "output_unplaced")) or
+                (not (m.get("units") or m.get("instruments")) and m.get("controllers")))
+
+
+def native_source_index(m):
+    """Exact graph identities from the complete source, including known rejected records."""
+    index = {"PLANT": {"role": "plant", "record": {}}, "BL": {"role": "boundary", "record": {}}}
+    groups = (("units", "id", "equipment"), ("streams", "id", "stream"),
+              ("instruments", "tag", "instrument"), ("final_elements", "tag", "final_element"),
+              ("controllers", "tag", "controller"), ("manual_valves", "tag", "manual_valve"),
+              ("relief_devices", "tag", "relief_device"), ("interlocks", "id", "interlock"),
+              ("unplaced", "tag", None))
+    for section, key, role in groups:
+        for record in m.get(section, []):
+            identity = native_exact_id(record.get(key), f"{section} {key}")
+            if section == "streams":
+                identity = "stream:" + identity
+            if identity in index:
+                raise InputError(f"ambiguous duplicate Native graph identity {identity!r}; reconcile source records")
+            supplied = record.get("kind") if role is None else role
+            if supplied is not None and not isinstance(supplied, str):
+                raise InputError("unplaced kind must be text when supplied")
+            index[identity] = {"role": supplied or "line_item", "record": record, "section": section}
+    for number, record in enumerate(m.get("limits", []), 1):
+        identity = native_exact_id(record.get("id") or f"LIM-{number}", "limit id")
+        if identity in index:
+            raise InputError(f"ambiguous duplicate Native graph identity {identity!r}; reconcile source records")
+        index[identity] = {"role": "limit", "record": record, "section": "limits"}
+    for controller in m.get("controllers", []):
+        native_controller_refs(controller, index)
+    return index
+
+
+def native_controller_refs(controller, index):
+    """Validate exact, role-compatible source links; raw scalar/list fields remain untouched."""
+    refs = {"measurements": [], "outputs": [], "sets": []}
+    def add(value, roles, bucket, field):
+        if value is None or value == "" or value == []:
+            return
+        values = [value] if isinstance(value, str) else value
+        if not isinstance(values, list):
+            raise InputError(f"controller {controller['tag']}: {field} must name an exact tag or list of tags")
+        for target in values:
+            native_exact_id(target, f"controller {controller['tag']} {field}")
+            found = index.get(target)
+            if found is None:
+                raise InputError(f"controller {controller['tag']}: {field} target {target!r} is missing")
+            if found["role"] not in roles:
+                raise InputError(f"controller {controller['tag']}: {field} target {target!r} has incompatible role")
+            if target not in refs[bucket]:
+                refs[bucket].append(target)
+    add(controller.get("measurement"), ("instrument", "controller"), "measurements", "measurement")
+    add(controller.get("measurement_unplaced"), ("instrument",), "measurements", "measurement_unplaced")
+    output = controller.get("output") or {}
+    add(output.get("final_element"), ("final_element",), "outputs", "output.final_element")
+    add(output.get("split_range"), ("final_element",), "outputs", "output.split_range")
+    add(controller.get("output_unplaced"), ("final_element",), "outputs", "output_unplaced")
+    for field in ("setpoint_of", "controller"):
+        add(output.get(field), ("controller",), "sets", "output." + field)
+    return refs
+
+
+def native_source_context(record, role, index, refs=None):
+    def bounded_fields(source):
+        fields = {key: copy.deepcopy(source[key]) for key in NATIVE_SOURCE_FIELDS if key in source}
+        for key in ("ops_review", "verification", "topology_verification"):
+            if isinstance(source.get(key), dict):
+                fields[key] = {name: copy.deepcopy(source[key][name]) for name in ("status", "by", "on", "notes")
+                               if name in source[key] and
+                               (name != "status" or source[key][name] == "rejected")}
+        return fields
+    fields = bounded_fields(record)
+    context = {"kind": NATIVE_SOURCE_CONTEXT, "model_role": role, "record_fields": fields,
+               "placement": "supplied unit" if record.get("unit") else "owning equipment unknown; no unit inferred"}
+    if refs is not None:
+        raw = {key: copy.deepcopy(record[key]) for key in ("measurement", "measurement_unplaced", "output_unplaced")
+               if key in record}
+        if "output" in record:
+            raw["output"] = (None if record["output"] is None else
+                             {key: copy.deepcopy(record["output"][key])
+                              for key in ("final_element", "split_range", "setpoint_of", "controller")
+                              if key in (record.get("output") or {})})
+        context["reference_fields"] = raw
+        context["active_exact_endpoints"] = copy.deepcopy(refs)
+        endpoint_ids = list(dict.fromkeys(target for values in native_controller_refs(record, index).values()
+                                         for target in values))
+        context["endpoint_context"] = [{"id": target, "model_role": index[target]["role"],
+                                       "record_fields": bounded_fields(index[target]["record"])}
+                                      for target in endpoint_ids]
+    try:
+        json.dumps(context, ensure_ascii=False, allow_nan=False).encode("utf-8")
+    except (UnicodeError, ValueError):
+        raise InputError("Native unplaced source context must contain finite UTF-8 JSON values") from None
+    return context
+
+
+def native_source_text(context):
+    literal = lambda value: json.dumps(value, ensure_ascii=False, allow_nan=False)
+    parts = [context["placement"] + "; supplied source interpretation, not installed truth"]
+    fields = context.get("record_fields", {})
+    if fields:
+        parts.append("Recorded qualifiers: " + literal(fields))
+    if fields.get("assigned_tag") is True:
+        parts.append("Assigned identifier; an operating tag has not been verified")
+    if "reference_fields" in context:
+        parts.append("Exact recorded endpoint fields: " + literal(context["reference_fields"]))
+        parts.append("Exact endpoints retained for this screen: " + literal(context["active_exact_endpoints"]))
+        for endpoint in context["endpoint_context"]:
+            qualifications = endpoint["record_fields"]
+            parts.append("Referenced " + endpoint["model_role"] + " " + literal(endpoint["id"]) +
+                         ": " + literal(qualifications))
+            if qualifications.get("assigned_tag") is True:
+                parts.append(literal(endpoint["id"]) + " has an assigned identifier, not a verified operating tag")
+        parts.append("A supplied command/process-measurement path is not measured valve travel or a verified physical signal path")
+    if "loop_record" in context:
+        parts.append("Supplemental loop record from " + literal(context["source"]) + ": " + literal(context["loop_record"]))
+        parts.append("Exact endpoints supplied for this screen: " + literal(context["active_exact_endpoints"]))
+        parts.append(context["graph_representation"])
+    return "; ".join(parts)
+
+
+def from_hand(m, native_index=None):
     items = []
     for u in m.get("units", []):
         items.append(Item(id=u["id"], tag=u["id"], kind="equipment", type=u.get("type"), isa=None,
@@ -466,21 +618,45 @@ def from_hand(m):
         spt = (f"(setpoint {sp['value']} {sp.get('uom', '')}".strip() + ")") if sp.get("value") is not None else None
         notes = [f"As found: {c['as_found']}." if c.get("as_found") else None,
                  f"As operated: {c['as_operated']}." if c.get("as_operated") else None]
-        items.append(Item(id=c["tag"], tag=c["tag"], kind="controller", isa=isa_of(c["tag"]),
+        item = Item(id=c["tag"], tag=c["tag"], kind="controller", isa=isa_of(c["tag"]),
                           text=" ".join(filter(None, [c["tag"], c.get("description"), spt])),
                           notes=" ".join(filter(None, notes)) or None, unit=c.get("unit"),
                           measurement=c.get("measurement"), outputs=outs, sets=sets, facts={},
                           evidence_only_facts=dict(c.get("facts") or {}),
-                          field=f"controllers[{c['tag']}]"))
+                          field=f"controllers[{c['tag']}]")
+        if native_index is not None:
+            original = native_index[c["tag"]]["record"]
+            refs = native_controller_refs(original, native_index)
+            refs = {name: [target for target in targets
+                           if (native_index[target]["record"].get("ops_review") or {}).get("status") != "rejected"]
+                    for name, targets in refs.items()}
+            item.update(measurements=refs["measurements"], outputs=refs["outputs"], sets=refs["sets"],
+                        native_source_context=native_source_context(original, "controller", native_index, refs))
+        items.append(item)
     for il in m.get("interlocks", []):
         items.append(Item(id=il["id"], tag=il["id"], kind="interlock", isa=None,
                           text=" ".join(filter(None, [il["id"], il.get("cause"), il.get("effect")])),
                           measurement=il.get("measurement"), outputs=[il.get("final_element")], facts={},
                           evidence_only_facts=dict(il.get("facts") or {}),
                           field=f"interlocks[{il['id']}]"))
+    if native_index is not None:
+        for record in m.get("unplaced", []):
+            role = record.get("kind")
+            kind = NATIVE_UNPLACED_ROLES.get(role, "line_item")
+            isa = isa_of(record["tag"])
+            if role == "final_element" and (CONTROL_VALVE.match(isa or "") or
+                                             record.get("dexpi_class") in NATIVE_VALVE_CLASSES):
+                kind = "valve"
+            original = native_index[record["tag"]]["record"]
+            items.append(Item(id=record["tag"], tag=record["tag"], kind=kind, type=None, isa=isa,
+                              variable=record.get("variable"), text=" ".join(filter(None, [record["tag"],
+                              record.get("description")])), unit=record.get("unit"), stream=record.get("stream"),
+                              facts=dict(record.get("facts") or {}), signal=signal_hand(record),
+                              field=f"unplaced[{record['tag']}]", native_unplaced=True,
+                              native_source_context=native_source_context(original, role or "line_item", native_index)))
     stream_unit = {i["stream"]: i["unit"] for i in items if i["kind"] == "stream" and i.get("unit")}
     for i in items:
-        if not i.get("unit") and i.get("stream") in stream_unit:
+        if not i.get("native_unplaced") and not i.get("unit") and i.get("stream") in stream_unit:
             i["unit"] = stream_unit[i["stream"]]
     return items
 
@@ -684,12 +860,15 @@ class Model:
                              f"{type(self.m['meta']).__name__}")
         self.twin = (self.m.get("meta") or {}).get("model_kind") == "extracted_twin"
         self.schedule_sources = []
-        if not (self.m.get("units") or self.m.get("instruments")):
+        if not (self.m.get("units") or self.m.get("instruments") or
+                (not self.twin and (self.m.get("controllers") or self.m.get("unplaced")))):
             raise InputError(f"the model {shown_path(path)} has no units or instruments: is this the right file? "
                              "Expected a process model (units, streams, instruments, ...) or an extracted twin "
                              "(plant_model.json)")
         check_shapes(self.m, path)
         try:
+            self.native_unplaced = not self.twin and native_unplaced_route(self.m)
+            native_index = native_source_index(self.m) if self.native_unplaced else None
             self.active_m, self.review_exclusions = screening_model(self.m)
             self.schedule = load_schedule(schedule_paths, self.schedule_sources)
             self.schedule_sources = sorted(set(self.schedule_sources))
@@ -701,7 +880,7 @@ class Model:
             self.io_sources = load_io_sources(io_paths)
             self.mapping_descriptions = []
             self.items = from_twin(self.active_m, self.schedule, self.source_paths, self.io_sources,
-                                   self.mapping_descriptions) if self.twin else from_hand(self.active_m)
+                                   self.mapping_descriptions) if self.twin else from_hand(self.active_m, native_index)
             for item in self.items:
                 fields = (item.get("schedule") or {}).get("fields") or {}
                 for name, value in (item.get("facts") or {}).items():
@@ -723,37 +902,83 @@ class Model:
         self.loop_rejected = []
         if loops:
             self.loop_source = shown_path(loops)
-            have = {norm_tag(i["tag"]) for i in self.items if i["kind"] == "controller"}
-            known = {norm_tag(i["tag"]) for i in self.items if i.get("tag")}
-            rows = load_loops(loops)
+            loop_key = (lambda value: value if value else None) if self.native_unplaced else norm_tag
+            have = {loop_key(i["tag"]) for i in self.items if i["kind"] == "controller"}
+            known = {loop_key(i["id"] if self.native_unplaced else i["tag"]) for i in self.items if i.get("tag")}
+            rows = load_loops(loops, exact=self.native_unplaced)
             # A supplemental list cannot undo an explicit model rejection. A live duplicate controller tag
             # still represents a separate eligible record; do not reject every occurrence of that tag.
-            live_identities = {norm_tag(value) for it in self.items for value in (it["id"], it.get("tag")) if value}
-            rejected_identities = {norm_tag(value) for it in self.review_exclusions
+            live_identities = {loop_key(value) for it in self.items for value in (it["id"], it.get("tag")) if value}
+            rejected_identities = {loop_key(value) for it in self.review_exclusions
                                    for value in (it["id"], it.get("tag")) if value} - live_identities
+            if self.native_unplaced:
+                rejected_identities = {identity for identity, entry in native_index.items()
+                                       if (entry["record"].get("ops_review") or {}).get("status") == "rejected"}
             # A loop row could otherwise recreate any rejected record as a controller, including a drive or
             # other final element. Apply the identity guard across sections, not just controller bubbles.
-            self.loop_rejected = [r["controller"] for r in rows if norm_tag(r["controller"]) in rejected_identities]
-            rows = [r for r in rows if norm_tag(r["controller"]) not in rejected_identities]
+            rejected_fields = ("controller", "measurement", "output") if self.native_unplaced else ("controller",)
+            self.loop_rejected = [r["controller"] for r in rows
+                                  if any(loop_key(r.get(k)) in rejected_identities for k in rejected_fields)]
+            rows = [r for r in rows if not any(loop_key(r.get(k)) in rejected_identities for k in rejected_fields)]
             # A loop list naming none of the model's tags is the wrong list or a typo: screening with it would
             # report every instrument as unread by any controller, so refuse it instead of answering confidently.
             self.loop_unmatched = [r["controller"] for r in rows
-                                   if not {norm_tag(r.get(k)) for k in ("controller", "measurement", "output")} & known]
+                                   if not {loop_key(r.get(k)) for k in ("controller", "measurement", "output")} & known]
             if rows and len(self.loop_unmatched) == len(rows):
                 raise InputError(f"none of the {len(rows)} row(s) in the loop list {self.loop_source} names a tag in "
                                  f"the model {shown_path(path)} (controller, measurement or output): is it the list "
                                  "for this unit, and are the tags spelt as on the drawing?")
+            if self.native_unplaced:
+                endpoint_roles = {identity: entry["role"] for identity, entry in native_index.items()
+                                  if identity not in rejected_identities}
+                for r in rows:
+                    endpoint_roles.setdefault(r["controller"], "controller")
+                for r in rows:
+                    for field, roles in (("measurement", ("instrument", "controller")),
+                                         ("output", ("final_element", "controller"))):
+                        target = r.get(field)
+                        if not target:
+                            continue  # Empty remains unknown; only nonempty references claim an endpoint.
+                        target_role = endpoint_roles.get(target)
+                        if target_role is None:
+                            raise InputError(f"loop controller {r['controller']}: {field} target {target!r} "
+                                             "is missing from exact active Native/source-loop identities")
+                        if target_role not in roles:
+                            raise InputError(f"loop controller {r['controller']}: {field} target {target!r} "
+                                             f"has incompatible role {target_role!r}")
             for r in rows:
-                if norm_tag(r.get("controller")) in have:
+                if self.native_unplaced and r["controller"] in native_index:
+                    entry = native_index[r["controller"]]
+                    if entry["role"] != "controller":
+                        raise InputError("loop controller collides with a different exact Native graph role")
+                    declared = native_controller_refs(entry["record"], native_index)
+                    for field, targets in (("measurement", declared["measurements"]),
+                                           ("output", declared["outputs"] + declared["sets"])):
+                        if r.get(field) and targets and r[field] not in targets:
+                            raise InputError("loop list conflicts with the Native controller's exact source endpoints")
+                if loop_key(r.get("controller")) in have:
                     continue
                 out = r.get("output", "")
-                is_ctrl = bool(re.match(r"^[A-Z]+I?C-", norm_tag(out) or ""))
+                is_ctrl = (out in have or any(x["controller"] == out for x in rows)) if self.native_unplaced else \
+                    bool(re.match(r"^[A-Z]+I?C-", norm_tag(out) or ""))
                 self.items.append(Item(id=r["controller"], tag=r["controller"], kind="controller",
                                        isa=isa_of(r["controller"]), text=" ".join([r["controller"],
                                                                                     r.get("description", "")]),
-                                       measurement=r.get("measurement"), outputs=[] if is_ctrl else [out],
+                                       measurement=r.get("measurement"), outputs=[] if is_ctrl or (self.native_unplaced and not out) else [out],
                                        sets=[out] if is_ctrl else [], facts={},
                                        field=f"loop list {self.loop_source} row {r['controller']}"))
+                if self.native_unplaced:
+                    item = self.items[-1]
+                    item["measurements"] = [r["measurement"]] if r.get("measurement") else []
+                    item["native_source_context"] = {
+                        "kind": NATIVE_SOURCE_CONTEXT, "model_role": "controller", "source": self.loop_source,
+                        "loop_record": {key: r[key] for key in ("controller", "measurement", "output", "description") if key in r},
+                        "placement": "owning equipment unknown; no unit inferred",
+                        "active_exact_endpoints": {"measurements": item["measurements"], "outputs": item["outputs"], "sets": item["sets"]},
+                        "graph_representation": "Supplemental loop controller is not a node in the selected source model. "
+                        "Author and review its identity/relationships in the model before graph/context handoff."}
+        if self.native_unplaced and len({item["id"] for item in self.items}) != len(self.items):
+            raise InputError("ambiguous duplicate exact Native screening identity; reconcile model/loop records")
         self.by_id = {i["id"]: i for i in self.items}
         self.by_tag = defaultdict(list)
         for i in self.items:
@@ -863,9 +1088,14 @@ def related(model, anchor, cand, clause):
     if rel == "other_unit":
         return bool(anchor_unit(anchor)) and bool(cand.get("unit")) and cand.get("unit") != anchor_unit(anchor)
     if rel == "drives":  # cand is a controller writing straight to the anchor valve
+        if getattr(model, "native_unplaced", False):
+            return cand["kind"] == "controller" and anchor["id"] in cand.get("outputs", [])
         return cand["kind"] == "controller" and norm_tag(anchor["tag"]) in {norm_tag(x) for x in cand.get("outputs",
                                                                                                           [])}
     if rel == "reads":  # cand is a controller or interlock reading the anchor measurement
+        if getattr(model, "native_unplaced", False):
+            return cand["kind"] in ("controller", "interlock") and anchor["id"] in cand.get(
+                "measurements", [cand.get("measurement")])
         return cand["kind"] in ("controller", "interlock") and norm_tag(cand.get("measurement")) == \
             norm_tag(anchor["tag"])
     if rel == "linked":  # joined to the anchor's unit by a drawn stream (an exhaust to a recovery exchanger)
@@ -1117,6 +1347,10 @@ def evidence_line(model, it, role):
         bits.append(f"at {u.label() if u else it['unit']}" + (" (by the extraction's attribution)" if model.twin
                                                                  else ""))
     result = {"role": role, "id": it["id"], "tag": it.get("tag"), "text": " ".join(bits), "field": it["field"]}
+    if it.get("native_source_context"):
+        context = copy.deepcopy(it["native_source_context"])
+        result["provenance"] = context
+        result["text"] += "; " + native_source_text(context)
     resolution = (it.get("schedule") or {}).get("service_reconciliation")
     if resolution:
         result["service_reconciliation"] = resolution
@@ -1454,7 +1688,8 @@ def render_md(model, catalog, doc):
                   "**Asset IDs (JSON array):** " + _markdown_json([a["id"] for a in f["assets"]]), "",
                   "**Evidence on the drawing / model**", ""]
             L += [f"- {e['role'].capitalize()}: {_markdown_json(e['text'])} ({_markdown_json(e['field'])})"
-                  if f["question_id"] in candidate_questions and e["role"] == CANDIDATE_FIELD_ROLE else
+                  if (f["question_id"] in candidate_questions and e["role"] == CANDIDATE_FIELD_ROLE) or
+                  (isinstance(e.get("provenance"), dict) and e["provenance"].get("kind") == NATIVE_SOURCE_CONTEXT) else
                   f"- Caveat: {e['text']}" if e["role"] == "caveat" else
                   f"- {'' if e['role'] == 'trigger' else e['role'].capitalize() + ': '}{e['text']} ({field_reference(e['field'])})"
                   for e in f["evidence"]]

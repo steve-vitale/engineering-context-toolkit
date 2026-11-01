@@ -6946,3 +6946,44 @@ N115 separately records unmeasured latest-answer grouping work. The current N082
 bounded source-reviewed rules and 27 remaining; earlier attempt records stay unchanged. No catalog, benchmark
 or matrix result changes. Full repository and exact-head CI remain separate, as do company/source authority,
 plant truth, operating permission and measured engineer usefulness.
+
+## 148. Carry known unplaced roles into a useful engineering handoff
+
+A reader should be able to start a useful investigation from a known valve before its owning equipment is
+established. The public I04 reader model already preserved instrument/final-element roles and a logical
+FT-04/FIC-04/FV-04 chain, but the question engine refused it because it lacked placed units and instruments.
+The [worked handoff](../examples/graph-export/unplaced-dexpi/question-handoff/README.md) now connects that
+supported partial model to a C3 records investigation, a fictional partial answer and retained revision history.
+
+The new Native unresolved-placement route preserves exact identities, selected source qualifiers, assigned-tag
+basis and explicit controller endpoints. Unknown ownership stays unknown. Missing, incompatible or duplicate
+references refuse before replacing reports; rejected records are not recreated through loop lists. An explicit
+unknown role is not promoted from valve-like spelling. Supplemental CSV controllers need authoring/review in
+the source model before graph/context handoff. Ordinary placed Native and extracted-twin contracts retain
+their existing behavior. The separate public C03 diagnostic now supports C3 for ESV-3712 without inventing
+a controller or owning equipment; this does not broaden platform-generator eligibility.
+
+The permanent regression extension contains four methods covering admission, exact relationships, loop-list
+controls and answer freshness/history. An earlier matched original/candidate exercise retained the failures;
+the canonical-LF public module reports 160 tests with one unnamed skip and no failures or errors.
+Checkout checks pass three methods. Canonical LF applies to the two derived model files; the original CRLF
+failed input is retained separately, and original source-document hashes keep their byte-exact meaning.
+
+The documented tutorial replay makes six CLI calls and three pure Snapshot pair readbacks. A partial answer
+is current on A; separate source and model revisions reopen it as stale/unanswered while retaining complete
+decision and ownership history. Model B is an authored fork that changes its declared path and tag basis;
+it is not a one-field causal control. Same-path freshness controls are separate regression evidence. The
+published 25 selected artifacts are exact copies of the earlier accepted run. Updated presentation metadata
+preserves that run's original README and provenance rather than claiming it consumed the later reader guide.
+
+Seven normal producers regenerate the four legacy screens, their food/Bayer rollup and two description
+bundles. Of 79 compared artifacts, 77 remain byte-identical; the two actual build receipts change only their
+question-engine code hash. The first public description check correctly fails those two stale receipts;
+after adopting the actual regenerated receipts, all 23 description tests pass. No receipt is hand-stamped.
+
+A300/N114 closes this local question/handoff gap. The reader guides distinguish reusable tools, substitution
+tutorials and public case evidence; an archive-planning page now scopes its clean-drawing assumptions to the
+early OPEN100 reference. Catalog rules, original workflow criteria, saved model results and pipeline records
+are unchanged. These exposed public/fictional software exercises establish no new plant accuracy, measured
+human benefit, authenticated company review or operating acceptance. Full repository and exact-head CI remain
+separate integration checks; the company retains source authority, access and continuing ownership.

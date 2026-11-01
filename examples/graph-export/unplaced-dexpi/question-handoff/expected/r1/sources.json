@@ -1,0 +1,20 @@
+{
+  "schema": "context-sources-1",
+  "documents": [
+    {
+      "id": "N114-FICTIONAL-NOTE",
+      "revision": "A",
+      "path": "note.txt",
+      "sha256": "7f90972cd32cad65e58b901934be4946506e74a51e562f692d030d259d0e8cb4",
+      "locators": [
+        {
+          "id": "command-limits",
+          "locator": "lines 3–5",
+          "questions": [
+            "C3@model"
+          ]
+        }
+      ]
+    }
+  ]
+}

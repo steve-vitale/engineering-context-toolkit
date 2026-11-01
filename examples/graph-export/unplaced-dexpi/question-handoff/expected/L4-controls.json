@@ -1,0 +1,63 @@
+{
+  "schema": "n114-L4-local-identifier-input-1",
+  "base": {
+    "path": "examples/graph-export/unplaced-dexpi/i04.model.json",
+    "sha256_raw": "d45563c5804f465ac8fb557c4180cc9eca5577cce5d5a2074078fde357962746"
+  },
+  "cases": [
+    {
+      "id": "L4-class-qualified-local-identifier",
+      "authored": true,
+      "patch": [
+        {
+          "op": "add",
+          "path": "/meta/authored_control",
+          "value": "AUTHORED N114 L4 SOFTWARE CONTROL: local-item-alpha is an assigned model identifier with no ISA-style prefix, not an installed operating tag. Known explicit final_element/GlobeValve and operated-valve source context remain; equipment ownership remains unknown. Renaming is not asserted by the original XML."
+        },
+        {
+          "op": "replace",
+          "path": "/controllers/0/output_unplaced",
+          "value": "local-item-alpha"
+        },
+        {
+          "op": "replace",
+          "path": "/unplaced/0/tag",
+          "value": "local-item-alpha"
+        },
+        {
+          "op": "replace",
+          "path": "/line_layers/networks/0/members/1",
+          "value": "local-item-alpha"
+        },
+        {
+          "op": "replace",
+          "path": "/line_layers/segments/0/to",
+          "value": "local-item-alpha"
+        },
+        {
+          "op": "add",
+          "path": "/unplaced/0/assigned_tag",
+          "value": true
+        },
+        {
+          "op": "replace",
+          "path": "/unplaced/0/tag_basis",
+          "value": "AUTHORED assigned local model identifier; not an operating-tag verification. Original source tag basis: PipingComponentNumberAssignmentClass of the operated valve"
+        },
+        {
+          "op": "replace",
+          "path": "/unplaced/0/source",
+          "value": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem) | AUTHORED N114 L4 SOFTWARE CONTROL: local-item-alpha is an assigned model identifier with no ISA-style prefix, not an installed operating tag. Known explicit final_element/GlobeValve and operated-valve source context remain; equipment ownership remains unknown. Renaming is not asserted by the original XML."
+        },
+        {
+          "op": "replace",
+          "path": "/controllers/0/source",
+          "value": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction) | AUTHORED L4 SOFTWARE CONTROL: exact output target renamed to local-item-alpha; this label is not the original XML operating tag."
+        }
+      ]
+    }
+  ],
+  "source_boundary": "Preserve actual supplied source role/class and operated-valve references. Only four exact live ID/reference occurrences renamed; raw XML/primarysourcefields such as FV 04 remain unchanged source claims, not live aliases. No unit or physical signal proof is added.",
+  "materialization": "Ordered RFC6902 add/replace to deep copied exact base; concrete bytes/recipes before any root-authorized call.",
+  "call_authorization": false
+}

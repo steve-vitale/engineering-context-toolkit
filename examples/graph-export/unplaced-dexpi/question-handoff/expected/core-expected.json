@@ -1,0 +1,172 @@
+{
+  "schema": "n114-prospective-expected-1",
+  "controls_input_freeze_sha256_raw": "b4e16a933ef49e1d422b75250de242eefc65a39496b71ab1b5da5bd8100c719d",
+  "controls_sha256_raw": "6707d9df7c1f4284c19e8f9d1c74dc18a4f98f0278058c870a197b7dfbe945ac",
+  "cases": [
+    {
+      "id": "U00-i04-original",
+      "expected": "admit_C3",
+      "CLI_exit": 0,
+      "finding_id": "C3@model",
+      "required_valve_anchors": [
+        "FV-04"
+      ],
+      "controller_exact_command_endpoints": {
+        "FIC-04": [
+          "FV-04"
+        ]
+      },
+      "plant_truth": "not_inferred"
+    },
+    {
+      "id": "U01-i01-original",
+      "expected": "admit_quiet",
+      "CLI_exit": 0,
+      "finding_id": null,
+      "required_valve_anchors": [],
+      "controller_exact_command_endpoints": {},
+      "plant_truth": "not_inferred"
+    },
+    {
+      "id": "U02-controller-only",
+      "expected": "admit_quiet",
+      "CLI_exit": 0,
+      "finding_id": null,
+      "required_valve_anchors": [],
+      "controller_exact_command_endpoints": {},
+      "plant_truth": "not_inferred"
+    },
+    {
+      "id": "U03-unplaced-only",
+      "expected": "admit_C3",
+      "CLI_exit": 0,
+      "finding_id": "C3@model",
+      "required_valve_anchors": [
+        "FV-04"
+      ],
+      "controller_exact_command_endpoints": {},
+      "plant_truth": "not_inferred"
+    },
+    {
+      "id": "U04-unknown-role",
+      "expected": "admit_quiet",
+      "CLI_exit": 0,
+      "finding_id": null,
+      "required_valve_anchors": [],
+      "controller_exact_command_endpoints": {},
+      "plant_truth": "not_inferred"
+    },
+    {
+      "id": "U05-rejected-valve",
+      "expected": "admit_quiet",
+      "CLI_exit": 0,
+      "finding_id": null,
+      "required_valve_anchors": [],
+      "controller_exact_command_endpoints": {},
+      "plant_truth": "not_inferred"
+    },
+    {
+      "id": "U06-duplicate-identity",
+      "expected": "refuse_duplicate",
+      "CLI_exit": 2,
+      "finding_id": null,
+      "required_valve_anchors": [],
+      "controller_exact_command_endpoints": {},
+      "plant_truth": "not_inferred"
+    },
+    {
+      "id": "U07-incompatible-endpoint",
+      "expected": "refuse_wrong_role",
+      "CLI_exit": 2,
+      "finding_id": null,
+      "required_valve_anchors": [],
+      "controller_exact_command_endpoints": {},
+      "plant_truth": "not_inferred"
+    },
+    {
+      "id": "U08-missing-endpoint",
+      "expected": "refuse_missing_target",
+      "CLI_exit": 2,
+      "finding_id": null,
+      "required_valve_anchors": [],
+      "controller_exact_command_endpoints": {},
+      "plant_truth": "not_inferred"
+    },
+    {
+      "id": "U09-foreign-valid-endpoint",
+      "expected": "admit_C3",
+      "CLI_exit": 0,
+      "finding_id": "C3@model",
+      "required_valve_anchors": [
+        "FV-04",
+        "FV-99"
+      ],
+      "controller_exact_command_endpoints": {
+        "FIC-04": [
+          "FV-99"
+        ]
+      },
+      "plant_truth": "not_inferred"
+    },
+    {
+      "id": "U10-malformed-json",
+      "expected": "refuse_parse",
+      "CLI_exit": 2,
+      "finding_id": null,
+      "required_valve_anchors": [],
+      "controller_exact_command_endpoints": {},
+      "plant_truth": "not_inferred"
+    },
+    {
+      "id": "U11-utility-does-not-own",
+      "expected": "admit_C3",
+      "CLI_exit": 0,
+      "finding_id": "C3@model",
+      "required_valve_anchors": [
+        "FV-04"
+      ],
+      "controller_exact_command_endpoints": {},
+      "plant_truth": "not_inferred"
+    },
+    {
+      "id": "U12-exact-ids-not-aliases",
+      "expected": "admit_C3",
+      "CLI_exit": 0,
+      "finding_id": "C3@model",
+      "required_valve_anchors": [
+        "FV-04",
+        "FV_04"
+      ],
+      "controller_exact_command_endpoints": {
+        "FIC-04": [
+          "FV_04"
+        ]
+      },
+      "plant_truth": "not_inferred"
+    }
+  ],
+  "common_requirements": [
+    "exactgraphassetIDs",
+    "noowningunitinferenceforunplaced",
+    "sourcekindandassigned/fallbacktagqualifiersretained",
+    "command_not_travelfeedback",
+    "completecatalogunchanged",
+    "relevantrefusalsbeforewrites",
+    "quiet_not_literalPASS"
+  ],
+  "extra_control_seeds_not_executed": [
+    {
+      "id": "L1-list-reference-shape",
+      "basis": "ExactI04knownrefs represented as one-elementlists; sameendpointmeaning, rawlistform/order retained"
+    },
+    {
+      "id": "L2-coexisting-controller-fields",
+      "basis": "Distinctcompatibleordinarymeasurement/output and*_unplacedrefs preservedadditively withsourcefields/order; nooverwrite"
+    },
+    {
+      "id": "L3-exact-measurement-identity",
+      "basis": "FT-04 and FT_04 bothknowninstruments; exactselectedmeasurementonly; requireifclaimreads support"
+    }
+  ],
+  "chronology": "Independent criteria beforecandidate/newcontrolcalls; one priororiginalI04admissionrefusal alreadyobserved/exposed, not rerun orcalledblind."
+}

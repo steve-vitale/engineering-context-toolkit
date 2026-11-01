@@ -1,0 +1,50 @@
+{
+  "schema": "n114-original-admission-derived-display-1",
+  "evidence_class": "observed-old-software-failure",
+  "presentation": "Derived public-safe display from retained actual receipt/result; not a copy of raw PID/argv logs. stderr_text below is exact retained stderr, without path redaction.",
+  "commit": "f9d08f6a955204b8301b3e9788943765f151ef29",
+  "input_and_method_pins": {
+    "scripts/question_engine.py": {
+      "sha256_raw": "97dd9491ecdf87e67325d6fd60d5b9888fd5ee9da611210769fe48293fd94e17",
+      "bytes": 107436
+    },
+    "scripts/output_paths.py": {
+      "sha256_raw": "48a339aa3e8f20757a967fea49f53b3d4cc0ff8993936a8a9988c7dc2c26876e",
+      "bytes": 2556
+    },
+    "data/questions.json": {
+      "sha256_raw": "0f2c9e6dd62e9e3c523f866eeb3bc8edcc0189d93f93981fb5d877f7c24bf9ed",
+      "bytes": 225757
+    },
+    "examples/graph-export/unplaced-dexpi/i04.model.json": {
+      "sha256_raw": "8178e1f9c56e986767392522a7b49417261dce5665c15d9dce8684883ad06c87",
+      "bytes": 10486
+    }
+  },
+  "CLI_calls": 1,
+  "exit_code": 2,
+  "no_output_directory": true,
+  "stdout": {
+    "sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "stderr": {
+    "sha256_raw": "067d09d92ed051a4717ca4b3d325c58159bcc641c6ebd173e6ab8891c3936533",
+    "bytes": 223
+  },
+  "stderr_text": "error: the model examples/graph-export/unplaced-dexpi/i04.model.json has no units or instruments: is this the right file? Expected a process model (units, streams, instruments, ...) or an extracted twin (plant_model.json)\r\n",
+  "original_receipt_sha256_raw": "0c75ed80d23781d985e1831dc72ae157a9cbe5b3267c7f8b73d4e5d81468f669",
+  "independent_original_receiving_sha256_raw": "a2cce8faf0cbdea61a391644c30221116468ad8efa6ffedcdd1de37aab7af9bc",
+  "limits": "One source-informed valid I04 refusal, not all model eligibility or field usefulness. Historical original behavior is preserved; later runner outputs must be produced from actual selected methods.",
+  "original_model_capture": {
+    "path": "history/original-model-bytes/i04.model.json",
+    "sha256_raw": "8178e1f9c56e986767392522a7b49417261dce5665c15d9dce8684883ad06c87",
+    "bytes": 10486
+  },
+  "successor_model_byte_cohort": {
+    "path": "examples/graph-export/unplaced-dexpi/i04.model.json",
+    "sha256_raw": "d45563c5804f465ac8fb557c4180cc9eca5577cce5d5a2074078fde357962746",
+    "bytes": 10265,
+    "qualification": "Exact Git LF bytes; JSON typed semantics identical to old CRLF input, but raw identity differs. Original failure is not restamped onto this input and successor results require new actual execution."
+  }
+}

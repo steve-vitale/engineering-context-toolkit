@@ -1,0 +1,1099 @@
+{
+  "question": {
+    "id": "C3@model",
+    "question_id": "C3",
+    "family": "controls",
+    "question": "What valve-position feedback and diagnostic records are available for these control valves?",
+    "about": "FV-04",
+    "assets": [
+      {
+        "id": "FV-04",
+        "tag": "FV-04"
+      },
+      {
+        "id": "FIC-04",
+        "tag": "FIC-04"
+      }
+    ],
+    "evidence": [
+      {
+        "role": "trigger",
+        "id": "FV-04",
+        "tag": "FV-04",
+        "text": "valve FV-04 reads \"FV-04 Globe valve operated by actuating system FV-04\"; owning equipment unknown; no unit inferred; supplied source interpretation, not installed truth; Recorded qualifiers: {\"tag\": \"FV-04\", \"kind\": \"final_element\", \"unit\": null, \"stream\": \"PipingNetworkSystem-1\", \"source\": \"DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)\", \"dexpi_id\": \"GlobeValve-1\", \"dexpi_class\": \"GlobeValve\", \"tag_basis\": \"PipingComponentNumberAssignmentClass of the operated valve | AUTHORED qualification revision B: local tag assignment basis needs responsible-role review; installed identity not verified.\", \"unit_basis\": \"no unit reachable through the piping from GlobeValve-1\", \"unplaced_reason\": \"final_elements need a unit; no unit reachable through the piping from GlobeValve-1\"}",
+        "field": "unplaced[FV-04]",
+        "provenance": {
+          "kind": "native-unplaced-source-context-1",
+          "model_role": "final_element",
+          "record_fields": {
+            "tag": "FV-04",
+            "kind": "final_element",
+            "unit": null,
+            "stream": "PipingNetworkSystem-1",
+            "source": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)",
+            "dexpi_id": "GlobeValve-1",
+            "dexpi_class": "GlobeValve",
+            "tag_basis": "PipingComponentNumberAssignmentClass of the operated valve | AUTHORED qualification revision B: local tag assignment basis needs responsible-role review; installed identity not verified.",
+            "unit_basis": "no unit reachable through the piping from GlobeValve-1",
+            "unplaced_reason": "final_elements need a unit; no unit reachable through the piping from GlobeValve-1"
+          },
+          "placement": "owning equipment unknown; no unit inferred"
+        }
+      },
+      {
+        "role": "controller-command candidate; not measured valve travel",
+        "id": "FIC-04",
+        "tag": "FIC-04",
+        "text": "controller FIC-04 reads \"FIC-04 FIC-04: flow, indicate, control (central location)\"; owning equipment unknown; no unit inferred; supplied source interpretation, not installed truth; Recorded qualifiers: {\"tag\": \"FIC-04\", \"source\": \"DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)\", \"dexpi_id\": \"ProcessInstrumentationFunction-1\", \"dexpi_class\": \"ProcessInstrumentationFunction\", \"tag_basis\": \"category + functions + number attributes\"}; Exact recorded endpoint fields: {\"measurement_unplaced\": \"FT-04\", \"output_unplaced\": \"FV-04\", \"output\": {}}; Exact endpoints retained for this screen: {\"measurements\": [\"FT-04\"], \"outputs\": [\"FV-04\"], \"sets\": []}; Referenced instrument \"FT-04\": {\"tag\": \"FT-04\", \"kind\": \"instrument\", \"unit\": null, \"stream\": \"PipingNetworkSystem-2\", \"source\": \"DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1\", \"dexpi_id\": \"ProcessSignalGeneratingFunction-1\", \"dexpi_class\": \"ProcessSignalGeneratingFunction\", \"tag_basis\": \"ASSIGNED here: the sensor has no number in the file\", \"assigned_tag\": true, \"unit_basis\": \"no unit reachable through the piping from FlowMeasuringElement-1\", \"unplaced_reason\": \"instruments need a unit; no unit reachable through the piping from FlowMeasuringElement-1\", \"variable\": \"flow\", \"part_of\": \"FIC-04\"}; \"FT-04\" has an assigned identifier, not a verified operating tag; Referenced final_element \"FV-04\": {\"tag\": \"FV-04\", \"kind\": \"final_element\", \"unit\": null, \"stream\": \"PipingNetworkSystem-1\", \"source\": \"DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)\", \"dexpi_id\": \"GlobeValve-1\", \"dexpi_class\": \"GlobeValve\", \"tag_basis\": \"PipingComponentNumberAssignmentClass of the operated valve | AUTHORED qualification revision B: local tag assignment basis needs responsible-role review; installed identity not verified.\", \"unit_basis\": \"no unit reachable through the piping from GlobeValve-1\", \"unplaced_reason\": \"final_elements need a unit; no unit reachable through the piping from GlobeValve-1\"}; A supplied command/process-measurement path is not measured valve travel or a verified physical signal path",
+        "field": "controllers[FIC-04]",
+        "provenance": {
+          "kind": "native-unplaced-source-context-1",
+          "model_role": "controller",
+          "record_fields": {
+            "tag": "FIC-04",
+            "source": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)",
+            "dexpi_id": "ProcessInstrumentationFunction-1",
+            "dexpi_class": "ProcessInstrumentationFunction",
+            "tag_basis": "category + functions + number attributes"
+          },
+          "placement": "owning equipment unknown; no unit inferred",
+          "reference_fields": {
+            "measurement_unplaced": "FT-04",
+            "output_unplaced": "FV-04",
+            "output": {}
+          },
+          "active_exact_endpoints": {
+            "measurements": [
+              "FT-04"
+            ],
+            "outputs": [
+              "FV-04"
+            ],
+            "sets": []
+          },
+          "endpoint_context": [
+            {
+              "id": "FT-04",
+              "model_role": "instrument",
+              "record_fields": {
+                "tag": "FT-04",
+                "kind": "instrument",
+                "unit": null,
+                "stream": "PipingNetworkSystem-2",
+                "source": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1",
+                "dexpi_id": "ProcessSignalGeneratingFunction-1",
+                "dexpi_class": "ProcessSignalGeneratingFunction",
+                "tag_basis": "ASSIGNED here: the sensor has no number in the file",
+                "assigned_tag": true,
+                "unit_basis": "no unit reachable through the piping from FlowMeasuringElement-1",
+                "unplaced_reason": "instruments need a unit; no unit reachable through the piping from FlowMeasuringElement-1",
+                "variable": "flow",
+                "part_of": "FIC-04"
+              }
+            },
+            {
+              "id": "FV-04",
+              "model_role": "final_element",
+              "record_fields": {
+                "tag": "FV-04",
+                "kind": "final_element",
+                "unit": null,
+                "stream": "PipingNetworkSystem-1",
+                "source": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)",
+                "dexpi_id": "GlobeValve-1",
+                "dexpi_class": "GlobeValve",
+                "tag_basis": "PipingComponentNumberAssignmentClass of the operated valve | AUTHORED qualification revision B: local tag assignment basis needs responsible-role review; installed identity not verified.",
+                "unit_basis": "no unit reachable through the piping from GlobeValve-1",
+                "unplaced_reason": "final_elements need a unit; no unit reachable through the piping from GlobeValve-1"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "data_requests": [
+      {
+        "item": "Existing valve/loop feedback and diagnostic records",
+        "state": "not_on_drawing",
+        "where": [
+          "DCS/PLC configuration: approved existing valve/positioner configuration and point definitions for each named valve and loop",
+          "maintenance records: existing valve, positioner and calibration records",
+          "site records: approved loop drawings, I/O mappings, source revisions and locators"
+        ],
+        "how": "For each named valve/loop, review the record target, revision/locator, declared signal function, units, enabled return path and diagnostic capability. Keep command/current/travel setpoint separate from measured stem or shaft travel; local positioner feedback does not establish control-room or historian availability. Nearby Z tags and shared unit/stream membership do not establish valve association. Acknowledge appropriate existing coverage, including endpoint indication for an on/off duty, and retain unresolved source questions. Supplied fields do not complete this review.",
+        "candidate_scope": "anchors",
+        "candidate_facts": []
+      },
+      {
+        "item": "Existing valve performance and diagnostic history",
+        "state": "not_on_drawing",
+        "where": [
+          "historian or DCS trend for FV-04 (no historian tag is mapped in this model for these)",
+          "maintenance records: existing diagnostic, inspection and work-order reports for the named valve",
+          "site records: previously acquired command, measured-travel and process-response history with its operating basis"
+        ],
+        "how": "Review available history first. Retain valve/loop identity, source revision/locator, time and operating conditions, enabled state, quality/calibration and readability. Where suitable, compare command, independently described travel and process response over coincident periods. Position indication, endpoint states or oscillation alone do not diagnose stiction or its cause. Keep disabled, bad-quality, unavailable, foreign and unknown records as qualified candidates; ask the responsible record owner for the missing basis. This screen specifies no new manual step test, loop-mode change or operating experiment.",
+        "candidate_scope": "anchors",
+        "candidate_facts": []
+      }
+    ],
+    "decision_rule": "Record appropriate existing feedback/diagnostics as coverage with its source scope and remaining gaps. Route a named valve/loop request to the responsible record owner where function, association, availability or performance evidence is unresolved. Configuration, tuning, process and assembly causes remain open when investigating reported behavior. Any further test or change requires a separate company-approved method and operating/outage decision; this finding prescribes no retrofit, retune, new connection or mode change.",
+    "typical_benefit": {
+      "wording": "S13 discusses backlash/stiction and variability in highly throttled/oversized pumping systems, not a universal feedback retrofit. S29-S32 distinguish feedback routes and vendor-specific diagnostic/history examples. They establish no quantified benefit for this investigation or the supplied plant.",
+      "source": [
+        "S13",
+        "S29",
+        "S30",
+        "S31",
+        "S32"
+      ],
+      "arc": null,
+      "source_titles": [
+        "S13: Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079)",
+        "S29: Emerson Automation Experts, Providing Operators Process Control Valve Position Feedback (2014-01-10; vendor guidance)",
+        "S30: Emerson, Valve Positioners (product overview and digital-controller FAQ; vendor-specific)",
+        "S31: Emerson, Control Valve Diagnostics (product capabilities and status monitor; vendor-specific)",
+        "S32: Emerson Automation Experts, Impacts of Control Valve Diagnostics (2011-02-14; vendor guidance)"
+      ]
+    },
+    "limits": "P&IDs can omit fitted positioners. Drawing omission, local feedback, an enabled control-room return, historian availability and verified plant conditions are separate claims. Discrete endpoint feedback is not a continuous travel trace and is not automatically unsuitable for an on/off duty. Supplied source/quality flags and reported abnormalities are unverified evidence, not installed-state checks, unique diagnoses or permission to test/change equipment.",
+    "status": "asked",
+    "context": {
+      "present": true,
+      "question": {
+        "id": "C3@model",
+        "question_id": "C3",
+        "family": "controls",
+        "question": "What valve-position feedback and diagnostic records are available for these control valves?",
+        "about": "FV-04",
+        "assets": [
+          {
+            "id": "FIC-04",
+            "tag": "FIC-04"
+          },
+          {
+            "id": "FV-04",
+            "tag": "FV-04"
+          }
+        ],
+        "evidence": [
+          {
+            "role": "trigger",
+            "id": "FV-04",
+            "tag": "FV-04",
+            "text": "valve FV-04 reads \"FV-04 Globe valve operated by actuating system FV-04\"; owning equipment unknown; no unit inferred; supplied source interpretation, not installed truth; Recorded qualifiers: {\"tag\": \"FV-04\", \"kind\": \"final_element\", \"unit\": null, \"stream\": \"PipingNetworkSystem-1\", \"source\": \"DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)\", \"dexpi_id\": \"GlobeValve-1\", \"dexpi_class\": \"GlobeValve\", \"tag_basis\": \"PipingComponentNumberAssignmentClass of the operated valve | AUTHORED qualification revision B: local tag assignment basis needs responsible-role review; installed identity not verified.\", \"unit_basis\": \"no unit reachable through the piping from GlobeValve-1\", \"unplaced_reason\": \"final_elements need a unit; no unit reachable through the piping from GlobeValve-1\"}",
+            "field": "unplaced[FV-04]",
+            "provenance": {
+              "kind": "native-unplaced-source-context-1",
+              "model_role": "final_element",
+              "record_fields": {
+                "tag": "FV-04",
+                "kind": "final_element",
+                "unit": null,
+                "stream": "PipingNetworkSystem-1",
+                "source": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)",
+                "dexpi_id": "GlobeValve-1",
+                "dexpi_class": "GlobeValve",
+                "tag_basis": "PipingComponentNumberAssignmentClass of the operated valve | AUTHORED qualification revision B: local tag assignment basis needs responsible-role review; installed identity not verified.",
+                "unit_basis": "no unit reachable through the piping from GlobeValve-1",
+                "unplaced_reason": "final_elements need a unit; no unit reachable through the piping from GlobeValve-1"
+              },
+              "placement": "owning equipment unknown; no unit inferred"
+            }
+          },
+          {
+            "role": "controller-command candidate; not measured valve travel",
+            "id": "FIC-04",
+            "tag": "FIC-04",
+            "text": "controller FIC-04 reads \"FIC-04 FIC-04: flow, indicate, control (central location)\"; owning equipment unknown; no unit inferred; supplied source interpretation, not installed truth; Recorded qualifiers: {\"tag\": \"FIC-04\", \"source\": \"DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)\", \"dexpi_id\": \"ProcessInstrumentationFunction-1\", \"dexpi_class\": \"ProcessInstrumentationFunction\", \"tag_basis\": \"category + functions + number attributes\"}; Exact recorded endpoint fields: {\"measurement_unplaced\": \"FT-04\", \"output_unplaced\": \"FV-04\", \"output\": {}}; Exact endpoints retained for this screen: {\"measurements\": [\"FT-04\"], \"outputs\": [\"FV-04\"], \"sets\": []}; Referenced instrument \"FT-04\": {\"tag\": \"FT-04\", \"kind\": \"instrument\", \"unit\": null, \"stream\": \"PipingNetworkSystem-2\", \"source\": \"DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1\", \"dexpi_id\": \"ProcessSignalGeneratingFunction-1\", \"dexpi_class\": \"ProcessSignalGeneratingFunction\", \"tag_basis\": \"ASSIGNED here: the sensor has no number in the file\", \"assigned_tag\": true, \"unit_basis\": \"no unit reachable through the piping from FlowMeasuringElement-1\", \"unplaced_reason\": \"instruments need a unit; no unit reachable through the piping from FlowMeasuringElement-1\", \"variable\": \"flow\", \"part_of\": \"FIC-04\"}; \"FT-04\" has an assigned identifier, not a verified operating tag; Referenced final_element \"FV-04\": {\"tag\": \"FV-04\", \"kind\": \"final_element\", \"unit\": null, \"stream\": \"PipingNetworkSystem-1\", \"source\": \"DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)\", \"dexpi_id\": \"GlobeValve-1\", \"dexpi_class\": \"GlobeValve\", \"tag_basis\": \"PipingComponentNumberAssignmentClass of the operated valve | AUTHORED qualification revision B: local tag assignment basis needs responsible-role review; installed identity not verified.\", \"unit_basis\": \"no unit reachable through the piping from GlobeValve-1\", \"unplaced_reason\": \"final_elements need a unit; no unit reachable through the piping from GlobeValve-1\"}; A supplied command/process-measurement path is not measured valve travel or a verified physical signal path",
+            "field": "controllers[FIC-04]",
+            "provenance": {
+              "kind": "native-unplaced-source-context-1",
+              "model_role": "controller",
+              "record_fields": {
+                "tag": "FIC-04",
+                "source": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)",
+                "dexpi_id": "ProcessInstrumentationFunction-1",
+                "dexpi_class": "ProcessInstrumentationFunction",
+                "tag_basis": "category + functions + number attributes"
+              },
+              "placement": "owning equipment unknown; no unit inferred",
+              "reference_fields": {
+                "measurement_unplaced": "FT-04",
+                "output_unplaced": "FV-04",
+                "output": {}
+              },
+              "active_exact_endpoints": {
+                "measurements": [
+                  "FT-04"
+                ],
+                "outputs": [
+                  "FV-04"
+                ],
+                "sets": []
+              },
+              "endpoint_context": [
+                {
+                  "id": "FT-04",
+                  "model_role": "instrument",
+                  "record_fields": {
+                    "tag": "FT-04",
+                    "kind": "instrument",
+                    "unit": null,
+                    "stream": "PipingNetworkSystem-2",
+                    "source": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1",
+                    "dexpi_id": "ProcessSignalGeneratingFunction-1",
+                    "dexpi_class": "ProcessSignalGeneratingFunction",
+                    "tag_basis": "ASSIGNED here: the sensor has no number in the file",
+                    "assigned_tag": true,
+                    "unit_basis": "no unit reachable through the piping from FlowMeasuringElement-1",
+                    "unplaced_reason": "instruments need a unit; no unit reachable through the piping from FlowMeasuringElement-1",
+                    "variable": "flow",
+                    "part_of": "FIC-04"
+                  }
+                },
+                {
+                  "id": "FV-04",
+                  "model_role": "final_element",
+                  "record_fields": {
+                    "tag": "FV-04",
+                    "kind": "final_element",
+                    "unit": null,
+                    "stream": "PipingNetworkSystem-1",
+                    "source": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)",
+                    "dexpi_id": "GlobeValve-1",
+                    "dexpi_class": "GlobeValve",
+                    "tag_basis": "PipingComponentNumberAssignmentClass of the operated valve | AUTHORED qualification revision B: local tag assignment basis needs responsible-role review; installed identity not verified.",
+                    "unit_basis": "no unit reachable through the piping from GlobeValve-1",
+                    "unplaced_reason": "final_elements need a unit; no unit reachable through the piping from GlobeValve-1"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "data_requests": [
+          {
+            "item": "Existing valve/loop feedback and diagnostic records",
+            "state": "not_on_drawing",
+            "where": [
+              "DCS/PLC configuration: approved existing valve/positioner configuration and point definitions for each named valve and loop",
+              "maintenance records: existing valve, positioner and calibration records",
+              "site records: approved loop drawings, I/O mappings, source revisions and locators"
+            ],
+            "how": "For each named valve/loop, review the record target, revision/locator, declared signal function, units, enabled return path and diagnostic capability. Keep command/current/travel setpoint separate from measured stem or shaft travel; local positioner feedback does not establish control-room or historian availability. Nearby Z tags and shared unit/stream membership do not establish valve association. Acknowledge appropriate existing coverage, including endpoint indication for an on/off duty, and retain unresolved source questions. Supplied fields do not complete this review.",
+            "candidate_scope": "anchors",
+            "candidate_facts": []
+          },
+          {
+            "item": "Existing valve performance and diagnostic history",
+            "state": "not_on_drawing",
+            "where": [
+              "historian or DCS trend for FV-04 (no historian tag is mapped in this model for these)",
+              "maintenance records: existing diagnostic, inspection and work-order reports for the named valve",
+              "site records: previously acquired command, measured-travel and process-response history with its operating basis"
+            ],
+            "how": "Review available history first. Retain valve/loop identity, source revision/locator, time and operating conditions, enabled state, quality/calibration and readability. Where suitable, compare command, independently described travel and process response over coincident periods. Position indication, endpoint states or oscillation alone do not diagnose stiction or its cause. Keep disabled, bad-quality, unavailable, foreign and unknown records as qualified candidates; ask the responsible record owner for the missing basis. This screen specifies no new manual step test, loop-mode change or operating experiment.",
+            "candidate_scope": "anchors",
+            "candidate_facts": []
+          }
+        ],
+        "decision_rule": "Record appropriate existing feedback/diagnostics as coverage with its source scope and remaining gaps. Route a named valve/loop request to the responsible record owner where function, association, availability or performance evidence is unresolved. Configuration, tuning, process and assembly causes remain open when investigating reported behavior. Any further test or change requires a separate company-approved method and operating/outage decision; this finding prescribes no retrofit, retune, new connection or mode change.",
+        "typical_benefit": {
+          "wording": "S13 discusses backlash/stiction and variability in highly throttled/oversized pumping systems, not a universal feedback retrofit. S29-S32 distinguish feedback routes and vendor-specific diagnostic/history examples. They establish no quantified benefit for this investigation or the supplied plant.",
+          "source": [
+            "S13",
+            "S29",
+            "S30",
+            "S31",
+            "S32"
+          ],
+          "arc": null,
+          "source_titles": [
+            "S13: Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079)",
+            "S29: Emerson Automation Experts, Providing Operators Process Control Valve Position Feedback (2014-01-10; vendor guidance)",
+            "S30: Emerson, Valve Positioners (product overview and digital-controller FAQ; vendor-specific)",
+            "S31: Emerson, Control Valve Diagnostics (product capabilities and status monitor; vendor-specific)",
+            "S32: Emerson Automation Experts, Impacts of Control Valve Diagnostics (2011-02-14; vendor guidance)"
+          ]
+        },
+        "limits": "P&IDs can omit fitted positioners. Drawing omission, local feedback, an enabled control-room return, historian availability and verified plant conditions are separate claims. Discrete endpoint feedback is not a continuous travel trace and is not automatically unsuitable for an on/off duty. Supplied source/quality flags and reported abnormalities are unverified evidence, not installed-state checks, unique diagnoses or permission to test/change equipment."
+      },
+      "owner": "Fictional controls-records owner",
+      "ownership": "assigned",
+      "assigned_by": "Fictional task coordinator",
+      "assigned_on": "2026-11-01",
+      "state": "unanswered",
+      "disputed_claims": [],
+      "answers": [
+        {
+          "decision_id": "d-f0dfae26f1a0a011d6ee27afe1e3a1f5040616e3452fcb763f95b2dc48812869",
+          "answer_id": "n114-partial-command-1",
+          "freshness": "stale",
+          "changed": [
+            "question content",
+            "assets content"
+          ]
+        }
+      ]
+    }
+  },
+  "current": {
+    "present": true,
+    "question": {
+      "id": "C3@model",
+      "question_id": "C3",
+      "family": "controls",
+      "question": "What valve-position feedback and diagnostic records are available for these control valves?",
+      "about": "FV-04",
+      "assets": [
+        {
+          "id": "FIC-04",
+          "tag": "FIC-04"
+        },
+        {
+          "id": "FV-04",
+          "tag": "FV-04"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "trigger",
+          "id": "FV-04",
+          "tag": "FV-04",
+          "text": "valve FV-04 reads \"FV-04 Globe valve operated by actuating system FV-04\"; owning equipment unknown; no unit inferred; supplied source interpretation, not installed truth; Recorded qualifiers: {\"tag\": \"FV-04\", \"kind\": \"final_element\", \"unit\": null, \"stream\": \"PipingNetworkSystem-1\", \"source\": \"DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)\", \"dexpi_id\": \"GlobeValve-1\", \"dexpi_class\": \"GlobeValve\", \"tag_basis\": \"PipingComponentNumberAssignmentClass of the operated valve | AUTHORED qualification revision B: local tag assignment basis needs responsible-role review; installed identity not verified.\", \"unit_basis\": \"no unit reachable through the piping from GlobeValve-1\", \"unplaced_reason\": \"final_elements need a unit; no unit reachable through the piping from GlobeValve-1\"}",
+          "field": "unplaced[FV-04]",
+          "provenance": {
+            "kind": "native-unplaced-source-context-1",
+            "model_role": "final_element",
+            "record_fields": {
+              "tag": "FV-04",
+              "kind": "final_element",
+              "unit": null,
+              "stream": "PipingNetworkSystem-1",
+              "source": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)",
+              "dexpi_id": "GlobeValve-1",
+              "dexpi_class": "GlobeValve",
+              "tag_basis": "PipingComponentNumberAssignmentClass of the operated valve | AUTHORED qualification revision B: local tag assignment basis needs responsible-role review; installed identity not verified.",
+              "unit_basis": "no unit reachable through the piping from GlobeValve-1",
+              "unplaced_reason": "final_elements need a unit; no unit reachable through the piping from GlobeValve-1"
+            },
+            "placement": "owning equipment unknown; no unit inferred"
+          }
+        },
+        {
+          "role": "controller-command candidate; not measured valve travel",
+          "id": "FIC-04",
+          "tag": "FIC-04",
+          "text": "controller FIC-04 reads \"FIC-04 FIC-04: flow, indicate, control (central location)\"; owning equipment unknown; no unit inferred; supplied source interpretation, not installed truth; Recorded qualifiers: {\"tag\": \"FIC-04\", \"source\": \"DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)\", \"dexpi_id\": \"ProcessInstrumentationFunction-1\", \"dexpi_class\": \"ProcessInstrumentationFunction\", \"tag_basis\": \"category + functions + number attributes\"}; Exact recorded endpoint fields: {\"measurement_unplaced\": \"FT-04\", \"output_unplaced\": \"FV-04\", \"output\": {}}; Exact endpoints retained for this screen: {\"measurements\": [\"FT-04\"], \"outputs\": [\"FV-04\"], \"sets\": []}; Referenced instrument \"FT-04\": {\"tag\": \"FT-04\", \"kind\": \"instrument\", \"unit\": null, \"stream\": \"PipingNetworkSystem-2\", \"source\": \"DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1\", \"dexpi_id\": \"ProcessSignalGeneratingFunction-1\", \"dexpi_class\": \"ProcessSignalGeneratingFunction\", \"tag_basis\": \"ASSIGNED here: the sensor has no number in the file\", \"assigned_tag\": true, \"unit_basis\": \"no unit reachable through the piping from FlowMeasuringElement-1\", \"unplaced_reason\": \"instruments need a unit; no unit reachable through the piping from FlowMeasuringElement-1\", \"variable\": \"flow\", \"part_of\": \"FIC-04\"}; \"FT-04\" has an assigned identifier, not a verified operating tag; Referenced final_element \"FV-04\": {\"tag\": \"FV-04\", \"kind\": \"final_element\", \"unit\": null, \"stream\": \"PipingNetworkSystem-1\", \"source\": \"DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)\", \"dexpi_id\": \"GlobeValve-1\", \"dexpi_class\": \"GlobeValve\", \"tag_basis\": \"PipingComponentNumberAssignmentClass of the operated valve | AUTHORED qualification revision B: local tag assignment basis needs responsible-role review; installed identity not verified.\", \"unit_basis\": \"no unit reachable through the piping from GlobeValve-1\", \"unplaced_reason\": \"final_elements need a unit; no unit reachable through the piping from GlobeValve-1\"}; A supplied command/process-measurement path is not measured valve travel or a verified physical signal path",
+          "field": "controllers[FIC-04]",
+          "provenance": {
+            "kind": "native-unplaced-source-context-1",
+            "model_role": "controller",
+            "record_fields": {
+              "tag": "FIC-04",
+              "source": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)",
+              "dexpi_id": "ProcessInstrumentationFunction-1",
+              "dexpi_class": "ProcessInstrumentationFunction",
+              "tag_basis": "category + functions + number attributes"
+            },
+            "placement": "owning equipment unknown; no unit inferred",
+            "reference_fields": {
+              "measurement_unplaced": "FT-04",
+              "output_unplaced": "FV-04",
+              "output": {}
+            },
+            "active_exact_endpoints": {
+              "measurements": [
+                "FT-04"
+              ],
+              "outputs": [
+                "FV-04"
+              ],
+              "sets": []
+            },
+            "endpoint_context": [
+              {
+                "id": "FT-04",
+                "model_role": "instrument",
+                "record_fields": {
+                  "tag": "FT-04",
+                  "kind": "instrument",
+                  "unit": null,
+                  "stream": "PipingNetworkSystem-2",
+                  "source": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1",
+                  "dexpi_id": "ProcessSignalGeneratingFunction-1",
+                  "dexpi_class": "ProcessSignalGeneratingFunction",
+                  "tag_basis": "ASSIGNED here: the sensor has no number in the file",
+                  "assigned_tag": true,
+                  "unit_basis": "no unit reachable through the piping from FlowMeasuringElement-1",
+                  "unplaced_reason": "instruments need a unit; no unit reachable through the piping from FlowMeasuringElement-1",
+                  "variable": "flow",
+                  "part_of": "FIC-04"
+                }
+              },
+              {
+                "id": "FV-04",
+                "model_role": "final_element",
+                "record_fields": {
+                  "tag": "FV-04",
+                  "kind": "final_element",
+                  "unit": null,
+                  "stream": "PipingNetworkSystem-1",
+                  "source": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)",
+                  "dexpi_id": "GlobeValve-1",
+                  "dexpi_class": "GlobeValve",
+                  "tag_basis": "PipingComponentNumberAssignmentClass of the operated valve | AUTHORED qualification revision B: local tag assignment basis needs responsible-role review; installed identity not verified.",
+                  "unit_basis": "no unit reachable through the piping from GlobeValve-1",
+                  "unplaced_reason": "final_elements need a unit; no unit reachable through the piping from GlobeValve-1"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "data_requests": [
+        {
+          "item": "Existing valve/loop feedback and diagnostic records",
+          "state": "not_on_drawing",
+          "where": [
+            "DCS/PLC configuration: approved existing valve/positioner configuration and point definitions for each named valve and loop",
+            "maintenance records: existing valve, positioner and calibration records",
+            "site records: approved loop drawings, I/O mappings, source revisions and locators"
+          ],
+          "how": "For each named valve/loop, review the record target, revision/locator, declared signal function, units, enabled return path and diagnostic capability. Keep command/current/travel setpoint separate from measured stem or shaft travel; local positioner feedback does not establish control-room or historian availability. Nearby Z tags and shared unit/stream membership do not establish valve association. Acknowledge appropriate existing coverage, including endpoint indication for an on/off duty, and retain unresolved source questions. Supplied fields do not complete this review.",
+          "candidate_scope": "anchors",
+          "candidate_facts": []
+        },
+        {
+          "item": "Existing valve performance and diagnostic history",
+          "state": "not_on_drawing",
+          "where": [
+            "historian or DCS trend for FV-04 (no historian tag is mapped in this model for these)",
+            "maintenance records: existing diagnostic, inspection and work-order reports for the named valve",
+            "site records: previously acquired command, measured-travel and process-response history with its operating basis"
+          ],
+          "how": "Review available history first. Retain valve/loop identity, source revision/locator, time and operating conditions, enabled state, quality/calibration and readability. Where suitable, compare command, independently described travel and process response over coincident periods. Position indication, endpoint states or oscillation alone do not diagnose stiction or its cause. Keep disabled, bad-quality, unavailable, foreign and unknown records as qualified candidates; ask the responsible record owner for the missing basis. This screen specifies no new manual step test, loop-mode change or operating experiment.",
+          "candidate_scope": "anchors",
+          "candidate_facts": []
+        }
+      ],
+      "decision_rule": "Record appropriate existing feedback/diagnostics as coverage with its source scope and remaining gaps. Route a named valve/loop request to the responsible record owner where function, association, availability or performance evidence is unresolved. Configuration, tuning, process and assembly causes remain open when investigating reported behavior. Any further test or change requires a separate company-approved method and operating/outage decision; this finding prescribes no retrofit, retune, new connection or mode change.",
+      "typical_benefit": {
+        "wording": "S13 discusses backlash/stiction and variability in highly throttled/oversized pumping systems, not a universal feedback retrofit. S29-S32 distinguish feedback routes and vendor-specific diagnostic/history examples. They establish no quantified benefit for this investigation or the supplied plant.",
+        "source": [
+          "S13",
+          "S29",
+          "S30",
+          "S31",
+          "S32"
+        ],
+        "arc": null,
+        "source_titles": [
+          "S13: Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079)",
+          "S29: Emerson Automation Experts, Providing Operators Process Control Valve Position Feedback (2014-01-10; vendor guidance)",
+          "S30: Emerson, Valve Positioners (product overview and digital-controller FAQ; vendor-specific)",
+          "S31: Emerson, Control Valve Diagnostics (product capabilities and status monitor; vendor-specific)",
+          "S32: Emerson Automation Experts, Impacts of Control Valve Diagnostics (2011-02-14; vendor guidance)"
+        ]
+      },
+      "limits": "P&IDs can omit fitted positioners. Drawing omission, local feedback, an enabled control-room return, historian availability and verified plant conditions are separate claims. Discrete endpoint feedback is not a continuous travel trace and is not automatically unsuitable for an on/off duty. Supplied source/quality flags and reported abnormalities are unverified evidence, not installed-state checks, unique diagnoses or permission to test/change equipment."
+    },
+    "owner": "Fictional controls-records owner",
+    "ownership": "assigned",
+    "assigned_by": "Fictional task coordinator",
+    "assigned_on": "2026-11-01",
+    "state": "unanswered",
+    "disputed_claims": [],
+    "answers": [
+      {
+        "decision_id": "d-f0dfae26f1a0a011d6ee27afe1e3a1f5040616e3452fcb763f95b2dc48812869",
+        "answer_id": "n114-partial-command-1",
+        "freshness": "stale",
+        "changed": [
+          "question content",
+          "assets content"
+        ]
+      }
+    ]
+  },
+  "decisions": [
+    {
+      "question_id": "C3@model",
+      "answer_id": "n114-partial-command-1",
+      "claim_key": "command-basis-not-travel",
+      "value": "logical command interpretation only; installed travel feedback unknown",
+      "answer": "The supplied reader model represents a logical FT-04 -> FIC-04 -> FV-04 command/process-measurement chain. FT-04 is assigned flow context, not measured valve travel. Owning equipment, operating tag identity, positioner/travel feedback, control-room return and historian availability remain unverified. Request existing loop, I/O, positioner and maintenance records from the responsible role; no field test or retrofit is authorized.",
+      "answer_state": "partial",
+      "decision": "accepted",
+      "reviewer": "Fictional source-review role",
+      "reviewed_on": "2026-11-01",
+      "source_match": "match",
+      "plant_truth": "unknown",
+      "note": "Entire note, actors and decision are fictional software fixtures; no authenticated review or operating authorization.",
+      "evidence_fingerprint": "8ae347d9a51f9bbcf9ae35508165b02b9d64be2ec63d20792ca90739c8e96a2d",
+      "owner": "Fictional controls-records owner",
+      "evidence": {
+        "question": {
+          "id": "C3@model",
+          "question_id": "C3",
+          "family": "controls",
+          "question": "What valve-position feedback and diagnostic records are available for these control valves?",
+          "about": "FV-04",
+          "assets": [
+            {
+              "id": "FIC-04",
+              "tag": "FIC-04"
+            },
+            {
+              "id": "FV-04",
+              "tag": "FV-04"
+            }
+          ],
+          "evidence": [
+            {
+              "role": "trigger",
+              "id": "FV-04",
+              "tag": "FV-04",
+              "text": "valve FV-04 reads \"FV-04 Globe valve operated by actuating system FV-04\"; owning equipment unknown; no unit inferred; supplied source interpretation, not installed truth; Recorded qualifiers: {\"tag\": \"FV-04\", \"kind\": \"final_element\", \"unit\": null, \"stream\": \"PipingNetworkSystem-1\", \"source\": \"DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)\", \"dexpi_id\": \"GlobeValve-1\", \"dexpi_class\": \"GlobeValve\", \"tag_basis\": \"PipingComponentNumberAssignmentClass of the operated valve\", \"unit_basis\": \"no unit reachable through the piping from GlobeValve-1\", \"unplaced_reason\": \"final_elements need a unit; no unit reachable through the piping from GlobeValve-1\"}",
+              "field": "unplaced[FV-04]",
+              "provenance": {
+                "kind": "native-unplaced-source-context-1",
+                "model_role": "final_element",
+                "record_fields": {
+                  "tag": "FV-04",
+                  "kind": "final_element",
+                  "unit": null,
+                  "stream": "PipingNetworkSystem-1",
+                  "source": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)",
+                  "dexpi_id": "GlobeValve-1",
+                  "dexpi_class": "GlobeValve",
+                  "tag_basis": "PipingComponentNumberAssignmentClass of the operated valve",
+                  "unit_basis": "no unit reachable through the piping from GlobeValve-1",
+                  "unplaced_reason": "final_elements need a unit; no unit reachable through the piping from GlobeValve-1"
+                },
+                "placement": "owning equipment unknown; no unit inferred"
+              }
+            },
+            {
+              "role": "controller-command candidate; not measured valve travel",
+              "id": "FIC-04",
+              "tag": "FIC-04",
+              "text": "controller FIC-04 reads \"FIC-04 FIC-04: flow, indicate, control (central location)\"; owning equipment unknown; no unit inferred; supplied source interpretation, not installed truth; Recorded qualifiers: {\"tag\": \"FIC-04\", \"source\": \"DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)\", \"dexpi_id\": \"ProcessInstrumentationFunction-1\", \"dexpi_class\": \"ProcessInstrumentationFunction\", \"tag_basis\": \"category + functions + number attributes\"}; Exact recorded endpoint fields: {\"measurement_unplaced\": \"FT-04\", \"output_unplaced\": \"FV-04\", \"output\": {}}; Exact endpoints retained for this screen: {\"measurements\": [\"FT-04\"], \"outputs\": [\"FV-04\"], \"sets\": []}; Referenced instrument \"FT-04\": {\"tag\": \"FT-04\", \"kind\": \"instrument\", \"unit\": null, \"stream\": \"PipingNetworkSystem-2\", \"source\": \"DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1\", \"dexpi_id\": \"ProcessSignalGeneratingFunction-1\", \"dexpi_class\": \"ProcessSignalGeneratingFunction\", \"tag_basis\": \"ASSIGNED here: the sensor has no number in the file\", \"assigned_tag\": true, \"unit_basis\": \"no unit reachable through the piping from FlowMeasuringElement-1\", \"unplaced_reason\": \"instruments need a unit; no unit reachable through the piping from FlowMeasuringElement-1\", \"variable\": \"flow\", \"part_of\": \"FIC-04\"}; \"FT-04\" has an assigned identifier, not a verified operating tag; Referenced final_element \"FV-04\": {\"tag\": \"FV-04\", \"kind\": \"final_element\", \"unit\": null, \"stream\": \"PipingNetworkSystem-1\", \"source\": \"DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)\", \"dexpi_id\": \"GlobeValve-1\", \"dexpi_class\": \"GlobeValve\", \"tag_basis\": \"PipingComponentNumberAssignmentClass of the operated valve\", \"unit_basis\": \"no unit reachable through the piping from GlobeValve-1\", \"unplaced_reason\": \"final_elements need a unit; no unit reachable through the piping from GlobeValve-1\"}; A supplied command/process-measurement path is not measured valve travel or a verified physical signal path",
+              "field": "controllers[FIC-04]",
+              "provenance": {
+                "kind": "native-unplaced-source-context-1",
+                "model_role": "controller",
+                "record_fields": {
+                  "tag": "FIC-04",
+                  "source": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)",
+                  "dexpi_id": "ProcessInstrumentationFunction-1",
+                  "dexpi_class": "ProcessInstrumentationFunction",
+                  "tag_basis": "category + functions + number attributes"
+                },
+                "placement": "owning equipment unknown; no unit inferred",
+                "reference_fields": {
+                  "measurement_unplaced": "FT-04",
+                  "output_unplaced": "FV-04",
+                  "output": {}
+                },
+                "active_exact_endpoints": {
+                  "measurements": [
+                    "FT-04"
+                  ],
+                  "outputs": [
+                    "FV-04"
+                  ],
+                  "sets": []
+                },
+                "endpoint_context": [
+                  {
+                    "id": "FT-04",
+                    "model_role": "instrument",
+                    "record_fields": {
+                      "tag": "FT-04",
+                      "kind": "instrument",
+                      "unit": null,
+                      "stream": "PipingNetworkSystem-2",
+                      "source": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1",
+                      "dexpi_id": "ProcessSignalGeneratingFunction-1",
+                      "dexpi_class": "ProcessSignalGeneratingFunction",
+                      "tag_basis": "ASSIGNED here: the sensor has no number in the file",
+                      "assigned_tag": true,
+                      "unit_basis": "no unit reachable through the piping from FlowMeasuringElement-1",
+                      "unplaced_reason": "instruments need a unit; no unit reachable through the piping from FlowMeasuringElement-1",
+                      "variable": "flow",
+                      "part_of": "FIC-04"
+                    }
+                  },
+                  {
+                    "id": "FV-04",
+                    "model_role": "final_element",
+                    "record_fields": {
+                      "tag": "FV-04",
+                      "kind": "final_element",
+                      "unit": null,
+                      "stream": "PipingNetworkSystem-1",
+                      "source": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)",
+                      "dexpi_id": "GlobeValve-1",
+                      "dexpi_class": "GlobeValve",
+                      "tag_basis": "PipingComponentNumberAssignmentClass of the operated valve",
+                      "unit_basis": "no unit reachable through the piping from GlobeValve-1",
+                      "unplaced_reason": "final_elements need a unit; no unit reachable through the piping from GlobeValve-1"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "data_requests": [
+            {
+              "item": "Existing valve/loop feedback and diagnostic records",
+              "state": "not_on_drawing",
+              "where": [
+                "DCS/PLC configuration: approved existing valve/positioner configuration and point definitions for each named valve and loop",
+                "maintenance records: existing valve, positioner and calibration records",
+                "site records: approved loop drawings, I/O mappings, source revisions and locators"
+              ],
+              "how": "For each named valve/loop, review the record target, revision/locator, declared signal function, units, enabled return path and diagnostic capability. Keep command/current/travel setpoint separate from measured stem or shaft travel; local positioner feedback does not establish control-room or historian availability. Nearby Z tags and shared unit/stream membership do not establish valve association. Acknowledge appropriate existing coverage, including endpoint indication for an on/off duty, and retain unresolved source questions. Supplied fields do not complete this review.",
+              "candidate_scope": "anchors",
+              "candidate_facts": []
+            },
+            {
+              "item": "Existing valve performance and diagnostic history",
+              "state": "not_on_drawing",
+              "where": [
+                "historian or DCS trend for FV-04 (no historian tag is mapped in this model for these)",
+                "maintenance records: existing diagnostic, inspection and work-order reports for the named valve",
+                "site records: previously acquired command, measured-travel and process-response history with its operating basis"
+              ],
+              "how": "Review available history first. Retain valve/loop identity, source revision/locator, time and operating conditions, enabled state, quality/calibration and readability. Where suitable, compare command, independently described travel and process response over coincident periods. Position indication, endpoint states or oscillation alone do not diagnose stiction or its cause. Keep disabled, bad-quality, unavailable, foreign and unknown records as qualified candidates; ask the responsible record owner for the missing basis. This screen specifies no new manual step test, loop-mode change or operating experiment.",
+              "candidate_scope": "anchors",
+              "candidate_facts": []
+            }
+          ],
+          "decision_rule": "Record appropriate existing feedback/diagnostics as coverage with its source scope and remaining gaps. Route a named valve/loop request to the responsible record owner where function, association, availability or performance evidence is unresolved. Configuration, tuning, process and assembly causes remain open when investigating reported behavior. Any further test or change requires a separate company-approved method and operating/outage decision; this finding prescribes no retrofit, retune, new connection or mode change.",
+          "typical_benefit": {
+            "wording": "S13 discusses backlash/stiction and variability in highly throttled/oversized pumping systems, not a universal feedback retrofit. S29-S32 distinguish feedback routes and vendor-specific diagnostic/history examples. They establish no quantified benefit for this investigation or the supplied plant.",
+            "source": [
+              "S13",
+              "S29",
+              "S30",
+              "S31",
+              "S32"
+            ],
+            "arc": null,
+            "source_titles": [
+              "S13: Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079)",
+              "S29: Emerson Automation Experts, Providing Operators Process Control Valve Position Feedback (2014-01-10; vendor guidance)",
+              "S30: Emerson, Valve Positioners (product overview and digital-controller FAQ; vendor-specific)",
+              "S31: Emerson, Control Valve Diagnostics (product capabilities and status monitor; vendor-specific)",
+              "S32: Emerson Automation Experts, Impacts of Control Valve Diagnostics (2011-02-14; vendor guidance)"
+            ]
+          },
+          "limits": "P&IDs can omit fitted positioners. Drawing omission, local feedback, an enabled control-room return, historian availability and verified plant conditions are separate claims. Discrete endpoint feedback is not a continuous travel trace and is not automatically unsuitable for an on/off duty. Supplied source/quality flags and reported abnormalities are unverified evidence, not installed-state checks, unique diagnoses or permission to test/change equipment."
+        },
+        "assets": [
+          {
+            "id": "FIC-04",
+            "content": {
+              "id": "FIC-04",
+              "kind": "controller",
+              "tag": "FIC-04",
+              "name": "FIC-04: flow, indicate, control (central location)",
+              "aliases": [],
+              "attributes": [
+                {
+                  "name": "InstrumentationLoopFunction-1:InstrumentationLoopFunctionNumberAssignmentClass.value",
+                  "value": "04",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML InstrumentationLoopFunction-1 GenericAttribute InstrumentationLoopFunctionNumberAssignmentClass"
+                  }
+                },
+                {
+                  "name": "InstrumentationLoopFunction-1:dexpi_class.value",
+                  "value": "InstrumentationLoopFunction",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML InstrumentationLoopFunction-1 <InstrumentationLoopFunction>"
+                  }
+                },
+                {
+                  "name": "LocationSpecialization.value",
+                  "value": "CentralLocation",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML ProcessInstrumentationFunction-1 GenericAttribute LocationSpecialization"
+                  }
+                },
+                {
+                  "name": "MeasuringLineFunction-1:dexpi_class.value",
+                  "value": "MeasuringLineFunction",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML MeasuringLineFunction-1 <InformationFlow>"
+                  }
+                },
+                {
+                  "name": "ProcessInstrumentationFunctionCategoryAssignmentClass.value",
+                  "value": "F",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML ProcessInstrumentationFunction-1 GenericAttribute ProcessInstrumentationFunctionCategoryAssignmentClass"
+                  }
+                },
+                {
+                  "name": "ProcessInstrumentationFunctionNumberAssignmentClass.value",
+                  "value": "04",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML ProcessInstrumentationFunction-1 GenericAttribute ProcessInstrumentationFunctionNumberAssignmentClass"
+                  }
+                },
+                {
+                  "name": "ProcessInstrumentationFunctionsAssignmentClass.value",
+                  "value": "IC",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML ProcessInstrumentationFunction-1 GenericAttribute ProcessInstrumentationFunctionsAssignmentClass"
+                  }
+                },
+                {
+                  "name": "SignalLineFunction-1:dexpi_class.value",
+                  "value": "SignalLineFunction",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML SignalLineFunction-1 <InformationFlow>"
+                  }
+                },
+                {
+                  "name": "description",
+                  "value": "FIC-04: flow, indicate, control (central location)",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+                  }
+                },
+                {
+                  "name": "dexpi_class",
+                  "value": "ProcessInstrumentationFunction",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+                  }
+                },
+                {
+                  "name": "dexpi_id",
+                  "value": "ProcessInstrumentationFunction-1",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+                  }
+                },
+                {
+                  "name": "measurement_unplaced",
+                  "value": "FT-04",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+                  }
+                },
+                {
+                  "name": "output_unplaced",
+                  "value": "FV-04",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+                  }
+                },
+                {
+                  "name": "tag_basis",
+                  "value": "category + functions + number attributes",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+                  }
+                }
+              ],
+              "source": {
+                "kind": "document",
+                "document": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+              },
+              "citations": {
+                "source": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+              }
+            },
+            "relations": [
+              {
+                "type": "controls",
+                "from": "FIC-04",
+                "to": "FV-04",
+                "direction": null,
+                "source": {
+                  "kind": "document",
+                  "document": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+                },
+                "citations": {
+                  "source": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+                }
+              },
+              {
+                "type": "controls",
+                "from": "FT-04",
+                "to": "FIC-04",
+                "direction": null,
+                "source": {
+                  "kind": "document",
+                  "document": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+                },
+                "citations": {
+                  "source": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+                }
+              }
+            ]
+          },
+          {
+            "id": "FV-04",
+            "content": {
+              "id": "FV-04",
+              "kind": "final_element",
+              "tag": "FV-04",
+              "name": "Globe valve operated by actuating system FV-04",
+              "aliases": [],
+              "attributes": [
+                {
+                  "name": "ActuatingFunction-1:dexpi_class.value",
+                  "value": "ActuatingFunction",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML ActuatingFunction-1 <ActuatingFunction>"
+                  }
+                },
+                {
+                  "name": "ActuatingSystem-1:NormalStateRepresentation.attribute_set",
+                  "value": "DexpiCustomAttributes",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML ActuatingSystem-1 GenericAttribute NormalStateRepresentation"
+                  }
+                },
+                {
+                  "name": "ActuatingSystem-1:NormalStateRepresentation.value",
+                  "value": "NC",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML ActuatingSystem-1 GenericAttribute NormalStateRepresentation"
+                  }
+                },
+                {
+                  "name": "ActuatingSystem-1:dexpi_class.value",
+                  "value": "ActuatingSystem",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML ActuatingSystem-1 <ActuatingSystem>"
+                  }
+                },
+                {
+                  "name": "ControlledActuator-1:DeviceTypeNameAssignmentClass.value",
+                  "value": "Spring-diaphragm",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML ControlledActuator-1 GenericAttribute DeviceTypeNameAssignmentClass"
+                  }
+                },
+                {
+                  "name": "ControlledActuator-1:dexpi_class.value",
+                  "value": "ControlledActuator",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML ControlledActuator-1 <ActuatingSystemComponent>"
+                  }
+                },
+                {
+                  "name": "OperatedValveReference-1:dexpi_class.value",
+                  "value": "OperatedValveReference",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML OperatedValveReference-1 <ActuatingSystemComponent>"
+                  }
+                },
+                {
+                  "name": "PipingComponentNumberAssignmentClass.value",
+                  "value": "FV 04",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML GlobeValve-1 GenericAttribute PipingComponentNumberAssignmentClass"
+                  }
+                },
+                {
+                  "name": "description",
+                  "value": "Globe valve operated by actuating system FV-04",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+                  }
+                },
+                {
+                  "name": "dexpi_class",
+                  "value": "GlobeValve",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+                  }
+                },
+                {
+                  "name": "dexpi_id",
+                  "value": "GlobeValve-1",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+                  }
+                },
+                {
+                  "name": "kind",
+                  "value": "final_element",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+                  }
+                },
+                {
+                  "name": "stream",
+                  "value": "PipingNetworkSystem-1",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+                  }
+                },
+                {
+                  "name": "tag_basis",
+                  "value": "PipingComponentNumberAssignmentClass of the operated valve",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+                  }
+                },
+                {
+                  "name": "unit",
+                  "value": null,
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+                  }
+                },
+                {
+                  "name": "unit_basis",
+                  "value": "no unit reachable through the piping from GlobeValve-1",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+                  }
+                },
+                {
+                  "name": "unplaced_reason",
+                  "value": "final_elements need a unit; no unit reachable through the piping from GlobeValve-1",
+                  "source": {
+                    "kind": "document",
+                    "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+                  }
+                }
+              ],
+              "source": {
+                "kind": "document",
+                "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+              },
+              "citations": {
+                "source": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+              },
+              "placement": "no unit reachable through the piping from GlobeValve-1"
+            },
+            "relations": [
+              {
+                "type": "piped_to",
+                "from": "BL",
+                "to": "FV-04",
+                "direction": "unknown",
+                "source": {
+                  "kind": "document",
+                  "document": "DEXPI XML piping topology (PipingNetworkSegment connections)"
+                },
+                "citations": {
+                  "source": "DEXPI XML piping topology (PipingNetworkSegment connections)"
+                },
+                "attributes": [
+                  {
+                    "name": "sheet",
+                    "value": "I04V01-VER.EX01",
+                    "source": {
+                      "kind": "document",
+                      "document": "DEXPI XML piping topology (PipingNetworkSegment connections)"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "sits_on",
+                "from": "FV-04",
+                "to": "stream:PipingNetworkSystem-1",
+                "direction": null,
+                "source": {
+                  "kind": "document",
+                  "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+                },
+                "citations": {
+                  "source": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+                }
+              },
+              {
+                "type": "controls",
+                "from": "FIC-04",
+                "to": "FV-04",
+                "direction": null,
+                "source": {
+                  "kind": "document",
+                  "document": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+                },
+                "citations": {
+                  "source": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+                }
+              },
+              {
+                "type": "on_network",
+                "from": "FV-04",
+                "to": "I04V01-VER.EX01-NET001",
+                "direction": null,
+                "source": {
+                  "kind": "document",
+                  "document": "DEXPI XML piping topology (PipingNetworkSegment connections)"
+                },
+                "citations": {
+                  "source": "DEXPI XML piping topology (PipingNetworkSegment connections)"
+                }
+              }
+            ]
+          }
+        ],
+        "source": {
+          "id": "N114-FICTIONAL-NOTE",
+          "revision": "A",
+          "sha256": "7f90972cd32cad65e58b901934be4946506e74a51e562f692d030d259d0e8cb4",
+          "locator_id": "command-limits",
+          "locator": "lines 3–5"
+        }
+      },
+      "previous": null,
+      "id": "d-f0dfae26f1a0a011d6ee27afe1e3a1f5040616e3452fcb763f95b2dc48812869"
+    }
+  ],
+  "ownership_history": [
+    {
+      "question_id": "C3@model",
+      "owner": "Fictional controls-records owner",
+      "by": "Fictional task coordinator",
+      "on": "2026-11-01",
+      "previous": null,
+      "id": "o-b39dcbabbdd6005d496e93718f28b40dac5d70364c5aef86f096dfe63738cd23"
+    }
+  ]
+}

@@ -41,6 +41,7 @@ identities, relationships, generated files or mapped data.
 | Prepare a portable graph or inspect sourced statements | [Graph format](GRAPH_EXPORT.md) · [Statement review](STATEMENT_REVIEW.md) |
 | Retain answers and source-revision dependencies in a local packet | [Context register](CONTEXT_REGISTER.md) |
 | Carry a selected source through a partial answer, revision and complete readback | [Retained-source tutorial](../examples/opportunity-screen/mapping-descriptions/retained-answer/README.md) |
+| Investigate a known valve while its equipment placement remains unknown | [Unplaced-role question and handoff tutorial](../examples/graph-export/unplaced-dexpi/question-handoff/README.md) |
 | Follow a revised source through questions, review history and snapshot readback | [Worked revision example](../examples/pump-revision/README.md) |
 | Keep department scopes and cross-team dependencies explicit | [Four owned packets](../examples/team-context/README.md) |
 | Retrieve a selected snapshot through an approved local MCP client | [MCP starter](../examples/internal-mcp/README.md) |

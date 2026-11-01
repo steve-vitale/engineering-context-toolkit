@@ -1,0 +1,182 @@
+{
+  "schema": "n114-supplementary-expected-1",
+  "basis": "Independent source-role/exact-identity criteria; no product-generated expected records. Original XML logical relations and known graph role contract are retained, authored targets explicitly qualified.",
+  "cases": {
+    "L1-list-reference-shape": {
+      "raw_controller_fields": {
+        "measurement_unplaced": [
+          "FT-04"
+        ],
+        "output_unplaced": [
+          "FV-04"
+        ],
+        "output": {}
+      },
+      "ordinary_measurement_absent": true,
+      "measurement_targets_ordered": [
+        "FT-04"
+      ],
+      "command_targets_ordered": [
+        "FV-04"
+      ],
+      "controls_edges": [
+        [
+          "FT-04",
+          "FIC-04"
+        ],
+        [
+          "FIC-04",
+          "FV-04"
+        ]
+      ],
+      "required_C3_anchors": [
+        "FV-04"
+      ],
+      "C3_command_by_anchor": {
+        "FV-04": [
+          "FIC-04"
+        ]
+      },
+      "reads_true": [
+        "FT-04"
+      ],
+      "reads_false": [],
+      "CLI_exit": 0,
+      "finding_id": "C3@model",
+      "controller_id": "FIC-04",
+      "C3_command_not_measured_travel": true,
+      "owning_units_all_unknown": true
+    },
+    "L2-coexisting-controller-fields": {
+      "raw_controller_fields": {
+        "measurement": "FT-04",
+        "output": {
+          "final_element": "FV-04"
+        },
+        "measurement_unplaced": [
+          "FT-904"
+        ],
+        "output_unplaced": [
+          "FV-904"
+        ]
+      },
+      "measurement_targets_by_field": {
+        "measurement": [
+          "FT-04"
+        ],
+        "measurement_unplaced": [
+          "FT-904"
+        ]
+      },
+      "command_targets_by_field": {
+        "output.final_element": [
+          "FV-04"
+        ],
+        "output_unplaced": [
+          "FV-904"
+        ]
+      },
+      "controls_edges": [
+        [
+          "FT-04",
+          "FIC-04"
+        ],
+        [
+          "FIC-04",
+          "FV-04"
+        ],
+        [
+          "FT-904",
+          "FIC-04"
+        ],
+        [
+          "FIC-04",
+          "FV-904"
+        ]
+      ],
+      "required_C3_anchors": [
+        "FV-04",
+        "FV-904"
+      ],
+      "C3_command_by_anchor": {
+        "FV-04": [
+          "FIC-04"
+        ],
+        "FV-904": [
+          "FIC-04"
+        ]
+      },
+      "reads_true": [
+        "FT-04",
+        "FT-904"
+      ],
+      "reads_false": [],
+      "CLI_exit": 0,
+      "finding_id": "C3@model",
+      "controller_id": "FIC-04",
+      "C3_command_not_measured_travel": true,
+      "owning_units_all_unknown": true
+    },
+    "L3-exact-measurement-identity": {
+      "raw_controller_fields": {
+        "measurement_unplaced": [
+          "FT_04",
+          "FT-905"
+        ],
+        "output_unplaced": "FV-04",
+        "output": {}
+      },
+      "ordinary_measurement_absent": true,
+      "measurement_targets_ordered": [
+        "FT_04",
+        "FT-905"
+      ],
+      "command_targets_ordered": [
+        "FV-04"
+      ],
+      "controls_edges": [
+        [
+          "FT_04",
+          "FIC-04"
+        ],
+        [
+          "FT-905",
+          "FIC-04"
+        ],
+        [
+          "FIC-04",
+          "FV-04"
+        ]
+      ],
+      "required_C3_anchors": [
+        "FV-04"
+      ],
+      "C3_command_by_anchor": {
+        "FV-04": [
+          "FIC-04"
+        ]
+      },
+      "reads_true": [
+        "FT_04",
+        "FT-905"
+      ],
+      "reads_false": [
+        "FT-04"
+      ],
+      "CLI_exit": 0,
+      "finding_id": "C3@model",
+      "controller_id": "FIC-04",
+      "C3_command_not_measured_travel": true,
+      "owning_units_all_unknown": true
+    }
+  },
+  "common": [
+    "Every listed exactID must be present once with compatible knownrole and unit:null; no synthetic owner or verified operating tag",
+    "Preserve rawscalar/listform/order, fields, source/authored qualifiers and absentvsnull; never overwrite ordinary fields with *_unplaced",
+    "Question/groupedcontroller evidence names exactcommandendpoints; processmeasurement not travelfeedback",
+    "Full/coregraph controls reflect only exactlistedrefs, plus unchangedotherbaseedges; graph edgeorder may use existing exporter recipe, source list order remains exact",
+    "Complete source-model graph/question/context handoff preserves record qualifications; actual CLI and pure reads helper controls are separate observations",
+    "No candidate/helper output or normalization used as oracle; no SDK/plant/model call"
+  ],
+  "runtime_status": "UNEXECUTED; root gate and immutable exact consumed bytes required"
+}

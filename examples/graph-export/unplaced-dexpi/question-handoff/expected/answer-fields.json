@@ -1,0 +1,23 @@
+{
+  "schema": "n114-fictional-answer-template-1",
+  "fields": {
+    "question_id": "C3@model",
+    "answer_id": "n114-partial-command-1",
+    "claim_key": "command-basis-not-travel",
+    "value": "logical command interpretation only; installed travel feedback unknown",
+    "answer": "The supplied reader model represents a logical FT-04 -> FIC-04 -> FV-04 command/process-measurement chain. FT-04 is assigned flow context, not measured valve travel. Owning equipment, operating tag identity, positioner/travel feedback, control-room return and historian availability remain unverified. Request existing loop, I/O, positioner and maintenance records from the responsible role; no field test or retrofit is authorized.",
+    "answer_state": "partial",
+    "decision": "accepted",
+    "owner": "Fictional controls-records owner",
+    "assigned_by": "Fictional task coordinator",
+    "assigned_on": "2026-11-01",
+    "reviewer": "Fictional source-review role",
+    "reviewed_on": "2026-11-01",
+    "source_id": "N114-FICTIONAL-NOTE",
+    "locator_id": "command-limits",
+    "source_match": "match",
+    "plant_truth": "unknown",
+    "note": "Entire note, actors and decision are fictional software fixtures; no authenticated review or operating authorization."
+  },
+  "evidence_fingerprint_policy": "Unfilled/nonrunnable until actual prepare. Use only actual evidence_choices.csv row matching exact question/source/locator under this frozen recipe; never fabricate or restamp a fingerprint."
+}
