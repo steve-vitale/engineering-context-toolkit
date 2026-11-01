@@ -1,0 +1,89 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "E29-02-own-drive-label.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E29"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "energy": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E29@K-B",
+   "question_id": "E29",
+   "family": "energy",
+   "question": "Does this refrigeration compressor carry part load on its slide valve (or hot gas bypass) with no speed control?",
+   "about": "K-B",
+   "assets": [
+    {
+     "id": "K-B",
+     "tag": "K-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "K-B",
+     "tag": "K-B",
+     "text": "equipment K-B reads \"K-B Ammonia R-717 screw compressor B\"",
+     "field": "units[K-B]"
+    },
+    {
+     "role": "checked, none found",
+     "text": "no variable speed drive or speed controller drawn on this compressor",
+     "field": "applies_when.without"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Slide valve (capacity) position over normal operation",
+     "state": "not_on_drawing",
+     "where": [
+      "DCS/PLC configuration: slide valve position or percent capacity per compressor from the refrigeration plant controls, a month or more"
+     ],
+     "how": "Hours spent below full load, by load band."
+    },
+    {
+     "item": "Compressor power and run hours",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: power logger on the compressor motor across a normal week"
+     ],
+     "how": "Power at each load band, so part-load efficiency can be seen."
+    },
+    {
+     "item": "How the compressors are sequenced",
+     "state": "not_on_drawing",
+     "where": [
+      "DCS/PLC configuration: which compressor trims, and the order and pressures at which they load and unload"
+     ],
+     "how": "Note whether more than one machine trims at the same time."
+    }
+   ],
+   "decision_rule": "Worth a look when screws spend long hours part-loaded on the slide valve while another could be off, or when no machine on a suction level has speed control to trim. Close it if each runs near full load or a sequencer already keeps one machine trimming.",
+   "typical_benefit": {
+    "wording": "Among control strategies that \"may compromise system energy efficiency\" (S25, p. 59, citing Pearson 2003): \"Slide valve unloading of oversized screw compressors.\" and \"Hot gas bypass of compressors.\" Speed control (S25, p. 63): \"ASDs used on compressors below a part-load ratio of about 95% will deliver performance equal to a fixed speed compressor but with lower electricity requirements. However, at near full (i.e., 100%) load, ASDs are approximately 3% less efficient than fixed speed drives\".",
+    "source": [
+     "S25"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S25: Brush, Masanet and Worrell, Energy Efficiency Improvement and Cost Saving Opportunities for the Dairy Processing Industry: An ENERGY STAR Guide for Energy and Plant Managers (LBNL-6261E, Oct 2011)"
+    ]
+   },
+   "limits": "A drive or sequencing change goes through the compressor vendor (minimum speed, oil management, vibration). Fires only where the equipment's own name, type or service names the refrigerant (ammonia, NH3, R-717, a refrigerant number) or says refrigeration; an air compressor, a process recycle compressor, a process condenser on cooling water or a power-plant air-cooled condenser does not.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

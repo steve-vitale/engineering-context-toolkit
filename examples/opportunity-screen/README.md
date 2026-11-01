@@ -11,9 +11,9 @@ How the engine works, the three evidence states and how to add a question: [`doc
 | [`te/`](te/) | Tennessee Eastman, hand-built (`data/te_process_model.json`) plus its loop list | 10 | [`te/screen.md`](te/screen.md) |
 | [`bayer/`](bayer/) | Bayer residue treater from the CSB report (`data/bayer_rt/process_model.json`) | 12 | [`bayer/screen.md`](bayer/screen.md) |
 | [`open100/`](open100/) | 12 OPEN100 sheets extracted to a twin (`out/twin/r2-tiles-trace/codex/plant_model.json`) plus the equipment schedules | 29 | [`open100/screen.md`](open100/screen.md) |
-| [`food/`](food/) | **ILLUSTRATIVE** synthetic food plant section: ammonia refrigeration, a dryer, an oven, a fryer and utilities ([`food_plant_model.json`](food_plant_model.json)) | 24 | [`food/screen.md`](food/screen.md) |
+| [`food/`](food/) | **ILLUSTRATIVE** synthetic food plant section: ammonia refrigeration, a dryer, an oven, a fryer and utilities ([`food_plant_model.json`](food_plant_model.json)) | 26 | [`food/screen.md`](food/screen.md) |
 | [`millard/`](millard/) | Two source-authored records from a historical refrigeration bulletin; E30 only, deliberately incomplete model | 1 | [Screen and first-question brief](millard/README.md) |
-| [`rollup-food-bayer/`](rollup-food-bayer/) | Roll-up of the `food` and `bayer` screens as two sites | 36 across 24 questions | [`rollup-food-bayer/rollup.md`](rollup-food-bayer/rollup.md) |
+| [`rollup-food-bayer/`](rollup-food-bayer/) | Roll-up of the `food` and `bayer` screens as two sites | 38 across 24 questions | [`rollup-food-bayer/rollup.md`](rollup-food-bayer/rollup.md) |
 
 The separate [two-supply regression](field-coverage/README.md) shows why grouping questions by unit must not
 combine different assets' partial answers. It is a fictional software control, not another public source family.
@@ -23,6 +23,10 @@ The [pump/motor/cooler example](pump-motor-basis/README.md) separates stated rat
 motor efficiency and actual heat duty. The [source-investigation recipe](source-investigation/README.md)
 retains the MGPI historical answer while asking conditional receiving-installation questions; it is an
 authored source-specific catalog, not a new default rule or usefulness score.
+
+The [function-basis regression cases](function-basis/README.md) retain drive, defrost and exhaust-control
+labels as candidates while asking for actual function and operating evidence. These 25 synthetic development
+cases test three rules; they are separate from plant studies and model-extraction benchmarks.
 
 The commands below regenerate tracked example outputs for contributors; the test checks them byte for byte.
 For a personal run, use a separate `--out` folder such as `../engineering-work/screen-te`. For a roll-up, point
@@ -147,7 +151,7 @@ safety-related design changes go through the licensing basis, not an energy scre
   the rule looks for condensate or trap outlets to drain.
 - The ACC condensate drain through LCV-1501 to the condensate system is not asked about.
 
-### Illustrative food plant section (24 findings)
+### Illustrative food plant section (26 findings)
 
 Checked against the model it was written from. **Expected** means the finding is the question the item was drawn to
 raise; **legit** means an older question fired on the new equipment and is a fair question there.
@@ -156,21 +160,20 @@ raise; **legit** means an older question fired on the new equipment and is a fai
 |---|---|
 | E27 C-201: ammonia evaporative condenser, PT-203 head pressure, PIC-203 "head pressure control at a fixed setpoint" | Expected. Supplied pressure/control records remain candidates; train membership, actual reset mode, operating limits and coincident total demand remain open for review, including when a reset is named |
 | E28 model: K-201, K-202, K-203 with suction pressures and candidate loads | Expected. The grouped question keeps suction membership, every coincident load/approach and reset coverage unresolved; grouping does not establish shared topology. |
-| E29 K-201 and K-202: screws with no drive (ZT-202 slide valve position shown on K-202) | Expected |
-| E30 EV-201: hot gas defrost valve HGV-201, defrost started by a timer | Expected |
+| E29 K-201, K-202 and K-203: stated drive/capacity-control records | Expected. The SC-203 drive label remains a candidate; each machine's actual part-load control, sequence and real-input basis stay open. |
+| E30 EV-201 and EV-202: supplied defrost/timer/DP records | Expected. A DP indication does not establish active demand initiation; applicability, initiation, termination and events need review for each unit. |
 | E31 D-301 (exhaust S1, TT-304) and O-302 (exhaust S2, TT-305) | Expected. The fuel request names FT-301 on the dryer and, on the oven, says only a valve is drawn |
 | E32 D-301 and F-303: gas-fired, no flue O2 | Expected; the decision rule and source keep the excess air a drying process needs |
 | H5 model: compressors and condenser, with WH-401 as a candidate heating duty | Expected. Source/sink grade, timing, distance, contamination/isolation, power impact and existing recovery coverage still require review. |
 | H6 D-301 and O-302, with WH-401 | Expected; overlaps E31 by design (E31 asks about the unit's own inlet air first) |
-| C11 D-301 and O-302: no humidity measurement | Expected. The dryer's manual exhaust damper HV-304 is shown |
+| C11 D-301 and O-302: exhaust-control investigation | Expected. HV-304 and the other supplied indications remain candidates; missing humidity does not establish manual control or make humidity universally suitable. |
 | C12 model: K-201, K-202, K-203, with JT-201 retained as a supplied power candidate | Expected. Real-input quantity, attribution, time/conversion basis and usable coincident operation stay open even when a power instrument is drawn. |
 | E19, E22, E23 AC-501 (instrument air compressor) | Legit. E19 also lists the refrigeration pressure controllers PIC-202 and PIC-203 as "pressure control" because its clause looks anywhere: **low value** in that part |
 | C1 O-302, F-303, WH-401: gas with no meter | Legit; the dryer's gas is metered (FT-301), so it is quiet |
 | C2, C3 model | Legit; **low value** as in the other examples |
 | C9 model: K-201, K-202, K-203, AC-501 record review | Each machine retains cause/effect and current association questions, including when a switch or trip is supplied. No protection, test or acceptance is inferred. |
 
-**Anti-triggers, each drawn on purpose and pinned in the test:** K-203 has a drive (SC-203), so E29 is quiet there;
-EV-202 starts defrost from a coil differential pressure (PDT-206), so E30 is quiet there; the oven has a flue O2
+**Anti-triggers, each drawn on purpose and pinned in the test:** the oven has a flue O2
 analyser (AT-302), so E32 is quiet there; the fryer's exhaust
 goes to a vapour condenser heat recovery exchanger (HX-303, the S26 p. 107 arrangement), so E31 and H6 are quiet
 there; and the instrument air compressor AC-501 and its refrigerated air dryer AD-502 get no refrigeration, oven or
@@ -181,6 +184,20 @@ input metadata. The current collection contract retains it as a candidate and ke
 open. Current-only, voltage-only, apparent/reactive power and bare cumulative-energy labels cannot settle that
 basis. Separate reset/recovery records also cannot erase other trains' requests. These are source-informed
 software controls, not food-plant or human-usefulness validation.
+
+SC-203 and PDT-206 also retain their historical quiet-control purpose in the unchanged input metadata. Current
+E29 and E30 keep the named machines in source review, retaining the supplied labels rather than treating them
+as proof of actual function. The saved historical cases and current regression expectations are kept separately.
+
+<details>
+<summary>Original food-case result</summary>
+
+#### Illustrative food plant section (24 findings)
+
+This retained anchor refers to the [original 24-finding screen at 8313a8e](https://github.com/steve-vitale/engineering-context-toolkit/blob/8313a8e948bc99e6af40293e61f0900a44516644/examples/opportunity-screen/food/screen.md).
+The current 26-finding screen above keeps K-203 and EV-202 in function review. The source model is unchanged.
+
+</details>
 
 **When the ten questions were first added, on the other three examples:** none of the ten new questions fired on TE, Bayer or OPEN100 (TE's recycle
 compressor K-101 and condenser E-101, Bayer's vent condenser E-1 and OPEN100's air-cooled condenser name no

@@ -1,19 +1,22 @@
 # Supported workflows and formats
 
-Use the [input selector](../README.md#start-wherever-you-are) to choose a guide. This reference explains what
-connects after that choice. It describes existing tool contracts, not one universal automated pipeline.
+Build from your records in reviewable stages: create a supported draft model, review and enrich it, then choose
+drawings, graph/context, platform staging and approved data connections. This reference gives each tool's exact
+file contract. The [tool selector](../README.md#start-wherever-you-are) routes your inputs; the
+[tutorials and case studies](README.md) show the method and its public evidence.
 
 ## First choose what the question needs
 
-- **Document clarification:** keep the question and source evidence in the [plain brief](../examples/first-pilot/README.md).
-  No model, drawing, graph or server is required.
-- **Shared learning and starter workflows:** author a selected [onboarding packet](../examples/engineering-onboarding/README.md)
-  with permitted sources, qualifications and workflow instructions. Read it with Python or an approved MCP client;
-  no asset model is required.
-- **Equipment identities or connections:** use the matching description, image or DEXPI guide to prepare a draft
-  model, then check it against independent evidence.
-- **Controls/history question:** use loop records or historian CSVs directly. Relate results to assets only after
-  reviewing the identity mapping. A CSV does not automatically create a process model.
+- **Your plant's draft structure:** use the [P&ID image](../examples/own-drawing/README.md),
+  [description](../examples/from-description/README.md) or [DEXPI XML](../examples/from-dexpi-xml/README.md) route.
+  Review the resulting model and its source evidence before enriching or connecting it.
+- **Controls or recorded behavior:** use loop records or historian CSVs directly, then relate the results to
+  reviewed asset identities. Recorded data complements the structural model; it is not itself a process model.
+- **Maintained source-linked knowledge:** attach questions and answers to supported models with the context
+  register, or author a selected [knowledge/workflow packet](../examples/engineering-onboarding/README.md)
+  without an asset model. Read selected packets through Python or an approved MCP client.
+- **Document clarification:** use the [plain brief](../examples/first-pilot/README.md) with permitted sources and
+  a reviewer. A drawing, graph or server is optional when the job only needs a qualified source answer.
 
 ## Files with different jobs
 

@@ -140,7 +140,10 @@ perfect selected-field score, and the question engine raises no findings on the 
 
 **OPEN100 structural demonstrations** retain drawing-only limits: direction on **361 of 1,133** process links,
 and **38 sheet-to-sheet connections**, **36 with a direction**. Undetermined links stay undirected. The mimic,
-3D tour and isolation mockup are research outputs requiring adaptation, not generic own-drawing deliverables.
+3D tour and isolation mockup show additional application work beyond the reusable intake/export tools.
+For your plant, start with the [own-P&ID tutorial](../examples/own-drawing/README.md), review the draft assets
+and connections, then add your process records, mappings and target-platform setup. The public assembly shows
+what can be built from that foundation; its accuracy and operating context belong to this case.
 See [structural evidence](OPEN100_STRUCTURAL.md) and the [TE/OPEN100 demonstration comparison](DELIVERABLES.md).
 
 ### One plant, end to end (Tennessee Eastman)

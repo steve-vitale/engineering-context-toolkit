@@ -1,12 +1,12 @@
 {
  "about": "Generalization matrix written by scripts/corpus_matrix.py; rendered as docs/GENERALIZATION.md.",
- "ran_at": "2026-11-01 01:42 UTC",
- "seconds": 1643.4,
+ "ran_at": "2026-11-01 03:30 UTC",
+ "seconds": 1643.5,
  "rows_run_this_time": [
-  6
+  3
  ],
  "inputs_run_this_time": [
-  "te-braatz-runs"
+  "own-drawing-extraction"
  ],
  "tracer_pass_f1": 0.88,
  "pipe_pass_f1": 0.88,
@@ -4955,21 +4955,21 @@
    "published": [
     {
      "file": "examples/own-drawing/README.md",
-     "line": 51,
+     "line": 52,
      "says": "2 equipment, 36 instruments, 53 line items, 9 off-page connectors, 345 links",
      "ours": "2 equipment, 36 instruments, 53 line items, 9 off-page connectors, 345 links",
      "agrees": true
     },
     {
      "file": "examples/own-drawing/README.md",
-     "line": 50,
+     "line": 51,
      "says": "445 rows",
      "ours": "445 rows",
      "agrees": true
     }
    ],
    "seconds": 0.5,
-   "ran_at": "2026-11-01 01:42 UTC",
+   "ran_at": "2026-11-01 03:30 UTC",
    "tool_files": {
     "scripts/build_twin.py": "sha256:8e9a5e26b9938a8a",
     "scripts/confidence.py": "sha256:0fc9948199d89edf",
@@ -5007,7 +5007,7 @@
       "exists": true,
       "directory": false,
       "files": {
-       "examples/own-drawing/README.md": "sha256:8353710f9d2933285901efc0aed80341f37307d730fe78df378139ee489fd6ee"
+       "examples/own-drawing/README.md": "sha256:aac51acdf39fbe41894ec97c754b891a474b4feaf6898ca0c9c6ac067e8c1604"
       }
      },
      {
@@ -7617,8 +7617,8 @@
      "agrees": true
     }
    ],
-   "seconds": 0.2,
-   "ran_at": "2026-10-31 03:31 UTC",
+   "seconds": 0.3,
+   "ran_at": "2026-11-01 03:24 UTC",
    "tool_files": {
     "scripts/generate.py": "sha256:729c3081be3e1ec3",
     "scripts/output_paths.py": "sha256:16ace3cf89be6baf",
@@ -7648,7 +7648,7 @@
       "exists": true,
       "directory": false,
       "files": {
-       "examples/from-description/README.md": "sha256:2fdad8d8e757eecf941b1c6556ec719ab1327e57cd4dbfcad1ea3605070a7783"
+       "examples/from-description/README.md": "sha256:8e6f0b45de44ec481b5c22eb08ff3f0582357430f027549af5b69db414a97bee"
       }
      }
     ]

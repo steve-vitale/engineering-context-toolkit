@@ -261,10 +261,12 @@ class ExpectedFindings(unittest.TestCase):
                     "E31@D-301", "E31@O-302", "E32@D-301", "E32@F-303", "C11@D-301", "C11@O-302", "H6@D-301",
                     "H6@O-302"):
             self.assertIn(fid, found)
-        # anti-triggers, each drawn on purpose: K-203 has a drive; EV-202 defrosts on demand (coil dP); the oven has
-        # a flue O2 analyser; the fryer's exhaust goes to a vapour condenser heat recovery exchanger.
+        # Source-informed collection keeps drive and DP labels as candidates, not proof of actual function.
+        for fid in ("E29@K-203", "E30@EV-202"):
+            self.assertIn(fid, found)
+        # Remaining anti-triggers: oven flue O2 and fryer exhaust heat recovery retain their prior scope.
         # K-201's stated power reading remains a candidate; actual real-input suitability stays open.
-        for fid in ("E29@K-203", "E30@EV-202", "E32@O-302", "E31@F-303", "H6@F-303"):
+        for fid in ("E32@O-302", "E31@F-303", "H6@F-303"):
             self.assertNotIn(fid, found)
         c12 = {a["id"] for a in finding(doc, "C12@model")["assets"]}
         self.assertEqual(c12 & {"K-201", "K-202", "K-203"}, {"K-201", "K-202", "K-203"})
@@ -2371,6 +2373,269 @@ class ReadableFindingReferences(unittest.TestCase):
                 self.assertEqual((Path(tmp) / "questions.json").read_text(encoding="utf-8"),
                                  (ROOT / relative / "questions.json").read_text(encoding="utf-8"))
                 self.assertIn("**Finding reference (JSON string):**", (Path(tmp) / "screen.md").read_text(encoding="utf-8"))
+
+
+class FunctionBasisCollection(unittest.TestCase):
+    """Synthetic source-development cases and candidate-only field behavior; no plant/usefulness claim."""
+    BASE = EX / "function-basis"
+    ROLE = "supplied candidate field"
+    TEST_ID = "TEST-FUNCTION-BASIS"
+
+    @staticmethod
+    def _question(kinds, fields=None):
+        question = {
+            "id": FunctionBasisCollection.TEST_ID, "family": "energy",
+            "question": "Which supplied qualifiers belong to this record?",
+            "applies_when": {"anchor": {"kind": list(kinds)}, "group_by": "item"},
+            "evidence_fields": ["supplied record only"],
+            "data_requests": [{"item": "Review source and current function",
+                               "where": [{"place": "records", "what": "approved existing configuration"}],
+                               "how": "Supplied candidates do not settle the review."}],
+            "decision_rule": "Return a qualified source investigation for review.",
+            "typical_benefit": {"wording": "No source or quantified benefit for this fictional software control.",
+                                "source": [], "arc": None},
+            "limits": "Representation test only, not an engineering recommendation.",
+        }
+        if fields is not None:
+            question["evidence_show_fields"] = fields
+        return question
+
+    @staticmethod
+    def _model():
+        return {"meta": {"model_id": "illustrative-function-basis-test", "illustrative": True},
+                "units": [{"id": "K-A", "name": "Ammonia screw compressor A", "type": "compressor"}],
+                "streams": [], "instruments": [], "controllers": [], "interlocks": [],
+                "final_elements": [], "manual_valves": []}
+
+    def _invoke(self, model, question=None, *, question_id=None, sentinel=False):
+        catalog = copy.deepcopy(CAT)
+        if question is not None:
+            self.assertNotIn(question["id"], {q["id"] for q in catalog["questions"]})
+            catalog["questions"].append(question)
+            question_id = question["id"]
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            source, catalog_path, out = base / "model.json", base / "catalog.json", base / "outputs"
+            source.write_text(json.dumps(model, ensure_ascii=True), encoding="utf-8")
+            catalog_path.write_text(json.dumps(catalog, ensure_ascii=True), encoding="utf-8")
+            sources_before = (source.read_bytes(), catalog_path.read_bytes())
+            if sentinel:
+                out.mkdir()
+                (out / "questions.json").write_bytes(b"QUESTIONS SENTINEL\x00\xff")
+                (out / "screen.md").write_bytes(b"SCREEN SENTINEL\x00\xff")
+            before = (out.exists(), {p.name: p.read_bytes() for p in out.iterdir()} if out.exists() else {})
+            stdout, stderr = io.StringIO(), io.StringIO()
+            with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                code = qe.main(["--model", str(source), "--catalog", str(catalog_path),
+                                "--question", question_id, "--out", str(out)])
+            after = (out.exists(), {p.name: p.read_bytes() for p in out.iterdir()} if out.exists() else {})
+            self.assertEqual((source.read_bytes(), catalog_path.read_bytes()), sources_before)
+            doc = json.loads(after[1]["questions.json"].decode("utf-8")) if code == 0 else None
+            markdown = after[1]["screen.md"].decode("utf-8") if code == 0 else None
+            return code, stdout.getvalue(), stderr.getvalue(), before, after, doc, markdown
+
+    def _assert_field(self, questions, expected):
+        rows = [e for q in questions for e in q["evidence"]
+                if e["role"] == self.ROLE and e.get("id") == expected["id"] and e["field"] == expected["field"]]
+        self.assertEqual(len(rows), 1, expected)
+        row = rows[0]
+        prefix = f"{expected.get('label', expected['id'])} {expected['name']} = "
+        suffix = f"; {expected['state']}; meaning and suitability unverified"
+        self.assertTrue(row["text"].startswith(prefix), row)
+        self.assertTrue(row["text"].endswith(suffix), row)
+        value = json.loads(row["text"][len(prefix):-len(suffix)])
+        # JSON comparison preserves false/zero and nested types as well as array/key order.
+        self.assertEqual(json.dumps(value, ensure_ascii=True),
+                         json.dumps(expected["value"], ensure_ascii=True))
+
+    def _decode_span(self, text):
+        count = len(text) - len(text.lstrip("`"))
+        self.assertGreater(count, 0)
+        end = text.find("`" * count, count)
+        self.assertGreaterEqual(end, count)
+        payload = text[count:end]
+        self.assertTrue(payload.isascii())
+        return json.loads(payload), text[end + count:]
+
+    def _assert_literal_markdown(self, doc, markdown):
+        rows = [e for q in doc["questions"] for e in q["evidence"] if e["role"] == self.ROLE]
+        prefix = "- Supplied candidate field: "
+        lines = [line[len(prefix):] for line in markdown.splitlines() if line.startswith(prefix)]
+        self.assertEqual(len(lines), len(rows))
+        for row, line in zip(rows, lines):
+            text, rest = self._decode_span(line)
+            self.assertTrue(rest.startswith(" ("))
+            field, rest = self._decode_span(rest[2:])
+            self.assertEqual(rest, ")")
+            self.assertEqual((text, field), (row["text"], row["field"]))
+
+    def test_source_development_corpus_preserves_subjects_candidates_and_open_requests(self):
+        oracle_path = self.BASE / "expected" / "cases.json"
+        self.assertTrue(oracle_path.is_file(), "install the committed function-basis corpus with this method")
+        oracle = json.loads(oracle_path.read_text(encoding="utf-8"))
+        self.assertEqual(oracle["schema"], "function-basis-cases-1")
+        self.assertEqual(oracle["evidence_class"], "synthetic-development")
+        self.assertGreaterEqual(len(oracle["cases"]), 25)  # Later preregistered cases may be appended.
+        self.assertEqual(len({c["id"] for c in oracle["cases"]}), len(oracle["cases"]))
+        for case in oracle["cases"]:
+            with self.subTest(case=case["id"]):
+                path = (self.BASE / case["model"]).resolve()
+                self.assertTrue(path.is_relative_to(self.BASE.resolve()))
+                self.assertTrue(path.is_file())
+                questions, _, _, _ = qe.screen(qe.Model(path), CAT, [case["question_id"]])
+                self.assertEqual([q["about"] for q in questions], case["expected_subjects"])
+                self.assertTrue(all(q["question_id"] == case["question_id"] for q in questions))
+                assets = {a["id"] for q in questions for a in q["assets"]}
+                self.assertLessEqual(set(case["required_candidate_ids"]), assets)
+                self.assertFalse(set(case["forbidden_candidate_ids"]) & assets)
+                for question in questions:
+                    self.assertEqual(len(question["data_requests"]), case.get("expected_request_count", 3))
+                    self.assertTrue(all(r["state"] == "not_on_drawing" and r["where"]
+                                        for r in question["data_requests"]))
+                for field in case["candidate_fields"]:
+                    self._assert_field(questions, field)
+
+    def test_native_controller_and_interlock_qualifiers_do_not_become_screening_truth(self):
+        for kind in ("controller", "interlock"):
+            with self.subTest(kind=kind):
+                model = self._model()
+                model["units"][0]["name"] = "Utility skid"
+                facts = {"normal_temperature_C": 100, "enabled": False, "observed_hours": 0, "mode": "unknown"}
+                if kind == "controller":
+                    identity, section = "TIC-X", "controllers"
+                    model[section] = [{"tag": identity, "unit": "K-A", "description": "Electric heater temperature control",
+                                       "measurement": None, "output": {}, "facts": facts}]
+                else:
+                    identity, section = "IL-X", "interlocks"
+                    model[section] = [{"id": identity, "unit": "K-A", "cause": "Electric heater temperature high",
+                                       "effect": "Trip request", "facts": facts}]
+                result = self._invoke(model, question_id="H3")
+                self.assertEqual(result[0], 0, result[2])
+                self.assertEqual(result[5]["questions"], [])
+                result = self._invoke(model, self._question([kind], ["enabled", "observed_hours", "mode"]))
+                self.assertEqual(result[0], 0, result[2])
+                for name, state, value in (("enabled", "present", False), ("observed_hours", "present", 0),
+                                           ("mode", "blank", "unknown")):
+                    self._assert_field(result[5]["questions"], {"id": identity, "name": name, "state": state,
+                        "value": value, "field": f"{section}[{identity}].facts.{name}"})
+
+    def test_candidate_literal_values_and_markdown_are_exact_and_inert(self):
+        model = self._model()
+        values = {"Enabled": False, "observed_hours": 0, "null_value": None, "empty_value": "",
+                  "whitespace_value": " \t", "unknown_value": "unknown", "array_value": [], "object_value": {},
+                  "nested_value": {"flag": False, "count": 0, "note": None},
+                  "as_operated": 'manual `A` **B** [link](https://example.invalid) <b>x</b>\nline2 μ',
+                  "event_history": '["this remains a string"]'}
+        model["final_elements"] = [{"tag": "SC-A", "unit": "K-A", "description": "Drive candidate", "facts": values}]
+        names = ["enabled" if n == "Enabled" else n for n in values]
+        result = self._invoke(model, self._question(["final_element"], names))
+        self.assertEqual(result[0], 0, result[2])
+        for name, value in values.items():
+            state = "blank" if name in {"null_value", "empty_value", "whitespace_value", "unknown_value"} else "present"
+            self._assert_field(result[5]["questions"], {"id": "SC-A", "name": "enabled" if name == "Enabled" else name,
+                "state": state, "value": value, "field": "final_elements[SC-A].facts." + name})
+        self._assert_literal_markdown(result[5], result[6])
+        self.assertTrue(all(q["data_requests"] for q in result[5]["questions"]))
+
+    def test_unrelated_rejected_and_unshown_records_cannot_lend_qualifiers(self):
+        model = self._model()
+        model["units"][0]["facts"] = {"enabled": True, "observed_hours": 999}
+        model["units"].append({"id": "P-X", "name": "Wash pump X", "type": "pump"})
+        model["final_elements"] = [
+            {"tag": "SC-A", "unit": "K-A", "description": "VFD candidate A", "facts": {"Enabled": False, "observed_hours": 0}},
+            {"tag": "SC-X", "unit": "P-X", "description": "VFD unrelated X", "facts": {"enabled": True, "observed_hours": 888}},
+            {"tag": "SC-R", "unit": "K-A", "description": "VFD rejected R", "facts": {"enabled": True, "observed_hours": 777},
+             "ops_review": {"status": "rejected"}},
+        ]
+        model["instruments"] = [{"tag": "TT-N", "unit": "K-A", "variable": "temperature", "description": "Ordinary temperature",
+                                 "facts": {"enabled": True, "observed_hours": 666}}]
+        result = self._invoke(model, question_id="E29")
+        self.assertEqual(result[0], 0, result[2])
+        question = result[5]["questions"][0]
+        self.assertEqual({a["id"] for a in question["assets"]}, {"K-A", "SC-A"})
+        for identity, name, value, original in (("K-A", "observed_hours", 999, "observed_hours"),
+                                               ("SC-A", "observed_hours", 0, "observed_hours"),
+                                               ("SC-A", "enabled", False, "Enabled")):
+            section = "units" if identity == "K-A" else "final_elements"
+            self._assert_field([question], {"id": identity, "name": name, "state": "present", "value": value,
+                                           "field": f"{section}[{identity}].facts.{original}"})
+
+    def test_invalid_allowlists_refuse_before_outputs_or_sentinel_replacement(self):
+        invalid = (None, [], "enabled", [None], [1], [""], [" "], [" enabled"], ["enabled "],
+                   ["enabled", "Enabled"], ["ß", "SS"])
+        for names in invalid:
+            for sentinel in (False, True):
+                with self.subTest(names=names, sentinel=sentinel):
+                    question = self._question(["equipment"])
+                    question["evidence_show_fields"] = names
+                    result = self._invoke(self._model(), question, sentinel=sentinel)
+                    self.assertEqual(result[0], 2)
+                    self.assertEqual(result[1], "")
+                    self.assertIn("evidence_show_fields", result[2])
+                    self.assertEqual(result[3], result[4])
+
+    def test_role_marker_is_reserved_only_for_questions_that_opt_in(self):
+        model = self._model()
+        model["controllers"] = [{"tag": "SC-A", "unit": "K-A", "description": "Speed controller candidate",
+                                  "measurement": None, "output": {}, "facts": {"enabled": False}}]
+        for location in ("anchor_role", "with", "also_show"):
+            with self.subTest(location=location):
+                question = self._question(["controller"])
+                if location == "anchor_role":
+                    question["applies_when"][location] = self.ROLE
+                else:
+                    question["applies_when"][location] = [{"select": {"kind": ["equipment"]},
+                        "relation": "same_unit", "as": self.ROLE}]
+                result = self._invoke(model, question)
+                self.assertEqual(result[0], 0, result[2])
+                self.assertIn("- Supplied candidate field: ", result[6])
+                self.assertNotIn("- Supplied candidate field: `", result[6])
+                question["evidence_show_fields"] = ["enabled"]
+                result = self._invoke(model, question, sentinel=True)
+                self.assertEqual(result[0], 2)
+                self.assertEqual(result[1], "")
+                self.assertIn("reserves the 'supplied candidate field' role", result[2])
+                self.assertEqual(result[3], result[4])
+
+    def test_escaped_surrogate_values_complete_utf8_and_preserve_literal_meaning(self):
+        values = ("\ud800", "\udfff", "μ-\ud800-🚀", {"μ": "\ud800", "valid": [False, 0, None, "🚀"]})
+        for value in values:
+            for sentinel in (False, True):
+                with self.subTest(value=repr(value), sentinel=sentinel):
+                    model = self._model()
+                    model["units"][0]["facts"] = {"source_revision": value}
+                    result = self._invoke(model, self._question(["equipment"], ["source_revision"]), sentinel=sentinel)
+                    self.assertEqual(result[0], 0, result[2])
+                    self.assertEqual(set(result[4][1]), {"questions.json", "screen.md"})
+                    self._assert_field(result[5]["questions"], {"id": "K-A", "name": "source_revision", "state": "present",
+                                                             "value": value, "field": "units[K-A].facts.source_revision"})
+                    self._assert_literal_markdown(result[5], result[6])
+
+    def test_non_utf8_allowlist_names_refuse_without_touching_targets(self):
+        for name in ("field_\ud800", "field_\udfff"):
+            for sentinel in (False, True):
+                with self.subTest(name=repr(name), sentinel=sentinel):
+                    model = self._model()
+                    model["units"][0]["facts"] = {name: False}
+                    result = self._invoke(model, self._question(["equipment"], [name]), sentinel=sentinel)
+                    self.assertEqual(result[0], 2)
+                    self.assertEqual(result[1], "")
+                    self.assertEqual(result[2], "error: catalog evidence_show_fields names must be valid UTF-8 text\n")
+                    self.assertEqual(result[3], result[4])
+
+    def test_candidate_only_controller_field_does_not_complete_required_field_scope(self):
+        model = self._model()
+        model["controllers"] = [{"tag": "SC-A", "unit": "K-A", "description": "Speed controller candidate",
+                                  "measurement": None, "output": {}, "facts": {"enabled": False}}]
+        question = self._question(["controller"], ["enabled"])
+        question["data_requests"][0]["fields"] = ["enabled"]
+        result = self._invoke(model, question)
+        self.assertEqual(result[0], 0, result[2])
+        self._assert_field(result[5]["questions"], {"id": "SC-A", "name": "enabled", "state": "present", "value": False,
+                                                  "field": "controllers[SC-A].facts.enabled"})
+        request = result[5]["questions"][0]["data_requests"][0]
+        self.assertEqual(request["still_needed"], ["enabled"])
+        self.assertEqual(request["field_coverage"][0]["fields"][0]["state"], "absent")
 
 
 if __name__ == "__main__":

@@ -1,16 +1,20 @@
 # From your own DEXPI XML: a process model that keeps sizes, specs and design limits
 
-**Why it matters:** A plant's own CAD export becomes a model with its line sizes, piping specs, fluid codes and
-design pressures and temperatures kept, each value pointing back at the XML element it came from.
+**Reusable XML reader; C01 tutorial and public-source evidence below.** Build the draft structure of your plant's
+digital twin directly from a supported DEXPI P&ID export. The converted model retains represented line sizes,
+piping specs, fluid codes and design limits with XML element references, plus a report of mappings, omissions
+and uncertain placement.
 
-[`examples/from-dexpi`](../from-dexpi/README.md) only converts the three public DEXPI sheets that
-`scripts/adapt_dexpi.py` has prepared, and drops every attribute on the way. `scripts/dexpi_reader.py` reads a
-DEXPI P&ID XML file directly (standard library only, no model, no drawing needed; written for DEXPI 1.x, tested on
-the DEXPI 1.3 examples and on DEXPI 1.2 and 1.3 TrainingTestCases files, see [Other tools' exports](#other-tools-exports))
-and writes the same kind of
-process model that [`examples/from-description`](../from-description/README.md) starts from, so `generate.py` and
-`graph_export.py` work on it unchanged. The model can also support a first engineering question before any
-platform export. Keep the conversion report and original XML with that investigation.
+`scripts/dexpi_reader.py` reads your XML with the standard library, without a visual model-reading step. It is
+written for DEXPI 1.x and tested on the DEXPI 1.3 examples and DEXPI 1.2/1.3 TrainingTestCases files; see
+[Other tools' exports](#other-tools-exports). Start with the own-file command below, then inspect the model and
+conversion report against the original XML. Choose the supported generator, graph and question routes afterward;
+their input eligibility still matters.
+
+The older [adapted-key route](../from-dexpi/README.md) is a separate public-dataset tutorial prepared by
+`adapt_dexpi.py`. Use this direct XML reader for your own supported CAD export. The model shares the process-model
+contract used by the [description tools](../from-description/README.md), so the same review, enrichment and
+export workflow can continue from it. Keep the original revision and conversion report with that work.
 
 ## Commands
 

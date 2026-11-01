@@ -5,6 +5,12 @@
 > disposable Ignition gateway: see [the native acceptance page](../docs/IGNITION_ACCEPTANCE.md). All Tennessee Eastman
 > values are recorded replay, not a live process simulation.
 
+The Docker replay explicitly selects `--historical-demo-addresses`: a compatibility profile adds 36 read-only
+addresses used by this backup alongside all 52 current replay channels. The [literal map](legacy-te-node-map.json)
+pins the backup and current model, source columns and units. Historical names such as `PI-107` and current names
+such as `PT-107` read the same recorded channel; this is not a company tag resolver or an upgrade of the old
+drawing's topology. `SC-212` remains deliberately unfed. Running the replay without that flag adds no old names.
+
 This runs the whole twin on your computer: Ignition, the Tennessee Eastman plant replayed from recorded data, and the
 extracted drawings.
 You don't need Python, settings or keys. It's an extra option. If you'd rather not install Docker, the
@@ -85,9 +91,14 @@ the run page.
 
 **Record:** the first 9 from-scratch starts had 2 failures. Both were the alarm step. Switching to the fault
 recreated the replay container, so Ignition had to rebuild its connection, usually in about 25 seconds but once not
-within 2 minutes. Now the replay switches live inside the running container, the connection never drops, and every
-start since has passed, with the alarm at 26 seconds each time. If yours doesn't come up, `stop-demo.bat` then
+within 2 minutes. After switching replay live inside the running container, subsequent starts in that historical
+test period passed, with the alarm at 26 seconds each time. If yours doesn't come up, `stop-demo.bat` then
 `start-demo.bat` is the first thing to try.
+
+**Later check, November 1:** three fresh CI starts failed all four browser checks. The historical backup requested
+old TE addresses while the current replay served the renamed channels. The explicit profile above repairs that
+address contract without changing the backup, current model, default channels or acceptance thresholds. Its next
+fresh-start result must be recorded separately; the earlier successes do not establish that this repair passed.
 
 ## How the demo backup is made (for maintainers)
 

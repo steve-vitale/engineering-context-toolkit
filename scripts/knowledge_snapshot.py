@@ -439,7 +439,7 @@ def selection_digest(components):
     return preimage, hashlib.sha256(raw).hexdigest()
 
 
-def _diagnostics(packet, index):
+def _basis_diagnostics(packet, index):
     selected = packet['selected_sources'];all_d = {}
     for i, r in enumerate(packet['records']):
         d = dict(basis_state='matches', basis_reasons=[], evidence=[], dependency_state='not_declared',
@@ -465,27 +465,31 @@ def _diagnostics(packet, index):
         if not states:
             states=['unknown'];reason('no_evidence_declared',f'/records/{i}/evidence',None,None)
         d['basis_state']=next(s for s in ('stale','unknown','matches') if s in states);all_d[r['id']]=d
-    for rid,r in index.items():
-        d=all_d[rid]
-        if r['depends_on']:
-            # Breadth-first, sorted neighbors => first path is shortest with lexical tie-break.
-            paths={};frontier=[(rid,)];seen={rid}
-            while frontier:
-                following=[]
-                for path in sorted(frontier):
-                    for target in sorted(index[path[-1]]['depends_on']):
-                        if target in seen:continue
-                        seen.add(target);new=path+(target,);paths[target]=new;following.append(new)
-                frontier=following
-            for target,path in sorted(paths.items(),key=lambda item:item[1]):
-                td=all_d[target]
-                if td['basis_state']!='matches':
-                    codes=[code for code in REASON_ORDER if any(x['code']==code for x in td['basis_reasons'])]
-                    d['dependency_reasons'].append(dict(path=list(path),basis_state=td['basis_state'],reason_codes=codes))
-            d['dependency_state']='needs_review' if d['dependency_reasons'] else 'matches'
-        if d['basis_state']!='matches' or d['dependency_state']=='needs_review':
-            d['basis_review_notice']='review_supplied_basis';d['next_review_step']=NEXT_REVIEW
     return all_d
+
+
+def _record_diagnostics(rid, index, basis):
+    """Expand one complete record's paths without retaining every root's expanded paths."""
+    r=index[rid];d=copy.deepcopy(basis[rid])
+    if r['depends_on']:
+        # Breadth-first, sorted neighbors => first path is shortest with lexical tie-break.
+        paths={};frontier=[(rid,)];seen={rid}
+        while frontier:
+            following=[]
+            for path in sorted(frontier):
+                for target in sorted(index[path[-1]]['depends_on']):
+                    if target in seen:continue
+                    seen.add(target);new=path+(target,);paths[target]=new;following.append(new)
+            frontier=following
+        for target,path in sorted(paths.items(),key=lambda item:item[1]):
+            td=basis[target]
+            if td['basis_state']!='matches':
+                codes=[code for code in REASON_ORDER if any(x['code']==code for x in td['basis_reasons'])]
+                d['dependency_reasons'].append(dict(path=list(path),basis_state=td['basis_state'],reason_codes=codes))
+        d['dependency_state']='needs_review' if d['dependency_reasons'] else 'matches'
+    if d['basis_state']!='matches' or d['dependency_state']=='needs_review':
+        d['basis_review_notice']='review_supplied_basis';d['next_review_step']=NEXT_REVIEW
+    return d
 
 
 class KnowledgeSnapshot:
@@ -520,15 +524,18 @@ class KnowledgeSnapshot:
             except ValueError:
                 _fail('invalid_date')
         self.loaded_at=loaded_at if loaded_at is not None else datetime.now(timezone.utc).isoformat(timespec='microseconds')
-        self._diagnostics=_diagnostics(packet,self._index)
+        self._basis_diagnostics=_basis_diagnostics(packet,self._index)
         self._summaries=[]
         for r in sorted(packet['records'],key=lambda r:r['id']):
-            d=self._diagnostics[r['id']]
+            d=_record_diagnostics(r['id'],self._index,self._basis_diagnostics)
+            # Admit every complete record response before publishing any catalogue. Expanded paths live
+            # for this record only; per-request reads reconstruct the same complete diagnostics.
+            self._response(dict(record=r,diagnostics=d))
             row={k:copy.deepcopy(r[k]) for k in ('id','kind','title','summary','aliases','revision','record_state','audience_hints','owner_roles')}
             row.update(review_state=r['review']['state'],basis_state=d['basis_state'],dependency_state=d['dependency_state'],basis_review_notice=d['basis_review_notice']);self._summaries.append(row)
+            del d
         # No partial catalogue is published if any complete record cannot be read.
         self.onboarding_overview()
-        for rid in self._index:self.get_onboarding_record(rid)
         self.list_onboarding_records(limit=1)
 
     def _response(self,result):
@@ -542,7 +549,7 @@ class KnowledgeSnapshot:
         if extra:_fail('invalid_schema','',code='invalid_argument')
         p=self._packet
         return self._response(dict(schema='engineering-onboarding-overview-1',packet={k:p[k] for k in ('schema','packet_id','revision','scope','title')},
-            landing_record=self._index[p['landing_record_id']],landing_diagnostics=self._diagnostics[p['landing_record_id']],record_count=len(self._index),
+            landing_record=self._index[p['landing_record_id']],landing_diagnostics=_record_diagnostics(p['landing_record_id'],self._index,self._basis_diagnostics),record_count=len(self._index),
             counts_by_kind={k:sum(r['kind']==k for r in p['records']) for k in KINDS},selected_sources=p['selected_sources'],selection=self._selection,
             capabilities=dict(read_only=True,workflow_execution=False,decision_acceptance=False,authorization='external')))
 
@@ -568,7 +575,7 @@ class KnowledgeSnapshot:
         try:record_id.encode('utf-8')
         except UnicodeError:_fail('invalid_type','/record_id',code='invalid_argument')
         if record_id not in self._index:_fail('unknown_record','/record_id',code='unknown_record')
-        return self._response(dict(record=self._index[record_id],diagnostics=self._diagnostics[record_id]))
+        return self._response(dict(record=self._index[record_id],diagnostics=_record_diagnostics(record_id,self._index,self._basis_diagnostics)))
 
 
 def main(argv=None):

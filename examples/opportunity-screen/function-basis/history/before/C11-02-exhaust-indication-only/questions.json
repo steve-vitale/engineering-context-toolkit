@@ -1,0 +1,90 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "C11-02-exhaust-indication-only.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "C11"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "controls": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "C11@D-B",
+   "question_id": "C11",
+   "family": "controls",
+   "question": "Is this dryer's or oven's exhaust (and make-up air) rate set by hand rather than by exhaust humidity?",
+   "about": "D-B",
+   "assets": [
+    {
+     "id": "D-B",
+     "tag": "D-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "D-B",
+     "tag": "D-B",
+     "text": "equipment D-B reads \"D-B Continuous product dryer B\"",
+     "field": "units[D-B]"
+    },
+    {
+     "role": "checked, none found",
+     "text": "no humidity, dew point or moisture measurement drawn on this unit",
+     "field": "applies_when.without"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Exhaust humidity and temperature over a production run",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: humidity or dew point logger in the exhaust duct for a full run"
+     ],
+     "how": "Compare the exhaust humidity with what the product and the process allow."
+    },
+    {
+     "item": "Exhaust damper or fan setting and how it is set",
+     "state": "not_on_drawing",
+     "where": [
+      "DCS/PLC configuration: exhaust damper position or fan speed, and whether anything adjusts it",
+      "a walkdown: damper position marks"
+     ],
+     "how": "Note whether it moves with production rate or product."
+    },
+    {
+     "item": "Product moisture at the exit and its specification",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: quality records: product moisture out of the dryer or oven against specification"
+     ],
+     "how": "Over-drying shows as moisture well below specification."
+    }
+   ],
+   "decision_rule": "Worth a look when the exhaust leaves well below the humidity the product and the safety limits allow, so heated air is thrown away unsaturated. Close it if the exhaust is already near the allowed humidity or the rate is set by a solvent (LEL) or dust limit.",
+   "typical_benefit": {
+    "wording": "S26 (p. 104): \"Process controls, such as feedback controllers, feed forward controllers, and model-based predictive controllers, can help to minimize dryer energy consumption by more precisely controlling energy inputs to meet the needs of the product being processed.\" The sensors it lists include \"absorption capacitive sensors (for air humidity)\". No % stated.",
+    "source": [
+     "S26"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S26: Masanet, Worrell, Graus and Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for the Fruit and Vegetable Processing Industry: An ENERGY STAR Guide for Energy and Plant Managers (LBNL-59289-Revision, Mar 2008)"
+    ]
+   },
+   "limits": "Exhaust rates on ovens that bake off solvents, or dryers with combustible dust, are set by safety limits: any change goes through the safety review. Fryers are left out: their exhaust is set by the vapour they boil off.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

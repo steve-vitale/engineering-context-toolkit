@@ -1,0 +1,603 @@
+{
+  "schema": "function-basis-cases-1",
+  "evidence_class": "synthetic-development",
+  "scope": "Three authored source-informed collection policies. RequiredcandidateIDs mean retain supplied indications/strategy records, NOT qualified function, applicability, performance or source authority. ForbiddenIDs are forbidden as evidence for this selected rule/subjects only, not globally removed source records.",
+  "cases": [
+    {
+      "id": "E29-01-no-records",
+      "question_id": "E29",
+      "model": "models/E29-01-no-records.json",
+      "expected_subjects": [
+        "K-A",
+        "K-B"
+      ],
+      "required_candidate_ids": [],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [],
+      "expected_request_count": 3,
+      "development_phase": "initial-source-preregistered"
+    },
+    {
+      "id": "E29-02-own-drive-label",
+      "question_id": "E29",
+      "model": "models/E29-02-own-drive-label.json",
+      "expected_subjects": [
+        "K-A",
+        "K-B"
+      ],
+      "required_candidate_ids": [
+        "SC-A"
+      ],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [
+        {
+          "id": "SC-A",
+          "name": "enabled",
+          "state": "blank",
+          "value": "unknown",
+          "field": "final_elements[SC-A].facts.enabled"
+        },
+        {
+          "id": "SC-A",
+          "name": "source_revision",
+          "state": "present",
+          "value": "draft-A",
+          "field": "final_elements[SC-A].facts.source_revision"
+        }
+      ],
+      "expected_request_count": 3,
+      "development_phase": "initial-source-preregistered"
+    },
+    {
+      "id": "E29-03-sequencer-candidate",
+      "question_id": "E29",
+      "model": "models/E29-03-sequencer-candidate.json",
+      "expected_subjects": [
+        "K-A",
+        "K-B"
+      ],
+      "required_candidate_ids": [
+        "SC-A",
+        "ZV-A",
+        "PT-A"
+      ],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [],
+      "expected_request_count": 3,
+      "development_phase": "initial-source-preregistered"
+    },
+    {
+      "id": "E29-04-unrelated-drive",
+      "question_id": "E29",
+      "model": "models/E29-04-unrelated-drive.json",
+      "expected_subjects": [
+        "K-A",
+        "K-B"
+      ],
+      "required_candidate_ids": [],
+      "forbidden_candidate_ids": [
+        "SC-X"
+      ],
+      "candidate_fields": [],
+      "expected_request_count": 3,
+      "development_phase": "initial-source-preregistered"
+    },
+    {
+      "id": "E29-05-enabled-label-no-history",
+      "question_id": "E29",
+      "model": "models/E29-05-enabled-label-no-history.json",
+      "expected_subjects": [
+        "K-A",
+        "K-B"
+      ],
+      "required_candidate_ids": [
+        "SC-A"
+      ],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [
+        {
+          "id": "SC-A",
+          "name": "enabled",
+          "state": "present",
+          "value": true,
+          "field": "final_elements[SC-A].facts.enabled"
+        },
+        {
+          "id": "SC-A",
+          "name": "actual_operating_period",
+          "state": "blank",
+          "value": "unknown",
+          "field": "final_elements[SC-A].facts.actual_operating_period"
+        },
+        {
+          "id": "SC-A",
+          "name": "minimum_speed_basis",
+          "state": "blank",
+          "value": "unknown",
+          "field": "final_elements[SC-A].facts.minimum_speed_basis"
+        },
+        {
+          "id": "SC-A",
+          "name": "near_full_load_hours",
+          "state": "blank",
+          "value": "unknown",
+          "field": "final_elements[SC-A].facts.near_full_load_hours"
+        }
+      ],
+      "expected_request_count": 3,
+      "development_phase": "initial-source-preregistered"
+    },
+    {
+      "id": "E29-06-negated-disabled",
+      "question_id": "E29",
+      "model": "models/E29-06-negated-disabled.json",
+      "expected_subjects": [
+        "K-A",
+        "K-B"
+      ],
+      "required_candidate_ids": [
+        "SC-A"
+      ],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [
+        {
+          "id": "SC-A",
+          "name": "enabled",
+          "state": "present",
+          "value": false,
+          "field": "final_elements[SC-A].facts.enabled"
+        },
+        {
+          "id": "SC-A",
+          "name": "as_operated",
+          "state": "present",
+          "value": "bypassed",
+          "field": "final_elements[SC-A].facts.as_operated"
+        },
+        {
+          "id": "SC-A",
+          "name": "observed_hours",
+          "state": "present",
+          "value": 0,
+          "field": "final_elements[SC-A].facts.observed_hours"
+        }
+      ],
+      "expected_request_count": 3,
+      "development_phase": "initial-source-preregistered"
+    },
+    {
+      "id": "E29-07-no-refrigeration-anchor",
+      "question_id": "E29",
+      "model": "models/E29-07-no-refrigeration-anchor.json",
+      "expected_subjects": [],
+      "required_candidate_ids": [],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [],
+      "expected_request_count": 3,
+      "development_phase": "initial-source-preregistered"
+    },
+    {
+      "id": "E30-01-unknown-initiation",
+      "question_id": "E30",
+      "model": "models/E30-01-unknown-initiation.json",
+      "expected_subjects": [
+        "EV-A",
+        "EV-B"
+      ],
+      "required_candidate_ids": [],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [],
+      "expected_request_count": 3,
+      "development_phase": "initial-source-preregistered"
+    },
+    {
+      "id": "E30-02-coil-DP-indicator",
+      "question_id": "E30",
+      "model": "models/E30-02-coil-DP-indicator.json",
+      "expected_subjects": [
+        "EV-A",
+        "EV-B"
+      ],
+      "required_candidate_ids": [
+        "PDT-A"
+      ],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [
+        {
+          "id": "PDT-A",
+          "name": "initiates_defrost",
+          "state": "blank",
+          "value": "unknown",
+          "field": "instruments[PDT-A].facts.initiates_defrost"
+        }
+      ],
+      "expected_request_count": 3,
+      "development_phase": "initial-source-preregistered"
+    },
+    {
+      "id": "E30-03-unrelated-DP",
+      "question_id": "E30",
+      "model": "models/E30-03-unrelated-DP.json",
+      "expected_subjects": [
+        "EV-A",
+        "EV-B"
+      ],
+      "required_candidate_ids": [],
+      "forbidden_candidate_ids": [
+        "PDT-X"
+      ],
+      "candidate_fields": [],
+      "expected_request_count": 3,
+      "development_phase": "initial-source-preregistered"
+    },
+    {
+      "id": "E30-04-disabled-demand",
+      "question_id": "E30",
+      "model": "models/E30-04-disabled-demand.json",
+      "expected_subjects": [
+        "EV-A",
+        "EV-B"
+      ],
+      "required_candidate_ids": [
+        "HGV-A"
+      ],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [
+        {
+          "id": "HGV-A",
+          "name": "enabled",
+          "state": "present",
+          "value": false,
+          "field": "final_elements[HGV-A].facts.enabled"
+        },
+        {
+          "id": "HGV-A",
+          "name": "initiation",
+          "state": "present",
+          "value": "fixed timer",
+          "field": "final_elements[HGV-A].facts.initiation"
+        },
+        {
+          "id": "HGV-A",
+          "name": "termination",
+          "state": "present",
+          "value": "coil temperature",
+          "field": "final_elements[HGV-A].facts.termination"
+        }
+      ],
+      "expected_request_count": 3,
+      "development_phase": "initial-source-preregistered"
+    },
+    {
+      "id": "E30-05-local-function-no-events",
+      "question_id": "E30",
+      "model": "models/E30-05-local-function-no-events.json",
+      "expected_subjects": [
+        "EV-A",
+        "EV-B"
+      ],
+      "required_candidate_ids": [
+        "PDT-A",
+        "HGV-A"
+      ],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [
+        {
+          "id": "PDT-A",
+          "name": "source_revision",
+          "state": "present",
+          "value": "B",
+          "field": "instruments[PDT-A].facts.source_revision"
+        },
+        {
+          "id": "PDT-A",
+          "name": "initiates_defrost",
+          "state": "present",
+          "value": true,
+          "field": "instruments[PDT-A].facts.initiates_defrost"
+        },
+        {
+          "id": "PDT-A",
+          "name": "as_operated_confirmed",
+          "state": "blank",
+          "value": "unknown",
+          "field": "instruments[PDT-A].facts.as_operated_confirmed"
+        }
+      ],
+      "expected_request_count": 3,
+      "development_phase": "initial-source-preregistered"
+    },
+    {
+      "id": "E30-06-termination-not-initiation",
+      "question_id": "E30",
+      "model": "models/E30-06-termination-not-initiation.json",
+      "expected_subjects": [
+        "EV-A",
+        "EV-B"
+      ],
+      "required_candidate_ids": [
+        "TT-A"
+      ],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [],
+      "expected_request_count": 3,
+      "development_phase": "initial-source-preregistered"
+    },
+    {
+      "id": "E30-07-no-refrigeration-anchor",
+      "question_id": "E30",
+      "model": "models/E30-07-no-refrigeration-anchor.json",
+      "expected_subjects": [],
+      "required_candidate_ids": [],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [],
+      "expected_request_count": 3,
+      "development_phase": "initial-source-preregistered"
+    },
+    {
+      "id": "C11-01-unknown-control",
+      "question_id": "C11",
+      "model": "models/C11-01-unknown-control.json",
+      "expected_subjects": [
+        "D-A",
+        "D-B"
+      ],
+      "required_candidate_ids": [],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [],
+      "expected_request_count": 3,
+      "development_phase": "initial-source-preregistered"
+    },
+    {
+      "id": "C11-02-exhaust-indication-only",
+      "question_id": "C11",
+      "model": "models/C11-02-exhaust-indication-only.json",
+      "expected_subjects": [
+        "D-A",
+        "D-B"
+      ],
+      "required_candidate_ids": [
+        "MT-A"
+      ],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [],
+      "expected_request_count": 3,
+      "development_phase": "initial-source-preregistered"
+    },
+    {
+      "id": "C11-03-product-moisture-role",
+      "question_id": "C11",
+      "model": "models/C11-03-product-moisture-role.json",
+      "expected_subjects": [
+        "D-A",
+        "D-B"
+      ],
+      "required_candidate_ids": [
+        "MT-A"
+      ],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [],
+      "expected_request_count": 3,
+      "development_phase": "initial-source-preregistered"
+    },
+    {
+      "id": "C11-04-inlet-not-exhaust",
+      "question_id": "C11",
+      "model": "models/C11-04-inlet-not-exhaust.json",
+      "expected_subjects": [
+        "D-A",
+        "D-B"
+      ],
+      "required_candidate_ids": [
+        "MT-A"
+      ],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [],
+      "expected_request_count": 3,
+      "development_phase": "initial-source-preregistered"
+    },
+    {
+      "id": "C11-05-alternative-control",
+      "question_id": "C11",
+      "model": "models/C11-05-alternative-control.json",
+      "expected_subjects": [
+        "D-A",
+        "D-B"
+      ],
+      "required_candidate_ids": [
+        "IR-A",
+        "SC-A",
+        "TIC-A"
+      ],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [],
+      "expected_request_count": 3,
+      "development_phase": "initial-source-preregistered"
+    },
+    {
+      "id": "C11-06-disabled-hand-override",
+      "question_id": "C11",
+      "model": "models/C11-06-disabled-hand-override.json",
+      "expected_subjects": [
+        "D-A",
+        "D-B"
+      ],
+      "required_candidate_ids": [
+        "MT-A",
+        "HC-A"
+      ],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [
+        {
+          "id": "MT-A",
+          "name": "enabled",
+          "state": "present",
+          "value": false,
+          "field": "instruments[MT-A].facts.enabled"
+        },
+        {
+          "id": "MT-A",
+          "name": "control_use",
+          "state": "blank",
+          "value": "none",
+          "field": "instruments[MT-A].facts.control_use"
+        },
+        {
+          "id": "MT-A",
+          "name": "data_quality",
+          "state": "present",
+          "value": "bad",
+          "field": "instruments[MT-A].facts.data_quality"
+        }
+      ],
+      "expected_request_count": 3,
+      "development_phase": "initial-source-preregistered"
+    },
+    {
+      "id": "C11-07-no-process-dryer-anchor",
+      "question_id": "C11",
+      "model": "models/C11-07-no-process-dryer-anchor.json",
+      "expected_subjects": [],
+      "required_candidate_ids": [],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [],
+      "expected_request_count": 3,
+      "development_phase": "initial-source-preregistered"
+    },
+    {
+      "id": "E30-S01-related-defrost-both",
+      "question_id": "E30",
+      "model": "models/E30-S01-related-defrost-both.json",
+      "expected_subjects": [
+        "EV-A",
+        "EV-B"
+      ],
+      "required_candidate_ids": [
+        "HGV-A",
+        "HGV-B"
+      ],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [],
+      "expected_request_count": 3,
+      "development_phase": "after-initial-21-observed"
+    },
+    {
+      "id": "E30-S02-indicator-not-initiation",
+      "question_id": "E30",
+      "model": "models/E30-S02-indicator-not-initiation.json",
+      "expected_subjects": [
+        "EV-A",
+        "EV-B"
+      ],
+      "required_candidate_ids": [
+        "HGV-A",
+        "HGV-B",
+        "PDT-A"
+      ],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [
+        {
+          "id": "PDT-A",
+          "name": "initiates_defrost",
+          "state": "present",
+          "value": false,
+          "field": "instruments[PDT-A].facts.initiates_defrost"
+        },
+        {
+          "id": "PDT-A",
+          "name": "source_revision",
+          "state": "present",
+          "value": "draft-A",
+          "field": "instruments[PDT-A].facts.source_revision"
+        }
+      ],
+      "expected_request_count": 3,
+      "development_phase": "after-initial-21-observed"
+    },
+    {
+      "id": "E30-S03-disabled-demand-label",
+      "question_id": "E30",
+      "model": "models/E30-S03-disabled-demand-label.json",
+      "expected_subjects": [
+        "EV-A",
+        "EV-B"
+      ],
+      "required_candidate_ids": [
+        "HGV-A",
+        "HGV-B"
+      ],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [
+        {
+          "id": "HGV-A",
+          "name": "enabled",
+          "state": "present",
+          "value": false,
+          "field": "final_elements[HGV-A].facts.enabled"
+        },
+        {
+          "id": "HGV-A",
+          "name": "initiation",
+          "state": "present",
+          "value": "fixed timer",
+          "field": "final_elements[HGV-A].facts.initiation"
+        },
+        {
+          "id": "HGV-A",
+          "name": "termination",
+          "state": "present",
+          "value": "coil temperature",
+          "field": "final_elements[HGV-A].facts.termination"
+        }
+      ],
+      "expected_request_count": 3,
+      "development_phase": "after-initial-21-observed"
+    },
+    {
+      "id": "E30-S04-declared-local-function-no-events",
+      "question_id": "E30",
+      "model": "models/E30-S04-declared-local-function-no-events.json",
+      "expected_subjects": [
+        "EV-A",
+        "EV-B"
+      ],
+      "required_candidate_ids": [
+        "HGV-A",
+        "HGV-B"
+      ],
+      "forbidden_candidate_ids": [],
+      "candidate_fields": [
+        {
+          "id": "HGV-A",
+          "name": "enabled",
+          "state": "present",
+          "value": true,
+          "field": "final_elements[HGV-A].facts.enabled"
+        },
+        {
+          "id": "HGV-A",
+          "name": "source_revision",
+          "state": "present",
+          "value": "B",
+          "field": "final_elements[HGV-A].facts.source_revision"
+        },
+        {
+          "id": "HGV-A",
+          "name": "event_history",
+          "state": "blank",
+          "value": "unknown",
+          "field": "final_elements[HGV-A].facts.event_history"
+        },
+        {
+          "id": "HGV-A",
+          "name": "termination_basis",
+          "state": "blank",
+          "value": "unknown",
+          "field": "final_elements[HGV-A].facts.termination_basis"
+        }
+      ],
+      "expected_request_count": 3,
+      "development_phase": "after-initial-21-observed"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "model_id": "E29-06-negated-disabled",
+    "title": "ILLUSTRATIVE source-adequacy counterexample",
+    "illustrative": true,
+    "not_a_drawing_of_record": "Synthetic authored source-adequacy control; not a plant/drawing/measurement or source-derived topology."
+  },
+  "units": [
+    {
+      "id": "K-A",
+      "name": "Ammonia R-717 screw compressor A; NO VFD in operation",
+      "type": "compressor",
+      "source": "Synthetic authored source-adequacy control; not a plant/drawing/measurement or source-derived topology."
+    },
+    {
+      "id": "K-B",
+      "name": "Ammonia R-717 screw compressor B",
+      "type": "compressor",
+      "source": "Synthetic authored source-adequacy control; not a plant/drawing/measurement or source-derived topology."
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "final_elements": [
+    {
+      "tag": "SC-A",
+      "unit": "K-A",
+      "description": "VFD bypassed and disabled",
+      "facts": {
+        "enabled": false,
+        "as_operated": "bypassed",
+        "observed_hours": 0
+      }
+    }
+  ],
+  "manual_valves": [],
+  "controllers": []
+}

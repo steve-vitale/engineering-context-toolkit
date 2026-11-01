@@ -20,7 +20,7 @@
    "id": "E30@EVAP-GROUP",
    "question_id": "E30",
    "family": "energy",
-   "question": "Are these evaporators defrosted on a fixed timer rather than when frost is actually there?",
+   "question": "What records support this evaporator's defrost applicability, initiation and termination?",
    "about": "EVAP-GROUP",
    "assets": [
     {
@@ -46,40 +46,39 @@
      "tag": "HG-MAIN",
      "text": "final element HG-MAIN reads \"HG-MAIN Hot gas main valve for defrost\" at EVAP-GROUP",
      "field": "final_elements[HG-MAIN]"
-    },
-    {
-     "role": "checked, none found",
-     "text": "no demand defrost initiation (coil differential pressure, frost sensor) drawn on this evaporator",
-     "field": "applies_when.without"
     }
    ],
    "data_requests": [
     {
-     "item": "Defrost schedule per evaporator",
+     "item": "Applicability and actual initiation per named evaporator",
      "state": "not_on_drawing",
      "where": [
-      "DCS/PLC configuration: defrost initiation (timer or demand), defrosts per day, duration and termination (time or coil temperature) per evaporator"
+      "DCS/PLC configuration: permitted current defrost configuration: target coil/unit, initiation and fallback mode, enabled/disabled state and revision",
+      "site records: existing source-owner or supplier records establishing whether defrost applies to this unit and which indications actually initiate it"
      ],
-     "how": "List defrosts per day by season."
+     "how": "Keep timer/demand labels and DP readings as candidates. An indication, termination sensor or unit name does not prove active demand initiation; do not borrow another evaporator's control basis."
     },
     {
-     "item": "Frost on the coil when a scheduled defrost starts",
+     "item": "Representative need and event/termination evidence",
      "state": "not_on_drawing",
      "where": [
-      "a walkdown: look at the coil just before a few scheduled defrosts, in a dry week and a humid week"
+      "site records: approved existing frost/coil-pressure and defrost-event records, initiation reason, duration, termination and coincident conditions",
+      "maintenance records: relevant recorded inspection or sensor/function checks and their dates"
      ],
-     "how": "Note clear, light or heavy frost."
+     "how": "Separate evidence of need from initiation and termination. Retain quantity/location/units/time and missing history explicitly; no pressure threshold, event count or universal observation duration is supplied."
     },
     {
-     "item": "Hot gas use and room temperature rise per defrost",
+     "item": "Affected room/product constraints and review route",
      "state": "not_on_drawing",
      "where": [
-      "historian or DCS trend for HG-MAIN (no historian tag is mapped in this model for these)"
+      "historian or DCS trend for HG-MAIN (no historian tag is mapped in this model for these)",
+      "site records: permitted room/product requirements, operating restrictions and existing reviewed defrost basis for the identified unit",
+      "the vendor datasheet: applicable unit and control constraints and responsible reviewer"
      ],
-     "how": "The heat put in to defrost comes back as refrigeration load afterwards."
+     "how": "Use an existing-record fallback when no suitable mapped signal is supplied. Establish relevant effects and constraints through the company review route; no inspection, defrost or setting change is authorized."
     }
    ],
-   "decision_rule": "Worth a look when coils are clear at scheduled defrosts, or the count per day is the same in dry weeks as in humid ones. Close it if defrost is already started on demand.",
+   "decision_rule": "Pursue missing applicability, source/function or representative event evidence. A drawn DP instrument or demand label does not settle whether defrost is initiated by actual need. Close only a qualified source investigation; no installed-control acceptance or operating change follows.",
    "typical_benefit": {
     "wording": "Demand defrost (S25, p. 66): \"Evaporators should be defrosted only when necessary, as opposed to on timed schedules where defrosting occurs regardless of need.\" \"Too frequent defrosts.\" is listed among control strategies that \"may compromise system energy efficiency\" (S25, p. 59, citing Pearson 2003). No % stated.",
     "source": [
@@ -90,7 +89,7 @@
      "S25: Brush, Masanet and Worrell, Energy Efficiency Improvement and Cost Saving Opportunities for the Dairy Processing Industry: An ENERGY STAR Guide for Energy and Plant Managers (LBNL-6261E, Oct 2011)"
     ]
    },
-   "limits": "A coil differential pressure instrument on the evaporator is taken as demand defrost; check that it is used for that. A P&ID rarely shows the defrost timer itself, so the schedule always comes from the controls.",
+   "limits": "S25 printed p.66 discusses need-based defrost; per-unit keep-open collection and accepting an anchor's own description as a candidate are authored software/engineering policy. Neither absence nor presence of a DP/demand/termination label establishes actual use. Applicability, initiation, termination, source revision and operating/product constraints require review. The screen does not infer frost, installed timers, thresholds or permission.",
    "status": "asked"
   }
  ],

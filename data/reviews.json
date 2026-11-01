@@ -6492,9 +6492,9 @@
     },
     {
      "path": "README.md",
-     "selector": "Complete Description \u2192 process model and review bundle route row plus one LF",
+     "selector": "Complete Description → process model and review bundle route row plus one LF",
      "sha256_lf": "04899cf541ad39ccc6e59b5e5feedc4c6e63d129fcdd65109662b3883a022cbf",
-     "text": "| **Description \u2192 process model and review bundle** | [Prepare \u2192 approved assistant \u2192 check \u2192 build](examples/from-description/README.md#try-the-connected-route-offline) packages numbered text, a complete answer contract, validation feedback, draft sheets, questions, graph and platform staging. It calls no model API. | The engineer or assistant authors the interpretation and layout. Local checks locate quotations and check structure/consistency; they cannot establish engineering truth. Copilot tenant support and unfamiliar-description accuracy are untested. |\n"
+     "text": "| **Description → process model and review bundle** | [Prepare → approved assistant → check → build](examples/from-description/README.md#try-the-connected-route-offline) packages numbered text, a complete answer contract, validation feedback, draft sheets, questions, graph and platform staging. It calls no model API. | The engineer or assistant authors the interpretation and layout. Local checks locate quotations and check structure/consistency; they cannot establish engineering truth. Copilot tenant support and unfamiliar-description accuracy are untested. |\n"
     }
    ],
    "findings": [],
@@ -15642,6 +15642,498 @@
    ],
    "private_proofs": {
     "independent_receiving_sha256": "2136d2f10444b8a2c9cf02f9a9ae0fd5329f6fc1db63370add3b43339b2187af"
+   }
+  },
+  {
+   "feature": "drawing-to-bundle",
+   "reviewer": "Independent coding-agent source/receipt receiving; integrated with explicit inherited evidence",
+   "date": "2026-11-01",
+   "verdict": "pass",
+   "file_hash_method": "SHA256 after CRLF-to-LF normalization; raw retained receipts separately qualified.",
+   "registered_example_file_count": 2,
+   "files": {
+    "examples/own-drawing/extraction_sheet0.json": "fbb9c92c322c0b4dd8e5a48482b0dc13c52a3144f92c3c77c5f2d4a308d571de",
+    "examples/own-drawing/manifest.json": "fb92b0ad0194687c1872cc35c06bdc5aea4b1382e87a5e7218072758e707f0df"
+   },
+   "freshly_reproduced_or_validated_files": {},
+   "inherited_unchanged_files": {
+    "examples/own-drawing/extraction_sheet0.json": "fbb9c92c322c0b4dd8e5a48482b0dc13c52a3144f92c3c77c5f2d4a308d571de",
+    "examples/own-drawing/manifest.json": "fb92b0ad0194687c1872cc35c06bdc5aea4b1382e87a5e7218072758e707f0df"
+   },
+   "supporting_files": {
+    "examples/own-drawing/README.md": "aac51acdf39fbe41894ec97c754b891a474b4feaf6898ca0c9c6ac067e8c1604",
+    "AGENTS.md": "a0454fdd8c2c36a29a9a03d46dd06471754b953580303eb9027d08896736ef27",
+    "data/questions.json": "0d8523b854d30c855ec088f8f5702fa24372686656fe3fb11201d11c60a8acde",
+    "scripts/question_engine.py": "713d6d0327c5daf27bae6a0a39e8d1b8d8a5d981313e343a84c7d1d0506aea85"
+   },
+   "scope": "Registered extraction and manifest inherit exact prior evidence. Actual guide-bound intake/report calls verify the documented counts after the own-plant wording change; no new extraction or plant accuracy run.",
+   "checks": [
+    "Fresh and inherited file evidence are distinguished below; hashes normalize CRLF toLF. A reviewed example is not a whole-toolkit completion or company acceptance claim.",
+    "The reader reviewer contributed earlier prose; this is source/code alignment review, not independent design validation or a human usability study."
+   ],
+   "limits": [
+    "No new commercial-model run, real plant/company/tenant acceptance, measured labor benefit or whole-catalog engineering validation. Historical failures and source exposure remain visible."
+   ],
+   "private_proofs": {
+    "reader_source_crosscheck_sha256": "c08a09f9dd01072ded87bf1a553b3d15ba2a68faab91d5833a06cba09fb99309",
+    "actual_guide_refresh_sha256": "9f11373a87c6f1d7fc7d3cd995e7892cca4d4cc31dbb75b10ed89362f1c7a8fc"
+   }
+  },
+  {
+   "feature": "client-report",
+   "reviewer": "Independent coding-agent source/receipt receiving; integrated with explicit inherited evidence",
+   "date": "2026-11-01",
+   "verdict": "pass",
+   "file_hash_method": "SHA256 after CRLF-to-LF normalization; raw retained receipts separately qualified.",
+   "registered_example_file_count": 1,
+   "files": {
+    "examples/own-drawing/deliverable/REPORT.html": "f88c1ffae19394035127612751b79d7527664a7802c36f35a0e9cb70d0c5872e"
+   },
+   "freshly_reproduced_or_validated_files": {},
+   "inherited_unchanged_files": {
+    "examples/own-drawing/deliverable/REPORT.html": "f88c1ffae19394035127612751b79d7527664a7802c36f35a0e9cb70d0c5872e"
+   },
+   "supporting_files": {
+    "examples/own-drawing/README.md": "aac51acdf39fbe41894ec97c754b891a474b4feaf6898ca0c9c6ac067e8c1604",
+    "data/questions.json": "0d8523b854d30c855ec088f8f5702fa24372686656fe3fb11201d11c60a8acde",
+    "scripts/question_engine.py": "713d6d0327c5daf27bae6a0a39e8d1b8d8a5d981313e343a84c7d1d0506aea85"
+   },
+   "scope": "The registered public HTML inherits its exact prior bytes. Actual guide-bound intake/report execution supports the revised guide; own-input output is an unranked review report, not the fitted OPEN100 priority claim.",
+   "checks": [
+    "Fresh and inherited file evidence are distinguished below; hashes normalize CRLF toLF. A reviewed example is not a whole-toolkit completion or company acceptance claim.",
+    "The reader reviewer contributed earlier prose; this is source/code alignment review, not independent design validation or a human usability study."
+   ],
+   "limits": [
+    "No new commercial-model run, real plant/company/tenant acceptance, measured labor benefit or whole-catalog engineering validation. Historical failures and source exposure remain visible."
+   ],
+   "private_proofs": {
+    "reader_source_crosscheck_sha256": "c08a09f9dd01072ded87bf1a553b3d15ba2a68faab91d5833a06cba09fb99309",
+    "actual_guide_refresh_sha256": "9f11373a87c6f1d7fc7d3cd995e7892cca4d4cc31dbb75b10ed89362f1c7a8fc"
+   }
+  },
+  {
+   "feature": "graph-export",
+   "reviewer": "Independent coding-agent source/receipt receiving; integrated with explicit inherited evidence",
+   "date": "2026-11-01",
+   "verdict": "pass",
+   "file_hash_method": "SHA256 after CRLF-to-LF normalization; raw retained receipts separately qualified.",
+   "registered_example_file_count": 16,
+   "files": {
+    "examples/graph-export/te_graph.json": "e66095faf972fbe6c20313455211c6518a731a35a6971dc350023f5e96d9b4f4",
+    "examples/graph-export/bayer_graph.json": "131f2d627c670096ee7facc1912cbb4a5d0caf8c717d1a7bb0c6807653686cb1",
+    "examples/graph-export/sheet0_graph.json": "1ff6b7f4123d74256d874e74d0a87c9ab4d2a43e09b2e8eba58b5ee0cac08b09",
+    "examples/graph-export/sheet0_graph_core.json": "33efd37ad6179f09c295967cf8183c460440ad8eb172426afadc62fe724bea21",
+    "examples/graph-export/unplaced-dexpi/source_key.json": "35036f712486f92fa8b782a92f3bfe573a423060d6b17f6b8a6c497af6f695b4",
+    "examples/graph-export/unplaced-dexpi/i04.model.json": "d45563c5804f465ac8fb557c4180cc9eca5577cce5d5a2074078fde357962746",
+    "examples/graph-export/unplaced-dexpi/i04.graph.json": "4e88eb067b2bc5ee1b24b12251c89aeb312018c13dc384a7c554b58dc66ea7d6",
+    "examples/graph-export/unplaced-dexpi/i01.model.json": "4c7820115e4c3a08df900154565a8db54a72684b302e645407cf1f6881dbd28f",
+    "examples/graph-export/unplaced-dexpi/i01.graph.json": "7c147f9da3cf17b6f206b00bca7d505c605cb3a4cb34743234acaaa79a338085",
+    "examples/graph-export/multi-appearance/source.json": "1a8f030d640b8976a9231248d5ba1445107eb0be21aa10f05f255c31e3c6350e",
+    "examples/graph-export/multi-appearance/model.json": "c9b26b07876b6ab0df5578ea23d9319ecc2bcdc7ff129ed84eb9bf06edf06a9c",
+    "examples/graph-export/multi-appearance/full.graph.json": "d76a00eeb8ea5e0b46ea193791e271e24f74170324358c0aa77d8052cca77f85",
+    "examples/graph-export/multi-appearance/core.graph.json": "00b73210f7071e3d7455a20daffa1a9c3d8fdc49b42adfb947e918cab8120e70",
+    "examples/graph-export/multi-appearance/review/statements.json": "a8781ca1061aef9920df4e97dc2bdebeed6589740aba5814813b741db01ba83d",
+    "examples/graph-export/multi-appearance/review/review_sheet.csv": "621b357c7ac0d1aaa69285cbf76b9219217cdd091a48f1c685746f79f87f0b10",
+    "examples/graph-export/multi-appearance/review/review.html": "a6afaa1fec34a2f25df9b4ef054ce1e96d02113c37dfb9f6b95f21b71ca9f67d"
+   },
+   "freshly_reproduced_or_validated_files": {},
+   "inherited_unchanged_files": {
+    "examples/graph-export/te_graph.json": "e66095faf972fbe6c20313455211c6518a731a35a6971dc350023f5e96d9b4f4",
+    "examples/graph-export/bayer_graph.json": "131f2d627c670096ee7facc1912cbb4a5d0caf8c717d1a7bb0c6807653686cb1",
+    "examples/graph-export/sheet0_graph.json": "1ff6b7f4123d74256d874e74d0a87c9ab4d2a43e09b2e8eba58b5ee0cac08b09",
+    "examples/graph-export/sheet0_graph_core.json": "33efd37ad6179f09c295967cf8183c460440ad8eb172426afadc62fe724bea21",
+    "examples/graph-export/unplaced-dexpi/source_key.json": "35036f712486f92fa8b782a92f3bfe573a423060d6b17f6b8a6c497af6f695b4",
+    "examples/graph-export/unplaced-dexpi/i04.model.json": "d45563c5804f465ac8fb557c4180cc9eca5577cce5d5a2074078fde357962746",
+    "examples/graph-export/unplaced-dexpi/i04.graph.json": "4e88eb067b2bc5ee1b24b12251c89aeb312018c13dc384a7c554b58dc66ea7d6",
+    "examples/graph-export/unplaced-dexpi/i01.model.json": "4c7820115e4c3a08df900154565a8db54a72684b302e645407cf1f6881dbd28f",
+    "examples/graph-export/unplaced-dexpi/i01.graph.json": "7c147f9da3cf17b6f206b00bca7d505c605cb3a4cb34743234acaaa79a338085",
+    "examples/graph-export/multi-appearance/source.json": "1a8f030d640b8976a9231248d5ba1445107eb0be21aa10f05f255c31e3c6350e",
+    "examples/graph-export/multi-appearance/model.json": "c9b26b07876b6ab0df5578ea23d9319ecc2bcdc7ff129ed84eb9bf06edf06a9c",
+    "examples/graph-export/multi-appearance/full.graph.json": "d76a00eeb8ea5e0b46ea193791e271e24f74170324358c0aa77d8052cca77f85",
+    "examples/graph-export/multi-appearance/core.graph.json": "00b73210f7071e3d7455a20daffa1a9c3d8fdc49b42adfb947e918cab8120e70",
+    "examples/graph-export/multi-appearance/review/statements.json": "a8781ca1061aef9920df4e97dc2bdebeed6589740aba5814813b741db01ba83d",
+    "examples/graph-export/multi-appearance/review/review_sheet.csv": "621b357c7ac0d1aaa69285cbf76b9219217cdd091a48f1c685746f79f87f0b10",
+    "examples/graph-export/multi-appearance/review/review.html": "a6afaa1fec34a2f25df9b4ef054ce1e96d02113c37dfb9f6b95f21b71ca9f67d"
+   },
+   "supporting_files": {
+    "docs/GRAPH_EXPORT.md": "86df96610fcb8c85b43f5388f40a68d82236131d82ed1f18a6df2f9412ae0178",
+    "data/script_index.json": "bda8313c3c05a7b7307e8c8a0a050bfb4c06a5064d55455badb5906db36cd095"
+   },
+   "scope": "Registered graph fixtures inherit exact prior bytes and prior implementation checks. New source/code-grounded documentation review limits portability to the documented format and an explicitly supplied receiving adapter; no connector or import was added.",
+   "checks": [
+    "Fresh and inherited file evidence are distinguished below; hashes normalize CRLF toLF. A reviewed example is not a whole-toolkit completion or company acceptance claim.",
+    "The reader reviewer contributed earlier prose; this is source/code alignment review, not independent design validation or a human usability study."
+   ],
+   "limits": [
+    "No new commercial-model run, real plant/company/tenant acceptance, measured labor benefit or whole-catalog engineering validation. Historical failures and source exposure remain visible."
+   ],
+   "private_proofs": {
+    "reader_source_crosscheck_sha256": "c08a09f9dd01072ded87bf1a553b3d15ba2a68faab91d5833a06cba09fb99309",
+    "actual_guide_refresh_sha256": "9f11373a87c6f1d7fc7d3cd995e7892cca4d4cc31dbb75b10ed89362f1c7a8fc"
+   }
+  },
+  {
+   "feature": "generalization-matrix",
+   "reviewer": "Independent coding-agent source/receipt receiving; integrated with explicit inherited evidence",
+   "date": "2026-11-01",
+   "verdict": "pass",
+   "file_hash_method": "SHA256 after CRLF-to-LF normalization; raw retained receipts separately qualified.",
+   "registered_example_file_count": 3,
+   "files": {
+    "docs/GENERALIZATION.md": "f40c7a3cf74a89ca20d66faf6314b2b19193b84a377958e2c539f9aea1d32275",
+    "out/generalization/matrix.json": "236417d513b4ad0c5eb1c3c45a83e7b1dcc25ba05eab9575a5182998a91f6f7d",
+    "data/corpus.json": "0f02e9434b490769619d14f0440fe737e925b239a2633b70a0851bd154114e9c"
+   },
+   "freshly_reproduced_or_validated_files": {
+    "docs/GENERALIZATION.md": "f40c7a3cf74a89ca20d66faf6314b2b19193b84a377958e2c539f9aea1d32275",
+    "out/generalization/matrix.json": "236417d513b4ad0c5eb1c3c45a83e7b1dcc25ba05eab9575a5182998a91f6f7d"
+   },
+   "inherited_unchanged_files": {
+    "data/corpus.json": "0f02e9434b490769619d14f0440fe737e925b239a2633b70a0851bd154114e9c"
+   },
+   "supporting_files": {
+    "scripts/corpus_matrix.py": "5407cd2daf752b48385e5226680f0b440d708e1ff55913bc081d159263a0f0ed",
+    "examples/own-drawing/README.md": "aac51acdf39fbe41894ec97c754b891a474b4feaf6898ca0c9c6ac067e8c1604",
+    "examples/from-description/README.md": "8e6f0b45de44ec481b5c22eb08ff3f0582357430f027549af5b69db414a97bee"
+   },
+   "scope": "Actual own-drawing row3 and Bayer export row5 refreshed their changed guide bindings; other93 complete cells and64pass/23fail/8n-a outcomes remain exact. A further own-guide correction reran only its cell. No unfamiliar model trial or global95-cell rerun.",
+   "checks": [
+    "Fresh and inherited file evidence are distinguished below; hashes normalize CRLF toLF. A reviewed example is not a whole-toolkit completion or company acceptance claim.",
+    "The reader reviewer contributed earlier prose; this is source/code alignment review, not independent design validation or a human usability study."
+   ],
+   "limits": [
+    "No new commercial-model run, real plant/company/tenant acceptance, measured labor benefit or whole-catalog engineering validation. Historical failures and source exposure remain visible."
+   ],
+   "private_proofs": {
+    "reader_source_crosscheck_sha256": "c08a09f9dd01072ded87bf1a553b3d15ba2a68faab91d5833a06cba09fb99309",
+    "actual_guide_refresh_sha256": "9f11373a87c6f1d7fc7d3cd995e7892cca4d4cc31dbb75b10ed89362f1c7a8fc"
+   }
+  },
+  {
+   "feature": "opportunity-screen",
+   "reviewer": "Independent coding-agent source/receipt receiving; integrated with explicit inherited evidence",
+   "date": "2026-11-01",
+   "verdict": "pass",
+   "file_hash_method": "SHA256 after CRLF-to-LF normalization; raw retained receipts separately qualified.",
+   "registered_example_file_count": 35,
+   "files": {
+    "examples/opportunity-screen/te/screen.md": "ef5d1c0d7d637760b09c473c0b1198e41dfe755fe37ff512cadebd9db13b4559",
+    "examples/opportunity-screen/te/questions.json": "e2fd46ace1c6ca87586b10617fd6d8b254345fdc73d0f2a573a097a626b4ae0e",
+    "examples/opportunity-screen/bayer/screen.md": "e9ea88958dec22bb1399f33a32ca650606359ba9c3034aa42fd71b8d5a6baadd",
+    "examples/opportunity-screen/bayer/questions.json": "75a81e3efa33659b3378167ec77e9468f68b572bc26cf9c9e82ec380a190f39d",
+    "examples/opportunity-screen/open100/screen.md": "1d0be1266599a7305e3a796b156bef2a7045a965bd27593bd57f98d676b0e30e",
+    "examples/opportunity-screen/open100/questions.json": "b7debd2fe5c6b75bc0297b495eb7257f32eb3693c644f73eac621afe6a447161",
+    "examples/opportunity-screen/food/screen.md": "18747ec15a47be5e4e51cb8baa1419222b9a6cdece0b60f03e792d739662b023",
+    "examples/opportunity-screen/food/questions.json": "75bb0ecd0dad0d5d917b199034a95f2f1011a98ba24985832698626b3597f7a9",
+    "examples/opportunity-screen/rollup-food-bayer/rollup.md": "5ec0cc2f321568f25d8b2274b0a0e61ea65b049a675584afb12b5a3f23c81ff8",
+    "examples/opportunity-screen/rollup-food-bayer/rollup.json": "48e21f6e3b8c4c281ffa4b0df2ab3ba23a847d56c93eb964a10a81d4fa3a7322",
+    "examples/opportunity-screen/review-refresh/expected/expected.json": "b9a2e3e68cf2333494fd991aa3ae6655f8ab4e5295d4e3778516a7344f13e9d2",
+    "examples/opportunity-screen/review-refresh/expected/questions.json": "c5561c9fedc9491dc430b063723d5d120e83dc9dd9d6b506007491bccfc82849",
+    "examples/opportunity-screen/review-refresh/expected/screen.md": "9d8cbfa19c731525243c0c599262ae07bfed692e575dd184c19ead9b7889cd27",
+    "examples/opportunity-screen/millard/screen/screen.md": "7c2fa616c01c0f4a99c29faa4a53e9c4251e9b0d612ba84a5a61704625693bba",
+    "examples/opportunity-screen/millard/screen/questions.json": "f8fedd1f7069f75f46a5f59b2c1fa6964cd56a8ace461c5058cd51d47f2afb37",
+    "examples/opportunity-screen/field-coverage/README.md": "5de9e8482479c69687edad39ca4157567ccc5ae387148554682cbe05c450df9b",
+    "examples/opportunity-screen/field-coverage/model.json": "25680206678be6dd3ecf75a8e88f14b38a4f74bc4d4b0d471d45eb18b424f750",
+    "examples/opportunity-screen/field-coverage/questions.json": "68ea10598e3f218057d99f254ef085838c9347e5b82b598a94419b4e99d920f4",
+    "examples/opportunity-screen/field-coverage/screen.md": "6924a0b87cb245c2d9da73e779329932a4d92d1f8ef49e223f5be4c732813600",
+    "examples/opportunity-screen/collection-basis/README.md": "a022e30b3dd9c3201339e3614bdc79a0d8136cc90e47ca29bd02e51e3982b1ab",
+    "examples/opportunity-screen/collection-basis/model.json": "4363ccd5a89ceb18957208bed29e59f88d2ff9bcda7aa99569f12ec7c5834103",
+    "examples/opportunity-screen/collection-basis/questions.json": "533da8fc2ca905ef3267325dc877021e0cae1bf331ac13d71e0400b250b056e2",
+    "examples/opportunity-screen/collection-basis/screen.md": "0699ade47839811831ad6bdc557e418e8dbc18469b359fc331aa55edd2739971",
+    "examples/opportunity-screen/collection-basis/sources.json": "965d33656f97e4fca4ff8d28fe323071ce3c5fb03e24d2cd513ff7c5593d7a0d",
+    "examples/opportunity-screen/pump-motor-basis/questions.json": "67c57e0db0e098025ec22eaf7427faa47473213178d26084efd4285636737ee3",
+    "examples/opportunity-screen/pump-motor-basis/screen.md": "6e4c1114e277a319a537550c87e6d6c2dceb9d17f3178c48ea31a7d9b0480c71",
+    "examples/opportunity-screen/source-investigation/questions.json": "4308f9ce8000e7f97481e3b2cf51ee3599d8a9114ce05d95cf11791ddd39568e",
+    "examples/opportunity-screen/source-investigation/screen.md": "a1974257a39d663a4a9ad74ea651b9806dec328c4228f93352d2159599895dd3",
+    "examples/opportunity-screen/function-basis/expected/cases.json": "0bc85462412ef51bed345e0cf43a63ddb5679fc4a67d26109a54f997e43113ee",
+    "examples/opportunity-screen/function-basis/expected/after/E29-02-own-drive-label/questions.json": "d2a767a903292f3de3b079c8cd2a205e5132cd056326473ec97d64397b200b82",
+    "examples/opportunity-screen/function-basis/expected/after/E29-02-own-drive-label/screen.md": "c993c428ecb3f34c5bed7b4401e941046266223b1ad7f2b4a433edaa501e405d",
+    "examples/opportunity-screen/function-basis/expected/after/E30-S02-indicator-not-initiation/questions.json": "e64556730204494eefe9d329ac88909e818f14239e7695003068cfe6f0a709e3",
+    "examples/opportunity-screen/function-basis/expected/after/E30-S02-indicator-not-initiation/screen.md": "2df1c5f6339423a7c7f1abcdf180f086ad0733d8a6963193b4a8f6a365e00325",
+    "examples/opportunity-screen/function-basis/expected/after/C11-02-exhaust-indication-only/questions.json": "b69b684474ed00b2194a85ad9105a80480bc88aea4825f33ffab5bff5c798769",
+    "examples/opportunity-screen/function-basis/expected/after/C11-02-exhaust-indication-only/screen.md": "917d89ccd4fafeb45c0e915cccd35f358d0879a56dc97c4007d08ed0549c98a5"
+   },
+   "freshly_reproduced_or_validated_files": {
+    "examples/opportunity-screen/te/screen.md": "ef5d1c0d7d637760b09c473c0b1198e41dfe755fe37ff512cadebd9db13b4559",
+    "examples/opportunity-screen/te/questions.json": "e2fd46ace1c6ca87586b10617fd6d8b254345fdc73d0f2a573a097a626b4ae0e",
+    "examples/opportunity-screen/bayer/screen.md": "e9ea88958dec22bb1399f33a32ca650606359ba9c3034aa42fd71b8d5a6baadd",
+    "examples/opportunity-screen/bayer/questions.json": "75a81e3efa33659b3378167ec77e9468f68b572bc26cf9c9e82ec380a190f39d",
+    "examples/opportunity-screen/open100/screen.md": "1d0be1266599a7305e3a796b156bef2a7045a965bd27593bd57f98d676b0e30e",
+    "examples/opportunity-screen/open100/questions.json": "b7debd2fe5c6b75bc0297b495eb7257f32eb3693c644f73eac621afe6a447161",
+    "examples/opportunity-screen/food/screen.md": "18747ec15a47be5e4e51cb8baa1419222b9a6cdece0b60f03e792d739662b023",
+    "examples/opportunity-screen/food/questions.json": "75bb0ecd0dad0d5d917b199034a95f2f1011a98ba24985832698626b3597f7a9",
+    "examples/opportunity-screen/rollup-food-bayer/rollup.md": "5ec0cc2f321568f25d8b2274b0a0e61ea65b049a675584afb12b5a3f23c81ff8",
+    "examples/opportunity-screen/rollup-food-bayer/rollup.json": "48e21f6e3b8c4c281ffa4b0df2ab3ba23a847d56c93eb964a10a81d4fa3a7322",
+    "examples/opportunity-screen/review-refresh/expected/expected.json": "b9a2e3e68cf2333494fd991aa3ae6655f8ab4e5295d4e3778516a7344f13e9d2",
+    "examples/opportunity-screen/review-refresh/expected/questions.json": "c5561c9fedc9491dc430b063723d5d120e83dc9dd9d6b506007491bccfc82849",
+    "examples/opportunity-screen/review-refresh/expected/screen.md": "9d8cbfa19c731525243c0c599262ae07bfed692e575dd184c19ead9b7889cd27",
+    "examples/opportunity-screen/millard/screen/screen.md": "7c2fa616c01c0f4a99c29faa4a53e9c4251e9b0d612ba84a5a61704625693bba",
+    "examples/opportunity-screen/millard/screen/questions.json": "f8fedd1f7069f75f46a5f59b2c1fa6964cd56a8ace461c5058cd51d47f2afb37",
+    "examples/opportunity-screen/field-coverage/questions.json": "68ea10598e3f218057d99f254ef085838c9347e5b82b598a94419b4e99d920f4",
+    "examples/opportunity-screen/field-coverage/screen.md": "6924a0b87cb245c2d9da73e779329932a4d92d1f8ef49e223f5be4c732813600",
+    "examples/opportunity-screen/collection-basis/questions.json": "533da8fc2ca905ef3267325dc877021e0cae1bf331ac13d71e0400b250b056e2",
+    "examples/opportunity-screen/collection-basis/screen.md": "0699ade47839811831ad6bdc557e418e8dbc18469b359fc331aa55edd2739971",
+    "examples/opportunity-screen/pump-motor-basis/questions.json": "67c57e0db0e098025ec22eaf7427faa47473213178d26084efd4285636737ee3",
+    "examples/opportunity-screen/pump-motor-basis/screen.md": "6e4c1114e277a319a537550c87e6d6c2dceb9d17f3178c48ea31a7d9b0480c71",
+    "examples/opportunity-screen/source-investigation/questions.json": "4308f9ce8000e7f97481e3b2cf51ee3599d8a9114ce05d95cf11791ddd39568e",
+    "examples/opportunity-screen/source-investigation/screen.md": "a1974257a39d663a4a9ad74ea651b9806dec328c4228f93352d2159599895dd3",
+    "examples/opportunity-screen/function-basis/expected/cases.json": "0bc85462412ef51bed345e0cf43a63ddb5679fc4a67d26109a54f997e43113ee",
+    "examples/opportunity-screen/function-basis/expected/after/E29-02-own-drive-label/questions.json": "d2a767a903292f3de3b079c8cd2a205e5132cd056326473ec97d64397b200b82",
+    "examples/opportunity-screen/function-basis/expected/after/E29-02-own-drive-label/screen.md": "c993c428ecb3f34c5bed7b4401e941046266223b1ad7f2b4a433edaa501e405d",
+    "examples/opportunity-screen/function-basis/expected/after/E30-S02-indicator-not-initiation/questions.json": "e64556730204494eefe9d329ac88909e818f14239e7695003068cfe6f0a709e3",
+    "examples/opportunity-screen/function-basis/expected/after/E30-S02-indicator-not-initiation/screen.md": "2df1c5f6339423a7c7f1abcdf180f086ad0733d8a6963193b4a8f6a365e00325",
+    "examples/opportunity-screen/function-basis/expected/after/C11-02-exhaust-indication-only/questions.json": "b69b684474ed00b2194a85ad9105a80480bc88aea4825f33ffab5bff5c798769",
+    "examples/opportunity-screen/function-basis/expected/after/C11-02-exhaust-indication-only/screen.md": "917d89ccd4fafeb45c0e915cccd35f358d0879a56dc97c4007d08ed0549c98a5"
+   },
+   "inherited_unchanged_files": {
+    "examples/opportunity-screen/field-coverage/README.md": "5de9e8482479c69687edad39ca4157567ccc5ae387148554682cbe05c450df9b",
+    "examples/opportunity-screen/field-coverage/model.json": "25680206678be6dd3ecf75a8e88f14b38a4f74bc4d4b0d471d45eb18b424f750",
+    "examples/opportunity-screen/collection-basis/README.md": "a022e30b3dd9c3201339e3614bdc79a0d8136cc90e47ca29bd02e51e3982b1ab",
+    "examples/opportunity-screen/collection-basis/model.json": "4363ccd5a89ceb18957208bed29e59f88d2ff9bcda7aa99569f12ec7c5834103",
+    "examples/opportunity-screen/collection-basis/sources.json": "965d33656f97e4fca4ff8d28fe323071ce3c5fb03e24d2cd513ff7c5593d7a0d"
+   },
+   "supporting_files": {
+    "scripts/question_engine.py": "713d6d0327c5daf27bae6a0a39e8d1b8d8a5d981313e343a84c7d1d0506aea85",
+    "data/questions.json": "0d8523b854d30c855ec088f8f5702fa24372686656fe3fb11201d11c60a8acde",
+    "scripts/test_question_engine.py": "8fabc55157d7c9dca08e81179b1996c45b825029251ae42afae0db6f46cdd61d",
+    "docs/OPPORTUNITY_SCREEN.md": "fa9974f242556769e2cf18ca62de8ddffc2a5d4a712631da5975f05daec371a6",
+    "examples/opportunity-screen/README.md": "d13e2e03e7ef8ce7688efb72514afc8b1965214206c8e93dd24e8ad8c45f8cd7",
+    "examples/opportunity-screen/review-refresh/demonstrate.py": "0df83327f3b024593e7f297405e6b75c1efcb3082ada38e1a1916fbc7ab927d9",
+    "examples/opportunity-screen/review-refresh/README.md": "41f0fb85bf6561baad3a2e5452a1e75ce3728ddde0cb1f4bec55de0eb46f49cb",
+    "examples/opportunity-screen/function-basis/EVALUATION.md": "76fb6be33a2f86a5b5eb604d61715646f5c945904dcce83f78d6eada8fe054a4",
+    "examples/opportunity-screen/function-basis/README.md": "655a6e1605c739bc01f9b092c87f5ac53a50e1fda2c5ce2b36f208b5627aef5c",
+    "examples/opportunity-screen/function-basis/SOURCES.json": "fc8b1611689f926072ab0b8a28dae10888c92885586ccea44d8e6dfa74ab4415",
+    "examples/opportunity-screen/function-basis/expected/cases.json": "0bc85462412ef51bed345e0cf43a63ddb5679fc4a67d26109a54f997e43113ee",
+    "examples/opportunity-screen/function-basis/history/baseline.json": "b7f0292688794ecc794c525f2146edb415947ad320c17e648f1eefcc4b90023a",
+    "examples/opportunity-screen/function-basis/history/expectations-e30-context-4.json": "95cdfb2eeb6bc29b24384f86e3ad3987bad56e6b034655d2493be50da0653087",
+    "examples/opportunity-screen/function-basis/history/expectations-original-21.json": "efbbf1f3eac74c52a5354d7cffb1360b35662a79e2dbe4f217999b97436e20d2",
+    "examples/opportunity-screen/function-basis/history/README.md": "1cd3a6b788e2757fa298533c9a40707fe5c652333b0449a312a225fcba62c7ae",
+    "examples/opportunity-screen/function-basis/models/C11-01-unknown-control.json": "cbcca80b05b4a6aa433261c2441a2e640bbad498c78e2cbe375490355d7a4890",
+    "examples/opportunity-screen/function-basis/models/C11-02-exhaust-indication-only.json": "8c35965fa0dc07f2123dcee707aaaba75a09e74c157e1ee8112f8dc72a8c5dae",
+    "examples/opportunity-screen/function-basis/models/C11-03-product-moisture-role.json": "2e3d6b1a3e2faaa44382629f08fa4522be5c12fc462c62740ab19e5451624635",
+    "examples/opportunity-screen/function-basis/models/C11-04-inlet-not-exhaust.json": "86b36ecfa4b92156b0fca57ce9183f90a3a8d70ca3ef0c14ca7c11eaf3775c1d",
+    "examples/opportunity-screen/function-basis/models/C11-05-alternative-control.json": "ababc4f9a209fe9590c981abfb42914b7fdd17571a4a205dd32fefd0574af2e1",
+    "examples/opportunity-screen/function-basis/models/C11-06-disabled-hand-override.json": "cd8b5f539598b54b088678e1a4fbdd3fc774074918c8adb8c56e5bdca746b6e0",
+    "examples/opportunity-screen/function-basis/models/C11-07-no-process-dryer-anchor.json": "d65b3b2c09e5e05c33a09b91a5ba452ddfe33182e6bda41149a1c5a749189122",
+    "examples/opportunity-screen/function-basis/models/E29-01-no-records.json": "72196e9f8d612b6cab5ea3cb9a926b99a545cd492e806ecfeaf789c324d7ebd2",
+    "examples/opportunity-screen/function-basis/models/E29-02-own-drive-label.json": "86a29f360e891292b3eacacee1a65412f515d1cf0b43dcb0cc20be9313f6d78b",
+    "examples/opportunity-screen/function-basis/models/E29-03-sequencer-candidate.json": "a765284d60dfa939f0ca8e86dd9240dfa57137a35589b6f3858a3b46b7c6047f",
+    "examples/opportunity-screen/function-basis/models/E29-04-unrelated-drive.json": "83a6d5608affa156c45a8898c6a753aae0782a38e83600e9ed1bf018350a2ada",
+    "examples/opportunity-screen/function-basis/models/E29-05-enabled-label-no-history.json": "e4e46ca7d24fbe818d0051187054ea708ccf3660f14c02b8fc712898bc85f622",
+    "examples/opportunity-screen/function-basis/models/E29-06-negated-disabled.json": "4bed8b30d6d0a34c3958b5c442c78a507f2a9e7aaa0ec61fc67a987589386de6",
+    "examples/opportunity-screen/function-basis/models/E29-07-no-refrigeration-anchor.json": "0bd87fa886ae070340cfed1c6ce62fe8046dc96d22a4cbd78b555a8f83ad3eb7",
+    "examples/opportunity-screen/function-basis/models/E30-01-unknown-initiation.json": "10f36423715b2cb39dc13b991a7b63ac4223a4e8dfc77dc2c149d76c678be28f",
+    "examples/opportunity-screen/function-basis/models/E30-02-coil-DP-indicator.json": "8e6686da976320652a5258f4fa140a962f7ea1e717961e0cf55f91caef032d3a",
+    "examples/opportunity-screen/function-basis/models/E30-03-unrelated-DP.json": "58a24563e5b463ab6680956fa004ba37d52368d4eeac868bcda5d7ba5aa981cb",
+    "examples/opportunity-screen/function-basis/models/E30-04-disabled-demand.json": "bf85195571c72c1a7ba7c81a256e31f7705343559d85dfa4c8404d52786fd0eb",
+    "examples/opportunity-screen/function-basis/models/E30-05-local-function-no-events.json": "93de1c0621993c65cdff1bf98dea48004c02807f50fcd2cf164d9bbc4c72d185",
+    "examples/opportunity-screen/function-basis/models/E30-06-termination-not-initiation.json": "7e5618e1b8995d9e59f966edc4f03dd9a1aa6b9f93683da8d58756501a715cc7",
+    "examples/opportunity-screen/function-basis/models/E30-07-no-refrigeration-anchor.json": "91453d9b0154fd0f49da00f8b70dc12fa3750257f41add7d466b7651e730952e",
+    "examples/opportunity-screen/function-basis/models/E30-S01-related-defrost-both.json": "757c8caccf8c8c64fc753f716f899b51e8b4b766a88ad855b773ea0f6f407d7f",
+    "examples/opportunity-screen/function-basis/models/E30-S02-indicator-not-initiation.json": "f894b3c6ebb6f1e3704e9eac5764ec1689f7ec1614bfc7a1d998eb2732ada2e1",
+    "examples/opportunity-screen/function-basis/models/E30-S03-disabled-demand-label.json": "533d2351c0cbd114afad0f2e780d9a1d7fb16023587bc133009dbd6d06b80f1e",
+    "examples/opportunity-screen/function-basis/models/E30-S04-declared-local-function-no-events.json": "1df0f848cdd25bb17621ff16228a06a0b8c683622f3f4c3d168a4e45fcfce033",
+    "examples/opportunity-screen/function-basis/history/before/C11-02-exhaust-indication-only/questions.json": "2d1f1f269954445a147b04189170765ce99d368094afbbe44407b574f4de62ce",
+    "examples/opportunity-screen/function-basis/history/before/C11-02-exhaust-indication-only/screen.md": "d1a10d6c3a1af0f6cd54892ec409a965ef76dc5633d4f86e7a5049ec9035fc01",
+    "examples/opportunity-screen/function-basis/history/before/E29-02-own-drive-label/questions.json": "d9bd7879ddd7c9c5f1f62cc570897c60e957e615b980bf6a79337b4cc4e3941b",
+    "examples/opportunity-screen/function-basis/history/before/E29-02-own-drive-label/screen.md": "1e391f48b67c8cfb0b796388a959050888b36c7c6922be1229394234034d0398",
+    "examples/opportunity-screen/function-basis/history/before/E30-S02-indicator-not-initiation/questions.json": "ab9ff6e9e80c9f73c350b09c99ac834cde3f13ce7fb731233397cbf448f014ce",
+    "examples/opportunity-screen/function-basis/history/before/E30-S02-indicator-not-initiation/screen.md": "3d1b5691089906e322ffd48ca58ab0c98dc321ef37b6073c6b6664c8ec22f1cf",
+    "examples/opportunity-screen/function-basis/expected/after/C11-02-exhaust-indication-only/questions.json": "b69b684474ed00b2194a85ad9105a80480bc88aea4825f33ffab5bff5c798769",
+    "examples/opportunity-screen/function-basis/expected/after/C11-02-exhaust-indication-only/screen.md": "917d89ccd4fafeb45c0e915cccd35f358d0879a56dc97c4007d08ed0549c98a5",
+    "examples/opportunity-screen/function-basis/expected/after/E29-02-own-drive-label/questions.json": "d2a767a903292f3de3b079c8cd2a205e5132cd056326473ec97d64397b200b82",
+    "examples/opportunity-screen/function-basis/expected/after/E29-02-own-drive-label/screen.md": "c993c428ecb3f34c5bed7b4401e941046266223b1ad7f2b4a433edaa501e405d",
+    "examples/opportunity-screen/function-basis/expected/after/E30-S02-indicator-not-initiation/questions.json": "e64556730204494eefe9d329ac88909e818f14239e7695003068cfe6f0a709e3",
+    "examples/opportunity-screen/function-basis/expected/after/E30-S02-indicator-not-initiation/screen.md": "2df1c5f6339423a7c7f1abcdf180f086ad0733d8a6963193b4a8f6a365e00325"
+   },
+   "scope": "Three source-informed rules retain function candidates and open per-subject records-first requests. New corpus is25synthetic development cases with21+4exposure, not25plants or model trials. Independent receiving validates actual reports,80non-target findings and38-finding/24-question rollup. Original17-call review failure and original130-test renderer error remain historical; revised review and one-expression V4 compatibility correction have separate passing controls. Other47rules/all50benefits exact; human usefulness and engineering adequacy unestablished.",
+   "checks": [
+    "Fresh and inherited file evidence are distinguished below; hashes normalize CRLF toLF. A reviewed example is not a whole-toolkit completion or company acceptance claim.",
+    "Source-oracle author independently received packaging/actual output conservation; this is independent of root implementation, not blinded human usefulness review. Expected cases are authored oracles, not generated predictions."
+   ],
+   "limits": [
+    "No new commercial-model run, real plant/company/tenant acceptance, measured labor benefit or whole-catalog engineering validation. Historical failures and source exposure remain visible."
+   ],
+   "private_proofs": {
+    "V3_actual_receiving_sha256": "a86b5fd9c39c917500e1bc1cc679376a956a09b79c9eb1c00256c94ea87bdf13",
+    "V4_renderer_static_sha256": "9bdd73bf640578eba47a887783723f00e3772b0b26dc8757c7c24e650e425c14",
+    "V4_two_actual_build_receiving_sha256": "2bd0535ca900eea3763b476ede710aab540f1fc0172e882c597c620cf995b1f3"
+   }
+  },
+  {
+   "feature": "description-workflow",
+   "reviewer": "Independent coding-agent source/receipt receiving; integrated with explicit inherited evidence",
+   "date": "2026-11-01",
+   "verdict": "pass",
+   "file_hash_method": "SHA256 after CRLF-to-LF normalization; raw retained receipts separately qualified.",
+   "registered_example_file_count": 54,
+   "files": {
+    "examples/from-description/assisted/source.txt": "4b36c932249a9db29c782771dd2cf6b76466a390e3565faf2a55aaa5ad4a196f",
+    "examples/from-description/assisted/branch-source.txt": "6bb042f23d8b2b83fdbcbf78c1e7d19febdba1971f1f978965c160a4f9cae5ae",
+    "examples/from-description/assisted/branch-answer.json": "9bf9a2fc9f2fd25a3f9903878100b3f99d19e88dcf6bde22b605871f94186e19",
+    "examples/from-description/assisted/offpage-answer.json": "5001894877c49e129f1600784a0943e463e939a6642caf0c0676f961957e353b",
+    "examples/from-description/assisted/result/REVIEW.md": "a11d8443f5de9950d5379d68425e8b9c3f5be453aadb5dadbd9a332652b9d7df",
+    "examples/from-description/assisted/result/answer.json": "9711b7f1f7613f2d25d598dc38e1476032d92d384322788fac71734f8440fcc8",
+    "examples/from-description/assisted/result/build.json": "1118aa8485993a8b049bfe2cc7debfea6c7193c9c38b48d2a354b80b7bea8fd6",
+    "examples/from-description/assisted/result/exports/ignition/tags.json": "2fa09782fddf70f5422d0cf4753d795b57a43de9013430b88d990953f33c0ab9",
+    "examples/from-description/assisted/result/exports/ops_review_sheet.csv": "e03fce04f6c65001d3fe04add2bae11f53b64d08123b3dbe940e0e5f74772394",
+    "examples/from-description/assisted/result/exports/pi/IMPORT_STEPS.txt": "f483b2d39dd0196849f843dd428db908daf7394ede56790b7ae7be62d51efd70",
+    "examples/from-description/assisted/result/exports/pi/attribute_descriptions.csv": "10c29785961b1ad399c087a7a606d7fe58058b1456e0dbeaf07d8da77622c492",
+    "examples/from-description/assisted/result/exports/pi/custom_uoms.csv": "1ccb9a299570e814268abb43e9d0fe9b073a03e986b007f2a1330fd8a9f2c31c",
+    "examples/from-description/assisted/result/exports/pi/pi_builder_af.csv": "58e67cca179376fe0af1367acb23c94cddc5ca3ab114145258fef437a441da1b",
+    "examples/from-description/assisted/result/exports/seed_export_manifest.json": "0588bf76e5e72fa940d3cd7fd196235dcbe2ddc2107dee376398c70cdf12adb3",
+    "examples/from-description/assisted/result/exports/seed_review_projection.json": "7ae6ed40cf47145b2975465e34309d4d99507a8afc6a9d398f74cea71424728a",
+    "examples/from-description/assisted/result/exports/svg/P-1.svg": "fd07d1bcfc6585e4b0ead093d050cf2ef3aa6d2f51e78a701899ee175a9544af",
+    "examples/from-description/assisted/result/exports/svg/TK-1.svg": "cd3675a0a81aa8ebee2cd5b3b4642fe5620e82d8650ae226d371c053a26e8a4d",
+    "examples/from-description/assisted/result/exports/svg/overview.svg": "707d4a77846e6dd260abf8f7aa1d5938dce5fa2b4c0823b9e400a1a72a83c419",
+    "examples/from-description/assisted/result/graph.json": "ca969f5329ac11e9600757e4f8200e5119c8f2c2f2d99ec678ede0554321be4a",
+    "examples/from-description/assisted/result/layout.json": "5de65e16a27bfdc92ebf5a7a71a4f442474d024aee6d3bbef26025f6c36c4c09",
+    "examples/from-description/assisted/result/model.json": "7523c5f8f5b4918e1fd00315d332befc68b0888d35b48ccb31fd8f71399f99f4",
+    "examples/from-description/assisted/result/packet.json": "06a7dfc98dfd707ab4e886d28b7fa67c647abd3da06a8dd9d09644b922f090f7",
+    "examples/from-description/assisted/result/pid/D1.graphml": "46479c2adf003eccf718a099261f25d8ff2923375f4b532ded59fbc47adbaec8",
+    "examples/from-description/assisted/result/pid/D1.png": "5e9305bde5e2aec93bbacac6207796f53a292f7b66ce40ee835a03c386a06f75",
+    "examples/from-description/assisted/result/pid/D1.svg": "369e912752d5f14ca1307e9ac1c7e0ee3a11598d770760f2ea8256c218a1438e",
+    "examples/from-description/assisted/result/pid/key.json": "280cf9f65a82a55234d911263e547a84961b9838a3864cddb0cd1b48fc0a37e1",
+    "examples/from-description/assisted/result/pid/manifest.json": "8f3ca9e4035afe9a939877afbb224db0e63409968df18742202d50a1053af6a9",
+    "examples/from-description/assisted/result/pid/sheet_register.csv": "5f2251cb19cf345143d37cce802822c55f4fdc744f17a7fbd1a5af884afe69b0",
+    "examples/from-description/assisted/result/questions/questions.json": "1ff028cdbdfd99a662b2c9d6bc528d8d70f2fb9c1ac6652e069732e22b4cfe1f",
+    "examples/from-description/assisted/result/questions/screen.md": "7a58d8b018134bbb37e06fa968cccdf263892d7ba0260b9ee717d9ebd9973f3d",
+    "examples/from-description/assisted/result/source.txt": "4b36c932249a9db29c782771dd2cf6b76466a390e3565faf2a55aaa5ad4a196f",
+    "examples/from-description/assisted/result/source_numbered.txt": "135234ecb19ca7c10a5ff442bdf0b73bcd8bd84181449e8f2d9cecab56f978f7",
+    "examples/from-description/assisted/result/validation.json": "0faa64c65acea8dd54ccecb6ec3078a1fc00b57ff5d4b95be08158edd9d21d42",
+    "examples/from-description/mgpi/source-initial.txt": "001f639eb86237eff8f727b72a5bac7030d536cfd0022f3e74af91e21e405acc",
+    "examples/from-description/mgpi/model-initial.json": "d8f18339e5f52f85ccd8a6a3ce6cf11d745be8570eb66d2ffb7cf24f9b24343a",
+    "examples/from-description/mgpi/source.txt": "551078e52d39c0f2dc587951b7534afaf8865c9e7c87e55e26ec27cbff4c74e8",
+    "examples/from-description/mgpi/model-expanded-source.json": "317e65cc9aaa7324d8e64c6911ff87f03f9c4182e00fe22fc74b6525766c1277",
+    "examples/from-description/mgpi/answer.json": "94776ad8a164c91add4840f09dae91cac7c9b35b01f9db9a261b116c5fb6423d",
+    "examples/from-description/mgpi/v1/source_inventory.json": "96782e724fc9fad637666faf3777c2dfde9b54613452fe826b27bd9034eb4691",
+    "examples/from-description/mgpi/v1/facts.json": "a3327aad29ac19c1da9bc5b044357825a2edf10ce1338d71bffd4f7a84b940cb",
+    "examples/from-description/mgpi/v2/source_inventory.json": "facb294d3ccef0774f79523b9c0033c60e6af3b1baabefe5e7ed00f6be75b2ce",
+    "examples/from-description/mgpi/v2/facts.json": "912ed6dacaadd96f5c9d41fc4a0b2a8cb9d05dfa0a6e480b8688bb02863bd588",
+    "examples/from-description/mgpi/result/pid/HYP.png": "abeb4071ac98e5892b1d268c41dbc5a7a262a5cb0556af824e1afcfc089ed30d",
+    "examples/from-description/mgpi/result/pid/ACID.png": "ca6c7884335389bd173d8dee676110b4cbb4c3830bddcc3d7f6a5059e1db06aa",
+    "examples/from-description/mgpi/result/graph.json": "155a9bfb0799490d8feebaee0fdc803c78663b612c1cde08967d01df4200eb2e",
+    "examples/from-description/mgpi/result/questions/questions.json": "a23064f3873f769813a77b9cf7bf6584b5b182b2b51fbe45c2328a0934f4b39d",
+    "examples/from-description/mgpi/result/REVIEW.md": "5f1becf334a45def175d3c744bebe110a3e5fac474b6ddb390c306b3a53a29b5",
+    "examples/from-description/mgpi/first-question.md": "11014ed35474afc3662b0257697fe41f6cac68b6f24529fddba690aad7b7fbe3",
+    "examples/from-description/mgpi/result/build.json": "13f89eab0d9c44bf60b7d6ff563c1551147a923a2f1c9b7a08bcff4addda35b5",
+    "examples/from-description/mgpi/result/pid/manifest.json": "85f8c312ad2f4ce17f067ebfb9ca11a498cb30cfd256e4942befae6fdbe27035",
+    "examples/from-description/assisted/result/interpretation_review.csv": "3613ff41b0c117ca1c4c08de6c9fd42b06af7399313b45fdc6868512b4103c89",
+    "examples/from-description/assisted/result/source_coverage.csv": "691db33f93226c06acf1e5f91080201ea96344fd4d99bc57fc094ce594762c07",
+    "examples/from-description/mgpi/result/interpretation_review.csv": "b0715347e95ddd62e6d30247f9e7dbe97aa0999e3ba91249a117fec5414cb355",
+    "examples/from-description/mgpi/result/source_coverage.csv": "ed6b9face62e707ea95e431b7c0fedce44de00aebca618937cf3ae96eac67992"
+   },
+   "freshly_reproduced_or_validated_files": {
+    "examples/from-description/assisted/result/build.json": "1118aa8485993a8b049bfe2cc7debfea6c7193c9c38b48d2a354b80b7bea8fd6",
+    "examples/from-description/mgpi/result/build.json": "13f89eab0d9c44bf60b7d6ff563c1551147a923a2f1c9b7a08bcff4addda35b5"
+   },
+   "inherited_unchanged_files": {
+    "examples/from-description/assisted/source.txt": "4b36c932249a9db29c782771dd2cf6b76466a390e3565faf2a55aaa5ad4a196f",
+    "examples/from-description/assisted/branch-source.txt": "6bb042f23d8b2b83fdbcbf78c1e7d19febdba1971f1f978965c160a4f9cae5ae",
+    "examples/from-description/assisted/branch-answer.json": "9bf9a2fc9f2fd25a3f9903878100b3f99d19e88dcf6bde22b605871f94186e19",
+    "examples/from-description/assisted/offpage-answer.json": "5001894877c49e129f1600784a0943e463e939a6642caf0c0676f961957e353b",
+    "examples/from-description/assisted/result/REVIEW.md": "a11d8443f5de9950d5379d68425e8b9c3f5be453aadb5dadbd9a332652b9d7df",
+    "examples/from-description/assisted/result/answer.json": "9711b7f1f7613f2d25d598dc38e1476032d92d384322788fac71734f8440fcc8",
+    "examples/from-description/assisted/result/exports/ignition/tags.json": "2fa09782fddf70f5422d0cf4753d795b57a43de9013430b88d990953f33c0ab9",
+    "examples/from-description/assisted/result/exports/ops_review_sheet.csv": "e03fce04f6c65001d3fe04add2bae11f53b64d08123b3dbe940e0e5f74772394",
+    "examples/from-description/assisted/result/exports/pi/IMPORT_STEPS.txt": "f483b2d39dd0196849f843dd428db908daf7394ede56790b7ae7be62d51efd70",
+    "examples/from-description/assisted/result/exports/pi/attribute_descriptions.csv": "10c29785961b1ad399c087a7a606d7fe58058b1456e0dbeaf07d8da77622c492",
+    "examples/from-description/assisted/result/exports/pi/custom_uoms.csv": "1ccb9a299570e814268abb43e9d0fe9b073a03e986b007f2a1330fd8a9f2c31c",
+    "examples/from-description/assisted/result/exports/pi/pi_builder_af.csv": "58e67cca179376fe0af1367acb23c94cddc5ca3ab114145258fef437a441da1b",
+    "examples/from-description/assisted/result/exports/seed_export_manifest.json": "0588bf76e5e72fa940d3cd7fd196235dcbe2ddc2107dee376398c70cdf12adb3",
+    "examples/from-description/assisted/result/exports/seed_review_projection.json": "7ae6ed40cf47145b2975465e34309d4d99507a8afc6a9d398f74cea71424728a",
+    "examples/from-description/assisted/result/exports/svg/P-1.svg": "fd07d1bcfc6585e4b0ead093d050cf2ef3aa6d2f51e78a701899ee175a9544af",
+    "examples/from-description/assisted/result/exports/svg/TK-1.svg": "cd3675a0a81aa8ebee2cd5b3b4642fe5620e82d8650ae226d371c053a26e8a4d",
+    "examples/from-description/assisted/result/exports/svg/overview.svg": "707d4a77846e6dd260abf8f7aa1d5938dce5fa2b4c0823b9e400a1a72a83c419",
+    "examples/from-description/assisted/result/graph.json": "ca969f5329ac11e9600757e4f8200e5119c8f2c2f2d99ec678ede0554321be4a",
+    "examples/from-description/assisted/result/layout.json": "5de65e16a27bfdc92ebf5a7a71a4f442474d024aee6d3bbef26025f6c36c4c09",
+    "examples/from-description/assisted/result/model.json": "7523c5f8f5b4918e1fd00315d332befc68b0888d35b48ccb31fd8f71399f99f4",
+    "examples/from-description/assisted/result/packet.json": "06a7dfc98dfd707ab4e886d28b7fa67c647abd3da06a8dd9d09644b922f090f7",
+    "examples/from-description/assisted/result/pid/D1.graphml": "46479c2adf003eccf718a099261f25d8ff2923375f4b532ded59fbc47adbaec8",
+    "examples/from-description/assisted/result/pid/D1.png": "5e9305bde5e2aec93bbacac6207796f53a292f7b66ce40ee835a03c386a06f75",
+    "examples/from-description/assisted/result/pid/D1.svg": "369e912752d5f14ca1307e9ac1c7e0ee3a11598d770760f2ea8256c218a1438e",
+    "examples/from-description/assisted/result/pid/key.json": "280cf9f65a82a55234d911263e547a84961b9838a3864cddb0cd1b48fc0a37e1",
+    "examples/from-description/assisted/result/pid/manifest.json": "8f3ca9e4035afe9a939877afbb224db0e63409968df18742202d50a1053af6a9",
+    "examples/from-description/assisted/result/pid/sheet_register.csv": "5f2251cb19cf345143d37cce802822c55f4fdc744f17a7fbd1a5af884afe69b0",
+    "examples/from-description/assisted/result/questions/questions.json": "1ff028cdbdfd99a662b2c9d6bc528d8d70f2fb9c1ac6652e069732e22b4cfe1f",
+    "examples/from-description/assisted/result/questions/screen.md": "7a58d8b018134bbb37e06fa968cccdf263892d7ba0260b9ee717d9ebd9973f3d",
+    "examples/from-description/assisted/result/source.txt": "4b36c932249a9db29c782771dd2cf6b76466a390e3565faf2a55aaa5ad4a196f",
+    "examples/from-description/assisted/result/source_numbered.txt": "135234ecb19ca7c10a5ff442bdf0b73bcd8bd84181449e8f2d9cecab56f978f7",
+    "examples/from-description/assisted/result/validation.json": "0faa64c65acea8dd54ccecb6ec3078a1fc00b57ff5d4b95be08158edd9d21d42",
+    "examples/from-description/mgpi/source-initial.txt": "001f639eb86237eff8f727b72a5bac7030d536cfd0022f3e74af91e21e405acc",
+    "examples/from-description/mgpi/model-initial.json": "d8f18339e5f52f85ccd8a6a3ce6cf11d745be8570eb66d2ffb7cf24f9b24343a",
+    "examples/from-description/mgpi/source.txt": "551078e52d39c0f2dc587951b7534afaf8865c9e7c87e55e26ec27cbff4c74e8",
+    "examples/from-description/mgpi/model-expanded-source.json": "317e65cc9aaa7324d8e64c6911ff87f03f9c4182e00fe22fc74b6525766c1277",
+    "examples/from-description/mgpi/answer.json": "94776ad8a164c91add4840f09dae91cac7c9b35b01f9db9a261b116c5fb6423d",
+    "examples/from-description/mgpi/v1/source_inventory.json": "96782e724fc9fad637666faf3777c2dfde9b54613452fe826b27bd9034eb4691",
+    "examples/from-description/mgpi/v1/facts.json": "a3327aad29ac19c1da9bc5b044357825a2edf10ce1338d71bffd4f7a84b940cb",
+    "examples/from-description/mgpi/v2/source_inventory.json": "facb294d3ccef0774f79523b9c0033c60e6af3b1baabefe5e7ed00f6be75b2ce",
+    "examples/from-description/mgpi/v2/facts.json": "912ed6dacaadd96f5c9d41fc4a0b2a8cb9d05dfa0a6e480b8688bb02863bd588",
+    "examples/from-description/mgpi/result/pid/HYP.png": "abeb4071ac98e5892b1d268c41dbc5a7a262a5cb0556af824e1afcfc089ed30d",
+    "examples/from-description/mgpi/result/pid/ACID.png": "ca6c7884335389bd173d8dee676110b4cbb4c3830bddcc3d7f6a5059e1db06aa",
+    "examples/from-description/mgpi/result/graph.json": "155a9bfb0799490d8feebaee0fdc803c78663b612c1cde08967d01df4200eb2e",
+    "examples/from-description/mgpi/result/questions/questions.json": "a23064f3873f769813a77b9cf7bf6584b5b182b2b51fbe45c2328a0934f4b39d",
+    "examples/from-description/mgpi/result/REVIEW.md": "5f1becf334a45def175d3c744bebe110a3e5fac474b6ddb390c306b3a53a29b5",
+    "examples/from-description/mgpi/first-question.md": "11014ed35474afc3662b0257697fe41f6cac68b6f24529fddba690aad7b7fbe3",
+    "examples/from-description/mgpi/result/pid/manifest.json": "85f8c312ad2f4ce17f067ebfb9ca11a498cb30cfd256e4942befae6fdbe27035",
+    "examples/from-description/assisted/result/interpretation_review.csv": "3613ff41b0c117ca1c4c08de6c9fd42b06af7399313b45fdc6868512b4103c89",
+    "examples/from-description/assisted/result/source_coverage.csv": "691db33f93226c06acf1e5f91080201ea96344fd4d99bc57fc094ce594762c07",
+    "examples/from-description/mgpi/result/interpretation_review.csv": "b0715347e95ddd62e6d30247f9e7dbe97aa0999e3ba91249a117fec5414cb355",
+    "examples/from-description/mgpi/result/source_coverage.csv": "ed6b9face62e707ea95e431b7c0fedce44de00aebca618937cf3ae96eac67992"
+   },
+   "supporting_files": {
+    "scripts/question_engine.py": "713d6d0327c5daf27bae6a0a39e8d1b8d8a5d981313e343a84c7d1d0506aea85",
+    "data/questions.json": "0d8523b854d30c855ec088f8f5702fa24372686656fe3fb11201d11c60a8acde",
+    "scripts/description_workflow.py": "463fd67e9c4665da3fed2b3acbf1b85673650e352d010d331eed2db942482a8a",
+    "examples/from-description/README.md": "8e6f0b45de44ec481b5c22eb08ff3f0582357430f027549af5b69db414a97bee"
+   },
+   "scope": "Two complete current bundles actually rebuilt under V3, then only2V4 successor builds performed. Across67files the only V4 differences are two actual build receipt method-hash leaves; other65rawexact. Authored source/model/layout meaning and prior registered example scope inherited, not newly engineer-reviewed.",
+   "checks": [
+    "Fresh and inherited file evidence are distinguished below; hashes normalize CRLF toLF. A reviewed example is not a whole-toolkit completion or company acceptance claim."
+   ],
+   "limits": [
+    "No new commercial-model run, real plant/company/tenant acceptance, measured labor benefit or whole-catalog engineering validation. Historical failures and source exposure remain visible."
+   ],
+   "private_proofs": {
+    "V3_actual_receiving_sha256": "a86b5fd9c39c917500e1bc1cc679376a956a09b79c9eb1c00256c94ea87bdf13",
+    "V4_renderer_static_sha256": "9bdd73bf640578eba47a887783723f00e3772b0b26dc8757c7c24e650e425c14",
+    "V4_two_actual_build_receiving_sha256": "2bd0535ca900eea3763b476ede710aab540f1fc0172e882c597c620cf995b1f3"
+   }
+  },
+  {
+   "feature": "engineering-onboarding",
+   "reviewer": "Independent coding-agent source/receipt receiving; integrated with explicit inherited evidence",
+   "date": "2026-11-01",
+   "verdict": "pass",
+   "file_hash_method": "SHA256 after CRLF-to-LF normalization; raw retained receipts separately qualified.",
+   "registered_example_file_count": 3,
+   "files": {
+    "examples/engineering-onboarding/actual/A-overview.json": "13280a7162e07d304573ab9627b2ca09b21d7bc9bf602b1c4678c73e89c12fc2",
+    "examples/engineering-onboarding/actual/B-workflow.json": "84a141c78f301901876b9be092b62a4095405ba9e3e2cd80f3848726d56b1270",
+    "examples/engineering-onboarding/actual/C-sources.json": "a3daa03e4681bf397f3165ed91fb928ebed80df6fee63f36873711ea3ee26aa5"
+   },
+   "freshly_reproduced_or_validated_files": {},
+   "inherited_unchanged_files": {
+    "examples/engineering-onboarding/actual/A-overview.json": "13280a7162e07d304573ab9627b2ca09b21d7bc9bf602b1c4678c73e89c12fc2",
+    "examples/engineering-onboarding/actual/B-workflow.json": "84a141c78f301901876b9be092b62a4095405ba9e3e2cd80f3848726d56b1270",
+    "examples/engineering-onboarding/actual/C-sources.json": "a3daa03e4681bf397f3165ed91fb928ebed80df6fee63f36873711ea3ee26aa5"
+   },
+   "supporting_files": {
+    "scripts/knowledge_snapshot.py": "6b88d2508a514e60c80a70d885c5e7fa3ff8068770dbe2ede053feacf0f906bb",
+    "scripts/test_knowledge_snapshot.py": "da623b7d6ed061ec9b8c6a79999198d5c5d272316f4bd16915bd489eceb190ea",
+    "examples/engineering-onboarding/README.md": "9f4bede11d57a340d64306f6bc171b80bf77768089eac385baac4ab86bafc7d2",
+    "docs/TEAM_CONTEXT_IMPACT.md": "d9e9312937b31c7c598e17dfc05e93a5377e70803976c66a5e80b68b2cacb31b"
+   },
+   "scope": "Three registered A/B/C readbacks inherit exact prior bytes. Independent finite knowledge-reader controls and public29-test pass support reduced retained dependency-path state with full eager admission/limits/path ordering preserved. No new SDK/human/company capacity trial; request recomputation is a tradeoff. The dependency-impact explanation lives in docs outside the byte-pinned team fixture.",
+   "checks": [
+    "Fresh and inherited file evidence are distinguished below; hashes normalize CRLF toLF. A reviewed example is not a whole-toolkit completion or company acceptance claim."
+   ],
+   "limits": [
+    "No new commercial-model run, real plant/company/tenant acceptance, measured labor benefit or whole-catalog engineering validation. Historical failures and source exposure remain visible."
+   ],
+   "private_proofs": {
+    "independent_memory_controls_sha256": "66fa206fca257ab0131bfed9f39a466461b195462eb62d487eb0dd8e8829d1b2",
+    "reader_source_crosscheck_sha256": "c08a09f9dd01072ded87bf1a553b3d15ba2a68faab91d5833a06cba09fb99309"
    }
   }
  ]

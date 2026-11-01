@@ -6236,3 +6236,133 @@ case, dependency or product claim to this release.
 Only the ignore rule and the STATUS/journal result wording change after that run. Source/implementation,
 predictions, scorecards, registered outputs and the other public input bytes remain as tested. Independent
 receiving, committed-blob identity and exact-head CI are separate checks.
+
+
+## 134. Make own-plant transfer explicit and retain function evidence
+
+**2026-10-31, Central time; receiving records continue into November 1 UTC.** Steve identified a framing defect:
+case-specific limits had become general statements about what the reader could build. The purpose is to teach
+and provide tools for their own plant, using public inputs to demonstrate the method and evaluate its limits.
+The README and documentation map now distinguish reusable tools, tutorials that substitute the reader's records,
+and case studies/evaluation. The own-P&ID, description and XML routes lead to a sourced draft model: review and
+enrich it, supply reviewed signal identities and process records, then connect and maintain the useful parts.
+The TE gateway assembly remains a specific reference application, rather than a restriction on the generic tools.
+
+The generated deliverables page now labels what was built in each case. Its rows, source notes, numbers and
+internal status keys are unchanged. Missing OPEN100 process data is an input need for that case, rather than a
+blanket impossibility. The script inventory separates own-input wrappers from case-study CLIs and describes
+direct XML separately from prepared public DEXPI keys. No runtime builder or graph-export algorithm was changed
+to obtain these wording improvements. Portable JSON still needs receiving mappings/import acceptance outside
+the repository's documented readers.
+
+A second reader pass found two surviving review-priority promises. Own-drawing intake supplies an unranked
+sheet; fitted red/amber/green tiers belong to the OPEN100 research workflow. The review guide, archive planning
+reference, feature inventory and own-drawing report description now agree. The archive plan's proposed
+cross-source reconciliation is explicitly site work. The guide-bound own-drawing and Bayer export matrix cells
+were actually rerun after the prose edits; the other 93 complete cell objects and all outcome counts remain
+unchanged. A final own-guide clarification prompted one further actual intake-cell refresh, preserving the
+previous run. The structural deliverables check was actually rebuilt, retaining the numerical/source criteria.
+
+### Keep labels as candidates rather than answers about actual function
+
+Original ENERGY STAR/LBNL dairy and fruit/vegetable guidance informed prospective expected questions for E29,
+E30 and C11. Their prior label-only exclusions could quiet a machine investigation without establishing actual
+part-load control, defrost initiation or exhaust strategy. Twenty-one synthetic cases had expectations frozen
+before baseline calls. Four later E30 cases isolate a separate anchor-versus-related-defrost interaction;
+they remain exposed development cases. All 25 original inputs and observations are retained. The old method
+missed 23 expected subjects in 18 cases; three no-anchor controls stayed quiet. This is neither 25 plants nor
+a held-out model-extraction benchmark.
+
+The revised rules retain named subjects and shown control/measurement records as candidates, with three open
+records-first requests per finding. Initiation differs from termination; humidity is one possible variable,
+not a universal control requirement. Per-machine keep-open behavior is conservative authored software policy
+informed by the sources, not a quoted source mandate. Source PDF byte equivalence to older downloaded copies
+was not established, and no new raw PDF was added.
+
+An opt-in evidence field list preserves literal supplied values, including false, zero, unknown and blanks,
+with exact source locators. Native controller/interlock qualifiers use an evidence-only carrier; their ordinary
+selector facts remain empty so, for example, a temperature qualifier cannot activate an unrelated heater rule.
+The other 47 question objects, all 50 benefit objects, catalog source objects and the 124-request inventory remain unchanged.
+
+Independent private receiving passed 50 CLI sessions and 1,710 bounded checks for the first candidate cohort.
+An additional encoding probe then found a real defect: an escaped lone surrogate in a selected value or field
+name could truncate questions.json before the encoding error. That candidate was not accepted. The UTF-8 successor
+candidate preserves otherwise unencodable values as JSON escapes and rejects invalid UTF-8 field names before
+writes. Ten affected follow-up sessions passed 1,187 checks; four complete normal report pairs stayed raw-exact.
+The previous cohort was inherited only after an explicit narrow code/encoding audit, not rerun for a new label.
+No source-informed check establishes installed function, engineering approval, useful human questions or savings.
+
+### Retain less expanded knowledge at startup
+
+The knowledge reader previously retained every root's expanded dependency paths. It now retains direct basis
+diagnostics and computes complete root paths when needed, while eagerly admitting every full record response
+before construction returns. Whole-packet validation, error precedence, response limits, path order and deep-copy
+isolation remain. Independent controls compared 260 compact complete responses and exercised the actual 2 MiB
+boundary, late invalid records and nested mutation isolation. The public module's 29 tests passed after adoption.
+
+On the finite 128-record synthetic chain, median traced peak allocation changed from 6,300,073 to 779,497 bytes;
+live traced allocation changed from 6,052,931 to 422,475 bytes. Baseline and candidate each had nine fresh-process
+samples across three sizes, not interleaved. Observed constructor time increased on that chain (0.9968 to 1.2133 s).
+This trades retained memory for computation; it is not a latency win or a large-company capacity measurement.
+The four-team tutorial also gains a compact reading of its existing actual observations: two source-dependent
+answers reopen, three independent answers retain status, and a fresh source answer can still leave proposals disputed.
+
+### Preserve the failed historical Docker starts
+
+Node-24 GitHub Action majors replace the earlier forced-Node-20 compatibility path. The CI-only head passes its
+tests and MCP jobs, but all three fresh Docker browser starts fail. The frozen October 8 backup requests historic
+TE tag spellings absent from the current 52-channel replay. A pinned, opt-in Docker compatibility profile adds
+36 literal source-column aliases, preserves the default 52 channels and leaves unavailable SC-212 unfed. Backup
+and current model bytes, browser thresholds and fault predicates remain unchanged. Paired values are Double/Good
+with identical UTC replay-publication timestamps; no current plant acquisition or identity inference is claimed.
+
+Independent source/receipt review accepted the seven-file repair. Its focused child passed; the wrapper exited
+one because two existing band outputs became CRLF. Their full LF text and parsed JSON remained equal; the other
+2,979 retained file hashes matched. This is a qualified result, not an all-raw-files pass. Those generated bands
+were not adopted. The browser fault diagnostic also stops naming an unrelated positional label as PT-107.
+Fresh Docker acceptance remains a separate gate. The two manual current replay stages retain historical receipts
+and remain stale after the server edit; historical Docker acceptance cannot renew native-gateway evidence.
+
+
+### Integrated renderer compatibility check
+
+The first public question-engine module run executes 130 tests: 128 pass, one is skipped and one errors.
+All 3,025 public input files remain raw-exact. An existing zero-finding renderer test supplies only families
+and sources; the new opt-in renderer lookup incorrectly requires a questions key even though there are no
+findings. The original failure is retained. A one-expression fallback to an empty question list restores that
+existing API contract. Independent AST receiving confirms no other code delta; full catalogs used by the
+previous producers still take the identical branch. Three affected existing/new renderer controls pass.
+The prior 16 successful producing calls and separate revised review remain their actual historical observations;
+only the two description bundles need new actual builds for the changed implementation-hash leaf.
+
+The review-refresh producer also initially fails its old assertion that rejecting a drive newly adds E29.
+That assertion conflicts with the source-informed keep-open policy. The revised exercise instead checks that
+K-203 stays in review, SC-203 is present as a candidate before rejection and absent afterward, and only the two
+exhaust/recovery findings are newly added. One revised exercise passes; the other 16 calls are not repeated.
+Independent receiving checks 92 actual artifacts, 80 non-target finding records, the 38-finding/24-question
+rollup and the complete description inventories. Seven unrelated JSON outputs differ only in line endings;
+their full LF text/JSON matches and their earlier public raw bytes are retained. Three after-report pairs are
+actual outputs at their declared repository-relative input paths, not hand-authored examples.
+
+The two V4 description builds subsequently pass. Independent receiving checks their 67 complete artifacts:
+only the two actual build receipts change their question-engine code-hash leaf; the other 65 files and all
+3,017 private inputs remain raw-exact. Only those two receipts replace the V3 receipts. Seven feature-review
+records distinguish fresh validation from inherited unchanged evidence and disclose source-oracle/prose
+authorship. The feature reference registers 346 example files, including seven new corpus result/oracle files;
+its input fixtures and historical reports are labelled as such rather than all described as generated outputs.
+
+### Preserve the complete local run and fix guide placement
+
+The integrated offline suite runs all 71 programs in 471.564 seconds: 70 pass and the team-context program
+fails its fixed file-count check (98 instead of 97). Six unittest cases are skipped, with three Windows platform
+notices and no additional skipped-check notices. All 3,025 public input files remain raw-exact, with no extra
+or missing path. The question-engine module, including its 130 tests, passes in this full run.
+
+The added impact explanation belonged outside the byte-pinned example packet. It moves into
+[TEAM_CONTEXT_IMPACT.md](TEAM_CONTEXT_IMPACT.md), with relative links and its feature/attempt references updated.
+The original 94 evidence files, three packet entry files and cardinality assertion remain; only the already
+authorized README link changes. The existing two-test team-context module then passes in 19.034 seconds, with
+all 3,025 current files raw-exact. The other 70 programs are not repeated to replace the failed full result.
+Current committed-head CI checks the complete suite and optional MCP separately, including their actual skips.
+Three fresh Docker starts check the historical compatibility profile; they do not accept a current plant twin
+or renew the two stale manual replay stages.

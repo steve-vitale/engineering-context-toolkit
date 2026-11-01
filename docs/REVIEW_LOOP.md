@@ -24,11 +24,13 @@ alarm metadata remains intact, including unknown or unreadable values. The
 [fictional native correction](../examples/review-and-mapping/native-identity/README.md) shows both behaviors,
 repeat review and the separate authored-layout reconciliation step. Use a disposable copy and inspect its full diff.
 
-**The sheet.** It's one row per item, riskiest first (red, amber, green):
+**The sheet.** It's one row per item:
 - Tennessee Eastman: `out/ops_review_sheet.csv`;
 - an extracted twin: `review_queue.csv`.
 
-In an extracted twin, an item whose tag reads as a relief device, shutdown valve, trip switch or isolation valve
+The own-drawing intake leaves risk tiers blank. Agree review priorities for your records; the fitted
+red/amber/green ordering belongs to the OPEN100 research workflow and has not been validated on your sheets.
+In that rated research twin, an item whose tag reads as a relief device, shutdown valve, trip switch or isolation valve
 is never green: its `why` starts "safety-relevant (...): always checked", whatever the extraction checks say. Green
 is a lower review-priority tier under the fitted rating; it does not accept an item or establish safety duty.
 Untagged and manual block valves are not caught by that floor. On unfamiliar drawings, check representative

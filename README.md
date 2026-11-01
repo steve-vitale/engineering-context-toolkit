@@ -2,93 +2,98 @@
 
 [![tests](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml/badge.svg)](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml)
 
-**Help engineers understand existing work, ask better questions and contribute knowledge others can use.**
+**Use your own P&IDs and process records to build a reviewable digital twin model and engineering context your team can maintain.**
 
-Use documents, drawings, models and recorded data to produce something another engineer can inspect:
-a source clarification, draft model or drawing, review packet, investigation plan, supplied-data analysis or
-portable context and workflow snapshot. Task/model benchmarks help contributors compare methods on saved answers.
-Choose the parts your assignment needs; this is not one automatic document-to-plant pipeline.
+Use your P&IDs, process descriptions or supported DEXPI exports to build a draft asset model: the structural
+foundation of your plant's digital twin. Review and enrich it, generate drawings or platform-staging files where
+supported, investigate questions, and connect selected information to company-approved tools and data sources.
+Public tutorials show the steps; case studies show what more complete assembled systems can look like.
 
-This is a starting point for maintained engineering context: what exists, why a choice was made, what the records
-support and what still needs review. P&IDs and process models are one specialist branch, and one foundation for
-future digital twins and manufacturing applications.
+You can also start with documents and one question, without an asset model. The same discipline applies:
+keep the evidence, interpretation, unresolved points and next owner together. Recorded-data analysis and
+task/model benchmarks support investigation and improvement alongside the modeling tools.
+
+| Choose a destination | What you get |
+|---|---|
+| **Tools — use your inputs** | [Choose a job below](#start-wherever-you-are); the [format map](docs/WORKFLOWS.md) states accepted inputs and generated outputs. |
+| **Tutorials — learn, then substitute your records** | [P&ID to review bundle](examples/own-drawing/README.md), [description to draft drawing/model](examples/from-description/README.md), or [DEXPI to model](examples/from-dexpi-xml/README.md). |
+| **Case studies and evaluation — inspect the evidence** | [TE/OPEN100 assembled examples](docs/DELIVERABLES.md), [results](docs/RESULTS.md), and [workflow/model comparisons](docs/README.md#reference-and-research-records). |
+
+## Start wherever you are
+
+These tools accept your own records in their documented formats. Choose the work product you need first.
+
+| Your engineering job | Starting material and guide | Work product |
+|---|---|---|
+| Build your plant's first draft asset model | [P&ID image](examples/own-drawing/README.md) or [DEXPI XML](examples/from-dexpi-xml/README.md) | Sourced assets and represented connections, review material, graph and platform-staging routes. |
+| Build from process knowledge | [Written description](examples/from-description/README.md) | An authored, source-linked model and layout, checked locally and rendered as draft P&ID sheets and exports. |
+| Review and enrich the model | [Sourced statements](docs/STATEMENT_REVIEW.md) · [model correction and mapping](docs/REVIEW_LOOP.md) | Checkable claims, supported local corrections and supplied signal mappings. |
+| Investigate controls or performance | [Loop list audit](examples/loop-audit/README.md) · [question engine](docs/OPPORTUNITY_SCREEN.md) · [historian CSVs](examples/historian-csv/README.md) | Explicit discrepancies, questions, evidence requests and analysis of recorded observations. |
+| Estimate a measured change | [Impact calculation](examples/impact-estimate/README.md) | First-draft energy, cost and CO2e calculations with measurements, assumptions and constants visible. |
+| Keep and exchange engineering context | [Context register](docs/CONTEXT_REGISTER.md) · [read-only MCP](examples/internal-mcp/README.md) · [owned team packets](examples/team-context/README.md) | Source dependencies, retained answers and selected snapshots to hand to the next team or company system. |
+| Evaluate or improve a method | [Labelled drawing comparison](examples/vendor-evaluation/README.md) · [task/model benchmarks](benchmarks/README.md) | Reproducible scores on declared cases and saved answers, with exposure and failure limits retained. |
+
+## What connects today: the hub and spokes
+
+1. **Build the draft.** An image route uses a supplied or approved-assistant extraction; a description route
+   uses an engineer/assistant-authored model and layout; supported DEXPI XML is read directly. Each produces
+   a documented model form. The [workflow map](docs/WORKFLOWS.md) shows which outputs that form supports.
+2. **Review and enrich it.** Check source identities, asset relationships and missing items, make supported
+   corrections, and add the independent process/controls evidence the investigation needs. Detailed drawing
+   geometry and engineering interpretation remain authored work.
+3. **Connect the useful parts.** Generate graph/context snapshots, draft Ignition/PI files and investigation
+   material. Supply reviewed point identities and verify selected connections in an approved lab or receiving
+   system. The [connectivity guide](docs/INTERNAL_CONNECTIVITY.md) covers permitted Copilot, local and IT/OT paths.
+4. **Maintain the evidence and decisions.** Retain source versions, refresh affected answers explicitly and keep
+   review history. Company systems own accepted records, permissions, releases and continuing responsibility.
+
+The reusable generators build from the model you supply. The TE gateway builder and recorded replay assemble
+one particular case study; use its architecture as a reference while following the tool guides for your plant's
+model, mappings and target environment. The [feature reference](docs/FEATURES.md) lists individual tool evidence.
 
 ## Start with one question
 
-**The jumpstart path:** one question, permitted records, a reviewer and one useful contribution.
+**The jumpstart path:** choose one question, permitted records, a reviewer and one useful contribution.
+For document-only work with manual review or company-approved Copilot, use the
+[first-question brief](examples/first-pilot/README.md). No local installation or asset model is required.
 
-**Using company-approved Copilot, with no local software?** Copy the
-[first-question brief](examples/first-pilot/README.md), select permitted sources and check the cited evidence.
-You can begin with a document clarification; no asset model or custom agent is required.
-
-**For leaders and managers:** use the [engineering onboarding guide](docs/ENGINEERING_ONBOARDING.md) to give an
-engineer or intern one useful assignment, approved sources, a mentor/reviewer and a clear handoff. New engineers
-can follow the same guide to reconstruct prior reasoning and return a source-backed contribution. No local
-installation is required for the manual or company-approved Copilot path.
+Leaders and mentors can use the [onboarding guide](docs/ENGINEERING_ONBOARDING.md) to scope the assignment.
+The [knowledge-only exercise](examples/engineering-onboarding/README.md) includes a worked evidence note and
+a starter for your permitted records.
 
 <details>
-<summary>Manufacturing example: follow a pump from description to evidence request</summary>
+<summary>Tutorial: follow a pump from description to evidence request</summary>
 
-**Want to see the tools connect?** [Follow one pump through the actual files](examples/from-description/assisted/PUMP_WALKTHROUGH.md):
+[Follow one pump through the actual files](examples/from-description/assisted/PUMP_WALKTHROUGH.md):
 description → authored model → draft drawing → investigation question → evidence request.
-The example is illustrative. The [description guide](examples/from-description/README.md#try-the-connected-route-offline)
-has the commands to build it offline with Python and the drawing dependencies; no model account is needed.
+Then use the [own-description steps](examples/from-description/README.md#use-your-own-description-with-an-approved-assistant)
+to substitute your source and authored response. The supplied pump is illustrative; it teaches the file contracts
+and review process rather than establishing accuracy on your plant.
 
 ![Illustrative pump and tank draft produced by the description workflow](examples/from-description/assisted/result/pid/D1.png)
 
 </details>
 
-## Start wherever you are
-
-Choose by engineering job. Each guide explains its inputs, setup, output and review needs; the
-[feature reference](docs/FEATURES.md) has the detailed tool inventory.
-
-| Your engineering job | Starting material and guide | Work product and boundary |
-|---|---|---|
-| Understand records or a prior decision | Documents → [first brief](examples/first-pilot/README.md); [onboarding exercise](examples/engineering-onboarding/README.md) | Cited answer, unknowns and next owner; manual or approved Copilot. |
-| Build a draft model or drawing | [Description](examples/from-description/README.md), [P&ID image](examples/own-drawing/README.md) or [DEXPI XML](examples/from-dexpi-xml/README.md) | Draft assets/drawing/staging; interpretation, layout and eligibility require review. |
-| Review, correct or reconcile a model | [Sourced statements](docs/STATEMENT_REVIEW.md) · [model correction and mapping](docs/REVIEW_LOOP.md) | Review sheet and supported local corrections; signal and company acceptance stay separate. |
-| Check controls or hand off source evidence | [Loop list audit](examples/loop-audit/README.md) · [structured-source handoff](examples/source-handoff/README.md) | Explicit omissions or a pinned evidence packet; no installed-safeguard acceptance. |
-| Analyze observations or measured impact | [Historian CSVs](examples/historian-csv/README.md) · [impact calculation](examples/impact-estimate/README.md) | Unusual trends or first-draft energy/cost estimates; qualified baselines and measurements matter. |
-| Maintain and exchange team context | [Context register](docs/CONTEXT_REGISTER.md) · [read-only MCP](examples/internal-mcp/README.md) · [owned team packets](examples/team-context/README.md) | Source dependencies, retained answers and selected snapshots; no shared company access service. |
-| Evaluate a model or method | [Labelled drawing comparison](examples/vendor-evaluation/README.md) · [task/model benchmarks](benchmarks/README.md) | Reproducible scores on declared cases and saved answers; no universal model ranking. |
-
-## What connects today: the hub and spokes
-
-The tools have different input contracts. Descriptions need an engineer or approved assistant to author the
-interpretation; a detailed draft P&ID also needs authored layout. Supported model JSON can feed questions,
-platform staging and a portable graph. The graph supports source review, context packets and optional read-only
-MCP access. It cannot currently regenerate every tool's input.
-
-Use the [workflow and format map](docs/WORKFLOWS.md) to see the supported connections and manual steps.
-The [feature reference](docs/FEATURES.md) lists the individual tools and reviewed examples.
-For structured XML evidence, the optional [DEXPI source capture and local handoff](examples/from-dexpi-xml/README.md#optional-capture-structured-source-evidence)
-keeps a complete policy-filtered packet beside the Native interpretation; capture is explicit and the default is unchanged.
-
 ## From a first assignment to shared engineering context
 
-The [onboarding packet](examples/engineering-onboarding/README.md) gives engineers a selected landing map,
-source-qualified records and starter workflows, without an asset model. Its three read-only tools can share
-the [MCP entry point](examples/internal-mcp/README.md) with existing graph/context tools. This is a local snapshot
-scaffold; shared company access and permissions remain integration work. Existing company systems retain
-source authority, accepted decisions and continuing ownership. See the [lifecycle](docs/CONTEXT_LIFECYCLE.md)
-and [example series](docs/README.md#engineering-work-examples).
+Keep the selected records and the reasons behind changes together as more people rely on them. The
+[source-revision tutorial](examples/pump-revision/README.md) and [owned-team tutorial](examples/team-context/README.md)
+show how supplied evidence reopens affected answers while preserving history and independent context.
+Use the [lifecycle guide](docs/CONTEXT_LIFECYCLE.md) to plan the handoff into your company's maintained home.
 
 ## Status
 
-These are prototypes tested on public inputs. Outputs are drafts for engineering review. No plant's own data,
-operations review, PI import or measured operational benefit is established. The Ignition lab demonstration is
-specific to Tennessee Eastman; its build command does not build your plant.
+The tools are prototypes tested on public and fictional inputs. Their output is a draft for engineering review;
+site accuracy, installed signal identity, native platform acceptance and operational benefit need evidence from
+your environment. Public benchmark numbers do not transfer automatically to a new drawing style or plant.
 
-- **Use it:** [Documentation map](docs/README.md) · [Plan a company pilot](docs/AT_YOUR_PLANT.md)
-- **Connect it:** [Choose an IT/OT path: approved Copilot, controlled exports or internal services](docs/INTERNAL_CONNECTIVITY.md)
-- **Assess it:** [Results and limits](docs/RESULTS.md) · [Review the evidence](docs/REVIEWING.md)
+- **Use it:** [Documentation map](docs/README.md) · [Plan work at your plant](docs/AT_YOUR_PLANT.md)
+- **Connect it:** [Approved clients and IT/OT paths](docs/INTERNAL_CONNECTIVITY.md)
+- **Assess it:** [Results and limits](docs/RESULTS.md) · [Current implementation status](docs/STATUS.md)
 - **Improve it:** [Contribute cases, model runs and tested changes](CONTRIBUTING.md)
 
 Code is MIT; drawing-derived assets have their own terms in [NOTICE.md](NOTICE.md).
 AI coding agents wrote most of the implementation; the [journal](docs/JOURNAL.md) records authorship and mistakes.
-
-Read the [state of the toolkit](docs/STATUS.md) for working parts, open defects and unfinished integrations.
 
 <details>
 <summary>Links retained for earlier research references</summary>

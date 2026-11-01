@@ -25,7 +25,7 @@ services:
   te-sim:
     build: { context: ., dockerfile: docker/sim.Dockerfile }
     image: pid-twin-sims
-    command: python scripts/ignition/te_sim_server.py --control /tmp/te-run
+    command: python scripts/ignition/te_sim_server.py --control /tmp/te-run --historical-demo-addresses
 
   # Synthetic values for the OPEN100 points mapped from the demo I/O list.
   demo-points:

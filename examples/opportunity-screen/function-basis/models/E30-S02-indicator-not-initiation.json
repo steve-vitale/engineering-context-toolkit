@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "model_id": "E30-S02-indicator-not-initiation",
+    "title": "ILLUSTRATIVE source-adequacy counterexample",
+    "illustrative": true,
+    "not_a_drawing_of_record": "Synthetic authored source-adequacy control; not a plant/drawing/measurement or source-derived topology."
+  },
+  "units": [
+    {
+      "id": "EV-A",
+      "name": "Ammonia freezer evaporator A hot gas defrost",
+      "type": "evaporator",
+      "source": "Synthetic authored source-adequacy control; not a plant/drawing/measurement or source-derived topology."
+    },
+    {
+      "id": "EV-B",
+      "name": "Ammonia freezer evaporator B hot gas defrost",
+      "type": "evaporator",
+      "source": "Synthetic authored source-adequacy control; not a plant/drawing/measurement or source-derived topology."
+    }
+  ],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "PDT-A",
+      "unit": "EV-A",
+      "variable": "pressure",
+      "description": "Coil differential pressure indication only; not wired to initiate",
+      "facts": {
+        "initiates_defrost": false,
+        "source_revision": "draft-A"
+      }
+    }
+  ],
+  "final_elements": [
+    {
+      "tag": "HGV-A",
+      "unit": "EV-A",
+      "description": "Hot gas defrost valve; initiation and termination unknown"
+    },
+    {
+      "tag": "HGV-B",
+      "unit": "EV-B",
+      "description": "Hot gas defrost valve; initiation and termination unknown"
+    }
+  ],
+  "manual_valves": [],
+  "controllers": []
+}

@@ -1,0 +1,160 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/function-basis/models/C11-02-exhaust-indication-only.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "C11"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "controls": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "C11@D-A",
+   "question_id": "C11",
+   "family": "controls",
+   "question": "What supports the exhaust/make-up control strategy and product requirements for this dryer or oven?",
+   "about": "D-A",
+   "assets": [
+    {
+     "id": "D-A",
+     "tag": "D-A"
+    },
+    {
+     "id": "MT-A",
+     "tag": "MT-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "D-A",
+     "tag": "D-A",
+     "text": "equipment D-A reads \"D-A Continuous product dryer A\"",
+     "field": "units[D-A]"
+    },
+    {
+     "role": "exhaust measurement",
+     "id": "MT-A",
+     "tag": "MT-A",
+     "text": "instrument MT-A reads \"MT-A Exhaust humidity indication; no control output known\" at D-A",
+     "field": "instruments[MT-A]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Actual control purpose, path and mode for this unit",
+     "state": "not_on_drawing",
+     "where": [
+      "DCS/PLC configuration: existing reviewed exhaust/make-up strategy, measurement-to-actuator path, active mode/override, unit association and revision",
+      "site records: permitted engineering or supplier basis for the selected product/process control approach"
+     ],
+     "how": "Do not infer manual operation from missing humidity, or active control from a transmitter/controller label. Retain disabled, unavailable and unknown candidates; temperature or another qualified strategy may be appropriate."
+    },
+    {
+     "item": "Representative relevant air and product observations",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: approved existing air/product observations appropriate to the actual strategy, with quantity, location, units, period and product/run conditions"
+     ],
+     "how": "An inlet-humidity or product-moisture record is not exhaust humidity. Review the variables needed by the actual qualified approach; no universal exhaust-humidity requirement, logging task or observation duration is imposed."
+    },
+    {
+     "item": "Product/process constraints and responsible review",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: permitted product-quality requirements and existing engineering/operating constraints for the identified unit",
+      "the vendor datasheet: applicable dryer/oven requirements, documented control basis and responsible engineering review route"
+     ],
+     "how": "Return supported observations, unresolved evidence and the next owner together. No airflow, ventilation, heating or other operational adjustment follows from this screen."
+    }
+   ],
+   "decision_rule": "Investigate missing or conflicting control-purpose, source/function and product/process evidence. Humidity is one possible variable, not a universal solution; neither its absence nor presence establishes actual control or suitability. Close only the source investigation after qualified review, retaining unresolved operating and quality requirements.",
+   "typical_benefit": {
+    "wording": "S26 (p. 104): \"Process controls, such as feedback controllers, feed forward controllers, and model-based predictive controllers, can help to minimize dryer energy consumption by more precisely controlling energy inputs to meet the needs of the product being processed.\" The sensors it lists include \"absorption capacitive sensors (for air humidity)\". No % stated.",
+    "source": [
+     "S26"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S26: Masanet, Worrell, Graus and Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for the Fruit and Vegetable Processing Industry: An ENERGY STAR Guide for Energy and Plant Managers (LBNL-59289-Revision, Mar 2008)"
+    ]
+   },
+   "limits": "S26 printed p.104 supports dryer process-control examples with several sensor/control approaches; it does not establish the applicability of every oven/roaster/toaster, a humidity threshold or operating safety requirements. Keeping each named subject in source review is authored conservative policy. Supplied labels and literal qualifiers remain unverified; existing company engineering and safety/quality review govern any actual work.",
+   "status": "asked"
+  },
+  {
+   "id": "C11@D-B",
+   "question_id": "C11",
+   "family": "controls",
+   "question": "What supports the exhaust/make-up control strategy and product requirements for this dryer or oven?",
+   "about": "D-B",
+   "assets": [
+    {
+     "id": "D-B",
+     "tag": "D-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "D-B",
+     "tag": "D-B",
+     "text": "equipment D-B reads \"D-B Continuous product dryer B\"",
+     "field": "units[D-B]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Actual control purpose, path and mode for this unit",
+     "state": "not_on_drawing",
+     "where": [
+      "DCS/PLC configuration: existing reviewed exhaust/make-up strategy, measurement-to-actuator path, active mode/override, unit association and revision",
+      "site records: permitted engineering or supplier basis for the selected product/process control approach"
+     ],
+     "how": "Do not infer manual operation from missing humidity, or active control from a transmitter/controller label. Retain disabled, unavailable and unknown candidates; temperature or another qualified strategy may be appropriate."
+    },
+    {
+     "item": "Representative relevant air and product observations",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: approved existing air/product observations appropriate to the actual strategy, with quantity, location, units, period and product/run conditions"
+     ],
+     "how": "An inlet-humidity or product-moisture record is not exhaust humidity. Review the variables needed by the actual qualified approach; no universal exhaust-humidity requirement, logging task or observation duration is imposed."
+    },
+    {
+     "item": "Product/process constraints and responsible review",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: permitted product-quality requirements and existing engineering/operating constraints for the identified unit",
+      "the vendor datasheet: applicable dryer/oven requirements, documented control basis and responsible engineering review route"
+     ],
+     "how": "Return supported observations, unresolved evidence and the next owner together. No airflow, ventilation, heating or other operational adjustment follows from this screen."
+    }
+   ],
+   "decision_rule": "Investigate missing or conflicting control-purpose, source/function and product/process evidence. Humidity is one possible variable, not a universal solution; neither its absence nor presence establishes actual control or suitability. Close only the source investigation after qualified review, retaining unresolved operating and quality requirements.",
+   "typical_benefit": {
+    "wording": "S26 (p. 104): \"Process controls, such as feedback controllers, feed forward controllers, and model-based predictive controllers, can help to minimize dryer energy consumption by more precisely controlling energy inputs to meet the needs of the product being processed.\" The sensors it lists include \"absorption capacitive sensors (for air humidity)\". No % stated.",
+    "source": [
+     "S26"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S26: Masanet, Worrell, Graus and Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for the Fruit and Vegetable Processing Industry: An ENERGY STAR Guide for Energy and Plant Managers (LBNL-59289-Revision, Mar 2008)"
+    ]
+   },
+   "limits": "S26 printed p.104 supports dryer process-control examples with several sensor/control approaches; it does not establish the applicability of every oven/roaster/toaster, a humidity threshold or operating safety requirements. Keeping each named subject in source review is authored conservative policy. Supplied labels and literal qualifiers remain unverified; existing company engineering and safety/quality review govern any actual work.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

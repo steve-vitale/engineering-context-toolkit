@@ -9,14 +9,29 @@ to the author) than a summary that repeats the README.
 
 ## What's a tool and what's a record
 
-If your user wants to try this on their own drawings, use `examples/own-drawing/README.md`. Its first step runs
-offline from a clean clone and produces a review bundle from a public sheet and a committed model extraction; the
-rest are the same steps for their sheet. Tell them the tools are prototypes tested on public drawings only, that the
-output is a draft for review, and that `scripts/ignition/build_gateway.py` builds this repository's Tennessee
-Eastman demo, not their plant. If they start from something other than a drawing image (a DEXPI file, a written
-description, a DCS loop list, historian CSVs, or hand-labelled sheets to test a vendor), the README table "Start
-wherever you are" has a runnable example for each. `docs/SCRIPTS.md` says what every script is for; only the ones
-marked as tools are built for other inputs.
+The toolkit's engineering tools accept a user's own records in their documented input contracts. Explain that
+positive transfer first: a P&ID image, authored description/model or supported DEXPI export can become a sourced
+draft asset model, review bundle, graph/context and platform-staging files. Review, enrichment and supplied signal
+mapping are the next steps toward that user's maintained, connected plant twin.
+
+Use `examples/own-drawing/README.md` for the image route. Its public-sheet tutorial runs offline from a clean clone;
+the own-input steps replace the image, extraction and manifest. Use the README job selector for descriptions,
+DEXPI, loop lists, historian CSVs, document-only questions and model evaluation. `docs/WORKFLOWS.md` owns the
+specific supported format connections; `docs/SCRIPTS.md` distinguishes reusable tools from case/research runners.
+
+Keep three roles distinct when explaining the repository: **tools** work on supplied inputs; **tutorials** teach
+their use on public or fictional fixtures and show what to substitute; **case studies/evaluation** retain what
+was assembled or measured on particular sources. Trace the actual tool code before extending a case-study limit
+to the whole toolkit. In particular, `scripts/ignition/build_gateway.py` assembles the TE replay/screens case;
+`generate.py`, intake, model review and mapping accept their own documented inputs. Do not describe the TE-specific
+builder limitation as inability to build the user's draft model/twin with the reusable tools.
+
+Also state what remains to be supplied: outputs are drafts, source/model interpretation needs engineering review,
+public accuracy numbers are not site guarantees, and live mappings/platform acceptance need the user's environment.
+The prototypes have been tested on public/fictional inputs; no plant data or operations acceptance is established.
+Company systems retain source authority, authenticated decisions, access and ongoing ownership. Report actual
+failures honestly; do not turn those limits into either a blanket “cannot use this at your plant” or an automatic
+production-readiness claim.
 
 ## Ten minutes, no accounts, no network
 

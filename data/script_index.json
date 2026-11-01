@@ -1,10 +1,10 @@
 {
- "about": "What each script in scripts/ is for. kind: tool = meant for your own drawings, models or data; check = checks this repository; support = a module other scripts import; research = produced one of this project's results and is kept to reproduce it, not built for other inputs. guide = where a tool's use is shown. docs/SCRIPTS.md is generated from this file and each script's own first docstring line by scripts/script_index.py; its test fails if a script is missing here, listed twice, or gone.",
+ "about": "Script roles and intended reuse. Tools accept documented user inputs; checks assess this repository; support modules are imported; case-study/research runners retain source-specific assemblies and experiments. Linked tutorials teach the tool contracts. A purpose override describes scope for any script, including Python; otherwise scripts/script_index.py uses its first docstring sentence. A reusable wrapper can use research internals without transferring the complete research CLI assumptions. Existing role keys and guide assignments are retained.",
  "kinds": {
   "tool": "For your own drawings, models or data",
   "check": "Checks on this repository",
   "support": "Imported by other scripts",
-  "research": "This project's research record: reproduces one result, not built for other inputs"
+  "research": "Case-study and research runners (source-specific recipes)"
  },
  "scripts": {
   "scripts/benchmark_tags.py": {"kind": "support", "guide": "benchmarks/README.md"},
@@ -21,8 +21,8 @@
   "scripts/import_site_drawing.py": {"kind": "tool", "guide": "examples/own-drawing/README.md"},
   "scripts/generate.py": {"kind": "tool", "guide": "examples/from-description/README.md"},
   "scripts/draw_pid_from_model.py": {"kind": "tool", "guide": "examples/from-description/README.md"},
-  "scripts/dexpi_to_twin.py": {"kind": "tool", "guide": "examples/from-dexpi/README.md"},
-  "scripts/dexpi_reader.py": {"kind": "tool", "guide": "examples/from-dexpi-xml/README.md"},
+  "scripts/dexpi_to_twin.py": {"kind": "tool", "guide": "examples/from-dexpi/README.md", "purpose": "Convert a prepared public DEXPI answer key to an intake prediction and manifest without a model API call; use dexpi_reader.py for your own supported XML."},
+  "scripts/dexpi_reader.py": {"kind": "tool", "guide": "examples/from-dexpi-xml/README.md", "purpose": "Read supported DEXPI XML into a process model with mapped attributes and source references, without visual extraction or a model API call; optional source capture is separate."},
   "scripts/source_evidence.py": {"kind": "support", "guide": "examples/from-dexpi-xml/README.md"},
   "scripts/source_handoff.py": {"kind": "tool", "guide": "examples/source-handoff/README.md"},
   "scripts/loop_audit.py": {"kind": "tool", "guide": "examples/loop-audit/README.md"},
@@ -48,7 +48,7 @@
   "scripts/feature_catalog.py": {"kind": "check", "guide": "docs/FEATURES.md"},
   "scripts/corpus_matrix.py": {"kind": "check", "guide": "docs/GENERALIZATION.md"},
   "scripts/fetch_corpus.py": {"kind": "check", "guide": "docs/CORPUS_FETCH.md"},
-  "scripts/graph_export.py": {"kind": "tool", "guide": "docs/GRAPH_EXPORT.md"},
+  "scripts/graph_export.py": {"kind": "tool", "guide": "docs/GRAPH_EXPORT.md", "purpose": "Export a supported model as portable twin-graph-1 JSON with typed relationships and sourced claims; external systems need a receiving adapter."},
   "scripts/question_engine.py": {"kind": "tool", "guide": "docs/OPPORTUNITY_SCREEN.md"},
   "scripts/estimate_impact.py": {"kind": "tool", "guide": "docs/IMPACT_ESTIMATE.md"},
   "scripts/statements.py": {"kind": "tool", "guide": "docs/STATEMENT_REVIEW.md"},
@@ -82,7 +82,7 @@
   "scripts/confidence.py": {"kind": "research"},
   "scripts/cost_report.py": {"kind": "research"},
   "scripts/deliverables_matrix.py": {"kind": "research"},
-  "scripts/demo.py": {"kind": "research"},
+  "scripts/demo.py": {"kind": "research", "purpose": "Run the TE recorded replay and OPEN100 synthetic-point case study in a configured Ignition lab."},
   "scripts/digitize_bayer_fig11.py": {"kind": "research"},
   "scripts/direction_spot_check.py": {"kind": "research"},
   "scripts/evaluate_connectivity_dev_v2.py": {"kind": "research"},
@@ -126,7 +126,7 @@
   "scripts/ignition/acceptance/browser_contract.js": {"kind": "research", "purpose": "Browser contract for the PIDTwin Perspective project: every route loaded and reloaded, every click target clicked, screenshots and alarm-count sampling."},
   "scripts/ignition/acceptance/live_checks.py": {"kind": "research"},
   "scripts/ignition/acceptance/nav_contract.py": {"kind": "research"},
-  "scripts/ignition/build_gateway.py": {"kind": "research"},
+  "scripts/ignition/build_gateway.py": {"kind": "research", "purpose": "Build the TE/OPEN100 Ignition lab case with its fixed TE model, replay, alarms and screens; optional extracted twins join that assembly."},
   "scripts/ignition/build_hmi.py": {"kind": "research"},
   "scripts/ignition/build_mimic.py": {"kind": "research"},
   "scripts/ignition/build_open100_mimic.py": {"kind": "research"},

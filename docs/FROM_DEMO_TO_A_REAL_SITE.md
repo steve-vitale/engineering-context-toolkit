@@ -1,5 +1,10 @@
 # From a clean demo set to 40 years of drawings
 
+**Planning reference.** Use this to design the archive, review and integration work around your own plant model.
+The phases include proposed site extensions; use [supported workflows](WORKFLOWS.md) for implemented tool
+contracts and [current status](STATUS.md) for what remains manual. The [own-P&ID tutorial](../examples/own-drawing/README.md)
+is the runnable starting point.
+
 This project runs on public drawings that are unusually kind: consistently drafted, current, with independent
 answer keys. A large site's P&ID archive is none of those things. This document is the honest gap list: what the demo
 assumes, what a real archive looks like, and what has to be added to get from one to the other. It complements
@@ -59,9 +64,10 @@ most valuable output of the whole project:
 | Instrument index, loop sheets | Instrument types, ranges, loop membership |
 | PSM records (PHA, MOC history) | Safety-critical items and recent changes |
 
-Every extracted item gets an agreement profile: which sources confirm it. Items confirmed by the drawing and two
-other sources can be fast-tracked. Items only on the drawing, or missing from the drawing but live in the DCS, go to
-review. That second group is often real **documentation drift**, which is worth reporting to engineering on its own.
+In an extended site workflow, give each extracted item an agreement profile showing which sources support it.
+Agree review criteria with the responsible engineers rather than counting source matches as acceptance. Investigate
+items supported only by a drawing, or present in a DCS export but absent from the drawing: they can reveal
+documentation drift, mismatched identities or different source scope. These cross-source adapters are site work.
 
 ### 2.5 Stitch sheets into one plant
 - **Pair off-page connectors** ("to PID 210-1") across sheets into one plant-wide graph.
@@ -77,8 +83,9 @@ review. That second group is often real **documentation drift**, which is worth 
 ### 2.7 Make human review a process, not a spreadsheet
 - **Order the queue by risk:** red, amber and green tiers from independent cross-checks (do other models and
   passes agree, is the symbol on a line, is the tag well-formed), not the model's own confidence. Then source
-  disagreements, unpaired connectors, placeholder tags, and instruments with no parent. The converter in this repo
-  produces exactly this queue.
+  disagreements, unpaired connectors, placeholder tags, and instruments with no parent. The OPEN100 research
+  workflow demonstrates fitted tiers; own-drawing intake supplies an unranked sheet. Build and validate any
+  additional cross-source prioritization against your site's records and review criteria.
 - **Calibrate the reviewers:** double-review a sample, and track agreement between reviewers. A tired reviewer
   has an error rate too.
 - **Measure review time per sheet:** that, not model accuracy, is the cost line that matters (`GOAL.md`'s

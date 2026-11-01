@@ -1,0 +1,394 @@
+{
+  "schema": "historical-docker-te-addresses-1",
+  "scope": "Address compatibility for this repository historical October8 Docker backup only; not plant tag aliases or a company identity resolver.",
+  "namespace_uri": "urn:pid-digital-twin:te-sim",
+  "backup_path": "docker/twin-demo.gwbk",
+  "backup_sha256": "2971268136a05ae35df94bde2b283fbf5a33833511737965a127e222a838aa5d",
+  "model_path": "data/te_process_model.json",
+  "model_sha256_lf": "7222ed15fa4b56ae0d38f6401160eef8881ccf1ba511380ba27161883f84921b",
+  "canonical_columns": {
+    "FT-101": 0,
+    "FT-102": 1,
+    "FT-103": 2,
+    "FT-104": 3,
+    "FT-105": 4,
+    "FT-106": 5,
+    "PT-107": 6,
+    "LT-108": 7,
+    "TT-109": 8,
+    "FT-110": 9,
+    "TT-111": 10,
+    "LT-112": 11,
+    "PT-113": 12,
+    "FT-114": 13,
+    "LT-115": 14,
+    "PT-116": 15,
+    "FT-117": 16,
+    "TT-118": 17,
+    "FT-119": 18,
+    "JT-120": 19,
+    "TT-121": 20,
+    "TT-122": 21,
+    "AT-123": 22,
+    "AT-123-B": 23,
+    "AT-123-C": 24,
+    "AT-123-D": 25,
+    "AT-123-E": 26,
+    "AT-123-F": 27,
+    "AT-129": 28,
+    "AT-129-B": 29,
+    "AT-129-C": 30,
+    "AT-129-D": 31,
+    "AT-129-E": 32,
+    "AT-129-F": 33,
+    "AT-129-G": 34,
+    "AT-129-H": 35,
+    "AT-137": 36,
+    "AT-137-E": 37,
+    "AT-137-F": 38,
+    "AT-137-G": 39,
+    "AT-137-H": 40,
+    "FV-102": 41,
+    "FV-103": 42,
+    "FV-101": 43,
+    "FV-104": 44,
+    "FV-105": 45,
+    "FV-110": 46,
+    "LV-112": 47,
+    "LV-115": 48,
+    "FV-119": 49,
+    "TV-121": 50,
+    "FV-117": 51
+  },
+  "aliases": [
+    {
+      "legacy_tag": "AI-137",
+      "canonical_tag": "AT-137",
+      "column": 36,
+      "units": "mol%",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/C-101/udts.json",
+      "backup_source_reference": "XMEAS 37-41"
+    },
+    {
+      "legacy_tag": "FI-104",
+      "canonical_tag": "FT-104",
+      "column": 3,
+      "units": "kscmh",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/C-101/udts.json",
+      "backup_source_reference": "XMEAS 4"
+    },
+    {
+      "legacy_tag": "FI-117",
+      "canonical_tag": "FT-117",
+      "column": 16,
+      "units": "m3/h",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/C-101/udts.json",
+      "backup_source_reference": "XMEAS 17"
+    },
+    {
+      "legacy_tag": "FI-119",
+      "canonical_tag": "FT-119",
+      "column": 18,
+      "units": "kg/h",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/C-101/udts.json",
+      "backup_source_reference": "XMEAS 19"
+    },
+    {
+      "legacy_tag": "FV-204",
+      "canonical_tag": "FV-104",
+      "column": 44,
+      "units": "%",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/C-101/udts.json",
+      "backup_source_reference": "XMV 4"
+    },
+    {
+      "legacy_tag": "FV-209",
+      "canonical_tag": "FV-119",
+      "column": 49,
+      "units": "%",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/C-101/udts.json",
+      "backup_source_reference": "XMV 9"
+    },
+    {
+      "legacy_tag": "LI-115",
+      "canonical_tag": "LT-115",
+      "column": 14,
+      "units": "%",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/C-101/udts.json",
+      "backup_source_reference": "XMEAS 15"
+    },
+    {
+      "legacy_tag": "LV-208",
+      "canonical_tag": "LV-115",
+      "column": 48,
+      "units": "%",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/C-101/udts.json",
+      "backup_source_reference": "XMV 8"
+    },
+    {
+      "legacy_tag": "PI-116",
+      "canonical_tag": "PT-116",
+      "column": 15,
+      "units": "kPa g",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/C-101/udts.json",
+      "backup_source_reference": "XMEAS 16"
+    },
+    {
+      "legacy_tag": "TI-118",
+      "canonical_tag": "TT-118",
+      "column": 17,
+      "units": "degC",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/C-101/udts.json",
+      "backup_source_reference": "XMEAS 18"
+    },
+    {
+      "legacy_tag": "TI-122",
+      "canonical_tag": "TT-122",
+      "column": 21,
+      "units": "degC",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/E-101/udts.json",
+      "backup_source_reference": "XMEAS 22"
+    },
+    {
+      "legacy_tag": "TV-211",
+      "canonical_tag": "FV-117",
+      "column": 51,
+      "units": "%",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/E-101/udts.json",
+      "backup_source_reference": "XMV 11"
+    },
+    {
+      "legacy_tag": "AI-129",
+      "canonical_tag": "AT-129",
+      "column": 28,
+      "units": "mol%",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/K-101/udts.json",
+      "backup_source_reference": "XMEAS 29-36"
+    },
+    {
+      "legacy_tag": "FI-105",
+      "canonical_tag": "FT-105",
+      "column": 4,
+      "units": "kscmh",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/K-101/udts.json",
+      "backup_source_reference": "XMEAS 5"
+    },
+    {
+      "legacy_tag": "FI-110",
+      "canonical_tag": "FT-110",
+      "column": 9,
+      "units": "kscmh",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/K-101/udts.json",
+      "backup_source_reference": "XMEAS 10"
+    },
+    {
+      "legacy_tag": "FV-206",
+      "canonical_tag": "FV-110",
+      "column": 46,
+      "units": "%",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/K-101/udts.json",
+      "backup_source_reference": "XMV 6"
+    },
+    {
+      "legacy_tag": "HV-205",
+      "canonical_tag": "FV-105",
+      "column": 45,
+      "units": "%",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/K-101/udts.json",
+      "backup_source_reference": "XMV 5"
+    },
+    {
+      "legacy_tag": "JI-120",
+      "canonical_tag": "JT-120",
+      "column": 19,
+      "units": "kW",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/K-101/udts.json",
+      "backup_source_reference": "XMEAS 20"
+    },
+    {
+      "legacy_tag": "AI-123",
+      "canonical_tag": "AT-123",
+      "column": 22,
+      "units": "mol%",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/R-101/udts.json",
+      "backup_source_reference": "XMEAS 23-28"
+    },
+    {
+      "legacy_tag": "FI-106",
+      "canonical_tag": "FT-106",
+      "column": 5,
+      "units": "kscmh",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/R-101/udts.json",
+      "backup_source_reference": "XMEAS 6"
+    },
+    {
+      "legacy_tag": "LI-108",
+      "canonical_tag": "LT-108",
+      "column": 7,
+      "units": "%",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/R-101/udts.json",
+      "backup_source_reference": "XMEAS 8"
+    },
+    {
+      "legacy_tag": "PI-107",
+      "canonical_tag": "PT-107",
+      "column": 6,
+      "units": "kPa g",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/R-101/udts.json",
+      "backup_source_reference": "XMEAS 7"
+    },
+    {
+      "legacy_tag": "TI-109",
+      "canonical_tag": "TT-109",
+      "column": 8,
+      "units": "degC",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/R-101/udts.json",
+      "backup_source_reference": "XMEAS 9"
+    },
+    {
+      "legacy_tag": "TI-121",
+      "canonical_tag": "TT-121",
+      "column": 20,
+      "units": "degC",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/R-101/udts.json",
+      "backup_source_reference": "XMEAS 21"
+    },
+    {
+      "legacy_tag": "TV-210",
+      "canonical_tag": "TV-121",
+      "column": 50,
+      "units": "%",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/R-101/udts.json",
+      "backup_source_reference": "XMV 10"
+    },
+    {
+      "legacy_tag": "FI-101",
+      "canonical_tag": "FT-101",
+      "column": 0,
+      "units": "kscmh",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/U-100/udts.json",
+      "backup_source_reference": "XMEAS 1"
+    },
+    {
+      "legacy_tag": "FI-102",
+      "canonical_tag": "FT-102",
+      "column": 1,
+      "units": "kg/h",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/U-100/udts.json",
+      "backup_source_reference": "XMEAS 2"
+    },
+    {
+      "legacy_tag": "FI-103",
+      "canonical_tag": "FT-103",
+      "column": 2,
+      "units": "kg/h",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/U-100/udts.json",
+      "backup_source_reference": "XMEAS 3"
+    },
+    {
+      "legacy_tag": "FV-201",
+      "canonical_tag": "FV-102",
+      "column": 41,
+      "units": "%",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/U-100/udts.json",
+      "backup_source_reference": "XMV 1"
+    },
+    {
+      "legacy_tag": "FV-202",
+      "canonical_tag": "FV-103",
+      "column": 42,
+      "units": "%",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/U-100/udts.json",
+      "backup_source_reference": "XMV 2"
+    },
+    {
+      "legacy_tag": "FV-203",
+      "canonical_tag": "FV-101",
+      "column": 43,
+      "units": "%",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/U-100/udts.json",
+      "backup_source_reference": "XMV 3"
+    },
+    {
+      "legacy_tag": "FI-114",
+      "canonical_tag": "FT-114",
+      "column": 13,
+      "units": "m3/h",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/V-101/udts.json",
+      "backup_source_reference": "XMEAS 14"
+    },
+    {
+      "legacy_tag": "LI-112",
+      "canonical_tag": "LT-112",
+      "column": 11,
+      "units": "%",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/V-101/udts.json",
+      "backup_source_reference": "XMEAS 12"
+    },
+    {
+      "legacy_tag": "LV-207",
+      "canonical_tag": "LV-112",
+      "column": 47,
+      "units": "%",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/V-101/udts.json",
+      "backup_source_reference": "XMV 7"
+    },
+    {
+      "legacy_tag": "PI-113",
+      "canonical_tag": "PT-113",
+      "column": 12,
+      "units": "kPa g",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/V-101/udts.json",
+      "backup_source_reference": "XMEAS 13"
+    },
+    {
+      "legacy_tag": "TI-111",
+      "canonical_tag": "TT-111",
+      "column": 10,
+      "units": "degC",
+      "value_type": "Double",
+      "backup_member": "config/resources/core/ignition/tag-definition/Twin/TE_Plant/V-101/udts.json",
+      "backup_source_reference": "XMEAS 11"
+    }
+  ],
+  "intentionally_unserved": [
+    "SC-212"
+  ],
+  "value_quality": "Same Good recorded-replay sample as the canonical node, not plant validation.",
+  "timestamps": "Aliases and canonical nodes for a source column share one per-tick UTC source/server timestamp in opt-in mode."
+}
