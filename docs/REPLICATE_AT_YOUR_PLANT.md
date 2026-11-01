@@ -97,7 +97,18 @@ Start with one bounded unit and a small representative drawing sample. The plant
 - **Display and alarms:** reviewer-approved roles, ranges, normal bands, alarm limits/priorities and change-control process. Drawing geometry does not establish operating limits or safe control actions.
 - **Data policy and lab:** approved local storage, access/retention, an isolated non-production target and rollback plan. Proprietary drawings, exports and credentials stay local unless the specific external-model transmission is approved. A gitignored file is not a security boundary; review the complete outbound file set.
 
-**A site adapter is still engineering work.** The bounded local intake below accepts one PNG and an existing extraction JSON. The [frozen extraction handoff](SITE_EXTRACTION_WORKFLOW.md) additionally stages one arbitrary local PNG for the existing whole-sheet Codex recipe and collects a matching run record. Only its explicit `execute` subcommand calls a model, after separate approval. Neither path accepts `--input my-plant.pdf`; the general tracing/scoring CLIs still use the repository's dataset folder conventions. PDF rasterization, revision selection, image normalization, label/schema conversion, site ontology, tag parsing, confidence recalibration and source reconciliation must be supplied and tested. There is no bundled local-inference adapter: the current Claude/Codex paths use hosted services, and the Gemma experiment also uses the Google API. A genuinely offline model requires a separately implemented and validated adapter. Do not overwrite benchmark folders with customer data. [From demo to a real site](FROM_DEMO_TO_A_REAL_SITE.md) is the detailed gap list; [At your plant](AT_YOUR_PLANT.md) covers governance and cost tradeoffs.
+**Use your own drawing folder.** The [own-P&ID tutorial](../examples/own-drawing/README.md#2-an-extraction-of-it)
+shows `PID_SHEETS_DIR` for extraction and local tracing; it accepts an absolute folder or a path relative to this
+checkout, containing the selected `<sheet>.png` files. Keep the supplied extraction and drawing manifest for
+the local intake below. Neither route takes a PDF directly: select the revision/page and rasterize it first.
+
+**Adapt the engineering interpretation.** The local intake accepts one PNG and an existing extraction JSON.
+The [frozen extraction handoff](SITE_EXTRACTION_WORKFLOW.md) separately prepares an arbitrary PNG for its fixed
+whole-sheet Codex recipe; only its explicit `execute` step calls a model. Review the schema, site ontology,
+tag conventions and source reconciliation, and evaluate tracing settings and any risk calibration on your
+drawings. The current hosted-model routes need the company's data approval. A local-inference adapter is
+additional implementation work. Keep customer data outside benchmark folders. The
+[site adaptation reference](FROM_DEMO_TO_A_REAL_SITE.md) and [plant guide](AT_YOUR_PLANT.md) explain the next steps.
 
 ### Bounded local intake: one PNG + an existing extraction
 

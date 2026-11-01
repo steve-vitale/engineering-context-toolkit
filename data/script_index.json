@@ -78,7 +78,7 @@
   "scripts/build_bayer_overview.py": {"kind": "research"},
   "scripts/build_open100_3d.py": {"kind": "research"},
   "scripts/build_scene_data.py": {"kind": "research"},
-  "scripts/build_twin.py": {"kind": "research"},
+  "scripts/build_twin.py": {"kind": "research", "purpose": "Assemble the multi-sheet extraction research case, including source-shaped tag/off-page rules and fitted review tiers; own-drawing intake reuses its converter through the documented one-sheet tool route."},
   "scripts/compare_bayer_fig10.py": {"kind": "research"},
   "scripts/confidence.py": {"kind": "research"},
   "scripts/cost_report.py": {"kind": "research"},

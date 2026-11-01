@@ -4,10 +4,14 @@
 tiers and exports on its public case. Start the [own-P&ID tutorial](../examples/own-drawing/README.md) to build
 your own draft model and unranked review bundle, then add reviewed identities, process records and connections.
 
-`scripts/build_twin.py` turns a set of extracted sheets into a package a plant could load. Extraction gives a flat
-list of symbols and links per sheet. The converter adds the structure a twin needs: a site/system/equipment
-hierarchy, cross-sheet links, platform import files and a review queue. The converter includes OPEN100-shaped tag/off-page parsing and confidence assumptions; new sites need an adapter and validation. Every decision
-records the method it used, and every item starts as `unverified`.
+The converter in `scripts/build_twin.py` adds hierarchy and represented relationships to extracted symbols and
+links; `generate.py` creates model-specific platform files and review material. The own-drawing intake reuses
+that conversion through a documented one-sheet interface for your inputs. Its bundle is the first structural
+part of your plant's draft twin.
+
+The complete research CLI below also assembles multiple sheets and applies the OPEN100-fitted review tiers.
+Its tag/off-page parsing, sheet register and confidence assumptions need site adaptation and validation before
+using that larger recipe. Every inferred decision records its method, and every item starts as `unverified`.
 
 ## One command
 

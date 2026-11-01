@@ -88,3 +88,6 @@ data/te_pid_layout.json text eol=lf
 # Captured screens retain the renderer's intentional Markdown hardbreaks; keep evidence bytes unchanged.
 /examples/opportunity-screen/valve-feedback-basis/history/before/**/screen.md whitespace=-blank-at-eol
 /examples/opportunity-screen/valve-feedback-basis/expected/after/**/screen.md whitespace=-blank-at-eol
+
+# Actual public SDK sample bytes have an explicit LF identity after reviewed capture.
+/examples/internal-mcp/sample_asset.json text eol=lf

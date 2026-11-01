@@ -172,3 +172,17 @@ source qualifiers and stale workflows through local SDK clients. These are softw
 or measured onboarding outcomes. Company authentication, Copilot channels, historian connections, native imports
 and operational value remain
 unvalidated. This feature adds snapshot access, not additional corpus cells or description-to-P&ID accuracy.
+
+### Maintainer: capture a changed public sample for review
+
+When the Bayer model or questions change, run `python scripts/check_snapshot_mcp.py --capture-sample NEW_JSON_PATH`
+in the approved SDK environment, choosing a fresh file in an existing private review folder. This builds the same
+canonical current Bayer packet and runs only the SDK stdio exercise before saving its actual P-1 application
+response as UTF-8/LF JSON. Existing destinations are refused; the committed sample is never updated automatically.
+Review the complete response and source changes, then deliberately adopt the reviewed file as `sample_asset.json`
+and run the default checker plus the offline snapshot tests. Capture alone does not run the full transport,
+context or knowledge controls, or establish company-client acceptance.
+
+The [capture provenance](sample_provenance.json) records the selected public inputs, canonical graph recipe,
+actual stdio evidence and retained failed CI. The fingerprint covers questions as well as the asset model, so
+a question update can require a fresh sample even when the returned asset is unchanged.

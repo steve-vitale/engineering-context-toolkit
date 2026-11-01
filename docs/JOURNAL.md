@@ -6889,3 +6889,34 @@ Original preparation/receiver/observer stops remain separately recorded. N111 cl
 repair, not source authentication, installed-state verification, company acceptance or measured engineer benefit.
 The catalog remains 50 rules/126 requests: 23 bounded source-informed collection reviews and 27 still awaiting
 original-source adequacy review. Full repository and exact-head CI remain separate integration gates.
+
+## 146. Recapture the whole-graph MCP sample after a source-policy change
+
+The C3 refresh changed the questions attached to the selected Bayer graph while its P-1 asset stayed exact.
+Our dependency audit missed the committed sample's scalar fingerprint of that entire graph. Review CI at
+`c2bbe0b` caught it in both jobs: 70 of 71 test programs passed, the saved benchmark step was skipped, and the
+MCP job printed 27 PASS lines before its final strict sample comparison failed. Two later reader recipes were
+skipped. That run remains failed; earlier local success did not establish complete integration.
+
+The default checker still compares the complete committed response, excluding only load time. A separate
+explicit [capture command](../examples/internal-mcp/README.md) now runs its one actual SDK stdio exercise and
+refuses an existing destination. Independent prospective criteria allow only `snapshot_sha256` and `loaded_at`
+to change. The approved SDK 2.3.0 session makes 15 tool calls, one tool listing and one resource read, with six
+expected negative tool responses. Full parsed SDK envelopes and the actual generated graph bytes are retained;
+the returned fingerprint equals their raw SHA-256. The complete P-1 node, claims, source/status and wrapper
+remain exact, including text/structured equality. No in-memory substitute or manually stamped hash is used.
+
+The [actual response provenance](../examples/internal-mcp/sample_provenance.json) records the current model,
+questions, recipe and limits. A narrow LF policy preserves the actual response bytes through checkout; company
+source originals are not normalized. The unfiltered snapshot module passes 19 tests and checkout passes 3,
+with no skips: 62 indexed and 124 materialization target comparisons retain 277 existing raw-packet files per
+configuration. All 3,235 public paths and raw files remain unchanged during these two module calls. Mocked
+capture-routing/refusal tests are distinct from the actual SDK evidence. The preparation-only SDK source-path
+stop is preserved; no capture was repeated. Full repository tests and successor exact-head CI remain separate.
+
+The reader follow-up also distinguishes reusable tools from the Bayer/Tennessee Eastman case records, clarifies
+absolute drawing-folder inputs, and separates generic generated tag imports from the demo's provider choice.
+These are source/readability corrections, not new runtime, transfer accuracy or usefulness measurements.
+
+A298/N112 closes this bounded sample dependency repair. Load time is not source acquisition time; no source
+authentication, company Copilot/IT/OT acceptance, operating permission or measured engineer benefit is claimed.

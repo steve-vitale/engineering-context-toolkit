@@ -256,9 +256,9 @@ Example review: **reviewed example**
 <details>
 <summary>Example files, tests and independent review</summary>
 
-- **Registered example files:** [`sample_asset.json`](../examples/internal-mcp/sample_asset.json)
+- **Registered example files:** [`sample_asset.json`](../examples/internal-mcp/sample_asset.json), [`sample_provenance.json`](../examples/internal-mcp/sample_provenance.json)
 - **Tests:** `test_snapshot_packet.py`, `check_snapshot_mcp.py`
-- **Independent review:** Independent AI review: unchanged registered sample and current selected-knowledge composition compatibility, 2026-11-01: pass
+- **Independent review:** Independent coding-agent prospective/static/capture and saved-test receiving; integrated by the capture/test operator with explicit inherited evidence, 2026-11-01: pass
 
 </details>
 
@@ -308,7 +308,7 @@ Example review: **reviewed example**
 
 - **Registered example files:** [`A-overview.json`](../examples/engineering-onboarding/actual/A-overview.json), [`B-workflow.json`](../examples/engineering-onboarding/actual/B-workflow.json), [`C-sources.json`](../examples/engineering-onboarding/actual/C-sources.json)
 - **Tests:** `test_knowledge_snapshot.py`, `test_snapshot_packet.py`, `check_snapshot_mcp.py`
-- **Independent review:** Independent coding-agent source/receipt receiving; integrated with explicit inherited evidence, 2026-11-01: pass
+- **Independent review:** Independent coding-agent prospective/static/capture and saved-test receiving; integrated by the capture/test operator with explicit inherited evidence, 2026-11-01: pass
 
 </details>
 
