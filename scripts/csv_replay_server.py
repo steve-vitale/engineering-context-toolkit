@@ -1,5 +1,4 @@
-"""A small OPC UA server that replays any historian-style CSV export, one row per step, so Ignition (or any OPC UA
-client) can read a plant's own recorded data the way it would read the live PLC/OPC server.
+"""Replay a recorded historian CSV over read-only OPC UA nodes for local screen and client tests.
 
 What it is NOT: not a simulator and not a process model. The values are the recorded ones, played back in order; they
 do not respond to anything a client does (nodes are read-only), and nothing is interpolated or filled in.
@@ -18,13 +17,14 @@ timestamps are the server's clock, not the CSV's: the CSV time is in `_time`.
 
 Usage:
   python scripts/csv_replay_server.py --csv export.csv [--port 4851] [--rate 1.0] [--folder CSV] [--loop] [--start N]
-  --rate   seconds between rows (default 1.0; the CSV's own time spacing is not used).
+  --rate   finite positive seconds between rows (default 1.0; the CSV's own time spacing is not used).
   --loop   go back to row 0 after the last row. Without it the server keeps serving the last row and says so.
-  --host   interface to listen on (default 0.0.0.0, as te_sim_server.py; use 127.0.0.1 for a private test).
+  --host   interface to listen on (default 127.0.0.1; use another interface only for an approved lab connection).
 """
 import argparse
 import asyncio
 import logging
+import math
 import sys
 from pathlib import Path
 
@@ -57,6 +57,8 @@ async def serve(args, stop=None):
         tname, tags, texts, rows = load(args.csv)
     except OSError as e:  # a missing or unreadable --csv: say so, exit nonzero, no traceback
         raise SystemExit(f"error: can't read {args.csv}: {e.strerror or e}") from None
+    if not 0 <= args.start < len(rows):
+        raise SystemExit(f"--start {args.start} is outside the {len(rows)} rows of {Path(args.csv).name}")
     server = Server()
     await server.init()
     server.set_endpoint(f"opc.tcp://{args.host}:{args.port}/csv-replay")
@@ -72,12 +74,10 @@ async def serve(args, stop=None):
     sample = await folder.add_variable(ua.NodeId(f"{f}/_sample", idx), "_sample", ua.Variant(0, ua.VariantType.Int32))
     when = await folder.add_variable(ua.NodeId(f"{f}/_time", idx), "_time", ua.Variant("", ua.VariantType.String))
     bad = sum(v is None for r in rows for v in r)
-    print(f"CSV replay '{Path(args.csv).name}' on opc.tcp://localhost:{args.port}/csv-replay, ns={idx}, "
+    print(f"CSV replay '{Path(args.csv).name}' on opc.tcp://{args.host}:{args.port}/csv-replay, ns={idx}, "
           f"folder {f}, {len(tags)} tags, {len(rows)} rows ({bad} bad cells) at {args.rate}s"
           f"{', looping' if args.loop else ''}", flush=True)
     async with server:
-        if not 0 <= args.start < len(rows):  # never wrap silently onto a different row than was asked for
-            raise SystemExit(f"--start {args.start} is outside the {len(rows)} rows of {Path(args.csv).name}")
         i, held = args.start, False
         while stop is None or not stop.is_set():
             row = rows[i]
@@ -99,7 +99,7 @@ def parse_args(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--csv", required=True, help="historian-style CSV: header row, time/index column, tag columns")
     ap.add_argument("--port", type=int, default=4851)
-    ap.add_argument("--host", default="0.0.0.0")
+    ap.add_argument("--host", default="127.0.0.1")
     ap.add_argument("--rate", type=float, default=1.0, help="seconds between rows")
     ap.add_argument("--folder", default="CSV", help="folder name; node ids are ns=<idx>;s=<folder>/<column>")
     ap.add_argument("--loop", action="store_true", help="restart at row 0 after the last row")
@@ -107,8 +107,8 @@ def parse_args(argv=None):
     args = ap.parse_args(argv)
     if not args.folder or "/" in args.folder:
         ap.error("--folder must be a non-empty name without '/'")
-    if args.rate <= 0:
-        ap.error("--rate must be > 0")
+    if not math.isfinite(args.rate) or args.rate <= 0:
+        ap.error("--rate must be finite and > 0")
     return args
 
 

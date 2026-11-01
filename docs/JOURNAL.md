@@ -6132,3 +6132,107 @@ Unknown originals retain null fingerprints; capturing peer memory does not verif
 systems retain identity/access, controlled records, accepted decisions and work execution. Human benefit and
 organization-scale capacity are unmeasured. Current-base integration, public review rows, full-suite and
 exact-head CI gates remain separate from this private result.
+
+
+## 133. Audit the broader toolkit and preserve review evidence
+
+**2026-10-31, Central time.** A holistic pass from `1b39115` found that the P&ID and onboarding labels hid
+existing modeling, correction, analysis, source-handoff and evaluation paths. The repository is now
+**Engineering Context Toolkit** (`steve-vitale/engineering-context-toolkit`). GitHub's stable repository ID and
+branch tips were checked before and after the rename; the old Git/API addresses resolve to the same repository.
+Active badges, clone instructions and citation metadata use the new address. Historical source URLs, output
+records, protocol namespaces and the local working-directory name are retained. Citation metadata no longer
+labels moving main as the old 1.0.0 release; users should cite the commit or release actually used.
+
+The README now selects by engineering job and names each work product and boundary. The documentation map
+includes experienced engineers and contributors. STATUS separates reproduced implementation failures,
+engineering-quality research, optional adapters and actual company acceptance, with earlier repairs retained
+in a collapsed reference. These editorial changes do not broaden any tool's input contract.
+
+### Reproduce defects before repairing them
+
+The review-kit baseline accepted changed drawing/overlay/base-queue evidence and non-review columns under the
+old bundle identity. Imported timer histories accepted unknown/interior events, invalid transitions or changing
+reviewer IDs. The repair verifies all three packet hashes and the manifest digest, preserves source fields
+outside the declared OPS columns, and uses the same event/identity/time validation for imported and appended
+logs. Rejected appends leave the timer file unchanged. Hash checks do not authenticate a reviewer or source.
+
+A vendor answer with a finite integer coordinate too large for float conversion raised OverflowError and
+aborted the report. Adding that exception to the existing malformed-answer guard retains the failed answer as
+empty while scoring the remaining answers. Non-object rows were already guarded, and an unused deeply nested
+JSON field did not reproduce a parser failure; neither was treated as a new defect. The first new regression
+asserted the detailed exception in the wrong output channel; that test-only assertion was corrected to the
+saved report diagnostic, retaining the original failed test receipt and product behavior.
+
+CSV replay now defaults to 127.0.0.1, reports the actual chosen interface, rejects nonfinite/nonpositive rates
+and checks an invalid start row before server initialization. Other interfaces remain explicit lab choices.
+This deliberate default change does not create authentication, encryption or a production OT connector.
+Matched baseline probes used a mocked server; the existing targeted smoke exercised local loopback only.
+
+Targeted modules pass 17 review-kit, 14 vendor and 41 CSV tests. The five added review/vendor regressions fail
+against the old methods. Fourteen synthetic CLI controls retain the original valid timing/summary and
+perfect/empty-answer reports while refusing the eight invalid review cases and retaining the overflow failure.
+These are software controls, not observations of real engineering labor or usefulness.
+
+### Refresh only affected evidence, without changing the results
+
+Fifteen scorer-control matrix cells were actually rerun for the changed vendor method. One intake cell and
+one historian cell were then actually rerun for their changed guide bytes. The combined 17 cells preserve
+their substantive outcomes and diagnostics; the other 78 complete cell objects remain exact. The matrix still
+records 64 pass, 23 fail and 8 n/a. Updated timings and source/method bindings are produced by those runs;
+the historian claim's locator moves by the four inserted guide lines, with the same quoted passage.
+
+The current OPEN100 saved-answer benchmark is reproduced into a new report pair, retaining the earlier report.
+Scores, controls, predictions and recipes remain the same; the implementation fingerprint and derived cohort
+identities change. The other four current report pairs retain their bytes. The review-kit pipeline stage is
+actually rebuilt in a private scratch root: its seven packet artifacts remain byte-exact and only that stage's
+code binding changes. These are fresh offline producing calls, not new commercial-model runs or evidence of
+improved extraction accuracy.
+
+The stricter integrity check also required clearer review instructions: save the filled CSV as a separate copy
+before editing or spreadsheet autosave, keeping the original packet unchanged. The kit guide and reviewer guide
+now state that path, the one-reviewer timer contract and the distinction between integrity and authentication.
+The first seven-artifact reproduction remains preserved; the intentional guide change needs its own subsequent
+stage binding rather than relabelling that earlier receipt.
+That second actual stage preserves the six generated packet files and retains the reviewed manual guide;
+only its README output hash changes from the first rebuild. The other 51 stage objects remain exact.
+
+### Complete one authoring and contribution path
+
+The knowledge-only onboarding example gains a six-record private-copy starter and field-by-field guide. The
+starter has no original source bytes, engineering answer, assigned owner or verified fingerprint. Local reads
+validate structure; they cannot decide source authority or permission. The guide distinguishes record revision
+from document revision, evidence pins from dependency links, and explicit restart from automatic synchronization.
+Four positive reads, three revision readbacks and five negative refusals exercise the guide's declared behavior.
+The earlier 42 example artifacts remain byte-exact.
+
+The worked note uses the existing fictional notices and attributed peer memory: 250 kPa equals 2.5 bar, while
+cause, deployment and governing revision remain unknown. An explicitly author-illustrated mentor comment
+corrects an overclaim before the revised draft. No real mentor, employee trial, acceptance or onboarding benefit
+is implied. Company access, authenticated decisions, work execution and continuing ownership remain in company
+systems. The source-adequacy backlog, matrix failures, missing historical predictions and actual company
+acceptance are still open; a broader name does not close them.
+
+
+### Integrated validation and retained file-set failure
+
+The current candidate's full offline run passes 71/71 test programs in 474.024 seconds, with six skipped
+unittest cases, three Windows platform notices and no additional skipped-check notices. The skip categories
+remain separate; this is not complete runtime, company or engineering acceptance. Publication checks match
+41 numerical claims with one prose-only claim; 52 pipeline stages are fresh, the 95-cell matrix is current,
+and five current task/model suites reproduce. Saved predictions reproduce 30 tables (23 MATCH and seven
+MATCH-OLD); five older tables remain GAP. One stale generated script-summary row was regenerated before the
+full run, retaining its initial failed check.
+
+The test process exits zero, but its wrapper's final file-set assertion fails: a parallel read-only browser
+retry of two previously inaccessible LinkedIn references creates four untracked capture files inside the
+checkout. All 2,978 frozen input files remain raw-byte-exact and none is missing. The four captures are moved
+to private storage with their exact hashes preserved, and the original 2,978-file set is checked again before
+any publication edits. The original failed wrapper result and logs remain immutable; a separate recovery
+receipt records this distinction. No tests are rerun to replace that result. Browser capture files are now
+ignored by default, alongside private LinkedIn drafts. The capture-producing research does not add a corpus
+case, dependency or product claim to this release.
+
+Only the ignore rule and the STATUS/journal result wording change after that run. Source/implementation,
+predictions, scorecards, registered outputs and the other public input bytes remain as tested. Independent
+receiving, committed-blob identity and exact-head CI are separate checks.

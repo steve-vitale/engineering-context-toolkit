@@ -164,6 +164,62 @@ class Kit(unittest.TestCase):
         with self.assertRaises(ValueError):
             rk.summarize(self.kit, filled)
 
+    def test_summary_checks_the_frozen_packet_bytes(self):
+        self.tick("start", 0); self.tick("stop", 5)
+        queue = self.kit / "review_queue_sheet8.csv"
+        for name in self.manifest["files"]:
+            with self.subTest(file=name):
+                target = self.kit / name
+                original = target.read_bytes()
+                try:
+                    target.write_bytes(original + b"\n")
+                    with self.assertRaisesRegex(ValueError, "packet differs"):
+                        rk.summarize(self.kit, queue)
+                finally:
+                    target.write_bytes(original)
+        self.assertEqual(rk.summarize(self.kit, queue)["active_minutes"], 5)
+
+    def test_filled_queue_can_change_only_review_columns(self):
+        self.tick("start", 0); self.tick("stop", 5)
+        fields, rows = rk.read_queue(self.kit / "review_queue_sheet8.csv")
+        filled = self.kit / "filled.csv"
+        rows[0]["OPS_confirm_or_correct"] = "correct"
+        rows[0]["OPS_correct_value"] = "reviewed value"
+        def save():
+            with filled.open("w", encoding="utf-8", newline="") as stream:
+                writer = csv.DictWriter(stream, fieldnames=fields)
+                writer.writeheader(); writer.writerows(rows)
+        save()
+        self.assertEqual(rk.summarize(self.kit, filled)["decided"], 1)
+        rows[0]["item_type"] = "different source fact"
+        save()
+        with self.assertRaisesRegex(ValueError, "outside the OPS_"):
+            rk.summarize(self.kit, filled)
+
+    def test_imported_timer_log_enforces_event_order_and_one_identity(self):
+        def row(event, minute, reviewer="R1"):
+            return {"utc": (T0 + timedelta(minutes=minute)).isoformat(), "event": event,
+                    "reviewer": reviewer, "note": ""}
+        bad = [
+            [row("start", 0), row("stop", 2), row("resume", 3), row("stop", 5)],
+            [row("start", 0), row("pause", 2), row("pause", 3), row("resume", 4), row("stop", 5)],
+            [row("start", 0), row("checkpoint", 2), row("stop", 5)],
+            [row("start", 0), row("stop", 5, "R2")],
+        ]
+        for rows in bad:
+            with self.subTest(rows=rows), self.assertRaises(ValueError):
+                rk.active_minutes(rows)
+        self.assertEqual(rk.active_minutes([row("start", 0), row("pause", 2), row("stop", 5)]), (2, 1))
+
+    def test_timer_refuses_bad_append_without_changing_the_log(self):
+        self.tick("start", 0)
+        log = self.kit / "timer_log.csv"
+        original = log.read_bytes()
+        for reviewer, when in [("R2", T0 + timedelta(minutes=1)), ("R1", T0 - timedelta(minutes=1))]:
+            with self.subTest(reviewer=reviewer, when=when), self.assertRaises(ValueError):
+                rk.timer(self.kit, "pause", reviewer, now=when)
+            self.assertEqual(log.read_bytes(), original)
+
 
 if __name__ == "__main__":
     unittest.main()

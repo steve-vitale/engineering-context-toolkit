@@ -1,0 +1,185 @@
+{
+  "schema": "engineering-onboarding-1",
+  "packet_id": "REPLACE-PACKET-ID",
+  "revision": "draft-1",
+  "scope": "REPLACE: one permitted document question; no operational work",
+  "title": "Draft a first evidence note",
+  "landing_record_id": "start_here",
+  "selected_sources": {
+    "REPLACE-DOC-ID": "source:record-r1"
+  },
+  "records": [
+    {
+      "id": "source:record-r1",
+      "kind": "source",
+      "title": "Source to locate and review",
+      "summary": "Reference placeholder; original not supplied or checked.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "draft",
+      "audience_hints": ["investigator"],
+      "owner_roles": [],
+      "review": {"state": "unreviewed", "reviewer_role": null, "reviewed_on": null},
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": ["Original location, revision, bytes, authority and owner are not established."],
+      "data": {
+        "document_id": "REPLACE-DOC-ID",
+        "source_revision": "Unknown",
+        "original_reference": null,
+        "original_raw_sha256": null,
+        "original_size_bytes": null,
+        "capture_kind": "reference-only",
+        "capture_sha256": null,
+        "captured_text": null,
+        "capture_complete": false,
+        "acquisition_time": null,
+        "original_reverified_at_runtime": false,
+        "source_authority": "Unknown; ask the document owner what governs.",
+        "original_status": "unavailable",
+        "capture_size_bytes": null
+      }
+    },
+    {
+      "id": "role:reviewer-unassigned",
+      "kind": "role_reference",
+      "title": "Reviewer needed; unassigned",
+      "summary": "Requested responsibility, not an assigned or authenticated person.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "draft",
+      "audience_hints": ["manager", "investigator"],
+      "owner_roles": [],
+      "review": {"state": "unreviewed", "reviewer_role": null, "reviewed_on": null},
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": ["Company reviewer and document owner must be identified."],
+      "data": {
+        "responsibility": "Review the evidence note and identify the accountable source owner.",
+        "authenticated_identity": null,
+        "assignment_authority": "Not supplied; assignment belongs to the existing company process."
+      }
+    },
+    {
+      "id": "system:review-route",
+      "kind": "system_reference",
+      "title": "Existing review location to confirm",
+      "summary": "No connected service or approved destination is supplied.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "draft",
+      "audience_hints": ["manager", "investigator"],
+      "owner_roles": [],
+      "review": {"state": "unreviewed", "reviewer_role": null, "reviewed_on": null},
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": ["Approved location, recipient and access rules need company confirmation."],
+      "data": {
+        "reference": "Unknown; ask for the existing approved review location.",
+        "availability": "not_connected",
+        "purpose": "Retain the draft note and record its eventual disposition through existing controls.",
+        "source_access": "Not granted by this packet."
+      }
+    },
+    {
+      "id": "workflow:first-note",
+      "kind": "workflow",
+      "title": "Investigate one permitted source question",
+      "summary": "Author a qualified draft; source support and review remain unresolved.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "draft",
+      "audience_hints": ["investigator"],
+      "owner_roles": [],
+      "review": {"state": "unreviewed", "reviewer_role": null, "reviewed_on": null},
+      "evidence": [
+        {
+          "source_record_id": "source:record-r1",
+          "document_id": "REPLACE-DOC-ID",
+          "revision": "Unknown",
+          "raw_sha256": null,
+          "capture_sha256": null,
+          "locator": "Unknown; record the exact page or section after locating the original.",
+          "currency_requirement": "selected_basis"
+        }
+      ],
+      "depends_on": ["source:record-r1"],
+      "known_unknowns": ["Question, source support, reviewer and receiving location need confirmation."],
+      "data": {
+        "purpose": "REPLACE-QUESTION: What does the selected record support, and what evidence is missing?",
+        "prerequisites": ["source:record-r1", "role:reviewer-unassigned", "system:review-route"],
+        "steps": [
+          {
+            "id": "locate-and-read",
+            "description": "Use permitted company access to locate the original and check identity, revision and exact locator. Stop if it is unavailable.",
+            "inputs": ["source:record-r1"],
+            "draft_output": "Cited observations or an explicit missing-source request; no invented answer."
+          },
+          {
+            "id": "prepare-handoff",
+            "description": "Separate cited facts, interpretation and unknowns in the first-question brief; request a reviewer and approved receiving location.",
+            "inputs": ["source:record-r1", "role:reviewer-unassigned", "system:review-route"],
+            "draft_output": "Draft evidence note; needs owner until the actual recipient accepts it."
+          }
+        ],
+        "stop_or_review_conditions": ["Source or permission is missing.", "Records conflict or a step would change real records, equipment or access."],
+        "review_handoff": {
+          "reviewer_role": "role:reviewer-unassigned",
+          "system_reference": "system:review-route",
+          "deliverables": ["Question and source locator", "Qualified answer or missing-evidence request", "Proposed next step and requested receiving owner"],
+          "acceptance": "Not recorded; a company reviewer decides through the existing process."
+        },
+        "execution": "template_data_only"
+      }
+    },
+    {
+      "id": "practice:first-note",
+      "kind": "practice",
+      "title": "One document-only assignment",
+      "summary": "Prepare a draft evidence note; no completion or acceptance is recorded.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "draft",
+      "audience_hints": ["investigator"],
+      "owner_roles": [],
+      "review": {"state": "unreviewed", "reviewer_role": null, "reviewed_on": null},
+      "evidence": [],
+      "depends_on": ["workflow:first-note"],
+      "known_unknowns": ["Assignment scope and receiving reviewer need confirmation."],
+      "data": {
+        "purpose": "Return one source-qualified contribution for review.",
+        "exercise_scope": "REPLACE: selected permitted documents and one question only.",
+        "inputs": ["source:record-r1", "workflow:first-note"],
+        "expected_draft_fields": ["Question", "Source identities, revisions and locators", "Facts, interpretations and unknowns", "Missing evidence", "Requested reviewer and next owner"],
+        "reviewer_role": "role:reviewer-unassigned",
+        "excluded_real_work": ["No operational action", "No source/system edits", "No permission or approval grants"],
+        "completion_tracking": "Not recorded here; use the approved company process."
+      }
+    },
+    {
+      "id": "start_here",
+      "kind": "landing",
+      "title": "Start with one evidence note",
+      "summary": "Unreviewed starter; source and assignment remain unknown.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "draft",
+      "audience_hints": ["manager", "investigator"],
+      "owner_roles": [],
+      "review": {"state": "unreviewed", "reviewer_role": null, "reviewed_on": null},
+      "evidence": [],
+      "depends_on": ["practice:first-note"],
+      "known_unknowns": ["No source, reviewer, access or acceptance is established by loading this template."],
+      "data": {
+        "start_here": [
+          {"record_id": "practice:first-note", "reason": "Agree one bounded contribution."},
+          {"record_id": "workflow:first-note", "reason": "Read the steps as reference data."},
+          {"record_id": "source:record-r1", "reason": "Locate the actual permitted source."},
+          {"record_id": "system:review-route", "reason": "Confirm the company receiving route."}
+        ],
+        "leader_preparation": ["Confirm one question and permitted sources", "Assign the real reviewer in the company process", "Confirm the existing handoff location"],
+        "new_engineer_outcome": "A reviewable draft or a qualified request for missing evidence; benefit not measured."
+      }
+    }
+  ]
+}

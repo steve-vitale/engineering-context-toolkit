@@ -12,10 +12,15 @@ manual bridges and the recommended order of work. Numerical research evidence li
 |---|---|
 | Leader or manager assigning work to an engineer or intern | [Scope an onboarding assignment](ENGINEERING_ONBOARDING.md#for-leaders-and-managers) |
 | Engineer or intern learning how the team works | [Complete a first contribution](ENGINEERING_ONBOARDING.md#for-engineers-and-interns) |
+| Engineer with a model, loop list or recorded data | [Choose an engineering job](../README.md#start-wherever-you-are), then use the task guides below. |
+| Contributor comparing a model or method | [Task/model benchmarks](../benchmarks/README.md) and [contribution rules](../CONTRIBUTING.md). |
+
+For the jumpstart path, follow one investigation below. Existing modeling, analysis and evaluation work can go
+directly to the task guides.
 
 1. **Frame a question.** Use the [first-question brief](../examples/first-pilot/README.md), including the
    company-approved Copilot/manual route without a local installation.
-2. **Choose the starting records.** The [README selector](../README.md#start-wherever-you-are) links the input guides.
+2. **Choose the starting records.** The [README selector](../README.md#start-wherever-you-are) links engineering jobs and starting materials.
    [Follow one pump](../examples/from-description/assisted/PUMP_WALKTHROUGH.md) to see an actual illustrative bundle.
 3. **Check the claims and missing evidence.** Use the selected guide's review steps. If you have a supported
    model, the [question engine](OPPORTUNITY_SCREEN.md) can suggest investigations; it does not perform a process audit.
@@ -35,7 +40,7 @@ benefit. Proposed episodes have no runnable packet yet.
 | Investigate a reported failure and missing follow-up | **Available:** [MetroPT-3 maintenance questions](../examples/context-register/metropt3/README.md); reported records do not establish a successful intervention. |
 | Exchange a published dependency and preserve disagreement | **Available:** [four owned packets](../examples/team-context/README.md) and [source revision](../examples/pump-revision/README.md); fictional local exercises, no shared company service. |
 | Connect drawings, models and investigation questions | **Available:** [one pump walkthrough](../examples/from-description/assisted/PUMP_WALKTHROUGH.md) and the [input guides](../README.md#start-wherever-you-are); a specialist branch with engineering review. |
-| Reconstruct a record revision and prepare a first review note | **Available:** [knowledge-only onboarding packet](../examples/engineering-onboarding/README.md), with fictional sources, glossary, review workflow and a document-only assignment; Python standard library or optional approved MCP. |
+| Reconstruct a record revision and prepare a first review note | **Available:** [fictional worked note](../examples/engineering-onboarding/own-packet/worked-note.md) and [private-copy starter](../examples/engineering-onboarding/own-packet/README.md). Read the note without installation; optional packet reads use the standard library or an approved MCP setup. |
 | Prepare a design review or supplier handoff | **Proposed worked episodes:** use the [onboarding guide's manual starters](ENGINEERING_ONBOARDING.md#choose-a-starter-workflow); dedicated packets for these jobs are not supplied. |
 
 ## Continue a task
@@ -44,6 +49,9 @@ benefit. Proposed episodes have no runnable packet yet.
 |---|---|
 | Correct a draft model and assign supplied signal addresses | [Model review](REVIEW_LOOP.md) · [PI mapping](PI_MAPPING.md) |
 | Calculate impact from an actual measured change | [Impact estimate](IMPACT_ESTIMATE.md) |
+| Analyze recorded observations or check a supplied loop list | [Historian CSVs](../examples/historian-csv/README.md) · [Loop audit](../examples/loop-audit/README.md) |
+| Exchange captured structured-source evidence | [Local source handoff](../examples/source-handoff/README.md) |
+| Compare saved model/method answers on declared tasks | [Task/model benchmarks](../benchmarks/README.md) |
 | Prepare a portable graph or inspect sourced statements | [Graph format](GRAPH_EXPORT.md) · [Statement review](STATEMENT_REVIEW.md) |
 | Retain answers and source-revision dependencies in a local packet | [Context register](CONTEXT_REGISTER.md) |
 | Follow a revised source through questions, review history and snapshot readback | [Worked revision example](../examples/pump-revision/README.md) |

@@ -12,7 +12,7 @@ screens. Those need your process knowledge, your I/O list and a person's review.
 ## On Windows, from zero
 
 1. Install Python 3.10 or newer from python.org. In the installer, tick "Add python.exe to PATH".
-2. Get the repository. With git: `git clone https://github.com/steve-vitale/pid-to-digital-twin`. Without git:
+2. Get the repository. With git: `git clone https://github.com/steve-vitale/engineering-context-toolkit`. Without git:
    on the repository page choose Code, then Download ZIP, and unzip it.
 3. Open PowerShell in the repository folder. For the offline worked example in step 0, use the installed
    `python` directly; no environment setup or package installation is needed. For a new model extraction in

@@ -375,10 +375,10 @@
     "out/twin/r2-tiles-trace/codex/review_queue.csv": "c55954db7f6b3651a400b493ec9706b8b6ee2aa65cbf75667fe8fae628a010ce",
     "out/twin/r2-tiles-trace/codex/svg/sheet_8.svg": "74b984968e281537abfd622b3f03933a630891b443c4b727127d40a4ded0ef4c",
     "scripts/output_paths.py": "16ace3cf89be6baffcac1be804ea4917c9db10caffe2b58c11ee0b9acd4d2939",
-    "scripts/review_kit.py": "4acd85e03f67593e1410fe9770a7f7f4a60b875031aba205921b298efe3a5089"
+    "scripts/review_kit.py": "17c320fa1f62efc25b8dcb0df7a43c050110610fbd95ac41427805694ea564bd"
    },
    "outputs": {
-    "out/review_kit/sheet-8/README.md": "09b4e88d5c214eb1e3004aed47c415e4b4b123ad49ae5d6e55890e8a8dfa6d2d",
+    "out/review_kit/sheet-8/README.md": "d2a74ba7a4adbb214ab8c549b183f1d1558d4b5a687811faf258a6a30b89987c",
     "out/review_kit/sheet-8/drawing_sheet8.png": "3e618c63f11ea59ca96813ae3658ac878c09261a29b7df8f7b6fbef3778f4ed2",
     "out/review_kit/sheet-8/extracted_overlay_sheet8.svg": "74b984968e281537abfd622b3f03933a630891b443c4b727127d40a4ded0ef4c",
     "out/review_kit/sheet-8/manifest.json": "d4ea9d4a0c8cf7c9bd26a11f36b11ec87cc6b7404ce7e178e8b5889b0a2d2867",

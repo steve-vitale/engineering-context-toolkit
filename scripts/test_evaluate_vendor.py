@@ -196,6 +196,25 @@ class Vendor(unittest.TestCase):
         self.assertEqual([(p["sheet"], p["status"]) for p in r["missing_or_failed"]], [("6", "failed"), ("8", "failed")])
         self.assertEqual(r["replicates"]["review_load_per_100"]["mean"], 100)
 
+    def test_unrepresentable_numeric_prediction_is_failed_not_a_batch_crash(self):
+        with tempfile.TemporaryDirectory() as t:
+            folder = Path(t) / "run"
+            bad = {"symbols": [{"id": "overflow", "class": "pump", "box": [0, 0, 10**400, 10]}],
+                   "connections": []}
+            write(folder, "6", perfect("6"))
+            write(folder, "8", bad)
+            code, warning = quiet_main(["--keys", str(KEYS), "--sheets", ",".join(SHEETS),
+                                        "--predictions", str(folder), "--out", str(Path(t) / "report")])
+            result = json.loads((Path(t) / "report.json").read_text("utf-8"))
+            text = (Path(t) / "report.md").read_text("utf-8")
+        self.assertEqual(code, 0)
+        self.assertEqual([(p["sheet"], p["status"]) for p in result["missing_or_failed"]], [("8", "failed")])
+        self.assertIn("OverflowError", result["missing_or_failed"][0]["note"])
+        self.assertIn("scored as an empty answer", warning)
+        self.assertIn("sheet 8: failed", text)
+        self.assertEqual(result["per_sheet"]["8"]["vendor_runs"][0]["review_load_per_100"], 100)
+        self.assertEqual(result["per_sheet"]["6"]["vendor_mean"]["review_load_per_100"], 0)
+
     def test_vendor_score_never_printed_without_controls(self):
         with tempfile.TemporaryDirectory() as t:
             write(Path(t) / "run1", "8", perfect("8"))

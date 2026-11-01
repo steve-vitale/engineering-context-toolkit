@@ -1,18 +1,21 @@
-# Engineering Context Jumpstart
+# Engineering Context Toolkit
 
-[![tests](https://github.com/steve-vitale/pid-to-digital-twin/actions/workflows/tests.yml/badge.svg)](https://github.com/steve-vitale/pid-to-digital-twin/actions/workflows/tests.yml)
+[![tests](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml/badge.svg)](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml)
 
 **Help engineers understand existing work, ask better questions and contribute knowledge others can use.**
 
-Start with one engineering question, the records already available and a reviewer who knows the work. Use the
-first brief to connect a qualified answer to its sources, missing evidence and next owner. Where asset models
-are useful, the tools add draft identities, connections, investigation questions and portable snapshots.
+Use documents, drawings, models and recorded data to produce something another engineer can inspect:
+a source clarification, draft model or drawing, review packet, investigation plan, supplied-data analysis or
+portable context and workflow snapshot. Task/model benchmarks help contributors compare methods on saved answers.
+Choose the parts your assignment needs; this is not one automatic document-to-plant pipeline.
 
 This is a starting point for maintained engineering context: what exists, why a choice was made, what the records
 support and what still needs review. P&IDs and process models are one specialist branch, and one foundation for
 future digital twins and manufacturing applications.
 
 ## Start with one question
+
+**The jumpstart path:** one question, permitted records, a reviewer and one useful contribution.
 
 **Using company-approved Copilot, with no local software?** Copy the
 [first-question brief](examples/first-pilot/README.md), select permitted sources and check the cited evidence.
@@ -37,17 +40,18 @@ has the commands to build it offline with Python and the drawing dependencies; n
 
 ## Start wherever you are
 
-Choose the guide for your starting records. Each guide states its setup, outputs and review needs.
+Choose by engineering job. Each guide explains its inputs, setup, output and review needs; the
+[feature reference](docs/FEATURES.md) has the detailed tool inventory.
 
-| Your starting point | Start here |
-|---|---|
-| Documents and one question | [Investigate the sources and prepare a first brief](examples/first-pilot/README.md) |
-| A written process description | [Author, check and build a draft model/drawing bundle](examples/from-description/README.md) |
-| A P&ID image | [Try the supplied extraction offline, then use your own drawing](examples/own-drawing/README.md) |
-| Supported DEXPI XML | [Read the structured export and inspect omissions](examples/from-dexpi-xml/README.md) |
-| A controls loop list | [Compare the listed loops with the model or drawing](examples/loop-audit/README.md) |
-| Historian CSVs | [Analyze recorded history and its false alarms](examples/historian-csv/README.md) |
-| Labelled sheets and saved model answers | [Score an extraction against known answers](examples/vendor-evaluation/README.md) |
+| Your engineering job | Starting material and guide | Work product and boundary |
+|---|---|---|
+| Understand records or a prior decision | Documents → [first brief](examples/first-pilot/README.md); [onboarding exercise](examples/engineering-onboarding/README.md) | Cited answer, unknowns and next owner; manual or approved Copilot. |
+| Build a draft model or drawing | [Description](examples/from-description/README.md), [P&ID image](examples/own-drawing/README.md) or [DEXPI XML](examples/from-dexpi-xml/README.md) | Draft assets/drawing/staging; interpretation, layout and eligibility require review. |
+| Review, correct or reconcile a model | [Sourced statements](docs/STATEMENT_REVIEW.md) · [model correction and mapping](docs/REVIEW_LOOP.md) | Review sheet and supported local corrections; signal and company acceptance stay separate. |
+| Check controls or hand off source evidence | [Loop list audit](examples/loop-audit/README.md) · [structured-source handoff](examples/source-handoff/README.md) | Explicit omissions or a pinned evidence packet; no installed-safeguard acceptance. |
+| Analyze observations or measured impact | [Historian CSVs](examples/historian-csv/README.md) · [impact calculation](examples/impact-estimate/README.md) | Unusual trends or first-draft energy/cost estimates; qualified baselines and measurements matter. |
+| Maintain and exchange team context | [Context register](docs/CONTEXT_REGISTER.md) · [read-only MCP](examples/internal-mcp/README.md) · [owned team packets](examples/team-context/README.md) | Source dependencies, retained answers and selected snapshots; no shared company access service. |
+| Evaluate a model or method | [Labelled drawing comparison](examples/vendor-evaluation/README.md) · [task/model benchmarks](benchmarks/README.md) | Reproducible scores on declared cases and saved answers; no universal model ranking. |
 
 ## What connects today: the hub and spokes
 

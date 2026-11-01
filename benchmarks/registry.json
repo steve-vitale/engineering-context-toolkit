@@ -3,7 +3,7 @@
   "reports": [
     {
       "suite": "benchmarks/open100-validation.json",
-      "report": "benchmarks/results/open100-validation-tag-adapter"
+      "report": "benchmarks/results/open100-validation-overflow-guard"
     },
     {
       "suite": "benchmarks/description-controls-recipe-preserved.json",

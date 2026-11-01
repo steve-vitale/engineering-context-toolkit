@@ -1,8 +1,9 @@
 # State of the toolkit
 
-Audit and repair follow-up: **2026-10-31, Central time**. This work starts from `bdf1b41`, following the
-[whole-toolkit audit](JOURNAL.md#113-refresh-the-whole-toolkit-audit-with-failing-handoffs). Earlier failures and
-their original evidence remain in the journal and attempt ledger.
+Holistic audit: **2026-10-31, Central time**, starting from released commit `1b39115`.
+The public name is **Engineering Context Toolkit**. The jumpstart is its first-assignment path; modeling,
+review, analysis and evaluation can be used independently. Earlier failures and original evidence remain
+in the [journal](JOURNAL.md) and [attempt ledger](TRIED.md).
 
 **Working local tools, with engineering interpretation and company acceptance still required.** Start with one
 source-backed question and a packet another engineer can reconstruct. This is a foundation for maintained
@@ -13,6 +14,120 @@ scripts; tests are separate. Twenty-two [feature groups](FEATURES.md) have bound
 example does not certify every input, current implementation or engineering conclusion.
 
 ## Known defects
+
+All three implementation defects reproduced in this pass have bounded repairs that passed independent
+receiving checks. The table records those closed findings; it does not claim that every malformed input or
+engineering task has been tested.
+
+| Reproduced gap | Required behavior and bounded repair |
+|---|---|
+| Review summaries accepted changed packet evidence or non-review queue fields under the old bundle identity. | Recheck drawing, overlay, base queue and manifest digest; permit changes only in the declared `OPS_` columns of the submitted review copy. Hash agreement is integrity, not source authority or reviewer authentication. |
+| Imported timers accepted invalid event sequences or changing reviewer identities. | Validate imported and appended events with the same state rules, one nonblank reviewer ID and ordered offset-aware timestamps; refuse before appending. Timer logs can record actual review observations; these software controls establish no measured human review time or benefit. |
+| An unrepresentable numeric vendor coordinate aborted the batch. | Count that answer as failed/empty, preserve the other answers and retain the diagnostic in the report. This extends the existing malformed-answer guard, not the scoring criteria. |
+
+CSV replay also now defaults to loopback, prints the selected interface, rejects nonfinite rates, and checks the
+start row before server initialization. A different interface requires an explicit `--host`; this remains an
+unauthenticated recorded-data lab service. See the [CSV guide](../examples/historian-csv/README.md).
+
+Completed historical repairs are grouped [below](#earlier-repairs-and-their-scope). Research failures,
+unimplemented adapters and unrun company acceptance are separate categories, not repaired software defects.
+
+## What exists, and what remains manual
+
+Select the tools needed for the job. The [workflow map](WORKFLOWS.md) owns the supported format contracts;
+the [feature reference](FEATURES.md) owns individual example evidence. Company systems retain authority,
+access, accepted decisions and continuing ownership. Local hashes, role labels and read-only transport do not
+create those controls.
+
+The [workflow map](WORKFLOWS.md) owns exact format contracts; [FEATURES.md](FEATURES.md) owns individual evidence.
+
+| Piece | Contribution | Boundary |
+|---|---|---|
+| Drawing intake and review report | A supplied extraction becomes a draft model, review queue, staging and readable HTML. | Approved extraction, engineering review and receiving-company acceptance. |
+| DEXPI routes | Read supported XML or the separate adapted-key/sheet contract; report omissions. | Exporter coverage and downstream eligibility vary; parsed C03 cannot feed the question engine. |
+| Description/model drawing | Authored model and detailed layout produce draft sheets and platform outputs. | Interpretation and geometry remain authored; matching quotations cannot establish correct meaning. |
+| Portable graph and statement review | Typed relationships, sourced claims and supplied appearances can be inspected and reviewed. | One-way export; statement verdicts do not edit generator facts. |
+| Model correction and point mapping | Apply supported local corrections and stage supplied signal addresses with history. | Identity/signal review, external companion reconciliation and regeneration remain explicit. |
+| Loop audit and vendor evaluation | Compare supplied loop truth or saved drawing answers with bounded scorers. | No installed safeguard/wiring acceptance or measured review-time result. |
+| Historian CSV and impact tools | Analyze supplied observations and calculate from supplied measurements/constants. | Qualified baseline, quality/time metadata, causal evidence and live connectors remain separate. |
+| Question engine | Catalog screens produce investigations and collection requests; source-scoped recipes retain known answers. | No arbitrary natural-language diagnosis or broad usefulness/coverage benchmark. |
+| Model-bound context and graph snapshot | Retain supplied answers, source dependencies and decision/ownership history; explicitly refresh and read back the selected graph/context pair. | Supported model/question contracts and manual refresh/restart; no source fetching or shared company access service. |
+| Knowledge/workflow starter packet | [Author and read](../examples/engineering-onboarding/own-packet/README.md) a selected landing map, source references, roles and workflow/practice records without an asset model. | Reference data only; no decision-history writer, source ingestion, workflow execution or authenticated assignment. Optional MCP is a retrieval transport. |
+| Checks, matrix and task/model benchmarks | Reproduce claims/results and exercise selected workflows with failures visible. | Four task adapters, including `tag-reading` / `tag-text-v1` with separate geometry and partial-list modes, raw fixture checks and offline saved-answer reports. Selected facts, fixed labels and tag coverage do not grade arbitrary engineering meaning or company asset identity. See the [task scope](../benchmarks/README.md#current-reproducible-tasks); these are not a whole-toolkit completion percentage or general model ranking. |
+
+## Demonstrations are a separate track
+
+The [TE/OPEN100 comparison](DELIVERABLES.md) includes screens, recorded replay, tours and isolation mockups.
+The gateway builder is TE-specific; PI staging has never been imported here. Proposed 3D geometry, keyword
+hazards and isolation views are not installed geometry, hazard analysis or operating procedures. Replay does not
+make commands drive a physical process simulation. The Docker package remains a historical demonstration.
+
+## Company handoff: external responsibilities and missing adapters
+
+Use the [acceptance exercise](ACCEPTANCE.md) for concrete tests, records and failure cases. It is prepared;
+actual participant, recipient, native-system and tenant observations remain **not run**.
+
+| Work category | Remaining work | Completion evidence |
+|---|---|---|
+| Engineering question quality | N065/N082: source adequacy and useful questions. Of 50 rules/124 request bundles, 14 rules have bounded collection reviews; 36 still await original-source adequacy review. Scoped MGPI is development evidence; default MGPI still produces zero findings. | Prospective expected/unacceptable questions, source/key review and actual engineer/recipient usefulness observations. |
+| Evaluation and transfer | N086 original-source/key engineering acceptance, Native placement gaps, existing matrix failures, unfamiliar-source coverage, scorer limits and five missing historical prediction tables. | Matched experiments with frozen criteria, retained failures, exposure/split labels and independent source/key review. More files or rerunning familiar inputs is not generalization. |
+| Optional adapters and receiving projections | General inverse graph conversion, captured-source consumers, managed-section merging and particular incumbent-system connectors are not implemented. Test changed/removed identifiers and complete retained history for the selected route. | A demonstrated engineering job, explicit supported contract, source preservation and subsequent-revision readback. Add only the adapter that job needs. |
+| Company acceptance and benefit | N062/N063: real engineer/recipient investigation, authorized company import/readback, client permissions and a subsequent revision. | Actual observations from the [acceptance exercise](ACCEPTANCE.md), not an agent simulation. Native PI/gateway acceptance, accepted Copilot tenant and operational benefit remain unverified. |
+
+The company retains authority over accepted context, access, controlled documents, work execution and ownership.
+Generic inverse graph conversion, live incumbent connectors, automatic managed-section merging and company
+synchronization are not implemented services. Typed JSON/CSV/graph exports exist; an OKF export remains an
+assessed additional format, with no Google import acceptance. Choose these adapters only for a demonstrated job.
+No permitted IT/OT route means disconnected work or an approved released snapshot, not a new port or tunnel.
+
+## Recommended order of work
+
+1. Use the independently reviewed repair examples as a baseline, retaining their original failing probes.
+2. Audit the remaining collection/source contracts and evaluate useful questions before adding catalog breadth.
+3. Run one real engineer/recipient investigation and one authorized receiving-system readback when available.
+4. Improve corpus failures through matched source-informed experiments; reserve unfamiliar inputs before tuning.
+5. Add only the connector or projection needed by that investigation, and test its next revision and permissions.
+
+Every active audit item and non-rejected unfinished research idea has an assigned agent workstream. Queued
+research, intentional tool boundaries and external acceptance are not silently counted as completed features.
+
+## How this audit was checked
+
+The 95-cell matrix records **64 pass / 23 fail / 8 n/a**. This audit actually reran 15 scorer-control cells for
+the vendor repair and two guide-bound intake/historian cells. Their substantive results remain exact; only
+measured timings, the changed method/guide bindings and the same historian passage's shifted locator change.
+The other 78 complete cell objects stay exact. Criteria, source/key inputs and historical failures are retained;
+no binding is backfilled. These failures remain research work, not failing unit tests.
+The current local full run passed **71/71 test scripts**, with six Windows unittest case skips, three platform notices and
+zero additional skipped-check notices. Those counts are distinct; the handoff's unavailable native-symlink
+subcheck is a platform notice without a skipped unittest case. This is not a complete runtime pass. Targeted CLI
+controls, source-preservation checks, full-value reproductions and independent cross-reviews support the bounded repairs.
+
+The publication check matches 41 numerical claims and identifies one prose-only claim; all 52 configured pipeline
+stages are fresh. Five current benchmark suites reproduce. Re-scoring saved predictions reproduces 30 tables
+(23 MATCH, seven MATCH-OLD); five historical tables still report GAP. These checks do not rerun commercial models.
+An initial clean Linux CI run caught two collection-declaration defects after the local suite passed. The
+follow-up separates an absent selected collection from committed siblings and binds exactly the TE files its
+consumer reads. Partial-present and strict missing-input checks remain. The matrix was actually rerun after
+this correction; [the journal](JOURNAL.md#116-correct-collection-boundaries-after-clean-ci-refuses-the-first-repair-candidate)
+retains the failed candidate and follow-up evidence.
+
+The local audit made no model calls, new original-source downloads, company/plant imports or live gateway calls.
+The full-run file-set guard caught four browser-research captures added concurrently to the checkout; all 2,978
+frozen input files remained byte-exact. The captures were preserved privately and the original path set checked
+again. The original guard failure remains recorded in [the journal](JOURNAL.md#133-audit-the-broader-toolkit-and-preserve-review-evidence).
+Browser captures are now ignored alongside private LinkedIn drafts. Clean CI separately stages checksum-pinned public fixtures.
+
+## Earlier repairs and their scope
+
+The [journal](JOURNAL.md) preserves the earlier source-output collision repairs, appearance/source-locator
+preservation, field accounting, collection-basis controls and report-interpretation corrections. The
+[attempt ledger](TRIED.md) retains tried methods and open work; [RESULTS.md](RESULTS.md) retains numerical
+research evidence. Historical records and failed attempts remain available rather than being replaced by a
+passing follow-up.
+
+<details>
+<summary>Earlier bounded repairs and their remaining limits</summary>
 
 The initial review, collection, freshness and retrieval failures below now have bounded repairs and negative
 controls. Keep the remaining source-adequacy and external-acceptance work separate from those software results.
@@ -64,7 +179,7 @@ The [follow-up record](JOURNAL.md#120-keep-qualified-private-fields-and-condense
 preserves the original failures and independently reviewed repairs. The bounded N086 capture and N097 local
 handoff are separate from source-owner acceptance and the real company receiving work in N062/N063.
 
-## What exists, and what remains manual
+
 
 The current design priority is [engineering context across teams](CONTEXT_LIFECYCLE.md): separately owned
 scopes, explicit published dependencies, reviewed company identities and preserved conflicting proposals.
@@ -86,85 +201,5 @@ because the writer folded their line endings before hashing. Genuine edits, othe
 generators and key mismatches still refuse. Original source-document pins remain raw; this is drawing-contract
 compatibility, not permission to normalize company evidence. See the [format contracts](WORKFLOWS.md).
 
-The [workflow map](WORKFLOWS.md) owns exact format contracts; [FEATURES.md](FEATURES.md) owns individual evidence.
 
-| Piece | Contribution | Boundary |
-|---|---|---|
-| Drawing intake and review report | A supplied extraction becomes a draft model, review queue, staging and readable HTML. | Approved extraction, engineering review and receiving-company acceptance. |
-| DEXPI routes | Read supported XML or the separate adapted-key/sheet contract; report omissions. | Exporter coverage and downstream eligibility vary; parsed C03 cannot feed the question engine. |
-| Description/model drawing | Authored model and detailed layout produce draft sheets and platform outputs. | Interpretation and geometry remain authored; matching quotations cannot establish correct meaning. |
-| Portable graph and statement review | Typed relationships, sourced claims and supplied appearances can be inspected and reviewed. | One-way export; statement verdicts do not edit generator facts. |
-| Model correction and point mapping | Apply supported local corrections and stage supplied signal addresses with history. | Identity/signal review, external companion reconciliation and regeneration remain explicit. |
-| Loop audit and vendor evaluation | Compare supplied loop truth or saved drawing answers with bounded scorers. | No installed safeguard/wiring acceptance or measured review-time result. |
-| Historian CSV and impact tools | Analyze supplied observations and calculate from supplied measurements/constants. | Qualified baseline, quality/time metadata, causal evidence and live connectors remain separate. |
-| Question engine | Catalog screens produce investigations and collection requests; source-scoped recipes retain known answers. | No arbitrary natural-language diagnosis or broad usefulness/coverage benchmark. |
-| Context register and snapshot MCP | Preserve supplied answers/history and explicitly refresh graph/context dependencies; [read a selected knowledge/workflow packet](../examples/engineering-onboarding/README.md) without an asset model. | Supplied-basis agreement does not establish engineering correctness or permission. No source watcher, full-text/source fetching, workflow execution, shared authentication, live process connector or accepted Copilot tenant. |
-| Checks, matrix and task/model benchmarks | Reproduce claims/results and exercise selected workflows with failures visible. | Four task adapters, including `tag-reading` / `tag-text-v1` with separate geometry and partial-list modes, raw fixture checks and offline saved-answer reports. Selected facts, fixed labels and tag coverage do not grade arbitrary engineering meaning or company asset identity. See the [task scope](../benchmarks/README.md#current-reproducible-tasks); these are not a whole-toolkit completion percentage or general model ranking. |
-
-## Demonstrations are a separate track
-
-The [TE/OPEN100 comparison](DELIVERABLES.md) includes screens, recorded replay, tours and isolation mockups.
-The gateway builder is TE-specific; PI staging has never been imported here. Proposed 3D geometry, keyword
-hazards and isolation views are not installed geometry, hazard analysis or operating procedures. Replay does not
-make commands drive a physical process simulation. The Docker package remains a historical demonstration.
-
-## Company handoff: external responsibilities and missing adapters
-
-Use the [acceptance exercise](ACCEPTANCE.md) for concrete tests, records and failure cases. It is prepared;
-actual participant, recipient, native-system and tenant observations remain **not run**.
-
-| Workstream owner | Remaining work | Completion evidence |
-|---|---|---|
-| **Questions agent** | N065 useful source-backed questions, N082 remaining catalog source adequacy and independent engineering source/key acceptance for N086. Fifty rules/124 request bundles are inventoried; 14 rules have bounded collection reviews and 36 still await original-source adequacy review. | Prospective expected/unacceptable questions across applicable source families, followed by engineer/recipient usefulness observations. The scoped MGPI recipe is development evidence; default MGPI still produces zero findings. |
-| **Evaluation agent** | N086 original-source/key engineering acceptance and Native placement gaps, the matrix's existing failures, unfamiliar-source coverage, scorer limits, optional original-source skips and five missing historical prediction tables. | Matched reproducible experiments with fixed criteria, retained failures, exposure/split labels and independent source/key review. More files or rerunning development inputs is not generalization. |
-| **Context/retrieval agent** | Keep the local refresh/review/restart contract bounded and test receiving projections, including changed or removed identifiers and complete history. | Source-change and full readback controls retaining history; company service behavior needs its own acceptance. |
-| **Integration agent** | N062 real engineer/recipient pilot; N063 authorized company import/readback, client permissions and subsequent revision. | Actual observations from the [acceptance exercise](ACCEPTANCE.md), not an agent simulation. Native PI/gateway acceptance and operational benefit remain unverified. |
-
-The company retains authority over accepted context, access, controlled documents, work execution and ownership.
-Generic inverse graph conversion, live incumbent connectors, automatic managed-section merging and company
-synchronization are not implemented services. Typed JSON/CSV/graph exports exist; an OKF export remains an
-assessed additional format, with no Google import acceptance. Choose these adapters only for a demonstrated job.
-No permitted IT/OT route means disconnected work or an approved released snapshot, not a new port or tunnel.
-
-## Recommended order of work
-
-1. Use the independently reviewed repair examples as a baseline, retaining their original failing probes.
-2. Audit the remaining collection/source contracts and evaluate useful questions before adding catalog breadth.
-3. Run one real engineer/recipient investigation and one authorized receiving-system readback when available.
-4. Improve corpus failures through matched source-informed experiments; reserve unfamiliar inputs before tuning.
-5. Add only the connector or projection needed by that investigation, and test its next revision and permissions.
-
-Every active audit item and non-rejected unfinished research idea has an assigned agent workstream. Queued
-research, intentional tool boundaries and external acceptance are not silently counted as completed features.
-
-## How this audit was checked
-
-The current 95-cell matrix records **64 pass / 23 fail / 8 n/a**. After explicit source capture was added, the
-13 Native-default cells that depend on the XML reader were actually rerun. Their substantive results remain
-exact; only the frozen timing fields, reader binding and conservative static source-backend dependency change.
-The other 82 complete cell objects stay exact. The static dependency is not evidence of Source-enabled execution.
-Criteria, source/key inputs and historical failures are retained; no binding is backfilled. These failures remain
-research work, not failing unit tests.
-All **71/71 local test scripts exit zero**, with six Windows unittest case skips, three platform notices and
-zero additional skipped-check notices. Those counts are distinct; the handoff's unavailable native-symlink
-subcheck is a platform notice without a skipped unittest case. This is not a complete runtime pass. Targeted CLI
-controls, source-preservation checks, full-value reproductions and independent cross-reviews support the bounded repairs.
-
-The publication check matches 41 numerical claims and identifies one prose-only claim; all 52 configured pipeline
-stages are fresh. Five current benchmark suites reproduce. Re-scoring saved predictions reproduces 30 tables
-(23 MATCH, seven MATCH-OLD); five historical tables still report GAP. These checks do not rerun commercial models.
-An initial clean Linux CI run caught two collection-declaration defects after the local suite passed. The
-follow-up separates an absent selected collection from committed siblings and binds exactly the TE files its
-consumer reads. Partial-present and strict missing-input checks remain. The matrix was actually rerun after
-this correction; [the journal](JOURNAL.md#116-correct-collection-boundaries-after-clean-ci-refuses-the-first-repair-candidate)
-retains the failed candidate and follow-up evidence.
-
-No model calls, new original-source downloads, company/plant imports or live gateway were exercised.
-
-## Earlier repairs and their scope
-
-The [journal](JOURNAL.md) preserves the earlier source-output collision repairs, appearance/source-locator
-preservation, field accounting, collection-basis controls and report-interpretation corrections. The
-[attempt ledger](TRIED.md) retains tried methods and open work; [RESULTS.md](RESULTS.md) retains numerical
-research evidence. Historical records and failed attempts remain available rather than being replaced by a
-passing follow-up.
+</details>

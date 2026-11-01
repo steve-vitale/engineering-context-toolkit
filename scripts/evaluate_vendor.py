@@ -264,7 +264,7 @@ def evaluate(keys_dir, pred_dirs, sheets=None, name="vendor", source_paths=None)
             if status == "ok":
                 try:
                     score_sheet(keys_dir, s, pred)
-                except (AttributeError, KeyError, TypeError, ValueError) as e:  # malformed entries inside the lists
+                except (AttributeError, KeyError, TypeError, ValueError, OverflowError) as e:  # malformed entries inside the lists
                     pred, status, note = None, "failed", f"the scorer could not read it: {type(e).__name__}: {e}"[:160]
             if status == "ok" and note:
                 models.add(note)

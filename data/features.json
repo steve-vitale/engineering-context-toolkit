@@ -753,7 +753,9 @@
     "benchmarks/tag-reading/fixtures/dexpi/dexpi-c08a.png",
     "benchmarks/tag-reading/fixtures/dexpi/dexpi-c08a.taglist.json",
     "benchmarks/tag-reading/fixtures/dexpi/dexpi-c08b.png",
-    "benchmarks/tag-reading/fixtures/dexpi/dexpi-c08b.taglist.json"
+    "benchmarks/tag-reading/fixtures/dexpi/dexpi-c08b.taglist.json",
+    "benchmarks/results/open100-validation-overflow-guard.json",
+    "benchmarks/results/open100-validation-overflow-guard.md"
    ],
    "tests": [
     "scripts/test_benchmark.py",
