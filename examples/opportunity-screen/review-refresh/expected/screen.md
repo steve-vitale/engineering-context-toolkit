@@ -29,56 +29,56 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 
 ## Energy
 
-### E29: Does this refrigeration compressor carry part load on its slide valve (or hot gas bypass) with no speed control?
+### E29: What records support this refrigeration compressor's part-load control, sequencing and real-input basis?
 
 **About:** K-201  
 
 **Finding reference (JSON string):** `"E29@K-201"`
-**Asset IDs (JSON array):** `["K-201"]`
+**Asset IDs (JSON array):** `["K-201", "PT-201"]`
 
 **Evidence on the drawing / model**
 
 - equipment K-201 reads "K-201 Ammonia (R-717) screw compressor, low stage (booster)" (`units[K-201]`)
-- Checked, none found: no variable speed drive or speed controller drawn on this compressor (`applies_when.without`)
+- Compressor pressure indication candidate: instrument PT-201 reads "PT-201 Low-stage suction pressure" at K-201 (`instruments[PT-201]`)
 
 **Data to collect**
 
-- Slide valve (capacity) position over normal operation [not on drawing]. Where: DCS/PLC configuration: slide valve position or percent capacity per compressor from the refrigeration plant controls, a month or more. How: Hours spent below full load, by load band.
-- Compressor power and run hours [not on drawing]. Where: a walkdown: power logger on the compressor motor across a normal week. How: Power at each load band, so part-load efficiency can be seen.
-- How the compressors are sequenced [not on drawing]. Where: DCS/PLC configuration: which compressor trims, and the order and pressures at which they load and unload. How: Note whether more than one machine trims at the same time.
+- Capacity-control mode and representative load for this compressor [not on drawing]. Where: DCS/PLC configuration: existing identified compressor configuration and active/fallback mode, slide-valve or bypass function, revision and responsible owner; then site records: permitted load/capacity histories with machine identity, period and coincident suction/demand conditions. How: Retain labels and enabled/disabled/unknown qualifiers as candidates. Establish actual function and a representative operating basis; a nameplate or drive label does not establish part-load behavior.
+- Representative real input power on the same operating basis [not on drawing]. Where: site records: approved existing electrical-input and run/load observations with quantity, units, time and conversion basis; then the vendor datasheet: applicable compressor/drive limits and part-load performance basis. How: Compare suitable coincident input and load records. Separate ratings, electrical indications and near-full-load conditions from actual representative real input; request missing evidence without inventing a value or authorizing measurements.
+- Actual sequencing, served group and applicable supplier constraints [not on drawing]. Where: DCS/PLC configuration: existing reviewed sequence/trim logic, machine-to-suction-group association, active overrides and revision; then site records: permitted operating/event records showing which machines actually trim under comparable conditions; then the vendor datasheet: applicable supplier constraints and responsible engineering review route. How: A sequencer label alone does not establish active operation or complete group coverage. Return a qualified partial answer or missing-evidence request to the responsible reviewer.
 
-**How it is decided:** Worth a look when screws spend long hours part-loaded on the slide valve while another could be off, or when no machine on a suction level has speed control to trim. Close it if each runs near full load or a sequencer already keeps one machine trimming.
+**How it is decided:** Investigate missing or conflicting source/function/operating evidence for each named machine. A drive or sequencing label does not settle efficiency, and the source describes load-dependent tradeoffs. Close only the source investigation after qualified evidence review; no drive change, operating instruction or savings estimate follows.
 
 **What the source says (S25):** Among control strategies that "may compromise system energy efficiency" (S25, p. 59, citing Pearson 2003): "Slide valve unloading of oversized screw compressors." and "Hot gas bypass of compressors." Speed control (S25, p. 63): "ASDs used on compressors below a part-load ratio of about 95% will deliver performance equal to a fixed speed compressor but with lower electricity requirements. However, at near full (i.e., 100%) load, ASDs are approximately 3% less efficient than fixed speed drives".
 
-**Limits:** A drive or sequencing change goes through the compressor vendor (minimum speed, oil management, vibration). Fires only where the equipment's own name, type or service names the refrigerant (ammonia, NH3, R-717, a refrigerant number) or says refrigeration; an air compressor, a process recycle compressor, a process condenser on cooling water or a power-plant air-cooled condenser does not.
+**Limits:** This is an authored per-machine collection policy informed by S25 printed pp.59,62,63, not a quoted design requirement or installed-state diagnosis. Labels and literal facts remain unverified candidates; review actual association, operating conditions and supplier constraints. No fixed observation duration or operating limit is inferred. A drive or sequencing change goes through the compressor vendor (minimum speed, oil management, vibration). Fires only where the equipment's own name, type or service names the refrigerant (ammonia, NH3, R-717, a refrigerant number) or says refrigeration; an air compressor, a process recycle compressor, a process condenser on cooling water or a power-plant air-cooled condenser does not.
 
-### E29: Does this refrigeration compressor carry part load on its slide valve (or hot gas bypass) with no speed control?
+### E29: What records support this refrigeration compressor's part-load control, sequencing and real-input basis?
 
 **About:** K-202  
 
 **Finding reference (JSON string):** `"E29@K-202"`
-**Asset IDs (JSON array):** `["K-202", "ZT-202"]`
+**Asset IDs (JSON array):** `["K-202", "ZT-202", "PT-202"]`
 
 **Evidence on the drawing / model**
 
 - equipment K-202 reads "K-202 Ammonia (R-717) screw compressor, high stage" (`units[K-202]`)
 - Capacity control: instrument ZT-202 reads "ZT-202 Slide valve (capacity) position" at K-202 (`instruments[ZT-202]`)
-- Checked, none found: no variable speed drive or speed controller drawn on this compressor (`applies_when.without`)
+- Compressor pressure indication candidate: instrument PT-202 reads "PT-202 High-stage suction pressure" at K-202 (`instruments[PT-202]`)
 
 **Data to collect**
 
-- Slide valve (capacity) position over normal operation [not on drawing]. Where: historian or DCS trend for ZT-202 (no historian tag is mapped in this model for these); then DCS/PLC configuration: slide valve position or percent capacity per compressor from the refrigeration plant controls, a month or more. How: Hours spent below full load, by load band.
-- Compressor power and run hours [not on drawing]. Where: a walkdown: power logger on the compressor motor across a normal week. How: Power at each load band, so part-load efficiency can be seen.
-- How the compressors are sequenced [not on drawing]. Where: DCS/PLC configuration: which compressor trims, and the order and pressures at which they load and unload. How: Note whether more than one machine trims at the same time.
+- Capacity-control mode and representative load for this compressor [not on drawing]. Where: DCS/PLC configuration: existing identified compressor configuration and active/fallback mode, slide-valve or bypass function, revision and responsible owner; then site records: permitted load/capacity histories with machine identity, period and coincident suction/demand conditions. How: Retain labels and enabled/disabled/unknown qualifiers as candidates. Establish actual function and a representative operating basis; a nameplate or drive label does not establish part-load behavior.
+- Representative real input power on the same operating basis [not on drawing]. Where: site records: approved existing electrical-input and run/load observations with quantity, units, time and conversion basis; then the vendor datasheet: applicable compressor/drive limits and part-load performance basis. How: Compare suitable coincident input and load records. Separate ratings, electrical indications and near-full-load conditions from actual representative real input; request missing evidence without inventing a value or authorizing measurements.
+- Actual sequencing, served group and applicable supplier constraints [not on drawing]. Where: DCS/PLC configuration: existing reviewed sequence/trim logic, machine-to-suction-group association, active overrides and revision; then site records: permitted operating/event records showing which machines actually trim under comparable conditions; then the vendor datasheet: applicable supplier constraints and responsible engineering review route. How: A sequencer label alone does not establish active operation or complete group coverage. Return a qualified partial answer or missing-evidence request to the responsible reviewer.
 
-**How it is decided:** Worth a look when screws spend long hours part-loaded on the slide valve while another could be off, or when no machine on a suction level has speed control to trim. Close it if each runs near full load or a sequencer already keeps one machine trimming.
+**How it is decided:** Investigate missing or conflicting source/function/operating evidence for each named machine. A drive or sequencing label does not settle efficiency, and the source describes load-dependent tradeoffs. Close only the source investigation after qualified evidence review; no drive change, operating instruction or savings estimate follows.
 
 **What the source says (S25):** Among control strategies that "may compromise system energy efficiency" (S25, p. 59, citing Pearson 2003): "Slide valve unloading of oversized screw compressors." and "Hot gas bypass of compressors." Speed control (S25, p. 63): "ASDs used on compressors below a part-load ratio of about 95% will deliver performance equal to a fixed speed compressor but with lower electricity requirements. However, at near full (i.e., 100%) load, ASDs are approximately 3% less efficient than fixed speed drives".
 
-**Limits:** A drive or sequencing change goes through the compressor vendor (minimum speed, oil management, vibration). Fires only where the equipment's own name, type or service names the refrigerant (ammonia, NH3, R-717, a refrigerant number) or says refrigeration; an air compressor, a process recycle compressor, a process condenser on cooling water or a power-plant air-cooled condenser does not.
+**Limits:** This is an authored per-machine collection policy informed by S25 printed pp.59,62,63, not a quoted design requirement or installed-state diagnosis. Labels and literal facts remain unverified candidates; review actual association, operating conditions and supplier constraints. No fixed observation duration or operating limit is inferred. A drive or sequencing change goes through the compressor vendor (minimum speed, oil management, vibration). Fires only where the equipment's own name, type or service names the refrigerant (ammonia, NH3, R-717, a refrigerant number) or says refrigeration; an air compressor, a process recycle compressor, a process condenser on cooling water or a power-plant air-cooled condenser does not.
 
-### E29: Does this refrigeration compressor carry part load on its slide valve (or hot gas bypass) with no speed control?
+### E29: What records support this refrigeration compressor's part-load control, sequencing and real-input basis?
 
 **About:** K-203  
 
@@ -88,19 +88,18 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 **Evidence on the drawing / model**
 
 - equipment K-203 reads "K-203 Ammonia (R-717) screw compressor, high stage (trim)" (`units[K-203]`)
-- Checked, none found: no variable speed drive or speed controller drawn on this compressor (`applies_when.without`)
 
 **Data to collect**
 
-- Slide valve (capacity) position over normal operation [not on drawing]. Where: DCS/PLC configuration: slide valve position or percent capacity per compressor from the refrigeration plant controls, a month or more. How: Hours spent below full load, by load band.
-- Compressor power and run hours [not on drawing]. Where: a walkdown: power logger on the compressor motor across a normal week. How: Power at each load band, so part-load efficiency can be seen.
-- How the compressors are sequenced [not on drawing]. Where: DCS/PLC configuration: which compressor trims, and the order and pressures at which they load and unload. How: Note whether more than one machine trims at the same time.
+- Capacity-control mode and representative load for this compressor [not on drawing]. Where: DCS/PLC configuration: existing identified compressor configuration and active/fallback mode, slide-valve or bypass function, revision and responsible owner; then site records: permitted load/capacity histories with machine identity, period and coincident suction/demand conditions. How: Retain labels and enabled/disabled/unknown qualifiers as candidates. Establish actual function and a representative operating basis; a nameplate or drive label does not establish part-load behavior.
+- Representative real input power on the same operating basis [not on drawing]. Where: site records: approved existing electrical-input and run/load observations with quantity, units, time and conversion basis; then the vendor datasheet: applicable compressor/drive limits and part-load performance basis. How: Compare suitable coincident input and load records. Separate ratings, electrical indications and near-full-load conditions from actual representative real input; request missing evidence without inventing a value or authorizing measurements.
+- Actual sequencing, served group and applicable supplier constraints [not on drawing]. Where: DCS/PLC configuration: existing reviewed sequence/trim logic, machine-to-suction-group association, active overrides and revision; then site records: permitted operating/event records showing which machines actually trim under comparable conditions; then the vendor datasheet: applicable supplier constraints and responsible engineering review route. How: A sequencer label alone does not establish active operation or complete group coverage. Return a qualified partial answer or missing-evidence request to the responsible reviewer.
 
-**How it is decided:** Worth a look when screws spend long hours part-loaded on the slide valve while another could be off, or when no machine on a suction level has speed control to trim. Close it if each runs near full load or a sequencer already keeps one machine trimming.
+**How it is decided:** Investigate missing or conflicting source/function/operating evidence for each named machine. A drive or sequencing label does not settle efficiency, and the source describes load-dependent tradeoffs. Close only the source investigation after qualified evidence review; no drive change, operating instruction or savings estimate follows.
 
 **What the source says (S25):** Among control strategies that "may compromise system energy efficiency" (S25, p. 59, citing Pearson 2003): "Slide valve unloading of oversized screw compressors." and "Hot gas bypass of compressors." Speed control (S25, p. 63): "ASDs used on compressors below a part-load ratio of about 95% will deliver performance equal to a fixed speed compressor but with lower electricity requirements. However, at near full (i.e., 100%) load, ASDs are approximately 3% less efficient than fixed speed drives".
 
-**Limits:** A drive or sequencing change goes through the compressor vendor (minimum speed, oil management, vibration). Fires only where the equipment's own name, type or service names the refrigerant (ammonia, NH3, R-717, a refrigerant number) or says refrigeration; an air compressor, a process recycle compressor, a process condenser on cooling water or a power-plant air-cooled condenser does not.
+**Limits:** This is an authored per-machine collection policy informed by S25 printed pp.59,62,63, not a quoted design requirement or installed-state diagnosis. Labels and literal facts remain unverified candidates; review actual association, operating conditions and supplier constraints. No fixed observation duration or operating limit is inferred. A drive or sequencing change goes through the compressor vendor (minimum speed, oil management, vibration). Fires only where the equipment's own name, type or service names the refrigerant (ammonia, NH3, R-717, a refrigerant number) or says refrigeration; an air compressor, a process recycle compressor, a process condenser on cooling water or a power-plant air-cooled condenser does not.
 
 ### E31: Does this oven, dryer or fryer send its hot exhaust to atmosphere with no heat recovery on it?
 

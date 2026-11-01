@@ -1,5 +1,9 @@
 # Twin outputs: from extracted sheets to a digital twin starter kit
 
+**Research reference and assembled OPEN100 example.** This multi-model recipe shows hierarchy, fitted review
+tiers and exports on its public case. Start the [own-P&ID tutorial](../examples/own-drawing/README.md) to build
+your own draft model and unranked review bundle, then add reviewed identities, process records and connections.
+
 `scripts/build_twin.py` turns a set of extracted sheets into a package a plant could load. Extraction gives a flat
 list of symbols and links per sheet. The converter adds the structure a twin needs: a site/system/equipment
 hierarchy, cross-sheet links, platform import files and a review queue. The converter includes OPEN100-shaped tag/off-page parsing and confidence assumptions; new sites need an adapter and validation. Every decision
@@ -10,8 +14,8 @@ records the method it used, and every item starts as `unverified`.
 ```
 python scripts/build_twin.py --label round1-v2-named-fields --sheets 0,1,2,3,4,5 --score
 ```
-The label names a folder of your own extraction runs under `runs/` (gitignored). Use the label from README tutorial
-step 5.
+The label names a folder of extraction runs under `runs/` (gitignored). This CLI retains the source-specific
+assumptions and development guards below; the own-drawing tutorial uses the reusable intake wrapper.
 
 - `--label` takes a run label (every tool folder under `runs/<label>/`) or one tool folder
   (`runs/round1-v2-named-fields/claude/`).

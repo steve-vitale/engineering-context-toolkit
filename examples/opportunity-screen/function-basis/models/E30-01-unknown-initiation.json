@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "model_id": "E30-01-unknown-initiation",
+    "title": "ILLUSTRATIVE source-adequacy counterexample",
+    "illustrative": true,
+    "not_a_drawing_of_record": "Synthetic authored source-adequacy control; not a plant/drawing/measurement or source-derived topology."
+  },
+  "units": [
+    {
+      "id": "EV-A",
+      "name": "Ammonia freezer evaporator A hot gas defrost",
+      "type": "evaporator",
+      "source": "Synthetic authored source-adequacy control; not a plant/drawing/measurement or source-derived topology."
+    },
+    {
+      "id": "EV-B",
+      "name": "Ammonia freezer evaporator B hot gas defrost",
+      "type": "evaporator",
+      "source": "Synthetic authored source-adequacy control; not a plant/drawing/measurement or source-derived topology."
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "final_elements": [],
+  "manual_valves": [],
+  "controllers": []
+}

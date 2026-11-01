@@ -8,7 +8,9 @@ The Process note changes its draft pressure basis from `200 kPa` to `220 kPa`. C
 that cites it; an independently sourced loop answer stays current in this source-only example. Neither version
 establishes an installed setting or authorizes a plant change.
 
-Read the [worked change review](worked/CHANGE-REVIEW.md), then the [receiving brief](worked/HANDOFF.md).
+Start with [who needs to revisit what](../../docs/TEAM_CONTEXT_IMPACT.md): two source-dependent answers reopen while three independent
+answers retain their status. Then inspect the [worked change review](worked/CHANGE-REVIEW.md) and
+[receiving brief](worked/HANDOFF.md).
 The packet retains exact original notes, authored graphs/questions, source versions, selected snapshots, disputes
 and full decision/owner histories. Every person, mapping review, source and decision here is invented. Local
 source acceptance grants no company authority; no real recipient or operating plant has accepted the result.

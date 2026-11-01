@@ -22,9 +22,11 @@ Read `out/millard-first-question/screen.md` alongside the brief. The committed [
 [question JSON](screen/questions.json) show the same result: `E30@EVAP-GROUP`, its two exact asset references and
 three collection requests. Only E30 was selected. Other questions and safety functions have not been screened.
 
-The engine finds a modeled evaporator and defrost valve without a modeled demand-initiation device. Its
-"none found" statement applies to this incomplete subset. It does not prove fixed-timer operation or a missing
-plant instrument. No historian signal is mapped. The energy question does not assess the incident's control logic.
+The current E30 rule retains the modeled evaporator and defrost valve as candidates and asks for applicability,
+actual initiation, termination and event evidence. The incomplete subset establishes neither fixed-timer
+operation nor active demand defrost. No historian signal is mapped. The energy question does not assess the
+incident's control logic. The brief retains its explicitly pinned historical catalog revision; keep it as a
+record of that investigation, alongside the current regenerated screen and selected catalog.
 
 ## Inspect the original
 

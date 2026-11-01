@@ -295,6 +295,84 @@ class KnowledgeControls(unittest.TestCase):
         self.assertEqual(packet.get_onboarding_record('practice:first-note')['result']['diagnostics']['dependency_reasons'][0]['path'],
                          ['practice:first-note', 'claim:selected-label'])
 
+    def nonlanding_response_budget_case(self):
+        """Keep ordinary complete responses admissible while only one term body grows."""
+        encode = lambda value: json.dumps(value, ensure_ascii=False, allow_nan=False,
+                                          separators=(',', ':')).encode('utf-8')
+        normal = self.load()
+        value = self.packet()
+        ordinary = [normal.onboarding_overview(), normal.list_onboarding_records(limit=1)]
+        ordinary.extend(normal.get_onboarding_record(r['id']) for r in value['records'])
+        budget = max(len(encode(response)) for response in ordinary)
+        term = next(r for r in value['records'] if r['id'] == 'term:revision')
+        term['data']['definition'] = 'x' * (budget + 1)
+        return value, budget, encode
+
+    def test_constructor_admits_every_full_get_before_exposing_small_views(self):
+        value, budget, encode = self.nonlanding_response_budget_case()
+        with patch.object(knowledge, 'MAX_RESPONSE_BYTES', budget):
+            self.load()  # The derived budget admits every ordinary complete response.
+        enlarged = self.load(value)  # Still well inside the normal production limit.
+        self.assertLessEqual(len(encode(enlarged.onboarding_overview())), budget)
+        self.assertLessEqual(len(encode(enlarged.list_onboarding_records(limit=1))), budget)
+        self.assertGreater(len(encode(enlarged.get_onboarding_record('term:revision'))), budget)
+        with patch.object(knowledge, 'MAX_RESPONSE_BYTES', budget):
+            self.assert_error(lambda: self.load(value), 'result_too_large', 'result_too_large', None)
+
+    def test_late_packet_and_companion_errors_precede_full_get_budget(self):
+        oversized, budget, _ = self.nonlanding_response_budget_case()
+        late_fk = copy.deepcopy(oversized)
+        late_fk['records'][-1]['owner_roles'] = ['role:missing']
+        late_fk_path = '/records/' + str(len(late_fk['records']) - 1) + '/owner_roles/0'
+        late_profile = copy.deepcopy(oversized)
+        source = copy.deepcopy(next(r for r in self.packet('C')['records']
+                                    if r['id'] == 'source:unknown-reference'))
+        source['data']['capture_sha256'] = 'a' * 64
+        late_profile['records'].append(source)
+        profile_path = '/records/' + str(len(late_profile['records']) - 1) + '/data/capture_sha256'
+        companion = copy.deepcopy(oversized)
+        companion['companion_bindings'] = {'graph': {'schema': 'twin-graph-1', 'raw_sha256': '0' * 64}}
+        cases = [('late FK', late_fk, 'invalid_packet', 'unknown_reference', late_fk_path),
+                 ('late source profile', late_profile, 'invalid_packet', 'source_profile_mismatch', profile_path),
+                 ('missing companion', companion, 'invalid_selection', 'missing_required_companion', None)]
+        with patch.object(knowledge, 'MAX_RESPONSE_BYTES', budget):
+            for label, value, code, reason, path in cases:
+                with self.subTest(label=label):
+                    self.assert_error(lambda: self.load(value), code, reason, path)
+
+    def test_nested_diagnostic_returns_are_isolated_across_reversed_gets(self):
+        value = self.packet('C')
+        value['selected_sources']['ENG-RESULT-17'] = 'source:result-B'
+        workflow = next(r for r in value['records'] if r['id'] == 'workflow:source-reconciliation')
+        workflow['depends_on'].append('claim:unknown-reference')
+        snapshot = self.load(value)
+        encode = lambda response: json.dumps(response, ensure_ascii=False, allow_nan=False,
+                                             separators=(',', ':')).encode('utf-8')
+        ids = [r['id'] for r in value['records']]
+        expected = {rid: encode(snapshot.get_onboarding_record(rid)) for rid in ids}
+        expected_overview = encode(snapshot.onboarding_overview())
+        expected_list = encode(snapshot.list_onboarding_records())
+        returned = snapshot.get_onboarding_record('workflow:source-reconciliation')['result']
+        self.assertEqual(returned['diagnostics']['dependency_state'], 'needs_review')
+        self.assertTrue(returned['diagnostics']['dependency_reasons'])
+        returned['diagnostics']['dependency_reasons'][0]['path'].append('invented return only')
+        returned['diagnostics']['basis_reasons'].append({'invented': True})
+        claim = snapshot.get_onboarding_record('claim:unknown-reference')['result']
+        self.assertEqual(claim['diagnostics']['basis_state'], 'unknown')
+        self.assertTrue(claim['record']['evidence'])
+        claim['record']['evidence'].clear()
+        claim['diagnostics']['evidence'].clear()
+        claim['diagnostics']['basis_reasons'].clear()
+        source = snapshot.get_onboarding_record('source:unknown-reference')['result']
+        source['diagnostics']['source_capture']['original_verified'] = True
+        snapshot.onboarding_overview()['result']['landing_diagnostics']['basis_reasons'].append({'invented': True})
+        for order in (list(reversed(ids)), ids):
+            for rid in order:
+                with self.subTest(record=rid):
+                    self.assertEqual(encode(snapshot.get_onboarding_record(rid)), expected[rid])
+            self.assertEqual(encode(snapshot.onboarding_overview()), expected_overview)
+            self.assertEqual(encode(snapshot.list_onboarding_records()), expected_list)
+
     def test_order_record_duplicate_yields_to_later_local(self):
         with self.assertRaises(knowledge.OnboardingError) as raised:
             knowledge.KnowledgeSnapshot(EXAMPLE / 'controls/ORDER-RECORD-BEFORE-LATE-LOCAL.json')

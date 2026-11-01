@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "model_id": "C11-03-product-moisture-role",
+    "title": "ILLUSTRATIVE source-adequacy counterexample",
+    "illustrative": true,
+    "not_a_drawing_of_record": "Synthetic authored source-adequacy control; not a plant/drawing/measurement or source-derived topology."
+  },
+  "units": [
+    {
+      "id": "D-A",
+      "name": "Continuous product dryer A",
+      "type": "dryer",
+      "source": "Synthetic authored source-adequacy control; not a plant/drawing/measurement or source-derived topology."
+    },
+    {
+      "id": "D-B",
+      "name": "Continuous product dryer B",
+      "type": "dryer",
+      "source": "Synthetic authored source-adequacy control; not a plant/drawing/measurement or source-derived topology."
+    }
+  ],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "MT-A",
+      "unit": "D-A",
+      "variable": "composition",
+      "description": "Product outlet moisture measurement; not exhaust humidity"
+    }
+  ],
+  "final_elements": [],
+  "manual_valves": [],
+  "controllers": []
+}

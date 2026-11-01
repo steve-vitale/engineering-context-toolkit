@@ -20,11 +20,12 @@ after the named behavior checks pass; the default only checks them.
 | Fictional decision | Observable change in the next screen |
 |---|---|
 | Reject power meter JT-201 | JT-201 disappears from C12 candidate evidence. K-201 remains in the question before and after rejection because actual real-input suitability stays open even with a supplied power reading. |
-| Reject speed drive SC-203 | E29 asks about K-203's part-load control. |
+| Reject speed drive SC-203 | E29 retains K-203's function/part-load investigation before and after review; SC-203 disappears as a candidate. A drive label never settled actual function. |
 | Reject recovery exchanger HX-303 | E31 and H6 ask about the fryer's exhaust and potential heat use. |
 
 The [generated screen](expected/screen.md) and [question JSON](expected/questions.json) run only C12, E29, E31
-and H6. The unchanged source model retains the original purpose of its drawn quiet controls; current C12 instead keeps the real-input basis open. Repeating the same review changes no model bytes.
+and H6. The unchanged source model retains the original purpose of its drawn quiet controls; current C12 and E29
+keep the real-input/function basis open. Repeating the same review changes no model bytes.
 A later explicit confirmation of the three invented items restores the original questions and retains the
 intermediate rejected decisions in model history. Confirmation in this control is not proof of plant truth.
 

@@ -1,24 +1,24 @@
 # From a written description: sourced model, questions and optional outputs
 
-**Start with a description, use an approved assistant to author a draft, then check and build it locally.**
-The [description workflow](../../scripts/description_workflow.py) prepares the source packet and answer contract,
-checks the returned model/layout and produces the connected review bundle. It calls no model API. Interpretation
-and detailed drafting geometry are authored by the engineer or assistant; neither is automatically inferred by
-the renderer. The [connection map](../../README.md#what-connects-today-the-hub-and-spokes) shows the other routes.
+**Reusable tools with a worked tutorial.** Use your process description to build a source-linked draft model
+and P&ID bundle: prepare the text, have an engineer or approved assistant author the model/layout, then check
+and generate it locally. The [description workflow](../../scripts/description_workflow.py) writes draft sheets,
+asset/export files, questions, a graph and interpretation-review material from the checked answer.
 
-**Why it matters:** A unit may have procedures and design notes but no usable drawing. A model with a source on every item supports draft asset lists, logical SVGs and platform staging. It makes the interpretation checkable; agreement with the actual plant still needs independent evidence and engineering review.
+This is a route to your plant's draft digital-twin structure when procedures, a design basis, a report or PFD
+notes contain the process knowledge. The tools generate from the authored model; interpretation and detailed
+drafting geometry are engineering/assistant inputs rather than automatically inferred by the renderer. Source
+citations make that interpretation inspectable, and engineering review establishes what the records support.
 
-When there's no usable drawing but there is a description (an operating procedure, a design basis, an
-investigation report, a PFD with notes), write a process model with a source on every item and check it against
-something it wasn't written from. Use that model for a first engineering question or generate the draft outputs
-the work needs. This repository built two such models: the Tennessee Eastman process from its published paper
-and simulator code, and the Bayer CropScience residue treater from the CSB's investigation report. The commands
-below use the Bayer model.
+The first tutorial uses a fictional pump/tank description and a supplied answer so you can build it offline.
+Then follow [Use your own description](#use-your-own-description-with-an-approved-assistant) to substitute your
+permitted text and authored response. Later sections retain the Bayer public-report case and standalone model
+commands; the TE model is another case built from published process knowledge.
 
-Begin with one useful question and an intended recipient. If the question only needs a clarification of the
-source text, use the [plain question brief](../first-pilot/pilot-brief.md) without creating a model. Build a model
-when the investigation needs asset identities or relationships. A first evidence packet does not require a new
-drawing or platform import.
+Build only the artifacts your job needs. If a source clarification needs no asset relationships, use the
+[plain brief](../first-pilot/pilot-brief.md). If it needs a model, review/enrich it and choose the graph, context,
+drawing or platform-staging steps in the [workflow map](../../docs/WORKFLOWS.md). Signal mapping and target-system
+readback supply the next evidence for a connected application.
 
 ## Try the connected route offline
 

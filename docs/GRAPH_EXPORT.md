@@ -1,7 +1,9 @@
 # The twin graph export (twin-graph-1)
 
-`scripts/graph_export.py` writes any plant model this repository produces as one JSON graph that an asset register,
-a graph database or a change-management system can load without knowing this repository. Examples:
+`scripts/graph_export.py` writes supported plant models as a portable, versioned JSON graph. Keep the represented
+assets, relationships and sourced claims together for review or an explicitly implemented receiving adapter.
+The repository's local context and snapshot tools read this format; other asset registers, graph databases and
+change systems need their own mapping, import and acceptance work. Examples:
 [`examples/graph-export/`](../examples/graph-export/) (the Tennessee Eastman model, the Bayer model and the extracted
 OPEN100 sheet 0).
 

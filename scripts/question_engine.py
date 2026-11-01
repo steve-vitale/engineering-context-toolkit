@@ -46,6 +46,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CATALOG = ROOT / "data" / "questions.json"
 SCHEMA = "opportunity-questions-1"
+CANDIDATE_FIELD_ROLE = "supplied candidate field"
 PLACEHOLDER = re.compile(r"^\s*(X+|TBD|TBA|N/?A|unknown|none|-+|\?+)\s*$", re.I)
 CONTROL_VALVE = re.compile(r"^([FLPTH]CV|[FLPTAH]V|PRV)$")
 MEDIA = OrderedDict([
@@ -444,11 +445,13 @@ def from_hand(m):
                           text=" ".join(filter(None, [c["tag"], c.get("description"), spt])),
                           notes=" ".join(filter(None, notes)) or None, unit=c.get("unit"),
                           measurement=c.get("measurement"), outputs=outs, sets=sets, facts={},
+                          evidence_only_facts=dict(c.get("facts") or {}),
                           field=f"controllers[{c['tag']}]"))
     for il in m.get("interlocks", []):
         items.append(Item(id=il["id"], tag=il["id"], kind="interlock", isa=None,
                           text=" ".join(filter(None, [il["id"], il.get("cause"), il.get("effect")])),
                           measurement=il.get("measurement"), outputs=[il.get("final_element")], facts={},
+                          evidence_only_facts=dict(il.get("facts") or {}),
                           field=f"interlocks[{il['id']}]"))
     stream_unit = {i["stream"]: i["unit"] for i in items if i["kind"] == "stream" and i.get("unit")}
     for i in items:
@@ -843,6 +846,25 @@ def render_historian(place, ctx):
 def validate_field_scopes(catalog):
     """Scope is part of a request's contract, independent of finding grouping."""
     for q in catalog["questions"]:
+        if "evidence_show_fields" in q:
+            names = q["evidence_show_fields"]
+            if (not isinstance(names, list) or not names
+                    or any(not isinstance(n, str) or not n.strip() or n != n.strip() for n in names)
+                    or len({n.casefold() for n in names}) != len(names)):
+                raise InputError(f"catalog question {q['id']}: evidence_show_fields must be distinct "
+                                 "nonempty literal field names without surrounding whitespace")
+            try:
+                for name in names:
+                    name.encode("utf-8")
+            except UnicodeError:
+                raise InputError("catalog evidence_show_fields names must be valid UTF-8 text") from None
+            aw = q.get("applies_when", {})
+            roles = [aw.get("anchor_role", "trigger")]
+            for clauses in (aw.get("with", []), aw.get("also_show", [])):
+                roles.extend(clause.get("as", "related") for clause in clauses if isinstance(clause, dict))
+            if CANDIDATE_FIELD_ROLE in roles:
+                raise InputError(f"catalog question {q['id']}: evidence_show_fields reserves the "
+                                 f"{CANDIDATE_FIELD_ROLE!r} role for literal candidate fields")
         for r in q.get("data_requests", []):
             scope = r.get("field_scope", "anchors")
             if scope not in ("anchors", "unit") or ("field_scope" in r and not (r.get("fields") or r.get("show_fields"))):
@@ -957,6 +979,30 @@ def evidence_line(model, it, role):
     return result
 
 
+def candidate_field_evidence(question, items):
+    """Quote only explicitly selected fields of already-shown records; never settle a request."""
+    names = question.get("evidence_show_fields", [])
+    if not names:
+        return []
+    rows = []
+    for it in OrderedDict((it["id"], it) for it in items).values():
+        # Native controller/interlock qualifiers are evidence, not selector facts. Keeping this
+        # carrier separate prevents temperature or other qualifiers from activating unrelated rules.
+        lookup = dict(it, facts=it["evidence_only_facts"]) if "evidence_only_facts" in it else it
+        for name in names:
+            state, value, where = field_state(lookup, name)
+            if state == "absent":
+                continue
+            literal = json.dumps(value, ensure_ascii=False, allow_nan=False)
+            # ASCII JSON can carry escaped lone surrogates. Preserve those as JSON escapes rather
+            # than introduce unencodable codepoints into the new evidence text. Normal Unicode stays exact.
+            literal = literal.encode("utf-8", errors="backslashreplace").decode("utf-8")
+            rows.append({"role": CANDIDATE_FIELD_ROLE, "id": it["id"], "tag": it.get("tag"),
+                         "text": f"{it.label()} {name} = {literal}; {state}; meaning and suitability unverified",
+                         "field": where})
+    return rows
+
+
 def service_reconciliation_text(resolution):
     candidates = "; ".join(f"{r['file']} row {r['row']}: {json.dumps(r['service'], ensure_ascii=False)}"
                            for r in resolution["candidates"])
@@ -1044,6 +1090,7 @@ def run_question(model, q, catalog):
         ev = [evidence_line(model, a, aw.get("anchor_role", "trigger")) for a in anchors]
         for r, its in roles.items():
             ev += [evidence_line(model, i, r) for i in its if i["id"] not in {a["id"] for a in anchors}]
+        ev += candidate_field_evidence(q, anchors + [it for its in roles.values() for it in its])
         if aw.get("absent_note"):
             ev.append({"role": "checked, none found", "text": aw["absent_note"], "field": "applies_when.without"})
         if model.twin and any(cl.get("relation") in ("discharge_side", "near") for cl in aw.get("with", [])):
@@ -1182,6 +1229,7 @@ def _markdown_json(value):
 
 
 def render_md(model, catalog, doc):
+    candidate_questions = {q["id"] for q in catalog.get("questions", []) if q.get("evidence_show_fields")}
     title = (f"extracted drawing set, {len(model.m.get('systems', []))} sheets" if model.twin
              else model.m.get("meta", {}).get("title", doc["source_model"]))
     L = [f"# Opportunity screen: {title}", "",
@@ -1229,7 +1277,9 @@ def render_md(model, catalog, doc):
                   "**Finding reference (JSON string):** " + _markdown_json(f["id"]),
                   "**Asset IDs (JSON array):** " + _markdown_json([a["id"] for a in f["assets"]]), "",
                   "**Evidence on the drawing / model**", ""]
-            L += [f"- Caveat: {e['text']}" if e["role"] == "caveat" else
+            L += [f"- {e['role'].capitalize()}: {_markdown_json(e['text'])} ({_markdown_json(e['field'])})"
+                  if f["question_id"] in candidate_questions and e["role"] == CANDIDATE_FIELD_ROLE else
+                  f"- Caveat: {e['text']}" if e["role"] == "caveat" else
                   f"- {'' if e['role'] == 'trigger' else e['role'].capitalize() + ': '}{e['text']} (`{e['field']}`)"
                   for e in f["evidence"]]
             L += ["", "**Data to collect**", ""]

@@ -4,7 +4,7 @@
 
 | Site | Screen | Model | Findings |
 |---|---|---|---|
-| food | `examples/opportunity-screen/food/questions.json` | `examples/opportunity-screen/food_plant_model.json` | 24 |
+| food | `examples/opportunity-screen/food/questions.json` | `examples/opportunity-screen/food_plant_model.json` | 26 |
 | bayer | `examples/opportunity-screen/bayer/questions.json` | `data/bayer_rt/process_model.json` | 12 |
 
 | Question | Family | Sites | Findings |
@@ -13,12 +13,13 @@
 | C2: Which measurements have no controller (read by people, or by nothing)? | Controls and automation | food, bayer | 2 |
 | C3: Do these control valves lack position feedback? | Controls and automation | food, bayer | 2 |
 | C9: What source-labelled trip or interlock records apply to each rotating or fired machine, and what remains unverified? | Safety questions to verify | food, bayer | 2 |
+| E29: What records support this refrigeration compressor's part-load control, sequencing and real-input basis? | Energy | food | 3 |
 | E11: Is this hot line insulated? | Energy | bayer | 2 |
-| E29: Does this refrigeration compressor carry part load on its slide valve (or hot gas bypass) with no speed control? | Energy | food | 2 |
+| E30: What records support this evaporator's defrost applicability, initiation and termination? | Energy | food | 2 |
 | E31: Does this oven, dryer or fryer send its hot exhaust to atmosphere with no heat recovery on it? | Energy | food | 2 |
 | E32: Is the burner air-fuel ratio on this oven, dryer or fryer checked and set, with no flue O2 measurement drawn? | Energy | food | 2 |
 | H6: Could this oven's, dryer's or fryer's exhaust heat serve a low-grade heating duty elsewhere (hot water, CIP, space heating)? | Heat grade (high-grade heat for low-grade duty) | food | 2 |
-| C11: Is this dryer's or oven's exhaust (and make-up air) rate set by hand rather than by exhaust humidity? | Controls and automation | food | 2 |
+| C11: What supports the exhaust/make-up control strategy and product requirements for this dryer or oven? | Controls and automation | food | 2 |
 | E1: Is this pump throttled by a control valve when it could run on a variable speed drive? | Energy | bayer | 1 |
 | E18: Is heat rejected to cooling water in one place while steam heats a colder stream in another (a heat-integration question)? | Energy | bayer | 1 |
 | E19: Is the compressed air header pressure higher than the end users need? | Energy | food | 1 |
@@ -30,7 +31,6 @@
 | E26: Are relief and vent flows to the flare or atmosphere unmetered? | Emissions | bayer | 1 |
 | E27: Is this refrigeration condenser train's head pressure appropriate for its weather, operating limits and actual reset coverage? | Energy | food | 1 |
 | E28: Does each refrigeration suction level match the conditions required by every coincident load it serves? | Energy | food | 1 |
-| E30: Are these evaporators defrosted on a fixed timer rather than when frost is actually there? | Energy | food | 1 |
 | H5: Is refrigeration condenser heat rejected while a low-grade heating duty nearby is met with fuel or steam? | Heat grade (high-grade heat for low-grade duty) | food | 1 |
 | C12: Is representative real input power available for each refrigeration compressor, with a usable coincident load and operating basis? | Metering | food | 1 |
 
@@ -116,6 +116,27 @@ Fired at 2 of 2 sites.
 
 **What the source says (no source):** Safety benefit; no energy source. Present it as a question to verify, not a finding.
 
+## E29: What records support this refrigeration compressor's part-load control, sequencing and real-input basis?
+
+Fired at 1 of 2 sites. Asked and quiet at: bayer.
+
+- **food**, K-201 (`E29@K-201`): JT-201, K-201, PT-201
+- **food**, K-202 (`E29@K-202`): K-202, PT-202, ZT-202
+- **food**, K-203 (`E29@K-203`): K-203, SC-203
+
+**Data to collect**
+
+- Capacity-control mode and representative load for this compressor. How: Retain labels and enabled/disabled/unknown qualifiers as candidates. Establish actual function and a representative operating basis; a nameplate or drive label does not establish part-load behavior.
+  - food [not on drawing]: DCS/PLC configuration: existing identified compressor configuration and active/fallback mode, slide-valve or bypass function, revision and responsible owner; then site records: permitted load/capacity histories with machine identity, period and coincident suction/demand conditions
+- Representative real input power on the same operating basis. How: Compare suitable coincident input and load records. Separate ratings, electrical indications and near-full-load conditions from actual representative real input; request missing evidence without inventing a value or authorizing measurements.
+  - food [not on drawing]: For `E29@K-201`: historian or DCS trend for JT-201 (no historian tag is mapped in this model for these). Then, for all of them: site records: approved existing electrical-input and run/load observations with quantity, units, time and conversion basis; then the vendor datasheet: applicable compressor/drive limits and part-load performance basis
+- Actual sequencing, served group and applicable supplier constraints. How: A sequencer label alone does not establish active operation or complete group coverage. Return a qualified partial answer or missing-evidence request to the responsible reviewer.
+  - food [not on drawing]: DCS/PLC configuration: existing reviewed sequence/trim logic, machine-to-suction-group association, active overrides and revision; then site records: permitted operating/event records showing which machines actually trim under comparable conditions; then the vendor datasheet: applicable supplier constraints and responsible engineering review route
+
+**How it is decided:** Investigate missing or conflicting source/function/operating evidence for each named machine. A drive or sequencing label does not settle efficiency, and the source describes load-dependent tradeoffs. Close only the source investigation after qualified evidence review; no drive change, operating instruction or savings estimate follows.
+
+**What the source says (S25):** Among control strategies that "may compromise system energy efficiency" (S25, p. 59, citing Pearson 2003): "Slide valve unloading of oversized screw compressors." and "Hot gas bypass of compressors." Speed control (S25, p. 63): "ASDs used on compressors below a part-load ratio of about 95% will deliver performance equal to a fixed speed compressor but with lower electricity requirements. However, at near full (i.e., 100%) load, ASDs are approximately 3% less efficient than fixed speed drives".
+
 ## E11: Is this hot line insulated?
 
 Fired at 1 of 2 sites. Asked and quiet at: food.
@@ -138,25 +159,25 @@ Fired at 1 of 2 sites. Asked and quiet at: food.
 
 **What the source says (S1, S19, S24):** "Insulation can typically reduce energy losses by 90%." "Any surface over 120°F should be insulated." LBNL (as reported in LBNL-56183): insulation 3-13%, 1.1 yr.
 
-## E29: Does this refrigeration compressor carry part load on its slide valve (or hot gas bypass) with no speed control?
+## E30: What records support this evaporator's defrost applicability, initiation and termination?
 
 Fired at 1 of 2 sites. Asked and quiet at: bayer.
 
-- **food**, K-201 (`E29@K-201`): JT-201, K-201
-- **food**, K-202 (`E29@K-202`): K-202, ZT-202
+- **food**, EV-201 (`E30@EV-201`): EV-201, HGV-201, TT-205
+- **food**, EV-202 (`E30@EV-202`): EV-202, HGV-202, PDT-206, TT-206
 
 **Data to collect**
 
-- Slide valve (capacity) position over normal operation. How: Hours spent below full load, by load band.
-  - food [not on drawing]: For `E29@K-202`: historian or DCS trend for ZT-202 (no historian tag is mapped in this model for these). Then, for all of them: DCS/PLC configuration: slide valve position or percent capacity per compressor from the refrigeration plant controls, a month or more
-- Compressor power and run hours. How: Power at each load band, so part-load efficiency can be seen.
-  - food [not on drawing]: For `E29@K-201`: historian or DCS trend for JT-201 (no historian tag is mapped in this model for these). Then, for all of them: a walkdown: power logger on the compressor motor across a normal week
-- How the compressors are sequenced. How: Note whether more than one machine trims at the same time.
-  - food [not on drawing]: DCS/PLC configuration: which compressor trims, and the order and pressures at which they load and unload
+- Applicability and actual initiation per named evaporator. How: Keep timer/demand labels and DP readings as candidates. An indication, termination sensor or unit name does not prove active demand initiation; do not borrow another evaporator's control basis.
+  - food [not on drawing]: DCS/PLC configuration: permitted current defrost configuration: target coil/unit, initiation and fallback mode, enabled/disabled state and revision; then site records: existing source-owner or supplier records establishing whether defrost applies to this unit and which indications actually initiate it
+- Representative need and event/termination evidence. How: Separate evidence of need from initiation and termination. Retain quantity/location/units/time and missing history explicitly; no pressure threshold, event count or universal observation duration is supplied.
+  - food [not on drawing]: For `E30@EV-201`: historian or DCS trend for TT-205 (no historian tag is mapped in this model for these). For `E30@EV-202`: historian or DCS trend for TT-206 (no historian tag is mapped in this model for these). Then, for all of them: site records: approved existing frost/coil-pressure and defrost-event records, initiation reason, duration, termination and coincident conditions; then maintenance records: relevant recorded inspection or sensor/function checks and their dates
+- Affected room/product constraints and review route. How: Use an existing-record fallback when no suitable mapped signal is supplied. Establish relevant effects and constraints through the company review route; no inspection, defrost or setting change is authorized.
+  - food [not on drawing]: For `E30@EV-201`: historian or DCS trend for HGV-201 (no historian tag is mapped in this model for these). For `E30@EV-202`: historian or DCS trend for HGV-202 (no historian tag is mapped in this model for these). Then, for all of them: site records: permitted room/product requirements, operating restrictions and existing reviewed defrost basis for the identified unit; then the vendor datasheet: applicable unit and control constraints and responsible reviewer
 
-**How it is decided:** Worth a look when screws spend long hours part-loaded on the slide valve while another could be off, or when no machine on a suction level has speed control to trim. Close it if each runs near full load or a sequencer already keeps one machine trimming.
+**How it is decided:** Pursue missing applicability, source/function or representative event evidence. A drawn DP instrument or demand label does not settle whether defrost is initiated by actual need. Close only a qualified source investigation; no installed-control acceptance or operating change follows.
 
-**What the source says (S25):** Among control strategies that "may compromise system energy efficiency" (S25, p. 59, citing Pearson 2003): "Slide valve unloading of oversized screw compressors." and "Hot gas bypass of compressors." Speed control (S25, p. 63): "ASDs used on compressors below a part-load ratio of about 95% will deliver performance equal to a fixed speed compressor but with lower electricity requirements. However, at near full (i.e., 100%) load, ASDs are approximately 3% less efficient than fixed speed drives".
+**What the source says (S25):** Demand defrost (S25, p. 66): "Evaporators should be defrosted only when necessary, as opposed to on timed schedules where defrosting occurs regardless of need." "Too frequent defrosts." is listed among control strategies that "may compromise system energy efficiency" (S25, p. 59, citing Pearson 2003). No % stated.
 
 ## E31: Does this oven, dryer or fryer send its hot exhaust to atmosphere with no heat recovery on it?
 
@@ -222,23 +243,23 @@ Fired at 1 of 2 sites. Asked and quiet at: bayer.
 
 **What the source says (S28, S26):** S28 (p. 1): "many companies install heat exchangers on the exhaust stacks of furnaces and ovens to produce hot water or to generate hot air for space heating." The same sheet: "The temperature difference between the primary and secondary process should be high enough (at least 200°F), and there should be a sufficient amount of usable waste heat." Fryers (S26, p. 107): "Heat can be recovered indirectly from a fryer's fat-laden exhaust gases via a heat exchange system and used for pre-heating air and water for use in other facility processes." No % stated.
 
-## C11: Is this dryer's or oven's exhaust (and make-up air) rate set by hand rather than by exhaust humidity?
+## C11: What supports the exhaust/make-up control strategy and product requirements for this dryer or oven?
 
 Fired at 1 of 2 sites. Asked and quiet at: bayer.
 
-- **food**, D-301 (`C11@D-301`): D-301, HV-304, TT-304
-- **food**, O-302 (`C11@O-302`): AT-302, O-302, TT-305
+- **food**, D-301 (`C11@D-301`): D-301, HV-304, TIC-301, TT-301, TT-304
+- **food**, O-302 (`C11@O-302`): AT-302, O-302, TIC-302, TT-302, TT-305
 
 **Data to collect**
 
-- Exhaust humidity and temperature over a production run. How: Compare the exhaust humidity with what the product and the process allow.
-  - food [not on drawing]: For `C11@D-301`: historian or DCS trend for TT-304 (no historian tag is mapped in this model for these). For `C11@O-302`: historian or DCS trend for TT-305 (no historian tag is mapped in this model for these). Then, for all of them: a walkdown: humidity or dew point logger in the exhaust duct for a full run
-- Exhaust damper or fan setting and how it is set. How: Note whether it moves with production rate or product.
-  - food [not on drawing]: For `C11@D-301`: historian or DCS trend for HV-304 (no historian tag is mapped in this model for these). Then, for all of them: DCS/PLC configuration: exhaust damper position or fan speed, and whether anything adjusts it; then a walkdown: damper position marks
-- Product moisture at the exit and its specification. How: Over-drying shows as moisture well below specification.
-  - food [not on drawing]: site records: quality records: product moisture out of the dryer or oven against specification
+- Actual control purpose, path and mode for this unit. How: Do not infer manual operation from missing humidity, or active control from a transmitter/controller label. Retain disabled, unavailable and unknown candidates; temperature or another qualified strategy may be appropriate.
+  - food [not on drawing]: DCS/PLC configuration: existing reviewed exhaust/make-up strategy, measurement-to-actuator path, active mode/override, unit association and revision; then site records: permitted engineering or supplier basis for the selected product/process control approach
+- Representative relevant air and product observations. How: An inlet-humidity or product-moisture record is not exhaust humidity. Review the variables needed by the actual qualified approach; no universal exhaust-humidity requirement, logging task or observation duration is imposed.
+  - food [not on drawing]: For `C11@D-301`: historian or DCS trend for TT-304 (no historian tag is mapped in this model for these). For `C11@O-302`: historian or DCS trend for TT-305 (no historian tag is mapped in this model for these). Then, for all of them: site records: approved existing air/product observations appropriate to the actual strategy, with quantity, location, units, period and product/run conditions
+- Product/process constraints and responsible review. How: Return supported observations, unresolved evidence and the next owner together. No airflow, ventilation, heating or other operational adjustment follows from this screen.
+  - food [not on drawing]: site records: permitted product-quality requirements and existing engineering/operating constraints for the identified unit; then the vendor datasheet: applicable dryer/oven requirements, documented control basis and responsible engineering review route
 
-**How it is decided:** Worth a look when the exhaust leaves well below the humidity the product and the safety limits allow, so heated air is thrown away unsaturated. Close it if the exhaust is already near the allowed humidity or the rate is set by a solvent (LEL) or dust limit.
+**How it is decided:** Investigate missing or conflicting control-purpose, source/function and product/process evidence. Humidity is one possible variable, not a universal solution; neither its absence nor presence establishes actual control or suitability. Close only the source investigation after qualified review, retaining unresolved operating and quality requirements.
 
 **What the source says (S26):** S26 (p. 104): "Process controls, such as feedback controllers, feed forward controllers, and model-based predictive controllers, can help to minimize dryer energy consumption by more precisely controlling energy inputs to meet the needs of the product being processed." The sensors it lists include "absorption capacitive sensors (for air humidity)". No % stated.
 
@@ -455,25 +476,6 @@ Fired at 1 of 2 sites. Asked and quiet at: bayer.
 **How it is decided:** Study a level only after mapping every coincident served load and reviewing its required temperature, approach and operating constraints against the actual level and reset coverage. A colder-than-required level may warrant investigation, but the most demanding admissible evaporating condition across all served loads constrains any change. A drawn reset, ambient change or warm load alone does not settle the question. The cited benefit remains a conditional two-stage low-stage example; no setpoint or savings is calculated.
 
 **What the source says (S25):** Two-stage systems (S25, p. 63): "a simple way to save energy is to raise the suction pressure and temperature of the low-stage compressor when ambient temperatures decrease. It has been estimated that energy savings of about 8% can be realized in two-stage systems when suction temperatures are raised from -30 °F to -20 °F (ISU 2005)." No figure is given there for single-stage systems.
-
-## E30: Are these evaporators defrosted on a fixed timer rather than when frost is actually there?
-
-Fired at 1 of 2 sites. Asked and quiet at: bayer.
-
-- **food**, EV-201 (`E30@EV-201`): EV-201, HGV-201, TT-205
-
-**Data to collect**
-
-- Defrost schedule per evaporator. How: List defrosts per day by season.
-  - food [not on drawing]: DCS/PLC configuration: defrost initiation (timer or demand), defrosts per day, duration and termination (time or coil temperature) per evaporator
-- Frost on the coil when a scheduled defrost starts. How: Note clear, light or heavy frost.
-  - food [not on drawing]: a walkdown: look at the coil just before a few scheduled defrosts, in a dry week and a humid week
-- Hot gas use and room temperature rise per defrost. How: The heat put in to defrost comes back as refrigeration load afterwards.
-  - food [not on drawing]: historian or DCS trend for HGV-201 (no historian tag is mapped in this model for these); then historian or DCS trend for TT-205 (no historian tag is mapped in this model for these)
-
-**How it is decided:** Worth a look when coils are clear at scheduled defrosts, or the count per day is the same in dry weeks as in humid ones. Close it if defrost is already started on demand.
-
-**What the source says (S25):** Demand defrost (S25, p. 66): "Evaporators should be defrosted only when necessary, as opposed to on timed schedules where defrosting occurs regardless of need." "Too frequent defrosts." is listed among control strategies that "may compromise system energy efficiency" (S25, p. 59, citing Pearson 2003). No % stated.
 
 ## H5: Is refrigeration condenser heat rejected while a low-grade heating duty nearby is met with fuel or steam?
 

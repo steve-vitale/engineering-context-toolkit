@@ -1,0 +1,478 @@
+{
+  "schema": "private-source-adequacy-expectations-1",
+  "selected": [
+    "E29",
+    "E30",
+    "C11"
+  ],
+  "cases": [
+    {
+      "id": "E29-01-no-records",
+      "question_id": "E29",
+      "fixture": "fixtures/E29-01-no-records.json",
+      "expected": {
+        "must_keep_collection_subjects": [
+          "K-A",
+          "K-B"
+        ],
+        "legitimate_no_anchor_quiet": false,
+        "candidate_record_ids": [],
+        "source_basis": [
+          "EPA-Dairy-2011 printed59,62,63"
+        ],
+        "reason": "Absent speed/capacity evidence does not establish slide-valve use or actual efficiency; ask both machine records.",
+        "unacceptable": [
+          "Infer actual installed or operating state, sourceauthority, savings or permission from model absence/presence.",
+          "Omit an otherwise applicable named subject because an unqualified, unrelated, disabled or merely labelled candidate exists."
+        ]
+      }
+    },
+    {
+      "id": "E29-02-own-drive-label",
+      "question_id": "E29",
+      "fixture": "fixtures/E29-02-own-drive-label.json",
+      "expected": {
+        "must_keep_collection_subjects": [
+          "K-A",
+          "K-B"
+        ],
+        "legitimate_no_anchor_quiet": false,
+        "candidate_record_ids": [
+          "SC-A"
+        ],
+        "source_basis": [
+          "EPA-Dairy-2011 printed59,62,63"
+        ],
+        "reason": "Drive hardware label is not representative operating/function evidence; preserve A candidate and keep B separate.",
+        "unacceptable": [
+          "Infer actual installed or operating state, sourceauthority, savings or permission from model absence/presence.",
+          "Omit an otherwise applicable named subject because an unqualified, unrelated, disabled or merely labelled candidate exists."
+        ]
+      }
+    },
+    {
+      "id": "E29-03-sequencer-candidate",
+      "question_id": "E29",
+      "fixture": "fixtures/E29-03-sequencer-candidate.json",
+      "expected": {
+        "must_keep_collection_subjects": [
+          "K-A",
+          "K-B"
+        ],
+        "legitimate_no_anchor_quiet": false,
+        "candidate_record_ids": [
+          "SC-A",
+          "ZV-A",
+          "PT-A"
+        ],
+        "source_basis": [
+          "EPA-Dairy-2011 printed59,62,63"
+        ],
+        "reason": "Sequencer name does not establish actual single trim, appropriate grouping or operating load; no all-machine closure.",
+        "unacceptable": [
+          "Infer actual installed or operating state, sourceauthority, savings or permission from model absence/presence.",
+          "Omit an otherwise applicable named subject because an unqualified, unrelated, disabled or merely labelled candidate exists."
+        ]
+      }
+    },
+    {
+      "id": "E29-04-unrelated-drive",
+      "question_id": "E29",
+      "fixture": "fixtures/E29-04-unrelated-drive.json",
+      "expected": {
+        "must_keep_collection_subjects": [
+          "K-A",
+          "K-B"
+        ],
+        "legitimate_no_anchor_quiet": false,
+        "candidate_record_ids": [
+          "SC-X"
+        ],
+        "source_basis": [
+          "EPA-Dairy-2011 printed59,62,63"
+        ],
+        "reason": "Another unit drive must not qualify either compressor.",
+        "unacceptable": [
+          "Infer actual installed or operating state, sourceauthority, savings or permission from model absence/presence.",
+          "Omit an otherwise applicable named subject because an unqualified, unrelated, disabled or merely labelled candidate exists."
+        ]
+      }
+    },
+    {
+      "id": "E29-05-enabled-label-no-history",
+      "question_id": "E29",
+      "fixture": "fixtures/E29-05-enabled-label-no-history.json",
+      "expected": {
+        "must_keep_collection_subjects": [
+          "K-A",
+          "K-B"
+        ],
+        "legitimate_no_anchor_quiet": false,
+        "candidate_record_ids": [
+          "SC-A"
+        ],
+        "source_basis": [
+          "EPA-Dairy-2011 printed59,62,63"
+        ],
+        "reason": "Even an explicit local enabled declaration lacks coincident load/power and vendor basis; no mandatoryVFD or fixedsaving.",
+        "unacceptable": [
+          "Infer actual installed or operating state, sourceauthority, savings or permission from model absence/presence.",
+          "Omit an otherwise applicable named subject because an unqualified, unrelated, disabled or merely labelled candidate exists."
+        ]
+      }
+    },
+    {
+      "id": "E29-06-negated-disabled",
+      "question_id": "E29",
+      "fixture": "fixtures/E29-06-negated-disabled.json",
+      "expected": {
+        "must_keep_collection_subjects": [
+          "K-A",
+          "K-B"
+        ],
+        "legitimate_no_anchor_quiet": false,
+        "candidate_record_ids": [
+          "SC-A"
+        ],
+        "source_basis": [
+          "EPA-Dairy-2011 printed59,62,63"
+        ],
+        "reason": "Keep negation/false/zero qualifiers; matching drive words cannot establish active function.",
+        "unacceptable": [
+          "Infer actual installed or operating state, sourceauthority, savings or permission from model absence/presence.",
+          "Omit an otherwise applicable named subject because an unqualified, unrelated, disabled or merely labelled candidate exists."
+        ]
+      }
+    },
+    {
+      "id": "E29-07-no-refrigeration-anchor",
+      "question_id": "E29",
+      "fixture": "fixtures/E29-07-no-refrigeration-anchor.json",
+      "expected": {
+        "must_keep_collection_subjects": [],
+        "legitimate_no_anchor_quiet": true,
+        "candidate_record_ids": [],
+        "source_basis": [
+          "EPA-Dairy-2011 printed59,62,63"
+        ],
+        "reason": "This question is scoped to refrigeration rather than compressed-air equipment.",
+        "unacceptable": [
+          "Create a refrigeration/process-drying investigation for this explicitly excluded equipment class."
+        ]
+      }
+    },
+    {
+      "id": "E30-01-unknown-initiation",
+      "question_id": "E30",
+      "fixture": "fixtures/E30-01-unknown-initiation.json",
+      "expected": {
+        "must_keep_collection_subjects": [
+          "EV-A",
+          "EV-B"
+        ],
+        "legitimate_no_anchor_quiet": false,
+        "candidate_record_ids": [],
+        "source_basis": [
+          "EPA-Dairy-2011 printed66"
+        ],
+        "reason": "Hot-gas/defrost words do not establish fixed-timer initiation; ask schedule/function separately for each evaporator.",
+        "unacceptable": [
+          "Infer actual installed or operating state, sourceauthority, savings or permission from model absence/presence.",
+          "Omit an otherwise applicable named subject because an unqualified, unrelated, disabled or merely labelled candidate exists."
+        ]
+      }
+    },
+    {
+      "id": "E30-02-coil-DP-indicator",
+      "question_id": "E30",
+      "fixture": "fixtures/E30-02-coil-DP-indicator.json",
+      "expected": {
+        "must_keep_collection_subjects": [
+          "EV-A",
+          "EV-B"
+        ],
+        "legitimate_no_anchor_quiet": false,
+        "candidate_record_ids": [
+          "PDT-A"
+        ],
+        "source_basis": [
+          "EPA-Dairy-2011 printed66"
+        ],
+        "reason": "The source relates actual coil-pressure evidence to need; mere DP indication is not demand initiation.",
+        "unacceptable": [
+          "Infer actual installed or operating state, sourceauthority, savings or permission from model absence/presence.",
+          "Omit an otherwise applicable named subject because an unqualified, unrelated, disabled or merely labelled candidate exists."
+        ]
+      }
+    },
+    {
+      "id": "E30-03-unrelated-DP",
+      "question_id": "E30",
+      "fixture": "fixtures/E30-03-unrelated-DP.json",
+      "expected": {
+        "must_keep_collection_subjects": [
+          "EV-A",
+          "EV-B"
+        ],
+        "legitimate_no_anchor_quiet": false,
+        "candidate_record_ids": [
+          "PDT-X"
+        ],
+        "source_basis": [
+          "EPA-Dairy-2011 printed66"
+        ],
+        "reason": "A different equipment measurement does not settle evaporator demand initiation.",
+        "unacceptable": [
+          "Infer actual installed or operating state, sourceauthority, savings or permission from model absence/presence.",
+          "Omit an otherwise applicable named subject because an unqualified, unrelated, disabled or merely labelled candidate exists."
+        ]
+      }
+    },
+    {
+      "id": "E30-04-disabled-demand",
+      "question_id": "E30",
+      "fixture": "fixtures/E30-04-disabled-demand.json",
+      "expected": {
+        "must_keep_collection_subjects": [
+          "EV-A",
+          "EV-B"
+        ],
+        "legitimate_no_anchor_quiet": false,
+        "candidate_record_ids": [
+          "HGV-A"
+        ],
+        "source_basis": [
+          "EPA-Dairy-2011 printed66"
+        ],
+        "reason": "Demand words with disabled/timed qualifiers must not erase applicable collection; initiation differs from termination.",
+        "unacceptable": [
+          "Infer actual installed or operating state, sourceauthority, savings or permission from model absence/presence.",
+          "Omit an otherwise applicable named subject because an unqualified, unrelated, disabled or merely labelled candidate exists."
+        ]
+      }
+    },
+    {
+      "id": "E30-05-local-function-no-events",
+      "question_id": "E30",
+      "fixture": "fixtures/E30-05-local-function-no-events.json",
+      "expected": {
+        "must_keep_collection_subjects": [
+          "EV-A",
+          "EV-B"
+        ],
+        "legitimate_no_anchor_quiet": false,
+        "candidate_record_ids": [
+          "PDT-A",
+          "HGV-A"
+        ],
+        "source_basis": [
+          "EPA-Dairy-2011 printed66"
+        ],
+        "reason": "Local functional declaration is a useful candidate, not evidence for B or actual need/termination/history.",
+        "unacceptable": [
+          "Infer actual installed or operating state, sourceauthority, savings or permission from model absence/presence.",
+          "Omit an otherwise applicable named subject because an unqualified, unrelated, disabled or merely labelled candidate exists."
+        ]
+      }
+    },
+    {
+      "id": "E30-06-termination-not-initiation",
+      "question_id": "E30",
+      "fixture": "fixtures/E30-06-termination-not-initiation.json",
+      "expected": {
+        "must_keep_collection_subjects": [
+          "EV-A",
+          "EV-B"
+        ],
+        "legitimate_no_anchor_quiet": false,
+        "candidate_record_ids": [
+          "TT-A"
+        ],
+        "source_basis": [
+          "EPA-Dairy-2011 printed66"
+        ],
+        "reason": "Termination temperature is not proof of demand initiation; ask each role and actual events separately.",
+        "unacceptable": [
+          "Infer actual installed or operating state, sourceauthority, savings or permission from model absence/presence.",
+          "Omit an otherwise applicable named subject because an unqualified, unrelated, disabled or merely labelled candidate exists."
+        ]
+      }
+    },
+    {
+      "id": "E30-07-no-refrigeration-anchor",
+      "question_id": "E30",
+      "fixture": "fixtures/E30-07-no-refrigeration-anchor.json",
+      "expected": {
+        "must_keep_collection_subjects": [],
+        "legitimate_no_anchor_quiet": true,
+        "candidate_record_ids": [],
+        "source_basis": [
+          "EPA-Dairy-2011 printed66"
+        ],
+        "reason": "Product concentration equipment is not refrigeration defrost equipment.",
+        "unacceptable": [
+          "Create a refrigeration/process-drying investigation for this explicitly excluded equipment class."
+        ]
+      }
+    },
+    {
+      "id": "C11-01-unknown-control",
+      "question_id": "C11",
+      "fixture": "fixtures/C11-01-unknown-control.json",
+      "expected": {
+        "must_keep_collection_subjects": [
+          "D-A",
+          "D-B"
+        ],
+        "legitimate_no_anchor_quiet": false,
+        "candidate_record_ids": [],
+        "source_basis": [
+          "LBL-FruitVeg-2008 printed104"
+        ],
+        "reason": "Missing humidity cannot establish manual control; ask actual exhaust/makeup control strategy and product basis.",
+        "unacceptable": [
+          "Infer actual installed or operating state, sourceauthority, savings or permission from model absence/presence.",
+          "Omit an otherwise applicable named subject because an unqualified, unrelated, disabled or merely labelled candidate exists."
+        ]
+      }
+    },
+    {
+      "id": "C11-02-exhaust-indication-only",
+      "question_id": "C11",
+      "fixture": "fixtures/C11-02-exhaust-indication-only.json",
+      "expected": {
+        "must_keep_collection_subjects": [
+          "D-A",
+          "D-B"
+        ],
+        "legitimate_no_anchor_quiet": false,
+        "candidate_record_ids": [
+          "MT-A"
+        ],
+        "source_basis": [
+          "LBL-FruitVeg-2008 printed104"
+        ],
+        "reason": "An exhaust humidity sensor does not establish automatic airflow control or acceptable product basis.",
+        "unacceptable": [
+          "Infer actual installed or operating state, sourceauthority, savings or permission from model absence/presence.",
+          "Omit an otherwise applicable named subject because an unqualified, unrelated, disabled or merely labelled candidate exists."
+        ]
+      }
+    },
+    {
+      "id": "C11-03-product-moisture-role",
+      "question_id": "C11",
+      "fixture": "fixtures/C11-03-product-moisture-role.json",
+      "expected": {
+        "must_keep_collection_subjects": [
+          "D-A",
+          "D-B"
+        ],
+        "legitimate_no_anchor_quiet": false,
+        "candidate_record_ids": [
+          "MT-A"
+        ],
+        "source_basis": [
+          "LBL-FruitVeg-2008 printed104"
+        ],
+        "reason": "Product moisture is useful product evidence, but it is not the exhaust humidity variable or a demonstrated exhaust feedback path.",
+        "unacceptable": [
+          "Infer actual installed or operating state, sourceauthority, savings or permission from model absence/presence.",
+          "Omit an otherwise applicable named subject because an unqualified, unrelated, disabled or merely labelled candidate exists."
+        ]
+      }
+    },
+    {
+      "id": "C11-04-inlet-not-exhaust",
+      "question_id": "C11",
+      "fixture": "fixtures/C11-04-inlet-not-exhaust.json",
+      "expected": {
+        "must_keep_collection_subjects": [
+          "D-A",
+          "D-B"
+        ],
+        "legitimate_no_anchor_quiet": false,
+        "candidate_record_ids": [
+          "MT-A"
+        ],
+        "source_basis": [
+          "LBL-FruitVeg-2008 printed104"
+        ],
+        "reason": "Location and control role must remain explicit; inlet measurement cannot stand in for exhaust conditions.",
+        "unacceptable": [
+          "Infer actual installed or operating state, sourceauthority, savings or permission from model absence/presence.",
+          "Omit an otherwise applicable named subject because an unqualified, unrelated, disabled or merely labelled candidate exists."
+        ]
+      }
+    },
+    {
+      "id": "C11-05-alternative-control",
+      "question_id": "C11",
+      "fixture": "fixtures/C11-05-alternative-control.json",
+      "expected": {
+        "must_keep_collection_subjects": [
+          "D-A",
+          "D-B"
+        ],
+        "legitimate_no_anchor_quiet": false,
+        "candidate_record_ids": [
+          "IR-A",
+          "SC-A",
+          "TIC-A"
+        ],
+        "source_basis": [
+          "LBL-FruitVeg-2008 printed104"
+        ],
+        "reason": "Source permits different product/process control approaches. Missing humidity must not imply hand control or make humidity universally required; investigate alternate strategy and evidence.",
+        "unacceptable": [
+          "Infer actual installed or operating state, sourceauthority, savings or permission from model absence/presence.",
+          "Omit an otherwise applicable named subject because an unqualified, unrelated, disabled or merely labelled candidate exists."
+        ]
+      }
+    },
+    {
+      "id": "C11-06-disabled-hand-override",
+      "question_id": "C11",
+      "fixture": "fixtures/C11-06-disabled-hand-override.json",
+      "expected": {
+        "must_keep_collection_subjects": [
+          "D-A",
+          "D-B"
+        ],
+        "legitimate_no_anchor_quiet": false,
+        "candidate_record_ids": [
+          "MT-A",
+          "HC-A"
+        ],
+        "source_basis": [
+          "LBL-FruitVeg-2008 printed104"
+        ],
+        "reason": "Preserve disabled/bad/manual qualifiers; humidity text cannot establish live automatic function.",
+        "unacceptable": [
+          "Infer actual installed or operating state, sourceauthority, savings or permission from model absence/presence.",
+          "Omit an otherwise applicable named subject because an unqualified, unrelated, disabled or merely labelled candidate exists."
+        ]
+      }
+    },
+    {
+      "id": "C11-07-no-process-dryer-anchor",
+      "question_id": "C11",
+      "fixture": "fixtures/C11-07-no-process-dryer-anchor.json",
+      "expected": {
+        "must_keep_collection_subjects": [],
+        "legitimate_no_anchor_quiet": true,
+        "candidate_record_ids": [],
+        "source_basis": [
+          "LBL-FruitVeg-2008 printed104"
+        ],
+        "reason": "Compressed-air drying is outside this process-dryer control question.",
+        "unacceptable": [
+          "Create a refrigeration/process-drying investigation for this explicitly excluded equipment class."
+        ]
+      }
+    }
+  ],
+  "criteria": "Source-informed research criteria; models are synthetic authored counterexamples. must_keep_collection_subjects means retain applicable source/function/operating-basis review, not installed deficiency or prescriptive control. A separately clearly scoped absence screen may narrow its wording only if complete applicable collection remains accessible; silent disappearance fails this proposed contract.",
+  "no_anchor_quiet": "Zero selected-rule investigations expected on each explicit no-anchor control.",
+  "counting": "21cases/3rule scopes; not21independentoriginals or a model accuracy/usefulness benchmark."
+}

@@ -1,0 +1,76 @@
+{
+  "source_documents": [
+    {
+      "id": "EPA-Dairy-2011",
+      "catalog_source": "S25",
+      "actual_url": "https://www.energystar.gov/sites/default/files/buildings/tools/Dairy_Guide_Final_With_LBNL_Number.pdf",
+      "title": "LBNL-6261E, Brush/Masanet/Worrell, Dairy Processing ENERGY STAR Guide, October2011",
+      "raw_original_sha256": null,
+      "locators": [
+        {
+          "printed_page": 59,
+          "pdf_zero_based_index": 65,
+          "physical_page": 66,
+          "section": "Monitoring/control list",
+          "web_lines": [
+            2167,
+            2174
+          ]
+        },
+        {
+          "printed_page": 62,
+          "pdf_zero_based_index": 68,
+          "physical_page": 69,
+          "section": "9.3 compressor control/scheduling",
+          "web_lines": [
+            2291,
+            2298
+          ]
+        },
+        {
+          "printed_page": 63,
+          "pdf_zero_based_index": 69,
+          "physical_page": 70,
+          "section": "ASDs on compressor motors",
+          "web_lines": [
+            2339,
+            2363
+          ]
+        },
+        {
+          "printed_page": 66,
+          "pdf_zero_based_index": 72,
+          "physical_page": 73,
+          "section": "Demand defrost",
+          "web_lines": [
+            2458,
+            2461
+          ]
+        }
+      ],
+      "acquisition_limit": "Primary source page-text reading; no raw PDF downloaded or redistributed, no pixel/visual review claim. Official EPA distribution byte equivalence to catalog OSTI bytes not established."
+    },
+    {
+      "id": "LBL-FruitVeg-2008",
+      "catalog_source": "S26",
+      "actual_url": "https://eta-publications.lbl.gov/sites/default/files/lbnl-59289-rev.pdf",
+      "title": "LBNL-59289-Revision, Masanet/Worrell/Graus/Galitsky, Fruit and Vegetable Processing ENERGY STAR Guide, March2008",
+      "raw_original_sha256": null,
+      "locators": [
+        {
+          "printed_page": 104,
+          "pdf_zero_based_index": 111,
+          "physical_page": 112,
+          "section": "13.2 Process controls",
+          "web_lines": [
+            4424,
+            4439
+          ]
+        }
+      ],
+      "acquisition_limit": "Primary page-text reading; no raw PDF redistributed; cited route alone does not authenticate earlier catalog bytes."
+    }
+  ],
+  "source_quotes_and_benefits": "Existing catalog source and typical_benefit objects stay exact; this fixture does not replace or authenticate them.",
+  "source_rule_distinction": "Evidence states and machine-specific collection policy are explicitly authored software criteria, not quoted installed-state or controls-change advice."
+}

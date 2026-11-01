@@ -1,5 +1,10 @@
 """Offline controls for full analyzer coverage; never connects to a gateway."""
 import ast
+import asyncio
+import io
+import contextlib
+from types import SimpleNamespace
+from unittest.mock import patch
 import copy
 import json
 import shlex
@@ -66,6 +71,9 @@ for module in (te_sim_server, demo_points_server, te_channels):
     assert Path(module.__file__).resolve().is_relative_to(app), module.__file__
 assert len(columns) == 52 and set(columns.values()) == set(range(52))
 assert 'SC-212' not in columns
+legacy = te_sim_server.historical_columns(model, columns)
+assert len(legacy) == 36 and len({**columns, **legacy}) == 88
+assert 'SC-212' not in legacy
 print(json.dumps(columns, sort_keys=True))
 """
         # A fresh interpreter excludes the checkout and PYTHONPATH: -E ignores PYTHON* variables and -P (3.11+)
@@ -78,6 +86,216 @@ print(json.dumps(columns, sort_keys=True))
         assert json.loads(result.stdout) == expected_columns
 
 
+def check_historical_profile(model, columns):
+    """Offline profile/source controls plus a fake server; no socket, gateway or live data acquisition."""
+    import hashlib
+    import re
+    import zipfile
+    import te_sim_server as replay
+    from asyncua import ua
+
+    profile_path = ROOT / 'docker/legacy-te-node-map.json'
+    profile = json.loads(profile_path.read_bytes())
+    legacy = replay.historical_columns(model, columns)
+    assert len(legacy) == 36 and len({**columns, **legacy}) == 88
+    assert not set(legacy) & set(columns) and 'SC-212' not in legacy
+    # Derive the expected address/column/unit set independently from the pinned original backup.
+    with zipfile.ZipFile(ROOT / 'docker/twin-demo.gwbk') as backup:
+        expected = {}
+        for member in backup.namelist():
+            if not member.startswith('config/resources/core/ignition/tag-definition/Twin/TE_Plant/') or not member.endswith('/udts.json'):
+                continue
+            for item in json.loads(backup.read(member)):
+                match = re.search(r'(XMEAS|XMV)\s+(\d+)(?:-\d+)?', item['documentation'])
+                assert match, item['name']
+                kind, index = match.group(1), int(match.group(2))
+                if kind == 'XMV' and index == 12:
+                    assert item['name'] == 'SC-212'
+                    continue
+                col = index - 1 if kind == 'XMEAS' else 40 + index
+                tag = item['parameters']['Tag']['value']
+                assert tag == item['name'] and tag not in expected
+                expected[tag] = col
+                entry = next(e for e in profile['aliases'] if e['legacy_tag'] == tag)
+                pv = next(e for e in item['tags'] if e['name'] == 'PV')
+                assert entry['column'] == col and entry['units'] == pv['engUnit']
+                assert entry['value_type'] == 'Double' and entry['backup_member'] == member
+        assert expected == legacy
+        summary = json.loads(backup.read('config/resources/core/ignition/tag-definition/Twin/TE_Plant/_Summary/tags.json'))
+        assert len(summary) == 8
+        for item in summary:
+            refs = re.findall(r'\{(\[Twin\][^}]+)\}', item['expression'])
+            assert refs and all(p.split('/')[-2] in expected for p in refs)
+            assert all('/SC-212/' not in p for p in refs)
+    # Literal, hand-derived checks expose XMEAS/XMV offsets and first-component analyzer semantics.
+    assert {k: legacy[k] for k in ('FI-101', 'PI-107', 'FV-204', 'AI-123')} == {
+        'FI-101': 0, 'PI-107': 6, 'FV-204': 44, 'AI-123': 22}
+    assert {k: columns[k] for k in ('FT-101', 'PT-107', 'FV-104', 'AT-123')} == {
+        'FT-101': 0, 'PT-107': 6, 'FV-104': 44, 'AT-123': 22}
+
+    # Controlled corrupted profiles exercise the preflight even when a test reseals their byte hash.
+    with tempfile.TemporaryDirectory() as folder:
+        root = Path(folder)
+        (root / 'docker').mkdir()
+        (root / 'data').mkdir()
+        shutil.copyfile(ROOT / 'docker/twin-demo.gwbk', root / 'docker/twin-demo.gwbk')
+        shutil.copyfile(ROOT / 'data/te_process_model.json', root / 'data/te_process_model.json')
+        target = root / 'docker/legacy-te-node-map.json'
+        target.write_bytes(profile_path.read_bytes())
+        assert replay.historical_columns(model, columns, root) == legacy
+        bad = dict(columns); bad['FT-101'] = False
+        try:
+            replay.historical_columns(model, bad, root)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError('bool source column accepted')
+        for label, mutate in (
+            ('duplicate', lambda p: p['aliases'].__setitem__(1, copy.deepcopy(p['aliases'][0]))),
+            ('collision', lambda p: p['aliases'][0].__setitem__('legacy_tag', 'FT-101')),
+            ('column', lambda p: p['aliases'][0].__setitem__('column', 51)),
+            ('bool-column', lambda p: p['aliases'][0].__setitem__('column', False)),
+            ('units', lambda p: p['aliases'][0].__setitem__('units', 'wrong unit')),
+            ('type', lambda p: p['aliases'][0].__setitem__('value_type', 'Float')),
+            ('namespace', lambda p: p.__setitem__('namespace_uri', 'unrelated')),
+            ('SC212', lambda p: p['aliases'][0].__setitem__('legacy_tag', 'SC-212')),
+            ('count', lambda p: p['aliases'].pop()),
+        ):
+            bad_profile = copy.deepcopy(profile); mutate(bad_profile)
+            raw = (json.dumps(bad_profile, indent=2) + '\n').encode()
+            target.write_bytes(raw)
+            with patch.object(replay, 'HISTORICAL_PROFILE_SHA256', hashlib.sha256(raw).hexdigest()):
+                try:
+                    replay.historical_columns(model, columns, root)
+                except ValueError:
+                    pass
+                else:
+                    raise AssertionError(label + ' profile accepted')
+        target.write_bytes(profile_path.read_bytes() + b' ')
+        try:
+            replay.historical_columns(model, columns, root)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError('unreviewed profile bytes accepted')
+        target.write_bytes(profile_path.read_bytes())
+        with (root / 'docker/twin-demo.gwbk').open('ab') as f: f.write(b'changed')
+        try:
+            replay.historical_columns(model, columns, root)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError('changed backup accepted')
+        shutil.copyfile(ROOT / 'docker/twin-demo.gwbk', root / 'docker/twin-demo.gwbk')
+        (root / 'data/te_process_model.json').write_bytes(b'{}')
+        try:
+            replay.historical_columns(model, columns, root)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError('changed source model accepted')
+
+    class EndReplay(Exception):
+        pass
+
+    class Node:
+        def __init__(self, name, value):
+            self.name, self.values = name, [value]
+        async def write_value(self, value):
+            self.values.append(value)
+        async def set_writable(self, *args):
+            raise AssertionError('client writes must never be enabled')
+
+    class Folder:
+        async def add_variable(self, nodeid, name, value):
+            assert nodeid.Identifier == 'TE/' + name and nodeid.NamespaceIndex == 2
+            assert name not in created
+            created[name] = Node(name, value)
+            return created[name]
+
+    class Objects:
+        async def add_folder(self, nodeid, name):
+            assert nodeid.Identifier == name == 'TE' and nodeid.NamespaceIndex == 2
+            return Folder()
+
+    class FakeServer:
+        def __init__(self):
+            server_calls.append('construct')
+            self.nodes = SimpleNamespace(objects=Objects())
+        async def init(self): server_calls.append('init')
+        def set_endpoint(self, value): assert value == 'opc.tcp://0.0.0.0:4841/te-sim'
+        def set_server_name(self, value): assert value == 'TE replay (open Tennessee Eastman data)'
+        def set_security_policy(self, value): assert value == [ua.SecurityPolicyType.NoSecurity]
+        async def register_namespace(self, value):
+            assert value == 'urn:pid-digital-twin:te-sim'
+            return 2
+        def set_force_server_timestamp(self, value):
+            assert value is False
+            server_calls.append('preserve-shared-timestamps')
+        async def __aenter__(self):
+            server_calls.append('listener')
+            if profile_on:
+                for old, col in legacy.items():
+                    native = next(n for n, c in columns.items() if c == col)
+                    assert created[old].values[-1] is created[native].values[-1]
+            return self
+        async def __aexit__(self, *args): pass
+
+    for profile_on in (False, True):
+        created, server_calls, sleeps = {}, [], []
+        with tempfile.TemporaryDirectory() as directory:
+            control = Path(directory) / 'control'
+            async def sleep(seconds):
+                assert seconds == 1.0
+                sleeps.append(1)
+                if len(sleeps) == 1:
+                    control.write_text('fault6 1')
+                else:
+                    raise EndReplay()
+            rows = lambda name: [[float(c) + 0.25 + t * 1000 + (2000 if name == 'fault6' else 0)
+                                  for c in range(52)] for t in range(2)]
+            argv = ['te_sim_server.py', '--control', str(control)] + (['--historical-demo-addresses'] if profile_on else [])
+            with patch.object(replay, 'Server', FakeServer), patch.object(replay, 'load_rows', rows), \
+                 patch.object(replay.asyncio, 'sleep', sleep), patch.object(sys, 'argv', argv), \
+                 contextlib.redirect_stdout(io.StringIO()):
+                if profile_on:
+                    try: asyncio.run(replay.main())
+                    except EndReplay: pass
+                else:
+                    # Default mode must not even load the optional profile or backup.
+                    with patch.object(replay, 'historical_columns', side_effect=AssertionError('default profile IO')):
+                        try: asyncio.run(replay.main())
+                        except EndReplay: pass
+        assert len(created) == (90 if profile_on else 54)  # tag variables plus unchanged _sample/_run
+        assert set(created) == set(columns) | (set(legacy) if profile_on else set()) | {'_sample', '_run'}
+        assert 'SC-212' not in created and server_calls.count('listener') == 1
+        assert ('preserve-shared-timestamps' in server_calls) is profile_on
+        value = lambda v: v.Value.Value if isinstance(v, ua.DataValue) else v.Value
+        assert value(created['_sample'].values[-1]) == 1 and value(created['_run'].values[-1]) == 'fault6'
+        for tag, col in {**columns, **(legacy if profile_on else {})}.items():
+            assert value(created[tag].values[-2]) == col + 0.25
+            assert value(created[tag].values[-1]) == 3000 + col + 0.25
+            if profile_on:
+                data = created[tag].values[-1]
+                assert data.Value.VariantType == ua.VariantType.Double and data.StatusCode.is_good()
+                assert data.SourceTimestamp == data.ServerTimestamp and data.SourceTimestamp.tzinfo is not None
+        if profile_on:
+            for old, col in legacy.items():
+                native = next(n for n, c in columns.items() if c == col)
+                assert created[old].values[-1] is created[native].values[-1]
+
+    # Failure of the real preflight must occur before even constructing the fake server.
+    server_calls = []
+    with patch.object(replay, 'HISTORICAL_PROFILE_SHA256', '0' * 64), \
+         patch.object(replay, 'Server', FakeServer), patch.object(sys, 'argv', ['te_sim_server.py', '--historical-demo-addresses']), \
+         contextlib.redirect_stderr(io.StringIO()):
+        try: asyncio.run(replay.main())
+        except SystemExit as error: assert error.code == 2
+        else: raise AssertionError('invalid profile did not refuse')
+    assert not server_calls
+    print('PASS: pinned36historical addresses beside52canonical, source/units/type/noSC212 and corrupted-profile controls; fake server preserves default path, paired timestamps/read-only and real control switch; no listener opened')
+
+
 def main():
     model = json.loads((ROOT / 'data/te_process_model.json').read_text())
     original = copy.deepcopy(model)
@@ -88,6 +306,7 @@ def main():
     assert set(columns.values()) == set(range(52))
     assert len(set(columns.values())) == 52
     assert columns == te_columns(model)
+    check_historical_profile(model, columns)
     check_packaged_servers(columns)
     # Verify the actual replay function offline without importing the optional
     # asyncua server dependency or starting a listener.

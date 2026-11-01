@@ -1,9 +1,17 @@
 # Reproduce the demonstrations, then evaluate a site pilot
 
-This is the advanced public-data reproduction and adaptation guide. For a first document question, use the
-[first-question brief](../examples/first-pilot/README.md); for site planning, use [AT_YOUR_PLANT.md](AT_YOUR_PLANT.md).
+**Advanced tutorial and adaptation reference.** Learn how the public cases were assembled, then apply the
+reusable modeling, review, mapping and export steps to your own plant records. For a first build, start directly
+with the [P&ID](../examples/own-drawing/README.md), [description](../examples/from-description/README.md) or
+[DEXPI XML](../examples/from-dexpi-xml/README.md) tool guide; use [AT_YOUR_PLANT.md](AT_YOUR_PLANT.md) to stage
+the additional review, data and target-system work. A document-only question can use the
+[first-question brief](../examples/first-pilot/README.md).
 
-Start with public data on a separate learning copy. Then decide whether a small, reviewed pilot on your own drawings is worthwhile. You can follow the learning path yourself; help from the repository author is optional. A site pilot still needs qualified plant engineering and operations reviewers. Neither path establishes a production-ready twin.
+The case-study commands below reproduce selected public models and applications on a learning copy. Your own
+supported model can feed the same generic exporter with
+`python -S scripts/generate.py PRIVATE/model.json --out PRIVATE/exports`; substitute an approved private working
+location and follow the matching model/review contract. Public replay and screens demonstrate additional
+assembly choices. Review and validate your own sources, mappings and receiving environment as you add them.
 
 ## 1. Know which demonstration you are copying
 
@@ -183,7 +191,7 @@ Generated `pi/reconciliation.json` identifies the staged mapping inventory, sche
 - **AVEVA PI / AF:** supply a licensed development environment, PI Builder/Excel and PI System Explorer access, AF database/template/hierarchy conventions, units/data types and actual PI Data Archive/point identities. The CSV is a **PI Builder-style draft**, not a validated native import. Unmapped `%Server%`/placeholder point references require site-specific reconciliation; [the separate PI mapper](PI_MAPPING.md) stages explicitly reviewed literal references, while `map_points.py`'s OPC mapping does **not** supply them. The current `pi/pi_builder_af.csv` uses schema v2 and `AttributeType`. Still compare its headers and row conventions with a sheet retrieved from the installed PI Builder version, confirm or create/map the units in `pi/custom_uoms.csv`, and follow `pi/IMPORT_STEPS.txt`. Have the PI engineer test import and verify point resolution, types, units, attribute values and quality in the development AF database. PI Vision graphics are a separate integration, not a supplied custom-SVG import path.
 - **Other historians, SCADA, CMMS or platforms:** supply their supported import/API schema, stable IDs, units/types, quality/time conventions and read-only access contract. Implement and test an exporter/adapter with reject logs and count reconciliation; there is no universal connector in this repository.
 
-**Network stop:** both supplied replay servers bind `0.0.0.0` (all host interfaces), with anonymous/unencrypted lab endpoints. A `localhost` URL or log line does not restrict their listener. Do not start them on plant or corporate networks; use a separately approved isolated lab with verified network containment. Do not weaken host security to make the demo work.
+**Case-study network scope:** the TE and OPEN100 replay servers used by `demo.py` bind `0.0.0.0` (all host interfaces), with anonymous/unencrypted lab endpoints. A `localhost` URL or log line does not restrict their listener. Use those case servers only in a separately approved isolated lab with verified network containment. The reusable historian CSV replay tool has its own explicit host setting and defaults to loopback; see the [CSV guide](../examples/historian-csv/README.md). Do not weaken host security to make a case study work.
 
 Keep observation read-only toward process systems: no PLC/DCS writes, control logic, setpoint changes or automatic alarm creation. Lab configuration changes are still changes requiring the site's approval. A later production pilot requires separate security, licensing, management-of-change and operations sign-off; it is outside this learning workflow.
 

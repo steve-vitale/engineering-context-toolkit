@@ -1,0 +1,69 @@
+{
+  "schema": "private-source-adequacy-supplement-1",
+  "development_exposure": "Authored AFTER observing original21baseline; not blinded/heldout. Original21oracles/fixtures/results remain immutable.",
+  "question": "E30",
+  "why": "OriginalNative unit names containdefrost but existingwith/same_unit excludes anchoritself. SeparateHGV-A/B admittedcontext records isolate this existingmethod gate before adding one candidate at A.",
+  "cases": [
+    {
+      "id": "E30-S01-related-defrost-both",
+      "fixture": "fixtures/E30-S01-related-defrost-both.json",
+      "question_id": "E30",
+      "expected_collection_subjects": [
+        "EV-A",
+        "EV-B"
+      ],
+      "expected_candidate_ids": [
+        "HGV-A",
+        "HGV-B"
+      ],
+      "unacceptable": "A DP instrument or demand label, including disabled/timed fallback or merely declared use, silently closes source/function/actual-need review for EV-A; EV-B cannot inherit Afunction.",
+      "basis": "Same preregEPA-Dairy-2011 printed66/lines2458-2461; own-HGV record placement is deliberate software-isolation inference, not a quoted source layout requirement."
+    },
+    {
+      "id": "E30-S02-indicator-not-initiation",
+      "fixture": "fixtures/E30-S02-indicator-not-initiation.json",
+      "question_id": "E30",
+      "expected_collection_subjects": [
+        "EV-A",
+        "EV-B"
+      ],
+      "expected_candidate_ids": [
+        "HGV-A",
+        "HGV-B",
+        "PDT-A"
+      ],
+      "unacceptable": "A DP instrument or demand label, including disabled/timed fallback or merely declared use, silently closes source/function/actual-need review for EV-A; EV-B cannot inherit Afunction.",
+      "basis": "Same preregEPA-Dairy-2011 printed66/lines2458-2461; own-HGV record placement is deliberate software-isolation inference, not a quoted source layout requirement."
+    },
+    {
+      "id": "E30-S03-disabled-demand-label",
+      "fixture": "fixtures/E30-S03-disabled-demand-label.json",
+      "question_id": "E30",
+      "expected_collection_subjects": [
+        "EV-A",
+        "EV-B"
+      ],
+      "expected_candidate_ids": [
+        "HGV-A",
+        "HGV-B"
+      ],
+      "unacceptable": "A DP instrument or demand label, including disabled/timed fallback or merely declared use, silently closes source/function/actual-need review for EV-A; EV-B cannot inherit Afunction.",
+      "basis": "Same preregEPA-Dairy-2011 printed66/lines2458-2461; own-HGV record placement is deliberate software-isolation inference, not a quoted source layout requirement."
+    },
+    {
+      "id": "E30-S04-declared-local-function-no-events",
+      "fixture": "fixtures/E30-S04-declared-local-function-no-events.json",
+      "question_id": "E30",
+      "expected_collection_subjects": [
+        "EV-A",
+        "EV-B"
+      ],
+      "expected_candidate_ids": [
+        "HGV-A",
+        "HGV-B"
+      ],
+      "unacceptable": "A DP instrument or demand label, including disabled/timed fallback or merely declared use, silently closes source/function/actual-need review for EV-A; EV-B cannot inherit Afunction.",
+      "basis": "Same preregEPA-Dairy-2011 printed66/lines2458-2461; own-HGV record placement is deliberate software-isolation inference, not a quoted source layout requirement."
+    }
+  ]
+}

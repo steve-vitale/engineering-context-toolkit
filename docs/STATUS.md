@@ -1,22 +1,26 @@
 # State of the toolkit
 
-Holistic audit: **2026-10-31, Central time**, starting from released commit `1b39115`.
+Holistic audit: **2026-10-31, Central time**, with the own-plant transfer follow-up starting from released commit `8313a8e`.
 The public name is **Engineering Context Toolkit**. The jumpstart is its first-assignment path; modeling,
 review, analysis and evaluation can be used independently. Earlier failures and original evidence remain
 in the [journal](JOURNAL.md) and [attempt ledger](TRIED.md).
 
-**Working local tools, with engineering interpretation and company acceptance still required.** Start with one
-source-backed question and a packet another engineer can reconstruct. This is a foundation for maintained
-engineering context; it is not a turnkey digital twin, process audit or company governance service.
+**Reusable local tools build draft plant structure and engineering context from your supported records.** Create
+the source-linked asset model, review and enrich its meaning, then generate selected graph/context and platform
+staging. Supply reviewed signal identities and verify receiving-system behavior as you connect the application.
+The public tutorials teach those steps; case studies and evaluations retain what was built or measured on their
+inputs. Engineering review and company acceptance determine what becomes an authoritative maintained twin or record.
 
 The [script registry](SCRIPTS.md) classifies 135 scripts: 33 tools, 12 checks, 14 support modules and 76 research
-scripts; tests are separate. Twenty-two [feature groups](FEATURES.md) have bounded example evidence. A reviewed
+scripts; tests are separate. Twenty-two [feature groups](FEATURES.md) register 346 example files, including
+inputs, generated outputs and retained history. Their evidence is bounded. A reviewed
 example does not certify every input, current implementation or engineering conclusion.
 
 ## Known defects
 
-All three implementation defects reproduced in this pass have bounded repairs that passed independent
-receiving checks. The table records those closed findings; it does not claim that every malformed input or
+The preceding audit's three implementation defects have bounded repairs that passed independent receiving
+checks. This follow-up also repairs candidate-text encoding and the historical Docker address contract, with
+runtime acceptance kept separate. These are reproduced findings, not a claim that every malformed input or
 engineering task has been tested.
 
 | Reproduced gap | Required behavior and bounded repair |
@@ -24,6 +28,8 @@ engineering task has been tested.
 | Review summaries accepted changed packet evidence or non-review queue fields under the old bundle identity. | Recheck drawing, overlay, base queue and manifest digest; permit changes only in the declared `OPS_` columns of the submitted review copy. Hash agreement is integrity, not source authority or reviewer authentication. |
 | Imported timers accepted invalid event sequences or changing reviewer identities. | Validate imported and appended events with the same state rules, one nonblank reviewer ID and ordered offset-aware timestamps; refuse before appending. Timer logs can record actual review observations; these software controls establish no measured human review time or benefit. |
 | An unrepresentable numeric vendor coordinate aborted the batch. | Count that answer as failed/empty, preserve the other answers and retain the diagnostic in the report. This extends the existing malformed-answer guard, not the scoring criteria. |
+| New literal candidate evidence could truncate a report on escaped lone surrogates. | Preserve values as JSON escapes where UTF-8 cannot encode them; reject invalid declared field names before changing either destination. Normal Unicode and legacy no-opt-in output remain unchanged. |
+| All three fresh starts of the frozen Docker demo lost historical TE addresses. | An explicit pinned profile supplies 36 literal aliases beside the current 52 channels, leaving SC-212 unfed. Focused and independent source checks passed; fresh browser acceptance is recorded separately in the [Docker guide](../docker/README.md). |
 
 CSV replay also now defaults to loopback, prints the selected interface, rejects nonfinite rates, and checks the
 start row before server initialization. A different interface requires an explicit `--host`; this remains an
@@ -38,8 +44,6 @@ Select the tools needed for the job. The [workflow map](WORKFLOWS.md) owns the s
 the [feature reference](FEATURES.md) owns individual example evidence. Company systems retain authority,
 access, accepted decisions and continuing ownership. Local hashes, role labels and read-only transport do not
 create those controls.
-
-The [workflow map](WORKFLOWS.md) owns exact format contracts; [FEATURES.md](FEATURES.md) owns individual evidence.
 
 | Piece | Contribution | Boundary |
 |---|---|---|
@@ -69,7 +73,7 @@ actual participant, recipient, native-system and tenant observations remain **no
 
 | Work category | Remaining work | Completion evidence |
 |---|---|---|
-| Engineering question quality | N065/N082: source adequacy and useful questions. Of 50 rules/124 request bundles, 14 rules have bounded collection reviews; 36 still await original-source adequacy review. Scoped MGPI is development evidence; default MGPI still produces zero findings. | Prospective expected/unacceptable questions, source/key review and actual engineer/recipient usefulness observations. |
+| Engineering question quality | N065/N082: source adequacy and useful questions. Of 50 rules/124 request bundles, 17 rules have bounded collection reviews; 33 still await original-source adequacy review. Scoped MGPI is development evidence; default MGPI still produces zero findings. | Prospective expected/unacceptable questions, source/key review and actual engineer/recipient usefulness observations. |
 | Evaluation and transfer | N086 original-source/key engineering acceptance, Native placement gaps, existing matrix failures, unfamiliar-source coverage, scorer limits and five missing historical prediction tables. | Matched experiments with frozen criteria, retained failures, exposure/split labels and independent source/key review. More files or rerunning familiar inputs is not generalization. |
 | Optional adapters and receiving projections | General inverse graph conversion, captured-source consumers, managed-section merging and particular incumbent-system connectors are not implemented. Test changed/removed identifiers and complete retained history for the selected route. | A demonstrated engineering job, explicit supported contract, source preservation and subsequent-revision readback. Add only the adapter that job needs. |
 | Company acceptance and benefit | N062/N063: real engineer/recipient investigation, authorized company import/readback, client permissions and a subsequent revision. | Actual observations from the [acceptance exercise](ACCEPTANCE.md), not an agent simulation. Native PI/gateway acceptance, accepted Copilot tenant and operational benefit remain unverified. |
@@ -93,18 +97,29 @@ research, intentional tool boundaries and external acceptance are not silently c
 
 ## How this audit was checked
 
-The 95-cell matrix records **64 pass / 23 fail / 8 n/a**. This audit actually reran 15 scorer-control cells for
+The 95-cell matrix records **64 pass / 23 fail / 8 n/a**. The preceding audit actually reran 15 scorer-control cells for
 the vendor repair and two guide-bound intake/historian cells. Their substantive results remain exact; only
 measured timings, the changed method/guide bindings and the same historian passage's shifted locator change.
 The other 78 complete cell objects stay exact. Criteria, source/key inputs and historical failures are retained;
-no binding is backfilled. These failures remain research work, not failing unit tests.
-The current local full run passed **71/71 test scripts**, with six Windows unittest case skips, three platform notices and
+no binding is backfilled. The own-plant transfer follow-up actually refreshed the own-drawing intake and Bayer
+export guide bindings, preserving the other 93 complete cell objects and all outcomes. These failures remain
+research work, not failing unit tests.
+The prior release's local full run passed **71/71 test scripts**, with six Windows unittest case skips, three platform notices and
 zero additional skipped-check notices. Those counts are distinct; the handoff's unavailable native-symlink
 subcheck is a platform notice without a skipped unittest case. This is not a complete runtime pass. Targeted CLI
 controls, source-preservation checks, full-value reproductions and independent cross-reviews support the bounded repairs.
 
-The publication check matches 41 numerical claims and identifies one prose-only claim; all 52 configured pipeline
-stages are fresh. Five current benchmark suites reproduce. Re-scoring saved predictions reproduces 30 tables
+The follow-up local full run executes all 71 programs: **70 pass**, with one failure caused by placing a new guide
+inside the team example's fixed 97-file packet. The guide now lives [in docs](TEAM_CONTEXT_IMPACT.md); its existing
+two-test module passes after relocation, with the test and 94 evidence files unchanged. Both runs preserve all
+3,025 input files. The original full result remains recorded rather than relabelled 71/71. See
+[committed-version CI](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml)
+for the separate complete-suite and optional MCP results; platform and missing-cache skips remain explicit.
+
+The publication check matches 41 numerical claims and identifies one prose-only claim. The follow-up currently has
+**50/52 stages fresh**: `te.pid_live` and `te.replay` retain their earlier runtime receipts and are stale after the
+replay implementation change. Offline checks and the historical Docker demonstration do not renew those manual
+runtime stages. Five benchmark suites reproduce on the prior release. Re-scoring saved predictions reproduces 30 tables
 (23 MATCH, seven MATCH-OLD); five historical tables still report GAP. These checks do not rerun commercial models.
 An initial clean Linux CI run caught two collection-declaration defects after the local suite passed. The
 follow-up separates an absent selected collection from committed siblings and binds exactly the TE files its
@@ -137,7 +152,7 @@ controls. Keep the remaining source-adequacy and external-acceptance work separa
 | **Model review — N072/N077** | Supplied alarm metadata and old receipts survive. Supported native tag corrections migrate live references; separate layouts, mappings and snapshots still need reconciliation. [Worked correction](../examples/review-and-mapping/native-identity/README.md). |
 | **Schedule choices — N079** | Contradictory service declarations refuse in either input order. Exact source-bound selections retain candidates and supplied qualifiers; existing spelling choices remain drafts. No choice grants organizational approval. |
 | **Description review — N078** | Every supplied record value and source line is exposed for review; all rows start unreviewed. Structural validity does not decide whether the interpretation is correct. [Description guide](../examples/from-description/README.md). |
-| **Collection contracts — N071/N073/N080/N084/N085/N088** | Fourteen named rules keep candidate fields, electrical quantities, measurements, machine/function association and actual coverage distinct from suitable evidence. Unrelated trips/reset/recovery cannot quiet other machines' review obligations. The other 36 rules still need source-adequacy review; no whole-catalog correctness or usefulness is established. [Collection limits](OPPORTUNITY_SCREEN.md). |
+| **Collection contracts — N071/N073/N080/N084/N085/N088/N082** | Seventeen named rules keep candidate fields, electrical quantities, measurements, machine/function association and actual coverage distinct from suitable evidence. Unrelated trips/reset/recovery and control labels cannot quiet other machines' review obligations. The other 33 rules still need source-adequacy review; no whole-catalog correctness or usefulness is established. [Collection limits](OPPORTUNITY_SCREEN.md). |
 | **Context and readback — N075/N076/N083** | Rejected evidence changes dependent-answer freshness; validated selected packets serve full retained sources, values, decisions and ownership. Bound enriched-question re-export refuses: use the complete graph/context pair or explicitly refresh the preserved register. No automatic source fetching, rebinding, authentication or company authority. [Context guide](CONTEXT_REGISTER.md). |
 | **Matrix provenance — N074** | Actual runs bind declared inputs/keys, inventories, registry, runner and code. Changed/missing required inputs refuse; absent optional caches are explicitly unverified. Strict input mode still requires them. Bindings are conservative declarations, not operating-system read tracing. |
 | **Benchmark recipes — N081** | Re-scores retain exact historical recipe snapshots, attempts, predictions and reports. New provenance identities are not new model performance. |

@@ -1,12 +1,13 @@
 # The opportunity screen: questions worth asking of a drawing
 
-**Why it matters:** Many energy and controls questions can be spotted on a P&ID before anyone collects data: a throttled pump, high-pressure steam let down for a low-temperature job, heat dumped to cooling water, a loop with no controller. A solo engineer rarely has time to look. This lists the questions with the evidence by tag and exactly what to collect, and where, to settle each one, without inventing a savings number.
+**Why it matters:** A P&ID can suggest useful energy and controls investigations: a throttled pump, high-pressure steam serving a low-temperature duty, heat rejected to cooling water, or control records to reconcile. The screen gives an engineer a starting plan with named model evidence, proposed collection requests and decision criteria. Review that plan against the process and available records before pursuing it.
 
-`scripts/question_engine.py` runs a list of engineering questions over a plant model and writes, for every place a
-question applies, what the drawing shows, what is still missing, exactly where to get it, and how the answer
-settles the question. Run every question and you get a draft energy and controls screen. Run one question and you
-get the answer to "what do I need to collect, and from where, to answer this?". Examples, with a hand check of every
-finding: [`examples/opportunity-screen/`](../examples/opportunity-screen/README.md).
+**Reusable tool:** `scripts/question_engine.py` matches catalog rules against your supplied model and proposes
+investigations with named assets, model evidence, collection requests and decision criteria. Use the screen to
+plan what to investigate and which records to obtain; review its applicability and requests against the actual
+process. Select one question for a focused collection plan, or the full catalog for a draft energy and controls
+screen. [Tutorials and case results](../examples/opportunity-screen/README.md) show the outputs, recorded reviews
+and coverage limits.
 
 Decision rules describe which investigations to pursue or conclude. In this screening language, "close it" means
 close the investigation, never operate or close equipment. Findings do not authorize operational changes.
@@ -183,8 +184,16 @@ establish effectiveness, testing, approval or operating authority. The independe
 [HSE's functional-safety guidance](https://www.hse.gov.uk/eci/functional.htm) to keep specification, validation and
 continuing evidence distinct; it makes no safety-design or compliance determination.
 
-The catalog has 50 rules and 124 collection requests. Fourteen rules have bounded source-informed collection
-reviews; the other 36 still need original-source adequacy review. These controls do not establish whole-catalog
+E29, E30 and C11 keep each named compressor, evaporator or dryer/oven in source review even when a drive,
+demand-defrost or humidity label is supplied. Establish actual control function, operating basis and applicable
+constraints from records. Initiation and termination are separate; humidity is one possible control variable.
+The [function-basis cases](../examples/opportunity-screen/function-basis/README.md) show these authored collection
+policies and their source limits. Optional `evidence_show_fields` quotes selected fields from already-shown
+records, preserving false, zero, unknown and blank values with their locators. Controller/interlock qualifiers
+remain evidence-only and do not activate unrelated selectors or complete requests.
+
+The catalog has 50 rules and 124 collection requests. Seventeen rules have bounded source-informed collection
+reviews; the other 33 still need original-source adequacy review. These controls do not establish whole-catalog
 engineering correctness or human usefulness. The [worked food screen](../examples/opportunity-screen/food/screen.md)
 shows the retained candidates and open coverage tasks.
 
@@ -335,13 +344,13 @@ the source's URL; each source entry in `data/questions.json` records that file's
 |---|---|---|---|
 | E27 | Is this condenser train's head pressure appropriate for its weather, limits and actual reset coverage? | named refrigeration condenser; supplied reset labels remain candidates and train/operating-basis review stays open | S25 pp. 62, 65 (conditional reported benefit; no site calculation) |
 | E28 | Does each suction level meet the conditions required by every coincident served load? | refrigeration compressors, with suction/load records and drawn reset candidates; membership, approaches and coverage stay open | S25 p. 63 (about 8% for a two-stage system raised from -30 °F to -20 °F) |
-| E29 | Does a refrigeration compressor carry part load on its slide valve with no speed control? | a refrigeration compressor with no drive (VFD, VSD, ASD, SC, SIC) on it | S25 pp. 59, 63 |
-| E30 | Are evaporators defrosted on a fixed timer? | an evaporator or unit cooler with defrost drawn on it; quiet with a coil differential pressure or demand defrost | S25 pp. 59, 66 (no %) |
+| E29 | What supports compressor part-load control, sequencing and real-input basis? | named refrigeration compressors; drive/control labels remain candidates | S25 pp. 59, 62, 63 |
+| E30 | What supports defrost applicability, initiation and termination? | named refrigeration evaporators/coolers; DP and demand labels remain candidates | S25 pp. 59, 66 (no %) |
 | E31 | Does an oven, dryer or fryer send hot exhaust to atmosphere with no heat recovery? | an oven, dryer, fryer, roaster or dehydrator; quiet if a heat recovery item is on it or at the other end of a stream from it | S26 pp. 104, 107; S25 p. 90 (up to 30% of spray dryer exhaust heat) |
 | E32 | Is the burner air-fuel ratio checked, with no flue O2 drawn? | an oven, dryer or fryer with a burner or fuel supply; quiet with an O2 analyser | S27 p. 1 (no %; excess air is part of a drying process) |
 | H5 | Is refrigeration condenser heat rejected while a low-grade duty is heated another way? | refrigeration plant plus a candidate heating duty; existing recovery remains evidence, with train/sink coverage unresolved | S25 p. 64 (no %) |
 | H6 | Could oven, dryer or fryer exhaust heat serve a low-grade duty elsewhere? | the E31 units, plus a low-grade duty anywhere | S28 p. 1; S26 p. 107 (no %) |
-| C11 | Is a dryer's or oven's exhaust rate set by hand rather than by humidity? | a dryer or oven with no humidity, dew point or moisture measurement | S26 p. 104 (no %) |
+| C11 | What supports the exhaust/make-up strategy and product requirements? | named dryers/ovens; supplied measurement/control candidates do not establish suitability | S26 p. 104; dryer guidance, oven extension unvalidated (no %) |
 | C12 | Is representative real input power available with a usable coincident operating basis? | refrigeration compressors, including those with supplied electrical readings; labels do not settle actual collection | S25 p. 58 (3% for monitoring, one winery review as reported there) |
 
 Anti-triggers, each in the tests: an air compressor, a recycle gas compressor, a process condenser on cooling water,

@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "model_id": "E30-07-no-refrigeration-anchor",
+    "title": "ILLUSTRATIVE source-adequacy counterexample",
+    "illustrative": true,
+    "not_a_drawing_of_record": "Synthetic authored source-adequacy control; not a plant/drawing/measurement or source-derived topology."
+  },
+  "units": [
+    {
+      "id": "EV-P",
+      "name": "Steam heated falling film multiple-effect evaporator",
+      "type": "evaporator",
+      "source": "Synthetic authored source-adequacy control; not a plant/drawing/measurement or source-derived topology."
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "final_elements": [],
+  "manual_valves": [],
+  "controllers": []
+}

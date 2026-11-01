@@ -1,0 +1,66 @@
+{
+  "catalog": {
+    "git_revision": "8313a8e948bc99e6af40293e61f0900a44516644",
+    "path": "data/questions.json",
+    "raw_sha256": "2bf5a179c4b2d04a0258ffae485d9981a610e8f88ee4963c747b43046bcfff4e",
+    "LF_sha256": "d20115933c48ad81d2430db2bc552c5fdcfe2f6e3797603f9a93c1c55f1ca75a",
+    "size_bytes": 193310
+  },
+  "engine": {
+    "git_revision": "8313a8e948bc99e6af40293e61f0900a44516644",
+    "path": "scripts/question_engine.py",
+    "raw_sha256": "41f7569d81952453f4e224991ddf31781d9af4a62f3f4938a5a99d881eafc110",
+    "LF_sha256": "41f7569d81952453f4e224991ddf31781d9af4a62f3f4938a5a99d881eafc110",
+    "size_bytes": 93097
+  },
+  "initial_expectations": {
+    "cases": 21,
+    "raw_sha256": "efbbf1f3eac74c52a5354d7cffb1360b35662a79e2dbe4f217999b97436e20d2",
+    "initial_preregistration_sha256": "2645a818063eeef32b1eb9d866e4895e7cd41bbc79b49ed773e0e98b186eeb79"
+  },
+  "later_E30_development_controls": {
+    "cases": 4,
+    "raw_sha256": "95cdfb2eeb6bc29b24384f86e3ad3987bad56e6b034655d2493be50da0653087",
+    "supplement_preregistration_sha256": "201a5ba6a6aa1b4ffe2e2069966f4ad6ffbec4b905f7d66025c49f906a5f5f05"
+  },
+  "historical_reports": {
+    "history/before/E29-02-own-drive-label/questions.json": {
+      "raw_sha256": "d9bd7879ddd7c9c5f1f62cc570897c60e957e615b980bf6a79337b4cc4e3941b",
+      "LF_sha256": "d9bd7879ddd7c9c5f1f62cc570897c60e957e615b980bf6a79337b4cc4e3941b",
+      "size_bytes": 3697
+    },
+    "history/before/E29-02-own-drive-label/screen.md": {
+      "raw_sha256": "1e391f48b67c8cfb0b796388a959050888b36c7c6922be1229394234034d0398",
+      "LF_sha256": "1e391f48b67c8cfb0b796388a959050888b36c7c6922be1229394234034d0398",
+      "size_bytes": 3909
+    },
+    "history/before/E30-S02-indicator-not-initiation/questions.json": {
+      "raw_sha256": "ab9ff6e9e80c9f73c350b09c99ac834cde3f13ce7fb731233397cbf448f014ce",
+      "LF_sha256": "ab9ff6e9e80c9f73c350b09c99ac834cde3f13ce7fb731233397cbf448f014ce",
+      "size_bytes": 3584
+    },
+    "history/before/E30-S02-indicator-not-initiation/screen.md": {
+      "raw_sha256": "3d1b5691089906e322ffd48ca58ab0c98dc321ef37b6073c6b6664c8ec22f1cf",
+      "LF_sha256": "3d1b5691089906e322ffd48ca58ab0c98dc321ef37b6073c6b6664c8ec22f1cf",
+      "size_bytes": 3654
+    },
+    "history/before/C11-02-exhaust-indication-only/questions.json": {
+      "raw_sha256": "2d1f1f269954445a147b04189170765ce99d368094afbbe44407b574f4de62ce",
+      "LF_sha256": "2d1f1f269954445a147b04189170765ce99d368094afbbe44407b574f4de62ce",
+      "size_bytes": 3471
+    },
+    "history/before/C11-02-exhaust-indication-only/screen.md": {
+      "raw_sha256": "d1a10d6c3a1af0f6cd54892ec409a965ef76dc5633d4f86e7a5049ec9035fc01",
+      "LF_sha256": "d1a10d6c3a1af0f6cd54892ec409a965ef76dc5633d4f86e7a5049ec9035fc01",
+      "size_bytes": 3726
+    }
+  },
+  "portable_expected_adoption": {
+    "source_raw_sha256": "a63a52bbf63ff39946d75f6d93183f630ed1f76667b7c57b0f7c16b017e7ff93",
+    "adopted_LF_sha256": "0bc85462412ef51bed345e0cf43a63ddb5679fc4a67d26109a54f997e43113ee",
+    "raw_source_preserved_privately": true,
+    "policy": "OnlyCRLF-to-LF for authored expected/cases.json; exacttypedJSON and allcase/oracle/order values unchanged. All25models and sixhistoricalbefore files remain exactsourcebytes.",
+    "typed_canonical_JSON_equal": true,
+    "root_explicit_authorization": "Use explicitLF adoption for expected/cases.json only; no raw-text exception needed."
+  }
+}

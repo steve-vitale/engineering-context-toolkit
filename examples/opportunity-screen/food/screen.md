@@ -12,7 +12,7 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 
 | Family | Findings |
 |---|---|
-| Energy | 12 |
+| Energy | 14 |
 | Heat grade (high-grade heat for low-grade duty) | 3 |
 | Metering | 4 |
 | Controls and automation | 4 |
@@ -154,57 +154,81 @@ IAC/ITAC recommendation code: 2.243x (by description).
 
 **Limits:** Product temperature and food-safety limits set the floor: a suction change changes how product is held and needs the quality owner's sign-off. Fires only where the equipment's own name, type or service names the refrigerant (ammonia, NH3, R-717, a refrigerant number) or says refrigeration; an air compressor, a process recycle compressor, a process condenser on cooling water or a power-plant air-cooled condenser does not. Drawn reset text does not prove usable operating observations or all-load coverage. Shared headers, different approaches, pressure regulation, stages, transients and equipment limits can change the governing condition; keep topology and applicability unverified until reviewed.
 
-### E29: Does this refrigeration compressor carry part load on its slide valve (or hot gas bypass) with no speed control?
+### E29: What records support this refrigeration compressor's part-load control, sequencing and real-input basis?
 
 **About:** K-201  
 
 **Finding reference (JSON string):** `"E29@K-201"`
-**Asset IDs (JSON array):** `["K-201", "JT-201"]`
+**Asset IDs (JSON array):** `["K-201", "JT-201", "PT-201"]`
 
 **Evidence on the drawing / model**
 
 - equipment K-201 reads "K-201 Ammonia (R-717) screw compressor, low stage (booster)" (`units[K-201]`)
 - Compressor power: instrument JT-201 reads "JT-201 Low-stage compressor motor power" at K-201 (`instruments[JT-201]`)
-- Checked, none found: no variable speed drive or speed controller drawn on this compressor (`applies_when.without`)
+- Compressor pressure indication candidate: instrument PT-201 reads "PT-201 Low-stage suction pressure" at K-201 (`instruments[PT-201]`)
 
 **Data to collect**
 
-- Slide valve (capacity) position over normal operation [not on drawing]. Where: DCS/PLC configuration: slide valve position or percent capacity per compressor from the refrigeration plant controls, a month or more. How: Hours spent below full load, by load band.
-- Compressor power and run hours [not on drawing]. Where: historian or DCS trend for JT-201 (no historian tag is mapped in this model for these); then a walkdown: power logger on the compressor motor across a normal week. How: Power at each load band, so part-load efficiency can be seen.
-- How the compressors are sequenced [not on drawing]. Where: DCS/PLC configuration: which compressor trims, and the order and pressures at which they load and unload. How: Note whether more than one machine trims at the same time.
+- Capacity-control mode and representative load for this compressor [not on drawing]. Where: DCS/PLC configuration: existing identified compressor configuration and active/fallback mode, slide-valve or bypass function, revision and responsible owner; then site records: permitted load/capacity histories with machine identity, period and coincident suction/demand conditions. How: Retain labels and enabled/disabled/unknown qualifiers as candidates. Establish actual function and a representative operating basis; a nameplate or drive label does not establish part-load behavior.
+- Representative real input power on the same operating basis [not on drawing]. Where: historian or DCS trend for JT-201 (no historian tag is mapped in this model for these); then site records: approved existing electrical-input and run/load observations with quantity, units, time and conversion basis; then the vendor datasheet: applicable compressor/drive limits and part-load performance basis. How: Compare suitable coincident input and load records. Separate ratings, electrical indications and near-full-load conditions from actual representative real input; request missing evidence without inventing a value or authorizing measurements.
+- Actual sequencing, served group and applicable supplier constraints [not on drawing]. Where: DCS/PLC configuration: existing reviewed sequence/trim logic, machine-to-suction-group association, active overrides and revision; then site records: permitted operating/event records showing which machines actually trim under comparable conditions; then the vendor datasheet: applicable supplier constraints and responsible engineering review route. How: A sequencer label alone does not establish active operation or complete group coverage. Return a qualified partial answer or missing-evidence request to the responsible reviewer.
 
-**How it is decided:** Worth a look when screws spend long hours part-loaded on the slide valve while another could be off, or when no machine on a suction level has speed control to trim. Close it if each runs near full load or a sequencer already keeps one machine trimming.
+**How it is decided:** Investigate missing or conflicting source/function/operating evidence for each named machine. A drive or sequencing label does not settle efficiency, and the source describes load-dependent tradeoffs. Close only the source investigation after qualified evidence review; no drive change, operating instruction or savings estimate follows.
 
 **What the source says (S25):** Among control strategies that "may compromise system energy efficiency" (S25, p. 59, citing Pearson 2003): "Slide valve unloading of oversized screw compressors." and "Hot gas bypass of compressors." Speed control (S25, p. 63): "ASDs used on compressors below a part-load ratio of about 95% will deliver performance equal to a fixed speed compressor but with lower electricity requirements. However, at near full (i.e., 100%) load, ASDs are approximately 3% less efficient than fixed speed drives".
 
-**Limits:** A drive or sequencing change goes through the compressor vendor (minimum speed, oil management, vibration). Fires only where the equipment's own name, type or service names the refrigerant (ammonia, NH3, R-717, a refrigerant number) or says refrigeration; an air compressor, a process recycle compressor, a process condenser on cooling water or a power-plant air-cooled condenser does not.
+**Limits:** This is an authored per-machine collection policy informed by S25 printed pp.59,62,63, not a quoted design requirement or installed-state diagnosis. Labels and literal facts remain unverified candidates; review actual association, operating conditions and supplier constraints. No fixed observation duration or operating limit is inferred. A drive or sequencing change goes through the compressor vendor (minimum speed, oil management, vibration). Fires only where the equipment's own name, type or service names the refrigerant (ammonia, NH3, R-717, a refrigerant number) or says refrigeration; an air compressor, a process recycle compressor, a process condenser on cooling water or a power-plant air-cooled condenser does not.
 
-### E29: Does this refrigeration compressor carry part load on its slide valve (or hot gas bypass) with no speed control?
+### E29: What records support this refrigeration compressor's part-load control, sequencing and real-input basis?
 
 **About:** K-202  
 
 **Finding reference (JSON string):** `"E29@K-202"`
-**Asset IDs (JSON array):** `["K-202", "ZT-202"]`
+**Asset IDs (JSON array):** `["K-202", "ZT-202", "PT-202"]`
 
 **Evidence on the drawing / model**
 
 - equipment K-202 reads "K-202 Ammonia (R-717) screw compressor, high stage" (`units[K-202]`)
 - Capacity control: instrument ZT-202 reads "ZT-202 Slide valve (capacity) position" at K-202 (`instruments[ZT-202]`)
-- Checked, none found: no variable speed drive or speed controller drawn on this compressor (`applies_when.without`)
+- Compressor pressure indication candidate: instrument PT-202 reads "PT-202 High-stage suction pressure" at K-202 (`instruments[PT-202]`)
 
 **Data to collect**
 
-- Slide valve (capacity) position over normal operation [not on drawing]. Where: historian or DCS trend for ZT-202 (no historian tag is mapped in this model for these); then DCS/PLC configuration: slide valve position or percent capacity per compressor from the refrigeration plant controls, a month or more. How: Hours spent below full load, by load band.
-- Compressor power and run hours [not on drawing]. Where: a walkdown: power logger on the compressor motor across a normal week. How: Power at each load band, so part-load efficiency can be seen.
-- How the compressors are sequenced [not on drawing]. Where: DCS/PLC configuration: which compressor trims, and the order and pressures at which they load and unload. How: Note whether more than one machine trims at the same time.
+- Capacity-control mode and representative load for this compressor [not on drawing]. Where: DCS/PLC configuration: existing identified compressor configuration and active/fallback mode, slide-valve or bypass function, revision and responsible owner; then site records: permitted load/capacity histories with machine identity, period and coincident suction/demand conditions. How: Retain labels and enabled/disabled/unknown qualifiers as candidates. Establish actual function and a representative operating basis; a nameplate or drive label does not establish part-load behavior.
+- Representative real input power on the same operating basis [not on drawing]. Where: site records: approved existing electrical-input and run/load observations with quantity, units, time and conversion basis; then the vendor datasheet: applicable compressor/drive limits and part-load performance basis. How: Compare suitable coincident input and load records. Separate ratings, electrical indications and near-full-load conditions from actual representative real input; request missing evidence without inventing a value or authorizing measurements.
+- Actual sequencing, served group and applicable supplier constraints [not on drawing]. Where: DCS/PLC configuration: existing reviewed sequence/trim logic, machine-to-suction-group association, active overrides and revision; then site records: permitted operating/event records showing which machines actually trim under comparable conditions; then the vendor datasheet: applicable supplier constraints and responsible engineering review route. How: A sequencer label alone does not establish active operation or complete group coverage. Return a qualified partial answer or missing-evidence request to the responsible reviewer.
 
-**How it is decided:** Worth a look when screws spend long hours part-loaded on the slide valve while another could be off, or when no machine on a suction level has speed control to trim. Close it if each runs near full load or a sequencer already keeps one machine trimming.
+**How it is decided:** Investigate missing or conflicting source/function/operating evidence for each named machine. A drive or sequencing label does not settle efficiency, and the source describes load-dependent tradeoffs. Close only the source investigation after qualified evidence review; no drive change, operating instruction or savings estimate follows.
 
 **What the source says (S25):** Among control strategies that "may compromise system energy efficiency" (S25, p. 59, citing Pearson 2003): "Slide valve unloading of oversized screw compressors." and "Hot gas bypass of compressors." Speed control (S25, p. 63): "ASDs used on compressors below a part-load ratio of about 95% will deliver performance equal to a fixed speed compressor but with lower electricity requirements. However, at near full (i.e., 100%) load, ASDs are approximately 3% less efficient than fixed speed drives".
 
-**Limits:** A drive or sequencing change goes through the compressor vendor (minimum speed, oil management, vibration). Fires only where the equipment's own name, type or service names the refrigerant (ammonia, NH3, R-717, a refrigerant number) or says refrigeration; an air compressor, a process recycle compressor, a process condenser on cooling water or a power-plant air-cooled condenser does not.
+**Limits:** This is an authored per-machine collection policy informed by S25 printed pp.59,62,63, not a quoted design requirement or installed-state diagnosis. Labels and literal facts remain unverified candidates; review actual association, operating conditions and supplier constraints. No fixed observation duration or operating limit is inferred. A drive or sequencing change goes through the compressor vendor (minimum speed, oil management, vibration). Fires only where the equipment's own name, type or service names the refrigerant (ammonia, NH3, R-717, a refrigerant number) or says refrigeration; an air compressor, a process recycle compressor, a process condenser on cooling water or a power-plant air-cooled condenser does not.
 
-### E30: Are these evaporators defrosted on a fixed timer rather than when frost is actually there?
+### E29: What records support this refrigeration compressor's part-load control, sequencing and real-input basis?
+
+**About:** K-203  
+
+**Finding reference (JSON string):** `"E29@K-203"`
+**Asset IDs (JSON array):** `["K-203", "SC-203"]`
+
+**Evidence on the drawing / model**
+
+- equipment K-203 reads "K-203 Ammonia (R-717) screw compressor, high stage (trim)" (`units[K-203]`)
+- Drive label candidate: final element SC-203 reads "SC-203 Variable speed drive, high-stage trim compressor" at K-203 (`final_elements[SC-203]`)
+
+**Data to collect**
+
+- Capacity-control mode and representative load for this compressor [not on drawing]. Where: DCS/PLC configuration: existing identified compressor configuration and active/fallback mode, slide-valve or bypass function, revision and responsible owner; then site records: permitted load/capacity histories with machine identity, period and coincident suction/demand conditions. How: Retain labels and enabled/disabled/unknown qualifiers as candidates. Establish actual function and a representative operating basis; a nameplate or drive label does not establish part-load behavior.
+- Representative real input power on the same operating basis [not on drawing]. Where: site records: approved existing electrical-input and run/load observations with quantity, units, time and conversion basis; then the vendor datasheet: applicable compressor/drive limits and part-load performance basis. How: Compare suitable coincident input and load records. Separate ratings, electrical indications and near-full-load conditions from actual representative real input; request missing evidence without inventing a value or authorizing measurements.
+- Actual sequencing, served group and applicable supplier constraints [not on drawing]. Where: DCS/PLC configuration: existing reviewed sequence/trim logic, machine-to-suction-group association, active overrides and revision; then site records: permitted operating/event records showing which machines actually trim under comparable conditions; then the vendor datasheet: applicable supplier constraints and responsible engineering review route. How: A sequencer label alone does not establish active operation or complete group coverage. Return a qualified partial answer or missing-evidence request to the responsible reviewer.
+
+**How it is decided:** Investigate missing or conflicting source/function/operating evidence for each named machine. A drive or sequencing label does not settle efficiency, and the source describes load-dependent tradeoffs. Close only the source investigation after qualified evidence review; no drive change, operating instruction or savings estimate follows.
+
+**What the source says (S25):** Among control strategies that "may compromise system energy efficiency" (S25, p. 59, citing Pearson 2003): "Slide valve unloading of oversized screw compressors." and "Hot gas bypass of compressors." Speed control (S25, p. 63): "ASDs used on compressors below a part-load ratio of about 95% will deliver performance equal to a fixed speed compressor but with lower electricity requirements. However, at near full (i.e., 100%) load, ASDs are approximately 3% less efficient than fixed speed drives".
+
+**Limits:** This is an authored per-machine collection policy informed by S25 printed pp.59,62,63, not a quoted design requirement or installed-state diagnosis. Labels and literal facts remain unverified candidates; review actual association, operating conditions and supplier constraints. No fixed observation duration or operating limit is inferred. A drive or sequencing change goes through the compressor vendor (minimum speed, oil management, vibration). Fires only where the equipment's own name, type or service names the refrigerant (ammonia, NH3, R-717, a refrigerant number) or says refrigeration; an air compressor, a process recycle compressor, a process condenser on cooling water or a power-plant air-cooled condenser does not.
+
+### E30: What records support this evaporator's defrost applicability, initiation and termination?
 
 **About:** EV-201  
 
@@ -216,19 +240,44 @@ IAC/ITAC recommendation code: 2.243x (by description).
 - equipment EV-201 reads "EV-201 Spiral freezer evaporator (ammonia, hot gas defrost)" (`units[EV-201]`)
 - Defrost: final element HGV-201 reads "HGV-201 Hot gas defrost valve, spiral freezer evaporator (defrost started by a timer)" at EV-201 (`final_elements[HGV-201]`)
 - Room or coil temperature: instrument TT-205 reads "TT-205 Spiral freezer air temperature" at EV-201 (`instruments[TT-205]`)
-- Checked, none found: no demand defrost initiation (coil differential pressure, frost sensor) drawn on this evaporator (`applies_when.without`)
 
 **Data to collect**
 
-- Defrost schedule per evaporator [not on drawing]. Where: DCS/PLC configuration: defrost initiation (timer or demand), defrosts per day, duration and termination (time or coil temperature) per evaporator. How: List defrosts per day by season.
-- Frost on the coil when a scheduled defrost starts [not on drawing]. Where: a walkdown: look at the coil just before a few scheduled defrosts, in a dry week and a humid week. How: Note clear, light or heavy frost.
-- Hot gas use and room temperature rise per defrost [not on drawing]. Where: historian or DCS trend for HGV-201 (no historian tag is mapped in this model for these); then historian or DCS trend for TT-205 (no historian tag is mapped in this model for these). How: The heat put in to defrost comes back as refrigeration load afterwards.
+- Applicability and actual initiation per named evaporator [not on drawing]. Where: DCS/PLC configuration: permitted current defrost configuration: target coil/unit, initiation and fallback mode, enabled/disabled state and revision; then site records: existing source-owner or supplier records establishing whether defrost applies to this unit and which indications actually initiate it. How: Keep timer/demand labels and DP readings as candidates. An indication, termination sensor or unit name does not prove active demand initiation; do not borrow another evaporator's control basis.
+- Representative need and event/termination evidence [not on drawing]. Where: historian or DCS trend for TT-205 (no historian tag is mapped in this model for these); then site records: approved existing frost/coil-pressure and defrost-event records, initiation reason, duration, termination and coincident conditions; then maintenance records: relevant recorded inspection or sensor/function checks and their dates. How: Separate evidence of need from initiation and termination. Retain quantity/location/units/time and missing history explicitly; no pressure threshold, event count or universal observation duration is supplied.
+- Affected room/product constraints and review route [not on drawing]. Where: historian or DCS trend for HGV-201 (no historian tag is mapped in this model for these); then site records: permitted room/product requirements, operating restrictions and existing reviewed defrost basis for the identified unit; then the vendor datasheet: applicable unit and control constraints and responsible reviewer. How: Use an existing-record fallback when no suitable mapped signal is supplied. Establish relevant effects and constraints through the company review route; no inspection, defrost or setting change is authorized.
 
-**How it is decided:** Worth a look when coils are clear at scheduled defrosts, or the count per day is the same in dry weeks as in humid ones. Close it if defrost is already started on demand.
+**How it is decided:** Pursue missing applicability, source/function or representative event evidence. A drawn DP instrument or demand label does not settle whether defrost is initiated by actual need. Close only a qualified source investigation; no installed-control acceptance or operating change follows.
 
 **What the source says (S25):** Demand defrost (S25, p. 66): "Evaporators should be defrosted only when necessary, as opposed to on timed schedules where defrosting occurs regardless of need." "Too frequent defrosts." is listed among control strategies that "may compromise system energy efficiency" (S25, p. 59, citing Pearson 2003). No % stated.
 
-**Limits:** A coil differential pressure instrument on the evaporator is taken as demand defrost; check that it is used for that. A P&ID rarely shows the defrost timer itself, so the schedule always comes from the controls.
+**Limits:** S25 printed p.66 discusses need-based defrost; per-unit keep-open collection and accepting an anchor's own description as a candidate are authored software/engineering policy. Neither absence nor presence of a DP/demand/termination label establishes actual use. Applicability, initiation, termination, source revision and operating/product constraints require review. The screen does not infer frost, installed timers, thresholds or permission.
+
+### E30: What records support this evaporator's defrost applicability, initiation and termination?
+
+**About:** EV-202  
+
+**Finding reference (JSON string):** `"E30@EV-202"`
+**Asset IDs (JSON array):** `["EV-202", "PDT-206", "HGV-202", "TT-206"]`
+
+**Evidence on the drawing / model**
+
+- equipment EV-202 reads "EV-202 Frozen store unit cooler (ammonia, hot gas defrost)" (`units[EV-202]`)
+- Defrost: instrument PDT-206 reads "PDT-206 Unit cooler coil air-side differential pressure (demand defrost initiation)" at EV-202 (`instruments[PDT-206]`)
+- Defrost: final element HGV-202 reads "HGV-202 Hot gas defrost valve, frozen store unit cooler" at EV-202 (`final_elements[HGV-202]`)
+- Room or coil temperature: instrument TT-206 reads "TT-206 Frozen store air temperature" at EV-202 (`instruments[TT-206]`)
+
+**Data to collect**
+
+- Applicability and actual initiation per named evaporator [not on drawing]. Where: DCS/PLC configuration: permitted current defrost configuration: target coil/unit, initiation and fallback mode, enabled/disabled state and revision; then site records: existing source-owner or supplier records establishing whether defrost applies to this unit and which indications actually initiate it. How: Keep timer/demand labels and DP readings as candidates. An indication, termination sensor or unit name does not prove active demand initiation; do not borrow another evaporator's control basis.
+- Representative need and event/termination evidence [not on drawing]. Where: historian or DCS trend for TT-206 (no historian tag is mapped in this model for these); then site records: approved existing frost/coil-pressure and defrost-event records, initiation reason, duration, termination and coincident conditions; then maintenance records: relevant recorded inspection or sensor/function checks and their dates. How: Separate evidence of need from initiation and termination. Retain quantity/location/units/time and missing history explicitly; no pressure threshold, event count or universal observation duration is supplied.
+- Affected room/product constraints and review route [not on drawing]. Where: historian or DCS trend for HGV-202 (no historian tag is mapped in this model for these); then site records: permitted room/product requirements, operating restrictions and existing reviewed defrost basis for the identified unit; then the vendor datasheet: applicable unit and control constraints and responsible reviewer. How: Use an existing-record fallback when no suitable mapped signal is supplied. Establish relevant effects and constraints through the company review route; no inspection, defrost or setting change is authorized.
+
+**How it is decided:** Pursue missing applicability, source/function or representative event evidence. A drawn DP instrument or demand label does not settle whether defrost is initiated by actual need. Close only a qualified source investigation; no installed-control acceptance or operating change follows.
+
+**What the source says (S25):** Demand defrost (S25, p. 66): "Evaporators should be defrosted only when necessary, as opposed to on timed schedules where defrosting occurs regardless of need." "Too frequent defrosts." is listed among control strategies that "may compromise system energy efficiency" (S25, p. 59, citing Pearson 2003). No % stated.
+
+**Limits:** S25 printed p.66 discusses need-based defrost; per-unit keep-open collection and accepting an anchor's own description as a candidate are authored software/engineering policy. Neither absence nor presence of a DP/demand/termination label establishes actual use. Applicability, initiation, termination, source revision and operating/product constraints require review. The screen does not infer frost, installed timers, thresholds or permission.
 
 ### E31: Does this oven, dryer or fryer send its hot exhaust to atmosphere with no heat recovery on it?
 
@@ -604,57 +653,59 @@ IAC/ITAC recommendation code: 2.243x (by description).
 
 **Limits:** P&IDs often omit positioners; the model saying 'none drawn' does not mean none fitted.
 
-### C11: Is this dryer's or oven's exhaust (and make-up air) rate set by hand rather than by exhaust humidity?
+### C11: What supports the exhaust/make-up control strategy and product requirements for this dryer or oven?
 
 **About:** D-301  
 
 **Finding reference (JSON string):** `"C11@D-301"`
-**Asset IDs (JSON array):** `["D-301", "TT-304", "HV-304"]`
+**Asset IDs (JSON array):** `["D-301", "TT-304", "HV-304", "TT-301", "TIC-301"]`
 
 **Evidence on the drawing / model**
 
 - equipment D-301 reads "D-301 Gas-fired product dryer (continuous belt)" (`units[D-301]`)
 - Exhaust measurement: instrument TT-304 reads "TT-304 Dryer exhaust air temperature" at D-301 (`instruments[TT-304]`)
 - Exhaust damper or fan: hand valve HV-304 reads "HV-304 Dryer exhaust damper (manual, fixed position)" at D-301 (`manual_valves[HV-304]`)
-- Checked, none found: no humidity, dew point or moisture measurement drawn on this unit (`applies_when.without`)
+- Air or product temperature indication candidate: instrument TT-301 reads "TT-301 Dryer inlet air temperature" at D-301 (`instruments[TT-301]`)
+- Control strategy candidate: controller TIC-301 reads "TIC-301 Dryer inlet air temperature control" at D-301 (`controllers[TIC-301]`)
 
 **Data to collect**
 
-- Exhaust humidity and temperature over a production run [not on drawing]. Where: historian or DCS trend for TT-304 (no historian tag is mapped in this model for these); then a walkdown: humidity or dew point logger in the exhaust duct for a full run. How: Compare the exhaust humidity with what the product and the process allow.
-- Exhaust damper or fan setting and how it is set [not on drawing]. Where: historian or DCS trend for HV-304 (no historian tag is mapped in this model for these); then DCS/PLC configuration: exhaust damper position or fan speed, and whether anything adjusts it; then a walkdown: damper position marks. How: Note whether it moves with production rate or product.
-- Product moisture at the exit and its specification [not on drawing]. Where: site records: quality records: product moisture out of the dryer or oven against specification. How: Over-drying shows as moisture well below specification.
+- Actual control purpose, path and mode for this unit [not on drawing]. Where: DCS/PLC configuration: existing reviewed exhaust/make-up strategy, measurement-to-actuator path, active mode/override, unit association and revision; then site records: permitted engineering or supplier basis for the selected product/process control approach. How: Do not infer manual operation from missing humidity, or active control from a transmitter/controller label. Retain disabled, unavailable and unknown candidates; temperature or another qualified strategy may be appropriate.
+- Representative relevant air and product observations [not on drawing]. Where: historian or DCS trend for TT-304 (no historian tag is mapped in this model for these); then site records: approved existing air/product observations appropriate to the actual strategy, with quantity, location, units, period and product/run conditions. How: An inlet-humidity or product-moisture record is not exhaust humidity. Review the variables needed by the actual qualified approach; no universal exhaust-humidity requirement, logging task or observation duration is imposed.
+- Product/process constraints and responsible review [not on drawing]. Where: site records: permitted product-quality requirements and existing engineering/operating constraints for the identified unit; then the vendor datasheet: applicable dryer/oven requirements, documented control basis and responsible engineering review route. How: Return supported observations, unresolved evidence and the next owner together. No airflow, ventilation, heating or other operational adjustment follows from this screen.
 
-**How it is decided:** Worth a look when the exhaust leaves well below the humidity the product and the safety limits allow, so heated air is thrown away unsaturated. Close it if the exhaust is already near the allowed humidity or the rate is set by a solvent (LEL) or dust limit.
+**How it is decided:** Investigate missing or conflicting control-purpose, source/function and product/process evidence. Humidity is one possible variable, not a universal solution; neither its absence nor presence establishes actual control or suitability. Close only the source investigation after qualified review, retaining unresolved operating and quality requirements.
 
 **What the source says (S26):** S26 (p. 104): "Process controls, such as feedback controllers, feed forward controllers, and model-based predictive controllers, can help to minimize dryer energy consumption by more precisely controlling energy inputs to meet the needs of the product being processed." The sensors it lists include "absorption capacitive sensors (for air humidity)". No % stated.
 
-**Limits:** Exhaust rates on ovens that bake off solvents, or dryers with combustible dust, are set by safety limits: any change goes through the safety review. Fryers are left out: their exhaust is set by the vapour they boil off.
+**Limits:** S26 printed p.104 supports dryer process-control examples with several sensor/control approaches; it does not establish the applicability of every oven/roaster/toaster, a humidity threshold or operating safety requirements. Keeping each named subject in source review is authored conservative policy. Supplied labels and literal qualifiers remain unverified; existing company engineering and safety/quality review govern any actual work.
 
-### C11: Is this dryer's or oven's exhaust (and make-up air) rate set by hand rather than by exhaust humidity?
+### C11: What supports the exhaust/make-up control strategy and product requirements for this dryer or oven?
 
 **About:** O-302  
 
 **Finding reference (JSON string):** `"C11@O-302"`
-**Asset IDs (JSON array):** `["O-302", "TT-305", "AT-302"]`
+**Asset IDs (JSON array):** `["O-302", "TT-305", "AT-302", "TT-302", "TIC-302"]`
 
 **Evidence on the drawing / model**
 
 - equipment O-302 reads "O-302 Gas-fired tunnel oven" (`units[O-302]`)
 - Exhaust measurement: instrument TT-305 reads "TT-305 Oven exhaust temperature" at O-302 (`instruments[TT-305]`)
 - Exhaust measurement: instrument AT-302 reads "AT-302 Oven flue O2 analyser" at O-302 (`instruments[AT-302]`)
-- Checked, none found: no humidity, dew point or moisture measurement drawn on this unit (`applies_when.without`)
+- Air or product temperature indication candidate: instrument TT-302 reads "TT-302 Oven zone temperature" at O-302 (`instruments[TT-302]`)
+- Control strategy candidate: controller TIC-302 reads "TIC-302 Oven zone temperature control" at O-302 (`controllers[TIC-302]`)
 
 **Data to collect**
 
-- Exhaust humidity and temperature over a production run [not on drawing]. Where: historian or DCS trend for TT-305 (no historian tag is mapped in this model for these); then a walkdown: humidity or dew point logger in the exhaust duct for a full run. How: Compare the exhaust humidity with what the product and the process allow.
-- Exhaust damper or fan setting and how it is set [not on drawing]. Where: DCS/PLC configuration: exhaust damper position or fan speed, and whether anything adjusts it; then a walkdown: damper position marks. How: Note whether it moves with production rate or product.
-- Product moisture at the exit and its specification [not on drawing]. Where: site records: quality records: product moisture out of the dryer or oven against specification. How: Over-drying shows as moisture well below specification.
+- Actual control purpose, path and mode for this unit [not on drawing]. Where: DCS/PLC configuration: existing reviewed exhaust/make-up strategy, measurement-to-actuator path, active mode/override, unit association and revision; then site records: permitted engineering or supplier basis for the selected product/process control approach. How: Do not infer manual operation from missing humidity, or active control from a transmitter/controller label. Retain disabled, unavailable and unknown candidates; temperature or another qualified strategy may be appropriate.
+- Representative relevant air and product observations [not on drawing]. Where: historian or DCS trend for TT-305 (no historian tag is mapped in this model for these); then site records: approved existing air/product observations appropriate to the actual strategy, with quantity, location, units, period and product/run conditions. How: An inlet-humidity or product-moisture record is not exhaust humidity. Review the variables needed by the actual qualified approach; no universal exhaust-humidity requirement, logging task or observation duration is imposed.
+- Product/process constraints and responsible review [not on drawing]. Where: site records: permitted product-quality requirements and existing engineering/operating constraints for the identified unit; then the vendor datasheet: applicable dryer/oven requirements, documented control basis and responsible engineering review route. How: Return supported observations, unresolved evidence and the next owner together. No airflow, ventilation, heating or other operational adjustment follows from this screen.
 
-**How it is decided:** Worth a look when the exhaust leaves well below the humidity the product and the safety limits allow, so heated air is thrown away unsaturated. Close it if the exhaust is already near the allowed humidity or the rate is set by a solvent (LEL) or dust limit.
+**How it is decided:** Investigate missing or conflicting control-purpose, source/function and product/process evidence. Humidity is one possible variable, not a universal solution; neither its absence nor presence establishes actual control or suitability. Close only the source investigation after qualified review, retaining unresolved operating and quality requirements.
 
 **What the source says (S26):** S26 (p. 104): "Process controls, such as feedback controllers, feed forward controllers, and model-based predictive controllers, can help to minimize dryer energy consumption by more precisely controlling energy inputs to meet the needs of the product being processed." The sensors it lists include "absorption capacitive sensors (for air humidity)". No % stated.
 
-**Limits:** Exhaust rates on ovens that bake off solvents, or dryers with combustible dust, are set by safety limits: any change goes through the safety review. Fryers are left out: their exhaust is set by the vapour they boil off.
+**Limits:** S26 printed p.104 supports dryer process-control examples with several sensor/control approaches; it does not establish the applicability of every oven/roaster/toaster, a humidity threshold or operating safety requirements. Keeping each named subject in source review is authored conservative policy. Supplied labels and literal qualifiers remain unverified; existing company engineering and safety/quality review govern any actual work.
 
 ## Safety questions to verify
 

@@ -15,7 +15,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 SOURCE = HERE.parent / "food_plant_model.json"
 QUESTIONS = ("C12", "E29", "E31", "H6")
-ADDED = {"E29@K-203", "E31@F-303", "H6@F-303"}
+ADDED = {"E31@F-303", "H6@F-303"}
 REJECTED = {"JT-201", "SC-203", "HX-303"}
 
 
@@ -70,6 +70,10 @@ def demonstrate(write=False):
         after_ids = {f["id"] for f in after["questions"]}
         assert after_ids - before_ids == ADDED
         assert not before_ids - after_ids
+        # E29 remains open with a drive label; rejection removes the candidate, not the machine investigation.
+        assert {"K-203", "SC-203"} <= assets(before, "E29@K-203")
+        assert "K-203" in assets(after, "E29@K-203")
+        assert "SC-203" not in assets(after, "E29@K-203")
         assert "K-201" in assets(before, "C12@model")
         assert "JT-201" in assets(before, "C12@model")
         assert "JT-201" not in assets(after, "C12@model")

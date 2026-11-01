@@ -1,14 +1,27 @@
 # Doing this at your plant
 
-Start with one engineering problem and the records available for it. This toolkit helps produce a draft that a
-person can inspect and use to plan the next evidence request. Its public examples do not establish accuracy,
-review effort or savings at your site. The [first-question brief](../examples/first-pilot/README.md) starts with
-approved documents and needs no local software. For a drawing pilot, the [offline drawing example](../examples/own-drawing/README.md#0-the-worked-example-offline-about-a-minute)
-uses Python, with no accounts, downloads or model calls.
+Build one useful part of your plant's digital twin from the records you already have. The reusable intake,
+modeling and export tools produce a sourced draft asset model, review material and staging files. Review and
+enrich that model, then add selected data connections and maintained context as the work requires.
 
-> **Short version:** treat the AI output as a *draft that people check*, not an automated result. Measure the
-> draft-plus-review time against your manual baseline. Keep everything read-only and out of the control network until
-> it has gone through your normal change process.
+Start with one sheet or unit and a defined engineering job. Use the [P&ID tutorial](../examples/own-drawing/README.md),
+[description workflow](../examples/from-description/README.md) or [DEXPI reader](../examples/from-dexpi-xml/README.md)
+on your approved inputs. The supplied public examples teach the same file contracts and review steps.
+
+| Stage | What you supply | Useful next result |
+|---|---|---|
+| Draft structure | Permitted source revision and the selected tool's inputs: image/extraction manifest, authored description/model/layout, or supported XML | Source-linked assets, represented connections and a review/export bundle. |
+| Review and enrich | Qualified review, independent process/controls records, missing-item corrections and an investigation scope | A corrected working model, qualified answers and open evidence requests. |
+| Connect and maintain | Reviewed point identities, an approved target environment, receiving owner and source-revision triggers | Selected staging/import work with actual readback evidence, retained revisions and review disposition. |
+
+For a document-only question, the [first-question brief](../examples/first-pilot/README.md) works with manual
+review or approved Copilot without a local model or installation. The first
+[offline drawing example](../examples/own-drawing/README.md#0-the-worked-example-offline-about-a-minute)
+also runs without accounts, downloads or model calls. New extraction uses a separately approved source-reading route.
+
+Public cases establish what was built or measured on their inputs. Evaluate accuracy, review effort and benefit
+on your own records when you need those claims. Keep draft/model work in the approved environment and use the
+site's engineering, access and change processes for real connections and accepted records.
 
 ---
 
@@ -27,13 +40,14 @@ Use the [input selector](../README.md#start-wherever-you-are) and [format contra
 assuming every route produces the same outputs. The [first-question brief](../examples/first-pilot/README.md)
 works with approved documents and Copilot or manual review, without a local model or custom agent.
 
-The [TE/OPEN100 deliverables comparison](DELIVERABLES.md) describes research demonstrations. Mimics, tours and
-isolation mockups are not generic outputs of the own-drawing intake. A draft P&ID needs an authored model and
-layout; adapting house symbols, title blocks or sheet conventions requires separate drafting/code work.
+The [TE/OPEN100 case studies](DELIVERABLES.md) show assembled examples of structure, displays and recorded-data
+replay. Reuse the model, review, mapping and export tools for your own plant; adapt additional screens, tours and
+platform configuration to the job. Detailed P&ID sheets use an authored model and layout, with house symbols,
+title blocks and sheet conventions handled as drafting/code work.
 
-A generated drawing is a draft for review, not a drawing of record or an operating/isolation procedure.
-Check source-backed content and proposed drafting additions separately. The site's engineering, document-control
-and applicable change processes govern acceptance. The steps below help evaluate a bounded pilot at your site.
+Review source-backed content and proposed drafting additions separately, then use the site's document-control
+and engineering process to release a drawing of record. Isolation views remain review mockups rather than operating
+procedures. The steps below help scope and evaluate the next stage of your own plant work.
 
 ## 1. Before you start: decide what you're actually converting
 

@@ -90,8 +90,13 @@ def main():
             red = page.locator(LABELS).evaluate_all(RED_JS)
             time.sleep(2)
         page.screenshot(path=shots / "3-fault6.png")
-        pi = page.locator(LABELS).nth(7).inner_text() if page.locator(LABELS).count() > 7 else "?"
-        print(f"fault 6: {red} red label(s) after {time.time() - t0:.0f} s (PT-107 shows {pi!r}) -> "
+        # A global label index read the navigation caption "Separator" in the failed starts. The historical
+        # backup calls reactor pressure PI-107; these observations do not claim to identify a named tag.
+        red_labels = page.locator(LABELS).evaluate_all("""els => els
+            .filter(e => e.style.backgroundColor === 'rgb(254, 202, 202)')
+            .map(e => ({text: e.innerText, bad: !!e.querySelector('.ia_qualityOverlay')}))""")
+        print(f"fault 6: {red} red label(s) after {time.time() - t0:.0f} s "
+              f"(red label observations, not a named-tag read: {red_labels!r}) -> "
               f"{'PASS' if red else 'FAIL'}")
         if not red:
             failures.append("fault alarm")

@@ -1,0 +1,178 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/function-basis/models/E29-02-own-drive-label.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E29"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E29@K-A",
+   "question_id": "E29",
+   "family": "energy",
+   "question": "What records support this refrigeration compressor's part-load control, sequencing and real-input basis?",
+   "about": "K-A",
+   "assets": [
+    {
+     "id": "K-A",
+     "tag": "K-A"
+    },
+    {
+     "id": "SC-A",
+     "tag": "SC-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "K-A",
+     "tag": "K-A",
+     "text": "equipment K-A reads \"K-A Ammonia R-717 screw compressor A\"",
+     "field": "units[K-A]"
+    },
+    {
+     "role": "drive label candidate",
+     "id": "SC-A",
+     "tag": "SC-A",
+     "text": "final element SC-A reads \"SC-A VFD candidate, enabled/mode/history unknown\" at K-A",
+     "field": "final_elements[SC-A]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SC-A",
+     "tag": "SC-A",
+     "text": "SC-A enabled = \"unknown\"; blank; meaning and suitability unverified",
+     "field": "final_elements[SC-A].facts.enabled"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SC-A",
+     "tag": "SC-A",
+     "text": "SC-A source_revision = \"draft-A\"; present; meaning and suitability unverified",
+     "field": "final_elements[SC-A].facts.source_revision"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Capacity-control mode and representative load for this compressor",
+     "state": "not_on_drawing",
+     "where": [
+      "DCS/PLC configuration: existing identified compressor configuration and active/fallback mode, slide-valve or bypass function, revision and responsible owner",
+      "site records: permitted load/capacity histories with machine identity, period and coincident suction/demand conditions"
+     ],
+     "how": "Retain labels and enabled/disabled/unknown qualifiers as candidates. Establish actual function and a representative operating basis; a nameplate or drive label does not establish part-load behavior."
+    },
+    {
+     "item": "Representative real input power on the same operating basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: approved existing electrical-input and run/load observations with quantity, units, time and conversion basis",
+      "the vendor datasheet: applicable compressor/drive limits and part-load performance basis"
+     ],
+     "how": "Compare suitable coincident input and load records. Separate ratings, electrical indications and near-full-load conditions from actual representative real input; request missing evidence without inventing a value or authorizing measurements."
+    },
+    {
+     "item": "Actual sequencing, served group and applicable supplier constraints",
+     "state": "not_on_drawing",
+     "where": [
+      "DCS/PLC configuration: existing reviewed sequence/trim logic, machine-to-suction-group association, active overrides and revision",
+      "site records: permitted operating/event records showing which machines actually trim under comparable conditions",
+      "the vendor datasheet: applicable supplier constraints and responsible engineering review route"
+     ],
+     "how": "A sequencer label alone does not establish active operation or complete group coverage. Return a qualified partial answer or missing-evidence request to the responsible reviewer."
+    }
+   ],
+   "decision_rule": "Investigate missing or conflicting source/function/operating evidence for each named machine. A drive or sequencing label does not settle efficiency, and the source describes load-dependent tradeoffs. Close only the source investigation after qualified evidence review; no drive change, operating instruction or savings estimate follows.",
+   "typical_benefit": {
+    "wording": "Among control strategies that \"may compromise system energy efficiency\" (S25, p. 59, citing Pearson 2003): \"Slide valve unloading of oversized screw compressors.\" and \"Hot gas bypass of compressors.\" Speed control (S25, p. 63): \"ASDs used on compressors below a part-load ratio of about 95% will deliver performance equal to a fixed speed compressor but with lower electricity requirements. However, at near full (i.e., 100%) load, ASDs are approximately 3% less efficient than fixed speed drives\".",
+    "source": [
+     "S25"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S25: Brush, Masanet and Worrell, Energy Efficiency Improvement and Cost Saving Opportunities for the Dairy Processing Industry: An ENERGY STAR Guide for Energy and Plant Managers (LBNL-6261E, Oct 2011)"
+    ]
+   },
+   "limits": "This is an authored per-machine collection policy informed by S25 printed pp.59,62,63, not a quoted design requirement or installed-state diagnosis. Labels and literal facts remain unverified candidates; review actual association, operating conditions and supplier constraints. No fixed observation duration or operating limit is inferred. A drive or sequencing change goes through the compressor vendor (minimum speed, oil management, vibration). Fires only where the equipment's own name, type or service names the refrigerant (ammonia, NH3, R-717, a refrigerant number) or says refrigeration; an air compressor, a process recycle compressor, a process condenser on cooling water or a power-plant air-cooled condenser does not.",
+   "status": "asked"
+  },
+  {
+   "id": "E29@K-B",
+   "question_id": "E29",
+   "family": "energy",
+   "question": "What records support this refrigeration compressor's part-load control, sequencing and real-input basis?",
+   "about": "K-B",
+   "assets": [
+    {
+     "id": "K-B",
+     "tag": "K-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "K-B",
+     "tag": "K-B",
+     "text": "equipment K-B reads \"K-B Ammonia R-717 screw compressor B\"",
+     "field": "units[K-B]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Capacity-control mode and representative load for this compressor",
+     "state": "not_on_drawing",
+     "where": [
+      "DCS/PLC configuration: existing identified compressor configuration and active/fallback mode, slide-valve or bypass function, revision and responsible owner",
+      "site records: permitted load/capacity histories with machine identity, period and coincident suction/demand conditions"
+     ],
+     "how": "Retain labels and enabled/disabled/unknown qualifiers as candidates. Establish actual function and a representative operating basis; a nameplate or drive label does not establish part-load behavior."
+    },
+    {
+     "item": "Representative real input power on the same operating basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: approved existing electrical-input and run/load observations with quantity, units, time and conversion basis",
+      "the vendor datasheet: applicable compressor/drive limits and part-load performance basis"
+     ],
+     "how": "Compare suitable coincident input and load records. Separate ratings, electrical indications and near-full-load conditions from actual representative real input; request missing evidence without inventing a value or authorizing measurements."
+    },
+    {
+     "item": "Actual sequencing, served group and applicable supplier constraints",
+     "state": "not_on_drawing",
+     "where": [
+      "DCS/PLC configuration: existing reviewed sequence/trim logic, machine-to-suction-group association, active overrides and revision",
+      "site records: permitted operating/event records showing which machines actually trim under comparable conditions",
+      "the vendor datasheet: applicable supplier constraints and responsible engineering review route"
+     ],
+     "how": "A sequencer label alone does not establish active operation or complete group coverage. Return a qualified partial answer or missing-evidence request to the responsible reviewer."
+    }
+   ],
+   "decision_rule": "Investigate missing or conflicting source/function/operating evidence for each named machine. A drive or sequencing label does not settle efficiency, and the source describes load-dependent tradeoffs. Close only the source investigation after qualified evidence review; no drive change, operating instruction or savings estimate follows.",
+   "typical_benefit": {
+    "wording": "Among control strategies that \"may compromise system energy efficiency\" (S25, p. 59, citing Pearson 2003): \"Slide valve unloading of oversized screw compressors.\" and \"Hot gas bypass of compressors.\" Speed control (S25, p. 63): \"ASDs used on compressors below a part-load ratio of about 95% will deliver performance equal to a fixed speed compressor but with lower electricity requirements. However, at near full (i.e., 100%) load, ASDs are approximately 3% less efficient than fixed speed drives\".",
+    "source": [
+     "S25"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S25: Brush, Masanet and Worrell, Energy Efficiency Improvement and Cost Saving Opportunities for the Dairy Processing Industry: An ENERGY STAR Guide for Energy and Plant Managers (LBNL-6261E, Oct 2011)"
+    ]
+   },
+   "limits": "This is an authored per-machine collection policy informed by S25 printed pp.59,62,63, not a quoted design requirement or installed-state diagnosis. Labels and literal facts remain unverified candidates; review actual association, operating conditions and supplier constraints. No fixed observation duration or operating limit is inferred. A drive or sequencing change goes through the compressor vendor (minimum speed, oil management, vibration). Fires only where the equipment's own name, type or service names the refrigerant (ammonia, NH3, R-717, a refrigerant number) or says refrigeration; an air compressor, a process recycle compressor, a process condenser on cooling water or a power-plant air-cooled condenser does not.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

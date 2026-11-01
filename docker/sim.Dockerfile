@@ -9,5 +9,7 @@ COPY scripts/fetch_te_data.py scripts/fetch_te_data.py
 COPY scripts/ignition/te_sim_server.py scripts/ignition/te_sim_server.py
 COPY scripts/ignition/te_channels.py scripts/ignition/te_channels.py
 COPY scripts/ignition/demo_points_server.py scripts/ignition/demo_points_server.py
+COPY docker/legacy-te-node-map.json docker/legacy-te-node-map.json
+COPY docker/twin-demo.gwbk docker/twin-demo.gwbk
 # The open TE runs, downloaded and checked against their recorded checksums when the image is built.
 RUN python scripts/fetch_te_data.py

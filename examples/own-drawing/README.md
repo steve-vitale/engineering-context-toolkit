@@ -5,9 +5,10 @@
 This is the runbook for using this repository on a drawing it has never seen. Start with the worked example below:
 it runs offline from a clean clone, on a public sheet, with a real model extraction that is committed here.
 
-What you get is a **draft**: an asset model, a review sheet, Ignition tags and PI AF staging files, every item marked
-unverified. What you don't get: verified structure, flow direction, live values, alarms or the Tennessee Eastman
-screens. Those need your process knowledge, your I/O list and a person's review.
+What you get is the first structural part of **your plant's draft digital twin**: a sourced asset model, a
+review sheet, Ignition tags and PI AF staging files. Review the assets and connections, then add your process
+records, signal inventory and target-platform setup to build out the connected application. The TE screen
+project is a separate case study showing one assembled result.
 
 ## On Windows, from zero
 
@@ -55,7 +56,7 @@ python -S scripts/import_site_drawing.py --manifest examples/own-drawing/manifes
 | `READ_ME.txt` | What the bundle has not established |
 
 To turn the bundle into the one-page report a client reads first (the drawing with every extracted item boxed,
-what to check first and why, the hierarchy, next steps and limits):
+items and review status, the hierarchy, next steps and limits):
 
 ```sh
 python scripts/deliverable_report.py my-bundle
@@ -205,12 +206,30 @@ extracted twin onto it.
 
 ## What carries over to your plant, and what doesn't
 
-- **Carries over:** the method (a model reads symbols and tags, code traces the lines, everything stays unverified
-  until a person reviews it), the file formats, the review and mapping steps, and the habit of checking every
-  number against its source (`scripts/check_claims.py` is an example).
-- **Doesn't:** the accuracy numbers (measured on public drawings, not yours), the tracer settings and risk tiers
-  (tuned on OPEN100), and everything that needs process data: values, normal bands, alarms, flow direction.
-- **To measure accuracy on your own drawings** you need answer keys for a few sheets in the PID2Graph GraphML format,
-  labelled by hand. Then `python scripts/score_pid2graph.py <sheet>.graphml runs/mine-trace/codex/0.json --png
-  <sheet>.png` scores one run; [examples/vendor-evaluation](../vendor-evaluation/README.md) scores several runs (or a
-  vendor's output) with the controls beside them. That's real work, and it's the only way to know.
+The tools in this guide are intended for **your own P&IDs**. The supplied OPEN100 sheet teaches the same input,
+model, review and export steps; substitute your private drawing, extraction and manifest to build the first
+structural part of your plant's draft digital twin.
+
+| Build the next part | Existing route | What you supply or review |
+|---|---|---|
+| Sourced asset model | One-sheet intake in steps 1–3 | Your approved PNG, supported extraction JSON, drawing identity and revision. Keep the originals with the model. |
+| Corrected structure and engineering meaning | Step 4 and the [model-review guide](../../docs/REVIEW_LOOP.md) | Check assets, tags, links, parents and missing items. Apply supported corrections; additions need a corrected extraction and new bundle as described above. |
+| Questions and context | [Question engine](../../docs/OPPORTUNITY_SCREEN.md), [graph export](../../docs/GRAPH_EXPORT.md) and [context register](../../docs/CONTEXT_REGISTER.md) | Add independent process/controls evidence, qualified answers and source revisions. Record missing evidence and next owners. |
+| Data-connected staging | OPC/PI mapping in step 4, then reviewed lab import in step 5 | Your authoritative point inventory, exact identities/addresses and platform configuration. Verify actual values, units, quality and signal identity in the receiving environment. |
+| Maintained knowledge | [Source-revision tutorial](../pump-revision/README.md) and [lifecycle guide](../../docs/CONTEXT_LIFECYCLE.md) | Preserve earlier records; refresh affected answers, reconcile model changes, regenerate selected exports and retain the receiving owner's disposition. |
+
+Begin with one sheet and a defined unit. The OPEN100 case study also demonstrates multi-sheet structure and
+off-page relationships; transferring that larger assembly requires your sheet register, reviewed continuation
+matches and site conventions. Separate single-sheet bundles are not automatically merged into one plant.
+
+Your process records and data supply the parts absent from the starting drawing: operating context, normal
+behavior, alarm definitions and mapped values. Flow direction must be supported by the drawing or independent
+process evidence; this intake's logical connections stay undirected. The TE replay and screens are a worked
+case-study assembly. Your model's generated tags and PI staging are the reusable starting files for your own
+approved target environment.
+
+The reusable code and file contracts transfer; measured performance does not transfer automatically. Treat the
+tracer's defaults as a starting configuration and evaluate them on your drawing style. The published OPEN100 risk
+model is not applied by this intake. To measure extraction accuracy, label a small representative sample and use
+[the vendor-evaluation tools](../vendor-evaluation/README.md) beside known-answer controls. Review time and site
+acceptance need your own observations.

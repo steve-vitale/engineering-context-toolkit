@@ -1,47 +1,33 @@
 # Documentation map
 
-Start with the [project overview](../README.md). This page routes you to instructions, reference or evidence;
-you do not need to read the research record to try a first investigation.
-
-For an implementation audit, start with [the state of the toolkit](STATUS.md): working parts, open defects,
-manual bridges and the recommended order of work. Numerical research evidence lives separately in RESULTS.
+Use the toolkit on your records, learn the method with a tutorial, or inspect the public case-study evidence.
+The [project overview](../README.md) shows the engineering jobs; this map keeps instructions, transferable tools
+and research records distinct.
 
 ## Follow one path
 
-| Your role | Start here |
-|---|---|
-| Leader or manager assigning work to an engineer or intern | [Scope an onboarding assignment](ENGINEERING_ONBOARDING.md#for-leaders-and-managers) |
-| Engineer or intern learning how the team works | [Complete a first contribution](ENGINEERING_ONBOARDING.md#for-engineers-and-interns) |
-| Engineer with a model, loop list or recorded data | [Choose an engineering job](../README.md#start-wherever-you-are), then use the task guides below. |
-| Contributor comparing a model or method | [Task/model benchmarks](../benchmarks/README.md) and [contribution rules](../CONTRIBUTING.md). |
+| Destination | Start here | How it transfers |
+|---|---|---|
+| **Tools — your inputs** | [P&ID intake](../examples/own-drawing/README.md), [description workflow](../examples/from-description/README.md), [DEXPI reader](../examples/from-dexpi-xml/README.md), or the [job selector](../README.md#start-wherever-you-are) | Supply your approved source files in the stated contract, review the draft model, then choose enrichment, export and connection steps. |
+| **Tutorials — apply the method** | Choose a worked path below. | Run the supplied public/fictional example to understand the outputs, then follow its own-input steps. Record identities, sources and reviews belong to your records, not the example. |
+| **Case studies and evaluation — public evidence** | [TE/OPEN100 deliverables](DELIVERABLES.md), [results](RESULTS.md), [workflow matrix](GENERALIZATION.md), [saved task/model comparisons](../benchmarks/README.md) | Learn what was assembled or measured, what inputs it used and what still needs adaptation or site validation. |
 
-For the jumpstart path, follow one investigation below. Existing modeling, analysis and evaluation work can go
-directly to the task guides.
-
-1. **Frame a question.** Use the [first-question brief](../examples/first-pilot/README.md), including the
-   company-approved Copilot/manual route without a local installation.
-2. **Choose the starting records.** The [README selector](../README.md#start-wherever-you-are) links engineering jobs and starting materials.
-   [Follow one pump](../examples/from-description/assisted/PUMP_WALKTHROUGH.md) to see an actual illustrative bundle.
-3. **Check the claims and missing evidence.** Use the selected guide's review steps. If you have a supported
-   model, the [question engine](OPPORTUNITY_SCREEN.md) can suggest investigations; it does not perform a process audit.
-4. **Hand off one finding.** Keep the sources, qualifications and next owner together in the brief.
-   [Company pilot guidance](AT_YOUR_PLANT.md) explains how to evaluate practical value and access at your site.
+For a document-only assignment, use the [first-question brief](../examples/first-pilot/README.md) with manual
+review or approved Copilot. The [onboarding guide](ENGINEERING_ONBOARDING.md) helps a leader assign a useful
+contribution and a newcomer return a source-backed result. An asset model is useful when the job needs asset
+identities, relationships, generated files or mapped data.
 
 ## Engineering work examples
 
-Use the same pattern across the series: one job, cited records, a qualified answer, a reviewer and a next step.
-Available examples are public software/source exercises; they do not establish company acceptance or onboarding
-benefit. Proposed episodes have no runnable packet yet.
-
-| Engineering job | Status and starting point |
-|---|---|
-| Explain a record before proposing a change | **Available:** [first-question brief](../examples/first-pilot/README.md) and its source-question examples; manual or approved Copilot, no installation. |
-| Understand a configuration identifier across revisions | **Available:** [NIST packet and plain brief](../examples/context-register/nist-smstestbed/README.md); optional local reproduction needs its pinned cached originals. |
-| Investigate a reported failure and missing follow-up | **Available:** [MetroPT-3 maintenance questions](../examples/context-register/metropt3/README.md); reported records do not establish a successful intervention. |
-| Exchange a published dependency and preserve disagreement | **Available:** [four owned packets](../examples/team-context/README.md) and [source revision](../examples/pump-revision/README.md); fictional local exercises, no shared company service. |
-| Connect drawings, models and investigation questions | **Available:** [one pump walkthrough](../examples/from-description/assisted/PUMP_WALKTHROUGH.md) and the [input guides](../README.md#start-wherever-you-are); a specialist branch with engineering review. |
-| Reconstruct a record revision and prepare a first review note | **Available:** [fictional worked note](../examples/engineering-onboarding/own-packet/worked-note.md) and [private-copy starter](../examples/engineering-onboarding/own-packet/README.md). Read the note without installation; optional packet reads use the standard library or an approved MCP setup. |
-| Prepare a design review or supplier handoff | **Proposed worked episodes:** use the [onboarding guide's manual starters](ENGINEERING_ONBOARDING.md#choose-a-starter-workflow); dedicated packets for these jobs are not supplied. |
+| Path | Type and what to learn | Use it on your records |
+|---|---|---|
+| [P&ID to model and review bundle](../examples/own-drawing/README.md) | **Tutorial using reusable tools:** run the supplied public sheet offline, inspect the draft assets, review sheet and exports. | Replace the image, extraction and drawing manifest, then review/enrich the resulting model. |
+| [Description to drawing/model bundle](../examples/from-description/README.md) | **Tutorial using reusable tools:** follow the [pump](../examples/from-description/assisted/PUMP_WALKTHROUGH.md) through model, layout, drawing, questions and graph. | Prepare your text; author/check the source-linked model and layout; build and review your draft. |
+| [Structured DEXPI to model](../examples/from-dexpi-xml/README.md) | **Tutorial and reader:** inspect the C01 example, attribute evidence and conversion report. | Select your supported XML export; review its mappings, omissions and downstream eligibility. |
+| [Revised source](../examples/pump-revision/README.md) and [four owned packets](../examples/team-context/README.md) | **Fictional maintenance tutorials:** follow source changes, retained decisions, independent evidence and disagreement. | Use your source manifest, supported model/questions, reviewed identities and actual scope owners; refresh explicitly. |
+| [Knowledge-only starter](../examples/engineering-onboarding/own-packet/README.md) and [worked note](../examples/engineering-onboarding/own-packet/worked-note.md) | **Fictional document tutorial:** see a qualified contribution and author-illustrated review correction. | Use permitted company records and a real reviewer, or author a selected packet without inventing an asset model. |
+| [NIST configuration question](../examples/context-register/nist-smstestbed/README.md) and [MetroPT maintenance questions](../examples/context-register/metropt3/README.md) | **Public-source case applications:** distinguish what records support from missing deployment or intervention evidence. | Reuse the investigation/context pattern with your sources; the public answers do not describe your installed system. |
+| Design review or supplier handoff | **Proposed worked episodes:** [manual starters](ENGINEERING_ONBOARDING.md#choose-a-starter-workflow) exist; a dedicated packet is not supplied. | Scope a first brief under the existing company review process. |
 
 ## Continue a task
 
@@ -85,7 +71,9 @@ Use [CONTRIBUTING.md](../CONTRIBUTING.md) before adding a case or changing a met
 [MGPI source clarification](../examples/from-description/mgpi/README.md), [operator screens](OPERATOR_SCREENS.md)
 and [Ignition acceptance](IGNITION_ACCEPTANCE.md) explain scoped examples. For Ignition setup use the
 [manual quickstart](IGNITION_QUICKSTART.md) or [build reference](IGNITION_BUILD.md).
-The [Docker package](../docker/README.md) restores a historical demo. None is a generic plant deployment.
+The [Docker package](../docker/README.md) restores a historical demo. To build a corresponding application for
+your plant, use the own-record tool routes and the [review, mapping and platform steps](AT_YOUR_PLANT.md);
+the case commands load their supplied examples.
 
 ## Where files live
 

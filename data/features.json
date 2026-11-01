@@ -33,7 +33,7 @@
    "job": "Get a starting asset model out of a P&ID without retyping it",
    "you_need": "One P&ID as a PNG; a model subscription (or the committed example)",
    "time": "88 s of commands on one new sheet (sheet 8), measured once; sheet 0's recorded run took 75 s plus 1 s; review time not measured",
-   "you_get": "Extracted symbols, tags and links as a draft model, a review sheet ranked for checking, Ignition tags and PI staging",
+   "you_get": "Extracted symbols, tags and links as a draft model, a review sheet, Ignition tags and PI staging. Your own-drawing sheet has no research-trained risk tiers; review priorities need your engineering judgment",
    "why": "Retyping drawings into asset lists takes manual effort in historian, HMI and digital twin projects. A draft turns some of that typing into checking; the time saved has not been measured."
   },
   {
@@ -54,13 +54,13 @@
    "job": "Show someone what came out of a drawing, and what still needs checking",
    "you_need": "A review bundle from the step above",
    "time": "Under a second",
-   "you_get": "One page: the drawing with every item boxed, what is still to check first and why, what a person has already decided (shown with the decision and left out of the to-check list), next steps, limits. Refuses if any generated column of the review sheet doesn't match what the model gives now; the reviewer's OPS_ entries aren't checked, so decisions not yet applied with apply_review.py don't appear",
+   "you_get": "One page: the drawing with every item boxed, item and review status, what a person has already decided (shown with the decision and left out of the to-check list), next steps, limits. Refuses if any generated column of the review sheet doesn't match what the model gives now; the reviewer's OPS_ entries aren't checked, so decisions not yet applied with apply_review.py don't appear",
    "why": "Whoever approves the work needs one page that says what was found and what is still unchecked, without opening a spreadsheet of 445 rows."
   },
   {
    "id": "dexpi-to-bundle",
    "category": "extract",
-   "title": "A DEXPI P&ID file to the same bundle, with no model reading",
+   "title": "Adapted public DEXPI examples to a drawing bundle, with no model reading",
    "tools": [
     "scripts/dexpi_to_twin.py"
    ],
@@ -240,7 +240,7 @@
     "scripts/test_scorer_controls.py"
    ],
    "job": "Find out whether a digitization tool or vendor is actually accurate on our drawings",
-   "you_need": "A few of our sheets labelled by hand, and the tool's output for them",
+   "you_need": "Your sheets and corresponding hand-labelled GraphML keys in the documented format, plus saved tool answers; the public tutorial supplies a worked comparison",
    "time": "Seconds once labelled; labelling takes hours",
    "you_get": "A score beside perfect, wrong and empty answers, per sheet, refusing to report if the scorer can be fooled",
    "why": "Vendors quote accuracy on their own test drawings. Scoring them on yours, with a deliberately wrong answer scored beside them, shows whether the number means anything."
@@ -396,7 +396,14 @@
     "examples/opportunity-screen/pump-motor-basis/questions.json",
     "examples/opportunity-screen/pump-motor-basis/screen.md",
     "examples/opportunity-screen/source-investigation/questions.json",
-    "examples/opportunity-screen/source-investigation/screen.md"
+    "examples/opportunity-screen/source-investigation/screen.md",
+    "examples/opportunity-screen/function-basis/expected/cases.json",
+    "examples/opportunity-screen/function-basis/expected/after/E29-02-own-drive-label/questions.json",
+    "examples/opportunity-screen/function-basis/expected/after/E29-02-own-drive-label/screen.md",
+    "examples/opportunity-screen/function-basis/expected/after/E30-S02-indicator-not-initiation/questions.json",
+    "examples/opportunity-screen/function-basis/expected/after/E30-S02-indicator-not-initiation/screen.md",
+    "examples/opportunity-screen/function-basis/expected/after/C11-02-exhaust-indication-only/questions.json",
+    "examples/opportunity-screen/function-basis/expected/after/C11-02-exhaust-indication-only/screen.md"
    ],
    "tests": [
     "scripts/test_question_engine.py"

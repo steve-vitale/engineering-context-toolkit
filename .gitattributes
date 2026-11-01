@@ -59,3 +59,6 @@ data/te_pid_layout.json text eol=lf
 
 # Onboarding packet/source raw identities must be stable across operating systems.
 /examples/engineering-onboarding/** text eol=lf
+
+# Synthetic function-basis inputs, oracles and retained reports have declared LF identities.
+/examples/opportunity-screen/function-basis/** text eol=lf
