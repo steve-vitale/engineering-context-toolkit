@@ -98,10 +98,37 @@ class IntakeControls(unittest.TestCase):
         self.assertNotIn('.site-intake-', all_output)
 
     def test_cli_works_without_site_packages_public_data_or_current_repo_directory(self):
+        # Generated JSON has a portable LF identity; supplied CRLF originals remain exact evidence.
+        retained_note = 'Inspection café Δ; line one\nline two\rreturn\ttab'
+        self.pred['source_note'] = retained_note
+        for path, payload in ((self.path, self.manifest), (self.extraction, self.pred)):
+            path.write_bytes((json.dumps(payload, indent=2, ensure_ascii=False) + '\n').replace('\n', '\r\n').encode('utf-8'))
+        originals = {'source/intake-manifest-original.json': self.path.read_bytes(),
+                     'source/extraction-original.json': self.extraction.read_bytes(),
+                     'source/0.png': self.image.read_bytes()}
+        self.assertIn(b'\r\n', originals['source/intake-manifest-original.json'])
+        self.assertIn(b'\r\n', originals['source/extraction-original.json'])
         result = subprocess.run([sys.executable, '-S', str(Path(intake.__file__).resolve()), '--manifest', str(self.path),
                                  '--out', str(self.out)], cwd=self.root, capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertTrue(json.loads(result.stdout)['exports_written'])
+        for name, original in originals.items():
+            self.assertEqual((self.out / name).read_bytes(), original, name)
+        for source, name in ((self.path, 'source/intake-manifest-original.json'),
+                             (self.extraction, 'source/extraction-original.json'), (self.image, 'source/0.png')):
+            self.assertEqual(source.read_bytes(), originals[name], str(source))
+        retained = json.loads((self.out / 'source/extraction-original.json').read_bytes())
+        self.assertEqual(retained['source_note'], retained_note)
+        for name in ('plant_model.json', 'intake_manifest.json', 'source/0.json'):
+            raw = (self.out / name).read_bytes()
+            self.assertIn(b'\n', raw, name)
+            self.assertTrue(raw.endswith(b'\n'), name)
+            self.assertNotIn(b'\r', raw, name + ' must be generated with LF on every platform')
+            expected = (json.dumps(json.loads(raw), indent=2, allow_nan=False) + '\n').encode('utf-8')
+            self.assertEqual(raw, expected, name)
+        evidence = json.loads((self.out / 'intake_manifest.json').read_bytes())
+        self.assertEqual(evidence['manifest_sha256'], hashlib.sha256(originals['source/intake-manifest-original.json']).hexdigest())
+        self.assertEqual(evidence['sources']['extraction']['sha256'], hashlib.sha256(originals['source/extraction-original.json']).hexdigest())
 
     def test_check_only_writes_nothing(self):
         before = set(self.root.iterdir())

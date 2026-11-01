@@ -236,7 +236,7 @@ def load_inputs(manifest_path, out):
 
 
 def write_json(path, value):
-    path.write_text(json.dumps(value, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+    path.write_text(json.dumps(value, indent=2, allow_nan=False) + "\n", encoding="utf-8", newline="\n")
 
 
 def import_drawing(manifest_path, out, check_only=False):

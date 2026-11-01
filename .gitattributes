@@ -71,3 +71,6 @@ data/te_pid_layout.json text eol=lf
 /scripts/build_twin.py text eol=lf
 /scripts/generate.py text eol=lf
 /scripts/pi_mapping.py text eol=lf
+
+# The committed intake manifest raw hash is retained in the generated example model.
+/examples/own-drawing/manifest.json text eol=lf
