@@ -21,7 +21,7 @@ jobs:
       matrix:
         start: [1, 2, 3]   # three independent from-scratch starts: a newcomer's first try must not be luck
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Start the demo (docker compose up)
         run: docker compose up -d --build
       - name: Wait for Ignition
@@ -31,7 +31,7 @@ jobs:
             sleep 5
           done
           echo "Ignition did not start"; exit 1
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Browser check
@@ -50,7 +50,7 @@ jobs:
             | head -8 | while read -r line; do echo "::notice title=demo check::$line"; done || true
           grep -iE "error|exception|fail" demo-logs.txt | grep -v "Dclock" | tail -5 \
             | while read -r line; do echo "::notice title=container log::${line:0:300}"; done || true
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: docker-demo-evidence-${{ matrix.start }}
