@@ -1,5 +1,9 @@
 # Follow the data: a lineage walk for a review day
 
+**Case-study review walkthrough.** Inspect the supplied TE/OPEN100 assemblies and how a correction propagates
+through their configured research stages. To build from your own records, use the
+[own-plant guide](../AT_YOUR_PLANT.md); reuse the review discipline here with your own dependencies and owners.
+
 This is the order to check things in: start where the data starts, confirm or correct each stage, and watch each
 correction travel forward. It pairs with the rest of the review day kit (`README.md`, `FEEDBACK.md` and the
 `CHECKLIST_*.md` files in this folder), which says *what* to look at in each artifact and who is
@@ -32,13 +36,14 @@ python scripts/pipeline.py status > status-before.txt
 python scripts/pipeline.py confidence > confidence-before.txt
 ```
 
-Expect 37 of 39 stages `FRESH` on a checkout of this commit. `te.replay` and `ignition.acceptance` show
-`NEVER BUILT HERE`: they need a running Ignition gateway, and their evidence is the receipts. After a correction, a
-rebuild may report a stage `BLOCKED` if this machine lacks what it needs: the TE replay files
-(`python scripts/fetch_te_data.py --all`), a package (Pillow, OpenCV), or a program named in `BLENDER_EXE` or
-`BROWSER_EXE` (the 3D stills and the OPEN100 mimic PNGs). That is expected, not a failure, but those outputs stay
-stale until someone rebuilds them where the prerequisite exists. If it isn't, find out why before reviewing anything:
-a stale output is not the thing you think you are reviewing.
+Read the actual stage counts and states in `status-before.txt` for your checkout; the configured stages and their
+freshness change as the toolkit develops. The [current status](../STATUS.md) explains known outstanding work;
+historical gateway receipts apply to their recorded files and environment. A `FRESH` label means declared
+dependencies match the local lock, not that a plant accepted the result.
+
+After a correction, a rebuild may report `BLOCKED` for missing replay files, packages or a configured rendering
+program. Inspect that reason and arrange the appropriate approved prerequisite; rebuilding a recorded gateway
+stage is separate lab work. Keep stale or unbuilt outputs labelled and do not review them as the new result.
 
 ## Walk 1: Tennessee Eastman
 

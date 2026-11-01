@@ -20520,6 +20520,137 @@
     "Full ordered histories remain; supplied accepted/confirmed/owner fields are not authenticated authority or plant truth.",
     "No source catalog, benchmark or matrix outcome changes; full repository and exact-head CI are separate gates."
    ]
+  },
+  {
+   "feature": "client-report",
+   "date": "2026-11-01",
+   "reviewer": "Coding-agent reader/source and saved-artifact reviewer; prior recommendations and N107 authorship disclosed; current report/doc implementation authored separately",
+   "verdict": "pass",
+   "files": {
+    "examples/own-drawing/deliverable/REPORT.html": "d083c521b90bba279fa3750acc64b53dd8dd83729e8efea0e8c7af315efbf966"
+   },
+   "fresh_registered_outputs": {
+    "examples/own-drawing/deliverable/REPORT.html": "d083c521b90bba279fa3750acc64b53dd8dd83729e8efea0e8c7af315efbf966"
+   },
+   "inherited_registered_outputs": {},
+   "scope": "Fresh reader/source review of the complete registered HTML, report generator and own-P&ID continuation. Against the released example, the embedded drawing, complete inline SVG, visible numbers and table bodies remain exact; structural twin value, optional questions/graph/context and supplied-review attribution are clearer. Saved fresh intake/questions/graph artifacts show the own-record workflow shape without another model call. This review checks meaning and artifact conservation, not a new full-feature runtime, drawing-accuracy or human-usefulness trial.",
+   "supporting_files": {
+    "data/features.json": "6e6c2131bb723042ef3c8d0f3a76fc918d610bcd5dc8484c768225d096e0f747",
+    "data/script_index.json": "6285df79377afd93d9c569f7f3c635e52af3d4c3920be7d11a4caf2604e8efa0",
+    "docs/REVIEW_LOOP.md": "1687338df048d0742777a7cb6a8172af7c9a7fc9edf4c40cad441ef1c4bc41af",
+    "examples/own-drawing/README.md": "29a21aa8feee52cccfb986f53daf3131fb7f3fc173f32b58b2698c408763c0ee",
+    "scripts/deliverable_report.py": "253e65c119ea6237eb03419dd16764f2381281dc1a518672edc706fe1e81dc88"
+   },
+   "limits": "No reviewer product/test/SDK/provider/network calls. Passing means the exact scoped outputs and source/reader changes were reviewed; company, human, operational, full-suite and exact-head CI acceptance are separate. No N114 artifact or candidate was inspected or changed in this review."
+  },
+  {
+   "feature": "dexpi-to-bundle",
+   "date": "2026-11-01",
+   "reviewer": "Coding-agent reader/source and saved-artifact reviewer; prior recommendations and N107 authorship disclosed; current report/doc implementation authored separately",
+   "verdict": "pass",
+   "files": {
+    "examples/from-dexpi/c01/dexpi-c01.prediction.json": "bcd31dad784ada4a131427461afb0660496786782e25dd52610e6c30e959112e",
+    "examples/from-dexpi/c01/REPORT.html": "084e2b4628f592c1ff7c6276ea2fde3d538b9c9b02a7e801ba0f255b17e6ad25"
+   },
+   "fresh_registered_outputs": {
+    "examples/from-dexpi/c01/REPORT.html": "084e2b4628f592c1ff7c6276ea2fde3d538b9c9b02a7e801ba0f255b17e6ad25"
+   },
+   "inherited_registered_outputs": {
+    "examples/from-dexpi/c01/dexpi-c01.prediction.json": "bcd31dad784ada4a131427461afb0660496786782e25dd52610e6c30e959112e"
+   },
+   "scope": "Fresh reader/source review of the complete changed C01 HTML. Embedded drawing/SVG, numeric extraction facts and table bodies remain exact against the released example. The unchanged prediction inherits its exact earlier accepted normalized hash. The implementation remains a configured public-example adapter, now classified as research; the direct XML reader is the own-input route. No new XML conversion, source download, model/benchmark trial or whole adapter rerun was performed by this reviewer.",
+   "supporting_files": {
+    "data/features.json": "6e6c2131bb723042ef3c8d0f3a76fc918d610bcd5dc8484c768225d096e0f747",
+    "data/script_index.json": "6285df79377afd93d9c569f7f3c635e52af3d4c3920be7d11a4caf2604e8efa0",
+    "docs/REVIEW_LOOP.md": "1687338df048d0742777a7cb6a8172af7c9a7fc9edf4c40cad441ef1c4bc41af",
+    "examples/from-dexpi/README.md": "20e966143cdb300b601a747aa25e52468436ccb004e64bd7f77ac9838947d548",
+    "scripts/deliverable_report.py": "253e65c119ea6237eb03419dd16764f2381281dc1a518672edc706fe1e81dc88",
+    "scripts/dexpi_to_twin.py": "24920399a29e7556ee9bd1dee8541cb9c9c34622fd4ace861241639ee5f69a24"
+   },
+   "limits": "No reviewer product/test/SDK/provider/network calls. Passing means the exact scoped outputs and source/reader changes were reviewed; company, human, operational, full-suite and exact-head CI acceptance are separate. No N114 artifact or candidate was inspected or changed in this review."
+  },
+  {
+   "feature": "review-and-mapping",
+   "date": "2026-11-01",
+   "reviewer": "Coding-agent reader/source and saved-artifact reviewer; prior recommendations and N107 authorship disclosed; current report/doc implementation authored separately",
+   "verdict": "pass",
+   "files": {
+    "examples/review-and-mapping/reviewed_sheet0.csv": "d8159f4fb4c8d8ca3497f5d0985298ed2000610efd29ab5f2d7be1595a3d0c15",
+    "examples/review-and-mapping/records/2026-10-29-bundle.md": "8ee42f4d23643b7d2f37e92769adffa20d04875bc4ac65db186fcdcaad0e53c3",
+    "examples/review-and-mapping/mapping_dry_run.md": "0a1055bd00dba08fadd5544b37dabec4009a04004925a26e63e991d49dee9205",
+    "examples/review-and-mapping/graph_after_review.json": "d35ca08a3a30a027d73a3ca5f79137b6bbaa9d5bec5d9e7dc3147b391fa0632b",
+    "examples/review-and-mapping/REPORT_after_review.html": "85aac5addb5d70716e5e44f650cadd52687f51435484689779654ce39972d939",
+    "examples/review-and-mapping/pi_mapping_dry_run.txt": "5dd633a14b312e17dc7fd574f9a86866e593f3577d3f565e39b3485cbcbdd47d",
+    "out/review_kit/sheet-8/README.md": "d2a74ba7a4adbb214ab8c549b183f1d1558d4b5a687811faf258a6a30b89987c",
+    "examples/review-and-mapping/native-identity/expected/model.json": "f9f28f256b962414d3c865f9cd3a414654f1f2499546ba48f03789ea15056c44",
+    "examples/review-and-mapping/native-identity/expected/change_record.json": "b471c67b2b61a67c8da4b8e755a64a36978f9acd07ae6315330b192efd0d3d02",
+    "examples/review-and-mapping/native-identity/expected/change_record.md": "529d077d7a16630bb5aafebfd329671849e4e6e3b119e911204ebcd26a77bf26",
+    "examples/review-and-mapping/review_associations.json": "2c6bb0d50f5e469b0bb57e0319e69f4565e915c3ff4e14ce073bbfd7e962048f"
+   },
+   "fresh_registered_outputs": {
+    "examples/review-and-mapping/REPORT_after_review.html": "85aac5addb5d70716e5e44f650cadd52687f51435484689779654ce39972d939"
+   },
+   "inherited_registered_outputs": {
+    "examples/review-and-mapping/reviewed_sheet0.csv": "d8159f4fb4c8d8ca3497f5d0985298ed2000610efd29ab5f2d7be1595a3d0c15",
+    "examples/review-and-mapping/records/2026-10-29-bundle.md": "8ee42f4d23643b7d2f37e92769adffa20d04875bc4ac65db186fcdcaad0e53c3",
+    "examples/review-and-mapping/mapping_dry_run.md": "0a1055bd00dba08fadd5544b37dabec4009a04004925a26e63e991d49dee9205",
+    "examples/review-and-mapping/graph_after_review.json": "d35ca08a3a30a027d73a3ca5f79137b6bbaa9d5bec5d9e7dc3147b391fa0632b",
+    "examples/review-and-mapping/pi_mapping_dry_run.txt": "5dd633a14b312e17dc7fd574f9a86866e593f3577d3f565e39b3485cbcbdd47d",
+    "out/review_kit/sheet-8/README.md": "d2a74ba7a4adbb214ab8c549b183f1d1558d4b5a687811faf258a6a30b89987c",
+    "examples/review-and-mapping/native-identity/expected/model.json": "f9f28f256b962414d3c865f9cd3a414654f1f2499546ba48f03789ea15056c44",
+    "examples/review-and-mapping/native-identity/expected/change_record.json": "b471c67b2b61a67c8da4b8e755a64a36978f9acd07ae6315330b192efd0d3d02",
+    "examples/review-and-mapping/native-identity/expected/change_record.md": "529d077d7a16630bb5aafebfd329671849e4e6e3b119e911204ebcd26a77bf26",
+    "examples/review-and-mapping/review_associations.json": "2c6bb0d50f5e469b0bb57e0319e69f4565e915c3ff4e14ce073bbfd7e962048f"
+   },
+   "scope": "Fresh reader/source review of the complete changed after-review HTML. Embedded drawing/SVG, visible counts and recorded-decision table bodies remain exact against the released example. The four illustrative decisions are described as supplied records, not proof of human review or authenticated approval. Ten other registered outputs inherit exact prior accepted normalized hashes. Existing review/mapping execution evidence remains inherited; this is targeted report/guide/source receiving, not a rerun of every registered review, mapper or identity control.",
+   "supporting_files": {
+    "data/features.json": "6e6c2131bb723042ef3c8d0f3a76fc918d610bcd5dc8484c768225d096e0f747",
+    "data/script_index.json": "6285df79377afd93d9c569f7f3c635e52af3d4c3920be7d11a4caf2604e8efa0",
+    "docs/REVIEW_LOOP.md": "1687338df048d0742777a7cb6a8172af7c9a7fc9edf4c40cad441ef1c4bc41af",
+    "examples/review-and-mapping/README.md": "1b08931151fb16e7923f1e116e6ec2f12e83ce665dccd2b35de32675da0923cf",
+    "scripts/apply_review.py": "22abfde579415d35a04a6e274803d5440ad238ffaa9bb62b82a8703a1a058fe9",
+    "scripts/deliverable_report.py": "253e65c119ea6237eb03419dd16764f2381281dc1a518672edc706fe1e81dc88",
+    "scripts/map_pi_points.py": "39caad8b1e5c24a8c74d6e692dbeb3dd5dcb1e3e479a7ca247d3355c1598080b",
+    "scripts/map_points.py": "ceda7aa64d12b683595ad79f2a2975ceb5318915216f16874b2ed537c3303431",
+    "scripts/review_kit.py": "17c320fa1f62efc25b8dcb0df7a43c050110610fbd95ac41427805694ea564bd"
+   },
+   "limits": "No reviewer product/test/SDK/provider/network calls. Passing means the exact scoped outputs and source/reader changes were reviewed; company, human, operational, full-suite and exact-head CI acceptance are separate. No N114 artifact or candidate was inspected or changed in this review."
+  },
+  {
+   "feature": "generalization-matrix",
+   "date": "2026-11-01",
+   "reviewer": "Independent coding-agent saved-evidence and source-binding review; renewal operator and receiver roles separate. Not human or plant acceptance.",
+   "verdict": "pass",
+   "findings": [],
+   "file_hash_method": "SHA256 with CRLF folded to LF for feature registration; actual raw outputs and logs separately pinned in retained receipts.",
+   "files": {
+    "docs/GENERALIZATION.md": "33cbb386d7953f00994eb93ca5e241ee24104de7410dd321f2f914bb4a7c6465",
+    "out/generalization/matrix.json": "341e5d793341c56e19e7042e3b7d95c6b3a2834d76c35d16a3d967dd07d224d6",
+    "data/corpus.json": "0f02e9434b490769619d14f0440fe737e925b239a2633b70a0851bd154114e9c"
+   },
+   "freshly_reproduced_or_validated_files": {
+    "docs/GENERALIZATION.md": "33cbb386d7953f00994eb93ca5e241ee24104de7410dd321f2f914bb4a7c6465",
+    "out/generalization/matrix.json": "341e5d793341c56e19e7042e3b7d95c6b3a2834d76c35d16a3d967dd07d224d6"
+   },
+   "inherited_unchanged_files": {
+    "data/corpus.json": "0f02e9434b490769619d14f0440fe737e925b239a2633b70a0851bd154114e9c"
+   },
+   "supporting_files": {
+    "scripts/corpus_matrix.py": "5407cd2daf752b48385e5226680f0b440d708e1ff55913bc081d159263a0f0ed",
+    "scripts/deliverable_report.py": "253e65c119ea6237eb03419dd16764f2381281dc1a518672edc706fe1e81dc88",
+    "examples/own-drawing/README.md": "29a21aa8feee52cccfb986f53daf3131fb7f3fc173f32b58b2698c408763c0ee",
+    "examples/from-description/README.md": "aacf2eafbfb323467c571c38414154118cb1f05ebb7538b6cbe6efaacd43776b"
+   },
+   "scope": "Two actual offline producing CLI invocations renew row 3 across all 15 registered inputs and row 5 for Bayer only; a third --check invocation verifies all 95 declared bindings. The 16 selected cells retain exact status, value, reason and detail; the other 79 complete cells are unchanged. Aggregate results remain 64 pass, 23 fail and 8 not applicable. Changes are run metadata, the deliverable-report code binding, two guide-input hashes and the Bayer guide line locator. All three registered outputs are bound: matrix and page freshly received, corpus registry inherited at its unchanged hash.",
+   "private_proofs": {
+    "renewal_terminal_sha256": "8c1ee04ca686f55ca8a96e34a1a428ed4557e8c2d734590affd2f39e1f179025",
+    "independent_receiving_sha256": "448a154bf9dd8ea9959bd24b7c6b3594394a11c1c6621d0cb8f4494e1bf5bf8a"
+   },
+   "limits": [
+    "This renews declared software/input bindings after reader-documentation changes; no changed criteria, engineering metrics, source/key authority or improved accuracy is inferred.",
+    "Inherited historical cells retain their public-data, agent-keyed and self-generated limitations. The 95 cells are configured workflow/input pairs, not independent plant trials or complete toolkit coverage.",
+    "No model/provider, company, plant, human review or SDK run was added by this receiving; no whole concurrent worktree invariance claim."
+   ]
   }
  ]
 }

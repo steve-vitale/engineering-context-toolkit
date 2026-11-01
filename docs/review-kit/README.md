@@ -1,5 +1,9 @@
 # Review day kit
 
+**Public-case review tutorial.** The sheets and screens here belong to the repository's worked assemblies.
+Use them to learn a qualified review process, then apply that process to the model built from
+[your own P&IDs or process records](../AT_YOUR_PLANT.md), with reviewers who know that process.
+
 Nobody with operations knowledge has reviewed anything in this project yet. This kit gets the first review done in
 one sitting at a desktop, and makes sure each check is done by someone qualified to make it.
 

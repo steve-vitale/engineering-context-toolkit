@@ -1,5 +1,11 @@
 # 3D operator orientation tour: review stills (proof of concept, not reviewed)
 
+**Case-study visualization.** Use these stills to see how a reviewed asset model could support orientation and
+source-linked explanations for your team. Build your starting model with the
+[own-P&ID tutorial](../../examples/own-drawing/README.md) or [description tools](../../examples/from-description/README.md).
+The scene and narration below were assembled for TE; making a tour of your plant requires your own scene,
+geometry and reviewed explanations in addition to the reusable model/export steps.
+
 These are review stills from a proof of concept that renders the twin's process model as a 3D walkthrough for
 operator orientation. Geometry, sizes, elevations and pipe routes are placeholders; tag colours come from the recorded
 Tennessee Eastman replay, not a live plant. The narration and the tour's short function lines were written with AI

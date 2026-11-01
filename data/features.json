@@ -52,10 +52,10 @@
     "scripts/test_deliverable_report.py"
    ],
    "job": "Show someone what came out of a drawing, and what still needs checking",
-   "you_need": "A review bundle from the step above",
+   "you_need": "A review bundle from import_site_drawing.py",
    "time": "Under a second",
-   "you_get": "One page: the drawing with every item boxed, item and review status, what a person has already decided (shown with the decision and left out of the to-check list), next steps, limits. Refuses if any generated column of the review sheet doesn't match what the model gives now; the reviewer's OPS_ entries aren't checked, so decisions not yet applied with apply_review.py don't appear",
-   "why": "Whoever approves the work needs one page that says what was found and what is still unchecked, without opening a spreadsheet of 445 rows."
+   "you_get": "One page: the drawing with every item boxed, item and review status, supplied applied review records with recorded reviewer/date, next steps toward questions/context or data-connected staging, and limits. Refuses if any generated column of the review sheet doesn't match what the model gives now; the reviewer's OPS_ entries aren't checked, so decisions not yet applied with apply_review.py don't appear",
+   "why": "The receiving engineer needs to see what was found, what is still unchecked and how to build on the model without tracing every generated file."
   },
   {
    "id": "dexpi-to-bundle",
@@ -72,7 +72,7 @@
    "tests": [
     "scripts/test_dexpi_to_twin.py"
    ],
-   "job": "Use a DEXPI file my CAD tool already exports",
+   "job": "Reproduce the configured public DEXPI examples through the drawing-intake contract",
    "you_need": "One of the three public DEXPI example sheets, prepared once by adapt_dexpi.py (downloads them; needs PyMuPDF). For your own DEXPI XML, use the DEXPI reader instead",
    "time": "Seconds once the sheets are prepared",
    "you_get": "The same bundle with no model reading: tags are the drawn label text, and links are the drawn connections, undirected, with each pipe tee expanded into pairwise links",

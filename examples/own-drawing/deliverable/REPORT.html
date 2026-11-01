@@ -25,7 +25,11 @@ ol li,ul li{margin:3px 0}
 <div class=sub>Revision public, page 1 ·
 Digital twin starter kit: site-drawing / supplied-extraction · extraction: recorded run r2-tiles-trace: 2x2 tiles with extraction/prompt_v2.md, then the code line tracer
 (gpt-6.1-sol)</div>
-<div class=draft><b>Draft, unverified.</b> Every item below was read off the drawing by software and has not been checked by a person. Nothing here is approved for operational use.</div>
+<p>This bundle is a structural starting point for a digital twin of the process represented by the drawing:
+assets, represented connections and their source locations, ready for engineering review. Use the same intake
+and review tools with your approved P&amp;ID and extraction to build from your plant's records. Add operating
+knowledge, retained decisions and reviewed signal mappings as the application develops.</p>
+<div class=draft><b>Draft, unverified.</b> Items were imported from the supplied extraction; no completed review is recorded here. Nothing here is approved for operational use.</div>
 
 <h2>What was extracted</h2>
 <div class=tiles><div class=tile><b>2</b><span>equipment</span></div><div class=tile><b>36</b><span>instruments</span></div>
@@ -55,12 +59,19 @@ by a drawn link and 16 by distance alone, which needs a closer look.</p>
 <h2>What's in the package</h2>
 <div class=scroll><table><tbody><tr><td><code>review_queue.csv</code></td><td>Every extracted item and link, one row each, for a reviewer to confirm, correct or reject in the OPS_ columns. Start here.</td></tr><tr><td><code>plant_model.json</code></td><td>The draft asset model: systems, equipment, instruments, valves, links, with where each came from on the sheet.</td></tr><tr><td><code>ignition/tags.json</code></td><td>An Ignition tag import (UDT types, one instance per asset); every value is a placeholder until mapped to a real signal.</td></tr><tr><td><code>pi/</code></td><td>PI AF staging sheets and the steps a PI site would still run; not import-tested.</td></tr><tr><td><code>svg/sheet_0.svg</code></td><td>The extracted items and links drawn as a logical diagram, not pipe routes.</td></tr><tr><td><code>source/</code></td><td>The exact drawing and extraction the bundle was built from, with hashes in intake_manifest.json.</td></tr><tr><td><code>READ_ME.txt</code></td><td>What the bundle has not established.</td></tr></tbody></table></div>
 
-<h2>Next steps</h2>
+<h2>Build on this model</h2>
 <ol><li>A reviewer who knows the unit works through <code>review_queue.csv</code>, starting with the rows above, and
 fills the <code>OPS_</code> columns.</li>
-<li>The decisions are applied with <code>apply_review.py</code> and the exports regenerated.</li>
-<li>Instruments are mapped to real signals from the plant's I/O list (<code>map_points.py</code>).</li>
-<li><code>ignition/tags.json</code> is imported into a lab gateway and checked before anything goes further.</li></ol>
+<li>Apply supported corrections with <code>apply_review.py</code>, inspect the change record and regenerate exports
+with <code>generate.py</code>. Missing items need a corrected extraction and a new bundle.</li>
+<li>For an investigation, run <code>question_engine.py</code> on <code>plant_model.json</code> and choose a relevant
+question. Export the model and questions with <code>graph_export.py</code>; the context-register tools can retain
+source revisions and reviewed answers. These are optional next outputs, not files already in this bundle.</li>
+<li>For a data-connected application, supply an authoritative I/O list to <code>map_points.py</code> or reviewed
+PI references to <code>map_pi_points.py</code>, then regenerate. Import the selected staging files into the approved
+lab target and verify signal identity, values, units and quality. Author the displays and connections the job needs.</li></ol>
+<p class=sub>The repository's <code>examples/own-drawing/README.md</code> gives the commands and own-input steps.
+The assembled public replay and screen projects illustrate further application work.</p>
 
 <h2>What this package does not establish</h2>
 <ul><li>Imported extraction and producer claims were supplied, not independently verified; no model was run.</li><li>PNG structure and CRCs checked, not full pixel decoding, readability or revision authority.</li><li>Class roles, tag conventions, linked parents and geometry fallback require engineering review.</li><li>Connections are unverified undirected logical links; direct pipe adjacency is not established. SVG segments are not pipe routes.</li><li>Supplied confidence and the existing 0.75 highlighting rule are uncalibrated for this drawing; no trained risk model was applied.</li><li>No point mapping, signal identity, range, quality, native import or operational approval was established.</li><li>Draft-only status is descriptive metadata, not a technical deployment interlock in other tools.</li><li>Source paths are relative to this bundle. Keep source/ with the model and SVG files.</li></ul>
