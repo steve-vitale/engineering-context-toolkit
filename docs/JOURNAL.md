@@ -6741,3 +6741,51 @@ The engine, other 48 whole question objects and all source objects remain unchan
 50 rules and 126 collection requests; 22 rules have bounded source-informed collection reviews and 28 still
 await original-source adequacy review. Existing function records can be acknowledged without a mandatory
 project. Company decisions, approval, installed-state verification and continuing ownership remain external.
+
+## 142. Keep question signal descriptions with explicit source bytes
+
+The original six CLI controls retain a real reader failure: a legacy mapping could silently borrow unrelated
+prose from a same-basename checkout CSV, while current physical-line mappings lost optional descriptions.
+Addresses remained supplied claims; an absent synthetic label never established real plant data. This was
+description/location context, not a demonstrated change in finding eligibility or installed signal identity.
+
+The [own-input tutorial](../examples/opportunity-screen/mapping-descriptions/README.md) now selects retained CSVs
+with repeatable `--io-list`. Modern records match raw source bytes, physical spans and the corresponding
+identity/address row, including renamed byte-identical files. Explicit legacy row associations remain
+`unverified_legacy`; a same-address supplied revision cannot authenticate its historical identity. Wrong or
+unselected context stays `unavailable`, and all mapped-signal captions say signal identity unverified. Selected
+source qualifications stay with each finding through full/core graph and context semantic readback; the original
+mapping source is retained. Complete top-level source context remains readable even when no question fires.
+
+Root-run candidate evidence has 16 CLI calls and 137 checks. Eight new focused methods pass without skips,
+including actual mapper-produced multiline evidence and source-status retention in graph/context. The context
+module passes 53 methods without skips. Three checkout methods pass without skips, retaining 56 indexed/112
+materialization comparisons and 277 raw-packet files per configuration; two synthetic BOM/CRLF CSVs have narrow
+raw-byte checkout protection. The other 138 original question methods remain AST-identical; one old ambient-I/O
+alias test intentionally becomes explicit selected-input protection. Current OPEN100 reproduction selects its
+committed synthetic source; old model mappings do not receive invented historical hashes.
+
+The candidate contract was frozen with original baseline observations exposed. A final written independent
+static seal followed the root candidate run; it is post-run source review, not a retroactive pre-call gate.
+Private helper/closure stops remain separate from actual product failures.
+
+Three actual producer calls succeed with 71 retained artifacts: two OPEN100 reports and 69 description-bundle
+artifacts. All 67 non-receipt description artifacts remain raw-exact; each of two actual build receipts changes
+only its engine identity leaf. Root adopts these four current files. The subsequent unfiltered question module
+reports 147 tests: 146 passed, one unnamed skip and zero failures; the skip is not an executed branch.
+Independent actual controls pass 61 checks without skips: five own-seed screens, a blank legacy-row negative,
+full/core carrier readback and selected-source hardlink refusal. A real retained-answer prepare/apply/refresh
+sequence becomes stale on a change to only the selected source's raw fingerprint; model, address, description,
+association status, byte count and backing record stay unchanged, with decision/owner history preserved. This
+is fictional software behavior, not an authenticated company source or accepted engineering answer.
+Separate independent docs/test/tutorial receiving passes 175 checks and excludes that receiver's own producer
+outputs. Independent producer receiving verifies all 71 complete artifacts, including 29 unchanged ordered
+OPEN100 finding IDs, 24 qualified legacy records with actual selected CSV identity, 67 raw-exact description
+files and two actual engine-leaf receipt updates. Its 717 checks are receiving controls, not performance.
+The root's 16-call candidate evidence is separately independently received without reruns. N108 closes only
+for selected-source context and semantic freshness; full-repository integration and exact-head CI remain
+separate gates.
+
+Five small exposed fictional tutorial/input files add no plants, held-out model trial or performance result.
+The catalog remains unchanged: 50 rules, 126 requests, 22 bounded source reviews and 28 remaining. Engineering
+interpretation, authorized source revisions, signal checks and ongoing company ownership remain external.

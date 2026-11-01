@@ -27,7 +27,8 @@ RUNS = {
     "bayer": ["--model", "data/bayer_rt/process_model.json"],
     "open100": ["--model", "out/twin/r2-tiles-trace/codex/plant_model.json", "--schedule",
                 "data/open100_equipment_schedule.json", "--schedule",
-                "examples/opportunity-screen/open100_schedule_fields.json"],
+                "examples/opportunity-screen/open100_schedule_fields.json", "--io-list",
+                "data/io_lists/open100_sheet0_demo.csv"],
     "food": ["--model", "examples/opportunity-screen/food_plant_model.json"],
     "millard/screen": ["--model", "examples/opportunity-screen/millard/model.json", "--question", "E30"],
 }
@@ -2104,19 +2105,18 @@ class OutputPublication(unittest.TestCase):
                     out = base / "questions.json" / "reports"
                 self.refuse_unchanged(base, ["--model", model, "--out", out])
 
-    def test_implicit_io_list_is_protected(self):
+    def test_explicit_io_list_is_protected(self):
         with tempfile.TemporaryDirectory() as tmp:
             base = Path(tmp)
-            source = base / "data/io_lists/io.csv"
-            source.parent.mkdir(parents=True)
-            source.write_text("point,description\nPT-1,synthetic fixture\n", encoding="utf-8")
+            source = base / "io.csv"
+            source.write_text("tag,server,base_path,point,description\nPT-1,SYNTHETIC-OPC,path,PT-1,synthetic fixture\n", encoding="utf-8")
             model = base / "model.json"
             model.write_text(json.dumps({"meta": {"model_kind": "extracted_twin"}, "units": [],
                 "instruments": [{"id": "PT-1", "tag": "PT-1", "data_point":
-                                 {"point": "PT-1", "source": "io.csv row 2"}}]}), encoding="utf-8")
+                                 {"server": "SYNTHETIC-OPC", "base_path": "path", "point": "PT-1",
+                                  "source": "io.csv row 2"}}]}), encoding="utf-8")
             os.link(source, base / "questions.json")
-            with patch.object(qe, "ROOT", base):
-                self.refuse_unchanged(base, ["--model", model, "--out", base])
+            self.refuse_unchanged(base, ["--model", model, "--io-list", source, "--out", base])
 
     def test_same_directory_generation_and_repeated_refresh_remain_valid(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -2950,6 +2950,258 @@ class CombustionControlBasis(unittest.TestCase):
                         self._assert_typed_literal(question, vector)
                     self.assertEqual(len(question["data_requests"]), 2)
                     self.assertTrue(all(r["state"] == "not_on_drawing" for r in question["data_requests"]))
+
+
+class MappingDescriptionSources(unittest.TestCase):
+    """Fictional source identity controls; no OPC connection or signal acceptance."""
+
+    CORPUS = EX / "mapping-descriptions"
+
+    def inputs(self, folder):
+        model = folder / "model.json"
+        model.write_bytes((self.CORPUS / "legacy-model.json").read_bytes())
+        sources = []
+        for revision in ("revision-a", "revision-b"):
+            path = folder / revision / "io.csv"
+            path.parent.mkdir()
+            path.write_bytes((self.CORPUS / revision / "io.csv").read_bytes())
+            sources.append(path)
+        return model, sources
+
+    def catalog(self):
+        catalog = copy.deepcopy(CAT)
+        question = copy.deepcopy(CAT["questions"][0])
+        question.update(id="IO1", question="Fictional source-context control, not an engineering finding.",
+                        applies_when={"anchor": {"kind": ["instrument"], "isa": "^FT$"},
+                                      "group_by": "item"},
+                        data_requests=[{"item": "Supplied flow record", "how": "Review the selected source.",
+                                        "where": [{"place": "historian", "quantity": "flow"}]}])
+        catalog["questions"] = [question]
+        return catalog
+
+    def screen(self, model_path, io_paths, output):
+        model = qe.Model(model_path, io_paths=io_paths)
+        catalog = self.catalog()
+        found, nc, quiet, excluded = qe.screen(model, catalog)
+        self.assertEqual([q["id"] for q in found], ["IO1@I-FLOW"])
+        doc = qe.write_outputs(model, catalog, found, nc, quiet, excluded, output)
+        self.assertEqual(doc, json.loads((output / "questions.json").read_bytes()))
+        record = next(x for x in doc["mapping_descriptions"] if x["asset_id"] == "I-FLOW")
+        signal = next(x["signal"] for x in model.items if x["id"] == "I-FLOW")
+        self.assertIn("signal identity unverified", signal.lower())
+        return doc, record, signal
+
+    def modern(self, model_path, source):
+        import map_points
+        fields, rows, spans, evidence = map_points.read_io_list(source)
+        self.assertIn("description", fields)
+        original = json.loads(model_path.read_bytes())
+        updated, report = map_points.plan_mapping(original, rows, source.name,
+                                                  source_rows=spans, source_sha256=evidence["sha256"])
+        self.assertTrue(report["valid"], report["errors"])
+        model_path.write_bytes((json.dumps(updated, indent=2) + "\n").encode("utf-8"))
+        return evidence, spans
+
+    def test_actual_mapper_multiline_snapshot_and_renamed_source_are_retained(self):
+        import hashlib
+        with tempfile.TemporaryDirectory() as temp:
+            folder = Path(temp)
+            model, (source, _) = self.inputs(folder)
+            raw = source.read_bytes()
+            evidence, spans = self.modern(model, source)
+            self.assertEqual(spans, [(2, 3)])
+            moved = folder / "retained-renamed.csv"
+            source.rename(moved)
+            doc, record, signal = self.screen(model, [moved], folder / "screen")
+            expected = json.loads((self.CORPUS / "cases.json").read_bytes())
+            self.assertEqual(record["status"], "matched")
+            self.assertEqual(record["description"], expected["description_a"])
+            self.assertEqual(record["mapping_source"]["source_sha256"], evidence["sha256"])
+            self.assertEqual(record["mapping_source"]["source_lines"], [2, 3])
+            self.assertEqual(record["selected_source"]["source_lines"], [2, 3])
+            self.assertEqual(record["selected_source"]["sha256"], hashlib.sha256(raw).hexdigest())
+            self.assertEqual(record["selected_source"]["file"], moved.name)
+            self.assertEqual(doc["io_lists"], [{"file": moved.name, "sha256": evidence["sha256"], "bytes": len(raw)}])
+            self.assertNotIn(str(folder), json.dumps(doc))
+            self.assertIn("SYNTHETIC", signal)
+            self.assertEqual(moved.read_bytes(), raw)
+
+    def test_bound_wrong_revision_and_unselected_source_remain_unavailable(self):
+        with tempfile.TemporaryDirectory() as temp:
+            folder = Path(temp)
+            model, (source, foreign) = self.inputs(folder)
+            self.modern(model, source)
+            original = model.read_bytes()
+            good, _, _ = self.screen(model, [source], folder / "matching")
+            for label, selected in (("wrong-revision", [foreign]), ("unselected", [])):
+                with self.subTest(label=label):
+                    doc, record, signal = self.screen(model, selected, folder / label)
+                    self.assertEqual(record["status"], "unavailable")
+                    self.assertTrue(record["reason"])
+                    self.assertNotIn("description", record)
+                    self.assertNotIn("UNRELATED REVISION B", signal)
+                    self.assertEqual(ids(doc), ids(good))
+                    self.assertEqual([q["assets"] for q in doc["questions"]],
+                                     [q["assets"] for q in good["questions"]])
+            self.assertEqual(model.read_bytes(), original)
+
+    def test_legacy_selection_is_explicit_unverified_and_ambiguous_sources_do_not_attach(self):
+        with tempfile.TemporaryDirectory() as temp:
+            folder = Path(temp)
+            model, (source, foreign) = self.inputs(folder)
+            ambient = folder / "data" / "io_lists"
+            ambient.mkdir(parents=True)
+            (ambient / "io.csv").write_bytes(foreign.read_bytes())
+            with patch.object(qe, "ROOT", folder):
+                _, absent, signal = self.screen(model, [], folder / "none")
+                self.assertEqual(absent["status"], "unavailable")
+                self.assertNotIn("UNRELATED REVISION B", signal)
+            _, supplied, signal = self.screen(model, [source], folder / "supplied")
+            self.assertEqual(supplied["status"], "unverified_legacy")
+            self.assertEqual(supplied["selected_source"]["logical_row"], 2)
+            self.assertEqual(supplied["selected_source"]["source_lines"], [2, 3])
+            self.assertNotIn("source_sha256", supplied["mapping_source"])
+            self.assertIn("unverified", signal.lower())
+            _, ambiguous, _ = self.screen(model, [source, foreign], folder / "ambiguous")
+            self.assertEqual(ambiguous["status"], "unavailable")
+            self.assertNotIn("description", ambiguous)
+
+    def test_same_path_revised_source_is_recaptured_without_cache(self):
+        with tempfile.TemporaryDirectory() as temp:
+            folder = Path(temp)
+            model, (source, foreign) = self.inputs(folder)
+            _, first, _ = self.screen(model, [source], folder / "first")
+            source.write_bytes(foreign.read_bytes())
+            _, second, signal = self.screen(model, [source], folder / "second")
+            self.assertEqual(first["status"], "unverified_legacy")
+            self.assertEqual(second["status"], "unverified_legacy")
+            self.assertNotEqual(first["selected_source"]["sha256"], second["selected_source"]["sha256"])
+            self.assertNotEqual(first["description"], second["description"])
+            self.assertIn("UNRELATED REVISION B", signal)
+            # Same-address legacy prose is explicitly supplied, not authenticated historical identity.
+
+    def test_physical_span_address_and_explicit_asset_id_are_independent_checks(self):
+        with tempfile.TemporaryDirectory() as temp:
+            folder = Path(temp)
+            model, (source, _) = self.inputs(folder)
+            self.modern(model, source)
+            original = json.loads(model.read_bytes())
+            changes = [("span", lambda x: x["instruments"][0]["data_point"].update(source_lines=[2, 2])),
+                       ("address", lambda x: x["instruments"][0]["data_point"].update(point="OTHER")),
+                       ("asset", lambda x: x["instruments"][0].update(id="OTHER-ASSET"))]
+            for name, change in changes:
+                with self.subTest(name=name):
+                    current = copy.deepcopy(original)
+                    change(current)
+                    model.write_text(json.dumps(current), encoding="utf-8")
+                    _, record, _ = self.screen_for_any_id(model, [source], folder / name)
+                    self.assertEqual(record["status"], "unavailable")
+                    self.assertNotIn("description", record)
+
+    def screen_for_any_id(self, path, sources, output):
+        model = qe.Model(path, io_paths=sources)
+        catalog = self.catalog()
+        found, nc, quiet, excluded = qe.screen(model, catalog)
+        self.assertEqual(len(found), 1)
+        doc = qe.write_outputs(model, catalog, found, nc, quiet, excluded, output)
+        return doc, doc["mapping_descriptions"][0], model.items[0]
+
+    def test_explicit_unreadable_or_malformed_csv_preserves_existing_reports(self):
+        for label, raw in (("missing", None), ("duplicate", b"tag,tag,server,base_path,point\n"),
+                           ("extra", b"tag,server,base_path,point\nFT-1,S,B,P,extra\n"),
+                           ("utf8", b"tag,server,base_path,point\n\xff,S,B,P\n"),
+                           ("quote", b'tag,server,base_path,point,description\nFT-1,S,B,P,"unclosed')):
+            with self.subTest(label=label), tempfile.TemporaryDirectory() as temp:
+                folder = Path(temp)
+                model, _ = self.inputs(folder)
+                source = folder / "selected.csv"
+                if raw is not None:
+                    source.write_bytes(raw)
+                output = folder / "out"
+                output.mkdir()
+                (output / "questions.json").write_bytes(b"prior JSON")
+                (output / "screen.md").write_bytes(b"prior Markdown")
+                before = OutputPublication.snapshot(self, folder)
+                with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()) as error:
+                    rc = qe.main(["--model", str(model), "--io-list", str(source), "--out", str(output)])
+                self.assertEqual(rc, 2, error.getvalue())
+                self.assertTrue(error.getvalue())
+                self.assertEqual(OutputPublication.snapshot(self, folder), before)
+
+
+    def test_question_source_metadata_survives_full_core_and_context_semantics(self):
+        import context_register as cr
+        with tempfile.TemporaryDirectory() as temp:
+            folder = Path(temp)
+            model, (source, foreign) = self.inputs(folder)
+            original = json.loads(model.read_bytes())
+            unrelated = copy.deepcopy(original["instruments"][0])
+            unrelated.update(id="I-PRESSURE", tag="PT-2", isa_letters="PT", variable="pressure")
+            original["instruments"].append(unrelated)
+            model.write_text(json.dumps(original), encoding="utf-8")
+            doc, record, _ = self.screen(model, [source], folder / "screen")
+            self.assertEqual(len(doc["mapping_descriptions"]), 2)
+            expected = doc["questions"][0]["mapping_descriptions"]
+            self.assertEqual(expected, [record])
+            self.assertEqual([x["asset_id"] for x in expected], ["I-FLOW"])
+            question_path = folder / "screen" / "questions.json"
+            graph = gx.build(model, questions=question_path)
+            for profile in ("full", "core"):
+                with self.subTest(profile=profile):
+                    selected = gx.apply_profile(graph, profile)
+                    self.assertEqual(selected["questions"], doc["questions"])
+                    graph_path = folder / (profile + ".json")
+                    graph_path.write_text(json.dumps(selected), encoding="utf-8")
+                    _, _, keyed = cr.load_inputs(graph_path, question_path)
+                    self.assertEqual(keyed["IO1@I-FLOW"]["question"]["mapping_descriptions"], expected)
+            question = doc["questions"][0]
+            self.assertEqual(cr.semantic(question)["mapping_descriptions"], expected)
+            changed_status = copy.deepcopy(question)
+            changed_status["mapping_descriptions"][0]["status"] = "unavailable"
+            self.assertNotEqual(cr.semantic(question), cr.semantic(changed_status))
+            revised, _, _ = self.screen(model, [foreign], folder / "revision-b")
+            self.assertEqual(ids(revised), ids(doc))
+            self.assertNotEqual(cr.semantic(question), cr.semantic(revised["questions"][0]))
+
+    def test_source_identity_types_address_components_and_tag_fallback(self):
+        import hashlib
+        with tempfile.TemporaryDirectory() as temp:
+            folder = Path(temp)
+            model, (source, _) = self.inputs(folder)
+            self.modern(model, source)
+            item = json.loads(model.read_bytes())["instruments"][0]
+            sources = qe.load_io_sources([source])
+            for field, value in (("source_lines", [True, 3]), ("source_lines", [2.0, 3]),
+                                 ("source_lines", [2, False]), ("source_sha256", True),
+                                 ("source_sha256", "not-a-raw-hash"),
+                                 ("server", "OTHER"), ("base_path", "OTHER"), ("point", "OTHER")):
+                with self.subTest(field=field, value=value):
+                    dp = copy.deepcopy(item["data_point"])
+                    dp[field] = value
+                    record = qe.point_description(dp, item, sources)
+                    self.assertEqual(record["status"], "unavailable")
+                    self.assertNotIn("description", record)
+                    self.assertTrue(record["reason"])
+            no_hash = copy.deepcopy(item["data_point"])
+            no_hash.pop("source_sha256")
+            self.assertEqual(qe.point_description(no_hash, item, sources)["status"], "unavailable")
+            original_pin = qe.point_description(item["data_point"], dict(item, tag="DIFFERENT-TAG"), sources)
+            self.assertEqual(original_pin["status"], "matched")
+            # An explicit asset_id takes precedence over the CSV/model tag spelling.
+            normalized = folder / "normalized.csv"
+            raw = source.read_bytes().replace(b"I-FLOW,FT-1,", b",ft_1,")
+            normalized.write_bytes(raw)
+            dp = copy.deepcopy(item["data_point"])
+            dp["source_sha256"] = hashlib.sha256(raw).hexdigest()
+            normalized_sources = qe.load_io_sources([normalized])
+            self.assertEqual(qe.point_description(dp, item, normalized_sources)["status"], "matched")
+            self.assertEqual(qe.point_description(dp, dict(item, tag="PT-2"), normalized_sources)["status"],
+                             "unavailable")
+            expected = json.loads((self.CORPUS / "cases.json").read_bytes())
+            for source_case in expected["raw_sources"]:
+                original_raw = (self.CORPUS / source_case["path"]).read_bytes()
+                self.assertEqual(hashlib.sha256(original_raw).hexdigest(), source_case["sha256_raw"])
+                self.assertEqual(len(original_raw), source_case["bytes"])
 
 
 if __name__ == "__main__":

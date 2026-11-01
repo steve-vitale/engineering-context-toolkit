@@ -1,6 +1,6 @@
 # State of the toolkit
 
-Holistic audit: **2026-11-01, Central time**, with the latest source-review follow-up starting from released commit `cbc98ee`.
+Holistic audit: **2026-11-01, Central time**, with the latest question-source portability follow-up starting from released commit `4927e7e`.
 The public name is **Engineering Context Toolkit**. The jumpstart is its first-assignment path; modeling,
 review, analysis and evaluation can be used independently. Earlier failures and original evidence remain
 in the [journal](JOURNAL.md) and [attempt ledger](TRIED.md).
@@ -12,7 +12,7 @@ The public tutorials teach those steps; case studies and evaluations retain what
 inputs. Engineering review and company acceptance determine what becomes an authoritative maintained twin or record.
 
 The [script registry](SCRIPTS.md) classifies 136 scripts: 33 tools, 12 checks, 15 support modules and 76 research
-scripts; tests are separate. Twenty-two [feature groups](FEATURES.md) register 464 distinct example files, including
+scripts; tests are separate. Twenty-two [feature groups](FEATURES.md) register 469 distinct example files, including
 inputs, generated outputs and retained history. Shared files can appear under more than one group; feature-file
 references are not additional unique examples. Their evidence is bounded. A reviewed
 example does not certify every input, current implementation or engineering conclusion.
@@ -37,6 +37,12 @@ illustrative intake manifest has a narrow LF checkout contract. Company source o
 checks and the review command's preservation of supplied model formatting remain unchanged. The retained
 `3100959` Linux failure is not upgraded by local success; corrected exact-head CI remains a separate gate.
 See [the failure and bounded repair](JOURNAL.md#140-make-generated-intake-json-portable-without-normalizing-originals).
+
+Own-plant question context can now travel with explicitly selected `--io-list` originals rather than an
+ambient checkout CSV. Modern byte/span/row matches and historically unverified legacy associations remain
+distinct through graph/context; all mapped signals retain their identity uncertainty. The
+[small fictional tutorial](../examples/opportunity-screen/mapping-descriptions/README.md) shows the handoff.
+N108 has bounded independent source-change/readback controls; source identity does not establish plant truth.
 
 | Reproduced gap | Required behavior and bounded repair |
 |---|---|

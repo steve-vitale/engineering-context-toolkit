@@ -2393,7 +2393,7 @@
      "item": "Steam flow through the station, with hours",
      "state": "not_on_drawing",
      "where": [
-      "only the valve position is recorded (TCV-1408: SYNTHETIC mapped data point TCV_1408_POS on OPEN100-Demo (open100_sheet0_demo.csv row 24: synthetic demo point (valve position)), not plant data); flow needs a meter or a calibrated valve curve",
+      "only the valve position is recorded (TCV-1408: SYNTHETIC mapped data point TCV_1408_POS on OPEN100-Demo (open100_sheet0_demo.csv row 24: `\"synthetic demo point (valve position)\"`), not plant data; supplied legacy description, historical source identity unverified; signal identity unverified); flow needs a meter or a calibrated valve curve",
       "site records: steam balance"
      ],
      "how": "Build a flow-duration curve: how many hours at each flow."
@@ -2466,7 +2466,33 @@
     ]
    },
    "limits": "Turbine bypass and pegging stations exist for startup, trips and low load; the question concerns normal-duty flow. Generic capacity, vendor rating, actual throughput/duration and available pressure drop are distinct. The cited applicability conditions support further study, not a turbine decision or an operating instruction.",
-   "status": "asked"
+   "status": "asked",
+   "mapping_descriptions": [
+    {
+     "asset_id": "S0-IN035",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "TCV_1408_POS"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 24"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       24,
+       24
+      ],
+      "logical_row": 24
+     },
+     "description": "synthetic demo point (valve position)",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    }
+   ]
   },
   {
    "id": "H1@S1-OP002",
@@ -3422,7 +3448,7 @@
      "item": "Valve stiction or backlash",
      "state": "not_on_drawing",
      "where": [
-      "historian / recorded data: TCV-1401: SYNTHETIC mapped data point TCV_1401_POS on OPEN100-Demo (open100_sheet0_demo.csv row 20: synthetic demo point (valve position)), not plant data; TCV-1402: SYNTHETIC mapped data point TCV_1402_POS on OPEN100-Demo (open100_sheet0_demo.csv row 21: synthetic demo point (valve position)), not plant data; TCV-1403: SYNTHETIC mapped data point TCV_1403_POS on OPEN100-Demo (open100_sheet0_demo.csv row 22: synthetic demo point (valve position)), not plant data; TCV-1406: SYNTHETIC mapped data point TCV_1406_POS on OPEN100-Demo (open100_sheet0_demo.csv row 23: synthetic demo point (valve position)), not plant data; TCV-1408: SYNTHETIC mapped data point TCV_1408_POS on OPEN100-Demo (open100_sheet0_demo.csv row 24: synthetic demo point (valve position)), not plant data; TCV-1409: SYNTHETIC mapped data point TCV_1409_POS on OPEN100-Demo (open100_sheet0_demo.csv row 25: synthetic demo point (valve position)), not plant data (no historian tag is mapped in this model for FCV-1615, FCV-1621, FCV-18012, FCV-6506, FCV-6508, FCV-XXX, LCV-1501, LCV-1611, LCV-5509, LCV-6507, PCV-14011, PCV-1703, TCV-16013, TCV-1622, TCV-2502, TCV-XXX)",
+      "historian / recorded data: TCV-1401: SYNTHETIC mapped data point TCV_1401_POS on OPEN100-Demo (open100_sheet0_demo.csv row 20: `\"synthetic demo point (valve position)\"`), not plant data; supplied legacy description, historical source identity unverified; signal identity unverified; TCV-1402: SYNTHETIC mapped data point TCV_1402_POS on OPEN100-Demo (open100_sheet0_demo.csv row 21: `\"synthetic demo point (valve position)\"`), not plant data; supplied legacy description, historical source identity unverified; signal identity unverified; TCV-1403: SYNTHETIC mapped data point TCV_1403_POS on OPEN100-Demo (open100_sheet0_demo.csv row 22: `\"synthetic demo point (valve position)\"`), not plant data; supplied legacy description, historical source identity unverified; signal identity unverified; TCV-1406: SYNTHETIC mapped data point TCV_1406_POS on OPEN100-Demo (open100_sheet0_demo.csv row 23: `\"synthetic demo point (valve position)\"`), not plant data; supplied legacy description, historical source identity unverified; signal identity unverified; TCV-1408: SYNTHETIC mapped data point TCV_1408_POS on OPEN100-Demo (open100_sheet0_demo.csv row 24: `\"synthetic demo point (valve position)\"`), not plant data; supplied legacy description, historical source identity unverified; signal identity unverified; TCV-1409: SYNTHETIC mapped data point TCV_1409_POS on OPEN100-Demo (open100_sheet0_demo.csv row 25: `\"synthetic demo point (valve position)\"`), not plant data; supplied legacy description, historical source identity unverified; signal identity unverified (no historian tag is mapped in this model for FCV-1615, FCV-1621, FCV-18012, FCV-6506, FCV-6508, FCV-XXX, LCV-1501, LCV-1611, LCV-5509, LCV-6507, PCV-14011, PCV-1703, TCV-16013, TCV-1622, TCV-2502, TCV-XXX)",
       "a walkdown: a small step test on each loop in manual"
      ],
      "how": "Compare controller output with measured response."
@@ -3440,7 +3466,153 @@
     ]
    },
    "limits": "P&IDs often omit positioners; the model saying 'none drawn' does not mean none fitted.",
-   "status": "asked"
+   "status": "asked",
+   "mapping_descriptions": [
+    {
+     "asset_id": "S0-IN001",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "TCV_1401_POS"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 20"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       20,
+       20
+      ],
+      "logical_row": 20
+     },
+     "description": "synthetic demo point (valve position)",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    },
+    {
+     "asset_id": "S0-IN013",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "TCV_1402_POS"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 21"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       21,
+       21
+      ],
+      "logical_row": 21
+     },
+     "description": "synthetic demo point (valve position)",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    },
+    {
+     "asset_id": "S0-IN024",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "TCV_1403_POS"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 22"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       22,
+       22
+      ],
+      "logical_row": 22
+     },
+     "description": "synthetic demo point (valve position)",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    },
+    {
+     "asset_id": "S0-IN031",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "TCV_1406_POS"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 23"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       23,
+       23
+      ],
+      "logical_row": 23
+     },
+     "description": "synthetic demo point (valve position)",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    },
+    {
+     "asset_id": "S0-IN035",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "TCV_1408_POS"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 24"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       24,
+       24
+      ],
+      "logical_row": 24
+     },
+     "description": "synthetic demo point (valve position)",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    },
+    {
+     "asset_id": "S0-IN036",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "TCV_1409_POS"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 25"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       25,
+       25
+      ],
+      "logical_row": 25
+     },
+     "description": "synthetic demo point (valve position)",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    }
+   ]
   },
   {
    "id": "C9@model",
@@ -3694,6 +3866,591 @@
    "S6-TK004"
   ]
  },
+ "mapping_descriptions": [
+  {
+   "asset_id": "S0-IN001",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "TCV_1401_POS"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 20"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     20,
+     20
+    ],
+    "logical_row": 20
+   },
+   "description": "synthetic demo point (valve position)",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN004",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "TE_14084A"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 2"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     2,
+     2
+    ],
+    "logical_row": 2
+   },
+   "description": "synthetic demo point",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN005",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "TE_14084B"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 3"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     3,
+     3
+    ],
+    "logical_row": 3
+   },
+   "description": "synthetic demo point",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN006",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "RE_1402"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 18"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     18,
+     18
+    ],
+    "logical_row": 18
+   },
+   "description": "synthetic demo point",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN007",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "PT_14085"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 14"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     14,
+     14
+    ],
+    "logical_row": 14
+   },
+   "description": "synthetic demo point",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN008",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "PT_14086"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 15"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     15,
+     15
+    ],
+    "logical_row": 15
+   },
+   "description": "synthetic demo point",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN009",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "PT_14087"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 16"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     16,
+     16
+    ],
+    "logical_row": 16
+   },
+   "description": "synthetic demo point",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN010",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "PT_14088"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 17"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     17,
+     17
+    ],
+    "logical_row": 17
+   },
+   "description": "synthetic demo point",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN011",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "TE_14089A"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 4"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     4,
+     4
+    ],
+    "logical_row": 4
+   },
+   "description": "synthetic demo point",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN012",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "TE_14089B"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 5"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     5,
+     5
+    ],
+    "logical_row": 5
+   },
+   "description": "synthetic demo point",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN013",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "TCV_1402_POS"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 21"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     21,
+     21
+    ],
+    "logical_row": 21
+   },
+   "description": "synthetic demo point (valve position)",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN021",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "RE_1403"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 19"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     19,
+     19
+    ],
+    "logical_row": 19
+   },
+   "description": "synthetic demo point",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN022",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "TE_14090A"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 6"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     6,
+     6
+    ],
+    "logical_row": 6
+   },
+   "description": "synthetic demo point",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN023",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "TE_14090B"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 7"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     7,
+     7
+    ],
+    "logical_row": 7
+   },
+   "description": "synthetic demo point",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN024",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "TCV_1403_POS"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 22"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     22,
+     22
+    ],
+    "logical_row": 22
+   },
+   "description": "synthetic demo point (valve position)",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN025",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "TE_14091A"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 8"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     8,
+     8
+    ],
+    "logical_row": 8
+   },
+   "description": "synthetic demo point",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN026",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "TE_14091B"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 9"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     9,
+     9
+    ],
+    "logical_row": 9
+   },
+   "description": "synthetic demo point",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN029",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "TE_14092A"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 10"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     10,
+     10
+    ],
+    "logical_row": 10
+   },
+   "description": "synthetic demo point",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN030",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "TE_14092B"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 11"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     11,
+     11
+    ],
+    "logical_row": 11
+   },
+   "description": "synthetic demo point",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN031",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "TCV_1406_POS"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 23"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     23,
+     23
+    ],
+    "logical_row": 23
+   },
+   "description": "synthetic demo point (valve position)",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN032",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "TE_14093B"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 13"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     13,
+     13
+    ],
+    "logical_row": 13
+   },
+   "description": "synthetic demo point",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN033",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "TE_14093A"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 12"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     12,
+     12
+    ],
+    "logical_row": 12
+   },
+   "description": "synthetic demo point",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN035",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "TCV_1408_POS"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 24"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     24,
+     24
+    ],
+    "logical_row": 24
+   },
+   "description": "synthetic demo point (valve position)",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  },
+  {
+   "asset_id": "S0-IN036",
+   "status": "unverified_legacy",
+   "mapping": {
+    "server": "OPEN100-Demo",
+    "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+    "point": "TCV_1409_POS"
+   },
+   "mapping_source": {
+    "source": "open100_sheet0_demo.csv row 25"
+   },
+   "selected_source": {
+    "file": "open100_sheet0_demo.csv",
+    "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+    "bytes": 3108,
+    "source_lines": [
+     25,
+     25
+    ],
+    "logical_row": 25
+   },
+   "description": "synthetic demo point (valve position)",
+   "reason": "selected legacy row and address only; historical source identity unverified"
+  }
+ ],
+ "io_lists": [
+  {
+   "file": "open100_sheet0_demo.csv",
+   "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+   "bytes": 3108
+  }
+ ],
  "service_reconciliations": [
   {
    "sheet": "2",

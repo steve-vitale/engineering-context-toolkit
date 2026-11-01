@@ -77,3 +77,7 @@ data/te_pid_layout.json text eol=lf
 
 # Fictional combustion-control input/oracle identities must be stable across operating systems.
 /examples/opportunity-screen/combustion-control-basis/** text eol=lf
+
+# These fictional I/O snapshots deliberately retain BOM/CRLF as raw source revisions.
+/examples/opportunity-screen/mapping-descriptions/revision-a/io.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/examples/opportunity-screen/mapping-descriptions/revision-b/io.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

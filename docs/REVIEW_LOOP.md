@@ -195,6 +195,11 @@ with the packet. Partial updates retain omitted mappings' earlier evidence; an o
 the new file's fingerprint. Mapping reports are current snapshots and same-name reports are replaced on apply.
 Hashes locate supplied bytes; they do not prove revision authority, source accuracy, connectivity or plant truth.
 
+For a question screen, supply those retained originals explicitly with repeatable `--io-list PATH` alongside `--model`. The screen never discovers an I/O CSV by checkout basename. Modern source
+hashes and physical spans bind selected row context; old unhashed `row N` records can carry only an explicit
+unverified legacy association. All mapped-signal captions remain “signal identity unverified.” See the
+[selected-source command and status meanings](OPPORTUNITY_SCREEN.md#retain-the-io-source-behind-a-mapped-signal).
+
 **The demo.** OPEN100 has no plant behind it, so `data/io_lists/open100_sheet0_demo.csv` is a synthetic I/O list,
 labeled as such. On sheet 0 it maps 24 instruments, with three different spellings of the tag style, and finds 2
 points that aren't on the drawing. It also hits one real ambiguity: the drawing shows `FT 1401` on two symbols.

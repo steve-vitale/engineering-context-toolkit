@@ -39,7 +39,8 @@ python -S scripts/question_engine.py --model data/te_process_model.json --loops 
 python -S scripts/question_engine.py --model data/bayer_rt/process_model.json --out examples/opportunity-screen/bayer
 python -S scripts/question_engine.py --model out/twin/r2-tiles-trace/codex/plant_model.json \
     --schedule data/open100_equipment_schedule.json \
-    --schedule examples/opportunity-screen/open100_schedule_fields.json --out examples/opportunity-screen/open100
+    --schedule examples/opportunity-screen/open100_schedule_fields.json \
+    --io-list data/io_lists/open100_sheet0_demo.csv --out examples/opportunity-screen/open100
 python -S scripts/question_engine.py --model examples/opportunity-screen/food_plant_model.json --out examples/opportunity-screen/food
 python -S scripts/question_engine.py --model examples/opportunity-screen/millard/model.json --question E30 --out examples/opportunity-screen/millard/screen
 python -S scripts/question_engine.py --rollup examples/opportunity-screen/food --rollup examples/opportunity-screen/bayer \

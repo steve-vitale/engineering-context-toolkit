@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "model_kind": "extracted_twin",
+    "title": "Fictional mapping-description source control",
+    "exposure": "Synthetic development fixture; not plant data or a tested engineering conclusion"
+  },
+  "systems": [
+    {
+      "id": "S0",
+      "system_code": "FICT",
+      "sheet": "0"
+    }
+  ],
+  "units": [
+    {
+      "id": "P1",
+      "tag": "P-1",
+      "class": "pump",
+      "sheets": [
+        "0"
+      ]
+    }
+  ],
+  "streams": [],
+  "instruments": [
+    {
+      "id": "I-FLOW",
+      "tag": "FT-1",
+      "isa_letters": "FT",
+      "variable": "flow",
+      "unit": "P1",
+      "provenance": [
+        {
+          "sheet": "0"
+        }
+      ],
+      "data_point": {
+        "server": "SYNTHETIC-OPC",
+        "base_path": "ns=1;s=SYNTHETIC",
+        "point": "FLOW.PV",
+        "source": "io.csv row 2"
+      }
+    }
+  ]
+}

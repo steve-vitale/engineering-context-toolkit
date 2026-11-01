@@ -78,7 +78,7 @@ def semantic(value):
         # Original evidence records are opaque content, including fields named status/context. Stripping
         # bookkeeping inside them would hide an evidence change from the context freshness comparison.
         return {k: copy.deepcopy(v) if k in ("provenance", "citations", "value", "candidate_facts", "field_coverage",
-                                            "service_reconciliation") else semantic(v)
+                                            "service_reconciliation", "mapping_descriptions") else semantic(v)
                 for k, v in value.items() if k not in BOOKKEEPING or k == "status" and v == "rejected"}
     if isinstance(value, list):
         # Lists can carry engineering order (curves, split ranges); preserve that order.
