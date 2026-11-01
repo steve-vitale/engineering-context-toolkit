@@ -16844,6 +16844,69 @@
    "limits": [
     "No new model run, rule adequacy, plant/company approval, measured engineer benefit or source authority is established."
    ]
+  },
+  {
+   "feature": "review-and-mapping",
+   "date": "2026-11-01",
+   "reviewer": "Independent coding-agent source/reader and saved-actual receiving; method and tests authored by separate agents with roles stated.",
+   "verdict": "pass",
+   "findings": [],
+   "files": {
+    "examples/review-and-mapping/reviewed_sheet0.csv": "d8159f4fb4c8d8ca3497f5d0985298ed2000610efd29ab5f2d7be1595a3d0c15",
+    "examples/review-and-mapping/records/2026-10-29-bundle.md": "8ee42f4d23643b7d2f37e92769adffa20d04875bc4ac65db186fcdcaad0e53c3",
+    "examples/review-and-mapping/mapping_dry_run.md": "0a1055bd00dba08fadd5544b37dabec4009a04004925a26e63e991d49dee9205",
+    "examples/review-and-mapping/graph_after_review.json": "0abf44119d3bd8c8bf3f90e2eed0f6f61508c7d08e3a246b48fac9c1523cc867",
+    "examples/review-and-mapping/REPORT_after_review.html": "33e641c1c5b7d718034671829b0575b927848d1d947636c1c94d3e08775b3b88",
+    "examples/review-and-mapping/pi_mapping_dry_run.txt": "5dd633a14b312e17dc7fd574f9a86866e593f3577d3f565e39b3485cbcbdd47d",
+    "out/review_kit/sheet-8/README.md": "d2a74ba7a4adbb214ab8c549b183f1d1558d4b5a687811faf258a6a30b89987c",
+    "examples/review-and-mapping/native-identity/expected/model.json": "f9f28f256b962414d3c865f9cd3a414654f1f2499546ba48f03789ea15056c44",
+    "examples/review-and-mapping/native-identity/expected/change_record.json": "b471c67b2b61a67c8da4b8e755a64a36978f9acd07ae6315330b192efd0d3d02",
+    "examples/review-and-mapping/native-identity/expected/change_record.md": "529d077d7a16630bb5aafebfd329671849e4e6e3b119e911204ebcd26a77bf26"
+   },
+   "scope": "N105 optional OPC receipt-directory placement only. All ten registered example files are inherited unchanged; their earlier engineering/source reviews keep their original scope. One private 33-method mapper module (27 retained/six new) passed with zero skips; three additional integration programs passed with one graph case skipped. Default byte comparison is candidate omitted versus explicit destination, not matched old/new runtime. No Native mapping expansion, review-event binding repair, live signal acceptance or human-benefit claim.",
+   "supporting_files": {
+    "scripts/map_points.py": "373f3366480afcfa913a8d3ca8638415340ec1edf88d5cd8fece07b1824384fa",
+    "scripts/test_map_points.py": "742fc2bf761bfd2457972373dcb6d6f1889ac84b69a91429f91e33a48b3fed05",
+    "docs/WORKFLOWS.md": "b79e0a6343e93d42c94e096ba6553f7a4b86dab34e18b131427b9aeeae6e568f",
+    "docs/GRAPH_EXPORT.md": "2d708b2908b2ea7b3e37de5fc4f7fb28e3503af6f7ebab108e435879298024cd",
+    "docs/REVIEW_LOOP.md": "57e8e83ab8a1a221c800f403f3445439d2ae10cd9c9be20da427395e60a561b1",
+    "docs/REPLICATE_AT_YOUR_PLANT.md": "813209a7a4d699a5047ce27c15e3e464a6de7c028ccc2d6c435f40f283d3798a",
+    "examples/own-drawing/README.md": "253d953f859b6f1c9697fa5214e5e674451f53e2c840dab89ca48c5a8ab15033",
+    "examples/review-and-mapping/README.md": "4a3a61ed7016ba12b2522306594f82c84288f3dddd4a74e7efe0e11ff55fec46",
+    ".gitignore": "40ab821d2dc5579fd9a0bd1f17700fe53a7f5ac56e80d2c121b7b4cbd27b2f4a"
+   },
+   "private_proofs": {
+    "method_static_acceptance_sha256": "93073f23d10cd1e6d51c085401fc4d0ad9fcff14aa5c33522d495186de624601",
+    "actual_acceptance_sha256": "04a543a79c0bddd6441755c9808db9ee3cd4d13dcd328a2c28dc129b55e7f937",
+    "docs_baseline_acceptance_sha256": "5eba1aa72d6730467f8cdb623c1757daa78b5dd59e703b5a38eedd630bf00944",
+    "author_actual_receipt_sha256": "41be574a39464d480040bbe318570ea9d36bdd081dab4f87013a75d712f2c6c0",
+    "case_label_reader_acceptance_sha256": "5ec8183b1881537bfbaa1302e229220d5474a3ce7e38fa7445fefe55021e2e16",
+    "local_targeted_result_sha256": "5db0fc87abe18bb26c7e7feade0e80a7547779811ccf08c928115e7d5507eb16"
+   },
+   "limits": "Fictional software and coding-agent reader controls only. Reports/stdout retain site fields; ignored folders are not access control. Legacy same-name overwrites, sequential writes and unbound review-directory semantics remain explicit; Native diagnostics and event lineage are open N106/N107."
+  },
+  {
+   "feature": "generalization-matrix",
+   "date": "2026-11-01",
+   "reviewer": "Independent coding-agent source/reader and saved-actual receiving; method and tests authored by separate agents with roles stated.",
+   "verdict": "pass",
+   "findings": [],
+   "files": {
+    "docs/GENERALIZATION.md": "dbe980946831164ebc5a083e30cdbf8f2d9e9d196c92e3442756f3c4854de6e8",
+    "out/generalization/matrix.json": "44c313d658d0da342889e04d2f6cef5b4e2290d7604e182326f7ff476504d71c",
+    "data/corpus.json": "0f02e9434b490769619d14f0440fe737e925b239a2633b70a0851bd154114e9c"
+   },
+   "scope": "Two actual guide-binding refreshes only: row 3 own-drawing-extraction pass; row 6 te-braatz-runs retains its existing fail. Other 93 complete cells and all substantive engineering results are unchanged; global64pass/23fail/8n-a. Shifted publication source lines are locators, not changed metrics. No new model/input-family/site evidence.",
+   "supporting_files": {
+    "scripts/corpus_matrix.py": "5407cd2daf752b48385e5226680f0b440d708e1ff55913bc081d159263a0f0ed",
+    "examples/own-drawing/README.md": "253d953f859b6f1c9697fa5214e5e674451f53e2c840dab89ca48c5a8ab15033",
+    "docs/OPERATOR_SCREENS.md": "add29e32d726af1049af62c093b26a83463b6e36da3eab56a1ed5a0b6587b299"
+   },
+   "private_proofs": {
+    "actual_result_sha256": "da8f070a51fdcc70817ffe47c0f0bd7fe3ab61cfc3f6f670290373544540e5a0",
+    "independent_receiving_sha256": "3633611174f68755770bd2ff4085b66f7be023a8fa6b2b7c901c61c3d2b85f7e"
+   },
+   "limits": "Existing workflow failures remain visible. Independent saved-actual receiving does not renew all performance or company acceptance."
   }
  ]
 }

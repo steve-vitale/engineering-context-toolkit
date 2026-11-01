@@ -17,9 +17,19 @@ preflight does not lock files against concurrent changes.
 
 ```sh
 python scripts/graph_export.py data/te_process_model.json --out te_graph.json
-python scripts/graph_export.py my-bundle/plant_model.json --reviews out/review --out my_graph.json
+python scripts/apply_review.py ../approved-work/unit-47/plant_model.json ../approved-work/unit-47/reviewed.csv --reviewer "Name, role" --record-dir ../approved-work/unit-47/review-records --dry-run
+# After inspecting and accepting the plan, apply it using the same model and receipt directory:
+python scripts/apply_review.py ../approved-work/unit-47/plant_model.json ../approved-work/unit-47/reviewed.csv --reviewer "Name, role" --record-dir ../approved-work/unit-47/review-records
+python scripts/graph_export.py ../approved-work/unit-47/plant_model.json --reviews ../approved-work/unit-47/review-records --out ../approved-work/unit-47/reviewed.graph.json
 python scripts/graph_export.py --check te_graph.json
 ```
+
+Use a permitted private working folder in place of the illustrative sibling path. `--reviews` reads every
+`*.json` in the selected directory and imports its review/change-review events; it does not filter by source
+model, revision or model hash. Audit that directory for the selected working model before passing it. Equally
+named item IDs do not establish a safe match. Keep other models' reviews and OPC mapping receipts elsewhere,
+or omit `--reviews` when no suitable review directory is available. The graph retains supplied events; this is
+not authenticated company acceptance.
 
 ## Keep known roles when placement is unknown
 

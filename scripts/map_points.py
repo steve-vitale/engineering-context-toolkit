@@ -12,7 +12,7 @@ Matching is by tag after normalizing separators and case ("FT 1401", "FT-1401" a
 asset_id when given. Nothing is guessed: a tag that matches two drawing items is reported as ambiguous and is
 not assigned by that row; existing mappings remain in partial mode.
 
-The report (out/mapping/<model>-<io list>.md/.json) has four lists. Each is a worklist for a real site:
+The report (out/mapping/<model>-<io list>.md/.json by default; --record-dir selects another folder) has four lists. Each is a worklist for a real site:
   mapped              instruments that now have a data address
   not in the I/O list drawing instruments not matched by this input (existing mappings may be preserved)
   not on the drawing  supplied I/O rows with no matching model item: reconcile both sources
@@ -27,7 +27,7 @@ The CLI hashes the exact CSV bytes it parses and retains 1-based physical line s
 Keep that original with the packet. A fingerprint/locator identifies supplied evidence, not source authority,
 valid OPC syntax, connectivity, signal identity, units or scaling.
 
-Usage: python scripts/map_points.py <plant_model.json> <io_list.csv> [--sheets 0,1] [--replace-all] [--dry-run] [--json]
+Usage: python scripts/map_points.py <plant_model.json> <io_list.csv> [--sheets 0,1] [--replace-all] [--dry-run] [--json] [--record-dir FOLDER]
 """
 import argparse
 import csv
@@ -203,6 +203,7 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--replace-all", action="store_true", help="replace all mappings in scope; default is a partial update")
     ap.add_argument("--json", action="store_true", help="print the complete JSON report instead of Markdown")
+    ap.add_argument("--record-dir", type=Path, help="where mapping reports go (default: repository out/mapping); use a private version folder for plant records")
     a = ap.parse_args()
     scope = {s.strip() for s in a.sheets.split(",") if s.strip()}
     model_path = Path(a.model).resolve()
@@ -234,7 +235,7 @@ def main():
     not_in_io = report["not_in_io_list"]
     not_on_drawing = report["not_on_drawing"]
     ambiguous = report["ambiguous"]
-    out_dir = ROOT / "out" / "mapping"
+    out_dir = a.record_dir if a.record_dir is not None else ROOT / "out" / "mapping"
     stem = f"{model_path.parent.parent.name}-{model_path.parent.name}-{Path(io_name).stem}"
     lines = [f"# Point mapping: {report['model']} ← {io_name}", "",
              "Status: " + ("valid plan" if report["valid"] else "REJECTED; mapped rows below are candidates only; no changes will be written"), "",

@@ -1,5 +1,9 @@
 # Ignition build and verification (plan written before the build; results at the end)
 
+**Historical case-study build record.** The build and checks below concern the supplied Tennessee Eastman
+application. The [own-P&ID guide](../examples/own-drawing/README.md#5-into-ignition) explains the reusable model,
+review, mapping and tag-import route for your plant; receiving-system configuration is part of that work.
+
 > **Version note:** the results on this page are the historical scripted build (October 8). The Docker `.gwbk` restores that
 > build too. The current project (24 views since journal entry 47) was imported separately into a disposable Ignition
 > 8.3.10 gateway on 2026-10-13 and passed V1–V8 plus a browser contract; see [the native acceptance page](IGNITION_ACCEPTANCE.md)

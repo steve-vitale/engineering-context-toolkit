@@ -6555,3 +6555,50 @@ backtick, plus checks that the original filename/path are absent from the receip
 review text. The other 22 methods remain exact. That one affected test passes once with no skip in a new
 isolated workspace; the original 23-method and three-checkout results are retained and not replayed. This closes
 the explicitly named filename dimension without changing the builder or restamping either worked bundle.
+
+
+## 137. Keep own-plant review and mapping records with the plant packet
+
+Three fresh coding-agent reader/source walks retain the intended payoff: use your own records to build a
+sourced draft twin model, review and enrich it, then connect and maintain the useful parts. The README and
+tool/tutorial/case distinction already say that. Four case-entry banners now make the same distinction beside
+the Ignition quickstart, build record, operator screens and OPEN100 assembly. Their existing bodies and results
+remain intact; the own-model route uses reusable generation and tag import rather than the TE gateway builder.
+
+The walk found a real own-input handoff defect. The OPC mapper accepted an external model and I/O CSV but always
+wrote its address-bearing Markdown/JSON receipts into the toolkit checkout. Two preserved original-script
+calls on fictional inputs show the requested private-directory flag refusing with exit 2, then omitted-flag
+application writing two reports into an isolated copied checkout. No company input or public fixture was used
+as a mutation target. The contract was written before candidate execution.
+
+The bounded repair adds optional `--record-dir`, consistent with the existing review command. Absolute and
+cwd-relative paths select the report folder; omitting it preserves the legacy destination, stem and report
+schema. Mapping logic, source locators, partial/replacement rules, stdout, serialization and both prewrite alias
+guards remain unchanged. Independent static review recovers the entire original source after removing four
+declared replacements. This is output placement, not redaction, permissions or a company records service.
+
+One isolated 33-method mapper run passes with no skips: all 27 original methods remain intact, with six new
+methods exercising twelve subprocess cases for chosen private paths, dry-run, invalid plans/targets, aliases
+and omitted-versus-explicit default bytes. That last comparison uses the candidate twice; it is not an
+old-versus-new runtime comparison. The two original baseline observations and source-equivalence proof are
+separate. Independent receiving verifies the saved logs, source pins and unchanged three-file test workspace.
+Three additional local integration programs pass; graph export reports one existing case skip. No local full
+suite is claimed. Committed-version CI remains a separate gate.
+
+Own-input instructions now carry explicit private review and mapping folders through the working model and
+graph handoff. The graph loader reads all JSON review events in its selected directory without checking model
+binding: keep an audited model-specific review folder, separate from mapping receipts. Shared item IDs alone
+are not a match. The OPC/PI CSV mappers use extracted-twin instrument IDs; authored process-model target fields
+remain separately configured. Two source-derived follow-ups retain early Native-input diagnostics (N106) and
+review-event model/revision binding (N107); neither has been runtime-reproduced or repaired in this pass.
+
+New untracked default mapping reports are ignored as staging hygiene. Existing tracked historical reports stay
+tracked. Reports and stdout still contain addresses and source rows; a gitignore rule is not data protection.
+Same-name mapping receipts still overwrite, so choose version folders and retain accepted originals. Known
+preflight refusals preserve files, but sequential writes are not atomic or protected against concurrent changes.
+
+Two actual matrix cells refresh the changed guide bindings: own-drawing intake passes; TE recorded fault
+comparison retains its failure (18/21 agree, 14/21 detected against reference 17). Other 93 whole cell records
+are inherited unchanged; totals stay 64 pass, 23 fail and 8 n/a. Only guide pins, timestamps/durations and
+shifted publication line locators change. No model call, new plant corpus, native import, operational approval,
+measured reviewer benefit or generalization improvement is inferred from these software/reader checks.

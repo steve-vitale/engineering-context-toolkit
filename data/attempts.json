@@ -4393,6 +4393,24 @@
         "scripts/test_checkout_contracts.py",
         ".gitattributes"
       ]
+    },
+    {
+      "id": "A289",
+      "function": "review_loop",
+      "date": "2026-11-01",
+      "change": "Keep own-plant OPC mapping receipts in an explicitly selected private folder and distinguish reusable model transfer from case-specific lab assembly.",
+      "hypothesis": "Private model/I/O inputs should have a usable private receipt destination without changing mapping semantics or importing unrelated review history.",
+      "evidence": "Two original isolated CLI observations expose the checkout receipt destination. Optional --record-dir retains the legacy default/report/guards; original source recovers after four declared replacements. One 33-method mapper run passes (27 retained plus six new, zero skips); three local integration programs pass with one graph case skipped. Actual two-cell guide refresh preserves all engineering results, 93 other whole cells and global 64 pass/23 fail/8 n-a.",
+      "runs": "Fictional local development/software and independent reader/source receiving; no model, company, plant or human-benefit trial.",
+      "verdict": "kept",
+      "why": "Close bounded N105 receipt placement; positive own-plant generation/import route and case labels stay explicit. Native mapper diagnostics and unbound review-event receiving remain separately open N106/N107.",
+      "source": [
+        "docs/JOURNAL.md#137-keep-own-plant-review-and-mapping-records-with-the-plant-packet",
+        "scripts/map_points.py",
+        "scripts/test_map_points.py",
+        "examples/own-drawing/README.md",
+        "docs/GRAPH_EXPORT.md"
+      ]
     }
   ],
   "not_tried": [
@@ -5554,6 +5572,44 @@
         "scripts/description_workflow.py",
         "docs/JOURNAL.md#136-retain-the-question-rules-in-the-description-handoff",
         "examples/from-description/README.md"
+      ]
+    },
+    {
+      "id": "N105",
+      "function": "review_loop",
+      "status": "done",
+      "idea": "Let own-plant OPC mapping keep its address-bearing receipts in a selected private packet rather than forcing reports into the checkout.",
+      "why_not_yet": "Completed A289 with optional --record-dir, exact legacy-default source conservation, private placement/refusal controls and own-input guide changes. Stdout, legacy overwrite, non-atomic writes and company custody remain explicit.",
+      "source": [
+        "docs/JOURNAL.md#137-keep-own-plant-review-and-mapping-records-with-the-plant-packet",
+        "scripts/map_points.py",
+        "scripts/test_map_points.py",
+        "examples/own-drawing/README.md",
+        "docs/GRAPH_EXPORT.md"
+      ]
+    },
+    {
+      "id": "N106",
+      "function": "review_loop",
+      "status": "not-done",
+      "idea": "Give tag-keyed Native process-model inputs a clear early unsupported-input diagnostic in the extracted-twin OPC mapper, or implement a separately validated Native adapter.",
+      "why_not_yet": "Source-derived gap: Native instruments can lack the id required by plan_mapping outside the CLI input handler. No runtime case or repair yet. Preserve useful Native staging and reviewed target-field configuration; do not invent IDs or imply universal mapping. Next work requires a retained failing case, no-write refusal controls and independent receiving.",
+      "source": [
+        "docs/JOURNAL.md#137-keep-own-plant-review-and-mapping-records-with-the-plant-packet",
+        "scripts/map_points.py",
+        "docs/WORKFLOWS.md"
+      ]
+    },
+    {
+      "id": "N107",
+      "function": "review_loop",
+      "status": "not-done",
+      "idea": "Bind imported graph review events to their actual source model and revision lineage instead of relying on directory selection or colliding item IDs.",
+      "why_not_yet": "Source-derived receiving gap: --reviews reads every JSON event without model binding; not runtime-reproduced or repaired here. Current guide requires an audited per-model directory. Define lineage/earlier-history acceptance and foreign-record no-overwrite controls before implementing a binding mechanism; do not discard history or claim company authentication.",
+      "source": [
+        "docs/JOURNAL.md#137-keep-own-plant-review-and-mapping-records-with-the-plant-packet",
+        "scripts/graph_export.py",
+        "docs/GRAPH_EXPORT.md"
       ]
     }
   ]

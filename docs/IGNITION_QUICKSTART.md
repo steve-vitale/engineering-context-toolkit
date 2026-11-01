@@ -1,5 +1,9 @@
 # Load the twin into an isolated Ignition lab
 
+**Case-study lab tutorial.** This guide assembles the supplied Tennessee Eastman/OPEN100 application. Use its
+architecture as a reference; to build from your plant model, start with the
+[own-P&ID tool route](../examples/own-drawing/README.md#5-into-ignition) and its generated tag import.
+
 **Pick one set of files before you import.** The committed `out/ignition/gateway/PIDTwin.zip` is the historical
 export and does not match the current tag provider. Don't combine them.
 - **Current project (recommended):** stage the dependencies and TE data (step 0), then run
