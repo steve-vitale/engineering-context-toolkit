@@ -257,7 +257,7 @@ digitized Fig 11 series, and an extracted twin's mapped data points (`data_point
 says so. A request only names signals that measure the quantity it asks for: a valve's position or controller
 output is never offered as a flow ("only the valve position is recorded; flow needs a meter or a calibrated valve
 curve"), and a cooling water outlet temperature is not offered as the supply temperature. A mapped point whose I/O
-list row (in `data/io_lists/`) describes it as synthetic is labelled SYNTHETIC, not plant data. Placeholder tags
+list row from an explicitly selected `--io-list` source describes it as synthetic is labelled SYNTHETIC, not plant data. Placeholder tags
 (`FCV XXX`) are marked as placeholders in the evidence.
 
 ## Inputs
@@ -298,8 +298,17 @@ selects one existing candidate, and records a nonempty basis and declared `draft
 }
 ```
 
-The surrounding entry supplies the sheet/tag scope. Candidate files use the displayed repository-relative
-path, or filename for an external source; distinct external inputs need distinct filenames. The complete
+A relocated schedule working copy can declare a top-level `source_label`, such as `site-records/water-A.json`,
+before authors create its service choices. Candidate `file` values then use that exact stable label; without it,
+the displayed repository-relative path or external basename remains the default. This lets distinct sources
+keep their joins even when their private copies share a basename. A label is opaque supplied identity, never
+a path to open, a content hash, authenticated authority or a revision-selection rule. Keep originals and
+record the working copy's real hash; every candidate row/service value must still match. Labels must be nonempty
+exact text without surrounding whitespace, control/line-separator characters or lone surrogates. Duplicate
+labels across distinct selected files refuse; actual input paths stay protected against output aliases.
+
+The surrounding entry supplies the sheet/tag scope. Candidate files use the declared `source_label`, or by default the displayed repository-relative
+path or external filename. Distinct selected sources need distinct displayed labels. The complete
 source set must be present. Changed text, row, identity or source set requires a new declaration; stale,
 duplicate-candidate, malformed and conflicting selections refuse before publication. Multiple agreeing
 declarations retain their separate provenance. Blank/null service values supply no description and cannot

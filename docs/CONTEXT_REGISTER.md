@@ -239,7 +239,10 @@ python -S scripts/context_register.py apply --model plant_model.json --questions
 ```
 
 A document's revision, bytes or locator changing makes dependent decisions stale. Changing a question's wording,
-request or referenced asset content does the same. Removing a question or its source binding preserves the old
+request or referenced asset content does the same. Selected I/O-source metadata is also part of that question
+basis: regenerate the screen with the intended sources, then refresh the preserved register. The
+[retained-source tutorial](../examples/opportunity-screen/mapping-descriptions/retained-answer/README.md) joins
+these steps. Removing a question or its source binding preserves the old
 decision and marks its absence. A different question, an unrelated asset or an ordinary review `status` change
 does not stale unaffected decisions. Explicit rejection is the exception described above. Generated edge numbering
 and relation ordering are ignored; changed relations incident to a

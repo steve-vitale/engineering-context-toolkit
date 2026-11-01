@@ -168,16 +168,38 @@ class Item(dict):
 
 # ---------------------------------------------------------------- reading models
 
-def load_schedule(paths):
+class _ScheduleLabel(str):
+    """A supplied logical label; keep it literal in fresh reports without changing legacy path display."""
+
+
+def schedule_label_text(label, code=False):
+    if isinstance(label, _ScheduleLabel):
+        return _markdown_json(label)
+    return f"`{label}`" if code else label
+
+
+def load_schedule(paths, source_labels=None):
     """Merge disjoint fields; refuse conflicting values instead of selecting an implicit revision."""
     out = {}
     labels = {}
     for p in paths or []:
-        label = shown_path(p)
-        if label in labels and Path(p).resolve() != labels[label]:
-            raise InputError(f"schedule source label {label!r} is ambiguous; use distinct source filenames")
-        labels[label] = Path(p).resolve()
         d = read_json(p, "equipment schedule")
+        if "source_label" in d:
+            label = d["source_label"]
+            if (not isinstance(label, str) or not label.strip() or label != label.strip()
+                    or any(ord(c) < 32 or 127 <= ord(c) <= 159 or ord(c) in (0x2028, 0x2029)
+                           or 0xD800 <= ord(c) <= 0xDFFF for c in label)):
+                raise InputError(f"schedule {shown_path(p)}: source_label must be nonempty exact text "
+                                 "without surrounding whitespace, control characters or invalid Unicode")
+            label = _ScheduleLabel(label)
+        else:
+            label = shown_path(p)
+        if label in labels and Path(p).resolve() != labels[label]:
+            hint = "use distinct source_label values" if "source_label" in d else "use distinct source filenames"
+            raise InputError(f"schedule source label {label!r} is ambiguous; {hint}")
+        labels[label] = Path(p).resolve()
+        if source_labels is not None:
+            source_labels.append(label)
         if not isinstance(d.get("sheets"), dict):
             raise InputError(f"the equipment schedule {shown_path(p)} has no 'sheets' object; expected "
                              '{"sheets": {"<sheet>": [{"tag": ..., "service": ..., "fields": {...}}]}}')
@@ -185,7 +207,7 @@ def load_schedule(paths):
             for row_number, r in enumerate(rows, 1):
                 key = (str(sheet), norm_tag(r["tag"]))
                 e = out.setdefault(key, {"tag": norm_tag(r["tag"]), "sheet": str(sheet), "service": None,
-                                         "fields": None, "file": shown_path(p)})
+                                         "fields": None, "file": label})
                 service = r.get("service")
                 if service is not None and not isinstance(service, str):
                     raise InputError(f"schedule {label}, sheet {sheet}, entry {r['tag']}: service must be text or null")
@@ -210,9 +232,9 @@ def load_schedule(paths):
                         chosen = old if old is not None else name
                         e["fields"][chosen] = value
                         sources.setdefault(chosen, [])
-                        if shown_path(p) not in sources[chosen]:
-                            sources[chosen].append(shown_path(p))
-                    e["fields_file"] = shown_path(p)
+                        if label not in sources[chosen]:
+                            sources[chosen].append(label)
+                    e["fields_file"] = label
     for e in out.values():
         for files in e.get("field_sources", {}).values():
             files.sort()
@@ -661,7 +683,7 @@ class Model:
             raise InputError(f"can't read {shown_path(path)}: 'meta' must be an object, not "
                              f"{type(self.m['meta']).__name__}")
         self.twin = (self.m.get("meta") or {}).get("model_kind") == "extracted_twin"
-        self.schedule_sources = sorted({shown_path(p) for p in schedule_paths or []})
+        self.schedule_sources = []
         if not (self.m.get("units") or self.m.get("instruments")):
             raise InputError(f"the model {shown_path(path)} has no units or instruments: is this the right file? "
                              "Expected a process model (units, streams, instruments, ...) or an extracted twin "
@@ -669,7 +691,8 @@ class Model:
         check_shapes(self.m, path)
         try:
             self.active_m, self.review_exclusions = screening_model(self.m)
-            self.schedule = load_schedule(schedule_paths)
+            self.schedule = load_schedule(schedule_paths, self.schedule_sources)
+            self.schedule_sources = sorted(set(self.schedule_sources))
             if schedule_paths and not self.twin:
                 raise InputError("--schedule applies only to extracted twins; put native model values in facts "
                                  "with their source basis instead of supplying an ignored schedule")
@@ -893,7 +916,7 @@ def field_state(item, name):
                 where = f"sheet {sch['sheet']} equipment schedule, entry {sch['tag']}, field {k}"
                 files = {p for paths in sch.get("field_sources", {}).values() for p in paths}
                 if len(files) > 1:
-                    where += " (source: " + ", ".join(sch["field_sources"][k]) + ")"
+                    where += " (source: " + ", ".join(schedule_label_text(p) for p in sch["field_sources"][k]) + ")"
                 if v is None or (isinstance(v, str) and (not v.strip() or PLACEHOLDER.match(v))):
                     return ("blank", v, where)
                 return ("present", v, where)
@@ -1028,7 +1051,14 @@ def resolve_requests(q, ctx):
                     have.add(fname)
                 elif st == "blank":
                     shown = f" (printed as {val!r})" if val else ""
-                    where_fields.append(f"the blank {fname} field{shown} on the {where.rsplit(', field', 1)[0]}")
+                    supplied_labels = (it.get("schedule") or {}).get("field_sources", {})
+                    displayed_sources = {label for labels in supplied_labels.values() for label in labels}
+                    explicit_location = len(displayed_sources) > 1 and any(
+                        isinstance(label, _ScheduleLabel) for label in displayed_sources)
+                    # A logical label can itself contain ', field'. Keep its
+                    # complete quoted location rather than parse that prose.
+                    location = where if explicit_location else where.rsplit(", field", 1)[0]
+                    where_fields.append(f"the blank {fname} field{shown} on the {location}")
         evidence += [{"item": r["item"], "text": t, "where": w} for t, w in found]
         missing = [f for f in fields if not subjects or any(f in s["still_needed"] for s in coverage)]
         if fields and subjects and not missing and not r.get("also_needs"):
@@ -1119,9 +1149,9 @@ def candidate_field_evidence(question, items):
 
 
 def service_reconciliation_text(resolution):
-    candidates = "; ".join(f"{r['file']} row {r['row']}: {json.dumps(r['service'], ensure_ascii=False)}"
+    candidates = "; ".join(f"{schedule_label_text(r['file'])} row {r['row']}: {json.dumps(r['service'], ensure_ascii=False)}"
                            for r in resolution["candidates"])
-    declarations = "; ".join(f"{r['file']} row {r['row']} ({r['status']}): {r['basis']}"
+    declarations = "; ".join(f"{schedule_label_text(r['file'])} row {r['row']} ({r['status']}): {r['basis']}"
                              for r in resolution["declarations"])
     return (f"Supplied service choice, unverified: {json.dumps(resolution['selected']['service'], ensure_ascii=False)}. "
             f"Original candidates: {candidates}. Declared basis: {declarations}. " + resolution["authority"])
@@ -1356,12 +1386,19 @@ def _markdown_json(value):
 
 def render_md(model, catalog, doc):
     candidate_questions = {q["id"] for q in catalog.get("questions", []) if q.get("evidence_show_fields")}
+    declared_schedule_labels = any(isinstance(label, _ScheduleLabel)
+                                   for label in getattr(model, "schedule_sources", ()))
+
+    def field_reference(value):
+        # New explicit source labels may contain literal Markdown punctuation.
+        # Do not put a complete source location inside a single-backtick fence.
+        return _markdown_json(value) if declared_schedule_labels else f"`{value}`"
     title = (f"extracted drawing set, {len(model.m.get('systems', []))} sheets" if model.twin
              else model.m.get("meta", {}).get("title", doc["source_model"]))
     L = [f"# Opportunity screen: {title}", "",
          f"Model: `{doc['source_model']}`. Questions: `{doc['catalog']}`"
          + (f". Loop list: `{doc['loops']}`" if doc["loops"] else "")
-         + ("".join(f". Schedule: `{s}`" for s in doc["schedules"])) + ".", ""]
+         + ("".join(f". Schedule: {schedule_label_text(s, code=True)}" for s in doc["schedules"])) + ".", ""]
     if doc.get("mapping_descriptions"):
         L += ["<details>", "<summary>Supplied mapping descriptions and source status</summary>", "",
               "These are supplied mappings; signal identity remains unverified. A matched description "
@@ -1419,7 +1456,7 @@ def render_md(model, catalog, doc):
             L += [f"- {e['role'].capitalize()}: {_markdown_json(e['text'])} ({_markdown_json(e['field'])})"
                   if f["question_id"] in candidate_questions and e["role"] == CANDIDATE_FIELD_ROLE else
                   f"- Caveat: {e['text']}" if e["role"] == "caveat" else
-                  f"- {'' if e['role'] == 'trigger' else e['role'].capitalize() + ': '}{e['text']} (`{e['field']}`)"
+                  f"- {'' if e['role'] == 'trigger' else e['role'].capitalize() + ': '}{e['text']} ({field_reference(e['field'])})"
                   for e in f["evidence"]]
             L += ["", "**Data to collect**", ""]
             for r in f["data_requests"]:
