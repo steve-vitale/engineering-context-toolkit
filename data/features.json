@@ -521,7 +521,12 @@
     "examples/opportunity-screen/combustion-control-basis/selector-controls/models/BND-05-reboiler.json",
     "examples/opportunity-screen/combustion-control-basis/selector-controls/models/BND-06-pump-name.json",
     "examples/opportunity-screen/combustion-control-basis/selector-controls/models/BND-07-exchanger-name.json",
-    "examples/opportunity-screen/combustion-control-basis/selector-controls/models/BND-08-combined-package.json"
+    "examples/opportunity-screen/combustion-control-basis/selector-controls/models/BND-08-combined-package.json",
+    "examples/opportunity-screen/mapping-descriptions/README.md",
+    "examples/opportunity-screen/mapping-descriptions/cases.json",
+    "examples/opportunity-screen/mapping-descriptions/legacy-model.json",
+    "examples/opportunity-screen/mapping-descriptions/revision-a/io.csv",
+    "examples/opportunity-screen/mapping-descriptions/revision-b/io.csv"
    ],
    "tests": [
     "scripts/test_question_engine.py"

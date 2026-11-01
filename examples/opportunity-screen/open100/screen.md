@@ -2,6 +2,110 @@
 
 Model: `out/twin/r2-tiles-trace/codex/plant_model.json`. Questions: `data/questions.json`. Schedule: `data/open100_equipment_schedule.json`. Schedule: `examples/opportunity-screen/open100_schedule_fields.json`.
 
+<details>
+<summary>Supplied mapping descriptions and source status</summary>
+
+These are supplied mappings; signal identity remains unverified. A matched description identifies selected CSV bytes and a consistent record, not source authority or plant truth.
+
+- Asset `"S0-IN001"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point (valve position)"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 20"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [20, 20], "logical_row": 20}`
+- Asset `"S0-IN004"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 2"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [2, 2], "logical_row": 2}`
+- Asset `"S0-IN005"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 3"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [3, 3], "logical_row": 3}`
+- Asset `"S0-IN006"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 18"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [18, 18], "logical_row": 18}`
+- Asset `"S0-IN007"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 14"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [14, 14], "logical_row": 14}`
+- Asset `"S0-IN008"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 15"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [15, 15], "logical_row": 15}`
+- Asset `"S0-IN009"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 16"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [16, 16], "logical_row": 16}`
+- Asset `"S0-IN010"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 17"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [17, 17], "logical_row": 17}`
+- Asset `"S0-IN011"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 4"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [4, 4], "logical_row": 4}`
+- Asset `"S0-IN012"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 5"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [5, 5], "logical_row": 5}`
+- Asset `"S0-IN013"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point (valve position)"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 21"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [21, 21], "logical_row": 21}`
+- Asset `"S0-IN021"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 19"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [19, 19], "logical_row": 19}`
+- Asset `"S0-IN022"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 6"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [6, 6], "logical_row": 6}`
+- Asset `"S0-IN023"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 7"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [7, 7], "logical_row": 7}`
+- Asset `"S0-IN024"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point (valve position)"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 22"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [22, 22], "logical_row": 22}`
+- Asset `"S0-IN025"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 8"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [8, 8], "logical_row": 8}`
+- Asset `"S0-IN026"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 9"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [9, 9], "logical_row": 9}`
+- Asset `"S0-IN029"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 10"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [10, 10], "logical_row": 10}`
+- Asset `"S0-IN030"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 11"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [11, 11], "logical_row": 11}`
+- Asset `"S0-IN031"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point (valve position)"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 23"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [23, 23], "logical_row": 23}`
+- Asset `"S0-IN032"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 13"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [13, 13], "logical_row": 13}`
+- Asset `"S0-IN033"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 12"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [12, 12], "logical_row": 12}`
+- Asset `"S0-IN035"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point (valve position)"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 24"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [24, 24], "logical_row": 24}`
+- Asset `"S0-IN036"`: `"unverified_legacy"`; `"selected legacy row and address only; historical source identity unverified"`.
+  Description: `"synthetic demo point (valve position)"`
+  Mapping source: `{"source": "open100_sheet0_demo.csv row 25"}`
+  Selected CSV record: `{"file": "open100_sheet0_demo.csv", "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857", "bytes": 3108, "source_lines": [25, 25], "logical_row": 25}`
+
+</details>
+
 ## Supplied service choices
 
 These exact source selections affect screening eligibility. Draft/reviewed labels are supplied provenance, not authenticated authority or engineering acceptance.
@@ -513,7 +617,7 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 
 **Data to collect**
 
-- Steam flow through the station, with hours [not on drawing]. Where: only the valve position is recorded (TCV-1408: SYNTHETIC mapped data point TCV_1408_POS on OPEN100-Demo (open100_sheet0_demo.csv row 24: synthetic demo point (valve position)), not plant data); flow needs a meter or a calibrated valve curve; then site records: steam balance. How: Build a flow-duration curve: how many hours at each flow.
+- Steam flow through the station, with hours [not on drawing]. Where: only the valve position is recorded (TCV-1408: SYNTHETIC mapped data point TCV_1408_POS on OPEN100-Demo (open100_sheet0_demo.csv row 24: `"synthetic demo point (valve position)"`), not plant data; supplied legacy description, historical source identity unverified; signal identity unverified); flow needs a meter or a calibrated valve curve; then site records: steam balance. How: Build a flow-duration curve: how many hours at each flow.
 - Upstream and downstream pressure and temperature [not on drawing]. Where: a walkdown: gauges and thermometers either side of the station; then site records: header design conditions. How: Record at normal operation.
 - Stated station capacity [not on drawing]. Where: the vendor datasheet: station or desuperheater datasheet. How: Retain the generic CAPACITY field and its original units/basis. A volume, heat capacity or unqualified scalar does not identify rated steam throughput; the matched rating and actual operating history remain separate review tasks.
 - When the station is used [not on drawing]. Where: site records: operating procedures: startup, trip, normal duty. How: Mark the station startup-only, trip-only or normal duty.
@@ -780,7 +884,7 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 **Data to collect**
 
 - Positioner type and diagnostics available [not on drawing]. Where: DCS/PLC configuration: valve positioner configuration (smart positioner? HART/fieldbus diagnostics?); then maintenance records: valve records. How: List which valves report position.
-- Valve stiction or backlash [not on drawing]. Where: historian / recorded data: TCV-1401: SYNTHETIC mapped data point TCV_1401_POS on OPEN100-Demo (open100_sheet0_demo.csv row 20: synthetic demo point (valve position)), not plant data; TCV-1402: SYNTHETIC mapped data point TCV_1402_POS on OPEN100-Demo (open100_sheet0_demo.csv row 21: synthetic demo point (valve position)), not plant data; TCV-1403: SYNTHETIC mapped data point TCV_1403_POS on OPEN100-Demo (open100_sheet0_demo.csv row 22: synthetic demo point (valve position)), not plant data; TCV-1406: SYNTHETIC mapped data point TCV_1406_POS on OPEN100-Demo (open100_sheet0_demo.csv row 23: synthetic demo point (valve position)), not plant data; TCV-1408: SYNTHETIC mapped data point TCV_1408_POS on OPEN100-Demo (open100_sheet0_demo.csv row 24: synthetic demo point (valve position)), not plant data; TCV-1409: SYNTHETIC mapped data point TCV_1409_POS on OPEN100-Demo (open100_sheet0_demo.csv row 25: synthetic demo point (valve position)), not plant data (no historian tag is mapped in this model for FCV-1615, FCV-1621, FCV-18012, FCV-6506, FCV-6508, FCV-XXX, LCV-1501, LCV-1611, LCV-5509, LCV-6507, PCV-14011, PCV-1703, TCV-16013, TCV-1622, TCV-2502, TCV-XXX); then a walkdown: a small step test on each loop in manual. How: Compare controller output with measured response.
+- Valve stiction or backlash [not on drawing]. Where: historian / recorded data: TCV-1401: SYNTHETIC mapped data point TCV_1401_POS on OPEN100-Demo (open100_sheet0_demo.csv row 20: `"synthetic demo point (valve position)"`), not plant data; supplied legacy description, historical source identity unverified; signal identity unverified; TCV-1402: SYNTHETIC mapped data point TCV_1402_POS on OPEN100-Demo (open100_sheet0_demo.csv row 21: `"synthetic demo point (valve position)"`), not plant data; supplied legacy description, historical source identity unverified; signal identity unverified; TCV-1403: SYNTHETIC mapped data point TCV_1403_POS on OPEN100-Demo (open100_sheet0_demo.csv row 22: `"synthetic demo point (valve position)"`), not plant data; supplied legacy description, historical source identity unverified; signal identity unverified; TCV-1406: SYNTHETIC mapped data point TCV_1406_POS on OPEN100-Demo (open100_sheet0_demo.csv row 23: `"synthetic demo point (valve position)"`), not plant data; supplied legacy description, historical source identity unverified; signal identity unverified; TCV-1408: SYNTHETIC mapped data point TCV_1408_POS on OPEN100-Demo (open100_sheet0_demo.csv row 24: `"synthetic demo point (valve position)"`), not plant data; supplied legacy description, historical source identity unverified; signal identity unverified; TCV-1409: SYNTHETIC mapped data point TCV_1409_POS on OPEN100-Demo (open100_sheet0_demo.csv row 25: `"synthetic demo point (valve position)"`), not plant data; supplied legacy description, historical source identity unverified; signal identity unverified (no historian tag is mapped in this model for FCV-1615, FCV-1621, FCV-18012, FCV-6506, FCV-6508, FCV-XXX, LCV-1501, LCV-1611, LCV-5509, LCV-6507, PCV-14011, PCV-1703, TCV-16013, TCV-1622, TCV-2502, TCV-XXX); then a walkdown: a small step test on each loop in manual. How: Compare controller output with measured response.
 
 **How it is decided:** Add feedback or diagnostics first on valves in energy- or safety-significant loops that show stiction or hunting.
 

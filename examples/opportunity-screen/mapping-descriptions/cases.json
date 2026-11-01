@@ -1,0 +1,35 @@
+{
+  "schema": "mapping-description-development-1",
+  "evidence_class": "fictional exposed development",
+  "description_a": "SYNTHETIC supplied flow description\r\nsecond line; function and installed identity unverified",
+  "raw_sources": [
+    {
+      "path": "revision-a/io.csv",
+      "sha256_raw": "31c04fc1acb98e765d0e099c745bd95663e4feda01bb3c7180e48b90380a0ffc",
+      "bytes": 199,
+      "source_lines": [
+        2,
+        3
+      ],
+      "logical_row": 2
+    },
+    {
+      "path": "revision-b/io.csv",
+      "sha256_raw": "f84ef08cff217cfa48ad15f1381690d154e55e0ae0940e2f5ed35e9236cd957b",
+      "bytes": 137,
+      "source_lines": [
+        2,
+        2
+      ],
+      "logical_row": 2
+    }
+  ],
+  "expected": {
+    "no_selected_source": "unavailable",
+    "explicit_legacy_a": "unverified_legacy",
+    "legacy_two_same_basename_revisions": "unavailable",
+    "actual_mapper_a_plus_byte_identical_renamed_source": "matched",
+    "actual_mapper_a_plus_revision_b": "unavailable"
+  },
+  "limits": "Expected statuses frozen before candidate calls. No generated reports or passing results are claimed. Same-address legacy context is a supplied association, not historical revision proof."
+}

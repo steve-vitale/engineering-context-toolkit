@@ -30,7 +30,9 @@ RAW_FAMILIES = ('out/review_kit', 'examples/review-and-mapping',
                 'examples/own-drawing/deliverable', 'examples/from-description/assisted',
                 'examples/from-description/mgpi', 'examples/pump-revision/inputs',
                 'examples/pump-revision/worked', 'examples/team-context/inputs',
-                'examples/team-context/worked')
+                'examples/team-context/worked',
+                'examples/opportunity-screen/mapping-descriptions/revision-a',
+                'examples/opportunity-screen/mapping-descriptions/revision-b')
 ORDINARY = ('scripts/line_layers.py', 'scripts/context_register.py',
             'examples/graph-export/multi-appearance/model.json')
 GIT_ENV = dict(os.environ, GIT_CONFIG_GLOBAL=os.devnull, GIT_CONFIG_SYSTEM=os.devnull,

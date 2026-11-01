@@ -29,7 +29,7 @@ python -S scripts/question_engine.py --rollup out/screen-site-a --rollup out/scr
 Stdlib only, offline, no model calls. Without `--out` it prints the screen.
 
 Before writing either report, the engine checks both destinations against the model, catalog, loop list and
-every supplied schedule, including any local I/O-description file it reads. Roll-ups check their catalog and
+every supplied schedule and explicit `--io-list` source. Roll-ups check their catalog and
 input screens too. An overlapping input, aliased output pair or invalid target is refused before either report
 changes. Both reports are rendered before writing; this is not a lock against concurrent filesystem changes.
 Normal refresh into the same folder is allowed when inputs have different filenames. Choose another output
@@ -50,6 +50,28 @@ is evidence needed to interpret the generated finding too.
 For your own model, add `--schedule` only for your corresponding records after checking their sheet/asset
 identities and scope. The committed OPEN100 schedules describe that public source, not arbitrary site equipment.
 Its complete scheduled example is in the [worked-example commands](../examples/opportunity-screen/README.md).
+
+## Retain the I/O source behind a mapped signal
+
+For an extracted-twin model, repeat `--io-list PATH` for the exact retained CSV revisions needed by its mappings:
+
+```sh
+python -S scripts/question_engine.py --model ../approved-work/unit-47/plant_model.json --io-list ../approved-work/unit-47/reviewed_io.csv --out ../approved-work/unit-47/questions-r2
+```
+
+There is no implicit checkout lookup. `mapping_descriptions` names each mapped asset, its retained mapping
+source, selected CSV fingerprint/locator and `matched`, `unverified_legacy` or `unavailable` status; `io_lists`
+records selected file labels, raw hashes and byte counts. Modern mappings require the recorded raw hash,
+physical span and corresponding address/item row. A byte-identical renamed source can match. Legacy `row N`
+records lack historical source identity: an explicit unambiguous filename/parsed-row and address association
+supplies qualified context, not proof of the original revision. Wrong or absent source context leaves the mapping
+visible and unavailable; malformed selected CSV input refuses before either report changes.
+
+All mapped signals remain **signal identity unverified**. Description text does not change rule eligibility,
+complete collection evidence or prove installed function. Keep original CSVs with the private model, mapping
+receipts, selected catalog and reports; use the reviewed mapper workflow for source revisions. The
+[small fictional tutorial](../examples/opportunity-screen/mapping-descriptions/README.md) explains the legacy
+and modern routes without a plant connection.
 
 ## Refresh after reviewing the model
 

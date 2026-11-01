@@ -4487,6 +4487,27 @@
         "data/questions.json",
         "scripts/test_question_engine.py"
       ]
+    },
+    {
+      "id": "A294",
+      "function": "intake_and_reuse",
+      "date": "2026-11-01",
+      "change": "Use explicitly selected I/O CSV snapshots for question-screen descriptions, retain source qualifications through graph/context, and stop borrowing text by checkout basename.",
+      "hypothesis": "An engineer should move a model and its original mapping evidence between approved folders without silently replacing its context with a different same-named CSV or losing the distinction between supplied and verified source identity.",
+      "evidence": "Six original CLI controls retain the actual legacy foreign-description admission and modern line/multiline description loss. Root-run candidate controls complete 16 CLI calls with 137 checks. Eight new focused methods pass without skips, including actual mapper-produced multiline pins, renamed sources, legacy ambiguity, identity/address/type controls, graph full/core and context semantic evidence. The context module passes 53 methods without skips; checkout passes three without skips, with 56 indexed/112 materialization comparisons and 277 retained raw-packet files per configuration. Three actual producer calls succeed and retain 71 complete artifacts: two current OPEN100 reports and 69 description-bundle artifacts. All 67 non-receipt description artifacts remain raw-exact; only the engine identity leaf changes in each of two actual build receipts. After root adopts these four actual files, the unfiltered question module reports 147 tests: 146 passed, one unnamed skip, zero failures. Independent candidate receiving passes 61 checks without skips, including five own-seed screens, a blank legacy-row negative, full/core carrier readback, a real retained-answer prepare/apply/refresh sequence and selected-source hardlink refusal. Changing only the selected-source raw fingerprint stales the retained answer while model/address/description/status/byte count, backing record and decision/owner history remain unchanged. Separate independent docs/test/tutorial receiving passes 175 checks, including retained local module evidence; it excludes the receiver's own three producer outputs. Independent producer receiving verifies all 71 complete artifacts from three successful calls: 29 unchanged ordered OPEN100 finding IDs, 24 qualified legacy records with actual selected CSV identity, and 69 description artifacts comprising 67 raw-exact files and two actual engine-leaf receipt updates. Its 717 receiving checks are software/source controls, not a performance metric. Separate independent receiving also confirms the root 16-call candidate evidence without reruns.",
+      "runs": "Synthetic development inputs and retained original observations; no provider/model calls, company data, network connection or measured human usefulness. Prospective candidate expectations are baseline-exposed; a final written static seal followed the root candidate run and is not claimed as a pre-run gate. Public tutorial fixtures and source identities are independent of installed-signal acceptance.",
+      "verdict": "kept",
+      "why": "Close N108 only for explicitly selected source context, qualified legacy readback and question-source semantic freshness, supported by independently executed and received controls. Independent whole-artifact receiving confirms all 71 outputs of the three producer routes; full-repository integration and exact-head CI remain separate gates. Raw fingerprints, physical spans and corresponding row identity/address bind modern source context; explicit legacy rows remain historically unverified. No implicit source lookup or path-only cache remains. All mapped-signal captions retain signal identity unverified. The catalog is unchanged at efb460bbd16705ff7e588ee5a900376fd552b2e5d10de25176941413fc589258: 50 rules/126 requests, 22 bounded source reviews/28 remaining. This repairs description provenance and semantic freshness, not company source authority, signal function, plant connectivity or whole-catalog adequacy.",
+      "source": [
+        "docs/JOURNAL.md#142-keep-question-signal-descriptions-with-explicit-source-bytes",
+        "docs/OPPORTUNITY_SCREEN.md#retain-the-io-source-behind-a-mapped-signal",
+        "docs/REVIEW_LOOP.md",
+        "examples/opportunity-screen/mapping-descriptions/README.md",
+        "examples/opportunity-screen/mapping-descriptions/cases.json",
+        "scripts/question_engine.py",
+        "scripts/context_register.py",
+        "scripts/test_question_engine.py"
+      ]
     }
   ],
   "not_tried": [
@@ -5695,6 +5716,23 @@
         "scripts/graph_review_records.py",
         "scripts/test_graph_export.py",
         "examples/review-and-mapping/README.md"
+      ]
+    },
+    {
+      "id": "N108",
+      "function": "intake_and_reuse",
+      "status": "done",
+      "idea": "Carry question-screen I/O descriptions from explicit byte-bound CSV sources, preserving modern physical spans and qualified legacy rows through graph/context and source-change review.",
+      "why_not_yet": "Completed A294 for bounded selected-source description context and source-change freshness: modern raw hashes/spans/row identity/address are checked; explicit legacy rows remain historically unverified; graph/core and context preserve complete source qualifications. Independent actual controls pass 61 checks without skips, including a retained answer becoming stale on selected-source identity alone with decision/owner history preserved; separate docs/test/tutorial receiving passes 175 checks. Independent whole-artifact receiving confirms all 71 outputs from the three producer routes; full-repository integration and exact-head CI remain separate gates. This is not installed signal identity, authenticated source/reviewer authority, company approval or engineering suitability.",
+      "source": [
+        "docs/JOURNAL.md#142-keep-question-signal-descriptions-with-explicit-source-bytes",
+        "docs/OPPORTUNITY_SCREEN.md#retain-the-io-source-behind-a-mapped-signal",
+        "docs/REVIEW_LOOP.md",
+        "examples/opportunity-screen/mapping-descriptions/README.md",
+        "examples/opportunity-screen/mapping-descriptions/cases.json",
+        "scripts/question_engine.py",
+        "scripts/context_register.py",
+        "scripts/test_question_engine.py"
       ]
     }
   ]

@@ -36,6 +36,9 @@ audit result: it says the drawing shows a pattern, never that the plant wastes e
 """
 import argparse
 import csv
+import copy
+import hashlib
+import io
 import json
 import math
 import re
@@ -460,7 +463,7 @@ def from_hand(m):
     return items
 
 
-def from_twin(m, schedule, source_paths=None):
+def from_twin(m, schedule, source_paths=None, io_sources=(), description_records=None):
     systems = {s["id"]: s for s in m.get("systems", [])}
     items = []
     for u in m.get("units", []):
@@ -488,11 +491,21 @@ def from_twin(m, schedule, source_paths=None):
         dp = it.get("data_point") or {}
         sig = None
         if dp.get("point"):
-            what = point_description(dp.get("source"), source_paths)
+            record = point_description(dp, it, io_sources)
+            if description_records is not None:
+                description_records.append(record)
+            what = record.get("description")
             sig = f"mapped data point {dp['point']} on {dp.get('server')} ({dp.get('source')}"
-            sig += (f": {what})" if what else ")")
+            sig += (f": {_markdown_json(what)})" if what else ")")
             if what and "synthetic" in what.lower():
                 sig = "SYNTHETIC " + sig + ", not plant data"
+            if record["status"] == "matched":
+                sig += "; description matches supplied CSV bytes and record"
+            elif record["status"] == "unverified_legacy":
+                sig += "; supplied legacy description, historical source identity unverified"
+            else:
+                sig += "; I/O description unavailable (" + record["reason"] + ")"
+            sig += "; signal identity unverified"
         items.append(Item(id=it["id"], tag=norm_tag(it.get("tag")), kind=kind, isa=isa, variable=it.get("variable"),
                           text=norm_tag(it.get("tag")) or "", unit=it.get("unit"), parent=it.get("parent"),
                           stream=None, sheet=str((it.get("provenance") or [{}])[0].get("sheet")),
@@ -513,29 +526,107 @@ def from_twin(m, schedule, source_paths=None):
     return items
 
 
-_IO_ROWS = {}
+def load_io_sources(paths):
+    """Read only explicitly selected CSVs, once each; hash and parse the same raw snapshot.
 
-
-def point_description(source, source_paths=None):
-    """The description column of the I/O list row a data point came from ('<file>.csv row N'), if the file is in
-    data/io_lists/; that is where a synthetic demo point says it is synthetic."""
-    m = re.match(r"^(.+\.csv) row (\d+)$", source or "")
-    if not m:
-        return None
-    f = ROOT / "data" / "io_lists" / Path(m.group(1)).name
-    if source_paths is not None and f.exists():
-        source_paths.add(f)
-    if f not in _IO_ROWS:
+    Basenames are display labels. Modern mappings resolve by raw digest, then by
+    physical record span and supplied identity/address. No checkout-wide cache.
+    """
+    sources = []
+    for path in paths or []:
         try:
-            with open(f, encoding="utf-8", newline="") as h:
-                _IO_ROWS[f] = list(csv.reader(h))
-        except OSError:
-            _IO_ROWS[f] = []
-    rows, n = _IO_ROWS[f], int(m.group(2)) - 1
-    if not rows or n >= len(rows) or "description" not in rows[0]:
-        return None
-    i = rows[0].index("description")
-    return rows[n][i].strip() if i < len(rows[n]) else None
+            raw = Path(path).read_bytes()
+            reader = csv.reader(io.StringIO(raw.decode("utf-8-sig"), newline=""), strict=True)
+            fields = next(reader, [])
+            if (not {"tag", "server", "base_path", "point"}.issubset(fields)
+                    or len(fields) != len(set(fields)) or any(not f for f in fields)):
+                raise ValueError("expected unique tag, server, base_path and point columns")
+            records, logical_row = [], 1
+            while True:
+                start = reader.line_num + 1
+                try:
+                    values = next(reader)
+                except StopIteration:
+                    break
+                logical_row += 1  # legacy csv.reader row labels count blank records too
+                if not values:
+                    continue
+                if len(values) > len(fields):
+                    raise ValueError("record has more fields than the header")
+                records.append({"fields": dict(zip(fields, values)), "source_lines": [start, reader.line_num],
+                                "logical_row": logical_row})
+            sources.append({"file": Path(path).name, "sha256": hashlib.sha256(raw).hexdigest(),
+                            "bytes": len(raw), "records": records})
+        except (OSError, UnicodeError, ValueError, csv.Error) as exc:
+            raise InputError(f"cannot read selected I/O list {shown_path(path)}: "
+                             f"{getattr(exc, 'strerror', None) or exc}") from exc
+    return sources
+
+
+def point_description(dp, asset, sources=()):
+    """Describe a supplied mapping without turning a filename or fingerprint into plant authority."""
+    result = {"asset_id": asset["id"], "status": "unavailable",
+              "mapping": {k: dp[k] for k in ("server", "base_path", "point") if k in dp},
+              "mapping_source": {k: dp[k] for k in ("source", "source_sha256", "source_lines") if k in dp}}
+
+    def unavailable(reason):
+        result["reason"] = reason
+        return result
+
+    source = dp.get("source")
+    label = re.fullmatch(r"(.+) (row|line|lines) ([1-9]\d*)(?:-([1-9]\d*))?", source) if isinstance(source, str) else None
+    if not sources:
+        return unavailable("no I/O list selected")
+    if not label:
+        return unavailable("unsupported source locator")
+    name, kind, first, last = label.groups()
+    first, last = int(first), int(last or first)
+    if last < first or (kind != "lines" and last != first):
+        return unavailable("invalid source locator")
+    digest = dp.get("source_sha256")
+    span = dp.get("source_lines")
+    has_digest = "source_sha256" in dp
+    if has_digest and (not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest)):
+        return unavailable("invalid recorded source fingerprint")
+    if "source_lines" in dp and (not isinstance(span, list) or len(span) != 2
+                            or any(type(n) is not int or n < 1 for n in span) or span[1] < span[0]):
+        return unavailable("invalid recorded source lines")
+    if kind != "row" and (not has_digest or span != [first, last]):
+        return unavailable("physical locator needs matching fingerprint and source_lines")
+    selected = [s for s in sources if s["sha256"] == digest] if has_digest else [
+        s for s in sources if s["file"] == Path(name).name]
+    if not selected:
+        return unavailable("recorded source bytes not selected" if has_digest else "legacy source name not selected")
+    candidates = []
+    norm = lambda tag: re.sub(r"[\s_\-./]+", "", (tag or "").upper())
+    for selected_source in selected:
+        for record in selected_source["records"]:
+            if kind == "row" and record["logical_row"] != first:
+                continue
+            if (kind != "row" or span is not None) and record["source_lines"] != (span or [first, last]):
+                continue
+            row = record["fields"]
+            pin = row.get("asset_id", "").strip()
+            identity_ok = pin == asset["id"] if pin else bool(
+                norm(row.get("tag")) and norm(row.get("tag")) == norm(asset.get("tag")))
+            address_ok = all(isinstance(dp.get(k), str) and row.get(k, "").strip() == dp[k].strip()
+                             and dp[k].strip() for k in ("server", "base_path", "point"))
+            if identity_ok and address_ok:
+                candidates.append((selected_source, record))
+    if not candidates:
+        return unavailable("source record does not match mapping locator, identity and address")
+    if len({(s["sha256"], tuple(r["source_lines"])) for s, r in candidates}) != 1:
+        return unavailable("ambiguous selected legacy sources")
+    selected_source, record = candidates[0]
+    result["selected_source"] = {k: selected_source[k] for k in ("file", "sha256", "bytes")}
+    result["selected_source"].update({k: record[k] for k in ("source_lines", "logical_row")})
+    description = record["fields"].get("description", "").strip()
+    if not description:
+        return unavailable("matched record has no description")
+    result.update(status="matched" if has_digest else "unverified_legacy", description=description,
+                  reason="raw fingerprint, locator, identity and address match" if has_digest else
+                  "selected legacy row and address only; historical source identity unverified")
+    return result
 
 
 def norm_text(t):
@@ -543,9 +634,9 @@ def norm_text(t):
 
 
 class Model:
-    def __init__(self, path, loops=None, schedule_paths=None):
+    def __init__(self, path, loops=None, schedule_paths=None, *, io_paths=None):
         self.path = path
-        self.source_paths = {Path(p) for p in [path, loops, *(schedule_paths or [])] if p is not None}
+        self.source_paths = {Path(p) for p in [path, loops, *(schedule_paths or []), *(io_paths or [])] if p is not None}
         self.m = read_json(path, "model")
         if "meta" in self.m and self.m["meta"] is None:
             self.m["meta"] = {}  # an empty meta is no meta
@@ -565,7 +656,12 @@ class Model:
             if schedule_paths and not self.twin:
                 raise InputError("--schedule applies only to extracted twins; put native model values in facts "
                                  "with their source basis instead of supplying an ignored schedule")
-            self.items = from_twin(self.active_m, self.schedule, self.source_paths) if self.twin else from_hand(self.active_m)
+            if io_paths and not self.twin:
+                raise InputError("--io-list applies only to extracted-twin mappings")
+            self.io_sources = load_io_sources(io_paths)
+            self.mapping_descriptions = []
+            self.items = from_twin(self.active_m, self.schedule, self.source_paths, self.io_sources,
+                                   self.mapping_descriptions) if self.twin else from_hand(self.active_m)
             for item in self.items:
                 fields = (item.get("schedule") or {}).get("fields") or {}
                 for name, value in (item.get("facts") or {}).items():
@@ -1130,6 +1226,13 @@ def screen(model, catalog, only=None):
         elif not f:
             quiet.append(q["id"])
         found += f
+    for finding in found:
+        asset_ids = {asset["id"] for asset in finding["assets"]}
+        records = [record for record in model.mapping_descriptions if record["asset_id"] in asset_ids]
+        if records:
+            # Questions are the existing graph/context carrier. Keep description
+            # identity with the prose so source revisions enter answer freshness.
+            finding["mapping_descriptions"] = copy.deepcopy(records)
     excl = defaultdict(list)
     for i in model.items:
         ex = excluded(i, catalog)
@@ -1171,6 +1274,10 @@ def write_outputs(model, catalog, found, not_checked, quiet, excl, out, only=Non
 
 
 def add_review_exclusions(model, doc):
+    if model.mapping_descriptions:
+        doc["mapping_descriptions"] = model.mapping_descriptions
+    if model.io_sources:
+        doc["io_lists"] = [{k: s[k] for k in ("file", "sha256", "bytes")} for s in model.io_sources]
     reconciliations = [entry["service_reconciliation"] for _, entry in sorted(model.schedule.items())
                        if entry.get("service_reconciliation")]
     if reconciliations:
@@ -1238,6 +1345,19 @@ def render_md(model, catalog, doc):
          f"Model: `{doc['source_model']}`. Questions: `{doc['catalog']}`"
          + (f". Loop list: `{doc['loops']}`" if doc["loops"] else "")
          + ("".join(f". Schedule: `{s}`" for s in doc["schedules"])) + ".", ""]
+    if doc.get("mapping_descriptions"):
+        L += ["<details>", "<summary>Supplied mapping descriptions and source status</summary>", "",
+              "These are supplied mappings; signal identity remains unverified. A matched description "
+              "identifies selected CSV bytes and a consistent record, not source authority or plant truth.", ""]
+        for record in doc["mapping_descriptions"]:
+            L.append("- Asset " + _markdown_json(record["asset_id"]) + ": "
+                     + _markdown_json(record["status"]) + "; " + _markdown_json(record["reason"]) + ".")
+            if "description" in record:
+                L.append("  Description: " + _markdown_json(record["description"]))
+            L.append("  Mapping source: " + _markdown_json(record["mapping_source"]))
+            if "selected_source" in record:
+                L.append("  Selected CSV record: " + _markdown_json(record["selected_source"]))
+        L += ["", "</details>", ""]
     if doc.get("service_reconciliations"):
         L += ["## Supplied service choices", "",
               "These exact source selections affect screening eligibility. Draft/reviewed labels are supplied "
@@ -1649,6 +1769,7 @@ def main(argv=None):
     ap.add_argument("--model")
     ap.add_argument("--loops", help="loop list CSV: controller,measurement,output[,description]")
     ap.add_argument("--schedule", action="append", help="equipment schedule JSON (repeatable)")
+    ap.add_argument("--io-list", action="append", help="selected source CSV for extracted-twin mapping descriptions (repeatable; no signal connection)")
     ap.add_argument("--question", action="append", help="run only this question id (repeatable)")
     ap.add_argument("--catalog", default=str(CATALOG))
     ap.add_argument("--out", help="folder for questions.json and screen.md (default: print the screen)")
@@ -1667,6 +1788,8 @@ def main(argv=None):
         print(list_questions(catalog))
         return 0
     if a.rollup:
+        if a.io_list:
+            ap.error("--io-list describes model mappings; select it with --model, not --rollup")
         if a.model:
             ap.error("give --model (one site's screen) or --rollup (several screens), not both")
         try:
@@ -1690,7 +1813,7 @@ def main(argv=None):
     if bad:
         ap.error(f"unknown question id(s): {', '.join(bad)}")
     try:
-        model = Model(a.model, a.loops, a.schedule)
+        model = Model(a.model, a.loops, a.schedule, io_paths=a.io_list)
     except InputError as e:
         print(f"error: {e}", file=sys.stderr)
         return 2

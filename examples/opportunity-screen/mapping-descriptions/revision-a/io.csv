@@ -1,0 +1,3 @@
+﻿asset_id,tag,server,base_path,point,description
+I-FLOW,FT-1,SYNTHETIC-OPC,ns=1;s=SYNTHETIC,FLOW.PV,"SYNTHETIC supplied flow description
+second line; function and installed identity unverified"
