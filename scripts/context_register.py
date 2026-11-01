@@ -542,7 +542,7 @@ def reconcile(register, questions, sources, choices, rows):
                 changed.append("question removed")
             else:
                 for part in ("question", "assets"):
-                    if old[part] != questions[qid][part]:
+                    if canonical(old[part]) != canonical(questions[qid][part]):
                         changed.append(part + " content")
             if choice is None:
                 changed.append("source/locator removed or binding withdrawn")
@@ -760,10 +760,10 @@ def validate_export(graph, register):
                     "locator_id": lid, "locator": loc["locator"]})
                 choices[(qid, did, lid)] = {"evidence": evidence, "fingerprint": digest(evidence)}
     expected = reconcile(register, questions, sources, choices, [])
-    if register.get("current") != expected["current"]:
+    if canonical(register.get("current")) != canonical(expected["current"]):
         raise InputError("selected context current state disagrees with its graph/evidence/history")
     for question in graph.get("questions", []):
-        if question.get("context") != register["current"].get(question["id"]):
+        if canonical(question.get("context")) != canonical(register["current"].get(question["id"])):
             raise InputError("graph question context disagrees with the selected register")
 
 

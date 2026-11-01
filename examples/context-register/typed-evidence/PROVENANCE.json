@@ -1,0 +1,103 @@
+{
+  "schema": "typed-evidence-provenance-1",
+  "evidence_class": "fictional-exposed-development",
+  "source": "Existing two-question test fixture shape, literal vectors independently frozen before original calls; no plant/company source.",
+  "exposure": "Author and baseline operator saw these inputs. This is a software regression/control exercise, not held-out model accuracy or human usefulness.",
+  "baseline": {
+    "released_base": "4abed5026657055f839e6c0e917e56b70edac70b",
+    "method_path": "scripts/context_register.py",
+    "method_working_sha256_raw": "8dac788bf2b7a9c734ce1520110bdc277e77b88efd38a4347739ed09e1dbeabc",
+    "method_git_blob_sha256_raw": "8dac788bf2b7a9c734ce1520110bdc277e77b88efd38a4347739ed09e1dbeabc",
+    "working_vs_git": "Recorded context method working bytes match the selected released Git blob raw-exact; shared-module identities are recorded separately.",
+    "shared_method_pins": {
+      "context_register.py": "8dac788bf2b7a9c734ce1520110bdc277e77b88efd38a4347739ed09e1dbeabc",
+      "graph_export.py": "502ef69cdfa387cc99082b026964e45bb7ed409bb4674d4f6e4fd41a042e182d",
+      "graph_review_records.py": "404cffabf1028eff9f05d3ad76a93c86f4c699ba7a508b1626253de0951ac4aa",
+      "output_paths.py": "48a339aa3e8f20757a967fea49f53b3d4cc0ff8993936a8a9988c7dc2c26876e",
+      "serve_snapshot.py": "d2db1d659a718e66cee71347e40f9508f491bbe49dc3a43b26de1a1e7c704b08"
+    },
+    "original_result_sha256_raw": "67ce515ced155ad3310afca464da8534445318a5d3b289b74614bad00cb789d1",
+    "independent_receiving_sha256_raw": "b781f57f347395c972c651b528712cef5901352860d0f5dc31944ff4d4ead573"
+  },
+  "prospective": {
+    "contract_sha256_raw": "494c22c21595e8cf3aa71ff620078b9fd19af262b527bc80d8b495a27733f3d3",
+    "addendum_sha256_raw": "019349e64a77613be5e59dc0fad4e948bd84eb35998fc380a22e3165b7716a5c",
+    "vectors_sha256_raw": "8611b99b52bd5cb67115bb57539e258c3bb9f9310cfb3c931b418bd96409ae01",
+    "freeze_v2_sha256_raw": "ec0a38cca48d3901875db098647247918d46b90aac5c7f92d2a2010fc608573e"
+  },
+  "files": {
+    "cases.json": {
+      "sha256_raw": "5848e5ce3be7800ea6eb840b69dccd245ea22bc9be9c8a17446dcd368e95cf5f",
+      "bytes": 1645
+    },
+    "expected.json": {
+      "sha256_raw": "652df7c78460510cf0d10e2b99de42c020ef9b578aa2af7320e6c2152d6f962c",
+      "bytes": 3067
+    },
+    "observations.json": {
+      "sha256_raw": "a14321add1a6a5f91e0e49fa6902639d618e0abf8281503c65c01685d170ba47",
+      "bytes": 30551
+    },
+    "reproduce.py": {
+      "sha256_raw": "4dac4ae52ba8092e630c415ef31cab50f570dc98ee23022bd5db541dc4e71ac3",
+      "bytes": 14865
+    },
+    "inputs/filled.csv": {
+      "sha256_raw": "5f83260a8c26d8f51c364cd7cbaf21b89de48333ee496a963561d38eadf84f9b",
+      "bytes": 865
+    },
+    "inputs/manual.txt": {
+      "sha256_raw": "87ae84e022d4243fd9878aa5c8041f373ed4029e240edeb9789f887097b07907",
+      "bytes": 65
+    },
+    "inputs/model.json": {
+      "sha256_raw": "39dc2488c88982d2a3a1aeed006f9d1f097c771a8cacdff2b1148eb5c7a3e9ae",
+      "bytes": 1644
+    },
+    "inputs/questions.json": {
+      "sha256_raw": "ec3625df2b2421164bfbe3abef69e6fec0efc399c4921ae49def08d0618163a5",
+      "bytes": 1165
+    },
+    "inputs/schedule.txt": {
+      "sha256_raw": "f7e2286a6a1b509e754290d79cc86378e57f6a641167ae0d8463d80b165606b7",
+      "bytes": 43
+    },
+    "inputs/sources.json": {
+      "sha256_raw": "b88d7df08905c0e893443e3241060b84eaf143ec922af5ec736695686ad6565d",
+      "bytes": 595
+    },
+    "history/original-TF01/context.json": {
+      "sha256_raw": "4d594c203ee4253183ddeae54f4aad354d17771cc4f59df76deffff27b16fbe5",
+      "bytes": 8351
+    },
+    "history/original-TF01/context.md": {
+      "sha256_raw": "4de3bfe0df2a991a3f85b1b79e46fdae03fdd84e614b9f80384c2c8ad2a86073",
+      "bytes": 2423
+    },
+    "history/original-TF01/enriched_graph.json": {
+      "sha256_raw": "437b99d10f723b703333b511d62ceb6d80e3f39223b7143287b74df8edf97291",
+      "bytes": 5227
+    },
+    "history/original-TF01/enriched_questions.json": {
+      "sha256_raw": "407db76671155543d703c42ce0ac9279a06dc7791292ac8f00386a60f2e170b9",
+      "bytes": 3648
+    }
+  },
+  "materialization": "inputs and history are exact raw copies; filled.csv intentionally retains CSV CRLF. Proposal requires raw checkout preservation for these directories.",
+  "scope": "Opaque proof hashes identify retained actual evidence, not private links or source authority. The V3 portable runner has one actual repaired-mode pass; this publication changes result metadata and README only. Original-method portable replay and exact-head CI are not claimed.",
+  "portable_actual": {
+    "reproducer_sha256_raw": "4dac4ae52ba8092e630c415ef31cab50f570dc98ee23022bd5db541dc4e71ac3",
+    "context_method_sha256_raw": "4e98bd52850a358a71f2f9448a5d1d00cfa5678975c8a42bf5d3d5c5320a5379",
+    "proofs": {
+      "actual_final_receipt_sha256_raw": "589587466ee94fd7118010de848ba4033009f151d4863dc8ed57dc0399397f2e",
+      "actual_observed_sha256_raw": "9ff78800bf47d5213b03ad11212d96077729b485da78ea60ca1d8609fb80c82f",
+      "actual_wrapper_result_sha256_raw": "0070d1b85f53434256b3a007110ccfb3ce39173090e4047a6a3082345548dba3",
+      "actual_evidence_manifest_sha256_raw": "c1fb89bf8ec32e224968499909bfdf8f5b726544eeab856c61bf54166e9aa7a6"
+    },
+    "CLI_calls": 14,
+    "valid_pair_controls": 7,
+    "conflicting_pair_controls": 2,
+    "SDK_calls": 0,
+    "scope": "Actual saved invocation, not a new plant/source/model benchmark. No blanket full-suite or CI result."
+  }
+}

@@ -1080,5 +1080,116 @@ class ContextRegister(unittest.TestCase):
         self.assertEqual(self.state(doc, "Q2@P-2")["state"], "answered")
 
 
+    @staticmethod
+    def _typed_json(value):
+        return json.dumps(value, sort_keys=True, separators=(",", ":"), allow_nan=False)
+
+    def _typed_candidate(self, value):
+        self.questions["questions"][0]["data_requests"] = [{
+            "item": "Review this fictional source value", "candidate_scope": "anchors",
+            "candidate_facts": [{"id": "P-1", "label": "Illustrative pump", "name": "recorded_value",
+                                 "value": value, "where": "fictional fixture, line 2"}]}]
+
+    def _snapshot_sources(self):
+        for node in self.graph["nodes"]:
+            for attribute in node.get("attributes", []):
+                attribute.setdefault("source", {"kind": "illustrative fixture"})
+
+    def _selected_pair_refuses(self, graph, register, message):
+        import serve_snapshot
+        with self.assertRaisesRegex(cr.InputError, message):
+            cr.validate_export(graph, register)
+        self.write("refused.graph.json", graph)
+        self.write("refused.context.json", register)
+        with self.assertRaisesRegex(serve_snapshot.InputError, message):
+            serve_snapshot.Snapshot(self.root / "refused.graph.json", self.root / "refused.context.json")
+
+    def _typed_revision_reopens(self, change, reason):
+        import serve_snapshot
+        self._snapshot_sources()
+        self.save_inputs()
+        original_graph, original_questions = copy.deepcopy(self.graph), copy.deepcopy(self.questions)
+        old = self.two_accepted()
+        source_bytes = [(self.root / name).read_bytes() for name in ("manual.txt", "schedule.txt")]
+        change()
+        self.save_inputs()
+        new = self.refresh()
+        current = self.state(new)
+        self.assertEqual(current["state"], "unanswered")
+        self.assertEqual(current["answers"][0]["freshness"], "stale")
+        self.assertEqual(current["answers"][0]["changed"], [reason])
+        self.assertEqual(self._typed_json(self.state(old, "Q2@P-2")),
+                         self._typed_json(self.state(new, "Q2@P-2")))
+        for section in ("decisions", "ownership_history", "sources"):
+            self.assertEqual(self._typed_json(old[section]), self._typed_json(new[section]))
+        self.assertEqual(source_bytes, [(self.root / name).read_bytes()
+                                       for name in ("manual.txt", "schedule.txt")])
+        before = self.all_bytes()
+        _, error = self.invoke("apply", out="old-sheet-refusal", register="bundle/context.json",
+                               answers="filled.csv", expected=2)
+        self.assertIn("stale or missing evidence_fingerprint", error)
+        self.assertEqual(before, self.all_bytes())
+        packet = serve_snapshot.Snapshot(self.root / "bundle/enriched_graph.json",
+                                        self.root / "bundle/context.json")
+        self.assertEqual(packet.context_question("Q1@P-1")["result"]["current"]["state"], "unanswered")
+        self.assertEqual(self._typed_json(packet.decisions()["result"]["decisions"]),
+                         self._typed_json(old["decisions"]))
+        inconsistent = self.read("bundle/enriched_graph.json")
+        inconsistent["context_register"]["content_sha256"] = cr.digest(old)
+        for question in inconsistent["questions"]:
+            question["context"] = copy.deepcopy(old["current"][question["id"]])
+        self._selected_pair_refuses(inconsistent, old, "current state")
+        self.graph, self.questions = original_graph, original_questions
+        self.save_inputs()
+        self.assertEqual(self._typed_json(old), self._typed_json(self.refresh()))
+
+    def test_false_and_integer_zero_asset_evidence_are_distinct(self):
+        self.graph["nodes"][1]["attributes"].append(
+            {"name": "feedback_recorded", "value": False, "status": "unverified",
+             "source": {"kind": "illustrative fixture"}})
+        self._typed_revision_reopens(
+            lambda: self.graph["nodes"][1]["attributes"][-1].update(value=0), "assets content")
+
+    def test_true_and_integer_one_question_evidence_are_distinct(self):
+        self._typed_candidate(True)
+        self._typed_revision_reopens(
+            lambda: self.questions["questions"][0]["data_requests"][0]["candidate_facts"][0].update(value=1),
+            "question content")
+
+    def test_integer_and_float_incident_evidence_are_distinct(self):
+        self.graph["nodes"].append({"id": "P-3", "kind": "equipment", "name": "Unqueried fixture",
+                                    "status": "unverified"})
+        self.graph["edges"] = [{"id": "R1", "type": "contains", "from": "P-3", "to": "P-1", "status": "unverified",
+                                "attributes": [{"name": "recorded_value", "value": 1, "status": "unverified",
+                                                "source": {"kind": "illustrative fixture"}}]}]
+        self._typed_revision_reopens(
+            lambda: self.graph["edges"][0]["attributes"][0].update(value=1.0), "assets content")
+
+    def test_float_sign_in_nested_question_evidence_is_retained(self):
+        self._typed_candidate({"samples": [0.0]})
+        self._typed_revision_reopens(
+            lambda: self.questions["questions"][0]["data_requests"][0]["candidate_facts"][0].update(
+                value={"samples": [-0.0]}), "question content")
+
+    def test_selected_current_view_requires_typed_consistency(self):
+        self._typed_candidate(True)
+        self._snapshot_sources()
+        self.save_inputs()
+        register = self.two_accepted()
+        graph = self.read("bundle/enriched_graph.json")
+        register["current"]["Q1@P-1"]["question"]["data_requests"][0]["candidate_facts"][0]["value"] = 1
+        graph["context_register"]["content_sha256"] = cr.digest(register)
+        self._selected_pair_refuses(graph, register, "current state")
+
+    def test_graph_question_context_requires_typed_consistency(self):
+        self._typed_candidate(True)
+        self._snapshot_sources()
+        self.save_inputs()
+        register = self.two_accepted()
+        graph = self.read("bundle/enriched_graph.json")
+        graph["questions"][0]["context"]["question"]["data_requests"][0]["candidate_facts"][0]["value"] = 1
+        self._selected_pair_refuses(graph, register, "question context")
+
+
 if __name__ == "__main__":
     unittest.main()

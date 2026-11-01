@@ -1,0 +1,176 @@
+{
+  "schema": "typed-evidence-expected-1",
+  "note": "Original observations versus prospective repaired contract; no engineering equivalence normalization is declared.",
+  "original": {
+    "TF01": {
+      "Q1@P-1": {
+        "state": "answered",
+        "freshness": [
+          "current"
+        ]
+      },
+      "Q2@P-2": {
+        "state": "answered",
+        "freshness": [
+          "current"
+        ]
+      }
+    },
+    "TF02": {
+      "Q1@P-1": {
+        "state": "answered",
+        "freshness": [
+          "current"
+        ]
+      },
+      "Q2@P-2": {
+        "state": "answered",
+        "freshness": [
+          "current"
+        ]
+      }
+    },
+    "TF03": {
+      "Q1@P-1": {
+        "state": "answered",
+        "freshness": [
+          "current"
+        ]
+      },
+      "Q2@P-2": {
+        "state": "answered",
+        "freshness": [
+          "current"
+        ]
+      }
+    },
+    "TF04": {
+      "Q1@P-1": {
+        "state": "answered",
+        "freshness": [
+          "current"
+        ]
+      },
+      "Q2@P-2": {
+        "state": "answered",
+        "freshness": [
+          "current"
+        ]
+      }
+    },
+    "TF05": {
+      "Q1@P-1": {
+        "state": "answered",
+        "freshness": [
+          "current"
+        ]
+      },
+      "Q2@P-2": {
+        "state": "answered",
+        "freshness": [
+          "current"
+        ]
+      }
+    },
+    "TF06": {
+      "Q1@P-1": {
+        "state": "answered",
+        "freshness": [
+          "current"
+        ]
+      },
+      "Q2@P-2": {
+        "state": "unanswered",
+        "freshness": [
+          "stale"
+        ]
+      }
+    }
+  },
+  "repaired": {
+    "TF01": {
+      "Q1@P-1": {
+        "state": "unanswered",
+        "freshness": [
+          "stale"
+        ]
+      },
+      "Q2@P-2": {
+        "state": "answered",
+        "freshness": [
+          "current"
+        ]
+      }
+    },
+    "TF02": {
+      "Q1@P-1": {
+        "state": "unanswered",
+        "freshness": [
+          "stale"
+        ]
+      },
+      "Q2@P-2": {
+        "state": "answered",
+        "freshness": [
+          "current"
+        ]
+      }
+    },
+    "TF03": {
+      "Q1@P-1": {
+        "state": "unanswered",
+        "freshness": [
+          "stale"
+        ]
+      },
+      "Q2@P-2": {
+        "state": "answered",
+        "freshness": [
+          "current"
+        ]
+      }
+    },
+    "TF04": {
+      "Q1@P-1": {
+        "state": "unanswered",
+        "freshness": [
+          "stale"
+        ]
+      },
+      "Q2@P-2": {
+        "state": "answered",
+        "freshness": [
+          "current"
+        ]
+      }
+    },
+    "TF05": {
+      "Q1@P-1": {
+        "state": "answered",
+        "freshness": [
+          "current"
+        ]
+      },
+      "Q2@P-2": {
+        "state": "answered",
+        "freshness": [
+          "current"
+        ]
+      }
+    },
+    "TF06": {
+      "Q1@P-1": {
+        "state": "answered",
+        "freshness": [
+          "current"
+        ]
+      },
+      "Q2@P-2": {
+        "state": "unanswered",
+        "freshness": [
+          "stale"
+        ]
+      }
+    }
+  }
+}

@@ -91,3 +91,8 @@ data/te_pid_layout.json text eol=lf
 
 # Actual public SDK sample bytes have an explicit LF identity after reviewed capture.
 /examples/internal-mcp/sample_asset.json text eol=lf
+
+# Typed-evidence case metadata is LF; original inputs and failed reports keep their exact captured bytes.
+/examples/context-register/typed-evidence/** text eol=lf
+/examples/context-register/typed-evidence/inputs/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/examples/context-register/typed-evidence/history/original-TF01/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

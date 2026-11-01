@@ -1,0 +1,50 @@
+{
+  "schema": "opportunity-questions-1",
+  "questions": [
+    {
+      "id": "Q1@P-1",
+      "question": "What does the fictional record declare for P-1?",
+      "assets": [
+        {
+          "id": "P-1"
+        }
+      ],
+      "status": "asked",
+      "data_requests": [
+        {
+          "item": "Review the fictional supplied record",
+          "how": "Records only; no operating action.",
+          "candidate_scope": "anchors",
+          "candidate_facts": [
+            {
+              "id": "P-1",
+              "label": "P-1",
+              "name": "declared_ready",
+              "where": "fictional.P-1.declared_ready",
+              "value": true
+            },
+            {
+              "id": "P-1",
+              "label": "P-1",
+              "name": "declared_zero",
+              "where": "fictional.P-1.declared_zero",
+              "value": {
+                "signed": 0.0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Q2@P-2",
+      "question": "What does the fictional record declare for P-2?",
+      "assets": [
+        {
+          "id": "P-2"
+        }
+      ],
+      "status": "asked"
+    }
+  ]
+}

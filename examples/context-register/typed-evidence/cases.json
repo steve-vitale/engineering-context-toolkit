@@ -1,0 +1,74 @@
+{
+  "schema": "typed-evidence-cases-1",
+  "evidence_class": "fictional-development",
+  "note": "Data-only controls frozen independently before the baseline. No new source/model trial.",
+  "cases": [
+    {
+      "id": "TF01",
+      "mutations": [
+        {
+          "document": "model.json",
+          "pointer": "/nodes/1/attributes/0/value",
+          "value": 0
+        }
+      ],
+      "old_csv_refuses": true
+    },
+    {
+      "id": "TF02",
+      "mutations": [
+        {
+          "document": "questions.json",
+          "pointer": "/questions/0/data_requests/0/candidate_facts/0/value",
+          "value": 1
+        }
+      ],
+      "old_csv_refuses": true
+    },
+    {
+      "id": "TF03",
+      "mutations": [
+        {
+          "document": "model.json",
+          "pointer": "/edges/0/attributes/0/value",
+          "value": 1.0
+        }
+      ],
+      "old_csv_refuses": true
+    },
+    {
+      "id": "TF04",
+      "mutations": [
+        {
+          "document": "questions.json",
+          "pointer": "/questions/0/data_requests/0/candidate_facts/1/value/signed",
+          "value": -0.0
+        }
+      ],
+      "old_csv_refuses": true
+    },
+    {
+      "id": "TF05",
+      "mutations": [
+        {
+          "document": "model.json",
+          "pointer": "/nodes/1/status",
+          "value": "confirmed"
+        }
+      ],
+      "reverse_object_keys": true
+    },
+    {
+      "id": "TF06",
+      "mutations": [
+        {
+          "document": "model.json",
+          "pointer": "/nodes/2/attributes/0/value",
+          "value": "steam"
+        }
+      ],
+      "old_csv_refuses": true,
+      "exact_reversion": true
+    }
+  ]
+}

@@ -6920,3 +6920,29 @@ These are source/readability corrections, not new runtime, transfer accuracy or 
 
 A298/N112 closes this bounded sample dependency repair. Load time is not source acquisition time; no source
 authentication, company Copilot/IT/OT acceptance, operating permission or measured engineer benefit is claimed.
+
+## 147. Keep typed evidence changes from inheriting an old answer
+
+An accepted answer could remain current after a model or candidate field changed from `false` to `0`.
+The evidence fingerprint changed, but refresh compared nested values with Python equality. The same mismatch
+affected `true`/`1`, `1`/`1.0` and signed zero, and could admit inconsistent current/context views at readback.
+Three comparisons now reuse the existing canonical JSON binding. This is no new numeric or unit interpretation.
+
+The original and matched candidate protocols each make 14 context CLI calls. Four affected answers now reopen,
+both bad-pair controls receive specific validator/readback refusals, complete histories stay intact, and 23
+positive files remain byte-identical. Benign key order/status, unrelated changes, stale-CSV refusal and exact
+reversion keep their existing behavior. Six permanent methods fail the old method with six assertions/no errors
+and all six pass the repair.
+
+The [fictional example](../examples/context-register/typed-evidence/README.md) retains original failures and a
+documented default reproducer. Its separate actual run makes 14 child CLI calls, with seven complete typed
+readbacks and four specific bad-pair refusals. The new integration test separately replays those 14 child calls.
+The public modules pass 59 context, 19 snapshot, 2 team-context, 7 context-example and 3 checkout methods: 90
+tests without skips. Checkout records 66 indexed/132 materialization comparisons and 287 raw-packet files per
+configuration. Independent receiving retains complete inputs, outputs, diagnostics and source guards.
+
+A299/N113 closes this local correctness repair. N114 keeps the unplaced-DEXPI question/handoff route open;
+N115 separately records unmeasured latest-answer grouping work. The current N082 count is corrected to 23
+bounded source-reviewed rules and 27 remaining; earlier attempt records stay unchanged. No catalog, benchmark
+or matrix result changes. Full repository and exact-head CI remain separate, as do company/source authority,
+plant truth, operating permission and measured engineer usefulness.

@@ -695,7 +695,21 @@
     "examples/context-register/nist-smstestbed/history/before-appearances.context.json",
     "examples/context-register/nist-smstestbed/history/before-appearances.answers.csv",
     "examples/context-register/metropt3/history/before-appearances.context.json",
-    "examples/context-register/metropt3/history/before-appearances.answers.csv"
+    "examples/context-register/metropt3/history/before-appearances.answers.csv",
+    "examples/context-register/typed-evidence/cases.json",
+    "examples/context-register/typed-evidence/expected.json",
+    "examples/context-register/typed-evidence/history/original-TF01/context.json",
+    "examples/context-register/typed-evidence/history/original-TF01/context.md",
+    "examples/context-register/typed-evidence/history/original-TF01/enriched_graph.json",
+    "examples/context-register/typed-evidence/history/original-TF01/enriched_questions.json",
+    "examples/context-register/typed-evidence/inputs/filled.csv",
+    "examples/context-register/typed-evidence/inputs/manual.txt",
+    "examples/context-register/typed-evidence/inputs/model.json",
+    "examples/context-register/typed-evidence/inputs/questions.json",
+    "examples/context-register/typed-evidence/inputs/schedule.txt",
+    "examples/context-register/typed-evidence/inputs/sources.json",
+    "examples/context-register/typed-evidence/observations.json",
+    "examples/context-register/typed-evidence/PROVENANCE.json"
    ],
    "tests": [
     "scripts/test_context_register.py",
