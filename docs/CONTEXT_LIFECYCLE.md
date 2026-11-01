@@ -5,6 +5,9 @@ participate, organize context into owned, versioned scopes that other teams can 
 maintenance and controls can keep their working tools while the company establishes which records and decisions
 each team owns. The local examples prepare that handoff; they do not provide a shared governance application.
 Begin with the [bounded pilot](../examples/first-pilot/README.md) and establish the company acceptance route.
+For the small-team, plant-site and global operating models, failure signals and service-selection criteria,
+use [organizational scaling and readiness](SCALING_ENGINEERING_CONTEXT.md). That guide owns the maturity path;
+this page owns the detailed record lifecycle and return path.
 
 The intended organizational pattern is coherent context assembled from published versions of those owned scopes.
 It needs consistent identities, sourced claims, unresolved questions, responsibility and decision history. A

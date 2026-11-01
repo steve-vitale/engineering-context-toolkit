@@ -10,6 +10,9 @@ This guide starts from **approved work Copilot, strict data policies and separat
 design assumption, not a measured claim about how many companies use Copilot. Choose a path for each site and
 data class; a company can use several paths at once. More connectivity is useful only when it answers a question
 that the simpler path cannot.
+For team, site and global responsibilities, use the [scaling guide](SCALING_ENGINEERING_CONTEXT.md).
+Organizational maturity and the permitted data path are separate choices; a global company can retain different
+approved connectivity patterns at different plants.
 
 The recommendations below are engineering choices informed by the primary sources linked here, not a surveyed
 ranking of deployment prevalence. Product documentation was checked on **October 31, 2026**. The optional
