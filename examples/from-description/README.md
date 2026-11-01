@@ -45,13 +45,48 @@ also works with the standard library alone; rendering needs Pillow. Open
 | `model.json`, `layout.json`, `answer.json` | Retain the assistant's equipment, connections, controls, unknowns, assumptions and proposed geometry for inspection. |
 | `pid/` | Draw PNG/SVG sheets with a routing key, manifest and register. The key comes from the same authored inputs; it is not independent ground truth. |
 | `questions/` | Screen that model for investigations and missing evidence. It does not declare savings or establish a process audit. |
+| `question_catalog.json` | Retain the exact rules used by that screen, including rules that did not fire. `build.json` records the raw hash and default/custom selection. Review their company applicability and authority. |
 | `graph.json` | Export the same identities and sourced relationships for review, context preparation and the [local MCP starter](../internal-mcp/README.md). It is a snapshot, not a live digital twin. |
 | `exports/` | Supply logical SVGs and Ignition/PI staging with placeholder signals. These files have not been accepted by a plant system. |
 | `validation.json`, `build.json`, `REVIEW.md` | Record the checks, payload fingerprints and what the receiving engineer should inspect. They grant no engineering approval. |
 | `interpretation_review.csv`, `source_coverage.csv` | Expose every supplied record value beside its cited text, plus every source line and its citing records. All rows start unreviewed; check unsupported interpretations and possible omissions explicitly. |
 
-Source and answer bytes are retained exactly, including a UTF-8 BOM or CRLF newlines. Generated text in the bundle
-uses LF newlines across platforms; the payload inventory hashes the published bytes.
+Source and answer bytes are retained exactly, including a UTF-8 BOM or CRLF newlines. The selected catalog must
+be a UTF-8 JSON object without a BOM, up to 8 MiB; its raw bytes, including CRLF, are retained unchanged.
+Other generated text uses LF newlines across platforms. The payload inventory hashes the published bytes.
+
+<details>
+<summary>Use approved company rules or replay the retained catalog</summary>
+
+The default is this toolkit's question catalog. For a prepared company packet and authored answer in a
+permitted private folder, select a permitted catalog working copy with the build-only option. It must use
+[the supported catalog format](../../docs/OPPORTUNITY_SCREEN.md#how-to-add-a-question), rather than an arbitrary
+JSON questionnaire:
+
+```sh
+python scripts/description_workflow.py build --packet ../approved-work/description-packet --answer ../approved-work/answer.json --catalog ../approved-work/questions.json --out ../approved-work/description-result
+```
+
+The engine reads the captured `question_catalog.json`, so changing or removing the original after capture
+does not change that build. The receipt records selected-byte identity, without storing the original catalog's
+filename or local path. The captured content itself remains intact: keep the whole bundle in the approved
+private environment when company rules or plant records are included.
+
+With the same approved question-engine version, rerun the retained model and rules into a separate folder:
+
+```sh
+python scripts/question_engine.py --model ../approved-work/description-result/model.json --catalog ../approved-work/description-result/question_catalog.json --out ../approved-work/replayed-screen
+```
+
+Report path captions follow the question engine's display rules and can differ when folders change; compare
+the retained catalog identity and question records.
+
+The retained rules explain a historical screen. A later default-catalog revision is a reason to check and
+explicitly rebuild the current publication, while preserving the earlier bundle. Repository checks compare
+the two published default examples with today's default; they do not decide whether a company catalog is
+approved or still appropriate. `prepare` and `check` remain independent of catalog selection.
+
+</details>
 
 ## Use your own description with an approved assistant
 

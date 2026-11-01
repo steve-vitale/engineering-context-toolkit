@@ -6478,3 +6478,80 @@ one skip, and leaves all 3,064 inputs raw-exact. Only the test changed before th
 all generated outputs remain exact. The other 70 local programs are not repeated. New committed-version CI
 provides the separate complete-suite gate, with its actual skips retained. The follow-up review inherits all
 44 opportunity example files and preserves all 195 earlier review records.
+
+## 136. Retain the question rules in the description handoff
+
+An engineer inheriting a description bundle needs its question rules as well as its source, authored model,
+drawing and resulting investigations. N104 identified a concrete missing input: the receipt pinned five direct
+producer files and generated payloads, but the question engine read a mutable default catalog that the bundle
+did not retain. This is a reproducibility gap, not a limit on using the tools for a reader's plant.
+
+### Observe the missing identity before changing the build
+
+Two old native CLI builds use identical source, answer and code, with default catalogs differing only in LF
+versus CRLF representation. Both succeed and produce 31 complete files byte-for-byte identical. Both omit the
+catalog snapshot and its receipt identity: all four prospective contract assertions are false. The two catalog
+hashes differ while their parsed JSON is exact. Independent receiving checks both closed input sets, logs and
+whole outputs. This accepts the baseline characterization, not the old provenance contract.
+
+The repair captures one bounded raw catalog before answer inspection or rendering, writes a fixed
+`question_catalog.json`, and makes the question subprocess consume that copy explicitly. The receipt records
+its relative path, raw SHA-256 and default/custom selection; the complete payload inventory includes the same
+raw bytes. The optional keyword-only argument and build-only CLI `--catalog` accept a permitted company copy
+in the existing catalog format. `prepare` and `check` remain independent of catalog selection. Original input
+filenames and local paths are not added to catalog metadata; the captured content itself is preserved and must
+remain in an approved environment.
+
+### Preserve raw evidence and make refusal explicit
+
+The new input has an inclusive 8 MiB limit, acquired through requests no larger than 64 KiB with positive
+short-read continuation and cap-plus-one refusal. It requires a finite UTF-8 JSON object without duplicate
+properties or a BOM. The unchanged question engine rejects BOM input; the builder refuses it before any
+inspection/rendering. Existing source/answer limits and their BOM preservation remain unchanged. A first
+private candidate failed static review because acquisition and parse exceptions could expose the original path
+or escape the promised `InputError`. The successor translates only that helper's failures to safe literals,
+with suppressed exception chaining. Both versions and the static finding remain retained; no candidate was
+executed before that correction.
+
+Catalog CRLF bytes are exempt from generated-text folding, just like retained source/answer bytes. Swapping or
+removing the upstream after capture does not affect the selected snapshot. A later semantic A-to-B rule change
+is visible, while a saved A catalog can replay A's question records under the same engine. Report path captions
+follow the existing engine rule: external temporary storage displays basenames; an in-checkout temporary path
+can retain a repository-relative prefix. Replay comparisons account only for the declared path labels and the
+existing CRLF/hard-break Markdown packaging transforms, not arbitrary cleanup.
+
+Current publication freshness is distinct from historical integrity. The repository's two named default
+examples must match today's default catalog as well as their own snapshot/inventory. A catalog-only revision
+makes that explicit publication check fail; it does not invalidate a self-consistent historical or custom bundle.
+The controls also refuse tampered snapshot identities. None of these hashes establishes authority, source
+suitability, company approval or a continuing synchronization service.
+
+### Keep default identity stable across Git checkouts
+
+The default catalog previously had ordinary Git text policy. An isolated Git witness confirms that Windows
+checkout could turn it into CRLF while committed raw bundle snapshots retained LF, creating a false freshness
+difference. One narrow `/data/questions.json` LF rule now keeps the repository input stable. It does not normalize
+company-selected catalogs. The existing checkout test moves that one path from its ordinary controls to its
+21 LF targets, retaining the other assertions. A display-only witness wrapper failed after writing its evidence;
+the original exit remains and additive receiving verifies the unchanged Git logs and outputs without reruns.
+
+### Rebuild the examples and check the transfer
+
+Two actual successor builds produce 32 assisted and 37 MGPI files. Across the old 67 files, 59 remain raw-exact.
+The only changes are the two new raw catalogs and, in each bundle, the question JSON catalog label, Markdown
+catalog caption, review instructions and measured build receipt. Whole finding objects, graphs, drawings,
+models, layouts, source/answer bytes, review CSVs and platform outputs remain exact. No receipt is restamped.
+
+The 23-method description module and three-method checkout module both pass with zero skips in a separate
+staged test workspace. Checkout records 42 indexed and 84 materialization comparisons, with 274 existing raw
+packet files retained per configuration. Independent receiving verifies all 69 artifacts and the input guards;
+the producer inputs and old 67-file baseline remain untouched. The A/B catalogs are exposed synthetic policy
+controls, not new plant sources, model-accuracy runs or measured engineer benefit. Global publication and
+committed-version CI are separate gates. No commercial model, company/OT connection or new original-source
+download is used in this follow-up.
+
+After the module run, the existing CLI test is strengthened with a filename containing spaces, Unicode and a
+backtick, plus checks that the original filename/path are absent from the receipt, question JSON, screen and
+review text. The other 22 methods remain exact. That one affected test passes once with no skip in a new
+isolated workspace; the original 23-method and three-checkout results are retained and not replayed. This closes
+the explicitly named filename dimension without changing the builder or restamping either worked bundle.

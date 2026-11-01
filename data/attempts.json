@@ -4374,6 +4374,25 @@
         "docs/JOURNAL.md#135-keep-heating-investigations-grounded-in-existing-records",
         "scripts/test_question_engine.py"
       ]
+    },
+    {
+      "id": "A288",
+      "function": "intake_and_reuse",
+      "date": "2026-11-01",
+      "change": "Retain and consume the exact question catalog in description builds, with explicit custom selection and stable repository checkout bytes.",
+      "hypothesis": "An engineer inheriting a bundle should recover its actual question policy and distinguish historical integrity from a later default-catalog revision.",
+      "evidence": "Two original LF/CRLF catalog builds yield 31 identical files each and omit four snapshot/identity assertions. The candidate uses one bounded raw capture, a fixed snapshot, explicit native --catalog and raw receipt/inventory identity. A static diagnostic blocker was preserved and fixed before runtime. Two actual builds (32 and 37 files) retain 59 old files raw-exact; only two new snapshots and eight declared changes differ. Independent receiving checks all 69 files. All 23 description tests and three checkout tests pass without skips; Git checks cover 42 indexed and 84 checkout comparisons, preserving 274 raw packet files per configuration. The narrow default LF policy preserves custom CRLF input. One actual guide-bound Bayer matrix cell is refreshed; the other 94 objects and 64 pass / 23 fail / 8 n/a outcomes remain.",
+      "runs": "Two old baseline builds; two successor examples; the affected 23- and three-method modules; one Bayer export cell. No model/provider calls or new plant/source-family trial. Committed-version CI remains separate.",
+      "verdict": "kept",
+      "why": "Bind the rules actually consumed, without relying on mutable upstream files, leaking original selected filenames, silently folding raw company bytes, or turning a retained hash into authority or automatic governance.",
+      "source": [
+        "docs/JOURNAL.md#136-retain-the-question-rules-in-the-description-handoff",
+        "examples/from-description/README.md",
+        "scripts/description_workflow.py",
+        "scripts/test_description_workflow.py",
+        "scripts/test_checkout_contracts.py",
+        ".gitattributes"
+      ]
     }
   ],
   "not_tried": [
@@ -5527,12 +5546,14 @@
     {
       "id": "N104",
       "function": "intake_and_reuse",
-      "status": "not-done",
+      "status": "done",
       "idea": "Bind the selected question catalog into description build receipts and test a subsequent catalog-only revision.",
-      "why_not_yet": "The current producer comparison separately freezes the catalog and compares complete generated artifacts; build.json itself only pins generator code. Assigned to the source/provenance workstream for a prospective matched receipt change. No receipt-level catalog authority or freshness claim is made.",
+      "why_not_yet": "Completed A288: raw snapshot is the explicit generator input and receipt/inventory dependency, with default/custom selection, catalog-only revision/replay controls and a narrow repository LF checkout contract. Two actual example builds and independent receiving pass; company authority, current approval, synchronization and complete transitive environment reproducibility remain outside this bounded repair.",
       "source": [
         "docs/JOURNAL.md#135-keep-heating-investigations-grounded-in-existing-records",
-        "scripts/description_workflow.py"
+        "scripts/description_workflow.py",
+        "docs/JOURNAL.md#136-retain-the-question-rules-in-the-description-handoff",
+        "examples/from-description/README.md"
       ]
     }
   ]

@@ -1,7 +1,7 @@
 {
  "schema": "opportunity-questions-1",
  "source_model": "model.json",
- "catalog": "data/questions.json",
+ "catalog": "question_catalog.json",
  "loops": null,
  "loop_rows_unmatched": [],
  "schedules": [],

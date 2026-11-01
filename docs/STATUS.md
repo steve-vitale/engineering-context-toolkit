@@ -12,7 +12,7 @@ The public tutorials teach those steps; case studies and evaluations retain what
 inputs. Engineering review and company acceptance determine what becomes an authoritative maintained twin or record.
 
 The [script registry](SCRIPTS.md) classifies 135 scripts: 33 tools, 12 checks, 14 support modules and 76 research
-scripts; tests are separate. Twenty-two [feature groups](FEATURES.md) register 355 example files, including
+scripts; tests are separate. Twenty-two [feature groups](FEATURES.md) register 357 example files, including
 inputs, generated outputs and retained history. Their evidence is bounded. A reviewed
 example does not certify every input, current implementation or engineering conclusion.
 
@@ -59,7 +59,7 @@ create those controls.
 |---|---|---|
 | Drawing intake and review report | A supplied extraction becomes a draft model, review queue, staging and readable HTML. | Approved extraction, engineering review and receiving-company acceptance. |
 | DEXPI routes | Read supported XML or the separate adapted-key/sheet contract; report omissions. | Exporter coverage and downstream eligibility vary; parsed C03 cannot feed the question engine. |
-| Description/model drawing | Authored model and detailed layout produce draft sheets and platform outputs. | Interpretation and geometry remain authored; matching quotations cannot establish correct meaning. |
+| Description/model drawing | Authored model and detailed layout produce draft sheets and platform outputs; the bundle retains the exact question catalog it consumed. | Interpretation and geometry remain authored; matching quotations and catalog hashes cannot establish correct meaning or company approval. |
 | Portable graph and statement review | Typed relationships, sourced claims and supplied appearances can be inspected and reviewed. | One-way export; statement verdicts do not edit generator facts. |
 | Model correction and point mapping | Apply supported local corrections and stage supplied signal addresses with history. | Identity/signal review, external companion reconciliation and regeneration remain explicit. |
 | Loop audit and vendor evaluation | Compare supplied loop truth or saved drawing answers with bounded scorers. | No installed safeguard/wiring acceptance or measured review-time result. |
@@ -131,8 +131,8 @@ cases and 14 unique producing routes. Its original 31-finding food failure remai
 have 29/41 findings. The aggregate contains 84 fresh and eight inherited artifacts. A final wrapper bookkeeping
 failure is retained and independently resolved by receipt-only postprocessing, without new product calls or
 changed criteria. The [journal](JOURNAL.md#135-keep-heating-investigations-grounded-in-existing-records) distinguishes
-those checks, the six matched context workflows and the two actually rebuilt description receipts. N104 retains
-the missing catalog hash in those product receipts as follow-up work; separate execution pins cover this comparison.
+those checks, the six matched context workflows and the two actually rebuilt description receipts. Those earlier
+receipts lacked their catalog input; N104 adds the retained-input repair described below, preserving the old evidence.
 
 The first `0884b2b` full local and CI runs each report **70/71**, failing an old assertion that a linked recovery
 label silences its unit's question. The fixture and CLI remain unchanged; the corrected test retains both
@@ -156,6 +156,17 @@ The full-run file-set guard caught four browser-research captures added concurre
 frozen input files remained byte-exact. The captures were preserved privately and the original path set checked
 again. The original guard failure remains recorded in [the journal](JOURNAL.md#133-audit-the-broader-toolkit-and-preserve-review-evidence).
 Browser captures are now ignored alongside private LinkedIn drafts. Clean CI separately stages checksum-pinned public fixtures.
+
+**N104 — retain the question rules with a description build.** Each bundle now includes raw
+`question_catalog.json`; the engine consumes that captured copy, and `build.json` records its hash and
+default/custom selection. The build-only `--catalog` option accepts an approved copy in the existing catalog
+format. The two examples were actually rebuilt to 32 and 37 files: 59 earlier files remain raw-exact, with two
+new catalogs and eight declared report/provenance changes. All 23 description tests and three checkout tests
+pass without skips in the isolated integration check. The repository default catalog has an LF checkout policy;
+custom CRLF input remains raw. Historical integrity and current-default publication freshness are separate:
+an old bundle can retain its rules while a current publication needs an explicit rebuild. This supplies neither
+company approval nor an automatic update service. See the [workflow guide](../examples/from-description/README.md)
+and [journal evidence](JOURNAL.md#136-retain-the-question-rules-in-the-description-handoff).
 
 ## Earlier repairs and their scope
 

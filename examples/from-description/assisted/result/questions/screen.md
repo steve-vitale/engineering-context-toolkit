@@ -1,6 +1,6 @@
 # Opportunity screen: Illustrative water utility
 
-Model: `model.json`. Questions: `data/questions.json`.
+Model: `model.json`. Questions: `question_catalog.json`.
 
 **How to read this.** This is a screen, not an audit. Each finding is a question the drawing or model
 raises, with the evidence found, what to collect (and exactly where), and how the collected data settles it. Nothing
