@@ -1,0 +1,18 @@
+{
+  "schema": "n114-authored-model-qualification-patch-1",
+  "base": "examples/graph-export/unplaced-dexpi/i04.model.json",
+  "base_sha256_raw": "d45563c5804f465ac8fb557c4180cc9eca5577cce5d5a2074078fde357962746",
+  "exposure": "Authored after candidate V3 static body, before any candidate calls. Not a new XML export or blind control.",
+  "patch": [
+    {
+      "op": "test",
+      "path": "/unplaced/0/tag_basis",
+      "value": "PipingComponentNumberAssignmentClass of the operated valve"
+    },
+    {
+      "op": "replace",
+      "path": "/unplaced/0/tag_basis",
+      "value": "PipingComponentNumberAssignmentClass of the operated valve | AUTHORED qualification revision B: local tag assignment basis needs responsible-role review; installed identity not verified."
+    }
+  ]
+}

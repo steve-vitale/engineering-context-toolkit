@@ -108,10 +108,14 @@ revision/hash and element locators, the conversion's omissions and inferences, w
 what remains unknown. The [first-question guide](../first-pilot/README.md) takes that packet into a company
 handoff; ongoing shared information, decisions, ownership and history need the company's maintained home.
 
-The question engine requires units or instruments. Public C03 converts but has neither, so the screen refuses it;
-its streams, manual valve and unplaced item do not make an eligible model. Start a labelled manual source question
-in the same plain brief instead of inventing equipment. No findings on an eligible model likewise establishes
-only that no catalog trigger fired on the supplied representation.
+Supported Native models can retain known unplaced instruments/final elements or controller records without
+inventing equipment ownership. Public C03 has no units/instruments/controllers but now supports C3 for its
+source-qualified ESV-3712 final element; no controller or ownership is inferred. The
+[unplaced-role handoff](../graph-export/unplaced-dexpi/question-handoff/README.md) shows a partial answer and refresh.
+Eligibility still depends on valid source roles and exact references. Generated questions use selected Native
+fields; review the complete model, original XML, retained generic attributes and conversion omissions as needed.
+A quiet eligible model means no catalog trigger fired, not that every engineering question is settled. For a
+useful question outside that scope, keep the labelled source brief and its next recipient.
 
 ## Optional platform and graph outputs
 

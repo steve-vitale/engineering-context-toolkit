@@ -11,7 +11,13 @@ export keeps those roles and represents `FT-04 -> FIC-04 -> FV-04` with controls
 placement remains unresolved. These are source interpretations requiring review, with unverified status;
 they establish neither operational plant truth nor independently confirmed physical signal direction.
 
-Run from the repository root, Python 3.10+, standard library only:
+For the next engineering step, use the [question-to-partial-answer handoff](question-handoff/README.md).
+It keeps the known valve/controller identities and unknown placement visible, then retains history as source
+notes or model qualifications change. Substitute your reviewed supported records and existing-company source
+home; the supplied answer and actors are fictional. Screening eligibility does not make this partial model a
+complete platform-generator input or verify an installed signal.
+
+Run this graph-only fixture check from the repository root, Python 3.10+, standard library only:
 
 ```sh
 python examples/graph-export/unplaced-dexpi/check_packet.py --check

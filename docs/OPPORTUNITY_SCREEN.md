@@ -267,10 +267,37 @@ curve"), and a cooling water outlet temperature is not offered as the supply tem
 list row from an explicitly selected `--io-list` source describes it as synthetic is labelled SYNTHETIC, not plant data. Placeholder tags
 (`FCV XXX`) are marked as placeholders in the evidence.
 
+## Known records with unresolved placement
+
+Supported Native records can retain a known instrument, final element or controller even when no owning
+equipment is supplied. The [unplaced-role handoff](../examples/graph-export/unplaced-dexpi/question-handoff/README.md)
+starts with the retained public I04 interpretation, asks C3, records a fictional partial answer and reopens it
+after separate source and model-qualifier revisions. Use the same steps with your reviewed records and named
+recipient. The example is exposed software evidence, not a new plant or a person's engineering approval.
+
+Exact graph IDs govern the new Native references: `FV-04` and `FV_04` remain different. Source role/class,
+unknown placement, assigned/fallback tag basis and recorded controller endpoints travel with the question.
+A command or assigned flow identifier does not establish measured valve travel or an installed operating tag.
+Unknown/manual roles do not become control valves from valve-like spelling; incompatible, missing or
+ambiguous references refuse before reports are replaced. Quiet output does not settle every engineering question.
+
+On this Native unresolved-placement route, a `--loops` CSV can supply additional qualified controllers.
+Every nonempty measurement/output must
+name an exact compatible active identity; empty endpoints remain unknown and rejection is not resurrected.
+New CSV controllers are not nodes of the selected source model: author and review their identities and
+relationships in that model before graph/context handoff. Do not fabricate graph nodes or equipment ownership.
+
+Keep the complete model/source evidence and matching graph/context sidecar together. Currentness means
+evidence matches, not approval. Non-rejected status changes inside an already-present review envelope alone
+are bookkeeping; its attribution/notes, explicit rejection and literal source or Native record status remain
+evidence. See [context freshness](CONTEXT_REGISTER.md) for the distinction. This route changes neither drawing
+accuracy criteria nor the separate platform generator/import requirements.
+
 ## Inputs
 
-- `--model`: a hand-built process model (`data/te_process_model.json`, `data/bayer_rt/process_model.json`, or one
-  from `generate.py`) or an extracted twin (`plant_model.json` from `import_site_drawing.py` or `build_twin.py`).
+- `--model`: a supported process-model JSON authored from records or read from DEXPI (for example
+  `data/bayer_rt/process_model.json`), or an extracted twin (`plant_model.json` from `import_site_drawing.py`
+  or `build_twin.py`). `generate.py` consumes these models; it is not a graph-to-model converter.
 - `--loops`: a loop list CSV in the `loop_audit.py` format (`controller,measurement,output[,description]`). An
   extracted drawing has no controllers, so without this the controller questions (C2, C6) are reported as
   "not checked".
@@ -284,9 +311,10 @@ list row from an explicitly selected `--io-list` source describes it as syntheti
   duplicate JSON object keys and nonfinite JSON numbers also refuse.
 - `--question ID` (repeatable): run only these questions.
 
-A missing, empty or malformed file, a model with no units or instruments, a loop list without the
-`controller,measurement,output` columns, or a schedule without `sheets` is refused with a message saying which file
-and why (exit code 2), never a traceback or an empty "found nothing" screen.
+Missing, empty or malformed inputs and unsupported model shapes refuse with a file/reason message (exit 2).
+Supported Native controller/unplaced record shapes can be screened without inventing units or instruments;
+known source roles determine whether a question applies. A valid quiet model is distinct from an input refusal.
+Loop lists still require `controller,measurement,output`, and schedules require `sheets`.
 
 Distinct nonempty service descriptions for the same sheet/tag now refuse. Input order never selects the
 governing description. An engineer can reconcile the sources first, or supply an explicit `service_resolution`

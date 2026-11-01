@@ -3665,5 +3665,388 @@ class ValveFeedbackBasis(unittest.TestCase):
                     self.assertEqual(gx.problems(result), [])
             self.assertEqual(question_path.read_bytes(), before)
 
+class NativeUnplacedQuestionHandoff(unittest.TestCase):
+    """Seen reader interpretations and fictional controls; no operating or human-usefulness acceptance."""
+
+    def fixture(self, name):
+        base = Path(globals().get("N114_DATA", ROOT / "examples/graph-export/unplaced-dexpi/question-handoff/expected"))
+        return base / name
+
+    def data(self, name):
+        return json.loads(self.fixture(name).read_bytes())
+
+    def equal_json(self, actual, expected):
+        # Python nested equality alone would equate false/0 and integer/float values.
+        self.assertEqual(json.dumps(actual, ensure_ascii=True, sort_keys=True, allow_nan=False),
+                         json.dumps(expected, ensure_ascii=True, sort_keys=True, allow_nan=False))
+
+    def patched(self, value, operations):
+        result = copy.deepcopy(value)
+        def location(pointer):
+            parts = [part.replace("~1", "/").replace("~0", "~") for part in pointer.split("/")[1:]]
+            parent = result
+            for part in parts[:-1]:
+                parent = parent[int(part)] if isinstance(parent, list) else parent[part]
+            return parent, parts[-1]
+        for operation in operations:
+            parent, key = location(operation["path"])
+            if operation["op"] == "copy":
+                source, source_key = location(operation["from"])
+                incoming = copy.deepcopy(source[int(source_key)] if isinstance(source, list) else source[source_key])
+            else:
+                incoming = copy.deepcopy(operation.get("value"))
+            if operation["op"] == "test":
+                self.equal_json(parent[int(key)] if isinstance(parent, list) else parent[key], incoming)
+            elif operation["op"] == "remove":
+                if isinstance(parent, list):
+                    del parent[int(key)]
+                else:
+                    del parent[key]
+            elif isinstance(parent, list):
+                if key == "-":
+                    parent.append(incoming)
+                elif operation["op"] in ("add", "copy"):
+                    parent.insert(int(key), incoming)
+                else:
+                    parent[int(key)] = incoming
+            else:
+                parent[key] = incoming
+        return result
+
+    def case(self, case_id):
+        import hashlib
+        documents = (self.data("core-controls.json"), self.data("supplement-controls.json"), self.data("L4-controls.json"))
+        for document in documents:
+            for case in document["cases"]:
+                if case["id"] != case_id:
+                    continue
+                if "raw_model_utf8" in case:
+                    return case["raw_model_utf8"].encode("utf-8")
+                base_id = case.get("base", "i04")
+                base = documents[0]["base_models"][base_id]
+                raw = (ROOT / base["path"]).read_bytes()
+                self.assertEqual(hashlib.sha256(raw).hexdigest(), base["sha256_raw"])
+                model = self.patched(json.loads(raw), case.get("patch", []))
+                if document is documents[0] and case.get("authored"):
+                    model["meta"]["authored_control"] = {"case_id": case_id,
+                        "basis": "FICTIONAL N114 SOFTWARE CONTROL; original XML does not assert these changes"}
+                return model
+        self.fail("Unknown frozen control " + case_id)
+
+    def screen_case(self, folder, model, loops=None, expected=0):
+        folder.mkdir(parents=True, exist_ok=True)
+        path, out = folder / "model.json", folder / "screen"
+        if isinstance(model, bytes):
+            path.write_bytes(model)
+        else:
+            path.write_text(json.dumps(model, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+        argv = ["--model", str(path), "--catalog", str(globals().get("N114_CATALOG", ROOT / "data/questions.json")),
+                "--question", "C3", "--out", str(out)]
+        if loops is not None:
+            loop_path = folder / "loops.csv"
+            loop_path.write_text(loops, encoding="utf-8", newline="\n")
+            argv += ["--loops", str(loop_path)]
+        if expected:
+            out.mkdir(exist_ok=True)
+            for name in ("questions.json", "screen.md"):
+                (out / name).write_bytes(b"retained sentinel\n")
+            before = {p.name: p.read_bytes() for p in out.iterdir()}
+        stdout, stderr = io.StringIO(), io.StringIO()
+        with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+            result = qe.main(argv)
+        self.assertEqual(result, expected, stderr.getvalue())
+        if expected:
+            self.assertEqual({p.name: p.read_bytes() for p in out.iterdir()}, before)
+            return stderr.getvalue()
+        self.assertEqual(stderr.getvalue(), "")
+        return path, out, json.loads((out / "questions.json").read_bytes()), (out / "screen.md").read_text(encoding="utf-8")
+
+    def anchors(self, document):
+        return {record["id"] for question in document["questions"] for record in question["evidence"]
+                if record.get("role") == "trigger"}
+
+    def context_rows(self, document, identity):
+        return [record["provenance"] for question in document["questions"] for record in question["evidence"]
+                if record.get("id") == identity and isinstance(record.get("provenance"), dict)]
+
+    def readable_rows(self, document, markdown):
+        decoded = []
+        for match in re.finditer(r'`+(?=")', markdown):
+            try:
+                value, _ = json.JSONDecoder().raw_decode(markdown[match.end():])
+            except ValueError:
+                continue
+            if isinstance(value, str):
+                decoded.append(value)
+        for question in document["questions"]:
+            for record in question["evidence"]:
+                if record.get("provenance"):
+                    self.assertIn(record["text"], decoded)
+
+    def test_partial_roles_unknown_placement_and_original_source_qualifiers(self):
+        expectations = {case["id"]: case for case in self.data("core-expected.json")["cases"]}
+        expectations["L4-class-qualified-local-identifier"] = self.data("L4-expected.json")
+        selected = ["U00-i04-original", "U01-i01-original", "U02-controller-only", "U03-unplaced-only",
+                    "U04-unknown-role", "U05-rejected-valve", "U11-utility-does-not-own", "L4-class-qualified-local-identifier"]
+        with tempfile.TemporaryDirectory() as tmp:
+            for number, case_id in enumerate(selected):
+                with self.subTest(case=case_id):
+                    source = self.case(case_id)
+                    path, out, document, markdown = self.screen_case(Path(tmp) / str(number), source)
+                    expected = expectations[case_id]
+                    required = expected.get("required_valve_anchors", expected.get("required_C3_anchors", []))
+                    self.assertEqual(self.anchors(document), set(required))
+                    self.assertEqual([q["id"] for q in document["questions"]], ["C3@model"] if required else [])
+                    self.readable_rows(document, markdown)
+                    for identity in required:
+                        contexts = self.context_rows(document, identity)
+                        self.assertTrue(contexts)
+                        original = next(row for row in source["unplaced"] if row["tag"] == identity)
+                        for context in contexts:
+                            for field in ("tag", "kind", "unit", "source", "dexpi_id", "dexpi_class", "tag_basis",
+                                          "assigned_tag", "unit_basis", "unplaced_reason", "variable"):
+                                if field in original:
+                                    self.assertIn(field, context["record_fields"])
+                                    self.equal_json(context["record_fields"][field], original[field])
+                            self.assertIn("unknown", context["placement"])
+                            self.assertIsNone(context["record_fields"].get("unit"))
+                        self.assertNotIn("at T100", markdown)
+                    if case_id == "U00-i04-original":
+                        controller = self.context_rows(document, "FIC-04")
+                        self.assertTrue(controller)
+                        endpoint = next(row for row in controller[0]["endpoint_context"] if row["id"] == "FT-04")
+                        self.assertIs(endpoint["record_fields"]["assigned_tag"], True)
+                        self.assertEqual(endpoint["record_fields"]["variable"], "flow")
+                        self.assertIn("ASSIGNED here", endpoint["record_fields"]["tag_basis"])
+                        self.assertIn("not measured valve travel", markdown)
+                    if case_id.startswith("L4"):
+                        valve_row = next(e for q in document["questions"] for e in q["evidence"]
+                                         if e["id"] == "local-item-alpha" and e.get("role") == "trigger")
+                        self.assertNotIn("reader-assigned", valve_row["text"])
+                        self.assertNotIn("assigned by the reader", valve_row["text"])
+                    if case_id == "U05-rejected-valve":
+                        self.assertIn("FV-04", json.dumps(document["review_exclusions"]))
+
+    def test_exact_reference_scope_lists_graphs_and_separate_loop_controls(self):
+        core = {case["id"]: case for case in self.data("core-expected.json")["cases"]}
+        supplementary = self.data("supplement-expected.json")["cases"]
+        selected = ["U09-foreign-valid-endpoint", "U12-exact-ids-not-aliases", *supplementary]
+        with tempfile.TemporaryDirectory() as tmp:
+            for number, case_id in enumerate(selected):
+                with self.subTest(case=case_id):
+                    source = self.case(case_id)
+                    path, out, document, markdown = self.screen_case(Path(tmp) / str(number), source)
+                    expected = core.get(case_id, supplementary.get(case_id))
+                    required = expected.get("required_valve_anchors", expected.get("required_C3_anchors", []))
+                    self.assertEqual(self.anchors(document), set(required))
+                    contexts = self.context_rows(document, "FIC-04")
+                    self.assertTrue(contexts)
+                    raw = source["controllers"][0]
+                    reference_fields = {key: raw[key] for key in ("measurement", "measurement_unplaced", "output_unplaced", "output") if key in raw}
+                    for context in contexts:
+                        self.equal_json(context["reference_fields"], reference_fields)
+                        commands = expected.get("controller_exact_command_endpoints", {}).get("FIC-04")
+                        if commands is None:
+                            commands = list(expected.get("command_targets_ordered", []))
+                            if "command_targets_by_field" in expected:
+                                commands = [target for targets in expected["command_targets_by_field"].values() for target in targets]
+                        self.equal_json(context["active_exact_endpoints"]["outputs"], commands)
+                    graph = gx.build(path, questions=out / "questions.json")
+                    for profile in ("full", "core"):
+                        result = gx.apply_profile(graph, profile)
+                        self.assertEqual(gx.problems(result), [])
+                        self.equal_json(result["questions"], document["questions"])
+                        graph_ids = {node["id"] for node in result["nodes"]}
+                        for question in result["questions"]:
+                            self.assertLessEqual({a["id"] for a in question["assets"]}, graph_ids)
+                            self.assertLessEqual({e["id"] for e in question["evidence"]}, graph_ids)
+                    if "controls_edges" in expected:
+                        actual = {(edge["from"], edge["to"]) for edge in graph["edges"] if edge["type"] == "controls"}
+                        self.assertEqual(actual, {tuple(edge) for edge in expected["controls_edges"]})
+                    self.readable_rows(document, markdown)
+            # These are nine exposed loop-supplement controls, not extra source models/plants.
+            loop_cases = {case["id"]: case for case in self.data("loops-controls.json")["cases"]}
+            for case_id in ("NL01-new-exact-controller", "NL02-known-rejected-controller", "NL03-known-rejected-output",
+                            "NL08-active-CSV-controller-cascade", "NL09-empty-endpoints-unknown"):
+                with self.subTest(loop_control=case_id):
+                    case = loop_cases[case_id]
+                    model = self.patched(self.case("U00-i04-original"), case.get("patch", []))
+                    folder = Path(tmp) / case_id
+                    path, out, document, markdown = self.screen_case(folder, model, case["csv"])
+                    if case_id.startswith("NL03"):
+                        self.assertEqual(document["questions"], [])
+                    elif case_id.startswith("NL02"):
+                        self.assertEqual(self.anchors(document), {"FV-04"})
+                        self.assertFalse(self.context_rows(document, "FIC-04"))
+                    else:
+                        parsed = qe.Model(path, loops=folder / "loops.csv")
+                        identities = ["FIC-904"] if case_id.startswith("NL01") else ["FIC-904", "FIC-905"]
+                        for identity in identities:
+                            self.assertIn(identity, parsed.by_id)
+                        if case_id.startswith("NL08"):
+                            self.equal_json(parsed.by_id["FIC-904"]["sets"], ["FIC-905"])
+                            self.assertFalse(qe.related(parsed, parsed.by_id["FV-04"], parsed.by_id["FIC-904"], {"relation": "drives"}))
+                        if case_id.startswith("NL09"):
+                            self.assertFalse(qe.related(parsed, parsed.by_id["FV-04"], parsed.by_id["FIC-904"], {"relation": "drives"}))
+                        candidate = "FIC-904" if case_id.startswith("NL01") else "FIC-905"
+                        contexts = self.context_rows(document, candidate)
+                        self.assertTrue(contexts)
+                        self.assertIn("not a node", contexts[0]["graph_representation"])
+                        self.assertEqual(contexts[0]["loop_record"]["controller"], candidate)
+
+    def test_source_specific_refusals_preserve_both_reports(self):
+        controls = {"U06-duplicate-identity": ("ambiguous", "duplicate"),
+                    "U07-incompatible-endpoint": ("incompatible", "role"),
+                    "U08-missing-endpoint": ("missing",), "U10-malformed-json": ("json",)}
+        with tempfile.TemporaryDirectory() as tmp:
+            for case_id, words in controls.items():
+                with self.subTest(case=case_id):
+                    error = self.screen_case(Path(tmp) / case_id, self.case(case_id), expected=2)
+                    for word in words:
+                        self.assertIn(word, error.casefold())
+            cases = self.data("loops-controls.json")["cases"]
+            for case in cases:
+                case_id = case["id"]
+                if not case_id.startswith(("NL04", "NL05", "NL06", "NL07")):
+                    continue
+                with self.subTest(loop_control=case_id):
+                    base = "U09-foreign-valid-endpoint" if case_id.startswith("NL05") else "U00-i04-original"
+                    source = self.patched(self.case(base), case.get("patch", []))
+                    error = self.screen_case(Path(tmp) / case_id, source, case["csv"], expected=2)
+                    words = (("none", "names a tag") if case_id.startswith("NL04") else
+                             ("conflict", "endpoint") if case_id.startswith("NL05") else
+                             ("FIC-904", "output", "FT-04", "incompatible") if case_id.startswith("NL06") else
+                             ("FIC-904", "output", "FV_04", "missing"))
+                    for word in words:
+                        self.assertIn(word, error)
+
+    def test_partial_answer_source_revision_and_review_qualifier_freshness(self):
+        import csv
+        import context_register as cr
+        from serve_snapshot import Snapshot, InputError as SnapshotInputError
+        def save(path, value):
+            path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+        def context(command, graph, questions, sources, out, register=None, answers=None, expected=0):
+            argv = [command, "--model", str(graph), "--questions", str(questions), "--sources", str(sources), "--out", str(out)]
+            if register: argv += ["--register", str(register)]
+            if answers: argv += ["--answers", str(answers)]
+            stdout, stderr = io.StringIO(), io.StringIO()
+            with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                result = cr.main(argv)
+            self.assertEqual(result, expected, stderr.getvalue())
+            return stderr.getvalue() if expected else json.loads((out / "context.json").read_bytes())
+        def accept(folder, model):
+            path, screen, document, markdown = self.screen_case(folder, model)
+            self.assertEqual([q["id"] for q in document["questions"]], ["C3@model"])
+            graph = folder / "full.graph.json"
+            save(graph, gx.build(path, questions=screen / "questions.json"))
+            prepared, accepted = folder / "prepared", folder / "accepted"
+            sources = self.fixture("r1/sources.json")
+            context("prepare", graph, screen / "questions.json", sources, prepared)
+            with (prepared / "evidence_choices.csv").open(encoding="utf-8", newline="") as stream:
+                choices = list(csv.DictReader(stream))
+            choice = next(row for row in choices if (row["question_id"], row["source_id"], row["locator_id"]) ==
+                          ("C3@model", "N114-FICTIONAL-NOTE", "command-limits"))
+            fields = self.data("answer-fields.json")["fields"]
+            row = {name: "" for name in cr.COLUMNS}
+            row.update(fields, evidence_fingerprint=choice["evidence_fingerprint"])
+            answers = folder / "filled.csv"
+            answers.write_text(cr.csv_text(cr.COLUMNS, [row]), encoding="utf-8", newline="")
+            register = context("apply", graph, screen / "questions.json", sources, accepted,
+                               prepared / "context.json", answers)
+            self.assertEqual(register["current"]["C3@model"]["state"], "partial")
+            self.assertEqual(len(register["decisions"]), 1)
+            self.assertEqual(len(register["ownership_history"]), 1)
+            self.assertEqual(register["decisions"][0]["plant_truth"], "unknown")
+            return path, screen, graph, accepted, answers, register
+        def assert_readback(folder, expected):
+            snapshot = Snapshot(folder / "enriched_graph.json", folder / "context.json")
+            question = json.loads((folder / "enriched_graph.json").read_bytes())["questions"][0]
+            self.equal_json(snapshot.question("C3@model")["result"], question)
+            self.equal_json(snapshot.context_question("C3@model")["result"]["current"], expected["current"]["C3@model"])
+            history, offset = [], 0
+            while True:
+                page = snapshot.decisions("C3@model", limit=1, offset=offset)["result"]
+                history += page["decisions"]
+                if page["next_offset"] is None: break
+                offset = page["next_offset"]
+            self.equal_json(history, expected["decisions"])
+        def assert_history(current, original):
+            self.equal_json(current["decisions"], original["decisions"])
+            self.equal_json(current["ownership_history"], original["ownership_history"])
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            model = self.case("U00-i04-original")
+            path, screen, graph, accepted, answers, original = accept(base / "main", model)
+            assert_readback(accepted, original)
+            sources = self.fixture("r1/sources.json")
+            source_out = base / "source-refresh"
+            source_result = context("apply", graph, screen / "questions.json", self.fixture("r2/sources.json"),
+                                    source_out, accepted / "context.json")
+            self.assertEqual(source_result["current"]["C3@model"]["state"], "unanswered")
+            self.assertEqual(source_result["current"]["C3@model"]["answers"][0]["freshness"], "stale")
+            assert_history(source_result, original)
+            assert_readback(source_out, source_result)
+            refused = base / "refused"
+            refused.mkdir()
+            sentinel = refused / "context.json"
+            sentinel.write_bytes(b"do not replace\n")
+            error = context("apply", graph, screen / "questions.json", self.fixture("r2/sources.json"), refused,
+                            accepted / "context.json", answers, expected=2)
+            self.assertIn("evidence_fingerprint", error)
+            self.assertEqual(sentinel.read_bytes(), b"do not replace\n")
+            with self.assertRaisesRegex(SnapshotInputError, "Invalid selected context"):
+                Snapshot(source_out / "enriched_graph.json", accepted / "context.json")
+            changed = self.patched(model, self.data("model-qualifier-revision.json")["patch"])
+            _, _, revised, _ = self.screen_case(base / "main", changed)
+            changed_graph = base / "changed.graph.json"
+            save(changed_graph, gx.build(path, questions=screen / "questions.json"))
+            changed_out = base / "model-refresh"
+            changed_result = context("apply", changed_graph, screen / "questions.json", sources, changed_out, accepted / "context.json")
+            self.assertEqual(changed_result["current"]["C3@model"]["state"], "unanswered")
+            assert_history(changed_result, original)
+            assert_readback(changed_out, changed_result)
+            # Status-only requires an already-present review envelope; dictionary addition is not this control.
+            for identity in ("FV-04", "FT-04"):
+                for envelope in ("ops_review", "verification", "topology_verification"):
+                    with self.subTest(identity=identity, envelope=envelope):
+                        seed = copy.deepcopy(model)
+                        record = next(row for row in seed["unplaced"] if row["tag"] == identity)
+                        record[envelope] = self.data("review-envelope.json")
+                        folder = base / (identity + "-" + envelope)
+                        p, s, g, a, _, old = accept(folder, seed)
+                        record[envelope]["status"] = "confirmed"
+                        self.screen_case(folder, seed)
+                        save(g, gx.build(p, questions=s / "questions.json"))
+                        refreshed = folder / "status-refreshed"
+                        result = context("apply", g, s / "questions.json", sources, refreshed, a / "context.json")
+                        self.assertEqual(result["current"]["C3@model"]["state"], "partial")
+                        self.assertEqual(result["current"]["C3@model"]["answers"][0]["freshness"], "current")
+                        assert_history(result, old)
+                        assert_readback(refreshed, result)
+            # Notes remain evidence. This is deliberately not a global stripping of review records.
+            seed = copy.deepcopy(model)
+            seed["unplaced"][0]["ops_review"] = self.data("review-envelope.json")
+            folder = base / "changed-note"
+            p, s, g, a, _, old = accept(folder, seed)
+            seed["unplaced"][0]["ops_review"]["notes"] += " AUTHORED source caveat changed."
+            self.screen_case(folder, seed)
+            save(g, gx.build(p, questions=s / "questions.json"))
+            result = context("apply", g, s / "questions.json", sources, folder / "refreshed", a / "context.json")
+            self.assertEqual(result["current"]["C3@model"]["state"], "unanswered")
+            assert_history(result, old)
+            # Native top-level status is a literal claim.value, not merely an exported status envelope.
+            seed = copy.deepcopy(model)
+            seed["unplaced"][0]["status"] = "unverified"
+            folder = base / "literal-record-status"
+            p, s, g, a, _, old = accept(folder, seed)
+            seed["unplaced"][0]["status"] = "confirmed"
+            self.screen_case(folder, seed)
+            save(g, gx.build(p, questions=s / "questions.json"))
+            result = context("apply", g, s / "questions.json", sources, folder / "refreshed", a / "context.json")
+            self.assertEqual(result["current"]["C3@model"]["state"], "unanswered")
+            assert_history(result, old)
+
+
 if __name__ == "__main__":
     unittest.main()

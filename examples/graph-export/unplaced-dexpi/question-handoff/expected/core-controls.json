@@ -1,0 +1,300 @@
+{
+  "schema": "n114-prospective-input-controls-1",
+  "evidence_class": "existing-public-interpretations-and-explicitly-authored-development-controls",
+  "status": "INPUT PROPOSAL; independent source/behavior expectations not yet frozen. No product calls.",
+  "base_models": {
+    "i04": {
+      "path": "examples/graph-export/unplaced-dexpi/i04.model.json",
+      "sha256_raw": "d45563c5804f465ac8fb557c4180cc9eca5577cce5d5a2074078fde357962746"
+    },
+    "i01": {
+      "path": "examples/graph-export/unplaced-dexpi/i01.model.json",
+      "sha256_raw": "4c7820115e4c3a08df900154565a8db54a72684b302e645407cf1f6881dbd28f"
+    }
+  },
+  "materialization": "Clone the exact named base, apply ordered RFC6902 add/replace/remove/copy operations. Authored variants are software controls, not new XML interpretations. No source reconstruction or guessed equipment. U10 uses the exact UTF-8 text instead of JSON serialization.",
+  "authored_variant_qualification": "For every authored valid-model variant, retain its sidecar case id and patch history; attach meta.authored_control={case_id:<id>,basis:\"FICTIONAL N114 SOFTWARE CONTROL; original XML does not assert these changes\"}. This note adds no source authority or plant identity.",
+  "cases": [
+    {
+      "id": "U00-i04-original",
+      "base": "i04",
+      "authored": false,
+      "patch": [],
+      "job_under_test": "Known unplaced FV-04 and FT-04, recorded FIC-04 logical endpoint chain, no owning equipment."
+    },
+    {
+      "id": "U01-i01-original",
+      "base": "i01",
+      "authored": false,
+      "patch": [],
+      "job_under_test": "Real existing tank does not locate unrelated XMP_6; its instrument role and unknown variable remain distinct."
+    },
+    {
+      "id": "U02-controller-only",
+      "base": "i04",
+      "authored": true,
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/streams",
+          "value": []
+        },
+        {
+          "op": "replace",
+          "path": "/unplaced",
+          "value": []
+        },
+        {
+          "op": "remove",
+          "path": "/controllers/0/measurement_unplaced"
+        },
+        {
+          "op": "remove",
+          "path": "/controllers/0/output_unplaced"
+        }
+      ],
+      "job_under_test": "A recognized controller-only Native shape, with endpoint references explicitly withdrawn, is different from malformed JSON or a valve."
+    },
+    {
+      "id": "U03-unplaced-only",
+      "base": "i04",
+      "authored": true,
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/controllers",
+          "value": []
+        },
+        {
+          "op": "remove",
+          "path": "/unplaced/1/part_of"
+        }
+      ],
+      "job_under_test": "Known unplaced instrument/final-element roles and stream context without a controller; no guessed equipment or command."
+    },
+    {
+      "id": "U04-unknown-role",
+      "base": "i04",
+      "authored": true,
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/unplaced/0/kind",
+          "value": "unknown_control_role"
+        },
+        {
+          "op": "remove",
+          "path": "/controllers/0/output_unplaced"
+        }
+      ],
+      "job_under_test": "The FV-looking tag/class/text must not override an explicit unknown role. Incompatible controller output is deliberately removed, not hidden."
+    },
+    {
+      "id": "U05-rejected-valve",
+      "base": "i04",
+      "authored": true,
+      "patch": [
+        {
+          "op": "add",
+          "path": "/unplaced/0/ops_review",
+          "value": {
+            "status": "rejected",
+            "by": "fictional-control-reviewer",
+            "on": "2026-11-01",
+            "notes": "AUTHORED SOFTWARE CONTROL: retain original record, exclude this valve from active screening; no company decision."
+          }
+        }
+      ],
+      "job_under_test": "A retained but rejected valve is not resurrected through controller/loop relations; dangling active drives links are not validated links."
+    },
+    {
+      "id": "U06-duplicate-identity",
+      "base": "i04",
+      "authored": true,
+      "patch": [
+        {
+          "op": "copy",
+          "from": "/unplaced/1",
+          "path": "/instruments/-"
+        }
+      ],
+      "job_under_test": "The exact same FT-04 identity appears in placed and unplaced sections; do not silently choose/merge or double count it."
+    },
+    {
+      "id": "U07-incompatible-endpoint",
+      "base": "i04",
+      "authored": true,
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/controllers/0/output_unplaced",
+          "value": "FT-04"
+        }
+      ],
+      "job_under_test": "An output reference naming an instrument must not turn that instrument into a valve or an accepted actuation link."
+    },
+    {
+      "id": "U08-missing-endpoint",
+      "base": "i04",
+      "authored": true,
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/controllers/0/output_unplaced",
+          "value": "FV-MISSING"
+        }
+      ],
+      "job_under_test": "Missing endpoint is malformed retained association, distinct from a valid controller targeting another known valve."
+    },
+    {
+      "id": "U09-foreign-valid-endpoint",
+      "base": "i04",
+      "authored": true,
+      "patch": [
+        {
+          "op": "add",
+          "path": "/unplaced/-",
+          "value": {
+            "tag": "FV-99",
+            "kind": "final_element",
+            "unit": null,
+            "dexpi_class": "GlobeValve",
+            "dexpi_id": "AUTHORED-VALVE-99",
+            "description": "FICTIONAL separate control valve for endpoint-scope control; not in the source XML.",
+            "source": "AUTHORED N114 SOFTWARE CONTROL: distinct valve endpoint, not an original XML claim.",
+            "tag_basis": "Authored control label; no operating-tag verification.",
+            "unit_basis": "Authored control deliberately leaves the owning equipment unknown.",
+            "unplaced_reason": "AUTHORED CONTROL: no owning equipment supplied."
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/controllers/0/output_unplaced",
+          "value": "FV-99"
+        },
+        {
+          "op": "replace",
+          "path": "/controllers/0/source",
+          "value": "AUTHORED N114 SOFTWARE CONTROL: original controller record reused with a fictional redirected output; this relationship is not asserted by the XML."
+        }
+      ],
+      "job_under_test": "Both known valves may be grouped as C3 anchors, but FIC-04 command context belongs only to its explicitly supplied target FV-99, not FV-04."
+    },
+    {
+      "id": "U10-malformed-json",
+      "base": null,
+      "authored": true,
+      "raw_model_utf8": "{\"units\":[",
+      "job_under_test": "JSON parse failure stays an input refusal, distinct from a recognized controller/unplaced-only Native record shape."
+    },
+    {
+      "id": "U11-utility-does-not-own",
+      "base": "i01",
+      "authored": true,
+      "patch": [
+        {
+          "op": "add",
+          "path": "/streams/0/utility",
+          "value": true
+        },
+        {
+          "op": "add",
+          "path": "/unplaced/-",
+          "value": {
+            "tag": "FV-04",
+            "unit": null,
+            "description": "Globe valve operated by actuating system FV-04",
+            "dexpi_class": "GlobeValve",
+            "dexpi_id": "GlobeValve-1",
+            "tag_basis": "PipingComponentNumberAssignmentClass of the operated valve",
+            "unit_basis": "no unit reachable through the piping from GlobeValve-1",
+            "source": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem) | AUTHORED N114 SOFTWARE CONTROL: joined to I01 stream XMP_23 only for a no-inferred-ownership control; neither original XML asserts this join.",
+            "stream": "XMP_23",
+            "PipingComponentNumberAssignmentClass": {
+              "value": "FV 04",
+              "source": "DEXPI XML GlobeValve-1 GenericAttribute PipingComponentNumberAssignmentClass"
+            },
+            "ActuatingSystem-1:dexpi_class": {
+              "value": "ActuatingSystem",
+              "source": "DEXPI XML ActuatingSystem-1 <ActuatingSystem>"
+            },
+            "ActuatingSystem-1:NormalStateRepresentation": {
+              "value": "NC",
+              "attribute_set": "DexpiCustomAttributes",
+              "source": "DEXPI XML ActuatingSystem-1 GenericAttribute NormalStateRepresentation"
+            },
+            "ControlledActuator-1:dexpi_class": {
+              "value": "ControlledActuator",
+              "source": "DEXPI XML ControlledActuator-1 <ActuatingSystemComponent>"
+            },
+            "ControlledActuator-1:DeviceTypeNameAssignmentClass": {
+              "value": "Spring-diaphragm",
+              "source": "DEXPI XML ControlledActuator-1 GenericAttribute DeviceTypeNameAssignmentClass"
+            },
+            "OperatedValveReference-1:dexpi_class": {
+              "value": "OperatedValveReference",
+              "source": "DEXPI XML OperatedValveReference-1 <ActuatingSystemComponent>"
+            },
+            "ActuatingFunction-1:dexpi_class": {
+              "value": "ActuatingFunction",
+              "source": "DEXPI XML ActuatingFunction-1 <ActuatingFunction>"
+            },
+            "unplaced_reason": "final_elements need a unit; no unit reachable through the piping from GlobeValve-1",
+            "kind": "final_element"
+          }
+        }
+      ],
+      "job_under_test": "The existing real source-record unit T100 supplies utility-stream context, but appended FV-04 retains explicit unit:null/unit_basis. No inferred ownership through a shared utility stream. This joined packet is an authored control, not either XML interpretation."
+    },
+    {
+      "id": "U12-exact-ids-not-aliases",
+      "base": "i04",
+      "authored": true,
+      "patch": [
+        {
+          "op": "add",
+          "path": "/unplaced/-",
+          "value": {
+            "tag": "FV_04",
+            "kind": "final_element",
+            "unit": null,
+            "dexpi_class": "GlobeValve",
+            "dexpi_id": "AUTHORED-VALVE-UNDERSCORE-04",
+            "description": "FICTIONAL distinct exact valve identity FV_04; not FV-04 and not in the original XML.",
+            "source": "AUTHORED N114 SOFTWARE CONTROL: FV_04 is a distinct supplied identity; no normalized-tag alias or operating-tag verification is asserted.",
+            "tag_basis": "Authored control label; no operating-tag verification.",
+            "unit_basis": "Authored control deliberately leaves the owning equipment unknown.",
+            "unplaced_reason": "AUTHORED CONTROL: no owning equipment supplied."
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/controllers/0/output_unplaced",
+          "value": "FV_04"
+        },
+        {
+          "op": "replace",
+          "path": "/controllers/0/source",
+          "value": "AUTHORED N114 SOFTWARE CONTROL: original controller reused with exact output target FV_04 only; this relationship is not asserted by the XML."
+        }
+      ],
+      "job_under_test": "FV-04 and FV_04 are distinct exact identities. Both may be valve anchors, but FIC-04 command belongs only to FV_04; normalization must not lend it to FV-04."
+    }
+  ],
+  "pending_independent_expected_states": true,
+  "preserve": [
+    "All unmodified original values/types/citations and ordered records",
+    "unit:null and placement reasons",
+    "FT-04 assigned_tag:true and original tag_basis",
+    "Controller command is not measured travel",
+    "No invented equipment to satisfy admission",
+    "Unknown-role tag text is not role authority"
+  ],
+  "outside_scope": [
+    "No changed matrix criterion or score",
+    "No new XML conversion or original-source download",
+    "No C3 catalog or benefit-policy change",
+    "No feedback-hardware or maintenance recommendation from absence alone",
+    "No physical signal/owner verification"
+  ]
+}

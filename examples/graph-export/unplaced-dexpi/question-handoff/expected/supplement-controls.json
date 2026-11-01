@@ -1,0 +1,187 @@
+{
+  "schema": "n114-supplementary-inputs-1",
+  "evidence_class": "authored-exposed-software-controls",
+  "base": {
+    "id": "i04",
+    "path": "examples/graph-export/unplaced-dexpi/i04.model.json",
+    "sha256_raw": "d45563c5804f465ac8fb557c4180cc9eca5577cce5d5a2074078fde357962746"
+  },
+  "materialization": "Apply ordered RFC6902 add/replace operations to an in-memory deep copy of exact base. Do not run a toolkit converter or alter original source/model. Freeze actual materialized bytes/recipes separately before product calls.",
+  "cases": [
+    {
+      "id": "L1-list-reference-shape",
+      "base": "i04",
+      "authored": true,
+      "patch": [
+        {
+          "op": "add",
+          "path": "/meta/authored_control",
+          "value": "AUTHORED N114 SOFTWARE CONTROL L1-list-reference-shape: Represent the same known logical targets using single-element lists. Original cached XML/base model remains unchanged; these changes are not upstream or plant observations."
+        },
+        {
+          "op": "replace",
+          "path": "/controllers/0/measurement_unplaced",
+          "value": [
+            "FT-04"
+          ]
+        },
+        {
+          "op": "replace",
+          "path": "/controllers/0/output_unplaced",
+          "value": [
+            "FV-04"
+          ]
+        },
+        {
+          "op": "replace",
+          "path": "/controllers/0/source",
+          "value": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction) | AUTHORED N114 SOFTWARE CONTROL L1-list-reference-shape: Represent the same known logical targets using single-element lists. Original cached XML/base model remains unchanged; these changes are not upstream or plant observations."
+        }
+      ],
+      "qualification": "AUTHORED N114 SOFTWARE CONTROL L1-list-reference-shape: Represent the same known logical targets using single-element lists. Original cached XML/base model remains unchanged; these changes are not upstream or plant observations."
+    },
+    {
+      "id": "L2-coexisting-controller-fields",
+      "base": "i04",
+      "authored": true,
+      "patch": [
+        {
+          "op": "add",
+          "path": "/meta/authored_control",
+          "value": "AUTHORED N114 SOFTWARE CONTROL L2-coexisting-controller-fields: Ordinary and *_unplaced fields name different compatible endpoints; neither source field replaces the other. Original cached XML/base model remains unchanged; these changes are not upstream or plant observations."
+        },
+        {
+          "op": "add",
+          "path": "/unplaced/-",
+          "value": {
+            "tag": "FT-904",
+            "kind": "instrument",
+            "unit": null,
+            "dexpi_id": "AUTHORED-N114-L2-MEAS-904",
+            "dexpi_class": "ProcessSignalGeneratingFunction",
+            "description": "FICTIONAL N114 supplementary instrument FT-904",
+            "source": "AUTHORED N114 SOFTWARE CONTROL: FT-904 is a supplied fictional role/identity, not an original XML item or installed operating tag.",
+            "tag_basis": "Authored control label; operating-tag verification remains unknown.",
+            "assigned_tag": true,
+            "unit_basis": "AUTHORED CONTROL: owning equipment is explicitly unknown.",
+            "unplaced_reason": "AUTHORED CONTROL: no owning equipment is supplied.",
+            "variable": "flow"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/unplaced/-",
+          "value": {
+            "tag": "FV-904",
+            "kind": "final_element",
+            "unit": null,
+            "dexpi_id": "AUTHORED-N114-L2-FINAL-904",
+            "dexpi_class": "GlobeValve",
+            "description": "FICTIONAL N114 supplementary final_element FV-904",
+            "source": "AUTHORED N114 SOFTWARE CONTROL: FV-904 is a supplied fictional role/identity, not an original XML item or installed operating tag.",
+            "tag_basis": "Authored control label; operating-tag verification remains unknown.",
+            "assigned_tag": true,
+            "unit_basis": "AUTHORED CONTROL: owning equipment is explicitly unknown.",
+            "unplaced_reason": "AUTHORED CONTROL: no owning equipment is supplied."
+          }
+        },
+        {
+          "op": "add",
+          "path": "/controllers/0/measurement",
+          "value": "FT-04"
+        },
+        {
+          "op": "replace",
+          "path": "/controllers/0/output",
+          "value": {
+            "final_element": "FV-04"
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/controllers/0/measurement_unplaced",
+          "value": [
+            "FT-904"
+          ]
+        },
+        {
+          "op": "replace",
+          "path": "/controllers/0/output_unplaced",
+          "value": [
+            "FV-904"
+          ]
+        },
+        {
+          "op": "replace",
+          "path": "/controllers/0/source",
+          "value": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction) | AUTHORED N114 SOFTWARE CONTROL L2-coexisting-controller-fields: Ordinary and *_unplaced fields name different compatible endpoints; neither source field replaces the other. Original cached XML/base model remains unchanged; these changes are not upstream or plant observations."
+        }
+      ],
+      "qualification": "AUTHORED N114 SOFTWARE CONTROL L2-coexisting-controller-fields: Ordinary and *_unplaced fields name different compatible endpoints; neither source field replaces the other. Original cached XML/base model remains unchanged; these changes are not upstream or plant observations."
+    },
+    {
+      "id": "L3-exact-measurement-identity",
+      "base": "i04",
+      "authored": true,
+      "patch": [
+        {
+          "op": "add",
+          "path": "/meta/authored_control",
+          "value": "AUTHORED N114 SOFTWARE CONTROL L3-exact-measurement-identity: Ordered measured endpoints FT_04 and FT-905 exclude the distinct original FT-04; no normalized-ID reads alias. Original cached XML/base model remains unchanged; these changes are not upstream or plant observations."
+        },
+        {
+          "op": "add",
+          "path": "/unplaced/-",
+          "value": {
+            "tag": "FT_04",
+            "kind": "instrument",
+            "unit": null,
+            "dexpi_id": "AUTHORED-N114-L3-MEAS-UNDERSCORE-04",
+            "dexpi_class": "ProcessSignalGeneratingFunction",
+            "description": "FICTIONAL N114 supplementary instrument FT_04",
+            "source": "AUTHORED N114 SOFTWARE CONTROL: FT_04 is a supplied fictional role/identity, not an original XML item or installed operating tag.",
+            "tag_basis": "Authored control label; operating-tag verification remains unknown.",
+            "assigned_tag": true,
+            "unit_basis": "AUTHORED CONTROL: owning equipment is explicitly unknown.",
+            "unplaced_reason": "AUTHORED CONTROL: no owning equipment is supplied.",
+            "variable": "flow"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/unplaced/-",
+          "value": {
+            "tag": "FT-905",
+            "kind": "instrument",
+            "unit": null,
+            "dexpi_id": "AUTHORED-N114-L3-MEAS-905",
+            "dexpi_class": "ProcessSignalGeneratingFunction",
+            "description": "FICTIONAL N114 supplementary instrument FT-905",
+            "source": "AUTHORED N114 SOFTWARE CONTROL: FT-905 is a supplied fictional role/identity, not an original XML item or installed operating tag.",
+            "tag_basis": "Authored control label; operating-tag verification remains unknown.",
+            "assigned_tag": true,
+            "unit_basis": "AUTHORED CONTROL: owning equipment is explicitly unknown.",
+            "unplaced_reason": "AUTHORED CONTROL: no owning equipment is supplied.",
+            "variable": "flow"
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/controllers/0/measurement_unplaced",
+          "value": [
+            "FT_04",
+            "FT-905"
+          ]
+        },
+        {
+          "op": "replace",
+          "path": "/controllers/0/source",
+          "value": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction) | AUTHORED N114 SOFTWARE CONTROL L3-exact-measurement-identity: Ordered measured endpoints FT_04 and FT-905 exclude the distinct original FT-04; no normalized-ID reads alias. Original cached XML/base model remains unchanged; these changes are not upstream or plant observations."
+        }
+      ],
+      "qualification": "AUTHORED N114 SOFTWARE CONTROL L3-exact-measurement-identity: Ordered measured endpoints FT_04 and FT-905 exclude the distinct original FT-04; no normalized-ID reads alias. Original cached XML/base model remains unchanged; these changes are not upstream or plant observations."
+    }
+  ],
+  "not_new_original_sources": true,
+  "calls_authorized_by_this_file": false
+}

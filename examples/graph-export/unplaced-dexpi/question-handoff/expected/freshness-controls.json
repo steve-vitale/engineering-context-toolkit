@@ -1,0 +1,45 @@
+{
+  "schema": "n114-review-status-freshness-2",
+  "status": "Design issue static, not actual product failure. Successor projection requires root design/static gate before actual handoff.",
+  "source_contract": {
+    "docs": "docs/CONTEXT_REGISTER.md:18-22",
+    "semantic": "scripts/context_register.py:76-85",
+    "graph": "scripts/graph_export.py:51-52,99-113,158-181,186-207"
+  },
+  "baseline_handoff": "From exact original I04 source model, screen C3; export full/core graph with exact current question. Prepare one fixed fictional source-manifest claim and one accepted PARTIAL answer for C3@model through standard prepared choices; plant_truth unknown. Source/model labels fixed. Freeze full source/graph/question/register/decision/ownership data before mutation. No guessed answer keys or SDK. Actual API signatures/actor fields/choice must be frozen by operator before calls.",
+  "pair_cases": [
+    {
+      "id": "FS01-Native-top-status-is-material",
+      "mutation": "On FV-04 Native source record change only existing top-level status unverified→confirmed; all other fields identical.",
+      "expected": "Material change: graph_export claims() does not skip top-level Native status; it becomes attribute name=status/value. Affected retained partial answer is stale/unanswered. Keep this source-defined status in question carrier; do not generalize graph-envelope bookkeeping to Native source fields."
+    },
+    {
+      "id": "FS02-ops-review-status-bookkeeping",
+      "mutation": "On FV-04 and separately endpoint FT-04 change only status unverified→confirmed within an already present ops_review, verification or topology_verification review dictionary; every other field including by/on/notes/evidence identical, dictionary presence unchanged. Each envelope is an explicit subcase, not three unspecified simultaneous changes.",
+      "expected": "No re-opening solely through new question evidence/prose provenance; direct-row and controller endpoint projection consistent. Complete history exact."
+    },
+    {
+      "id": "FS03-explicit-rejection",
+      "mutation": "Change only FV-04 ops_review.status from unverified to rejected, same other review fields.",
+      "expected": "No active FV-04 anchor or command resurrection. If C3 has no remaining subjects it retires; retained decisions and ownership history stay exact and prior answer is not represented as current active accepted coverage. Restoration of exact prior evidence may restore currentness; no new review inferred."
+    },
+    {
+      "id": "FS04-actual-source-basis",
+      "mutation": "Change only FV-04 tag_basis or source literal with all review statuses unchanged.",
+      "expected": "Affected retained partial answer stale/unanswered; original source/decision/history retained. Exact source reversion may restore prior currentness, no authority upgrade."
+    },
+    {
+      "id": "FS05-review-content",
+      "mutation": "Change existing ops_review.notes only, status/by/on unchanged; repeat by or on only if making that broader claim.",
+      "expected": "Evidence change remains freshness-relevant: graph.review retains by/on/notes. No blanket removal of review fields. Existing semantics do not promise notes/by/on are benign."
+    },
+    {
+      "id": "FS06-literal-source-status",
+      "mutation": "In an explicitly authored source claim value object {status: draft, source: illustrative}, change status to final; use actual bound graph attribute value, not record-level review status.",
+      "expected": "Stale affected answer. Opaque source-defined status content under provenance/citations/value remains exact evidence. No broad context_register semantic stripping."
+    }
+  ],
+  "static_observation": "v2 native_source_context copies review-envelope status into opaque evidence.provenance and emitted literal prose. For existing review dictionaries differing only in benign status, this can change question semantics while graph status envelopes are bookkeeping. Native top-level status is separately material. No Model/semantic/refresh call executed.",
+  "limits": "Grouping C3 remains one question owner. No per-valve owner, installed verification, physical travel signal, source authority, company home or SDK claim.",
+  "amendment": "Additive pre-call correction to v1 FS01 after reading claims()/SKIP: top-level Native status is source content. Only existing review-envelope status-only changes are benign; no criterion changes to literal source status, by/on/notes, rejection, source or tag basis. Original v1 retained; zero product calls."
+}

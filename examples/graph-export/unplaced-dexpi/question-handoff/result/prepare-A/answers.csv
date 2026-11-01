@@ -1,0 +1,2 @@
+question_id,answer_id,claim_key,value,answer,answer_state,decision,owner,assigned_by,assigned_on,reviewer,reviewed_on,source_id,locator_id,source_match,plant_truth,note,evidence_fingerprint
+C3@model,,,,,needs_data,proposed,needs_owner,,,,,,,unknown,unknown,,

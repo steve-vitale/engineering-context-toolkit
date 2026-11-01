@@ -1,0 +1,1187 @@
+{
+  "schema": "twin-graph-1",
+  "source_model": "examples/graph-export/unplaced-dexpi/question-handoff/result/B-model/model.json",
+  "model_kind": "hand_built",
+  "title": "DEXPI XML I04V01-VER.EX01.xml",
+  "nodes": [
+    {
+      "id": "PLANT",
+      "kind": "plant",
+      "tag": "I04V01-VER.EX01",
+      "name": "DEXPI XML I04V01-VER.EX01.xml",
+      "aliases": [],
+      "status": "unverified",
+      "attributes": [
+        {
+          "name": "attribution",
+          "value": "DEXPI example P&IDs from the DEXPI TrainingTestCases repository (DEXPI initiative and contributing members), CC BY 4.0",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "DEXPI XML file I04V01-VER.EX01.xml, SHA-256 91b301bad8f432feb5dfff46190830a9415c63fd9904485a700f9fda7dfc10b5",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "converted_by",
+          "value": "scripts/dexpi_reader.py (no model; every item cites its XML element ID)",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "DEXPI XML file I04V01-VER.EX01.xml, SHA-256 91b301bad8f432feb5dfff46190830a9415c63fd9904485a700f9fda7dfc10b5",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "dexpi_file.Application",
+          "value": "Dexpi",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "DEXPI XML file I04V01-VER.EX01.xml, SHA-256 91b301bad8f432feb5dfff46190830a9415c63fd9904485a700f9fda7dfc10b5",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "dexpi_file.ApplicationVersion",
+          "value": "1.3.1",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "DEXPI XML file I04V01-VER.EX01.xml, SHA-256 91b301bad8f432feb5dfff46190830a9415c63fd9904485a700f9fda7dfc10b5",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "dexpi_file.Date",
+          "value": "2019-07-08",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "DEXPI XML file I04V01-VER.EX01.xml, SHA-256 91b301bad8f432feb5dfff46190830a9415c63fd9904485a700f9fda7dfc10b5",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "dexpi_file.Discipline",
+          "value": "PID",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "DEXPI XML file I04V01-VER.EX01.xml, SHA-256 91b301bad8f432feb5dfff46190830a9415c63fd9904485a700f9fda7dfc10b5",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "dexpi_file.Is3D",
+          "value": "no",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "DEXPI XML file I04V01-VER.EX01.xml, SHA-256 91b301bad8f432feb5dfff46190830a9415c63fd9904485a700f9fda7dfc10b5",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "dexpi_file.OriginatingSystem",
+          "value": "P&ID Toolbox",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "DEXPI XML file I04V01-VER.EX01.xml, SHA-256 91b301bad8f432feb5dfff46190830a9415c63fd9904485a700f9fda7dfc10b5",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "dexpi_file.OriginatingSystemVendor",
+          "value": "pnb plants & bytes GmbH, Aachen, Germany",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "DEXPI XML file I04V01-VER.EX01.xml, SHA-256 91b301bad8f432feb5dfff46190830a9415c63fd9904485a700f9fda7dfc10b5",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "dexpi_file.OriginatingSystemVersion",
+          "value": "0.9",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "DEXPI XML file I04V01-VER.EX01.xml, SHA-256 91b301bad8f432feb5dfff46190830a9415c63fd9904485a700f9fda7dfc10b5",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "dexpi_file.SchemaVersion",
+          "value": "4.1.1",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "DEXPI XML file I04V01-VER.EX01.xml, SHA-256 91b301bad8f432feb5dfff46190830a9415c63fd9904485a700f9fda7dfc10b5",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "dexpi_file.Time",
+          "value": "03:02:01",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "DEXPI XML file I04V01-VER.EX01.xml, SHA-256 91b301bad8f432feb5dfff46190830a9415c63fd9904485a700f9fda7dfc10b5",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "dexpi_file.Units",
+          "value": "mm",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "DEXPI XML file I04V01-VER.EX01.xml, SHA-256 91b301bad8f432feb5dfff46190830a9415c63fd9904485a700f9fda7dfc10b5",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "model_kind",
+          "value": "dexpi_import",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "DEXPI XML file I04V01-VER.EX01.xml, SHA-256 91b301bad8f432feb5dfff46190830a9415c63fd9904485a700f9fda7dfc10b5",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "not_a_drawing_of_record",
+          "value": "Converted from an exported file. Nothing here is verified by anyone; units of instruments and valves are inferred through the piping (unit_basis).",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "DEXPI XML file I04V01-VER.EX01.xml, SHA-256 91b301bad8f432feb5dfff46190830a9415c63fd9904485a700f9fda7dfc10b5",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "plant_structure",
+          "value": [],
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "DEXPI XML file I04V01-VER.EX01.xml, SHA-256 91b301bad8f432feb5dfff46190830a9415c63fd9904485a700f9fda7dfc10b5",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "source_document",
+          "value": "DEXPI XML file I04V01-VER.EX01.xml, SHA-256 91b301bad8f432feb5dfff46190830a9415c63fd9904485a700f9fda7dfc10b5",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "DEXPI XML file I04V01-VER.EX01.xml, SHA-256 91b301bad8f432feb5dfff46190830a9415c63fd9904485a700f9fda7dfc10b5",
+            "note": "the item cites no source of its own"
+          }
+        }
+      ],
+      "source": {
+        "kind": "model",
+        "document": "DEXPI XML file I04V01-VER.EX01.xml, SHA-256 91b301bad8f432feb5dfff46190830a9415c63fd9904485a700f9fda7dfc10b5",
+        "note": "the item cites no source of its own"
+      }
+    },
+    {
+      "id": "BL",
+      "kind": "boundary",
+      "tag": null,
+      "name": "battery limit",
+      "aliases": [],
+      "status": "confirmed",
+      "attributes": [],
+      "source": {
+        "kind": "model",
+        "document": "DEXPI XML file I04V01-VER.EX01.xml, SHA-256 91b301bad8f432feb5dfff46190830a9415c63fd9904485a700f9fda7dfc10b5",
+        "note": "the item cites no source of its own"
+      }
+    },
+    {
+      "id": "FIC-04",
+      "kind": "controller",
+      "tag": "FIC-04",
+      "name": "FIC-04: flow, indicate, control (central location)",
+      "aliases": [],
+      "status": "unverified",
+      "attributes": [
+        {
+          "name": "InstrumentationLoopFunction-1:InstrumentationLoopFunctionNumberAssignmentClass.value",
+          "value": "04",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML InstrumentationLoopFunction-1 GenericAttribute InstrumentationLoopFunctionNumberAssignmentClass"
+          }
+        },
+        {
+          "name": "InstrumentationLoopFunction-1:dexpi_class.value",
+          "value": "InstrumentationLoopFunction",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML InstrumentationLoopFunction-1 <InstrumentationLoopFunction>"
+          }
+        },
+        {
+          "name": "LocationSpecialization.value",
+          "value": "CentralLocation",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessInstrumentationFunction-1 GenericAttribute LocationSpecialization"
+          }
+        },
+        {
+          "name": "MeasuringLineFunction-1:dexpi_class.value",
+          "value": "MeasuringLineFunction",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML MeasuringLineFunction-1 <InformationFlow>"
+          }
+        },
+        {
+          "name": "ProcessInstrumentationFunctionCategoryAssignmentClass.value",
+          "value": "F",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessInstrumentationFunction-1 GenericAttribute ProcessInstrumentationFunctionCategoryAssignmentClass"
+          }
+        },
+        {
+          "name": "ProcessInstrumentationFunctionNumberAssignmentClass.value",
+          "value": "04",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessInstrumentationFunction-1 GenericAttribute ProcessInstrumentationFunctionNumberAssignmentClass"
+          }
+        },
+        {
+          "name": "ProcessInstrumentationFunctionsAssignmentClass.value",
+          "value": "IC",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessInstrumentationFunction-1 GenericAttribute ProcessInstrumentationFunctionsAssignmentClass"
+          }
+        },
+        {
+          "name": "SignalLineFunction-1:dexpi_class.value",
+          "value": "SignalLineFunction",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML SignalLineFunction-1 <InformationFlow>"
+          }
+        },
+        {
+          "name": "description",
+          "value": "FIC-04: flow, indicate, control (central location)",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+          }
+        },
+        {
+          "name": "dexpi_class",
+          "value": "ProcessInstrumentationFunction",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+          }
+        },
+        {
+          "name": "dexpi_id",
+          "value": "ProcessInstrumentationFunction-1",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+          }
+        },
+        {
+          "name": "measurement_unplaced",
+          "value": "FT-04",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+          }
+        },
+        {
+          "name": "output_unplaced",
+          "value": "FV-04",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+          }
+        },
+        {
+          "name": "tag_basis",
+          "value": "category + functions + number attributes",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+          }
+        }
+      ],
+      "source": {
+        "kind": "document",
+        "document": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+      },
+      "citations": {
+        "source": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+      }
+    },
+    {
+      "id": "FV-04",
+      "kind": "final_element",
+      "tag": "FV-04",
+      "name": "Globe valve operated by actuating system FV-04",
+      "aliases": [],
+      "status": "unverified",
+      "attributes": [
+        {
+          "name": "ActuatingFunction-1:dexpi_class.value",
+          "value": "ActuatingFunction",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ActuatingFunction-1 <ActuatingFunction>"
+          }
+        },
+        {
+          "name": "ActuatingSystem-1:NormalStateRepresentation.attribute_set",
+          "value": "DexpiCustomAttributes",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ActuatingSystem-1 GenericAttribute NormalStateRepresentation"
+          }
+        },
+        {
+          "name": "ActuatingSystem-1:NormalStateRepresentation.value",
+          "value": "NC",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ActuatingSystem-1 GenericAttribute NormalStateRepresentation"
+          }
+        },
+        {
+          "name": "ActuatingSystem-1:dexpi_class.value",
+          "value": "ActuatingSystem",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ActuatingSystem-1 <ActuatingSystem>"
+          }
+        },
+        {
+          "name": "ControlledActuator-1:DeviceTypeNameAssignmentClass.value",
+          "value": "Spring-diaphragm",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ControlledActuator-1 GenericAttribute DeviceTypeNameAssignmentClass"
+          }
+        },
+        {
+          "name": "ControlledActuator-1:dexpi_class.value",
+          "value": "ControlledActuator",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ControlledActuator-1 <ActuatingSystemComponent>"
+          }
+        },
+        {
+          "name": "OperatedValveReference-1:dexpi_class.value",
+          "value": "OperatedValveReference",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML OperatedValveReference-1 <ActuatingSystemComponent>"
+          }
+        },
+        {
+          "name": "PipingComponentNumberAssignmentClass.value",
+          "value": "FV 04",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML GlobeValve-1 GenericAttribute PipingComponentNumberAssignmentClass"
+          }
+        },
+        {
+          "name": "description",
+          "value": "Globe valve operated by actuating system FV-04",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+          }
+        },
+        {
+          "name": "dexpi_class",
+          "value": "GlobeValve",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+          }
+        },
+        {
+          "name": "dexpi_id",
+          "value": "GlobeValve-1",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+          }
+        },
+        {
+          "name": "kind",
+          "value": "final_element",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+          }
+        },
+        {
+          "name": "stream",
+          "value": "PipingNetworkSystem-1",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+          }
+        },
+        {
+          "name": "tag_basis",
+          "value": "PipingComponentNumberAssignmentClass of the operated valve | AUTHORED qualification revision B: local tag assignment basis needs responsible-role review; installed identity not verified.",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+          }
+        },
+        {
+          "name": "unit",
+          "value": null,
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+          }
+        },
+        {
+          "name": "unit_basis",
+          "value": "no unit reachable through the piping from GlobeValve-1",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+          }
+        },
+        {
+          "name": "unplaced_reason",
+          "value": "final_elements need a unit; no unit reachable through the piping from GlobeValve-1",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+          }
+        }
+      ],
+      "source": {
+        "kind": "document",
+        "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+      },
+      "citations": {
+        "source": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+      },
+      "placement": "no unit reachable through the piping from GlobeValve-1"
+    },
+    {
+      "id": "FT-04",
+      "kind": "instrument",
+      "tag": "FT-04",
+      "name": "Sensor of FIC-04: flow",
+      "aliases": [],
+      "status": "unverified",
+      "attributes": [
+        {
+          "name": "assigned_tag",
+          "value": true,
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1"
+          }
+        },
+        {
+          "name": "description",
+          "value": "Sensor of FIC-04: flow",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1"
+          }
+        },
+        {
+          "name": "dexpi_class",
+          "value": "ProcessSignalGeneratingFunction",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1"
+          }
+        },
+        {
+          "name": "dexpi_id",
+          "value": "ProcessSignalGeneratingFunction-1",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1"
+          }
+        },
+        {
+          "name": "kind",
+          "value": "instrument",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1"
+          }
+        },
+        {
+          "name": "location",
+          "value": "FlowMeasuringElement-1",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1"
+          }
+        },
+        {
+          "name": "part_of",
+          "value": "FIC-04",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1"
+          }
+        },
+        {
+          "name": "stream",
+          "value": "PipingNetworkSystem-2",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1"
+          }
+        },
+        {
+          "name": "tag_basis",
+          "value": "ASSIGNED here: the sensor has no number in the file",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1"
+          }
+        },
+        {
+          "name": "unit",
+          "value": null,
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1"
+          }
+        },
+        {
+          "name": "unit_basis",
+          "value": "no unit reachable through the piping from FlowMeasuringElement-1",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1"
+          }
+        },
+        {
+          "name": "unplaced_reason",
+          "value": "instruments need a unit; no unit reachable through the piping from FlowMeasuringElement-1",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1"
+          }
+        },
+        {
+          "name": "uom",
+          "value": "",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1"
+          }
+        },
+        {
+          "name": "variable",
+          "value": "flow",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1"
+          }
+        }
+      ],
+      "source": {
+        "kind": "document",
+        "document": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1"
+      },
+      "citations": {
+        "source": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1"
+      },
+      "placement": "no unit reachable through the piping from FlowMeasuringElement-1"
+    },
+    {
+      "id": "I04V01-VER.EX01-NET001",
+      "kind": "line_network",
+      "tag": null,
+      "name": "line network",
+      "aliases": [],
+      "status": "unverified",
+      "attributes": [
+        {
+          "name": "pairwise_links",
+          "value": 1,
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML piping topology (PipingNetworkSegment connections)"
+          }
+        },
+        {
+          "name": "sheet",
+          "value": "I04V01-VER.EX01",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML piping topology (PipingNetworkSegment connections)"
+          }
+        }
+      ],
+      "source": {
+        "kind": "document",
+        "document": "DEXPI XML piping topology (PipingNetworkSegment connections)"
+      },
+      "citations": {
+        "source": "DEXPI XML piping topology (PipingNetworkSegment connections)"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "PipingNetworkSystem-1",
+      "type": "connects",
+      "from": "BL",
+      "to": "BL",
+      "status": "unverified",
+      "direction": "known",
+      "source": {
+        "kind": "document",
+        "document": "DEXPI XML PipingNetworkSystem-1 (PipingNetworkSystem), segments PipingNetworkSegment-1"
+      },
+      "citations": {
+        "source": "DEXPI XML PipingNetworkSystem-1 (PipingNetworkSystem), segments PipingNetworkSegment-1"
+      },
+      "layer": "stream",
+      "attributes": [
+        {
+          "name": "PipingNetworkSegment-1:dexpi_class.value",
+          "value": "PipingNetworkSegment",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML PipingNetworkSegment-1 <PipingNetworkSegment>"
+          }
+        },
+        {
+          "name": "dexpi_class",
+          "value": "PipingNetworkSystem",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML PipingNetworkSystem-1 (PipingNetworkSystem), segments PipingNetworkSegment-1"
+          }
+        },
+        {
+          "name": "dexpi_id",
+          "value": "PipingNetworkSystem-1",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML PipingNetworkSystem-1 (PipingNetworkSystem), segments PipingNetworkSegment-1"
+          }
+        },
+        {
+          "name": "from_end",
+          "value": "line end with no connector (open-start:PipingNetworkSegment-1): leaves the sheet",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML PipingNetworkSystem-1 (PipingNetworkSystem), segments PipingNetworkSegment-1"
+          }
+        },
+        {
+          "name": "from_item",
+          "value": "open-start:PipingNetworkSegment-1",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML PipingNetworkSystem-1 (PipingNetworkSystem), segments PipingNetworkSegment-1"
+          }
+        },
+        {
+          "name": "name",
+          "value": "Line PipingNetworkSystem-1: BL to BL",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML PipingNetworkSystem-1 (PipingNetworkSystem), segments PipingNetworkSegment-1"
+          }
+        },
+        {
+          "name": "to_end",
+          "value": "line end with no connector (open-end:PipingNetworkSegment-1): leaves the sheet",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML PipingNetworkSystem-1 (PipingNetworkSystem), segments PipingNetworkSegment-1"
+          }
+        },
+        {
+          "name": "to_item",
+          "value": "open-end:PipingNetworkSegment-1",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML PipingNetworkSystem-1 (PipingNetworkSystem), segments PipingNetworkSegment-1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "PipingNetworkSystem-2",
+      "type": "connects",
+      "from": "BL",
+      "to": "BL",
+      "status": "unverified",
+      "direction": "known",
+      "source": {
+        "kind": "document",
+        "document": "DEXPI XML PipingNetworkSystem-2 (PipingNetworkSystem), segments PipingNetworkSegment-2"
+      },
+      "citations": {
+        "source": "DEXPI XML PipingNetworkSystem-2 (PipingNetworkSystem), segments PipingNetworkSegment-2"
+      },
+      "layer": "stream",
+      "attributes": [
+        {
+          "name": "FlowMeasuringElement-1:PipingComponentNumberAssignmentClass.value",
+          "value": "FE 04",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML FlowMeasuringElement-1 GenericAttribute PipingComponentNumberAssignmentClass"
+          }
+        },
+        {
+          "name": "FlowMeasuringElement-1:dexpi_class.value",
+          "value": "FlowMeasuringElement",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML FlowMeasuringElement-1 <PipingComponent>"
+          }
+        },
+        {
+          "name": "PipingNetworkSegment-2:dexpi_class.value",
+          "value": "PipingNetworkSegment",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML PipingNetworkSegment-2 <PipingNetworkSegment>"
+          }
+        },
+        {
+          "name": "dexpi_class",
+          "value": "PipingNetworkSystem",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML PipingNetworkSystem-2 (PipingNetworkSystem), segments PipingNetworkSegment-2"
+          }
+        },
+        {
+          "name": "dexpi_id",
+          "value": "PipingNetworkSystem-2",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML PipingNetworkSystem-2 (PipingNetworkSystem), segments PipingNetworkSegment-2"
+          }
+        },
+        {
+          "name": "from_end",
+          "value": "line end with no connector (open-start:PipingNetworkSegment-2): leaves the sheet",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML PipingNetworkSystem-2 (PipingNetworkSystem), segments PipingNetworkSegment-2"
+          }
+        },
+        {
+          "name": "from_item",
+          "value": "open-start:PipingNetworkSegment-2",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML PipingNetworkSystem-2 (PipingNetworkSystem), segments PipingNetworkSegment-2"
+          }
+        },
+        {
+          "name": "name",
+          "value": "Line PipingNetworkSystem-2: BL to BL",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML PipingNetworkSystem-2 (PipingNetworkSystem), segments PipingNetworkSegment-2"
+          }
+        },
+        {
+          "name": "to_end",
+          "value": "line end with no connector (open-end:PipingNetworkSegment-2): leaves the sheet",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML PipingNetworkSystem-2 (PipingNetworkSystem), segments PipingNetworkSegment-2"
+          }
+        },
+        {
+          "name": "to_item",
+          "value": "open-end:PipingNetworkSegment-2",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML PipingNetworkSystem-2 (PipingNetworkSystem), segments PipingNetworkSegment-2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "E00003",
+      "type": "sits_on",
+      "from": "FV-04",
+      "to": "stream:PipingNetworkSystem-1",
+      "status": "unverified",
+      "direction": null,
+      "source": {
+        "kind": "document",
+        "document": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+      },
+      "citations": {
+        "source": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)"
+      }
+    },
+    {
+      "id": "E00004",
+      "type": "sits_on",
+      "from": "FT-04",
+      "to": "stream:PipingNetworkSystem-2",
+      "status": "unverified",
+      "direction": null,
+      "source": {
+        "kind": "document",
+        "document": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1"
+      },
+      "citations": {
+        "source": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1"
+      }
+    },
+    {
+      "id": "E00005",
+      "type": "on_network",
+      "from": "BL",
+      "to": "I04V01-VER.EX01-NET001",
+      "status": "unverified",
+      "direction": null,
+      "source": {
+        "kind": "document",
+        "document": "DEXPI XML piping topology (PipingNetworkSegment connections)"
+      },
+      "citations": {
+        "source": "DEXPI XML piping topology (PipingNetworkSegment connections)"
+      }
+    },
+    {
+      "id": "E00006",
+      "type": "on_network",
+      "from": "FV-04",
+      "to": "I04V01-VER.EX01-NET001",
+      "status": "unverified",
+      "direction": null,
+      "source": {
+        "kind": "document",
+        "document": "DEXPI XML piping topology (PipingNetworkSegment connections)"
+      },
+      "citations": {
+        "source": "DEXPI XML piping topology (PipingNetworkSegment connections)"
+      }
+    },
+    {
+      "id": "I04V01-VER.EX01-PS001",
+      "type": "piped_to",
+      "from": "BL",
+      "to": "FV-04",
+      "status": "unverified",
+      "direction": "unknown",
+      "source": {
+        "kind": "document",
+        "document": "DEXPI XML piping topology (PipingNetworkSegment connections)"
+      },
+      "citations": {
+        "source": "DEXPI XML piping topology (PipingNetworkSegment connections)"
+      },
+      "attributes": [
+        {
+          "name": "sheet",
+          "value": "I04V01-VER.EX01",
+          "status": "unverified",
+          "source": {
+            "kind": "document",
+            "document": "DEXPI XML piping topology (PipingNetworkSegment connections)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "E00008",
+      "type": "controls",
+      "from": "FT-04",
+      "to": "FIC-04",
+      "status": "unverified",
+      "direction": null,
+      "source": {
+        "kind": "document",
+        "document": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+      },
+      "citations": {
+        "source": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+      }
+    },
+    {
+      "id": "E00009",
+      "type": "controls",
+      "from": "FIC-04",
+      "to": "FV-04",
+      "status": "unverified",
+      "direction": null,
+      "source": {
+        "kind": "document",
+        "document": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+      },
+      "citations": {
+        "source": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)"
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "C3@model",
+      "question_id": "C3",
+      "family": "controls",
+      "question": "What valve-position feedback and diagnostic records are available for these control valves?",
+      "about": "FV-04",
+      "assets": [
+        {
+          "id": "FV-04",
+          "tag": "FV-04"
+        },
+        {
+          "id": "FIC-04",
+          "tag": "FIC-04"
+        }
+      ],
+      "evidence": [
+        {
+          "role": "trigger",
+          "id": "FV-04",
+          "tag": "FV-04",
+          "text": "valve FV-04 reads \"FV-04 Globe valve operated by actuating system FV-04\"; owning equipment unknown; no unit inferred; supplied source interpretation, not installed truth; Recorded qualifiers: {\"tag\": \"FV-04\", \"kind\": \"final_element\", \"unit\": null, \"stream\": \"PipingNetworkSystem-1\", \"source\": \"DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)\", \"dexpi_id\": \"GlobeValve-1\", \"dexpi_class\": \"GlobeValve\", \"tag_basis\": \"PipingComponentNumberAssignmentClass of the operated valve | AUTHORED qualification revision B: local tag assignment basis needs responsible-role review; installed identity not verified.\", \"unit_basis\": \"no unit reachable through the piping from GlobeValve-1\", \"unplaced_reason\": \"final_elements need a unit; no unit reachable through the piping from GlobeValve-1\"}",
+          "field": "unplaced[FV-04]",
+          "provenance": {
+            "kind": "native-unplaced-source-context-1",
+            "model_role": "final_element",
+            "record_fields": {
+              "tag": "FV-04",
+              "kind": "final_element",
+              "unit": null,
+              "stream": "PipingNetworkSystem-1",
+              "source": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)",
+              "dexpi_id": "GlobeValve-1",
+              "dexpi_class": "GlobeValve",
+              "tag_basis": "PipingComponentNumberAssignmentClass of the operated valve | AUTHORED qualification revision B: local tag assignment basis needs responsible-role review; installed identity not verified.",
+              "unit_basis": "no unit reachable through the piping from GlobeValve-1",
+              "unplaced_reason": "final_elements need a unit; no unit reachable through the piping from GlobeValve-1"
+            },
+            "placement": "owning equipment unknown; no unit inferred"
+          }
+        },
+        {
+          "role": "controller-command candidate; not measured valve travel",
+          "id": "FIC-04",
+          "tag": "FIC-04",
+          "text": "controller FIC-04 reads \"FIC-04 FIC-04: flow, indicate, control (central location)\"; owning equipment unknown; no unit inferred; supplied source interpretation, not installed truth; Recorded qualifiers: {\"tag\": \"FIC-04\", \"source\": \"DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)\", \"dexpi_id\": \"ProcessInstrumentationFunction-1\", \"dexpi_class\": \"ProcessInstrumentationFunction\", \"tag_basis\": \"category + functions + number attributes\"}; Exact recorded endpoint fields: {\"measurement_unplaced\": \"FT-04\", \"output_unplaced\": \"FV-04\", \"output\": {}}; Exact endpoints retained for this screen: {\"measurements\": [\"FT-04\"], \"outputs\": [\"FV-04\"], \"sets\": []}; Referenced instrument \"FT-04\": {\"tag\": \"FT-04\", \"kind\": \"instrument\", \"unit\": null, \"stream\": \"PipingNetworkSystem-2\", \"source\": \"DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1\", \"dexpi_id\": \"ProcessSignalGeneratingFunction-1\", \"dexpi_class\": \"ProcessSignalGeneratingFunction\", \"tag_basis\": \"ASSIGNED here: the sensor has no number in the file\", \"assigned_tag\": true, \"unit_basis\": \"no unit reachable through the piping from FlowMeasuringElement-1\", \"unplaced_reason\": \"instruments need a unit; no unit reachable through the piping from FlowMeasuringElement-1\", \"variable\": \"flow\", \"part_of\": \"FIC-04\"}; \"FT-04\" has an assigned identifier, not a verified operating tag; Referenced final_element \"FV-04\": {\"tag\": \"FV-04\", \"kind\": \"final_element\", \"unit\": null, \"stream\": \"PipingNetworkSystem-1\", \"source\": \"DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)\", \"dexpi_id\": \"GlobeValve-1\", \"dexpi_class\": \"GlobeValve\", \"tag_basis\": \"PipingComponentNumberAssignmentClass of the operated valve | AUTHORED qualification revision B: local tag assignment basis needs responsible-role review; installed identity not verified.\", \"unit_basis\": \"no unit reachable through the piping from GlobeValve-1\", \"unplaced_reason\": \"final_elements need a unit; no unit reachable through the piping from GlobeValve-1\"}; A supplied command/process-measurement path is not measured valve travel or a verified physical signal path",
+          "field": "controllers[FIC-04]",
+          "provenance": {
+            "kind": "native-unplaced-source-context-1",
+            "model_role": "controller",
+            "record_fields": {
+              "tag": "FIC-04",
+              "source": "DEXPI XML ProcessInstrumentationFunction-1 (ProcessInstrumentationFunction)",
+              "dexpi_id": "ProcessInstrumentationFunction-1",
+              "dexpi_class": "ProcessInstrumentationFunction",
+              "tag_basis": "category + functions + number attributes"
+            },
+            "placement": "owning equipment unknown; no unit inferred",
+            "reference_fields": {
+              "measurement_unplaced": "FT-04",
+              "output_unplaced": "FV-04",
+              "output": {}
+            },
+            "active_exact_endpoints": {
+              "measurements": [
+                "FT-04"
+              ],
+              "outputs": [
+                "FV-04"
+              ],
+              "sets": []
+            },
+            "endpoint_context": [
+              {
+                "id": "FT-04",
+                "model_role": "instrument",
+                "record_fields": {
+                  "tag": "FT-04",
+                  "kind": "instrument",
+                  "unit": null,
+                  "stream": "PipingNetworkSystem-2",
+                  "source": "DEXPI XML ProcessSignalGeneratingFunction-1 (ProcessSignalGeneratingFunction) in ProcessInstrumentationFunction-1",
+                  "dexpi_id": "ProcessSignalGeneratingFunction-1",
+                  "dexpi_class": "ProcessSignalGeneratingFunction",
+                  "tag_basis": "ASSIGNED here: the sensor has no number in the file",
+                  "assigned_tag": true,
+                  "unit_basis": "no unit reachable through the piping from FlowMeasuringElement-1",
+                  "unplaced_reason": "instruments need a unit; no unit reachable through the piping from FlowMeasuringElement-1",
+                  "variable": "flow",
+                  "part_of": "FIC-04"
+                }
+              },
+              {
+                "id": "FV-04",
+                "model_role": "final_element",
+                "record_fields": {
+                  "tag": "FV-04",
+                  "kind": "final_element",
+                  "unit": null,
+                  "stream": "PipingNetworkSystem-1",
+                  "source": "DEXPI XML GlobeValve-1 (GlobeValve), operated by ActuatingSystem-1 (ActuatingSystem)",
+                  "dexpi_id": "GlobeValve-1",
+                  "dexpi_class": "GlobeValve",
+                  "tag_basis": "PipingComponentNumberAssignmentClass of the operated valve | AUTHORED qualification revision B: local tag assignment basis needs responsible-role review; installed identity not verified.",
+                  "unit_basis": "no unit reachable through the piping from GlobeValve-1",
+                  "unplaced_reason": "final_elements need a unit; no unit reachable through the piping from GlobeValve-1"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "data_requests": [
+        {
+          "item": "Existing valve/loop feedback and diagnostic records",
+          "state": "not_on_drawing",
+          "where": [
+            "DCS/PLC configuration: approved existing valve/positioner configuration and point definitions for each named valve and loop",
+            "maintenance records: existing valve, positioner and calibration records",
+            "site records: approved loop drawings, I/O mappings, source revisions and locators"
+          ],
+          "how": "For each named valve/loop, review the record target, revision/locator, declared signal function, units, enabled return path and diagnostic capability. Keep command/current/travel setpoint separate from measured stem or shaft travel; local positioner feedback does not establish control-room or historian availability. Nearby Z tags and shared unit/stream membership do not establish valve association. Acknowledge appropriate existing coverage, including endpoint indication for an on/off duty, and retain unresolved source questions. Supplied fields do not complete this review.",
+          "candidate_scope": "anchors",
+          "candidate_facts": []
+        },
+        {
+          "item": "Existing valve performance and diagnostic history",
+          "state": "not_on_drawing",
+          "where": [
+            "historian or DCS trend for FV-04 (no historian tag is mapped in this model for these)",
+            "maintenance records: existing diagnostic, inspection and work-order reports for the named valve",
+            "site records: previously acquired command, measured-travel and process-response history with its operating basis"
+          ],
+          "how": "Review available history first. Retain valve/loop identity, source revision/locator, time and operating conditions, enabled state, quality/calibration and readability. Where suitable, compare command, independently described travel and process response over coincident periods. Position indication, endpoint states or oscillation alone do not diagnose stiction or its cause. Keep disabled, bad-quality, unavailable, foreign and unknown records as qualified candidates; ask the responsible record owner for the missing basis. This screen specifies no new manual step test, loop-mode change or operating experiment.",
+          "candidate_scope": "anchors",
+          "candidate_facts": []
+        }
+      ],
+      "decision_rule": "Record appropriate existing feedback/diagnostics as coverage with its source scope and remaining gaps. Route a named valve/loop request to the responsible record owner where function, association, availability or performance evidence is unresolved. Configuration, tuning, process and assembly causes remain open when investigating reported behavior. Any further test or change requires a separate company-approved method and operating/outage decision; this finding prescribes no retrofit, retune, new connection or mode change.",
+      "typical_benefit": {
+        "wording": "S13 discusses backlash/stiction and variability in highly throttled/oversized pumping systems, not a universal feedback retrofit. S29-S32 distinguish feedback routes and vendor-specific diagnostic/history examples. They establish no quantified benefit for this investigation or the supplied plant.",
+        "source": [
+          "S13",
+          "S29",
+          "S30",
+          "S31",
+          "S32"
+        ],
+        "arc": null,
+        "source_titles": [
+          "S13: Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079)",
+          "S29: Emerson Automation Experts, Providing Operators Process Control Valve Position Feedback (2014-01-10; vendor guidance)",
+          "S30: Emerson, Valve Positioners (product overview and digital-controller FAQ; vendor-specific)",
+          "S31: Emerson, Control Valve Diagnostics (product capabilities and status monitor; vendor-specific)",
+          "S32: Emerson Automation Experts, Impacts of Control Valve Diagnostics (2011-02-14; vendor guidance)"
+        ]
+      },
+      "limits": "P&IDs can omit fitted positioners. Drawing omission, local feedback, an enabled control-room return, historian availability and verified plant conditions are separate claims. Discrete endpoint feedback is not a continuous travel trace and is not automatically unsuitable for an on/off duty. Supplied source/quality flags and reported abnormalities are unverified evidence, not installed-state checks, unique diagnoses or permission to test/change equipment.",
+      "status": "asked"
+    }
+  ],
+  "events": [],
+  "not_exported": [],
+  "counts": {
+    "nodes": 6,
+    "edges": 9,
+    "claims": 83,
+    "questions": 1,
+    "events": 0
+  }
+}

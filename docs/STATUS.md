@@ -116,7 +116,7 @@ create those controls.
 | Piece | Contribution | Boundary |
 |---|---|---|
 | Drawing intake and review report | A supplied extraction becomes a draft model, review queue, staging and readable HTML. | Approved extraction, engineering review and receiving-company acceptance. |
-| DEXPI routes | Read supported XML or the separate adapted-key/sheet contract; report omissions. | Exporter coverage and downstream eligibility vary; parsed C03 cannot feed the question engine. |
+| DEXPI routes | Read supported XML or the separate adapted-key/sheet contract; report omissions. | Exporter coverage and downstream eligibility vary; supported unplaced roles can feed source-qualified questions while equipment placement remains unknown. This does not extend platform-generator eligibility. |
 | Description/model drawing | Authored model and detailed layout produce draft sheets and platform outputs; the bundle retains the exact question catalog it consumed. | Interpretation and geometry remain authored; matching quotations and catalog hashes cannot establish correct meaning or company approval. |
 | Portable graph and statement review | Typed relationships, sourced claims and supplied appearances can be inspected and reviewed. | One-way export; statement verdicts do not edit generator facts. |
 | Model correction and point mapping | Apply supported local corrections and stage supplied signal addresses with history. | Identity/signal review, external companion reconciliation and regeneration remain explicit. |

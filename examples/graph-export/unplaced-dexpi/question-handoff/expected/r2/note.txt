@@ -1,0 +1,5 @@
+FICTIONAL N114 SOFTWARE WALKTHROUGH; not an operating record.
+Revision B; authored text-only software revision, not a new XML export or plant observation.
+The supplied reader model names FV-04 and FIC-04; its logical command references are unverified interpretation.
+FT-04 is a reader-assigned flow identifier; this note supplies no measured valve travel, equipment location or installed-tag verification.
+Next record request: the responsible role should use its approved company home to obtain loop, positioner, I/O and maintenance records.

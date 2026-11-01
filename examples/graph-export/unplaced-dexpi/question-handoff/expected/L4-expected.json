@@ -1,0 +1,50 @@
+{
+  "schema": "n114-L4-prospective-expected-1",
+  "case": "L4-class-qualified-local-identifier",
+  "CLI_exit": 0,
+  "finding_id": "C3@model",
+  "required_C3_anchors": [
+    "local-item-alpha"
+  ],
+  "required_command_candidates": {
+    "FIC-04": [
+      "local-item-alpha"
+    ]
+  },
+  "exact_measurement_targets": [
+    "FT-04"
+  ],
+  "controls_edges": [
+    [
+      "FT-04",
+      "FIC-04"
+    ],
+    [
+      "FIC-04",
+      "local-item-alpha"
+    ]
+  ],
+  "graph_identity_requirements": {
+    "present": [
+      "local-item-alpha",
+      "FT-04",
+      "FIC-04"
+    ],
+    "absent_live_IDs": [
+      "FV-04"
+    ],
+    "line_layer_network_member": "local-item-alpha",
+    "line_layer_segment_to": "local-item-alpha"
+  },
+  "raw_qualifiers": {
+    "kind": "final_element",
+    "dexpi_class": "GlobeValve",
+    "unit": null,
+    "assigned_tag": true,
+    "tag_basis_must_contain": "AUTHORED assigned local model identifier",
+    "operating_tag_verification": "not inferred"
+  },
+  "policy": "Known explicit final-element role AND retained GlobeValve/operated-source context permit valve classification without FV spelling. Explicit unknown/manual roles in frozenU04/othercontrols must not become control valves solely from a tag/class word. This is a supplied-class prototype interpretation, not universal valve taxonomy or installed validation.",
+  "retention": "Raw scalar controllerreference/newidentifier and all untouchedmeasurement/source/unknown-placement claims preserved; full/coregraph and question/sourceprojection agree; no invented unit or normalized operating-tag alias.",
+  "status": "UNEXECUTED; data-only lategeneralizationcontrol afterprivatecandidatebodyexists but before anycandidatecalls; not blind or a new XML/plant trial."
+}

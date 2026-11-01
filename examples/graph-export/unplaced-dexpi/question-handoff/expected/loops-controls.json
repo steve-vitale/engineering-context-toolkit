@@ -1,0 +1,127 @@
+{
+  "schema": "n114-loops-prospective-2",
+  "status": "ROOT policy frozen BEFORE v4/candidate runtime; DATA ONLY, no calls authorized.",
+  "common": "Raw CSV UTF-8 LF; preserve exact IDs, description and source label; use frozen originals/controlpatches, authored qualifier, no model graph mutation. For refusal/omission preserve sentinels. These controls are exposed after reading candidate, not blind. Native-only branch; legacy placed/twin behavior unchanged.",
+  "cases": [
+    {
+      "id": "NL01-new-exact-controller",
+      "base": "i04",
+      "patch": [],
+      "csv": "controller,measurement,output,description\nFIC-904,FT-04,FV-04,AUTHORED supplemental command record\n",
+      "expected": "Admit exact new controller candidate; reads FT-04/drives FV-04 only. Preserve loop source/row and unknown owner. Explicitly not a node in selected original model; do not claim graph/context handoff until authored model contains it."
+    },
+    {
+      "id": "NL02-known-rejected-controller",
+      "base": "i04",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/controllers/0/ops_review",
+          "value": {
+            "status": "rejected",
+            "by": "Fictional reviewer",
+            "on": "2026-11-01",
+            "notes": "AUTHORED control only"
+          }
+        }
+      ],
+      "csv": "controller,measurement,output,description\nFIC-04,FT-04,FV-04,AUTHORED cannot resurrect rejected controller\n",
+      "expected": "Admit source valve review, no FIC-04 item/active command via CSV. loop_rejected identifies FIC-04. Rejection history/source reason retained; no silent redirection."
+    },
+    {
+      "id": "NL03-known-rejected-output",
+      "base": "i04",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/unplaced/0/ops_review",
+          "value": {
+            "status": "rejected",
+            "by": "Fictional reviewer",
+            "on": "2026-11-01",
+            "notes": "AUTHORED rejected target"
+          }
+        }
+      ],
+      "csv": "controller,measurement,output,description\nFIC-904,FT-04,FV-04,AUTHORED cannot resurrect rejected endpoint\n",
+      "expected": "Admit quiet C3, no supplemental controller or drives link resurrects rejected FV-04. loop_rejected identifies FIC-904; original rejected target not treated as missing/aliased."
+    },
+    {
+      "id": "NL04-all-alias-only",
+      "base": "i04",
+      "patch": [],
+      "csv": "controller,measurement,output,description\nFIC_904,FT_04,FV_04,AUTHORED aliases are not source IDs\n",
+      "expected": "Refuse unmatched source list before output writes; no normalization to FT-04/FV-04. Exact unrelated controller name is not itself a match."
+    },
+    {
+      "id": "NL05-existing-controller-conflict",
+      "base": "U09-foreign-valid-endpoint",
+      "patch": [],
+      "csv": "controller,measurement,output,description\nFIC-04,FT-04,FV-04,AUTHORED contradicts native FV-99 endpoint\n",
+      "expected": "Refuse exact source-endpoint conflict before writes. Existing controller remains bound to native FV-99, not CSV FV-04."
+    },
+    {
+      "id": "NL06-new-controller-incompatible-output",
+      "base": "i04",
+      "patch": [],
+      "csv": "controller,measurement,output,description\nFIC-904,FT-04,FT-04,AUTHORED instrument is not a final element\n",
+      "expected": "InputError / CLI exit2 before writes: field output of FIC-904 names exact known FT-04 with incompatible role instrument. Diagnostic must identify incompatible endpoint/role and field, not unrelated no-units/unmatched/model-parse error. No generated association or output replacement.",
+      "diagnostic_contract": {
+        "exception_type": "InputError",
+        "CLI_exit": 2,
+        "reason": "incompatible exact output role",
+        "field": "output",
+        "controller": "FIC-904",
+        "target": "FT-04",
+        "exact_sentence": "Not prescribed; semantic identity/field/reason required."
+      }
+    },
+    {
+      "id": "NL07-new-controller-one-missing-endpoint",
+      "base": "i04",
+      "patch": [],
+      "csv": "controller,measurement,output,description\nFIC-904,FT-04,FV_04,AUTHORED one exact endpoint does not validate the other\n",
+      "expected": "InputError / CLI exit2 before writes: field output of FIC-904 names missing exact FV_04 even though measurement FT-04 resolves. Do not alias FV_04 to FV-04 or admit partially valid row. Diagnostic must identify missing endpoint/field/target, not all-rows-unmatched or unrelated admission error.",
+      "diagnostic_contract": {
+        "exception_type": "InputError",
+        "CLI_exit": 2,
+        "reason": "missing exact output target",
+        "field": "output",
+        "controller": "FIC-904",
+        "target": "FV_04",
+        "exact_sentence": "Not prescribed; semantic identity/field/reason required."
+      }
+    },
+    {
+      "id": "NL08-active-CSV-controller-cascade",
+      "base": "i04",
+      "patch": [],
+      "csv": "controller,measurement,output,description\nFIC-904,FT-04,FIC-905,AUTHORED active supplied cascade stage\nFIC-905,,FV-04,AUTHORED exact final command stage\n",
+      "expected": "Admit both active supplemental controller identities with explicit original-graph-not-represented qualification. FIC-904 reads FT-04 and sets exact FIC-905; it does not directly drive FV-04. FIC-905 drives FV-04 and has unknown measurement. Entire source rows remain supplied/unverified, no installed/controller-node inference."
+    },
+    {
+      "id": "NL09-empty-endpoints-unknown",
+      "base": "i04",
+      "patch": [],
+      "csv": "controller,measurement,output,description\nFIC-904,FT-04,,AUTHORED output unknown\nFIC-905,,FV-04,AUTHORED measurement unknown\n",
+      "expected": "Admit both useful partially described rows because all NONEMPTY endpoints resolve. Reads FIC-904→FT-04 true; drives FIC-905→FV-04 true; no inferred FIC-904 output or FIC-905 measurement. Missing/empty remains unknown, not incompatible or completed control."
+    }
+  ],
+  "policy": {
+    "nonempty_refs": "Every nonempty measurement/output must resolve against unique compatible exact identities from source model plus explicitly supplied ACTIVE CSV controllers. No aliasing, no partial-valid associations. Validate before writes.",
+    "measurement_roles": [
+      "instrument",
+      "controller"
+    ],
+    "output_roles": [
+      "final_element",
+      "controller"
+    ],
+    "rejected": "Exclude rejected controller/endpoint rows before active CSV endpoint resolution; neither known rejected source IDs nor excluded CSV controllers may be resurrected through another row. Report exclusions; preserve original source/reason separately.",
+    "native_existing_conflicts": "Existing Native source endpoint conflict remains refusal; CSV does not overwrite existing record.",
+    "missing_fields": "Required CSV columns stay required; individual empty endpoint cells are unknown and allowed when existing matching/admission rules allow the row.",
+    "legacy": "Only new Native-unplaced route uses new strict exact-reference policy; placed/twin legacy behavior and outputs remain unchanged.",
+    "graph_boundary": "Valid supplemental CSV controller may be absent from original model graph; retain explicit boundary, require authored/reviewed model addition before full graph/context handoff."
+  },
+  "chronology": "Appends root-selected policy after v3 static and before v4/candidate calls; previous undecided NL06/NL07 retained in earlier frozen file. NL08/NL09 are newly exposed source-policy positives, not blind trials."
+}

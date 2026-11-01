@@ -1,0 +1,156 @@
+{
+  "schema": "n114-question-handoff-example-provenance-1",
+  "evidence_class": "public-source-interpretation-and-fictional-exposed-development-controls",
+  "files": {
+    "expected/answer-fields.json": {
+      "sha256_raw": "986df9707e8b5b6b62abdeae113d2b081272a3b4e8416416cc79945b5506e63a",
+      "bytes": 1491
+    },
+    "expected/core-controls.json": {
+      "sha256_raw": "af595308dc3b127be7c10aaa70a168374f918c1699eba76a31e29e97508687f1",
+      "bytes": 12011
+    },
+    "expected/core-expected.json": {
+      "sha256_raw": "66d88e770492747a302bc24ec0dcb88bbd9b3f7ae6a05f53cffca7b33c9b3679",
+      "bytes": 4878
+    },
+    "expected/freshness-controls.json": {
+      "sha256_raw": "2deb460557f767a27dc01b506f0f2bc89537915851381da3f51dd7e5855fc9f5",
+      "bytes": 4557
+    },
+    "expected/L4-controls.json": {
+      "sha256_raw": "6a2030769cf38cd75ad9bbd41954caa4645c835812cd4dc6722f8e5dd2afddae",
+      "bytes": 2966
+    },
+    "expected/L4-expected.json": {
+      "sha256_raw": "98b7952e01635ee85fa4494887efe06aa7d1f947a1bfd091dfcda86f97624470",
+      "bytes": 1750
+    },
+    "expected/loops-controls.json": {
+      "sha256_raw": "b94ff1a29e49f6f940077674ab8e1a8636c00704f97d735571163ea4c380df55",
+      "bytes": 7538
+    },
+    "expected/model-qualifier-revision.json": {
+      "sha256_raw": "390d2bfbb111bcc80ee68da6ebc8b9d70eaabb2cc8c7f0ac030d41f794bfc8ab",
+      "bytes": 783
+    },
+    "expected/r1/note.txt": {
+      "sha256_raw": "7f90972cd32cad65e58b901934be4946506e74a51e562f692d030d259d0e8cb4",
+      "bytes": 461
+    },
+    "expected/r1/sources.json": {
+      "sha256_raw": "a3dafbd2d517bbeba0df147acf5408dc4db0b41f39e46a628c59a51ad186bb0e",
+      "bytes": 416
+    },
+    "expected/r2/note.txt": {
+      "sha256_raw": "6e64f8ef77f3e6d321b2cf5d79a9f71c85a6aae179f4dd61fc8ba7d5c59f2155",
+      "bytes": 542
+    },
+    "expected/r2/sources.json": {
+      "sha256_raw": "b81bf4f36d5b250ebe4e217f68c19ecc6d061bb43a63ca1575cfd117564efce2",
+      "bytes": 416
+    },
+    "expected/review-envelope.json": {
+      "sha256_raw": "fd9a0eb03c9a3f47e96e05cfe57e852142367474940b6d50aaa83f637aad2a5a",
+      "bytes": 177
+    },
+    "expected/supplement-controls.json": {
+      "sha256_raw": "466fccba984868c5d00c865f10b9adf8082112738ee78d16949b8be199715bb6",
+      "bytes": 8898
+    },
+    "expected/supplement-expected.json": {
+      "sha256_raw": "9223575cbf1431ae0957ced3ef4e43d06f5338709a3f8d6c3c9b5ec9cb55ac19",
+      "bytes": 4574
+    },
+    "history/original-admission.json": {
+      "sha256_raw": "8c8daa1d0f5f3a617cc693a831cf38908a2f57ae3bfccf99352a2aa7e42fff31",
+      "bytes": 2629
+    },
+    "history/original-model-bytes/i04.model.json": {
+      "sha256_raw": "8178e1f9c56e986767392522a7b49417261dce5665c15d9dce8684883ad06c87",
+      "bytes": 10486
+    },
+    "README.md": {
+      "sha256_raw": "a74016d2e52867c00517731fefd00ed71d5787d3b3ef7612311c08785c45cea4",
+      "bytes": 6794
+    },
+    "reproduce.py": {
+      "sha256_raw": "d4ebd0f73f0dea7439e5364c193f7d09d6b7536d08ae08aef678c4f76821e164",
+      "bytes": 10256
+    }
+  },
+  "source_models": {
+    "examples/graph-export/unplaced-dexpi/i04.model.json": {
+      "sha256_raw": "d45563c5804f465ac8fb557c4180cc9eca5577cce5d5a2074078fde357962746",
+      "bytes": 10265
+    },
+    "examples/graph-export/unplaced-dexpi/i01.model.json": {
+      "sha256_raw": "4c7820115e4c3a08df900154565a8db54a72684b302e645407cf1f6881dbd28f",
+      "bytes": 60691
+    }
+  },
+  "source_key": {
+    "path": "examples/graph-export/unplaced-dexpi/source_key.json",
+    "role": "Referenced review basis; reproduce.py does not consume this key or include it in its protected runtime input inventory.",
+    "historical_working_CRLF": {
+      "sha256_raw": "c0201243f5951b49b12bbb8d94c6dd3354cb4e3e174183a0bb79d30b809301d9",
+      "bytes": 9679,
+      "cohort": "Historical Windows CRLF working source-key identity; not an OS-invariant current raw hash."
+    },
+    "canonical_git_LF": {
+      "sha256_raw": "35036f712486f92fa8b782a92f3bfe573a423060d6b17f6b8a6c497af6f695b4",
+      "bytes": 9389,
+      "commit": "67db9ab0f62eb78b15bc852f2b5c7982f3b98461",
+      "basis": "Exact committed Git blob; JSON typed content is the same as the historical working copy."
+    },
+    "checkout_policy": "This key retains its ordinary checkout policy; current working bytes can vary with Git text conversion. No source-key normalization or attribute change is introduced."
+  },
+  "fixture_exposure": "Fifteen small frozen data files. Core13/L1-L4 source-role controls and later loop/freshness specifications were exposed during development; no new plant, XML, source family or blind holdout.",
+  "fixture_chronology": "Preparation-era unexecuted/pending fields remain immutable historical inputs. They do not report a completed run. This worked runner consumes the fictional source/answer/model-revision subset; it does not execute all regression controls.",
+  "prior_actual17": {
+    "receipt_sha256_raw": "7bd5801abe9bf1341f9609fbbbd18a822cc8ae04fde30d53bd4353249f5ea8f0",
+    "scope": "13 CLI+four API casejobs; no loops/freshness/Snapshot jobs in that count",
+    "model_byte_cohort": "Historical actual Windows CRLF models; retained as completed evidence. Not a result for the new canonical-LF input cohort."
+  },
+  "prior_focused_method_pair": {
+    "receipt_sha256_raw": "c933a6295c08378c7d32d438757a6f3027914267d20b62d4c13300bc8e21cf9d",
+    "scope": "four new methods on original and candidate; 156 prior methods not run by that focused pair",
+    "model_byte_cohort": "Historical CRLF base inputs; prior matched outcomes remain unchanged. Successor focused/whole-module/checkout execution is pending."
+  },
+  "portable_runner": {
+    "status": "UNEXECUTED successor canonical-LF input cohort; no generated after outputs. New focused/whole160/checkout validation and portable capture are separately gated.",
+    "planned": "Six child CLI calls; direct graph full/core checks and three pure Snapshot bound-pair readbacks. No SDK/listener/network/model calls."
+  },
+  "raw_policy": "Derived direct *.model.json use explicit text eol=lf, identical to existing Git blobs and reader output policy. Entire question-handoff/** is raw-preserved (-text), including source/oracle files and the captured old CRLF I04 input. Company originals and review sources are not normalized.",
+  "authority": "Fictional note, actors, partial acceptance and owner are not authenticated human/company decisions. Source identity, currentness and plant truth are separate.",
+  "publication_policy": "Complete runtime INPUTS/START/argv/logs/observed data can contain private absolute paths and stay private. A later public capture must use a new private code view with outputs under the planned repository-relative example location; select portable engineering artifacts byte-exact and label any public-safe summary DERIVED. Do not rewrite raw logs or hashes to appear portable.",
+  "byte_cohorts": {
+    "i04": {
+      "path": "examples/graph-export/unplaced-dexpi/i04.model.json",
+      "historical_CRLF": {
+        "sha256_raw": "8178e1f9c56e986767392522a7b49417261dce5665c15d9dce8684883ad06c87",
+        "bytes": 10486
+      },
+      "successor_canonical_LF": {
+        "sha256_raw": "d45563c5804f465ac8fb557c4180cc9eca5577cce5d5a2074078fde357962746",
+        "bytes": 10265
+      },
+      "typed_semantics_exact": true,
+      "only_CRLF_to_LF": true
+    },
+    "i01": {
+      "path": "examples/graph-export/unplaced-dexpi/i01.model.json",
+      "historical_CRLF": {
+        "sha256_raw": "cf32ae70d0380214aff0ddf1c5f6f1101d13c802eae82ff2a67d2dcc6f0f813f",
+        "bytes": 62541
+      },
+      "successor_canonical_LF": {
+        "sha256_raw": "4c7820115e4c3a08df900154565a8db54a72684b302e645407cf1f6881dbd28f",
+        "bytes": 60691
+      },
+      "typed_semantics_exact": true,
+      "only_CRLF_to_LF": true
+    }
+  },
+  "fixture_successor": "Exactly four successor fixture files update only raw model-base digest fields for canonical LF input. Source-policy expected states, patches, literal fields, notes and actors are unchanged. core-expected.json retains the historical original control/oracle freeze references; those opaque historical hashes do not claim equality to the successor core-controls bytes. The current packet manifest binds every successor file."
+}

@@ -1,0 +1,269 @@
+{
+  "schema": "n114-question-handoff-curated-capture-1",
+  "presentation": "DERIVED PUBLIC-SAFE SUMMARY of one actual local software exercise. Selected engineering artifacts below are byte-exact copies; this summary is not a raw runtime log.",
+  "case": "Existing public I04 reader interpretation, canonical-LF working model, fictional note/actors/accepted partial answer; no new source family, plant or model-accuracy trial.",
+  "producer_receipt_sha256_raw": "48d34b31cc69047b00cf4b240d4a9c322fbbdaeb90e74cfc9701f20ef3f1841c",
+  "raw_result_inventory_sha256_raw": "af411d20e1281e48a81932ba2e4b30025d9fa74844ff05a6d95d045751768a65",
+  "actual_scope": {
+    "local_child_CLI_calls": 6,
+    "child_exits": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "direct_pure_Snapshot_bound_pairs": 3,
+    "SDK_listener_provider_sourcefetch_calls": 0
+  },
+  "input_PROVENANCE_sha256_raw": "af1c5545a9279c7e8cb718f07525f3c23ce2867b3093a06e6fa8baf74370be34",
+  "selected_methods": {
+    "question_engine.py": {
+      "sha256_raw": "5e2cb1ea94e2bb8910349540d8c5cf8276e7f7bbbf13147bd7abfda83cc6b1a3",
+      "bytes": 123592
+    },
+    "graph_export.py": {
+      "sha256_raw": "502ef69cdfa387cc99082b026964e45bb7ed409bb4674d4f6e4fd41a042e182d",
+      "bytes": 40962
+    },
+    "context_register.py": {
+      "sha256_raw": "4e98bd52850a358a71f2f9448a5d1d00cfa5678975c8a42bf5d3d5c5320a5379",
+      "bytes": 48832
+    },
+    "serve_snapshot.py": {
+      "sha256_raw": "d2db1d659a718e66cee71347e40f9508f491bbe49dc3a43b26de1a1e7c704b08",
+      "bytes": 24227
+    }
+  },
+  "catalog": {
+    "sha256_raw": "0f2c9e6dd62e9e3c523f866eeb3bc8edcc0189d93f93981fb5d877f7c24bf9ed",
+    "bytes": 225757
+  },
+  "reproducer": {
+    "sha256_raw": "d4ebd0f73f0dea7439e5364c193f7d09d6b7536d08ae08aef678c4f76821e164",
+    "bytes": 10256
+  },
+  "observations": {
+    "current-A": {
+      "state": "partial",
+      "answers": [
+        {
+          "decision_id": "d-f0dfae26f1a0a011d6ee27afe1e3a1f5040616e3452fcb763f95b2dc48812869",
+          "answer_id": "n114-partial-command-1",
+          "freshness": "current",
+          "changed": []
+        }
+      ],
+      "owner": "Fictional controls-records owner"
+    },
+    "current-B-source": {
+      "state": "unanswered",
+      "answers": [
+        {
+          "decision_id": "d-f0dfae26f1a0a011d6ee27afe1e3a1f5040616e3452fcb763f95b2dc48812869",
+          "answer_id": "n114-partial-command-1",
+          "freshness": "stale",
+          "changed": [
+            "source revision/bytes/locator"
+          ]
+        }
+      ],
+      "owner": "Fictional controls-records owner"
+    },
+    "current-B-model": {
+      "state": "unanswered",
+      "answers": [
+        {
+          "decision_id": "d-f0dfae26f1a0a011d6ee27afe1e3a1f5040616e3452fcb763f95b2dc48812869",
+          "answer_id": "n114-partial-command-1",
+          "freshness": "stale",
+          "changed": [
+            "question content",
+            "assets content"
+          ]
+        }
+      ],
+      "owner": "Fictional controls-records owner"
+    }
+  },
+  "history": {
+    "decision_count": 1,
+    "ownership_history_count": 1,
+    "whole_history_exact_after_both_refreshes": true,
+    "plant_truth": "unknown",
+    "qualification": "Question-level fictional owner coordinates existing-record requests. No authenticated review, per-valve task routing or company approval."
+  },
+  "static_artifact_consistency": {
+    "current-A": {
+      "static_bound_content_digest_matches": true,
+      "stored_actual_readback_whole_question_current_decision_owner_history_matches": true
+    },
+    "current-B-source": {
+      "static_bound_content_digest_matches": true,
+      "stored_actual_readback_whole_question_current_decision_owner_history_matches": true
+    },
+    "current-B-model": {
+      "static_bound_content_digest_matches": true,
+      "stored_actual_readback_whole_question_current_decision_owner_history_matches": true
+    }
+  },
+  "other_separate_accepted_scopes": {
+    "LF_three_programs_independent_sha256_raw": "9199aa501e7f303d740df949549f1805e6e4c4b8f6fe52f1f9a58592c4bd43b9",
+    "LF05_independent_sha256_raw": "9a76982e3e842145d60d84c0181c06b1c24c385afc3fb8ff503db76ee387d224",
+    "LF05_actual_receipt_sha256_raw": "83a29880527a5bcf1b728a8d52d15ed9392c7c9413c1f856665fdf3164b7cc74",
+    "qualification": "Separate software scopes, not extra calls hidden in this six-CLI tutorial or a corpus/model performance metric."
+  },
+  "files": {
+    "result/A/model.json": {
+      "sha256_raw": "d45563c5804f465ac8fb557c4180cc9eca5577cce5d5a2074078fde357962746",
+      "bytes": 10265
+    },
+    "result/A/screen/questions.json": {
+      "sha256_raw": "9625aef6d5326d0eb098d255e0146162166e002b189b90625ec8d052dad71e34",
+      "bytes": 11734
+    },
+    "result/A/screen/screen.md": {
+      "sha256_raw": "8db29d95451e9dc3570699e7be52ef6dc84ba433469b44146d2e6fb68e87abbe",
+      "bytes": 9795
+    },
+    "result/A/full.graph.json": {
+      "sha256_raw": "f6eb6ac08eb2e7e3950332096b18273e790813d89f6e1d85e407eead5b0426c0",
+      "bytes": 48193
+    },
+    "result/A/core.graph.json": {
+      "sha256_raw": "9f48956e817c4de4a43e723dad0501745ee6e416404c3893cacbdc774677d729",
+      "bytes": 47736
+    },
+    "result/B-model/model.json": {
+      "sha256_raw": "6110daffb2aa61315abd3f5656892b6a46e1052cb59378f97f3015371c70eb41",
+      "bytes": 11044
+    },
+    "result/B-model/screen/questions.json": {
+      "sha256_raw": "41e4cc61688a9bdcd2cc2bac67c717d2399670176c0782d59cbe4749de2abb48",
+      "bytes": 12252
+    },
+    "result/B-model/screen/screen.md": {
+      "sha256_raw": "9a8714f3890fdb32171515fc107cd82ce040631e5a21147fa15ec28e62801f00",
+      "bytes": 10057
+    },
+    "result/B-model/full.graph.json": {
+      "sha256_raw": "927c586ac881fe36c589331b99d28059133de192d79db123f372585cf4c5912d",
+      "bytes": 48839
+    },
+    "result/B-model/core.graph.json": {
+      "sha256_raw": "6b37ee2cb1c925939da9cafa82b98114da7ca7083ba1528447968054f6261d46",
+      "bytes": 48382
+    },
+    "result/current-A/context.json": {
+      "sha256_raw": "07eb9d82ea3223125fa74c637ea39f8bde20f3c590780e6479cc16c6e0dab527",
+      "bytes": 43834
+    },
+    "result/current-A/context.md": {
+      "sha256_raw": "d4a8303837957c5d2f523a03d0f979e1bf8085d2a54b42f11de05658dd8981e2",
+      "bytes": 5413
+    },
+    "result/current-A/enriched_graph.json": {
+      "sha256_raw": "d55f37aa7af0d4cc84f6cd2e82e1e444c1aa4c91eb86bb718fdc3d8115400f5d",
+      "bytes": 61641
+    },
+    "result/current-A/readback.json": {
+      "sha256_raw": "f2433436659d005e94322dcf6b109eff3774e0338fb9e270af63d31a1a567beb",
+      "bytes": 67766
+    },
+    "result/current-B-source/context.json": {
+      "sha256_raw": "ad7e1d5f261ecb256bc43e335d90f01f62d663c317b35908037158c7e4d789f0",
+      "bytes": 43890
+    },
+    "result/current-B-source/context.md": {
+      "sha256_raw": "276d460756784947b06fe80ea0d9fb740e1fad301313d6c0fdfc2bcfa5c48ab3",
+      "bytes": 5465
+    },
+    "result/current-B-source/enriched_graph.json": {
+      "sha256_raw": "37fc47583d6b00d4502efa84d2c6e1720ede7bdf016a70e0ebc1ddaf1064d095",
+      "bytes": 61701
+    },
+    "result/current-B-source/readback.json": {
+      "sha256_raw": "b8e049febdea8c7fe1503daf216affb04da91e725810e585922a1f8af9a49861",
+      "bytes": 67874
+    },
+    "result/current-B-model/context.json": {
+      "sha256_raw": "77f897afeb4cc7d7b88c73bd10397391f2f4b3b09434cd776b01ca2b92d09c20",
+      "bytes": 44419
+    },
+    "result/current-B-model/context.md": {
+      "sha256_raw": "940016176a5fbe5f9b039254831cc6f32f50fe7bf92053f93fc09bc3d5afa455",
+      "bytes": 5468
+    },
+    "result/current-B-model/enriched_graph.json": {
+      "sha256_raw": "ac0f37def7a8bbd0c20a91fad21460c27fa01ff0dd7a06510d124c737fa8bc3b",
+      "bytes": 62878
+    },
+    "result/current-B-model/readback.json": {
+      "sha256_raw": "75dc695669f74275da158c53113674d187079319cbc4a04c84509bfb83de4186",
+      "bytes": 69442
+    },
+    "result/filled-fictional-answer.csv": {
+      "sha256_raw": "ff658a776cc59100f623815bb2091e1b756a211f9bef9f95b20b23931840664f",
+      "bytes": 1117
+    },
+    "result/prepare-A/answers.csv": {
+      "sha256_raw": "743b222f9eb5d46922d1d8452fd58561733283fae346cce62916df2be97a8e3c",
+      "bytes": 259
+    },
+    "result/prepare-A/evidence_choices.csv": {
+      "sha256_raw": "c407f3989292296d99bbc9ac9939d87761a1feb767ea962a35760c34e9dc879a",
+      "bytes": 266
+    }
+  },
+  "publication_policy": "Complete 66-file raw run, absolute ROOT/argv/input inventories/observed/logs remain private unchanged. Only these25 artifacts are selected byte-exact. Source_model values retain actual planned repository-relative result/A and result/B-model paths; no relabelled payloads or restamped fingerprints.",
+  "limitations": "Currentness/source match remain distinct from installed truth. Tools produce draft investigation/context contributions; the organization supplies the maintained home, roles, access and acceptance. Core graph question check is separate from the full-graph/register decision pairs.",
+  "provenance_succession": {
+    "actual_runtime_PROVENANCE": {
+      "path": "history/runtime-inputs/PROVENANCE.json",
+      "sha256_raw": "af1c5545a9279c7e8cb718f07525f3c23ce2867b3093a06e6fa8baf74370be34",
+      "bytes": 8294
+    },
+    "actual_runtime_README": {
+      "path": "history/runtime-inputs/README.md",
+      "sha256_raw": "a74016d2e52867c00517731fefd00ed71d5787d3b3ef7612311c08785c45cea4",
+      "bytes": 6794
+    },
+    "publication_current_PROVENANCE": {
+      "path": "PROVENANCE.json",
+      "sha256_raw": "f33b62108afab180340aea8cbbf96afc21ec0f1ea2ba1335c5efabd54e5061e4",
+      "bytes": 8294
+    },
+    "publication_current_README": {
+      "path": "README.md",
+      "sha256_raw": "b10b38420abd20c5b69a3983bb8ea8e6c220f61de709d96742d02cbf5ba57377",
+      "bytes": 6801
+    },
+    "only_runtime_manifest_successor_change": "/files/README.md/{sha256_raw,bytes}",
+    "qualification": "The observed run consumed historical af1c manifest and historical guide. Current publication metadata was authored after that run only to bind the updated reader guide; no claim that the current manifest was used in the observed run. All product code, model/source/answer bytes and25 selected outputs remain exact. Public replay with the current metadata is a separate later check."
+  },
+  "publication_metadata": {
+    "history/runtime-inputs/README.md": {
+      "sha256_raw": "a74016d2e52867c00517731fefd00ed71d5787d3b3ef7612311c08785c45cea4",
+      "bytes": 6794
+    },
+    "history/runtime-inputs/PROVENANCE.json": {
+      "sha256_raw": "af1c5545a9279c7e8cb718f07525f3c23ce2867b3093a06e6fa8baf74370be34",
+      "bytes": 8294
+    },
+    "README.md": {
+      "sha256_raw": "b10b38420abd20c5b69a3983bb8ea8e6c220f61de709d96742d02cbf5ba57377",
+      "bytes": 6801
+    },
+    "PROVENANCE.json": {
+      "sha256_raw": "f33b62108afab180340aea8cbbf96afc21ec0f1ea2ba1335c5efabd54e5061e4",
+      "bytes": 8294
+    }
+  },
+  "portable_actual_independent_receipt_sha256_raw": "87b2e5c88f3746d972e514a07ecd5e2759e84a633d2f7a1e3d72646c6e748716",
+  "diagnostic_limits": {
+    "B_model": "Authored fork under its own declared result/B-model/model.json source_model path AND changed FV-04 tag_basis. The portable fork demonstrates revised-model-basis freshness; it does not isolate one changed field as the cause.",
+    "same_path_tag_basis_control": "Separately accepted focused regression within LF-three-program proof changes FV-04 tag_basis while reusing the same materialized model path, then asserts stale/unanswered with retained decision/ownership. This control is not an extra portable-run call.",
+    "source_B": "Separate source-revision/bytes branch uses the original A graph/questions and retained A register; its outcome remains source-basis-specific, not installed-truth verification."
+  }
+}

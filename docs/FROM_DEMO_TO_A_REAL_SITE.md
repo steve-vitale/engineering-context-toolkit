@@ -5,9 +5,10 @@ The phases include proposed site extensions; use [supported workflows](WORKFLOWS
 contracts and [current status](STATUS.md) for what remains manual. The [own-P&ID tutorial](../examples/own-drawing/README.md)
 is the runnable starting point.
 
-This project runs on public drawings that are unusually kind: consistently drafted, current, with independent
-answer keys. A large site's P&ID archive is none of those things. This document is the honest gap list: what the demo
-assumes, what a real archive looks like, and what has to be added to get from one to the other. It complements
+The early 12-sheet OPEN100 extraction example provides one reference for planning a larger archive. The current
+corpus also includes other CAD dialects and archive scans, with failures and weaker agent-made keys retained in
+[the workflow matrix](GENERALIZATION.md). This page plans document control, review and integration around the
+reusable tools; a clean public drawing set is not a prerequisite for starting your own draft model. It complements
 [AT_YOUR_PLANT.md](AT_YOUR_PLANT.md) (preparation, savings, safety and security) and
 [EVALUATION.md](EVALUATION.md) / [GOAL.md](GOAL.md) (how results are judged).
 
@@ -15,13 +16,13 @@ assumes, what a real archive looks like, and what has to be added to get from on
 > What changes is that the "checks" grow from one scorer into several independent sources of truth, and the people
 > need a process, not a spreadsheet.
 
-## 1. What the demo assumes vs what a real archive looks like
+## 1. The early OPEN100 reference case versus a site archive
 
-| The demo assumes | A 40-year archive actually has |
+| The early 12-sheet reference case | A larger site archive may have |
 |---|---|
 | One drafting style | Several eras and contractors: hand-drafted mylar, early CAD, modern intelligent P&IDs, vendor skid packages, each with its own symbol library and tag habits |
 | Clean digital images | Scans of scans, faded lines, coffee stains, skew, stamps, sheet sizes from A3 to E-size |
-| The drawing is current | Redlines never incorporated, "as-built" sheets that were never updated, equipment removed in the field but still drawn, and the reverse |
+| One selected drawing revision | Redlines never incorporated, "as-built" sheets that were never updated, equipment removed in the field but still drawn, and the reverse |
 | One copy per sheet | Superseded revisions in the same folder, duplicates across departments, sheets that no longer have a home unit |
 | Consistent tags | Renumbering campaigns, legacy tags in the DCS, tags reused across units, placeholder "XXX" tags never filled in |
 | An answer key exists | Nothing to score against except other imperfect sources |

@@ -31,6 +31,8 @@ TARGETS += ['examples/opportunity-screen/valve-feedback-basis/models/C3-01-omiss
 TARGETS += ['examples/internal-mcp/sample_asset.json']
 TARGETS += ['examples/context-register/typed-evidence/cases.json',
             'examples/context-register/typed-evidence/reproduce.py']
+TARGETS += ['examples/graph-export/unplaced-dexpi/i04.model.json',
+            'examples/graph-export/unplaced-dexpi/i01.model.json']
 RAW_FAMILIES = ('out/review_kit', 'examples/review-and-mapping',
                 'examples/own-drawing/deliverable', 'examples/from-description/assisted',
                 'examples/from-description/mgpi', 'examples/pump-revision/inputs',
@@ -39,7 +41,8 @@ RAW_FAMILIES = ('out/review_kit', 'examples/review-and-mapping',
                 'examples/opportunity-screen/mapping-descriptions/revision-a',
                 'examples/opportunity-screen/mapping-descriptions/revision-b',
                 'examples/context-register/typed-evidence/inputs',
-                'examples/context-register/typed-evidence/history/original-TF01')
+                'examples/context-register/typed-evidence/history/original-TF01',
+                'examples/graph-export/unplaced-dexpi/question-handoff')
 ORDINARY = ('scripts/line_layers.py', 'scripts/context_register.py',
             'examples/graph-export/multi-appearance/model.json')
 GIT_ENV = dict(os.environ, GIT_CONFIG_GLOBAL=os.devnull, GIT_CONFIG_SYSTEM=os.devnull,
@@ -85,7 +88,7 @@ class CheckoutContracts(unittest.TestCase):
     def test_git_filters_retain_lf_contracts_and_existing_raw_packets(self):
         self.assertIsNotNone(shutil.which('git'), 'Git is required for checkout-contract controls')
         targets = {path: (ROOT / path).read_bytes() for path in TARGETS}
-        self.assertEqual(len(targets), 33)
+        self.assertEqual(len(targets), 35)
         for path, raw in targets.items():
             self.assertNotIn(b'\r', raw, path + ' must materialize as committed LF bytes')
         protected = {}
@@ -96,6 +99,11 @@ class CheckoutContracts(unittest.TestCase):
                     if path.is_file() and '__pycache__' not in path.parts:
                         protected[path.relative_to(ROOT).as_posix()] = path.read_bytes()
         self.assertTrue(protected, 'Existing raw-byte families must be present')
+        packet = 'examples/graph-export/unplaced-dexpi/question-handoff/'
+        for name in ('PROVENANCE.json', 'reproduce.py', 'history/original-admission.json',
+                     'history/original-model-bytes/i04.model.json',
+                     'expected/r1/note.txt', 'expected/r2/note.txt'):
+            self.assertIn(packet + name, protected, 'The new raw packet must actually be exercised')
         ordinary = {path: (ROOT / path).read_bytes() for path in ORDINARY}
         synthetic = {'checkout-control.bin': b'\0raw\r\nbytes\xff',
                      'checkout-control.txt': b'ordinary LF control\n'}
@@ -143,8 +151,8 @@ class CheckoutContracts(unittest.TestCase):
                     expected = b'ordinary LF control\r\n' if checkout == 'true' else synthetic['checkout-control.txt']
                     self.assertEqual((folder / 'checkout-control.txt').read_bytes(), expected,
                                      'The negative control must actually exercise the selected Git text filter')
-        self.assertEqual((clean_count, checkout_count), (66, 132))
-        print('Git byte contracts: 66 indexed + 132 checkout target comparisons; '
+        self.assertEqual((clean_count, checkout_count), (70, 140))
+        print('Git byte contracts: 70 indexed + 140 checkout target comparisons; '
               + str(len(protected)) + ' existing raw-packet files retained per configuration')
 
     def test_current_drawing_manifests_match_exact_working_bytes(self):

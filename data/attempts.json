@@ -4612,6 +4612,30 @@
         "scripts/test_checkout_contracts.py",
         ".gitattributes"
       ]
+    },
+    {
+      "id": "A300",
+      "function": "intake_and_reuse",
+      "date": "2026-11-01",
+      "change": "Carry source-known unplaced Native roles and exact controller references through questions, qualified answers and revision history without inventing equipment ownership.",
+      "hypothesis": "A known instrument or final element can support a scoped records investigation before placement is resolved, provided role, identity, source qualifications and answer dependencies survive the handoff.",
+      "evidence": "Original I04 refuses despite retained roles. The bounded new route admits supported controller/unplaced records, preserves exact endpoints and qualifiers, excludes rejected records and refuses invalid identities before writes. Four appended regression methods cover the new route; the complete public question module reports 160 tests with one unnamed skip and no failures/errors. Three checkout tests pass. The documented public replay completes six CLI calls and three complete pure Snapshot bound-pair readbacks: current partial A becomes stale/unanswered for separate source and model forks while decisions/ownership history stay exact. Seven normal producers yield 79 artifacts:77 raw-identical and only two actual description build receipt code-hash leaves changed. The first description check fails those two stale receipts; adopting actual regenerated receipts yields 23 passing tests. Independent receiving checks actual outputs and their scoped guards.",
+      "runs": "Earlier matched original/candidate four-method controls, 17-case diagnostic jobs, canonical-LF regression runs and public tutorial replay are separate exposed software cohorts. The four appended methods are included in the 160, not additional unique tests. Seven normal producing commands and the post-refresh23-method description run are separate; no SDK transport, model/provider, company or plant connection.",
+      "verdict": "kept",
+      "why": "N114 closes the supported local question/handoff route. Unknown placement remains explicit; a logical command/flow path is not measured valve travel. The tutorial teaches own-source substitution; public/fictional cases establish no plant accuracy, human benefit or organizational authority. Original workflow criteria, catalog rules and saved model results are unchanged; full repository and exact-head CI remain separate integration gates.",
+      "source": [
+        "docs/JOURNAL.md#148-carry-known-unplaced-roles-into-a-useful-engineering-handoff",
+        "docs/OPPORTUNITY_SCREEN.md",
+        "docs/WORKFLOWS.md",
+        "examples/graph-export/unplaced-dexpi/question-handoff/README.md",
+        "examples/graph-export/unplaced-dexpi/question-handoff/PROVENANCE.json",
+        "examples/graph-export/unplaced-dexpi/question-handoff/capture.json",
+        "examples/graph-export/unplaced-dexpi/question-handoff/history/original-admission.json",
+        "scripts/question_engine.py",
+        "scripts/test_question_engine.py",
+        "scripts/test_checkout_contracts.py",
+        ".gitattributes"
+      ]
     }
   ],
   "not_tried": [
@@ -5927,14 +5951,21 @@
     {
       "id": "N114",
       "function": "intake_and_reuse",
-      "status": "not-done",
+      "status": "done",
       "idea": "Establish a useful source-qualified question/handoff route for explicitly unplaced DEXPI instruments and final elements without inventing owning equipment.",
-      "why_not_yet": "A201 and the committed unplaced-DEXPI graph packet preserve supplied roles and explicit FT-04/FIC-04/FV-04 relationships, not equipment placement. A source-informed prospective question contract, matched input/control results and useful receiving handoff are still needed; the graph repair is not a question-route completion claim. No new XML/source download or question evaluation is recorded here.",
+      "why_not_yet": "Completed A300 with source-qualified Native admission, exact relationships, permanent controls and a worked partial-answer/revision handoff. Public question module (160 tests) reports one unnamed skip; checkout (3 tests) and post-refresh description (23 tests) pass. The documented replay uses six CLI calls and three pure Snapshot pairs, preserving history. Seven normal producers compare 79 artifacts with only two measured receipt code-hash leaves changed. Known source roles do not establish installed truth, company acceptance or platform-generator eligibility. Full repository/exact-head CI remain separate.",
       "source": [
-        "docs/JOURNAL.md#69-preserve-known-engineering-meaning-and-retained-review-history",
-        "examples/graph-export/unplaced-dexpi/README.md",
+        "docs/JOURNAL.md#148-carry-known-unplaced-roles-into-a-useful-engineering-handoff",
         "docs/OPPORTUNITY_SCREEN.md",
-        "docs/GRAPH_EXPORT.md"
+        "docs/WORKFLOWS.md",
+        "examples/graph-export/unplaced-dexpi/question-handoff/README.md",
+        "examples/graph-export/unplaced-dexpi/question-handoff/PROVENANCE.json",
+        "examples/graph-export/unplaced-dexpi/question-handoff/capture.json",
+        "examples/graph-export/unplaced-dexpi/question-handoff/history/original-admission.json",
+        "scripts/question_engine.py",
+        "scripts/test_question_engine.py",
+        "scripts/test_checkout_contracts.py",
+        ".gitattributes"
       ]
     },
     {
