@@ -1,6 +1,6 @@
 # State of the toolkit
 
-Holistic audit: **2026-11-01, Central time**, with the latest collection/readout follow-up starting from released commit `037c523`.
+Holistic audit: **2026-11-01, Central time**, with the latest review-history and portability follow-up starting from released commit `f8fb378`.
 The public name is **Engineering Context Toolkit**. The jumpstart is its first-assignment path; modeling,
 review, analysis and evaluation can be used independently. Earlier failures and original evidence remain
 in the [journal](JOURNAL.md) and [attempt ledger](TRIED.md).
@@ -11,9 +11,10 @@ staging. Supply reviewed signal identities and verify receiving-system behavior 
 The public tutorials teach those steps; case studies and evaluations retain what was built or measured on their
 inputs. Engineering review and company acceptance determine what becomes an authoritative maintained twin or record.
 
-The [script registry](SCRIPTS.md) classifies 135 scripts: 33 tools, 12 checks, 14 support modules and 76 research
-scripts; tests are separate. Twenty-two [feature groups](FEATURES.md) register 357 example files, including
-inputs, generated outputs and retained history. Their evidence is bounded. A reviewed
+The [script registry](SCRIPTS.md) classifies 136 scripts: 33 tools, 12 checks, 15 support modules and 76 research
+scripts; tests are separate. Twenty-two [feature groups](FEATURES.md) register 358 distinct example files, including
+inputs, generated outputs and retained history. Shared files can appear under more than one group; feature-file
+references are not additional unique examples. Their evidence is bounded. A reviewed
 example does not certify every input, current implementation or engineering conclusion.
 
 ## Known defects
@@ -94,7 +95,7 @@ actual participant, recipient, native-system and tenant observations remain **no
 | Engineering question quality | N065/N082: source adequacy and useful questions. Of 50 rules/124 request bundles, 20 rules have bounded collection reviews; 30 still await original-source adequacy review. Scoped MGPI is development evidence; default MGPI still produces zero findings. | Prospective expected/unacceptable questions, source/key review and actual engineer/recipient usefulness observations. |
 | Evaluation and transfer | N086 original-source/key engineering acceptance, Native placement gaps, existing matrix failures, unfamiliar-source coverage, scorer limits and five missing historical prediction tables. | Matched experiments with frozen criteria, retained failures, exposure/split labels and independent source/key review. More files or rerunning familiar inputs is not generalization. |
 | Optional adapters and receiving projections | General inverse graph conversion, captured-source consumers, managed-section merging and particular incumbent-system connectors are not implemented. Test changed/removed identifiers and complete retained history for the selected route. | A demonstrated engineering job, explicit supported contract, source preservation and subsequent-revision readback. Add only the adapter that job needs. |
-| Own-input receiving contracts | N107 remains open: original graph CLI controls confirm foreign review events can attach through colliding local IDs; a countercontrol retains genuine earlier history after relocation and renaming. Current guides require an audited per-model review directory; it is not model binding. | A model/revision-bound receiving contract must refuse foreign association while retaining legitimate earlier decisions. No repair or company authentication is claimed. |
+| Review-history handoff | N107 now preserves selected JSON intact and unbound, then attaches events only through [individual supplied associations](REVIEW_HISTORY.md) to exact model/record bytes. Complete earlier history remains readable; full/core retain its qualifications. | Review the source/revision relationship in the company process. Matching hashes cannot detect a false supplied basis or establish writer lineage, reviewer authority, approval or permission to share. |
 | Company acceptance and benefit | N062/N063: real engineer/recipient investigation, authorized company import/readback, client permissions and a subsequent revision. | Actual observations from the [acceptance exercise](ACCEPTANCE.md), not an agent simulation. Native PI/gateway acceptance, accepted Copilot tenant and operational benefit remain unverified. |
 
 The company retains authority over accepted context, access, controlled documents, work execution and ownership.

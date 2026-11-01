@@ -165,9 +165,10 @@ python scripts/map_points.py ../approved-work/unit-47/plant_model.json ../approv
 ```
 
 After inspecting each plan, repeat the accepted command without `--dry-run`, retaining the same explicit paths.
-When exporting review events, pass only that model's audited review-record directory to `graph_export.py
---reviews`; it reads every JSON file in the selected directory without checking model binding. Keep OPC mapping
-receipts separate. See the [paired review/export example](GRAPH_EXPORT.md).
+For graph handoff, `graph_export.py --reviews` preserves the selected records intact and unbound by default.
+Inspect individual source/model/revision relationships before supplying an explicit association manifest to
+attach events. Keep OPC mapping receipts separate; unbound records still carry all supplied content. Follow
+[the review-history steps](REVIEW_HISTORY.md), then retain the complete packet in your approved company location.
 
 **Gateway caution:** `build_gateway.py --fresh` deletes/recreates the lab provider and configures gateway resources; it is not a file-only regeneration command. Runtime import and verification require a separately approved isolated lab, not production. See [native acceptance page](IGNITION_ACCEPTANCE.md).
 

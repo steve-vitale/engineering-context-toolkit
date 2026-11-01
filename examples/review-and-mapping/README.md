@@ -24,7 +24,8 @@ obsolete generated files and explicit reinstatement. The sheet-0 example below r
 | `reviewed_sheet0.csv` | a reviewer, filling the `OPS_` columns of `review_queue.csv` | 4 decisions: 2 confirmed, 1 rejected (a second read of the same bubble), 1 corrected (a placeholder tag) |
 | `records/2026-10-29-bundle.md` and `.json` | `apply_review.py` | The dated change record: who decided what, and what changed |
 | `mapping_dry_run.md` | `map_points.py --dry-run` | 25 instruments matched to I/O points, 10 on the drawing but not in the list, 2 the other way round; nothing written |
-| `graph_after_review.json` | `graph_export.py --reviews records` | The model as a graph after the review: the rejected item shows `rejected`, the corrected valve keeps its old tag as an alias, and the 4 decisions are events |
+| `review_associations.json` | Supplied illustrative association | Exact model/record hashes and the stated basis for attaching this example's individual dated record; not authenticated approval |
+| `graph_after_review.json` | `graph_export.py --reviews records --review-associations ...` | The reviewed model, original decisions and complete record context, with the supplied association beside each attached event |
 | `REPORT_after_review.html` | `generate.py` on the reviewed model, then `deliverable_report.py` | The client report after the review: "partly reviewed", the 4 decisions listed with what the sheet now says, and left out of the items to check first. Run before regenerating, the report refuses: the review sheet no longer matches the model |
 | `reviewed_pi_sheet0.csv`, `pi_mapping_dry_run.txt` | a reviewer, then `map_pi_points.py --dry-run` | Two PI points attested by a reviewer (illustrative names, not a real archive), and the mapping plan; nothing written |
 | [`out/review_kit/sheet-8/`](../../out/review_kit/sheet-8/README.md) | `review_kit.py make` | A one-sheet timed-review kit: the queue, the drawing, the overlay and a timer that logs itself. Ready to run, not run |
@@ -39,14 +40,17 @@ and the reports. `bundle/` and `my-review/` must not exist yet; delete both afte
 python -S scripts/import_site_drawing.py --manifest examples/own-drawing/manifest.json --out bundle
 python scripts/apply_review.py bundle/plant_model.json examples/review-and-mapping/reviewed_sheet0.csv --reviewer "R1 (illustrative example, not a real review)" --date 2026-10-29 --record-dir my-review/records
 python scripts/map_points.py bundle/plant_model.json data/io_lists/open100_sheet0_demo.csv --sheets 0 --dry-run > my-review/mapping_dry_run.md
-python scripts/graph_export.py bundle/plant_model.json --reviews my-review/records --out my-review/graph_after_review.json
+python -c "import shutil,sys; shutil.copyfile(sys.argv[1],sys.argv[2])" examples/review-and-mapping/review_associations.json my-review/review_associations.json
+python scripts/graph_export.py bundle/plant_model.json --reviews my-review/records --review-associations my-review/review_associations.json --out my-review/graph_after_review.json
 python scripts/generate.py bundle/plant_model.json
 python scripts/deliverable_report.py bundle --out my-review/REPORT_after_review.html
 python -S scripts/map_pi_points.py bundle/plant_model.json examples/review-and-mapping/reviewed_pi_sheet0.csv --dry-run > my-review/pi_mapping_dry_run.txt
 ```
 
-Every file in `my-review/` is then byte-identical to the one committed here
-(`scripts/test_deliverable_report.py` checks this).
+Every file in `my-review/`, including the copied association input, is then byte-identical to the one committed
+here (`scripts/test_deliverable_report.py` checks this). The association is an authored example for these exact
+bytes. For your model, [inspect individual records and supply your own checked basis](../../docs/REVIEW_HISTORY.md);
+do not copy this manifest or automatically associate a whole folder.
 
 Add `--dry-run` to `apply_review.py` to see the changes without writing them. If some rows are refused (an unknown
 item, a bad decision, a correction with no value), the valid rows are still applied and the run exits 1 listing the
@@ -74,10 +78,12 @@ Dry-run prints the proposed model snapshots without writing them. A successful a
 and saves its mapping reports in `--record-dir` when supplied; omitting it preserves the legacy `out/mapping/`
 default. Same-name mapping reports are replaced in the selected directory. For your own I/O list, use an approved
 private directory, for example `--record-dir ../approved-work/unit-47/mapping-records`, and keep accepted versions
-with the original CSV and model. Review decisions have their separate `apply_review.py --record-dir`; use only
-that model's audited review directory for `graph_export.py --reviews`. The exporter imports every JSON record
-there without checking model binding, so keep mapping receipts and other models' reviews separate. This is source traceability for a
-specialist tool, not a company decision-history service. The PI mapper keeps its separate existing contract.
+with the original CSV and model. Review decisions have their separate `apply_review.py --record-dir`. Graph
+export captures selected review JSON intact and unbound by default; an individual supplied association attaches
+events without proving authority or a historical transition. Complete record content, including addresses and
+reviewer fields, travels even when unbound. Keep mapping receipts and unrelated reviews separate, and follow
+[the review-history steps](../../docs/REVIEW_HISTORY.md). This is source traceability for a specialist tool;
+the PI mapper keeps its separate existing contract.
 
 The [mapping tests](../../scripts/test_map_points.py) include an explicitly illustrative CRLF CSV with a blank
 line and a quoted newline: its two records occupy lines 3–4 and 6. They verify exact fingerprints, locators,

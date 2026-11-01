@@ -11,25 +11,25 @@ Each represented item keeps its identity `source` and complete original drawing 
 Claims keep their own sources, including document-specific citations and later corrections. Keep the source
 model and original records alongside the graph; exported references do not verify those records or plant truth.
 
-The CLI refuses an output that aliases the input model, question file or any consumed `--reviews/*.json`
-record, including resolved directory links and existing hardlinks. Choose a separate output path. This local
-preflight does not lock files against concurrent changes.
+The CLI refuses an output that aliases the input model, question file, association manifest or any consumed
+review record, including resolved directory links and existing hardlinks. Choose a separate output path. This
+local preflight does not lock files against concurrent changes.
 
 ```sh
 python scripts/graph_export.py data/te_process_model.json --out te_graph.json
 python scripts/apply_review.py ../approved-work/unit-47/plant_model.json ../approved-work/unit-47/reviewed.csv --reviewer "Name, role" --record-dir ../approved-work/unit-47/review-records --dry-run
 # After inspecting and accepting the plan, apply it using the same model and receipt directory:
 python scripts/apply_review.py ../approved-work/unit-47/plant_model.json ../approved-work/unit-47/reviewed.csv --reviewer "Name, role" --record-dir ../approved-work/unit-47/review-records
-python scripts/graph_export.py ../approved-work/unit-47/plant_model.json --reviews ../approved-work/unit-47/review-records --out ../approved-work/unit-47/reviewed.graph.json
+python scripts/graph_export.py ../approved-work/unit-47/plant_model.json --reviews ../approved-work/unit-47/review-records --out ../approved-work/unit-47/history.unbound.graph.json
 python scripts/graph_export.py --check te_graph.json
 ```
 
-Use a permitted private working folder in place of the illustrative sibling path. `--reviews` reads every
-`*.json` in the selected directory and imports its review/change-review events; it does not filter by source
-model, revision or model hash. Audit that directory for the selected working model before passing it. Equally
-named item IDs do not establish a safe match. Keep other models' reviews and OPC mapping receipts elsewhere,
-or omit `--reviews` when no suitable review directory is available. The graph retains supplied events; this is
-not authenticated company acceptance.
+Use a permitted private working folder in place of the illustrative sibling path. `--reviews` captures every
+immediate `.json`/`.JSON` record intact in `review_context`; by default all are unbound and attach no events.
+To attach an individual record, inspect its source/model/revision basis and supply `--review-associations FILE`
+with exact model/record hashes and a meaningful relationship. Follow [the review-history steps](REVIEW_HISTORY.md).
+Matching IDs do not prove ownership, and supplied association is not authenticated company acceptance. Complete
+record content travels even when unbound; keep OPC mapping receipts and unrelated material separate.
 
 ## Keep known roles when placement is unknown
 
@@ -307,7 +307,8 @@ the 345 dropped all-pairs links, and 736 edges become 391
 ([`sheet0_graph_core.json`](../examples/graph-export/sheet0_graph_core.json)). Hand-built models (TE, Bayer) carry no
 extraction internals, so their `core` export equals the full one. `core` is a view for loading, not a replacement:
 keep the full export as the record. Each kept claim still carries its source; the full export retains methods and
-candidate alternatives a reviewer may also need.
+candidate alternatives a reviewer may also need. When reviews are selected, both profiles retain the complete
+`review_context` and association qualifications; `core` does not redact review records. See [review history](REVIEW_HISTORY.md).
 
 ## The format
 

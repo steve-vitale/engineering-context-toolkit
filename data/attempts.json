@@ -4428,6 +4428,25 @@
         "scripts/test_map_points.py",
         "docs/WORKFLOWS.md"
       ]
+    },
+    {
+      "id": "A291",
+      "function": "review_loop",
+      "date": "2026-11-01",
+      "change": "Preserve selected graph review records intact and unbound, then attach events only through an explicit individual supplied association to exact model and record bytes.",
+      "hypothesis": "An engineer should keep genuine earlier decisions and their source context without silently attaching every JSON record through a shared folder or colliding item IDs.",
+      "evidence": "The independently received v4 private cohort has 13 top-level jobs: 58 unit methods reported (57 passed, one unnamed skip), four candidate no-review exports raw-exact to original baselines, six full/core graph comparisons against independently frozen data oracles and real 8 MiB/plus-one record controls. Initial example creation stopped at a missing dynamic confidence.py harness dependency; the corrected A2 creation passed. Four repository code files then received LF byte pins: portable A3 has seven successful creation calls plus one expected refusal of the old A2 manifest without replacement. The actual adopted README and checkout modules pass nine plus three methods without skips. Two actual description rebuilds preserve 67 complete files and change only the graph-producer hash leaf in two build receipts.",
+      "runs": "Public fictional/development records, saved original baselines, actual local CLI/test controls and independent saved-evidence receiving where separately recorded. No model/provider call, new source corpus, plant connection, authenticated company review or human benefit measurement.",
+      "verdict": "kept",
+      "why": "Close N107 only for default-unbound custody and strict supplied-association admission/checking. Matching raw hashes and a current/historical label do not prove ownership, revision lineage, engineering correctness or reviewer authority; a false supplied basis is not semantically detected. Automatic writer lineage, company access/approval and shared governance remain outside this repair.",
+      "source": [
+        "docs/JOURNAL.md#139-preserve-review-records-before-associating-their-events",
+        "docs/REVIEW_HISTORY.md",
+        "scripts/graph_export.py",
+        "scripts/graph_review_records.py",
+        "scripts/test_graph_export.py",
+        "examples/review-and-mapping/README.md"
+      ]
     }
   ],
   "not_tried": [
@@ -5622,14 +5641,19 @@
     {
       "id": "N107",
       "function": "review_loop",
-      "status": "not-done",
-      "idea": "Bind imported graph review events to their actual source model and revision lineage instead of relying on directory selection or colliding item IDs.",
-      "why_not_yet": "Two retained original graph CLI cases now characterize the receiving gap: three foreign review events can attach to a different model when local IDs collide; a separate countercontrol preserves genuine earlier history after relocation and renamed current identities. Both original CLI calls exit0; no binding repair is implemented. Keep an audited per-model review directory meanwhile. Any repair must refuse foreign association without discarding legitimate earlier decisions or claiming company authentication.",
+      "status": "done",
+      "idea": "Preserve imported graph review records unbound and require an explicit supplied model/record association before attaching their events.",
+      "why_not_yet": "Completed A291 for bounded local receiving: complete selected JSON/raw bytes retained by default, individual exact model/record hashes and a supplied current/historical basis required for event attachment, complete qualified history preserved in full/core and standalone internal checks. Original foreign-event and genuine-history baselines remain retained. This does not infer or authenticate source ownership, prove a historical model transition, detect a false supplied basis or implement automatic writer lineage/company governance.",
       "source": [
         "docs/JOURNAL.md#137-keep-own-plant-review-and-mapping-records-with-the-plant-packet",
         "scripts/graph_export.py",
         "docs/GRAPH_EXPORT.md",
-        "docs/JOURNAL.md#138-explain-the-native-model-boundary-before-point-mapping"
+        "docs/JOURNAL.md#138-explain-the-native-model-boundary-before-point-mapping",
+        "docs/JOURNAL.md#139-preserve-review-records-before-associating-their-events",
+        "docs/REVIEW_HISTORY.md",
+        "scripts/graph_review_records.py",
+        "scripts/test_graph_export.py",
+        "examples/review-and-mapping/README.md"
       ]
     }
   ]

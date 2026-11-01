@@ -188,9 +188,10 @@ when `--record-dir` is omitted; `map_points.py` similarly defaults to `out/mappi
 earlier copies in the selected directory. Keep accepted versions and original sources with the company record.
 Ignoring a checkout folder does not secure or relocate its contents.
 
-Keep review records for this model separate from mapping receipts and other models. If you export review events,
-use the same explicit review directory with `graph_export.py --reviews`; that loader reads all JSON files there
-and does not verify model binding. Shared item IDs are not evidence that a record belongs to this model/revision.
+Keep review records for this model separate from mapping receipts and other models. `graph_export.py --reviews`
+captures the selected JSON intact and unbound; it attaches no events without an explicit individual-record
+association manifest. [Inspect the source/revision basis and hash the chosen records](REVIEW_HISTORY.md) before
+attaching history. Shared IDs do not establish ownership; even unbound records retain all supplied content.
 
 The OPC mapper above uses extracted-twin instrument IDs. Native process models from description or DEXPI routes
 still generate staging, with target fields/connections separately authored and reviewed; a universal Native

@@ -196,6 +196,8 @@ Substitute your permitted locations and inspect the complete diffs. After review
 each accepted plan with the same private receipt paths, then regenerate the model's exports with `generate.py`.
 Keep earlier models, filled sheets, I/O originals and accepted receipts with the investigation. Mapping receipts
 with the same generated name replace earlier ones in the selected folder; use a new version folder to retain them.
+To carry earlier decisions into a graph, [capture review history, then associate individual records](../../docs/REVIEW_HISTORY.md).
+A folder or matching item ID does not establish the source/revision relationship.
 
 The OPC mapper uses this route's extracted-twin instrument IDs. Native process models from descriptions or DEXPI
 can generate staging too, but need separately reviewed target-field authoring/configuration; this mapper does
