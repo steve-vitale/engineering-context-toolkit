@@ -23,8 +23,10 @@ The current runner registers **57 source-only and 75 full-suite programs**. The 
 56 then-registered source-only programs with eight skipped unittest cases and three explanatory platform notices; four focused
 programs also pass 48 methods without skips. The basis-check follow-up's three focused programs pass 56 methods
 without skips, followed by 57/57 source-only programs with eight skipped cases and three platform notices.
-Later review/documentation metadata is checked separately; current full-suite/SDK CI remains unrun. Earlier counts below describe
-their bounded development snapshots rather than an additional current integration result.
+The first-installment review commit `a97e239` also passed [normal review CI](https://github.com/steve-vitale/engineering-context-toolkit/actions/runs/41522983712):
+75/75 full-suite programs, with 18 individual cases skipped, and the optional MCP/protocol job. These are
+software checks, not company or plant acceptance. Follow [committed-version CI](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml)
+for the latest revision; earlier counts below retain their bounded development snapshots.
 
 The reader-path follow-up carries that distinction into the generated client reports, manual Bayer tutorial,
 review kit and 3D case. The own-P&ID tutorial now gives the model/questions-to-graph continuation; description
