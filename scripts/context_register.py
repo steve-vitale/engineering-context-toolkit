@@ -528,13 +528,14 @@ def reconcile(register, questions, sources, choices, rows):
         rec["id"] = record_id(rec, "d-")
         out["decisions"].append(rec)
         latest[key] = rec
+    answers_by_question = {}
+    for (question_id, _), rec in sorted(latest.items()):
+        answers_by_question.setdefault(question_id, []).append(rec)
     current = {}
     all_ids = set(questions) | {r["question_id"] for r in out["decisions"]} | set(owners)
     for qid in sorted(all_ids):
         answers = []
-        for (question_id, _), rec in sorted(latest.items()):
-            if question_id != qid:
-                continue
+        for rec in answers_by_question.get(qid, ()):
             old = rec["evidence"]
             choice = choices.get((qid, old["source"]["id"], old["source"]["locator_id"]))
             changed = []

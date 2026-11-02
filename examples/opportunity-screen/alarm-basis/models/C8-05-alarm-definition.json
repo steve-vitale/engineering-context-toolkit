@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "C8-05-alarm-definition",
+    "evidence_class": "author-illustrated fictional prospective development construction",
+    "source_review": "HSE-source-informed expectedcriteria; engineering/software acceptance pending; no productcall",
+    "plant_truth": "unknown"
+  },
+  "units": [
+    {
+      "id": "U-A",
+      "type": "vessel",
+      "name": "Fictional area A"
+    },
+    {
+      "id": "U-B",
+      "type": "vessel",
+      "name": "Fictional area B"
+    }
+  ],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "PAH-101",
+      "unit": "U-A",
+      "stream": null,
+      "variable": "pressure",
+      "uom": null,
+      "description": "Fictional drawnalarmcandidate; notinstalledconfiguration",
+      "facts": {
+        "record_reference": null,
+        "record_revision": null,
+        "operator_role": null,
+        "console_id": null,
+        "responsibility_area": null,
+        "period_start": null,
+        "period_end": null,
+        "operating_mode": null,
+        "journal_definition": "includes statuses and acknowledgements",
+        "standing_alarm_count": null,
+        "standing_duration_basis": null,
+        "underlying_claim_verified": false,
+        "indication_class": "process-status-only",
+        "operator_action_required": false,
+        "source_document": "fictional:status-register-A"
+      }
+    },
+    {
+      "tag": "LAHH-201",
+      "unit": "U-B",
+      "stream": null,
+      "variable": "level",
+      "uom": null,
+      "description": "Fictional drawnalarmcandidate; notinstalledconfiguration",
+      "facts": {
+        "record_reference": null,
+        "record_revision": null,
+        "operator_role": null,
+        "console_id": null,
+        "responsibility_area": null,
+        "period_start": null,
+        "period_end": null,
+        "operating_mode": null,
+        "journal_definition": "declared operatorpresentations; filtercoverageunknown",
+        "standing_alarm_count": null,
+        "standing_duration_basis": null,
+        "underlying_claim_verified": false,
+        "indication_class": "operator-alarm",
+        "operator_action_required": true,
+        "source_document": "fictional:alarm-register-B",
+        "required_response_document": "fictional:response-B"
+      }
+    }
+  ],
+  "final_elements": [],
+  "controllers": []
+}

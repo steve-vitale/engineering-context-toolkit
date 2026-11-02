@@ -35,6 +35,10 @@ existing records, declared function, uncertainty and next recipient. Its six fic
 two eligibility controls are distinct from these public/illustrative model applications. The current reports
 were regenerated; questions and supplied records are not installed deficiencies or compulsory projects.
 
+The [alarm-record example](alarm-basis/README.md) keeps operator responsibility, source/period coverage and
+existing records together, including shared responsibilities and foreign records with matching labels. Its nine
+fictional cases demonstrate collection behavior and typed visibility, not alarm quality or compliance.
+
 The commands below regenerate tracked example outputs for contributors; the test checks them byte for byte.
 For a personal run, use a separate `--out` folder such as `../engineering-work/screen-te`. For a roll-up, point
 each `--rollup` at the corresponding working output folder.

@@ -1,16 +1,17 @@
-# A generated question keeps its partial answer
+# A generated question retains its earlier answers for review
 
-This example runs the actual question engine, then retains a qualified response in the context register. It uses
-the existing sourced Bayer model and the original public CSB report. It is a development example in an existing
-source family, with no human owner, reviewer, sign-off or plant-truth verdict.
+This example connects the question engine to retained engineering context. It uses the existing sourced Bayer
+model and public CSB report as development evidence, with no human owner, reviewer, sign-off or plant-truth verdict.
 
-E18 asks whether heat rejected to cooling water could serve another heating duty. The engine finds one question,
-`E18@model`, with six exact asset/stream references and three collection requests. The published narrative supplies
-part of the operating-sequence context; it does not establish actual simultaneous duties or an opportunity.
+E18 investigates whether rejected cooling heat could serve another heating duty. Its screen has six exact
+asset/stream references and three collection requests. The published operating narrative provides useful sequence
+context; it does not establish simultaneous duties or an available opportunity.
 
-First read the [generated screen](screen/screen.md), then the [retained context report](expected/context.md).
-The latter keeps E18 **partial**, with its original temperature/duty, time-overlap and layout/fouling prompts,
-decision rule and limits still visible. No saving is calculated and no engineering change is proposed.
+Read the [current screen](screen/screen.md) and [retained report](expected/context.md). Both earlier proposed
+decisions remain in history. The latest answer's recorded state is **partial**, while current E18 is **unanswered**:
+its evidence fingerprint no longer matches the clarified decision-rule wording in the current question content.
+The model and source report are unchanged. This wording revision does not prove the earlier engineering
+interpretation wrong; it requires review of whether that answer still addresses the current screening basis.
 
 From the repository root:
 
@@ -18,35 +19,40 @@ From the repository root:
 python scripts/question_engine.py --model data/bayer_rt/process_model.json --question E18 --out my-bayer-question/screen
 ```
 
-If the source report is not already cached, this existing fetch command downloads it from csb.gov and verifies
-its pinned SHA-256. It does not digitize or publish a figure:
+If the original report is not cached, this existing explicit fetch downloads it from csb.gov and checks its pinned
+SHA-256; it does not digitize or publish a figure:
 
 ```sh
 python scripts/digitize_bayer_fig11.py fetch
 ```
 
-Then run the context workflow against the current original bytes:
+Refresh the full retained register without supplying a new answer:
 
 ```sh
-python -S scripts/context_register.py prepare --model data/bayer_rt/process_model.json --questions my-bayer-question/screen/questions.json --sources examples/context-register/bayer/sources.json --source-root data/external --out my-bayer-question/prepared
-python -S scripts/context_register.py apply --model data/bayer_rt/process_model.json --questions my-bayer-question/screen/questions.json --sources examples/context-register/bayer/sources.json --source-root data/external --register examples/context-register/bayer/history/before-appearances.context.json --answers examples/context-register/bayer/proposed_answer.csv --out my-bayer-question/current
+python -S scripts/context_register.py apply --model data/bayer_rt/process_model.json --questions my-bayer-question/screen/questions.json --sources examples/context-register/bayer/sources.json --source-root data/external --register examples/context-register/bayer/expected/context.json --out my-bayer-question/current
 ```
 
-The supplied CSV is an AI-authored proposed interpretation of the temperature-control narrative on PDF page 37
-(printed page 29). `source_key.json` records the exact locator, file identity, interpretation and remaining requests.
-Neither the report PDF nor its figures are redistributed here. Historical model data and its existing caveats
-are not revalidated or upgraded by attaching this answer.
+This refresh is idempotent against the current supplied register. It adds no decision or ownership record: both
+proposals stay intact, ownership remains `needs_owner`, plant truth stays unknown, and the latest response remains
+stale for `question content`. The source key cites PDF page 37 (printed page 29), the temperature-control narrative.
+Its historical sequence and the model's caveats are not revalidated by this software refresh.
 
-The [prior register](history/before-appearances.context.json) retains the original proposal unchanged. The current
-sheet is an explicitly labelled AI re-proposal against expanded item evidence; both decision snapshots remain.
-The [old answer sheet](history/before-appearances.answers.csv) refuses against the revised evidence. This software
-refresh adds no human review, plant-truth verdict or opportunity claim.
+The [supplied proposed CSV](proposed_answer.csv) keeps its earlier fingerprint and is historical input. Applying it
+against the current basis refuses; do not replace its fingerprint or copy it into a new approval. The
+[prior register](history/before-appearances.context.json) and [older sheet](history/before-appearances.answers.csv)
+also remain unchanged.
 
-For your own unit, the owner must examine the operating sequence and representative measured duties together,
-including their timing and operating states. Record further independently sourced answers without overwriting
-this one. Keep unresolved requests visible, and make an explicit reviewed decision rather than treating a screen
-as an opportunity or a historical sequence as proof of current operation. The register does not track completion
-of each collection prompt automatically.
+When an owner is ready to review the current question and evidence basis, prepare a **new** sheet from the
+retained current register:
 
-Use the [first-pilot brief](../../first-pilot/README.md) to choose one decision worth investigating. The
-[maintenance guide](../../../docs/CONTEXT_REGISTER.md) explains ownership, revision refresh and portable handoff.
+```sh
+python -S scripts/context_register.py prepare --model data/bayer_rt/process_model.json --questions my-bayer-question/screen/questions.json --sources examples/context-register/bayer/sources.json --source-root data/external --register my-bayer-question/current/context.json --out my-bayer-question/review
+```
+
+Review the operating sequence, existing duty/timing records and remaining requests before authoring a new answer.
+That review determines applicability; the tool does not convert a wording edit into an engineering verdict or
+complete each collection prompt. Keep earlier decisions and independently sourced responses rather than
+overwriting them. No saving or engineering change is established here.
+
+Use the [first-pilot brief](../../first-pilot/README.md) for one decision worth investigating. The
+[maintenance guide](../../../docs/CONTEXT_REGISTER.md) covers ownership, revisions and portable handoff.

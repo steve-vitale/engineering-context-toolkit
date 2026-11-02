@@ -4,7 +4,7 @@ Draft for engineering review. Source match and plant truth are separate explicit
 
 ## E18@model: Is heat rejected to cooling water in one place while steam heats a colder stream in another (a heat-integration question)?
 
-State: **partial**; owner: **needs owner**; present in current input: yes.
+State: **unanswered**; owner: **needs owner**; present in current input: yes.
 
 Collection prompts from the screen. These are not per-request completion records; an answer does not automatically satisfy or clear them.
 
@@ -23,14 +23,15 @@ Collection prompts from the screen. These are not per-request completion records
   Where: a walkdown: distance between the two exchangers
   Where: maintenance records: cleaning history
 
-Decision rule from the screen: Worth a pinch or exchanger study only when the hot stream's temperature range sits above the cold stream's with a practical approach, both run at the same time for long hours, and they are close enough to connect. Otherwise close it.
+Decision rule from the screen: Worth a pinch or exchanger study only when the hot stream's temperature range sits above the cold stream's with a practical approach, both run at the same time for long hours, and they are close enough to connect. Otherwise close this screening investigation.
 
 Limits from the screen: A screen pairs any cooling-water-cooled item with any steam-heated item; the temperatures decide. On a reactive system any heat-integration change needs a hazard review first. IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.
 
-- `published-control-sequence`: **current**, proposed, partial; `intended-heating-cooling-sequence` = **steam closed; recirculation redirected at setpoint**.
+- `published-control-sequence`: **stale**, proposed, partial; `intended-heating-cooling-sequence` = **steam closed; recirculation redirected at setpoint**.
   The published narrative describes the intended sequence: at the temperature setpoint, steam flow closes and recirculation is redirected from the heater to the cooler. This is useful operating context, but it does not establish actual simultaneous duties, their duration, or an available heat-recovery opportunity.
   Source: CSB-2008-08-I-WV, revision final report; exact file pinned by SHA-256, PDF page 37 (printed page 29), temperature-control paragraph above Figure 10; narrative only; SHA-256 `6b4c944c7c5c8b5537c32e86d247064c164fe50c15d08ea64083975e574cf619`.
   Source match: unknown; plant truth: unknown; reviewer: not recorded, reviewed on: not recorded; owner at decision: needs owner.
+  Reopened because: question content.
   Note: AI-authored proposed source interpretation; no owner, reviewer or site decision. Still collect representative temperatures/flows/duties, time alignment and overlap under comparable operating states, and layout/fouling evidence. Do not close E18 or calculate savings from this narrative. AI-authored re-proposal against expanded item evidence; prior proposal retained. No new human or plant review.
 
 Immutable history: 2 decisions, 0 ownership assignments. Full old evidence snapshots are in context.json.

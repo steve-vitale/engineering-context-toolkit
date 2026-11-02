@@ -1,0 +1,68 @@
+{
+  "schema": "public-snapshot-sample-capture-1",
+  "scope": "Actual SDK readback of this repository public Bayer example; not an own-plant capture tool, company client or operational connection.",
+  "response": "sample_asset.json",
+  "response_sha256_raw": "228df64435ca7c96dc82cdf3db8fbf684b2ed054e961d26983a32567a5b50b13",
+  "response_encoding": "UTF-8 LF, indent2, final LF; narrow repository LF checkout policy preserves these actual response-file bytes.",
+  "capture": {
+    "command": "python scripts/check_snapshot_mcp.py --capture-sample NEW_JSON_PATH",
+    "selected_asset": "P-1",
+    "transport": "stdio",
+    "sdk": "mcp 2.3.0",
+    "protocol": "2026-07-28",
+    "sessions": 1,
+    "tool_calls": 15,
+    "expected_tool_errors": 6,
+    "list_tools": 1,
+    "read_resources": 1,
+    "snapshot_loaded_at": "2026-11-01T15:45:47.695477+00:00",
+    "source_acquisition_time": null
+  },
+  "graph": {
+    "model": "data/bayer_rt/process_model.json",
+    "questions": "examples/opportunity-screen/bayer/questions.json",
+    "profile": "full",
+    "selected_context": null,
+    "selected_knowledge": null,
+    "serialization": "json.dumps(ensure_ascii=False, indent=1) + final newline, UTF-8 with explicit LF; normal insertion order.",
+    "snapshot_sha256_raw": "d75e0b69a879500fc376b5a499645a32aff7c6f0d0a126b324b12c585f913a39",
+    "bytes": 130647
+  },
+  "repository_source_identity": {
+    "scheme": "sha256-text-lf (CRLF pairs folded to LF for repository-authored text; not a rule for company source originals)",
+    "files": {
+      "scripts/check_snapshot_mcp.py": "a2247439da3d4b62dd47bb39c0f5f563dada0aba8b203c5618aa10be9ec76d67",
+      "scripts/graph_export.py": "502ef69cdfa387cc99082b026964e45bb7ed409bb4674d4f6e4fd41a042e182d",
+      "scripts/serve_snapshot.py": "d2db1d659a718e66cee71347e40f9508f491bbe49dc3a43b26de1a1e7c704b08",
+      "data/bayer_rt/process_model.json": "171fd1d3c1b7ac7fa2a69b57197317a48978d545d61e4a4d8fec714225782928",
+      "examples/opportunity-screen/bayer/questions.json": "3845e6c42623730f4f027083899bf09aac9c1b8a28adcc848e67f587ceafdeaa",
+      "requirements-mcp.txt": "5d6679369dad83b8981b6593e12c4e2f6567d7d5cf258c1ac7186fe17e7ca674"
+    }
+  },
+  "comparison": {
+    "previous_sample_commit": "c2bbe0b3ec7e2dd67b7c5e99f246ed5033db4e26",
+    "changed_typed_leaves": [
+      "/snapshot_sha256",
+      "/loaded_at"
+    ],
+    "all_other_wrapper_fields_and_complete_asset_unchanged": true,
+    "method": "Only actual returned payload was copied. Its text/structured forms and independent literal P-1/source/status key agree; actual retained graph bytes supply its fingerprint."
+  },
+  "history": {
+    "failed_review_run": 41321082811,
+    "failed_commit": "c2bbe0b3ec7e2dd67b7c5e99f246ed5033db4e26",
+    "cause": "The sample fingerprint covers the entire current graph, including questions. C3 changed the graph while P-1 remained unchanged. Both the offline snapshot test and final SDK sample comparison caught the stale fixture.",
+    "original_result": "70/71 test programs passed; benchmark registry step skipped. MCP had 27 PASS lines before its sample assertion, with two later recipe steps skipped. The old run remains failed."
+  },
+  "private_evidence_sha256": {
+    "pre_call_contract": "6cbb8ab0cf9cb35d6bcfa2a19fe9abf51f300d1b8155e03648d16f04b770f098",
+    "actual_capture": "4c1b23ee27b927f827f8a7cfbc1680688151111d4b01ba76d0fddca160e3d40c",
+    "independent_capture_receiving": "05f5bc7d1c82b137bb249326f80f3851807da9a6376b6d4d11c066c5b1e7489a"
+  },
+  "limits": [
+    "This one stdio capture is not the full protocol/context/knowledge suite or exact-head CI. Mocked capture-routing controls are separate from actual SDK evidence.",
+    "Claims and cited sources remain supplied and unverified. Load time is not source acquisition time or evidence of current plant conditions.",
+    "No MCP network listener was configured for capture; no zero-OS-socket claim, company/Copilot/OT acceptance, process connection, model API or source-document fetch.",
+    "Full parsed SDK envelopes and canonical graph bytes are retained privately; no raw JSON-RPC wire, unavailable child PID or human approval is invented."
+  ]
+}

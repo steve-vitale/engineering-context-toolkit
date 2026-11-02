@@ -626,7 +626,41 @@
     "examples/graph-export/unplaced-dexpi/question-handoff/result/current-B-source/readback.json",
     "examples/graph-export/unplaced-dexpi/question-handoff/result/filled-fictional-answer.csv",
     "examples/graph-export/unplaced-dexpi/question-handoff/result/prepare-A/answers.csv",
-    "examples/graph-export/unplaced-dexpi/question-handoff/result/prepare-A/evidence_choices.csv"
+    "examples/graph-export/unplaced-dexpi/question-handoff/result/prepare-A/evidence_choices.csv",
+    "examples/opportunity-screen/alarm-basis/README.md",
+    "examples/opportunity-screen/alarm-basis/SOURCES.json",
+    "examples/opportunity-screen/alarm-basis/expected/after/C8-01-record-availability/questions.json",
+    "examples/opportunity-screen/alarm-basis/expected/after/C8-01-record-availability/screen.md",
+    "examples/opportunity-screen/alarm-basis/expected/after/C8-02-normal-versus-upset/questions.json",
+    "examples/opportunity-screen/alarm-basis/expected/after/C8-02-normal-versus-upset/screen.md",
+    "examples/opportunity-screen/alarm-basis/expected/after/C8-03-standing-and-response/questions.json",
+    "examples/opportunity-screen/alarm-basis/expected/after/C8-03-standing-and-response/screen.md",
+    "examples/opportunity-screen/alarm-basis/expected/after/C8-04-operator-scope/questions.json",
+    "examples/opportunity-screen/alarm-basis/expected/after/C8-04-operator-scope/screen.md",
+    "examples/opportunity-screen/alarm-basis/expected/after/C8-05-alarm-definition/questions.json",
+    "examples/opportunity-screen/alarm-basis/expected/after/C8-05-alarm-definition/screen.md",
+    "examples/opportunity-screen/alarm-basis/expected/after/C8-06-foreign-versus-matched-record/questions.json",
+    "examples/opportunity-screen/alarm-basis/expected/after/C8-06-foreign-versus-matched-record/screen.md",
+    "examples/opportunity-screen/alarm-basis/expected/after/C8-07-no-drawn-alarm-tags/questions.json",
+    "examples/opportunity-screen/alarm-basis/expected/after/C8-07-no-drawn-alarm-tags/screen.md",
+    "examples/opportunity-screen/alarm-basis/expected/after/C8-S01-shared-operator-record/questions.json",
+    "examples/opportunity-screen/alarm-basis/expected/after/C8-S01-shared-operator-record/screen.md",
+    "examples/opportunity-screen/alarm-basis/expected/after/C8-S02-repeated-label-foreign-scopes/questions.json",
+    "examples/opportunity-screen/alarm-basis/expected/after/C8-S02-repeated-label-foreign-scopes/screen.md",
+    "examples/opportunity-screen/alarm-basis/expected/cases.json",
+    "examples/opportunity-screen/alarm-basis/expected/input-vectors.json",
+    "examples/opportunity-screen/alarm-basis/history/PROVENANCE.json",
+    "examples/opportunity-screen/alarm-basis/history/before-shared-scope/questions.json",
+    "examples/opportunity-screen/alarm-basis/history/before-shared-scope/screen.md",
+    "examples/opportunity-screen/alarm-basis/models/C8-01-record-availability.json",
+    "examples/opportunity-screen/alarm-basis/models/C8-02-normal-versus-upset.json",
+    "examples/opportunity-screen/alarm-basis/models/C8-03-standing-and-response.json",
+    "examples/opportunity-screen/alarm-basis/models/C8-04-operator-scope.json",
+    "examples/opportunity-screen/alarm-basis/models/C8-05-alarm-definition.json",
+    "examples/opportunity-screen/alarm-basis/models/C8-06-foreign-versus-matched-record.json",
+    "examples/opportunity-screen/alarm-basis/models/C8-07-no-drawn-alarm-tags.json",
+    "examples/opportunity-screen/alarm-basis/models/C8-S01-shared-operator-record.json",
+    "examples/opportunity-screen/alarm-basis/models/C8-S02-repeated-label-foreign-scopes.json"
    ],
    "tests": [
     "scripts/test_question_engine.py"
@@ -757,7 +791,8 @@
     "examples/context-register/typed-evidence/inputs/schedule.txt",
     "examples/context-register/typed-evidence/inputs/sources.json",
     "examples/context-register/typed-evidence/observations.json",
-    "examples/context-register/typed-evidence/PROVENANCE.json"
+    "examples/context-register/typed-evidence/PROVENANCE.json",
+    "examples/context-register/grouping-observations.json"
    ],
    "tests": [
     "scripts/test_context_register.py",
@@ -781,7 +816,9 @@
    "guide": "examples/internal-mcp/README.md",
    "example_outputs": [
     "examples/internal-mcp/sample_asset.json",
-    "examples/internal-mcp/sample_provenance.json"
+    "examples/internal-mcp/sample_provenance.json",
+    "examples/internal-mcp/history/before-screening-wording/sample_asset.json",
+    "examples/internal-mcp/history/before-screening-wording/sample_provenance.json"
    ],
    "tests": [
     "scripts/test_snapshot_packet.py",

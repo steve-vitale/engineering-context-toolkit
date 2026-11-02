@@ -182,7 +182,7 @@
      ]
     }
    ],
-   "decision_rule": "Worth a change only if a lower-grade source can meet the needed temperature with margin, for the hours the user runs; if the steam is already the lowest grade available, close it.",
+   "decision_rule": "Worth a change only if a lower-grade source can meet the needed temperature with margin, for the hours the user runs; if the steam is already the lowest grade available, close this screening investigation.",
    "typical_benefit": {
     "wording": "Closest source wordings: pinch potential \"far exceeds that from well-known conventional techniques such as heat recovery from boiler flue gas, insulation and steam trap management\" (S19, no % stated); for letdown to the lower pressure, S6's turbogenerator condition. No source gives a number for matching steam grade to duty.",
     "source": [

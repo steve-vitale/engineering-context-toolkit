@@ -1191,5 +1191,136 @@ class ContextRegister(unittest.TestCase):
         self._selected_pair_refuses(graph, register, "question context")
 
 
+    def _grouping_seed(self):
+        """Fictional exact IDs; labels do not authenticate teams or owners."""
+        a, b = "Team-A::Q1", "Team-B::Q1"
+        pending, owner_only = "Z::pending", "Owner::retired"
+        self.questions["questions"] = [
+            {"id": b, "question": "Which fictional B record applies?", "assets": [{"id": "P-2"}]},
+            {"id": pending, "question": "What remains unknown?", "assets": [{"id": "P-2"}]},
+            {"id": owner_only, "question": "Who will obtain the record?", "assets": [{"id": "P-1"}]},
+            {"id": a, "question": "Which fictional A record applies?", "assets": [{"id": "P-1"}]}]
+        self.manifest["documents"][0]["locators"][0]["questions"] = [a, owner_only]
+        self.manifest["documents"][1]["locators"][0]["questions"] = [b, pending]
+        self.save_inputs()
+        self.prepared()
+        assignment = {column: "" for column in cr.COLUMNS}
+        assignment.update(question_id=owner_only, owner="fictional-records-owner",
+                          assigned_by="fictional-coordinator", assigned_on="2026-11-01")
+        self.answers(
+            self.row(qid=b, aid="answer-2", claim_key="slot-2", value="B-2"),
+            self.row(qid=a, aid="answer-2", claim_key="slot-2", value="A-2"),
+            self.row(qid=a, aid="answer-10", claim_key="slot-10", value="A-10"),
+            assignment)
+        return self.apply()
+
+    def test_exact_question_ids_keep_reused_answers_and_lexical_order(self):
+        register = self._grouping_seed()
+        self.assertEqual(list(register["current"]),
+                         ["Owner::retired", "Team-A::Q1", "Team-B::Q1", "Z::pending"])
+        self.assertEqual([answer["answer_id"] for answer in register["current"]["Team-A::Q1"]["answers"]],
+                         ["answer-10", "answer-2"])
+        self.assertEqual([answer["answer_id"] for answer in register["current"]["Team-B::Q1"]["answers"]],
+                         ["answer-2"])
+        self.assertEqual([(r["question_id"], r["answer_id"], r["value"]) for r in register["decisions"]],
+                         [("Team-B::Q1", "answer-2", "B-2"),
+                          ("Team-A::Q1", "answer-2", "A-2"),
+                          ("Team-A::Q1", "answer-10", "A-10")])
+        exact = {(r["question_id"], r["answer_id"]): r["id"] for r in register["decisions"]}
+        for qid in ("Team-A::Q1", "Team-B::Q1"):
+            for answer in register["current"][qid]["answers"]:
+                self.assertEqual(answer["decision_id"], exact[(qid, answer["answer_id"])])
+                self.assertEqual(answer["freshness"], "current")
+            self.assertEqual(register["current"][qid]["state"], "answered")
+        self.assertEqual(register["current"]["Z::pending"]["answers"], [])
+        self.assertEqual(register["current"]["Z::pending"]["ownership"], "needs_owner")
+        self.assertEqual(register["current"]["Owner::retired"]["answers"], [])
+        self.assertEqual(register["current"]["Owner::retired"]["owner"], "fictional-records-owner")
+        self.assertTrue(all(r["plant_truth"] == "unknown" for r in register["decisions"]))
+
+    def test_incoming_updates_keep_retired_owner_only_and_answerless_questions(self):
+        original = self._grouping_seed()
+        sources_before = {name: (self.root / name).read_bytes() for name in ("manual.txt", "schedule.txt")}
+        a, pending = "Team-A::Q1", "Z::pending"
+        self.questions["questions"] = [q for q in self.questions["questions"] if q["id"] in (a, pending)]
+        self.manifest["documents"][0]["locators"][0]["questions"] = [a]
+        self.manifest["documents"][1]["locators"][0]["questions"] = [pending]
+        self.save_inputs()
+        revised = self.row(qid=a, aid="answer-2", claim_key="slot-2", value="A-2-revised",
+                           owner="", assigned_by="", assigned_on="", note="Fictional explicit revision.")
+        unchanged = self.row(qid=a, aid="answer-10", claim_key="slot-10", value="A-10",
+                             owner="", assigned_by="", assigned_on="")
+        assignment = {column: "" for column in cr.COLUMNS}
+        assignment.update(question_id=a, owner="fictional-successor-owner",
+                          assigned_by="fictional-coordinator", assigned_on="2026-11-01")
+        self.answers(revised, unchanged, assignment)
+        current = self.apply()
+        self.assertEqual(self._typed_json(current["decisions"][:-1]), self._typed_json(original["decisions"]))
+        self.assertEqual(len(current["decisions"]), len(original["decisions"]) + 1)
+        self.assertEqual(self._typed_json(current["ownership_history"][:-1]), self._typed_json(original["ownership_history"]))
+        self.assertEqual(len(current["ownership_history"]), len(original["ownership_history"]) + 1)
+        previous = next(r for r in original["decisions"] if r["question_id"] == a and r["answer_id"] == "answer-2")
+        self.assertEqual(current["decisions"][-1]["previous"], previous["id"])
+        self.assertEqual(current["decisions"][-1]["owner"], previous["owner"])
+        self.assertEqual(current["current"][a]["owner"], "fictional-successor-owner")
+        self.assertEqual([r["answer_id"] for r in current["current"][a]["answers"]], ["answer-10", "answer-2"])
+        selected = {r["answer_id"]: r["decision_id"] for r in current["current"][a]["answers"]}
+        self.assertEqual(selected["answer-2"], current["decisions"][-1]["id"])
+        self.assertEqual(current["decisions"][-1]["value"], "A-2-revised")
+        unchanged_decision = next(r for r in original["decisions"] if r["question_id"] == a and r["answer_id"] == "answer-10")
+        self.assertEqual(selected["answer-10"], unchanged_decision["id"])
+        self.assertEqual(current["current"][a]["state"], "answered")
+        self.assertEqual(list(current["current"]), sorted(original["current"]))
+        retired = current["current"]["Team-B::Q1"]
+        self.assertFalse(retired["present"])
+        self.assertEqual(retired["state"], "unanswered")
+        self.assertEqual(retired["answers"][0]["changed"],
+                         ["question removed", "source/locator removed or binding withdrawn"])
+        self.assertFalse(current["current"]["Owner::retired"]["present"])
+        self.assertEqual(current["current"]["Owner::retired"]["owner"], "fictional-records-owner")
+        self.assertEqual(current["current"]["Owner::retired"]["answers"], [])
+        self.assertTrue(current["current"][pending]["present"])
+        self.assertEqual(current["current"][pending]["state"], "unanswered")
+        self.assertEqual(current["current"][pending]["ownership"], "needs_owner")
+        self.assertEqual(sources_before, {name: (self.root / name).read_bytes() for name in sources_before})
+
+    def test_latest_answer_sort_feed_does_not_repeat_for_each_question(self):
+        import builtins
+        from unittest.mock import patch
+
+        original = self._grouping_seed()
+        _, _, questions = cr.load_inputs(self.root / "model.json", self.root / "questions.json")
+        sources, choices, _ = cr.load_sources(self.root / "sources.json", questions)
+        before = self.all_bytes()
+        counts = {"latest_calls": 0, "latest_records": 0}
+
+        def observe_sorted(iterable, *args, **kwargs):
+            records = list(iterable)
+            is_latest = bool(records) and all(
+                isinstance(item, tuple) and len(item) == 2 and isinstance(item[0], tuple) and len(item[0]) == 2
+                and isinstance(item[1], dict) and {"question_id", "answer_id", "evidence", "previous"} <= item[1].keys()
+                and item[0] == (item[1]["question_id"], item[1]["answer_id"])
+                for item in records)
+            if is_latest:
+                counts["latest_calls"] += 1
+                counts["latest_records"] += len(records)
+            return builtins.sorted(records, *args, **kwargs)
+
+        # Calibrate the public-record-shape observer, without calling the product.
+        sample = [((r["question_id"], r["answer_id"]), r) for r in original["decisions"]]
+        observe_sorted(sample)
+        self.assertEqual(counts, {"latest_calls": 1, "latest_records": 3})
+        counts.update(latest_calls=0, latest_records=0)
+        with patch.object(cr, "sorted", observe_sorted, create=True):
+            refreshed = cr.reconcile(original, questions, sources, choices, [])
+        self.assertEqual(self._typed_json(refreshed), self._typed_json(original))
+        self.assertEqual(before, self.all_bytes())
+        self.assertLessEqual(counts["latest_records"], 3)
+        self.assertLessEqual(counts["latest_calls"], 1)
+        # This protects repeated global sort feeds only. Full grouping/shared-work
+        # accounting is a separate source-ledger study, not a timing/unit-test claim.
+
+
+
 if __name__ == "__main__":
     unittest.main()

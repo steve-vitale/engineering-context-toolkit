@@ -141,39 +141,100 @@ class WorkedContext(unittest.TestCase):
             self.assertEqual(old, {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in source.iterdir()})
         self.assertEqual(hashlib.sha256(archive.read_bytes()).hexdigest(), before)
 
-    def test_actual_question_engine_bridge_retains_requests_and_partial_answer(self):
+    def test_actual_question_engine_bridge_refreshes_retained_history_without_answers(self):
+        """Offline retained metadata is not acquisition/authority of the original CSB file."""
         packet = ROOT / 'examples/context-register/bayer'
+        protected_paths = [ROOT / 'data/bayer_rt/process_model.json', packet / 'sources.json',
+                           packet / 'source_key.json', packet / 'proposed_answer.csv',
+                           packet / 'history/before-appearances.context.json',
+                           packet / 'history/before-appearances.answers.csv']
+        protected_paths += [packet / 'expected' / name for name in
+                            ('context.json', 'context.md', 'enriched_graph.json', 'enriched_questions.json')]
+        protected_paths += [packet / 'screen' / name for name in ('questions.json', 'screen.md')]
+        protected = {path: path.read_bytes() for path in protected_paths}
+        old_csv = packet / 'proposed_answer.csv'
+        with old_csv.open(encoding='utf-8-sig', newline='') as stream:
+            old_rows = list(csv.DictReader(stream))
+        old_fingerprints = [row['evidence_fingerprint'] for row in old_rows]
         with tempfile.TemporaryDirectory() as tmp:
-            out = Path(tmp) / 'screen'
+            folder = Path(tmp)
+            out = folder / 'screen'
             result = subprocess.run([sys.executable, str(ROOT / 'scripts/question_engine.py'), '--model',
                 str(ROOT / 'data/bayer_rt/process_model.json'), '--question', 'E18', '--out', str(out)],
                 cwd=ROOT, env=ENV, capture_output=True, encoding='utf-8', timeout=30)
             self.assertEqual(result.returncode, 0, result.stderr)
             for name in ('questions.json', 'screen.md'):
                 self.assertEqual((out / name).read_bytes(), (packet / 'screen' / name).read_bytes(), name)
-            _, generated, questions = context_register.load_inputs(ROOT / 'data/bayer_rt/process_model.json',
-                                                                   out / 'questions.json')
-            register = json.loads((packet / 'expected/context.json').read_text(encoding='utf-8'))
-            context_register.validate_register(register)
-            self.assertEqual(register['current']['E18@model']['state'], 'partial')
+            graph, generated, questions = context_register.load_inputs(ROOT / 'data/bayer_rt/process_model.json',
+                                                                       out / 'questions.json')
+            seed = json.loads((packet / 'expected/context.json').read_bytes())
+            context_register.validate_register(seed)
             prior = json.loads((packet / 'history/before-appearances.context.json').read_bytes())
-            self.assertEqual(register['decisions'][:len(prior['decisions'])], prior['decisions'])
-            self.assertEqual(len(register['decisions']), 2)
-            decision = register['decisions'][-1]
-            self.assertEqual(decision['decision'], 'proposed')
-            self.assertEqual(decision['plant_truth'], 'unknown')
-            self.assertEqual(decision['evidence']['question'], questions['E18@model']['question'])
-            self.assertEqual(decision['evidence']['assets'], questions['E18@model']['assets'])
-            enriched = json.loads((packet / 'expected/enriched_questions.json').read_text(encoding='utf-8'))
+            self.assertEqual(context_register.canonical(seed['decisions'][:len(prior['decisions'])]),
+                             context_register.canonical(prior['decisions']))
+            self.assertEqual(len(seed['decisions']), 2)
+            self.assertEqual(seed['ownership_history'], [])
+            self.assertTrue(all(row['plant_truth'] == 'unknown' and row['decision'] == 'proposed'
+                                for row in seed['decisions']))
+            latest = seed['decisions'][-1]
+            self.assertEqual(latest['answer_state'], 'partial')
+            self.assertEqual(old_fingerprints, [latest['evidence_fingerprint']])
+            self.assertNotEqual(latest['evidence']['question']['decision_rule'],
+                                questions['E18@model']['question']['decision_rule'])
+            self.assertEqual(context_register.canonical(latest['evidence']['assets']),
+                             context_register.canonical(questions['E18@model']['assets']))
+
+            # Use only the retained document/revision/hash/locator metadata. This
+            # test never reads or substitutes bytes for the downloaded original.
+            sources = {source['id']: copy.deepcopy(source) for source in seed['sources']}
+            choices = {}
+            for source in sources.values():
+                for locator in source['locators']:
+                    for qid in locator['questions']:
+                        evidence = dict(copy.deepcopy(questions[qid]), source={
+                            'id': source['id'], 'revision': source['revision'], 'sha256': source['sha256'],
+                            'locator_id': locator['id'], 'locator': locator['locator']})
+                        choices[(qid, source['id'], locator['id'])] = {
+                            'evidence': evidence, 'fingerprint': context_register.digest(evidence)}
+            self.assertTrue(all(row['evidence_fingerprint'] != choices[
+                (row['question_id'], row['source_id'], row['locator_id'])]['fingerprint'] for row in old_rows))
+            refreshed = context_register.reconcile(seed, questions, sources, choices, [])
+            self.assertEqual(context_register.canonical(refreshed), context_register.canonical(seed))
+            for field in ('decisions', 'ownership_history'):
+                self.assertEqual(context_register.canonical(refreshed[field]), context_register.canonical(seed[field]))
+            current = refreshed['current']['E18@model']
+            self.assertEqual(current['state'], 'unanswered')
+            self.assertIsNone(current['owner'])
+            self.assertEqual(current['ownership'], 'needs_owner')
+            self.assertEqual(current['answers'], [{'decision_id': latest['id'], 'answer_id': latest['answer_id'],
+                'freshness': 'stale', 'changed': ['question content']}])
+
+            # Specific direct CSV-admission refusal, with all existing temporary
+            # files retained. The normal CLI write transaction is covered elsewhere.
+            sentinel = folder / 'keep.txt'
+            sentinel.write_bytes(b'Preserve existing output.\n')
+            before_refusal = {p.relative_to(folder).as_posix(): p.read_bytes()
+                              for p in folder.rglob('*') if p.is_file()}
+            with self.assertRaisesRegex(context_register.InputError, 'stale or missing evidence_fingerprint'):
+                context_register.read_answers(old_csv, questions, choices)
+            self.assertEqual(before_refusal, {p.relative_to(folder).as_posix(): p.read_bytes()
+                                             for p in folder.rglob('*') if p.is_file()})
+            self.assertEqual(old_csv.read_bytes(), protected[old_csv])
+            with old_csv.open(encoding='utf-8-sig', newline='') as stream:
+                self.assertEqual(old_fingerprints, [row['evidence_fingerprint'] for row in csv.DictReader(stream)])
+            files = context_register.outputs(graph, generated, refreshed, choices)
+            self.assertEqual(set(files), {'context.json', 'context.md', 'enriched_graph.json', 'enriched_questions.json'})
+            for name, text in files.items():
+                self.assertEqual(text.encode('utf-8'), (packet / 'expected' / name).read_bytes(), name)
+            context_register.validate_export(json.loads(files['enriched_graph.json']), refreshed)
             original = generated['questions'][0]
-            for key in ('assets', 'data_requests', 'decision_rule', 'limits'):
-                self.assertEqual(enriched['questions'][0][key], original[key])
-            report = (packet / 'expected/context.md').read_text(encoding='utf-8')
             self.assertEqual(len(original['data_requests']), 3)
+            report = files['context.md']
             for request in original['data_requests']:
                 self.assertIn(context_register.md(request['item']), report)
                 self.assertIn(context_register.md(request['how']), report)
             self.assertIn(context_register.md(original['limits']), report)
+        self.assertEqual(protected, {path: path.read_bytes() for path in protected_paths})
 
     def test_runbook_reproduces_every_expected_file_without_changing_sources(self):
         before = {p.name: p.read_bytes() for p in PACKET.iterdir() if p.is_file()}

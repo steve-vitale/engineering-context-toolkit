@@ -4636,6 +4636,49 @@
         "scripts/test_checkout_contracts.py",
         ".gitattributes"
       ]
+    },
+    {
+      "id": "A301",
+      "function": "intake_and_reuse",
+      "date": "2026-11-01",
+      "change": "Group latest retained answers once by exact question ID after incoming updates, preserving complete context and history.",
+      "hypothesis": "A per-call ordered answer index can remove repeated cross-question sorting while preserving exact identities, revisions, owners, freshness and output behavior.",
+      "evidence": "The original focused module passes two semantic guards but fails the repeated-sort bound with 12 records supplied against a limit of 3. The grouped method passes the unfiltered 62-method context module without skips, preserving the 59 prior test method ASTs. Existing context-example checks report 7 methods with one named optional original-cache skip; snapshot 19, pump-revision 2 and team-context 2 pass. Complete local logs and exact source identities are retained. No new retained normal producer output or SDK sample is claimed.",
+      "runs": "Three focused original-method guards; one unfiltered 62-method grouped module; four separate existing integration modules. The three new guards are included in the 62. Private maintainer diagnostics remain separately scoped and are not a public benchmark.",
+      "verdict": "kept",
+      "why": "N115 closes this bounded repeated-sort implementation issue. Grouping follows incoming rows and retains removed/owner-only questions, lexical answer order and full history. Temporary grouping work and unchanged validation/copy/output costs remain; no timing, memory, engineer benefit or organization-capacity claim follows. Historical captures and reviews remain intact; full repository and exact-head CI are separate gates.",
+      "source": [
+        "docs/JOURNAL.md#149-group-retained-answers-after-incoming-revisions",
+        "docs/CONTEXT_REGISTER.md",
+        "examples/context-register/grouping-observations.json",
+        "scripts/context_register.py",
+        "scripts/test_context_register.py"
+      ]
+    },
+    {
+      "id": "A302",
+      "function": "intake_and_reuse",
+      "date": "2026-11-01",
+      "change": "Review existing alarm records in their declared operator, period and source scope; retain supplied qualifiers rather than infer workload from drawing tags.",
+      "hypothesis": "Records-first collection with explicit responsibility, alarm definition and shared/foreign coverage can produce a useful next review without prescribing a new export or treating historical rate targets as a quality verdict.",
+      "evidence": "Nine fictional development cases retain eight C8-positive constructions and one quiet tag-route control. Source-job and fresh public-path receiving accept all 254 typed carrier-field values, using 41 of 50 optional names; nine names remain unexercised. Nine fresh current public-path calls produce 18 complete reports. The earlier eight-route refresh covered six closing clarifications. A separate final eight-route refresh covers the two additional E1/H5 clarifications: six outputs are raw unchanged and ten differ only by the declared phrase substitutions; finding IDs, references and benefits remain unchanged. All eight clarification policies close only the screening investigation, not a plant issue or required action. A separate no-answer Bayer refresh retains both old proposals and no ownership history, changing current partial to unanswered/stale only for question content. Local question tests report 163 methods: 162 pass and one named Windows symlink privilege skip, including all three new alarm tests passing. Checkout three pass after stale inventory cardinality literals were corrected; earlier failed envelopes remain.",
+      "runs": "Nine-case original/candidate development, nine public-path calls, two separate eight-route legacy screen/rollup refreshes, one cached-source context refresh and local unit modules are separate cohorts. No model/provider run, operator study, new source download or company acceptance is inferred. Full repository and exact-head CI are separate gates.",
+      "verdict": "kept",
+      "why": "C8 has a bounded source-informed collection review, bringing the current reviewed-rule count to 24 with 26 remaining. Drawing tags and supplied approval/coverage fields remain claims. The screen calculates no alarm metric, authenticates no source/owner, matches no company records automatically and demonstrates no workload quality, human benefit or industry-standard compliance. Historical catalogs, decisions and reviews remain intact; pending MCP and full feature-review freshness are not claimed.",
+      "source": [
+        "docs/JOURNAL.md#150-review-alarm-records-in-their-operator-and-source-scope",
+        "docs/OPPORTUNITY_SCREEN.md",
+        "examples/opportunity-screen/alarm-basis/README.md",
+        "examples/opportunity-screen/alarm-basis/SOURCES.json",
+        "examples/opportunity-screen/alarm-basis/expected/cases.json",
+        "examples/opportunity-screen/alarm-basis/expected/input-vectors.json",
+        "examples/opportunity-screen/alarm-basis/history/PROVENANCE.json",
+        "data/questions.json",
+        "scripts/test_question_engine.py",
+        "scripts/test_checkout_contracts.py",
+        "examples/context-register/bayer/README.md",
+        "examples/context-register/bayer/expected/context.json"
+      ]
     }
   ],
   "not_tried": [
@@ -5509,8 +5552,8 @@
       "id": "N082",
       "function": "intake_and_reuse",
       "status": "not-done",
-      "idea": "Source-review the remaining 27 catalog rules within the 50-rule/126-request inventory with prospective expected/unacceptable questions, exact collection scope and independent source review.",
-      "why_not_yet": "Twenty-three named rules have bounded source-informed collection reviews after A297, including service-first E16/C5 and scoped C3 valve feedback; 27 remain. This is not whole-catalog engineering adequacy, safety validation or usefulness. N065 and real engineer/recipient acceptance remain open.",
+      "idea": "Source-review the remaining 26 catalog rules within the 50-rule/126-request inventory with prospective expected/unacceptable questions, exact collection scope and independent source review.",
+      "why_not_yet": "Twenty-four named rules have bounded source-informed collection reviews after A302, including service-first E16/C5, scoped C3 valve feedback and C8 existing alarm-record review; 26 remain. This is not whole-catalog engineering adequacy, alarm/workload quality, industry-standard compliance or usefulness. N065 and real engineer/recipient acceptance remain open.",
       "source": [
         "docs/JOURNAL.md#115-repair-the-audit-gaps-with-owned-workstreams-and-independent-handoffs",
         "docs/STATUS.md",
@@ -5520,7 +5563,9 @@
         "docs/JOURNAL.md#134-make-own-plant-transfer-explicit-and-retain-function-evidence",
         "docs/JOURNAL.md#135-keep-heating-investigations-grounded-in-existing-records",
         "docs/JOURNAL.md#141-investigate-combustion-and-drum-control-from-service-and-existing-records",
-        "docs/JOURNAL.md#145-review-valve-feedback-from-existing-records"
+        "docs/JOURNAL.md#145-review-valve-feedback-from-existing-records",
+        "docs/JOURNAL.md#150-review-alarm-records-in-their-operator-and-source-scope",
+        "examples/opportunity-screen/alarm-basis/SOURCES.json"
       ]
     },
     {
@@ -5971,13 +6016,15 @@
     {
       "id": "N115",
       "function": "intake_and_reuse",
-      "status": "not-done",
+      "status": "done",
       "idea": "Group latest retained context answers once per question instead of sorting and scanning every latest answer for each question.",
-      "why_not_yet": "The current-state loop still repeats the latest-answer scan. The typed-freshness correctness repair deliberately leaves this separate algorithm unchanged. Freeze full-output/history/order oracles and count complete grouping/construction plus answer visits on bounded fictional packets before changing it. No timing, memory, team capacity or performance result has been measured.",
+      "why_not_yet": "Completed A301 for per-call latest-answer grouping after incoming rows, with exact identities/order/history preserved. The original repeated-sort guard fails 12 against a limit of 3; the grouped 62-method module passes without skips. Existing local integrations pass with one named optional cache skip. Counts are bounded software checks; validation, copying, serialization and temporary index work remain. No timing, memory or team/site/global-capacity result is inferred; final repository/CI gates remain separate.",
       "source": [
-        "scripts/context_register.py",
+        "docs/JOURNAL.md#149-group-retained-answers-after-incoming-revisions",
         "docs/CONTEXT_REGISTER.md",
-        "docs/JOURNAL.md#147-keep-typed-evidence-changes-from-inheriting-an-old-answer"
+        "examples/context-register/grouping-observations.json",
+        "scripts/context_register.py",
+        "scripts/test_context_register.py"
       ]
     }
   ]

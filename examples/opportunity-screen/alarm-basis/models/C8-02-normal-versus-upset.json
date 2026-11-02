@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "title": "C8-02-normal-versus-upset",
+    "evidence_class": "author-illustrated fictional prospective development construction",
+    "source_review": "HSE-source-informed expectedcriteria; engineering/software acceptance pending; no productcall",
+    "plant_truth": "unknown"
+  },
+  "units": [
+    {
+      "id": "U-A",
+      "type": "vessel",
+      "name": "Fictional area A"
+    },
+    {
+      "id": "U-B",
+      "type": "vessel",
+      "name": "Fictional area B"
+    }
+  ],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "PAH-101",
+      "unit": "U-A",
+      "stream": null,
+      "variable": "pressure",
+      "uom": null,
+      "description": "Fictional drawnalarmcandidate; notinstalledconfiguration",
+      "facts": {
+        "record_reference": null,
+        "record_revision": null,
+        "operator_role": null,
+        "console_id": null,
+        "responsibility_area": null,
+        "period_start": null,
+        "period_end": null,
+        "operating_mode": "normal snapshot",
+        "journal_definition": null,
+        "standing_alarm_count": null,
+        "standing_duration_basis": null,
+        "underlying_claim_verified": false,
+        "normal_presentations_per_10min": 1,
+        "normal_period_hours": 0.1666666667,
+        "upset_first10_presentations": null
+      }
+    },
+    {
+      "tag": "LAHH-201",
+      "unit": "U-B",
+      "stream": null,
+      "variable": "level",
+      "uom": null,
+      "description": "Fictional drawnalarmcandidate; notinstalledconfiguration",
+      "facts": {
+        "record_reference": "fictional:alarm-summary-B",
+        "record_revision": "r2",
+        "operator_role": null,
+        "console_id": null,
+        "responsibility_area": null,
+        "period_start": null,
+        "period_end": null,
+        "operating_mode": "normal and declaredmajorupset",
+        "journal_definition": null,
+        "standing_alarm_count": null,
+        "standing_duration_basis": null,
+        "underlying_claim_verified": false,
+        "normal_presentations_per_10min": 1,
+        "normal_period_hours": 720,
+        "upset_first10_presentations": 25
+      }
+    }
+  ],
+  "final_elements": [],
+  "controllers": []
+}

@@ -43,7 +43,7 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 - Whether the duties overlap in time [not on drawing]. Where: site records: operating sequence: are both duties needed at the same time?. How: Mark each duty continuous, batch or startup-only.
 - Layout distance and fouling [not on drawing]. Where: a walkdown: distance between the two exchangers; then maintenance records: cleaning history. How: Note pipe run and fouling service.
 
-**How it is decided:** Worth a pinch or exchanger study only when the hot stream's temperature range sits above the cold stream's with a practical approach, both run at the same time for long hours, and they are close enough to connect. Otherwise close it.
+**How it is decided:** Worth a pinch or exchanger study only when the hot stream's temperature range sits above the cold stream's with a practical approach, both run at the same time for long hours, and they are close enough to connect. Otherwise close this screening investigation.
 
 **What the source says (S19, S24):** Pinch potential "far exceeds that from well-known conventional techniques such as heat recovery from boiler flue gas, insulation and steam trap management." No % stated in that section.
 IAC/ITAC recommendation code: 2.243x; 2.244x (IAC/ITAC browse page: 2.243x: 3,673 recommendations, 1.4 yr average payback, 31.2% implemented; 2.244x: 1,466 recommendations, 1.7 yr, 28.6%; average dollar figure omitted).

@@ -1,22 +1,24 @@
 {
   "schema": "public-snapshot-sample-capture-1",
-  "scope": "Actual SDK readback of this repository public Bayer example; not an own-plant capture tool, company client or operational connection.",
+  "scope": "Actual SDK readback of the public Bayer snapshot after final screening-wording maintenance; one stdio capture, not an own-plant capture tool, company client or operational connection.",
   "response": "sample_asset.json",
-  "response_sha256_raw": "228df64435ca7c96dc82cdf3db8fbf684b2ed054e961d26983a32567a5b50b13",
-  "response_encoding": "UTF-8 LF, indent2, final LF; narrow repository LF checkout policy preserves these actual response-file bytes.",
+  "response_sha256_raw": "9b6099fdeace7db0ae0762a277ee062a21773a51423b3f20632e95c0096b99ca",
+  "response_encoding": "Actual UTF-8 LF, indent2, final LF response bytes; copied unchanged.",
   "capture": {
     "command": "python scripts/check_snapshot_mcp.py --capture-sample NEW_JSON_PATH",
     "selected_asset": "P-1",
     "transport": "stdio",
     "sdk": "mcp 2.3.0",
+    "python": "3.14.2",
     "protocol": "2026-07-28",
     "sessions": 1,
     "tool_calls": 15,
     "expected_tool_errors": 6,
     "list_tools": 1,
     "read_resources": 1,
-    "snapshot_loaded_at": "2026-11-01T15:45:47.695477+00:00",
-    "source_acquisition_time": null
+    "snapshot_loaded_at": "2026-11-01T23:54:41.511874+00:00",
+    "source_acquisition_time": null,
+    "scope": "Existing capture-only exercise; not default full checker, HTTP/context/knowledge checks or exact-head CI."
   },
   "graph": {
     "model": "data/bayer_rt/process_model.json",
@@ -24,45 +26,122 @@
     "profile": "full",
     "selected_context": null,
     "selected_knowledge": null,
-    "serialization": "json.dumps(ensure_ascii=False, indent=1) + final newline, UTF-8 with explicit LF; normal insertion order.",
-    "snapshot_sha256_raw": "d75e0b69a879500fc376b5a499645a32aff7c6f0d0a126b324b12c585f913a39",
-    "bytes": 130647
+    "serialization": "json.dumps(ensure_ascii=False, indent=1) + final newline, UTF-8 explicit LF; normal insertion order.",
+    "snapshot_sha256_raw": "4cd40bce11944dcf5a79099bdb9e3628e0a620381944127569a98656bd92ff4b",
+    "bytes": 130751,
+    "question_count": 12,
+    "identity_basis": "Measured retained canonical graph bytes served by the actual SDK session; no predicted or manually replaced fingerprint."
   },
   "repository_source_identity": {
-    "scheme": "sha256-text-lf (CRLF pairs folded to LF for repository-authored text; not a rule for company source originals)",
+    "scheme": "sha256-text-lf for repository-authored source/metadata; actual raw guarded inputs are also recorded. Neither policy normalizes company originals.",
+    "base_commit": "a916c4d21a9972fdfc78b590222d733154265615",
+    "capture_state": "Uncommitted isolated integration snapshot, not a clean/exact committed-head proof; named source hashes bind the observed inputs.",
     "files": {
       "scripts/check_snapshot_mcp.py": "a2247439da3d4b62dd47bb39c0f5f563dada0aba8b203c5618aa10be9ec76d67",
       "scripts/graph_export.py": "502ef69cdfa387cc99082b026964e45bb7ed409bb4674d4f6e4fd41a042e182d",
       "scripts/serve_snapshot.py": "d2db1d659a718e66cee71347e40f9508f491bbe49dc3a43b26de1a1e7c704b08",
+      "scripts/context_register.py": "5a902bb2a405599b4d864e9e7ca77162d51488d8920bd24874bb9c426b06f30d",
+      "scripts/test_context_register.py": "00b80abbf284722a4487031e012f00ab3d1dbb5932c0a32ea7f68716433fe8aa",
+      "scripts/output_paths.py": "16ace3cf89be6baffcac1be804ea4917c9db10caffe2b58c11ee0b9acd4d2939",
+      "scripts/graph_review_records.py": "404cffabf1028eff9f05d3ad76a93c86f4c699ba7a508b1626253de0951ac4aa",
+      "scripts/knowledge_snapshot.py": "6b88d2508a514e60c80a70d885c5e7fa3ff8068770dbe2ede053feacf0f906bb",
       "data/bayer_rt/process_model.json": "171fd1d3c1b7ac7fa2a69b57197317a48978d545d61e4a4d8fec714225782928",
-      "examples/opportunity-screen/bayer/questions.json": "3845e6c42623730f4f027083899bf09aac9c1b8a28adcc848e67f587ceafdeaa",
+      "examples/opportunity-screen/bayer/questions.json": "9927a0956479782c091140000e1c30d4d9305c7c9ec11f79837011fe73c93fb8",
       "requirements-mcp.txt": "5d6679369dad83b8981b6593e12c4e2f6567d7d5cf258c1ac7186fe17e7ca674"
-    }
+    },
+    "guarded_raw_files": {
+      "scripts/check_snapshot_mcp.py": {
+        "sha256_raw": "b7a5a393e2b6da89564a438ec440716a6dee593772df02c68badd346e0d6084f",
+        "bytes": 31340
+      },
+      "scripts/graph_export.py": {
+        "sha256_raw": "732744abdf6122da9f00702813760f31d1284165e654c07b2b2db31f8d712192",
+        "bytes": 41674
+      },
+      "scripts/serve_snapshot.py": {
+        "sha256_raw": "7d9c7865e98012bd140c08371bdd224df594017f846c78906d56ab77960cb9a6",
+        "bytes": 24648
+      },
+      "scripts/context_register.py": {
+        "sha256_raw": "5a902bb2a405599b4d864e9e7ca77162d51488d8920bd24874bb9c426b06f30d",
+        "bytes": 48918
+      },
+      "scripts/test_context_register.py": {
+        "sha256_raw": "2dd17452525cc8e07879e1d80c6a8bfcf58a32eef2d994e011caeab98338dc28",
+        "bytes": 79298
+      },
+      "scripts/output_paths.py": {
+        "sha256_raw": "48a339aa3e8f20757a967fea49f53b3d4cc0ff8993936a8a9988c7dc2c26876e",
+        "bytes": 2556
+      },
+      "scripts/graph_review_records.py": {
+        "sha256_raw": "fc96c6637835415c237338b128002e1b1dbd3c1666a5f0114f206028950b8cd1",
+        "bytes": 13397
+      },
+      "scripts/knowledge_snapshot.py": {
+        "sha256_raw": "983a89cd68df9e449057bf974fa11e3b0f4cd3cb722d79afc64bb89d151c07a9",
+        "bytes": 34227
+      },
+      "data/bayer_rt/process_model.json": {
+        "sha256_raw": "171fd1d3c1b7ac7fa2a69b57197317a48978d545d61e4a4d8fec714225782928",
+        "bytes": 15851
+      },
+      "examples/opportunity-screen/bayer/questions.json": {
+        "sha256_raw": "9927a0956479782c091140000e1c30d4d9305c7c9ec11f79837011fe73c93fb8",
+        "bytes": 54776
+      },
+      "requirements-mcp.txt": {
+        "sha256_raw": "131f8ea600629a6aa619240a6310d03bcf8bd71bf2a49bb29110048678a46246",
+        "bytes": 174
+      }
+    },
+    "scope": "Guarded code/model/questions/dependency declaration; not proof every imported API was exercised or a complete environment lock."
+  },
+  "producer_and_client": {
+    "producer": "scripts/check_snapshot_mcp.py canonical_packet shared with full checking; capture_sample explicitly selects stdio",
+    "observer_method_sha256_raw": "3fccb439cbb77042cb714877aa3f10144b956a93ed387ec4a29272c87add9064",
+    "literal_key_sha256_raw": "743787bc212c18f1876e797d877032ae29ff560a8888fb89a27389cc92b07173",
+    "client": "Existing approved MCP2.3.0 runtime; passive wrappers preserved complete parsed SDK envelopes and returned the original objects unchanged.",
+    "runtime_observation": "Actual protocol negotiation and sys.version recorded; no SDK installation performed for this capture."
   },
   "comparison": {
-    "previous_sample_commit": "c2bbe0b3ec7e2dd67b7c5e99f246ed5033db4e26",
+    "previous_sample_commit": "a916c4d21a9972fdfc78b590222d733154265615",
+    "previous_response_sha256_raw": "228df64435ca7c96dc82cdf3db8fbf684b2ed054e961d26983a32567a5b50b13",
     "changed_typed_leaves": [
       "/snapshot_sha256",
       "/loaded_at"
     ],
     "all_other_wrapper_fields_and_complete_asset_unchanged": true,
-    "method": "Only actual returned payload was copied. Its text/structured forms and independent literal P-1/source/status key agree; actual retained graph bytes supply its fingerprint."
+    "graph_change_scope": [
+      "E1 decision_rule",
+      "E18 decision_rule",
+      "H2 decision_rule",
+      "C6 decision_rule"
+    ],
+    "method": "Complete old public/final application objects differ only at the two allowed leaves. Saved full graphs differ only in the four named question decision rules; the final actual capture adds only E1 wording to an earlier independently received intermediate graph. No graph or response was edited to fit the comparison."
   },
   "history": {
-    "failed_review_run": 41321082811,
-    "failed_commit": "c2bbe0b3ec7e2dd67b7c5e99f246ed5033db4e26",
-    "cause": "The sample fingerprint covers the entire current graph, including questions. C3 changed the graph while P-1 remained unchanged. Both the offline snapshot test and final SDK sample comparison caught the stale fixture.",
-    "original_result": "70/71 test programs passed; benchmark registry step skipped. MCP had 27 PASS lines before its sample assertion, with two later recipe steps skipped. The old run remains failed."
+    "previous_response": "history/before-screening-wording/sample_asset.json",
+    "previous_response_sha256_raw": "228df64435ca7c96dc82cdf3db8fbf684b2ed054e961d26983a32567a5b50b13",
+    "previous_provenance": "history/before-screening-wording/sample_provenance.json",
+    "previous_provenance_sha256_raw": "ef484d2408643dba8314cb684ae0aeaade57141962dd59cdb540f994a910e392",
+    "byte_basis": "Public history preserves the released primary canonical-LF provenance raw-exact. The integration checkout had a typed-equivalent CRLF metadata buffer, retained separately privately; it was not normalized and relabelled as raw.",
+    "prior_capture_and_failed_CI": "The previous provenance retains its own original capture and failed-CI history unchanged; those are historical records, not new evidence for this capture.",
+    "intermediate_observation": "An intermediate capture and its publication proposal are retained privately. The public history below preserves only the released previous sample and canonical provenance; it is not substituted by an intermediate capture."
   },
   "private_evidence_sha256": {
-    "pre_call_contract": "6cbb8ab0cf9cb35d6bcfa2a19fe9abf51f300d1b8155e03648d16f04b770f098",
-    "actual_capture": "4c1b23ee27b927f827f8a7cfbc1680688151111d4b01ba76d0fddca160e3d40c",
-    "independent_capture_receiving": "05f5bc7d1c82b137bb249326f80f3851807da9a6376b6d4d11c066c5b1e7489a"
+    "pre_call_contract": "d438cf5f9f1d9b142e9c71f0200aa4857bb9060e47e4f3c348b810aaa1593692",
+    "pretest": "ff705fe529b3f28ad4c864d1ac87f3eefd1365105eb921e3832e8645950b75e4",
+    "actual_capture": "9c96e61a98214442b2623adb27fd0a2034fe4c1366c824ab250674d18b3f1427",
+    "complete_actual_manifest": "3fc430f3b3e2f29820591d9e5a230fb0b662158395e92558ced277d18e6bf5a4",
+    "actual_canonical_graph": "4cd40bce11944dcf5a79099bdb9e3628e0a620381944127569a98656bd92ff4b",
+    "independent_capture_receiving": "68239e2bf2cc03464fbc4c989daea6df304849ac5d35641da4550069df18669e",
+    "derived_released_to_final_graph_scope": "017b2dc019b94f566d8a4deb7a9c4a30b4b6305179a3403f74a3ef4b9ed39f8a"
   },
   "limits": [
-    "This one stdio capture is not the full protocol/context/knowledge suite or exact-head CI. Mocked capture-routing controls are separate from actual SDK evidence.",
-    "Claims and cited sources remain supplied and unverified. Load time is not source acquisition time or evidence of current plant conditions.",
-    "No MCP network listener was configured for capture; no zero-OS-socket claim, company/Copilot/OT acceptance, process connection, model API or source-document fetch.",
-    "Full parsed SDK envelopes and canonical graph bytes are retained privately; no raw JSON-RPC wire, unavailable child PID or human approval is invented."
+    "This one stdio capture does not establish full checker/CI, company/Copilot/OT compatibility, source authority, human benefit or operating approval.",
+    "No configured MCP network listener or plant/process connection; no zero-OS-socket claim.",
+    "Load time is not source acquisition time. Claims/statuses/citations remain supplied and unverified.",
+    "Complete parsed SDK envelopes, graph bytes and runtime logs remain private. No unavailable child PID, raw wire trace or human sign-off is invented."
   ]
 }

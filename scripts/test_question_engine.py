@@ -4048,5 +4048,151 @@ class NativeUnplacedQuestionHandoff(unittest.TestCase):
             assert_history(result, old)
 
 
+class AlarmBasisRecordReview(unittest.TestCase):
+    """Exposed source-policy controls; not plant performance or alarm authority."""
+    packet = EX / "alarm-basis"
+
+    def _run_model(self, model, folder):
+        out = folder / "screen"
+        stdout, stderr = io.StringIO(), io.StringIO()
+        with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+            rc = qe.main(["--model", str(model), "--out", str(out)])
+        self.assertEqual(rc, 0, stdout.getvalue() + stderr.getvalue())
+        return (json.loads((out / "questions.json").read_bytes().decode("utf-8")),
+                (out / "screen.md").read_bytes().decode("utf-8"), out)
+
+    @staticmethod
+    def _span(text):
+        fence = re.match(r"`+", text).group()
+        end = text.index(fence, len(fence))
+        return json.loads(text[len(fence):end]), text[end + len(fence):]
+
+    def _readable_pairs(self, markdown):
+        result = []
+        prefix = "- Supplied candidate field: "
+        for line in markdown.splitlines():
+            if not line.startswith(prefix):
+                continue
+            value, rest = self._span(line[len(prefix):])
+            self.assertTrue(rest.startswith(" ("))
+            field, rest = self._span(rest[2:])
+            self.assertEqual(rest, ")")
+            result.append((value, field))
+        return result
+
+    def _rows(self, question):
+        result = {}
+        for evidence in question["evidence"]:
+            if evidence.get("role") != "supplied candidate field":
+                continue
+            name = evidence["field"].rsplit(".facts.", 1)[1]
+            tail = evidence["text"].split(" " + name + " = ", 1)[1]
+            value, end = json.JSONDecoder().raw_decode(tail)
+            state = re.match(r"; (present|blank);", tail[end:]).group(1)
+            key = (evidence["id"], name)
+            self.assertNotIn(key, result)
+            result[key] = (value, state, evidence)
+        return result
+
+    def test_committed_cases_reproduce_and_keep_typed_readable_records(self):
+        cases = json.loads((self.packet / "expected/cases.json").read_bytes())["cases"]
+        vectors = {c["case"]: c["vectors"] for c in json.loads(
+            (self.packet / "expected/input-vectors.json").read_bytes())["cases"]}
+        checked = 0
+        for case in cases:
+            with self.subTest(case=case["case"]), tempfile.TemporaryDirectory() as tmp:
+                doc, markdown, out = self._run_model(self.packet / case["model"], Path(tmp))
+                for name in ("questions.json", "screen.md"):
+                    self.assertEqual((out / name).read_bytes(),
+                                     (self.packet / case["expected_output_folder"] / name).read_bytes())
+                questions = [q for q in doc["questions"] if q["question_id"] == "C8"]
+                self.assertEqual([q["id"] for q in questions], case["expected_C8_ids"])
+                self.assertEqual([a["id"] for q in questions for a in q["assets"]],
+                                 case["expected_C8_assets"])
+                for question in questions:
+                    self.assertEqual(question["status"], "asked")
+                    open_requests = [r for r in question["data_requests"]
+                                     if r["state"] in {"not_on_drawing", "blank_on_drawing"}]
+                    self.assertGreaterEqual(len(open_requests), case["minimum_open_review_requests"])
+                if not questions:
+                    self.assertEqual(case["minimum_open_review_requests"], 0)
+                    self.assertEqual(vectors[case["case"]], [])
+                    continue  # Quiet coverage is not a shown-evidence pass.
+                rows = self._rows(questions[0])
+                readable = self._readable_pairs(markdown)
+                for vector in vectors[case["case"]]:
+                    key = (vector["asset_id"], vector["name"])
+                    self.assertIn(key, rows, "missing supplied alarm record: " + repr(key))
+                    value, state, evidence = rows[key]
+                    self.assertIs(type(value), type(vector["value"]))
+                    self.assertEqual(json.dumps(value, ensure_ascii=True, sort_keys=True),
+                                     json.dumps(vector["value"], ensure_ascii=True, sort_keys=True))
+                    self.assertEqual(state, vector["state"])
+                    self.assertEqual(evidence["field"], vector["field"])
+                    self.assertIn((evidence["text"], evidence["field"]), readable)
+                    checked += 1
+        self.assertEqual(checked, sum(c["active_literal_rows"] for c in cases))
+
+    def test_shared_and_foreign_scopes_remain_qualified_review_requests(self):
+        def current(case):
+            doc = json.loads((self.packet / "expected/after" / case / "questions.json").read_bytes())
+            return next(q for q in doc["questions"] if q["question_id"] == "C8")
+
+        shared = current("C8-S01-shared-operator-record")
+        foreign = current("C8-S02-repeated-label-foreign-scopes")
+        for question in (shared, foreign):
+            self.assertEqual(question["status"], "asked")
+            self.assertTrue(question["data_requests"])
+            items = [r["item"] for r in question["data_requests"]]
+            self.assertEqual(items, list(dict.fromkeys(items)))
+        rows = self._rows(shared)
+        ids = [a["id"] for a in shared["assets"]]
+        for aid in ids:
+            for name in ("record_reference", "record_subjects", "record_units", "plant_truth"):
+                self.assertIn((aid, name), rows, "missing shared-scope record: " + repr((aid, name)))
+        self.assertEqual(len({rows[(aid, "record_reference")][0] for aid in ids}), 1)
+        for aid in ids:
+            self.assertEqual(rows[(aid, "record_subjects")][0], ids)
+            self.assertEqual(rows[(aid, "record_units")][0], ["U-A", "U-B"])
+            self.assertEqual(rows[(aid, "plant_truth")][:2], ("unknown", "blank"))
+        rows = self._rows(foreign)
+        ids = [a["id"] for a in foreign["assets"]]
+        for aid in ids:
+            for name in ("console_id", "operator_role", "site_namespace", "record_site_namespace",
+                         "source_namespace", "record_source_namespace"):
+                self.assertIn((aid, name), rows, "missing foreign-scope record: " + repr((aid, name)))
+        self.assertEqual(len({rows[(aid, "console_id")][0] for aid in ids}), 1)
+        self.assertEqual(len({rows[(aid, "operator_role")][0] for aid in ids}), 1)
+        self.assertEqual(len({rows[(aid, "site_namespace")][0] for aid in ids}), 2)
+        for aid in ids:
+            self.assertNotEqual(rows[(aid, "site_namespace")][0],
+                                rows[(aid, "record_site_namespace")][0])
+            self.assertNotEqual(rows[(aid, "source_namespace")][0],
+                                rows[(aid, "record_source_namespace")][0])
+
+    def test_approval_and_zero_claims_do_not_complete_the_review(self):
+        model = json.loads((self.packet / "models/C8-S01-shared-operator-record.json").read_bytes())
+        for instrument in model["instruments"]:
+            instrument["facts"].update(underlying_claim_verified=True,
+                                       record_review_status="approved",
+                                       normal_presentations_per_10min=0)
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            source = folder / "claims.json"
+            source.write_text(json.dumps(model), encoding="utf-8", newline="\n")
+            doc, _, _ = self._run_model(source, folder)
+            question = next(q for q in doc["questions"] if q["question_id"] == "C8")
+            self.assertEqual(question["status"], "asked")
+            self.assertTrue(question["data_requests"])
+            rows = self._rows(question)
+            for aid in ("PAH-101", "LAHH-201"):
+                for name in ("underlying_claim_verified", "normal_presentations_per_10min", "plant_truth"):
+                    self.assertIn((aid, name), rows, "missing supplied claim: " + repr((aid, name)))
+                self.assertIs(rows[(aid, "underlying_claim_verified")][0], True)
+                self.assertIs(type(rows[(aid, "normal_presentations_per_10min")][0]), int)
+                self.assertEqual(rows[(aid, "normal_presentations_per_10min")][0], 0)
+                self.assertEqual(rows[(aid, "plant_truth")][:2], ("unknown", "blank"))
+
+
 if __name__ == "__main__":
     unittest.main()

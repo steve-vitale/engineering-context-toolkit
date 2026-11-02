@@ -246,8 +246,17 @@ The [valve-feedback tutorial](../examples/opportunity-screen/valve-feedback-basi
 per-valve handoff and its [primary-source boundaries](../examples/opportunity-screen/valve-feedback-basis/SOURCES.json).
 Further tests or changes require a separate company decision.
 
-The catalog has 50 rules and 126 collection requests. Twenty-three rules have bounded source-informed collection
-reviews; the other 27 still need original-source adequacy review. These controls do not establish whole-catalog
+C8 starts with existing alarm philosophy/register, response procedures and scoped journal or performance-review
+records. Establish the responsible operator, console/area, site/source and operating periods before interpreting
+supplied counts. One reviewed record may cover several alarms or units; matching labels across namespaces do
+not establish coverage. Availability, approval and coverage fields remain supplied claims for review.
+The [alarm-record example](../examples/opportunity-screen/alarm-basis/README.md) shows shared and foreign scopes
+and keeps 254 typed carrier-field values visible across 41 of 50 optional names; nine names are unexercised.
+It measures no alarm workload or quality. [Source boundaries](../examples/opportunity-screen/alarm-basis/SOURCES.json)
+keep the historical HSE guidance separate from applicable site requirements and any compliance judgment.
+
+The catalog has 50 rules and 126 collection requests. Twenty-four rules have bounded source-informed collection
+reviews; the other 26 still need original-source adequacy review. These controls do not establish whole-catalog
 engineering correctness or human usefulness. The [worked food screen](../examples/opportunity-screen/food/screen.md)
 shows the retained candidates and open coverage tasks.
 
@@ -417,8 +426,9 @@ screens under the reviewed catalog. Matching IDs or filenames alone do not estab
 
 `data/questions.json` holds 50 questions as data: energy (E1-E24, E27-E32), heat grade (H1-H6), metering (C1,
 C12), controls (C2-C7, C10, C11), emissions (E25, E26) and safety questions to verify (C8, C9). `--list` prints them. E1-E26 and C1-C10
-come from a review of public DOE, LBNL, EPA and HSE documents; the wording was copied from text extracts of those
-documents. H1-H4 are the "high-grade heat used for low-grade duty" family:
+began from a review of public DOE, LBNL, EPA and HSE documents. Current collection wording also includes
+authored source-informed review policies; it is not all verbatim source text. H1-H4 are the
+"high-grade heat used for low-grade duty" family:
 
 | ID | Question | Closest source |
 |---|---|---|

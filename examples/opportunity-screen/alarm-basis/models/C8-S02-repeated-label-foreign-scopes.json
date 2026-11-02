@@ -1,0 +1,81 @@
+{
+  "meta": {
+    "title": "C8-S02-repeated-label-foreign-scopes",
+    "evidence_class": "AUTHOR-ILLUSTRATED prospective software construction; not company records or authenticated approval",
+    "plant_truth": "unknown",
+    "source_review": "HSE-informed scope contract; unvalidated; no product call"
+  },
+  "units": [
+    {
+      "id": "U-A",
+      "type": "vessel",
+      "name": "Fictional responsibility member A"
+    },
+    {
+      "id": "U-B",
+      "type": "vessel",
+      "name": "Fictional responsibility member B"
+    }
+  ],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "PAH-101",
+      "unit": "U-A",
+      "stream": null,
+      "variable": "pressure",
+      "uom": null,
+      "description": "Fictional alarm candidate, not installed configuration",
+      "facts": {
+        "site_namespace": "fictional-site-A",
+        "source_namespace": "fictional-source-A",
+        "console_id": "CON-1",
+        "operator_role": "console-operator",
+        "workload_scope": "fictional-site-A/CON-1/console-operator",
+        "underlying_claim_verified": false,
+        "plant_truth": "unknown",
+        "record_reference": "fictional:workload-report-B",
+        "record_revision": "r1",
+        "record_site_namespace": "fictional-site-B",
+        "record_source_namespace": "fictional-source-B",
+        "record_console_id": "CON-1",
+        "record_operator_role": "console-operator",
+        "record_workload_scope": "fictional-site-B/CON-1/console-operator",
+        "record_coverage": "provided record belongs to the other site/source scope despite matching console and role labels",
+        "record_review_status": "scope association unresolved; not actual company approval",
+        "record_owner": "fictional owner fictional-site-B",
+        "next_recipient": "fictional operations-console owner fictional-site-A with alarm-system owner"
+      }
+    },
+    {
+      "tag": "LAHH-201",
+      "unit": "U-B",
+      "stream": null,
+      "variable": "level",
+      "uom": null,
+      "description": "Fictional alarm candidate, not installed configuration",
+      "facts": {
+        "site_namespace": "fictional-site-B",
+        "source_namespace": "fictional-source-B",
+        "console_id": "CON-1",
+        "operator_role": "console-operator",
+        "workload_scope": "fictional-site-B/CON-1/console-operator",
+        "underlying_claim_verified": false,
+        "plant_truth": "unknown",
+        "record_reference": "fictional:workload-report-A",
+        "record_revision": "r1",
+        "record_site_namespace": "fictional-site-A",
+        "record_source_namespace": "fictional-source-A",
+        "record_console_id": "CON-1",
+        "record_operator_role": "console-operator",
+        "record_workload_scope": "fictional-site-A/CON-1/console-operator",
+        "record_coverage": "provided record belongs to the other site/source scope despite matching console and role labels",
+        "record_review_status": "scope association unresolved; not actual company approval",
+        "record_owner": "fictional owner fictional-site-A",
+        "next_recipient": "fictional operations-console owner fictional-site-B with alarm-system owner"
+      }
+    }
+  ],
+  "final_elements": [],
+  "controllers": []
+}

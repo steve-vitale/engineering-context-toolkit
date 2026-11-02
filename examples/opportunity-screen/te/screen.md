@@ -40,7 +40,7 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 - Surge margin at normal operation [not on drawing]. Where: the vendor datasheet: compressor map with the surge line; then DCS/PLC configuration: the anti-surge controller's surge-line settings. How: Compare the normal operating point with the surge line plus the controller's margin.
 - Compressor power [not on drawing]. Where: historian / recorded data: JT-120: recorded signal XMEAS(20) in the TE data files; then a walkdown: power meter at the drive. How: Record power with the valve at its normal opening.
 
-**How it is decided:** Worth a look when the recycle or blow-off valve is open at normal throughput, or the controller margin is wider than the vendor map needs. If it only opens during upsets or turndown, close it.
+**How it is decided:** Worth a look when the recycle or blow-off valve is open at normal throughput, or the controller margin is wider than the vendor map needs. If it only opens during upsets or turndown, close this screening investigation; this is not an instruction to operate the valve or change surge protection.
 
 **What the source says (S11):** Blow-off "is a waste of energy and should be used only where necessary to avoid surge." Inlet throttling: "Capacity can typically be reduced from 100 percent capacity to about 70-80 percent with reasonable energy reduction." No % saving stated.
 
@@ -68,7 +68,7 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 - Whether the duties overlap in time [not on drawing]. Where: site records: operating sequence: are both duties needed at the same time?. How: Mark each duty continuous, batch or startup-only.
 - Layout distance and fouling [not on drawing]. Where: a walkdown: distance between the two exchangers; then maintenance records: cleaning history. How: Note pipe run and fouling service.
 
-**How it is decided:** Worth a pinch or exchanger study only when the hot stream's temperature range sits above the cold stream's with a practical approach, both run at the same time for long hours, and they are close enough to connect. Otherwise close it.
+**How it is decided:** Worth a pinch or exchanger study only when the hot stream's temperature range sits above the cold stream's with a practical approach, both run at the same time for long hours, and they are close enough to connect. Otherwise close this screening investigation.
 
 **What the source says (S19, S24):** Pinch potential "far exceeds that from well-known conventional techniques such as heat recovery from boiler flue gas, insulation and steam trap management." No % stated in that section.
 IAC/ITAC recommendation code: 2.243x; 2.244x (IAC/ITAC browse page: 2.243x: 3,673 recommendations, 1.4 yr average payback, 31.2% implemented; 2.244x: 1,466 recommendations, 1.7 yr, 28.6%; average dollar figure omitted).
@@ -98,7 +98,7 @@ IAC/ITAC recommendation code: 2.243x; 2.244x (IAC/ITAC browse page: 2.243x: 3,67
 - A lower-grade heat source on site (a lower steam header, exhaust or waste heat) with spare capacity [not on drawing]. Where: site records: site steam balance; then a walkdown: headers and hot streams near this user. How: List sources whose temperature exceeds the need with a practical approach.
 - Applicable steam-supply conditions and operating basis [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: approved existing supply/user configuration and coincident operating-condition records. How: Review supply/user identity and location, source revision, pressure units and gauge/absolute reference, steam condition, coincident period/mode and design-versus-actual basis. Unknown, Boolean, wrong-asset or noncoincident candidates remain unresolved. Saturation temperature is only a conditional reference after the pressure basis/state are established; never infer actual superheated temperature from pressure alone. No new live measurement or change is instructed.
 
-**How it is decided:** Worth a change only if a lower-grade source can meet the needed temperature with margin, for the hours the user runs; if the steam is already the lowest grade available, close it.
+**How it is decided:** Worth a change only if a lower-grade source can meet the needed temperature with margin, for the hours the user runs; if the steam is already the lowest grade available, close this screening investigation.
 
 **What the source says (S19, S6):** Closest source wordings: pinch potential "far exceeds that from well-known conventional techniques such as heat recovery from boiler flue gas, insulation and steam trap management" (S19, no % stated); for letdown to the lower pressure, S6's turbogenerator condition. No source gives a number for matching steam grade to duty.
 
