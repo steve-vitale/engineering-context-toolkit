@@ -4194,5 +4194,73 @@ class AlarmBasisRecordReview(unittest.TestCase):
                 self.assertEqual(rows[(aid, "plant_truth")][:2], ("unknown", "blank"))
 
 
+class CompressorRecycleBasisRecordReview(unittest.TestCase):
+    """Finite collection controls, not machine/protection acceptance."""
+    packet = EX / "compressor-recycle-basis"
+    _run_model = AlarmBasisRecordReview._run_model
+    _span = staticmethod(AlarmBasisRecordReview._span)
+    _readable_pairs = AlarmBasisRecordReview._readable_pairs
+    _rows = AlarmBasisRecordReview._rows
+
+    def test_cases_reproduce_and_preserve_records_without_settling_review(self):
+        cases = json.loads((self.packet / "expected/cases.json").read_bytes())["cases"]
+        vectors = json.loads((self.packet / "expected/input-vectors.json").read_bytes())["vectors"]
+        current, checked, findings = {}, 0, 0
+        for case in cases:
+            with self.subTest(case=case["case"]), tempfile.TemporaryDirectory() as tmp:
+                doc, markdown, out = self._run_model(self.packet / case["model"], Path(tmp))
+                for name in ("questions.json", "screen.md"):
+                    self.assertEqual((out / name).read_bytes(),
+                        (self.packet / case["expected_output_folder"] / name).read_bytes())
+                questions = [q for q in doc["questions"] if q["question_id"] == "E6"]
+                self.assertEqual([q["id"] for q in questions], case["expected_E6_ids"])
+                self.assertEqual([a["id"] for q in questions for a in q["assets"]], case["expected_E6_assets"])
+                before = json.loads((self.packet / case["original_output_folder"] / "questions.json").read_bytes())
+                self.assertEqual(
+                    json.dumps([q for q in doc["questions"] if q["question_id"] != "E6"],
+                               sort_keys=True, ensure_ascii=True),
+                    json.dumps([q for q in before["questions"] if q["question_id"] != "E6"],
+                               sort_keys=True, ensure_ascii=True))
+                readable, rows = self._readable_pairs(markdown), {}
+                for question in questions:
+                    self.assertEqual(question["status"], "asked")
+                    self.assertGreaterEqual(sum(r["state"] in {"not_on_drawing", "blank_on_drawing"}
+                        for r in question["data_requests"]), case["minimum_open_review_requests"])
+                    findings += 1
+                    for key, value in self._rows(question).items():
+                        self.assertNotIn(key, rows)
+                        rows[key] = value
+                for vector in [v for v in vectors if v["case_id"] == case["case"]]:
+                    key = (vector["subject_id"], vector["field"])
+                    if not vector["present"] or not vector["expected_E6_field_carrier"]:
+                        self.assertNotIn(key, rows)
+                        continue
+                    self.assertIn(key, rows, "missing whole supplied record: " + repr(key))
+                    value, state, evidence = rows[key]
+                    self.assertIs(type(value), type(vector["value"]))
+                    self.assertEqual(json.dumps(value, ensure_ascii=True, sort_keys=True),
+                                     json.dumps(vector["value"], ensure_ascii=True, sort_keys=True))
+                    self.assertEqual(state, vector["field_state"])
+                    self.assertEqual(evidence["field"], vector["input_location"])
+                    self.assertIn((evidence["text"], evidence["field"]), readable)
+                    checked += 1
+                if not questions:
+                    self.assertEqual(case["minimum_open_review_requests"], 0)
+                current[case["case"]] = rows
+        self.assertEqual((checked, findings), (24, 18))
+        for suffix, covers in (("A", ["K-A", "K-B"]), ("B", ["K-A"])):
+            key = "E6-06-power-and-sibling-coverage-" + suffix
+            self.assertIn(key, current, "missing completed shared-scope case: " + key)
+            rows = current[key]
+            for aid in ("K-A", "K-B"):
+                self.assertIn((aid, "control_records"), rows)
+            left, right = (rows[(aid, "control_records")][0] for aid in ("K-A", "K-B"))
+            self.assertEqual(left, right)  # References to one supplied claim, not two reports.
+            self.assertEqual(left[0]["covers"], covers)
+            self.assertIs(left[0]["approval"], False)
+            self.assertIs(type(left[0]["value"]), int)
+            self.assertEqual(left[0]["value"], 0)
+
+
 if __name__ == "__main__":
     unittest.main()

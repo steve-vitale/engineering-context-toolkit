@@ -1,0 +1,114 @@
+{
+  "meta": {
+    "model_id": "E6-02-pairing-B",
+    "title": "E6 fictional collection-scope development: E6-02-pairing-B",
+    "development_only": true,
+    "engineering_truth": "unknown",
+    "not_a_plant_or_source_extraction": true,
+    "assigned_identifier_basis": "All K/RV labels are authored software identifiers, not verified operating tags.",
+    "record_set": {
+      "id": "E6-02-pairing-B-supplied-record-set",
+      "record_ids": [
+        "REC-PAIR-B1",
+        "REC-PAIR-B2"
+      ],
+      "exposed_on": [
+        "K-A",
+        "K-B"
+      ],
+      "meaning": "Same supplied record-list references on both anchors when present; not independent duplicate reports or verified pairing/coverage."
+    },
+    "fixture_aliases": {
+      "K-A": "Fictional compressor subject",
+      "K-B": "Fictional compressor subject"
+    },
+    "source_recipe": {
+      "freeze_sha256_raw": "e32a6de538ab868910aae606e28d14d7e0b351be3149a719fd3924e2f6819b9b",
+      "expected_sha256_raw": "76637ec3c8713e9802bd5cd73ab39b7217cd6769d60d15f385b81e3845efeac7",
+      "pointer": "/paired_groups/1/B"
+    }
+  },
+  "units": [
+    {
+      "id": "K-A",
+      "name": "Fictional compressor subject K-A",
+      "type": "compressor",
+      "source": "Authored software control; not a DOE plant example or observed installed equipment.",
+      "assigned_tag": true,
+      "facts": {
+        "control_records": [
+          {
+            "record_id": "REC-PAIR-B1",
+            "revision": "R1",
+            "locator": "fictional record rows2-5",
+            "machine_id": "K-B",
+            "valve_id": "RV-A",
+            "source_scope": "fictional training packet",
+            "plant_truth": "unknown",
+            "approval": false
+          },
+          {
+            "record_id": "REC-PAIR-B2",
+            "revision": "R1",
+            "locator": "fictional record rows2-5",
+            "machine_id": null,
+            "valve_id": "RV-B",
+            "source_scope": "fictional training packet",
+            "plant_truth": "unknown",
+            "approval": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "K-B",
+      "name": "Fictional compressor subject K-B",
+      "type": "compressor",
+      "source": "Authored software control; not a DOE plant example or observed installed equipment.",
+      "assigned_tag": true,
+      "facts": {
+        "control_records": [
+          {
+            "record_id": "REC-PAIR-B1",
+            "revision": "R1",
+            "locator": "fictional record rows2-5",
+            "machine_id": "K-B",
+            "valve_id": "RV-A",
+            "source_scope": "fictional training packet",
+            "plant_truth": "unknown",
+            "approval": false
+          },
+          {
+            "record_id": "REC-PAIR-B2",
+            "revision": "R1",
+            "locator": "fictional record rows2-5",
+            "machine_id": null,
+            "valve_id": "RV-B",
+            "source_scope": "fictional training packet",
+            "plant_truth": "unknown",
+            "approval": false
+          }
+        ]
+      }
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "final_elements": [
+    {
+      "tag": "RV-A",
+      "unit": "K-A",
+      "description": "Recycle/bypass candidate; fictional unverified model association",
+      "source": "Authored software control; no installed pairing or flow path verified.",
+      "assigned_tag": true
+    },
+    {
+      "tag": "RV-B",
+      "unit": "K-B",
+      "description": "Recycle/bypass candidate; fictional unverified model association",
+      "source": "Authored software control; no installed pairing or flow path verified.",
+      "assigned_tag": true
+    }
+  ],
+  "controllers": []
+}

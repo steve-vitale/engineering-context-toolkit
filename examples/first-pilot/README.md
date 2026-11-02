@@ -66,5 +66,8 @@ The [lifecycle](../../docs/CONTEXT_LIFECYCLE.md) describes the intended handoff 
 adapters and automatic document updates remain integration work. The [MCP starter](../internal-mcp/README.md)
 retrieves one local snapshot; company authentication, Copilot deployment and live process connectors are separate.
 
+When another team depends on the answer, use the [manual dependency row](../team-context/README.md#use-approved-copilot-or-manual-review-without-an-installation)
+to agree who checks and sends revisions, who receives them, and where receipt/disposition is recorded.
+
 Return to the [documentation map](../../docs/README.md) for the next task and [project status](../../docs/STATUS.md)
 for the implementation gaps. No company handoff or operational benefit is established by a supplied example.

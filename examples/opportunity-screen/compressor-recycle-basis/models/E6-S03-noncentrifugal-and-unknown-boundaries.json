@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "model_id": "E6-S03-noncentrifugal-and-unknown-boundaries",
+    "title": "E6 fictional scope/control: E6-S03-noncentrifugal-and-unknown-boundaries",
+    "development_only": true,
+    "engineering_truth": "unknown",
+    "not_a_plant_or_source_extraction": true,
+    "assigned_identifier_basis": "All K/P/RV labels are authored software identifiers, not verified operating tags.",
+    "fixture_aliases": {
+      "K-R": "Fictional equipment subject",
+      "K-U": "Fictional equipment subject"
+    },
+    "source_recipe": {
+      "expected_sha256_raw": "76637ec3c8713e9802bd5cd73ab39b7217cd6769d60d15f385b81e3845efeac7",
+      "control_id": "E6-S03-noncentrifugal-and-unknown-boundaries"
+    },
+    "control_records": "None supplied; optional facts.control_records remains absent, not fabricated as a report."
+  },
+  "units": [
+    {
+      "id": "K-R",
+      "name": "Fictional rotary screw air compressor K-R",
+      "type": "compressor",
+      "source": "Authored software control; not a DOE plant example or observed installed equipment.",
+      "assigned_tag": true,
+      "facts": {
+        "machine_class": "rotary screw",
+        "service": "air"
+      }
+    },
+    {
+      "id": "K-U",
+      "name": "Fictional compressor K-U",
+      "type": "compressor",
+      "source": "Authored software control; not a DOE plant example or observed installed equipment.",
+      "assigned_tag": true,
+      "facts": {
+        "machine_class": "unknown",
+        "service": "unknown"
+      }
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "final_elements": [
+    {
+      "tag": "RV-R",
+      "unit": "K-R",
+      "description": "Recycle/bypass candidate; fictional unverified model association",
+      "source": "Authored software control; no installed pairing or flow path verified.",
+      "assigned_tag": true
+    },
+    {
+      "tag": "RV-U",
+      "unit": "K-U",
+      "description": "Recycle/bypass candidate; fictional unverified model association",
+      "source": "Authored software control; no installed pairing or flow path verified.",
+      "assigned_tag": true
+    }
+  ],
+  "controllers": []
+}

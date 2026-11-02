@@ -1,0 +1,292 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/compressor-recycle-basis/models/E6-S01-no-eligible-compressor.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E1",
+  "E2",
+  "E3",
+  "E4",
+  "E5",
+  "E6",
+  "E7",
+  "E8",
+  "E9",
+  "E10",
+  "E11",
+  "E12",
+  "E13",
+  "E14",
+  "E15",
+  "E16",
+  "E17",
+  "E18",
+  "E19",
+  "E20",
+  "E21",
+  "E22",
+  "E23",
+  "E24",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "C1",
+  "C2",
+  "C3",
+  "C4",
+  "C5",
+  "C6",
+  "C7",
+  "C10",
+  "C8",
+  "C9",
+  "E25",
+  "E26",
+  "E27",
+  "E28",
+  "E29",
+  "E30",
+  "E31",
+  "E32",
+  "H5",
+  "H6",
+  "C11",
+  "C12"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 1,
+   "safety_question": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E2@P-A",
+   "question_id": "E2",
+   "family": "energy",
+   "question": "Is this pump oversized, given a bypass line around it or its valve?",
+   "about": "P-A",
+   "assets": [
+    {
+     "id": "P-A",
+     "tag": "P-A"
+    },
+    {
+     "id": "RV-A",
+     "tag": "RV-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "P-A",
+     "tag": "P-A",
+     "text": "equipment P-A reads \"P-A Fictional pump P-A\"",
+     "field": "units[P-A]"
+    },
+    {
+     "role": "bypass",
+     "id": "RV-A",
+     "tag": "RV-A",
+     "text": "final element RV-A reads \"RV-A Recycle/bypass candidate; fictional unverified model association\" at P-A",
+     "field": "final_elements[RV-A]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Measured flow and head at normal operation",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: suction and discharge pressure gauges plus a clamp-on ultrasonic flow meter"
+     ],
+     "how": "Read flow and suction and discharge pressure at steady operation."
+    },
+    {
+     "item": "Pump stated rated flow and head",
+     "state": "not_on_drawing",
+     "where": [
+      "the vendor datasheet: pump curve"
+     ],
+     "how": "Retain the stated rating and original units as model evidence; generic CAPACITY/DISCHARGE do not identify BEP.",
+     "field_scope": "anchors",
+     "field_coverage": [
+      {
+       "id": "P-A",
+       "label": "P-A",
+       "fields": [
+        {
+         "name": "CAPACITY",
+         "state": "absent",
+         "where": null
+        },
+        {
+         "name": "DISCHARGE",
+         "state": "absent",
+         "where": null
+        }
+       ],
+       "still_needed": [
+        "CAPACITY",
+        "DISCHARGE"
+       ]
+      }
+     ],
+     "still_needed": [
+      "CAPACITY",
+      "DISCHARGE"
+     ]
+    },
+    {
+     "item": "How often the bypass is open",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: valve position and line temperature",
+      "site records: operator logs"
+     ],
+     "how": "Record bypass position over several shifts."
+    },
+    {
+     "item": "Matched pump curve and best-efficiency-point (BEP) duty",
+     "state": "not_on_drawing",
+     "where": [
+      "the vendor datasheet: pump curve"
+     ],
+     "how": "Review the matching curve for installed impeller, speed, fluid and units, then identify its BEP flow/head with source revision and locator. Keep generic CAPACITY/DISCHARGE as rated candidates, not BEP. Retain unknown or unsuitable curve evidence and compare with representative measured operation.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
+    }
+   ],
+   "decision_rule": "Prioritize the pump if it runs at a flow 30% or more away from BEP or the bypass is used routinely; otherwise close this screening investigation.",
+   "typical_benefit": {
+    "wording": "Five indications: \"excessive flow noise, highly throttled flow control valves, heavy use of bypass lines, frequent replacements of bearings and seals, and intermittent pump operation.\" Prioritize pumps \"with flow rates of 30% or more from the BEP flow rates, or with system imbalances greater than 20%.\" No % saving stated.",
+    "source": [
+     "S13",
+     "S14"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S13: Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079)",
+     "S14: Pumping Systems Tip #6, Match Pumps to System Requirements (DOE/GO-102005-2160)"
+    ]
+   },
+   "limits": "A drawn bypass may be normally closed; the drawing cannot show how it is used.",
+   "status": "asked"
+  },
+  {
+   "id": "C9@model",
+   "question_id": "C9",
+   "family": "safety_question",
+   "question": "What source-labelled trip or interlock records apply to each rotating or fired machine, and what remains unverified?",
+   "about": "P-A",
+   "assets": [
+    {
+     "id": "P-A",
+     "tag": "P-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "P-A",
+     "tag": "P-A",
+     "text": "equipment P-A reads \"P-A Fictional pump P-A\"",
+     "field": "units[P-A]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Cause-and-effect matrix and HAZOP/LOPA records",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: cause-and-effect matrix, HAZOP and LOPA reports",
+      "DCS/PLC configuration: safety system configuration"
+     ],
+     "how": "Review existing cause-and-effect, governing requirements and configuration records for each named machine, with their revisions and applicability. Retain supplied trip/switch indications as candidates; a drawing label or an unrelated function does not settle the records or establish effective, tested protection. Missing model information is not evidence that installed protection is absent."
+    },
+    {
+     "item": "Machine/function association and current evidence",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: source-labelled function identifiers, initiating measurements, final elements and protected-machine targets, shared scope and revisions; governing requirements and validation/test evidence where applicable",
+      "DCS/PLC configuration: existing configuration and its documented measurement/action/final-element identities, read through the approved site process"
+     ],
+     "how": "Keep each machine in the review even where a switch or trip is supplied. Retain all explicit shared targets and supplied qualifiers; unknown or contradictory targets remain unresolved. Same-model text or nearby equipment does not prove function coverage. Record a responsible person or authority separately from protected-machine association; neither is inferred here. This requests record review, not a new test, safety design or operating action."
+    }
+   ],
+   "decision_rule": "A qualified site review may resolve the source-labelled machine/function associations and remaining record requests using applicable current evidence. A supplied trip, switch, cause/effect row or shared-function label alone establishes neither complete coverage nor installed protection adequacy. This screen grants no acceptance or authority and performs no safety validation.",
+   "typical_benefit": {
+    "wording": "Safety benefit; no energy source. Present it as a question to verify, not a finding.",
+    "source": [],
+    "arc": null,
+    "source_titles": []
+   },
+   "limits": "P&IDs often leave trips to separate cause-and-effect records. Missing or unknown model evidence does not establish missing installed protection. Supplied associations, shared targets, revisions and contradictions require review; no machine, person owner, approval, tested condition or effective protection is inferred. C9 has no primary safety-design source cited in the catalog and remains a question for record review, not safety design, SIL assignment, a legal-compliance assessment or an operating recommendation.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [
+  {
+   "question_id": "C2",
+   "reason": "the model holds no controllers; give a loop list with --loops (controller,measurement,output) to check this"
+  },
+  {
+   "question_id": "C6",
+   "reason": "the model holds no controllers; give a loop list with --loops to check this"
+  }
+ ],
+ "did_not_fire": [
+  "E1",
+  "E3",
+  "E4",
+  "E5",
+  "E6",
+  "E7",
+  "E8",
+  "E9",
+  "E10",
+  "E11",
+  "E12",
+  "E13",
+  "E14",
+  "E15",
+  "E16",
+  "E17",
+  "E18",
+  "E19",
+  "E20",
+  "E21",
+  "E22",
+  "E23",
+  "E24",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "C1",
+  "C3",
+  "C4",
+  "C5",
+  "C7",
+  "C10",
+  "C8",
+  "E25",
+  "E26",
+  "E27",
+  "E28",
+  "E29",
+  "E30",
+  "E31",
+  "E32",
+  "H5",
+  "H6",
+  "C11",
+  "C12"
+ ],
+ "left_out": {}
+}

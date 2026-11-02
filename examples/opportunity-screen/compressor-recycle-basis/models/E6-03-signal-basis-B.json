@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "model_id": "E6-03-signal-basis-B",
+    "title": "E6 fictional collection-scope development: E6-03-signal-basis-B",
+    "development_only": true,
+    "engineering_truth": "unknown",
+    "not_a_plant_or_source_extraction": true,
+    "assigned_identifier_basis": "All K/RV labels are authored software identifiers, not verified operating tags.",
+    "record_set": {
+      "id": "E6-03-signal-basis-B-supplied-record-set",
+      "record_ids": [
+        "REC-SIGNAL-B"
+      ],
+      "exposed_on": [
+        "K-A"
+      ],
+      "meaning": "Same supplied record-list references on both anchors when present; not independent duplicate reports or verified pairing/coverage."
+    },
+    "fixture_aliases": {
+      "K-A": "Fictional compressor subject"
+    },
+    "source_recipe": {
+      "freeze_sha256_raw": "e32a6de538ab868910aae606e28d14d7e0b351be3149a719fd3924e2f6819b9b",
+      "expected_sha256_raw": "76637ec3c8713e9802bd5cd73ab39b7217cd6769d60d15f385b81e3845efeac7",
+      "pointer": "/paired_groups/2/B"
+    }
+  },
+  "units": [
+    {
+      "id": "K-A",
+      "name": "Fictional compressor subject K-A",
+      "type": "compressor",
+      "source": "Authored software control; not a DOE plant example or observed installed equipment.",
+      "assigned_tag": true,
+      "facts": {
+        "control_records": [
+          {
+            "record_id": "REC-SIGNAL-B",
+            "revision": "R1",
+            "locator": "fictional record rows2-5",
+            "machine_id": "K-A",
+            "valve_id": "RV-A",
+            "source_scope": "fictional training packet",
+            "plant_truth": "unknown",
+            "approval": false,
+            "controller_output_pct": 40,
+            "actual_travel_pct": 40,
+            "recycle_flow": {
+              "value": 0,
+              "uom": "standard m3/h",
+              "reference_conditions": null,
+              "quality": "unknown"
+            },
+            "operating_mode": "shutdown"
+          }
+        ]
+      }
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "final_elements": [
+    {
+      "tag": "RV-A",
+      "unit": "K-A",
+      "description": "Recycle/bypass candidate; fictional unverified model association",
+      "source": "Authored software control; no installed pairing or flow path verified.",
+      "assigned_tag": true
+    }
+  ],
+  "controllers": []
+}

@@ -1,0 +1,895 @@
+{
+  "schema": "e6-exact-typed-field-vectors-1",
+  "field_names": [
+    "machine_class",
+    "service",
+    "control_records"
+  ],
+  "vectors": [
+    {
+      "case_id": "E6-01-service-transfer-A",
+      "subject_id": "K-A",
+      "field": "machine_class",
+      "input_location": "units[K-A].facts.machine_class",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": "centrifugal",
+      "value_type": "str",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-01-service-transfer-A",
+      "subject_id": "K-A",
+      "field": "service",
+      "input_location": "units[K-A].facts.service",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": "compressed air",
+      "value_type": "str",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-01-service-transfer-A",
+      "subject_id": "K-A",
+      "field": "control_records",
+      "input_location": "units[K-A].facts.control_records",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": [
+        {
+          "record_id": "REC-SCOPE-A",
+          "revision": "R1",
+          "locator": "fictional record rows2-5",
+          "machine_id": "K-A",
+          "valve_id": "RV-A",
+          "source_scope": "fictional training packet",
+          "plant_truth": "unknown",
+          "approval": false
+        }
+      ],
+      "value_type": "list",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-01-service-transfer-B",
+      "subject_id": "K-A",
+      "field": "machine_class",
+      "input_location": "units[K-A].facts.machine_class",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": "centrifugal",
+      "value_type": "str",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-01-service-transfer-B",
+      "subject_id": "K-A",
+      "field": "service",
+      "input_location": "units[K-A].facts.service",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": "process gas",
+      "value_type": "str",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-01-service-transfer-B",
+      "subject_id": "K-A",
+      "field": "control_records",
+      "input_location": "units[K-A].facts.control_records",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": [
+        {
+          "record_id": "REC-SCOPE-B",
+          "revision": "R1",
+          "locator": "fictional record rows2-5",
+          "machine_id": "K-A",
+          "valve_id": "RV-A",
+          "source_scope": "fictional training packet",
+          "plant_truth": "unknown",
+          "approval": false
+        }
+      ],
+      "value_type": "list",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-02-pairing-A",
+      "subject_id": "K-A",
+      "field": "machine_class",
+      "input_location": "units[K-A].facts.machine_class",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-02-pairing-A",
+      "subject_id": "K-A",
+      "field": "service",
+      "input_location": "units[K-A].facts.service",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-02-pairing-A",
+      "subject_id": "K-A",
+      "field": "control_records",
+      "input_location": "units[K-A].facts.control_records",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": [
+        {
+          "record_id": "REC-PAIR-A1",
+          "revision": "R1",
+          "locator": "fictional record rows2-5",
+          "machine_id": "K-A",
+          "valve_id": "RV-A",
+          "source_scope": "fictional training packet",
+          "plant_truth": "unknown",
+          "approval": false
+        },
+        {
+          "record_id": "REC-PAIR-A2",
+          "revision": "R1",
+          "locator": "fictional record rows2-5",
+          "machine_id": "K-B",
+          "valve_id": "RV-B",
+          "source_scope": "fictional training packet",
+          "plant_truth": "unknown",
+          "approval": false
+        }
+      ],
+      "value_type": "list",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-02-pairing-A",
+      "subject_id": "K-B",
+      "field": "machine_class",
+      "input_location": "units[K-B].facts.machine_class",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-02-pairing-A",
+      "subject_id": "K-B",
+      "field": "service",
+      "input_location": "units[K-B].facts.service",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-02-pairing-A",
+      "subject_id": "K-B",
+      "field": "control_records",
+      "input_location": "units[K-B].facts.control_records",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": [
+        {
+          "record_id": "REC-PAIR-A1",
+          "revision": "R1",
+          "locator": "fictional record rows2-5",
+          "machine_id": "K-A",
+          "valve_id": "RV-A",
+          "source_scope": "fictional training packet",
+          "plant_truth": "unknown",
+          "approval": false
+        },
+        {
+          "record_id": "REC-PAIR-A2",
+          "revision": "R1",
+          "locator": "fictional record rows2-5",
+          "machine_id": "K-B",
+          "valve_id": "RV-B",
+          "source_scope": "fictional training packet",
+          "plant_truth": "unknown",
+          "approval": false
+        }
+      ],
+      "value_type": "list",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-02-pairing-B",
+      "subject_id": "K-A",
+      "field": "machine_class",
+      "input_location": "units[K-A].facts.machine_class",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-02-pairing-B",
+      "subject_id": "K-A",
+      "field": "service",
+      "input_location": "units[K-A].facts.service",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-02-pairing-B",
+      "subject_id": "K-A",
+      "field": "control_records",
+      "input_location": "units[K-A].facts.control_records",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": [
+        {
+          "record_id": "REC-PAIR-B1",
+          "revision": "R1",
+          "locator": "fictional record rows2-5",
+          "machine_id": "K-B",
+          "valve_id": "RV-A",
+          "source_scope": "fictional training packet",
+          "plant_truth": "unknown",
+          "approval": false
+        },
+        {
+          "record_id": "REC-PAIR-B2",
+          "revision": "R1",
+          "locator": "fictional record rows2-5",
+          "machine_id": null,
+          "valve_id": "RV-B",
+          "source_scope": "fictional training packet",
+          "plant_truth": "unknown",
+          "approval": false
+        }
+      ],
+      "value_type": "list",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-02-pairing-B",
+      "subject_id": "K-B",
+      "field": "machine_class",
+      "input_location": "units[K-B].facts.machine_class",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-02-pairing-B",
+      "subject_id": "K-B",
+      "field": "service",
+      "input_location": "units[K-B].facts.service",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-02-pairing-B",
+      "subject_id": "K-B",
+      "field": "control_records",
+      "input_location": "units[K-B].facts.control_records",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": [
+        {
+          "record_id": "REC-PAIR-B1",
+          "revision": "R1",
+          "locator": "fictional record rows2-5",
+          "machine_id": "K-B",
+          "valve_id": "RV-A",
+          "source_scope": "fictional training packet",
+          "plant_truth": "unknown",
+          "approval": false
+        },
+        {
+          "record_id": "REC-PAIR-B2",
+          "revision": "R1",
+          "locator": "fictional record rows2-5",
+          "machine_id": null,
+          "valve_id": "RV-B",
+          "source_scope": "fictional training packet",
+          "plant_truth": "unknown",
+          "approval": false
+        }
+      ],
+      "value_type": "list",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-03-signal-basis-A",
+      "subject_id": "K-A",
+      "field": "machine_class",
+      "input_location": "units[K-A].facts.machine_class",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-03-signal-basis-A",
+      "subject_id": "K-A",
+      "field": "service",
+      "input_location": "units[K-A].facts.service",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-03-signal-basis-A",
+      "subject_id": "K-A",
+      "field": "control_records",
+      "input_location": "units[K-A].facts.control_records",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": [
+        {
+          "record_id": "REC-SIGNAL-A",
+          "revision": "R1",
+          "locator": "fictional record rows2-5",
+          "machine_id": "K-A",
+          "valve_id": "RV-A",
+          "source_scope": "fictional training packet",
+          "plant_truth": "unknown",
+          "approval": false,
+          "controller_output_pct": 40,
+          "actual_travel_pct": null,
+          "recycle_flow": null,
+          "quality": "unknown"
+        }
+      ],
+      "value_type": "list",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-03-signal-basis-B",
+      "subject_id": "K-A",
+      "field": "machine_class",
+      "input_location": "units[K-A].facts.machine_class",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-03-signal-basis-B",
+      "subject_id": "K-A",
+      "field": "service",
+      "input_location": "units[K-A].facts.service",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-03-signal-basis-B",
+      "subject_id": "K-A",
+      "field": "control_records",
+      "input_location": "units[K-A].facts.control_records",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": [
+        {
+          "record_id": "REC-SIGNAL-B",
+          "revision": "R1",
+          "locator": "fictional record rows2-5",
+          "machine_id": "K-A",
+          "valve_id": "RV-A",
+          "source_scope": "fictional training packet",
+          "plant_truth": "unknown",
+          "approval": false,
+          "controller_output_pct": 40,
+          "actual_travel_pct": 40,
+          "recycle_flow": {
+            "value": 0,
+            "uom": "standard m3/h",
+            "reference_conditions": null,
+            "quality": "unknown"
+          },
+          "operating_mode": "shutdown"
+        }
+      ],
+      "value_type": "list",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-04-existing-period-coverage-A",
+      "subject_id": "K-A",
+      "field": "machine_class",
+      "input_location": "units[K-A].facts.machine_class",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-04-existing-period-coverage-A",
+      "subject_id": "K-A",
+      "field": "service",
+      "input_location": "units[K-A].facts.service",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-04-existing-period-coverage-A",
+      "subject_id": "K-A",
+      "field": "control_records",
+      "input_location": "units[K-A].facts.control_records",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": [
+        {
+          "record_id": "REC-PERIOD-A",
+          "revision": "R1",
+          "locator": "fictional record rows2-5",
+          "machine_id": "K-A",
+          "valve_id": "RV-A",
+          "source_scope": "fictional training packet",
+          "plant_truth": "unknown",
+          "approval": false,
+          "period": "fictional6h reviewed cycle",
+          "covered_modes": [
+            "normal",
+            "turndown",
+            "upset history"
+          ],
+          "representative_basis": "declared reviewed cycle, supplied claim only"
+        }
+      ],
+      "value_type": "list",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-04-existing-period-coverage-B",
+      "subject_id": "K-A",
+      "field": "machine_class",
+      "input_location": "units[K-A].facts.machine_class",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-04-existing-period-coverage-B",
+      "subject_id": "K-A",
+      "field": "service",
+      "input_location": "units[K-A].facts.service",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-04-existing-period-coverage-B",
+      "subject_id": "K-A",
+      "field": "control_records",
+      "input_location": "units[K-A].facts.control_records",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": [
+        {
+          "record_id": "REC-PERIOD-B",
+          "revision": "R1",
+          "locator": "fictional record rows2-5",
+          "machine_id": "K-A",
+          "valve_id": "RV-A",
+          "source_scope": "fictional training packet",
+          "plant_truth": "unknown",
+          "approval": false,
+          "period": "same fictional6h",
+          "covered_modes": [
+            "normal"
+          ],
+          "representative_basis": null,
+          "known_missing": [
+            "relevant turndown and upset context"
+          ]
+        }
+      ],
+      "value_type": "list",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-05-protection-revision-A",
+      "subject_id": "K-A",
+      "field": "machine_class",
+      "input_location": "units[K-A].facts.machine_class",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-05-protection-revision-A",
+      "subject_id": "K-A",
+      "field": "service",
+      "input_location": "units[K-A].facts.service",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-05-protection-revision-A",
+      "subject_id": "K-A",
+      "field": "control_records",
+      "input_location": "units[K-A].facts.control_records",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": [
+        {
+          "record_id": "REC-PROTECTION-A",
+          "revision": "R1",
+          "locator": "fictional record rows2-5",
+          "machine_id": "K-A",
+          "valve_id": "RV-A",
+          "source_scope": "fictional training packet",
+          "plant_truth": "unknown",
+          "approval": false,
+          "basis_kind": "supplied manufacturer/site protection record",
+          "basis_revision": "current declared R2",
+          "conditions": "declared matching machine/duty, unverified",
+          "margin_value": 0,
+          "reviewer": null
+        }
+      ],
+      "value_type": "list",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-05-protection-revision-B",
+      "subject_id": "K-A",
+      "field": "machine_class",
+      "input_location": "units[K-A].facts.machine_class",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-05-protection-revision-B",
+      "subject_id": "K-A",
+      "field": "service",
+      "input_location": "units[K-A].facts.service",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-05-protection-revision-B",
+      "subject_id": "K-A",
+      "field": "control_records",
+      "input_location": "units[K-A].facts.control_records",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": [
+        {
+          "record_id": "REC-PROTECTION-B",
+          "revision": "R1",
+          "locator": "fictional record rows2-5",
+          "machine_id": "K-B",
+          "valve_id": "RV-A",
+          "source_scope": "fictional training packet",
+          "plant_truth": "unknown",
+          "approval": false,
+          "basis_kind": "supplied generic map",
+          "basis_revision": "obsolete declared R0",
+          "conditions": null,
+          "margin_value": 0,
+          "reviewer": null
+        }
+      ],
+      "value_type": "list",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-06-power-and-sibling-coverage-A",
+      "subject_id": "K-A",
+      "field": "machine_class",
+      "input_location": "units[K-A].facts.machine_class",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-06-power-and-sibling-coverage-A",
+      "subject_id": "K-A",
+      "field": "service",
+      "input_location": "units[K-A].facts.service",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-06-power-and-sibling-coverage-A",
+      "subject_id": "K-A",
+      "field": "control_records",
+      "input_location": "units[K-A].facts.control_records",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": [
+        {
+          "record_id": "REC-POWER-A",
+          "revision": "R1",
+          "locator": "fictional record rows2-5",
+          "machine_id": "K-A",
+          "valve_id": "RV-A",
+          "source_scope": "fictional training packet",
+          "plant_truth": "unknown",
+          "approval": false,
+          "covers": [
+            "K-A",
+            "K-B"
+          ],
+          "quantity": "real power",
+          "value": 0,
+          "uom": "kW",
+          "period": "fictional aligned interval",
+          "coverage_basis": "declared shared reviewed record; supplied claim"
+        }
+      ],
+      "value_type": "list",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-06-power-and-sibling-coverage-A",
+      "subject_id": "K-B",
+      "field": "machine_class",
+      "input_location": "units[K-B].facts.machine_class",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-06-power-and-sibling-coverage-A",
+      "subject_id": "K-B",
+      "field": "service",
+      "input_location": "units[K-B].facts.service",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-06-power-and-sibling-coverage-A",
+      "subject_id": "K-B",
+      "field": "control_records",
+      "input_location": "units[K-B].facts.control_records",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": [
+        {
+          "record_id": "REC-POWER-A",
+          "revision": "R1",
+          "locator": "fictional record rows2-5",
+          "machine_id": "K-A",
+          "valve_id": "RV-A",
+          "source_scope": "fictional training packet",
+          "plant_truth": "unknown",
+          "approval": false,
+          "covers": [
+            "K-A",
+            "K-B"
+          ],
+          "quantity": "real power",
+          "value": 0,
+          "uom": "kW",
+          "period": "fictional aligned interval",
+          "coverage_basis": "declared shared reviewed record; supplied claim"
+        }
+      ],
+      "value_type": "list",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-06-power-and-sibling-coverage-B",
+      "subject_id": "K-A",
+      "field": "machine_class",
+      "input_location": "units[K-A].facts.machine_class",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-06-power-and-sibling-coverage-B",
+      "subject_id": "K-A",
+      "field": "service",
+      "input_location": "units[K-A].facts.service",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-06-power-and-sibling-coverage-B",
+      "subject_id": "K-A",
+      "field": "control_records",
+      "input_location": "units[K-A].facts.control_records",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": [
+        {
+          "record_id": "REC-POWER-B",
+          "revision": "R1",
+          "locator": "fictional record rows2-5",
+          "machine_id": "K-A",
+          "valve_id": "RV-A",
+          "source_scope": "fictional training packet",
+          "plant_truth": "unknown",
+          "approval": false,
+          "covers": [
+            "K-A"
+          ],
+          "quantity": "nameplate power",
+          "value": 0,
+          "uom": "kW",
+          "period": null,
+          "coverage_basis": null
+        }
+      ],
+      "value_type": "list",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-06-power-and-sibling-coverage-B",
+      "subject_id": "K-B",
+      "field": "machine_class",
+      "input_location": "units[K-B].facts.machine_class",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-06-power-and-sibling-coverage-B",
+      "subject_id": "K-B",
+      "field": "service",
+      "input_location": "units[K-B].facts.service",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-06-power-and-sibling-coverage-B",
+      "subject_id": "K-B",
+      "field": "control_records",
+      "input_location": "units[K-B].facts.control_records",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": [
+        {
+          "record_id": "REC-POWER-B",
+          "revision": "R1",
+          "locator": "fictional record rows2-5",
+          "machine_id": "K-A",
+          "valve_id": "RV-A",
+          "source_scope": "fictional training packet",
+          "plant_truth": "unknown",
+          "approval": false,
+          "covers": [
+            "K-A"
+          ],
+          "quantity": "nameplate power",
+          "value": 0,
+          "uom": "kW",
+          "period": null,
+          "coverage_basis": null
+        }
+      ],
+      "value_type": "list",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-S01-no-eligible-compressor",
+      "subject_id": "P-A",
+      "field": "machine_class",
+      "input_location": "units[P-A].facts.machine_class",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-S01-no-eligible-compressor",
+      "subject_id": "P-A",
+      "field": "service",
+      "input_location": "units[P-A].facts.service",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-S01-no-eligible-compressor",
+      "subject_id": "P-A",
+      "field": "control_records",
+      "input_location": "units[P-A].facts.control_records",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-S02-no-drawn-valve-candidate",
+      "subject_id": "K-A",
+      "field": "machine_class",
+      "input_location": "units[K-A].facts.machine_class",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-S02-no-drawn-valve-candidate",
+      "subject_id": "K-A",
+      "field": "service",
+      "input_location": "units[K-A].facts.service",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-S02-no-drawn-valve-candidate",
+      "subject_id": "K-A",
+      "field": "control_records",
+      "input_location": "units[K-A].facts.control_records",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-S03-noncentrifugal-and-unknown-boundaries",
+      "subject_id": "K-R",
+      "field": "machine_class",
+      "input_location": "units[K-R].facts.machine_class",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": "rotary screw",
+      "value_type": "str",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-S03-noncentrifugal-and-unknown-boundaries",
+      "subject_id": "K-R",
+      "field": "service",
+      "input_location": "units[K-R].facts.service",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": "air",
+      "value_type": "str",
+      "field_state": "present"
+    },
+    {
+      "case_id": "E6-S03-noncentrifugal-and-unknown-boundaries",
+      "subject_id": "K-R",
+      "field": "control_records",
+      "input_location": "units[K-R].facts.control_records",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    },
+    {
+      "case_id": "E6-S03-noncentrifugal-and-unknown-boundaries",
+      "subject_id": "K-U",
+      "field": "machine_class",
+      "input_location": "units[K-U].facts.machine_class",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": "unknown",
+      "value_type": "str",
+      "field_state": "blank"
+    },
+    {
+      "case_id": "E6-S03-noncentrifugal-and-unknown-boundaries",
+      "subject_id": "K-U",
+      "field": "service",
+      "input_location": "units[K-U].facts.service",
+      "present": true,
+      "expected_E6_field_carrier": true,
+      "value": "unknown",
+      "value_type": "str",
+      "field_state": "blank"
+    },
+    {
+      "case_id": "E6-S03-noncentrifugal-and-unknown-boundaries",
+      "subject_id": "K-U",
+      "field": "control_records",
+      "input_location": "units[K-U].facts.control_records",
+      "present": false,
+      "expected_E6_field_carrier": false,
+      "field_state": "absent"
+    }
+  ],
+  "counts": {
+    "per_subject_field_rows": 60,
+    "supplied_whole_typed_values": 24,
+    "absent_optional_fields": 36,
+    "underlying_distinct_authored_record_ids": 14,
+    "serialized_referenced_record_objects": 20
+  },
+  "state_policy": "Existing source field_state line1135+: null/blank/PLACEHOLDER strings blank; False/0 and any supplied list/dict present. This does not imply completeness or truth of nested records. Literal values remain exact.",
+  "no_runtime_grade": true
+}
