@@ -40,6 +40,11 @@ TARGETS += ['examples/opportunity-screen/compressor-recycle-basis/models/E6-02-p
             'examples/opportunity-screen/compressor-recycle-basis/expected/input-vectors.json',
             'examples/opportunity-screen/compressor-recycle-basis/expected/after/E6-06-power-and-sibling-coverage-A/questions.json',
             'examples/opportunity-screen/compressor-recycle-basis/expected/after/E6-06-power-and-sibling-coverage-A/screen.md']
+TARGETS += [path.relative_to(ROOT).as_posix()
+            for path in sorted((ROOT / 'examples/batch-analysis').rglob('*'))
+            if path.is_file() and path.suffix in ('.json', '.csv', '.md', '.py')
+            and '__pycache__' not in path.parts
+            and 'public-distillation/source/' not in path.as_posix()]
 RAW_FAMILIES = ('out/review_kit', 'examples/review-and-mapping',
                 'examples/own-drawing/deliverable', 'examples/from-description/assisted',
                 'examples/from-description/mgpi', 'examples/pump-revision/inputs',
@@ -53,6 +58,10 @@ RAW_FAMILIES = ('out/review_kit', 'examples/review-and-mapping',
 RAW_FAMILIES += ('examples/opportunity-screen/alarm-basis/models',
                  'examples/opportunity-screen/alarm-basis/history/before-shared-scope',
                  'examples/internal-mcp/history/before-screening-wording')
+RAW_FAMILIES += ('examples/batch-analysis/public-distillation/source',)
+TARGETS += [path.relative_to(ROOT).as_posix()
+            for path in sorted((ROOT / 'examples/engineering-change').rglob('*'))
+            if path.is_file() and path.suffix != '.png' and '__pycache__' not in path.parts]
 ORDINARY = ('scripts/line_layers.py', 'scripts/context_register.py',
             'examples/graph-export/multi-appearance/model.json')
 GIT_ENV = dict(os.environ, GIT_CONFIG_GLOBAL=os.devnull, GIT_CONFIG_SYSTEM=os.devnull,
@@ -109,6 +118,9 @@ class CheckoutContracts(unittest.TestCase):
                     if path.is_file() and '__pycache__' not in path.parts:
                         protected[path.relative_to(ROOT).as_posix()] = path.read_bytes()
         self.assertTrue(protected, 'Existing raw-byte families must be present')
+        for name in ('operation.csv', 'operation-log.csv', 'anomaly-metadata.yaml', 'settings.csv', 'plant-description.yaml'):
+            self.assertIn('examples/batch-analysis/public-distillation/source/' + name, protected,
+                          'The copied experimental original must actually be exercised')
         packet = 'examples/graph-export/unplaced-dexpi/question-handoff/'
         for name in ('PROVENANCE.json', 'reproduce.py', 'history/original-admission.json',
                      'history/original-model-bytes/i04.model.json',

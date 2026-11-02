@@ -1,0 +1,30 @@
+Index, Property, Value, Unit
+0, operated_plant, Batch Distillation Plant V1, -
+1, operator, 0+7, -
+2, operating_point_pressure, 550, mbar
+3, operating_point_reflux_ratio_set, 1, -
+4, operating_point_heating_power_H701, 140, W
+5, operating_point_heating_power_H002, 0, W
+6, operating_point_cooling_temperature, 10, °C
+7, setpoint_controller_H702, 10.0, °C DeltaT_T703
+8, setpoint_controller_H704, 5.0, °C DeltaT_T703
+9, setpoint_controller_H706, 5.0, °C DeltaT_T703
+10, setpoint_controller_H708, 0.0, °C DeltaT_T703
+11, setpoint_controller_PD702, 2.0, mbar constant
+12, process_control_system_supplier, inhouse-system, 
+13, process_control_system_base, itom - python-code, 
+14, process_control_system_version, 2024_09_18_V1, 
+15, periphery_control_qr201, Spinsolve 2.6.6 - Magritek 
+16, periphery_control_P201, inhouse program - LabView 2013 
+17, periphery_control_TCU1, manual control 
+18, periphery_control_TCU2, manual control 
+19, periphery_control_H001, manual control 
+20, periphery_control_H002, manual control 
+21, periphery_control_SD001, inhouse python-code 
+22, periphery_control_CAM001, included in inhouse PCS 
+23, periphery_control_CAM002, included in inhouse PCS 
+24, periphery_control_CAM003, included in inhouse PCS 
+25, periphery_control_CAM004, not available 
+26, periphery_control_DR001, not available 
+27, comment_process_control, no comment, 
+28, inline_sampling_QR201, V001 continuous flow, 

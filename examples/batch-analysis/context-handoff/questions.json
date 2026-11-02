@@ -1,0 +1,127 @@
+{
+  "schema": "opportunity-questions-1",
+  "about": "Three authored fictional follow-up questions; stable local IDs and exact supplied graph IDs, not company-wide identities. No catalog or automatic question generation.",
+  "questions": [
+    {
+      "id": "observed-feed@FERM-101",
+      "status": "asked",
+      "question": "What feed quantity does the selected saved analysis report support for A and B under its declared interpolation and quality policy, and what remains unknown?",
+      "assets": [
+        {
+          "id": "FERM-101"
+        },
+        {
+          "id": "FT-101"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "authored-analysis-followup",
+          "provenance": {
+            "source_id": "ANALYSIS-REPORT",
+            "locator_id": "feed-windows",
+            "scope": "Conditional recorded-data calculation, no physical yield or production improvement. Previous/linear assumptions must not be conflated.",
+            "missing_followup": [
+              {
+                "evidence_kind": "event_and_quality",
+                "availability": "not supplied",
+                "role": "Automation / historian data owner",
+                "needed_for": "Explain the FAULT interval or align phases to actual events; not needed to report the saved calculation as conditional",
+                "source_locator": "No event journal/quality-code definition supplied; observations.csv record ending line6 only carries the exact token FAULT",
+                "sample_or_event_time": "Batch B elapsed1800s; absolute origin/timezone unresolved",
+                "result_available_time": "unknown; no event receipt/acquisition record supplied",
+                "next_step": "Obtain permitted source status semantics and actual phase/event record; do not infer a physical fault cause from FAULT."
+              }
+            ]
+          }
+        }
+      ],
+      "next_role": "Process reviewer with automation/historian owner"
+    },
+    {
+      "id": "comparability-yield@FERM-101",
+      "status": "asked",
+      "question": "Are these executions comparable for a yield claim? Review executed recipe, scale/charge, phase/event alignment and product/lab basis before interpreting a feed difference as yield.",
+      "assets": [
+        {
+          "id": "FERM-101"
+        },
+        {
+          "id": "FT-101"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "manual-readiness",
+          "provenance": {
+            "scope": "No product quantity, assay, executed recipe or lab join supplied; unknown is not zero or evidence of poor yield.",
+            "missing_followup": [
+              {
+                "evidence_kind": "event_and_quality",
+                "availability": "not supplied",
+                "role": "Automation / historian data owner",
+                "needed_for": "Explain the FAULT interval or align phases to actual events; not needed to report the saved calculation as conditional",
+                "source_locator": "No event journal/quality-code definition supplied; observations.csv record ending line6 only carries the exact token FAULT",
+                "sample_or_event_time": "Batch B elapsed1800s; absolute origin/timezone unresolved",
+                "result_available_time": "unknown; no event receipt/acquisition record supplied",
+                "next_step": "Obtain permitted source status semantics and actual phase/event record; do not infer a physical fault cause from FAULT."
+              },
+              {
+                "evidence_kind": "executed_recipe",
+                "availability": "not supplied",
+                "role": "Process / production execution record owner",
+                "needed_for": "Compare executions or attribute a yield difference",
+                "source_locator": "Plan context.recipe_id/revision are authored labels, not an executed batch record",
+                "sample_or_event_time": "Execution/phase boundaries need their governing source and clock basis",
+                "result_available_time": "unknown; no released execution record supplied",
+                "next_step": "Review actual executed recipe revision, scale, charge/batch genealogy, phases and deviations before deciding comparability."
+              },
+              {
+                "evidence_kind": "lab_and_product",
+                "availability": "not supplied",
+                "role": "Laboratory / quality owner with process reviewer",
+                "needed_for": "Define product quantity/concentration/purity and yield; not required for descriptive feed integration",
+                "source_locator": "No sample ID, assay/product amount or lab report supplied",
+                "sample_or_event_time": "Required sample collection time and batch/phase association are unknown",
+                "result_available_time": "Required result release/availability time is separately unknown",
+                "next_step": "Request cleared sample identity, collection time, result availability time, method/units/basis, revision and batch/phase link; a later lab-posting time is not sample time."
+              }
+            ]
+          }
+        }
+      ],
+      "next_role": "Process / production reviewer and laboratory quality owner"
+    },
+    {
+      "id": "predictive-what-if@FERM-101",
+      "status": "asked",
+      "question": "If a predictive feed/recipe what-if is needed, which suitable model, calibration/validation, kinetic or other domain evidence is missing? A descriptive total does not validate prediction.",
+      "assets": [
+        {
+          "id": "FERM-101"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "manual-readiness",
+          "provenance": {
+            "scope": "Conditional evidence request only. No model fitting, counterfactual calculation or kinetics-sufficiency verdict.",
+            "missing_followup": [
+              {
+                "evidence_kind": "predictive_model",
+                "availability": "not supplied",
+                "role": "Process model owner / qualified domain reviewer",
+                "needed_for": "Only if a predictive what-if is required rather than a descriptive record review",
+                "source_locator": "No calibrated/validated dynamic or kinetic model, parameter provenance or applicability domain supplied",
+                "sample_or_event_time": "Parameter/validation evidence must name its covered executions and regimes",
+                "result_available_time": "unknown; no approved model/version release supplied",
+                "next_step": "Choose an appropriate model and test its assumptions, parameters, independent validation, balances and domain; kinetics alone is not automatic sufficiency or an operating recommendation."
+              }
+            ]
+          }
+        }
+      ],
+      "next_role": "Process model owner and domain reviewer"
+    }
+  ]
+}

@@ -1,5 +1,8 @@
 # Doing this at your plant
 
+For a first visit with a mixed document folder, begin with [the organization starting guide](ORGANIZATION_START.md).
+It separates usable tools from preparation, engineering judgment and continuing leadership/IT ownership.
+
 Build one useful part of your plant's digital twin from the records you already have. The reusable intake,
 modeling and export tools produce a sourced draft asset model, review material and staging files. Review and
 enrich that model, then add selected data connections and maintained context as the work requires.

@@ -1,0 +1,641 @@
+{
+  "schema": "twin-graph-1",
+  "source_model": "examples/batch-analysis/process_model.json",
+  "model_kind": "hand_built",
+  "title": "Fictional fermentation analysis teaching model",
+  "nodes": [
+    {
+      "id": "PLANT",
+      "kind": "plant",
+      "tag": null,
+      "name": "Fictional fermentation analysis teaching model",
+      "aliases": [],
+      "status": "unverified",
+      "attributes": [
+        {
+          "name": "source_document",
+          "value": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+            "note": "the item cites no source of its own"
+          }
+        }
+      ],
+      "source": {
+        "kind": "model",
+        "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+        "note": "the item cites no source of its own"
+      }
+    },
+    {
+      "id": "BL",
+      "kind": "boundary",
+      "tag": null,
+      "name": "battery limit",
+      "aliases": [],
+      "status": "confirmed",
+      "attributes": [],
+      "source": {
+        "kind": "model",
+        "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+        "note": "the item cites no source of its own"
+      }
+    },
+    {
+      "id": "FERM-101",
+      "kind": "equipment",
+      "tag": "FERM-101",
+      "name": "Illustrative fermenter",
+      "aliases": [],
+      "status": "unverified",
+      "attributes": [
+        {
+          "name": "name",
+          "value": "Illustrative fermenter",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "type",
+          "value": "fermenter",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+            "note": "the item cites no source of its own"
+          }
+        }
+      ],
+      "source": {
+        "kind": "model",
+        "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+        "note": "the item cites no source of its own"
+      }
+    },
+    {
+      "id": "FT-101",
+      "kind": "instrument",
+      "tag": "FT-101",
+      "name": null,
+      "aliases": [],
+      "status": "unverified",
+      "attributes": [
+        {
+          "name": "service",
+          "value": "feed mass flow",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "type",
+          "value": "flow transmitter",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "unit",
+          "value": "FERM-101",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "units",
+          "value": "kg/h",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+            "note": "the item cites no source of its own"
+          }
+        }
+      ],
+      "source": {
+        "kind": "model",
+        "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+        "note": "the item cites no source of its own"
+      }
+    },
+    {
+      "id": "TT-101",
+      "kind": "instrument",
+      "tag": "TT-101",
+      "name": null,
+      "aliases": [],
+      "status": "unverified",
+      "attributes": [
+        {
+          "name": "type",
+          "value": "temperature transmitter",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "unit",
+          "value": "FERM-101",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "units",
+          "value": "degC",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+            "note": "the item cites no source of its own"
+          }
+        }
+      ],
+      "source": {
+        "kind": "model",
+        "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+        "note": "the item cites no source of its own"
+      }
+    },
+    {
+      "id": "DO-101",
+      "kind": "instrument",
+      "tag": "DO-101",
+      "name": null,
+      "aliases": [],
+      "status": "unverified",
+      "attributes": [
+        {
+          "name": "service",
+          "value": "percent air saturation",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "type",
+          "value": "dissolved oxygen transmitter",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "unit",
+          "value": "FERM-101",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "units",
+          "value": "%",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+            "note": "the item cites no source of its own"
+          }
+        }
+      ],
+      "source": {
+        "kind": "model",
+        "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+        "note": "the item cites no source of its own"
+      }
+    },
+    {
+      "id": "POWER-101",
+      "kind": "instrument",
+      "tag": "POWER-101",
+      "name": null,
+      "aliases": [],
+      "status": "unverified",
+      "attributes": [
+        {
+          "name": "type",
+          "value": "power transmitter",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "unit",
+          "value": "FERM-101",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+            "note": "the item cites no source of its own"
+          }
+        },
+        {
+          "name": "units",
+          "value": "W",
+          "status": "unverified",
+          "source": {
+            "kind": "model",
+            "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+            "note": "the item cites no source of its own"
+          }
+        }
+      ],
+      "source": {
+        "kind": "model",
+        "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+        "note": "the item cites no source of its own"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "E00001",
+      "type": "contains",
+      "from": "PLANT",
+      "to": "FERM-101",
+      "status": "unverified",
+      "direction": null,
+      "source": {
+        "kind": "model",
+        "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+        "note": "the item cites no source of its own"
+      }
+    },
+    {
+      "id": "E00002",
+      "type": "measures",
+      "from": "FT-101",
+      "to": "FERM-101",
+      "status": "unverified",
+      "direction": null,
+      "source": {
+        "kind": "model",
+        "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+        "note": "the item cites no source of its own"
+      }
+    },
+    {
+      "id": "E00003",
+      "type": "measures",
+      "from": "TT-101",
+      "to": "FERM-101",
+      "status": "unverified",
+      "direction": null,
+      "source": {
+        "kind": "model",
+        "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+        "note": "the item cites no source of its own"
+      }
+    },
+    {
+      "id": "E00004",
+      "type": "measures",
+      "from": "DO-101",
+      "to": "FERM-101",
+      "status": "unverified",
+      "direction": null,
+      "source": {
+        "kind": "model",
+        "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+        "note": "the item cites no source of its own"
+      }
+    },
+    {
+      "id": "E00005",
+      "type": "measures",
+      "from": "POWER-101",
+      "to": "FERM-101",
+      "status": "unverified",
+      "direction": null,
+      "source": {
+        "kind": "model",
+        "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+        "note": "the item cites no source of its own"
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "observed-feed@FERM-101",
+      "status": "asked",
+      "question": "What feed quantity does the selected saved analysis report support for A and B under its declared interpolation and quality policy, and what remains unknown?",
+      "assets": [
+        {
+          "id": "FERM-101"
+        },
+        {
+          "id": "FT-101"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "authored-analysis-followup",
+          "provenance": {
+            "source_id": "ANALYSIS-REPORT",
+            "locator_id": "feed-windows",
+            "scope": "Conditional recorded-data calculation, no physical yield or production improvement. Previous/linear assumptions must not be conflated.",
+            "missing_followup": [
+              {
+                "evidence_kind": "event_and_quality",
+                "availability": "not supplied",
+                "role": "Automation / historian data owner",
+                "needed_for": "Explain the FAULT interval or align phases to actual events; not needed to report the saved calculation as conditional",
+                "source_locator": "No event journal/quality-code definition supplied; observations.csv record ending line6 only carries the exact token FAULT",
+                "sample_or_event_time": "Batch B elapsed1800s; absolute origin/timezone unresolved",
+                "result_available_time": "unknown; no event receipt/acquisition record supplied",
+                "next_step": "Obtain permitted source status semantics and actual phase/event record; do not infer a physical fault cause from FAULT."
+              }
+            ]
+          }
+        }
+      ],
+      "next_role": "Process reviewer with automation/historian owner",
+      "context": {
+        "present": true,
+        "question": {
+          "id": "observed-feed@FERM-101",
+          "question": "What feed quantity does the selected saved analysis report support for A and B under its declared interpolation and quality policy, and what remains unknown?",
+          "assets": [
+            {
+              "id": "FERM-101"
+            },
+            {
+              "id": "FT-101"
+            }
+          ],
+          "evidence": [
+            {
+              "kind": "authored-analysis-followup",
+              "provenance": {
+                "source_id": "ANALYSIS-REPORT",
+                "locator_id": "feed-windows",
+                "scope": "Conditional recorded-data calculation, no physical yield or production improvement. Previous/linear assumptions must not be conflated.",
+                "missing_followup": [
+                  {
+                    "evidence_kind": "event_and_quality",
+                    "availability": "not supplied",
+                    "role": "Automation / historian data owner",
+                    "needed_for": "Explain the FAULT interval or align phases to actual events; not needed to report the saved calculation as conditional",
+                    "source_locator": "No event journal/quality-code definition supplied; observations.csv record ending line6 only carries the exact token FAULT",
+                    "sample_or_event_time": "Batch B elapsed1800s; absolute origin/timezone unresolved",
+                    "result_available_time": "unknown; no event receipt/acquisition record supplied",
+                    "next_step": "Obtain permitted source status semantics and actual phase/event record; do not infer a physical fault cause from FAULT."
+                  }
+                ]
+              }
+            }
+          ],
+          "next_role": "Process reviewer with automation/historian owner"
+        },
+        "owner": "Fictional process reviewer",
+        "ownership": "assigned",
+        "assigned_by": "Fictional exercise coordinator",
+        "assigned_on": "2026-11-02",
+        "state": "partial",
+        "disputed_claims": [],
+        "answers": [
+          {
+            "decision_id": "d-2c6f9cbcf7704d67bf36ba3ff73d792ee429b4e881c3b83afdcb2c620a371644",
+            "answer_id": "fictional-feed-review-1",
+            "freshness": "current",
+            "changed": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "comparability-yield@FERM-101",
+      "status": "asked",
+      "question": "Are these executions comparable for a yield claim? Review executed recipe, scale/charge, phase/event alignment and product/lab basis before interpreting a feed difference as yield.",
+      "assets": [
+        {
+          "id": "FERM-101"
+        },
+        {
+          "id": "FT-101"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "manual-readiness",
+          "provenance": {
+            "scope": "No product quantity, assay, executed recipe or lab join supplied; unknown is not zero or evidence of poor yield.",
+            "missing_followup": [
+              {
+                "evidence_kind": "event_and_quality",
+                "availability": "not supplied",
+                "role": "Automation / historian data owner",
+                "needed_for": "Explain the FAULT interval or align phases to actual events; not needed to report the saved calculation as conditional",
+                "source_locator": "No event journal/quality-code definition supplied; observations.csv record ending line6 only carries the exact token FAULT",
+                "sample_or_event_time": "Batch B elapsed1800s; absolute origin/timezone unresolved",
+                "result_available_time": "unknown; no event receipt/acquisition record supplied",
+                "next_step": "Obtain permitted source status semantics and actual phase/event record; do not infer a physical fault cause from FAULT."
+              },
+              {
+                "evidence_kind": "executed_recipe",
+                "availability": "not supplied",
+                "role": "Process / production execution record owner",
+                "needed_for": "Compare executions or attribute a yield difference",
+                "source_locator": "Plan context.recipe_id/revision are authored labels, not an executed batch record",
+                "sample_or_event_time": "Execution/phase boundaries need their governing source and clock basis",
+                "result_available_time": "unknown; no released execution record supplied",
+                "next_step": "Review actual executed recipe revision, scale, charge/batch genealogy, phases and deviations before deciding comparability."
+              },
+              {
+                "evidence_kind": "lab_and_product",
+                "availability": "not supplied",
+                "role": "Laboratory / quality owner with process reviewer",
+                "needed_for": "Define product quantity/concentration/purity and yield; not required for descriptive feed integration",
+                "source_locator": "No sample ID, assay/product amount or lab report supplied",
+                "sample_or_event_time": "Required sample collection time and batch/phase association are unknown",
+                "result_available_time": "Required result release/availability time is separately unknown",
+                "next_step": "Request cleared sample identity, collection time, result availability time, method/units/basis, revision and batch/phase link; a later lab-posting time is not sample time."
+              }
+            ]
+          }
+        }
+      ],
+      "next_role": "Process / production reviewer and laboratory quality owner",
+      "context": {
+        "present": true,
+        "question": {
+          "id": "comparability-yield@FERM-101",
+          "question": "Are these executions comparable for a yield claim? Review executed recipe, scale/charge, phase/event alignment and product/lab basis before interpreting a feed difference as yield.",
+          "assets": [
+            {
+              "id": "FERM-101"
+            },
+            {
+              "id": "FT-101"
+            }
+          ],
+          "evidence": [
+            {
+              "kind": "manual-readiness",
+              "provenance": {
+                "scope": "No product quantity, assay, executed recipe or lab join supplied; unknown is not zero or evidence of poor yield.",
+                "missing_followup": [
+                  {
+                    "evidence_kind": "event_and_quality",
+                    "availability": "not supplied",
+                    "role": "Automation / historian data owner",
+                    "needed_for": "Explain the FAULT interval or align phases to actual events; not needed to report the saved calculation as conditional",
+                    "source_locator": "No event journal/quality-code definition supplied; observations.csv record ending line6 only carries the exact token FAULT",
+                    "sample_or_event_time": "Batch B elapsed1800s; absolute origin/timezone unresolved",
+                    "result_available_time": "unknown; no event receipt/acquisition record supplied",
+                    "next_step": "Obtain permitted source status semantics and actual phase/event record; do not infer a physical fault cause from FAULT."
+                  },
+                  {
+                    "evidence_kind": "executed_recipe",
+                    "availability": "not supplied",
+                    "role": "Process / production execution record owner",
+                    "needed_for": "Compare executions or attribute a yield difference",
+                    "source_locator": "Plan context.recipe_id/revision are authored labels, not an executed batch record",
+                    "sample_or_event_time": "Execution/phase boundaries need their governing source and clock basis",
+                    "result_available_time": "unknown; no released execution record supplied",
+                    "next_step": "Review actual executed recipe revision, scale, charge/batch genealogy, phases and deviations before deciding comparability."
+                  },
+                  {
+                    "evidence_kind": "lab_and_product",
+                    "availability": "not supplied",
+                    "role": "Laboratory / quality owner with process reviewer",
+                    "needed_for": "Define product quantity/concentration/purity and yield; not required for descriptive feed integration",
+                    "source_locator": "No sample ID, assay/product amount or lab report supplied",
+                    "sample_or_event_time": "Required sample collection time and batch/phase association are unknown",
+                    "result_available_time": "Required result release/availability time is separately unknown",
+                    "next_step": "Request cleared sample identity, collection time, result availability time, method/units/basis, revision and batch/phase link; a later lab-posting time is not sample time."
+                  }
+                ]
+              }
+            }
+          ],
+          "next_role": "Process / production reviewer and laboratory quality owner"
+        },
+        "owner": null,
+        "ownership": "needs_owner",
+        "assigned_by": null,
+        "assigned_on": null,
+        "state": "unanswered",
+        "disputed_claims": [],
+        "answers": []
+      }
+    },
+    {
+      "id": "predictive-what-if@FERM-101",
+      "status": "asked",
+      "question": "If a predictive feed/recipe what-if is needed, which suitable model, calibration/validation, kinetic or other domain evidence is missing? A descriptive total does not validate prediction.",
+      "assets": [
+        {
+          "id": "FERM-101"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "manual-readiness",
+          "provenance": {
+            "scope": "Conditional evidence request only. No model fitting, counterfactual calculation or kinetics-sufficiency verdict.",
+            "missing_followup": [
+              {
+                "evidence_kind": "predictive_model",
+                "availability": "not supplied",
+                "role": "Process model owner / qualified domain reviewer",
+                "needed_for": "Only if a predictive what-if is required rather than a descriptive record review",
+                "source_locator": "No calibrated/validated dynamic or kinetic model, parameter provenance or applicability domain supplied",
+                "sample_or_event_time": "Parameter/validation evidence must name its covered executions and regimes",
+                "result_available_time": "unknown; no approved model/version release supplied",
+                "next_step": "Choose an appropriate model and test its assumptions, parameters, independent validation, balances and domain; kinetics alone is not automatic sufficiency or an operating recommendation."
+              }
+            ]
+          }
+        }
+      ],
+      "next_role": "Process model owner and domain reviewer",
+      "context": {
+        "present": true,
+        "question": {
+          "id": "predictive-what-if@FERM-101",
+          "question": "If a predictive feed/recipe what-if is needed, which suitable model, calibration/validation, kinetic or other domain evidence is missing? A descriptive total does not validate prediction.",
+          "assets": [
+            {
+              "id": "FERM-101"
+            }
+          ],
+          "evidence": [
+            {
+              "kind": "manual-readiness",
+              "provenance": {
+                "scope": "Conditional evidence request only. No model fitting, counterfactual calculation or kinetics-sufficiency verdict.",
+                "missing_followup": [
+                  {
+                    "evidence_kind": "predictive_model",
+                    "availability": "not supplied",
+                    "role": "Process model owner / qualified domain reviewer",
+                    "needed_for": "Only if a predictive what-if is required rather than a descriptive record review",
+                    "source_locator": "No calibrated/validated dynamic or kinetic model, parameter provenance or applicability domain supplied",
+                    "sample_or_event_time": "Parameter/validation evidence must name its covered executions and regimes",
+                    "result_available_time": "unknown; no approved model/version release supplied",
+                    "next_step": "Choose an appropriate model and test its assumptions, parameters, independent validation, balances and domain; kinetics alone is not automatic sufficiency or an operating recommendation."
+                  }
+                ]
+              }
+            }
+          ],
+          "next_role": "Process model owner and domain reviewer"
+        },
+        "owner": null,
+        "ownership": "needs_owner",
+        "assigned_by": null,
+        "assigned_on": null,
+        "state": "unanswered",
+        "disputed_claims": [],
+        "answers": []
+      }
+    }
+  ],
+  "events": [],
+  "not_exported": [],
+  "counts": {
+    "nodes": 7,
+    "edges": 5,
+    "claims": 17,
+    "questions": 3,
+    "events": 0
+  },
+  "context_register": {
+    "schema": "context-register-1",
+    "sidecar": "context.json",
+    "content_sha256": "5330d601a9f15c145c8b7aab7343de0701a9dfaa5f5d17d44fc0c8db00358b21"
+  }
+}

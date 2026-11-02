@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "title": "Fictional fermentation analysis teaching model",
+    "source_document": "Authored fictional example, 2026-11-02; not a plant or kinetic model"
+  },
+  "units": [
+    {"id": "FERM-101", "name": "Illustrative fermenter", "type": "fermenter"}
+  ],
+  "streams": [],
+  "instruments": [
+    {"tag": "FT-101", "unit": "FERM-101", "type": "flow transmitter", "units": "kg/h", "service": "feed mass flow"},
+    {"tag": "TT-101", "unit": "FERM-101", "type": "temperature transmitter", "units": "degC"},
+    {"tag": "DO-101", "unit": "FERM-101", "type": "dissolved oxygen transmitter", "units": "%", "service": "percent air saturation"},
+    {"tag": "POWER-101", "unit": "FERM-101", "type": "power transmitter", "units": "W"}
+  ]
+}

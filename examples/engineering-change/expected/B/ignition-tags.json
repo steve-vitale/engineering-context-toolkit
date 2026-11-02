@@ -1,0 +1,99 @@
+{
+  "name": "",
+  "tagType": "Provider",
+  "tags": [
+    {
+      "name": "_types_",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "Tank",
+          "tagType": "UdtType",
+          "parameters": {
+            "BasePath": {
+              "dataType": "String",
+              "value": ""
+            },
+            "OPCServer": {
+              "dataType": "String",
+              "value": "Ignition OPC UA Server"
+            }
+          },
+          "tags": []
+        },
+        {
+          "name": "Pump",
+          "tagType": "UdtType",
+          "parameters": {
+            "BasePath": {
+              "dataType": "String",
+              "value": ""
+            },
+            "OPCServer": {
+              "dataType": "String",
+              "value": "Ignition OPC UA Server"
+            }
+          },
+          "tags": []
+        },
+        {
+          "name": "Pump_P2",
+          "tagType": "UdtType",
+          "parameters": {
+            "BasePath": {
+              "dataType": "String",
+              "value": ""
+            },
+            "OPCServer": {
+              "dataType": "String",
+              "value": "Ignition OPC UA Server"
+            }
+          },
+          "tags": []
+        }
+      ]
+    },
+    {
+      "name": "illustrative-pump-change",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "TK-1",
+          "tagType": "UdtInstance",
+          "typeId": "Tank",
+          "documentation": "Water tank | source check: unverified | ops review: unverified",
+          "parameters": {
+            "BasePath": {
+              "dataType": "String",
+              "value": "ns=1;s=illustrative-pump-change.TK-1"
+            }
+          }
+        },
+        {
+          "name": "P-1",
+          "tagType": "UdtInstance",
+          "typeId": "Pump",
+          "documentation": "Duty water pump | source check: unverified | ops review: unverified",
+          "parameters": {
+            "BasePath": {
+              "dataType": "String",
+              "value": "ns=1;s=illustrative-pump-change.P-1"
+            }
+          }
+        },
+        {
+          "name": "P-2",
+          "tagType": "UdtInstance",
+          "typeId": "Pump_P2",
+          "documentation": "Standby water pump | source check: unverified | ops review: unverified",
+          "parameters": {
+            "BasePath": {
+              "dataType": "String",
+              "value": "ns=1;s=illustrative-pump-change.P-2"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

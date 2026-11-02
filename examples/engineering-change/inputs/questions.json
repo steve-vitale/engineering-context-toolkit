@@ -1,0 +1,26 @@
+{
+  "schema": "opportunity-questions-1",
+  "fixture_note": "Authored source and operability follow-ups, separate from catalog-generated findings. All engineering review actors are fictional.",
+  "questions": [
+    {
+      "id": "ARRANGEMENT@TK-1",
+      "question": "What pump arrangement does the selected design record describe, and what remains unverified?",
+      "assets": [
+        {
+          "id": "TK-1"
+        }
+      ],
+      "status": "asked"
+    },
+    {
+      "id": "OPERABILITY@P-1",
+      "question": "What reviewed evidence is needed before relying on the proposed pump service roles, controls, protection and operating procedures?",
+      "assets": [
+        {
+          "id": "P-1"
+        }
+      ],
+      "status": "asked"
+    }
+  ]
+}

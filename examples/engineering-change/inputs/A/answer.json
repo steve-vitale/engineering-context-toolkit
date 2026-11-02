@@ -1,0 +1,195 @@
+{
+  "model": {
+    "meta": {
+      "model_id": "illustrative-pump-change",
+      "title": "Illustrative pump change",
+      "source_document": "source.txt",
+      "source_sha256": "4555af838d8a59ba122162b0612d8d1c4c9caacb564ee4f3ffb71eee9e49da24",
+      "unknowns": [
+        "Pump sizing, line sizes, isolation and nonreturn details, electrical supply, instrument units, operating limits, protection and control logic are not specified."
+      ],
+      "assumptions": [
+        "Symbol dimensions and locations are proposed drafting geometry, not plant dimensions.",
+        "Draft service roles are not control behavior or installed-state evidence."
+      ]
+    },
+    "units": [
+      {
+        "id": "TK-1",
+        "name": "Water tank",
+        "type": "tank",
+        "source": "source.txt:L2-L2"
+      },
+      {
+        "id": "P-1",
+        "name": "Water pump",
+        "type": "pump",
+        "source": "source.txt:L3-L3"
+      }
+    ],
+    "streams": [
+      {
+        "id": "S1",
+        "name": "Water feed",
+        "from": "BL",
+        "to": "TK-1",
+        "source": "source.txt:L4-L4"
+      },
+      {
+        "id": "S2",
+        "name": "Pump suction",
+        "from": "TK-1",
+        "to": "P-1",
+        "source": "source.txt:L5-L5"
+      },
+      {
+        "id": "S3",
+        "name": "Water discharge",
+        "from": "P-1",
+        "to": "BL",
+        "source": "source.txt:L5-L5"
+      }
+    ],
+    "instruments": [],
+    "final_elements": [],
+    "controllers": []
+  },
+  "layout": {
+    "sheet_px": [
+      3200,
+      2130
+    ],
+    "control_valve_stations": false,
+    "line_label_prefix": "UNSIZED",
+    "register_header": "# Illustrative draft, not a plant drawing register.",
+    "title_block": {
+      "project": "ILLUSTRATIVE PUMP CHANGE",
+      "drawn_by": "ASSISTED DRAFT",
+      "date": "UNKNOWN",
+      "revision": "DRAFT",
+      "scale": "NONE",
+      "notes": [
+        "NOT A DRAWING OF RECORD",
+        "SOURCE FACTS REQUIRE REVIEW",
+        "GEOMETRY IS PROPOSED ONLY",
+        "SIZE/SPEC ARE PLACEHOLDERS"
+      ]
+    },
+    "sheets": [
+      {
+        "id": "D1",
+        "drawing": "PUMP-CHANGE-A",
+        "system": "WATER",
+        "title": "ILLUSTRATIVE PUMP CHANGE A",
+        "units": {
+          "TK-1": {
+            "shape": "vertical_vessel",
+            "cx": 800,
+            "top": 760,
+            "bottom": 1040,
+            "w": 200,
+            "head": 40
+          },
+          "P-1": {
+            "shape": "pump",
+            "at": [
+              1700,
+              900
+            ],
+            "r": 45
+          }
+        },
+        "flags": {
+          "IN": {
+            "stream": "S1",
+            "label": "WATER FEED",
+            "at": [
+              120,
+              900
+            ],
+            "dir": "right"
+          },
+          "OUT": {
+            "stream": "S3",
+            "label": "WATER DISCHARGE",
+            "at": [
+              2750,
+              900
+            ],
+            "dir": "right"
+          }
+        },
+        "controllers": {},
+        "signals": [],
+        "routes": [
+          {
+            "id": "S1",
+            "stream": "S1",
+            "from": {
+              "flag": "IN"
+            },
+            "to": {
+              "unit": "TK-1"
+            },
+            "pts": [
+              [
+                350,
+                900
+              ],
+              [
+                700,
+                900
+              ]
+            ]
+          },
+          {
+            "id": "S2",
+            "stream": "S2",
+            "from": {
+              "unit": "TK-1"
+            },
+            "to": {
+              "unit": "P-1"
+            },
+            "pts": [
+              [
+                900,
+                900
+              ],
+              [
+                1655,
+                900
+              ]
+            ]
+          },
+          {
+            "id": "S3",
+            "stream": "S3",
+            "from": {
+              "unit": "P-1"
+            },
+            "to": {
+              "flag": "OUT"
+            },
+            "pts": [
+              [
+                1745,
+                900
+              ],
+              [
+                2750,
+                900
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "evidence": {
+    "source.txt:L2-L2": "TK-1 is a water tank.",
+    "source.txt:L3-L3": "P-1 is a water pump taking suction from TK-1 and discharging to the downstream battery limit.",
+    "source.txt:L4-L4": "S1 feeds TK-1 from the upstream battery limit.",
+    "source.txt:L5-L5": "S2 runs from TK-1 to P-1; S3 runs from P-1 to the downstream battery limit."
+  }
+}

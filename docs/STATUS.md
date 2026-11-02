@@ -1,6 +1,7 @@
 # State of the toolkit
 
-Holistic audit: **2026-11-02, UTC**, with the latest bounded collection-review follow-up starting from released commit `7f55e3f`.
+Implementation state updated **2026-11-02, UTC**. The analytics and demo follow-ups start from released commit `9d56496`;
+earlier audit and collection-review evidence remains in its dated journal entries.
 The public name is **Engineering Context Toolkit**. The jumpstart is its first-assignment path; modeling,
 review, analysis and evaluation can be used independently. Earlier failures and original evidence remain
 in the [journal](JOURNAL.md) and [attempt ledger](TRIED.md).
@@ -10,6 +11,20 @@ the source-linked asset model, review and enrich its meaning, then generate sele
 staging. Supply reviewed signal identities and verify receiving-system behavior as you connect the application.
 The public tutorials teach those steps; case studies and evaluations retain what was built or measured on their
 inputs. Engineering review and company acceptance determine what becomes an authoritative maintained twin or record.
+
+The [five-episode demo series](DEMO_SERIES.md) connects the separate source/model, engineering-change,
+process-analysis, onboarding and owned-team examples. Its new [structural-change tutorial](../examples/engineering-change/README.md)
+uses existing tools to add a proposed standby pump, regenerate supported outputs and explicitly reopen an old
+partial source answer. Independent saved-evidence/public review passed; 14 worked CLI jobs, 56 assertions and
+the three new regression methods are local software evidence. The drawings do not establish a complete
+duty/standby design or installed operation, and the series is not one integrated plant application.
+
+The current runner registers **57 source-only and 75 full-suite programs**. The preceding demo integration passes all
+56 then-registered source-only programs with eight skipped unittest cases and three explanatory platform notices; four focused
+programs also pass 48 methods without skips. The basis-check follow-up's three focused programs pass 56 methods
+without skips, followed by 57/57 source-only programs with eight skipped cases and three platform notices.
+Later review/documentation metadata is checked separately; current full-suite/SDK CI remains unrun. Earlier counts below describe
+their bounded development snapshots rather than an additional current integration result.
 
 The reader-path follow-up carries that distinction into the generated client reports, manual Bayer tutorial,
 review kit and 3D case. The own-P&ID tutorial now gives the model/questions-to-graph continuation; description
@@ -21,6 +36,19 @@ and research runners; tests are separate. The [feature reference](FEATURES.md) l
 registered example files, including inputs, generated outputs and retained history. Shared files can appear under more than one group; feature-file
 references are not additional unique examples. Their evidence is bounded. A reviewed
 example does not certify every input, current implementation or engineering conclusion.
+
+The bounded process-data addition supplies [recorded batch phase calculations](../examples/batch-analysis/README.md)
+with optional exact twin-graph asset-ID binding. V1 preserves its prefiltered linear contract; V2 explicitly
+selects interpolation and external quality policy. Null quality is unchecked, not a filtering or good-data claim.
+One [measured laboratory source](../examples/batch-analysis/public-distillation/README.md) adds independent
+recorded-series arithmetic, with upstream interpolation and documented negligible anomalies retained.
+The [worked context handoff](../examples/batch-analysis/context-handoff/README.md) keeps a partial proposal,
+remaining evidence needs and history; a changed report reopens the answer. These examples do not establish
+fermentation prediction, physical mass truth, a real recipient's benefit or plant acceptance. The feature catalog
+owns the exact independent-review scope. [Process analytics](PROCESS_ANALYTICS.md) distinguishes working tools
+and manual event/recipe/lab/model qualification from proposed automatic joins, balances, soft sensors and
+dynamic-model adapters. The question engine does not automatically assess arbitrary kinetic-model sufficiency;
+the MCP starter does not execute analyses, chase report dependencies or query live history.
 
 ## Known defects
 
@@ -145,6 +173,7 @@ create those controls.
 | Model correction and point mapping | Apply supported local corrections and stage supplied signal addresses with history. | Identity/signal review, external companion reconciliation and regeneration remain explicit. |
 | Loop audit and vendor evaluation | Compare supplied loop truth or saved drawing answers with bounded scorers. | No installed safeguard/wiring acceptance or measured review-time result. |
 | Historian CSV and impact tools | Analyze supplied observations and calculate from supplied measurements/constants. | Qualified baseline, quality/time metadata, causal evidence and live connectors remain separate. |
+| Saved batch calculation basis check | Explicitly compare selected CSV/plan/graph and current code pins, then reproduce the complete typed report when they match. | No automatic dependency monitoring, source authority, method validation or context refresh. |
 | Question engine | Catalog screens produce investigations and collection requests; source-scoped recipes retain known answers. | No arbitrary natural-language diagnosis or broad usefulness/coverage benchmark. |
 | Model-bound context and graph snapshot | Retain supplied answers, source dependencies and decision/ownership history; explicitly refresh and read back the selected graph/context pair. | Supported model/question contracts and manual refresh/restart; no source fetching or shared company access service. |
 | Knowledge/workflow starter packet | [Author and read](../examples/engineering-onboarding/own-packet/README.md) a selected landing map, source references, roles and workflow/practice records without an asset model. | Reference data only; no decision-history writer, source ingestion, workflow execution or authenticated assignment. Optional MCP is a retrieval transport. |
@@ -156,6 +185,8 @@ The [TE/OPEN100 comparison](DELIVERABLES.md) includes screens, recorded replay, 
 The gateway builder is TE-specific; PI staging has never been imported here. Proposed 3D geometry, keyword
 hazards and isolation views are not installed geometry, hazard analysis or operating procedures. Replay does not
 make commands drive a physical process simulation. The Docker package remains a historical demonstration.
+Anatomy's optional vendored drawing kit belongs only to the [interactive TE case study](../drafts/interactive-tour/README.md),
+with browser-only viewing and separate rebuild/verifier requirements. It is no core architecture or toolkit dependency.
 
 ## Company handoff: external responsibilities and missing adapters
 
@@ -169,6 +200,10 @@ actual participant, recipient, native-system and tenant observations remain **no
 | Optional adapters and receiving projections | General inverse graph conversion, captured-source consumers, managed-section merging and particular incumbent-system connectors are not implemented. Test changed/removed identifiers and complete retained history for the selected route. | A demonstrated engineering job, explicit supported contract, source preservation and subsequent-revision readback. Add only the adapter that job needs. |
 | Review-history handoff | N107 now preserves selected JSON intact and unbound, then attaches events only through [individual supplied associations](REVIEW_HISTORY.md) to exact model/record bytes. Complete earlier history remains readable; full/core retain its qualifications. | Review the source/revision relationship in the company process. Matching hashes cannot detect a false supplied basis or establish writer lineage, reviewer authority, approval or permission to share. |
 | Company acceptance and benefit | N062/N063: real engineer/recipient investigation, authorized company import/readback, client permissions and a subsequent revision. | Actual observations from the [acceptance exercise](ACCEPTANCE.md), not an agent simulation. Native PI/gateway acceptance, accepted Copilot tenant and operational benefit remain unverified. |
+
+The remaining question review includes a specific [default E13 limitation](OPPORTUNITY_SCREEN.md): its
+boiler-blowdown scope and action text conflate distinct functions. Original-source review identified it;
+the shared catalog is unchanged and needs a matched candidate/adoption review. It is not a closed rule repair.
 
 The company retains authority over accepted context, access, controlled documents, work execution and ownership.
 Generic inverse graph conversion, live incumbent connectors, automatic managed-section merging and company

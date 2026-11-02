@@ -1,0 +1,117 @@
+{
+  "schema": "engineering-change-demo-1",
+  "scope": "Fictional structural change and explicit retained-source refresh; no installed or operating acceptance.",
+  "revisions": {
+    "A": {
+      "equipment_ids": [
+        "TK-1",
+        "P-1"
+      ],
+      "stream_endpoints": [
+        [
+          "S1",
+          "BL",
+          "TK-1"
+        ],
+        [
+          "S2",
+          "TK-1",
+          "P-1"
+        ],
+        [
+          "S3",
+          "P-1",
+          "BL"
+        ]
+      ],
+      "generated_question_ids": [
+        "C9@model"
+      ],
+      "source_sha256": "4555af838d8a59ba122162b0612d8d1c4c9caacb564ee4f3ffb71eee9e49da24",
+      "selected_outputs_sha256": {
+        "model.json": "dd3ede7d91872aed9b926712d93b800b5b6b62a1bb5f5bc224a1927a1ab82b43",
+        "graph.json": "0790c2a47c39d6d737403b4de1fe491d4c61d9fa014297bb5b2520b608bd845a",
+        "pid/D1.png": "3db9950ef4b34bd19ebafa6a2bc5a2fcdd62b12760a9337c36b58920479a7955",
+        "pid/D1.svg": "badbe2442754ee84946cb279486b4d5f8ede4e76e80675b80472d1fce003061a",
+        "exports/ignition/tags.json": "d950b454d36849a91e0dbfe0cd49262589032b30b3ff85ee29b4d4c1c9c85333",
+        "exports/pi/pi_builder_af.csv": "a66ce29b6c82f94ca2957282646f8edcf112bee88710f8d358feb754a34da508"
+      },
+      "context_sha256": "975cc7e1233c29d73176b55230dcb980b26ebfe11e992882d1bd42f2a6bffc48"
+    },
+    "B": {
+      "equipment_ids": [
+        "TK-1",
+        "P-1",
+        "P-2"
+      ],
+      "stream_endpoints": [
+        [
+          "S1",
+          "BL",
+          "TK-1"
+        ],
+        [
+          "S2",
+          "TK-1",
+          "P-1"
+        ],
+        [
+          "S3",
+          "P-1",
+          "BL"
+        ],
+        [
+          "S4",
+          "TK-1",
+          "P-2"
+        ],
+        [
+          "S5",
+          "P-2",
+          "BL"
+        ]
+      ],
+      "generated_question_ids": [
+        "C9@model"
+      ],
+      "source_sha256": "4ab3526f62ed96fdf076919f57566b26337459efdf31c2f6dfa242dd37683155",
+      "selected_outputs_sha256": {
+        "model.json": "d02879d9aa2e5667c60709895dee7e6de5699ca39b875ce98c068829f4b13547",
+        "graph.json": "3e9c59091fb5f045ba16c0061204f79d88ec5ad8ef0a9ae80e7a712de4a7d077",
+        "pid/D1.png": "a5567881558ae7612494a00a15a4ca7d6e2c08a17731925bf9bc9077bd15ec8b",
+        "pid/D1.svg": "8858a94915edd8c2e26c64db63171e2c4ba2f1b9cf34086ba1bcb33a457f3eb8",
+        "exports/ignition/tags.json": "2b5de621ba9c2584d4402617d9c1e43db551f9c9071cccfbf3134e1155b37c10",
+        "exports/pi/pi_builder_af.csv": "1e21e96e0e504fe798d0632c7d0c03d052e9f29645763da790f960e75e8a23d1"
+      },
+      "context_sha256": "6d3ad6c458d6bbfcfd862fcaf0e049b30d884912fafd5fcb1d64043209e89e8f"
+    }
+  },
+  "answer_change": {
+    "id": "ARRANGEMENT@TK-1",
+    "A_state": "partial",
+    "B_state": "unanswered",
+    "changed": [
+      "assets content",
+      "source revision/bytes/locator"
+    ],
+    "decisions_retained": 1,
+    "owner_records_retained": 1
+  },
+  "automatic": [
+    "Validate supplied source quotations and supported model/layout consistency",
+    "Generate supported draft outputs and catalog questions",
+    "Reconcile retained answers when explicitly refreshed",
+    "Read selected graph/context records"
+  ],
+  "authored": [
+    "Fictional source revisions, interpretations and geometry",
+    "Selected source dependencies and manual follow-up questions",
+    "Fictional proposed partial answer and role assignment"
+  ],
+  "unresolved": [
+    "No automatic changeover or instrument/motor model is invented.",
+    "Shared hydraulic connections do not prove operability or protection.",
+    "Staleness is selected-record dependency accounting, not complete engineering change impact analysis.",
+    "No company approval, physical acceptance, automatic source monitoring, complete impact analysis or timing benefit demonstrated."
+  ]
+}

@@ -1,5 +1,9 @@
 # Start a packet for your own permitted records
 
+For a first contribution, [read the worked note](worked-note.md), substitute your permitted sources and return
+the [plain question brief](../../first-pilot/README.md). No JSON or installation is needed. Continue below only
+when a structured landing map, source records and workflow references would help the assignment.
+
 Use [starter.json](starter.json) for one document-only assignment, without an asset model. Its six records are
 an unreviewed template: a source reference, an unassigned reviewer role, an unconnected receiving location,
 a workflow, an assignment and a landing map. It contains **no original source bytes or engineering answer**.
