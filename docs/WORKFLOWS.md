@@ -4,6 +4,8 @@ Build from your records in reviewable stages: create a supported draft model, re
 drawings, graph/context, platform staging and approved data connections. This reference gives each tool's exact
 file contract. The [tool selector](../README.md#start-wherever-you-are) routes your inputs; the
 [tutorials and case studies](README.md) show the method and its public evidence.
+The [structural-change tutorial](../examples/engineering-change/README.md) exercises a subsequent model/layout
+revision through the existing description, generation and context contracts below; it adds no new importer.
 
 ## First choose what the question needs
 
@@ -73,6 +75,8 @@ The older converted-key DEXPI adapter produces an extracted twin through its sep
 | `knowledge_snapshot.py` | One explicitly selected `engineering-onboarding-1` JSON packet | Three standard-library reads: overview, metadata lookup and complete records, including workflow instructions and their source qualifications. Source references are not fetched; workflow steps are data. No company authentication, source-authority decision or graph conversion. |
 | `serve_snapshot.py` | Selected onboarding packet and/or `twin-graph-1` graph; the graph may have an explicitly selected, hash-bound `context-register-1` sidecar | Three knowledge reads when selected; existing graph/context tools retain bounded asset, relation, question and complete history readback. Scopes coexist without merging record identities. Restart to load a reviewed version. No automatic source fetching, workflow execution or shared company authentication. |
 | Historian CSV tools | Recorded data in the documented CSV shape | Analysis and replay of the supplied history. Joining channels to canonical plant assets is a separate mapping task; an unusual trend is not a validated diagnosis. |
+| `batch_analysis.py` | Recorded batch CSV (`batch_id`, elapsed `time_s`, selected signals), strict phase/unit plan, optionally selected `twin-graph-1`; V2 explicitly declares interpolation and quality columns/policy | Phase extrema, time-weighted observed means and supported rate integrals with time coverage; exact graph equipment/instrument ID checks when selected. Supplied mappings/units/phase truth remain unverified. JSON/Markdown sidecars, no automatic graph/context/MCP update or live data connector. See [batch analysis](../examples/batch-analysis/README.md). |
+| `check_analysis_basis.py` | Saved V1/V2 batch-analysis JSON plus explicitly selected original CSV/plan and graph exactly when originally bound | Read-only input/code fingerprint comparisons and complete typed-result reproduction when they match; changed/invalid selections have separate exits. No automatic dependency monitoring, revision selection or context refresh. See [basis check](../examples/batch-analysis/basis-check/README.md). |
 | `estimate_impact.py` | A strict JSON specification containing measurements and site constants, or explicitly requested public defaults | A first-draft calculation with assumptions and source notes. The model alone does not supply the measurements; generator provenance belongs in a sidecar rather than unrecognized calculation fields. |
 | `pipeline.py` | The repository's declared stages, inputs, code and configuration | Freshness and rebuilds for its configured research demonstrations. An organization's own recipes and service orchestration need an explicit implementation; the existing stage list is not a universal plant integration. |
 

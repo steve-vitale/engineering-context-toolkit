@@ -1,0 +1,275 @@
+{
+  "schema": "context-register-1",
+  "decisions": [
+    {
+      "question_id": "ARRANGEMENT@TK-1",
+      "answer_id": "fictional-arrangement-A",
+      "claim_key": "source-arrangement",
+      "value": "One water pump P-1; no standby pump specified in design A",
+      "answer": "Fictional partial proposal: design A describes TK-1 supplying P-1. This source summary does not establish the installed arrangement, sizing, protective details, controls or operating readiness. Review the current design and independent records before use.",
+      "answer_state": "partial",
+      "decision": "proposed",
+      "reviewer": "",
+      "reviewed_on": "",
+      "source_match": "match",
+      "plant_truth": "unknown",
+      "note": "Authored teaching statement; no authenticated company review or approval.",
+      "evidence_fingerprint": "95541328952f4bba8a4f78efb21c00252b744c4514b83758cefefc59b69a25d6",
+      "owner": "Fictional process reviewer",
+      "evidence": {
+        "question": {
+          "id": "ARRANGEMENT@TK-1",
+          "question": "What pump arrangement does the selected design record describe, and what remains unverified?",
+          "assets": [
+            {
+              "id": "TK-1"
+            }
+          ]
+        },
+        "assets": [
+          {
+            "id": "TK-1",
+            "content": {
+              "id": "TK-1",
+              "kind": "equipment",
+              "tag": "TK-1",
+              "name": "Water tank",
+              "aliases": [],
+              "attributes": [
+                {
+                  "name": "name",
+                  "value": "Water tank",
+                  "source": {
+                    "kind": "document",
+                    "document": "source.txt:L2-L2"
+                  }
+                },
+                {
+                  "name": "type",
+                  "value": "tank",
+                  "source": {
+                    "kind": "document",
+                    "document": "source.txt:L2-L2"
+                  }
+                }
+              ],
+              "source": {
+                "kind": "document",
+                "document": "source.txt:L2-L2"
+              },
+              "citations": {
+                "source": "source.txt:L2-L2"
+              }
+            },
+            "relations": [
+              {
+                "type": "connects",
+                "from": "BL",
+                "to": "TK-1",
+                "direction": "known",
+                "source": {
+                  "kind": "document",
+                  "document": "source.txt:L4-L4"
+                },
+                "citations": {
+                  "source": "source.txt:L4-L4"
+                },
+                "layer": "stream",
+                "attributes": [
+                  {
+                    "name": "name",
+                    "value": "Water feed",
+                    "source": {
+                      "kind": "document",
+                      "document": "source.txt:L4-L4"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "connects",
+                "from": "TK-1",
+                "to": "P-1",
+                "direction": "known",
+                "source": {
+                  "kind": "document",
+                  "document": "source.txt:L5-L5"
+                },
+                "citations": {
+                  "source": "source.txt:L5-L5"
+                },
+                "layer": "stream",
+                "attributes": [
+                  {
+                    "name": "name",
+                    "value": "Pump suction",
+                    "source": {
+                      "kind": "document",
+                      "document": "source.txt:L5-L5"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "contains",
+                "from": "PLANT",
+                "to": "TK-1",
+                "direction": null,
+                "source": {
+                  "kind": "document",
+                  "document": "source.txt:L2-L2"
+                },
+                "citations": {
+                  "source": "source.txt:L2-L2"
+                }
+              }
+            ]
+          }
+        ],
+        "source": {
+          "id": "PUMP-DESIGN",
+          "revision": "A-fictional-design",
+          "sha256": "4555af838d8a59ba122162b0612d8d1c4c9caacb564ee4f3ffb71eee9e49da24",
+          "locator_id": "arrangement",
+          "locator": "source.txt lines 2-8; proposed structure and unresolved operating evidence"
+        }
+      },
+      "previous": null,
+      "id": "d-73ab5996810deb3a4b3a933d9685abc6207b0fe0f274eeeec628b022740dea1c"
+    }
+  ],
+  "ownership_history": [
+    {
+      "question_id": "ARRANGEMENT@TK-1",
+      "owner": "Fictional process reviewer",
+      "by": "Fictional demo coordinator",
+      "on": "2026-11-02",
+      "previous": null,
+      "id": "o-c2fc9950172e2eed6705b5b546c331e413d92e48548afb42e51b585efb2335fa"
+    }
+  ],
+  "current": {
+    "ARRANGEMENT@TK-1": {
+      "present": true,
+      "question": {
+        "id": "ARRANGEMENT@TK-1",
+        "question": "What pump arrangement does the selected design record describe, and what remains unverified?",
+        "assets": [
+          {
+            "id": "TK-1"
+          }
+        ]
+      },
+      "owner": "Fictional process reviewer",
+      "ownership": "assigned",
+      "assigned_by": "Fictional demo coordinator",
+      "assigned_on": "2026-11-02",
+      "state": "partial",
+      "disputed_claims": [],
+      "answers": [
+        {
+          "decision_id": "d-73ab5996810deb3a4b3a933d9685abc6207b0fe0f274eeeec628b022740dea1c",
+          "answer_id": "fictional-arrangement-A",
+          "freshness": "current",
+          "changed": []
+        }
+      ]
+    },
+    "C9@model": {
+      "present": true,
+      "question": {
+        "id": "C9@model",
+        "question_id": "C9",
+        "family": "safety_question",
+        "question": "What source-labelled trip or interlock records apply to each rotating or fired machine, and what remains unverified?",
+        "about": "P-1",
+        "assets": [
+          {
+            "id": "P-1",
+            "tag": "P-1"
+          }
+        ],
+        "evidence": [
+          {
+            "role": "trigger",
+            "id": "P-1",
+            "tag": "P-1",
+            "text": "equipment P-1 reads \"P-1 Water pump\"",
+            "field": "units[P-1]"
+          }
+        ],
+        "data_requests": [
+          {
+            "item": "Cause-and-effect matrix and HAZOP/LOPA records",
+            "state": "not_on_drawing",
+            "where": [
+              "site records: cause-and-effect matrix, HAZOP and LOPA reports",
+              "DCS/PLC configuration: safety system configuration"
+            ],
+            "how": "Review existing cause-and-effect, governing requirements and configuration records for each named machine, with their revisions and applicability. Retain supplied trip/switch indications as candidates; a drawing label or an unrelated function does not settle the records or establish effective, tested protection. Missing model information is not evidence that installed protection is absent."
+          },
+          {
+            "item": "Machine/function association and current evidence",
+            "state": "not_on_drawing",
+            "where": [
+              "site records: source-labelled function identifiers, initiating measurements, final elements and protected-machine targets, shared scope and revisions; governing requirements and validation/test evidence where applicable",
+              "DCS/PLC configuration: existing configuration and its documented measurement/action/final-element identities, read through the approved site process"
+            ],
+            "how": "Keep each machine in the review even where a switch or trip is supplied. Retain all explicit shared targets and supplied qualifiers; unknown or contradictory targets remain unresolved. Same-model text or nearby equipment does not prove function coverage. Record a responsible person or authority separately from protected-machine association; neither is inferred here. This requests record review, not a new test, safety design or operating action."
+          }
+        ],
+        "decision_rule": "A qualified site review may resolve the source-labelled machine/function associations and remaining record requests using applicable current evidence. A supplied trip, switch, cause/effect row or shared-function label alone establishes neither complete coverage nor installed protection adequacy. This screen grants no acceptance or authority and performs no safety validation.",
+        "typical_benefit": {
+          "wording": "Safety benefit; no energy source. Present it as a question to verify, not a finding.",
+          "source": [],
+          "arc": null,
+          "source_titles": []
+        },
+        "limits": "P&IDs often leave trips to separate cause-and-effect records. Missing or unknown model evidence does not establish missing installed protection. Supplied associations, shared targets, revisions and contradictions require review; no machine, person owner, approval, tested condition or effective protection is inferred. C9 has no primary safety-design source cited in the catalog and remains a question for record review, not safety design, SIL assignment, a legal-compliance assessment or an operating recommendation."
+      },
+      "owner": null,
+      "ownership": "needs_owner",
+      "assigned_by": null,
+      "assigned_on": null,
+      "state": "unanswered",
+      "disputed_claims": [],
+      "answers": []
+    },
+    "OPERABILITY@P-1": {
+      "present": true,
+      "question": {
+        "id": "OPERABILITY@P-1",
+        "question": "What reviewed evidence is needed before relying on the proposed pump service roles, controls, protection and operating procedures?",
+        "assets": [
+          {
+            "id": "P-1"
+          }
+        ]
+      },
+      "owner": null,
+      "ownership": "needs_owner",
+      "assigned_by": null,
+      "assigned_on": null,
+      "state": "unanswered",
+      "disputed_claims": [],
+      "answers": []
+    }
+  },
+  "sources": [
+    {
+      "id": "PUMP-DESIGN",
+      "revision": "A-fictional-design",
+      "sha256": "4555af838d8a59ba122162b0612d8d1c4c9caacb564ee4f3ffb71eee9e49da24",
+      "locators": [
+        {
+          "id": "arrangement",
+          "locator": "source.txt lines 2-8; proposed structure and unresolved operating evidence",
+          "questions": [
+            "ARRANGEMENT@TK-1",
+            "OPERABILITY@P-1"
+          ]
+        }
+      ]
+    }
+  ]
+}

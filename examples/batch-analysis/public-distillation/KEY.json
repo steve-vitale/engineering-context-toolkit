@@ -1,0 +1,37 @@
+{
+  "unit_basis": "arxiv2510.18075v1 Table2; raw published values; not independent physical mass truth",
+  "first_time": "10:45:54",
+  "last_time": "11:44:25",
+  "duration_s": 3511,
+  "sample_count": 3512,
+  "time_step_s": 1,
+  "signals": {
+    "FT703": {
+      "unit": "kg/h",
+      "good_samples": 3512,
+      "sample_min": "0.004",
+      "sample_max": "1.558",
+      "covered_s": 3511,
+      "trapezoid_area_value_seconds_exact_decimal": "1687.00750000000000000",
+      "time_weighted_mean_observed": "0.48049202506408430646539447450868698376530902876673",
+      "integral_unit": "kg",
+      "observed_integral_exact_fraction": "1687.00750000000000000/3600",
+      "observed_integral_decimal": "0.46861319444444444444444444444444444444444444444444"
+    },
+    "T703": {
+      "unit": "degC",
+      "good_samples": 3512,
+      "sample_min": "52.584",
+      "sample_max": "68.107",
+      "covered_s": 3511,
+      "trapezoid_area_value_seconds_exact_decimal": "206014.532000000000002",
+      "time_weighted_mean_observed": "58.676881800056963828538877812589005981201936770151"
+    }
+  },
+  "schema": "public-distillation-decimal-key-1",
+  "status": "Independent arithmetic over exact published CSV values, not a tool-generated report or physical mass reference",
+  "source_sha256_raw": "52e00ebe2f00926c6c2b004e38576155ec3be7797779acc0c8a4568c561db787",
+  "absolute_tolerance": 1e-10,
+  "relative_tolerance": 1e-12,
+  "independent_formula": "For each adjacent one-second pair sum (Decimal(left)+Decimal(right))/2; divide FT703 area by3600 for kg and each area by3511 for observed mean. All exact source decimal text retained."
+}

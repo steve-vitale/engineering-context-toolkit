@@ -1,0 +1,9 @@
+ILLUSTRATIVE DESIGN B; proposed change only, not evidence of an installed plant change.
+TK-1 is a water tank.
+P-1 is the proposed duty water pump; new P-2 is the proposed standby water pump, both taking suction from TK-1.
+S1 feeds TK-1 from the upstream battery limit.
+S2 runs from TK-1 to P-1; S3 runs from P-1 to the downstream battery limit.
+S4 branches from S2 upstream of P-1 to P-2; S5 runs from P-2 and joins S3 before the downstream battery limit.
+Duty/standby are proposed service roles; automatic changeover, alternation, simultaneous operation and actual run status are not specified.
+Pump sizing, line sizes, isolation and nonreturn details, electrical supply, instrument units, operating limits, protection and control logic are not specified.
+Engineering review is required; this record does not authorize installation or operation.

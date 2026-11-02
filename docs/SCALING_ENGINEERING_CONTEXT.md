@@ -38,6 +38,36 @@ These are responsibility levels, not mandatory software tiers. Existing company 
 the necessary site or enterprise controls. Keep using them when they do. A small team still follows applicable
 engineering, quality and change-control rules; its local `accepted` field cannot release a company change.
 
+## When a custom prototype becomes a service people depend on
+
+Choose the path by intended use and the consequence of wrong, stale or unavailable information. One line
+can need production controls immediately. A read-only screen can also become consequential when operators
+rely on it; the absence of a write button does not establish low criticality or an approved network route.
+
+| Intended use | Reasonable starting path | Before expanding reliance |
+|---|---|---|
+| Bounded document investigation or recorded-data demonstration | Approved manual/Copilot workflow or local tools, selected records and an explicit draft result. | Review usefulness, sources and limitations; retain a reconstructable packet. |
+| Recurring departmental analysis or custom display | Use an existing approved data/export interface and a supported company runtime where suitable. | Name a service owner and backup; prove access, freshness, unavailable-data behavior, upgrades and restoration for this use. |
+| Operational display, alarm response, commands or other consequential decisions | Select the company's approved operating platform and engineering/change process for the actual requirements. | Validate the complete receiving behavior, responsibility and support. A working UI or small plant scope is insufficient evidence. |
+
+For example, Ignition documents distinct [alarm states and notification behavior](https://www.docs.inductiveautomation.com/docs/8.3/platform/alarming),
+[buffered data delivery](https://www.docs.inductiveautomation.com/docs/8.3/platform/store-and-forward) and
+[gateway redundancy](https://www.docs.inductiveautomation.com/docs/8.3/platform/ignition-redundancy).
+These are capabilities to configure and test where needed, not properties inherited by drawing a similar
+screen. Neither a vendor purchase nor an AI-generated application establishes acceptance by itself.
+
+Compare lifecycle cost on the same scope: implementation, integration, engineering review, security,
+support/patching, recovery and eventual migration, alongside applicable licensing and configuration. Use
+actual requirements and quotations; this guide supplies no universal price or cost advantage. AI-assisted
+authoring does not identify who will maintain the result after its author leaves.
+
+Keep reviewed identities, units, signal mappings, sources, calculation assumptions and decision history
+separable from presentation code. Moving a prototype into another runtime requires an explicit mapping,
+recorded conversion losses and receiving tests; a custom application is not automatically convertible into
+an Ignition project or another platform. Preserve the old version and prove the replacement's readback,
+refresh and recovery before relying on it. Use the [author-absent handover exercise](ACCEPTANCE.md#5-can-a-replacement-engineer-maintain-the-application)
+for a concrete test. That exercise has not been run for a company here.
+
 ## Recognize the first failure, before it becomes routine
 
 | Trigger | What to introduce or prove before relying on the expanded use |
@@ -181,5 +211,6 @@ when requirements exceed that route. Neither these byte limits nor an algorithm 
 plants or engineers a production service can support. Public software checks establish no company deployment,
 human productivity or global-capacity result.
 
-Architecture recommendations and linked primary documentation reviewed **November 1, 2026**. The operating
-model is our proposed application of those principles; it is not an endorsement of a vendor or a proven deployment.
+Base architecture guidance reviewed **November 1, 2026**; the custom-prototype/service section and its linked
+platform documentation were reviewed **November 2, 2026**. The operating model is our proposed application of
+those principles; it is not an endorsement of a vendor or a proven deployment.

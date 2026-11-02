@@ -2,16 +2,24 @@
 
 [![tests](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml/badge.svg)](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml)
 
-**Use your own P&IDs and process records to build a reviewable digital twin model and engineering context your team can maintain.**
+**Turn your plant's existing records into engineering knowledge your team can build on.**
 
-Use your P&IDs, process descriptions or supported DEXPI exports to build a draft asset model: the structural
-foundation of your plant's digital twin. Review and enrich it, generate drawings or platform-staging files where
-supported, investigate questions, and connect selected information to company-approved tools and data sources.
-Public tutorials show the steps; case studies show what more complete assembled systems can look like.
+Start with selected records and one engineering question. Return a cited draft that separates what the records
+support from interpretations and missing evidence, then identifies the next reviewer and source-change trigger.
+That is a useful first contribution another engineer can continue.
 
-You can also start with documents and one question, without an asset model. The same discipline applies:
-keep the evidence, interpretation, unresolved points and next owner together. Recorded-data analysis and
-task/model benchmarks support investigation and improvement alongside the modeling tools.
+**Try it without installing anything:** the [first-question guide](examples/first-pilot/README.md) gives a small
+fictional worked result, its original records and a prompt for manual review or company-approved Copilot.
+Substitute your permitted records when you understand the pattern. No model or process-data connection is needed.
+
+For work that needs plant structure, use your own P&IDs, process descriptions or supported DEXPI exports to build
+a sourced, reviewable draft model: the structural foundation of your plant's digital twin. Generate supported
+engineering outputs, investigate missing information, analyze selected process data, and retain the evidence and
+decisions behind the work. The [demo series](docs/DEMO_SERIES.md) connects these jobs without making every piece
+a prerequisite. Public tutorials teach what to substitute at your plant; case studies retain their own evidence.
+
+For a team assignment, the [organization starting guide](docs/ORGANIZATION_START.md) distinguishes ready-to-run
+steps, source preparation and continuing ownership. [Dependencies](docs/DEPENDENCIES.md) vary by route.
 
 | Choose a destination | What you get |
 |---|---|
@@ -28,7 +36,7 @@ These tools accept your own records in their documented formats. Choose the work
 | Build your plant's first draft asset model | [P&ID image](examples/own-drawing/README.md) or [DEXPI XML](examples/from-dexpi-xml/README.md) | Sourced assets and represented connections, review material, graph and platform-staging routes. |
 | Build from process knowledge | [Written description](examples/from-description/README.md) | An authored, source-linked model and layout, checked locally and rendered as draft P&ID sheets and exports. |
 | Review and enrich the model | [Sourced statements](docs/STATEMENT_REVIEW.md) · [model correction and mapping](docs/REVIEW_LOOP.md) | Checkable claims, supported local corrections and supplied signal mappings. |
-| Investigate controls or performance | [Loop list audit](examples/loop-audit/README.md) · [question engine](docs/OPPORTUNITY_SCREEN.md) · [historian CSVs](examples/historian-csv/README.md) | Explicit discrepancies, questions, evidence requests and analysis of recorded observations. |
+| Investigate controls or performance | [Loop list audit](examples/loop-audit/README.md) · [question engine](docs/OPPORTUNITY_SCREEN.md) · [process data and analytics](docs/PROCESS_ANALYTICS.md) | Explicit discrepancies, evidence requests, recorded-data bands and phase calculations beside the twin. |
 | Estimate a measured change | [Impact calculation](examples/impact-estimate/README.md) | First-draft energy, cost and CO2e calculations with measurements, assumptions and constants visible. |
 | Keep and exchange engineering context | [Context register](docs/CONTEXT_REGISTER.md) · [read-only MCP](examples/internal-mcp/README.md) · [owned team packets](examples/team-context/README.md) | Source dependencies, retained answers and selected snapshots to hand to the next team or company system. |
 | Evaluate or improve a method | [Drawing comparison](examples/vendor-evaluation/README.md) · [task/model benchmarks](benchmarks/README.md) · [review a frozen model](benchmarks/source-support/artifact-values/README.md) | Compare saved answers against reviewed source/key cases, with missing answers, mistakes and evidence limits visible. |
@@ -53,9 +61,8 @@ model, mappings and target environment. The [feature reference](docs/FEATURES.md
 
 ## Start with one question
 
-**The jumpstart path:** choose one question, permitted records, a reviewer and one useful contribution.
-For document-only work with manual review or company-approved Copilot, use the
-[first-question brief](examples/first-pilot/README.md). No local installation or asset model is required.
+The [first-question guide](examples/first-pilot/README.md) owns the no-install path and copyable brief.
+Keep the result and the reasons behind it together; a saved note does not maintain itself when sources change.
 
 Leaders and mentors can use the [onboarding guide](docs/ENGINEERING_ONBOARDING.md) to scope the assignment.
 The [knowledge-only exercise](examples/engineering-onboarding/README.md) includes a worked evidence note and

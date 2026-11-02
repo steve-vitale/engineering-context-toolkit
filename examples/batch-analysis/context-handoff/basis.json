@@ -1,0 +1,46 @@
+{
+  "schema": "analysis-context-source-basis-1",
+  "files": {
+    "source/graph.json": {
+      "repository_path": "examples/batch-analysis/graph.json",
+      "sha256_raw": "17f43c020632871215f185420d91aecc4f48ad7183358f8b87dd840c2e1ddfc4",
+      "bytes": 9264
+    },
+    "source/observations.csv": {
+      "repository_path": "examples/batch-analysis/semantics/observations.csv",
+      "sha256_raw": "b69ab6c1178ab68e49299aa9b01721213e89c0708bacefdb389c7d356ab1bdcd",
+      "bytes": 157
+    },
+    "source/previous/plan.json": {
+      "repository_path": "examples/batch-analysis/semantics/previous.plan.json",
+      "sha256_raw": "5a94fde70553c6d610e93b2ee0d71c40d4018fff8f38f4e74e2dee8cedf08ce5",
+      "bytes": 1085
+    },
+    "source/previous/batch_analysis.json": {
+      "repository_path": "examples/batch-analysis/semantics/expected/previous/batch_analysis.json",
+      "sha256_raw": "09365dc4b25361275ed042036c35e1e34c22dfdfb003dce465b7961e0c88fa68",
+      "bytes": 5971
+    },
+    "source/previous/batch_analysis.md": {
+      "repository_path": "examples/batch-analysis/semantics/expected/previous/batch_analysis.md",
+      "sha256_raw": "ada46fa9ae0cc2c30789ca17af4f5c25336095a1039b6eafeb01cc398b26dc7c",
+      "bytes": 1945
+    },
+    "source/linear/plan.json": {
+      "repository_path": "examples/batch-analysis/semantics/linear.plan.json",
+      "sha256_raw": "bef108dccb561943f91117c3b96ac66925832e9967e8edf2e76e44d822a19e81",
+      "bytes": 1211
+    },
+    "source/linear/batch_analysis.json": {
+      "repository_path": "examples/batch-analysis/semantics/expected/linear/batch_analysis.json",
+      "sha256_raw": "463cb7119d815397750ca2459f9b72e0fe957f13f4402d69bab30752221e3b77",
+      "bytes": 5965
+    },
+    "source/linear/batch_analysis.md": {
+      "repository_path": "examples/batch-analysis/semantics/expected/linear/batch_analysis.md",
+      "sha256_raw": "7eafa0524f5a95547da0555b9dbf613585a010239ccefa805a11aa3903c69722",
+      "bytes": 1943
+    }
+  },
+  "scope": "Exact preexisting fictional analysis outputs, inputs and graph; no analysis execution or company data"
+}

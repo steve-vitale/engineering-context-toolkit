@@ -100,3 +100,14 @@ redistribution with software, but not selling the font by itself.
 ## MGPI source-adapted development case
 
 The model, adapted narrative, draft drawings and derived source inventories in `examples/from-description/mgpi/` are repository-authored development artifacts. They cite the U.S. Chemical Safety and Hazard Investigation Board, *Key Lessons for Preventing Inadvertent Mixing During Chemical Unloading Operations*, report 2017-01-I-KS, December 2017, https://www.csb.gov/file.aspx?DocumentId=6047. The original PDF is fetched only into ignored local source storage and is not redistributed. No CSB report figure or third-party photograph is republished. Project aliases, proposed geometry and agent-derived interpretations are not CSB plant tags, answer keys, approved designs or current installed-state evidence. See the case guide for exposure and source-revision limits.
+
+## Experimental batch distillation records
+
+Five original source files under `examples/batch-analysis/public-distillation/source/` and their numerical
+adaptations derive from Justus Arweiler et al., *Batch Distillation Data for Developing Machine Learning Anomaly
+Detection Methods*, Zenodo record [22250958](https://doi.org/10.5281/zenodo.22250958), version 1.1.3,
+September 2, 2026, licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The case's provenance lists
+all creators and exact archive/member hashes. The originals are copied byte-for-byte; adaptations select two
+columns, derive within-experiment elapsed time and author a calculation plan/key. This is measured laboratory
+data with upstream interpolation and documented anomalies assessed negligible by its authors, not plant or
+fermentation acceptance. No author endorsement is implied. Toolkit helper code remains MIT.

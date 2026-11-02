@@ -1,0 +1,123 @@
+anomalies:
+  - class: ConfirmedAnomaly
+    comment: This event was assessed as negligible and treated as normal; optional for
+      anomalous set inclusion.
+    id: OP002TN001A001
+    hasBeginning:
+    - '10:48:20'
+    - '10:55:23'
+    - '11:02:54'
+    - '11:04:23'
+    - '11:15:56'
+    - '11:16:14'
+    - '11:16:40'
+    - '11:24:56'
+    - '11:35:20'
+    hasEnd:
+    - '10:48:59'
+    - '10:56:08'
+    - '11:04:06'
+    - '11:05:29'
+    - '11:16:07'
+    - '11:16:25'
+    - '11:16:54'
+    - '11:25:54'
+    - '11:36:14'
+    hasCategory: recurrent
+    hasRecoveryAction: null
+    Perturbation: Improperly sealed sample valve
+    PerturbationMode:
+      label: Leaking into system (air ingress)
+      hasBeginning: '10:45:54'
+      hasEnd: '11:44:25'
+      happenedAt:
+        System:
+          label: Manual valve for sample specimen drawing
+          id: HV004
+          hasFunction: Allow controlled sampling without venting or external leakage (normally
+            closed/sealed)
+          hasNormalState: sealed
+          hasAnomalousState: leaking in; air ingress
+      hasLocalEffect:
+        LocalEffect:
+          label: Spikes in the mass-flow signal
+          id: Observation001_OP002TN001A001
+          madeBySensor:
+            Sensor:
+              id: FT704
+          observedProperty:
+            ObservableProperty: Mass flow rate
+          hasFeatureOfInterest:
+            FeatureOfInterest: Reflux stream
+
+  - class: ConfirmedAnomaly
+    comment: This event was assessed as negligible and treated as normal; optional for
+      anomalous set inclusion.
+    id: OP002TN001A001
+    hasBeginning:
+    - '10:54:27'
+    - '10:57:58'
+    - '11:01:32'
+    - '11:04:23'
+    - '11:08:28'
+    - '11:10:08'
+    - '11:12:45'
+    - '11:15:32'
+    - '11:18:31'
+    - '11:22:18'
+    - '11:24:15'
+    - '11:27:26'
+    - '11:30:28'
+    - '11:33:36'
+    - '11:35:03'
+    - '11:38:06'
+    - '11:40:41'
+    - '11:41:41'
+    - '11:43:28'
+    hasEnd:
+    - '10:54:47'
+    - '10:58:20'
+    - '11:01:42'
+    - '11:05:29'
+    - '11:08:54'
+    - '11:10:19'
+    - '11:13:11'
+    - '11:15:50'
+    - '11:18:57'
+    - '11:22:40'
+    - '11:24:27'
+    - '11:27:42'
+    - '11:31:08'
+    - '11:33:50'
+    - '11:35:18'
+    - '11:38:19'
+    - '11:40:54'
+    - '11:42:00'
+    - '11:43:53'
+    hasCategory: recurrent
+    hasRecoveryAction: null
+    Perturbation: Improperly sealed sample valve
+    PerturbationMode:
+      label: Leaking into system (air ingress)
+      hasBeginning: '10:45:54'
+      hasEnd: '11:44:25'
+      happenedAt:
+        System:
+          label: Manual valve for sample specimen drawing
+          id: HV005
+          hasFunction: Allow controlled sampling without venting or external leakage (normally
+            closed/sealed)
+          hasNormalState: sealed
+          hasAnomalousState: leaking in; air ingress
+      hasLocalEffect:
+        LocalEffect:
+          label: Spikes in the mass-flow signal
+          id: Observation002_OP002TN001A001
+          madeBySensor:
+            Sensor:
+              id: FT703
+          observedProperty:
+            ObservableProperty: Mass flow rate
+          hasFeatureOfInterest:
+            FeatureOfInterest: Distillate stream
+
