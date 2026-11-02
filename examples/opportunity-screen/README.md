@@ -39,6 +39,11 @@ The [alarm-record example](alarm-basis/README.md) keeps operator responsibility,
 existing records together, including shared responsibilities and foreign records with matching labels. Its nine
 fictional cases demonstrate collection behavior and typed visibility, not alarm quality or compliance.
 
+The [compressor-record tutorial](compressor-recycle-basis/README.md) uses E6 to hand off existing machine/service,
+valve-duty and real-power records with their scope and unknowns. Its 15 fictional models and retained before/after
+reports exercise collection behavior; [source limits](compressor-recycle-basis/SOURCES.json) do not establish
+installed pairing, excessive recycle, protection adequacy or a retrofit need.
+
 The commands below regenerate tracked example outputs for contributors; the test checks them byte for byte.
 For a personal run, use a separate `--out` folder such as `../engineering-work/screen-te`. For a roll-up, point
 each `--rollup` at the corresponding working output folder.
@@ -100,7 +105,7 @@ listed under "Triggers tightened".
 
 | Finding | Judgement |
 |---|---|
-| E6 K-101: compressor recycle valve FV-105 | True. FV-105 is "Compressor recycle valve" on K-101, the valve that spills flow back around the machine (`docs/JOURNAL.md`, topology check). The simulator models the spill-back only as a reduction of net flow, so there is no spill-back stream. Historian request names XMV(5) and XMEAS(20) |
+| E6 K-101: compressor recycle valve FV-105 | The model supplies a recycle-valve association, not verified installed pairing or wasted flow. Existing machine/service, duty, command/travel/flow, protection and real-power records remain for review. The simulator represents spill-back only as reduced net flow, without a spill-back stream; mapped demand XMV(5) is not measured travel or flow. |
 | E18 model: reactor and condenser cooling water (TV-121, TT-121, FV-117, TT-122) while the stripper is steam heated (FV-119, FT-119) | True, and the textbook pinch question for TE. Caveat: TE's stripper "steam flow" is computed from the stripper heat duty in the simulator code |
 | H2 C-101: stripper steam, grade not stated; TT-118 and FIC-119 shown | True. The model gives no steam pressure, so the first data request is "what grade is it?" |
 | H4 R-101 and H4 E-101: heat rejected to cooling water, outlet temperatures TT-121 and TT-122 | True. TT-122's source name is "Separator Cooling Water Outlet Temp"; the model places it on the condenser E-101 |

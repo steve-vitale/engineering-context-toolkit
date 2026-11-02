@@ -1,0 +1,185 @@
+{
+  "schema": "compressor-recycle-basis-sources-1",
+  "official_url": "https://www.energy.gov/sites/default/files/2016/03/f30/Improving%20Compressed%20Air%20Sourcebook%20version%203.pdf",
+  "publication": "DOE/Compressed Air Challenge third edition; PDF metadata2016,114pages. Live official URL verified2026-11-02; not presented as a new2026design standard.",
+  "primary_summary": "The guide separates centrifugal compressed-air controls from rotary controls. Blow-off/recycle is discussed in relation to surge protection. Baselines combine power, pressure and flow with production and operating-condition context. Logged direct real power has a different basis from a rough electrical estimate. Assessment duration depends on demand variation. The guide is introductory rather than a comprehensive design text.",
+  "locators": [
+    {
+      "id": "L1",
+      "pdf_page_1_based": 6,
+      "printed_page": "1",
+      "section": "Quick Start Guide",
+      "use": "Scope/limitations of this sourcebook; web text reviewed."
+    },
+    {
+      "id": "L2",
+      "pdf_page_1_based": 14,
+      "printed_page": "9",
+      "section": "Centrifugal Air Compressors",
+      "use": "Machine-class and protective-function context; full page rendered/read."
+    },
+    {
+      "id": "L3",
+      "pdf_page_1_based": [
+        41,
+        42
+      ],
+      "printed_page": [
+        "36",
+        "37"
+      ],
+      "section": "Fact Sheet5: Capacity Controls for Centrifugal Type Compressors; Multiple Compressor Control",
+      "use": "Conditional blow-off/recycle discussion, distinct compressor/control types and demand context; both full pages rendered/read."
+    },
+    {
+      "id": "L4",
+      "pdf_page_1_based": [
+        65,
+        66
+      ],
+      "printed_page": [
+        "60",
+        "61"
+      ],
+      "section": "Fact Sheet10: Baselining Compressed Air Systems; Power; Pressure; Flow",
+      "use": "Operating-condition and simultaneous measured-data context; direct real-power and flow reference-condition distinctions; both full pages rendered/read."
+    },
+    {
+      "id": "L5",
+      "pdf_page_1_based": 69,
+      "printed_page": "64",
+      "section": "Fact Sheet11: Load Profile; Supply-Side Issues; Compressor Package",
+      "use": "Assessment period follows demand variation; manufacturer/site-condition context; full page rendered/read."
+    }
+  ],
+  "review_method": "Official extraction cross-checked with original bytes and six complete rendered pages; not a model/extraction or plant trial.",
+  "redistribution": "Full book/text/pages not included. Use official URL and locators. No blanket public-domain/CAC/third-party rights determination or endorsement.",
+  "no_new_source_family_or_claim_count": true,
+  "original_source_sha256_raw": "3280284235b8daef10f7d9e6a21aada90d7b804b805cc9ef842903aeca009c22",
+  "original_source_bytes": 2740595,
+  "optional_facts": {
+    "machine_class": "Supplied machine class; absent/unknown remains unresolved.",
+    "service": "Supplied service; compressed-air examples do not establish process-gas applicability.",
+    "control_records": "List of supplied record objects retaining IDs/revision/locator/association/coverage/quantity/time/quality/approval/gaps. No arbitrary file parsing or authentication."
+  },
+  "authored_policy": "Association/schema/literal-retention/records-first/quantity-separation/owner-review controls are authored engineering/software inferences, not a DOE-prescribed schema or site acceptance standard.",
+  "exercise_scope": {
+    "facts_fields": 3,
+    "whole_supplied_values": 24,
+    "vector_rows": 60,
+    "absent_fields": 36,
+    "present": 22,
+    "blank": 2,
+    "record_ids": 14,
+    "record_references": 20,
+    "inputs": "15 fictional development models, not plants/source families/operator studies; preparation markers historical.",
+    "source_count": "This packet records finite collection-software evidence, not source authentication or engineering acceptance. Overall source-review bookkeeping and final integration are separate.",
+    "actual_public_production": {
+      "cases": 15,
+      "whole_reports": 30,
+      "focused_corpus_tests": 1,
+      "focused_case_iterations": 15,
+      "checkout_tests": 3,
+      "scope": "Actual local normal CLI production and focused regressions; no full CI, new plant/source family, extraction trial or operator study."
+    }
+  },
+  "bounded_collection_criteria": [
+    {
+      "id": "E6-C01",
+      "basis": "authored scope policy, supported by L1-L3",
+      "primary_support_locators": [
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "expected": "State or request machine class, service and operating duty before applying a centrifugal-air interpretation. A generic compressor/recycle label remains a candidate, not evidence of unnecessary flow.",
+      "unacceptable": "Treat all process-gas, rotary, unknown or generic compressors as proven instances of the cited centrifugal-air control example.",
+      "interpretation": "Primary locators support the stated engineering context only; the paired software/collection criterion is an authored inference."
+    },
+    {
+      "id": "E6-C02",
+      "basis": "authored identity/association control; engineering inference, not a DOE schema",
+      "primary_support_locators": [],
+      "expected": "Keep exact compressor, valve and record identities and source/revision/locator qualifiers visible. A unit/area association or target claim is a review candidate. Explicit foreign/unknown pairing must remain unresolved.",
+      "unacceptable": "Convert same_unit, similar labels, or one sibling record into verified installed pairing or coverage for another compressor.",
+      "interpretation": "Authored association/software/receiving policy; not a literal DOE requirement or prescribed data schema."
+    },
+    {
+      "id": "E6-C03",
+      "basis": "authored quantity-separation control supported by L4; not a quoted valve-calibration rule",
+      "primary_support_locators": [
+        "L4"
+      ],
+      "expected": "Distinguish controller demand/output, actual travel/position and measured flow. Preserve provided quantity/unit/quality/reference conditions and missing alternatives.",
+      "unacceptable": "Infer actual valve travel from a command, recycle flow from percent opening, or zero/unknown flow from a missing field.",
+      "interpretation": "Primary locators support the stated engineering context only; the paired software/collection criterion is an authored inference."
+    },
+    {
+      "id": "E6-C04",
+      "basis": "authored records-first workflow supported by L4-L5",
+      "primary_support_locators": [
+        "L4",
+        "L5"
+      ],
+      "expected": "Start with existing approved/supplied records and their suitability, time alignment, operating-mode coverage and limitations. Suitable existing evidence may be acknowledged; gaps stay explicit.",
+      "unacceptable": "Require a new month of export, walkdown or test when suitable records already exist, or treat any filled label/spot sample as sufficient regardless of declared coverage.",
+      "interpretation": "Primary locators support the stated engineering context only; the paired software/collection criterion is an authored inference."
+    },
+    {
+      "id": "E6-C05",
+      "basis": "authored representative-period criterion supported by L4-L5",
+      "primary_support_locators": [
+        "L4",
+        "L5"
+      ],
+      "expected": "Separate normal, part-load/turndown, startup/shutdown and upset context when supplied and relevant. Select the review period from the stated duty/demand basis rather than a universal duration.",
+      "unacceptable": "Automatically close the investigation solely because a valve opens during turndown/upsets, or because a fixed month is present/absent.",
+      "interpretation": "Primary locators support the stated engineering context only; the paired software/collection criterion is an authored inference."
+    },
+    {
+      "id": "E6-C06",
+      "basis": "authored machine-protection inference supported by L2-L3, not a source-prescribed universal margin test",
+      "primary_support_locators": [
+        "L2",
+        "L3"
+      ],
+      "expected": "Review the appropriate current manufacturer/site protection basis, conditions and revision with responsible expertise when applicable. Existing records can be retained without declaring settings inadequate.",
+      "unacceptable": "Declare controller margin excessive from one generic map or percentage, mandate a smaller margin, operate a valve, induce surge, or change protection/settings through this screen.",
+      "interpretation": "Primary locators support the stated engineering context only; the paired software/collection criterion is an authored inference."
+    },
+    {
+      "id": "E6-C07",
+      "basis": "authored energy-evidence inference supported by L4",
+      "primary_support_locators": [
+        "L4"
+      ],
+      "expected": "Retain real-power versus estimate/nameplate/apparent-quantity basis and its machine/time coverage. A source record is not automatically a measured saving or efficiency verdict.",
+      "unacceptable": "Treat nameplate power, one unmatched meter, or one sibling trace as complete representative real-power evidence for every anchor.",
+      "interpretation": "Primary locators support the stated engineering context only; the paired software/collection criterion is an authored inference."
+    },
+    {
+      "id": "E6-C08",
+      "basis": "existing software typed-evidence contract; not a DOE requirement",
+      "primary_support_locators": [],
+      "expected": "Preserve provided False,0,null,unknown strings, arrays, nested qualifiers and exact IDs without coercion. Existing field_state treats False/0 as present and null/literal unknown as blank while retaining their literal values.",
+      "unacceptable": "Drop or normalize inconvenient literals, silently authenticate approval/quality fields, or grade literal unknown as present contrary to the unchanged engine.",
+      "interpretation": "Authored association/software/receiving policy; not a literal DOE requirement or prescribed data schema."
+    },
+    {
+      "id": "E6-C09",
+      "basis": "authored outcome/receiving criterion",
+      "primary_support_locators": [],
+      "expected": "Provide a source-qualified investigation and concrete remaining records/recipient review. Allow explicit acknowledgement of suitable working evidence without a compulsory project.",
+      "unacceptable": "Turn a candidate/quiet screen into proof of installed deficiency, protection adequacy, source authority, quantified benefit, retrofit need, operating permission or engineer acceptance.",
+      "interpretation": "Authored association/software/receiving policy; not a literal DOE requirement or prescribed data schema."
+    },
+    {
+      "id": "E6-C10",
+      "basis": "bounded implementation/evidence conservation gate",
+      "primary_support_locators": [],
+      "expected": "Limit this repair to E6 and its explicit field/collection contract. Preserve other 49 whole rules, shared sources and the 50-rule/126-request inventory; retain the original baseline and actual matched results.",
+      "unacceptable": "Treat source reading or CLI completion alone as a completed source job, restamp old outputs/history, broaden catalog scope without a separately agreed criterion, or imply engineering/operating approval.",
+      "interpretation": "Authored association/software/receiving policy; not a literal DOE requirement or prescribed data schema."
+    }
+  ]
+}

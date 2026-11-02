@@ -123,3 +123,8 @@ data/te_pid_layout.json text eol=lf
 # Preserve the actual current sample metadata and earlier capture buffers.
 /examples/internal-mcp/sample_provenance.json text eol=lf
 /examples/internal-mcp/history/before-screening-wording/** -text
+
+# Fictional compressor-record fixtures, oracles and captured reports bind LF bytes.
+/examples/opportunity-screen/compressor-recycle-basis/** text eol=lf
+/examples/opportunity-screen/compressor-recycle-basis/history/before/**/screen.md whitespace=-blank-at-eol
+/examples/opportunity-screen/compressor-recycle-basis/expected/after/**/screen.md whitespace=-blank-at-eol

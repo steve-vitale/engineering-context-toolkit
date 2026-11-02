@@ -42,5 +42,8 @@ the receiving owner to record receipt/disposition, and agree the next revision t
 notification, authenticates a release or observes a plant. Whole-document pins reopen declared source-dependent
 answers; they do not discover every consequential field, infer physical effects or prove the answer is true.
 
+For your own records, use the existing [manual/Copilot exchange steps and dependency row](../examples/team-context/README.md#use-approved-copilot-or-manual-review-without-an-installation);
+keep the brief and receipt in your approved company record.
+
 The [actual refreshed observations](../examples/team-context/worked/OBSERVATIONS.json) and retained source/context records
 support this explanation. No real recipient accepted it; human effort and operational benefit remain unmeasured.

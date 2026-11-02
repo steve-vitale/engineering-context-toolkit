@@ -36,6 +36,10 @@ TARGETS += ['examples/graph-export/unplaced-dexpi/i04.model.json',
             'examples/graph-export/unplaced-dexpi/i01.model.json']
 TARGETS += ['examples/opportunity-screen/alarm-basis/expected/input-vectors.json',
             'examples/opportunity-screen/alarm-basis/expected/after/C8-S01-shared-operator-record/questions.json']
+TARGETS += ['examples/opportunity-screen/compressor-recycle-basis/models/E6-02-pairing-B.json',
+            'examples/opportunity-screen/compressor-recycle-basis/expected/input-vectors.json',
+            'examples/opportunity-screen/compressor-recycle-basis/expected/after/E6-06-power-and-sibling-coverage-A/questions.json',
+            'examples/opportunity-screen/compressor-recycle-basis/expected/after/E6-06-power-and-sibling-coverage-A/screen.md']
 RAW_FAMILIES = ('out/review_kit', 'examples/review-and-mapping',
                 'examples/own-drawing/deliverable', 'examples/from-description/assisted',
                 'examples/from-description/mgpi', 'examples/pump-revision/inputs',
@@ -94,7 +98,7 @@ class CheckoutContracts(unittest.TestCase):
     def test_git_filters_retain_lf_contracts_and_existing_raw_packets(self):
         self.assertIsNotNone(shutil.which('git'), 'Git is required for checkout-contract controls')
         targets = {path: (ROOT / path).read_bytes() for path in TARGETS}
-        self.assertEqual(len(targets), 38)
+        self.assertEqual(len(targets), len(TARGETS), 'Checkout targets must be distinct')
         for path, raw in targets.items():
             self.assertNotIn(b'\r', raw, path + ' must materialize as committed LF bytes')
         protected = {}
@@ -157,8 +161,8 @@ class CheckoutContracts(unittest.TestCase):
                     expected = b'ordinary LF control\r\n' if checkout == 'true' else synthetic['checkout-control.txt']
                     self.assertEqual((folder / 'checkout-control.txt').read_bytes(), expected,
                                      'The negative control must actually exercise the selected Git text filter')
-        self.assertEqual((clean_count, checkout_count), (76, 152))
-        print('Git byte contracts: 76 indexed + 152 checkout target comparisons; '
+        self.assertEqual((clean_count, checkout_count), (2 * len(targets), 4 * len(targets)))
+        print(f'Git byte contracts: {clean_count} indexed + {checkout_count} checkout target comparisons; '
               + str(len(protected)) + ' existing raw-packet files retained per configuration')
 
     def test_current_drawing_manifests_match_exact_working_bytes(self):

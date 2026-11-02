@@ -73,7 +73,7 @@
    "id": "E6@K-101",
    "question_id": "E6",
    "family": "energy",
-   "question": "Is this compressor spilling flow back (recycle or blow-off) more than surge protection needs?",
+   "question": "What do existing records show about this compressor's recycle or blow-off duty?",
    "about": "K-101",
    "assets": [
     {
@@ -114,34 +114,35 @@
    ],
    "data_requests": [
     {
-     "item": "Recycle (or blow-off) valve opening over normal operation",
+     "item": "Existing control records, machine/service and operating-mode basis",
      "state": "not_on_drawing",
      "where": [
+      "site records: retained operating/control records with exact machine and valve IDs, record revision and locator",
       "historian / recorded data: FV-105: recorded signal XMV(5) in the TE data files",
-      "DCS/PLC configuration: anti-surge or recycle controller output"
+      "DCS/PLC configuration: existing approved control documentation, if applicable; controller demand/output is not measured travel or flow"
      ],
-     "how": "Take a month or more of valve position; note the hours it is open at normal throughput."
+     "how": "Start with existing records and check machine class, service and duty. Keep exact machine, valve and record IDs, revision, locator and supplied limitations. Resolve foreign, unknown or shared targets with the record owner; a model association does not verify installed pairing or sibling coverage. Distinguish controller demand/output, actual valve travel and measured flow, including units, quality and reference conditions. Select a representative period from demand and relevant normal, turndown, startup/shutdown and upset coverage, not a fixed month. Acknowledge suitable existing evidence and request only the remaining gaps."
     },
     {
-     "item": "Surge margin at normal operation",
+     "item": "Applicable machine-protection basis and qualified review",
      "state": "not_on_drawing",
      "where": [
-      "the vendor datasheet: compressor map with the surge line",
-      "DCS/PLC configuration: the anti-surge controller's surge-line settings"
+      "site records: current site protection/control basis, applicable revision, conditions and responsible reviewer",
+      "the vendor datasheet: the appropriate machine-specific operating envelope and protection guidance for the declared service"
      ],
-     "how": "Compare the normal operating point with the surge line plus the controller's margin."
+     "how": "Review existing manufacturer/site records with the responsible machinery and controls engineers. Establish applicability to this machine, service, conditions and revision before interpreting a surge line or controller margin. A generic, obsolete or other-machine map cannot establish an excessive margin. Retain unresolved applicability and missing review; do not change settings, operate a valve or induce surge to answer this screen."
     },
     {
-     "item": "Compressor power",
+     "item": "Time-aligned real-power, pressure and flow evidence",
      "state": "not_on_drawing",
      "where": [
-      "historian / recorded data: JT-120: recorded signal XMEAS(20) in the TE data files",
-      "a walkdown: power meter at the drive"
+      "site records: existing energy/operating records with measurement basis, units, quality, time and individual/shared machine coverage",
+      "historian / recorded data: JT-120: recorded signal XMEAS(20) in the TE data files"
      ],
-     "how": "Record power with the valve at its normal opening."
+     "how": "Check existing records for time-aligned real input power, pressure, flow and operating conditions over the selected duty. Separate measured real power from estimates, nameplate ratings and apparent quantities. Check each record against the exact machine(s) and time covered. Reuse a shared record when its reviewed scope covers the named machines and time; do not infer missing individual coverage from a sibling trace. Keep zero, null and unknown values and limitations explicit. Agree any remaining evidence plan with the responsible owner; no new export, walkdown or test is compulsory when suitable records already exist."
     }
    ],
-   "decision_rule": "Worth a look when the recycle or blow-off valve is open at normal throughput, or the controller margin is wider than the vendor map needs. If it only opens during upsets or turndown, close this screening investigation; this is not an instruction to operate the valve or change surge protection.",
+   "decision_rule": "Review the evidence and remaining gaps with the responsible process, controls and machinery engineers. Recycle/blow-off activity can reflect protection and demand; an open valve or a generic margin alone does not establish waste. Turndown/upset-only opening alone neither closes the investigation nor proves a deficiency. Acknowledge suitable working evidence and record the basis for concluding or continuing this screening investigation, its next owner and unresolved questions. No retrofit or quantified saving follows from this screen.",
    "typical_benefit": {
     "wording": "Blow-off \"is a waste of energy and should be used only where necessary to avoid surge.\" Inlet throttling: \"Capacity can typically be reduced from 100 percent capacity to about 70-80 percent with reasonable energy reduction.\" No % saving stated.",
     "source": [
@@ -152,7 +153,7 @@
      "S11: Improving Compressed Air System Performance: A Sourcebook for Industry, 3rd ed. (DOE + Compressed Air Challenge)"
     ]
    },
-   "limits": "Surge protection is a machine-protection function: any change goes through the compressor vendor and a change review.",
+   "limits": "S11 describes compressed-air systems, including centrifugal-air controls; its examples and figures do not automatically apply to process gas, rotary or unknown machines. Establish machine/service applicability first. Supplied machine_class, service and control_records values are unverified claims, including approval/quality fields; showing them does not authenticate their source or establish installed function, protection adequacy or complete coverage. Keep unmatched records, unclear shared coverage and missing reference conditions unresolved. This screen authorizes no operation, test or protection/settings change; any proposed change needs responsible machinery/vendor expertise and the company change-review process.",
    "status": "asked"
   },
   {

@@ -255,8 +255,16 @@ and keeps 254 typed carrier-field values visible across 41 of 50 optional names;
 It measures no alarm workload or quality. [Source boundaries](../examples/opportunity-screen/alarm-basis/SOURCES.json)
 keep the historical HSE guidance separate from applicable site requirements and any compliance judgment.
 
-The catalog has 50 rules and 126 collection requests. Twenty-four rules have bounded source-informed collection
-reviews; the other 26 still need original-source adequacy review. These controls do not establish whole-catalog
+E6 starts with existing compressor/service and control records. Keep demand/output, actual valve travel and
+measured flow distinct, with the exact machine/valve IDs, revision, operating periods and source limitations.
+Review the applicable manufacturer/site protection basis and real-power evidence with responsible engineers;
+reuse shared records only for the named machines and time they cover. The [compressor-record tutorial](../examples/opportunity-screen/compressor-recycle-basis/README.md)
+shows this handoff; its [source boundaries](../examples/opportunity-screen/compressor-recycle-basis/SOURCES.json)
+distinguish centrifugal compressed-air guidance from process-gas, rotary and unknown machinery. Neither an
+open valve nor turndown/upset-only activity settles this screening investigation or authorizes changes.
+
+The catalog has 50 rules and 126 collection requests. Twenty-five rules have bounded source-informed collection
+reviews; the other 25 still need original-source adequacy review. These controls do not establish whole-catalog
 engineering correctness or human usefulness. The [worked food screen](../examples/opportunity-screen/food/screen.md)
 shows the retained candidates and open coverage tasks.
 

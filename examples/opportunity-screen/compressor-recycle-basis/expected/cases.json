@@ -1,0 +1,485 @@
+{
+  "schema": "compressor-recycle-source-cases-1",
+  "state": "After outputs absent pending actual public-path production. IDs/minimum criteria prospective; assets observed in original selection.",
+  "cases": [
+    {
+      "case": "E6-01-service-transfer-A",
+      "model": "models/E6-01-service-transfer-A.json",
+      "original_output_folder": "history/before/E6-01-service-transfer-A",
+      "expected_output_folder": "expected/after/E6-01-service-transfer-A",
+      "expected_E6_ids": [
+        "E6@K-A"
+      ],
+      "expected_E6_assets": [
+        "K-A",
+        "RV-A"
+      ],
+      "quiet": false,
+      "minimum_open_review_requests": 1,
+      "source_policy": {
+        "source_minimum": "Both supplied scopes stay visible; B requires explicit applicability/transfer qualification and machine-specific basis. Neither has a demonstrated waste/protection defect.",
+        "source_allowed": "A source-qualified review can acknowledge the documented air context; B can remain an applicability review under existing generic eligibility.",
+        "source_unacceptable": "Apply S11air figures, margins or operating recommendations as established process-gas acceptance."
+      },
+      "record_ids": [
+        "REC-SCOPE-A"
+      ],
+      "record_set_id": "E6-01-service-transfer-A-supplied-record-set",
+      "same_record_list_referenced_on": [
+        "K-A"
+      ],
+      "source_recipe_reference": {
+        "freeze_sha256_raw": "e32a6de538ab868910aae606e28d14d7e0b351be3149a719fd3924e2f6819b9b",
+        "expected_sha256_raw": "76637ec3c8713e9802bd5cd73ab39b7217cd6769d60d15f385b81e3845efeac7",
+        "pointer": "/paired_groups/0/A"
+      }
+    },
+    {
+      "case": "E6-01-service-transfer-B",
+      "model": "models/E6-01-service-transfer-B.json",
+      "original_output_folder": "history/before/E6-01-service-transfer-B",
+      "expected_output_folder": "expected/after/E6-01-service-transfer-B",
+      "expected_E6_ids": [
+        "E6@K-A"
+      ],
+      "expected_E6_assets": [
+        "K-A",
+        "RV-A"
+      ],
+      "quiet": false,
+      "minimum_open_review_requests": 1,
+      "source_policy": {
+        "source_minimum": "Both supplied scopes stay visible; B requires explicit applicability/transfer qualification and machine-specific basis. Neither has a demonstrated waste/protection defect.",
+        "source_allowed": "A source-qualified review can acknowledge the documented air context; B can remain an applicability review under existing generic eligibility.",
+        "source_unacceptable": "Apply S11air figures, margins or operating recommendations as established process-gas acceptance."
+      },
+      "record_ids": [
+        "REC-SCOPE-B"
+      ],
+      "record_set_id": "E6-01-service-transfer-B-supplied-record-set",
+      "same_record_list_referenced_on": [
+        "K-A"
+      ],
+      "source_recipe_reference": {
+        "freeze_sha256_raw": "e32a6de538ab868910aae606e28d14d7e0b351be3149a719fd3924e2f6819b9b",
+        "expected_sha256_raw": "76637ec3c8713e9802bd5cd73ab39b7217cd6769d60d15f385b81e3845efeac7",
+        "pointer": "/paired_groups/0/B"
+      }
+    },
+    {
+      "case": "E6-02-pairing-A",
+      "model": "models/E6-02-pairing-A.json",
+      "original_output_folder": "history/before/E6-02-pairing-A",
+      "expected_output_folder": "expected/after/E6-02-pairing-A",
+      "expected_E6_ids": [
+        "E6@K-A",
+        "E6@K-B"
+      ],
+      "expected_E6_assets": [
+        "K-A",
+        "RV-A",
+        "K-B",
+        "RV-B"
+      ],
+      "quiet": false,
+      "minimum_open_review_requests": 1,
+      "source_policy": {
+        "source_minimum": "Foreign and unknown target claims remain visible/unresolved, even if a drawing/model assigns a valve to the same unit. No sibling borrowing.",
+        "source_allowed": "Explicit matched candidates may inform collection; they are not authenticated installed pairing.",
+        "source_unacceptable": "Silently reassign, suppress, verify or use foreign/unknown records to discharge another anchor."
+      },
+      "record_ids": [
+        "REC-PAIR-A1",
+        "REC-PAIR-A2"
+      ],
+      "record_set_id": "E6-02-pairing-A-supplied-record-set",
+      "same_record_list_referenced_on": [
+        "K-A",
+        "K-B"
+      ],
+      "source_recipe_reference": {
+        "freeze_sha256_raw": "e32a6de538ab868910aae606e28d14d7e0b351be3149a719fd3924e2f6819b9b",
+        "expected_sha256_raw": "76637ec3c8713e9802bd5cd73ab39b7217cd6769d60d15f385b81e3845efeac7",
+        "pointer": "/paired_groups/1/A"
+      }
+    },
+    {
+      "case": "E6-02-pairing-B",
+      "model": "models/E6-02-pairing-B.json",
+      "original_output_folder": "history/before/E6-02-pairing-B",
+      "expected_output_folder": "expected/after/E6-02-pairing-B",
+      "expected_E6_ids": [
+        "E6@K-A",
+        "E6@K-B"
+      ],
+      "expected_E6_assets": [
+        "K-A",
+        "RV-A",
+        "K-B",
+        "RV-B"
+      ],
+      "quiet": false,
+      "minimum_open_review_requests": 1,
+      "source_policy": {
+        "source_minimum": "Foreign and unknown target claims remain visible/unresolved, even if a drawing/model assigns a valve to the same unit. No sibling borrowing.",
+        "source_allowed": "Explicit matched candidates may inform collection; they are not authenticated installed pairing.",
+        "source_unacceptable": "Silently reassign, suppress, verify or use foreign/unknown records to discharge another anchor."
+      },
+      "record_ids": [
+        "REC-PAIR-B1",
+        "REC-PAIR-B2"
+      ],
+      "record_set_id": "E6-02-pairing-B-supplied-record-set",
+      "same_record_list_referenced_on": [
+        "K-A",
+        "K-B"
+      ],
+      "source_recipe_reference": {
+        "freeze_sha256_raw": "e32a6de538ab868910aae606e28d14d7e0b351be3149a719fd3924e2f6819b9b",
+        "expected_sha256_raw": "76637ec3c8713e9802bd5cd73ab39b7217cd6769d60d15f385b81e3845efeac7",
+        "pointer": "/paired_groups/1/B"
+      }
+    },
+    {
+      "case": "E6-03-signal-basis-A",
+      "model": "models/E6-03-signal-basis-A.json",
+      "original_output_folder": "history/before/E6-03-signal-basis-A",
+      "expected_output_folder": "expected/after/E6-03-signal-basis-A",
+      "expected_E6_ids": [
+        "E6@K-A"
+      ],
+      "expected_E6_assets": [
+        "K-A",
+        "RV-A"
+      ],
+      "quiet": false,
+      "minimum_open_review_requests": 1,
+      "source_policy": {
+        "source_minimum": "Command, travel and measured-flow candidates retain their distinct identities/types/qualities/modes. Zero and missing reference conditions remain literal; no inferred normal-operation flow or saving.",
+        "source_allowed": "A can acknowledge only a command record; B can acknowledge supplied travel/flow records while keeping suitability unresolved.",
+        "source_unacceptable": "Command=travel=flow; null=zero; zero shutdown flow proves protection or normal-duty adequacy."
+      },
+      "record_ids": [
+        "REC-SIGNAL-A"
+      ],
+      "record_set_id": "E6-03-signal-basis-A-supplied-record-set",
+      "same_record_list_referenced_on": [
+        "K-A"
+      ],
+      "source_recipe_reference": {
+        "freeze_sha256_raw": "e32a6de538ab868910aae606e28d14d7e0b351be3149a719fd3924e2f6819b9b",
+        "expected_sha256_raw": "76637ec3c8713e9802bd5cd73ab39b7217cd6769d60d15f385b81e3845efeac7",
+        "pointer": "/paired_groups/2/A"
+      }
+    },
+    {
+      "case": "E6-03-signal-basis-B",
+      "model": "models/E6-03-signal-basis-B.json",
+      "original_output_folder": "history/before/E6-03-signal-basis-B",
+      "expected_output_folder": "expected/after/E6-03-signal-basis-B",
+      "expected_E6_ids": [
+        "E6@K-A"
+      ],
+      "expected_E6_assets": [
+        "K-A",
+        "RV-A"
+      ],
+      "quiet": false,
+      "minimum_open_review_requests": 1,
+      "source_policy": {
+        "source_minimum": "Command, travel and measured-flow candidates retain their distinct identities/types/qualities/modes. Zero and missing reference conditions remain literal; no inferred normal-operation flow or saving.",
+        "source_allowed": "A can acknowledge only a command record; B can acknowledge supplied travel/flow records while keeping suitability unresolved.",
+        "source_unacceptable": "Command=travel=flow; null=zero; zero shutdown flow proves protection or normal-duty adequacy."
+      },
+      "record_ids": [
+        "REC-SIGNAL-B"
+      ],
+      "record_set_id": "E6-03-signal-basis-B-supplied-record-set",
+      "same_record_list_referenced_on": [
+        "K-A"
+      ],
+      "source_recipe_reference": {
+        "freeze_sha256_raw": "e32a6de538ab868910aae606e28d14d7e0b351be3149a719fd3924e2f6819b9b",
+        "expected_sha256_raw": "76637ec3c8713e9802bd5cd73ab39b7217cd6769d60d15f385b81e3845efeac7",
+        "pointer": "/paired_groups/2/B"
+      }
+    },
+    {
+      "case": "E6-04-existing-period-coverage-A",
+      "model": "models/E6-04-existing-period-coverage-A.json",
+      "original_output_folder": "history/before/E6-04-existing-period-coverage-A",
+      "expected_output_folder": "expected/after/E6-04-existing-period-coverage-A",
+      "expected_E6_ids": [
+        "E6@K-A"
+      ],
+      "expected_E6_assets": [
+        "K-A",
+        "RV-A"
+      ],
+      "quiet": false,
+      "minimum_open_review_requests": 1,
+      "source_policy": {
+        "source_minimum": "A existing record may be acknowledged without a compulsory month/export. B missing modes/basis remain explicit, not silently completed by duration.",
+        "source_allowed": "Do not require every mode if the documented machine duty makes it irrelevant; retain that applicability qualification.",
+        "source_unacceptable": "Fixed-month rule or automatic closure from mode label alone."
+      },
+      "record_ids": [
+        "REC-PERIOD-A"
+      ],
+      "record_set_id": "E6-04-existing-period-coverage-A-supplied-record-set",
+      "same_record_list_referenced_on": [
+        "K-A"
+      ],
+      "source_recipe_reference": {
+        "freeze_sha256_raw": "e32a6de538ab868910aae606e28d14d7e0b351be3149a719fd3924e2f6819b9b",
+        "expected_sha256_raw": "76637ec3c8713e9802bd5cd73ab39b7217cd6769d60d15f385b81e3845efeac7",
+        "pointer": "/paired_groups/3/A"
+      }
+    },
+    {
+      "case": "E6-04-existing-period-coverage-B",
+      "model": "models/E6-04-existing-period-coverage-B.json",
+      "original_output_folder": "history/before/E6-04-existing-period-coverage-B",
+      "expected_output_folder": "expected/after/E6-04-existing-period-coverage-B",
+      "expected_E6_ids": [
+        "E6@K-A"
+      ],
+      "expected_E6_assets": [
+        "K-A",
+        "RV-A"
+      ],
+      "quiet": false,
+      "minimum_open_review_requests": 1,
+      "source_policy": {
+        "source_minimum": "A existing record may be acknowledged without a compulsory month/export. B missing modes/basis remain explicit, not silently completed by duration.",
+        "source_allowed": "Do not require every mode if the documented machine duty makes it irrelevant; retain that applicability qualification.",
+        "source_unacceptable": "Fixed-month rule or automatic closure from mode label alone."
+      },
+      "record_ids": [
+        "REC-PERIOD-B"
+      ],
+      "record_set_id": "E6-04-existing-period-coverage-B-supplied-record-set",
+      "same_record_list_referenced_on": [
+        "K-A"
+      ],
+      "source_recipe_reference": {
+        "freeze_sha256_raw": "e32a6de538ab868910aae606e28d14d7e0b351be3149a719fd3924e2f6819b9b",
+        "expected_sha256_raw": "76637ec3c8713e9802bd5cd73ab39b7217cd6769d60d15f385b81e3845efeac7",
+        "pointer": "/paired_groups/3/B"
+      }
+    },
+    {
+      "case": "E6-05-protection-revision-A",
+      "model": "models/E6-05-protection-revision-A.json",
+      "original_output_folder": "history/before/E6-05-protection-revision-A",
+      "expected_output_folder": "expected/after/E6-05-protection-revision-A",
+      "expected_E6_ids": [
+        "E6@K-A"
+      ],
+      "expected_E6_assets": [
+        "K-A",
+        "RV-A"
+      ],
+      "quiet": false,
+      "minimum_open_review_requests": 1,
+      "source_policy": {
+        "source_minimum": "Preserve machine/revision/condition/zero qualifiers. Neither supplied record authorizes settings changes; B cannot establish K-A margin sufficiency/excess.",
+        "source_allowed": "A suitable current document may be acknowledged pending responsible review; do not require a new map for its own sake.",
+        "source_unacceptable": "Margin-value-only pass/fail, setting reduction instruction, generic-map authority or installed-protection verdict."
+      },
+      "record_ids": [
+        "REC-PROTECTION-A"
+      ],
+      "record_set_id": "E6-05-protection-revision-A-supplied-record-set",
+      "same_record_list_referenced_on": [
+        "K-A"
+      ],
+      "source_recipe_reference": {
+        "freeze_sha256_raw": "e32a6de538ab868910aae606e28d14d7e0b351be3149a719fd3924e2f6819b9b",
+        "expected_sha256_raw": "76637ec3c8713e9802bd5cd73ab39b7217cd6769d60d15f385b81e3845efeac7",
+        "pointer": "/paired_groups/4/A"
+      }
+    },
+    {
+      "case": "E6-05-protection-revision-B",
+      "model": "models/E6-05-protection-revision-B.json",
+      "original_output_folder": "history/before/E6-05-protection-revision-B",
+      "expected_output_folder": "expected/after/E6-05-protection-revision-B",
+      "expected_E6_ids": [
+        "E6@K-A"
+      ],
+      "expected_E6_assets": [
+        "K-A",
+        "RV-A"
+      ],
+      "quiet": false,
+      "minimum_open_review_requests": 1,
+      "source_policy": {
+        "source_minimum": "Preserve machine/revision/condition/zero qualifiers. Neither supplied record authorizes settings changes; B cannot establish K-A margin sufficiency/excess.",
+        "source_allowed": "A suitable current document may be acknowledged pending responsible review; do not require a new map for its own sake.",
+        "source_unacceptable": "Margin-value-only pass/fail, setting reduction instruction, generic-map authority or installed-protection verdict."
+      },
+      "record_ids": [
+        "REC-PROTECTION-B"
+      ],
+      "record_set_id": "E6-05-protection-revision-B-supplied-record-set",
+      "same_record_list_referenced_on": [
+        "K-A"
+      ],
+      "source_recipe_reference": {
+        "freeze_sha256_raw": "e32a6de538ab868910aae606e28d14d7e0b351be3149a719fd3924e2f6819b9b",
+        "expected_sha256_raw": "76637ec3c8713e9802bd5cd73ab39b7217cd6769d60d15f385b81e3845efeac7",
+        "pointer": "/paired_groups/4/B"
+      }
+    },
+    {
+      "case": "E6-06-power-and-sibling-coverage-A",
+      "model": "models/E6-06-power-and-sibling-coverage-A.json",
+      "original_output_folder": "history/before/E6-06-power-and-sibling-coverage-A",
+      "expected_output_folder": "expected/after/E6-06-power-and-sibling-coverage-A",
+      "expected_E6_ids": [
+        "E6@K-A",
+        "E6@K-B"
+      ],
+      "expected_E6_assets": [
+        "K-A",
+        "RV-A",
+        "K-B",
+        "RV-B"
+      ],
+      "quiet": false,
+      "minimum_open_review_requests": 1,
+      "source_policy": {
+        "source_minimum": "A can be reused for both subjects only as a scoped supplied record; do not force duplicate reports. B covers neither representative real-power sufficiency nor K-B by same-unit proximity.",
+        "source_allowed": "Keep missing power/flow/period/protection bases as review needs without claiming a compulsory new measurement campaign.",
+        "source_unacceptable": "Nameplate=measured representative power; K-Arecord covers K-B automatically; False/0/unknown overwritten."
+      },
+      "record_ids": [
+        "REC-POWER-A"
+      ],
+      "record_set_id": "E6-06-power-and-sibling-coverage-A-supplied-record-set",
+      "same_record_list_referenced_on": [
+        "K-A",
+        "K-B"
+      ],
+      "source_recipe_reference": {
+        "freeze_sha256_raw": "e32a6de538ab868910aae606e28d14d7e0b351be3149a719fd3924e2f6819b9b",
+        "expected_sha256_raw": "76637ec3c8713e9802bd5cd73ab39b7217cd6769d60d15f385b81e3845efeac7",
+        "pointer": "/paired_groups/5/A"
+      }
+    },
+    {
+      "case": "E6-06-power-and-sibling-coverage-B",
+      "model": "models/E6-06-power-and-sibling-coverage-B.json",
+      "original_output_folder": "history/before/E6-06-power-and-sibling-coverage-B",
+      "expected_output_folder": "expected/after/E6-06-power-and-sibling-coverage-B",
+      "expected_E6_ids": [
+        "E6@K-A",
+        "E6@K-B"
+      ],
+      "expected_E6_assets": [
+        "K-A",
+        "RV-A",
+        "K-B",
+        "RV-B"
+      ],
+      "quiet": false,
+      "minimum_open_review_requests": 1,
+      "source_policy": {
+        "source_minimum": "A can be reused for both subjects only as a scoped supplied record; do not force duplicate reports. B covers neither representative real-power sufficiency nor K-B by same-unit proximity.",
+        "source_allowed": "Keep missing power/flow/period/protection bases as review needs without claiming a compulsory new measurement campaign.",
+        "source_unacceptable": "Nameplate=measured representative power; K-Arecord covers K-B automatically; False/0/unknown overwritten."
+      },
+      "record_ids": [
+        "REC-POWER-B"
+      ],
+      "record_set_id": "E6-06-power-and-sibling-coverage-B-supplied-record-set",
+      "same_record_list_referenced_on": [
+        "K-A",
+        "K-B"
+      ],
+      "source_recipe_reference": {
+        "freeze_sha256_raw": "e32a6de538ab868910aae606e28d14d7e0b351be3149a719fd3924e2f6819b9b",
+        "expected_sha256_raw": "76637ec3c8713e9802bd5cd73ab39b7217cd6769d60d15f385b81e3845efeac7",
+        "pointer": "/paired_groups/5/B"
+      }
+    },
+    {
+      "case": "E6-S01-no-eligible-compressor",
+      "model": "models/E6-S01-no-eligible-compressor.json",
+      "original_output_folder": "history/before/E6-S01-no-eligible-compressor",
+      "expected_output_folder": "expected/after/E6-S01-no-eligible-compressor",
+      "expected_E6_ids": [],
+      "expected_E6_assets": [],
+      "quiet": true,
+      "minimum_open_review_requests": 0,
+      "source_policy": {
+        "source_minimum": "E6quiet; quiet is no source/engineering adequacy verdict."
+      },
+      "record_ids": [],
+      "record_set_id": null,
+      "same_record_list_referenced_on": [],
+      "source_recipe_reference": {
+        "expected_sha256_raw": "76637ec3c8713e9802bd5cd73ab39b7217cd6769d60d15f385b81e3845efeac7",
+        "control_id": "E6-S01-no-eligible-compressor"
+      }
+    },
+    {
+      "case": "E6-S02-no-drawn-valve-candidate",
+      "model": "models/E6-S02-no-drawn-valve-candidate.json",
+      "original_output_folder": "history/before/E6-S02-no-drawn-valve-candidate",
+      "expected_output_folder": "expected/after/E6-S02-no-drawn-valve-candidate",
+      "expected_E6_ids": [],
+      "expected_E6_assets": [],
+      "quiet": true,
+      "minimum_open_review_requests": 0,
+      "source_policy": {
+        "source_minimum": "Existing drawing-based selector may stay quiet; it must not assert absence of installed bypass/protection or adequate operation."
+      },
+      "record_ids": [],
+      "record_set_id": null,
+      "same_record_list_referenced_on": [],
+      "source_recipe_reference": {
+        "expected_sha256_raw": "76637ec3c8713e9802bd5cd73ab39b7217cd6769d60d15f385b81e3845efeac7",
+        "control_id": "E6-S02-no-drawn-valve-candidate"
+      }
+    },
+    {
+      "case": "E6-S03-noncentrifugal-and-unknown-boundaries",
+      "model": "models/E6-S03-noncentrifugal-and-unknown-boundaries.json",
+      "original_output_folder": "history/before/E6-S03-noncentrifugal-and-unknown-boundaries",
+      "expected_output_folder": "expected/after/E6-S03-noncentrifugal-and-unknown-boundaries",
+      "expected_E6_ids": [
+        "E6@K-R",
+        "E6@K-U"
+      ],
+      "expected_E6_assets": [
+        "K-R",
+        "RV-R",
+        "K-U",
+        "RV-U"
+      ],
+      "quiet": false,
+      "minimum_open_review_requests": 1,
+      "source_policy": {
+        "source_minimum": "If current generic eligibility is retained, preserve separate applicability review; do not prescribe centrifugal anti-surge map/limits to both. Any deliberate quieting needs a separately frozen root-approved applicability rationale, not tag-only promotion or concealment."
+      },
+      "record_ids": [],
+      "record_set_id": null,
+      "same_record_list_referenced_on": [],
+      "source_recipe_reference": {
+        "expected_sha256_raw": "76637ec3c8713e9802bd5cd73ab39b7217cd6769d60d15f385b81e3845efeac7",
+        "control_id": "E6-S03-noncentrifugal-and-unknown-boundaries"
+      }
+    }
+  ],
+  "counts": {
+    "inputs": 15,
+    "positive": 13,
+    "quiet": 2,
+    "E6_findings": 18,
+    "record_ids": 14,
+    "record_references": 20
+  },
+  "grouping": "Native equipment anchor uses exact equipment ID, not plant-area grouping.02/06retain K-A/K-B; equal lists reference one authored record set, not independent reports."
+}

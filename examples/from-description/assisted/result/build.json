@@ -4,7 +4,7 @@
   "answer_sha256": "9711b7f1f7613f2d25d598dc38e1476032d92d384322788fac71734f8440fcc8",
   "question_catalog": {
     "path": "question_catalog.json",
-    "sha256_raw": "2dac4d0d7187384f495c4e5445f694f50aca64b3788bfba8bc99fc2bf63767ca",
+    "sha256_raw": "5aa92c8be6e629be784b9eb4150d0e1c57533cfc5563d656014c0e863fdffeec",
     "selection": "default"
   },
   "code_sha256": {
@@ -20,7 +20,7 @@
     "layout.json": "5de65e16a27bfdc92ebf5a7a71a4f442474d024aee6d3bbef26025f6c36c4c09",
     "model.json": "7523c5f8f5b4918e1fd00315d332befc68b0888d35b48ccb31fd8f71399f99f4",
     "packet.json": "06a7dfc98dfd707ab4e886d28b7fa67c647abd3da06a8dd9d09644b922f090f7",
-    "question_catalog.json": "2dac4d0d7187384f495c4e5445f694f50aca64b3788bfba8bc99fc2bf63767ca",
+    "question_catalog.json": "5aa92c8be6e629be784b9eb4150d0e1c57533cfc5563d656014c0e863fdffeec",
     "source.txt": "4b36c932249a9db29c782771dd2cf6b76466a390e3565faf2a55aaa5ad4a196f",
     "source_numbered.txt": "135234ecb19ca7c10a5ff442bdf0b73bcd8bd84181449e8f2d9cecab56f978f7",
     "exports/ops_review_sheet.csv": "e03fce04f6c65001d3fe04add2bae11f53b64d08123b3dbe940e0e5f74772394",

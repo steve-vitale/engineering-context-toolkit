@@ -1,6 +1,6 @@
 """scripts/generate.py on a hand-built model that isn't Tennessee Eastman (the Bayer residue treater): it must export,
 draw valves as valves, place units it has no positions for and say so, and write only where --out points.
-Stdlib only."""
+Export checks use the standard library; drawing tests require installed Pillow."""
 import json
 import subprocess
 import sys

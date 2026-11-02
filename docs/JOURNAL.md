@@ -7032,3 +7032,55 @@ all three alarm methods passing. Checkout three pass after stale inventory-count
 failed envelopes/logs are retained. A302 records these finite checks, not operator performance, human usefulness
 or plant/company acceptance. Historical catalogs, decisions and all prior reviews remain. Full repository,
 pending actual MCP evidence and exact-head CI are separate gates.
+
+## 151. Review compressor recycle from existing records and applicable duty
+
+E6's earlier fixed-month export, generic margin and turndown/upset closure could bypass the actual machine,
+service and record basis. The revised question starts with existing records and keeps compressor/valve
+identity, source revision, duty and coverage unresolved where supplied claims cannot settle them. Controller
+output, actual travel and measured flow remain distinct; nameplate or one sibling trace cannot establish
+representative real input power for every machine. Suitable reviewed shared records can be reused.
+
+The [compressor-record tutorial](../examples/opportunity-screen/compressor-recycle-basis/README.md) explains the
+own-supported-model route and next process, controls, machinery or record owner. Its [source map](../examples/opportunity-screen/compressor-recycle-basis/SOURCES.json)
+separates the DOE/CAC compressed-air guidance from authored collection controls and process-gas applicability.
+The screen neither orders a new export/test nor authorizes operation, protection/settings changes or a project.
+
+Three separate cohorts retain 15 original, 15 private-candidate and 15 fresh public-path CLI calls. Each has
+18 E6 findings and two quiet cases. The original omits all 24 supplied whole fields from its question-facing
+projection; the repair retains all 24 (22 present, two blank) as decoded JSON and readable evidence across
+60 subject/field vectors. Fourteen authored record IDs occur in 20 references, including one list shared by
+two subjects. These are 15 fictional models, not plants or independent reports. The 80-file packet preserves
+30 original and 30 fresh current reports, input models, oracles and post-run metadata without relabelling old captures.
+
+All 18 non-E6 findings in the paired cases remain typed-exact. A separate normal TE regeneration changes
+only E6: nine other findings and all IDs remain, and Markdown outside E6 is raw-exact. Static preread caught
+a non-scalar prose shape and unconditional shared-scope wording before any candidate calls; the corrected
+scalar/shared-scope successor preserves the source criteria, other 49 rules, benefits and shared sources.
+
+The unfiltered local question module runs 164 tests: 163 pass, one unnamed skip, no failures or errors; all
+163 prior method ASTs remain unchanged. The new method checks all 15 complete after pairs and typed contexts.
+Checkout three pass with 84 indexed and 168 checkout comparisons, retaining 348 raw-packet files per
+configuration and the negative text-filter control. Source guards complete before three publication metadata
+successors are adopted; original history and all 77 other packet files remain unchanged.
+
+A303 brings N082 to 25 bounded rule reviews and 25 pending within 50 rules/126 requests; N082 stays open.
+These are source-informed collection/software checks, not machine protection acceptance, source authentication,
+plant or extraction accuracy, measured human usefulness or company approval. Broader freshness, full-repository
+integration and exact-head CI remain separate gates.
+
+## 152. Keep stdlib-only tests honest about drawing dependencies
+
+The original standard-library-only run passed 54 of 55 programs and retained one `PIL` import error.
+`test_generate_any_model.py` included real PNG drawing and a direct renderer call, so its stdlib-only label
+was wrong. It now belongs to full mode, with all 17 drawing test methods unchanged. The full unique set
+still contains 71 programs; source-only selects 54 and explicitly excludes dependency-bearing tests.
+Full prerequisites now check Pillow before launching children; source-only does not discover dependencies.
+
+The targeted stdlib runner controls pass 19 tests; the drawing module passes all 17 with installed Pillow,
+without skips. Three new controls exercise missing-Pillow refusal, source-only independence and full dispatch
+exactly once; the earlier 16 runner-control methods remain. The first failure is preserved, and renderer
+code and published artifacts are unchanged. The corrected source-only run passes 54 of 54 programs with 22 unittest case skips, three platform
+notices and no additional skipped-check notices; all 3,420 watched files stay unchanged. The platform
+notices explain case skips and are not added to that count. This narrower result is not a full-suite pass.
+Mode-specific results and normal exact-head full CI are separate evidence scopes.

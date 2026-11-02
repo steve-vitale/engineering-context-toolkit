@@ -223,5 +223,56 @@ class RunnerControls(unittest.TestCase):
             self.assertIn(('source', f'empty committed file: {runner.DRAWINGS}/0.graphml'), runner.prerequisites(root, True))
 
 
+    def test_missing_pillow_blocks_full_preflight_before_any_child(self):
+        expected = hashlib.sha256(b'cache fixture').hexdigest()
+        with tempfile.TemporaryDirectory() as tmp, \
+             patch.object(fetch_te_data, 'FILES', {'d00_te.dat': expected}), \
+             patch.object(fetch_te_data, 'EVALUATION_FILES', {}), \
+             patch.object(verify_te_topology, 'REVISED_SHA256', expected), \
+             patch.object(runner.importlib.util, 'find_spec',
+                          side_effect=lambda name: None if name == 'PIL' else object()), \
+             patch('urllib.request.urlopen', side_effect=AssertionError('network forbidden')), \
+             patch.object(runner.subprocess, 'run') as child:
+            root = Path(tmp)
+            self.fixture(root)
+            with patch.object(runner, 'ROOT', root), contextlib.redirect_stdout(io.StringIO()) as output:
+                self.assertEqual(runner.main([]), 2)
+            child.assert_not_called()
+            self.assertIn('missing Python module PIL (package Pillow)', output.getvalue())
+            self.assertIn('no test scripts ran', output.getvalue())
+            self.assertNotIn('suite passed', output.getvalue())
+
+    def test_source_only_excludes_drawing_without_pillow_discovery(self):
+        drawing = 'scripts/test_generate_any_model.py'
+        with tempfile.TemporaryDirectory() as tmp, \
+             patch.object(runner.importlib.util, 'find_spec',
+                          side_effect=AssertionError('dependency discovery forbidden')) as discovery, \
+             patch.object(runner.subprocess, 'run') as child:
+            root = Path(tmp)
+            self.fixture(root, cached=False)
+            with patch.object(runner, 'ROOT', root), contextlib.redirect_stdout(io.StringIO()) as output:
+                self.assertEqual(runner.main(['--source-only', '--check-prerequisites']), 0)
+            discovery.assert_not_called()
+            child.assert_not_called()
+            self.assertIn(drawing, output.getvalue())
+            self.assertIn('tests NOT RUN', output.getvalue())
+        status, output, child = self.invoke(['--source-only'])
+        self.assertEqual(status, 0)
+        self.assertNotIn(drawing, [call.args[0][-1] for call in child.call_args_list])
+        self.assertIn(drawing, output)
+        self.assertIn('NOT a full-suite pass', output)
+
+    def test_full_dispatch_keeps_all_drawing_assertions_exactly_once(self):
+        drawing = 'scripts/test_generate_any_model.py'
+        status, _, child = self.invoke([])
+        self.assertEqual(status, 0)
+        launched = [call.args[0][-1] for call in child.call_args_list]
+        self.assertEqual(launched.count(drawing), 1)
+        self.assertIn(drawing, runner.FULL_ONLY_TESTS)
+        self.assertNotIn(drawing, runner.SOURCE_TESTS)
+        self.assertEqual(set(launched), set(runner.TESTS))
+        self.assertEqual(len(launched), len(set(launched)))
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -1,0 +1,339 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "E6-02-pairing-B.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E1",
+  "E2",
+  "E3",
+  "E4",
+  "E5",
+  "E6",
+  "E7",
+  "E8",
+  "E9",
+  "E10",
+  "E11",
+  "E12",
+  "E13",
+  "E14",
+  "E15",
+  "E16",
+  "E17",
+  "E18",
+  "E19",
+  "E20",
+  "E21",
+  "E22",
+  "E23",
+  "E24",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "C1",
+  "C2",
+  "C3",
+  "C4",
+  "C5",
+  "C6",
+  "C7",
+  "C10",
+  "C8",
+  "C9",
+  "E25",
+  "E26",
+  "E27",
+  "E28",
+  "E29",
+  "E30",
+  "E31",
+  "E32",
+  "H5",
+  "H6",
+  "C11",
+  "C12"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 3,
+  "by_family": {
+   "energy": 2,
+   "safety_question": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E6@K-A",
+   "question_id": "E6",
+   "family": "energy",
+   "question": "Is this compressor spilling flow back (recycle or blow-off) more than surge protection needs?",
+   "about": "K-A",
+   "assets": [
+    {
+     "id": "K-A",
+     "tag": "K-A"
+    },
+    {
+     "id": "RV-A",
+     "tag": "RV-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "K-A",
+     "tag": "K-A",
+     "text": "equipment K-A reads \"K-A Fictional compressor subject K-A\"",
+     "field": "units[K-A]"
+    },
+    {
+     "role": "recycle valve",
+     "id": "RV-A",
+     "tag": "RV-A",
+     "text": "final element RV-A reads \"RV-A Recycle/bypass candidate; fictional unverified model association\" at K-A",
+     "field": "final_elements[RV-A]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Recycle (or blow-off) valve opening over normal operation",
+     "state": "not_on_drawing",
+     "where": [
+      "historian or DCS trend for RV-A (no historian tag is mapped in this model for these)",
+      "DCS/PLC configuration: anti-surge or recycle controller output"
+     ],
+     "how": "Take a month or more of valve position; note the hours it is open at normal throughput."
+    },
+    {
+     "item": "Surge margin at normal operation",
+     "state": "not_on_drawing",
+     "where": [
+      "the vendor datasheet: compressor map with the surge line",
+      "DCS/PLC configuration: the anti-surge controller's surge-line settings"
+     ],
+     "how": "Compare the normal operating point with the surge line plus the controller's margin."
+    },
+    {
+     "item": "Compressor power",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: power meter at the drive"
+     ],
+     "how": "Record power with the valve at its normal opening."
+    }
+   ],
+   "decision_rule": "Worth a look when the recycle or blow-off valve is open at normal throughput, or the controller margin is wider than the vendor map needs. If it only opens during upsets or turndown, close this screening investigation; this is not an instruction to operate the valve or change surge protection.",
+   "typical_benefit": {
+    "wording": "Blow-off \"is a waste of energy and should be used only where necessary to avoid surge.\" Inlet throttling: \"Capacity can typically be reduced from 100 percent capacity to about 70-80 percent with reasonable energy reduction.\" No % saving stated.",
+    "source": [
+     "S11"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S11: Improving Compressed Air System Performance: A Sourcebook for Industry, 3rd ed. (DOE + Compressed Air Challenge)"
+    ]
+   },
+   "limits": "Surge protection is a machine-protection function: any change goes through the compressor vendor and a change review.",
+   "status": "asked"
+  },
+  {
+   "id": "E6@K-B",
+   "question_id": "E6",
+   "family": "energy",
+   "question": "Is this compressor spilling flow back (recycle or blow-off) more than surge protection needs?",
+   "about": "K-B",
+   "assets": [
+    {
+     "id": "K-B",
+     "tag": "K-B"
+    },
+    {
+     "id": "RV-B",
+     "tag": "RV-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "K-B",
+     "tag": "K-B",
+     "text": "equipment K-B reads \"K-B Fictional compressor subject K-B\"",
+     "field": "units[K-B]"
+    },
+    {
+     "role": "recycle valve",
+     "id": "RV-B",
+     "tag": "RV-B",
+     "text": "final element RV-B reads \"RV-B Recycle/bypass candidate; fictional unverified model association\" at K-B",
+     "field": "final_elements[RV-B]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Recycle (or blow-off) valve opening over normal operation",
+     "state": "not_on_drawing",
+     "where": [
+      "historian or DCS trend for RV-B (no historian tag is mapped in this model for these)",
+      "DCS/PLC configuration: anti-surge or recycle controller output"
+     ],
+     "how": "Take a month or more of valve position; note the hours it is open at normal throughput."
+    },
+    {
+     "item": "Surge margin at normal operation",
+     "state": "not_on_drawing",
+     "where": [
+      "the vendor datasheet: compressor map with the surge line",
+      "DCS/PLC configuration: the anti-surge controller's surge-line settings"
+     ],
+     "how": "Compare the normal operating point with the surge line plus the controller's margin."
+    },
+    {
+     "item": "Compressor power",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: power meter at the drive"
+     ],
+     "how": "Record power with the valve at its normal opening."
+    }
+   ],
+   "decision_rule": "Worth a look when the recycle or blow-off valve is open at normal throughput, or the controller margin is wider than the vendor map needs. If it only opens during upsets or turndown, close this screening investigation; this is not an instruction to operate the valve or change surge protection.",
+   "typical_benefit": {
+    "wording": "Blow-off \"is a waste of energy and should be used only where necessary to avoid surge.\" Inlet throttling: \"Capacity can typically be reduced from 100 percent capacity to about 70-80 percent with reasonable energy reduction.\" No % saving stated.",
+    "source": [
+     "S11"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S11: Improving Compressed Air System Performance: A Sourcebook for Industry, 3rd ed. (DOE + Compressed Air Challenge)"
+    ]
+   },
+   "limits": "Surge protection is a machine-protection function: any change goes through the compressor vendor and a change review.",
+   "status": "asked"
+  },
+  {
+   "id": "C9@model",
+   "question_id": "C9",
+   "family": "safety_question",
+   "question": "What source-labelled trip or interlock records apply to each rotating or fired machine, and what remains unverified?",
+   "about": "K-A, K-B",
+   "assets": [
+    {
+     "id": "K-A",
+     "tag": "K-A"
+    },
+    {
+     "id": "K-B",
+     "tag": "K-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "K-A",
+     "tag": "K-A",
+     "text": "equipment K-A reads \"K-A Fictional compressor subject K-A\"",
+     "field": "units[K-A]"
+    },
+    {
+     "role": "trigger",
+     "id": "K-B",
+     "tag": "K-B",
+     "text": "equipment K-B reads \"K-B Fictional compressor subject K-B\"",
+     "field": "units[K-B]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Cause-and-effect matrix and HAZOP/LOPA records",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: cause-and-effect matrix, HAZOP and LOPA reports",
+      "DCS/PLC configuration: safety system configuration"
+     ],
+     "how": "Review existing cause-and-effect, governing requirements and configuration records for each named machine, with their revisions and applicability. Retain supplied trip/switch indications as candidates; a drawing label or an unrelated function does not settle the records or establish effective, tested protection. Missing model information is not evidence that installed protection is absent."
+    },
+    {
+     "item": "Machine/function association and current evidence",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: source-labelled function identifiers, initiating measurements, final elements and protected-machine targets, shared scope and revisions; governing requirements and validation/test evidence where applicable",
+      "DCS/PLC configuration: existing configuration and its documented measurement/action/final-element identities, read through the approved site process"
+     ],
+     "how": "Keep each machine in the review even where a switch or trip is supplied. Retain all explicit shared targets and supplied qualifiers; unknown or contradictory targets remain unresolved. Same-model text or nearby equipment does not prove function coverage. Record a responsible person or authority separately from protected-machine association; neither is inferred here. This requests record review, not a new test, safety design or operating action."
+    }
+   ],
+   "decision_rule": "A qualified site review may resolve the source-labelled machine/function associations and remaining record requests using applicable current evidence. A supplied trip, switch, cause/effect row or shared-function label alone establishes neither complete coverage nor installed protection adequacy. This screen grants no acceptance or authority and performs no safety validation.",
+   "typical_benefit": {
+    "wording": "Safety benefit; no energy source. Present it as a question to verify, not a finding.",
+    "source": [],
+    "arc": null,
+    "source_titles": []
+   },
+   "limits": "P&IDs often leave trips to separate cause-and-effect records. Missing or unknown model evidence does not establish missing installed protection. Supplied associations, shared targets, revisions and contradictions require review; no machine, person owner, approval, tested condition or effective protection is inferred. C9 has no primary safety-design source cited in the catalog and remains a question for record review, not safety design, SIL assignment, a legal-compliance assessment or an operating recommendation.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [
+  {
+   "question_id": "C2",
+   "reason": "the model holds no controllers; give a loop list with --loops (controller,measurement,output) to check this"
+  },
+  {
+   "question_id": "C6",
+   "reason": "the model holds no controllers; give a loop list with --loops to check this"
+  }
+ ],
+ "did_not_fire": [
+  "E1",
+  "E2",
+  "E3",
+  "E4",
+  "E5",
+  "E7",
+  "E8",
+  "E9",
+  "E10",
+  "E11",
+  "E12",
+  "E13",
+  "E14",
+  "E15",
+  "E16",
+  "E17",
+  "E18",
+  "E19",
+  "E20",
+  "E21",
+  "E22",
+  "E23",
+  "E24",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "C1",
+  "C3",
+  "C4",
+  "C5",
+  "C7",
+  "C10",
+  "C8",
+  "E25",
+  "E26",
+  "E27",
+  "E28",
+  "E29",
+  "E30",
+  "E31",
+  "E32",
+  "H5",
+  "H6",
+  "C11",
+  "C12"
+ ],
+ "left_out": {}
+}

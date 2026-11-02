@@ -52,7 +52,6 @@ SOURCE_TESTS = (
     "scripts/test_own_drawing_example.py",
     "scripts/test_loop_audit.py",
     "scripts/test_evaluate_vendor.py",
-    "scripts/test_generate_any_model.py",
     "scripts/test_script_index.py",
     "scripts/test_attempts_ledger.py",
     "scripts/test_graph_export.py",
@@ -75,6 +74,7 @@ SOURCE_TESTS = (
 )
 # These tests need cached data or third-party imports, even though none needs a gateway.
 FULL_ONLY_TESTS = (
+    "scripts/test_generate_any_model.py",
     "scripts/test_description_workflow.py",
     "scripts/test_csv_tools.py",
     "scripts/test_te_channels.py",
@@ -94,7 +94,7 @@ FULL_ONLY_TESTS = (
 )
 TESTS = SOURCE_TESTS + FULL_ONLY_TESTS
 DEPENDENCIES = {"numpy": "numpy", "cv2": "opencv-python-headless",
-                "asyncua": "asyncua", "cryptography": "cryptography"}
+                "asyncua": "asyncua", "cryptography": "cryptography", "PIL": "Pillow"}
 TWIN = "out/twin/r2-tiles-trace/codex"
 DRAWINGS = "data/external/pid2graph/PID2Graph/Complete/PID2Graph OPEN100"
 SOURCE_FILES = (
