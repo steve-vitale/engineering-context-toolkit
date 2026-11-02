@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "C8-06-foreign-versus-matched-record",
+    "evidence_class": "author-illustrated fictional prospective development construction",
+    "source_review": "HSE-source-informed expectedcriteria; engineering/software acceptance pending; no productcall",
+    "plant_truth": "unknown"
+  },
+  "units": [
+    {
+      "id": "U-A",
+      "type": "vessel",
+      "name": "Fictional area A"
+    },
+    {
+      "id": "U-B",
+      "type": "vessel",
+      "name": "Fictional area B"
+    }
+  ],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "PAH-101",
+      "unit": "U-A",
+      "stream": null,
+      "variable": "pressure",
+      "uom": null,
+      "description": "Fictional drawnalarmcandidate; notinstalledconfiguration",
+      "facts": {
+        "record_reference": "fictional:foreign-alarm-journal",
+        "record_revision": "r-old",
+        "operator_role": null,
+        "console_id": "CON-A",
+        "responsibility_area": null,
+        "period_start": null,
+        "period_end": null,
+        "operating_mode": null,
+        "journal_definition": null,
+        "standing_alarm_count": null,
+        "standing_duration_basis": null,
+        "underlying_claim_verified": false,
+        "record_console_id": "CON-OTHER",
+        "current_configuration_revision": "r-new",
+        "normal_presentations_per_10min": 0
+      }
+    },
+    {
+      "tag": "LAHH-201",
+      "unit": "U-B",
+      "stream": null,
+      "variable": "level",
+      "uom": null,
+      "description": "Fictional drawnalarmcandidate; notinstalledconfiguration",
+      "facts": {
+        "record_reference": "fictional:matching-alarm-journal",
+        "record_revision": "r-new",
+        "operator_role": null,
+        "console_id": "CON-B",
+        "responsibility_area": null,
+        "period_start": null,
+        "period_end": null,
+        "operating_mode": null,
+        "journal_definition": null,
+        "standing_alarm_count": null,
+        "standing_duration_basis": null,
+        "underlying_claim_verified": false,
+        "record_console_id": "CON-B",
+        "current_configuration_revision": "r-new",
+        "normal_presentations_per_10min": 0,
+        "period_coverage_review": "authorillustrated only; notcompanyaccepted"
+      }
+    }
+  ],
+  "final_elements": [],
+  "controllers": []
+}

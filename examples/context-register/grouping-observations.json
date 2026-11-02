@@ -1,0 +1,141 @@
+{
+  "schema": "retained-answer-grouping-observations-1",
+  "date": "2026-11-01",
+  "evidence_class": "fictional-local-software-regressions",
+  "scope": "One bounded repeated-sort guard and existing local modules; separate from privately retained maintainer work-accounting diagnostics and final repository CI.",
+  "methods": {
+    "original": {
+      "path": "scripts/context_register.py",
+      "sha256_raw": "4e98bd52850a358a71f2f9448a5d1d00cfa5678975c8a42bf5d3d5c5320a5379"
+    },
+    "grouped": {
+      "path": "scripts/context_register.py",
+      "sha256_raw": "5a902bb2a405599b4d864e9e7ca77162d51488d8920bd24874bb9c426b06f30d"
+    }
+  },
+  "test_source": {
+    "path": "scripts/test_context_register.py",
+    "sha256_working_raw": "2dd17452525cc8e07879e1d80c6a8bfcf58a32eef2d994e011caeab98338dc28",
+    "sha256_CRLF_folded_LF": "00b80abbf284722a4487031e012f00ab3d1dbb5932c0a32ea7f68716433fe8aa",
+    "normalization": "Actual working bytes and CRLF-to-LF text form are recorded separately; commit identity is outside this local-run record.",
+    "prior_test_methods_AST_preserved": 59,
+    "new_methods": 3
+  },
+  "reproduction": {
+    "command": "python -B scripts/test_context_register.py ContextRegister.test_exact_question_ids_keep_reused_answers_and_lexical_order ContextRegister.test_incoming_updates_keep_retired_owner_only_and_answerless_questions ContextRegister.test_latest_answer_sort_feed_does_not_repeat_for_each_question",
+    "method_selection": "Use the intended method beside the test module. The original comparison requires the exact original local source, not a silent fallback or automatic download.",
+    "coverage": "Exact question/answer identity and order; incoming revision/no-op/owner update; retired/owner-only/answerless retention; a pass-through latest-record sort-feed bound. This is not a reproduction of all private diagnostic profiles."
+  },
+  "original_focused": {
+    "reported_methods": 3,
+    "passed": 2,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "failed_method": "ContextRegister.test_latest_answer_sort_feed_does_not_repeat_for_each_question",
+    "observed_records_supplied_to_latest_sort": 12,
+    "guard_limit": 3,
+    "retained_expected_failure": true,
+    "proofs": {
+      "result_sha256_raw": "aa8638116a49eaa5e6372102b0256218405f37062386ff0b76d9eb8d10582400",
+      "start_sha256_raw": "b07fef6967245347d26c5ee27d5b560c587e947a62dcce6bc20f05098bf7f0e3",
+      "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "1c9ebd2cb161474a87b7e53394c08ae5d0793a6963622927bb8163b69045b4bb"
+    }
+  },
+  "grouped_module": {
+    "reported_methods": 62,
+    "passed": 62,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "same_guard_passed": true,
+    "latest_sort_record_upper_bound": 3,
+    "exact_new_product_count_logged": null,
+    "count_qualification": "The passing test proves the upper bound; its normal unittest log does not print an exact new product count.",
+    "proofs": {
+      "result_sha256_raw": "2a9c4a53a833989d6d7a1ac06a43f8a27511e0274bffd463502c1f2444a17900",
+      "start_sha256_raw": "f32878b075308f6b7d3c359d8342ec701cd3cc358688c3f3c616161a6469a217",
+      "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256_raw": "08d803c91f5c2d510c9b845c09903fdaec2975073fa619384821e655b22c48a7"
+    }
+  },
+  "existing_integration_modules": [
+    {
+      "module": "scripts/test_context_examples.py",
+      "reported_methods": 7,
+      "passed": 6,
+      "skipped": 1,
+      "failures": 0,
+      "errors": 0,
+      "proofs": {
+        "result_sha256_raw": "dbb443eb7797d2bfbc27c02c481130fa21494ddd0e39b5fc8081a60942bf08f8",
+        "start_sha256_raw": "8bbf23ef6417a62e182a83622c3acffc0c44b885fa18995ad785188064a47baa",
+        "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256_raw": "027ea858396c5602b5ed53bc74d5dd6694efd7a85a276e306b8bd0e96560de4a"
+      }
+    },
+    {
+      "module": "scripts/test_snapshot_packet.py",
+      "reported_methods": 19,
+      "passed": 19,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "proofs": {
+        "result_sha256_raw": "d5db73ed77bc7533e2bf41541da44d2d575bae396a9fe678b92f262c353936f2",
+        "start_sha256_raw": "bacc841a8be32a856508f4ad51429220363f1f6d8d2af392e241de06b7595905",
+        "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256_raw": "2097768d7dc9dd904284348966eadbd644a0382ed859044650a4b26ed0ce9c7d"
+      }
+    },
+    {
+      "module": "scripts/test_pump_revision.py",
+      "reported_methods": 2,
+      "passed": 2,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "proofs": {
+        "result_sha256_raw": "1a57f983a58a73c6a53f0390a8f055a08824ba2518346d40f7ceefe5dd01e5eb",
+        "start_sha256_raw": "24f591164cb806038febacfd5bfcdea8fcf4da3f7b8441a45b042163fc00a390",
+        "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256_raw": "0d42e6fe6d433d2e6df708536c65bab4f0abe82458bc4afb8715e08b75adfd99"
+      }
+    },
+    {
+      "module": "scripts/test_team_context.py",
+      "reported_methods": 2,
+      "passed": 2,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "proofs": {
+        "result_sha256_raw": "c6711346d61c38eb12aa3fafa3f25e09cd05232f39b7edbd7bd401dda2efe348",
+        "start_sha256_raw": "1f910f1376cf4dbaf52a3ecc3d3d67e08a9e4777aad6e7ff66788f6facd7d326",
+        "stdout_sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256_raw": "5b20445599fd9ac8af4d3ef45ee5feb5589db92b7dfd7ac83d74e430284589a6"
+      }
+    }
+  ],
+  "named_skip": {
+    "module": "scripts/test_context_examples.py",
+    "test": "test_metropt_actual_original_workflow_when_cached",
+    "reason": "MetroPT original ZIP not cached; optional original-source test skipped without fetching it."
+  },
+  "new_local_module_totals": {
+    "reported_methods": 92,
+    "passed": 91,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 1,
+    "original_three_guard_run_counted_separately": true
+  },
+  "limits": [
+    "No timing, peak-memory, total-machine-work, engineering usefulness, human review, company or global plant-capacity result.",
+    "Grouping creates a temporary index; empty/single-question inputs may add work. History validation, copying and output construction remain.",
+    "The public sort guard covers supplied records at one sorting boundary, not all grouping/shared-work channels or private profiles.",
+    "Old typed-evidence and unplaced-handoff captures retain their dated original hashes. No fresh retained normal producer/example or SDK recapture claim.",
+    "These saved local module results precede final integration and exact-head CI; independent receiving is a separate gate."
+  ]
+}

@@ -2560,7 +2560,7 @@
      "how": "A recovery device elsewhere does not establish coverage here. Retain drawn indications as candidates and verify which train and sink they serve, whether useful duty is already met, and remaining coincident heat. Keep temperatures, isolation, compressor-power/head-pressure effects and required site review explicit; no installation mandate or savings is inferred."
     }
    ],
-   "decision_rule": "Worth a study when the refrigeration plant runs at the same times as a duty that needs heat below the discharge or condensing temperature, and recovery does not force the head pressure up. Close it if the duties do not overlap or recovery would need a higher condensing pressure all year.",
+   "decision_rule": "Worth a study when the refrigeration plant runs at the same times as a duty that needs heat below the discharge or condensing temperature, and recovery does not force the head pressure up. Close this screening investigation if the duties do not overlap or recovery would need a higher condensing pressure all year.",
    "typical_benefit": {
     "wording": "S25 (p. 64), refrigeration compressors: \"Where economically feasible, rejected heat can be recovered from compressors and used in other facility applications, such as space heating or water heating.\" No % stated there for refrigeration (the air compressor heat recovery figures quoted under E23 do not apply).",
     "source": [

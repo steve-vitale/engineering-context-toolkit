@@ -1,0 +1,25 @@
+{
+  "schema": "alarm-basis-original-history-1",
+  "role": "Two raw original-method shared-scope files: output-projection gap, not alarm quality measurement.",
+  "head": "a916c4d21a9972fdfc78b590222d733154265615",
+  "method_sha256_raw": "5e2cb1ea94e2bb8910349540d8c5cf8276e7f7bbbf13147bd7abfda83cc6b1a3",
+  "catalog_sha256_raw": "0f2c9e6dd62e9e3c523f866eeb3bc8edcc0189d93f93981fb5d877f7c24bf9ed",
+  "input_model": {
+    "sha256_raw": "fb2455a8c2ce3cacec56ad2d7cc49a1f4a6883fe6fdba4838da9476ac21cf7f2",
+    "bytes": 4168
+  },
+  "files": {
+    "questions.json": {
+      "sha256_raw": "560f318d35a8f821beb5293e5af64197180de3c7e2b0be5db8b534ccd4672eb4",
+      "bytes": 3420
+    },
+    "screen.md": {
+      "sha256_raw": "15fd2d0ccac4326ed9963379fa57f37c42441afe855ce577584cbf7fd384ed12",
+      "bytes": 3144
+    }
+  },
+  "label_qualification": "Original source_model is the private input basename, with no absolute path. Current public-relative labels intentionally differ. Not raw-exact outputs of the current public command.",
+  "observation": "Supplied record/scope facts remained in the source model but were absent from question output. Open request alone was not failure; no duplicate-journal mandate or actual cross-site merge was observed.",
+  "source_gap_receipt_sha256": "d5a57408587a14dc6766baf707e498c420f07729832bd317bdcc8d4bac238516",
+  "preservation": "No raw argv/private paths/PID logs/full-catalog duplicate or fabricated after output published."
+}

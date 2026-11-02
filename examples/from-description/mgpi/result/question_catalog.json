@@ -132,7 +132,7 @@
     },
     "S23": {
       "title": "UK HSE, Better Alarm Handling, Chemicals Information Sheet No. 6 (CHIS6, 3/00)",
-      "url": "https://www.hse.gov.uk/PuBns/chis6.pdf",
+      "url": "https://www.hse.gov.uk/pubns/chis6.pdf",
       "license": "Crown copyright; HSE content is generally under the Open Government Licence, but verify"
     },
     "S24": {
@@ -390,7 +390,7 @@
           ]
         }
       ],
-      "decision_rule": "Worth a drive quote when the valve normally runs well throttled for long hours and most of the head is friction rather than static lift (VSDs suit friction-dominated systems best). Close it if the valve normally runs near fully open, the head is mostly static, or the pump runs few hours.",
+      "decision_rule": "Worth a drive quote when the valve normally runs well throttled for long hours and most of the head is friction rather than static lift (VSDs suit friction-dominated systems best). Close this screening investigation if the valve normally runs near fully open, the head is mostly static, or the pump runs few hours.",
       "typical_benefit": {
         "wording": "\"With rotodynamic pump installations, savings of between 30% and 50% have been achieved in many installations by installing VSDs.\" Also: \"It is estimated that 75% of pump systems are oversized, many by more than 20%.\"",
         "source": [
@@ -505,7 +505,7 @@
           ]
         }
       ],
-      "decision_rule": "Prioritize the pump if it runs at a flow 30% or more away from BEP or the bypass is used routinely; otherwise close it.",
+      "decision_rule": "Prioritize the pump if it runs at a flow 30% or more away from BEP or the bypass is used routinely; otherwise close this screening investigation.",
       "typical_benefit": {
         "wording": "Five indications: \"excessive flow noise, highly throttled flow control valves, heavy use of bypass lines, frequent replacements of bearings and seals, and intermittent pump operation.\" Prioritize pumps \"with flow rates of 30% or more from the BEP flow rates, or with system imbalances greater than 20%.\" No % saving stated.",
         "source": [
@@ -908,7 +908,7 @@
           "how": "Record power with the valve at its normal opening."
         }
       ],
-      "decision_rule": "Worth a look when the recycle or blow-off valve is open at normal throughput, or the controller margin is wider than the vendor map needs. If it only opens during upsets or turndown, close it.",
+      "decision_rule": "Worth a look when the recycle or blow-off valve is open at normal throughput, or the controller margin is wider than the vendor map needs. If it only opens during upsets or turndown, close this screening investigation; this is not an instruction to operate the valve or change surge protection.",
       "typical_benefit": {
         "wording": "Blow-off \"is a waste of energy and should be used only where necessary to avoid surge.\" Inlet throttling: \"Capacity can typically be reduced from 100 percent capacity to about 70-80 percent with reasonable energy reduction.\" No % saving stated.",
         "source": [
@@ -974,7 +974,7 @@
           "how": "Record both at normal operation."
         }
       ],
-      "decision_rule": "Consider a backpressure turbogenerator only if the station passes a constant flow of at least 3,000 lb/hr with a pressure drop of at least 100 psi (S6's condition); otherwise close it.",
+      "decision_rule": "Consider a backpressure turbogenerator only if the station passes a constant flow of at least 3,000 lb/hr with a pressure drop of at least 100 psi (S6's condition); otherwise close this screening investigation.",
       "typical_benefit": {
         "wording": "Consider when a PRV has \"constant steam flows of at least 3,000 pounds per hour (lb/hr), and when the steam pressure drop is at least 100 psi.\" Installation costs \"typically average 75% of equipment costs\".",
         "source": [
@@ -1758,7 +1758,7 @@
           "how": "Note pipe run and fouling service."
         }
       ],
-      "decision_rule": "Worth a pinch or exchanger study only when the hot stream's temperature range sits above the cold stream's with a practical approach, both run at the same time for long hours, and they are close enough to connect. Otherwise close it.",
+      "decision_rule": "Worth a pinch or exchanger study only when the hot stream's temperature range sits above the cold stream's with a practical approach, both run at the same time for long hours, and they are close enough to connect. Otherwise close this screening investigation.",
       "typical_benefit": {
         "wording": "Pinch potential \"far exceeds that from well-known conventional techniques such as heat recovery from boiler flue gas, insulation and steam trap management.\" No % stated in that section.",
         "source": [
@@ -2381,7 +2381,7 @@
           "how": "Review supply/user identity and location, source revision, pressure units and gauge/absolute reference, steam condition, coincident period/mode and design-versus-actual basis. Unknown, Boolean, wrong-asset or noncoincident candidates remain unresolved. Saturation temperature is only a conditional reference after the pressure basis/state are established; never infer actual superheated temperature from pressure alone. No new live measurement or change is instructed."
         }
       ],
-      "decision_rule": "Worth a change only if a lower-grade source can meet the needed temperature with margin, for the hours the user runs; if the steam is already the lowest grade available, close it.",
+      "decision_rule": "Worth a change only if a lower-grade source can meet the needed temperature with margin, for the hours the user runs; if the steam is already the lowest grade available, close this screening investigation.",
       "typical_benefit": {
         "wording": "Closest source wordings: pinch potential \"far exceeds that from well-known conventional techniques such as heat recovery from boiler flue gas, insulation and steam trap management\" (S19, no % stated); for letdown to the lower pressure, S6's turbogenerator condition. No source gives a number for matching steam grade to duty.",
         "source": [
@@ -3323,7 +3323,7 @@
           "how": "Note how often supply pressure moves."
         }
       ],
-      "decision_rule": "A flow slave helps when steam supply pressure swings disturb the temperature; a steady header and a well-behaved loop close it.",
+      "decision_rule": "A flow slave helps when steam supply pressure swings disturb the temperature; a steady header and a well-behaved loop close this screening investigation.",
       "typical_benefit": {
         "wording": "No public numeric source found. Report as qualitative only.",
         "source": [],
@@ -3436,7 +3436,7 @@
     {
       "id": "C8",
       "family": "safety_question",
-      "question": "Are there more alarms per operator area than an operator can handle?",
+      "question": "What do existing records show about alarm workload and response for each responsible operator scope?",
       "applies_when": {
         "anchor": {
           "isa": "^[A-Z]A(H|L|HH|LL)$"
@@ -3444,7 +3444,9 @@
         "group_by": "model"
       },
       "evidence_fields": [
-        "alarm tags (xAH/xAL/xAHH/xALL)"
+        "drawn alarm-tag candidates, not a complete configured alarm inventory",
+        "supplied record/revision and declared operator, responsibility-area, site and source scope",
+        "supplied operating-period, alarm-definition, standing/nuisance and response/review qualifiers"
       ],
       "data_requests": [
         {
@@ -3452,13 +3454,17 @@
           "where": [
             {
               "place": "records",
-              "what": "alarm journal export"
+              "what": "existing alarm philosophy/register, defined-response procedures and scoped alarm journal or performance-review records"
+            },
+            {
+              "place": "records",
+              "what": "the responsible operations/console owner and alarm-system owner; existing operator feedback and record-scope review"
             }
           ],
-          "how": "Count alarms per 10 minutes in normal operation and after upsets."
+          "how": "Start with existing approved records. Confirm each record's operator responsibility, console/area, site/source, revision and operating periods. Distinguish presented alarms from status events, acknowledgements and returns to normal; retain journal filters, time basis and gaps. Review representative normal and available upset periods separately, including standing count/duration, nuisance patterns, required responses and operator feedback. Reuse a record when its reviewed scope covers several alarms or units; matching labels alone do not establish coverage. Acknowledge available evidence and ask only for missing records, scope clarification or interpretation. Record unavailable upset evidence as a limitation."
         }
       ],
-      "decision_rule": "Rationalize when the long-term rate or the upset flood exceeds the HSE guidance.",
+      "decision_rule": "Agree the next review with the operations and alarm-system owners using the site alarm philosophy, operator concerns and unresolved evidence. Existing suitable records can be acknowledged without a new export or compulsory project. The quoted historical rate targets guide investigation; they do not establish alarm quality. Keep partial answers and remaining needs in the company records process or context register.",
       "typical_benefit": {
         "wording": "HSE: \"the long-term average alarm rate during normal operation should be no more than one every ten minutes; and no more than ten displayed in the first ten minutes following a major plant upset.\"",
         "source": [
@@ -3466,7 +3472,59 @@
         ],
         "arc": null
       },
-      "limits": "ISA-18.2 / IEC 62682 are not openly accessible; HSE CHIS6 is the citable open alternative."
+      "limits": "Drawing tags are candidates, not a complete alarm inventory or proof of operator workload. Scope, coverage and approval fields remain supplied claims; this screen calculates no alarm metrics, matches no records automatically, assigns no ownership and authorizes no operating changes. A quiet screen does not establish alarm absence or adequacy. CHIS6 is introductory guidance dated March 2000, not a replacement standard or universal compliance threshold. Current HSE guidance identifies BS EN 62682 as the benchmark: https://www.hse.gov.uk/eci/functional.htm. Review against the site's applicable requirements.",
+      "evidence_show_fields": [
+        "record_reference",
+        "record_revision",
+        "operator_role",
+        "console_id",
+        "responsibility_area",
+        "period_start",
+        "period_end",
+        "operating_mode",
+        "journal_definition",
+        "standing_alarm_count",
+        "standing_duration_basis",
+        "underlying_claim_verified",
+        "journal_available",
+        "record_readable",
+        "normal_presentations_per_10min",
+        "normal_period_hours",
+        "upset_first10_presentations",
+        "required_response_document",
+        "staffing_basis",
+        "indication_class",
+        "operator_action_required",
+        "source_document",
+        "record_console_id",
+        "current_configuration_revision",
+        "period_coverage_review",
+        "site_namespace",
+        "source_namespace",
+        "workload_scope",
+        "plant_truth",
+        "record_site_namespace",
+        "record_source_namespace",
+        "record_operator_role",
+        "record_subjects",
+        "record_units",
+        "record_workload_scope",
+        "record_coverage",
+        "record_review_status",
+        "record_review_basis",
+        "record_period_basis",
+        "record_owner",
+        "next_recipient",
+        "alarm_philosophy_reference",
+        "journal_filter_basis",
+        "journal_time_zone",
+        "record_data_gaps",
+        "operator_feedback_reference",
+        "nuisance_alarm_basis",
+        "priority_basis",
+        "required_response_basis",
+        "record_coverage_limitations"
+      ]
     },
     {
       "id": "C9",
@@ -4746,7 +4804,7 @@
           "how": "A recovery device elsewhere does not establish coverage here. Retain drawn indications as candidates and verify which train and sink they serve, whether useful duty is already met, and remaining coincident heat. Keep temperatures, isolation, compressor-power/head-pressure effects and required site review explicit; no installation mandate or savings is inferred."
         }
       ],
-      "decision_rule": "Worth a study when the refrigeration plant runs at the same times as a duty that needs heat below the discharge or condensing temperature, and recovery does not force the head pressure up. Close it if the duties do not overlap or recovery would need a higher condensing pressure all year.",
+      "decision_rule": "Worth a study when the refrigeration plant runs at the same times as a duty that needs heat below the discharge or condensing temperature, and recovery does not force the head pressure up. Close this screening investigation if the duties do not overlap or recovery would need a higher condensing pressure all year.",
       "typical_benefit": {
         "wording": "S25 (p. 64), refrigeration compressors: \"Where economically feasible, rejected heat can be recovered from compressors and used in other facility applications, such as space heating or water heating.\" No % stated there for refrigeration (the air compressor heat recovery figures quoted under E23 do not apply).",
         "source": [

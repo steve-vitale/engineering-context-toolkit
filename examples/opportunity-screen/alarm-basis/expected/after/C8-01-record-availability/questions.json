@@ -1,0 +1,368 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/alarm-basis/models/C8-01-record-availability.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E1",
+  "E2",
+  "E3",
+  "E4",
+  "E5",
+  "E6",
+  "E7",
+  "E8",
+  "E9",
+  "E10",
+  "E11",
+  "E12",
+  "E13",
+  "E14",
+  "E15",
+  "E16",
+  "E17",
+  "E18",
+  "E19",
+  "E20",
+  "E21",
+  "E22",
+  "E23",
+  "E24",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "C1",
+  "C2",
+  "C3",
+  "C4",
+  "C5",
+  "C6",
+  "C7",
+  "C10",
+  "C8",
+  "C9",
+  "E25",
+  "E26",
+  "E27",
+  "E28",
+  "E29",
+  "E30",
+  "E31",
+  "E32",
+  "H5",
+  "H6",
+  "C11",
+  "C12"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "safety_question": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "C8@model",
+   "question_id": "C8",
+   "family": "safety_question",
+   "question": "What do existing records show about alarm workload and response for each responsible operator scope?",
+   "about": "PAH-101, LAHH-201",
+   "assets": [
+    {
+     "id": "PAH-101",
+     "tag": "PAH-101"
+    },
+    {
+     "id": "LAHH-201",
+     "tag": "LAHH-201"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "PAH-101",
+     "tag": "PAH-101",
+     "text": "instrument PAH-101 reads \"PAH-101 Fictional drawnalarmcandidate; notinstalledconfiguration\" at U-A",
+     "field": "instruments[PAH-101]"
+    },
+    {
+     "role": "trigger",
+     "id": "LAHH-201",
+     "tag": "LAHH-201",
+     "text": "instrument LAHH-201 reads \"LAHH-201 Fictional drawnalarmcandidate; notinstalledconfiguration\" at U-B",
+     "field": "instruments[LAHH-201]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PAH-101",
+     "tag": "PAH-101",
+     "text": "PAH-101 record_reference = null; blank; meaning and suitability unverified",
+     "field": "instruments[PAH-101].facts.record_reference"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PAH-101",
+     "tag": "PAH-101",
+     "text": "PAH-101 record_revision = null; blank; meaning and suitability unverified",
+     "field": "instruments[PAH-101].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PAH-101",
+     "tag": "PAH-101",
+     "text": "PAH-101 operator_role = null; blank; meaning and suitability unverified",
+     "field": "instruments[PAH-101].facts.operator_role"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PAH-101",
+     "tag": "PAH-101",
+     "text": "PAH-101 console_id = null; blank; meaning and suitability unverified",
+     "field": "instruments[PAH-101].facts.console_id"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PAH-101",
+     "tag": "PAH-101",
+     "text": "PAH-101 responsibility_area = null; blank; meaning and suitability unverified",
+     "field": "instruments[PAH-101].facts.responsibility_area"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PAH-101",
+     "tag": "PAH-101",
+     "text": "PAH-101 period_start = null; blank; meaning and suitability unverified",
+     "field": "instruments[PAH-101].facts.period_start"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PAH-101",
+     "tag": "PAH-101",
+     "text": "PAH-101 period_end = null; blank; meaning and suitability unverified",
+     "field": "instruments[PAH-101].facts.period_end"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PAH-101",
+     "tag": "PAH-101",
+     "text": "PAH-101 operating_mode = null; blank; meaning and suitability unverified",
+     "field": "instruments[PAH-101].facts.operating_mode"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PAH-101",
+     "tag": "PAH-101",
+     "text": "PAH-101 journal_definition = null; blank; meaning and suitability unverified",
+     "field": "instruments[PAH-101].facts.journal_definition"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PAH-101",
+     "tag": "PAH-101",
+     "text": "PAH-101 standing_alarm_count = null; blank; meaning and suitability unverified",
+     "field": "instruments[PAH-101].facts.standing_alarm_count"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PAH-101",
+     "tag": "PAH-101",
+     "text": "PAH-101 standing_duration_basis = null; blank; meaning and suitability unverified",
+     "field": "instruments[PAH-101].facts.standing_duration_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PAH-101",
+     "tag": "PAH-101",
+     "text": "PAH-101 underlying_claim_verified = false; present; meaning and suitability unverified",
+     "field": "instruments[PAH-101].facts.underlying_claim_verified"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "LAHH-201",
+     "tag": "LAHH-201",
+     "text": "LAHH-201 record_reference = \"fictional:alarm-report-B\"; present; meaning and suitability unverified",
+     "field": "instruments[LAHH-201].facts.record_reference"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "LAHH-201",
+     "tag": "LAHH-201",
+     "text": "LAHH-201 record_revision = \"r1\"; present; meaning and suitability unverified",
+     "field": "instruments[LAHH-201].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "LAHH-201",
+     "tag": "LAHH-201",
+     "text": "LAHH-201 operator_role = null; blank; meaning and suitability unverified",
+     "field": "instruments[LAHH-201].facts.operator_role"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "LAHH-201",
+     "tag": "LAHH-201",
+     "text": "LAHH-201 console_id = null; blank; meaning and suitability unverified",
+     "field": "instruments[LAHH-201].facts.console_id"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "LAHH-201",
+     "tag": "LAHH-201",
+     "text": "LAHH-201 responsibility_area = null; blank; meaning and suitability unverified",
+     "field": "instruments[LAHH-201].facts.responsibility_area"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "LAHH-201",
+     "tag": "LAHH-201",
+     "text": "LAHH-201 period_start = null; blank; meaning and suitability unverified",
+     "field": "instruments[LAHH-201].facts.period_start"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "LAHH-201",
+     "tag": "LAHH-201",
+     "text": "LAHH-201 period_end = null; blank; meaning and suitability unverified",
+     "field": "instruments[LAHH-201].facts.period_end"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "LAHH-201",
+     "tag": "LAHH-201",
+     "text": "LAHH-201 operating_mode = null; blank; meaning and suitability unverified",
+     "field": "instruments[LAHH-201].facts.operating_mode"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "LAHH-201",
+     "tag": "LAHH-201",
+     "text": "LAHH-201 journal_definition = null; blank; meaning and suitability unverified",
+     "field": "instruments[LAHH-201].facts.journal_definition"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "LAHH-201",
+     "tag": "LAHH-201",
+     "text": "LAHH-201 standing_alarm_count = null; blank; meaning and suitability unverified",
+     "field": "instruments[LAHH-201].facts.standing_alarm_count"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "LAHH-201",
+     "tag": "LAHH-201",
+     "text": "LAHH-201 standing_duration_basis = null; blank; meaning and suitability unverified",
+     "field": "instruments[LAHH-201].facts.standing_duration_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "LAHH-201",
+     "tag": "LAHH-201",
+     "text": "LAHH-201 underlying_claim_verified = false; present; meaning and suitability unverified",
+     "field": "instruments[LAHH-201].facts.underlying_claim_verified"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "LAHH-201",
+     "tag": "LAHH-201",
+     "text": "LAHH-201 journal_available = true; present; meaning and suitability unverified",
+     "field": "instruments[LAHH-201].facts.journal_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "LAHH-201",
+     "tag": "LAHH-201",
+     "text": "LAHH-201 record_readable = false; present; meaning and suitability unverified",
+     "field": "instruments[LAHH-201].facts.record_readable"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Alarm rate, floods and standing alarms",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: existing alarm philosophy/register, defined-response procedures and scoped alarm journal or performance-review records",
+      "site records: the responsible operations/console owner and alarm-system owner; existing operator feedback and record-scope review"
+     ],
+     "how": "Start with existing approved records. Confirm each record's operator responsibility, console/area, site/source, revision and operating periods. Distinguish presented alarms from status events, acknowledgements and returns to normal; retain journal filters, time basis and gaps. Review representative normal and available upset periods separately, including standing count/duration, nuisance patterns, required responses and operator feedback. Reuse a record when its reviewed scope covers several alarms or units; matching labels alone do not establish coverage. Acknowledge available evidence and ask only for missing records, scope clarification or interpretation. Record unavailable upset evidence as a limitation."
+    }
+   ],
+   "decision_rule": "Agree the next review with the operations and alarm-system owners using the site alarm philosophy, operator concerns and unresolved evidence. Existing suitable records can be acknowledged without a new export or compulsory project. The quoted historical rate targets guide investigation; they do not establish alarm quality. Keep partial answers and remaining needs in the company records process or context register.",
+   "typical_benefit": {
+    "wording": "HSE: \"the long-term average alarm rate during normal operation should be no more than one every ten minutes; and no more than ten displayed in the first ten minutes following a major plant upset.\"",
+    "source": [
+     "S23"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S23: UK HSE, Better Alarm Handling, Chemicals Information Sheet No. 6 (CHIS6, 3/00)"
+    ]
+   },
+   "limits": "Drawing tags are candidates, not a complete alarm inventory or proof of operator workload. Scope, coverage and approval fields remain supplied claims; this screen calculates no alarm metrics, matches no records automatically, assigns no ownership and authorizes no operating changes. A quiet screen does not establish alarm absence or adequacy. CHIS6 is introductory guidance dated March 2000, not a replacement standard or universal compliance threshold. Current HSE guidance identifies BS EN 62682 as the benchmark: https://www.hse.gov.uk/eci/functional.htm. Review against the site's applicable requirements.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [
+  {
+   "question_id": "C2",
+   "reason": "the model holds no controllers; give a loop list with --loops (controller,measurement,output) to check this"
+  },
+  {
+   "question_id": "C6",
+   "reason": "the model holds no controllers; give a loop list with --loops to check this"
+  }
+ ],
+ "did_not_fire": [
+  "E1",
+  "E2",
+  "E3",
+  "E4",
+  "E5",
+  "E6",
+  "E7",
+  "E8",
+  "E9",
+  "E10",
+  "E11",
+  "E12",
+  "E13",
+  "E14",
+  "E15",
+  "E16",
+  "E17",
+  "E18",
+  "E19",
+  "E20",
+  "E21",
+  "E22",
+  "E23",
+  "E24",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "C1",
+  "C3",
+  "C4",
+  "C5",
+  "C7",
+  "C10",
+  "C9",
+  "E25",
+  "E26",
+  "E27",
+  "E28",
+  "E29",
+  "E30",
+  "E31",
+  "E32",
+  "H5",
+  "H6",
+  "C11",
+  "C12"
+ ],
+ "left_out": {}
+}

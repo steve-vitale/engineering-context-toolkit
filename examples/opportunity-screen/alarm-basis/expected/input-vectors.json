@@ -1,0 +1,2113 @@
+{
+  "schema": "alarm-basis-literal-vectors-1",
+  "role": "Derived public-safe oracle; values/types/states/locators exact accepted vector-v2 data; private path metadata omitted, not a raw original-oracle copy.",
+  "source_data_sha256_raw": "111797c75fc1858ab450567d2bd6f032292ed6e739a697716333ea1303831606",
+  "cases": [
+    {
+      "case": "C8-01-record-availability",
+      "model": "models/C8-01-record-availability.json",
+      "model_sha256_raw": "dd2386de00081ff07a5f6721b6d4b380f60eed9057451b8d1b631b61fb74f8e9",
+      "vectors": [
+        {
+          "asset_id": "PAH-101",
+          "name": "record_reference",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.record_reference"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_revision",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.record_revision"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "operator_role",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.operator_role"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "console_id",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.console_id"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "responsibility_area",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.responsibility_area"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "period_start",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.period_start"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "period_end",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.period_end"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "operating_mode",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.operating_mode"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "journal_definition",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.journal_definition"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "standing_alarm_count",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.standing_alarm_count"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "standing_duration_basis",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.standing_duration_basis"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "underlying_claim_verified",
+          "value": false,
+          "type": "bool",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.underlying_claim_verified"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_reference",
+          "value": "fictional:alarm-report-B",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_reference"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_revision",
+          "value": "r1",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_revision"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "operator_role",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.operator_role"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "console_id",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.console_id"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "responsibility_area",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.responsibility_area"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "period_start",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.period_start"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "period_end",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.period_end"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "operating_mode",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.operating_mode"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "journal_definition",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.journal_definition"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "standing_alarm_count",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.standing_alarm_count"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "standing_duration_basis",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.standing_duration_basis"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "underlying_claim_verified",
+          "value": false,
+          "type": "bool",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.underlying_claim_verified"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "journal_available",
+          "value": true,
+          "type": "bool",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.journal_available"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_readable",
+          "value": false,
+          "type": "bool",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_readable"
+        }
+      ]
+    },
+    {
+      "case": "C8-02-normal-versus-upset",
+      "model": "models/C8-02-normal-versus-upset.json",
+      "model_sha256_raw": "b957a5ae208aa55eaf0953edf11b570584667b6b7b95d1bcc4c5ec686ec08302",
+      "vectors": [
+        {
+          "asset_id": "PAH-101",
+          "name": "record_reference",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.record_reference"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_revision",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.record_revision"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "operator_role",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.operator_role"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "console_id",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.console_id"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "responsibility_area",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.responsibility_area"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "period_start",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.period_start"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "period_end",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.period_end"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "operating_mode",
+          "value": "normal snapshot",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.operating_mode"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "journal_definition",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.journal_definition"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "standing_alarm_count",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.standing_alarm_count"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "standing_duration_basis",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.standing_duration_basis"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "underlying_claim_verified",
+          "value": false,
+          "type": "bool",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.underlying_claim_verified"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "normal_presentations_per_10min",
+          "value": 1,
+          "type": "int",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.normal_presentations_per_10min"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "normal_period_hours",
+          "value": 0.1666666667,
+          "type": "float",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.normal_period_hours"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "upset_first10_presentations",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.upset_first10_presentations"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_reference",
+          "value": "fictional:alarm-summary-B",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_reference"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_revision",
+          "value": "r2",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_revision"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "operator_role",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.operator_role"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "console_id",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.console_id"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "responsibility_area",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.responsibility_area"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "period_start",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.period_start"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "period_end",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.period_end"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "operating_mode",
+          "value": "normal and declaredmajorupset",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.operating_mode"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "journal_definition",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.journal_definition"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "standing_alarm_count",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.standing_alarm_count"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "standing_duration_basis",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.standing_duration_basis"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "underlying_claim_verified",
+          "value": false,
+          "type": "bool",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.underlying_claim_verified"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "normal_presentations_per_10min",
+          "value": 1,
+          "type": "int",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.normal_presentations_per_10min"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "normal_period_hours",
+          "value": 720,
+          "type": "int",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.normal_period_hours"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "upset_first10_presentations",
+          "value": 25,
+          "type": "int",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.upset_first10_presentations"
+        }
+      ]
+    },
+    {
+      "case": "C8-03-standing-and-response",
+      "model": "models/C8-03-standing-and-response.json",
+      "model_sha256_raw": "7abdd4609e3cbce4f3549f81b0eaccaaa0e3e16134a3423f2494988bfc8bcb7a",
+      "vectors": [
+        {
+          "asset_id": "PAH-101",
+          "name": "record_reference",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.record_reference"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_revision",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.record_revision"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "operator_role",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.operator_role"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "console_id",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.console_id"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "responsibility_area",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.responsibility_area"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "period_start",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.period_start"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "period_end",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.period_end"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "operating_mode",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.operating_mode"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "journal_definition",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.journal_definition"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "standing_alarm_count",
+          "value": 12,
+          "type": "int",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.standing_alarm_count"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "standing_duration_basis",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.standing_duration_basis"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "underlying_claim_verified",
+          "value": false,
+          "type": "bool",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.underlying_claim_verified"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "normal_presentations_per_10min",
+          "value": 0,
+          "type": "int",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.normal_presentations_per_10min"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "required_response_document",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.required_response_document"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_reference",
+          "value": "fictional:standing-summary-B",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_reference"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_revision",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.record_revision"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "operator_role",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.operator_role"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "console_id",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.console_id"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "responsibility_area",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.responsibility_area"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "period_start",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.period_start"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "period_end",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.period_end"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "operating_mode",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.operating_mode"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "journal_definition",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.journal_definition"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "standing_alarm_count",
+          "value": 0,
+          "type": "int",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.standing_alarm_count"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "standing_duration_basis",
+          "value": "fictional observedperiod A00\u2013A01; clockbasisunknown",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.standing_duration_basis"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "underlying_claim_verified",
+          "value": false,
+          "type": "bool",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.underlying_claim_verified"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "normal_presentations_per_10min",
+          "value": 0,
+          "type": "int",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.normal_presentations_per_10min"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "required_response_document",
+          "value": "fictional:response-list-B",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.required_response_document"
+        }
+      ]
+    },
+    {
+      "case": "C8-04-operator-scope",
+      "model": "models/C8-04-operator-scope.json",
+      "model_sha256_raw": "a344a2838226823721cf6e2c8d25e9becd41046a89375bd032022e88f261b260",
+      "vectors": [
+        {
+          "asset_id": "PAH-101",
+          "name": "record_reference",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.record_reference"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_revision",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.record_revision"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "operator_role",
+          "value": "shared-console-role",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.operator_role"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "console_id",
+          "value": "CON-A",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.console_id"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "responsibility_area",
+          "value": "AREA-A + AREA-B",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.responsibility_area"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "period_start",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.period_start"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "period_end",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.period_end"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "operating_mode",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.operating_mode"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "journal_definition",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.journal_definition"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "standing_alarm_count",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.standing_alarm_count"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "standing_duration_basis",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.standing_duration_basis"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "underlying_claim_verified",
+          "value": false,
+          "type": "bool",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.underlying_claim_verified"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "normal_presentations_per_10min",
+          "value": 2,
+          "type": "int",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.normal_presentations_per_10min"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "staffing_basis",
+          "value": "one role responsible; shiftcoverage unknown",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.staffing_basis"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_reference",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.record_reference"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_revision",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.record_revision"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "operator_role",
+          "value": "separate-console-role",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.operator_role"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "console_id",
+          "value": "CON-B",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.console_id"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "responsibility_area",
+          "value": "AREA-B",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.responsibility_area"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "period_start",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.period_start"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "period_end",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.period_end"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "operating_mode",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.operating_mode"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "journal_definition",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.journal_definition"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "standing_alarm_count",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.standing_alarm_count"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "standing_duration_basis",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.standing_duration_basis"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "underlying_claim_verified",
+          "value": false,
+          "type": "bool",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.underlying_claim_verified"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "normal_presentations_per_10min",
+          "value": 1,
+          "type": "int",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.normal_presentations_per_10min"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "staffing_basis",
+          "value": "separate role claim; coverageunknown",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.staffing_basis"
+        }
+      ]
+    },
+    {
+      "case": "C8-05-alarm-definition",
+      "model": "models/C8-05-alarm-definition.json",
+      "model_sha256_raw": "7ebf68c6689698432a1003a5d27d5fa1b00389cc6bfeb01b51765daa743eccdc",
+      "vectors": [
+        {
+          "asset_id": "PAH-101",
+          "name": "record_reference",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.record_reference"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_revision",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.record_revision"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "operator_role",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.operator_role"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "console_id",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.console_id"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "responsibility_area",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.responsibility_area"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "period_start",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.period_start"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "period_end",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.period_end"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "operating_mode",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.operating_mode"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "journal_definition",
+          "value": "includes statuses and acknowledgements",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.journal_definition"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "standing_alarm_count",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.standing_alarm_count"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "standing_duration_basis",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.standing_duration_basis"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "underlying_claim_verified",
+          "value": false,
+          "type": "bool",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.underlying_claim_verified"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "indication_class",
+          "value": "process-status-only",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.indication_class"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "operator_action_required",
+          "value": false,
+          "type": "bool",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.operator_action_required"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "source_document",
+          "value": "fictional:status-register-A",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.source_document"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_reference",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.record_reference"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_revision",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.record_revision"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "operator_role",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.operator_role"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "console_id",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.console_id"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "responsibility_area",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.responsibility_area"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "period_start",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.period_start"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "period_end",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.period_end"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "operating_mode",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.operating_mode"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "journal_definition",
+          "value": "declared operatorpresentations; filtercoverageunknown",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.journal_definition"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "standing_alarm_count",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.standing_alarm_count"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "standing_duration_basis",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.standing_duration_basis"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "underlying_claim_verified",
+          "value": false,
+          "type": "bool",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.underlying_claim_verified"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "indication_class",
+          "value": "operator-alarm",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.indication_class"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "operator_action_required",
+          "value": true,
+          "type": "bool",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.operator_action_required"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "source_document",
+          "value": "fictional:alarm-register-B",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.source_document"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "required_response_document",
+          "value": "fictional:response-B",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.required_response_document"
+        }
+      ]
+    },
+    {
+      "case": "C8-06-foreign-versus-matched-record",
+      "model": "models/C8-06-foreign-versus-matched-record.json",
+      "model_sha256_raw": "7a0274389f48a33f81823069d3b1b852dfc5d2baf0a791b3e80e98202647acc4",
+      "vectors": [
+        {
+          "asset_id": "PAH-101",
+          "name": "record_reference",
+          "value": "fictional:foreign-alarm-journal",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_reference"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_revision",
+          "value": "r-old",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_revision"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "operator_role",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.operator_role"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "console_id",
+          "value": "CON-A",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.console_id"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "responsibility_area",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.responsibility_area"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "period_start",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.period_start"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "period_end",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.period_end"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "operating_mode",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.operating_mode"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "journal_definition",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.journal_definition"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "standing_alarm_count",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.standing_alarm_count"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "standing_duration_basis",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.standing_duration_basis"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "underlying_claim_verified",
+          "value": false,
+          "type": "bool",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.underlying_claim_verified"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_console_id",
+          "value": "CON-OTHER",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_console_id"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "current_configuration_revision",
+          "value": "r-new",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.current_configuration_revision"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "normal_presentations_per_10min",
+          "value": 0,
+          "type": "int",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.normal_presentations_per_10min"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_reference",
+          "value": "fictional:matching-alarm-journal",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_reference"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_revision",
+          "value": "r-new",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_revision"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "operator_role",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.operator_role"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "console_id",
+          "value": "CON-B",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.console_id"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "responsibility_area",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.responsibility_area"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "period_start",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.period_start"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "period_end",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.period_end"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "operating_mode",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.operating_mode"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "journal_definition",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.journal_definition"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "standing_alarm_count",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.standing_alarm_count"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "standing_duration_basis",
+          "value": null,
+          "type": "NoneType",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.standing_duration_basis"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "underlying_claim_verified",
+          "value": false,
+          "type": "bool",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.underlying_claim_verified"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_console_id",
+          "value": "CON-B",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_console_id"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "current_configuration_revision",
+          "value": "r-new",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.current_configuration_revision"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "normal_presentations_per_10min",
+          "value": 0,
+          "type": "int",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.normal_presentations_per_10min"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "period_coverage_review",
+          "value": "authorillustrated only; notcompanyaccepted",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.period_coverage_review"
+        }
+      ]
+    },
+    {
+      "case": "C8-07-no-drawn-alarm-tags",
+      "model": "models/C8-07-no-drawn-alarm-tags.json",
+      "model_sha256_raw": "18c83dae2a9ecb003ba31a96559d4951a564ad5729ae11aecb5e339643c0bf01",
+      "vectors": []
+    },
+    {
+      "case": "C8-S01-shared-operator-record",
+      "model": "models/C8-S01-shared-operator-record.json",
+      "model_sha256_raw": "fb2455a8c2ce3cacec56ad2d7cc49a1f4a6883fe6fdba4838da9476ac21cf7f2",
+      "vectors": [
+        {
+          "asset_id": "PAH-101",
+          "name": "site_namespace",
+          "value": "fictional-site-A",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.site_namespace"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "source_namespace",
+          "value": "fictional-source-A",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.source_namespace"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "console_id",
+          "value": "CON-1",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.console_id"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "operator_role",
+          "value": "console-operator",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.operator_role"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "workload_scope",
+          "value": "fictional-site-A/CON-1/console-operator",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.workload_scope"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "underlying_claim_verified",
+          "value": false,
+          "type": "bool",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.underlying_claim_verified"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "plant_truth",
+          "value": "unknown",
+          "type": "str",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.plant_truth"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_reference",
+          "value": "fictional:shared-workload-report-A",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_reference"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_revision",
+          "value": "r1",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_revision"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_site_namespace",
+          "value": "fictional-site-A",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_site_namespace"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_source_namespace",
+          "value": "fictional-source-A",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_source_namespace"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_console_id",
+          "value": "CON-1",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_console_id"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_operator_role",
+          "value": "console-operator",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_operator_role"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_subjects",
+          "value": [
+            "PAH-101",
+            "LAHH-201"
+          ],
+          "type": "list",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_subjects"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_units",
+          "value": [
+            "U-A",
+            "U-B"
+          ],
+          "type": "list",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_units"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_workload_scope",
+          "value": "fictional-site-A/CON-1/console-operator",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_workload_scope"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_coverage",
+          "value": "one record claims the complete shared responsibility across both units",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_coverage"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_review_status",
+          "value": "AUTHOR-ILLUSTRATED approved for this scoped review; not actual company approval",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_review_status"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_review_basis",
+          "value": "Fictional operations and alarm-owner review says this record covers both named units and subjects; suitability and source authority remain supplied claims",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_review_basis"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_period_basis",
+          "value": "declared normal and upset record periods, identities to be reviewed; no fixed duration or computed metric",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_period_basis"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_owner",
+          "value": "fictional operations-console owner A",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_owner"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "next_recipient",
+          "value": "fictional operations-console owner A with alarm-system owner",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.next_recipient"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "site_namespace",
+          "value": "fictional-site-A",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.site_namespace"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "source_namespace",
+          "value": "fictional-source-A",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.source_namespace"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "console_id",
+          "value": "CON-1",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.console_id"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "operator_role",
+          "value": "console-operator",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.operator_role"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "workload_scope",
+          "value": "fictional-site-A/CON-1/console-operator",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.workload_scope"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "underlying_claim_verified",
+          "value": false,
+          "type": "bool",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.underlying_claim_verified"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "plant_truth",
+          "value": "unknown",
+          "type": "str",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.plant_truth"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_reference",
+          "value": "fictional:shared-workload-report-A",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_reference"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_revision",
+          "value": "r1",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_revision"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_site_namespace",
+          "value": "fictional-site-A",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_site_namespace"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_source_namespace",
+          "value": "fictional-source-A",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_source_namespace"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_console_id",
+          "value": "CON-1",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_console_id"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_operator_role",
+          "value": "console-operator",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_operator_role"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_subjects",
+          "value": [
+            "PAH-101",
+            "LAHH-201"
+          ],
+          "type": "list",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_subjects"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_units",
+          "value": [
+            "U-A",
+            "U-B"
+          ],
+          "type": "list",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_units"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_workload_scope",
+          "value": "fictional-site-A/CON-1/console-operator",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_workload_scope"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_coverage",
+          "value": "one record claims the complete shared responsibility across both units",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_coverage"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_review_status",
+          "value": "AUTHOR-ILLUSTRATED approved for this scoped review; not actual company approval",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_review_status"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_review_basis",
+          "value": "Fictional operations and alarm-owner review says this record covers both named units and subjects; suitability and source authority remain supplied claims",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_review_basis"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_period_basis",
+          "value": "declared normal and upset record periods, identities to be reviewed; no fixed duration or computed metric",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_period_basis"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_owner",
+          "value": "fictional operations-console owner A",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_owner"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "next_recipient",
+          "value": "fictional operations-console owner A with alarm-system owner",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.next_recipient"
+        }
+      ]
+    },
+    {
+      "case": "C8-S02-repeated-label-foreign-scopes",
+      "model": "models/C8-S02-repeated-label-foreign-scopes.json",
+      "model_sha256_raw": "6be050ad9e9ba17d6c8d4a615ceb5328610b4fbd25b64c1d0fb02e4940b450df",
+      "vectors": [
+        {
+          "asset_id": "PAH-101",
+          "name": "site_namespace",
+          "value": "fictional-site-A",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.site_namespace"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "source_namespace",
+          "value": "fictional-source-A",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.source_namespace"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "console_id",
+          "value": "CON-1",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.console_id"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "operator_role",
+          "value": "console-operator",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.operator_role"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "workload_scope",
+          "value": "fictional-site-A/CON-1/console-operator",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.workload_scope"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "underlying_claim_verified",
+          "value": false,
+          "type": "bool",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.underlying_claim_verified"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "plant_truth",
+          "value": "unknown",
+          "type": "str",
+          "state": "blank",
+          "field": "instruments[PAH-101].facts.plant_truth"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_reference",
+          "value": "fictional:workload-report-B",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_reference"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_revision",
+          "value": "r1",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_revision"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_site_namespace",
+          "value": "fictional-site-B",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_site_namespace"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_source_namespace",
+          "value": "fictional-source-B",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_source_namespace"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_console_id",
+          "value": "CON-1",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_console_id"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_operator_role",
+          "value": "console-operator",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_operator_role"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_workload_scope",
+          "value": "fictional-site-B/CON-1/console-operator",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_workload_scope"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_coverage",
+          "value": "provided record belongs to the other site/source scope despite matching console and role labels",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_coverage"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_review_status",
+          "value": "scope association unresolved; not actual company approval",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_review_status"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "record_owner",
+          "value": "fictional owner fictional-site-B",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.record_owner"
+        },
+        {
+          "asset_id": "PAH-101",
+          "name": "next_recipient",
+          "value": "fictional operations-console owner fictional-site-A with alarm-system owner",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[PAH-101].facts.next_recipient"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "site_namespace",
+          "value": "fictional-site-B",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.site_namespace"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "source_namespace",
+          "value": "fictional-source-B",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.source_namespace"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "console_id",
+          "value": "CON-1",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.console_id"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "operator_role",
+          "value": "console-operator",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.operator_role"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "workload_scope",
+          "value": "fictional-site-B/CON-1/console-operator",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.workload_scope"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "underlying_claim_verified",
+          "value": false,
+          "type": "bool",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.underlying_claim_verified"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "plant_truth",
+          "value": "unknown",
+          "type": "str",
+          "state": "blank",
+          "field": "instruments[LAHH-201].facts.plant_truth"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_reference",
+          "value": "fictional:workload-report-A",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_reference"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_revision",
+          "value": "r1",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_revision"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_site_namespace",
+          "value": "fictional-site-A",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_site_namespace"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_source_namespace",
+          "value": "fictional-source-A",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_source_namespace"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_console_id",
+          "value": "CON-1",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_console_id"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_operator_role",
+          "value": "console-operator",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_operator_role"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_workload_scope",
+          "value": "fictional-site-A/CON-1/console-operator",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_workload_scope"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_coverage",
+          "value": "provided record belongs to the other site/source scope despite matching console and role labels",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_coverage"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_review_status",
+          "value": "scope association unresolved; not actual company approval",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_review_status"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "record_owner",
+          "value": "fictional owner fictional-site-A",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.record_owner"
+        },
+        {
+          "asset_id": "LAHH-201",
+          "name": "next_recipient",
+          "value": "fictional operations-console owner fictional-site-B with alarm-system owner",
+          "type": "str",
+          "state": "present",
+          "field": "instruments[LAHH-201].facts.next_recipient"
+        }
+      ]
+    }
+  ]
+}

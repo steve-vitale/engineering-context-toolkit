@@ -1,0 +1,185 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "C8-S01-shared-operator-record.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E1",
+  "E2",
+  "E3",
+  "E4",
+  "E5",
+  "E6",
+  "E7",
+  "E8",
+  "E9",
+  "E10",
+  "E11",
+  "E12",
+  "E13",
+  "E14",
+  "E15",
+  "E16",
+  "E17",
+  "E18",
+  "E19",
+  "E20",
+  "E21",
+  "E22",
+  "E23",
+  "E24",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "C1",
+  "C2",
+  "C3",
+  "C4",
+  "C5",
+  "C6",
+  "C7",
+  "C10",
+  "C8",
+  "C9",
+  "E25",
+  "E26",
+  "E27",
+  "E28",
+  "E29",
+  "E30",
+  "E31",
+  "E32",
+  "H5",
+  "H6",
+  "C11",
+  "C12"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "safety_question": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "C8@model",
+   "question_id": "C8",
+   "family": "safety_question",
+   "question": "Are there more alarms per operator area than an operator can handle?",
+   "about": "PAH-101, LAHH-201",
+   "assets": [
+    {
+     "id": "PAH-101",
+     "tag": "PAH-101"
+    },
+    {
+     "id": "LAHH-201",
+     "tag": "LAHH-201"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "PAH-101",
+     "tag": "PAH-101",
+     "text": "instrument PAH-101 reads \"PAH-101 Fictional alarm candidate, not installed configuration\" at U-A",
+     "field": "instruments[PAH-101]"
+    },
+    {
+     "role": "trigger",
+     "id": "LAHH-201",
+     "tag": "LAHH-201",
+     "text": "instrument LAHH-201 reads \"LAHH-201 Fictional alarm candidate, not installed configuration\" at U-B",
+     "field": "instruments[LAHH-201]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Alarm rate, floods and standing alarms",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: alarm journal export"
+     ],
+     "how": "Count alarms per 10 minutes in normal operation and after upsets."
+    }
+   ],
+   "decision_rule": "Rationalize when the long-term rate or the upset flood exceeds the HSE guidance.",
+   "typical_benefit": {
+    "wording": "HSE: \"the long-term average alarm rate during normal operation should be no more than one every ten minutes; and no more than ten displayed in the first ten minutes following a major plant upset.\"",
+    "source": [
+     "S23"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S23: UK HSE, Better Alarm Handling, Chemicals Information Sheet No. 6 (CHIS6, 3/00)"
+    ]
+   },
+   "limits": "ISA-18.2 / IEC 62682 are not openly accessible; HSE CHIS6 is the citable open alternative.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [
+  {
+   "question_id": "C2",
+   "reason": "the model holds no controllers; give a loop list with --loops (controller,measurement,output) to check this"
+  },
+  {
+   "question_id": "C6",
+   "reason": "the model holds no controllers; give a loop list with --loops to check this"
+  }
+ ],
+ "did_not_fire": [
+  "E1",
+  "E2",
+  "E3",
+  "E4",
+  "E5",
+  "E6",
+  "E7",
+  "E8",
+  "E9",
+  "E10",
+  "E11",
+  "E12",
+  "E13",
+  "E14",
+  "E15",
+  "E16",
+  "E17",
+  "E18",
+  "E19",
+  "E20",
+  "E21",
+  "E22",
+  "E23",
+  "E24",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "C1",
+  "C3",
+  "C4",
+  "C5",
+  "C7",
+  "C10",
+  "C9",
+  "E25",
+  "E26",
+  "E27",
+  "E28",
+  "E29",
+  "E30",
+  "E31",
+  "E32",
+  "H5",
+  "H6",
+  "C11",
+  "C12"
+ ],
+ "left_out": {}
+}

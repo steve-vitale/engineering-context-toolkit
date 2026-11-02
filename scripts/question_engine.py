@@ -1133,7 +1133,10 @@ def find(model, anchor, clause, pool):
 # ---------------------------------------------------------------- evidence states
 
 def field_state(item, name):
-    """('present', value, where) | ('blank', None, where) | ('absent', None, None) for a named field."""
+    """Return (state, value, where); blank or placeholder values stay literal.
+
+    Absent fields return ('absent', None, None).
+    """
     for k, v in (item.get("facts") or {}).items():
         if k.lower() == name.lower():
             if v is None or (isinstance(v, str) and (not v.strip() or PLACEHOLDER.match(v))):

@@ -105,3 +105,21 @@ data/te_pid_layout.json text eol=lf
 # Preserve the two captured screens' intentional Markdown hardbreaks.
 /examples/graph-export/unplaced-dexpi/question-handoff/result/A/screen/screen.md whitespace=-blank-at-eol
 /examples/graph-export/unplaced-dexpi/question-handoff/result/B-model/screen/screen.md whitespace=-blank-at-eol
+
+# Alarm record-review source fixtures and captured outputs.
+/examples/opportunity-screen/alarm-basis/** text eol=lf
+/examples/opportunity-screen/alarm-basis/models/** -text
+/examples/opportunity-screen/alarm-basis/history/before-shared-scope/** -text
+/examples/opportunity-screen/alarm-basis/history/before-shared-scope/screen.md whitespace=-blank-at-eol
+/examples/opportunity-screen/alarm-basis/expected/after/C8-01-record-availability/screen.md whitespace=-blank-at-eol
+/examples/opportunity-screen/alarm-basis/expected/after/C8-02-normal-versus-upset/screen.md whitespace=-blank-at-eol
+/examples/opportunity-screen/alarm-basis/expected/after/C8-03-standing-and-response/screen.md whitespace=-blank-at-eol
+/examples/opportunity-screen/alarm-basis/expected/after/C8-04-operator-scope/screen.md whitespace=-blank-at-eol
+/examples/opportunity-screen/alarm-basis/expected/after/C8-05-alarm-definition/screen.md whitespace=-blank-at-eol
+/examples/opportunity-screen/alarm-basis/expected/after/C8-06-foreign-versus-matched-record/screen.md whitespace=-blank-at-eol
+/examples/opportunity-screen/alarm-basis/expected/after/C8-S01-shared-operator-record/screen.md whitespace=-blank-at-eol
+/examples/opportunity-screen/alarm-basis/expected/after/C8-S02-repeated-label-foreign-scopes/screen.md whitespace=-blank-at-eol
+
+# Preserve the actual current sample metadata and earlier capture buffers.
+/examples/internal-mcp/sample_provenance.json text eol=lf
+/examples/internal-mcp/history/before-screening-wording/** -text

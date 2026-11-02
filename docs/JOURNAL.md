@@ -6987,3 +6987,48 @@ early OPEN100 reference. Catalog rules, original workflow criteria, saved model 
 are unchanged. These exposed public/fictional software exercises establish no new plant accuracy, measured
 human benefit, authenticated company review or operating acceptance. Full repository and exact-head CI remain
 separate integration checks; the company retains source authority, access and continuing ownership.
+## 149. Group retained answers after incoming revisions
+
+A four-question fictional packet with three latest answers supplied twelve records to the same latest-answer
+sort because current construction repeated it for every question. The repair groups the final latest records
+once by exact question ID, after incoming rows. It preserves lexical order, revised-answer references, removed
+and owner-only questions, and complete decision and ownership history.
+
+Three additive guards retain the original two semantic passes and the sort-bound failure (12 against a limit
+of 3). The grouped method passes all 62 context tests without skips; all 59 prior method ASTs are unchanged.
+Existing context-example tests report seven methods with one named optional original-cache skip, while
+snapshot (19), pump-revision (2) and team-context (2) pass. The [small structured record](../examples/context-register/grouping-observations.json)
+binds actual local results and source hashes. The initial private observer calibration failure is preserved;
+its nested site-key collision was repaired before the separately scoped maintainer comparison.
+
+A301/N115 closes this local implementation issue. The public guards reproduce the bounded sort regression,
+not every private work-accounting profile. Temporary grouping allocations and unchanged validation, copying
+and serialization costs remain. Historical captures/reviews are not rehashed and no fresh normal producer or
+SDK sample is claimed. Source counts do not establish timing, memory, human benefit or plant/company capacity;
+full repository integration, exact-head CI and independent receiving remain separate gates.
+
+## 150. Review alarm records in their operator and source scope
+
+C8's generic journal request did not retain the supplied record availability, definitions, periods and operator
+responsibility needed for a scoped review. The revised question starts with existing philosophy/register,
+response and journal/performance records. Shared coverage may be reused; matching labels in foreign site/source
+scopes remain unverified. No rate, alarm quality, ownership or compliance verdict is calculated.
+
+The [alarm-record cases](../examples/opportunity-screen/alarm-basis/README.md) retain nine fictional development
+models and eighteen fresh complete reports. All 254 typed carrier-field values remain visible, exercising 41
+of 50 optional names. Source review is bounded to C8: 24 rules now have collection reviews and 26 remain.
+Historical HSE targets stay investigation context; the vocabulary and collection policy are authored, not a
+prescribed company schema or proof that supplied approval fields are valid.
+
+Eight closing phrases now explicitly close only the screening investigation; E1 and H5 were clarified in a
+separate two-leaf successor after the first six. A final eight-route actual refresh preserves six outputs raw
+and changes ten only by the two declared phrase substitutions. Finding IDs, references and benefits remain
+unchanged. This adds no source-rule adequacy claim. The Bayer context refresh adds no answer: both prior proposals remain, while changed question content
+reopens the current E18 investigation as unanswered/stale, with no owner assigned. Its earlier interpretation is
+not declared wrong by that wording change; the old CSV fingerprint remains historical and refuses reuse.
+
+The local question module reports 163 methods: 162 pass and one Windows symlink-privilege case skips, including
+all three alarm methods passing. Checkout three pass after stale inventory-count literals are corrected; earlier
+failed envelopes/logs are retained. A302 records these finite checks, not operator performance, human usefulness
+or plant/company acceptance. Historical catalogs, decisions and all prior reviews remain. Full repository,
+pending actual MCP evidence and exact-head CI are separate gates.

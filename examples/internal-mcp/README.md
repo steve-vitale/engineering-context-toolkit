@@ -184,5 +184,10 @@ and run the default checker plus the offline snapshot tests. Capture alone does 
 context or knowledge controls, or establish company-client acceptance.
 
 The [capture provenance](sample_provenance.json) records the selected public inputs, canonical graph recipe,
-actual stdio evidence and retained failed CI. The fingerprint covers questions as well as the asset model, so
+actual stdio evidence and prior capture history. The fingerprint covers questions as well as the asset model, so
 a question update can require a fresh sample even when the returned asset is unchanged.
+
+The [previous sample](history/before-screening-wording/sample_asset.json) and its
+[provenance](history/before-screening-wording/sample_provenance.json) are retained byte for byte.
+The current stdio capture follows E1/E18/H2/C6 screening-wording revisions: only the graph fingerprint and
+local load time changed; the complete returned asset remains unchanged.

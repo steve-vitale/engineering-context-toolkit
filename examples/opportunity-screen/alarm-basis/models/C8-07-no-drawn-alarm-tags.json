@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "title": "C8-07-no-drawn-alarm-tags",
+    "evidence_class": "fictional currentselectorcoverage control",
+    "plant_truth": "unknown"
+  },
+  "units": [
+    {
+      "id": "U-A",
+      "type": "vessel",
+      "name": "Fictional scope A"
+    }
+  ],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "TI-101",
+      "unit": "U-A",
+      "stream": null,
+      "variable": "temperature",
+      "uom": null,
+      "description": "Statusindicator; completealarmconfigurationunknown",
+      "facts": {
+        "alarm_register_reference": "fictional:undrawn-alarm-register",
+        "underlying_claim_verified": false
+      }
+    }
+  ],
+  "final_elements": [],
+  "controllers": []
+}

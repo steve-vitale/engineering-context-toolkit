@@ -1,0 +1,141 @@
+{
+  "schema": "alarm-basis-cases-1",
+  "role": "Exposed fictional development controls; source-informed software behavior, not plant audit or human usefulness",
+  "cases": [
+    {
+      "case": "C8-01-record-availability",
+      "model": "models/C8-01-record-availability.json",
+      "model_sha256_raw": "dd2386de00081ff07a5f6721b6d4b380f60eed9057451b8d1b631b61fb74f8e9",
+      "expected_C8_ids": [
+        "C8@model"
+      ],
+      "expected_C8_assets": [
+        "PAH-101",
+        "LAHH-201"
+      ],
+      "expected_output_folder": "expected/after/C8-01-record-availability",
+      "active_literal_rows": 26,
+      "minimum_open_review_requests": 1
+    },
+    {
+      "case": "C8-02-normal-versus-upset",
+      "model": "models/C8-02-normal-versus-upset.json",
+      "model_sha256_raw": "b957a5ae208aa55eaf0953edf11b570584667b6b7b95d1bcc4c5ec686ec08302",
+      "expected_C8_ids": [
+        "C8@model"
+      ],
+      "expected_C8_assets": [
+        "PAH-101",
+        "LAHH-201"
+      ],
+      "expected_output_folder": "expected/after/C8-02-normal-versus-upset",
+      "active_literal_rows": 30,
+      "minimum_open_review_requests": 1
+    },
+    {
+      "case": "C8-03-standing-and-response",
+      "model": "models/C8-03-standing-and-response.json",
+      "model_sha256_raw": "7abdd4609e3cbce4f3549f81b0eaccaaa0e3e16134a3423f2494988bfc8bcb7a",
+      "expected_C8_ids": [
+        "C8@model"
+      ],
+      "expected_C8_assets": [
+        "PAH-101",
+        "LAHH-201"
+      ],
+      "expected_output_folder": "expected/after/C8-03-standing-and-response",
+      "active_literal_rows": 28,
+      "minimum_open_review_requests": 1
+    },
+    {
+      "case": "C8-04-operator-scope",
+      "model": "models/C8-04-operator-scope.json",
+      "model_sha256_raw": "a344a2838226823721cf6e2c8d25e9becd41046a89375bd032022e88f261b260",
+      "expected_C8_ids": [
+        "C8@model"
+      ],
+      "expected_C8_assets": [
+        "PAH-101",
+        "LAHH-201"
+      ],
+      "expected_output_folder": "expected/after/C8-04-operator-scope",
+      "active_literal_rows": 28,
+      "minimum_open_review_requests": 1
+    },
+    {
+      "case": "C8-05-alarm-definition",
+      "model": "models/C8-05-alarm-definition.json",
+      "model_sha256_raw": "7ebf68c6689698432a1003a5d27d5fa1b00389cc6bfeb01b51765daa743eccdc",
+      "expected_C8_ids": [
+        "C8@model"
+      ],
+      "expected_C8_assets": [
+        "PAH-101",
+        "LAHH-201"
+      ],
+      "expected_output_folder": "expected/after/C8-05-alarm-definition",
+      "active_literal_rows": 31,
+      "minimum_open_review_requests": 1
+    },
+    {
+      "case": "C8-06-foreign-versus-matched-record",
+      "model": "models/C8-06-foreign-versus-matched-record.json",
+      "model_sha256_raw": "7a0274389f48a33f81823069d3b1b852dfc5d2baf0a791b3e80e98202647acc4",
+      "expected_C8_ids": [
+        "C8@model"
+      ],
+      "expected_C8_assets": [
+        "PAH-101",
+        "LAHH-201"
+      ],
+      "expected_output_folder": "expected/after/C8-06-foreign-versus-matched-record",
+      "active_literal_rows": 31,
+      "minimum_open_review_requests": 1
+    },
+    {
+      "case": "C8-07-no-drawn-alarm-tags",
+      "model": "models/C8-07-no-drawn-alarm-tags.json",
+      "model_sha256_raw": "18c83dae2a9ecb003ba31a96559d4951a564ad5729ae11aecb5e339643c0bf01",
+      "expected_C8_ids": [],
+      "expected_C8_assets": [],
+      "expected_output_folder": "expected/after/C8-07-no-drawn-alarm-tags",
+      "active_literal_rows": 0,
+      "minimum_open_review_requests": 0
+    },
+    {
+      "case": "C8-S01-shared-operator-record",
+      "model": "models/C8-S01-shared-operator-record.json",
+      "model_sha256_raw": "fb2455a8c2ce3cacec56ad2d7cc49a1f4a6883fe6fdba4838da9476ac21cf7f2",
+      "expected_C8_ids": [
+        "C8@model"
+      ],
+      "expected_C8_assets": [
+        "PAH-101",
+        "LAHH-201"
+      ],
+      "expected_output_folder": "expected/after/C8-S01-shared-operator-record",
+      "active_literal_rows": 44,
+      "minimum_open_review_requests": 1
+    },
+    {
+      "case": "C8-S02-repeated-label-foreign-scopes",
+      "model": "models/C8-S02-repeated-label-foreign-scopes.json",
+      "model_sha256_raw": "6be050ad9e9ba17d6c8d4a615ceb5328610b4fbd25b64c1d0fb02e4940b450df",
+      "expected_C8_ids": [
+        "C8@model"
+      ],
+      "expected_C8_assets": [
+        "PAH-101",
+        "LAHH-201"
+      ],
+      "expected_output_folder": "expected/after/C8-S02-repeated-label-foreign-scopes",
+      "active_literal_rows": 36,
+      "minimum_open_review_requests": 1
+    }
+  ],
+  "states": {
+    "blank": 114,
+    "present": 140
+  },
+  "active_literal_rows": 254
+}

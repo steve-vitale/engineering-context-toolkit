@@ -76,6 +76,18 @@ unaffected answers remain. The [fictional typed-evidence route](../examples/cont
 and 90 public module methods pass without skips (A299/N113). This is local consistency, not source authority,
 plant truth or company acceptance; full repository and exact-head CI are separate gates.
 
+Retained answers now group once by exact question ID after incoming revisions instead of repeating the
+latest-answer sort for every question (A301/N115). The grouped context module passes 62 methods without
+skips; existing integrations retain one named optional source-cache skip. The [bounded local observations](../examples/context-register/grouping-observations.json)
+preserve the old sort-guard failure and exact source identities. History, source checks and output construction
+remain; no timing, memory or company-capacity result follows. Final integration and CI are separate gates.
+
+C8 now starts with existing alarm records and the responsible operator/source scope; shared records can cover
+several subjects after review. The [fictional alarm-record cases](../examples/opportunity-screen/alarm-basis/README.md)
+retain supplied qualifications rather than infer workload from tags (A302). The local question module reports
+163 methods with one Windows privilege skip; checkout three pass after count-literal corrections. These are
+bounded software/source checks; full integration, current MCP evidence and exact-head CI remain separate.
+
 | Reproduced gap | Required behavior and bounded repair |
 |---|---|
 | Review summaries accepted changed packet evidence or non-review queue fields under the old bundle identity. | Recheck drawing, overlay, base queue and manifest digest; permit changes only in the declared `OPS_` columns of the submitted review copy. Hash agreement is integrity, not source authority or reviewer authentication. |
@@ -141,7 +153,7 @@ actual participant, recipient, native-system and tenant observations remain **no
 
 | Work category | Remaining work | Completion evidence |
 |---|---|---|
-| Engineering question quality | N065/N082: source adequacy and useful questions. Of 50 rules/126 request bundles, 23 rules have bounded collection reviews; 27 still await original-source adequacy review. Scoped MGPI is development evidence; default MGPI still produces zero findings. | Prospective expected/unacceptable questions, source/key review and actual engineer/recipient usefulness observations. |
+| Engineering question quality | N065/N082: source adequacy and useful questions. Of 50 rules/126 request bundles, 24 rules have bounded collection reviews; 26 still await original-source adequacy review. Scoped MGPI is development evidence; default MGPI still produces zero findings. | Prospective expected/unacceptable questions, source/key review and actual engineer/recipient usefulness observations. |
 | Evaluation and transfer | N086 original-source/key engineering acceptance, Native placement gaps, existing matrix failures, unfamiliar-source coverage, scorer limits and five missing historical prediction tables. | Matched experiments with frozen criteria, retained failures, exposure/split labels and independent source/key review. More files or rerunning familiar inputs is not generalization. |
 | Optional adapters and receiving projections | General inverse graph conversion, captured-source consumers, managed-section merging and particular incumbent-system connectors are not implemented. Test changed/removed identifiers and complete retained history for the selected route. | A demonstrated engineering job, explicit supported contract, source preservation and subsequent-revision readback. Add only the adapter that job needs. |
 | Review-history handoff | N107 now preserves selected JSON intact and unbound, then attaches events only through [individual supplied associations](REVIEW_HISTORY.md) to exact model/record bytes. Complete earlier history remains readable; full/core retain its qualifications. | Review the source/revision relationship in the company process. Matching hashes cannot detect a false supplied basis or establish writer lineage, reviewer authority, approval or permission to share. |
@@ -246,7 +258,7 @@ controls. Keep the remaining source-adequacy and external-acceptance work separa
 | **Model review — N072/N077** | Supplied alarm metadata and old receipts survive. Supported native tag corrections migrate live references; separate layouts, mappings and snapshots still need reconciliation. [Worked correction](../examples/review-and-mapping/native-identity/README.md). |
 | **Schedule choices — N079** | Contradictory service declarations refuse in either input order. Exact source-bound selections retain candidates and supplied qualifiers; existing spelling choices remain drafts. No choice grants organizational approval. |
 | **Description review — N078** | Every supplied record value and source line is exposed for review; all rows start unreviewed. Structural validity does not decide whether the interpretation is correct. [Description guide](../examples/from-description/README.md). |
-| **Collection contracts — N071/N073/N080/N084/N085/N088/N082** | Twenty-three named rules keep candidate fields, electrical quantities, measurements, machine/function association and actual coverage distinct from suitable evidence. E16/C5 first establish heat/water service and applicable existing function records; an oxygen label or boiler name does not require a control retrofit. The other 27 rules still need source-adequacy review; no whole-catalog correctness or usefulness is established. [Collection limits](OPPORTUNITY_SCREEN.md). |
+| **Collection contracts — N071/N073/N080/N084/N085/N088/N082** | Twenty-four named rules keep candidate fields, electrical quantities, measurements, machine/function association and actual coverage distinct from suitable evidence. E16/C5 first establish heat/water service and applicable existing function records; an oxygen label or boiler name does not require a control retrofit. C8 adds existing alarm-record, operator-scope and source-coverage review without a workload-quality or compliance verdict. The other 26 rules still need source-adequacy review; no whole-catalog correctness or usefulness is established. [Collection limits](OPPORTUNITY_SCREEN.md). |
 | **Context and readback — N075/N076/N083** | Rejected evidence changes dependent-answer freshness; validated selected packets serve full retained sources, values, decisions and ownership. Bound enriched-question re-export refuses: use the complete graph/context pair or explicitly refresh the preserved register. No automatic source fetching, rebinding, authentication or company authority. [Context guide](CONTEXT_REGISTER.md). |
 | **Matrix provenance — N074** | Actual runs bind declared inputs/keys, inventories, registry, runner and code. Changed/missing required inputs refuse; absent optional caches are explicitly unverified. Strict input mode still requires them. Bindings are conservative declarations, not operating-system read tracing. |
 | **Benchmark recipes — N081** | Re-scores retain exact historical recipe snapshots, attempts, predictions and reports. New provenance identities are not new model performance. |

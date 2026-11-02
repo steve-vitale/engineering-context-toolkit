@@ -181,7 +181,7 @@
      ]
     }
    ],
-   "decision_rule": "Worth a drive quote when the valve normally runs well throttled for long hours and most of the head is friction rather than static lift (VSDs suit friction-dominated systems best). Close it if the valve normally runs near fully open, the head is mostly static, or the pump runs few hours.",
+   "decision_rule": "Worth a drive quote when the valve normally runs well throttled for long hours and most of the head is friction rather than static lift (VSDs suit friction-dominated systems best). Close this screening investigation if the valve normally runs near fully open, the head is mostly static, or the pump runs few hours.",
    "typical_benefit": {
     "wording": "\"With rotodynamic pump installations, savings of between 30% and 50% have been achieved in many installations by installing VSDs.\" Also: \"It is estimated that 75% of pump systems are oversized, many by more than 20%.\"",
     "source": [
@@ -305,7 +305,7 @@
      ]
     }
    ],
-   "decision_rule": "Prioritize the pump if it runs at a flow 30% or more away from BEP or the bypass is used routinely; otherwise close it.",
+   "decision_rule": "Prioritize the pump if it runs at a flow 30% or more away from BEP or the bypass is used routinely; otherwise close this screening investigation.",
    "typical_benefit": {
     "wording": "Five indications: \"excessive flow noise, highly throttled flow control valves, heavy use of bypass lines, frequent replacements of bearings and seals, and intermittent pump operation.\" Prioritize pumps \"with flow rates of 30% or more from the BEP flow rates, or with system imbalances greater than 20%.\" No % saving stated.",
     "source": [

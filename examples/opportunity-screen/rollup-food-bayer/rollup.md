@@ -295,7 +295,7 @@ Fired at 1 of 2 sites. Asked and quiet at: food.
   - bayer [not on drawing]: the motor nameplate on P-1; then maintenance records: motor record card
     - For `E1@P-1`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
 
-**How it is decided:** Worth a drive quote when the valve normally runs well throttled for long hours and most of the head is friction rather than static lift (VSDs suit friction-dominated systems best). Close it if the valve normally runs near fully open, the head is mostly static, or the pump runs few hours.
+**How it is decided:** Worth a drive quote when the valve normally runs well throttled for long hours and most of the head is friction rather than static lift (VSDs suit friction-dominated systems best). Close this screening investigation if the valve normally runs near fully open, the head is mostly static, or the pump runs few hours.
 
 **What the source says (S15, S24):** "With rotodynamic pump installations, savings of between 30% and 50% have been achieved in many installations by installing VSDs." Also: "It is estimated that 75% of pump systems are oversized, many by more than 20%."
 
@@ -314,7 +314,7 @@ Fired at 1 of 2 sites. Asked and quiet at: food.
 - Layout distance and fouling. How: Note pipe run and fouling service.
   - bayer [not on drawing]: a walkdown: distance between the two exchangers; then maintenance records: cleaning history
 
-**How it is decided:** Worth a pinch or exchanger study only when the hot stream's temperature range sits above the cold stream's with a practical approach, both run at the same time for long hours, and they are close enough to connect. Otherwise close it.
+**How it is decided:** Worth a pinch or exchanger study only when the hot stream's temperature range sits above the cold stream's with a practical approach, both run at the same time for long hours, and they are close enough to connect. Otherwise close this screening investigation.
 
 **What the source says (S19, S24):** Pinch potential "far exceeds that from well-known conventional techniques such as heat recovery from boiler flue gas, insulation and steam trap management." No % stated in that section.
 
@@ -382,7 +382,7 @@ Fired at 1 of 2 sites. Asked and quiet at: food.
   - bayer [not on drawing]: site records: approved existing supply/user configuration and coincident operating-condition records
     - For `H2@E-2`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
 
-**How it is decided:** Worth a change only if a lower-grade source can meet the needed temperature with margin, for the hours the user runs; if the steam is already the lowest grade available, close it.
+**How it is decided:** Worth a change only if a lower-grade source can meet the needed temperature with margin, for the hours the user runs; if the steam is already the lowest grade available, close this screening investigation.
 
 **What the source says (S19, S6):** Closest source wordings: pinch potential "far exceeds that from well-known conventional techniques such as heat recovery from boiler flue gas, insulation and steam trap management" (S19, no % stated); for letdown to the lower pressure, S6's turbogenerator condition. No source gives a number for matching steam grade to duty.
 
@@ -421,7 +421,7 @@ Fired at 1 of 2 sites. Asked and quiet at: food.
 - Steam header pressure swings. How: Note how often supply pressure moves.
   - bayer [not on drawing]: site records: steam header pressure trend
 
-**How it is decided:** A flow slave helps when steam supply pressure swings disturb the temperature; a steady header and a well-behaved loop close it.
+**How it is decided:** A flow slave helps when steam supply pressure swings disturb the temperature; a steady header and a well-behaved loop close this screening investigation.
 
 **What the source says (no source):** No public numeric source found. Report as qualitative only.
 
@@ -503,7 +503,7 @@ Fired at 1 of 2 sites. Asked and quiet at: bayer.
 - Recovery coverage by refrigeration train and heating duty. How: A recovery device elsewhere does not establish coverage here. Retain drawn indications as candidates and verify which train and sink they serve, whether useful duty is already met, and remaining coincident heat. Keep temperatures, isolation, compressor-power/head-pressure effects and required site review explicit; no installation mandate or savings is inferred.
   - food [not on drawing]: site records: source-labelled connections, heat delivered and operating periods for each existing refrigeration recovery device and served heating duty; then a walkdown: confirm boundaries, distance and separation or contamination constraints for the candidate source and sink
 
-**How it is decided:** Worth a study when the refrigeration plant runs at the same times as a duty that needs heat below the discharge or condensing temperature, and recovery does not force the head pressure up. Close it if the duties do not overlap or recovery would need a higher condensing pressure all year.
+**How it is decided:** Worth a study when the refrigeration plant runs at the same times as a duty that needs heat below the discharge or condensing temperature, and recovery does not force the head pressure up. Close this screening investigation if the duties do not overlap or recovery would need a higher condensing pressure all year.
 
 **What the source says (S25):** S25 (p. 64), refrigeration compressors: "Where economically feasible, rejected heat can be recovered from compressors and used in other facility applications, such as space heating or water heating." No % stated there for refrigeration (the air compressor heat recovery figures quoted under E23 do not apply).
 

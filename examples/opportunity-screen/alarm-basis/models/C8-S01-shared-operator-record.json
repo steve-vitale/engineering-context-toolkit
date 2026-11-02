@@ -1,0 +1,101 @@
+{
+  "meta": {
+    "title": "C8-S01-shared-operator-record",
+    "evidence_class": "AUTHOR-ILLUSTRATED prospective software construction; not company records or authenticated approval",
+    "plant_truth": "unknown",
+    "source_review": "HSE-informed scope contract; unvalidated; no product call"
+  },
+  "units": [
+    {
+      "id": "U-A",
+      "type": "vessel",
+      "name": "Fictional responsibility member A"
+    },
+    {
+      "id": "U-B",
+      "type": "vessel",
+      "name": "Fictional responsibility member B"
+    }
+  ],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "PAH-101",
+      "unit": "U-A",
+      "stream": null,
+      "variable": "pressure",
+      "uom": null,
+      "description": "Fictional alarm candidate, not installed configuration",
+      "facts": {
+        "site_namespace": "fictional-site-A",
+        "source_namespace": "fictional-source-A",
+        "console_id": "CON-1",
+        "operator_role": "console-operator",
+        "workload_scope": "fictional-site-A/CON-1/console-operator",
+        "underlying_claim_verified": false,
+        "plant_truth": "unknown",
+        "record_reference": "fictional:shared-workload-report-A",
+        "record_revision": "r1",
+        "record_site_namespace": "fictional-site-A",
+        "record_source_namespace": "fictional-source-A",
+        "record_console_id": "CON-1",
+        "record_operator_role": "console-operator",
+        "record_subjects": [
+          "PAH-101",
+          "LAHH-201"
+        ],
+        "record_units": [
+          "U-A",
+          "U-B"
+        ],
+        "record_workload_scope": "fictional-site-A/CON-1/console-operator",
+        "record_coverage": "one record claims the complete shared responsibility across both units",
+        "record_review_status": "AUTHOR-ILLUSTRATED approved for this scoped review; not actual company approval",
+        "record_review_basis": "Fictional operations and alarm-owner review says this record covers both named units and subjects; suitability and source authority remain supplied claims",
+        "record_period_basis": "declared normal and upset record periods, identities to be reviewed; no fixed duration or computed metric",
+        "record_owner": "fictional operations-console owner A",
+        "next_recipient": "fictional operations-console owner A with alarm-system owner"
+      }
+    },
+    {
+      "tag": "LAHH-201",
+      "unit": "U-B",
+      "stream": null,
+      "variable": "level",
+      "uom": null,
+      "description": "Fictional alarm candidate, not installed configuration",
+      "facts": {
+        "site_namespace": "fictional-site-A",
+        "source_namespace": "fictional-source-A",
+        "console_id": "CON-1",
+        "operator_role": "console-operator",
+        "workload_scope": "fictional-site-A/CON-1/console-operator",
+        "underlying_claim_verified": false,
+        "plant_truth": "unknown",
+        "record_reference": "fictional:shared-workload-report-A",
+        "record_revision": "r1",
+        "record_site_namespace": "fictional-site-A",
+        "record_source_namespace": "fictional-source-A",
+        "record_console_id": "CON-1",
+        "record_operator_role": "console-operator",
+        "record_subjects": [
+          "PAH-101",
+          "LAHH-201"
+        ],
+        "record_units": [
+          "U-A",
+          "U-B"
+        ],
+        "record_workload_scope": "fictional-site-A/CON-1/console-operator",
+        "record_coverage": "one record claims the complete shared responsibility across both units",
+        "record_review_status": "AUTHOR-ILLUSTRATED approved for this scoped review; not actual company approval",
+        "record_review_basis": "Fictional operations and alarm-owner review says this record covers both named units and subjects; suitability and source authority remain supplied claims",
+        "record_period_basis": "declared normal and upset record periods, identities to be reviewed; no fixed duration or computed metric",
+        "record_owner": "fictional operations-console owner A",
+        "next_recipient": "fictional operations-console owner A with alarm-system owner"
+      }
+    }
+  ],
+  "final_elements": [],
+  "controllers": []
+}

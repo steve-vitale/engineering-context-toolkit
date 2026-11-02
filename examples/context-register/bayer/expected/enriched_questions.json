@@ -121,7 +121,7 @@
           "how": "Note pipe run and fouling service."
         }
       ],
-      "decision_rule": "Worth a pinch or exchanger study only when the hot stream's temperature range sits above the cold stream's with a practical approach, both run at the same time for long hours, and they are close enough to connect. Otherwise close it.",
+      "decision_rule": "Worth a pinch or exchanger study only when the hot stream's temperature range sits above the cold stream's with a practical approach, both run at the same time for long hours, and they are close enough to connect. Otherwise close this screening investigation.",
       "typical_benefit": {
         "wording": "Pinch potential \"far exceeds that from well-known conventional techniques such as heat recovery from boiler flue gas, insulation and steam trap management.\" No % stated in that section.",
         "source": [
@@ -243,7 +243,7 @@
               "how": "Note pipe run and fouling service."
             }
           ],
-          "decision_rule": "Worth a pinch or exchanger study only when the hot stream's temperature range sits above the cold stream's with a practical approach, both run at the same time for long hours, and they are close enough to connect. Otherwise close it.",
+          "decision_rule": "Worth a pinch or exchanger study only when the hot stream's temperature range sits above the cold stream's with a practical approach, both run at the same time for long hours, and they are close enough to connect. Otherwise close this screening investigation.",
           "typical_benefit": {
             "wording": "Pinch potential \"far exceeds that from well-known conventional techniques such as heat recovery from boiler flue gas, insulation and steam trap management.\" No % stated in that section.",
             "source": [
@@ -262,14 +262,16 @@
         "ownership": "needs_owner",
         "assigned_by": null,
         "assigned_on": null,
-        "state": "partial",
+        "state": "unanswered",
         "disputed_claims": [],
         "answers": [
           {
             "decision_id": "d-6dd58384fd930f0c50af855ca867976551ce78559ebb0f4f204b95440d393458",
             "answer_id": "published-control-sequence",
-            "freshness": "current",
-            "changed": []
+            "freshness": "stale",
+            "changed": [
+              "question content"
+            ]
           }
         ]
       }
@@ -281,6 +283,6 @@
   "context_register": {
     "schema": "context-register-1",
     "sidecar": "context.json",
-    "content_sha256": "d01265f71f68410a15a4c1a289b1ab3be7db95dae2a95295ed46939bf88c6b97"
+    "content_sha256": "7473c5d9147453c088308de5012744b185dc413ac39407e8e454f0e76db1863b"
   }
 }

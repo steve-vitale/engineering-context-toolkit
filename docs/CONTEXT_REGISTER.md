@@ -335,3 +335,15 @@ verdicts, ownership, idempotence and selective staleness. These are software con
 review time or a plant validation. The public PRONTO transfer packet in `examples/context-register/pronto/` uses
 actual source documents and requires their separately fetched local bytes; its proposed answers do not claim a
 human owner or current plant truth.
+
+### Retained-answer grouping
+
+Refresh groups latest answers once by exact question ID after applying incoming rows. Removed questions,
+owner-only records and complete decision history stay in the packet; answer order remains lexical. This removes
+repeated latest-answer sorting across questions. The temporary index adds work, especially for empty or
+single-question inputs; source validation, history copying and output construction remain.
+
+The three named guards in the [bounded observations](../examples/context-register/grouping-observations.json)
+can be run from the existing context test module. They check identity/order/update behavior and a latest-sort
+feed bound. They do not reproduce every private maintainer diagnostic or measure timing, memory, company
+readiness or plant capacity. Historical example captures retain the method identities that actually produced them.

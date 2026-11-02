@@ -141,7 +141,7 @@
      "how": "Record power with the valve at its normal opening."
     }
    ],
-   "decision_rule": "Worth a look when the recycle or blow-off valve is open at normal throughput, or the controller margin is wider than the vendor map needs. If it only opens during upsets or turndown, close it.",
+   "decision_rule": "Worth a look when the recycle or blow-off valve is open at normal throughput, or the controller margin is wider than the vendor map needs. If it only opens during upsets or turndown, close this screening investigation; this is not an instruction to operate the valve or change surge protection.",
    "typical_benefit": {
     "wording": "Blow-off \"is a waste of energy and should be used only where necessary to avoid surge.\" Inlet throttling: \"Capacity can typically be reduced from 100 percent capacity to about 70-80 percent with reasonable energy reduction.\" No % saving stated.",
     "source": [
@@ -260,7 +260,7 @@
      "how": "Note pipe run and fouling service."
     }
    ],
-   "decision_rule": "Worth a pinch or exchanger study only when the hot stream's temperature range sits above the cold stream's with a practical approach, both run at the same time for long hours, and they are close enough to connect. Otherwise close it.",
+   "decision_rule": "Worth a pinch or exchanger study only when the hot stream's temperature range sits above the cold stream's with a practical approach, both run at the same time for long hours, and they are close enough to connect. Otherwise close this screening investigation.",
    "typical_benefit": {
     "wording": "Pinch potential \"far exceeds that from well-known conventional techniques such as heat recovery from boiler flue gas, insulation and steam trap management.\" No % stated in that section.",
     "source": [
@@ -395,7 +395,7 @@
      "candidate_facts": []
     }
    ],
-   "decision_rule": "Worth a change only if a lower-grade source can meet the needed temperature with margin, for the hours the user runs; if the steam is already the lowest grade available, close it.",
+   "decision_rule": "Worth a change only if a lower-grade source can meet the needed temperature with margin, for the hours the user runs; if the steam is already the lowest grade available, close this screening investigation.",
    "typical_benefit": {
     "wording": "Closest source wordings: pinch potential \"far exceeds that from well-known conventional techniques such as heat recovery from boiler flue gas, insulation and steam trap management\" (S19, no % stated); for letdown to the lower pressure, S6's turbogenerator condition. No source gives a number for matching steam grade to duty.",
     "source": [

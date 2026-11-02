@@ -4,14 +4,14 @@
   "answer_sha256": "94776ad8a164c91add4840f09dae91cac7c9b35b01f9db9a261b116c5fb6423d",
   "question_catalog": {
     "path": "question_catalog.json",
-    "sha256_raw": "0f2c9e6dd62e9e3c523f866eeb3bc8edcc0189d93f93981fb5d877f7c24bf9ed",
+    "sha256_raw": "2dac4d0d7187384f495c4e5445f694f50aca64b3788bfba8bc99fc2bf63767ca",
     "selection": "default"
   },
   "code_sha256": {
     "description_workflow.py": "10882088431bd8091a2a275e472bab580e256098addee7065d18e8e2f5452215",
     "draw_pid_from_model.py": "019f4a4903cba9e87db55fffe137c3303686df033aac2c86f3a5ff6838582cef",
     "generate.py": "729c3081be3e1ec372d4538175d464eceedc7a6665c82a512728094268914307",
-    "question_engine.py": "5e2cb1ea94e2bb8910349540d8c5cf8276e7f7bbbf13147bd7abfda83cc6b1a3",
+    "question_engine.py": "339965994f584308e0307b4938880ab4ba442cd432fea09f5b17a0e289778117",
     "graph_export.py": "502ef69cdfa387cc99082b026964e45bb7ed409bb4674d4f6e4fd41a042e182d"
   },
   "files_sha256": {
@@ -20,7 +20,7 @@
     "layout.json": "2d3c5c78e802828c74b4f7d753750290970e2662705fc0212e091be9138f0914",
     "model.json": "317e65cc9aaa7324d8e64c6911ff87f03f9c4182e00fe22fc74b6525766c1277",
     "packet.json": "d6912fcf627c32e4ae1586db6842d1fb7e85f81d1a2f94c32d8911eeeab5264f",
-    "question_catalog.json": "0f2c9e6dd62e9e3c523f866eeb3bc8edcc0189d93f93981fb5d877f7c24bf9ed",
+    "question_catalog.json": "2dac4d0d7187384f495c4e5445f694f50aca64b3788bfba8bc99fc2bf63767ca",
     "source.txt": "551078e52d39c0f2dc587951b7534afaf8865c9e7c87e55e26ec27cbff4c74e8",
     "source_numbered.txt": "5361e428a59e0b2fec742c74777f654cba4d66ad34c8113cd9051608091554ac",
     "exports/ops_review_sheet.csv": "edf9fc88b54c6a3e52f9f494d6f3a3575fe382b6e2f274de008063c07206717e",
