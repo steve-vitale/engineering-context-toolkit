@@ -1,0 +1,448 @@
+{
+  "schema": "artifact-value-review-key-1",
+  "source_key_acceptance_sha256_raw": "18c1bbf063bc85ebbc57d342d0201ea976f0464548848c9b0064f882aec6ba45",
+  "artifact": {
+    "sha256_raw": "6ffa56e14e98a5400b0f572db379e284c953c5f764a386cd8593d623d60658e6",
+    "bytes": 4101
+  },
+  "source": {
+    "sha256_raw": "551078e52d39c0f2dc587951b7534afaf8865c9e7c87e55e26ec27cbff4c74e8",
+    "bytes": 1794
+  },
+  "inventory": {
+    "sha256_raw": "a2622f7f6fb554e73a59bec7eb02fd3aa397a6ea81b67317cd42cbedea4e35fc",
+    "bytes": 49438
+  },
+  "provided_values": {
+    "sha256_raw": "7b4d8a610270f95368fb732d5a7b3953e9c7c7583e6a32c03b5c326c4247556b",
+    "bytes": 15087
+  },
+  "required_all_model_pointers": [
+    "/meta/model_id",
+    "/meta/title",
+    "/meta/source_document",
+    "/meta/source_sha256",
+    "/meta/source_report",
+    "/meta/source_report_sha256",
+    "/meta/authoring_exposure/0",
+    "/meta/authoring_exposure/1",
+    "/meta/authoring_exposure/2",
+    "/meta/authoring_exposure/3",
+    "/meta/unknowns/0",
+    "/meta/unknowns/1",
+    "/meta/unknowns/2",
+    "/meta/unknowns/3",
+    "/meta/unknowns/4",
+    "/meta/assumptions/0",
+    "/meta/assumptions/1",
+    "/meta/source_scope_revision",
+    "/units/0/id",
+    "/units/0/name",
+    "/units/0/type",
+    "/units/0/source",
+    "/units/0/assigned_tag",
+    "/units/0/reported_capacity_gal",
+    "/units/0/reported_concentration_pct",
+    "/units/0/storage_pressure_basis",
+    "/units/1/id",
+    "/units/1/name",
+    "/units/1/type",
+    "/units/1/source",
+    "/units/1/assigned_tag",
+    "/units/2/id",
+    "/units/2/name",
+    "/units/2/type",
+    "/units/2/source",
+    "/units/2/assigned_tag",
+    "/units/3/id",
+    "/units/3/name",
+    "/units/3/type",
+    "/units/3/source",
+    "/units/3/assigned_tag",
+    "/units/3/reported_capacity_gal",
+    "/units/3/reported_concentration_pct",
+    "/streams/0/id",
+    "/streams/0/name",
+    "/streams/0/from",
+    "/streams/0/to",
+    "/streams/0/source",
+    "/streams/1/id",
+    "/streams/1/name",
+    "/streams/1/from",
+    "/streams/1/to",
+    "/streams/1/source",
+    "/streams/2/id",
+    "/streams/2/name",
+    "/streams/2/from",
+    "/streams/2/to",
+    "/streams/2/source",
+    "/streams/3/id",
+    "/streams/3/name",
+    "/streams/3/from",
+    "/streams/3/to",
+    "/streams/3/source",
+    "/streams/4/id",
+    "/streams/4/name",
+    "/streams/4/from",
+    "/streams/4/to",
+    "/streams/4/source",
+    "/instruments/0/tag",
+    "/instruments/0/unit",
+    "/instruments/0/variable",
+    "/instruments/0/uom",
+    "/instruments/0/description",
+    "/instruments/0/source",
+    "/instruments/0/assigned_tag",
+    "/instruments/0/alarm_action_basis",
+    "/final_elements",
+    "/controllers",
+    "/manual_valves",
+    "/relief_devices",
+    "/interlocks",
+    "/limits"
+  ],
+  "required_provided_pointers": [
+    "/meta/unknowns/0",
+    "/meta/unknowns/1",
+    "/meta/unknowns/2",
+    "/meta/unknowns/3",
+    "/meta/unknowns/4",
+    "/meta/assumptions/0",
+    "/meta/assumptions/1",
+    "/units/0/id",
+    "/units/0/name",
+    "/units/0/type",
+    "/units/0/assigned_tag",
+    "/units/0/reported_capacity_gal",
+    "/units/0/reported_concentration_pct",
+    "/units/0/storage_pressure_basis",
+    "/units/1/id",
+    "/units/1/name",
+    "/units/1/type",
+    "/units/1/assigned_tag",
+    "/units/2/id",
+    "/units/2/name",
+    "/units/2/type",
+    "/units/2/assigned_tag",
+    "/units/3/id",
+    "/units/3/name",
+    "/units/3/type",
+    "/units/3/assigned_tag",
+    "/units/3/reported_capacity_gal",
+    "/units/3/reported_concentration_pct",
+    "/streams/0/id",
+    "/streams/0/name",
+    "/streams/0/from",
+    "/streams/0/to",
+    "/streams/1/id",
+    "/streams/1/name",
+    "/streams/1/from",
+    "/streams/1/to",
+    "/streams/2/id",
+    "/streams/2/name",
+    "/streams/2/from",
+    "/streams/2/to",
+    "/streams/3/id",
+    "/streams/3/name",
+    "/streams/3/from",
+    "/streams/3/to",
+    "/streams/4/id",
+    "/streams/4/name",
+    "/streams/4/from",
+    "/streams/4/to",
+    "/instruments/0/tag",
+    "/instruments/0/unit",
+    "/instruments/0/variable",
+    "/instruments/0/uom",
+    "/instruments/0/description",
+    "/instruments/0/assigned_tag",
+    "/instruments/0/alarm_action_basis"
+  ],
+  "required_group_ids": [
+    "AV-G01",
+    "AV-G02",
+    "AV-G03",
+    "AV-G04",
+    "AV-G05",
+    "AV-G06",
+    "AV-G07",
+    "AV-G08",
+    "AV-G09",
+    "AV-G10",
+    "AV-G11",
+    "AV-G12",
+    "AV-G13",
+    "AV-G14"
+  ],
+  "roles": {
+    "/meta/model_id": "exact-provenance-exposure-or-title-not-plant-claim",
+    "/meta/title": "exact-provenance-exposure-or-title-not-plant-claim",
+    "/meta/source_document": "exact-provenance-exposure-or-title-not-plant-claim",
+    "/meta/source_sha256": "exact-provenance-exposure-or-title-not-plant-claim",
+    "/meta/source_report": "exact-provenance-exposure-or-title-not-plant-claim",
+    "/meta/source_report_sha256": "exact-provenance-exposure-or-title-not-plant-claim",
+    "/meta/authoring_exposure/0": "exact-provenance-exposure-or-title-not-plant-claim",
+    "/meta/authoring_exposure/1": "exact-provenance-exposure-or-title-not-plant-claim",
+    "/meta/authoring_exposure/2": "exact-provenance-exposure-or-title-not-plant-claim",
+    "/meta/authoring_exposure/3": "exact-provenance-exposure-or-title-not-plant-claim",
+    "/meta/unknowns/0": "project-alias-qualification-not-plant-tag-evidence",
+    "/meta/unknowns/1": "declared-unresolved-scope-not-physical-absence",
+    "/meta/unknowns/2": "semantic-claim-component",
+    "/meta/unknowns/3": "boundary-notation-not-common-physical-junction",
+    "/meta/unknowns/4": "semantic-claim-component",
+    "/meta/assumptions/0": "authored-intent-not-source-validated-engineering",
+    "/meta/assumptions/1": "authored-intent-not-source-validated-engineering",
+    "/meta/source_scope_revision": "exact-provenance-exposure-or-title-not-plant-claim",
+    "/units/0/id": "project-identifier-binding-only",
+    "/units/0/name": "semantic-claim-component",
+    "/units/0/type": "semantic-claim-component",
+    "/units/0/source": "source-locator-binding-only",
+    "/units/0/assigned_tag": "author-assignment-declaration-only",
+    "/units/0/reported_capacity_gal": "semantic-claim-component",
+    "/units/0/reported_concentration_pct": "semantic-claim-component",
+    "/units/0/storage_pressure_basis": "semantic-claim-component",
+    "/units/1/id": "project-identifier-binding-only",
+    "/units/1/name": "semantic-claim-component",
+    "/units/1/type": "semantic-claim-component",
+    "/units/1/source": "source-locator-binding-only",
+    "/units/1/assigned_tag": "author-assignment-declaration-only",
+    "/units/2/id": "project-identifier-binding-only",
+    "/units/2/name": "semantic-claim-component",
+    "/units/2/type": "semantic-claim-component",
+    "/units/2/source": "source-locator-binding-only",
+    "/units/2/assigned_tag": "author-assignment-declaration-only",
+    "/units/3/id": "project-identifier-binding-only",
+    "/units/3/name": "semantic-claim-component",
+    "/units/3/type": "semantic-claim-component",
+    "/units/3/source": "source-locator-binding-only",
+    "/units/3/assigned_tag": "author-assignment-declaration-only",
+    "/units/3/reported_capacity_gal": "semantic-claim-component",
+    "/units/3/reported_concentration_pct": "semantic-claim-component",
+    "/streams/0/id": "project-identifier-binding-only",
+    "/streams/0/name": "semantic-claim-component",
+    "/streams/0/from": "semantic-claim-component",
+    "/streams/0/to": "semantic-claim-component",
+    "/streams/0/source": "source-locator-binding-only",
+    "/streams/1/id": "project-identifier-binding-only",
+    "/streams/1/name": "semantic-claim-component",
+    "/streams/1/from": "semantic-claim-component",
+    "/streams/1/to": "semantic-claim-component",
+    "/streams/1/source": "source-locator-binding-only",
+    "/streams/2/id": "project-identifier-binding-only",
+    "/streams/2/name": "semantic-claim-component",
+    "/streams/2/from": "semantic-claim-component",
+    "/streams/2/to": "semantic-claim-component",
+    "/streams/2/source": "source-locator-binding-only",
+    "/streams/3/id": "project-identifier-binding-only",
+    "/streams/3/name": "semantic-claim-component",
+    "/streams/3/from": "semantic-claim-component",
+    "/streams/3/to": "semantic-claim-component",
+    "/streams/3/source": "source-locator-binding-only",
+    "/streams/4/id": "project-identifier-binding-only",
+    "/streams/4/name": "semantic-claim-component",
+    "/streams/4/from": "semantic-claim-component",
+    "/streams/4/to": "semantic-claim-component",
+    "/streams/4/source": "source-locator-binding-only",
+    "/instruments/0/tag": "project-identifier-binding-only",
+    "/instruments/0/unit": "semantic-claim-component",
+    "/instruments/0/variable": "semantic-claim-component",
+    "/instruments/0/uom": "explicit-unknown-encoding-not-unitless-fact",
+    "/instruments/0/description": "semantic-claim-component",
+    "/instruments/0/source": "source-locator-binding-only",
+    "/instruments/0/assigned_tag": "author-assignment-declaration-only",
+    "/instruments/0/alarm_action_basis": "semantic-claim-component",
+    "/final_elements": "no-supplied-records-not-physical-absence",
+    "/controllers": "no-supplied-records-not-physical-absence",
+    "/manual_valves": "no-supplied-records-not-physical-absence",
+    "/relief_devices": "no-supplied-records-not-physical-absence",
+    "/interlocks": "no-supplied-records-not-physical-absence",
+    "/limits": "no-supplied-records-not-physical-absence"
+  },
+  "group_membership": {
+    "AV-G01": [
+      "/units/0/name",
+      "/units/0/type",
+      "/units/0/reported_capacity_gal",
+      "/units/0/reported_concentration_pct",
+      "/units/0/storage_pressure_basis"
+    ],
+    "AV-G02": [
+      "/units/1/name",
+      "/units/1/type"
+    ],
+    "AV-G03": [
+      "/units/2/name",
+      "/units/2/type"
+    ],
+    "AV-G04": [
+      "/units/3/name",
+      "/units/3/type",
+      "/units/3/reported_capacity_gal",
+      "/units/3/reported_concentration_pct"
+    ],
+    "AV-G05": [
+      "/streams/0/name",
+      "/streams/0/from",
+      "/streams/0/to"
+    ],
+    "AV-G06": [
+      "/streams/1/name",
+      "/streams/1/from",
+      "/streams/1/to"
+    ],
+    "AV-G07": [
+      "/streams/2/name",
+      "/streams/2/from",
+      "/streams/2/to"
+    ],
+    "AV-G08": [
+      "/streams/3/name",
+      "/streams/3/from",
+      "/streams/3/to"
+    ],
+    "AV-G09": [
+      "/streams/4/name",
+      "/streams/4/from",
+      "/streams/4/to"
+    ],
+    "AV-G10": [
+      "/instruments/0/unit",
+      "/instruments/0/variable"
+    ],
+    "AV-G11": [
+      "/instruments/0/description"
+    ],
+    "AV-G12": [
+      "/instruments/0/alarm_action_basis"
+    ],
+    "AV-G13": [
+      "/meta/unknowns/4"
+    ],
+    "AV-G14": [
+      "/meta/unknowns/2"
+    ]
+  },
+  "judgments": {
+    "AV-G01": "supported",
+    "AV-G02": "supported",
+    "AV-G03": "supported",
+    "AV-G04": "supported",
+    "AV-G05": "supported",
+    "AV-G06": "supported",
+    "AV-G07": "supported",
+    "AV-G08": "supported",
+    "AV-G09": "supported",
+    "AV-G10": "supported",
+    "AV-G11": "supported",
+    "AV-G12": "contradicted",
+    "AV-G13": "supported",
+    "AV-G14": "supported"
+  },
+  "rationales": {
+    "AV-G01": {
+      "evidence_ids": [
+        "S01"
+      ],
+      "decisive_original_locator": "Printed/PDF p7, section2.3, right-column final narrative paragraph continuing to p8.",
+      "rationale": "The admitted paragraph explicitly gives 12.5% sodium hypochlorite, outdoor 6,500-gallon bulk tank and atmospheric storage. Name/type and reported attributes are supported jointly at that historical/report scope. HYPO_BULK remains an authored alias, not a primary-source tag."
+    },
+    "AV-G02": {
+      "evidence_ids": [
+        "S02"
+      ],
+      "decisive_original_locator": "Printed/PDF p7 final narrative sentence continued at p8 upper-left first sentence, before section2.3.1.",
+      "rationale": "The report explicitly describes transfer into a smaller day tank inside Mod B. The group names that tank by project alias; it does not assert its plant tag or a present-day installation."
+    },
+    "AV-G03": {
+      "evidence_ids": [
+        "S03"
+      ],
+      "decisive_original_locator": "Printed/PDF p8 upper-left opening paragraph, before section2.3.1, sentence following day-tank transfer.",
+      "rationale": "The same historical sequence transfers sodium hypochlorite into a process vessel. The admitted narrative does not name that vessel; 'Unidentified' is bounded to this evidence, not a claim that nobody knows its identity."
+    },
+    "AV-G04": {
+      "evidence_ids": [
+        "S04"
+      ],
+      "decisive_original_locator": "Printed/PDF p8 upper-left opening paragraph before section2.3.1, sulfuric-acid receipt sentences.",
+      "rationale": "Thirty-percent sulfuric acid and an outdoor 8,500-gallon day tank are explicit. The grouped name/type/capacity/concentration faithfully represent that reported storage description, not current certified properties."
+    },
+    "AV-G05": {
+      "evidence_ids": [
+        "S01"
+      ],
+      "decisive_original_locator": "Printed/PDF p7 section2.3, right-column final paragraph describing receipt at unloading area and piping into outdoor bulk tank.",
+      "rationale": "The incoming hypochlorite-to-bulk transfer is explicit. BL is only the authored scope-boundary endpoint; support does not extend to a shared junction, particular pipe geometry or an actual source equipment tag."
+    },
+    "AV-G06": {
+      "evidence_ids": [
+        "S02"
+      ],
+      "decisive_original_locator": "Printed/PDF p7 final sentence joined to p8 upper-left first sentence before section2.3.1.",
+      "rationale": "The joined sentence explicitly transfers sodium hypochlorite from bulk storage by piping into the smaller day tank. Exact alias endpoints express this narrative sequence, not independent physical identity verification."
+    },
+    "AV-G07": {
+      "evidence_ids": [
+        "S03"
+      ],
+      "decisive_original_locator": "Printed/PDF p8 upper-left first paragraph before section2.3.1, day-tank-to-process-vessel sentence.",
+      "rationale": "The next step is transfer from that day tank into a process vessel as needed. It supplies no detailed route, nozzle, equipment identifier or destination geometry beyond the declared boundary."
+    },
+    "AV-G08": {
+      "evidence_ids": [
+        "S04"
+      ],
+      "decisive_original_locator": "Printed/PDF p8 upper-left first paragraph before section2.3.1, acid receipt/day-tank sentence.",
+      "rationale": "Acid receipt in the unloading area into the outdoor day tank supports the declared incoming boundary-to-day transfer. BL is representational scope, not a reported physical junction or evidence that acid and hypochlorite share a pipe."
+    },
+    "AV-G09": {
+      "evidence_ids": [
+        "S05"
+      ],
+      "decisive_original_locator": "Printed/PDF p8 upper-left first paragraph final sentence before section2.3.1.",
+      "rationale": "The report directly transfers sulfuric acid from its day tank into the process. No destination equipment is identified in the admitted narrative. The boundary endpoint preserves that omission; it does not establish a different or identical physical vessel relative to HYPO_PROCESS."
+    },
+    "AV-G10": {
+      "evidence_ids": [
+        "S06",
+        "S07"
+      ],
+      "decisive_original_locator": "Printed/PDF p23 section5.2 right-column level-indicator paragraph: notification sentences and immediately following 7:59 AM sentence.",
+      "rationale": "The paragraph describes a level indicator; the subsequent sentence explicitly associates it with the sodium hypochlorite bulk tank. The two sentences jointly support variable and bulk-tank association. No instrument tag, engineering unit or threshold value is supplied."
+    },
+    "AV-G11": {
+      "evidence_ids": [
+        "S06"
+      ],
+      "decisive_original_locator": "Printed/PDF p23 section5.2 right-column actual level-indicator paragraph, before the emergency-stop paragraph.",
+      "rationale": "The reported indicator signals the control-system alarm near tank capacity and notifies operators of high level. That supports the description without inferring automatic mitigation."
+    },
+    "AV-G12": {
+      "evidence_ids": [
+        "S06"
+      ],
+      "decisive_original_locator": "Printed/PDF p23 section5.2 right-column actual level-indicator paragraph, read with opening left-column incident-configuration paragraph.",
+      "rationale": "The exact false value says high level automatically shuts down unloading. The admitted report explicitly states the alarm only notified operators and the system was not configured to shut transfer automatically. Same historical entity/function/endpoint scope, direct contradiction. A real indicator, real quote and correct other fields cannot support that action."
+    },
+    "AV-G13": {
+      "evidence_ids": [
+        "S06"
+      ],
+      "decisive_original_locator": "Printed/PDF p23 section5.2 right-column actual level-indicator paragraph, read with incident-time opening on left.",
+      "rationale": "Although stored in meta.unknowns, this is a substantive alarm-action statement. Notification-only and lack of automatic unloading shutdown are explicit in the historical account. It is not merely source silence, nor a 2026 installation statement."
+    },
+    "AV-G14": {
+      "evidence_ids": [
+        "S03",
+        "S05"
+      ],
+      "decisive_original_locator": "Printed/PDF p8 upper-left opening paragraph before section2.3.1: hypochlorite process-vessel and sulfuric-acid-to-process sentences.",
+      "rationale": "The admitted narrative names neither the hypochlorite process vessel nor the acid destination equipment. The 'must not be equated' clause is a justified evidence-handling restriction/inference from that bounded lack of identity evidence, not a claim that the two physical destinations are different. Support is for this scoped uncertainty statement."
+    }
+  },
+  "limits": "Approved exact82/55 value/group scope only. Role-only entries are not source-accuracy successes. Label accuracy evaluates the reviewer; false artifact AV-G12 remains a critical contradiction even when the reviewer scores14/14.",
+  "v1_projection": {
+    "sha256_raw": "e374e29f48992828b02462f2787b553d512abd6d519b9634d1cdbc191b5089d5",
+    "bytes": 14022
+  }
+}

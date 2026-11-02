@@ -1,0 +1,1098 @@
+{
+  "schema": "artifact-value-review-public-label-controls-1",
+  "coverage_each": {
+    "model_entries": 82,
+    "provided_values": 55,
+    "role_only_values": 48,
+    "semantic_component_values": 34,
+    "semantic_groups": 14
+  },
+  "runs": {
+    "artifact-control-false-correct-label-poor-reason": {
+      "case": "artifact-false-shutdown",
+      "source_api_control": "false-correct-label-poor-reason",
+      "status": "ok",
+      "note": null,
+      "counts": {
+        "contradicted": {
+          "predicted": 1,
+          "tp": 1,
+          "truth": 1
+        },
+        "insufficient-evidence": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 0
+        },
+        "judgments": {
+          "predicted": 14,
+          "tp": 14,
+          "truth": 14
+        },
+        "supported": {
+          "predicted": 13,
+          "tp": 13,
+          "truth": 13
+        }
+      },
+      "diagnostics": {
+        "correct_judgments": 14,
+        "exact_label_accuracy": 1.0,
+        "expected_judgments": 14,
+        "incorrect_judgments": [],
+        "missing_judgments": [],
+        "reason_quality_scored": false,
+        "scope": "Fixed supplied claim labels only; citation IDs checked structurally. No automatic prose, source-validity or plant-truth judgment."
+      },
+      "not_attempted": [
+        "artifact-reference"
+      ],
+      "coverage": {
+        "model_entries": 82,
+        "provided_values": 55,
+        "role_only_values": 48,
+        "semantic_component_values": 34,
+        "semantic_groups": 14
+      },
+      "keyed_artifact_contradictions": [
+        {
+          "id": "AV-G12",
+          "pointers": [
+            "/instruments/0/alarm_action_basis"
+          ],
+          "values": {
+            "/instruments/0/alarm_action_basis": "High level automatically shuts down unloading."
+          }
+        }
+      ]
+    },
+    "artifact-control-false-literal-unreviewed": {
+      "case": "artifact-false-shutdown",
+      "source_api_control": "false-literal-unreviewed",
+      "status": "invalid-answer",
+      "note": "Unknown judgment label",
+      "counts": {
+        "contradicted": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 1
+        },
+        "insufficient-evidence": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 0
+        },
+        "judgments": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 14
+        },
+        "supported": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 13
+        }
+      },
+      "diagnostics": {
+        "correct_judgments": 0,
+        "exact_label_accuracy": 0.0,
+        "expected_judgments": 14,
+        "incorrect_judgments": [],
+        "missing_judgments": [
+          "AV-G01",
+          "AV-G02",
+          "AV-G03",
+          "AV-G04",
+          "AV-G05",
+          "AV-G06",
+          "AV-G07",
+          "AV-G08",
+          "AV-G09",
+          "AV-G10",
+          "AV-G11",
+          "AV-G12",
+          "AV-G13",
+          "AV-G14"
+        ],
+        "reason_quality_scored": false,
+        "scope": "Fixed supplied claim labels only; citation IDs checked structurally. No automatic prose, source-validity or plant-truth judgment."
+      },
+      "not_attempted": [
+        "artifact-reference"
+      ],
+      "coverage": {
+        "model_entries": 82,
+        "provided_values": 55,
+        "role_only_values": 48,
+        "semantic_component_values": 34,
+        "semantic_groups": 14
+      },
+      "keyed_artifact_contradictions": [
+        {
+          "id": "AV-G12",
+          "pointers": [
+            "/instruments/0/alarm_action_basis"
+          ],
+          "values": {
+            "/instruments/0/alarm_action_basis": "High level automatically shuts down unloading."
+          }
+        }
+      ]
+    },
+    "artifact-control-false-shutdown-all-contradicted": {
+      "case": "artifact-false-shutdown",
+      "source_api_control": "false-shutdown-all-contradicted",
+      "status": "ok",
+      "note": null,
+      "counts": {
+        "contradicted": {
+          "predicted": 14,
+          "tp": 1,
+          "truth": 1
+        },
+        "insufficient-evidence": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 0
+        },
+        "judgments": {
+          "predicted": 14,
+          "tp": 1,
+          "truth": 14
+        },
+        "supported": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 13
+        }
+      },
+      "diagnostics": {
+        "correct_judgments": 1,
+        "exact_label_accuracy": 0.07142857142857142,
+        "expected_judgments": 14,
+        "incorrect_judgments": [
+          {
+            "expected": "supported",
+            "id": "AV-G01",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G02",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G03",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G04",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G05",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G06",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G07",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G08",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G09",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G10",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G11",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G13",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G14",
+            "predicted": "contradicted"
+          }
+        ],
+        "missing_judgments": [],
+        "reason_quality_scored": false,
+        "scope": "Fixed supplied claim labels only; citation IDs checked structurally. No automatic prose, source-validity or plant-truth judgment."
+      },
+      "not_attempted": [
+        "artifact-reference"
+      ],
+      "coverage": {
+        "model_entries": 82,
+        "provided_values": 55,
+        "role_only_values": 48,
+        "semantic_component_values": 34,
+        "semantic_groups": 14
+      },
+      "keyed_artifact_contradictions": [
+        {
+          "id": "AV-G12",
+          "pointers": [
+            "/instruments/0/alarm_action_basis"
+          ],
+          "values": {
+            "/instruments/0/alarm_action_basis": "High level automatically shuts down unloading."
+          }
+        }
+      ]
+    },
+    "artifact-control-false-shutdown-all-insufficient-evidence": {
+      "case": "artifact-false-shutdown",
+      "source_api_control": "false-shutdown-all-insufficient-evidence",
+      "status": "ok",
+      "note": null,
+      "counts": {
+        "contradicted": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 1
+        },
+        "insufficient-evidence": {
+          "predicted": 14,
+          "tp": 0,
+          "truth": 0
+        },
+        "judgments": {
+          "predicted": 14,
+          "tp": 0,
+          "truth": 14
+        },
+        "supported": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 13
+        }
+      },
+      "diagnostics": {
+        "correct_judgments": 0,
+        "exact_label_accuracy": 0.0,
+        "expected_judgments": 14,
+        "incorrect_judgments": [
+          {
+            "expected": "supported",
+            "id": "AV-G01",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G02",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G03",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G04",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G05",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G06",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G07",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G08",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G09",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G10",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G11",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "contradicted",
+            "id": "AV-G12",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G13",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G14",
+            "predicted": "insufficient-evidence"
+          }
+        ],
+        "missing_judgments": [],
+        "reason_quality_scored": false,
+        "scope": "Fixed supplied claim labels only; citation IDs checked structurally. No automatic prose, source-validity or plant-truth judgment."
+      },
+      "not_attempted": [
+        "artifact-reference"
+      ],
+      "coverage": {
+        "model_entries": 82,
+        "provided_values": 55,
+        "role_only_values": 48,
+        "semantic_component_values": 34,
+        "semantic_groups": 14
+      },
+      "keyed_artifact_contradictions": [
+        {
+          "id": "AV-G12",
+          "pointers": [
+            "/instruments/0/alarm_action_basis"
+          ],
+          "values": {
+            "/instruments/0/alarm_action_basis": "High level automatically shuts down unloading."
+          }
+        }
+      ]
+    },
+    "artifact-control-false-shutdown-all-supported": {
+      "case": "artifact-false-shutdown",
+      "source_api_control": "false-shutdown-all-supported",
+      "status": "ok",
+      "note": null,
+      "counts": {
+        "contradicted": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 1
+        },
+        "insufficient-evidence": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 0
+        },
+        "judgments": {
+          "predicted": 14,
+          "tp": 13,
+          "truth": 14
+        },
+        "supported": {
+          "predicted": 14,
+          "tp": 13,
+          "truth": 13
+        }
+      },
+      "diagnostics": {
+        "correct_judgments": 13,
+        "exact_label_accuracy": 0.9285714285714286,
+        "expected_judgments": 14,
+        "incorrect_judgments": [
+          {
+            "expected": "contradicted",
+            "id": "AV-G12",
+            "predicted": "supported"
+          }
+        ],
+        "missing_judgments": [],
+        "reason_quality_scored": false,
+        "scope": "Fixed supplied claim labels only; citation IDs checked structurally. No automatic prose, source-validity or plant-truth judgment."
+      },
+      "not_attempted": [
+        "artifact-reference"
+      ],
+      "coverage": {
+        "model_entries": 82,
+        "provided_values": 55,
+        "role_only_values": 48,
+        "semantic_component_values": 34,
+        "semantic_groups": 14
+      },
+      "keyed_artifact_contradictions": [
+        {
+          "id": "AV-G12",
+          "pointers": [
+            "/instruments/0/alarm_action_basis"
+          ],
+          "values": {
+            "/instruments/0/alarm_action_basis": "High level automatically shuts down unloading."
+          }
+        }
+      ]
+    },
+    "artifact-control-false-shutdown-empty": {
+      "case": "artifact-false-shutdown",
+      "source_api_control": "false-shutdown-empty",
+      "status": "ok",
+      "note": null,
+      "counts": {
+        "contradicted": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 1
+        },
+        "insufficient-evidence": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 0
+        },
+        "judgments": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 14
+        },
+        "supported": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 13
+        }
+      },
+      "diagnostics": {
+        "correct_judgments": 0,
+        "exact_label_accuracy": 0.0,
+        "expected_judgments": 14,
+        "incorrect_judgments": [],
+        "missing_judgments": [
+          "AV-G01",
+          "AV-G02",
+          "AV-G03",
+          "AV-G04",
+          "AV-G05",
+          "AV-G06",
+          "AV-G07",
+          "AV-G08",
+          "AV-G09",
+          "AV-G10",
+          "AV-G11",
+          "AV-G12",
+          "AV-G13",
+          "AV-G14"
+        ],
+        "reason_quality_scored": false,
+        "scope": "Fixed supplied claim labels only; citation IDs checked structurally. No automatic prose, source-validity or plant-truth judgment."
+      },
+      "not_attempted": [
+        "artifact-reference"
+      ],
+      "coverage": {
+        "model_entries": 82,
+        "provided_values": 55,
+        "role_only_values": 48,
+        "semantic_component_values": 34,
+        "semantic_groups": 14
+      },
+      "keyed_artifact_contradictions": [
+        {
+          "id": "AV-G12",
+          "pointers": [
+            "/instruments/0/alarm_action_basis"
+          ],
+          "values": {
+            "/instruments/0/alarm_action_basis": "High level automatically shuts down unloading."
+          }
+        }
+      ]
+    },
+    "artifact-control-false-shutdown-keyed-review": {
+      "case": "artifact-false-shutdown",
+      "source_api_control": "false-shutdown-keyed-review",
+      "status": "ok",
+      "note": null,
+      "counts": {
+        "contradicted": {
+          "predicted": 1,
+          "tp": 1,
+          "truth": 1
+        },
+        "insufficient-evidence": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 0
+        },
+        "judgments": {
+          "predicted": 14,
+          "tp": 14,
+          "truth": 14
+        },
+        "supported": {
+          "predicted": 13,
+          "tp": 13,
+          "truth": 13
+        }
+      },
+      "diagnostics": {
+        "correct_judgments": 14,
+        "exact_label_accuracy": 1.0,
+        "expected_judgments": 14,
+        "incorrect_judgments": [],
+        "missing_judgments": [],
+        "reason_quality_scored": false,
+        "scope": "Fixed supplied claim labels only; citation IDs checked structurally. No automatic prose, source-validity or plant-truth judgment."
+      },
+      "not_attempted": [
+        "artifact-reference"
+      ],
+      "coverage": {
+        "model_entries": 82,
+        "provided_values": 55,
+        "role_only_values": 48,
+        "semantic_component_values": 34,
+        "semantic_groups": 14
+      },
+      "keyed_artifact_contradictions": [
+        {
+          "id": "AV-G12",
+          "pointers": [
+            "/instruments/0/alarm_action_basis"
+          ],
+          "values": {
+            "/instruments/0/alarm_action_basis": "High level automatically shuts down unloading."
+          }
+        }
+      ]
+    },
+    "artifact-control-false-shutdown-missing-critical": {
+      "case": "artifact-false-shutdown",
+      "source_api_control": "false-shutdown-missing-critical",
+      "status": "ok",
+      "note": null,
+      "counts": {
+        "contradicted": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 1
+        },
+        "insufficient-evidence": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 0
+        },
+        "judgments": {
+          "predicted": 13,
+          "tp": 13,
+          "truth": 14
+        },
+        "supported": {
+          "predicted": 13,
+          "tp": 13,
+          "truth": 13
+        }
+      },
+      "diagnostics": {
+        "correct_judgments": 13,
+        "exact_label_accuracy": 0.9285714285714286,
+        "expected_judgments": 14,
+        "incorrect_judgments": [],
+        "missing_judgments": [
+          "AV-G12"
+        ],
+        "reason_quality_scored": false,
+        "scope": "Fixed supplied claim labels only; citation IDs checked structurally. No automatic prose, source-validity or plant-truth judgment."
+      },
+      "not_attempted": [
+        "artifact-reference"
+      ],
+      "coverage": {
+        "model_entries": 82,
+        "provided_values": 55,
+        "role_only_values": 48,
+        "semantic_component_values": 34,
+        "semantic_groups": 14
+      },
+      "keyed_artifact_contradictions": [
+        {
+          "id": "AV-G12",
+          "pointers": [
+            "/instruments/0/alarm_action_basis"
+          ],
+          "values": {
+            "/instruments/0/alarm_action_basis": "High level automatically shuts down unloading."
+          }
+        }
+      ]
+    },
+    "artifact-control-reference-all-contradicted": {
+      "case": "artifact-reference",
+      "source_api_control": "reference-all-contradicted",
+      "status": "ok",
+      "note": null,
+      "counts": {
+        "contradicted": {
+          "predicted": 14,
+          "tp": 0,
+          "truth": 0
+        },
+        "insufficient-evidence": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 0
+        },
+        "judgments": {
+          "predicted": 14,
+          "tp": 0,
+          "truth": 14
+        },
+        "supported": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 14
+        }
+      },
+      "diagnostics": {
+        "correct_judgments": 0,
+        "exact_label_accuracy": 0.0,
+        "expected_judgments": 14,
+        "incorrect_judgments": [
+          {
+            "expected": "supported",
+            "id": "AV-G01",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G02",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G03",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G04",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G05",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G06",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G07",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G08",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G09",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G10",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G11",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G12",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G13",
+            "predicted": "contradicted"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G14",
+            "predicted": "contradicted"
+          }
+        ],
+        "missing_judgments": [],
+        "reason_quality_scored": false,
+        "scope": "Fixed supplied claim labels only; citation IDs checked structurally. No automatic prose, source-validity or plant-truth judgment."
+      },
+      "not_attempted": [
+        "artifact-false-shutdown"
+      ],
+      "coverage": {
+        "model_entries": 82,
+        "provided_values": 55,
+        "role_only_values": 48,
+        "semantic_component_values": 34,
+        "semantic_groups": 14
+      },
+      "keyed_artifact_contradictions": []
+    },
+    "artifact-control-reference-all-insufficient-evidence": {
+      "case": "artifact-reference",
+      "source_api_control": "reference-all-insufficient-evidence",
+      "status": "ok",
+      "note": null,
+      "counts": {
+        "contradicted": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 0
+        },
+        "insufficient-evidence": {
+          "predicted": 14,
+          "tp": 0,
+          "truth": 0
+        },
+        "judgments": {
+          "predicted": 14,
+          "tp": 0,
+          "truth": 14
+        },
+        "supported": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 14
+        }
+      },
+      "diagnostics": {
+        "correct_judgments": 0,
+        "exact_label_accuracy": 0.0,
+        "expected_judgments": 14,
+        "incorrect_judgments": [
+          {
+            "expected": "supported",
+            "id": "AV-G01",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G02",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G03",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G04",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G05",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G06",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G07",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G08",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G09",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G10",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G11",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G12",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G13",
+            "predicted": "insufficient-evidence"
+          },
+          {
+            "expected": "supported",
+            "id": "AV-G14",
+            "predicted": "insufficient-evidence"
+          }
+        ],
+        "missing_judgments": [],
+        "reason_quality_scored": false,
+        "scope": "Fixed supplied claim labels only; citation IDs checked structurally. No automatic prose, source-validity or plant-truth judgment."
+      },
+      "not_attempted": [
+        "artifact-false-shutdown"
+      ],
+      "coverage": {
+        "model_entries": 82,
+        "provided_values": 55,
+        "role_only_values": 48,
+        "semantic_component_values": 34,
+        "semantic_groups": 14
+      },
+      "keyed_artifact_contradictions": []
+    },
+    "artifact-control-reference-all-supported": {
+      "case": "artifact-reference",
+      "source_api_control": "reference-all-supported",
+      "status": "ok",
+      "note": null,
+      "counts": {
+        "contradicted": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 0
+        },
+        "insufficient-evidence": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 0
+        },
+        "judgments": {
+          "predicted": 14,
+          "tp": 14,
+          "truth": 14
+        },
+        "supported": {
+          "predicted": 14,
+          "tp": 14,
+          "truth": 14
+        }
+      },
+      "diagnostics": {
+        "correct_judgments": 14,
+        "exact_label_accuracy": 1.0,
+        "expected_judgments": 14,
+        "incorrect_judgments": [],
+        "missing_judgments": [],
+        "reason_quality_scored": false,
+        "scope": "Fixed supplied claim labels only; citation IDs checked structurally. No automatic prose, source-validity or plant-truth judgment."
+      },
+      "not_attempted": [
+        "artifact-false-shutdown"
+      ],
+      "coverage": {
+        "model_entries": 82,
+        "provided_values": 55,
+        "role_only_values": 48,
+        "semantic_component_values": 34,
+        "semantic_groups": 14
+      },
+      "keyed_artifact_contradictions": []
+    },
+    "artifact-control-reference-empty": {
+      "case": "artifact-reference",
+      "source_api_control": "reference-empty",
+      "status": "ok",
+      "note": null,
+      "counts": {
+        "contradicted": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 0
+        },
+        "insufficient-evidence": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 0
+        },
+        "judgments": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 14
+        },
+        "supported": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 14
+        }
+      },
+      "diagnostics": {
+        "correct_judgments": 0,
+        "exact_label_accuracy": 0.0,
+        "expected_judgments": 14,
+        "incorrect_judgments": [],
+        "missing_judgments": [
+          "AV-G01",
+          "AV-G02",
+          "AV-G03",
+          "AV-G04",
+          "AV-G05",
+          "AV-G06",
+          "AV-G07",
+          "AV-G08",
+          "AV-G09",
+          "AV-G10",
+          "AV-G11",
+          "AV-G12",
+          "AV-G13",
+          "AV-G14"
+        ],
+        "reason_quality_scored": false,
+        "scope": "Fixed supplied claim labels only; citation IDs checked structurally. No automatic prose, source-validity or plant-truth judgment."
+      },
+      "not_attempted": [
+        "artifact-false-shutdown"
+      ],
+      "coverage": {
+        "model_entries": 82,
+        "provided_values": 55,
+        "role_only_values": 48,
+        "semantic_component_values": 34,
+        "semantic_groups": 14
+      },
+      "keyed_artifact_contradictions": []
+    },
+    "artifact-control-reference-keyed-review": {
+      "case": "artifact-reference",
+      "source_api_control": "reference-keyed-review",
+      "status": "ok",
+      "note": null,
+      "counts": {
+        "contradicted": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 0
+        },
+        "insufficient-evidence": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 0
+        },
+        "judgments": {
+          "predicted": 14,
+          "tp": 14,
+          "truth": 14
+        },
+        "supported": {
+          "predicted": 14,
+          "tp": 14,
+          "truth": 14
+        }
+      },
+      "diagnostics": {
+        "correct_judgments": 14,
+        "exact_label_accuracy": 1.0,
+        "expected_judgments": 14,
+        "incorrect_judgments": [],
+        "missing_judgments": [],
+        "reason_quality_scored": false,
+        "scope": "Fixed supplied claim labels only; citation IDs checked structurally. No automatic prose, source-validity or plant-truth judgment."
+      },
+      "not_attempted": [
+        "artifact-false-shutdown"
+      ],
+      "coverage": {
+        "model_entries": 82,
+        "provided_values": 55,
+        "role_only_values": 48,
+        "semantic_component_values": 34,
+        "semantic_groups": 14
+      },
+      "keyed_artifact_contradictions": []
+    },
+    "artifact-control-reference-missing-critical": {
+      "case": "artifact-reference",
+      "source_api_control": "reference-missing-critical",
+      "status": "ok",
+      "note": null,
+      "counts": {
+        "contradicted": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 0
+        },
+        "insufficient-evidence": {
+          "predicted": 0,
+          "tp": 0,
+          "truth": 0
+        },
+        "judgments": {
+          "predicted": 13,
+          "tp": 13,
+          "truth": 14
+        },
+        "supported": {
+          "predicted": 13,
+          "tp": 13,
+          "truth": 14
+        }
+      },
+      "diagnostics": {
+        "correct_judgments": 13,
+        "exact_label_accuracy": 0.9285714285714286,
+        "expected_judgments": 14,
+        "incorrect_judgments": [],
+        "missing_judgments": [
+          "AV-G12"
+        ],
+        "reason_quality_scored": false,
+        "scope": "Fixed supplied claim labels only; citation IDs checked structurally. No automatic prose, source-validity or plant-truth judgment."
+      },
+      "not_attempted": [
+        "artifact-false-shutdown"
+      ],
+      "coverage": {
+        "model_entries": 82,
+        "provided_values": 55,
+        "role_only_values": 48,
+        "semantic_component_values": 34,
+        "semantic_groups": 14
+      },
+      "keyed_artifact_contradictions": []
+    }
+  }
+}

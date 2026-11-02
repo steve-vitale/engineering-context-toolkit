@@ -1,0 +1,37 @@
+{
+  "cases": [
+    "artifact-reference"
+  ],
+  "configuration": {
+    "authoring_date_not_inference_date": "2026-11-02",
+    "no_model_call": true,
+    "source_case": "reference",
+    "synthetic_control": true
+  },
+  "id": "artifact-control-reference-missing-critical",
+  "interface": "deterministic authored saved JSON; no inference",
+  "method": "reference-missing-critical",
+  "model": {
+    "id": "synthetic-review-control",
+    "provider": "none",
+    "version": "1"
+  },
+  "predictions": {
+    "artifact-reference": {
+      "path": "benchmarks/source-support/artifact-values/predictions/reference-missing-critical.json",
+      "sha256": "8701e985adcf69c3f9a13ffdb3ab3dadcb392eea4d9d7a3069b43403cda66b2e"
+    }
+  },
+  "provenance": "Saved key-derived/empty/uniform/missing/invalid/rationale controls. Not a model attempt, independent source family, held-out evaluation, reviewer authentication or plant acceptance. Actual CLI date/status is retained separately.",
+  "ran_at": "2026-11-02",
+  "recipe": [
+    {
+      "path": "benchmarks/source-support/artifact-values/PROTOCOL.md",
+      "sha256": "d9ff0cba444743a9e86f12b21ce8802c18ff4022033ef1d5456da6618aac9532"
+    },
+    {
+      "path": "benchmarks/source-support/artifact-values/EXPOSURE.json",
+      "sha256": "e0e5c1d8ac930dbd87921ebcd2280c3be723716d299e641305e09b275117c087"
+    }
+  ]
+}

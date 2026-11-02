@@ -4722,6 +4722,33 @@
         "requirements.txt",
         "docs/STATUS.md"
       ]
+    },
+    {
+      "id": "A305",
+      "function": "scoring",
+      "date": "2026-11-02",
+      "change": "Bind an independently reviewed frozen Native value/group scope before the unchanged source-support reviewer-label scorer.",
+      "hypothesis": "Exact artifact/source/CSV/inventory/approved-context binding can make declared review coverage inspectable without confusing reviewer label accuracy with whether the artifact contains a contradiction.",
+      "evidence": "The two exposed historical-source artifacts retain 82 scalar/empty-container entries, 55 provided CSV rows and 14 reviewed semantic groups each; these are fixture counts, not atomic claim counts or schema limits. Twenty-seven admission vectors comprise two valid cases and 25 specific refusals. Fourteen synthetic saved reviewer controls remain 13 scored plus one invalid-answer/empty-score; AV-G12 is contradicted in the false artifact even when the reviewer labels all 14 correctly. Six actual normal public-root CLI runs produce twelve complete report files. Five legacy successors preserve counts, metrics, types, statuses, diagnostics and attempted sets, changing only prederived implementation/cohort/group identities and corresponding summary order. Old reports and ten versioned snapshot files remain unchanged. The six-entry registry check passes. Four focused stdlib programs report 63 tests: 62 pass, one unnamed benchmark skip, zero failures/errors; independent receiving accepts publication and focused evidence.",
+      "runs": "Six fresh normal public-root CLI jobs (five legacy plus one fourteen-submission opt-in suite), not model/provider trials. Focused programs: artifact review: 4 passed; source support: 8 passed; benchmark: 31 passed and one unnamed skip; runner: 19 passed. The four programs report 62 passed and one unnamed skip in 63 tests. The original zero-skip observer hold remains; only the uncalled fourth module was resumed, with no completed module rerun.",
+      "verdict": "kept",
+      "why": "N116 closes bounded admission/scoring normalization for explicitly reviewed frozen profiles, reusing claim-judgments-v1 and preserving native-facts-v1 and all historical answers/results. The helper is support, not a new CLI, task family, operational review workflow or truth service. Role/source/group exclusions and engineering labels require independent review; citations and nonempty reasons do not establish support or reason quality. No automatic claim discovery, general generator accuracy, source/reviewer authority, current plant truth or measured human benefit. The registered source-only mode (55 programs), full suite (72 programs) and exact-head CI remain unrun integration gates at this dated entry.",
+      "source": [
+        "docs/JOURNAL.md#153-bind-a-frozen-model-review-before-scoring-supplied-labels",
+        "benchmarks/README.md",
+        "benchmarks/source-support/artifact-values/README.md",
+        "benchmarks/source-support/artifact-values/SOURCE-KEY-REVIEW.json",
+        "benchmarks/source-support/artifact-values/admission-controls.json",
+        "benchmarks/source-support/artifact-values/suite.json",
+        "benchmarks/results/artifact-value-review-development.json",
+        "benchmarks/results/artifact-value-review-development.md",
+        "scripts/artifact_value_review.py",
+        "scripts/benchmark.py",
+        "scripts/test_artifact_value_review.py",
+        "scripts/test_source_support.py",
+        "scripts/test_benchmark.py",
+        "scripts/run_tests.py"
+      ]
     }
   ],
   "not_tried": [
@@ -6070,6 +6097,29 @@
         "examples/context-register/grouping-observations.json",
         "scripts/context_register.py",
         "scripts/test_context_register.py"
+      ]
+    },
+    {
+      "id": "N116",
+      "function": "scoring",
+      "status": "done",
+      "idea": "Bind complete explicitly reviewed frozen Native artifact values, source/CSV context and semantic groups before fixed reviewer-label scoring.",
+      "why_not_yet": "Completed A305 for the opt-in provided-model-values-v1 profile. All selected scalar/empty-container roles and approved projection context are bound; missing, stale, typed, foreign or omitted components refuse before existing claim-judgments-v1 grading. Six normal public-root scores and the six-entry registry check pass; four focused programs report 62 passed and one unnamed skip in 63 tests. This is contributor evaluation of reviewed frozen scopes, not automatic assertion discovery, arbitrary Native/model support, general description-generator accuracy, current engineering truth or authority. The source-only mode (55 programs), full suite (72 programs), exact-head CI and final feature-review registration remain separate integration gates.",
+      "source": [
+        "docs/JOURNAL.md#153-bind-a-frozen-model-review-before-scoring-supplied-labels",
+        "benchmarks/README.md",
+        "benchmarks/source-support/artifact-values/README.md",
+        "benchmarks/source-support/artifact-values/SOURCE-KEY-REVIEW.json",
+        "benchmarks/source-support/artifact-values/admission-controls.json",
+        "benchmarks/source-support/artifact-values/suite.json",
+        "benchmarks/results/artifact-value-review-development.json",
+        "benchmarks/results/artifact-value-review-development.md",
+        "scripts/artifact_value_review.py",
+        "scripts/benchmark.py",
+        "scripts/test_artifact_value_review.py",
+        "scripts/test_source_support.py",
+        "scripts/test_benchmark.py",
+        "scripts/run_tests.py"
       ]
     }
   ]

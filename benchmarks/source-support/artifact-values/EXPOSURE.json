@@ -1,0 +1,12 @@
+{
+  "candidate_acceptance_sha256": "d4b3e06b3434d4dac8c5caa7061b5a3cdef7243440bef5eda37a8b002d429aca",
+  "evidence": "synthetic-control",
+  "key_acceptance_sha256": "18c1bbf063bc85ebbc57d342d0201ea976f0464548848c9b0064f882aec6ba45",
+  "key_exposure": "Independent keys/source review and both existing artifacts exposed to authors; predictions are saved synthetic controls, not model attempts.",
+  "model_provider_calls": 0,
+  "original_acceptance_sha256": "fdf7f804cba4758ba15bc26ba02974db7e411567ec73336c1fe681c0cb508321",
+  "projection_binding_acceptance_sha256": "bb679efa68b9a95e616a14a4949b8ba4ca06b3915bdf595edc52f9fb3808b3b7",
+  "ran_at_meaning": "Run manifest date is saved synthetic prediction authoring date; actual benchmark CLI timestamps/PIDs are separately recorded.",
+  "schema": "artifact-review-cli-exposure-1",
+  "source_family": "same exposed CSB MGPI adaptation, not new independent sources"
+}

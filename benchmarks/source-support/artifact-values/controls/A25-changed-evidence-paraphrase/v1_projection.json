@@ -1,0 +1,210 @@
+{
+  "schema": "source-support-input-1",
+  "sources": [
+    {
+      "id": "CSB-MGPI-2017",
+      "sha256": "2e8f0ef9db7b9c65b790dbb3c1a2f12f90a9a7051e531189b5868ce2c2e6a07e",
+      "title": "CSB MGPI case study, report2017-01-I-KS, December2017",
+      "identity": "Historical October21,2016 incident/configuration account",
+      "url": "https://www.csb.gov/file.aspx?DocumentId=6047",
+      "time_scope": "Historical incident/configuration as described by2017 report; not2026 installed state",
+      "admitted_scope": "Printed/PDF p7§2.3 narrative and p8 continuation before2.3.1; p23§5.2 narrative. No figures, footnotes/callout, later plant records or other source expansion.",
+      "raw_original_not_embedded_or_fetched": true
+    }
+  ],
+  "evidence": [
+    {
+      "id": "S01",
+      "source_ids": [
+        "CSB-MGPI-2017"
+      ],
+      "locator": "[{\"paragraph\":\"chemical storage and transfer; continues on page 8\",\"pdf_page\":7,\"printed_page\":7,\"section\":\"2.3\"}]",
+      "paraphrase": "Sodium hypochlorite delivered to Mod B is 12.5 percent; it is received at the chemical unloading area and piped into an outdoor 6500-gallon bulk tank stored at atmospheric pressure.",
+      "time_scope": "Bounded original historical narrative, not current installed state. Derived inventory text is not an original CSB quotation."
+    },
+    {
+      "id": "S02",
+      "source_ids": [
+        "CSB-MGPI-2017"
+      ],
+      "locator": "[{\"paragraph\":\"chemical storage and transfer; continues on page 8\",\"pdf_page\":7,\"printed_page\":7,\"section\":\"2.3\"},{\"paragraph\":\"first paragraph; continuation before section 2.3.1\",\"pdf_page\":8,\"printed_page\":8,\"section\":\"2.3\"}]",
+      "paraphrase": "Operators pipe sodium hypochlorite from the bulk tank to a smaller day tank inside the Mod B building.",
+      "time_scope": "Bounded original historical narrative, not current installed state. Derived inventory text is not an original CSB quotation."
+    },
+    {
+      "id": "S03",
+      "source_ids": [
+        "CSB-MGPI-2017"
+      ],
+      "locator": "[{\"paragraph\":\"first paragraph; continuation before section 2.3.1\",\"pdf_page\":8,\"printed_page\":8,\"section\":\"2.3\"}]",
+      "paraphrase": "Sodium hypochlorite is transferred from the day tank into an unnamed process vessel when needed.",
+      "time_scope": "Bounded original historical narrative, not current installed state. Derived inventory text is not an original CSB quotation."
+    },
+    {
+      "id": "S04",
+      "source_ids": [
+        "CSB-MGPI-2017"
+      ],
+      "locator": "[{\"paragraph\":\"first paragraph; continuation before section 2.3.1\",\"pdf_page\":8,\"printed_page\":8,\"section\":\"2.3\"}]",
+      "paraphrase": "Thirty-percent sulfuric acid is received at the chemical unloading area in an outdoor 8500-gallon day tank.",
+      "time_scope": "Bounded original historical narrative, not current installed state. Derived inventory text is not an original CSB quotation."
+    },
+    {
+      "id": "S05",
+      "source_ids": [
+        "CSB-MGPI-2017"
+      ],
+      "locator": "[{\"paragraph\":\"first paragraph; continuation before section 2.3.1\",\"pdf_page\":8,\"printed_page\":8,\"section\":\"2.3\"}]",
+      "paraphrase": "Operators transfer sulfuric acid directly from the day tank into the process; the destination equipment is unnamed.",
+      "time_scope": "Bounded original historical narrative, not current installed state. Derived inventory text is not an original CSB quotation."
+    },
+    {
+      "id": "S06",
+      "source_ids": [
+        "CSB-MGPI-2017"
+      ],
+      "locator": "[{\"paragraph\":\"actual sodium hypochlorite level-indicator alarm paragraph\",\"pdf_page\":23,\"printed_page\":23,\"section\":\"5.2\"}]",
+      "paraphrase": "Changed evidence paraphrase: synthetic unapproved source-context negative.",
+      "time_scope": "Bounded original historical narrative, not current installed state. Derived inventory text is not an original CSB quotation."
+    },
+    {
+      "id": "S07",
+      "source_ids": [
+        "CSB-MGPI-2017"
+      ],
+      "locator": "[{\"boundary\":\"one sentence only; ends with acid beginning to flow into the tank\",\"paragraph\":\"same actual level-indicator paragraph; immediately following sentence concerning the 7:59 AM alarm\",\"pdf_page\":23,\"printed_page\":23,\"section\":\"5.2\"}]",
+      "paraphrase": "The next sentence explicitly associates the level indicator with the sodium hypochlorite bulk tank.",
+      "time_scope": "Bounded original historical narrative, not current installed state. Derived inventory text is not an original CSB quotation."
+    }
+  ],
+  "items": [
+    {
+      "id": "AV-G01",
+      "candidate_claim": "Bulk-record name/type/capacity/concentration/pressure jointly assert the reported hypochlorite bulk-storage description. HYPO_BULK is only an assigned alias. All material parts must be supported. Exact bound values: {\"/units/0/name\":\"Sodium hypochlorite bulk tank\",\"/units/0/reported_capacity_gal\":6500,\"/units/0/reported_concentration_pct\":12.5,\"/units/0/storage_pressure_basis\":\"atmospheric\",\"/units/0/type\":\"tank\"}",
+      "claim_time_scope": "Historical October21,2016 configuration/process described byDecember2017 report; not current installed state",
+      "family": "csb-mgpi-artifact-review-development",
+      "admitted_evidence_ids": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AV-G02",
+      "candidate_claim": "HYPO_DAY identifies the reported smaller hypochlorite day tank; identifier is a project alias, not a reported plant tag. Exact bound values: {\"/units/1/name\":\"Sodium hypochlorite day tank\",\"/units/1/type\":\"tank\"}",
+      "claim_time_scope": "Historical October21,2016 configuration/process described byDecember2017 report; not current installed state",
+      "family": "csb-mgpi-artifact-review-development",
+      "admitted_evidence_ids": [
+        "S02"
+      ]
+    },
+    {
+      "id": "AV-G03",
+      "candidate_claim": "HYPO_PROCESS identifies an unnamed hypochlorite process vessel within the admitted narrative; no actual equipment tag or precise destination identity is asserted. Exact bound values: {\"/units/2/name\":\"Unidentified sodium hypochlorite process vessel\",\"/units/2/type\":\"vessel\"}",
+      "claim_time_scope": "Historical October21,2016 configuration/process described byDecember2017 report; not current installed state",
+      "family": "csb-mgpi-artifact-review-development",
+      "admitted_evidence_ids": [
+        "S03"
+      ]
+    },
+    {
+      "id": "AV-G04",
+      "candidate_claim": "Acid-record name/type/capacity/concentration jointly describe the reported sulfuric-acid day tank, not current certified properties. Exact bound values: {\"/units/3/name\":\"Sulfuric acid day tank\",\"/units/3/reported_capacity_gal\":8500,\"/units/3/reported_concentration_pct\":30,\"/units/3/type\":\"tank\"}",
+      "claim_time_scope": "Historical October21,2016 configuration/process described byDecember2017 report; not current installed state",
+      "family": "csb-mgpi-artifact-review-development",
+      "admitted_evidence_ids": [
+        "S04"
+      ]
+    },
+    {
+      "id": "AV-G05",
+      "candidate_claim": "Stream record0 name and exact endpoint pair jointly assert the narrative transfer. BL means scope boundary only; two BL occurrences do not assert a shared pipe junction. Alias targets must resolve to the frozen record context, not real plant tags. Exact bound values: {\"/streams/0/from\":\"BL\",\"/streams/0/name\":\"Hypochlorite unloading across scope boundary\",\"/streams/0/to\":\"HYPO_BULK\"}",
+      "claim_time_scope": "Historical October21,2016 configuration/process described byDecember2017 report; not current installed state",
+      "family": "csb-mgpi-artifact-review-development",
+      "admitted_evidence_ids": [
+        "S01"
+      ]
+    },
+    {
+      "id": "AV-G06",
+      "candidate_claim": "Stream record1 name and exact endpoint pair jointly assert the narrative transfer. BL means scope boundary only; two BL occurrences do not assert a shared pipe junction. Alias targets must resolve to the frozen record context, not real plant tags. Exact bound values: {\"/streams/1/from\":\"HYPO_BULK\",\"/streams/1/name\":\"Hypochlorite bulk-to-day transfer\",\"/streams/1/to\":\"HYPO_DAY\"}",
+      "claim_time_scope": "Historical October21,2016 configuration/process described byDecember2017 report; not current installed state",
+      "family": "csb-mgpi-artifact-review-development",
+      "admitted_evidence_ids": [
+        "S02"
+      ]
+    },
+    {
+      "id": "AV-G07",
+      "candidate_claim": "Stream record2 name and exact endpoint pair jointly assert the narrative transfer. BL means scope boundary only; two BL occurrences do not assert a shared pipe junction. Alias targets must resolve to the frozen record context, not real plant tags. Exact bound values: {\"/streams/2/from\":\"HYPO_DAY\",\"/streams/2/name\":\"Hypochlorite day-to-process transfer\",\"/streams/2/to\":\"HYPO_PROCESS\"}",
+      "claim_time_scope": "Historical October21,2016 configuration/process described byDecember2017 report; not current installed state",
+      "family": "csb-mgpi-artifact-review-development",
+      "admitted_evidence_ids": [
+        "S03"
+      ]
+    },
+    {
+      "id": "AV-G08",
+      "candidate_claim": "Stream record3 name and exact endpoint pair jointly assert the narrative transfer. BL means scope boundary only; two BL occurrences do not assert a shared pipe junction. Alias targets must resolve to the frozen record context, not real plant tags. Exact bound values: {\"/streams/3/from\":\"BL\",\"/streams/3/name\":\"Sulfuric acid unloading across scope boundary\",\"/streams/3/to\":\"ACID_DAY\"}",
+      "claim_time_scope": "Historical October21,2016 configuration/process described byDecember2017 report; not current installed state",
+      "family": "csb-mgpi-artifact-review-development",
+      "admitted_evidence_ids": [
+        "S04"
+      ]
+    },
+    {
+      "id": "AV-G09",
+      "candidate_claim": "Stream record4 name and exact endpoint pair jointly assert the narrative transfer. BL means scope boundary only; two BL occurrences do not assert a shared pipe junction. Alias targets must resolve to the frozen record context, not real plant tags. Exact bound values: {\"/streams/4/from\":\"ACID_DAY\",\"/streams/4/name\":\"Sulfuric acid to unspecified process boundary\",\"/streams/4/to\":\"BL\"}",
+      "claim_time_scope": "Historical October21,2016 configuration/process described byDecember2017 report; not current installed state",
+      "family": "csb-mgpi-artifact-review-development",
+      "admitted_evidence_ids": [
+        "S05"
+      ]
+    },
+    {
+      "id": "AV-G10",
+      "candidate_claim": "The level indicator is associated with the hypochlorite bulk-tank alias within the explicit expanded historical source scope. Exact bound values: {\"/instruments/0/unit\":\"HYPO_BULK\",\"/instruments/0/variable\":\"level\"}",
+      "claim_time_scope": "Historical October21,2016 configuration/process described byDecember2017 report; not current installed state",
+      "family": "csb-mgpi-artifact-review-development",
+      "admitted_evidence_ids": [
+        "S06",
+        "S07"
+      ]
+    },
+    {
+      "id": "AV-G11",
+      "candidate_claim": "The reported instrument provides level indication and high-level operator notification. This is not an automatic mitigation claim. Exact bound values: {\"/instruments/0/description\":\"Level indication and high-level operator notification\"}",
+      "claim_time_scope": "Historical October21,2016 configuration/process described byDecember2017 report; not current installed state",
+      "family": "csb-mgpi-artifact-review-development",
+      "admitted_evidence_ids": [
+        "S06"
+      ]
+    },
+    {
+      "id": "AV-G12",
+      "candidate_claim": "Judge the complete exact action value: operator notification versus automatic unloading shutdown in the historical reported configuration. A real citation does not approve the value. Exact bound values: {\"/instruments/0/alarm_action_basis\":\"High level automatically shuts down unloading.\"}",
+      "claim_time_scope": "Historical October21,2016 configuration/process described byDecember2017 report; not current installed state",
+      "family": "csb-mgpi-artifact-review-development",
+      "admitted_evidence_ids": [
+        "S06"
+      ]
+    },
+    {
+      "id": "AV-G13",
+      "candidate_claim": "This unknowns entry contains substantive historical alarm-action wording and cannot be excluded merely because it is under meta. Its historical notification-only qualification is not a2026 installed-state claim. Exact bound values: {\"/meta/unknowns/4\":\"No automatic chemical-unloading shutdown is established; the level alarm is notification only.\"}",
+      "claim_time_scope": "Historical October21,2016 configuration/process described byDecember2017 report; not current installed state",
+      "family": "csb-mgpi-artifact-review-development",
+      "admitted_evidence_ids": [
+        "S06"
+      ]
+    },
+    {
+      "id": "AV-G14",
+      "candidate_claim": "This entry states the bounded narrative leaves HYPO_PROCESS unnamed and the acid destination unspecified, and prohibits equating the aliases without evidence. It does not assert physical absence, a different installed destination, or a complete instrumentation inventory. Exact bound values: {\"/meta/unknowns/2\":\"HYPO_PROCESS is unnamed; the acid process destination is unspecified and must not be equated with it.\"}",
+      "claim_time_scope": "Admitted historical narrative and explicitly authored non-equivalence/uncertainty convention; no physical-identity or current-state conclusion",
+      "family": "csb-mgpi-artifact-review-development",
+      "admitted_evidence_ids": [
+        "S03",
+        "S05"
+      ]
+    }
+  ]
+}

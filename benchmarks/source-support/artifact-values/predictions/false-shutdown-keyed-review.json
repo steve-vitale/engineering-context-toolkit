@@ -1,0 +1,119 @@
+{
+  "schema": "source-support-answer-1",
+  "decisions": [
+    {
+      "id": "AV-G01",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S01"
+      ],
+      "reason": "The admitted paragraph explicitly gives 12.5% sodium hypochlorite, outdoor 6,500-gallon bulk tank and atmospheric storage. Name/type and reported attributes are supported jointly at that historical/report scope. HYPO_BULK remains an authored alias, not a primary-source tag."
+    },
+    {
+      "id": "AV-G02",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S02"
+      ],
+      "reason": "The report explicitly describes transfer into a smaller day tank inside Mod B. The group names that tank by project alias; it does not assert its plant tag or a present-day installation."
+    },
+    {
+      "id": "AV-G03",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S03"
+      ],
+      "reason": "The same historical sequence transfers sodium hypochlorite into a process vessel. The admitted narrative does not name that vessel; 'Unidentified' is bounded to this evidence, not a claim that nobody knows its identity."
+    },
+    {
+      "id": "AV-G04",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S04"
+      ],
+      "reason": "Thirty-percent sulfuric acid and an outdoor 8,500-gallon day tank are explicit. The grouped name/type/capacity/concentration faithfully represent that reported storage description, not current certified properties."
+    },
+    {
+      "id": "AV-G05",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S01"
+      ],
+      "reason": "The incoming hypochlorite-to-bulk transfer is explicit. BL is only the authored scope-boundary endpoint; support does not extend to a shared junction, particular pipe geometry or an actual source equipment tag."
+    },
+    {
+      "id": "AV-G06",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S02"
+      ],
+      "reason": "The joined sentence explicitly transfers sodium hypochlorite from bulk storage by piping into the smaller day tank. Exact alias endpoints express this narrative sequence, not independent physical identity verification."
+    },
+    {
+      "id": "AV-G07",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S03"
+      ],
+      "reason": "The next step is transfer from that day tank into a process vessel as needed. It supplies no detailed route, nozzle, equipment identifier or destination geometry beyond the declared boundary."
+    },
+    {
+      "id": "AV-G08",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S04"
+      ],
+      "reason": "Acid receipt in the unloading area into the outdoor day tank supports the declared incoming boundary-to-day transfer. BL is representational scope, not a reported physical junction or evidence that acid and hypochlorite share a pipe."
+    },
+    {
+      "id": "AV-G09",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S05"
+      ],
+      "reason": "The report directly transfers sulfuric acid from its day tank into the process. No destination equipment is identified in the admitted narrative. The boundary endpoint preserves that omission; it does not establish a different or identical physical vessel relative to HYPO_PROCESS."
+    },
+    {
+      "id": "AV-G10",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S06",
+        "S07"
+      ],
+      "reason": "The paragraph describes a level indicator; the subsequent sentence explicitly associates it with the sodium hypochlorite bulk tank. The two sentences jointly support variable and bulk-tank association. No instrument tag, engineering unit or threshold value is supplied."
+    },
+    {
+      "id": "AV-G11",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S06"
+      ],
+      "reason": "The reported indicator signals the control-system alarm near tank capacity and notifies operators of high level. That supports the description without inferring automatic mitigation."
+    },
+    {
+      "id": "AV-G12",
+      "judgment": "contradicted",
+      "evidence_ids": [
+        "S06"
+      ],
+      "reason": "The exact false value says high level automatically shuts down unloading. The admitted report explicitly states the alarm only notified operators and the system was not configured to shut transfer automatically. Same historical entity/function/endpoint scope, direct contradiction. A real indicator, real quote and correct other fields cannot support that action."
+    },
+    {
+      "id": "AV-G13",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S06"
+      ],
+      "reason": "Although stored in meta.unknowns, this is a substantive alarm-action statement. Notification-only and lack of automatic unloading shutdown are explicit in the historical account. It is not merely source silence, nor a 2026 installation statement."
+    },
+    {
+      "id": "AV-G14",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S03",
+        "S05"
+      ],
+      "reason": "The admitted narrative names neither the hypochlorite process vessel nor the acid destination equipment. The 'must not be equated' clause is a justified evidence-handling restriction/inference from that bounded lack of identity evidence, not a claim that the two physical destinations are different. Support is for this scoped uncertainty statement."
+    }
+  ]
+}

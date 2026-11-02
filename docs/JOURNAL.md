@@ -7084,3 +7084,31 @@ code and published artifacts are unchanged. The corrected source-only run passes
 notices and no additional skipped-check notices; all 3,420 watched files stay unchanged. The platform
 notices explain case skips and are not added to that count. This narrower result is not a full-suite pass.
 Mode-specific results and normal exact-head full CI are separate evidence scopes.
+
+## 153. Bind a frozen model review before scoring supplied labels
+
+The MGPI false-shutdown artifact can still pass the selected-field `native-facts-v1` scorer; that documented
+boundary remains. Fixed claim labels already existed, but a reviewer result was not bound to every supplied
+model value and its approved claim/source context. The contributor [frozen-model review](../benchmarks/source-support/artifact-values/README.md)
+now binds that explicitly reviewed scope before the unchanged `claim-judgments-v1` scorer. It does not discover
+claims or grade arbitrary generated models. The manual interpretation-review CSV remains the engineer route.
+
+The two exposed artifacts retain 82 scalar/empty-container entries, 55 provided rows and 14 reviewed groups
+each. Roles distinguish source qualifiers, aliases, intent and unknowns; 55 rows are not 55 atomic engineering
+claims. Twenty-seven admission vectors contain two valid cases and 25 refusals, including omitted scope,
+typed changes, stale source and altered approved context. The historical CSB key contradicts the false
+artifact's automatic-shutdown group. A reviewer may correctly label all 14 while that contradiction remains;
+citations and nonempty reasons do not establish source support or reason quality.
+
+Six normal public-root CLI scores produce twelve actual reports. Five legacy suites preserve all task
+counts, metrics, diagnostics, statuses and attempted sets; only prederived implementation/comparison IDs and
+summary order change. Old report pairs and ten versioned snapshots remain. The new report contains fourteen
+synthetic reviewer controls: thirteen scored and one invalid-answer/empty-score. The normal six-entry registry
+check passes. Independent receiving checks publication and focused tests: four stdlib programs report 63
+tests, 62 passed and one unnamed benchmark skip. The original zero-skip observer hold remains; only the
+uncalled fourth program resumed. Earlier table-observer failures also remain separate evidence.
+
+A305/N116 closes this bounded evaluation addition. The helper is support, not a new tool or task family.
+Source/key review and declared exclusions remain substantive judgments; no current plant truth, authority,
+general generator accuracy or human benefit follows. Source-only mode (55 programs), the full suite (72 programs) and exact-head CI
+remain separate, unrun integration gates at this entry; old review rows are not rehashed into new acceptance.

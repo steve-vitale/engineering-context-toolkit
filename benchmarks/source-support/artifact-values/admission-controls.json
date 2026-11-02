@@ -1,0 +1,411 @@
+{
+  "schema": "artifact-value-review-public-admission-controls-1",
+  "scope": "27 exposed structural admission cases: 2 valid and 25 specific refusal controls, not 27 plant examples or semantic judgments",
+  "cases": [
+    {
+      "id": "A01-reference-valid",
+      "case": "reference",
+      "expected": "admit",
+      "expected_class": null,
+      "expected_message": null,
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A01-reference-valid/input-artifact.json",
+        "sha256": "305575cf09305ff88db2aa85b0e437a0d618463009ac3ea4e7e946e11ac82103"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/keys/reference.artifact-key.json",
+        "sha256": "1e17acde5ce583aaddbfdf5bbd310c6685bdc564aafbb16939f8eca3655c2401"
+      }
+    },
+    {
+      "id": "A02-false-valid",
+      "case": "false-shutdown",
+      "expected": "admit",
+      "expected_class": null,
+      "expected_message": null,
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A02-false-valid/input-artifact.json",
+        "sha256": "3ca7766763adc57913df5c53b11285ed23cb18ccd7e3cdce3bbc0df6e6150534"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/keys/false-shutdown.artifact-key.json",
+        "sha256": "b700f1db0036a3593eec5ada28a4ef8099ae49b5b4ea44c338930280efcb1364"
+      }
+    },
+    {
+      "id": "A03-stale-reference-inventory",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: inventory artifact_raw raw identity differs",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A03-stale-reference-inventory/input-artifact.json",
+        "sha256": "d958a2a5d754d4babccbaff3cbf220379b871703af1faee25b27cf852fbf2f9c"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A03-stale-reference-inventory/key.json",
+        "sha256": "11da788ae3ceac0e874fcef8054f4ad8878586e23b7270f151fb483f87c1c81b"
+      }
+    },
+    {
+      "id": "A04-omitted-critical-entry",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: inventory does not cover every actual model value in order",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A04-omitted-critical-entry/input-artifact.json",
+        "sha256": "f6911017f2ff5087c57d47a2a6b2f92458f0c0b0a0bead31703ff09eefedbc71"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A04-omitted-critical-entry/key.json",
+        "sha256": "677be6b9d173ef6db6acfda47036b6dbe9cd3e7294af3e857a7025f4dcd2f8ca"
+      }
+    },
+    {
+      "id": "A05-duplicate-inventory-pointer",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: inventory pointers repeats an identity",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A05-duplicate-inventory-pointer/input-artifact.json",
+        "sha256": "a474e95eab0ccdaf106a7a3b24875c4b52af889c913debb86249501e096c2eef"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A05-duplicate-inventory-pointer/key.json",
+        "sha256": "0d9e4f3782b034c50812026bfb73329f08e248ad345a0bcf3568ade0fdf31532"
+      }
+    },
+    {
+      "id": "A06-extra-inventory-pointer",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: inventory does not cover every actual model value in order",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A06-extra-inventory-pointer/input-artifact.json",
+        "sha256": "adb6ac99110fccd2f02b179b9fcae9392bddfd355cca3aa219a482a53994f04c"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A06-extra-inventory-pointer/key.json",
+        "sha256": "f4eb20952fa5da99b65bab94a3124d6204a8830d16ba88ac0c472708d3e62f6d"
+      }
+    },
+    {
+      "id": "A07-boolean-numeric-typed-mismatch",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: inventory typed value/kind differs from artifact",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A07-boolean-numeric-typed-mismatch/input-artifact.json",
+        "sha256": "fbaa8efc6849ad2d1461a37085063bcde021e8ae8550dda1845d8a1868aa634b"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A07-boolean-numeric-typed-mismatch/key.json",
+        "sha256": "5d0ff072188de04451d2c74f4f41662f02cda90a3b7e7db32077d75e34489575"
+      }
+    },
+    {
+      "id": "A08-integer-float-typed-mismatch",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: inventory typed value/kind differs from artifact",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A08-integer-float-typed-mismatch/input-artifact.json",
+        "sha256": "023c92ecd02849a9cd280e90824058c776cee3f9b58be6f741aa8f1b48d9034d"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A08-integer-float-typed-mismatch/key.json",
+        "sha256": "d9035209f508339df96f0b5cc14b8bc72c1e98a36d2b840db4666f4f1206e1d9"
+      }
+    },
+    {
+      "id": "A09-stale-source-bytes",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: model source identity differs from captured source",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A09-stale-source-bytes/input-artifact.json",
+        "sha256": "89f3ebab944451189bd996f5c6e6e49163a28184bd8d04d137c25829fa8bdbcc"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A09-stale-source-bytes/key.json",
+        "sha256": "484e41b7296a3e936a0059505bf6b350689ccb280ff7db8c2581a1a22ad4a661"
+      }
+    },
+    {
+      "id": "A10-wrong-source-quote",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: inventory source context differs",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A10-wrong-source-quote/input-artifact.json",
+        "sha256": "194e6cb100fa8a007205114e629d8fb749a49203d445bc4ed646c0af0d98ac47"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A10-wrong-source-quote/key.json",
+        "sha256": "dd2506eefa892831238cdfaf9288ce9383a138f7b9bd1806550a61069d1ab37d"
+      }
+    },
+    {
+      "id": "A11-wrong-locator-same-source",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: inventory source context differs",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A11-wrong-locator-same-source/input-artifact.json",
+        "sha256": "0b551d8fb5c20d078203d74110e9d8ac9db96593f9c816c9ab54f75fa7afaeb3"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A11-wrong-locator-same-source/key.json",
+        "sha256": "fecce4aca2f4632d4b8edcb8c39755a7ab465e6dbb9b5aa7f0a2aae08f296837"
+      }
+    },
+    {
+      "id": "A12-critical-role-downgrade",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: inventory role differs from reviewed key",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A12-critical-role-downgrade/input-artifact.json",
+        "sha256": "65027cc18c96aeb53f68fc6f0c86ded4fb45e2440eb5f80546b8256ddd9d3c54"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A12-critical-role-downgrade/key.json",
+        "sha256": "d2dad8201008d0ea7afbda3e4acbfadb6bfc35537278b1f2b2416afc6d73be8d"
+      }
+    },
+    {
+      "id": "A13-omit-critical-group-and-key",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: key v1_projection raw identity differs",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A13-omit-critical-group-and-key/input-artifact.json",
+        "sha256": "95a37452d67790a861facd687349c4efa0d025373ee434be4818e4501e8608e7"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A13-omit-critical-group-and-key/key.json",
+        "sha256": "c0090e654426842b696747d2e3a4ee23b38b3380aaabb87e847e8bc1d11ffd7f"
+      }
+    },
+    {
+      "id": "A14-wrong-group-record-membership",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: projection does not retain the exact typed group values",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A14-wrong-group-record-membership/input-artifact.json",
+        "sha256": "3ca7766763adc57913df5c53b11285ed23cb18ccd7e3cdce3bbc0df6e6150534"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A14-wrong-group-record-membership/key.json",
+        "sha256": "cc3079d9f3f0e47af4feb7365a5985e6ce1dbc7fe0a15486ceec74b48adab58f"
+      }
+    },
+    {
+      "id": "A15-CSV-missing-critical-row",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: provided CSV row coverage differs",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A15-CSV-missing-critical-row/input-artifact.json",
+        "sha256": "5770952c3c2af6bec119ffd9dbe6ea2243b116b1b85fce371a7464973f3b1583"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A15-CSV-missing-critical-row/key.json",
+        "sha256": "ebfeed8a5ec2e43fa40bb7fadf41f73be88de6ebaa6a620d95f3cdc3eb77ca0a"
+      }
+    },
+    {
+      "id": "A16-CSV-duplicate-row",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: provided CSV pointers repeats an identity",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A16-CSV-duplicate-row/input-artifact.json",
+        "sha256": "309502a11f3a3402ead69e58419ac1b0a2f67b2719d9ef242ad3c0fc52da2eb9"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A16-CSV-duplicate-row/key.json",
+        "sha256": "f8c61daa7ee6d76a56a8f46dffb7fb5adcab6acba649c7c6c3b6d07fa14856c9"
+      }
+    },
+    {
+      "id": "A17-CSV-foreign-record-identity",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: provided CSV typed value/identity/quote differs",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A17-CSV-foreign-record-identity/input-artifact.json",
+        "sha256": "291fb43bd827c4fff7cd3764e630b2ea137edf3e485c3073a6854b73fe88c261"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A17-CSV-foreign-record-identity/key.json",
+        "sha256": "81635bc40b13089b5625036d7189de584457dd8c1fd3b9339691235a55fd1f69"
+      }
+    },
+    {
+      "id": "A18-missing-key-label",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: key labels do not cover every declared group",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A18-missing-key-label/input-artifact.json",
+        "sha256": "3ca7766763adc57913df5c53b11285ed23cb18ccd7e3cdce3bbc0df6e6150534"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A18-missing-key-label/key.json",
+        "sha256": "4b65f9c1c6549cb089172a7b5f40d4b40510ede14785234130b9afa5d9230239"
+      }
+    },
+    {
+      "id": "A19-omitted-complementary-meta",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: inventory does not cover every actual model value in order",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A19-omitted-complementary-meta/input-artifact.json",
+        "sha256": "2aa7e9ea81e69909d40c2ac85175ac60ed54c6f668ae391a48d01171cd43879f"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A19-omitted-complementary-meta/key.json",
+        "sha256": "ad0dcabdaeb8116d7270b264f75f7dc0eff41d80a1a6fd0636fd412ffe6b5dcc"
+      }
+    },
+    {
+      "id": "A20-new-model-field-uninventoried",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: model pointer scope/order differs from key",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A20-new-model-field-uninventoried/input-artifact.json",
+        "sha256": "b8c135418ea4e075d27de5c2dc43bd3c450385fd208f3ccabbf51323287a9d96"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A20-new-model-field-uninventoried/key.json",
+        "sha256": "cb72c3723a36c6fe90ee5cd65a025a869b41b43aaf8464535f991fa52ed6bdd7"
+      }
+    },
+    {
+      "id": "A21-model-duplicate-JSON-key",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: duplicate JSON key",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A21-model-duplicate-JSON-key/input-artifact.json",
+        "sha256": "d97be5a36bc30626c7af98b1b32d21fa188a2aaa259e2d526282f4a410b5e6ff"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A21-model-duplicate-JSON-key/key.json",
+        "sha256": "3a300483d21dc255c83e11020038d21f307a3a031cd23c03dfaaf2efd41335fa"
+      }
+    },
+    {
+      "id": "A22-CSV-boolean-numeric-value",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: provided CSV typed value/identity/quote differs",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A22-CSV-boolean-numeric-value/input-artifact.json",
+        "sha256": "432fc6b26c52d2c14e187f08a9b7c88b4796fde0bbf57bcf06981d810b74354f"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A22-CSV-boolean-numeric-value/key.json",
+        "sha256": "272aafc14b397d7107b5f503d4773269c14f5ed745421fa488f65932762f3706"
+      }
+    },
+    {
+      "id": "A23-changed-claim-prefix",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: key v1_projection raw identity differs",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A23-changed-claim-prefix/input-artifact.json",
+        "sha256": "300a12c955c42dec7eb1911f0b8473ce5d851d7f6095de07d1760d957e168747"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/keys/false-shutdown.artifact-key.json",
+        "sha256": "b700f1db0036a3593eec5ada28a4ef8099ae49b5b4ea44c338930280efcb1364"
+      }
+    },
+    {
+      "id": "A24-changed-claim-time",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: key v1_projection raw identity differs",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A24-changed-claim-time/input-artifact.json",
+        "sha256": "c8ba9f91f4f6ee7ff4c2e703e5b4244bdcddcbdc34ec7d8eeab7714155d312a9"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/keys/false-shutdown.artifact-key.json",
+        "sha256": "b700f1db0036a3593eec5ada28a4ef8099ae49b5b4ea44c338930280efcb1364"
+      }
+    },
+    {
+      "id": "A25-changed-evidence-paraphrase",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: key v1_projection raw identity differs",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A25-changed-evidence-paraphrase/input-artifact.json",
+        "sha256": "c6087b3db3fbf544a1928d10f9d52a0a03e0bdb6df87f82b4d32588dcb8c2c4f"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/keys/false-shutdown.artifact-key.json",
+        "sha256": "b700f1db0036a3593eec5ada28a4ef8099ae49b5b4ea44c338930280efcb1364"
+      }
+    },
+    {
+      "id": "A26-changed-evidence-source-context",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: key v1_projection raw identity differs",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A26-changed-evidence-source-context/input-artifact.json",
+        "sha256": "03a54c60b74b4356caf27edc42a611660c48e1e88dfd060735802e351bd940f4"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/keys/false-shutdown.artifact-key.json",
+        "sha256": "b700f1db0036a3593eec5ada28a4ef8099ae49b5b4ea44c338930280efcb1364"
+      }
+    },
+    {
+      "id": "A27-mismatched-value-with-coherent-key-pin",
+      "case": "false-shutdown",
+      "expected": "refuse",
+      "expected_class": "ValueError",
+      "expected_message": "Artifact value review: projection does not retain the exact typed group values",
+      "input_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A27-mismatched-value-with-coherent-key-pin/input-artifact.json",
+        "sha256": "b2cc88ff954505d6713c3390dafbbf7845093832e9c96034d58a5020e8bfd92b"
+      },
+      "key_ref": {
+        "path": "benchmarks/source-support/artifact-values/controls/A27-mismatched-value-with-coherent-key-pin/key.json",
+        "sha256": "7b441f572d3b5b67b8baa4a0c65238e9312f5051116bc72d59e41f3bd7c5cdd1"
+      }
+    }
+  ]
+}
