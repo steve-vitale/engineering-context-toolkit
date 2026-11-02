@@ -148,8 +148,12 @@ For a bounded investigation, an engineer can operate the existing tools without 
 3. Prepare a new review folder with the preserved register, give the relevant source and question brief to its
    owner through the company's existing process, and record a new attributed review only after it happens.
    Apply that new sheet with the current register. Reusing an old sheet against changed evidence refuses.
-4. Generate the supported output into a new draft folder from the selected reviewed snapshot. Retain its previous
-   version, input/code hashes and differences. Reconcile authored text and any changed drawing layout manually;
+4. Generate supported outputs from the selected **working process model or extracted twin**, using the matching
+   [format contract](WORKFLOWS.md). Context answers and statement verdicts do not edit that model; apply supported
+   [model corrections](REVIEW_LOOP.md) or review an authored model revision first when its facts must change.
+   An enriched graph/context pair is for retained-context readback, not direct input to `generate.py`.
+   Write into a new draft folder and retain the previous version, input/code hashes and differences.
+   Reconcile authored text and any changed drawing layout manually;
    this toolkit does not merge reports or rewrite controlled originals. Publish through the document owner's
    existing release process. Local `accepted` is not organizational release.
 5. If using the [snapshot MCP starter](../examples/internal-mcp/README.md#read-the-complete-context-packet), select

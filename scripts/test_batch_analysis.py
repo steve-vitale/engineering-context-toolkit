@@ -225,13 +225,17 @@ class BatchAnalysis(unittest.TestCase):
         self.assertAlmostEqual(r["observed_integral"], 1 / 3)
         self.assertIsNone(r["full_window_integral"])
 
-    def test_v1_retained_baseline_changes_only_implementation_fingerprint(self):
+    def test_v1_retained_baseline_changes_only_implementation_fingerprints(self):
         r = tool.analyze((EXAMPLE / "observations.csv").read_bytes(), (EXAMPLE / "plan.json").read_bytes(),
                          (EXAMPLE / "graph.json").read_bytes())
         old = json.loads((EXAMPLE / "history/a306/batch_analysis.json").read_bytes())
         self.assertNotEqual(r["method"]["tool_sha256_lf"], old["method"]["tool_sha256_lf"])
         del r["method"]["tool_sha256_lf"]
         del old["method"]["tool_sha256_lf"]
+        # The core-export repair also changes the pinned graph validator file.
+        # Current pins are checked separately; retain exact equality of all engineering values.
+        del r["graph_binding"]["validator_sha256_lf"]
+        del old["graph_binding"]["validator_sha256_lf"]
         self.assertEqual(r, old)
         self.assertEqual((EXAMPLE / "expected/batch_analysis.md").read_bytes(),
                          (EXAMPLE / "history/a306/batch_analysis.md").read_bytes())
@@ -328,7 +332,7 @@ class BatchAnalysis(unittest.TestCase):
             for stage in ("partial", "refreshed"):
                 for name in ("context.json", "enriched_graph.json"):
                     self.assertEqual((out / stage / name).read_bytes(), (case / "expected" / stage / name).read_bytes())
-            self.assertEqual((out / "fictional-partial.csv").read_bytes(), (case / "fictional-partial.csv").read_bytes())
+            self.assertEqual((out / "fictional-partial.csv").read_bytes(), (case / "fictional-partial-v2.csv").read_bytes())
 
     def test_graph_unknown_wrong_kind_rejected_and_malformed_refuse(self):
         plan_raw = (EXAMPLE / "plan.json").read_bytes()

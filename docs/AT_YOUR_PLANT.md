@@ -166,10 +166,13 @@ test that claim; count both effort and remaining errors.
 
   Options include enterprise agreements, private or regional endpoints, or models run on your own hardware.
   Redact title blocks and site names if policy requires it.
-- **Keep AI tooling out of the control network.** Follow your zone and conduit design (e.g. ISA/IEC 62443):
-  - The extraction and twin-building work belongs on the business network or in the DMZ.
-  - Historian data flows *outward* through the DMZ (e.g. a DMZ historian).
-  - Nothing inbound to Levels 1–2, and no AI agent with credentials into the control network.
+- **Use the site's approved zone and conduit design.** Choose the permitted placement and data path through
+  the [connectivity guide](INTERNAL_CONNECTIVITY.md#choose-the-data-path-before-the-assistant).
+  - Prefer approved released records or a receiving-side reporting copy when that meets the job.
+  - Restricted work may remain disconnected inside an authorized zone with approved local tools or manual review.
+    That creates no route to cloud Copilot and no permission for an agent to access controllers.
+  - A new cross-zone connection or service placement requires the responsible IT/OT design and authorization;
+    a read-only flag does not establish that boundary. No permitted transfer means keeping that work local.
 - **Test before production.**
   - Load generated Ignition and PI import files into a development gateway or test AF database first.
   - Keep them under version control, and have an engineer review the diff before anything reaches production.

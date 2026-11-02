@@ -4,7 +4,7 @@ A draft of an interactive, standalone browser page that walks a new operator thr
 seed model: each unit drawn as a recognisable machine with a cut-away window, pipes coloured by service with pulses
 moving in the flow direction, a time scrubber over the recorded Braatz replays (normal and fault 6), purpose cards, and
 a lockout/tagout design mockup. It complements the Blender tour in [../3d-tour/](../3d-tour/README.md): Blender gives
-cinematic stills and video, this gives self-paced orientation in a browser. Nothing here has been reviewed by an
+cinematic review stills (the narrated video remains proposed), this gives self-paced orientation in a browser. Nothing here has been reviewed by an
 operator.
 
 This optional TE case study uses a vendored, MIT-licensed Anatomy presentation kit for its drawing and
@@ -20,7 +20,7 @@ comes from `data/te_unit_purposes.json`, which cites the simulator lines it rest
 | Still | What it shows |
 |---|---|
 | ![overview](shots/overview-1440-dark.jpg) | Overview, normal replay: six units in flow order, lines coloured by service |
-| ![reactor](shots/reactor-1440-light.jpg) | Reactor stop (light theme): agitator, cooling coil and liquid level in the cutaway, key tags with live values, purpose card with its `teprob.f` citations, Ignition and PI AF paths, the public-incident citation |
+| ![reactor](shots/reactor-1440-light.jpg) | Reactor stop (light theme): agitator, cooling coil and liquid level in the cutaway, key tags with recorded replay values, purpose card with its `teprob.f` citations, Ignition and PI AF paths, the public-incident citation |
 | ![fault](shots/fault6-alarm-1440-dark.jpg) | Fault 6 at the first published alarm: sample 258 (+294 min), PT-107 2,897 kPa g above its 2,895 high alarm |
 | ![loto](shots/loto-all-feeds-and-motor-1440-dark.jpg) | Lockout/tagout design mockup: every feed block valve and the compressor motor isolated, all process flow stopped, the remaining energy sources listed |
 | ![phone](shots/overview-390-dark.jpg) | The same page at 390 px |
