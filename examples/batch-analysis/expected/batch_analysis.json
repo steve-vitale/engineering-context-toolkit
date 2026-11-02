@@ -1,0 +1,374 @@
+{
+  "schema": "batch-analysis-result-1",
+  "context": {
+    "site_id": "fictional-site",
+    "asset_id": "FERM-101",
+    "model_revision": "illustrative-model-r1-not-an-installed-mapping",
+    "recipe_id": "illustrative-fermentation",
+    "recipe_revision": "r1"
+  },
+  "context_status": "supplied identities and revisions; not verified against installed assets",
+  "inputs": {
+    "csv_sha256": "d8c511cab0918ee6f26784a2e3296a41574177cecf2a981ae146bc143ef762eb",
+    "plan_sha256": "485e9ca3064bca2b75baa34769692dc44dedb2039c8f7e254b08682d149fe394"
+  },
+  "method": {
+    "name": "adjacent-sample-trapezoid-v1",
+    "max_gap_s": 1800,
+    "tool_sha256_lf": "bd65873d209bdec1746265735a37e0f843bd4fee993ae1c175a7fb9ae6e47ae0",
+    "assumption": "linear between adjacent good observations; no extrapolation or gap filling"
+  },
+  "signal_definitions": {
+    "FT-101": {
+      "unit": "kg/h",
+      "asset_id": "FT-101",
+      "source_ref": "fictional feed meter; mass rate, not solution concentration"
+    },
+    "TT-101": {
+      "unit": "degC",
+      "asset_id": "TT-101",
+      "source_ref": "fictional temperature sensor"
+    },
+    "DO-101": {
+      "unit": "%",
+      "asset_id": "DO-101",
+      "source_ref": "fictional dissolved oxygen, percent air saturation"
+    },
+    "POWER-101": {
+      "unit": "W",
+      "asset_id": "POWER-101",
+      "source_ref": "fictional measured electrical power"
+    }
+  },
+  "windows": [
+    {
+      "id": "A-growth",
+      "batch_id": "A",
+      "phase": "growth",
+      "start_s": 0,
+      "end_s": 3600,
+      "source_ref": "authored fictional phase record",
+      "duration_s": 3600,
+      "signals": {
+        "FT-101": {
+          "unit": "kg/h",
+          "sample_count": 3,
+          "good_samples": 3,
+          "bad_sample_lines": [],
+          "sample_min": 0.0,
+          "sample_max": 2.0,
+          "covered_s": 3600.0,
+          "coverage_fraction": 1.0,
+          "coverage_status": "complete",
+          "time_weighted_mean_observed": 0.5,
+          "integral_unit": "kg",
+          "observed_integral": 0.5,
+          "full_window_integral": 0.5
+        },
+        "TT-101": {
+          "unit": "degC",
+          "sample_count": 3,
+          "good_samples": 3,
+          "bad_sample_lines": [],
+          "sample_min": 28.0,
+          "sample_max": 30.0,
+          "covered_s": 3600.0,
+          "coverage_fraction": 1.0,
+          "coverage_status": "complete",
+          "time_weighted_mean_observed": 29.5,
+          "integral_unit": null,
+          "observed_integral": null,
+          "full_window_integral": null
+        },
+        "DO-101": {
+          "unit": "%",
+          "sample_count": 3,
+          "good_samples": 3,
+          "bad_sample_lines": [],
+          "sample_min": 40.0,
+          "sample_max": 40.0,
+          "covered_s": 3600.0,
+          "coverage_fraction": 1.0,
+          "coverage_status": "complete",
+          "time_weighted_mean_observed": 40.0,
+          "integral_unit": null,
+          "observed_integral": null,
+          "full_window_integral": null
+        },
+        "POWER-101": {
+          "unit": "W",
+          "sample_count": 3,
+          "good_samples": 3,
+          "bad_sample_lines": [],
+          "sample_min": 1000.0,
+          "sample_max": 1000.0,
+          "covered_s": 3600.0,
+          "coverage_fraction": 1.0,
+          "coverage_status": "complete",
+          "time_weighted_mean_observed": 1000.0,
+          "integral_unit": "kWh",
+          "observed_integral": 0.9999999999999999,
+          "full_window_integral": 0.9999999999999999
+        }
+      }
+    },
+    {
+      "id": "A-feed",
+      "batch_id": "A",
+      "phase": "feed",
+      "start_s": 3600,
+      "end_s": 7200,
+      "source_ref": "authored fictional phase record",
+      "duration_s": 3600,
+      "signals": {
+        "FT-101": {
+          "unit": "kg/h",
+          "sample_count": 3,
+          "good_samples": 3,
+          "bad_sample_lines": [],
+          "sample_min": 2.0,
+          "sample_max": 4.0,
+          "covered_s": 3600.0,
+          "coverage_fraction": 1.0,
+          "coverage_status": "complete",
+          "time_weighted_mean_observed": 3.5,
+          "integral_unit": "kg",
+          "observed_integral": 3.5,
+          "full_window_integral": 3.5
+        },
+        "TT-101": {
+          "unit": "degC",
+          "sample_count": 3,
+          "good_samples": 3,
+          "bad_sample_lines": [],
+          "sample_min": 30.0,
+          "sample_max": 30.0,
+          "covered_s": 3600.0,
+          "coverage_fraction": 1.0,
+          "coverage_status": "complete",
+          "time_weighted_mean_observed": 30.0,
+          "integral_unit": null,
+          "observed_integral": null,
+          "full_window_integral": null
+        },
+        "DO-101": {
+          "unit": "%",
+          "sample_count": 3,
+          "good_samples": 3,
+          "bad_sample_lines": [],
+          "sample_min": 20.0,
+          "sample_max": 40.0,
+          "covered_s": 3600.0,
+          "coverage_fraction": 1.0,
+          "coverage_status": "complete",
+          "time_weighted_mean_observed": 30.0,
+          "integral_unit": null,
+          "observed_integral": null,
+          "full_window_integral": null
+        },
+        "POWER-101": {
+          "unit": "W",
+          "sample_count": 3,
+          "good_samples": 3,
+          "bad_sample_lines": [],
+          "sample_min": 1000.0,
+          "sample_max": 1000.0,
+          "covered_s": 3600.0,
+          "coverage_fraction": 1.0,
+          "coverage_status": "complete",
+          "time_weighted_mean_observed": 1000.0,
+          "integral_unit": "kWh",
+          "observed_integral": 0.9999999999999999,
+          "full_window_integral": 0.9999999999999999
+        }
+      }
+    },
+    {
+      "id": "B-feed",
+      "batch_id": "B",
+      "phase": "feed",
+      "start_s": 3600,
+      "end_s": 7200,
+      "source_ref": "authored fictional phase record",
+      "duration_s": 3600,
+      "signals": {
+        "FT-101": {
+          "unit": "kg/h",
+          "sample_count": 3,
+          "good_samples": 3,
+          "bad_sample_lines": [],
+          "sample_min": 2.0,
+          "sample_max": 2.0,
+          "covered_s": 3600.0,
+          "coverage_fraction": 1.0,
+          "coverage_status": "complete",
+          "time_weighted_mean_observed": 2.0,
+          "integral_unit": "kg",
+          "observed_integral": 2.0,
+          "full_window_integral": 2.0
+        },
+        "TT-101": {
+          "unit": "degC",
+          "sample_count": 3,
+          "good_samples": 3,
+          "bad_sample_lines": [],
+          "sample_min": 30.0,
+          "sample_max": 30.0,
+          "covered_s": 3600.0,
+          "coverage_fraction": 1.0,
+          "coverage_status": "complete",
+          "time_weighted_mean_observed": 30.0,
+          "integral_unit": null,
+          "observed_integral": null,
+          "full_window_integral": null
+        },
+        "DO-101": {
+          "unit": "%",
+          "sample_count": 3,
+          "good_samples": 3,
+          "bad_sample_lines": [],
+          "sample_min": 40.0,
+          "sample_max": 40.0,
+          "covered_s": 3600.0,
+          "coverage_fraction": 1.0,
+          "coverage_status": "complete",
+          "time_weighted_mean_observed": 40.0,
+          "integral_unit": null,
+          "observed_integral": null,
+          "full_window_integral": null
+        },
+        "POWER-101": {
+          "unit": "W",
+          "sample_count": 3,
+          "good_samples": 3,
+          "bad_sample_lines": [],
+          "sample_min": 1000.0,
+          "sample_max": 1000.0,
+          "covered_s": 3600.0,
+          "coverage_fraction": 1.0,
+          "coverage_status": "complete",
+          "time_weighted_mean_observed": 1000.0,
+          "integral_unit": "kWh",
+          "observed_integral": 0.9999999999999999,
+          "full_window_integral": 0.9999999999999999
+        }
+      }
+    },
+    {
+      "id": "C-feed",
+      "batch_id": "C",
+      "phase": "feed",
+      "start_s": 3600,
+      "end_s": 7200,
+      "source_ref": "authored fictional phase record",
+      "duration_s": 3600,
+      "signals": {
+        "FT-101": {
+          "unit": "kg/h",
+          "sample_count": 3,
+          "good_samples": 2,
+          "bad_sample_lines": [
+            11
+          ],
+          "sample_min": 2.0,
+          "sample_max": 2.0,
+          "covered_s": 0.0,
+          "coverage_fraction": 0.0,
+          "coverage_status": "incomplete",
+          "time_weighted_mean_observed": null,
+          "integral_unit": "kg",
+          "observed_integral": null,
+          "full_window_integral": null
+        },
+        "TT-101": {
+          "unit": "degC",
+          "sample_count": 3,
+          "good_samples": 3,
+          "bad_sample_lines": [],
+          "sample_min": 30.0,
+          "sample_max": 30.0,
+          "covered_s": 3600.0,
+          "coverage_fraction": 1.0,
+          "coverage_status": "complete",
+          "time_weighted_mean_observed": 30.0,
+          "integral_unit": null,
+          "observed_integral": null,
+          "full_window_integral": null
+        },
+        "DO-101": {
+          "unit": "%",
+          "sample_count": 3,
+          "good_samples": 3,
+          "bad_sample_lines": [],
+          "sample_min": 40.0,
+          "sample_max": 40.0,
+          "covered_s": 3600.0,
+          "coverage_fraction": 1.0,
+          "coverage_status": "complete",
+          "time_weighted_mean_observed": 40.0,
+          "integral_unit": null,
+          "observed_integral": null,
+          "full_window_integral": null
+        },
+        "POWER-101": {
+          "unit": "W",
+          "sample_count": 3,
+          "good_samples": 3,
+          "bad_sample_lines": [],
+          "sample_min": 1000.0,
+          "sample_max": 1000.0,
+          "covered_s": 3600.0,
+          "coverage_fraction": 1.0,
+          "coverage_status": "complete",
+          "time_weighted_mean_observed": 1000.0,
+          "integral_unit": "kWh",
+          "observed_integral": 0.9999999999999999,
+          "full_window_integral": 0.9999999999999999
+        }
+      }
+    }
+  ],
+  "graph_binding": {
+    "status": "IDs resolved in selected graph; mappings, units and installed identity remain supplied",
+    "graph_sha256": "17f43c020632871215f185420d91aecc4f48ad7183358f8b87dd840c2e1ddfc4",
+    "assets": [
+      {
+        "role": "context",
+        "asset_id": "FERM-101",
+        "kind": "equipment",
+        "status": "unverified"
+      },
+      {
+        "role": "FT-101",
+        "asset_id": "FT-101",
+        "kind": "instrument",
+        "status": "unverified"
+      },
+      {
+        "role": "TT-101",
+        "asset_id": "TT-101",
+        "kind": "instrument",
+        "status": "unverified"
+      },
+      {
+        "role": "DO-101",
+        "asset_id": "DO-101",
+        "kind": "instrument",
+        "status": "unverified"
+      },
+      {
+        "role": "POWER-101",
+        "asset_id": "POWER-101",
+        "kind": "instrument",
+        "status": "unverified"
+      }
+    ],
+    "validator_sha256_lf": "502ef69cdfa387cc99082b026964e45bb7ed409bb4674d4f6e4fd41a042e182d"
+  },
+  "limits": [
+    "Descriptive recorded-data calculation; no diagnosis, prediction or acceptance.",
+    "Sample extrema can miss excursions between observations.",
+    "Observed integrals over incomplete coverage are not full-phase totals.",
+    "Supplied phase labels, units and mappings require engineering review."
+  ]
+}

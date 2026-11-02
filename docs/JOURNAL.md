@@ -7112,3 +7112,177 @@ A305/N116 closes this bounded evaluation addition. The helper is support, not a 
 Source/key review and declared exclusions remain substantive judgments; no current plant truth, authority,
 general generator accuracy or human benefit follows. Source-only mode (55 programs), the full suite (72 programs) and exact-head CI
 remain separate, unrun integration gates at this entry; old review rows are not rehashed into new acceptance.
+
+## 154. Connect recorded phase calculations to the twin before adding a simulator
+
+2026-11-02. A public post about Pow.Bio's Cassandra/K-log prompted an investigation of quantitative analysis
+beside engineering context. The post and its linked race-car model were inspected; the video/runtime were not.
+The [analytics guide](PROCESS_ANALYTICS.md) preserves the primary links, attributed claims and adoption boundary.
+No linked program was copied and no runtime, dependency, live connector or control interface was added.
+
+The first inventory already found asset models, supplied OPC/PI mappings, historian bands, measured impact and
+source-linked questions. The user challenged an unnecessary kinetics prerequisite: those existing pieces should
+be used for observed-data jobs. Kinetics or a suitable identified model is conditional on the actual prediction.
+The question catalog currently does not determine arbitrary analysis readiness; a plain job-specific brief is
+the honest route rather than a claim of automatic kinetics-gap detection.
+
+Kept one bounded addition, `batch_analysis.py`: an elapsed-time batch CSV plus supplied nonoverlapping phase
+windows and units produce source-bound summaries and rate integrals with per-signal observed-time coverage.
+Optional selection of an existing portable graph resolves exact equipment/instrument IDs and retains its hash
+and record statuses. It does not verify installed mappings, units against graph claims or physical relationships.
+All supplied originals are read as data; reports do not mutate the graph, working model, context or MCP snapshot.
+
+The [acceptance cases](../examples/batch-analysis/ACCEPTANCE.md) were authored before implementation.
+Fourteen stdlib regression methods pass: analytical rectangles/triangles and W/kW conversion, missing/bad/long-gap
+observations, separate batches and phases, graph refusals, invalid CLI inputs, exact reports and source/output
+preservation. The fictional tutorial has three batches/four windows: feed totals 0.5, 3.5, 2 and unknown kg;
+all windows record approximately 1 kWh. The first 13-method run failed two strict floating-point equalities:
+1,000 W for an hour computed 0.9999999999999999 kWh. The assertions now allow ordinary floating-point tolerance;
+the numerical code and retained report value were not changed to hide that representation difference.
+
+A navigation addition to the existing historian guide correctly made its bound TE matrix cell stale. Removed
+only that new navigation paragraph, preserving the historical guide's exact source text and the original matrix;
+the documentation index and new canonical analytics guide provide navigation instead. No detector, baseline,
+answer key or historical performance result was changed or rerun.
+
+A306 records this addition. New examples remain independently unreviewed; no real fermentation/campaign corpus,
+predictive benefit, operator review or plant acceptance is established. The source-only integration suite then
+passed 56/56 programs, zero failures, eight skipped unittest cases and three explanatory platform notices.
+All 3,587 source files remained byte-identical during that run. Its corpus check verified all 95 locally
+available bindings after the historian guide was restored; this did not rerun models or establish new performance.
+Subsequent edits only relocate the status note and record these outcomes in the journal/ledger. Full/SDK CI and
+independent feature review remain unrun for this local change.
+
+## 155. Qualify recorded data before adding more analysis
+
+2026-11-02. Follow-up to A306 after the user requested continuing gap repairs and the earlier evidence/handoff
+gaps. A pre-implementation protocol and retained A306 outputs distinguish an unsupported V2 profile from a
+failure of the original strict V1 contract. The new exact signal profile selects linear or previous-value
+interpolation and an exact-token external quality filter. Missing choices refuse. Numeric data rejected by its
+quality policy never becomes a spanning interval or complete total. All original V1 result fields are retained;
+only the implementation fingerprint changes and its Markdown remains byte-identical.
+
+A307 adds exposed quality/interpolation controls: identical 2,6,6 kg/h samples produce 4 kg with previous-value
+hold and 5 kg with linear interpolation. A numeric 99 with FAULT quality excludes both adjacent intervals.
+Independent source/code and stress review found no blocking core numerical issue. An important source-driven
+qualification supersedes an early V2 draft: null quality does not assert that someone prefiltered the series.
+It says no external quality filter is selected and quality is unchecked. The legacy JSON `good_samples` field
+means admitted numeric samples; the V2 table calls them Accepted. The old draft and observer float-equality hold
+remain private records. V1 compatibility and the new qualification controls pass without changing arithmetic.
+
+A308 adds [one measured batch-distillation record](../examples/batch-analysis/public-distillation/README.md),
+Arweiler et al., Zenodo version 1.1.3, CC BY 4.0. Original selected CSV/context records retain exact publisher
+bytes. The independent key was calculated and separately checked before the toolkit ran. The supplied Operation
+partition has 3,512 one-second observations over 3,511 seconds; FT703 integrates to approximately 0.4686131944 kg.
+This is numerical evaluation of the published series, not independently weighed mass or a fermentation case.
+The authors already filled missing PCS samples and retain anomalies assessed negligible. Normal classification,
+complete numerical coverage and absent quality codes do not establish good original sensors. The first log row,
+experiment-start event and first sensor record have different clocks; none is guessed as the other's origin.
+One explicit fixed-archive recovery also reproduces the selected source bytes without replacing repository data.
+
+Review found the source runner trusted whatever files a manifest happened to list. Two missing-pin controls
+failed before repair; the runner now requires all eight runtime files before invoking analysis. Output/cache
+paths must be outside the checkout. Source, key and numerical outputs are unchanged. Actual source recovery,
+complete report replay and the specific refusal controls are distinguished from general connector acceptance.
+
+A309 uses the [existing context tools](../examples/batch-analysis/context-handoff/README.md), with no new
+service: four initial context CLI calls (three successful and one intended stale-CSV refusal) and two pure
+Snapshot graph/register readbacks retain a fictional proposed partial answer. Switching the relied-on report
+from previous-value to linear reopens it as stale/unanswered while preserving the complete decision/owner
+history. Original CSV and graph stay unchanged. Event/recipe/lab/model requests remain explicit. A manual
+readiness worksheet separates sample/event time from result availability, exact identity/revision, reviewed
+join, units, owner and next step. It implements no automatic lab/event join or kinetic-sufficiency judgment.
+
+The first combined 26-method regression program exposed a test-authoring NameError after the ported context
+comparisons had passed: new test code split an existing path test. Moving those statements back fixed the test;
+the two affected methods then passed. No product code, data, key or worked output was changed for that repair.
+The source-only integration subsequently passes 56/56 programs with zero failures, eight skipped unittest cases
+and three explanatory platform notices. All 3,626 source files stay byte-identical during that run. The current
+26-method batch program passes through the normal runner; its saved summary is not a separate full-method
+transcript. Independent whole-feature receiving covers 45 registered examples and supporting runtime/guides.
+
+A later private-index whitespace preflight correctly flags original CRLF/trailing spaces and an existing blank
+EOF line in the anomaly YAML. Only the exact five copied-original paths gain EOL whitespace exemptions; only
+that YAML also gains the EOF exemption. `-text` stays unchanged and no source/key/code/report byte changes.
+The first failed check and first partial policy check remain retained. The complete change now passes the Git
+whitespace check, an unlisted neighboring file still fails, and a fresh targeted three-test Git checkout run
+passes. Independent receiving qualifies the pre-policy source suite and these later policy checks separately.
+All 235 prior published review objects remain unchanged when adding the new feature review. Full/SDK tests,
+new exact-head CI, industrial/fermentation validation and timed human benefit remain unestablished.
+## 156. Follow a change beyond the drawing
+
+The five-episode [demo series](DEMO_SERIES.md) presents the existing source/model, process-analysis, onboarding
+and owned-team paths around useful engineering jobs. It identifies their separate public/fictional fixtures;
+they are not one connected plant application. The root introduction now leads with reusable engineering
+knowledge and explains the draft twin model as one foundation rather than the whole outcome.
+
+The new [structural-change tutorial](../examples/engineering-change/README.md) adds a distinct missing episode:
+an authored model/layout actually changes from one pump to proposed duty/standby branches. Existing description,
+generation, question and context tools do the work; no production implementation changes were required. A/B
+source, native answers and the initial semantic key were frozen before the first build. Sources and key came
+from the same author; this is development/regression evidence, not independent interpretation accuracy.
+
+The first actual A build correctly generated C9, while the authored key incorrectly expected E1. E1 needs a
+discharge control valve and none was specified. We retained the failed expectation and corrected the key rather
+than inventing a valve. C9 stays one question while its explicit machine scope expands from P-1 to P-1/P-2.
+The independent v4 review checked complete outputs, source meaning and 21 typed pure Snapshot envelopes.
+It identified missing final key/runner/catalog custody guards and an exit-only stale-model observer. The
+successor guards those bytes, checks both retained catalogs and the exact source mismatch, and adds a
+bad-topology build refusal before publication. Another observer had required the word fingerprint; the real
+mixed graph/context refusals correctly named the content hash. Those refusals and the corrected observer remain.
+
+Visual inspection moved two authored tee coordinates away from stream labels; source facts and model endpoints
+stayed unchanged. The current worked run completed 14 CLI jobs and 56 assertions, including four specific CLI
+refusals and both mixed-pair refusals. Both assets content and selected source revision reopen the fictional
+partial arrangement answer. One complete proposed decision and one ownership record remain, with plant truth
+unknown and no new accepted answer. Ignition/PI gain equipment entries, but templates contain no signals.
+Independent successor/public receiving passed the adopted tutorial, artifacts and five-episode navigation.
+Four focused programs pass: engineering-change 3, description workflow 23, checkout contracts 3 and runner
+controls 19 methods, with no skipped cases. Broader integration and full/SDK CI remain separate.
+The subsequent source-only integration passes 56/56 programs, with eight skipped unittest cases, three
+explanatory platform notices and no additional skipped-check notices. All 3,660 source files remained unchanged
+during that run. Later review/guide/status/ledger metadata is checked separately; current full/SDK CI remains unrun.
+
+No isolation/nonreturn details, sizing, electrical design, protective function or automatic changeover is
+invented. Design B is a proposal, not installation/execution evidence. No plant, receiving engineer, company
+authorization, operating benefit, unfamiliar-input accuracy or global-scale service has been validated.
+
+## 157. Check the calculation basis before reusing a saved result
+
+The separate [basis checker](../examples/batch-analysis/basis-check/README.md) addresses an explicit lifecycle
+boundary: an unchanged report does not show that its CSV, plan or graph still matches. A311 reads only selected
+local inputs and the current calculation/validator modules, compares their recorded identities, and reruns the
+existing analysis only when every pin matches. A complete typed JSON comparison catches changed result content,
+including Python-equal boolean/numeric values and signed zero. The checker writes no files, follows no report
+paths and changes no context decision. Calculation and context implementations and earlier outputs are unchanged.
+
+The existing fictional V1 and both V2 reports reproduce. Six other actual CLI controls retain changed CSV,
+plan, graph, historical-code pin, result content and missing graph selections, with expected exits 1 or 2.
+Changed input whitespace is a raw-byte basis change even when its arithmetic would be unchanged. An old code
+pin requests historical review, not a declaration that the old calculation was wrong. Input fixtures keep raw
+identity; code pins fold CRLF to LF. Runtime and upstream record qualification remain outside this check.
+
+Two initial new-test failures were authoring errors: the V1 fixture names FT-101 rather than FEED, and setting
+an existing 0.0 to 0.0 was not a mutation. The corrected controls use the actual tag and distinct boolean,
+signed-zero and integer/float values. No analyzer, source or expected calculation was changed to fix them.
+Three focused programs pass 56 methods: existing batch analysis 26, new basis checker 11 and runner controls 19,
+without skips. Broader integration and independent review are recorded separately once actually executed.
+
+Anatomy remains an optional authored visual case study, with its MIT attribution and Node/browser requirements
+explicit in the dependency guide; it is not a core engineering method or shared toolkit requirement. Remaining
+source-question adequacy, model-free contribution history, unsupported formats and company receiving acceptance
+are separate gaps; this calculation check does not close them.
+
+Independent prospective checker receiving passed all 37 planned CLI cases once: six matched, sixteen changed
+basis/result and fifteen invalid/refused selections. Complete original stdio, distinct process records and the
+341-file private closure were retained. Four new/changed example files were directly reviewed; forty-four
+unchanged files retain their exact prior passing review. The public nine-case receipt matches its actual run.
+The subsequent source-only integration passes 57/57 programs, with eight skipped cases, three explanatory
+platform notices and no additional skipped-check notices; all 3,668 captured files stay unchanged. Review and
+documentation metadata recorded afterward is checked separately. Full/SDK/CI acceptance remains unrun.
+
+A separate original-source audit identified default E13's blowdown scope/action gap. Root also read the two
+captured DOE Tip 9 pages: ordinary manual bottom blowdown and surface-control optimization are distinct.
+The [question guide](OPPORTUNITY_SCREEN.md) now states the specific unresolved limitation and records-first
+interpretation. The shared catalog/engine and its 25-of-50 source-review count remain unchanged. Frozen
+prospective controls and any private candidate work are preparation for a matched repair, not an adopted fix.

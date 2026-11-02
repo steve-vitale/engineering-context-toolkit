@@ -7,6 +7,9 @@ Python, an asset model or a custom agent. The [MCP starter](../examples/internal
 
 ## For leaders and managers
 
+Use the [first organization assignment](ORGANIZATION_START.md) to distinguish what an engineer/agent can prepare
+from source-authority, reviewer-capacity, permitted-tool and continuing shared-service decisions.
+
 For responsibilities beyond one assignment, the [scaling guide](SCALING_ENGINEERING_CONTEXT.md) explains when
 team coordination needs site or organization-level ownership, publication and service support. Name a backup
 owner and reserve review time before expanding the number of contributors.

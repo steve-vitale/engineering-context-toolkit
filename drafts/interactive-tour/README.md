@@ -1,11 +1,16 @@
 # Interactive process tour: a browser cutaway of the TE unit (proof of concept, not reviewed)
 
-A draft of an interactive, zero-dependency browser page that walks a new operator through the Tennessee Eastman (TE)
+A draft of an interactive, standalone browser page that walks a new operator through the Tennessee Eastman (TE)
 seed model: each unit drawn as a recognisable machine with a cut-away window, pipes coloured by service with pulses
 moving in the flow direction, a time scrubber over the recorded Braatz replays (normal and fault 6), purpose cards, and
 a lockout/tagout design mockup. It complements the Blender tour in [../3d-tour/](../3d-tour/README.md): Blender gives
 cinematic stills and video, this gives self-paced orientation in a browser. Nothing here has been reviewed by an
 operator.
+
+This optional TE case study uses a vendored, MIT-licensed Anatomy presentation kit for its drawing and
+geometry checks. It is not a core toolkit dependency or an architecture requirement. The committed standalone
+HTML needs only a browser; rebuilding uses Node.js 20.10+, and the browser verifier also needs Chrome or
+Chromium. See [Build it](#build-it) for the case-specific source-data and build steps.
 
 Geometry, sizes, elevations, nozzle positions, pipe routes and the parts drawn inside each cutaway are placeholders;
 the connections, tags, alarm limits and every number shown come from the repository's data files. The tour's short
@@ -93,7 +98,7 @@ Open them directly in a browser: no server and no network are needed.
 
 ## Credits
 
-Drawing technique, kit and audit adapted from [anatomy](https://github.com/wheresryan22/anatomy) by Ryan (MIT, commit
+This case study's drawing technique, kit and audit are adapted from [anatomy](https://github.com/wheresryan22/anatomy) by Ryan (MIT, commit
 `e6600ff`); `kit/` is vendored unchanged with its licence in [kit/LICENSE](kit/LICENSE), and `cdp.mjs` adapts its
 headless-Chrome scripts. See [NOTICE.md](../../NOTICE.md). Labels in Atkinson Hyperlegible (SIL OFL 1.1).
 

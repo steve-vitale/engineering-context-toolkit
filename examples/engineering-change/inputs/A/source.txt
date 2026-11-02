@@ -1,0 +1,8 @@
+ILLUSTRATIVE DESIGN A; invented teaching record, not installed plant information.
+TK-1 is a water tank.
+P-1 is a water pump taking suction from TK-1 and discharging to the downstream battery limit.
+S1 feeds TK-1 from the upstream battery limit.
+S2 runs from TK-1 to P-1; S3 runs from P-1 to the downstream battery limit.
+This record describes one pump, with no standby pump specified.
+Pump sizing, line sizes, isolation and nonreturn details, electrical supply, instrument units, operating limits, protection and control logic are not specified.
+Engineering review is required; this record does not authorize installation or operation.

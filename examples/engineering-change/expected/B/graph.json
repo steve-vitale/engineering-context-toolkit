@@ -1,0 +1,442 @@
+{
+ "schema": "twin-graph-1",
+ "source_model": "model.json",
+ "model_kind": "hand_built",
+ "title": "Illustrative pump change",
+ "nodes": [
+  {
+   "id": "PLANT",
+   "kind": "plant",
+   "tag": "illustrative-pump-change",
+   "name": "Illustrative pump change",
+   "aliases": [],
+   "status": "unverified",
+   "attributes": [
+    {
+     "name": "assumptions",
+     "value": [
+      "Symbol dimensions and locations are proposed drafting geometry, not plant dimensions.",
+      "Draft service roles are not control behavior or installed-state evidence."
+     ],
+     "status": "unverified",
+     "source": {
+      "kind": "model",
+      "document": "source.txt",
+      "note": "the item cites no source of its own"
+     }
+    },
+    {
+     "name": "source_document",
+     "value": "source.txt",
+     "status": "unverified",
+     "source": {
+      "kind": "model",
+      "document": "source.txt",
+      "note": "the item cites no source of its own"
+     }
+    },
+    {
+     "name": "source_sha256",
+     "value": "4ab3526f62ed96fdf076919f57566b26337459efdf31c2f6dfa242dd37683155",
+     "status": "unverified",
+     "source": {
+      "kind": "model",
+      "document": "source.txt",
+      "note": "the item cites no source of its own"
+     }
+    },
+    {
+     "name": "unknowns",
+     "value": [
+      "Pump sizing, line sizes, isolation and nonreturn details, electrical supply, instrument units, operating limits, protection and control logic are not specified."
+     ],
+     "status": "unverified",
+     "source": {
+      "kind": "model",
+      "document": "source.txt",
+      "note": "the item cites no source of its own"
+     }
+    }
+   ],
+   "source": {
+    "kind": "model",
+    "document": "source.txt",
+    "note": "the item cites no source of its own"
+   }
+  },
+  {
+   "id": "BL",
+   "kind": "boundary",
+   "tag": null,
+   "name": "battery limit",
+   "aliases": [],
+   "status": "confirmed",
+   "attributes": [],
+   "source": {
+    "kind": "model",
+    "document": "source.txt",
+    "note": "the item cites no source of its own"
+   }
+  },
+  {
+   "id": "TK-1",
+   "kind": "equipment",
+   "tag": "TK-1",
+   "name": "Water tank",
+   "aliases": [],
+   "status": "unverified",
+   "attributes": [
+    {
+     "name": "name",
+     "value": "Water tank",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "source.txt:L2-L2"
+     }
+    },
+    {
+     "name": "type",
+     "value": "tank",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "source.txt:L2-L2"
+     }
+    }
+   ],
+   "source": {
+    "kind": "document",
+    "document": "source.txt:L2-L2"
+   },
+   "citations": {
+    "source": "source.txt:L2-L2"
+   }
+  },
+  {
+   "id": "P-1",
+   "kind": "equipment",
+   "tag": "P-1",
+   "name": "Duty water pump",
+   "aliases": [],
+   "status": "unverified",
+   "attributes": [
+    {
+     "name": "name",
+     "value": "Duty water pump",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "source.txt:L3-L3"
+     }
+    },
+    {
+     "name": "type",
+     "value": "pump",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "source.txt:L3-L3"
+     }
+    }
+   ],
+   "source": {
+    "kind": "document",
+    "document": "source.txt:L3-L3"
+   },
+   "citations": {
+    "source": "source.txt:L3-L3"
+   }
+  },
+  {
+   "id": "P-2",
+   "kind": "equipment",
+   "tag": "P-2",
+   "name": "Standby water pump",
+   "aliases": [],
+   "status": "unverified",
+   "attributes": [
+    {
+     "name": "name",
+     "value": "Standby water pump",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "source.txt:L3-L3"
+     }
+    },
+    {
+     "name": "type",
+     "value": "pump",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "source.txt:L3-L3"
+     }
+    }
+   ],
+   "source": {
+    "kind": "document",
+    "document": "source.txt:L3-L3"
+   },
+   "citations": {
+    "source": "source.txt:L3-L3"
+   }
+  }
+ ],
+ "edges": [
+  {
+   "id": "E00001",
+   "type": "contains",
+   "from": "PLANT",
+   "to": "TK-1",
+   "status": "unverified",
+   "direction": null,
+   "source": {
+    "kind": "document",
+    "document": "source.txt:L2-L2"
+   },
+   "citations": {
+    "source": "source.txt:L2-L2"
+   }
+  },
+  {
+   "id": "E00002",
+   "type": "contains",
+   "from": "PLANT",
+   "to": "P-1",
+   "status": "unverified",
+   "direction": null,
+   "source": {
+    "kind": "document",
+    "document": "source.txt:L3-L3"
+   },
+   "citations": {
+    "source": "source.txt:L3-L3"
+   }
+  },
+  {
+   "id": "E00003",
+   "type": "contains",
+   "from": "PLANT",
+   "to": "P-2",
+   "status": "unverified",
+   "direction": null,
+   "source": {
+    "kind": "document",
+    "document": "source.txt:L3-L3"
+   },
+   "citations": {
+    "source": "source.txt:L3-L3"
+   }
+  },
+  {
+   "id": "S1",
+   "type": "connects",
+   "from": "BL",
+   "to": "TK-1",
+   "status": "unverified",
+   "direction": "known",
+   "source": {
+    "kind": "document",
+    "document": "source.txt:L4-L4"
+   },
+   "citations": {
+    "source": "source.txt:L4-L4"
+   },
+   "layer": "stream",
+   "attributes": [
+    {
+     "name": "name",
+     "value": "Water feed",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "source.txt:L4-L4"
+     }
+    }
+   ]
+  },
+  {
+   "id": "S2",
+   "type": "connects",
+   "from": "TK-1",
+   "to": "P-1",
+   "status": "unverified",
+   "direction": "known",
+   "source": {
+    "kind": "document",
+    "document": "source.txt:L5-L5"
+   },
+   "citations": {
+    "source": "source.txt:L5-L5"
+   },
+   "layer": "stream",
+   "attributes": [
+    {
+     "name": "name",
+     "value": "Pump suction",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "source.txt:L5-L5"
+     }
+    }
+   ]
+  },
+  {
+   "id": "S3",
+   "type": "connects",
+   "from": "P-1",
+   "to": "BL",
+   "status": "unverified",
+   "direction": "known",
+   "source": {
+    "kind": "document",
+    "document": "source.txt:L5-L5"
+   },
+   "citations": {
+    "source": "source.txt:L5-L5"
+   },
+   "layer": "stream",
+   "attributes": [
+    {
+     "name": "name",
+     "value": "Water discharge",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "source.txt:L5-L5"
+     }
+    }
+   ]
+  },
+  {
+   "id": "S4",
+   "type": "connects",
+   "from": "TK-1",
+   "to": "P-2",
+   "status": "unverified",
+   "direction": "known",
+   "source": {
+    "kind": "document",
+    "document": "source.txt:L6-L6"
+   },
+   "citations": {
+    "source": "source.txt:L6-L6"
+   },
+   "layer": "stream",
+   "attributes": [
+    {
+     "name": "name",
+     "value": "Standby suction branch",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "source.txt:L6-L6"
+     }
+    }
+   ]
+  },
+  {
+   "id": "S5",
+   "type": "connects",
+   "from": "P-2",
+   "to": "BL",
+   "status": "unverified",
+   "direction": "known",
+   "source": {
+    "kind": "document",
+    "document": "source.txt:L6-L6"
+   },
+   "citations": {
+    "source": "source.txt:L6-L6"
+   },
+   "layer": "stream",
+   "attributes": [
+    {
+     "name": "name",
+     "value": "Standby discharge branch",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "source.txt:L6-L6"
+     }
+    }
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "id": "C9@model",
+   "question_id": "C9",
+   "family": "safety_question",
+   "question": "What source-labelled trip or interlock records apply to each rotating or fired machine, and what remains unverified?",
+   "about": "P-1, P-2",
+   "assets": [
+    {
+     "id": "P-1",
+     "tag": "P-1"
+    },
+    {
+     "id": "P-2",
+     "tag": "P-2"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "P-1",
+     "tag": "P-1",
+     "text": "equipment P-1 reads \"P-1 Duty water pump\"",
+     "field": "units[P-1]"
+    },
+    {
+     "role": "trigger",
+     "id": "P-2",
+     "tag": "P-2",
+     "text": "equipment P-2 reads \"P-2 Standby water pump\"",
+     "field": "units[P-2]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Cause-and-effect matrix and HAZOP/LOPA records",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: cause-and-effect matrix, HAZOP and LOPA reports",
+      "DCS/PLC configuration: safety system configuration"
+     ],
+     "how": "Review existing cause-and-effect, governing requirements and configuration records for each named machine, with their revisions and applicability. Retain supplied trip/switch indications as candidates; a drawing label or an unrelated function does not settle the records or establish effective, tested protection. Missing model information is not evidence that installed protection is absent."
+    },
+    {
+     "item": "Machine/function association and current evidence",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: source-labelled function identifiers, initiating measurements, final elements and protected-machine targets, shared scope and revisions; governing requirements and validation/test evidence where applicable",
+      "DCS/PLC configuration: existing configuration and its documented measurement/action/final-element identities, read through the approved site process"
+     ],
+     "how": "Keep each machine in the review even where a switch or trip is supplied. Retain all explicit shared targets and supplied qualifiers; unknown or contradictory targets remain unresolved. Same-model text or nearby equipment does not prove function coverage. Record a responsible person or authority separately from protected-machine association; neither is inferred here. This requests record review, not a new test, safety design or operating action."
+    }
+   ],
+   "decision_rule": "A qualified site review may resolve the source-labelled machine/function associations and remaining record requests using applicable current evidence. A supplied trip, switch, cause/effect row or shared-function label alone establishes neither complete coverage nor installed protection adequacy. This screen grants no acceptance or authority and performs no safety validation.",
+   "typical_benefit": {
+    "wording": "Safety benefit; no energy source. Present it as a question to verify, not a finding.",
+    "source": [],
+    "arc": null,
+    "source_titles": []
+   },
+   "limits": "P&IDs often leave trips to separate cause-and-effect records. Missing or unknown model evidence does not establish missing installed protection. Supplied associations, shared targets, revisions and contradictions require review; no machine, person owner, approval, tested condition or effective protection is inferred. C9 has no primary safety-design source cited in the catalog and remains a question for record review, not safety design, SIL assignment, a legal-compliance assessment or an operating recommendation.",
+   "status": "asked"
+  }
+ ],
+ "events": [],
+ "not_exported": [],
+ "counts": {
+  "nodes": 5,
+  "edges": 8,
+  "claims": 15,
+  "questions": 1,
+  "events": 0
+ }
+}

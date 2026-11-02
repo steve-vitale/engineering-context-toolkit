@@ -1,0 +1,19 @@
+{
+  "question_id": "observed-feed@FERM-101",
+  "answer_id": "fictional-feed-review-1",
+  "claim_key": "conditional-recorded-feed",
+  "value": "A=4kg under previous-value interpolation; B=unknown",
+  "answer": "Fictional partial proposal: the selected previous-value report gives A4kg over its authored one-hour feed window. B remains unknown: numeric99 is excluded by FAULT and both adjacent intervals lack two accepted endpoints. This does not establish actual feed, yield, recipe comparability, fault cause, installed signal identity or predictive validity. Lab, executed-recipe/event and model evidence remain unresolved.",
+  "answer_state": "partial",
+  "decision": "proposed",
+  "owner": "Fictional process reviewer",
+  "assigned_by": "Fictional exercise coordinator",
+  "assigned_on": "2026-11-02",
+  "reviewer": "",
+  "reviewed_on": "",
+  "source_id": "ANALYSIS-REPORT",
+  "locator_id": "feed-windows",
+  "source_match": "match",
+  "plant_truth": "unknown",
+  "note": "Authored teaching statement; match is a supplied source-match assertion, not authenticated human approval. Copy only the current prepared evidence fingerprint after inspecting the selected source; never repair an old reviewed basis."
+}

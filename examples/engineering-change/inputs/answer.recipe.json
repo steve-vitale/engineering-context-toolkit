@@ -1,0 +1,19 @@
+{
+  "question_id": "ARRANGEMENT@TK-1",
+  "answer_id": "fictional-arrangement-A",
+  "claim_key": "source-arrangement",
+  "value": "One water pump P-1; no standby pump specified in design A",
+  "answer": "Fictional partial proposal: design A describes TK-1 supplying P-1. This source summary does not establish the installed arrangement, sizing, protective details, controls or operating readiness. Review the current design and independent records before use.",
+  "answer_state": "partial",
+  "decision": "proposed",
+  "owner": "Fictional process reviewer",
+  "assigned_by": "Fictional demo coordinator",
+  "assigned_on": "2026-11-02",
+  "reviewer": "",
+  "reviewed_on": "",
+  "source_id": "PUMP-DESIGN",
+  "locator_id": "arrangement",
+  "source_match": "match",
+  "plant_truth": "unknown",
+  "note": "Authored teaching statement; no authenticated company review or approval."
+}

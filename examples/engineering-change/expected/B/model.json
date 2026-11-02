@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "model_id": "illustrative-pump-change",
+    "title": "Illustrative pump change",
+    "source_document": "source.txt",
+    "source_sha256": "4ab3526f62ed96fdf076919f57566b26337459efdf31c2f6dfa242dd37683155",
+    "unknowns": [
+      "Pump sizing, line sizes, isolation and nonreturn details, electrical supply, instrument units, operating limits, protection and control logic are not specified."
+    ],
+    "assumptions": [
+      "Symbol dimensions and locations are proposed drafting geometry, not plant dimensions.",
+      "Draft service roles are not control behavior or installed-state evidence."
+    ]
+  },
+  "units": [
+    {
+      "id": "TK-1",
+      "name": "Water tank",
+      "type": "tank",
+      "source": "source.txt:L2-L2"
+    },
+    {
+      "id": "P-1",
+      "name": "Duty water pump",
+      "type": "pump",
+      "source": "source.txt:L3-L3"
+    },
+    {
+      "id": "P-2",
+      "name": "Standby water pump",
+      "type": "pump",
+      "source": "source.txt:L3-L3"
+    }
+  ],
+  "streams": [
+    {
+      "id": "S1",
+      "name": "Water feed",
+      "from": "BL",
+      "to": "TK-1",
+      "source": "source.txt:L4-L4"
+    },
+    {
+      "id": "S2",
+      "name": "Pump suction",
+      "from": "TK-1",
+      "to": "P-1",
+      "source": "source.txt:L5-L5"
+    },
+    {
+      "id": "S3",
+      "name": "Water discharge",
+      "from": "P-1",
+      "to": "BL",
+      "source": "source.txt:L5-L5"
+    },
+    {
+      "id": "S4",
+      "name": "Standby suction branch",
+      "from": "TK-1",
+      "to": "P-2",
+      "source": "source.txt:L6-L6"
+    },
+    {
+      "id": "S5",
+      "name": "Standby discharge branch",
+      "from": "P-2",
+      "to": "BL",
+      "source": "source.txt:L6-L6"
+    }
+  ],
+  "instruments": [],
+  "final_elements": [],
+  "controllers": []
+}

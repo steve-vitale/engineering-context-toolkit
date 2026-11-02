@@ -1,0 +1,93 @@
+{
+  "schema": "engineering-change-demo-key-1",
+  "provenance": "Source/model/layout and initial key were authored before first build. The initial key incorrectly expected E1 without a discharge control valve. Actual A run retained; key v2 instead expects the existing C9 grouped machine-record question and its explicit machine identities. No source, model, geometry or production tool changed. This is development evidence, not held-out model accuracy.",
+  "expected": {
+    "A": {
+      "equipment_ids": [
+        "TK-1",
+        "P-1"
+      ],
+      "stream_endpoints": [
+        [
+          "S1",
+          "BL",
+          "TK-1"
+        ],
+        [
+          "S2",
+          "TK-1",
+          "P-1"
+        ],
+        [
+          "S3",
+          "P-1",
+          "BL"
+        ]
+      ],
+      "generated_question_ids": [
+        "C9@model"
+      ],
+      "generated_machine_review_assets": [
+        "P-1"
+      ]
+    },
+    "B": {
+      "equipment_ids": [
+        "TK-1",
+        "P-1",
+        "P-2"
+      ],
+      "stream_endpoints": [
+        [
+          "S1",
+          "BL",
+          "TK-1"
+        ],
+        [
+          "S2",
+          "TK-1",
+          "P-1"
+        ],
+        [
+          "S3",
+          "P-1",
+          "BL"
+        ],
+        [
+          "S4",
+          "TK-1",
+          "P-2"
+        ],
+        [
+          "S5",
+          "P-2",
+          "BL"
+        ]
+      ],
+      "generated_question_ids": [
+        "C9@model"
+      ],
+      "generated_machine_review_assets": [
+        "P-1",
+        "P-2"
+      ]
+    }
+  },
+  "retained_answer": {
+    "id": "ARRANGEMENT@TK-1",
+    "A_state": "partial",
+    "B_state": "unanswered",
+    "B_freshness": "stale",
+    "preserve_decisions_and_ownership": true
+  },
+  "controls": [
+    "Old A answer does not match prepared B source SHA; check exits 2.",
+    "B layout S5 resolves to BL but wrong model S5.to=P-1; check exits 2.",
+    "Old A context answer CSV against B refuses stale fingerprint before output writes."
+  ],
+  "limits": [
+    "No automatic changeover or instrument/motor model is invented.",
+    "Shared hydraulic connections do not prove operability or protection.",
+    "Staleness is selected-record dependency accounting, not complete engineering change impact analysis."
+  ]
+}

@@ -1,151 +1,497 @@
 {
- "about": "Script roles and intended reuse. Tools accept documented user inputs; checks assess this repository; support modules are imported; case-study/research runners retain source-specific assemblies and experiments. Linked tutorials teach the tool contracts. A purpose override describes scope for any script, including Python; otherwise scripts/script_index.py uses its first docstring sentence. A reusable wrapper can use research internals without transferring the complete research CLI assumptions. Existing role keys and guide assignments are retained.",
- "kinds": {
-  "tool": "For your own drawings, models or data",
-  "check": "Checks on this repository",
-  "support": "Imported by other scripts",
-  "research": "Case-study and research runners (source-specific recipes)"
- },
- "scripts": {
-  "scripts/benchmark_tags.py": {"kind": "support", "guide": "benchmarks/README.md"},
-  "scripts/source_support.py": {"kind": "support", "guide": "benchmarks/README.md"},
-  "scripts/artifact_value_review.py": {"kind": "support", "guide": "benchmarks/source-support/artifact-values/README.md", "purpose": "Admit an explicitly reviewed frozen Native value/group scope before unchanged source-support label scoring; no automatic claim discovery or plant verification."},
-  "scripts/benchmark.py": {"kind": "tool", "guide": "CONTRIBUTING.md"},
-  "scripts/description_workflow.py": {"kind": "tool", "guide": "examples/from-description/README.md"},
-  "scripts/knowledge_snapshot.py": {"kind": "tool", "guide": "examples/engineering-onboarding/README.md"},
-  "scripts/serve_snapshot.py": {"kind": "tool", "guide": "examples/internal-mcp/README.md"},
-  "scripts/check_snapshot_mcp.py": {"kind": "check", "guide": "examples/internal-mcp/README.md"},
-  "scripts/run_extraction.py": {"kind": "tool", "guide": "examples/own-drawing/README.md"},
-  "scripts/trace_connections.py": {"kind": "tool", "guide": "examples/own-drawing/README.md"},
-  "scripts/scan_cleanup.py": {"kind": "tool", "guide": "docs/GRAPH_EXPORT.md"},
-  "scripts/site_extraction_workflow.py": {"kind": "tool", "guide": "docs/SITE_EXTRACTION_WORKFLOW.md"},
-  "scripts/import_site_drawing.py": {"kind": "tool", "guide": "examples/own-drawing/README.md"},
-  "scripts/generate.py": {"kind": "tool", "guide": "examples/from-description/README.md", "purpose": "Generate logical SVGs, review material and Ignition/PI staging from supported Native process models or drawing-extracted twins; target mapping depends on the model kind."},
-  "scripts/draw_pid_from_model.py": {"kind": "tool", "guide": "examples/from-description/README.md"},
-  "scripts/dexpi_to_twin.py": {"kind": "research", "guide": "examples/from-dexpi/README.md", "purpose": "Convert a configured public DEXPI answer key to an intake prediction and manifest without a model API call; use dexpi_reader.py for your own supported XML."},
-  "scripts/dexpi_reader.py": {"kind": "tool", "guide": "examples/from-dexpi-xml/README.md", "purpose": "Read supported DEXPI XML into a process model with mapped attributes and source references, without visual extraction or a model API call; optional source capture is separate."},
-  "scripts/source_evidence.py": {"kind": "support", "guide": "examples/from-dexpi-xml/README.md"},
-  "scripts/source_handoff.py": {"kind": "tool", "guide": "examples/source-handoff/README.md"},
-  "scripts/loop_audit.py": {"kind": "tool", "guide": "examples/loop-audit/README.md"},
-  "scripts/csv_replay_server.py": {"kind": "tool", "guide": "examples/historian-csv/README.md"},
-  "scripts/csv_normal_bands.py": {"kind": "tool", "guide": "examples/historian-csv/README.md"},
-  "scripts/evaluate_vendor.py": {"kind": "tool", "guide": "examples/vendor-evaluation/README.md"},
-  "scripts/score_pid2graph.py": {"kind": "tool", "guide": "examples/vendor-evaluation/README.md"},
-  "scripts/degrade_scans.py": {"kind": "tool", "guide": "docs/GOAL.md"},
-  "scripts/apply_review.py": {"kind": "tool", "guide": "docs/REVIEW_LOOP.md"},
-  "scripts/review_kit.py": {"kind": "tool", "guide": "docs/REVIEWING.md"},
-  "scripts/map_points.py": {"kind": "tool", "guide": "docs/REPLICATE_AT_YOUR_PLANT.md", "purpose": "Assign supplied OPC addresses to extracted-twin instruments and retain their I/O source; Native bindings require separate target configuration and no signal connection is verified."},
-  "scripts/map_pi_points.py": {"kind": "tool", "guide": "docs/PI_MAPPING.md", "purpose": "Apply explicit reviewed PI references to extracted-twin instruments; dry-run writes nothing. Native models use manual staging reconciliation."},
-  "scripts/check_pi_export.py": {"kind": "tool", "guide": "docs/PI_MAPPING.md"},
-  "scripts/ignition/import_tags.py": {"kind": "tool", "guide": "docs/IGNITION_QUICKSTART.md"},
-  "scripts/deliverable_report.py": {"kind": "tool", "guide": "examples/own-drawing/README.md"},
-
-  "scripts/check_claims.py": {"kind": "check", "guide": "docs/REVIEWING.md"},
-  "scripts/rescore.py": {"kind": "check", "guide": "docs/REVIEWING.md"},
-  "scripts/pipeline.py": {"kind": "check", "guide": "docs/DATA_LINEAGE.md"},
-  "scripts/run_tests.py": {"kind": "check"},
-  "scripts/script_index.py": {"kind": "check"},
-  "scripts/attempts_ledger.py": {"kind": "check", "guide": "docs/TRIED.md"},
-  "scripts/feature_catalog.py": {"kind": "check", "guide": "docs/FEATURES.md"},
-  "scripts/corpus_matrix.py": {"kind": "check", "guide": "docs/GENERALIZATION.md"},
-  "scripts/fetch_corpus.py": {"kind": "check", "guide": "docs/CORPUS_FETCH.md"},
-  "scripts/graph_export.py": {"kind": "tool", "guide": "docs/GRAPH_EXPORT.md", "purpose": "Export a supported model as portable twin-graph-1 JSON with typed relationships and sourced claims; external systems need a receiving adapter."},
-  "scripts/graph_review_records.py": {"kind": "support", "guide": "docs/REVIEW_HISTORY.md", "purpose": "Retain review-source bytes and check supplied graph associations for graph_export.py."},
-  "scripts/question_engine.py": {"kind": "tool", "guide": "docs/OPPORTUNITY_SCREEN.md"},
-  "scripts/estimate_impact.py": {"kind": "tool", "guide": "docs/IMPACT_ESTIMATE.md"},
-  "scripts/statements.py": {"kind": "tool", "guide": "docs/STATEMENT_REVIEW.md"},
-  "scripts/line_layers.py": {"kind": "tool", "guide": "docs/GRAPH_EXPORT.md"},
-  "scripts/check_docker_demo.py": {"kind": "check"},
-  "scripts/ignition/acceptance_preflight.py": {"kind": "check", "guide": "docs/IGNITION_ACCEPTANCE.md"},
-
-  "scripts/tiling.py": {"kind": "support"},
-  "scripts/output_paths.py": {"kind": "support"},
-  "scripts/corpus_adapters.py": {"kind": "support"},
-  "scripts/historian_adapters.py": {"kind": "support"},
-  "scripts/label_layout.py": {"kind": "support"},
-  "scripts/provenance.py": {"kind": "support"},
-  "scripts/pi_mapping.py": {"kind": "support"},
-  "scripts/display_contract.py": {"kind": "support"},
-  "scripts/platform_capabilities.py": {"kind": "support"},
-  "scripts/ignition/gw.py": {"kind": "support"},
-  "scripts/ignition/ua_client.py": {"kind": "support"},
-
-  "scripts/adapt_dexpi.py": {"kind": "research"},
-  "scripts/adapt_pid2graph_synthetic.py": {"kind": "research"},
-  "scripts/bayer_replay.py": {"kind": "research"},
-  "scripts/bayer_walkthrough.py": {"kind": "research"},
-  "scripts/blender_tour_template.py": {"kind": "research", "purpose": "Blender script template for the 3D tour stills: build_3d_scene.py fills it with a scene and runs it in Blender (placeholder geometry)."},
-  "scripts/build_3d_scene.py": {"kind": "research"},
-  "scripts/build_bayer_overview.py": {"kind": "research"},
-  "scripts/build_open100_3d.py": {"kind": "research"},
-  "scripts/build_scene_data.py": {"kind": "research"},
-  "scripts/build_twin.py": {"kind": "research", "purpose": "Assemble the multi-sheet extraction research case, including source-shaped tag/off-page rules and fitted review tiers; own-drawing intake reuses its converter through the documented one-sheet tool route."},
-  "scripts/compare_bayer_fig10.py": {"kind": "research"},
-  "scripts/confidence.py": {"kind": "research"},
-  "scripts/cost_report.py": {"kind": "research"},
-  "scripts/deliverables_matrix.py": {"kind": "research"},
-  "scripts/demo.py": {"kind": "research", "purpose": "Run the TE recorded replay and OPEN100 synthetic-point case study in a configured Ignition lab."},
-  "scripts/digitize_bayer_fig11.py": {"kind": "research"},
-  "scripts/direction_spot_check.py": {"kind": "research"},
-  "scripts/evaluate_connectivity_dev_v2.py": {"kind": "research"},
-  "scripts/export_interactive_tour.py": {"kind": "research"},
-  "scripts/export_mimic_layout.py": {"kind": "research"},
-  "scripts/fault_detection_eval.py": {"kind": "research"},
-  "scripts/fetch_pid2graph.py": {"kind": "research"},
-  "scripts/fetch_te_data.py": {"kind": "research"},
-  "scripts/flow_direction.py": {"kind": "research"},
-  "scripts/hazard_citations.py": {"kind": "research"},
-  "scripts/make_before_after.py": {"kind": "research"},
-  "scripts/make_demo_gif.py": {"kind": "research"},
-  "scripts/normal_bands.py": {"kind": "research"},
-  "scripts/open100_structure.py": {"kind": "research"},
-  "scripts/orientation_tour.py": {"kind": "research"},
-  "scripts/per_drawing.py": {"kind": "research"},
-  "scripts/preview_mimic.py": {"kind": "research"},
-  "scripts/remerge_tiles.py": {"kind": "research"},
-  "scripts/render_mimic_snapshots.py": {"kind": "research"},
-  "scripts/render_open100_structural.py": {"kind": "research"},
-  "scripts/replicate_stats.py": {"kind": "research"},
-  "scripts/restore_review_bundle.py": {"kind": "research"},
-  "scripts/retag_te_valves.py": {"kind": "research"},
-  "scripts/review_effort.py": {"kind": "research"},
-  "scripts/run_te_roundtrip.py": {"kind": "research"},
-  "scripts/score_tags.py": {"kind": "research"},
-  "scripts/score_te_roundtrip.py": {"kind": "research"},
-  "scripts/score_triage.py": {"kind": "research"},
-  "scripts/context_register.py": {"kind": "tool", "guide": "docs/CONTEXT_REGISTER.md"},
-  "scripts/score_twin.py": {"kind": "research"},
-  "scripts/scorecard.py": {"kind": "research"},
-  "scripts/style_fidelity.py": {"kind": "research"},
-  "scripts/te_control_loops.py": {"kind": "research"},
-  "scripts/te_live_check.py": {"kind": "research"},
-  "scripts/te_model_diff.py": {"kind": "research"},
-  "scripts/trace_connections_v2.py": {"kind": "research"},
-  "scripts/transcribe_equipment_schedules.py": {"kind": "research"},
-  "scripts/verify_3d_render.py": {"kind": "research"},
-  "scripts/verify_te_source.py": {"kind": "research"},
-  "scripts/verify_te_topology.py": {"kind": "research"},
-  "scripts/ignition/acceptance/browser_contract.js": {"kind": "research", "purpose": "Browser contract for the PIDTwin Perspective project: every route loaded and reloaded, every click target clicked, screenshots and alarm-count sampling."},
-  "scripts/ignition/acceptance/live_checks.py": {"kind": "research"},
-  "scripts/ignition/acceptance/nav_contract.py": {"kind": "research"},
-  "scripts/ignition/build_gateway.py": {"kind": "research", "purpose": "Build the TE/OPEN100 Ignition lab case with its fixed TE model, replay, alarms and screens; optional extracted twins join that assembly."},
-  "scripts/ignition/build_hmi.py": {"kind": "research"},
-  "scripts/ignition/build_mimic.py": {"kind": "research"},
-  "scripts/ignition/build_open100_mimic.py": {"kind": "research"},
-  "scripts/ignition/build_views.py": {"kind": "research"},
-  "scripts/ignition/demo_points_server.py": {"kind": "research"},
-  "scripts/ignition/make_local_ca.py": {"kind": "research"},
-  "scripts/ignition/prepare_demo_backup.py": {"kind": "research"},
-  "scripts/ignition/prepare_drawings.py": {"kind": "research"},
-  "scripts/ignition/te_channels.py": {"kind": "research"},
-  "scripts/ignition/te_sim_server.py": {"kind": "research"},
-  "scripts/ignition/verify_gateway.py": {"kind": "research"},
-  "scripts/run_holdouts.ps1": {"kind": "research", "purpose": "Run the round-2 holdout extractions (Windows)."},
-  "scripts/run_round5.ps1": {"kind": "research", "purpose": "Run the round-5 replicate extractions (Windows)."},
-  "scripts/run_scan_robustness.ps1": {"kind": "research", "purpose": "Run the round-4 old-scan extractions (Windows)."},
-  "scripts/score_holdout_b.ps1": {"kind": "research", "purpose": "Score the holdout-B runs (Windows)."},
-  "scripts/score_parent_holdouts.ps1": {"kind": "research", "purpose": "Score instrument parent assignment on the holdouts (Windows)."},
-  "scripts/score_scan_robustness.ps1": {"kind": "research", "purpose": "Score the round-4 old-scan runs (Windows)."},
-  "scripts/score_triage_holdouts.ps1": {"kind": "research", "purpose": "Score the round-3 risk rating on the holdouts (Windows)."}
- }
+  "about": "Script roles and intended reuse. Tools accept documented user inputs; checks assess this repository; support modules are imported; case-study/research runners retain source-specific assemblies and experiments. Linked tutorials teach the tool contracts. A purpose override describes scope for any script, including Python; otherwise scripts/script_index.py uses its first docstring sentence. A reusable wrapper can use research internals without transferring the complete research CLI assumptions. Existing role keys and guide assignments are retained.",
+  "kinds": {
+    "tool": "For your own drawings, models or data",
+    "check": "Checks on this repository",
+    "support": "Imported by other scripts",
+    "research": "Case-study and research runners (source-specific recipes)"
+  },
+  "scripts": {
+    "scripts/batch_analysis.py": {
+      "kind": "tool",
+      "guide": "examples/batch-analysis/README.md"
+    },
+    "scripts/benchmark_tags.py": {
+      "kind": "support",
+      "guide": "benchmarks/README.md"
+    },
+    "scripts/source_support.py": {
+      "kind": "support",
+      "guide": "benchmarks/README.md"
+    },
+    "scripts/artifact_value_review.py": {
+      "kind": "support",
+      "guide": "benchmarks/source-support/artifact-values/README.md",
+      "purpose": "Admit an explicitly reviewed frozen Native value/group scope before unchanged source-support label scoring; no automatic claim discovery or plant verification."
+    },
+    "scripts/benchmark.py": {
+      "kind": "tool",
+      "guide": "CONTRIBUTING.md"
+    },
+    "scripts/description_workflow.py": {
+      "kind": "tool",
+      "guide": "examples/from-description/README.md"
+    },
+    "scripts/knowledge_snapshot.py": {
+      "kind": "tool",
+      "guide": "examples/engineering-onboarding/README.md"
+    },
+    "scripts/serve_snapshot.py": {
+      "kind": "tool",
+      "guide": "examples/internal-mcp/README.md"
+    },
+    "scripts/check_snapshot_mcp.py": {
+      "kind": "check",
+      "guide": "examples/internal-mcp/README.md"
+    },
+    "scripts/run_extraction.py": {
+      "kind": "tool",
+      "guide": "examples/own-drawing/README.md"
+    },
+    "scripts/trace_connections.py": {
+      "kind": "tool",
+      "guide": "examples/own-drawing/README.md"
+    },
+    "scripts/scan_cleanup.py": {
+      "kind": "tool",
+      "guide": "docs/GRAPH_EXPORT.md"
+    },
+    "scripts/site_extraction_workflow.py": {
+      "kind": "tool",
+      "guide": "docs/SITE_EXTRACTION_WORKFLOW.md"
+    },
+    "scripts/import_site_drawing.py": {
+      "kind": "tool",
+      "guide": "examples/own-drawing/README.md"
+    },
+    "scripts/generate.py": {
+      "kind": "tool",
+      "guide": "examples/from-description/README.md",
+      "purpose": "Generate logical SVGs, review material and Ignition/PI staging from supported Native process models or drawing-extracted twins; target mapping depends on the model kind."
+    },
+    "scripts/draw_pid_from_model.py": {
+      "kind": "tool",
+      "guide": "examples/from-description/README.md"
+    },
+    "scripts/dexpi_to_twin.py": {
+      "kind": "research",
+      "guide": "examples/from-dexpi/README.md",
+      "purpose": "Convert a configured public DEXPI answer key to an intake prediction and manifest without a model API call; use dexpi_reader.py for your own supported XML."
+    },
+    "scripts/dexpi_reader.py": {
+      "kind": "tool",
+      "guide": "examples/from-dexpi-xml/README.md",
+      "purpose": "Read supported DEXPI XML into a process model with mapped attributes and source references, without visual extraction or a model API call; optional source capture is separate."
+    },
+    "scripts/source_evidence.py": {
+      "kind": "support",
+      "guide": "examples/from-dexpi-xml/README.md"
+    },
+    "scripts/source_handoff.py": {
+      "kind": "tool",
+      "guide": "examples/source-handoff/README.md"
+    },
+    "scripts/loop_audit.py": {
+      "kind": "tool",
+      "guide": "examples/loop-audit/README.md"
+    },
+    "scripts/csv_replay_server.py": {
+      "kind": "tool",
+      "guide": "examples/historian-csv/README.md"
+    },
+    "scripts/csv_normal_bands.py": {
+      "kind": "tool",
+      "guide": "examples/historian-csv/README.md"
+    },
+    "scripts/evaluate_vendor.py": {
+      "kind": "tool",
+      "guide": "examples/vendor-evaluation/README.md"
+    },
+    "scripts/score_pid2graph.py": {
+      "kind": "tool",
+      "guide": "examples/vendor-evaluation/README.md"
+    },
+    "scripts/degrade_scans.py": {
+      "kind": "tool",
+      "guide": "docs/GOAL.md"
+    },
+    "scripts/apply_review.py": {
+      "kind": "tool",
+      "guide": "docs/REVIEW_LOOP.md"
+    },
+    "scripts/review_kit.py": {
+      "kind": "tool",
+      "guide": "docs/REVIEWING.md"
+    },
+    "scripts/map_points.py": {
+      "kind": "tool",
+      "guide": "docs/REPLICATE_AT_YOUR_PLANT.md",
+      "purpose": "Assign supplied OPC addresses to extracted-twin instruments and retain their I/O source; Native bindings require separate target configuration and no signal connection is verified."
+    },
+    "scripts/map_pi_points.py": {
+      "kind": "tool",
+      "guide": "docs/PI_MAPPING.md",
+      "purpose": "Apply explicit reviewed PI references to extracted-twin instruments; dry-run writes nothing. Native models use manual staging reconciliation."
+    },
+    "scripts/check_pi_export.py": {
+      "kind": "tool",
+      "guide": "docs/PI_MAPPING.md"
+    },
+    "scripts/ignition/import_tags.py": {
+      "kind": "tool",
+      "guide": "docs/IGNITION_QUICKSTART.md"
+    },
+    "scripts/deliverable_report.py": {
+      "kind": "tool",
+      "guide": "examples/own-drawing/README.md"
+    },
+    "scripts/check_claims.py": {
+      "kind": "check",
+      "guide": "docs/REVIEWING.md"
+    },
+    "scripts/rescore.py": {
+      "kind": "check",
+      "guide": "docs/REVIEWING.md"
+    },
+    "scripts/pipeline.py": {
+      "kind": "check",
+      "guide": "docs/DATA_LINEAGE.md"
+    },
+    "scripts/run_tests.py": {
+      "kind": "check"
+    },
+    "scripts/script_index.py": {
+      "kind": "check"
+    },
+    "scripts/attempts_ledger.py": {
+      "kind": "check",
+      "guide": "docs/TRIED.md"
+    },
+    "scripts/feature_catalog.py": {
+      "kind": "check",
+      "guide": "docs/FEATURES.md"
+    },
+    "scripts/corpus_matrix.py": {
+      "kind": "check",
+      "guide": "docs/GENERALIZATION.md"
+    },
+    "scripts/fetch_corpus.py": {
+      "kind": "check",
+      "guide": "docs/CORPUS_FETCH.md"
+    },
+    "scripts/graph_export.py": {
+      "kind": "tool",
+      "guide": "docs/GRAPH_EXPORT.md",
+      "purpose": "Export a supported model as portable twin-graph-1 JSON with typed relationships and sourced claims; external systems need a receiving adapter."
+    },
+    "scripts/graph_review_records.py": {
+      "kind": "support",
+      "guide": "docs/REVIEW_HISTORY.md",
+      "purpose": "Retain review-source bytes and check supplied graph associations for graph_export.py."
+    },
+    "scripts/question_engine.py": {
+      "kind": "tool",
+      "guide": "docs/OPPORTUNITY_SCREEN.md"
+    },
+    "scripts/estimate_impact.py": {
+      "kind": "tool",
+      "guide": "docs/IMPACT_ESTIMATE.md"
+    },
+    "scripts/statements.py": {
+      "kind": "tool",
+      "guide": "docs/STATEMENT_REVIEW.md"
+    },
+    "scripts/line_layers.py": {
+      "kind": "tool",
+      "guide": "docs/GRAPH_EXPORT.md"
+    },
+    "scripts/check_docker_demo.py": {
+      "kind": "check"
+    },
+    "scripts/ignition/acceptance_preflight.py": {
+      "kind": "check",
+      "guide": "docs/IGNITION_ACCEPTANCE.md"
+    },
+    "scripts/tiling.py": {
+      "kind": "support"
+    },
+    "scripts/output_paths.py": {
+      "kind": "support"
+    },
+    "scripts/corpus_adapters.py": {
+      "kind": "support"
+    },
+    "scripts/historian_adapters.py": {
+      "kind": "support"
+    },
+    "scripts/label_layout.py": {
+      "kind": "support"
+    },
+    "scripts/provenance.py": {
+      "kind": "support"
+    },
+    "scripts/pi_mapping.py": {
+      "kind": "support"
+    },
+    "scripts/display_contract.py": {
+      "kind": "support"
+    },
+    "scripts/platform_capabilities.py": {
+      "kind": "support"
+    },
+    "scripts/ignition/gw.py": {
+      "kind": "support"
+    },
+    "scripts/ignition/ua_client.py": {
+      "kind": "support"
+    },
+    "scripts/adapt_dexpi.py": {
+      "kind": "research"
+    },
+    "scripts/adapt_pid2graph_synthetic.py": {
+      "kind": "research"
+    },
+    "scripts/bayer_replay.py": {
+      "kind": "research"
+    },
+    "scripts/bayer_walkthrough.py": {
+      "kind": "research"
+    },
+    "scripts/blender_tour_template.py": {
+      "kind": "research",
+      "purpose": "Blender script template for the 3D tour stills: build_3d_scene.py fills it with a scene and runs it in Blender (placeholder geometry)."
+    },
+    "scripts/build_3d_scene.py": {
+      "kind": "research"
+    },
+    "scripts/build_bayer_overview.py": {
+      "kind": "research"
+    },
+    "scripts/build_open100_3d.py": {
+      "kind": "research"
+    },
+    "scripts/build_scene_data.py": {
+      "kind": "research"
+    },
+    "scripts/build_twin.py": {
+      "kind": "research",
+      "purpose": "Assemble the multi-sheet extraction research case, including source-shaped tag/off-page rules and fitted review tiers; own-drawing intake reuses its converter through the documented one-sheet tool route."
+    },
+    "scripts/compare_bayer_fig10.py": {
+      "kind": "research"
+    },
+    "scripts/confidence.py": {
+      "kind": "research"
+    },
+    "scripts/cost_report.py": {
+      "kind": "research"
+    },
+    "scripts/deliverables_matrix.py": {
+      "kind": "research"
+    },
+    "scripts/demo.py": {
+      "kind": "research",
+      "purpose": "Run the TE recorded replay and OPEN100 synthetic-point case study in a configured Ignition lab."
+    },
+    "scripts/digitize_bayer_fig11.py": {
+      "kind": "research"
+    },
+    "scripts/direction_spot_check.py": {
+      "kind": "research"
+    },
+    "scripts/evaluate_connectivity_dev_v2.py": {
+      "kind": "research"
+    },
+    "scripts/export_interactive_tour.py": {
+      "kind": "research"
+    },
+    "scripts/export_mimic_layout.py": {
+      "kind": "research"
+    },
+    "scripts/fault_detection_eval.py": {
+      "kind": "research"
+    },
+    "scripts/fetch_pid2graph.py": {
+      "kind": "research"
+    },
+    "scripts/fetch_te_data.py": {
+      "kind": "research"
+    },
+    "scripts/flow_direction.py": {
+      "kind": "research"
+    },
+    "scripts/hazard_citations.py": {
+      "kind": "research"
+    },
+    "scripts/make_before_after.py": {
+      "kind": "research"
+    },
+    "scripts/make_demo_gif.py": {
+      "kind": "research"
+    },
+    "scripts/normal_bands.py": {
+      "kind": "research"
+    },
+    "scripts/open100_structure.py": {
+      "kind": "research"
+    },
+    "scripts/orientation_tour.py": {
+      "kind": "research"
+    },
+    "scripts/per_drawing.py": {
+      "kind": "research"
+    },
+    "scripts/preview_mimic.py": {
+      "kind": "research"
+    },
+    "scripts/remerge_tiles.py": {
+      "kind": "research"
+    },
+    "scripts/render_mimic_snapshots.py": {
+      "kind": "research"
+    },
+    "scripts/render_open100_structural.py": {
+      "kind": "research"
+    },
+    "scripts/replicate_stats.py": {
+      "kind": "research"
+    },
+    "scripts/restore_review_bundle.py": {
+      "kind": "research"
+    },
+    "scripts/retag_te_valves.py": {
+      "kind": "research"
+    },
+    "scripts/review_effort.py": {
+      "kind": "research"
+    },
+    "scripts/run_te_roundtrip.py": {
+      "kind": "research"
+    },
+    "scripts/score_tags.py": {
+      "kind": "research"
+    },
+    "scripts/score_te_roundtrip.py": {
+      "kind": "research"
+    },
+    "scripts/score_triage.py": {
+      "kind": "research"
+    },
+    "scripts/context_register.py": {
+      "kind": "tool",
+      "guide": "docs/CONTEXT_REGISTER.md"
+    },
+    "scripts/score_twin.py": {
+      "kind": "research"
+    },
+    "scripts/scorecard.py": {
+      "kind": "research"
+    },
+    "scripts/style_fidelity.py": {
+      "kind": "research"
+    },
+    "scripts/te_control_loops.py": {
+      "kind": "research"
+    },
+    "scripts/te_live_check.py": {
+      "kind": "research"
+    },
+    "scripts/te_model_diff.py": {
+      "kind": "research"
+    },
+    "scripts/trace_connections_v2.py": {
+      "kind": "research"
+    },
+    "scripts/transcribe_equipment_schedules.py": {
+      "kind": "research"
+    },
+    "scripts/verify_3d_render.py": {
+      "kind": "research"
+    },
+    "scripts/verify_te_source.py": {
+      "kind": "research"
+    },
+    "scripts/verify_te_topology.py": {
+      "kind": "research"
+    },
+    "scripts/ignition/acceptance/browser_contract.js": {
+      "kind": "research",
+      "purpose": "Browser contract for the PIDTwin Perspective project: every route loaded and reloaded, every click target clicked, screenshots and alarm-count sampling."
+    },
+    "scripts/ignition/acceptance/live_checks.py": {
+      "kind": "research"
+    },
+    "scripts/ignition/acceptance/nav_contract.py": {
+      "kind": "research"
+    },
+    "scripts/ignition/build_gateway.py": {
+      "kind": "research",
+      "purpose": "Build the TE/OPEN100 Ignition lab case with its fixed TE model, replay, alarms and screens; optional extracted twins join that assembly."
+    },
+    "scripts/ignition/build_hmi.py": {
+      "kind": "research"
+    },
+    "scripts/ignition/build_mimic.py": {
+      "kind": "research"
+    },
+    "scripts/ignition/build_open100_mimic.py": {
+      "kind": "research"
+    },
+    "scripts/ignition/build_views.py": {
+      "kind": "research"
+    },
+    "scripts/ignition/demo_points_server.py": {
+      "kind": "research"
+    },
+    "scripts/ignition/make_local_ca.py": {
+      "kind": "research"
+    },
+    "scripts/ignition/prepare_demo_backup.py": {
+      "kind": "research"
+    },
+    "scripts/ignition/prepare_drawings.py": {
+      "kind": "research"
+    },
+    "scripts/ignition/te_channels.py": {
+      "kind": "research"
+    },
+    "scripts/ignition/te_sim_server.py": {
+      "kind": "research"
+    },
+    "scripts/ignition/verify_gateway.py": {
+      "kind": "research"
+    },
+    "scripts/run_holdouts.ps1": {
+      "kind": "research",
+      "purpose": "Run the round-2 holdout extractions (Windows)."
+    },
+    "scripts/run_round5.ps1": {
+      "kind": "research",
+      "purpose": "Run the round-5 replicate extractions (Windows)."
+    },
+    "scripts/run_scan_robustness.ps1": {
+      "kind": "research",
+      "purpose": "Run the round-4 old-scan extractions (Windows)."
+    },
+    "scripts/score_holdout_b.ps1": {
+      "kind": "research",
+      "purpose": "Score the holdout-B runs (Windows)."
+    },
+    "scripts/score_parent_holdouts.ps1": {
+      "kind": "research",
+      "purpose": "Score instrument parent assignment on the holdouts (Windows)."
+    },
+    "scripts/score_scan_robustness.ps1": {
+      "kind": "research",
+      "purpose": "Score the round-4 old-scan runs (Windows)."
+    },
+    "scripts/score_triage_holdouts.ps1": {
+      "kind": "research",
+      "purpose": "Score the round-3 risk rating on the holdouts (Windows)."
+    },
+    "scripts/check_analysis_basis.py": {
+      "kind": "tool",
+      "guide": "examples/batch-analysis/basis-check/README.md"
+    }
+  }
 }

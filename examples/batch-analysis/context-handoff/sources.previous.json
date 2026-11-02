@@ -1,0 +1,36 @@
+{
+  "schema": "context-sources-1",
+  "documents": [
+    {
+      "id": "ANALYSIS-REPORT",
+      "revision": "r1-previous-assumption",
+      "path": "source/previous/batch_analysis.json",
+      "sha256": "09365dc4b25361275ed042036c35e1e34c22dfdfb003dce465b7961e0c88fa68",
+      "locators": [
+        {
+          "id": "feed-windows",
+          "locator": "JSON /windows/0/signals/FT-101 and /windows/1/signals/FT-101; /signal_definitions/FT-101; /inputs; /graph_binding",
+          "questions": [
+            "observed-feed@FERM-101"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "READINESS-NOTE",
+      "revision": "fictional-r1",
+      "path": "readiness.json",
+      "sha256": "dce42c2ac6f5ab5675bf46ee58a2c264c0b8ce1db74bf1e6a87dc909cb0bea9a",
+      "locators": [
+        {
+          "id": "missing-evidence",
+          "locator": "JSON /items/0 through /items/3; manual role-specific requests, not supplied event/lab/recipe/model evidence",
+          "questions": [
+            "comparability-yield@FERM-101",
+            "predictive-what-if@FERM-101"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "context-sources-1",
+  "documents": [
+    {
+      "id": "PUMP-DESIGN",
+      "revision": "A-fictional-design",
+      "path": "source.txt",
+      "sha256": "4555af838d8a59ba122162b0612d8d1c4c9caacb564ee4f3ffb71eee9e49da24",
+      "locators": [
+        {
+          "id": "arrangement",
+          "locator": "source.txt lines 2-8; proposed structure and unresolved operating evidence",
+          "questions": [
+            "ARRANGEMENT@TK-1",
+            "OPERABILITY@P-1"
+          ]
+        }
+      ]
+    }
+  ]
+}
