@@ -31,7 +31,7 @@ UNPLACED_KINDS = ("equipment", "instrument", "final_element", "controller", "lin
                   "manual_valve", "relief_device")
 # What a `connects` edge means, by where it came from (the edge's `layer`). Extracted drawings: the tracer's pairwise
 # link, network co-membership (both ends on one drawn line network, the answer key's definition), NOT pipe adjacency.
-# Hand-built models: a process stream recorded from one end to the other (pipe-level). Cross-sheet pairs: two
+# Hand-built models: a logical stream between declared endpoints, not physical adjacency. Cross-sheet pairs: two
 # off-page connectors matched across drawings. The pipe layer itself is `piped_to` (scripts/line_layers.py); drawn
 # lines that are not pipe are `instrument_connection` (a bubble's leader or impulse line), `actuated_by` (a valve's
 # actuator stem) and `nozzle_of` (a nozzle stub on its vessel).
@@ -41,7 +41,7 @@ LINE_SECTIONS = {"segments": "piped_to", "instrument_lines": "instrument_connect
 JUNCTION_NAMES = {"pipe_tee": "pipe tee", "instrument_tap": "instrument tap", "marked_crossing": "marked crossing",
                   "instrument_line_junction": "instrument line junction"}
 CONNECTS_LAYERS = {"network_pair": "both ends are on the same drawn line network (pairwise co-membership)",
-                   "stream": "a process stream recorded in the model from one end to the other (pipe-level)",
+                   "stream": "a logical process stream between the model's declared endpoints, not physical pipe adjacency",
                    "offpage_pair": "two off-page connectors paired across drawings"}
 LINE_LAYER_ENDS = ("plant", "system", "line_network", "controller", "interlock", "limit")  # never a line edge's end
 # Never attribute claims: identity (id, tag and former_tag make the node and its aliases), the item's own source and
@@ -477,8 +477,8 @@ def _build_snapshot(model_path, reviews=None, questions=None, *, review_associat
 # Export profiles. "full" is everything the model holds. "core" is what a system that governs changes to the plant
 # needs to keep: identity, configuration a change would alter, the relations that decide impact (measures, controls,
 # protects, trips, piped_to, network membership) and where each fact came from. It drops how the extraction got there
-# (method names, hashes, pixel geometry, candidate lists) and the all-pairs network links, which are rebuildable from
-# on_network and grow with the square of a network's size. Every dropped claim name and edge kind is counted in the
+# (method names, hashes, pixel geometry, candidate lists) and only ordinary network pairs explicitly represented by
+# retained on_network records. Unrepresented or qualified pairs stay whole. Every dropped claim name and edge kind is counted in the
 # graph's "profile" block, so nothing leaves silently; the full export stays the record.
 CORE_DROP_CLAIMS = re.compile(
     r"^(extraction_\w+|\w+_method|\w*sha256|source_evidence\..+|source_manifest|source_run|source_drawing\..+|image\w*|"
@@ -486,6 +486,39 @@ CORE_DROP_CLAIMS = re.compile(
     r"parent_source\..+|linked_candidates|unit_hops|pairwise_links|arms|lines\..+|pair_description_similarity|"
     r"grid_ref_on_target|drawing_number_candidates|system_codes_seen\..+|model)$")
 PROFILES = ("full", "core")
+
+
+def core_redundant_pairs(g):
+    """Only reduce explicitly represented, unreviewed, undirected co-membership.
+
+    Basic intake has no network layer; an ambiguous pair has no selected network.
+    Neither case permits inventing a membership or throwing away the original edge.
+    The full export remains the record of deliberately omitted pair claims.
+    """
+    networks = {n["id"] for n in g["nodes"]
+                if n.get("kind") == "line_network" and n.get("status") == "unverified"}
+    memberships = {}
+    for e in g["edges"]:
+        if e.get("type") == "on_network":
+            memberships.setdefault((e.get("from"), e.get("to")), []).append(e)
+    standard = {"id", "type", "from", "to", "status", "direction", "source", "layer", "network", "attributes"}
+    removable = set()
+    for e in g["edges"]:
+        if (e.get("type") != "connects" or e.get("layer") != "network_pair"
+                or e.get("network") not in networks or e.get("direction") != "unknown"
+                or e.get("status") != "unverified" or not e.keys() <= standard
+                or any(c.get("status") not in {"unverified", "extracted"} for c in e.get("attributes", []))):
+            continue
+        ordinary = {"direction": "unknown", "kind": "extracted_link", "name": f"{e['from']} - {e['to']}"}
+        if any(not CORE_DROP_CLAIMS.match(re.sub(r"\[\d+\]", "", c["name"]))
+               and not (c["name"] in ordinary and c.get("value") == ordinary[c["name"]])
+               for c in e.get("attributes", [])):
+            continue  # membership cannot reproduce a supplied size/fluid/limit or a different label
+        records = [memberships.get((end, e["network"]), []) for end in (e["from"], e["to"])]
+        if all(len(rs) == 1 and rs[0].get("status") == "unverified" and rs[0].get("direction") is None
+               for rs in records):
+            removable.add(e["id"])
+    return removable
 
 
 def apply_profile(g, profile):
@@ -496,6 +529,8 @@ def apply_profile(g, profile):
         raise ValueError(f"unknown profile {profile!r}; choose one of {', '.join(PROFILES)}")
     g = json.loads(json.dumps(g))
     dropped_claims, dropped_edges, on_dropped_edges = {}, {}, 0
+    redundant_pairs = core_redundant_pairs(g)
+    retained_pairs = False
 
     def keep(attrs):
         out = []
@@ -512,6 +547,10 @@ def apply_profile(g, profile):
     edges = []
     for e in g["edges"]:
         if e["type"] == "connects" and e.get("layer") == "network_pair":
+            if e["id"] not in redundant_pairs:
+                edges.append(e)  # keep the complete evidence/qualification, not just its endpoints
+                retained_pairs = True
+                continue
             k = "connects (network_pair)"
             dropped_edges[k] = dropped_edges.get(k, 0) + 1
             on_dropped_edges += len(e.get("attributes", []))
@@ -527,6 +566,11 @@ def apply_profile(g, profile):
         "dropped_claims": dict(sorted(dropped_claims.items())),
         "dropped_edges": dropped_edges,
         "claims_on_dropped_edges": on_dropped_edges}
+    if retained_pairs:
+        g["profile"]["rule"] = (
+            "identity, configuration, impact relations and sources kept; extraction internals and explicitly "
+            "rebuildable unreviewed network pairs dropped; other network pairs retained whole. "
+            "The full export is the record.")
     g["counts"].update(nodes=len(g["nodes"]), edges=len(g["edges"]),
                        claims=sum(len(n["attributes"]) for n in g["nodes"])
                        + sum(len(e.get("attributes", [])) for e in g["edges"]))
@@ -655,7 +699,7 @@ def main(argv=None):
     ap.add_argument("--check", metavar="GRAPH", help="validate an exported graph file and exit")
     ap.add_argument("--profile", choices=PROFILES, default="full",
                     help="full (default): everything; core: identity, configuration, impact relations and sources, "
-                         "without extraction internals or all-pairs network links")
+                         "without extraction internals or explicitly rebuildable unreviewed network pairs")
     a = ap.parse_args(argv)
     if a.review_associations is not None and (a.reviews is None or a.check is not None):
         ap.error('--review-associations requires --reviews and cannot be combined with --check')
@@ -688,6 +732,12 @@ def main(argv=None):
             protect_outputs([a.out], sources)
     except (OSError, ValueError, KeyError, TypeError) as exc:
         print(f"{a.model}: can't export ({exc})", file=sys.stderr)
+        return 1
+    # Check the complete input before a projection can hide an invalid edge or claim.
+    bad = problems(g)
+    if bad:
+        for b in bad:
+            print("FAIL:", b, file=sys.stderr)
         return 1
     g = apply_profile(g, a.profile)
     for s in g["not_exported"]:

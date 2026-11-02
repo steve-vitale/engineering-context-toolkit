@@ -427,7 +427,7 @@
         "disputed_claims": [],
         "answers": [
           {
-            "decision_id": "d-2c6f9cbcf7704d67bf36ba3ff73d792ee429b4e881c3b83afdcb2c620a371644",
+            "decision_id": "d-ec92247dc5ab4458a31e66f9cff374746eeaf5ab8cbb110e2f80bddf8bfce9cd",
             "answer_id": "fictional-feed-review-1",
             "freshness": "current",
             "changed": []
@@ -636,6 +636,6 @@
   "context_register": {
     "schema": "context-register-1",
     "sidecar": "context.json",
-    "content_sha256": "5330d601a9f15c145c8b7aab7343de0701a9dfaa5f5d17d44fc0c8db00358b21"
+    "content_sha256": "d9272aa1d9ffcccc009cda2dc366d1567cb59a2bace4d1c935ea0cd0761c01a4"
   }
 }

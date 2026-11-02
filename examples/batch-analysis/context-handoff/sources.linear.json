@@ -5,7 +5,7 @@
       "id": "ANALYSIS-REPORT",
       "revision": "r2-linear-assumption",
       "path": "source/linear/batch_analysis.json",
-      "sha256": "463cb7119d815397750ca2459f9b72e0fe957f13f4402d69bab30752221e3b77",
+      "sha256": "d54f0aad89248f1a10fce435975dc56b92d98d064dfd18f7ac02a63f6ba7b4e8",
       "locators": [
         {
           "id": "feed-windows",
