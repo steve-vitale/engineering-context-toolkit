@@ -128,3 +128,6 @@ data/te_pid_layout.json text eol=lf
 /examples/opportunity-screen/compressor-recycle-basis/** text eol=lf
 /examples/opportunity-screen/compressor-recycle-basis/history/before/**/screen.md whitespace=-blank-at-eol
 /examples/opportunity-screen/compressor-recycle-basis/expected/after/**/screen.md whitespace=-blank-at-eol
+
+# A09 deliberately changes the source bytes with one extra final LF; retain this negative fixture.
+/benchmarks/source-support/artifact-values/controls/A09-stale-source-bytes/source.txt whitespace=-blank-at-eof
