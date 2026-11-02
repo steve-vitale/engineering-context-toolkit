@@ -1,0 +1,6 @@
+﻿Selected(x),Parent,Name,ObjectType,Description,Template,AttributeType,AttributeDefaultUOM,AttributeDataReference,AttributeConfigString
+x,,Tank,ElementTemplate,Seed model unit type: tank,,,,,
+x,,Pump,ElementTemplate,Seed model unit type: pump,,,,,
+x,,illustrative-pump-change,Element,Illustrative pump change,,,,,
+x,illustrative-pump-change,TK-1,Element,Water tank | source check: unverified | ops review: unverified,Tank,,,,
+x,illustrative-pump-change,P-1,Element,Water pump | source check: unverified | ops review: unverified,Pump,,,,

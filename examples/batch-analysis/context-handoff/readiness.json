@@ -1,0 +1,47 @@
+{
+  "schema": "manual-analysis-readiness-1",
+  "scope": "Authored fictional requests, not an implemented lab/event/recipe join or machine readiness verdict",
+  "all_existing_reports_and_identities_are_supplied_not_plant_verified": true,
+  "items": [
+    {
+      "evidence_kind": "event_and_quality",
+      "availability": "not supplied",
+      "role": "Automation / historian data owner",
+      "needed_for": "Explain the FAULT interval or align phases to actual events; not needed to report the saved calculation as conditional",
+      "source_locator": "No event journal/quality-code definition supplied; observations.csv record ending line6 only carries the exact token FAULT",
+      "sample_or_event_time": "Batch B elapsed1800s; absolute origin/timezone unresolved",
+      "result_available_time": "unknown; no event receipt/acquisition record supplied",
+      "next_step": "Obtain permitted source status semantics and actual phase/event record; do not infer a physical fault cause from FAULT."
+    },
+    {
+      "evidence_kind": "executed_recipe",
+      "availability": "not supplied",
+      "role": "Process / production execution record owner",
+      "needed_for": "Compare executions or attribute a yield difference",
+      "source_locator": "Plan context.recipe_id/revision are authored labels, not an executed batch record",
+      "sample_or_event_time": "Execution/phase boundaries need their governing source and clock basis",
+      "result_available_time": "unknown; no released execution record supplied",
+      "next_step": "Review actual executed recipe revision, scale, charge/batch genealogy, phases and deviations before deciding comparability."
+    },
+    {
+      "evidence_kind": "lab_and_product",
+      "availability": "not supplied",
+      "role": "Laboratory / quality owner with process reviewer",
+      "needed_for": "Define product quantity/concentration/purity and yield; not required for descriptive feed integration",
+      "source_locator": "No sample ID, assay/product amount or lab report supplied",
+      "sample_or_event_time": "Required sample collection time and batch/phase association are unknown",
+      "result_available_time": "Required result release/availability time is separately unknown",
+      "next_step": "Request cleared sample identity, collection time, result availability time, method/units/basis, revision and batch/phase link; a later lab-posting time is not sample time."
+    },
+    {
+      "evidence_kind": "predictive_model",
+      "availability": "not supplied",
+      "role": "Process model owner / qualified domain reviewer",
+      "needed_for": "Only if a predictive what-if is required rather than a descriptive record review",
+      "source_locator": "No calibrated/validated dynamic or kinetic model, parameter provenance or applicability domain supplied",
+      "sample_or_event_time": "Parameter/validation evidence must name its covered executions and regimes",
+      "result_available_time": "unknown; no approved model/version release supplied",
+      "next_step": "Choose an appropriate model and test its assumptions, parameters, independent validation, balances and domain; kinetics alone is not automatic sufficiency or an operating recommendation."
+    }
+  ]
+}

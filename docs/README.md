@@ -4,6 +4,15 @@ Use the toolkit on your records, learn the method with a tutorial, or inspect th
 The [project overview](../README.md) shows the engineering jobs; this map keeps instructions, transferable tools
 and research records distinct.
 
+For a connected explanation of why the pieces matter, use the [five-episode demo series](DEMO_SERIES.md):
+existing records, engineering change, process analysis, onboarding and cross-team ownership.
+
+**First visit:** follow the [first-question guide](../examples/first-pilot/README.md), inspect its small
+fictional worked note, then substitute permitted records. This manual/approved-Copilot path needs no install.
+
+New organizational users should start with [one assignment from their document folder](ORGANIZATION_START.md):
+what runs, what needs preparation/review, who makes company decisions and [which dependencies a route needs](DEPENDENCIES.md).
+
 ## Follow one path
 
 | Destination | Start here | How it transfers |
@@ -24,8 +33,9 @@ identities, relationships, generated files or mapped data.
 | [P&ID to model and review bundle](../examples/own-drawing/README.md) | **Tutorial using reusable tools:** run the supplied public sheet offline, inspect the draft assets, review sheet and exports. | Replace the image, extraction and drawing manifest, then review/enrich the resulting model. |
 | [Description to drawing/model bundle](../examples/from-description/README.md) | **Tutorial using reusable tools:** follow the [pump](../examples/from-description/assisted/PUMP_WALKTHROUGH.md) through model, layout, drawing, questions and graph. | Prepare your text; author/check the source-linked model and layout; build and review your draft. |
 | [Structured DEXPI to model](../examples/from-dexpi-xml/README.md) | **Tutorial and reader:** inspect the C01 example, attribute evidence and conversion report. | Select your supported XML export; review its mappings, omissions and downstream eligibility. |
+| [Follow a structural engineering change](../examples/engineering-change/README.md) | **Fictional tutorial:** one pump becomes proposed duty/standby; rebuild the drawing/staging, inspect changed question scope and explicitly reopen the old source answer. | Supply the reviewed change basis, model/layout, dependencies and real receiving roles; installed and operating acceptance remain company work. |
 | [Revised source](../examples/pump-revision/README.md) and [four owned packets](../examples/team-context/README.md) | **Fictional maintenance tutorials:** follow source changes, retained decisions, independent evidence and disagreement. | Use your source manifest, supported model/questions, reviewed identities and actual scope owners; refresh explicitly. |
-| [Knowledge-only starter](../examples/engineering-onboarding/own-packet/README.md) and [worked note](../examples/engineering-onboarding/own-packet/worked-note.md) | **Fictional document tutorial:** see a qualified contribution and author-illustrated review correction. | Use permitted company records and a real reviewer, or author a selected packet without inventing an asset model. |
+| [Worked source note](../examples/engineering-onboarding/own-packet/worked-note.md), then [optional knowledge-only starter](../examples/engineering-onboarding/own-packet/README.md) | **Fictional document tutorial:** see a qualified contribution and author-illustrated review correction. | Use the [first-question route](../examples/first-pilot/README.md) with your records and a real reviewer; author a structured packet only when useful. |
 | [NIST configuration question](../examples/context-register/nist-smstestbed/README.md) and [MetroPT maintenance questions](../examples/context-register/metropt3/README.md) | **Public-source case applications:** distinguish what records support from missing deployment or intervention evidence. | Reuse the investigation/context pattern with your sources; the public answers do not describe your installed system. |
 | Design review or supplier handoff | **Proposed worked episodes:** [manual starters](ENGINEERING_ONBOARDING.md#choose-a-starter-workflow) exist; a dedicated packet is not supplied. | Scope a first brief under the existing company review process. |
 
@@ -35,7 +45,9 @@ identities, relationships, generated files or mapped data.
 |---|---|
 | Correct a draft model and assign supplied signal addresses | [Model review](REVIEW_LOOP.md) · [PI mapping](PI_MAPPING.md) |
 | Calculate impact from an actual measured change | [Impact estimate](IMPACT_ESTIMATE.md) |
-| Analyze recorded observations or check a supplied loop list | [Historian CSVs](../examples/historian-csv/README.md) · [Loop audit](../examples/loop-audit/README.md) |
+| Connect process observations to an investigation and choose an analysis | [Process analytics](PROCESS_ANALYTICS.md): historian bands, batch phases, measured impact and conditional modeling gaps |
+| Calculate recorded feed/energy by explicit phase, optionally bound to twin asset IDs | [Fictional batch tutorial and reusable tool](../examples/batch-analysis/README.md) |
+| Check a supplied loop list | [Loop audit](../examples/loop-audit/README.md) |
 | Exchange captured structured-source evidence | [Local source handoff](../examples/source-handoff/README.md) |
 | Compare saved model/method answers on declared tasks | [Task/model benchmarks](../benchmarks/README.md) |
 | Prepare a portable graph or inspect sourced statements | [Graph format](GRAPH_EXPORT.md) · [Statement review](STATEMENT_REVIEW.md) |

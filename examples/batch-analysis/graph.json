@@ -1,0 +1,359 @@
+{
+ "schema": "twin-graph-1",
+ "source_model": "examples/batch-analysis/process_model.json",
+ "model_kind": "hand_built",
+ "title": "Fictional fermentation analysis teaching model",
+ "nodes": [
+  {
+   "id": "PLANT",
+   "kind": "plant",
+   "tag": null,
+   "name": "Fictional fermentation analysis teaching model",
+   "aliases": [],
+   "status": "unverified",
+   "attributes": [
+    {
+     "name": "source_document",
+     "value": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+     "status": "unverified",
+     "source": {
+      "kind": "model",
+      "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+      "note": "the item cites no source of its own"
+     }
+    }
+   ],
+   "source": {
+    "kind": "model",
+    "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+    "note": "the item cites no source of its own"
+   }
+  },
+  {
+   "id": "BL",
+   "kind": "boundary",
+   "tag": null,
+   "name": "battery limit",
+   "aliases": [],
+   "status": "confirmed",
+   "attributes": [],
+   "source": {
+    "kind": "model",
+    "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+    "note": "the item cites no source of its own"
+   }
+  },
+  {
+   "id": "FERM-101",
+   "kind": "equipment",
+   "tag": "FERM-101",
+   "name": "Illustrative fermenter",
+   "aliases": [],
+   "status": "unverified",
+   "attributes": [
+    {
+     "name": "name",
+     "value": "Illustrative fermenter",
+     "status": "unverified",
+     "source": {
+      "kind": "model",
+      "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+      "note": "the item cites no source of its own"
+     }
+    },
+    {
+     "name": "type",
+     "value": "fermenter",
+     "status": "unverified",
+     "source": {
+      "kind": "model",
+      "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+      "note": "the item cites no source of its own"
+     }
+    }
+   ],
+   "source": {
+    "kind": "model",
+    "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+    "note": "the item cites no source of its own"
+   }
+  },
+  {
+   "id": "FT-101",
+   "kind": "instrument",
+   "tag": "FT-101",
+   "name": null,
+   "aliases": [],
+   "status": "unverified",
+   "attributes": [
+    {
+     "name": "service",
+     "value": "feed mass flow",
+     "status": "unverified",
+     "source": {
+      "kind": "model",
+      "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+      "note": "the item cites no source of its own"
+     }
+    },
+    {
+     "name": "type",
+     "value": "flow transmitter",
+     "status": "unverified",
+     "source": {
+      "kind": "model",
+      "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+      "note": "the item cites no source of its own"
+     }
+    },
+    {
+     "name": "unit",
+     "value": "FERM-101",
+     "status": "unverified",
+     "source": {
+      "kind": "model",
+      "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+      "note": "the item cites no source of its own"
+     }
+    },
+    {
+     "name": "units",
+     "value": "kg/h",
+     "status": "unverified",
+     "source": {
+      "kind": "model",
+      "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+      "note": "the item cites no source of its own"
+     }
+    }
+   ],
+   "source": {
+    "kind": "model",
+    "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+    "note": "the item cites no source of its own"
+   }
+  },
+  {
+   "id": "TT-101",
+   "kind": "instrument",
+   "tag": "TT-101",
+   "name": null,
+   "aliases": [],
+   "status": "unverified",
+   "attributes": [
+    {
+     "name": "type",
+     "value": "temperature transmitter",
+     "status": "unverified",
+     "source": {
+      "kind": "model",
+      "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+      "note": "the item cites no source of its own"
+     }
+    },
+    {
+     "name": "unit",
+     "value": "FERM-101",
+     "status": "unverified",
+     "source": {
+      "kind": "model",
+      "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+      "note": "the item cites no source of its own"
+     }
+    },
+    {
+     "name": "units",
+     "value": "degC",
+     "status": "unverified",
+     "source": {
+      "kind": "model",
+      "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+      "note": "the item cites no source of its own"
+     }
+    }
+   ],
+   "source": {
+    "kind": "model",
+    "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+    "note": "the item cites no source of its own"
+   }
+  },
+  {
+   "id": "DO-101",
+   "kind": "instrument",
+   "tag": "DO-101",
+   "name": null,
+   "aliases": [],
+   "status": "unverified",
+   "attributes": [
+    {
+     "name": "service",
+     "value": "percent air saturation",
+     "status": "unverified",
+     "source": {
+      "kind": "model",
+      "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+      "note": "the item cites no source of its own"
+     }
+    },
+    {
+     "name": "type",
+     "value": "dissolved oxygen transmitter",
+     "status": "unverified",
+     "source": {
+      "kind": "model",
+      "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+      "note": "the item cites no source of its own"
+     }
+    },
+    {
+     "name": "unit",
+     "value": "FERM-101",
+     "status": "unverified",
+     "source": {
+      "kind": "model",
+      "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+      "note": "the item cites no source of its own"
+     }
+    },
+    {
+     "name": "units",
+     "value": "%",
+     "status": "unverified",
+     "source": {
+      "kind": "model",
+      "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+      "note": "the item cites no source of its own"
+     }
+    }
+   ],
+   "source": {
+    "kind": "model",
+    "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+    "note": "the item cites no source of its own"
+   }
+  },
+  {
+   "id": "POWER-101",
+   "kind": "instrument",
+   "tag": "POWER-101",
+   "name": null,
+   "aliases": [],
+   "status": "unverified",
+   "attributes": [
+    {
+     "name": "type",
+     "value": "power transmitter",
+     "status": "unverified",
+     "source": {
+      "kind": "model",
+      "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+      "note": "the item cites no source of its own"
+     }
+    },
+    {
+     "name": "unit",
+     "value": "FERM-101",
+     "status": "unverified",
+     "source": {
+      "kind": "model",
+      "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+      "note": "the item cites no source of its own"
+     }
+    },
+    {
+     "name": "units",
+     "value": "W",
+     "status": "unverified",
+     "source": {
+      "kind": "model",
+      "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+      "note": "the item cites no source of its own"
+     }
+    }
+   ],
+   "source": {
+    "kind": "model",
+    "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+    "note": "the item cites no source of its own"
+   }
+  }
+ ],
+ "edges": [
+  {
+   "id": "E00001",
+   "type": "contains",
+   "from": "PLANT",
+   "to": "FERM-101",
+   "status": "unverified",
+   "direction": null,
+   "source": {
+    "kind": "model",
+    "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+    "note": "the item cites no source of its own"
+   }
+  },
+  {
+   "id": "E00002",
+   "type": "measures",
+   "from": "FT-101",
+   "to": "FERM-101",
+   "status": "unverified",
+   "direction": null,
+   "source": {
+    "kind": "model",
+    "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+    "note": "the item cites no source of its own"
+   }
+  },
+  {
+   "id": "E00003",
+   "type": "measures",
+   "from": "TT-101",
+   "to": "FERM-101",
+   "status": "unverified",
+   "direction": null,
+   "source": {
+    "kind": "model",
+    "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+    "note": "the item cites no source of its own"
+   }
+  },
+  {
+   "id": "E00004",
+   "type": "measures",
+   "from": "DO-101",
+   "to": "FERM-101",
+   "status": "unverified",
+   "direction": null,
+   "source": {
+    "kind": "model",
+    "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+    "note": "the item cites no source of its own"
+   }
+  },
+  {
+   "id": "E00005",
+   "type": "measures",
+   "from": "POWER-101",
+   "to": "FERM-101",
+   "status": "unverified",
+   "direction": null,
+   "source": {
+    "kind": "model",
+    "document": "Authored fictional example, 2026-11-02; not a plant or kinetic model",
+    "note": "the item cites no source of its own"
+   }
+  }
+ ],
+ "questions": [],
+ "events": [],
+ "not_exported": [],
+ "counts": {
+  "nodes": 7,
+  "edges": 5,
+  "claims": 17,
+  "questions": 0,
+  "events": 0
+ }
+}

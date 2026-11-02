@@ -268,6 +268,16 @@ reviews; the other 25 still need original-source adequacy review. These controls
 engineering correctness or human usefulness. The [worked food screen](../examples/opportunity-screen/food/screen.md)
 shows the retained candidates and open coverage tasks.
 
+**Known limitation in default E13 (boiler blowdown):** its broad equipment trigger, nearby-analyzer
+exclusion and decision text still need refinement. Treat its output as an invitation to review existing
+boiler/water-treatment records, not an approved automation or heat-recovery recommendation. DOE's
+[Steam Tip 9, pages 1–2](https://www.energy.gov/sites/prod/files/2014/05/f16/steam9_blowdown.pdf)
+distinguishes normally manual bottom/mud blowdown from surface blowdown; the automatic-control discussion
+concerns the latter. First establish applicable boiler/water service, blowdown function, actual control and
+recovery coverage, operating basis and responsible review. A generic analyzer label does not establish
+that coverage. The default rule remains unrepaired; this source assessment does not increase the 25-rule
+review count or establish usefulness at a plant.
+
 `candidate_facts` retains each supplied value, subject and locator; `candidate_scope` uses the request's subject
 scope. Missing/blank optional candidates receive no satisfaction credit and do not add required fields. With
 only `show_fields`, a request remains open. If an author also supplies `fields`, those required fields retain

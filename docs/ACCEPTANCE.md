@@ -104,3 +104,27 @@ reviewed merge. Automatic managed-section replacement and company synchronizatio
 Finish with a dated decision: continue, change scope, stop or insufficient evidence. Keep failures, owner and
 next review trigger with the packet. Report operational benefit only after actual observations and an appropriate
 comparison; source completeness or a task-completed flag is not a causal result.
+
+
+## 5. Can a replacement engineer maintain the application?
+
+Use an approved lab or test scope before colleagues depend on a custom application or selected context service.
+The original author supplies a versioned handover; a replacement engineer works without the author's help.
+
+1. Record intended use, consequence of failure, source/platform boundaries, service owner/backup and support
+   responsibilities. Include versions/dependencies, configuration, permitted access and the deployment/restore
+   instructions in the approved location; never put credentials in the packet.
+2. Have the replacement recreate the permitted environment and trace one displayed value or answer to its source,
+   units, quality/time basis and calculation/version. Make one reviewed change and identify affected outputs.
+3. In the test scope, introduce an unavailable or stale source and an interrupted delivery. Observe the actual
+   indication and recovery against predeclared criteria. Exercise authorization changes where applicable.
+4. Restore a backup or roll back a test release. Verify the selected source/configuration revision and retained
+   history afterward. If moving runtimes, compare the mapped meanings, behavior and explicit conversion losses.
+5. Record effort, missing knowledge, failures and a dated receiving decision: continue, repair, restrict the use
+   or stop. Count continuing support and migration effort in the lifecycle comparison.
+
+Choose only relevant failure cases; this exercise is not permission to interrupt plant services or proof that
+all operational requirements have been covered. Use the [prototype-to-service guide](SCALING_ENGINEERING_CONTEXT.md#when-a-custom-prototype-becomes-a-service-people-depend-on)
+to select the intended role and the company's receiving process.
+
+Current project status: **not run; replacement-engineer maintenance, recovery and production migration unverified**.

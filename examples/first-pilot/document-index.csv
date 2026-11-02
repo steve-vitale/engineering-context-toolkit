@@ -1,0 +1,2 @@
+record_ref,original_location,document_id,revision,source_date,original_sha256,exact_locator,availability,authority_status,source_owner_or_needed_role,intended_job,current_format,preparation_or_supported_route,next_action
+REPLACE-LOCAL-REFERENCE,REPLACE-APPROVED-LOCATION,Unknown,Unknown,Unknown,not recorded,not recorded,not checked,unknown,needs owner,REPLACE-BOUNDED-JOB,Unknown,not selected,Inspect the permitted original and choose the matching workflow contract

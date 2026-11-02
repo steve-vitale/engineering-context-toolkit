@@ -1,0 +1,123 @@
+Time,Property,Value,ID
+09:32:41,Selected Experiment,217,
+09:32:50,Finished steps,"UiItem(class: QLabel, name: current_step)",2966
+09:32:54,Finished steps,"UiItem(class: QLabel, name: current_step)",2967
+09:33:02,Finished steps,"UiItem(class: QLabel, name: current_step)",2968
+09:33:05,Finished steps,"UiItem(class: QLabel, name: current_step)",2969
+09:33:07,Finished steps,"UiItem(class: QLabel, name: current_step)",2970
+09:33:09,Finished steps,"UiItem(class: QLabel, name: current_step)",2971
+09:33:10,Finished steps,"UiItem(class: QLabel, name: current_step)",2972
+09:33:14,Finished steps,"UiItem(class: QLabel, name: current_step)",2973
+09:33:16,Opened window with recipe steps,-,-
+09:33:20,Selected recipe steps,-,-
+09:33:31,Opened window with recipe steps,-,-
+09:33:33,Selected recipe steps,-,-
+09:33:41,Started experiment,-,-
+09:35:59,Opened window with recipe steps,-,-
+09:36:06,Selected recipe steps,-,-
+09:36:06,H701 new step,-,-
+09:36:06,H702 new step,-,-
+09:36:07,H704 new step,-,-
+09:36:07,H706 new step,-,-
+09:36:08,H708 new step,,-
+09:36:09,AV8 back to automatic mode,-,-
+09:36:09,Step back to jump conditions,-,-
+09:37:14,<class 'AttributeError'>,This uiItem has neither a child item nor a method defined with the name 'lineEdit_H701'.,submit_value_H701
+09:37:19,Changed value H702,0,-
+09:37:23,Changed value H706,0,-
+09:37:26,<class 'AttributeError'>,This uiItem has neither a child item nor a method defined with the name 'lineEdit_H701'.,submit_value_H701
+09:37:45,Opened window with recipe steps,-,-
+09:37:47,Selected recipe steps,-,-
+09:37:47,AV8 back to automatic mode,-,-
+09:37:48,P701 and P702 new step,-,-
+09:37:49,Step back to jump conditions,-,-
+09:38:11,H706 back to automatic mode,-,-
+09:38:11,H702 back to automatic mode,-,-
+09:38:18,Opened window with recipe steps,-,-
+09:38:20,Selected recipe steps,-,-
+09:38:20,H701 new step,-,-
+09:38:21,H702 new step,-,-
+09:38:21,H704 new step,-,-
+09:38:22,H706 new step,-,-
+09:38:22,H708 new step,,-
+09:38:22,AV8 back to automatic mode,-,-
+09:38:23,Step back to jump conditions,-,-
+09:38:29,Changed value TV1,"Variant(val:0.0,type:VariantType.Float)",-
+09:54:30,Opened window with recipe steps,-,-
+09:54:32,Selected recipe steps,-,-
+09:54:32,H701 new step,-,-
+09:54:33,H702 new step,-,-
+09:54:33,H704 new step,-,-
+09:54:35,H706 new step,-,-
+09:54:35,H708 new step,,-
+09:54:35,P301 new step,-,-
+09:54:36,AV8 back to automatic mode,-,-
+09:54:37,P701 and P702 new step,-,-
+09:54:37,Step back to jump conditions,-,-
+09:54:46,Changed value TV1,"Variant(val:0.0,type:VariantType.Float)",-
+09:55:07,Opened window with recipe steps,-,-
+09:55:09,Selected recipe steps,-,-
+09:55:09,H701 new step,-,-
+09:55:10,H702 new step,-,-
+09:55:10,H704 new step,-,-
+09:55:11,H706 new step,-,-
+09:55:11,H708 new step,,-
+09:55:12,AV8 back to automatic mode,-,-
+09:55:12,Step back to jump conditions,-,-
+09:55:18,AV8 back to automatic mode,-,-
+09:55:26,Opened window with recipe steps,-,-
+09:55:29,Selected recipe steps,-,-
+09:55:29,H701 new step,-,-
+09:55:30,H702 new step,-,-
+09:55:30,H704 new step,-,-
+09:55:31,H706 new step,-,-
+09:55:31,H708 new step,,-
+09:55:31,AV8 back to automatic mode,-,-
+09:55:32,Step back to jump conditions,-,-
+09:55:35,Opened window with recipe steps,-,-
+09:55:36,Opened window with recipe steps,-,-
+09:55:37,Selected recipe steps,-,-
+09:55:38,H701 new step,-,-
+09:55:38,H702 new step,-,-
+09:55:39,H704 new step,-,-
+09:55:39,H706 new step,-,-
+09:55:40,H708 new step,,-
+09:55:40,P301 new step,-,-
+09:55:40,AV8 back to automatic mode,-,-
+09:55:41,P701 and P702 new step,-,-
+09:55:42,Step back to jump conditions,-,-
+09:56:01,Opened window with recipe steps,-,-
+09:56:02,Selected recipe steps,-,-
+09:56:03,H701 new step,-,-
+09:56:03,H702 new step,-,-
+09:56:05,H704 new step,-,-
+09:56:05,H706 new step,-,-
+09:56:06,H708 new step,,-
+09:56:06,AV8 back to automatic mode,-,-
+09:56:07,Step back to jump conditions,-,-
+10:33:51,Opened window with recipe steps,-,-
+10:33:53,Selected recipe steps,-,-
+10:33:54,AV8 back to automatic mode,-,-
+10:33:55,P701 and P702 new step,-,-
+10:33:56,Step back to jump conditions,-,-
+10:37:12,Opened window with recipe steps,-,-
+10:37:14,Selected recipe steps,-,-
+10:37:15,AV8 back to automatic mode,-,-
+10:37:16,P701 and P702 new step,-,-
+10:37:16,Step back to jump conditions,-,-
+11:44:20,Opened window with recipe steps,-,-
+11:44:23,Selected recipe steps,-,-
+11:44:23,H701 new step,-,-
+11:44:24,H702 new step,-,-
+11:44:24,H704 new step,-,-
+11:44:25,H706 new step,-,-
+11:44:25,H708 new step,,-
+11:44:26,P301 new step,-,-
+11:44:26,AV8 back to automatic mode,-,-
+11:44:27,P701 and P702 new step,-,-
+11:44:28,Step back to jump conditions,-,-
+12:09:13,Heater disabled,-,-
+12:09:16,Stopped Experiment,-,-
+12:09:22,Closed Process Control,clicked,Close-button
+13:30:52,Changed value AV716,1,-
+13:36:08,Selected Experiment,223,

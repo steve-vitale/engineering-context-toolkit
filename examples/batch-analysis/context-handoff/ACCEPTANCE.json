@@ -1,0 +1,78 @@
+{
+  "schema": "analysis-context-prospective-acceptance-1",
+  "authored_before_any_context_or_Snapshot_calls": true,
+  "question_ids": [
+    "observed-feed@FERM-101",
+    "comparability-yield@FERM-101",
+    "predictive-what-if@FERM-101"
+  ],
+  "register_commands": [
+    "prepare previous source",
+    "apply one source-bound fictional partial proposal",
+    "refresh from original applied register with linear source and NO answers",
+    "refuse old prepared CSV under linear source before writing"
+  ],
+  "initial": {
+    "decision_count": 1,
+    "ownership_count": 1,
+    "feed_state": "partial",
+    "other_states": "unanswered",
+    "plant_truth": "unknown",
+    "decision": "proposed",
+    "source_id": "ANALYSIS-REPORT"
+  },
+  "refresh": {
+    "feed_state": "unanswered",
+    "feed_answer_freshness": "stale",
+    "changed": [
+      "source revision/bytes/locator"
+    ],
+    "all_decision_and_ownership_records_typed_exact": true,
+    "no_new_answer_or_auto_reinterpretation": true,
+    "same_graph_and_questions": true
+  },
+  "numerical_scope": {
+    "previous_A_kg": 4,
+    "linear_A_kg": 5,
+    "B_total": null,
+    "B_quality_exclusion": {
+      "raw_value": "99",
+      "quality": "FAULT",
+      "covered_s": 0
+    },
+    "no_analysis_execution": true,
+    "same_observation_and_graph_bytes": true
+  },
+  "Snapshot": {
+    "pure_constructor_pairs": 2,
+    "complete_loaded_graph_and_context_typed_equal_to_inputs": true,
+    "read_each_question_and_context_question_full": true,
+    "complete_decision_pagination": true,
+    "source_acquisition_time": null,
+    "live": false,
+    "no_transport_or_analysis_execution": true
+  },
+  "preserved_inputs": {
+    "source/graph.json": "examples/batch-analysis/graph.json",
+    "source/observations.csv": "examples/batch-analysis/semantics/observations.csv",
+    "source/previous/plan.json": "examples/batch-analysis/semantics/previous.plan.json",
+    "source/previous/batch_analysis.json": "examples/batch-analysis/semantics/expected/previous/batch_analysis.json",
+    "source/previous/batch_analysis.md": "examples/batch-analysis/semantics/expected/previous/batch_analysis.md",
+    "source/linear/plan.json": "examples/batch-analysis/semantics/linear.plan.json",
+    "source/linear/batch_analysis.json": "examples/batch-analysis/semantics/expected/linear/batch_analysis.json",
+    "source/linear/batch_analysis.md": "examples/batch-analysis/semantics/expected/linear/batch_analysis.md"
+  },
+  "missing_groups": [
+    "event_and_quality",
+    "executed_recipe",
+    "lab_and_product",
+    "predictive_model"
+  ],
+  "limits": [
+    "No automatic lab/event/recipe join",
+    "No kinetic model or sufficiency determination",
+    "No company review, authority or installed plant truth",
+    "Changing interpolation is not evidence of improved production or yield",
+    "All actors, source/recipe labels and graph assets are fictional/supplied"
+  ]
+}

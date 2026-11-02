@@ -1,0 +1,112 @@
+{
+  "schema": "engineering-change-demo-provenance-1",
+  "source_kind": "Fictional agent-authored teaching records and proposed model/layout; no plant data.",
+  "roles": "Tools are reusable scripts in scripts/. This reproduce.py is a fixed-example runner, not an arbitrary-input importer.",
+  "key_authoring": "Sources, native model/layout and initial semantic key authored before first build. Same agent authored source and key; not independent or held-out model interpretation evidence.",
+  "retained_development_failures": [
+    "Initial key expected E1 despite no specified discharge control valve. Actual A build correctly emitted C9; corrected key retains that development exposure. No source/model fact or tool was changed to force E1.",
+    "First mixed-pair observer looked for the word fingerprint; both pairs correctly refused with content-hash diagnostic. Corrected observer checks the actual specific message; earlier outputs retained."
+  ],
+  "visual_revision": "Moved two authored B tee coordinates away from stream labels after viewing both drawings. Source facts and model topology unchanged.",
+  "actual_run": {
+    "jobs": 14,
+    "checks": 56,
+    "exit": 0,
+    "mode": "Local existing CLIs plus pure Snapshot; no SDK, server, listener, provider, gateway or plant connection.",
+    "partial_answer": "Fictional proposed partial source summary, plant truth unknown.",
+    "B_reopen_reasons": [
+      "assets content",
+      "source revision/bytes/locator"
+    ],
+    "history": "One complete decision and one ownership record preserved; no replacement answer invented.",
+    "catalog_sha256_raw": "5aa92c8be6e629be784b9eb4150d0e1c57533cfc5563d656014c0e863fdffeec"
+  },
+  "public_selection": {
+    "expected/A/model.json": {
+      "sha256_raw": "dd3ede7d91872aed9b926712d93b800b5b6b62a1bb5f5bc224a1927a1ab82b43",
+      "bytes": 1375
+    },
+    "expected/A/graph.json": {
+      "sha256_raw": "0790c2a47c39d6d737403b4de1fe491d4c61d9fa014297bb5b2520b608bd845a",
+      "bytes": 8848
+    },
+    "expected/A/D1.png": {
+      "sha256_raw": "3db9950ef4b34bd19ebafa6a2bc5a2fcdd62b12760a9337c36b58920479a7955",
+      "bytes": 30762
+    },
+    "expected/A/D1.svg": {
+      "sha256_raw": "badbe2442754ee84946cb279486b4d5f8ede4e76e80675b80472d1fce003061a",
+      "bytes": 16565
+    },
+    "expected/A/ignition-tags.json": {
+      "sha256_raw": "d950b454d36849a91e0dbfe0cd49262589032b30b3ff85ee29b4d4c1c9c85333",
+      "bytes": 1742
+    },
+    "expected/A/pi-af.csv": {
+      "sha256_raw": "a66ce29b6c82f94ca2957282646f8edcf112bee88710f8d358feb754a34da508",
+      "bytes": 539
+    },
+    "expected/A/context.json": {
+      "sha256_raw": "975cc7e1233c29d73176b55230dcb980b26ebfe11e992882d1bd42f2a6bffc48",
+      "bytes": 10622
+    },
+    "expected/A/enriched_graph.json": {
+      "sha256_raw": "e287330e923a6d29f7f2bf9a064ba647de09dd6c74e2e1de68135be4d1a9cacc",
+      "bytes": 16160
+    },
+    "expected/A/questions.json": {
+      "sha256_raw": "6a3e43f7ff1121a7892dbe2bc7e2d0b58d62dbe9fdb19049fab9009528839b48",
+      "bytes": 6160
+    },
+    "expected/B/model.json": {
+      "sha256_raw": "d02879d9aa2e5667c60709895dee7e6de5699ca39b875ce98c068829f4b13547",
+      "bytes": 1799
+    },
+    "expected/B/graph.json": {
+      "sha256_raw": "3e9c59091fb5f045ba16c0061204f79d88ec5ad8ef0a9ae80e7a712de4a7d077",
+      "bytes": 11027
+    },
+    "expected/B/D1.png": {
+      "sha256_raw": "a5567881558ae7612494a00a15a4ca7d6e2c08a17731925bf9bc9077bd15ec8b",
+      "bytes": 33305
+    },
+    "expected/B/D1.svg": {
+      "sha256_raw": "8858a94915edd8c2e26c64db63171e2c4ba2f1b9cf34086ba1bcb33a457f3eb8",
+      "bytes": 18496
+    },
+    "expected/B/ignition-tags.json": {
+      "sha256_raw": "2b5de621ba9c2584d4402617d9c1e43db551f9c9071cccfbf3134e1155b37c10",
+      "bytes": 2506
+    },
+    "expected/B/pi-af.csv": {
+      "sha256_raw": "1e21e96e0e504fe798d0632c7d0c03d052e9f29645763da790f960e75e8a23d1",
+      "bytes": 663
+    },
+    "expected/B/context.json": {
+      "sha256_raw": "6d3ad6c458d6bbfcfd862fcaf0e049b30d884912fafd5fcb1d64043209e89e8f",
+      "bytes": 11004
+    },
+    "expected/B/enriched_graph.json": {
+      "sha256_raw": "e1659ecc5db09ccd2f114a833e5213d5fb93c93e91a7d19963e34d26fc7136b3",
+      "bytes": 19188
+    },
+    "expected/B/questions.json": {
+      "sha256_raw": "118175948b2917b756466701f9bbabebab6e6a9c42abd5165ccd4f8c559c1c4a",
+      "bytes": 6434
+    },
+    "expected/CHANGE-REVIEW.json": {
+      "sha256_raw": "4b15fc421f63674acb164568049ec8cb9f58a0f21f73a30dd61e2c52c8f4c9a4",
+      "bytes": 3865
+    },
+    "expected/question_catalog.json": {
+      "sha256_raw": "5aa92c8be6e629be784b9eb4150d0e1c57533cfc5563d656014c0e863fdffeec",
+      "bytes": 232648
+    }
+  },
+  "not_established": [
+    "Source authority, installed arrangement, pump sizing, isolation/nonreturn protection, automatic changeover or operating readiness",
+    "Company authentication/approval, maintained connectors, transitive freshness or complete engineering impact analysis",
+    "Unfamiliar input accuracy, human acceptance/time benefit or enterprise capacity"
+  ],
+  "review": "Independent saved-evidence and successor public/tutorial review passed for the bounded fictional workflow, source meaning, selected outputs, runner custody/controls and series navigation. Existing 56 description examples retain their separately matched prior review. The current 32-file addition does not establish plant acceptance, unfamiliar-input accuracy, authenticated governance or enterprise capacity."
+}

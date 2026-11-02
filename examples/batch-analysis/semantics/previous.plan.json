@@ -1,0 +1,31 @@
+{
+  "schema": "batch-analysis-2",
+  "context": {
+    "site_id": "fictional-site",
+    "asset_id": "FERM-101",
+    "model_revision": "illustrative-model-r1-not-an-installed-mapping",
+    "recipe_id": "interpolation-and-quality-control",
+    "recipe_revision": "r1"
+  },
+  "max_gap_s": 1800,
+  "signals": {
+    "FT-101": {
+      "unit": "kg/h",
+      "asset_id": "FT-101",
+      "source_ref": "authored quality and interpolation control; not a real historian export",
+      "interpolation": "previous",
+      "quality": {"column": "FT-101_status", "good_values": ["GOOD"]}
+    },
+    "POWER-101": {
+      "unit": "W",
+      "asset_id": "POWER-101",
+      "source_ref": "authored power already filtered for this calculation control",
+      "interpolation": "linear",
+      "quality": null
+    }
+  },
+  "windows": [
+    {"id": "A-feed", "batch_id": "A", "phase": "feed", "start_s": 0, "end_s": 3600, "source_ref": "authored fictional phase record"},
+    {"id": "B-feed", "batch_id": "B", "phase": "feed", "start_s": 0, "end_s": 3600, "source_ref": "authored fictional phase record"}
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "schema": "batch-analysis-result-2",
+  "context": {
+    "site_id": "public-RPTU-laboratory-record",
+    "asset_id": "Batch-Distillation-Plant-V1",
+    "model_revision": "not-supplied-no-graph-selected",
+    "recipe_id": "not-supplied",
+    "recipe_revision": "not-supplied"
+  },
+  "context_status": "supplied identities and revisions; not verified against installed assets",
+  "inputs": {
+    "csv_sha256": "9de69d607004b7d3d6bd27fc3ad595511594fa2517e31700154664f2a1c6bb9c",
+    "plan_sha256": "3fa77e2d048e21092ac042604160247c8fd879853824e1c3d3acf8b942e78d24"
+  },
+  "method": {
+    "name": "adjacent-sample-selected-interpolation-v1",
+    "max_gap_s": 1,
+    "tool_sha256_lf": "bd65873d209bdec1746265735a37e0f843bd4fee993ae1c175a7fb9ae6e47ae0",
+    "assumption": "per-signal linear or previous-value hold between adjacent admitted observations; both endpoints required; no extrapolation or gap filling"
+  },
+  "signal_definitions": {
+    "FT703": {
+      "unit": "kg/h",
+      "asset_id": "FT703",
+      "source_ref": "https://doi.org/10.5281/zenodo.22250958 / 01_Batch_Distillation_Plant_M-202210_Timeseries_Sensors/Operation/batch_dist_ternary_acetone+butan-1-ol+methanol/operating_point_002/train_normal_experiment_001.csv; paper Table2. Published one-second series already interpolate missing PCS samples; external quality unchecked; normal-labelled run retains source-documented negligible air-ingress events.",
+      "interpolation": "linear",
+      "quality": null
+    },
+    "T703": {
+      "unit": "degC",
+      "asset_id": "T703",
+      "source_ref": "https://doi.org/10.5281/zenodo.22250958 / 01_Batch_Distillation_Plant_M-202210_Timeseries_Sensors/Operation/batch_dist_ternary_acetone+butan-1-ol+methanol/operating_point_002/train_normal_experiment_001.csv; paper Table2. Published one-second series already interpolate missing PCS samples; external quality unchecked; normal-labelled run retains source-documented negligible air-ingress events.",
+      "interpolation": "linear",
+      "quality": null
+    }
+  },
+  "windows": [
+    {
+      "id": "published-operation",
+      "batch_id": "published-OP002-TN001",
+      "phase": "Operation",
+      "start_s": 0,
+      "end_s": 3511,
+      "source_ref": "https://doi.org/10.5281/zenodo.22250958 / 01_Batch_Distillation_Plant_M-202210_Timeseries_Sensors/Operation/batch_dist_ternary_acetone+butan-1-ol+methanol/operating_point_002/train_normal_experiment_001.csv; directory phase label; actual first/last clocks10:45:54/11:44:25. Published one-second series already interpolate missing PCS samples; external quality unchecked; normal-labelled run retains source-documented negligible air-ingress events.",
+      "duration_s": 3511,
+      "signals": {
+        "FT703": {
+          "unit": "kg/h",
+          "sample_count": 3512,
+          "good_samples": 3512,
+          "bad_sample_lines": [],
+          "sample_min": 0.004,
+          "sample_max": 1.558,
+          "covered_s": 3511.0,
+          "coverage_fraction": 1.0,
+          "coverage_status": "complete",
+          "time_weighted_mean_observed": 0.4804920250640843,
+          "integral_unit": "kg",
+          "observed_integral": 0.46861319444444444,
+          "full_window_integral": 0.46861319444444444,
+          "interpolation": "linear",
+          "quality_policy": "no external quality filter selected; quality not checked",
+          "excluded_samples": []
+        },
+        "T703": {
+          "unit": "degC",
+          "sample_count": 3512,
+          "good_samples": 3512,
+          "bad_sample_lines": [],
+          "sample_min": 52.584,
+          "sample_max": 68.107,
+          "covered_s": 3511.0,
+          "coverage_fraction": 1.0,
+          "coverage_status": "complete",
+          "time_weighted_mean_observed": 58.67688180005697,
+          "integral_unit": null,
+          "observed_integral": null,
+          "full_window_integral": null,
+          "interpolation": "linear",
+          "quality_policy": "no external quality filter selected; quality not checked",
+          "excluded_samples": []
+        }
+      }
+    }
+  ],
+  "graph_binding": {
+    "status": "not selected; asset IDs are supplied labels only"
+  },
+  "limits": [
+    "Descriptive recorded-data calculation; no diagnosis, prediction or acceptance.",
+    "Sample extrema can miss excursions between observations.",
+    "Observed integrals over incomplete coverage are not full-phase totals.",
+    "Supplied phase labels, units and mappings require engineering review.",
+    "Accepted numeric samples and complete coverage do not verify source quality or original sensor continuity."
+  ]
+}
