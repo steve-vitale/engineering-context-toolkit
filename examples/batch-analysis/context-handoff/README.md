@@ -27,6 +27,13 @@ raw identities. `tool-basis.json` names the reviewed tool versions; changed inpu
 successor, not a silent fingerprint repair. The runner copies selected source bytes into the private output,
 preserving the original checkout. It does not run the batch-analysis command again.
 
+The current selected reports were recalculated after the graph core-profile repair; their validator identity
+changed while every recorded quantity, input and graph value stayed the same. A fresh prepared sheet and the
+existing fictional answer recipe produced [the successor answer](fictional-partial-v2.csv) and current expected
+packets. The [original answer CSV](fictional-partial.csv) remains unchanged historical evidence for the earlier
+report bytes; it is not a sheet to reuse against the current selection. Earlier reports/packets remain in Git
+history. No real review is implied by either fictional answer.
+
 The four existing context CLI calls are:
 
 1. Prepare three authored exact-ID questions against the previous-value report.

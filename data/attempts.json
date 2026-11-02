@@ -4873,6 +4873,25 @@
         "scripts/check_analysis_basis.py",
         "scripts/test_check_analysis_basis.py"
       ]
+    },
+    {
+      "id": "A312",
+      "function": "intake_and_reuse",
+      "date": "2026-11-02",
+      "change": "Keep complete unrepresented or qualified drawing connections in core graphs; reduce only explicitly rebuildable ordinary co-membership.",
+      "hypothesis": "A smaller graph must not lose topology absent from its retained network layer, or supplied engineering fields that membership cannot represent.",
+      "evidence": "Original own-drawing core removed345pairs with no network layer; enriched sheet also lost2unassigned pairs. Final current core retains basic345pairs/446edges and enriched2ambiguous pairs while removing343ordinary represented pairs (393edges/982claims). Six new graph methods cover actual intake/export, absence/ambiguity, review/direction qualifications, typed substantive claims and pre-reduction refusal; graph64methods reports1optional skip. A first candidate over-retained extracted-confidence records; a later adversarial extension exposed9semantic-claim losses before the final restriction. Original core and failures remain. Actual producer/calculation/context refresh preserves engineering values and old answers; initial broader source55/57 remains recorded separately from targeted/finalCI.",
+      "runs": "Exposed saved OPEN100 and authored regression/qualification controls; matched offline CLI/API checks, no model calls or plant data.",
+      "verdict": "kept",
+      "why": "Preserves explicit connections and substantive evidence without inventing network membership. Full valid output stays unchanged; core remains a declared lossy projection with no engineering-truth, global-capacity or physical-impact completeness guarantee.",
+      "source": [
+        "docs/JOURNAL.md#158-preserve-connections-and-engineering-claims-in-a-smaller-graph",
+        "docs/GRAPH_EXPORT.md#two-profiles-the-full-record-and-the-part-a-change-system-needs",
+        "examples/graph-export/sheet0_graph_core.json",
+        "examples/graph-export/sheet0_graph_core_v2.json",
+        "scripts/graph_export.py",
+        "scripts/test_graph_export.py"
+      ]
     }
   ],
   "not_tried": [

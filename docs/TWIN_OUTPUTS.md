@@ -173,8 +173,10 @@ separate PI mapping step is `map_pi_points.py`, from reviewer-supplied PI refere
   `scripts/map_points.py` writes real data addresses from an I/O list. Regenerating then carries both into these
   files: rejected items leave them, `ReviewStatus` carries the decision, and mapped instruments get their real OPC
   server and path. See [REVIEW_LOOP.md](REVIEW_LOOP.md).
-- **Scripted import.** Instead of the Designer, `scripts/ignition/build_gateway.py` imports this file into a running
-  gateway over its REST API, adds Perspective screens built from `svg/`, and `verify_gateway.py` checks the result.
+- **Import and assembled screens.** Follow the [manual lab import](IGNITION_QUICKSTART.md) for your reviewed
+  staging files and check the selected mappings in your environment. `scripts/ignition/build_gateway.py` instead
+  assembles the fixed TE/OPEN100 case, including its supplied screens and providers; it is not a general importer
+  that builds screens for any extracted twin. Its case verifier checks that assembled application.
 
 ## PI AF: asset structure only, by decision
 

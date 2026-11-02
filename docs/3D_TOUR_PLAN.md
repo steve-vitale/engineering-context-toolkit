@@ -5,7 +5,8 @@ recorded, the LOTO points are inferred and the script is Claude's, not reviewed 
 whether a 3D tour is worth building, what it may and may not claim, and records the generator that was actually run.
 Since the merge (2026-10-13) the tour reads the source-checked topology (the purge leaves from V-101), takes each
 purpose sentence from `data/te_unit_purposes.json`, and labels in Atkinson Hyperlegible; twelve stills were
-re-rendered and verified (no check failed: 15 pass, 2 informational), five are committed in [drafts/3d-tour/](../drafts/3d-tour/README.md).
+re-rendered and verified (no check failed: 15 pass, 2 informational). That dated pass committed five review stills;
+the [current render record](../drafts/3d-tour/README.md) records the later twelve-still render and eight committed review JPEGs.
 
 **Second pass (2026-10-12):** the render is checked procedurally against the twin contract, the Ignition and PI
 exports, the P&ID trace and its own pixels ([Procedural verification](#procedural-verification)). Those checks found
@@ -17,8 +18,9 @@ review of the first version ("quite a bit of cleanup and review"), the scene was
 - purpose cards and an eye-height camera;
 - a lockout/tagout design mockup ([LOTO mode](#lockouttagout-mode-design-and-a-mockup-still-not-a-procedure)).
 
-Only five review stills have been rendered since; the narrated video waits for approval of the stills. The script
-and purpose text are Claude's and have not been reviewed by an operator.
+The five-still redesign measurements below describe that earlier pass. The later render remains stills-only;
+the narrated video waits for approval of the stills. The script and purpose text are Claude's and have not been
+reviewed by an operator.
 
 The prototype uses the **Tennessee Eastman (TE) seed model**, the same one the 2D operator screens use. It does
 not use the OPEN100 extracted twin, whose stream directions are `unknown` and which has no units arranged as a

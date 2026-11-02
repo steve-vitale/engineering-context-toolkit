@@ -34,7 +34,8 @@ revision through the existing description, generation and context contracts belo
 ```mermaid
 flowchart LR
     A[Authored engineering records] --> K[Knowledge/workflow packet]
-    K --> M[Read-only MCP entry point]
+    K --> L[Local standard-library reader]
+    K -.->|Optional approved client| M[Read-only MCP entry point]
     D[Description] -.->|Engineer or approved assistant authors| P[Process model]
     I[P&ID image] -->|Extraction plus review| T[Extracted twin]
     X[Supported DEXPI XML] -->|Reader plus review| P
@@ -44,7 +45,8 @@ flowchart LR
     P --> G[Portable graph snapshot]
     T --> G
     G --> R[Source review, context packet]
-    G --> M
+    G --> L
+    G -.->|Optional approved client| M
 ```
 
 The diagram omits setup and optional evidence inputs; the table below states each contract. Image extraction

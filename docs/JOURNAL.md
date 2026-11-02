@@ -7286,3 +7286,57 @@ captured DOE Tip 9 pages: ordinary manual bottom blowdown and surface-control op
 The [question guide](OPPORTUNITY_SCREEN.md) now states the specific unresolved limitation and records-first
 interpretation. The shared catalog/engine and its 25-of-50 source-review count remain unchanged. Frozen
 prospective controls and any private candidate work are preparation for a matched repair, not an adopted fix.
+
+## 158. Preserve connections and engineering claims in a smaller graph
+
+A reader-path and contract audit found a functional mismatch in the `core` graph profile. Basic own-drawing
+intake contains no line-network membership records, but reduction removed all 345 drawing connections anyway.
+Even the enriched saved sheet had two pairs without a selected network. The full export remained intact; the
+smaller view could not reconstruct what it had discarded. The original
+[core file](../examples/graph-export/sheet0_graph_core.json) remains historical evidence.
+
+The repair removes only ordinary, unreviewed, undirected pairs with an explicit retained network and both exact
+memberships. Ambiguous/unrepresented pairs and additional qualifications remain complete original edge objects.
+The full graph is validated before projection so an invalid network reference cannot disappear into a passing
+output. Core claim filtering elsewhere is unchanged. A first conservative candidate retained every pair because
+ordinary extraction-confidence claims use `extracted`, not `unverified`; the failed result was kept and the
+predicate corrected to distinguish unreviewed extraction from review decisions.
+
+An adversarial extension then demonstrated nine further failures: topology membership cannot reproduce a
+supplied size, fluid, limit, false/zero value, ordered list, custom label/kind or conflicting direction claim.
+The final predicate retains those whole pairs too. Only the declared extraction-internal claims and exact
+ordinary direction/kind/name values may leave with a represented pair; it does not guess engineering meaning.
+The [current core](../examples/graph-export/sheet0_graph_core_v2.json) keeps the two unresolved pairs and removes
+343 represented ones: 393 edges and 982 retained claims. Basic intake keeps all 345 pairs and 446 total edges.
+These are exposed software controls, not new drawing accuracy or physical impact-analysis results.
+
+Six added graph regression methods cover actual offline intake/export, absent/ambiguous membership, qualifiers,
+substantive typed claims and invalid-input refusal. The graph module runs 64 methods with one optional case
+skipped. Independent prospective checks include the original failures, unchanged valid full outputs, ordinary
+represented reduction, Native streams, off-page pairs, source guards and pure context/Snapshot readback. No model,
+SDK transport, plant connection or human-benefit trial is involved.
+
+Two description bundles and three batch reports were actually regenerated after the producer/validator source
+changed. Only their code identities changed; all other artifacts and engineering values stayed exact. Fresh
+context preparation/application/refresh and stale-sheet refusal produced current expected packets and
+[a new fictional answer](../examples/batch-analysis/context-handoff/fictional-partial-v2.csv). The original
+answer CSV remains unchanged; earlier packets and reports remain in Git history. Nine calculation-basis controls
+were actually rerun. This is a new illustrative source selection, not a repair of an old reviewed fingerprint.
+
+The first broader source-only run reports **55/57**, eight skipped cases and three platform notices. One old
+batch regression assumed the validator file identity could not change; the corrected comparison excludes only
+the two code fingerprints while keeping every engineering value exact, with current pins checked separately.
+The other failure correctly exposed a stale structural-check receipt after a descriptive still-count correction;
+that stage was actually rerun rather than its lock being backfilled. Targeted follow-up and final committed-version
+CI remain separate evidence from this original failed run.
+
+The targeted follow-up passes the batch module's 26 methods, saved-basis checker 11, description workflow 23,
+and pipeline 45/45 checks. The final graph module's 64 methods retain one optional skip. Pipeline status returns
+to 50/52 fresh; the two manual runtime stages remain stale. The other source-only programs are not relabelled as
+a new full run; normal committed-version CI is the separate complete-suite gate.
+
+The same audit separates current status from retained repair history; clarifies model correction versus context
+review, private working paths, approved IT/OT placement, conditional onboarding steps, fixed-case gateway assembly,
+optional MCP/local reading and visual evidence labels. The feature catalog now explains its exact example-file
+badge predicate instead of implying current implementation/test freshness. No new dependency, company service,
+source authority, workflow execution or operational acceptance follows from those documentation changes.

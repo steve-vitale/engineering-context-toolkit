@@ -82,6 +82,8 @@ be enough. Exact file contracts belong in the [workflow map](WORKFLOWS.md); all 
 protocols and later acceptance notes; [JOURNAL.md](JOURNAL.md) is chronological development history;
 [TRIED.md](TRIED.md) is the generated attempt ledger. These are records, not the current user journey.
 Use [CONTRIBUTING.md](../CONTRIBUTING.md) before adding a case or changing a method.
+Captured guides under an example's `history/` retain their original text and relative-path context; use the
+example's current guide for navigation and commands.
 
 **Demonstrations:** [OPEN100 structure](OPEN100_STRUCTURAL.md), [Bayer reconstruction](BAYER_RT.md),
 [MGPI source clarification](../examples/from-description/mgpi/README.md), [operator screens](OPERATOR_SCREENS.md)

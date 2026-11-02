@@ -163,7 +163,7 @@
    "deliverable": "3D orientation tour (stills)",
    "te": {
     "status": "draft",
-    "note": "proof of concept: placeholder geometry, source-checked topology, colours from recorded replay; no render check fails on twelve stills (15 pass, 2 informational), five committed",
+    "note": "proof of concept: placeholder geometry, source-checked topology, colours from recorded replay; no render check fails on twelve stills (15 pass, 2 informational), eight review JPEGs committed",
     "evidence": [
      "drafts/3d-tour/00_overview_normal.jpg",
      "drafts/3d-tour/verification.md"
