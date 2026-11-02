@@ -322,16 +322,110 @@ class GraphExport(unittest.TestCase):
         self.assertEqual({e["item"] for e in g["events"]}, {"S0-IN003", "S0-TK001", "S0-VL020", "S0-IN002"})
         self.assertEqual(gx.problems(g), [])
 
+    def test_actual_own_drawing_core_keeps_all_unrepresented_connections(self):
+        with tempfile.TemporaryDirectory() as d:
+            bundle, output = Path(d) / "bundle", Path(d) / "core.json"
+            intake = subprocess.run([sys.executable, "-B", "-S", str(ROOT / "scripts/import_site_drawing.py"),
+                                     "--manifest", str(ROOT / "examples/own-drawing/manifest.json"),
+                                     "--out", str(bundle)], cwd=ROOT, capture_output=True, text=True)
+            self.assertEqual(intake.returncode, 0, intake.stdout + intake.stderr)
+            full = gx.build(bundle / "plant_model.json")
+            export = subprocess.run([sys.executable, "-B", "-S", str(ROOT / "scripts/graph_export.py"),
+                                     str(bundle / "plant_model.json"), "--profile", "core", "--out", str(output)],
+                                    cwd=ROOT, capture_output=True, text=True)
+            self.assertEqual(export.returncode, 0, export.stdout + export.stderr)
+            core = json.loads(output.read_bytes())
+            pairs = [e for e in full["edges"] if e.get("layer") == "network_pair"]
+            self.assertEqual(len(pairs), 345)
+            self.assertEqual([e for e in core["edges"] if e.get("layer") == "network_pair"], pairs)
+            self.assertFalse(any(n["kind"] == "line_network" for n in core["nodes"]))
+            self.assertEqual(core["counts"]["edges"], 446)
+
+    def test_core_keeps_configuration_claims_not_represented_by_membership(self):
+        baseline = json.loads((EX / "sheet0_graph.json").read_text(encoding="utf-8"))
+        selected = next(e["id"] for e in baseline["edges"] if e.get("network"))
+        for name, value in [("size", "DN50"), ("fluid", "steam"), ("pressure_limit", 250),
+                            ("enabled", False), ("allowance", 0), ("phase_order", ["wash", "rinse"]),
+                            ("direction", "known"), ("kind", "configured_signal"), ("name", "Steam bypass")]:
+            with self.subTest(name=name, value=value):
+                graph = copy.deepcopy(baseline)
+                pair = next(e for e in graph["edges"] if e["id"] == selected)
+                pair["attributes"].append({"name": name, "value": value, "status": "unverified",
+                                           "source": copy.deepcopy(pair["source"])})
+                core = gx.apply_profile(graph, "core")
+                self.assertEqual(next((e for e in core["edges"] if e["id"] == selected), None), pair)
+
+    def test_core_keeps_whole_pairs_without_network_membership(self):
+        graph = build_from(hand_built(units=[{"id": "A"}, {"id": "B"}],
+                                     streams=[{"id": "AB", "from": "A", "to": "B", "size": "unknown"}]))
+        pair = next(e for e in graph["edges"] if e["id"] == "AB")
+        pair.update(layer="network_pair", direction="unknown")
+        self.assertEqual(gx.problems(graph), [])
+        original = copy.deepcopy(graph)
+        core = gx.apply_profile(graph, "core")
+        self.assertEqual(next(e for e in core["edges"] if e["id"] == "AB"), pair)
+        self.assertEqual(core["profile"]["dropped_edges"], {})
+        self.assertEqual(graph, original)
+        self.assertEqual(gx.problems(core), [])
+
+    def test_core_keeps_ambiguous_network_pairs_whole(self):
+        graph = json.loads((EX / "sheet0_graph.json").read_text(encoding="utf-8"))
+        expected_ids = {"L0-181", "L0-265"}
+        original = copy.deepcopy(graph)
+        expected = [e for e in graph["edges"] if e["id"] in expected_ids]
+        self.assertEqual(len(expected), 2)
+        self.assertTrue(all("network" not in e for e in expected))
+        core = gx.apply_profile(graph, "core")
+        pairs = [e for e in core["edges"] if e.get("layer") == "network_pair"]
+        self.assertEqual(pairs, expected)
+        self.assertEqual(core["profile"]["dropped_edges"], {"connects (network_pair)": 343})
+        self.assertEqual(graph, original)
+
+    def test_core_preserves_pair_and_membership_qualifications(self):
+        baseline = json.loads((EX / "sheet0_graph.json").read_text(encoding="utf-8"))
+        selected = next(e["id"] for e in baseline["edges"] if e.get("network"))
+        changes = [lambda g, e: e.update(direction="known"),
+                   lambda g, e: e.update(status="confirmed"),
+                   lambda g, e: e.update(status="corrected"),
+                   lambda g, e: e.update(status="rejected"),
+                   lambda g, e: e.update(citations={"basis": "qualified supplied citation"}),
+                   lambda g, e: e["attributes"][0].update(status="confirmed"),
+                   lambda g, e: next(x for x in g["edges"] if x["type"] == "on_network"
+                                    and x["from"] == e["from"] and x["to"] == e["network"]).update(status="rejected"),
+                   lambda g, e: next(x for x in g["nodes"] if x["id"] == e["network"]).update(status="confirmed")]
+        for i, change in enumerate(changes):
+            with self.subTest(case=i):
+                graph = copy.deepcopy(baseline)
+                pair = next(e for e in graph["edges"] if e["id"] == selected)
+                change(graph, pair)
+                core = gx.apply_profile(graph, "core")
+                self.assertEqual(next((e for e in core["edges"] if e["id"] == selected), None), pair)
+
+    def test_core_cli_validates_before_removing_pairs(self):
+        baseline = json.loads((EX / "sheet0_graph.json").read_text(encoding="utf-8"))
+        for wrong in ("NOT-A-NETWORK", next(n["id"] for n in baseline["nodes"] if n["kind"] == "line_network")):
+            graph = copy.deepcopy(baseline)
+            pair = next(e for e in graph["edges"] if e.get("network") and e["network"] != wrong)
+            pair["network"] = wrong
+            self.assertTrue(gx.problems(graph))
+            with tempfile.TemporaryDirectory() as d, mock.patch.object(gx, "_build_snapshot", return_value=(graph, [])):
+                out = Path(d) / "core.json"
+                code, message = run_cli("fixture-model.json", "--profile", "core", "--out", out)
+                self.assertEqual(code, 1)
+                self.assertIn("FAIL:", message)
+                self.assertFalse(out.exists())
+
     def test_core_profile_keeps_the_governed_set_and_counts_what_it_drops(self):
         full = json.loads((EX / "sheet0_graph.json").read_text(encoding="utf-8"))
         core = gx.apply_profile(full, "core")
         self.assertEqual(json.dumps(core, indent=1, ensure_ascii=False) + "\n",
-                         (EX / "sheet0_graph_core.json").read_text(encoding="utf-8"))  # the committed example
+                         (EX / "sheet0_graph_core_v2.json").read_text(encoding="utf-8"))  # conservative successor
         self.assertEqual(gx.problems(core), [])
         p = core["profile"]
         self.assertEqual(core["counts"]["claims"] + sum(p["dropped_claims"].values()) + p["claims_on_dropped_edges"],
                          full["counts"]["claims"])  # every claim is either kept or counted as dropped
-        self.assertFalse(any(e["type"] == "connects" and e.get("layer") == "network_pair" for e in core["edges"]))
+        self.assertEqual({e["id"] for e in core["edges"] if e.get("layer") == "network_pair"},
+                         {"L0-181", "L0-265"})  # no selected network: preserve complete edges
         kept = {e["type"] for e in core["edges"]}
         self.assertTrue({"piped_to", "on_network", "contains"} <= kept)
         names = {a["name"] for n in core["nodes"] for a in n["attributes"]}

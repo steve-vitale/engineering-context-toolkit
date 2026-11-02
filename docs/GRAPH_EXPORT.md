@@ -69,6 +69,11 @@ supplied-original change invalidates its old review binding. None of these check
 
 `examples/graph-export/sheet0_graph.json` is the extracted OPEN100 sheet 0, with its line layers (below):
 
+The intake and basic graph export use the standard library. The optional image-based `line_layers.py enrich`
+step below needs NumPy and OpenCV from [requirements.txt](../requirements.txt); it is not part of basic intake.
+Use a fresh private working folder for your own inputs. Keep the full graph when a network layer has not been
+prepared; a core projection now also preserves pairs it cannot explicitly reconstruct.
+
 ```sh
 python -S scripts/import_site_drawing.py --manifest examples/own-drawing/manifest.json --out my-bundle
 python scripts/line_layers.py enrich my-bundle/plant_model.json --image "0=data/external/pid2graph/PID2Graph/Complete/PID2Graph OPEN100/0.png" --out my-bundle/plant_model.json
@@ -299,13 +304,23 @@ python scripts/graph_export.py my-bundle/plant_model.json --profile core --out m
 | Profile | Keeps | Drops |
 |---|---|---|
 | `full` (default) | all supported claims and relations | declared exclusions listed in `not_exported` (for example, the Bayer incident timeline) |
-| `core` | nodes, identity and configuration claims, `measures` / `controls` / `sets_point_of` / `protects` / `trips` / `piped_to` / `instrument_connection` / `actuated_by` / `nozzle_of` / `on_network` / `contains`, every claim's `source` | extraction internals (`*_method`, hashes, `source_evidence.*`, pixel geometry, candidate lists, `sheet`, which every claim's source already names) and the all-pairs `connects` links, which `on_network` rebuilds |
+| `core` | nodes, identity/configuration claims, impact relations and sources; **complete network-pair edges that lack an explicit rebuildable network or carry additional qualifications** | declared extraction internals, and only ordinary unreviewed/undirected network pairs with an explicit retained network and both exact memberships |
 
-Nothing leaves silently: a `core` graph has a `profile` block counting every dropped claim name, the dropped edges
-and the claims they carried. On sheet 0, 6,581 claims become 956 kept + 1,140 extraction internals + 4,485 carried on
-the 345 dropped all-pairs links, and 736 edges become 391
-([`sheet0_graph_core.json`](../examples/graph-export/sheet0_graph_core.json)). Hand-built models (TE, Bayer) carry no
-extraction internals, so their `core` export equals the full one. `core` is a view for loading, not a replacement:
+Basic own-drawing intake has no network layer, so its 345 drawing connections remain in `core`; the tool does
+not invent memberships to compress them. Even an enriched graph can leave a pair's network unresolved.
+Directed, reviewed/rejected or additionally qualified pair records remain whole rather than being replaced by
+ordinary co-membership. Supplied size, fluid, limits or other substantive pair claims also remain whole;
+membership cannot reproduce them. Only declared extraction internals and exact ordinary direction/kind/name
+claims are eligible for removal with a represented pair. The complete graph is validated before reduction, so an invalid network reference
+cannot disappear and make an invalid export look valid.
+
+A `core` graph counts every dropped claim name, edge kind and claim on dropped edges. The current
+[sheet-0 successor](../examples/graph-export/sheet0_graph_core_v2.json) keeps the two pairs `L0-181` and `L0-265`
+that have no selected network: 736 edges become 393, and 6,581 claims become 982 kept + 1,140 extraction internals
+and 4,459 on the 343 removed pairs. The [original core](../examples/graph-export/sheet0_graph_core.json) remains
+historical evidence of the earlier unconditional reduction, not the current rule. Hand-built TE/Bayer models
+carry no extraction internals or network pairs to remove; their content/counts are unchanged apart from the
+profile declaration. `core` is a view for loading, not a replacement:
 keep the full export as the record. Each kept claim still carries its source; the full export retains methods and
 candidate alternatives a reviewer may also need. When reviews are selected, both profiles retain the complete
 `review_context` and association qualifications; `core` does not redact review records. See [review history](REVIEW_HISTORY.md).
@@ -321,7 +336,7 @@ appearance list. `core` removes its declared claims/links, while retaining these
 |---|---|---|
 | `nodes` | `id`, `kind`, `tag`, `name`, `aliases`, `status`, `attributes` | `kind`: plant, system, equipment, instrument, final_element, controller, line_item, offpage_connector, boundary, manual_valve, relief_device, interlock, limit, junction, line_network (the last two: [line layers](#three-layers-for-the-lines)). `aliases` holds every earlier tag (`former_tag`), so older documents still join |
 | `nodes[].attributes` | `name`, `value`, `status`, `source` | One claim per attribute. `status`: confirmed, corrected, unverified, rejected, extracted, unresolvable. `source.kind` is `drawing` (sheet, box, the text as read, run and model), `document` (what it was checked against, the evidence, the date), `review` (who changed it, when, and what it was) or `model` (the item cites no source of its own: the model's source document is given so the gap is visible). Nested content becomes claims at any depth: a record becomes dotted names (a controller's `setpoint.value` and `setpoint.uom`, which cite the page that gives the setpoint, since a record naming its own `source` lends it to everything under it; a drawn line's `source_evidence.source_drawing.page`), a list of plain values is one claim, and a list holding records is indexed (`ratings[0].psig`, `ratings[1].psig`). Not claims: the item's id, tag and former tags (they are the node), its own source, status and review (every claim carries them), its drawing layout, keys starting with `_`, and keys that became edges (a controller's `measurement` and output valve or cascade target, an interlock's `measurement` and `final_element`); any other key in a controller's `output` is a claim (`output.action`). A value is always a plain value or a list of them |
-| `edges` | `id`, `type`, `from`, `to`, `status`, `direction`, `source` | `type`: contains, connects, measures, controls (measurement to controller, controller to each valve it moves, split range included), acts_on, sets_point_of (a cascade: the controller whose output is another controller's setpoint, from `output.setpoint_of`), sits_on, protects (relief device to the vessel), trips (measurement to interlock), applies_to (limit to its tag), piped_to (pipe segment between two items or junctions), instrument_connection (a bubble's leader or impulse line), actuated_by (valve to the actuator stacked on it), nozzle_of (nozzle to its vessel), on_network (item or junction to its line network). A `connects` edge carries `layer`: `network_pair` for a link read off a drawing, which means the two items are on the same drawn line network (lines, bends, junctions or crossings join them with no symbol in between: how `score_pid2graph.py` reads the public answer key's graph, every pair of symbols reachable through its connector and crossing nodes), not that a pipe runs directly from one to the other (on sheet 0, 22 of 27 sampled links passed through one or more tees, [statement review](../examples/statement-review/README.md)); with line layers it also names the `network` both ends are on. `stream` for a hand-built model's process stream (pipe-level); `offpage_pair` for two off-page connectors paired across drawings. A drawn `connects` or `piped_to` edge has `direction: unknown` unless the drawing showed it. A `connects` edge also carries `attributes`: the line's own claims (size, fluid, insulation, temperature), sourced like a node's |
+| `edges` | `id`, `type`, `from`, `to`, `status`, `direction`, `source` | `type`: contains, connects, measures, controls (measurement to controller, controller to each valve it moves, split range included), acts_on, sets_point_of (a cascade: the controller whose output is another controller's setpoint, from `output.setpoint_of`), sits_on, protects (relief device to the vessel), trips (measurement to interlock), applies_to (limit to its tag), piped_to (pipe segment between two items or junctions), instrument_connection (a bubble's leader or impulse line), actuated_by (valve to the actuator stacked on it), nozzle_of (nozzle to its vessel), on_network (item or junction to its line network). A `connects` edge carries `layer`: `network_pair` for a link read off a drawing, which means the two items are on the same drawn line network (lines, bends, junctions or crossings join them with no symbol in between: how `score_pid2graph.py` reads the public answer key's graph, every pair of symbols reachable through its connector and crossing nodes), not that a pipe runs directly from one to the other (on sheet 0, 22 of 27 sampled links passed through one or more tees, [statement review](../examples/statement-review/README.md)); with line layers it also names the `network` both ends are on. `stream` for a hand-built model's logical process stream between declared endpoints, not physical adjacency or a complete tee/pipe layout; `offpage_pair` for two off-page connectors paired across drawings. A drawn `connects` or `piped_to` edge has `direction: unknown` unless the drawing showed it. A `connects` edge also carries `attributes`: the line's own claims (size, fluid, insulation, temperature), sourced like a node's |
 | `questions` | (from the question engine, when attached) | Open engineering questions tied to assets, with the data needed to answer them |
 | `events` | `type`, `item`, `by`, `on`, plus the decision | Review decisions and change-review requests from `apply_review.py` records |
 | `nodes[].placement` | text | Only on an item no owning unit could be found for (for example a valve on a line between two off-page connectors): it is still a node, with the reason, never left out |

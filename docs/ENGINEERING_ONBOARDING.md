@@ -36,10 +36,12 @@ evidence through the existing process. Keep unsuccessful attempts and the mentor
    and escalation route. Leave an unknown owner unassigned.
 2. **Follow the source index.** Open the permitted originals; check revision, page/section and conflicting records.
    Check an assistant's citation against the source.
-3. **Reconstruct one prior decision.** Explain what the records support, why it matters and what remains
-   interpretation or unknown. Distinguish proposed options from accepted decisions.
-4. **Ask one focused question of a colleague.** Keep a qualified account as described below and request its
-   supporting record or example.
+3. **Explain what the selected records support.** State why it matters and what remains interpretation or
+   unknown. If the assignment concerns a prior decision, reconstruct its basis and distinguish proposed options
+   from accepted decisions. An initial source question need not have a prior decision to reconstruct.
+4. **Request missing evidence when needed.** A focused colleague question can help; keep a qualified account
+   as described below and request its supporting record or example. If no colleague is available, retain the
+   unresolved request and receiving role rather than inventing an interview or delaying a useful partial note.
 5. **Return one contribution for review.** Complete the brief's question, evidence and handoff sections. Name the
    next action and receiving owner, or mark **needs owner**. Record the outcome and revision that should reopen
    it. Leave trial fields **not run / benefit not measured** unless an authorized measured pilot occurred.
