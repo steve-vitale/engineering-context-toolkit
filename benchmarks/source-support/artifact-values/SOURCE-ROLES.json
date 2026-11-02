@@ -1,0 +1,36 @@
+{
+  "schema": "artifact-review-source-roles-1",
+  "primary": {
+    "id": "CSB-MGPI-2017",
+    "sha256": "2e8f0ef9db7b9c65b790dbb3c1a2f12f90a9a7051e531189b5868ce2c2e6a07e",
+    "title": "CSB MGPI case study, report2017-01-I-KS, December2017",
+    "identity": "Historical October21,2016 incident/configuration account",
+    "url": "https://www.csb.gov/file.aspx?DocumentId=6047",
+    "time_scope": "Historical incident/configuration as described by2017 report; not2026 installed state",
+    "admitted_scope": "Printed/PDF p7§2.3 narrative and p8 continuation before2.3.1; p23§5.2 narrative. No figures, footnotes/callout, later plant records or other source expansion.",
+    "raw_original_not_embedded_or_fetched": true
+  },
+  "adaptation": {
+    "id": "PROJECT-MGPI-ADAPTATION",
+    "sha256": "551078e52d39c0f2dc587951b7534afaf8865c9e7c87e55e26ec27cbff4c74e8",
+    "title": "Project-authored MGPI source adaptation",
+    "identity": "Repository source.txt; assigned aliases and scope-boundary conventions",
+    "url": "repository:examples/from-description/mgpi/source.txt",
+    "time_scope": "Exposed2026development adaptation of historical source",
+    "admitted_scope": "Only attribution, source locator/value binding, alias/BL/project notation and declared uncertainty; not independent primary engineering evidence."
+  },
+  "source_inventory": {
+    "path": "benchmarks/source-support/artifact-values/source_inventory.json",
+    "sha256_raw": "facb294d3ccef0774f79523b9c0033c60e6af3b1baabefe5e7ed00f6be75b2ce",
+    "bytes": 13896,
+    "role": "Existing agent-authored derived source facts/locators. Independent original-source/key reviewer must verify claim groups; not a CSB answer key."
+  },
+  "source_key_review": {
+    "path": "benchmarks/source-support/artifact-values/SOURCE-KEY-REVIEW.json",
+    "sha256_raw": "536e75b80d16cbbfd4a96905b729584914276337e2a6e4b9da126ce2d9389087",
+    "bytes": 12744,
+    "scope": "Independent coding-agent historical source/group/role judgment, not human engineering approval or current plant truth"
+  },
+  "source_key_acceptance_sha256_raw": "18c1bbf063bc85ebbc57d342d0201ea976f0464548848c9b0064f882aec6ba45",
+  "projection_binding_metadata_acceptance_sha256_raw": "bb679efa68b9a95e616a14a4949b8ba4ca06b3915bdf595edc52f9fb3808b3b7"
+}

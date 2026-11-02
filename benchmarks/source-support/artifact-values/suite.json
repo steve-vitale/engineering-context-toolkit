@@ -1,0 +1,65 @@
+{
+  "cases": [
+    {
+      "artifact_values_protocol": "provided-model-values-v1",
+      "evidence": "Exposed saved artifact and independently reviewed historical key; synthetic reviewer-label controls only, not model or human trials.",
+      "family": "csb-mgpi-artifact-review-development",
+      "files": {
+        "input": {
+          "path": "benchmarks/source-support/artifact-values/cases/reference/input-artifact.json",
+          "sha256": "305575cf09305ff88db2aa85b0e437a0d618463009ac3ea4e7e946e11ac82103"
+        },
+        "key": {
+          "path": "benchmarks/source-support/artifact-values/keys/reference.artifact-key.json",
+          "sha256": "1e17acde5ce583aaddbfdf5bbd310c6685bdc564aafbb16939f8eca3655c2401"
+        }
+      },
+      "id": "artifact-reference",
+      "key_author": "Independent coding-agent source/group/key review, metadata-only projection-binding review; no human engineering approval.",
+      "license": "Repository-authored source adaptation/models/CSV and controls under repository license; no original PDF or figures copied.",
+      "source_url": "https://www.csb.gov/file.aspx?DocumentId=6047",
+      "split": "synthetic-control"
+    },
+    {
+      "artifact_values_protocol": "provided-model-values-v1",
+      "evidence": "Exposed saved artifact and independently reviewed historical key; synthetic reviewer-label controls only, not model or human trials.",
+      "family": "csb-mgpi-artifact-review-development",
+      "files": {
+        "input": {
+          "path": "benchmarks/source-support/artifact-values/cases/false-shutdown/input-artifact.json",
+          "sha256": "3ca7766763adc57913df5c53b11285ed23cb18ccd7e3cdce3bbc0df6e6150534"
+        },
+        "key": {
+          "path": "benchmarks/source-support/artifact-values/keys/false-shutdown.artifact-key.json",
+          "sha256": "b700f1db0036a3593eec5ada28a4ef8099ae49b5b4ea44c338930280efcb1364"
+        }
+      },
+      "id": "artifact-false-shutdown",
+      "key_author": "Independent coding-agent source/group/key review, metadata-only projection-binding review; no human engineering approval.",
+      "license": "Repository-authored source adaptation/models/CSV and controls under repository license; no original PDF or figures copied.",
+      "source_url": "https://www.csb.gov/file.aspx?DocumentId=6047",
+      "split": "synthetic-control"
+    }
+  ],
+  "id": "artifact-value-review-exposed-cli-controls",
+  "protocol": "provided-model-values-v1 admission plus unchanged claim-judgments-v1 labels; exact raw source/value/context, exposed saved controls",
+  "registration": "Two existing exposed source-adapted artifacts,14 synthetic reviewer control manifests. No model/provider/human trial, automatic source truth, generic Native compatibility, description-generator accuracy or plant acceptance. Public path curation is a new transport/cohort; actual public-root scoring must precede result publication.",
+  "runs": [
+    "benchmarks/source-support/artifact-values/runs/artifact-control-reference-keyed-review.json",
+    "benchmarks/source-support/artifact-values/runs/artifact-control-reference-empty.json",
+    "benchmarks/source-support/artifact-values/runs/artifact-control-reference-all-supported.json",
+    "benchmarks/source-support/artifact-values/runs/artifact-control-reference-all-contradicted.json",
+    "benchmarks/source-support/artifact-values/runs/artifact-control-reference-all-insufficient-evidence.json",
+    "benchmarks/source-support/artifact-values/runs/artifact-control-reference-missing-critical.json",
+    "benchmarks/source-support/artifact-values/runs/artifact-control-false-shutdown-keyed-review.json",
+    "benchmarks/source-support/artifact-values/runs/artifact-control-false-shutdown-empty.json",
+    "benchmarks/source-support/artifact-values/runs/artifact-control-false-shutdown-all-supported.json",
+    "benchmarks/source-support/artifact-values/runs/artifact-control-false-shutdown-all-contradicted.json",
+    "benchmarks/source-support/artifact-values/runs/artifact-control-false-shutdown-all-insufficient-evidence.json",
+    "benchmarks/source-support/artifact-values/runs/artifact-control-false-shutdown-missing-critical.json",
+    "benchmarks/source-support/artifact-values/runs/artifact-control-false-correct-label-poor-reason.json",
+    "benchmarks/source-support/artifact-values/runs/artifact-control-false-literal-unreviewed.json"
+  ],
+  "task": "source-support",
+  "version": "1"
+}

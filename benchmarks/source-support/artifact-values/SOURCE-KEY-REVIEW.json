@@ -1,0 +1,206 @@
+{
+  "schema": "artifact-value-review-independent-source-key-1",
+  "author_role": "Independent primary-source/protocol reviewer, separate from packet author and future scorer implementation. Existing model pair, old key and source adaptations exposed; no blind/source-family generalization claim.",
+  "source_packet_freeze_sha256_raw": "530fb2b6b51ac79a87073e68528b3217b28cc261f80f8f3a40aa09578f33f2f7",
+  "claim_groups_draft_sha256_raw": "3109e8a7d08fd92ba027ac993e101b4ba4a5a886aaa289a866c16f71434dd26c",
+  "primary": {
+    "sha256_raw": "2e8f0ef9db7b9c65b790dbb3c1a2f12f90a9a7051e531189b5868ce2c2e6a07e",
+    "bytes": 3268926,
+    "read": "Actual cached original, freshly text-extracted/rendered and visually read. Only admitted p7 section2.3 narrative, p8 continuation before2.3.1, p23 section5.2 narrative used. No figure, footnote/callout, present-day record or external engineering assertion used.",
+    "historical_scope": "October21,2016 incident/configuration/process as described by December2017 report; not a2026 installed-state claim."
+  },
+  "judgments": [
+    {
+      "id": "AV-G01",
+      "reference": "supported",
+      "false_shutdown": "supported",
+      "evidence_ids": [
+        "S01"
+      ],
+      "decisive_original_locator": "Printed/PDF p7, section2.3, right-column final narrative paragraph continuing to p8.",
+      "rationale": "The admitted paragraph explicitly gives 12.5% sodium hypochlorite, outdoor 6,500-gallon bulk tank and atmospheric storage. Name/type and reported attributes are supported jointly at that historical/report scope. HYPO_BULK remains an authored alias, not a primary-source tag.",
+      "false_shutdown_rationale": null
+    },
+    {
+      "id": "AV-G02",
+      "reference": "supported",
+      "false_shutdown": "supported",
+      "evidence_ids": [
+        "S02"
+      ],
+      "decisive_original_locator": "Printed/PDF p7 final narrative sentence continued at p8 upper-left first sentence, before section2.3.1.",
+      "rationale": "The report explicitly describes transfer into a smaller day tank inside Mod B. The group names that tank by project alias; it does not assert its plant tag or a present-day installation.",
+      "false_shutdown_rationale": null
+    },
+    {
+      "id": "AV-G03",
+      "reference": "supported",
+      "false_shutdown": "supported",
+      "evidence_ids": [
+        "S03"
+      ],
+      "decisive_original_locator": "Printed/PDF p8 upper-left opening paragraph, before section2.3.1, sentence following day-tank transfer.",
+      "rationale": "The same historical sequence transfers sodium hypochlorite into a process vessel. The admitted narrative does not name that vessel; 'Unidentified' is bounded to this evidence, not a claim that nobody knows its identity.",
+      "false_shutdown_rationale": null
+    },
+    {
+      "id": "AV-G04",
+      "reference": "supported",
+      "false_shutdown": "supported",
+      "evidence_ids": [
+        "S04"
+      ],
+      "decisive_original_locator": "Printed/PDF p8 upper-left opening paragraph before section2.3.1, sulfuric-acid receipt sentences.",
+      "rationale": "Thirty-percent sulfuric acid and an outdoor 8,500-gallon day tank are explicit. The grouped name/type/capacity/concentration faithfully represent that reported storage description, not current certified properties.",
+      "false_shutdown_rationale": null
+    },
+    {
+      "id": "AV-G05",
+      "reference": "supported",
+      "false_shutdown": "supported",
+      "evidence_ids": [
+        "S01"
+      ],
+      "decisive_original_locator": "Printed/PDF p7 section2.3, right-column final paragraph describing receipt at unloading area and piping into outdoor bulk tank.",
+      "rationale": "The incoming hypochlorite-to-bulk transfer is explicit. BL is only the authored scope-boundary endpoint; support does not extend to a shared junction, particular pipe geometry or an actual source equipment tag.",
+      "false_shutdown_rationale": null
+    },
+    {
+      "id": "AV-G06",
+      "reference": "supported",
+      "false_shutdown": "supported",
+      "evidence_ids": [
+        "S02"
+      ],
+      "decisive_original_locator": "Printed/PDF p7 final sentence joined to p8 upper-left first sentence before section2.3.1.",
+      "rationale": "The joined sentence explicitly transfers sodium hypochlorite from bulk storage by piping into the smaller day tank. Exact alias endpoints express this narrative sequence, not independent physical identity verification.",
+      "false_shutdown_rationale": null
+    },
+    {
+      "id": "AV-G07",
+      "reference": "supported",
+      "false_shutdown": "supported",
+      "evidence_ids": [
+        "S03"
+      ],
+      "decisive_original_locator": "Printed/PDF p8 upper-left first paragraph before section2.3.1, day-tank-to-process-vessel sentence.",
+      "rationale": "The next step is transfer from that day tank into a process vessel as needed. It supplies no detailed route, nozzle, equipment identifier or destination geometry beyond the declared boundary.",
+      "false_shutdown_rationale": null
+    },
+    {
+      "id": "AV-G08",
+      "reference": "supported",
+      "false_shutdown": "supported",
+      "evidence_ids": [
+        "S04"
+      ],
+      "decisive_original_locator": "Printed/PDF p8 upper-left first paragraph before section2.3.1, acid receipt/day-tank sentence.",
+      "rationale": "Acid receipt in the unloading area into the outdoor day tank supports the declared incoming boundary-to-day transfer. BL is representational scope, not a reported physical junction or evidence that acid and hypochlorite share a pipe.",
+      "false_shutdown_rationale": null
+    },
+    {
+      "id": "AV-G09",
+      "reference": "supported",
+      "false_shutdown": "supported",
+      "evidence_ids": [
+        "S05"
+      ],
+      "decisive_original_locator": "Printed/PDF p8 upper-left first paragraph final sentence before section2.3.1.",
+      "rationale": "The report directly transfers sulfuric acid from its day tank into the process. No destination equipment is identified in the admitted narrative. The boundary endpoint preserves that omission; it does not establish a different or identical physical vessel relative to HYPO_PROCESS.",
+      "false_shutdown_rationale": null
+    },
+    {
+      "id": "AV-G10",
+      "reference": "supported",
+      "false_shutdown": "supported",
+      "evidence_ids": [
+        "S06",
+        "S07"
+      ],
+      "decisive_original_locator": "Printed/PDF p23 section5.2 right-column level-indicator paragraph: notification sentences and immediately following 7:59 AM sentence.",
+      "rationale": "The paragraph describes a level indicator; the subsequent sentence explicitly associates it with the sodium hypochlorite bulk tank. The two sentences jointly support variable and bulk-tank association. No instrument tag, engineering unit or threshold value is supplied.",
+      "false_shutdown_rationale": null
+    },
+    {
+      "id": "AV-G11",
+      "reference": "supported",
+      "false_shutdown": "supported",
+      "evidence_ids": [
+        "S06"
+      ],
+      "decisive_original_locator": "Printed/PDF p23 section5.2 right-column actual level-indicator paragraph, before the emergency-stop paragraph.",
+      "rationale": "The reported indicator signals the control-system alarm near tank capacity and notifies operators of high level. That supports the description without inferring automatic mitigation.",
+      "false_shutdown_rationale": null
+    },
+    {
+      "id": "AV-G12",
+      "reference": "supported",
+      "false_shutdown": "contradicted",
+      "evidence_ids": [
+        "S06"
+      ],
+      "decisive_original_locator": "Printed/PDF p23 section5.2 right-column actual level-indicator paragraph, read with opening left-column incident-configuration paragraph.",
+      "rationale": "For the reference artifact, the report explicitly distinguishes notification from automatic transfer shutdown and says that automatic function was not configured. The claim is supported only for the historical reported configuration, not current protection or adequacy.",
+      "false_shutdown_rationale": "The exact false value says high level automatically shuts down unloading. The admitted report explicitly states the alarm only notified operators and the system was not configured to shut transfer automatically. Same historical entity/function/endpoint scope, direct contradiction. A real indicator, real quote and correct other fields cannot support that action."
+    },
+    {
+      "id": "AV-G13",
+      "reference": "supported",
+      "false_shutdown": "supported",
+      "evidence_ids": [
+        "S06"
+      ],
+      "decisive_original_locator": "Printed/PDF p23 section5.2 right-column actual level-indicator paragraph, read with incident-time opening on left.",
+      "rationale": "Although stored in meta.unknowns, this is a substantive alarm-action statement. Notification-only and lack of automatic unloading shutdown are explicit in the historical account. It is not merely source silence, nor a 2026 installation statement.",
+      "false_shutdown_rationale": null
+    },
+    {
+      "id": "AV-G14",
+      "reference": "supported",
+      "false_shutdown": "supported",
+      "evidence_ids": [
+        "S03",
+        "S05"
+      ],
+      "decisive_original_locator": "Printed/PDF p8 upper-left opening paragraph before section2.3.1: hypochlorite process-vessel and sulfuric-acid-to-process sentences.",
+      "rationale": "The admitted narrative names neither the hypochlorite process vessel nor the acid destination equipment. The 'must not be equated' clause is a justified evidence-handling restriction/inference from that bounded lack of identity evidence, not a claim that the two physical destinations are different. Support is for this scoped uncertainty statement.",
+      "false_shutdown_rationale": null
+    }
+  ],
+  "key_expected_distribution_not_run": {
+    "reference": {
+      "supported": 14,
+      "contradicted": 0,
+      "insufficient-evidence": 0
+    },
+    "false-shutdown": {
+      "supported": 13,
+      "contradicted": 1,
+      "insufficient-evidence": 0
+    }
+  },
+  "scope_qualifications": [
+    "All reference groups being supported is the result of this bounded source review, not a default reference label. No artificial class balance is imposed. Future unsupported claims must remain insufficient-evidence rather than be forced into these labels.",
+    "Support for name/service/endpoints uses the declared alias/context interpretation. It does not certify plant tags, physical BL junctions, routes/geometry, omitted equipment, current configuration or safety adequacy.",
+    "AV-G14 is explicitly epistemic/record-identity uncertainty. If interpreted instead as 'acid and hypochlorite physically terminate at different vessels', these admitted sources leave that claim insufficient-evidence; this key does not permit that interpretation.",
+    "The false artifact still retains supported AV-G13 while AV-G12 is contradicted. Preserve that source-supported metadata alongside the false action; do not erase the inconsistency, infer an accepted winner or claim the artifact is correct.",
+    "Role-only82-entry bindings are inspected conventions/provenance/uncertainty/intents, not source-accuracy successes. Empty arrays do not establish physical absence; empty uom does not establish dimensionlessness.",
+    "This task evaluates a reviewer's judgments about a frozen artifact. A perfect reviewer can receive14/14 label accuracy while correctly reporting the false artifact's critical contradiction. That is not14 supported engineering claims or a safe/correct model.",
+    "Reason/citation relevance remains unscored by unchanged source_support-v1. A correctly labelled but poorly justified answer can get label credit without source-reasoning acceptance; exact counts/prose presence cannot establish authority."
+  ],
+  "approved_inventory": {
+    "each_case": {
+      "entries": 82,
+      "provided_values": 55,
+      "semantic_component_values": 34,
+      "semantic_groups": 14,
+      "provided_role_only": 21,
+      "complementary_role_only": 27
+    },
+    "reference_inventory_sha256_raw": "5b574292e4e8462f251558f5f76393a6195360f26007c8058dca0361bbc18c3b",
+    "false_inventory_sha256_raw": "c3bdfae0f839954a0995b0c6c0c2b477798d9eb4fc5d6a23604563789469637e",
+    "membership": "Exact frozen per-pointer roles/membership accepted for these two artifacts. No wildcard future exclusion or automatic claim discovery is approved."
+  },
+  "blockers": [],
+  "prospective_only": "This independently freezes source/key judgments and declared coverage. Root retains final protocol/implementation/runtime gates; no scorer, product, benchmark, model/provider, SDK, service or public writes were performed."
+}

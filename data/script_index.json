@@ -9,6 +9,7 @@
  "scripts": {
   "scripts/benchmark_tags.py": {"kind": "support", "guide": "benchmarks/README.md"},
   "scripts/source_support.py": {"kind": "support", "guide": "benchmarks/README.md"},
+  "scripts/artifact_value_review.py": {"kind": "support", "guide": "benchmarks/source-support/artifact-values/README.md", "purpose": "Admit an explicitly reviewed frozen Native value/group scope before unchanged source-support label scoring; no automatic claim discovery or plant verification."},
   "scripts/benchmark.py": {"kind": "tool", "guide": "CONTRIBUTING.md"},
   "scripts/description_workflow.py": {"kind": "tool", "guide": "examples/from-description/README.md"},
   "scripts/knowledge_snapshot.py": {"kind": "tool", "guide": "examples/engineering-onboarding/README.md"},

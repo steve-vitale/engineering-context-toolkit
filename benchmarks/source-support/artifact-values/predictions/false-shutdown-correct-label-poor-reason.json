@@ -1,0 +1,118 @@
+{
+  "schema": "source-support-answer-1",
+  "decisions": [
+    {
+      "id": "AV-G01",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S01"
+      ],
+      "reason": "Deliberately wrong explanation: all source citations prove safe current operation. Negative rationale-quality control; these words are not an accepted claim."
+    },
+    {
+      "id": "AV-G02",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S02"
+      ],
+      "reason": "Deliberately wrong explanation: all source citations prove safe current operation. Negative rationale-quality control; these words are not an accepted claim."
+    },
+    {
+      "id": "AV-G03",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S03"
+      ],
+      "reason": "Deliberately wrong explanation: all source citations prove safe current operation. Negative rationale-quality control; these words are not an accepted claim."
+    },
+    {
+      "id": "AV-G04",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S04"
+      ],
+      "reason": "Deliberately wrong explanation: all source citations prove safe current operation. Negative rationale-quality control; these words are not an accepted claim."
+    },
+    {
+      "id": "AV-G05",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S01"
+      ],
+      "reason": "Deliberately wrong explanation: all source citations prove safe current operation. Negative rationale-quality control; these words are not an accepted claim."
+    },
+    {
+      "id": "AV-G06",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S02"
+      ],
+      "reason": "Deliberately wrong explanation: all source citations prove safe current operation. Negative rationale-quality control; these words are not an accepted claim."
+    },
+    {
+      "id": "AV-G07",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S03"
+      ],
+      "reason": "Deliberately wrong explanation: all source citations prove safe current operation. Negative rationale-quality control; these words are not an accepted claim."
+    },
+    {
+      "id": "AV-G08",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S04"
+      ],
+      "reason": "Deliberately wrong explanation: all source citations prove safe current operation. Negative rationale-quality control; these words are not an accepted claim."
+    },
+    {
+      "id": "AV-G09",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S05"
+      ],
+      "reason": "Deliberately wrong explanation: all source citations prove safe current operation. Negative rationale-quality control; these words are not an accepted claim."
+    },
+    {
+      "id": "AV-G10",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S06",
+        "S07"
+      ],
+      "reason": "Deliberately wrong explanation: all source citations prove safe current operation. Negative rationale-quality control; these words are not an accepted claim."
+    },
+    {
+      "id": "AV-G11",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S06"
+      ],
+      "reason": "Deliberately wrong explanation: all source citations prove safe current operation. Negative rationale-quality control; these words are not an accepted claim."
+    },
+    {
+      "id": "AV-G12",
+      "judgment": "contradicted",
+      "evidence_ids": [
+        "S06"
+      ],
+      "reason": "Deliberately wrong explanation: all source citations prove safe current operation. Negative rationale-quality control; these words are not an accepted claim."
+    },
+    {
+      "id": "AV-G13",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S06"
+      ],
+      "reason": "Deliberately wrong explanation: all source citations prove safe current operation. Negative rationale-quality control; these words are not an accepted claim."
+    },
+    {
+      "id": "AV-G14",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S03"
+      ],
+      "reason": "Deliberately wrong explanation: all source citations prove safe current operation. Negative rationale-quality control; these words are not an accepted claim."
+    }
+  ]
+}

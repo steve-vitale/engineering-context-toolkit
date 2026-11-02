@@ -1,0 +1,47 @@
+{
+  "schema": "source-support-artifact-values-1",
+  "normalization": "provided-model-values-v1 -> unchanged source-support-input-1 / claim-judgments-v1",
+  "model_root_pointer": "",
+  "artifact": {
+    "path": "benchmarks/source-support/artifact-values/cases/false-shutdown/model.json",
+    "sha256_raw": "6ffa56e14e98a5400b0f572db379e284c953c5f764a386cd8593d623d60658e6",
+    "bytes": 4101
+  },
+  "provided_values": {
+    "path": "benchmarks/source-support/artifact-values/cases/false-shutdown/provided-values.csv",
+    "sha256_raw": "7b4d8a610270f95368fb732d5a7b3953e9c7c7583e6a32c03b5c326c4247556b",
+    "bytes": 15087
+  },
+  "source": {
+    "path": "benchmarks/source-support/artifact-values/controls/A09-stale-source-bytes/source.txt",
+    "sha256_raw": "44ab2890b20de340db1e82f02fde74c0c1ffa052e91e72f475e6d5876ece0336",
+    "bytes": 1795
+  },
+  "inventory": {
+    "path": "benchmarks/source-support/artifact-values/controls/A09-stale-source-bytes/inventory.json",
+    "sha256_raw": "803470a152e6256dab697d28221c1c49237db89e71ee5f822c0df2b51193b563",
+    "bytes": 48694
+  },
+  "v1_projection": {
+    "path": "benchmarks/source-support/artifact-values/cases/false-shutdown/input-v1-projection.json",
+    "sha256_raw": "e374e29f48992828b02462f2787b553d512abd6d519b9634d1cdbc191b5089d5",
+    "bytes": 14022
+  },
+  "claim_group_ids": [
+    "AV-G01",
+    "AV-G02",
+    "AV-G03",
+    "AV-G04",
+    "AV-G05",
+    "AV-G06",
+    "AV-G07",
+    "AV-G08",
+    "AV-G09",
+    "AV-G10",
+    "AV-G11",
+    "AV-G12",
+    "AV-G13",
+    "AV-G14"
+  ],
+  "key_status": "Independent original-source group labels/rationales and complete key scope are required before final protocol freeze/implementation/calls."
+}

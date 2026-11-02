@@ -61,6 +61,8 @@ support. The supplied paraphrases scaffold this task, so distinguish it from ori
 question usefulness and current installed-state validation. Publish genuine model attempts separately from
 synthetic controls, with the actual exposure and provider/version/settings declared.
 
+For an already reviewed frozen Native artifact, the opt-in [artifact-value admission contract](benchmarks/source-support/artifact-values/README.md) binds every scalar/empty-container pointer, typed value, provided CSV row, role and reviewed group before applying those same labels. This contributor benchmark is separate from the engineer-facing manual interpretation-review CSV. It does not discover claims or grade arbitrary generated models.
+
 `development` means used for method work; `validation` can inform selection; `held-out` requires an actual
 documented separation from tuning. Public keys cannot prove that a model or contributor never saw them. Once a
 case informs a fix, retain that history and use new evidence for a subsequent generalization claim. Keep

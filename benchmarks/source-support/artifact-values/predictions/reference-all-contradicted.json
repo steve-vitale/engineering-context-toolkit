@@ -1,0 +1,117 @@
+{
+  "schema": "source-support-answer-1",
+  "decisions": [
+    {
+      "id": "AV-G01",
+      "judgment": "contradicted",
+      "evidence_ids": [
+        "S01"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G02",
+      "judgment": "contradicted",
+      "evidence_ids": [
+        "S02"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G03",
+      "judgment": "contradicted",
+      "evidence_ids": [
+        "S03"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G04",
+      "judgment": "contradicted",
+      "evidence_ids": [
+        "S04"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G05",
+      "judgment": "contradicted",
+      "evidence_ids": [
+        "S01"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G06",
+      "judgment": "contradicted",
+      "evidence_ids": [
+        "S02"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G07",
+      "judgment": "contradicted",
+      "evidence_ids": [
+        "S03"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G08",
+      "judgment": "contradicted",
+      "evidence_ids": [
+        "S04"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G09",
+      "judgment": "contradicted",
+      "evidence_ids": [
+        "S05"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G10",
+      "judgment": "contradicted",
+      "evidence_ids": [
+        "S06"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G11",
+      "judgment": "contradicted",
+      "evidence_ids": [
+        "S06"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G12",
+      "judgment": "contradicted",
+      "evidence_ids": [
+        "S06"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G13",
+      "judgment": "contradicted",
+      "evidence_ids": [
+        "S06"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G14",
+      "judgment": "contradicted",
+      "evidence_ids": [
+        "S03"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    }
+  ]
+}

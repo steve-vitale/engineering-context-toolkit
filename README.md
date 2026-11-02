@@ -31,7 +31,7 @@ These tools accept your own records in their documented formats. Choose the work
 | Investigate controls or performance | [Loop list audit](examples/loop-audit/README.md) · [question engine](docs/OPPORTUNITY_SCREEN.md) · [historian CSVs](examples/historian-csv/README.md) | Explicit discrepancies, questions, evidence requests and analysis of recorded observations. |
 | Estimate a measured change | [Impact calculation](examples/impact-estimate/README.md) | First-draft energy, cost and CO2e calculations with measurements, assumptions and constants visible. |
 | Keep and exchange engineering context | [Context register](docs/CONTEXT_REGISTER.md) · [read-only MCP](examples/internal-mcp/README.md) · [owned team packets](examples/team-context/README.md) | Source dependencies, retained answers and selected snapshots to hand to the next team or company system. |
-| Evaluate or improve a method | [Labelled drawing comparison](examples/vendor-evaluation/README.md) · [task/model benchmarks](benchmarks/README.md) | Reproducible scores on declared cases and saved answers, with exposure and failure limits retained. |
+| Evaluate or improve a method | [Drawing comparison](examples/vendor-evaluation/README.md) · [task/model benchmarks](benchmarks/README.md) · [review a frozen model](benchmarks/source-support/artifact-values/README.md) | Compare saved answers against reviewed source/key cases, with missing answers, mistakes and evidence limits visible. |
 
 ## What connects today: the hub and spokes
 

@@ -3,23 +3,27 @@
   "reports": [
     {
       "suite": "benchmarks/open100-validation.json",
-      "report": "benchmarks/results/open100-validation-overflow-guard"
+      "report": "benchmarks/results/open100-validation-overflow-guard-artifact-values"
     },
     {
       "suite": "benchmarks/description-controls-recipe-preserved.json",
-      "report": "benchmarks/results/description-controls-tag-adapter"
+      "report": "benchmarks/results/description-controls-tag-adapter-artifact-values"
     },
     {
       "suite": "benchmarks/mgpi-development-recipe-preserved.json",
-      "report": "benchmarks/results/mgpi-development-tag-adapter"
+      "report": "benchmarks/results/mgpi-development-tag-adapter-artifact-values"
     },
     {
       "suite": "benchmarks/source-support-development.json",
-      "report": "benchmarks/results/source-support-development-tag-adapter"
+      "report": "benchmarks/results/source-support-development-tag-adapter-artifact-values"
     },
     {
       "suite": "benchmarks/tag-reading-development.json",
-      "report": "benchmarks/results/tag-reading-development"
+      "report": "benchmarks/results/tag-reading-development-artifact-values"
+    },
+    {
+      "suite": "benchmarks/source-support/artifact-values/suite.json",
+      "report": "benchmarks/results/artifact-value-review-development"
     }
   ]
 }

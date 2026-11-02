@@ -1,0 +1,1161 @@
+{
+  "schema": "provided-model-value-inventory-1",
+  "artifact_raw": {
+    "sha256_raw": "6ffa56e14e98a5400b0f572db379e284c953c5f764a386cd8593d623d60658e6",
+    "bytes": 4101
+  },
+  "source_raw": {
+    "sha256_raw": "551078e52d39c0f2dc587951b7534afaf8865c9e7c87e55e26ec27cbff4c74e8",
+    "bytes": 1794
+  },
+  "provided_values_raw": {
+    "sha256_raw": "7b4d8a610270f95368fb732d5a7b3953e9c7c7583e6a32c03b5c326c4247556b",
+    "bytes": 15087
+  },
+  "entries": [
+    {
+      "pointer": "/meta/model_id",
+      "value": "mgpi-transfer-development",
+      "json_kind": "string",
+      "canonical_typed_value": "\"mgpi-transfer-development\"",
+      "role": "exact-provenance-exposure-or-title-not-plant-claim",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/meta/title",
+      "value": "MGPI transfer paths - source-adapted development draft",
+      "json_kind": "string",
+      "canonical_typed_value": "\"MGPI transfer paths - source-adapted development draft\"",
+      "role": "exact-provenance-exposure-or-title-not-plant-claim",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/meta/source_document",
+      "value": "source.txt",
+      "json_kind": "string",
+      "canonical_typed_value": "\"source.txt\"",
+      "role": "exact-provenance-exposure-or-title-not-plant-claim",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/meta/source_sha256",
+      "value": "551078e52d39c0f2dc587951b7534afaf8865c9e7c87e55e26ec27cbff4c74e8",
+      "json_kind": "string",
+      "canonical_typed_value": "\"551078e52d39c0f2dc587951b7534afaf8865c9e7c87e55e26ec27cbff4c74e8\"",
+      "role": "exact-provenance-exposure-or-title-not-plant-claim",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/meta/source_report",
+      "value": "CSB 2017-01-I-KS, December2017; printedpages7-8,23",
+      "json_kind": "string",
+      "canonical_typed_value": "\"CSB 2017-01-I-KS, December2017; printedpages7-8,23\"",
+      "role": "exact-provenance-exposure-or-title-not-plant-claim",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/meta/source_report_sha256",
+      "value": "2e8f0ef9db7b9c65b790dbb3c1a2f12f90a9a7051e531189b5868ce2c2e6a07e",
+      "json_kind": "string",
+      "canonical_typed_value": "\"2e8f0ef9db7b9c65b790dbb3c1a2f12f90a9a7051e531189b5868ce2c2e6a07e\"",
+      "role": "exact-provenance-exposure-or-title-not-plant-claim",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/meta/authoring_exposure/0",
+      "value": "Maintainer read selected original narrative and saw report Figure3 during source scouting.",
+      "json_kind": "string",
+      "canonical_typed_value": "\"Maintainer read selected original narrative and saw report Figure3 during source scouting.\"",
+      "role": "exact-provenance-exposure-or-title-not-plant-claim",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/meta/authoring_exposure/1",
+      "value": "Source-adapted development case; not a blind or unfamiliar-description model experiment.",
+      "json_kind": "string",
+      "canonical_typed_value": "\"Source-adapted development case; not a blind or unfamiliar-description model experiment.\"",
+      "role": "exact-provenance-exposure-or-title-not-plant-claim",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/meta/authoring_exposure/2",
+      "value": "Independent original-source key not read before this candidate was frozen.",
+      "json_kind": "string",
+      "canonical_typed_value": "\"Independent original-source key not read before this candidate was frozen.\"",
+      "role": "exact-provenance-exposure-or-title-not-plant-claim",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/meta/authoring_exposure/3",
+      "value": "After first source audit, the original-source scope/key was expanded to resolve bulk placement; this is corrected development evidence, not model improvement.",
+      "json_kind": "string",
+      "canonical_typed_value": "\"After first source audit, the original-source scope/key was expanded to resolve bulk placement; this is corrected development evidence, not model improvement.\"",
+      "role": "exact-provenance-exposure-or-title-not-plant-claim",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/meta/unknowns/0",
+      "value": "All supplied IDs are project aliases, not reported plant tags.",
+      "json_kind": "string",
+      "canonical_typed_value": "\"All supplied IDs are project aliases, not reported plant tags.\"",
+      "role": "project-alias-qualification-not-plant-tag-evidence",
+      "claim_ids": [],
+      "provided_row": 49,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/meta/unknowns/1",
+      "value": "Actual level units, alarm thresholds, pumps, valves, safeguards, line sizes and installed-state configuration remain unresolved.",
+      "json_kind": "string",
+      "canonical_typed_value": "\"Actual level units, alarm thresholds, pumps, valves, safeguards, line sizes and installed-state configuration remain unresolved.\"",
+      "role": "declared-unresolved-scope-not-physical-absence",
+      "claim_ids": [],
+      "provided_row": 50,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/meta/unknowns/2",
+      "value": "HYPO_PROCESS is unnamed; the acid process destination is unspecified and must not be equated with it.",
+      "json_kind": "string",
+      "canonical_typed_value": "\"HYPO_PROCESS is unnamed; the acid process destination is unspecified and must not be equated with it.\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G14"
+      ],
+      "provided_row": 51,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/meta/unknowns/3",
+      "value": "BL is a scope-boundary convention, not a common physical connection.",
+      "json_kind": "string",
+      "canonical_typed_value": "\"BL is a scope-boundary convention, not a common physical connection.\"",
+      "role": "boundary-notation-not-common-physical-junction",
+      "claim_ids": [],
+      "provided_row": 52,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/meta/unknowns/4",
+      "value": "No automatic chemical-unloading shutdown is established; the level alarm is notification only.",
+      "json_kind": "string",
+      "canonical_typed_value": "\"No automatic chemical-unloading shutdown is established; the level alarm is notification only.\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G13"
+      ],
+      "provided_row": 53,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/meta/assumptions/0",
+      "value": "No source-free process equipment or control equipment is added.",
+      "json_kind": "string",
+      "canonical_typed_value": "\"No source-free process equipment or control equipment is added.\"",
+      "role": "authored-intent-not-source-validated-engineering",
+      "claim_ids": [],
+      "provided_row": 54,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/meta/assumptions/1",
+      "value": "The later layout will propose geometry only; it will not infer equipment dimensions or nozzle positions.",
+      "json_kind": "string",
+      "canonical_typed_value": "\"The later layout will propose geometry only; it will not infer equipment dimensions or nozzle positions.\"",
+      "role": "authored-intent-not-source-validated-engineering",
+      "claim_ids": [],
+      "provided_row": 55,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/meta/source_scope_revision",
+      "value": "v2: adds the next section5.2 sentence explicitly locating the alarm in the bulk tank; v1 and its unsupported adaptation retained separately.",
+      "json_kind": "string",
+      "canonical_typed_value": "\"v2: adds the next section5.2 sentence explicitly locating the alarm in the bulk tank; v1 and its unsupported adaptation retained separately.\"",
+      "role": "exact-provenance-exposure-or-title-not-plant-claim",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/units/0/id",
+      "value": "HYPO_BULK",
+      "json_kind": "string",
+      "canonical_typed_value": "\"HYPO_BULK\"",
+      "role": "project-identifier-binding-only",
+      "claim_ids": [],
+      "provided_row": 1,
+      "record_pointer": "/units/0",
+      "record_identity": "HYPO_BULK",
+      "source_locator": "source.txt:L3-L3",
+      "source_quote": "HYPO_BULK is an outdoor tank receiving 12.5% sodium hypochlorite through unloading piping. The report describes a 6,500-gallon tank and atmospheric storage."
+    },
+    {
+      "pointer": "/units/0/name",
+      "value": "Sodium hypochlorite bulk tank",
+      "json_kind": "string",
+      "canonical_typed_value": "\"Sodium hypochlorite bulk tank\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G01"
+      ],
+      "provided_row": 2,
+      "record_pointer": "/units/0",
+      "record_identity": "HYPO_BULK",
+      "source_locator": "source.txt:L3-L3",
+      "source_quote": "HYPO_BULK is an outdoor tank receiving 12.5% sodium hypochlorite through unloading piping. The report describes a 6,500-gallon tank and atmospheric storage."
+    },
+    {
+      "pointer": "/units/0/type",
+      "value": "tank",
+      "json_kind": "string",
+      "canonical_typed_value": "\"tank\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G01"
+      ],
+      "provided_row": 3,
+      "record_pointer": "/units/0",
+      "record_identity": "HYPO_BULK",
+      "source_locator": "source.txt:L3-L3",
+      "source_quote": "HYPO_BULK is an outdoor tank receiving 12.5% sodium hypochlorite through unloading piping. The report describes a 6,500-gallon tank and atmospheric storage."
+    },
+    {
+      "pointer": "/units/0/source",
+      "value": "source.txt:L3-L3",
+      "json_kind": "string",
+      "canonical_typed_value": "\"source.txt:L3-L3\"",
+      "role": "source-locator-binding-only",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": "/units/0",
+      "record_identity": "HYPO_BULK",
+      "source_locator": "source.txt:L3-L3",
+      "source_quote": "HYPO_BULK is an outdoor tank receiving 12.5% sodium hypochlorite through unloading piping. The report describes a 6,500-gallon tank and atmospheric storage."
+    },
+    {
+      "pointer": "/units/0/assigned_tag",
+      "value": 1,
+      "json_kind": "integer",
+      "canonical_typed_value": "1",
+      "role": "author-assignment-declaration-only",
+      "claim_ids": [],
+      "provided_row": 4,
+      "record_pointer": "/units/0",
+      "record_identity": "HYPO_BULK",
+      "source_locator": "source.txt:L3-L3",
+      "source_quote": "HYPO_BULK is an outdoor tank receiving 12.5% sodium hypochlorite through unloading piping. The report describes a 6,500-gallon tank and atmospheric storage."
+    },
+    {
+      "pointer": "/units/0/reported_capacity_gal",
+      "value": 6500,
+      "json_kind": "integer",
+      "canonical_typed_value": "6500",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G01"
+      ],
+      "provided_row": 5,
+      "record_pointer": "/units/0",
+      "record_identity": "HYPO_BULK",
+      "source_locator": "source.txt:L3-L3",
+      "source_quote": "HYPO_BULK is an outdoor tank receiving 12.5% sodium hypochlorite through unloading piping. The report describes a 6,500-gallon tank and atmospheric storage."
+    },
+    {
+      "pointer": "/units/0/reported_concentration_pct",
+      "value": 12.5,
+      "json_kind": "number",
+      "canonical_typed_value": "12.5",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G01"
+      ],
+      "provided_row": 6,
+      "record_pointer": "/units/0",
+      "record_identity": "HYPO_BULK",
+      "source_locator": "source.txt:L3-L3",
+      "source_quote": "HYPO_BULK is an outdoor tank receiving 12.5% sodium hypochlorite through unloading piping. The report describes a 6,500-gallon tank and atmospheric storage."
+    },
+    {
+      "pointer": "/units/0/storage_pressure_basis",
+      "value": "atmospheric",
+      "json_kind": "string",
+      "canonical_typed_value": "\"atmospheric\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G01"
+      ],
+      "provided_row": 7,
+      "record_pointer": "/units/0",
+      "record_identity": "HYPO_BULK",
+      "source_locator": "source.txt:L3-L3",
+      "source_quote": "HYPO_BULK is an outdoor tank receiving 12.5% sodium hypochlorite through unloading piping. The report describes a 6,500-gallon tank and atmospheric storage."
+    },
+    {
+      "pointer": "/units/1/id",
+      "value": "HYPO_DAY",
+      "json_kind": "string",
+      "canonical_typed_value": "\"HYPO_DAY\"",
+      "role": "project-identifier-binding-only",
+      "claim_ids": [],
+      "provided_row": 8,
+      "record_pointer": "/units/1",
+      "record_identity": "HYPO_DAY",
+      "source_locator": "source.txt:L4-L4",
+      "source_quote": "Sodium hypochlorite is transferred from HYPO_BULK into HYPO_DAY, a smaller tank inside Mod B, and then from HYPO_DAY into HYPO_PROCESS, an otherwise unidentified process vessel."
+    },
+    {
+      "pointer": "/units/1/name",
+      "value": "Sodium hypochlorite day tank",
+      "json_kind": "string",
+      "canonical_typed_value": "\"Sodium hypochlorite day tank\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G02"
+      ],
+      "provided_row": 9,
+      "record_pointer": "/units/1",
+      "record_identity": "HYPO_DAY",
+      "source_locator": "source.txt:L4-L4",
+      "source_quote": "Sodium hypochlorite is transferred from HYPO_BULK into HYPO_DAY, a smaller tank inside Mod B, and then from HYPO_DAY into HYPO_PROCESS, an otherwise unidentified process vessel."
+    },
+    {
+      "pointer": "/units/1/type",
+      "value": "tank",
+      "json_kind": "string",
+      "canonical_typed_value": "\"tank\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G02"
+      ],
+      "provided_row": 10,
+      "record_pointer": "/units/1",
+      "record_identity": "HYPO_DAY",
+      "source_locator": "source.txt:L4-L4",
+      "source_quote": "Sodium hypochlorite is transferred from HYPO_BULK into HYPO_DAY, a smaller tank inside Mod B, and then from HYPO_DAY into HYPO_PROCESS, an otherwise unidentified process vessel."
+    },
+    {
+      "pointer": "/units/1/source",
+      "value": "source.txt:L4-L4",
+      "json_kind": "string",
+      "canonical_typed_value": "\"source.txt:L4-L4\"",
+      "role": "source-locator-binding-only",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": "/units/1",
+      "record_identity": "HYPO_DAY",
+      "source_locator": "source.txt:L4-L4",
+      "source_quote": "Sodium hypochlorite is transferred from HYPO_BULK into HYPO_DAY, a smaller tank inside Mod B, and then from HYPO_DAY into HYPO_PROCESS, an otherwise unidentified process vessel."
+    },
+    {
+      "pointer": "/units/1/assigned_tag",
+      "value": true,
+      "json_kind": "boolean",
+      "canonical_typed_value": "true",
+      "role": "author-assignment-declaration-only",
+      "claim_ids": [],
+      "provided_row": 11,
+      "record_pointer": "/units/1",
+      "record_identity": "HYPO_DAY",
+      "source_locator": "source.txt:L4-L4",
+      "source_quote": "Sodium hypochlorite is transferred from HYPO_BULK into HYPO_DAY, a smaller tank inside Mod B, and then from HYPO_DAY into HYPO_PROCESS, an otherwise unidentified process vessel."
+    },
+    {
+      "pointer": "/units/2/id",
+      "value": "HYPO_PROCESS",
+      "json_kind": "string",
+      "canonical_typed_value": "\"HYPO_PROCESS\"",
+      "role": "project-identifier-binding-only",
+      "claim_ids": [],
+      "provided_row": 12,
+      "record_pointer": "/units/2",
+      "record_identity": "HYPO_PROCESS",
+      "source_locator": "source.txt:L4-L4",
+      "source_quote": "Sodium hypochlorite is transferred from HYPO_BULK into HYPO_DAY, a smaller tank inside Mod B, and then from HYPO_DAY into HYPO_PROCESS, an otherwise unidentified process vessel."
+    },
+    {
+      "pointer": "/units/2/name",
+      "value": "Unidentified sodium hypochlorite process vessel",
+      "json_kind": "string",
+      "canonical_typed_value": "\"Unidentified sodium hypochlorite process vessel\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G03"
+      ],
+      "provided_row": 13,
+      "record_pointer": "/units/2",
+      "record_identity": "HYPO_PROCESS",
+      "source_locator": "source.txt:L4-L4",
+      "source_quote": "Sodium hypochlorite is transferred from HYPO_BULK into HYPO_DAY, a smaller tank inside Mod B, and then from HYPO_DAY into HYPO_PROCESS, an otherwise unidentified process vessel."
+    },
+    {
+      "pointer": "/units/2/type",
+      "value": "vessel",
+      "json_kind": "string",
+      "canonical_typed_value": "\"vessel\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G03"
+      ],
+      "provided_row": 14,
+      "record_pointer": "/units/2",
+      "record_identity": "HYPO_PROCESS",
+      "source_locator": "source.txt:L4-L4",
+      "source_quote": "Sodium hypochlorite is transferred from HYPO_BULK into HYPO_DAY, a smaller tank inside Mod B, and then from HYPO_DAY into HYPO_PROCESS, an otherwise unidentified process vessel."
+    },
+    {
+      "pointer": "/units/2/source",
+      "value": "source.txt:L4-L4",
+      "json_kind": "string",
+      "canonical_typed_value": "\"source.txt:L4-L4\"",
+      "role": "source-locator-binding-only",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": "/units/2",
+      "record_identity": "HYPO_PROCESS",
+      "source_locator": "source.txt:L4-L4",
+      "source_quote": "Sodium hypochlorite is transferred from HYPO_BULK into HYPO_DAY, a smaller tank inside Mod B, and then from HYPO_DAY into HYPO_PROCESS, an otherwise unidentified process vessel."
+    },
+    {
+      "pointer": "/units/2/assigned_tag",
+      "value": true,
+      "json_kind": "boolean",
+      "canonical_typed_value": "true",
+      "role": "author-assignment-declaration-only",
+      "claim_ids": [],
+      "provided_row": 15,
+      "record_pointer": "/units/2",
+      "record_identity": "HYPO_PROCESS",
+      "source_locator": "source.txt:L4-L4",
+      "source_quote": "Sodium hypochlorite is transferred from HYPO_BULK into HYPO_DAY, a smaller tank inside Mod B, and then from HYPO_DAY into HYPO_PROCESS, an otherwise unidentified process vessel."
+    },
+    {
+      "pointer": "/units/3/id",
+      "value": "ACID_DAY",
+      "json_kind": "string",
+      "canonical_typed_value": "\"ACID_DAY\"",
+      "role": "project-identifier-binding-only",
+      "claim_ids": [],
+      "provided_row": 16,
+      "record_pointer": "/units/3",
+      "record_identity": "ACID_DAY",
+      "source_locator": "source.txt:L5-L5",
+      "source_quote": "ACID_DAY is an outdoor day tank receiving 30% sulfuric acid in the unloading area. Its reported capacity is 8,500 gallons. Material goes from this tank directly into an unspecified process destination."
+    },
+    {
+      "pointer": "/units/3/name",
+      "value": "Sulfuric acid day tank",
+      "json_kind": "string",
+      "canonical_typed_value": "\"Sulfuric acid day tank\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G04"
+      ],
+      "provided_row": 17,
+      "record_pointer": "/units/3",
+      "record_identity": "ACID_DAY",
+      "source_locator": "source.txt:L5-L5",
+      "source_quote": "ACID_DAY is an outdoor day tank receiving 30% sulfuric acid in the unloading area. Its reported capacity is 8,500 gallons. Material goes from this tank directly into an unspecified process destination."
+    },
+    {
+      "pointer": "/units/3/type",
+      "value": "tank",
+      "json_kind": "string",
+      "canonical_typed_value": "\"tank\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G04"
+      ],
+      "provided_row": 18,
+      "record_pointer": "/units/3",
+      "record_identity": "ACID_DAY",
+      "source_locator": "source.txt:L5-L5",
+      "source_quote": "ACID_DAY is an outdoor day tank receiving 30% sulfuric acid in the unloading area. Its reported capacity is 8,500 gallons. Material goes from this tank directly into an unspecified process destination."
+    },
+    {
+      "pointer": "/units/3/source",
+      "value": "source.txt:L5-L5",
+      "json_kind": "string",
+      "canonical_typed_value": "\"source.txt:L5-L5\"",
+      "role": "source-locator-binding-only",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": "/units/3",
+      "record_identity": "ACID_DAY",
+      "source_locator": "source.txt:L5-L5",
+      "source_quote": "ACID_DAY is an outdoor day tank receiving 30% sulfuric acid in the unloading area. Its reported capacity is 8,500 gallons. Material goes from this tank directly into an unspecified process destination."
+    },
+    {
+      "pointer": "/units/3/assigned_tag",
+      "value": true,
+      "json_kind": "boolean",
+      "canonical_typed_value": "true",
+      "role": "author-assignment-declaration-only",
+      "claim_ids": [],
+      "provided_row": 19,
+      "record_pointer": "/units/3",
+      "record_identity": "ACID_DAY",
+      "source_locator": "source.txt:L5-L5",
+      "source_quote": "ACID_DAY is an outdoor day tank receiving 30% sulfuric acid in the unloading area. Its reported capacity is 8,500 gallons. Material goes from this tank directly into an unspecified process destination."
+    },
+    {
+      "pointer": "/units/3/reported_capacity_gal",
+      "value": 8500,
+      "json_kind": "integer",
+      "canonical_typed_value": "8500",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G04"
+      ],
+      "provided_row": 20,
+      "record_pointer": "/units/3",
+      "record_identity": "ACID_DAY",
+      "source_locator": "source.txt:L5-L5",
+      "source_quote": "ACID_DAY is an outdoor day tank receiving 30% sulfuric acid in the unloading area. Its reported capacity is 8,500 gallons. Material goes from this tank directly into an unspecified process destination."
+    },
+    {
+      "pointer": "/units/3/reported_concentration_pct",
+      "value": 30,
+      "json_kind": "integer",
+      "canonical_typed_value": "30",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G04"
+      ],
+      "provided_row": 21,
+      "record_pointer": "/units/3",
+      "record_identity": "ACID_DAY",
+      "source_locator": "source.txt:L5-L5",
+      "source_quote": "ACID_DAY is an outdoor day tank receiving 30% sulfuric acid in the unloading area. Its reported capacity is 8,500 gallons. Material goes from this tank directly into an unspecified process destination."
+    },
+    {
+      "pointer": "/streams/0/id",
+      "value": "H1",
+      "json_kind": "string",
+      "canonical_typed_value": "\"H1\"",
+      "role": "project-identifier-binding-only",
+      "claim_ids": [],
+      "provided_row": 22,
+      "record_pointer": "/streams/0",
+      "record_identity": "H1",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/0/name",
+      "value": "Hypochlorite unloading across scope boundary",
+      "json_kind": "string",
+      "canonical_typed_value": "\"Hypochlorite unloading across scope boundary\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G05"
+      ],
+      "provided_row": 23,
+      "record_pointer": "/streams/0",
+      "record_identity": "H1",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/0/from",
+      "value": "BL",
+      "json_kind": "string",
+      "canonical_typed_value": "\"BL\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G05"
+      ],
+      "provided_row": 24,
+      "record_pointer": "/streams/0",
+      "record_identity": "H1",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/0/to",
+      "value": "HYPO_BULK",
+      "json_kind": "string",
+      "canonical_typed_value": "\"HYPO_BULK\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G05"
+      ],
+      "provided_row": 25,
+      "record_pointer": "/streams/0",
+      "record_identity": "H1",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/0/source",
+      "value": "source.txt:L6-L6",
+      "json_kind": "string",
+      "canonical_typed_value": "\"source.txt:L6-L6\"",
+      "role": "source-locator-binding-only",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": "/streams/0",
+      "record_identity": "H1",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/1/id",
+      "value": "H2",
+      "json_kind": "string",
+      "canonical_typed_value": "\"H2\"",
+      "role": "project-identifier-binding-only",
+      "claim_ids": [],
+      "provided_row": 26,
+      "record_pointer": "/streams/1",
+      "record_identity": "H2",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/1/name",
+      "value": "Hypochlorite bulk-to-day transfer",
+      "json_kind": "string",
+      "canonical_typed_value": "\"Hypochlorite bulk-to-day transfer\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G06"
+      ],
+      "provided_row": 27,
+      "record_pointer": "/streams/1",
+      "record_identity": "H2",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/1/from",
+      "value": "HYPO_BULK",
+      "json_kind": "string",
+      "canonical_typed_value": "\"HYPO_BULK\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G06"
+      ],
+      "provided_row": 28,
+      "record_pointer": "/streams/1",
+      "record_identity": "H2",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/1/to",
+      "value": "HYPO_DAY",
+      "json_kind": "string",
+      "canonical_typed_value": "\"HYPO_DAY\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G06"
+      ],
+      "provided_row": 29,
+      "record_pointer": "/streams/1",
+      "record_identity": "H2",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/1/source",
+      "value": "source.txt:L6-L6",
+      "json_kind": "string",
+      "canonical_typed_value": "\"source.txt:L6-L6\"",
+      "role": "source-locator-binding-only",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": "/streams/1",
+      "record_identity": "H2",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/2/id",
+      "value": "H3",
+      "json_kind": "string",
+      "canonical_typed_value": "\"H3\"",
+      "role": "project-identifier-binding-only",
+      "claim_ids": [],
+      "provided_row": 30,
+      "record_pointer": "/streams/2",
+      "record_identity": "H3",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/2/name",
+      "value": "Hypochlorite day-to-process transfer",
+      "json_kind": "string",
+      "canonical_typed_value": "\"Hypochlorite day-to-process transfer\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G07"
+      ],
+      "provided_row": 31,
+      "record_pointer": "/streams/2",
+      "record_identity": "H3",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/2/from",
+      "value": "HYPO_DAY",
+      "json_kind": "string",
+      "canonical_typed_value": "\"HYPO_DAY\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G07"
+      ],
+      "provided_row": 32,
+      "record_pointer": "/streams/2",
+      "record_identity": "H3",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/2/to",
+      "value": "HYPO_PROCESS",
+      "json_kind": "string",
+      "canonical_typed_value": "\"HYPO_PROCESS\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G07"
+      ],
+      "provided_row": 33,
+      "record_pointer": "/streams/2",
+      "record_identity": "H3",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/2/source",
+      "value": "source.txt:L6-L6",
+      "json_kind": "string",
+      "canonical_typed_value": "\"source.txt:L6-L6\"",
+      "role": "source-locator-binding-only",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": "/streams/2",
+      "record_identity": "H3",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/3/id",
+      "value": "A1",
+      "json_kind": "string",
+      "canonical_typed_value": "\"A1\"",
+      "role": "project-identifier-binding-only",
+      "claim_ids": [],
+      "provided_row": 34,
+      "record_pointer": "/streams/3",
+      "record_identity": "A1",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/3/name",
+      "value": "Sulfuric acid unloading across scope boundary",
+      "json_kind": "string",
+      "canonical_typed_value": "\"Sulfuric acid unloading across scope boundary\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G08"
+      ],
+      "provided_row": 35,
+      "record_pointer": "/streams/3",
+      "record_identity": "A1",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/3/from",
+      "value": "BL",
+      "json_kind": "string",
+      "canonical_typed_value": "\"BL\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G08"
+      ],
+      "provided_row": 36,
+      "record_pointer": "/streams/3",
+      "record_identity": "A1",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/3/to",
+      "value": "ACID_DAY",
+      "json_kind": "string",
+      "canonical_typed_value": "\"ACID_DAY\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G08"
+      ],
+      "provided_row": 37,
+      "record_pointer": "/streams/3",
+      "record_identity": "A1",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/3/source",
+      "value": "source.txt:L6-L6",
+      "json_kind": "string",
+      "canonical_typed_value": "\"source.txt:L6-L6\"",
+      "role": "source-locator-binding-only",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": "/streams/3",
+      "record_identity": "A1",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/4/id",
+      "value": "A2",
+      "json_kind": "string",
+      "canonical_typed_value": "\"A2\"",
+      "role": "project-identifier-binding-only",
+      "claim_ids": [],
+      "provided_row": 38,
+      "record_pointer": "/streams/4",
+      "record_identity": "A2",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/4/name",
+      "value": "Sulfuric acid to unspecified process boundary",
+      "json_kind": "string",
+      "canonical_typed_value": "\"Sulfuric acid to unspecified process boundary\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G09"
+      ],
+      "provided_row": 39,
+      "record_pointer": "/streams/4",
+      "record_identity": "A2",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/4/from",
+      "value": "ACID_DAY",
+      "json_kind": "string",
+      "canonical_typed_value": "\"ACID_DAY\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G09"
+      ],
+      "provided_row": 40,
+      "record_pointer": "/streams/4",
+      "record_identity": "A2",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/4/to",
+      "value": "BL",
+      "json_kind": "string",
+      "canonical_typed_value": "\"BL\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G09"
+      ],
+      "provided_row": 41,
+      "record_pointer": "/streams/4",
+      "record_identity": "A2",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/streams/4/source",
+      "value": "source.txt:L6-L6",
+      "json_kind": "string",
+      "canonical_typed_value": "\"source.txt:L6-L6\"",
+      "role": "source-locator-binding-only",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": "/streams/4",
+      "record_identity": "A2",
+      "source_locator": "source.txt:L6-L6",
+      "source_quote": "For this model, H1 denotes the boundary-to-HYPO_BULK transfer, H2 the HYPO_BULK-to-HYPO_DAY transfer, H3 the HYPO_DAY-to-HYPO_PROCESS transfer, A1 the boundary-to-ACID_DAY transfer, and A2 the ACID_DAY-to-boundary transfer."
+    },
+    {
+      "pointer": "/instruments/0/tag",
+      "value": "LI_HYPO",
+      "json_kind": "string",
+      "canonical_typed_value": "\"LI_HYPO\"",
+      "role": "project-identifier-binding-only",
+      "claim_ids": [],
+      "provided_row": 42,
+      "record_pointer": "/instruments/0",
+      "record_identity": "LI_HYPO",
+      "source_locator": "source.txt:L7-L7",
+      "source_quote": "The added section 5.2 sentence explicitly places the alarmed indicator in the sodium hypochlorite bulk tank; LI_HYPO is its project alias. Its high-level alarm notifies operators; this indication does not automatically stop chemical unloading."
+    },
+    {
+      "pointer": "/instruments/0/unit",
+      "value": "HYPO_BULK",
+      "json_kind": "string",
+      "canonical_typed_value": "\"HYPO_BULK\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G10"
+      ],
+      "provided_row": 43,
+      "record_pointer": "/instruments/0",
+      "record_identity": "LI_HYPO",
+      "source_locator": "source.txt:L7-L7",
+      "source_quote": "The added section 5.2 sentence explicitly places the alarmed indicator in the sodium hypochlorite bulk tank; LI_HYPO is its project alias. Its high-level alarm notifies operators; this indication does not automatically stop chemical unloading."
+    },
+    {
+      "pointer": "/instruments/0/variable",
+      "value": "level",
+      "json_kind": "string",
+      "canonical_typed_value": "\"level\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G10"
+      ],
+      "provided_row": 44,
+      "record_pointer": "/instruments/0",
+      "record_identity": "LI_HYPO",
+      "source_locator": "source.txt:L7-L7",
+      "source_quote": "The added section 5.2 sentence explicitly places the alarmed indicator in the sodium hypochlorite bulk tank; LI_HYPO is its project alias. Its high-level alarm notifies operators; this indication does not automatically stop chemical unloading."
+    },
+    {
+      "pointer": "/instruments/0/uom",
+      "value": "",
+      "json_kind": "string",
+      "canonical_typed_value": "\"\"",
+      "role": "explicit-unknown-encoding-not-unitless-fact",
+      "claim_ids": [],
+      "provided_row": 45,
+      "record_pointer": "/instruments/0",
+      "record_identity": "LI_HYPO",
+      "source_locator": "source.txt:L7-L7",
+      "source_quote": "The added section 5.2 sentence explicitly places the alarmed indicator in the sodium hypochlorite bulk tank; LI_HYPO is its project alias. Its high-level alarm notifies operators; this indication does not automatically stop chemical unloading."
+    },
+    {
+      "pointer": "/instruments/0/description",
+      "value": "Level indication and high-level operator notification",
+      "json_kind": "string",
+      "canonical_typed_value": "\"Level indication and high-level operator notification\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G11"
+      ],
+      "provided_row": 46,
+      "record_pointer": "/instruments/0",
+      "record_identity": "LI_HYPO",
+      "source_locator": "source.txt:L7-L7",
+      "source_quote": "The added section 5.2 sentence explicitly places the alarmed indicator in the sodium hypochlorite bulk tank; LI_HYPO is its project alias. Its high-level alarm notifies operators; this indication does not automatically stop chemical unloading."
+    },
+    {
+      "pointer": "/instruments/0/source",
+      "value": "source.txt:L7-L7",
+      "json_kind": "string",
+      "canonical_typed_value": "\"source.txt:L7-L7\"",
+      "role": "source-locator-binding-only",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": "/instruments/0",
+      "record_identity": "LI_HYPO",
+      "source_locator": "source.txt:L7-L7",
+      "source_quote": "The added section 5.2 sentence explicitly places the alarmed indicator in the sodium hypochlorite bulk tank; LI_HYPO is its project alias. Its high-level alarm notifies operators; this indication does not automatically stop chemical unloading."
+    },
+    {
+      "pointer": "/instruments/0/assigned_tag",
+      "value": true,
+      "json_kind": "boolean",
+      "canonical_typed_value": "true",
+      "role": "author-assignment-declaration-only",
+      "claim_ids": [],
+      "provided_row": 47,
+      "record_pointer": "/instruments/0",
+      "record_identity": "LI_HYPO",
+      "source_locator": "source.txt:L7-L7",
+      "source_quote": "The added section 5.2 sentence explicitly places the alarmed indicator in the sodium hypochlorite bulk tank; LI_HYPO is its project alias. Its high-level alarm notifies operators; this indication does not automatically stop chemical unloading."
+    },
+    {
+      "pointer": "/instruments/0/alarm_action_basis",
+      "value": "High level automatically shuts down unloading.",
+      "json_kind": "string",
+      "canonical_typed_value": "\"High level automatically shuts down unloading.\"",
+      "role": "semantic-claim-component",
+      "claim_ids": [
+        "AV-G12"
+      ],
+      "provided_row": 48,
+      "record_pointer": "/instruments/0",
+      "record_identity": "LI_HYPO",
+      "source_locator": "source.txt:L7-L7",
+      "source_quote": "The added section 5.2 sentence explicitly places the alarmed indicator in the sodium hypochlorite bulk tank; LI_HYPO is its project alias. Its high-level alarm notifies operators; this indication does not automatically stop chemical unloading."
+    },
+    {
+      "pointer": "/final_elements",
+      "value": [],
+      "json_kind": "empty-array",
+      "canonical_typed_value": "[]",
+      "role": "no-supplied-records-not-physical-absence",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/controllers",
+      "value": [],
+      "json_kind": "empty-array",
+      "canonical_typed_value": "[]",
+      "role": "no-supplied-records-not-physical-absence",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/manual_valves",
+      "value": [],
+      "json_kind": "empty-array",
+      "canonical_typed_value": "[]",
+      "role": "no-supplied-records-not-physical-absence",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/relief_devices",
+      "value": [],
+      "json_kind": "empty-array",
+      "canonical_typed_value": "[]",
+      "role": "no-supplied-records-not-physical-absence",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/interlocks",
+      "value": [],
+      "json_kind": "empty-array",
+      "canonical_typed_value": "[]",
+      "role": "no-supplied-records-not-physical-absence",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    },
+    {
+      "pointer": "/limits",
+      "value": [],
+      "json_kind": "empty-array",
+      "canonical_typed_value": "[]",
+      "role": "no-supplied-records-not-physical-absence",
+      "claim_ids": [],
+      "provided_row": null,
+      "record_pointer": null,
+      "record_identity": null,
+      "source_locator": null,
+      "source_quote": null
+    }
+  ],
+  "counts": {
+    "all_model_leaves_or_empty_containers": 82,
+    "provided_values": 55,
+    "complementary_source_fields": 10,
+    "complementary_meta_values": 11,
+    "empty_sections": 6,
+    "semantic_components": 34,
+    "semantic_groups": 14
+  },
+  "origin": "Prospective authored control: exact reference CSV with only action value_json changed and CSV reserialized; not a claimed product-generated false review. Actual old producer reproduction awaits root authorization."
+}

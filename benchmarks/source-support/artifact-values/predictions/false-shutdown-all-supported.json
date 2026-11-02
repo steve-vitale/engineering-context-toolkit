@@ -1,0 +1,117 @@
+{
+  "schema": "source-support-answer-1",
+  "decisions": [
+    {
+      "id": "AV-G01",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S01"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G02",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S02"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G03",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S03"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G04",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S04"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G05",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S01"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G06",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S02"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G07",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S03"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G08",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S04"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G09",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S05"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G10",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S06"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G11",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S06"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G12",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S06"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G13",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S06"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    },
+    {
+      "id": "AV-G14",
+      "judgment": "supported",
+      "evidence_ids": [
+        "S03"
+      ],
+      "reason": "Synthetic uniform-label control; reason/citation quality is not scored."
+    }
+  ]
+}

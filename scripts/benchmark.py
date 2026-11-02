@@ -175,6 +175,8 @@ def metrics(total):
 def score_case(task, files, prediction):
     if task == 'source-support':
         import source_support
+        if '_artifact_value_review' in files:
+            return files['_artifact_value_review'].score(prediction)
         return source_support.score(read_json(files['input']), read_json(files['key']), prediction)
     if task == 'drawing-extraction':
         import score_pid2graph as scorer
@@ -217,6 +219,8 @@ def evaluate(suite_path, root=ROOT):
                                  'score_tags.py', 'test_scorer_controls.py'] if task == 'drawing-extraction' else [])
     if task == 'source-support':
         sources.append('source_support.py')
+        if any(isinstance(c, dict) and 'artifact_values_protocol' in c for c in suite.get('cases', [])):
+            sources.extend(['artifact_value_review.py', 'description_workflow.py'])
     code_hashes = {p: file_hash(Path(__file__).parent / p) for p in sources}
     require(isinstance(suite.get('cases'), list) and suite['cases'], 'Suite needs cases')
     require(isinstance(suite.get('runs'), list) and suite['runs'], 'Suite needs run manifest paths')
@@ -227,7 +231,13 @@ def evaluate(suite_path, root=ROOT):
         require(case['id'] not in cases, 'Duplicate case ID')
         required = {'input', 'key'} | ({'expected'} if task == 'description-facts' else set())
         require(set(case.get('files', {})) == required, 'Case needs ' + ', '.join(sorted(required)) + ' references')
-        files = {k: reference(root, v) for k, v in case['files'].items()}
+        if 'artifact_values_protocol' in case:
+            require(task == 'source-support', 'Artifact value review is an opt-in source-support case')
+            import artifact_value_review
+            require(case['artifact_values_protocol'] == artifact_value_review.PROTOCOL, 'Unsupported artifact value review protocol')
+            files = {'_artifact_value_review': artifact_value_review.admit(root, case['files']['input'], case['files']['key'])}
+        else:
+            files = {k: reference(root, v) for k, v in case['files'].items()}
         # Validate keys independently: a bad key must stop evaluation, never become a model failure.
         score_case(task, files, None)
         if task == 'drawing-extraction':
@@ -248,7 +258,8 @@ def evaluate(suite_path, root=ROOT):
             controls[case['id']] = table
         elif task == 'source-support':
             import source_support
-            controls[case['id']] = source_support.controls(read_json(files['input']), read_json(files['key']))
+            controls[case['id']] = (files['_artifact_value_review'].controls() if '_artifact_value_review' in files else
+                                   source_support.controls(read_json(files['input']), read_json(files['key'])))
             positive = controls[case['id']]['reference']['judgments']
             require(positive['tp'] == positive['predicted'] == positive['truth'] > 0,
                     'Source judgment reference control must match every key label')
@@ -333,6 +344,8 @@ def evaluate(suite_path, root=ROOT):
                 rows.append({'case': cid, 'status': status, 'note': note, 'counts': scored, 'diagnostics': diagnostics,
                              'reported_resources': reported, 'recorded_run_at': recorded_run_at,
                              'prediction_ref': ref})
+                if '_artifact_value_review' in loaded[cid]:
+                    rows[-1]['artifact_value_review'] = loaded[cid]['_artifact_value_review'].report()
             results.append({'run': run['id'], 'model': run['model'], 'interface': run['interface'],
                             'method': run['method'], 'configuration': run['configuration'], 'recipe': run['recipe'],
                             'ran_at': run['ran_at'], 'provenance': run['provenance'], 'cohort': digest(encoded(cohort)),
@@ -393,6 +406,19 @@ def markdown(report):
                 str(count['tp']) + ' / ' + str(count['truth']),
                 str(count['predicted']) + ' / ' + str(count['truth']),
                 f"{count['tp'] / count['truth']:.4f}", false_supported]) + ' |')
+        artifact_rows = [(run, case) for run in report['results'] for case in run['rows'] if 'artifact_value_review' in case]
+        if artifact_rows:
+            lines += ['', '## Declared artifact value coverage', '',
+                      'Coverage counts describe the reviewed frozen inventory. Reviewer label accuracy is separate from whether the artifact contains contradicted claims. '
+                      'A perfect reviewer may correctly report a critical contradiction. Role-only values are not source-accuracy successes; rationale quality and current plant truth remain unscored.', '',
+                      '| Run | Case | Model entries | Provided values | Declared groups | Keyed artifact contradictions (ID and pointer) | Missing reviewer judgments |',
+                      '|---|---|---|---|---|---|---|']
+            for run, case in artifact_rows:
+                admission = case['artifact_value_review']
+                coverage = admission['coverage']
+                contradictions = '; '.join(c['id'] + ': ' + ', '.join(c['pointers']) for c in admission['keyed_artifact_contradictions']) or 'none in declared key'
+                lines.append('| ' + ' | '.join(safe(v) for v in [run['run'], case['case'], coverage['model_entries'], coverage['provided_values'],
+                    coverage['semantic_groups'], contradictions, ', '.join(case['diagnostics'].get('missing_judgments', [])) or 'none']) + ' |')
         lines += ['', 'The label F1 rows below are companion diagnostics. F1 differs from exact accuracy when judgments are missing. '
                   'Inspect each claim and its reason; a correct label can accompany a false explanation.', '', '## Per-label diagnostics', '']
     lines += [

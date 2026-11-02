@@ -1,6 +1,6 @@
 # State of the toolkit
 
-Holistic audit: **2026-11-02, UTC**, with the latest bounded collection-review follow-up starting from released commit `d94e645`.
+Holistic audit: **2026-11-02, UTC**, with the latest bounded collection-review follow-up starting from released commit `7f55e3f`.
 The public name is **Engineering Context Toolkit**. The jumpstart is its first-assignment path; modeling,
 review, analysis and evaluation can be used independently. Earlier failures and original evidence remain
 in the [journal](JOURNAL.md) and [attempt ledger](TRIED.md).
@@ -89,6 +89,15 @@ adequacy or a compulsory project (A302/A303). The current local question module 
 one unnamed case skips; checkout three pass. Collection checks, whole-repository freshness and exact-head CI
 are separate evidence scopes. The standard-library-only mode excludes Pillow-dependent drawing checks; full
 mode retains every registered test. None of these checks establishes plant or company acceptance.
+
+**Frozen-model review benchmark.** Explicitly reviewed Native values, roles, supplied CSV and
+approved claim/source context are bound before the existing fixed-label scorer. Declared coverage and keyed
+artifact contradictions remain separate from reviewer accuracy; the manual CSV remains the engineer route.
+Six actual public-root scores and the six-entry registry check pass. Four focused stdlib programs report 63
+tests: 62 passed and one unnamed skip. These focused results are separate from source-only mode
+(55 programs), the full suite (72 programs), and exact-head CI.
+The [profile and limits](../benchmarks/source-support/artifact-values/README.md) exclude automatic claim
+discovery, general generator accuracy, source authority and current plant acceptance.
 
 | Reproduced gap | Required behavior and bounded repair |
 |---|---|

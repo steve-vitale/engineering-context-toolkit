@@ -1,0 +1,37 @@
+{
+  "cases": [
+    "artifact-false-shutdown"
+  ],
+  "configuration": {
+    "authoring_date_not_inference_date": "2026-11-02",
+    "no_model_call": true,
+    "source_case": "false-shutdown",
+    "synthetic_control": true
+  },
+  "id": "artifact-control-false-shutdown-all-contradicted",
+  "interface": "deterministic authored saved JSON; no inference",
+  "method": "false-shutdown-all-contradicted",
+  "model": {
+    "id": "synthetic-review-control",
+    "provider": "none",
+    "version": "1"
+  },
+  "predictions": {
+    "artifact-false-shutdown": {
+      "path": "benchmarks/source-support/artifact-values/predictions/false-shutdown-all-contradicted.json",
+      "sha256": "001f70e9fbd38cbaf4990f8c8ee12dcc47e25fbba45c11de62a42ffaf0bd801a"
+    }
+  },
+  "provenance": "Saved key-derived/empty/uniform/missing/invalid/rationale controls. Not a model attempt, independent source family, held-out evaluation, reviewer authentication or plant acceptance. Actual CLI date/status is retained separately.",
+  "ran_at": "2026-11-02",
+  "recipe": [
+    {
+      "path": "benchmarks/source-support/artifact-values/PROTOCOL.md",
+      "sha256": "d9ff0cba444743a9e86f12b21ce8802c18ff4022033ef1d5456da6618aac9532"
+    },
+    {
+      "path": "benchmarks/source-support/artifact-values/EXPOSURE.json",
+      "sha256": "e0e5c1d8ac930dbd87921ebcd2280c3be723716d299e641305e09b275117c087"
+    }
+  ]
+}
