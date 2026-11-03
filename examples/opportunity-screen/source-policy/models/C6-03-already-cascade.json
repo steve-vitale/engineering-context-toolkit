@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "title": "Fictional final-six source/collection controls",
+    "unknowns": [
+      "Actual operation, engineering/source authority and human acceptance unknown"
+    ],
+    "assumptions": [
+      "All supplied identities/values/relations fictional before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "U-A",
+      "name": "Fictional exchanger",
+      "type": "heat_exchanger",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified"
+      },
+      "source": "Fictional source role",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [
+    {
+      "id": "S-A",
+      "name": "STEAM SUPPLY",
+      "from": "BL",
+      "to": "U-A",
+      "utility": true
+    }
+  ],
+  "instruments": [
+    {
+      "tag": "TT-A",
+      "variable": "temperature",
+      "unit": "U-A",
+      "stream": null,
+      "description": "Supplied fictional instrument",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "processtemperature"
+      },
+      "source": "Fictional source/association",
+      "assigned_tag": true
+    },
+    {
+      "tag": "FT-A",
+      "variable": "flow",
+      "unit": "U-A",
+      "stream": "S-A",
+      "description": "STEAM flow",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "quantity": "massflow",
+        "flow_unit": "kg/h"
+      },
+      "source": "Fictional source/association",
+      "assigned_tag": true
+    }
+  ],
+  "controllers": [
+    {
+      "tag": "TIC-A",
+      "unit": "U-A",
+      "measurement": "TT-A",
+      "output": {
+        "setpoint_of": "FIC-A"
+      },
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "mode": "auto",
+        "output_role": "flowsetpoint"
+      },
+      "description": "Fictional supplied controller",
+      "source": "Fictional exact source controller",
+      "assigned_tag": true
+    },
+    {
+      "tag": "FIC-A",
+      "unit": "U-A",
+      "measurement": "FT-A",
+      "output": {
+        "final_element": "TV-A"
+      },
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "mode": "cascade",
+        "output_role": "valve"
+      },
+      "description": "Fictional supplied controller",
+      "source": "Fictional exact source controller",
+      "assigned_tag": true
+    }
+  ],
+  "interlocks": [],
+  "manual_valves": [],
+  "final_elements": [
+    {
+      "tag": "TV-A",
+      "unit": "U-A",
+      "stream": "S-A",
+      "description": "STEAM valve",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "steamsupply"
+      },
+      "source": "Fictional valve association",
+      "assigned_tag": true
+    }
+  ],
+  "relief_devices": [],
+  "unplaced": []
+}

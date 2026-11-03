@@ -1,0 +1,602 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/models/E15-02-oil-unknown-sink.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E15"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E15@B-A",
+   "question_id": "E15",
+   "family": "energy",
+   "question": "What do existing records establish about this boiler/steam-generator candidate's applicable condensing-recovery function, receiving duty and system constraints?",
+   "about": "B-A",
+   "assets": [
+    {
+     "id": "B-A",
+     "tag": "B-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "equipment B-A reads \"B-A Light oil boiler\"",
+     "field": "units[B-A]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A record_source = \"Fictional development record; no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A record_available = true; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A service = \"steamwaterflue\"; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A fuel_basis = \"lightoil\"; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.fuel_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A sink_basis = null; blank; meaning and suitability unverified",
+     "field": "units[B-A].facts.sink_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A condensate_quality = \"acid/treatmentunreviewed\"; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.condensate_quality"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A fictional_record = True",
+     "field": "units[B-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_source = Fictional development record; no company or human approval",
+     "field": "units[B-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_revision = R1",
+     "field": "units[B-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_available = True",
+     "field": "units[B-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_authority = unverified",
+     "field": "units[B-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A service = steamwaterflue",
+     "field": "units[B-A].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A fuel_basis = lightoil",
+     "field": "units[B-A].facts.fuel_basis"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A condensate_quality = acid/treatmentunreviewed",
+     "field": "units[B-A].facts.condensate_quality"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A fictional_record = True",
+     "field": "units[B-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_source = Fictional development record; no company or human approval",
+     "field": "units[B-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_revision = R1",
+     "field": "units[B-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_available = True",
+     "field": "units[B-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_authority = unverified",
+     "field": "units[B-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A service = steamwaterflue",
+     "field": "units[B-A].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A fuel_basis = lightoil",
+     "field": "units[B-A].facts.fuel_basis"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A condensate_quality = acid/treatmentunreviewed",
+     "field": "units[B-A].facts.condensate_quality"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing boiler/flue/fuel and installed-recovery operating basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing named-subject actual boiler/flue/fuel and recovery arrangement, capacity/load/hours/fuel use, stack temperature/moisture and gas condition, source/revision/units/time/availability and unknowns.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "Establish relevant actual flue/boiler service first; known nonflue/electric or nonwater helper scope is not applicable and unknown service remains conditional. Missing GAS text, an unrecorded sink or unknown fuel is not proof that no records investigation is needed. S7 covers natural-gas and light-oil examples with different acid/material/treatment qualifications, not automatic suitability for any fuel. Acknowledge suitable existing recovery before considering further work.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[B-A].facts.fictional_record"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_source",
+       "value": "Fictional development record; no company or human approval",
+       "where": "units[B-A].facts.record_source"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[B-A].facts.record_revision"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_available",
+       "value": true,
+       "where": "units[B-A].facts.record_available"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[B-A].facts.record_authority"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "service",
+       "value": "steamwaterflue",
+       "where": "units[B-A].facts.service"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "fuel_basis",
+       "value": "lightoil",
+       "where": "units[B-A].facts.fuel_basis"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "condensate_quality",
+       "value": "acid/treatmentunreviewed",
+       "where": "units[B-A].facts.condensate_quality"
+      }
+     ]
+    },
+    {
+     "item": "Existing matched receiving duty, water quality and whole-system feasibility basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing actual receiving-water/process duty, temperature/flow/timing, exact association/source/quality and practical access; condensate acidity/treatment/materials, emissions/stack dispersion, deaerator/steam/turbine/blowdown-heat interactions and economic constraints.",
+      "site records: The following receiving-water tag/series locations are candidate-only lookup aids from supplied records; boiler/system association, source identity, availability, compatible duty and water quality remain unverified. Do not treat a foreign or unknown candidate as this boiler's measured heat sink.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "A nearby or anywhere MAKEUP/PROCESS/HOT WATER label is not proof of a cold, available, compatible or steady heat sink. Review source and receiving duty together with acid-condensate/water-quality treatment, design/material and whole-steam-system effects. S7 explicitly requires site-specific engineering and water-chemistry understanding; direct/indirect configurations and source examples are not interchangeable site prescriptions. Acknowledge suitable existing basis or unknowns without compulsory flue analysis, new measurements, equipment quotes or retrofit; no current site saving is calculated.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[B-A].facts.fictional_record"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_source",
+       "value": "Fictional development record; no company or human approval",
+       "where": "units[B-A].facts.record_source"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[B-A].facts.record_revision"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_available",
+       "value": true,
+       "where": "units[B-A].facts.record_available"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[B-A].facts.record_authority"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "service",
+       "value": "steamwaterflue",
+       "where": "units[B-A].facts.service"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "fuel_basis",
+       "value": "lightoil",
+       "where": "units[B-A].facts.fuel_basis"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "condensate_quality",
+       "value": "acid/treatmentunreviewed",
+       "where": "units[B-A].facts.condensate_quality"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual service/fuel, installed recovery and matched receiving duty/quality/timing with acid-condensate, materials, dispersion, whole-system and economic constraints before a feasibility decision. Do not obtain quotes or prescribe a condensing economizer from a GAS label plus nearby water, nor silently close unknown/oil/missing-sink records. Suitable existing function or nonapplicability may be acknowledged. No chemical, hardware, operating or site-benefit authorization follows.",
+   "typical_benefit": {
+    "wording": "Can \"increase overall heat recovery and steam system efficiency by up to 10%.\" \"Simple paybacks... are often less than 2 years.\"",
+    "source": [
+     "S7"
+    ],
+    "arc": "2.242x (by description)",
+    "source_titles": [
+     "S7: Steam Tip #26B, Considerations When Selecting a Condensing Economizer (DOE/GO-102012-3397)"
+    ]
+   },
+   "limits": "Source review: complete S7/Tip26B pp1–3 includes natural-gas/light-oil table qualifications, acid water/treatment/materials, system/stack-dispersion interactions and explicit site-specific engineering. Inherited up-to efficiency and payback examples are not present-day quotes or this site's outcomes. Supplied field/association values are unverified candidates, not completion.",
+   "status": "asked"
+  },
+  {
+   "id": "E15@B-B",
+   "question_id": "E15",
+   "family": "energy",
+   "question": "What do existing records establish about this boiler/steam-generator candidate's applicable condensing-recovery function, receiving duty and system constraints?",
+   "about": "B-B",
+   "assets": [
+    {
+     "id": "B-B",
+     "tag": "B-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "equipment B-B reads \"B-B Boiler unknown fuel\"",
+     "field": "units[B-B]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "B-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[B-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "B-B record_source = \"Fictional development record; no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[B-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "B-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[B-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "B-B record_available = true; present; meaning and suitability unverified",
+     "field": "units[B-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "B-B record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[B-B].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "B-B service = \"steamwaterflueunverified\"; present; meaning and suitability unverified",
+     "field": "units[B-B].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "B-B fuel_basis = null; blank; meaning and suitability unverified",
+     "field": "units[B-B].facts.fuel_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "B-B sink_basis = null; blank; meaning and suitability unverified",
+     "field": "units[B-B].facts.sink_basis"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B fictional_record = True",
+     "field": "units[B-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B record_source = Fictional development record; no company or human approval",
+     "field": "units[B-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B record_revision = R1",
+     "field": "units[B-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B record_available = True",
+     "field": "units[B-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B record_authority = unverified",
+     "field": "units[B-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B service = steamwaterflueunverified",
+     "field": "units[B-B].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B fictional_record = True",
+     "field": "units[B-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B record_source = Fictional development record; no company or human approval",
+     "field": "units[B-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B record_revision = R1",
+     "field": "units[B-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B record_available = True",
+     "field": "units[B-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B record_authority = unverified",
+     "field": "units[B-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B service = steamwaterflueunverified",
+     "field": "units[B-B].facts.service"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing boiler/flue/fuel and installed-recovery operating basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing named-subject actual boiler/flue/fuel and recovery arrangement, capacity/load/hours/fuel use, stack temperature/moisture and gas condition, source/revision/units/time/availability and unknowns.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "Establish relevant actual flue/boiler service first; known nonflue/electric or nonwater helper scope is not applicable and unknown service remains conditional. Missing GAS text, an unrecorded sink or unknown fuel is not proof that no records investigation is needed. S7 covers natural-gas and light-oil examples with different acid/material/treatment qualifications, not automatic suitability for any fuel. Acknowledge suitable existing recovery before considering further work.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[B-B].facts.fictional_record"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "record_source",
+       "value": "Fictional development record; no company or human approval",
+       "where": "units[B-B].facts.record_source"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[B-B].facts.record_revision"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "record_available",
+       "value": true,
+       "where": "units[B-B].facts.record_available"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[B-B].facts.record_authority"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "service",
+       "value": "steamwaterflueunverified",
+       "where": "units[B-B].facts.service"
+      }
+     ]
+    },
+    {
+     "item": "Existing matched receiving duty, water quality and whole-system feasibility basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing actual receiving-water/process duty, temperature/flow/timing, exact association/source/quality and practical access; condensate acidity/treatment/materials, emissions/stack dispersion, deaerator/steam/turbine/blowdown-heat interactions and economic constraints.",
+      "site records: The following receiving-water tag/series locations are candidate-only lookup aids from supplied records; boiler/system association, source identity, availability, compatible duty and water quality remain unverified. Do not treat a foreign or unknown candidate as this boiler's measured heat sink.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "A nearby or anywhere MAKEUP/PROCESS/HOT WATER label is not proof of a cold, available, compatible or steady heat sink. Review source and receiving duty together with acid-condensate/water-quality treatment, design/material and whole-steam-system effects. S7 explicitly requires site-specific engineering and water-chemistry understanding; direct/indirect configurations and source examples are not interchangeable site prescriptions. Acknowledge suitable existing basis or unknowns without compulsory flue analysis, new measurements, equipment quotes or retrofit; no current site saving is calculated.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[B-B].facts.fictional_record"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "record_source",
+       "value": "Fictional development record; no company or human approval",
+       "where": "units[B-B].facts.record_source"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[B-B].facts.record_revision"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "record_available",
+       "value": true,
+       "where": "units[B-B].facts.record_available"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[B-B].facts.record_authority"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "service",
+       "value": "steamwaterflueunverified",
+       "where": "units[B-B].facts.service"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual service/fuel, installed recovery and matched receiving duty/quality/timing with acid-condensate, materials, dispersion, whole-system and economic constraints before a feasibility decision. Do not obtain quotes or prescribe a condensing economizer from a GAS label plus nearby water, nor silently close unknown/oil/missing-sink records. Suitable existing function or nonapplicability may be acknowledged. No chemical, hardware, operating or site-benefit authorization follows.",
+   "typical_benefit": {
+    "wording": "Can \"increase overall heat recovery and steam system efficiency by up to 10%.\" \"Simple paybacks... are often less than 2 years.\"",
+    "source": [
+     "S7"
+    ],
+    "arc": "2.242x (by description)",
+    "source_titles": [
+     "S7: Steam Tip #26B, Considerations When Selecting a Condensing Economizer (DOE/GO-102012-3397)"
+    ]
+   },
+   "limits": "Source review: complete S7/Tip26B pp1–3 includes natural-gas/light-oil table qualifications, acid water/treatment/materials, system/stack-dispersion interactions and explicit site-specific engineering. Inherited up-to efficiency and payback examples are not present-day quotes or this site's outcomes. Supplied field/association values are unverified candidates, not completion.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

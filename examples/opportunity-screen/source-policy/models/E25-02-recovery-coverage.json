@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "title": "Fictional final-six source/collection controls",
+    "unknowns": [
+      "Actual operation, engineering/source authority and human acceptance unknown"
+    ],
+    "assumptions": [
+      "All supplied identities/values/relations fictional before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "TK-A",
+      "name": "TANK TO ATM",
+      "type": "storage_tank",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "crudeoil",
+        "existing_recovery": "suppliedlocalVRU"
+      },
+      "source": "Fictional source role",
+      "assigned_tag": true
+    },
+    {
+      "id": "TK-B",
+      "name": "TANK TO ATM",
+      "type": "storage_tank",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "producedwaterunknownhydrocarbons",
+        "existing_recovery": null
+      },
+      "source": "Fictional source role",
+      "assigned_tag": true
+    },
+    {
+      "id": "VR-X",
+      "name": "VRU VAPOR RECOVERY",
+      "type": "vapor_recovery_unit",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "target_subject": "TK-Aonly",
+        "record_scope": "suppliedAonly",
+        "capture_claim": 95,
+        "capture_unit": "percentunverified"
+      },
+      "source": "Fictional source role",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "controllers": [],
+  "interlocks": [],
+  "manual_valves": [],
+  "final_elements": [],
+  "relief_devices": [],
+  "unplaced": []
+}

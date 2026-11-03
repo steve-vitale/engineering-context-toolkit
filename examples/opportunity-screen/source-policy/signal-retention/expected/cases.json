@@ -1,0 +1,354 @@
+{
+  "schema": "source-policy-signal-retention-cases-v1",
+  "scope": "12 post-audit fictional mapper/locator controls supplement88source-policy controls; no new plants/generalization, source authority, measured time series, live historian or engineering approval",
+  "rules_audited": [
+    "E3",
+    "E7",
+    "E10",
+    "E14",
+    "E15",
+    "E19"
+  ],
+  "rules_proposed_for_locator_change": [
+    "E3",
+    "E7",
+    "E10",
+    "E15",
+    "E19"
+  ],
+  "E14": "No patch: old equipment-only trigger historian entry is a no-op, not an observed lost tag.",
+  "cases": [
+    {
+      "id": "SC01-E3-selected-flow",
+      "rule": "E3",
+      "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC01-E3-selected-flow.json",
+      "model_sha256_raw": "9d8f966fc1f439936da10f3980a0c6835042517cfc31a4c6d934bfeda1e1e7aa",
+      "independent_criteria": [
+        "SC01",
+        "SC13",
+        "SC14"
+      ],
+      "expected_finding_ids": [
+        "E3@P-A"
+      ],
+      "expected_after_data_request_index": 1,
+      "receiving_kind": "actual_locator",
+      "required_where_fragments": [
+        "FT-R",
+        "SYNTHETIC_SC01_RECIRC_FLOW"
+      ],
+      "forbidden_where_fragments": [
+        "SYNTHETIC_SC01_FORWARD_FLOW",
+        "SYNTHETIC_SC01_TEMPERATURE",
+        "only the valve position",
+        "only a valve"
+      ],
+      "expect_all_existing_fields_unchanged_except_declared_where": true,
+      "expected_before": "history/before/SC01-E3-selected-flow",
+      "expected_after": "expected/after/SC01-E3-selected-flow",
+      "source_qualification": "Only selected-role flow pointer is recoverable; presence of selected FT prevents a false no-flow warning. It is not actual measured flow or loop acceptance."
+    },
+    {
+      "id": "SC02-E3-position-only",
+      "rule": "E3",
+      "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC02-E3-position-only.json",
+      "model_sha256_raw": "64174d5c514d8d1ca29301ce1cb2c846b22d79b74f697a47ba9cdee098c15b29",
+      "independent_criteria": [
+        "SC02",
+        "SC13",
+        "SC14"
+      ],
+      "expected_finding_ids": [
+        "E3@P-A"
+      ],
+      "expected_after_data_request_index": 1,
+      "receiving_kind": "position_warning",
+      "required_where_fragments": [
+        "FV-R",
+        "SYNTHETIC_SC02_POSITION",
+        "only the valve position is recorded",
+        "flow needs a meter or a calibrated valve curve"
+      ],
+      "forbidden_where_fragments": [
+        "SYNTHETIC_SC02_FORWARD_FLOW"
+      ],
+      "expect_all_existing_fields_unchanged_except_declared_where": true,
+      "expected_before": "history/before/SC02-E3-position-only",
+      "expected_after": "expected/after/SC02-E3-position-only",
+      "source_qualification": "Unrelated forward FT cannot suppress selected recirculation position-not-flow limitation."
+    },
+    {
+      "id": "SC03-E7-position-only",
+      "rule": "E7",
+      "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC03-E7-position-only.json",
+      "model_sha256_raw": "dc676567e499edd6323b29a26976b1284046d546b3d1488d50bae01539f9a777",
+      "independent_criteria": [
+        "SC03",
+        "SC13",
+        "SC14"
+      ],
+      "expected_finding_ids": [
+        "E7@PCV-A"
+      ],
+      "expected_after_data_request_index": 0,
+      "receiving_kind": "position_warning",
+      "required_where_fragments": [
+        "PCV-A",
+        "SYNTHETIC_SC03_POSITION",
+        "only the valve position is recorded",
+        "flow needs a meter or a calibrated valve curve"
+      ],
+      "forbidden_where_fragments": [
+        "SYNTHETIC_SC03_FOREIGN_FLOW"
+      ],
+      "expect_all_existing_fields_unchanged_except_declared_where": true,
+      "expected_before": "history/before/SC03-E7-position-only",
+      "expected_after": "expected/after/SC03-E7-position-only",
+      "source_qualification": "No fake station equipment/owner. This restores an honest position limitation, not measured station flow."
+    },
+    {
+      "id": "SC04-E7-quiet",
+      "rule": "E7",
+      "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC04-E7-quiet.json",
+      "model_sha256_raw": "a32e161e8ba3f001ec742f386be8dd8c0dcc016ebbf60a2ec9fb07214c092e75",
+      "independent_criteria": [
+        "SC04",
+        "SC13",
+        "SC14"
+      ],
+      "expected_finding_ids": [],
+      "expected_after_data_request_index": 0,
+      "receiving_kind": "quiet",
+      "required_where_fragments": [],
+      "forbidden_where_fragments": [
+        "SYNTHETIC_SC04_POSITION"
+      ],
+      "expect_all_existing_fields_unchanged_except_declared_where": true,
+      "expected_before": "history/before/SC04-E7-quiet",
+      "expected_after": "expected/after/SC04-E7-quiet",
+      "source_qualification": "Nonstation input remains quiet; no new scope or measurement assertion."
+    },
+    {
+      "id": "SC05-E10-instrument-trigger",
+      "rule": "E10",
+      "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC05-E10-instrument-trigger.json",
+      "model_sha256_raw": "c51b1dc7d87834c3bc465fe58fadca13fd922f7b74246f094205104a44a0ce02",
+      "independent_criteria": [
+        "SC05",
+        "SC13",
+        "SC14"
+      ],
+      "expected_finding_ids": [
+        "E10@PT-A",
+        "E10@FT-B",
+        "E10@TT-C"
+      ],
+      "expected_after_data_request_index": 0,
+      "receiving_kind": "actual_locator",
+      "required_where_fragments": [
+        "SYNTHETIC_SC05_PRESSURE",
+        "SYNTHETIC_SC05_FLOW"
+      ],
+      "forbidden_where_fragments": [
+        "SYNTHETIC_SC05_WRONG_TEMPERATURE",
+        "SYNTHETIC_SC05_FOREIGN_FLOW"
+      ],
+      "expect_all_existing_fields_unchanged_except_declared_where": true,
+      "expected_before": "history/before/SC05-E10-instrument-trigger",
+      "expected_after": "expected/after/SC05-E10-instrument-trigger",
+      "source_qualification": "Pressure/flow locators are supported only for directly admitted instrument triggers; TT trigger stays without a requested-quantity locator. No neighboring association is invented."
+    },
+    {
+      "id": "SC06-E10-equipment-noop",
+      "rule": "E10",
+      "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC06-E10-equipment-noop.json",
+      "model_sha256_raw": "373ffe71ac20533442f719aeef26905a3e1eb491dc4032395717eb78bfcf24de",
+      "independent_criteria": [
+        "SC06",
+        "SC13",
+        "SC14"
+      ],
+      "expected_finding_ids": [
+        "E10@TK-A"
+      ],
+      "expected_after_data_request_index": 0,
+      "receiving_kind": "no_op",
+      "required_where_fragments": [],
+      "forbidden_where_fragments": [
+        "SYNTHETIC_SC06_NEIGHBOR_PRESSURE",
+        "SYNTHETIC_SC06_OIL_FLOW"
+      ],
+      "expect_all_existing_fields_unchanged_except_declared_where": true,
+      "expected_before": "history/before/SC06-E10-equipment-noop",
+      "expected_after": "expected/after/SC06-E10-equipment-noop",
+      "source_qualification": "Equipment trigger cannot become an instrument. Hydrocarbon flash equipment remains excluded; no source/physical inference from adjacent tags."
+    },
+    {
+      "id": "SC07-E14-equipment-noop",
+      "rule": "E14",
+      "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC07-E14-equipment-noop.json",
+      "model_sha256_raw": "a1d98df7081b42091f269801c00aeab9ffeba69da095f17e5e7b68613db4a9aa",
+      "independent_criteria": [
+        "SC07",
+        "SC13",
+        "SC14"
+      ],
+      "expected_finding_ids": [
+        "E14@B-A"
+      ],
+      "expected_after_data_request_index": 0,
+      "receiving_kind": "no_op",
+      "required_where_fragments": [],
+      "forbidden_where_fragments": [
+        "SYNTHETIC_SC07_STACK_TEMPERATURE"
+      ],
+      "expect_all_existing_fields_unchanged_except_declared_where": true,
+      "expected_before": "history/before/SC07-E14-equipment-noop",
+      "expected_after": "expected/after/SC07-E14-equipment-noop",
+      "source_qualification": "E14 is unchanged: equipment-only old historian trigger never selects this separate TT. Foreign economizer remains qualified, not accepted coverage."
+    },
+    {
+      "id": "SC08-E14-excluded",
+      "rule": "E14",
+      "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC08-E14-excluded.json",
+      "model_sha256_raw": "2c39554ffe039467e31e775590ce4dabc82518e430c8aa59ba600110c1f6dc1d",
+      "independent_criteria": [
+        "SC08",
+        "SC13",
+        "SC14"
+      ],
+      "expected_finding_ids": [],
+      "expected_after_data_request_index": 0,
+      "receiving_kind": "quiet",
+      "required_where_fragments": [],
+      "forbidden_where_fragments": [
+        "SYNTHETIC_SC08_EXCLUDED_TEMPERATURE"
+      ],
+      "expect_all_existing_fields_unchanged_except_declared_where": true,
+      "expected_before": "history/before/SC08-E14-excluded",
+      "expected_after": "expected/after/SC08-E14-excluded",
+      "source_qualification": "No E14 selector broadening solely to manufacture a signal recovery."
+    },
+    {
+      "id": "SC09-E15-candidate-flow",
+      "rule": "E15",
+      "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC09-E15-candidate-flow.json",
+      "model_sha256_raw": "5310d77380c0123d592f9a2b2779f7eea62641aa1b4819a6600f48ae55e2392b",
+      "independent_criteria": [
+        "SC09",
+        "SC13",
+        "SC14"
+      ],
+      "expected_finding_ids": [
+        "E15@B-A",
+        "E15@B-B"
+      ],
+      "expected_after_data_request_index": 1,
+      "receiving_kind": "unverified_candidate_locator",
+      "required_where_fragments": [
+        "FT-W",
+        "SYNTHETIC_SC09_WATER_FLOW",
+        "candidate-only",
+        "association"
+      ],
+      "forbidden_where_fragments": [
+        "SYNTHETIC_SC09_WRONG_TEMPERATURE",
+        "SYNTHETIC_SC09_UNRELATED_FLOW"
+      ],
+      "expect_all_existing_fields_unchanged_except_declared_where": true,
+      "expected_before": "history/before/SC09-E15-candidate-flow",
+      "expected_after": "expected/after/SC09-E15-candidate-flow",
+      "source_qualification": "Global receiving-water lookup remains explicitly unverified/foreign or unknown; no boiler match, connected sink, water quality or installed recovery accepted."
+    },
+    {
+      "id": "SC10-E15-position-only",
+      "rule": "E15",
+      "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC10-E15-position-only.json",
+      "model_sha256_raw": "34936e8488533a9f05e4c2eb7e53abcbb401045ac4421530f5bdb14290423592",
+      "independent_criteria": [
+        "SC10",
+        "SC13",
+        "SC14"
+      ],
+      "expected_finding_ids": [
+        "E15@B-A"
+      ],
+      "expected_after_data_request_index": 1,
+      "receiving_kind": "position_warning",
+      "required_where_fragments": [
+        "FV-W",
+        "SYNTHETIC_SC10_POSITION",
+        "only the valve position is recorded",
+        "flow needs a meter or a calibrated valve curve",
+        "candidate-only"
+      ],
+      "forbidden_where_fragments": [
+        "SYNTHETIC_SC10_TEMPERATURE",
+        "SYNTHETIC_SC10_UNRELATED_FLOW"
+      ],
+      "expect_all_existing_fields_unchanged_except_declared_where": true,
+      "expected_before": "history/before/SC10-E15-position-only",
+      "expected_after": "expected/after/SC10-E15-position-only",
+      "source_qualification": "Receiving valve command and TT do not become flow; unrelated FT is not borrowed. Candidate-only warning prevents implied compatible sink."
+    },
+    {
+      "id": "SC11-E19-candidate-pressure",
+      "rule": "E19",
+      "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC11-E19-candidate-pressure.json",
+      "model_sha256_raw": "37f1682b4c19a1cd04c7f7bdd43734d9d88d52c94232bdf7698b85b45510cebf",
+      "independent_criteria": [
+        "SC11",
+        "SC13",
+        "SC14"
+      ],
+      "expected_finding_ids": [
+        "E19@C-A",
+        "E19@C-B"
+      ],
+      "expected_after_data_request_index": 0,
+      "receiving_kind": "unverified_candidate_locator",
+      "required_where_fragments": [
+        "PIC-A",
+        "SYNTHETIC_SC11_PRESSURE",
+        "candidate-only",
+        "association"
+      ],
+      "forbidden_where_fragments": [
+        "SYNTHETIC_SC11_WRONG_FLOW",
+        "SYNTHETIC_SC11_TEMPERATURE"
+      ],
+      "expect_all_existing_fields_unchanged_except_declared_where": true,
+      "expected_before": "history/before/SC11-E19-candidate-pressure",
+      "expected_after": "expected/after/SC11-E19-candidate-pressure",
+      "source_qualification": "Retain only mapper-admitted pressure pointer, not own-system/header/setpoint/minimum-user proof. Foreign/unknown global source remains visible and qualified."
+    },
+    {
+      "id": "SC12-E19-nonmeasurement",
+      "rule": "E19",
+      "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC12-E19-nonmeasurement.json",
+      "model_sha256_raw": "8280cd70748ad3f58dc0a6ca6abcb8913087d09adf0186095a4c4b7a50647c56",
+      "independent_criteria": [
+        "SC12",
+        "SC13",
+        "SC14"
+      ],
+      "expected_finding_ids": [
+        "E19@C-A"
+      ],
+      "expected_after_data_request_index": 0,
+      "receiving_kind": "no_admitted_quantity",
+      "required_where_fragments": [
+        "candidate-only"
+      ],
+      "forbidden_where_fragments": [
+        "SYNTHETIC_SC12_TEMPERATURE",
+        "SYNTHETIC_SC12_FLOW",
+        "SYNTHETIC_SC12_POSITION"
+      ],
+      "expect_all_existing_fields_unchanged_except_declared_where": true,
+      "expected_before": "history/before/SC12-E19-nonmeasurement",
+      "expected_after": "expected/after/SC12-E19-nonmeasurement",
+      "source_qualification": "Controller kind/valve command excluded from pressure mapper; no borrowed FT/TT or control-output-as-pressure. Known process-gas machine remains excluded."
+    }
+  ]
+}

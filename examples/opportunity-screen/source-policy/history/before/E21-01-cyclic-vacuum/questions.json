@@ -1,0 +1,81 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/air-utility-records/models/E21-01-cyclic-vacuum.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E21"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "energy": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E21@model",
+   "question_id": "E21",
+   "family": "energy",
+   "question": "Is compressed air used for open blowing, sparging, venturi vacuum or cabinet cooling?",
+   "about": "V-A, V-B",
+   "assets": [
+    {
+     "id": "V-A",
+     "tag": "V-A"
+    },
+    {
+     "id": "V-B",
+     "tag": "V-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "V-A",
+     "tag": "V-A",
+     "text": "equipment V-A reads \"V-A AIR VENTURI vacuum\"",
+     "field": "units[V-A]"
+    },
+    {
+     "role": "trigger",
+     "id": "V-B",
+     "tag": "V-B",
+     "text": "equipment V-B reads \"V-B AIR VENTURI vacuum\"",
+     "field": "units[V-B]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "End-use inventory with flow",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: list every air end use and estimate its flow"
+     ],
+     "how": "Flag uses a blower, pump or fan could do."
+    }
+   ],
+   "decision_rule": "Replace inappropriate uses with a blower, vacuum pump or fan where practical.",
+   "typical_benefit": {
+    "wording": "\"unregulated usage is commonly as high as 30 to 50 percent of air demand.\"",
+    "source": [
+     "S11",
+     "S24"
+    ],
+    "arc": "2.4239; 2.4237; 2.4238 (IAC/ITAC browse page: 2.4239: 2,697 recommendations, 1.0 yr average payback, 48.4% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S11: Improving Compressed Air System Performance: A Sourcebook for Industry, 3rd ed. (DOE + Compressed Air Challenge)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

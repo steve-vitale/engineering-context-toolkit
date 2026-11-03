@@ -2,7 +2,7 @@
 
 For each question: what you must measure (never defaulted), and each site constant with where it comes from. A public typical value exists for some constants; the tool uses it only with `--use-defaults` and labels it in every output.
 
-## E8: Is there a steam trap population large enough to justify a trap survey program?
+## E8: What do existing records establish about the represented trap candidates' steam service, inventory coverage and current inspection program?
 
 Failed steam traps: steam lost per failed trap (lb/h, from the survey) x number failed, hours the steam is on, the energy per lb at those conditions, then fuel via boiler efficiency.
 

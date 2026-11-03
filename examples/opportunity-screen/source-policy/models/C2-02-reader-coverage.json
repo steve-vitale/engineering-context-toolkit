@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "title": "Fictional final-six source/collection controls",
+    "unknowns": [
+      "Actual operation, engineering/source authority and human acceptance unknown"
+    ],
+    "assumptions": [
+      "All supplied identities/values/relations fictional before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "U-A",
+      "name": "Fictional process",
+      "type": "process_unit",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified"
+      },
+      "source": "Fictional source role",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "FT-A",
+      "variable": "flow",
+      "unit": "U-A",
+      "stream": null,
+      "description": "Supplied fictional instrument",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": false,
+        "record_authority": "unverified",
+        "purpose": "suppliedcontrol",
+        "logic_coverage": "unknowncomplete",
+        "record_scope": "foreignFT-A"
+      },
+      "source": "Fictional source/association",
+      "assigned_tag": true
+    },
+    {
+      "tag": "PT-B",
+      "variable": "pressure",
+      "unit": "U-A",
+      "stream": null,
+      "description": "Supplied fictional instrument",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "purpose": "unknown",
+        "manual_adjustments": null
+      },
+      "source": "Fictional source/association",
+      "assigned_tag": true
+    }
+  ],
+  "controllers": [
+    {
+      "tag": "FIC-A",
+      "unit": "U-A",
+      "measurement": "FT-A",
+      "output": {
+        "final_element": "FV-A"
+      },
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "mode": "unverified",
+        "record_scope": "sourceAonly"
+      },
+      "description": "Fictional supplied controller",
+      "source": "Fictional exact source controller",
+      "assigned_tag": true
+    }
+  ],
+  "interlocks": [],
+  "manual_valves": [],
+  "final_elements": [
+    {
+      "tag": "FV-A",
+      "unit": "U-A",
+      "stream": "S-A",
+      "description": "Process valve",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "steamsupply"
+      },
+      "source": "Fictional valve association",
+      "assigned_tag": true
+    }
+  ],
+  "relief_devices": [],
+  "unplaced": []
+}

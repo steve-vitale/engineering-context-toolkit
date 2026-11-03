@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "title": "Fictional original-source question control",
+    "unknowns": [
+      "Actual operating state, source authority and human usefulness not established"
+    ],
+    "assumptions": [
+      "All identifiers/values authored for development before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "P-A",
+      "name": "Fictional pumpA",
+      "type": "positive_displacement_pump",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development packet; no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "line_purpose": "positive-displacement reliefreturn, not reviewed E3scope"
+      },
+      "assigned_tag": true,
+      "source": "Fictional source-defined record, no physical existence implied"
+    },
+    {
+      "id": "P-B",
+      "name": "Fictional pumpB",
+      "type": "centrifugal_pump",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development packet; no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "line_purpose": "centrifugal minimumflow candidate"
+      },
+      "assigned_tag": true,
+      "source": "Fictional source-defined record, no physical existence implied"
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "final_elements": [],
+  "manual_valves": [
+    {
+      "tag": "HV-A",
+      "unit": "P-A",
+      "description": "Minimum-flow recirculation candidate",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development packet; no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "line_purpose": "source-declared candidate; exactdischarge-return association unverified"
+      },
+      "assigned_tag": true
+    },
+    {
+      "tag": "HV-B",
+      "unit": "P-B",
+      "description": "Minimum-flow recirculation candidate",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development packet; no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "line_purpose": "source-declared candidate; exactdischarge-return association unverified"
+      },
+      "assigned_tag": true
+    }
+  ],
+  "controllers": []
+}

@@ -1,0 +1,83 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/thermal-recovery-records/models/E14-03-heat-source.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E14"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "energy": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E14@E-A",
+   "question_id": "E14",
+   "family": "energy",
+   "question": "Does this boiler stack have no feedwater economizer?",
+   "about": "E-A",
+   "assets": [
+    {
+     "id": "E-A",
+     "tag": "E-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "E-A",
+     "tag": "E-A",
+     "text": "equipment E-A reads \"E-A Electric boiler\"",
+     "field": "units[E-A]"
+    },
+    {
+     "role": "checked, none found",
+     "text": "no economizer anywhere in the model",
+     "field": "applies_when.without"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Stack temperature",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: flue gas thermometer at the stack"
+     ],
+     "how": "Record at normal firing."
+    },
+    {
+     "item": "Fuel sulfur content",
+     "state": "not_on_drawing",
+     "where": [
+      "utility bills or the site energy report: fuel specification"
+     ],
+     "how": "Limits how low the flue gas can be cooled."
+    }
+   ],
+   "decision_rule": "Worth a quote when stack temperature is high and the fuel allows cooling the flue gas.",
+   "typical_benefit": {
+    "wording": "Efficiency \"can be increased by 1% for every 40°F reduction in flue gas temperature.\" An economizer \"can often reduce fuel requirements by 5% to 10% and pay for itself in less than 2 years.\"",
+    "source": [
+     "S4",
+     "S24"
+    ],
+    "arc": "2.242x (by description) (IAC/ITAC browse page: 635 recommendations, 2.1 yr average payback, 24.3% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S4: Steam Tip #3, Use Feedwater Economizers for Waste Heat Recovery",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

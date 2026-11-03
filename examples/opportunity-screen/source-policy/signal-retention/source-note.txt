@@ -1,0 +1,7 @@
+Fictional source document: Signal locator exercise, Figure 11.
+All SYNTHETIC_SCxx_* labels below are explicitly fictional symbolic source-series pointers authored
+for the existing Native fig11_series field. No numeric time series, actual figure/data collection,
+TE channel, historian connection, company record or physical measurement is supplied or asserted.
+The native renderer's phrase "from the source report's Fig 11" is exercised against THIS fictional
+source note only. Its emitted pointer proves literal lookup retention, not external evidence existence.
+False, zero, null, unknown and empty values remain typed fictional inputs; no value is an approval.

@@ -1,0 +1,464 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/water-valve-records/models/C4-05-topology-and-marking.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "C4"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "controls": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "C4@FV-A",
+   "question_id": "C4",
+   "family": "controls",
+   "question": "What do existing valve, bypass and operating records establish about this candidate's control performance and sizing basis?",
+   "about": "FV-A",
+   "assets": [
+    {
+     "id": "FV-A",
+     "tag": "FV-A"
+    },
+    {
+     "id": "HV-A",
+     "tag": "HV-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "FV-A",
+     "tag": "FV-A",
+     "text": "valve FV-A reads \"FV-A Fictional flow control valve\" at U-A",
+     "field": "final_elements[FV-A]"
+    },
+    {
+     "role": "bypass valve",
+     "id": "HV-A",
+     "tag": "HV-A",
+     "text": "hand valve HV-A reads \"HV-A Fictional bypass valve\" at U-A",
+     "field": "manual_valves[HV-A]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-A",
+     "tag": "FV-A",
+     "text": "FV-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "final_elements[FV-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-A",
+     "tag": "FV-A",
+     "text": "FV-A record_source = \"Fictional training record, no plant or human approval\"; present; meaning and suitability unverified",
+     "field": "final_elements[FV-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-A",
+     "tag": "FV-A",
+     "text": "FV-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "final_elements[FV-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-A",
+     "tag": "FV-A",
+     "text": "FV-A record_available = true; present; meaning and suitability unverified",
+     "field": "final_elements[FV-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-A",
+     "tag": "FV-A",
+     "text": "FV-A record_authority = \"not authenticated\"; present; meaning and suitability unverified",
+     "field": "final_elements[FV-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-A",
+     "tag": "FV-A",
+     "text": "FV-A bypass_association = \"same line only; around-valve topology unknown\"; present; meaning and suitability unverified",
+     "field": "final_elements[FV-A].facts.bypass_association"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-A",
+     "tag": "HV-A",
+     "text": "HV-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-A",
+     "tag": "HV-A",
+     "text": "HV-A record_source = \"Fictional training record, no plant or human approval\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-A",
+     "tag": "HV-A",
+     "text": "HV-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-A",
+     "tag": "HV-A",
+     "text": "HV-A record_available = true; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-A",
+     "tag": "HV-A",
+     "text": "HV-A record_authority = \"not authenticated\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-A",
+     "tag": "HV-A",
+     "text": "HV-A bypass_association = \"heat-exchanger bypass on same stream, not established aroundFV-A\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-A].facts.bypass_association"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FV-A fictional_record = True",
+     "field": "final_elements[FV-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FV-A record_source = Fictional training record, no plant or human approval",
+     "field": "final_elements[FV-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FV-A record_revision = R1",
+     "field": "final_elements[FV-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FV-A record_available = True",
+     "field": "final_elements[FV-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FV-A record_authority = not authenticated",
+     "field": "final_elements[FV-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FV-A bypass_association = same line only; around-valve topology unknown",
+     "field": "final_elements[FV-A].facts.bypass_association"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing named-valve and bypass function, characteristic and operating basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing named-valve sizing/Cv and characteristic, process/system/pump duty and pressure/flow range, control-performance and bypass function/normal-position records. Retain exact asset/source/revision, availability and operating/sample coverage; do not substitute another site or valve.",
+      "historian or DCS trend for FV-A (no historian tag is mapped in this model for these)",
+      "a walkdown: Only if existing records cannot settle an applicable question: agree safe observations with the responsible engineer, including actual bypass function/position or measured travel association. No automatic field test, bypass closure or equipment change."
+     ],
+     "how": "First establish the actual valve/bypass service and association: same-stream presence does not prove a physical bypass around this valve. Distinguish command/indication from measured valve travel, and review the valve characteristic and matched operating/control-performance basis. Low opening, an open/cracked bypass or a source example alone does not prove oversizing or justify resize/trim; bypasses can perform legitimate differential-pressure protection or temperature control. Acknowledge suitable existing records without compulsory new measurement; retain unknown or foreign/unavailable evidence as qualified context.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "FV-A",
+       "label": "FV-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "final_elements[FV-A].facts.fictional_record"
+      },
+      {
+       "id": "FV-A",
+       "label": "FV-A",
+       "name": "record_source",
+       "value": "Fictional training record, no plant or human approval",
+       "where": "final_elements[FV-A].facts.record_source"
+      },
+      {
+       "id": "FV-A",
+       "label": "FV-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "final_elements[FV-A].facts.record_revision"
+      },
+      {
+       "id": "FV-A",
+       "label": "FV-A",
+       "name": "record_available",
+       "value": true,
+       "where": "final_elements[FV-A].facts.record_available"
+      },
+      {
+       "id": "FV-A",
+       "label": "FV-A",
+       "name": "record_authority",
+       "value": "not authenticated",
+       "where": "final_elements[FV-A].facts.record_authority"
+      },
+      {
+       "id": "FV-A",
+       "label": "FV-A",
+       "name": "bypass_association",
+       "value": "same line only; around-valve topology unknown",
+       "where": "final_elements[FV-A].facts.bypass_association"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review whether existing service, valve characteristic, system/pump operating range, control performance and actual bypass purpose establish a remaining investigation. No universal 50%-open criterion, commanded position, cracked bypass or absent record authorizes resize/trim, bypass closure or other hardware/operating change. Suitable existing records may be acknowledged; unresolved applicability or association remains a records question for the responsible engineer.",
+   "typical_benefit": {
+    "wording": "S13, printed pp. 25–26: highly throttled operation is a clue to review pump/system duty, valve sizing, characterization and control performance. Bypasses can have protective or temperature-control functions. This source supports investigation, not a universal opening threshold or a quantified site benefit.",
+    "source": [
+     "S13"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S13: Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079)"
+    ]
+   },
+   "limits": "Source-informed records review: S13 printed pp. 25–26 / PDF pp. 29–30, including valve-characterization qualifications and protective/temperature bypass functions. The earlier ellipsis omitted intervening characterization context; its exact old wording remains in history. Opening or a bypass label alone does not establish suitability, source authority or permission to modify equipment. Supplied fields remain candidates.",
+   "status": "asked"
+  },
+  {
+   "id": "C4@FV-B",
+   "question_id": "C4",
+   "family": "controls",
+   "question": "What do existing valve, bypass and operating records establish about this candidate's control performance and sizing basis?",
+   "about": "FV-B",
+   "assets": [
+    {
+     "id": "FV-B",
+     "tag": "FV-B"
+    },
+    {
+     "id": "HV-B",
+     "tag": "HV-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "FV-B",
+     "tag": "FV-B",
+     "text": "valve FV-B reads \"FV-B Fictional flow control valve\" at U-B",
+     "field": "final_elements[FV-B]"
+    },
+    {
+     "role": "bypass valve",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "hand valve HV-B reads \"HV-B Fictional bypass valve\" at U-B",
+     "field": "manual_valves[HV-B]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-B",
+     "tag": "FV-B",
+     "text": "FV-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "final_elements[FV-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-B",
+     "tag": "FV-B",
+     "text": "FV-B record_source = \"Fictional training record, no plant or human approval\"; present; meaning and suitability unverified",
+     "field": "final_elements[FV-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-B",
+     "tag": "FV-B",
+     "text": "FV-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "final_elements[FV-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-B",
+     "tag": "FV-B",
+     "text": "FV-B record_available = true; present; meaning and suitability unverified",
+     "field": "final_elements[FV-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-B",
+     "tag": "FV-B",
+     "text": "FV-B record_authority = \"not authenticated\"; present; meaning and suitability unverified",
+     "field": "final_elements[FV-B].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-B",
+     "tag": "FV-B",
+     "text": "FV-B bypass_association = \"declared bypass, marking NC/CSC supplied\"; present; meaning and suitability unverified",
+     "field": "final_elements[FV-B].facts.bypass_association"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B record_source = \"Fictional training record, no plant or human approval\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B record_available = true; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B record_authority = \"not authenticated\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-B].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B bypass_normal_position = \"NC\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-B].facts.bypass_normal_position"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B bypass_marking = \"CSC\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-B].facts.bypass_marking"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FV-B fictional_record = True",
+     "field": "final_elements[FV-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FV-B record_source = Fictional training record, no plant or human approval",
+     "field": "final_elements[FV-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FV-B record_revision = R1",
+     "field": "final_elements[FV-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FV-B record_available = True",
+     "field": "final_elements[FV-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FV-B record_authority = not authenticated",
+     "field": "final_elements[FV-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FV-B bypass_association = declared bypass, marking NC/CSC supplied",
+     "field": "final_elements[FV-B].facts.bypass_association"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing named-valve and bypass function, characteristic and operating basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing named-valve sizing/Cv and characteristic, process/system/pump duty and pressure/flow range, control-performance and bypass function/normal-position records. Retain exact asset/source/revision, availability and operating/sample coverage; do not substitute another site or valve.",
+      "historian or DCS trend for FV-B (no historian tag is mapped in this model for these)",
+      "a walkdown: Only if existing records cannot settle an applicable question: agree safe observations with the responsible engineer, including actual bypass function/position or measured travel association. No automatic field test, bypass closure or equipment change."
+     ],
+     "how": "First establish the actual valve/bypass service and association: same-stream presence does not prove a physical bypass around this valve. Distinguish command/indication from measured valve travel, and review the valve characteristic and matched operating/control-performance basis. Low opening, an open/cracked bypass or a source example alone does not prove oversizing or justify resize/trim; bypasses can perform legitimate differential-pressure protection or temperature control. Acknowledge suitable existing records without compulsory new measurement; retain unknown or foreign/unavailable evidence as qualified context.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "FV-B",
+       "label": "FV-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "final_elements[FV-B].facts.fictional_record"
+      },
+      {
+       "id": "FV-B",
+       "label": "FV-B",
+       "name": "record_source",
+       "value": "Fictional training record, no plant or human approval",
+       "where": "final_elements[FV-B].facts.record_source"
+      },
+      {
+       "id": "FV-B",
+       "label": "FV-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "final_elements[FV-B].facts.record_revision"
+      },
+      {
+       "id": "FV-B",
+       "label": "FV-B",
+       "name": "record_available",
+       "value": true,
+       "where": "final_elements[FV-B].facts.record_available"
+      },
+      {
+       "id": "FV-B",
+       "label": "FV-B",
+       "name": "record_authority",
+       "value": "not authenticated",
+       "where": "final_elements[FV-B].facts.record_authority"
+      },
+      {
+       "id": "FV-B",
+       "label": "FV-B",
+       "name": "bypass_association",
+       "value": "declared bypass, marking NC/CSC supplied",
+       "where": "final_elements[FV-B].facts.bypass_association"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review whether existing service, valve characteristic, system/pump operating range, control performance and actual bypass purpose establish a remaining investigation. No universal 50%-open criterion, commanded position, cracked bypass or absent record authorizes resize/trim, bypass closure or other hardware/operating change. Suitable existing records may be acknowledged; unresolved applicability or association remains a records question for the responsible engineer.",
+   "typical_benefit": {
+    "wording": "S13, printed pp. 25–26: highly throttled operation is a clue to review pump/system duty, valve sizing, characterization and control performance. Bypasses can have protective or temperature-control functions. This source supports investigation, not a universal opening threshold or a quantified site benefit.",
+    "source": [
+     "S13"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S13: Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079)"
+    ]
+   },
+   "limits": "Source-informed records review: S13 printed pp. 25–26 / PDF pp. 29–30, including valve-characterization qualifications and protective/temperature bypass functions. The earlier ellipsis omitted intervening characterization context; its exact old wording remains in history. Opening or a bypass label alone does not establish suitability, source authority or permission to modify equipment. Supplied fields remain candidates.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

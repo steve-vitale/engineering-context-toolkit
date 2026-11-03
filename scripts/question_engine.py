@@ -34,7 +34,7 @@ Writes questions.json (the graph-export questions shape: scripts/graph_export.py
 screen.md (grouped by family, readable on its own).
 
 What it does not do: it computes no savings, dollars or energy figures for the plant, and ranks nothing by value.
-The typical benefits are the cited sources' own general wording. A finding is a question worth asking, not an
+Referenced benefits include source quotations and contextual paraphrases. A finding is a question worth asking, not an
 audit result: it says the drawing shows a pattern, never that the plant wastes energy. Stdlib only; no network.
 """
 import argparse
@@ -1529,8 +1529,8 @@ def screen(model, catalog, only=None):
 
 HOW_TO_READ = """**How to read this.** This is a screen, not an audit. Each finding is a question the drawing or model
 raises, with the evidence found, what to collect (and exactly where), and how the collected data settles it. Nothing
-here says the plant wastes energy, and no savings are computed: the "what the source says" lines are the cited
-sources' general figures for plants in general, quoted as written, never an estimate for this plant. Data requests
+here says the plant wastes energy, and no savings are computed: the "what the source says" lines include source
+quotations and contextual paraphrases, retaining their qualifications, never estimates for this plant. Data requests
 are in one of three states: **on drawing** (the value is on the drawing or model and is quoted as evidence),
 **blank on drawing** (the drawing prints a field for it but leaves it empty, so fill that field), and **not on
 drawing** (collect it from the place named). Systems listed under "Left out" were not screened."""
@@ -1543,7 +1543,7 @@ def write_outputs(model, catalog, found, not_checked, quiet, excl, out, only=Non
            "schedules": model.schedule_sources,
            "questions_run": [q["id"] for q in catalog["questions"] if not only or q["id"] in only],
            "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings "
-                   "are computed; typical benefits are the cited sources' general wording.",
+                   "are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
            "counts": {"findings": len(found), "by_family": dict(sorted(count_by(found, "family").items()))},
            "questions": found, "not_checked": not_checked, "did_not_fire": quiet,
            "left_out": {k: sorted(set(v)) for k, v in sorted(excl.items())}}
@@ -1986,8 +1986,9 @@ def render_rollup_md(doc, catalog):
          "**How to read this.** Each site's screen, combined. A question is listed once, with every site and "
          "asset it fired on and the data to collect at each site, so the same request can be planned across "
          "sites. The order is only how many sites a question fired at, then how many findings: it is not a "
-         "ranking by value, and no savings are computed. The \"what the source says\" lines are the sources' "
-         "general figures, quoted as written. Read each site's own screen for the evidence behind a finding.", "",
+         "ranking by value, and no savings are computed. The \"what the source says\" lines include source quotations "
+         "and contextual paraphrases, retaining their qualifications, never estimates for these plants. "
+         "Read each site's own screen for the evidence behind a finding.", "",
          "| Site | Screen | Model | Findings |", "|---|---|---|---|"]
     if doc["catalog"] != shown_path(CATALOG):
         L[2:2] = [f"Questions: `{doc['catalog']}`.", ""]

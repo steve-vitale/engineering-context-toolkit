@@ -1,16 +1,16 @@
 # Opportunity screen roll-up: food, bayer
 
-**How to read this.** Each site's screen, combined. A question is listed once, with every site and asset it fired on and the data to collect at each site, so the same request can be planned across sites. The order is only how many sites a question fired at, then how many findings: it is not a ranking by value, and no savings are computed. The "what the source says" lines are the sources' general figures, quoted as written. Read each site's own screen for the evidence behind a finding.
+**How to read this.** Each site's screen, combined. A question is listed once, with every site and asset it fired on and the data to collect at each site, so the same request can be planned across sites. The order is only how many sites a question fired at, then how many findings: it is not a ranking by value, and no savings are computed. The "what the source says" lines include source quotations and contextual paraphrases, retaining their qualifications, never estimates for these plants. Read each site's own screen for the evidence behind a finding.
 
 | Site | Screen | Model | Findings |
 |---|---|---|---|
-| food | `examples/opportunity-screen/food/questions.json` | `examples/opportunity-screen/food_plant_model.json` | 29 |
-| bayer | `examples/opportunity-screen/bayer/questions.json` | `data/bayer_rt/process_model.json` | 12 |
+| food | `examples/opportunity-screen/food/questions.json` | `examples/opportunity-screen/food_plant_model.json` | 30 |
+| bayer | `examples/opportunity-screen/bayer/questions.json` | `data/bayer_rt/process_model.json` | 13 |
 
 | Question | Family | Sites | Findings |
 |---|---|---|---|
-| C1: Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user? | Metering | food, bayer | 4 |
-| C2: Which measurements have no controller (read by people, or by nothing)? | Controls and automation | food, bayer | 2 |
+| C1: What do existing records establish about this utility user's measurement coverage, usable data and intended decision? | Metering | food, bayer | 6 |
+| C2: What do existing records establish about these measurements' purpose, readers and remaining source/logic coverage? | Controls and automation | food, bayer | 2 |
 | C3: What valve-position feedback and diagnostic records are available for these control valves? | Controls and automation | food, bayer | 2 |
 | C9: What source-labelled trip or interlock records apply to each rotating or fired machine, and what remains unverified? | Safety questions to verify | food, bayer | 2 |
 | E29: What records support this refrigeration compressor's part-load control, sequencing and real-input basis? | Energy | food | 3 |
@@ -21,58 +21,76 @@
 | E30: What records support this evaporator's defrost applicability, initiation and termination? | Energy | food | 2 |
 | C11: What supports the exhaust/make-up control strategy and product requirements for this dryer or oven? | Controls and automation | food | 2 |
 | E1: Is this pump throttled by a control valve when it could run on a variable speed drive? | Energy | bayer | 1 |
-| E18: Is heat rejected to cooling water in one place while steam heats a colder stream in another (a heat-integration question)? | Energy | bayer | 1 |
-| E19: Is the compressed air header pressure higher than the end users need? | Energy | food | 1 |
-| E22: Does the air compressor lack enough storage for intermittent large users? | Energy | food | 1 |
-| E23: Is air compressor heat rejected when it could heat something? | Energy | food | 1 |
+| E18: What do existing records establish about these cooling/steam-labelled candidates' process-stream duties and any system-level heat-integration question? | Energy | bayer | 1 |
+| E19: What do existing records establish about this air-system candidate's pressure requirements, losses and control/storage constraints? | Energy | food | 1 |
+| E22: What do existing records establish about this air-system candidate's demand events, controls and existing storage coverage/adequacy? | Energy | food | 1 |
+| E23: What do existing records establish about this air-compressor candidate's actual heat availability, existing recovery and compatible receiving duty? | Energy | food | 1 |
 | H2: Is high-grade (or unknown-grade) steam doing a low-temperature job? | Heat grade (high-grade heat for low-grade duty) | bayer | 1 |
 | H4: Is heat rejected to cooling water at a temperature another user could use? | Heat grade (high-grade heat for low-grade duty) | bayer | 1 |
-| C6: Does a temperature controller write straight to a steam valve with no flow controller underneath (a cascade candidate)? | Controls and automation | bayer | 1 |
-| E26: Are relief and vent flows to the flare or atmosphere unmetered? | Emissions | bayer | 1 |
+| C6: What do existing records establish about this direct temperature-to-steam-valve control candidate's configuration, disturbances and suitable dynamics? | Controls and automation | bayer | 1 |
+| E26: What do existing records establish about these relief/flare/vent candidates' actual events, measurement/composition and source coverage? | Emissions | bayer | 1 |
 | E27: Is this refrigeration condenser train's head pressure appropriate for its weather, operating limits and actual reset coverage? | Energy | food | 1 |
 | E28: Does each refrigeration suction level match the conditions required by every coincident load it serves? | Energy | food | 1 |
 | H5: Is refrigeration condenser heat rejected while a low-grade heating duty nearby is met with fuel or steam? | Heat grade (high-grade heat for low-grade duty) | food | 1 |
 | C12: Is representative real input power available for each refrigeration compressor, with a usable coincident load and operating basis? | Metering | food | 1 |
 
-## C1: Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?
+## C1: What do existing records establish about this utility user's measurement coverage, usable data and intended decision?
 
 Fired at 2 of 2 sites.
 
+- **food**, D-301 (`C1@D-301`): D-301, FT-301, TV-301, U1
 - **food**, O-302 (`C1@O-302`): O-302, TV-302, U2
 - **food**, F-303 (`C1@F-303`): F-303, TV-303, U3
 - **food**, WH-401 (`C1@WH-401`): TV-401, U4, WH-401
+- **bayer**, E-2 (`C1@E-2`): E-2, FT-106, HV-108, TV-104C, U1
 - **bayer**, E-3 (`C1@E-3`): E-3, HV-112, U2
 
 **Data to collect**
 
-- Utility flow to this user. How: Measure flow over a representative period and compare with production.
-  - food [not on drawing]: For `C1@O-302`: only a valve (TV-302) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve. For `C1@F-303`: only a valve (TV-303) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve. For `C1@WH-401`: only a valve (TV-401) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve. Then, for all of them: a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading; then utility bills or the site energy report: site-level meter readings to apportion
-  - bayer [not on drawing]: only a valve (HV-112) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve; then a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading; then utility bills or the site energy report: site-level meter readings to apportion
-- Who would use the reading. How: Name the report the meter would feed.
-  - food [not on drawing]: site records: energy or production reporting
-  - bayer [not on drawing]: site records: energy or production reporting
+- Utility flow to this user. How: A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.
+  - food [not on drawing]: For `C1@D-301`: historian or DCS trend for FT-301 (no historian tag is mapped in this model for these). For `C1@O-302`: only a valve (TV-302) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve. For `C1@F-303`: only a valve (TV-303) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve. For `C1@WH-401`: only a valve (TV-401) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve. Then, for all of them: site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.
+    - For `C1@D-301`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
+    - For `C1@O-302`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
+    - For `C1@F-303`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
+    - For `C1@WH-401`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
+  - bayer [not on drawing]: For `C1@E-2`: historian or DCS trend for FT-106 (no historian tag is mapped in this model for these). For `C1@E-3`: only a valve (HV-112) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve. Then, for all of them: site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.
+    - For `C1@E-2`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
+    - For `C1@E-3`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
+- Who would use the reading. How: S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.
+  - food [not on drawing]: site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.
+    - For `C1@D-301`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
+    - For `C1@O-302`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
+    - For `C1@F-303`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
+    - For `C1@WH-401`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
+  - bayer [not on drawing]: site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.
+    - For `C1@E-2`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
+    - For `C1@E-3`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
 
-**How it is decided:** Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.
+**How it is decided:** Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.
 
 **What the source says (S22, S19):** "You can't manage what do don't measure" [sic]. Buildings: "efficiency improvements of 10-20%." The guide warns "only success stories are published" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): "Typical savings 4-17%, average 8%" (UK experience).
 
-## C2: Which measurements have no controller (read by people, or by nothing)?
+## C2: What do existing records establish about these measurements' purpose, readers and remaining source/logic coverage?
 
 Fired at 2 of 2 sites.
 
-- **food**, PT-201, JT-201, TT-202, TT-205, TT-206, PDT-206 and 4 more (`C2@model`): AT-302, FT-301, JT-201, PDT-206, PT-201, TT-202, TT-205, TT-206, TT-304, TT-305
-- **bayer**, PT-101, FT-103, TT-105, FT-106 (`C2@model`): FT-103, FT-106, IL-2, IL-3, PT-101, TT-105
+- **food**, PT-201, JT-201, PT-202, TT-202, PT-203, TT-205 and 11 more (`C2@model`): AT-302, FT-301, JT-201, PDT-206, PIC-202, PIC-203, PIC-501, PT-201, PT-202, PT-203, PT-501, TIC-301, TIC-302, TIC-303, TIC-401, TT-202, TT-205, TT-206, TT-301, TT-302, TT-303, TT-304, TT-305, TT-401
+- **bayer**, PT-101, LT-102, FT-103, TT-104, TT-105, FT-106 (`C2@model`): FT-103, FT-106, IL-1, IL-2, IL-3, LIC-102, LT-102, PT-101, TIC-104, TT-104, TT-105
 
 **Data to collect**
 
-- Whether operators adjust anything by hand from these readings. How: Note manual adjustments per shift tied to each reading.
-  - food [not on drawing]: site records: operator logs and round sheets; then ask the operators which of these they act on, and how often
-  - bayer [not on drawing]: site records: operator logs and round sheets; then ask the operators which of these they act on, and how often
-- The control system's own loop list. How: Confirm the reading is indication-only and not read by logic the model lacks.
-  - food [not on drawing]: DCS/PLC configuration: export the loop and point list
-  - bayer [not on drawing]: DCS/PLC configuration: export the loop and point list
+- Whether operators adjust anything by hand from these readings. How: Frequent manual adjustment can justify a control investigation, not automatic automation. A reading with no routine manual action may have a legitimate abnormal/alarm/protection/indication purpose; do not close it solely because nobody regularly acts. Acknowledge suitable existing purpose, manual or automatic operation, and record unresolved function/source suitability. No operator trial, live change or benefit is inferred.
+  - food [not on drawing]: site records: Existing exact measurement/source identity and quantity, actual indication/control/alarm/protection/recording purpose, normal and abnormal decisions, operator logs/round sheets and current availability/quality/coverage; retain per-subject association and source/revision.; then a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change.
+    - For `C2@model`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
+  - bayer [not on drawing]: site records: Existing exact measurement/source identity and quantity, actual indication/control/alarm/protection/recording purpose, normal and abnormal decisions, operator logs/round sheets and current availability/quality/coverage; retain per-subject association and source/revision.; then a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change.
+    - For `C2@model`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
+- The control system's own loop list. How: A controller or interlock reference is useful supplied evidence, not proof of complete current logic, correct process meaning, safety adequacy or measurement authority. A partial model without controllers can still prompt existing-record clarification; it does not prove no installed controls or require a fabricated loop list. S19 printed30 is broad monitoring/process-control guidance, not a per-reading automation acceptance test.
+  - food [not on drawing]: site records: Existing current loop/point list, cause/effect, alarm/sequence/configuration and represented reader/interlock/source records; preserve exact endpoints and identify missing model coverage before concluding indication-only.; then DCS/PLC configuration: Review a permitted current loop/point/configuration export, if available, as an existing source rather than a complete plant-truth inventory.; then a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change.
+    - For `C2@model`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
+  - bayer [not on drawing]: site records: Existing current loop/point list, cause/effect, alarm/sequence/configuration and represented reader/interlock/source records; preserve exact endpoints and identify missing model coverage before concluding indication-only.; then DCS/PLC configuration: Review a permitted current loop/point/configuration export, if available, as an existing source rather than a complete plant-truth inventory.; then a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change.
+    - For `C2@model`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
 
-**How it is decided:** Worth automating a reading that operators adjust by hand often, on a service where steadier control saves energy or quality; indication-only readings nobody acts on close the question.
+**How it is decided:** Review measurement purpose and actual normal/abnormal decisions, represented readers and source/logic coverage with the responsible specialist. Neither a missing model controller nor a represented reader settles installed control completeness or the need for automation. Suitable existing use or nonapplicability can be acknowledged; unresolved records remain explicit. No automatic upgrade, safety acceptance or source-reported saving is assigned.
 
 **What the source says (S19):** "energy and cost savings are around 5% or more for many industrial applications of process control systems" (for plants without updated controls). Process control: "Typically 2-18% savings." The source says these figures "cannot be added".
 
@@ -299,7 +317,7 @@ Fired at 1 of 2 sites. Asked and quiet at: food.
 
 **What the source says (S15, S24):** "With rotodynamic pump installations, savings of between 30% and 50% have been achieved in many installations by installing VSDs." Also: "It is estimated that 75% of pump systems are oversized, many by more than 20%."
 
-## E18: Is heat rejected to cooling water in one place while steam heats a colder stream in another (a heat-integration question)?
+## E18: What do existing records establish about these cooling/steam-labelled candidates' process-stream duties and any system-level heat-integration question?
 
 Fired at 1 of 2 sites. Asked and quiet at: food.
 
@@ -307,18 +325,21 @@ Fired at 1 of 2 sites. Asked and quiet at: food.
 
 **Data to collect**
 
-- Temperatures and duties of the cooled and the heated streams. How: For each stream: supply and target temperature and duty.
-  - bayer [not on drawing]: only a valve (HV-112) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve; then historian or DCS trend for FT-106 (no historian tag is mapped in this model for these); then site records: heat and material balance
-- Whether the duties overlap in time. How: Mark each duty continuous, batch or startup-only.
-  - bayer [not on drawing]: site records: operating sequence: are both duties needed at the same time?
-- Layout distance and fouling. How: Note pipe run and fouling service.
-  - bayer [not on drawing]: a walkdown: distance between the two exchangers; then maintenance records: cleaning history
+- Existing exact process-stream identities, temperature-enthalpy and duty basis. How: A CW or steam valve/instrument label is a proxy, not measured process heat rejection/heating, a process-stream identity or a flow signal. Retain each owner/source separately, including related steam-record values shown as candidate evidence. Review actual comparable process duties and uncertainty before inferring any match; command values, foreign data or incompatible units/periods cannot settle it.
+  - bayer [not on drawing]: only a valve (HV-112) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve; then historian or DCS trend for FT-106 (no historian tag is mapped in this model for these); then site records: Existing process/utility identities and directions, actual supply/target temperatures, flows, heat-capacity/phase/duty and operating coverage for each represented cooling and steam candidate; source/revision/availability, quantity units and matching sample periods retained.; then a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit.
+    - For `E18@model`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
+- Existing process-wide targets and time-aware operating constraints. How: S19 printed43-45 describes process-wide composite curves, approach/capital-energy tradeoffs and developments for batch/time-aware integration and heat pumps/transformers. Do not replace that analysis with a rule that all hot temperatures must exceed all cold temperatures, or automatically close every non-simultaneous/batch pair. Conversely, overlapping ideal profiles or an alternative technology name is not proof of feasible recovery. Review the appropriate system and timing model before deciding.
+  - bayer [not on drawing]: site records: Existing heat/material balance, process-wide temperature-enthalpy/composite profiles and utility targets, batch sequences and timing, current studies and alternatives, with source scope and economic/operating assumptions.; then a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit.
+    - For `E18@model`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
+- Existing physical, material, fouling and hazard/feasibility basis. How: Existing suitable studies may be acknowledged without new measurements or a compulsory exchanger study. On reactive service an integration change needs the applicable hazard review; a missing review, supplied Boolean or source label is not protection acceptance. No piping connection, operating change, whole-process completeness or site saving follows from the represented pair.
+  - bayer [not on drawing]: site records: Existing layout/routing and fouling/cleaning records, composition/pressure/material and cross-contamination constraints, reactive/process hazard review, existing exchanger/network function and economic/practical basis; authority and missing records remain explicit.; then a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit.
+    - For `E18@model`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
 
-**How it is decided:** Worth a pinch or exchanger study only when the hot stream's temperature range sits above the cold stream's with a practical approach, both run at the same time for long hours, and they are close enough to connect. Otherwise close this screening investigation.
+**How it is decided:** Review the actual process-wide temperature-enthalpy/utility targets, stream identities and duty/time basis, practical approach/capital tradeoffs and physical/material/hazard constraints before an integration decision. Do not prescribe a connection or automatically close a question from a pairwise temperature-range, simultaneity, hours or distance shortcut. Suitable existing analysis or nonapplicability may be acknowledged; missing or contradictory source/units/time remains explicit.
 
-**What the source says (S19, S24):** Pinch potential "far exceeds that from well-known conventional techniques such as heat recovery from boiler flue gas, insulation and steam trap management." No % stated in that section.
+**What the source says (S19, S24):** The source describes systematic process-wide temperature-enthalpy targeting and matching of heating/cooling demands, including time-aware batch approaches and alternatives. Potential depends on the actual process and capital-energy tradeoffs; this screen establishes no universal superiority, quantified benefit or site saving.
 
-## E19: Is the compressed air header pressure higher than the end users need?
+## E19: What do existing records establish about this air-system candidate's pressure requirements, losses and control/storage constraints?
 
 Fired at 1 of 2 sites. Asked and quiet at: bayer.
 
@@ -326,14 +347,15 @@ Fired at 1 of 2 sites. Asked and quiet at: bayer.
 
 **Data to collect**
 
-- Header pressure profile and the minimum end-use pressure. How: Find the highest pressure any user truly needs.
-  - food [not on drawing]: a walkdown: pressure at the farthest and most demanding users
+- Existing named-system service, pressure/end-use and dynamic control/storage basis. How: A pressure record anywhere is not this compressor's control or another user's requirement, and missing control representation is not closure. Known helpers/process-gas/refrigeration compressors are not air subjects; an air-compressor package is not disqualified merely because its name also mentions a dryer. Establish actual service/requirements and match quantities, locations and dynamic operating coverage. Review appropriate existing records and component/storage/control constraints before considering pressure changes. Suitable requirements or existing configuration can be acknowledged without new tests or lower-setpoint instructions.
+  - food [not on drawing]: site records: Existing actual compressor/system and controls, pressure location and discharge/header/point-of-use profiles, actual end-use requirements, distribution/treatment losses, peak/transient demand, storage/control range and manufacturer constraints; exact source/owner/revision, units/time/availability and coverage retained.; then site records: The following pressure/control tag/series locations are candidate-only lookup aids from supplied records; compressor/system association, source identity, availability, measurement location and requirements remain unverified. Do not treat a foreign or unknown candidate as this compressor's measured header pressure or minimum end-use requirement.; then a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit.
+    - For `E19@AC-501`: Candidate scope: unit. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
 
-**How it is decided:** Lower the setpoint toward the highest true end-use need plus distribution losses.
+**How it is decided:** Review actual system/end-use requirements and matched pressure/location/time records, peak demand, distribution/component drops, storage/control and manufacturer constraints with the responsible specialist before a pressure decision. Highest scalar need plus an assumed loss alone does not authorize lowering a setpoint. Unknown scope or dynamic basis remains a records question, and suitable existing operation or nonapplicability may be acknowledged; no operating change or site savings are calculated.
 
-**What the source says (S11, S24):** "for every 2 psi decrease in discharge pressure, energy consumption will decrease by approximately 1 percent at full output flow." With 30-50% unregulated usage, "about 1 to 1.6 percent for every 2 psi."
+**What the source says (S11, S24):** S11 explains that pressure can affect compressor power and unregulated demand, with effects depending on compressor/control type, pressure range and operating conditions. Review manufacturer/system performance and required end-use pressure; no universal saving per pressure step or site benefit is asserted.
 
-## E22: Does the air compressor lack enough storage for intermittent large users?
+## E22: What do existing records establish about this air-system candidate's demand events, controls and existing storage coverage/adequacy?
 
 Fired at 1 of 2 sites. Asked and quiet at: bayer.
 
@@ -341,14 +363,15 @@ Fired at 1 of 2 sites. Asked and quiet at: bayer.
 
 **Data to collect**
 
-- Demand profile. How: Find short high-demand events.
-  - food [not on drawing]: a walkdown: data-log compressor load and header pressure for a week
+- Existing system/end-use demand, control and storage basis. How: A receiver/storage label anywhere is not this air system's coverage or sufficient capacity, and missing representation is not installed absence. Review actual demand patterns, controls and current receivers first; the appropriate strategy depends on quantity/quality and pressure requirements, event and refill timing and compressor/control characteristics. S11 printed43-44 does not endorse a universal gallons-per-cfm rule. A known compressor package is not excluded merely because its name mentions a dryer; helpers and known nonair machines are not air subjects. Acknowledge suitable existing coverage before additional work; no obligatory one-week logging, receiver installation, compressor stop or pressure change is authorized.
+  - food [not on drawing]: site records: Existing actual compressor/system, critical end-use pressure and air quality, control/capacity mode, receiver volumes and location/coverage, peak magnitude/duration and interval, pressure differential, available compressor supply during events and replenishment/recovery time; source, units and comparable operating periods retained.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.
+    - For `E22@AC-501`: Candidate scope: unit. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
 
-**How it is decided:** Add storage when short peaks force an extra compressor on.
+**How it is decided:** Review actual system and critical end-use requirements, existing receiver coverage, pressure/demand/event and refill profiles and interacting compressor/control constraints with the responsible specialist. Short peaks or an extra unit starting are not by themselves an instruction to add storage. Suitable existing strategy or nonapplicability can be acknowledged; unresolved service, source, quantity, quality, pressure or timing remains a records question, not a sizing or vessel-safety approval.
 
 **What the source says (S10, S24):** Storage "may allow such a compressor to be turned off." No % stated.
 
-## E23: Is air compressor heat rejected when it could heat something?
+## E23: What do existing records establish about this air-compressor candidate's actual heat availability, existing recovery and compatible receiving duty?
 
 Fired at 1 of 2 sites. Asked and quiet at: bayer.
 
@@ -356,10 +379,11 @@ Fired at 1 of 2 sites. Asked and quiet at: bayer.
 
 **Data to collect**
 
-- Load hours and a nearby heat sink. How: List heat users within reach.
-  - food [not on drawing]: site records: compressor run hours; then a walkdown: space or water heating needs nearby
+- Existing compressor/cooling, recovery and receiving-duty basis. How: S11 printed58-59 describes heat fractions and different air-cooled/water-cooled arrangements. Electrical input converted to heat and a recovered fraction of available thermal energy are not electrical savings or a useful site duty. Establish compatible temperatures, coincident demand and source/configuration first; the source says this heat is usually insufficient for direct steam production. Nearby load or long hours alone is insufficient. Retain required compressor cooling, ventilation/backpressure, water-quality/material and control constraints and added fan/exchanger effects. Acknowledge suitable existing recovery or nonapplicability; missing coverage remains conditional rather than a forced field test or new exchanger.
+  - food [not on drawing]: site records: Existing actual compressor type/cooling arrangement and performance, available thermal quantity/temperature and load/run schedule, existing recovery/coverage and receiving heat duty/temperature/time/seasonality, displaced energy and quality/material/cooling/ventilation/backpressure/control constraints, with exact units/source/owner/revision/availability.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.
+    - For `E23@AC-501`: Candidate scope: unit. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
 
-**How it is decided:** Worth a look when the compressor runs long hours and a low-temperature heat user is nearby.
+**How it is decided:** Review actual compressor/cooling performance, existing recovery and useful receiving duty, temperature, timing and operating/material/control constraints with the responsible specialist. Do not infer feasibility, useful output or a required retrofit from proximity/run hours or source heat percentages. Suitable existing recovery or nonapplicability may be acknowledged; unresolved source, service, units or duty remains explicit. No heat-recovery design, steam promise or site savings is produced.
 
 **What the source says (S11):** "As much as 80 to 93 percent of the electrical energy" becomes heat; recovery "anywhere from 50 to 90 percent of this".
 
@@ -408,7 +432,7 @@ Fired at 1 of 2 sites. Asked and quiet at: food.
 
 **What the source says (S19, S11):** Closest source wording (S19, pinch): potential "far exceeds that from well-known conventional techniques such as heat recovery from boiler flue gas, insulation and steam trap management." No % stated. For air compressors S11 says recovery "anywhere from 50 to 90 percent" of the heat, which applies to compressors only.
 
-## C6: Does a temperature controller write straight to a steam valve with no flow controller underneath (a cascade candidate)?
+## C6: What do existing records establish about this direct temperature-to-steam-valve control candidate's configuration, disturbances and suitable dynamics?
 
 Fired at 1 of 2 sites. Asked and quiet at: food.
 
@@ -416,16 +440,18 @@ Fired at 1 of 2 sites. Asked and quiet at: food.
 
 **Data to collect**
 
-- Loop behaviour. How: Look for oscillation or slow recovery after steam pressure changes.
-  - bayer [not on drawing]: DCS/PLC configuration: controller tuning and output history
-- Steam header pressure swings. How: Note how often supply pressure moves.
-  - bayer [not on drawing]: site records: steam header pressure trend
+- Loop behaviour. How: A flow-controller reference sharing the valve does not prove a nested cascade or justify suppression of conflicting/unknown configuration. The explicit additional Siemens AD353-128 rev2 April2012 pp1-4 describes a measurable/controllable secondary affecting the primary, encompassing the relevant disturbance and responding substantially faster. It also identifies disturbances outside that secondary loop and alternative secondary variables. Review the actual chain/dynamics, operating range and required behavior first; neither an oscillation nor a pressure swing alone authorizes a flow slave or tuning test. Suitable existing operation can be acknowledged.
+  - bayer [not on drawing]: site records: Existing exact measurement/controller/output and setpoint-chain/configuration, active modes, source/coverage, process objective and matched primary/secondary response, flow measurement/actuator suitability and existing load-disturbance histories.; then DCS/PLC configuration: Review existing controller configuration, tuning/modes and output history; no change is requested.; then a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change.
+    - For `C6@TV-104C`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
+- Steam header pressure swings. How: The manufacturer example is contextual application engineering, not a universal speed ratio, procurement or tuning requirement. Confirm that a secondary could address the relevant disturbance before any proposed design. Preserve limits and suitable transfer/reset/operating modes; a proper represented temperature-to-flow-setpoint chain is outside this direct-output pattern, not proof every cascade is adequate. No step test, setpoint/pressure change or equipment addition follows.
+  - bayer [not on drawing]: site records: Existing comparable header/valve/flow/primary-variable pressure and disturbance records, sample periods and units, control ranges/limits, transfer/tracking/reset/anti-windup and actuator/measurement constraints.; then a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change.
+    - For `C6@TV-104C`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
 
-**How it is decided:** A flow slave helps when steam supply pressure swings disturb the temperature; a steady header and a well-behaved loop close this screening investigation.
+**How it is decided:** Review actual direct-output versus nested setpoint configuration, modes, relevant disturbance paths, measurement/actuator suitability and relative process dynamics with the responsible control engineer. Shared output labels or supply-pressure variation do not establish a cascade, its absence or a requirement to add one. Suitable existing control or nonapplicability can be acknowledged; unresolved configuration/source evidence remains a records question without tuning or operating authority.
 
 **What the source says (no source):** No public numeric source found. Report as qualitative only.
 
-## E26: Are relief and vent flows to the flare or atmosphere unmetered?
+## E26: What do existing records establish about these relief/flare/vent candidates' actual events, measurement/composition and source coverage?
 
 Fired at 1 of 2 sites. Asked and quiet at: food.
 
@@ -433,12 +459,13 @@ Fired at 1 of 2 sites. Asked and quiet at: food.
 
 **Data to collect**
 
-- Flare or vent flow and composition. How: Separate continuous (background) flow from relief events.
-  - bayer [not on drawing]: a walkdown: ultrasonic flare-gas meter or a temporary vent flow measurement; then site records: relief valve lift records
+- Flare or vent flow and composition. How: Same-stream flow labeling is useful candidate evidence, not complete current flow/composition/event coverage. Retain foreign, inaccessible, FAULT or unqualified totalizer data without treating it as suitable. S19 printed34-35 distinguishes planned intermittent/continuous background from upset-blowdown and describes manufacturer minimum-flow context; rare relief events or a zero lift count alone do not automatically close source/safety/environmental review. Review suitable existing records first; no generic analyzer or meter closes all quantities. Any additional measurement/recovery proposal must preserve safety paths and undergo responsible hazard/environmental review, not be imposed from a drawing clue.
+  - bayer [not on drawing]: site records: Existing exact service/path and measurement/source/event associations; quantity/rate/total/reference units, sample periods and quality/availability/gaps, composition/variability and planned intermittent/continuous versus upset/blowdown/relief records, purge/pilot/manufacturer requirements and safety/environmental basis.; then site records: Review existing relief-valve lift, flare/vent and operating-event records with their actual time/source coverage.; then a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change.
+    - For `E26@model`: Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it.
 
-**How it is decided:** Worth metering when background flow is continuous; relief-only lines that seldom lift close the question.
+**How it is decided:** Review exact relief/vent/flare service, planned and abnormal event coverage and usable quantity/composition/time/source records with the responsible safety/environmental and operating specialists. A flow candidate or rare-event label does not establish suitable data, completeness or safe closure. Existing appropriate records/nonapplicability can be acknowledged; unresolved evidence remains explicit. No live metering, recovery modification, reduced purge/minimum flow or operating change is authorized.
 
-**What the source says (S19):** Background flaring "can be as much as 50% of all flared gases (Miles, 2001)." In refineries it "will generally be less than 50%." No recovery % stated.
+**What the source says (S19):** S19 reports that background flaring in offshore cases can be as much as50% of all flared gas, while refinery shares generally depend on individual practices and are lower. This historical reported share is neither a recovery fraction nor a site benefit or a reason to compromise required flare operation.
 
 ## E27: Is this refrigeration condenser train's head pressure appropriate for its weather, operating limits and actual reset coverage?
 

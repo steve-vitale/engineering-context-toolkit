@@ -1,0 +1,302 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/models/C7-03-role-package.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "C7"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "controls": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "C7@model",
+   "question_id": "C7",
+   "family": "controls",
+   "question": "What do existing records establish about these air-compressor candidates' shared-system operation and coordinated control strategy?",
+   "about": "C-B, C-C",
+   "assets": [
+    {
+     "id": "C-B",
+     "tag": "C-B"
+    },
+    {
+     "id": "C-C",
+     "tag": "C-C"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "equipment C-B reads \"C-B AIR COMPRESSOR package with DRYER\"",
+     "field": "units[C-B]"
+    },
+    {
+     "role": "trigger",
+     "id": "C-C",
+     "tag": "C-C",
+     "text": "equipment C-C reads \"C-C AIR COMPRESSOR\"",
+     "field": "units[C-C]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "C-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[C-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "C-B record_source = \"Fictional pre-call record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[C-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "C-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[C-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "C-B record_available = true; present; meaning and suitability unverified",
+     "field": "units[C-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "C-B record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[C-B].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "C-B service = \"compressedair\"; present; meaning and suitability unverified",
+     "field": "units[C-B].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-C",
+     "tag": "C-C",
+     "text": "C-C fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[C-C].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-C",
+     "tag": "C-C",
+     "text": "C-C record_source = \"Fictional pre-call record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[C-C].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-C",
+     "tag": "C-C",
+     "text": "C-C record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[C-C].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-C",
+     "tag": "C-C",
+     "text": "C-C record_available = true; present; meaning and suitability unverified",
+     "field": "units[C-C].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-C",
+     "tag": "C-C",
+     "text": "C-C record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[C-C].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-C",
+     "tag": "C-C",
+     "text": "C-C service = null; blank; meaning and suitability unverified",
+     "field": "units[C-C].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-B fictional_record = True",
+     "field": "units[C-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-C fictional_record = True",
+     "field": "units[C-C].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-B record_source = Fictional pre-call record, no company or human approval",
+     "field": "units[C-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-C record_source = Fictional pre-call record, no company or human approval",
+     "field": "units[C-C].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-B record_revision = R1",
+     "field": "units[C-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-C record_revision = R1",
+     "field": "units[C-C].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-B record_available = True",
+     "field": "units[C-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-C record_available = True",
+     "field": "units[C-C].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-B record_authority = unverified",
+     "field": "units[C-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-C record_authority = unverified",
+     "field": "units[C-C].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-B service = compressedair",
+     "field": "units[C-B].facts.service"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Control narrative and load/unload history",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing exact compressor/service/system and shared-header boundaries, current local/network/master narrative/settings/capability and source coverage, matched demand/pressure/load/power/time and storage/treatment records, base/trim roles, requirements and manufacturer/compatibility constraints.",
+      "DCS/PLC configuration: Review permitted existing compressor control settings/narratives with their coverage and active modes.",
+      "a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
+     ],
+     "how": "Two names or part-load scalar values do not show shared system or concurrent operation, and a global MASTER/SEQUENCER label does not cover every machine. S11 printed34-39/42 supports different local/network/master arrangements depending on equipment, requirements, demand/storage and complexity; part-loading of a suitable trim unit is not automatically waste. Known helper/nonair types are not air machines, but a compressor package is not omitted merely because its name mentions a dryer. Review suitable existing strategy and source/units/operating coverage before further work, consulting specialists for mixed/variable-speed arrangements. No automatic master addition, compressor stop or new logging is required.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "C-B",
+       "label": "C-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[C-B].facts.fictional_record"
+      },
+      {
+       "id": "C-C",
+       "label": "C-C",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[C-C].facts.fictional_record"
+      },
+      {
+       "id": "C-B",
+       "label": "C-B",
+       "name": "record_source",
+       "value": "Fictional pre-call record, no company or human approval",
+       "where": "units[C-B].facts.record_source"
+      },
+      {
+       "id": "C-C",
+       "label": "C-C",
+       "name": "record_source",
+       "value": "Fictional pre-call record, no company or human approval",
+       "where": "units[C-C].facts.record_source"
+      },
+      {
+       "id": "C-B",
+       "label": "C-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[C-B].facts.record_revision"
+      },
+      {
+       "id": "C-C",
+       "label": "C-C",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[C-C].facts.record_revision"
+      },
+      {
+       "id": "C-B",
+       "label": "C-B",
+       "name": "record_available",
+       "value": true,
+       "where": "units[C-B].facts.record_available"
+      },
+      {
+       "id": "C-C",
+       "label": "C-C",
+       "name": "record_available",
+       "value": true,
+       "where": "units[C-C].facts.record_available"
+      },
+      {
+       "id": "C-B",
+       "label": "C-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[C-B].facts.record_authority"
+      },
+      {
+       "id": "C-C",
+       "label": "C-C",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[C-C].facts.record_authority"
+      },
+      {
+       "id": "C-B",
+       "label": "C-B",
+       "name": "service",
+       "value": "compressedair",
+       "where": "units[C-B].facts.service"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual shared-system membership and concurrency, requirements, current local/network/master coordination, base/trim capabilities, demand/storage/pressure/power and source/time coverage with the responsible specialist. Multiple names or simultaneous part-load labels alone do not require sequencing hardware. Suitable existing strategy or nonapplicability can be acknowledged; unresolved scope/operation remains explicit without pressure/control or equipment-change authority.",
+   "typical_benefit": {
+    "wording": "Control objective \"is also to shut off unneeded compressors or delay bringing on additional compressors until needed.\" No % stated.",
+    "source": [
+     "S11",
+     "S24"
+    ],
+    "arc": "2.423x (operations, category only) (IAC/ITAC browse page: 20,819 recommendations, 0.5 yr average payback, 67.4% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S11: Improving Compressed Air System Performance: A Sourcebook for Industry, 3rd ed. (DOE + Compressed Air Challenge)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: S11 printed34-39/PDF39-44 and42/PDF47, full relevant control pages. Model-level at-least2 candidates is a records prompt, not inferred topology/concurrency or a claim the installed system lacks master control. Existing strategies and compatible operating requirements matter; source objective and IAC history are not site savings.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

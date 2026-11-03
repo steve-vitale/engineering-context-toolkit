@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "title": "Fictional source-led heating/integration/air controls",
+    "unknowns": [
+      "Actualstate, sourceauthority and engineering/human acceptance unknown"
+    ],
+    "assumptions": [
+      "Allrecordidentities/values fictional before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "C-A",
+      "name": "Fictional AIR COMPRESSOR",
+      "type": "air_compressor",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "compressedair",
+        "discharge_pressure": 100,
+        "required_end_pressure": 95,
+        "pressure_unit": "psig",
+        "dynamic_demand": "suddenpeak",
+        "storage_basis": null,
+        "control_range": "unknown",
+        "manufacturer_basis": "unreviewed"
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    },
+    {
+      "id": "C-B",
+      "name": "Fictional AIR COMPRESSOR",
+      "type": "air_compressor",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "compressedair",
+        "discharge_pressure": 7,
+        "required_end_pressure": 95,
+        "pressure_unit": "dischargebar; endusepsig, conversionnotdone",
+        "sample_period": "differentperiods",
+        "storage_basis": "suppliedexistingrecordnotapproved"
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "PIC-A",
+      "unit": "C-A",
+      "description": "Supplied pressurecontrol candidate",
+      "variable": "pressure",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "measurement_target": "C-A provisional",
+        "record_scope": "notallusers"
+      },
+      "source": "Fictional association, notverified",
+      "assigned_tag": true
+    }
+  ],
+  "manual_valves": [],
+  "final_elements": [],
+  "controllers": [],
+  "unplaced": []
+}

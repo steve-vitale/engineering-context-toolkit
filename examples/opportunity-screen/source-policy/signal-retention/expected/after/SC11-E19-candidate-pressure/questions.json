@@ -1,0 +1,531 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/signal-retention/models/SC11-E19-candidate-pressure.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E19"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E19@C-A",
+   "question_id": "E19",
+   "family": "energy",
+   "question": "What do existing records establish about this air-system candidate's pressure requirements, losses and control/storage constraints?",
+   "about": "C-A",
+   "assets": [
+    {
+     "id": "C-A",
+     "tag": "C-A"
+    },
+    {
+     "id": "PIC-A",
+     "tag": "PIC-A"
+    },
+    {
+     "id": "PIC-W",
+     "tag": "PIC-W"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "equipment C-A reads \"C-A AIR COMPRESSOR A\"",
+     "field": "units[C-A]"
+    },
+    {
+     "role": "unverified pressure/control record; system association not inferred",
+     "id": "PIC-A",
+     "tag": "PIC-A",
+     "text": "instrument PIC-A reads \"PIC-A Supplied pressure/control candidate\" at C-A",
+     "field": "instruments[PIC-A]"
+    },
+    {
+     "role": "unverified pressure/control record; system association not inferred",
+     "id": "PIC-W",
+     "tag": "PIC-W",
+     "text": "instrument PIC-W reads \"PIC-W Pressure-control named but flow-variable record\"",
+     "field": "instruments[PIC-W]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[C-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A record_source = \"Fictional signal-locator source note, Figure 11; no actual series or plant record\"; present; meaning and suitability unverified",
+     "field": "units[C-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[C-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A record_available = false; present; meaning and suitability unverified",
+     "field": "units[C-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[C-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-A",
+     "tag": "PIC-A",
+     "text": "PIC-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "instruments[PIC-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-A",
+     "tag": "PIC-A",
+     "text": "PIC-A record_source = \"Fictional signal-locator source note, Figure 11; no actual series or plant record\"; present; meaning and suitability unverified",
+     "field": "instruments[PIC-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-A",
+     "tag": "PIC-A",
+     "text": "PIC-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "instruments[PIC-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-A",
+     "tag": "PIC-A",
+     "text": "PIC-A record_available = false; present; meaning and suitability unverified",
+     "field": "instruments[PIC-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-A",
+     "tag": "PIC-A",
+     "text": "PIC-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "instruments[PIC-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-A",
+     "tag": "PIC-A",
+     "text": "PIC-A record_scope = \"foreignrefrigerationorunknownairassociation\"; present; meaning and suitability unverified",
+     "field": "instruments[PIC-A].facts.record_scope"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-A",
+     "tag": "PIC-A",
+     "text": "PIC-A measurement_target = null; blank; meaning and suitability unverified",
+     "field": "instruments[PIC-A].facts.measurement_target"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-W",
+     "tag": "PIC-W",
+     "text": "PIC-W fictional_record = true; present; meaning and suitability unverified",
+     "field": "instruments[PIC-W].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-W",
+     "tag": "PIC-W",
+     "text": "PIC-W record_source = \"Fictional signal-locator source note, Figure 11; no actual series or plant record\"; present; meaning and suitability unverified",
+     "field": "instruments[PIC-W].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-W",
+     "tag": "PIC-W",
+     "text": "PIC-W record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "instruments[PIC-W].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-W",
+     "tag": "PIC-W",
+     "text": "PIC-W record_available = false; present; meaning and suitability unverified",
+     "field": "instruments[PIC-W].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-W",
+     "tag": "PIC-W",
+     "text": "PIC-W record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "instruments[PIC-W].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-A fictional_record = True",
+     "field": "units[C-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-A record_source = Fictional signal-locator source note, Figure 11; no actual series or plant record",
+     "field": "units[C-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-A record_revision = R1",
+     "field": "units[C-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-A record_available = False",
+     "field": "units[C-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-A record_authority = unverified",
+     "field": "units[C-A].facts.record_authority"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing named-system service, pressure/end-use and dynamic control/storage basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing actual compressor/system and controls, pressure location and discharge/header/point-of-use profiles, actual end-use requirements, distribution/treatment losses, peak/transient demand, storage/control range and manufacturer constraints; exact source/owner/revision, units/time/availability and coverage retained.",
+      "site records: The following pressure/control tag/series locations are candidate-only lookup aids from supplied records; compressor/system association, source identity, availability, measurement location and requirements remain unverified. Do not treat a foreign or unknown candidate as this compressor's measured header pressure or minimum end-use requirement.",
+      "historian / recorded data: PIC-A: digitized series 'SYNTHETIC_SC11_PRESSURE' (from the source report's Fig 11)",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
+     ],
+     "how": "A pressure record anywhere is not this compressor's control or another user's requirement, and missing control representation is not closure. Known helpers/process-gas/refrigeration compressors are not air subjects; an air-compressor package is not disqualified merely because its name also mentions a dryer. Establish actual service/requirements and match quantities, locations and dynamic operating coverage. Review appropriate existing records and component/storage/control constraints before considering pressure changes. Suitable requirements or existing configuration can be acknowledged without new tests or lower-setpoint instructions.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "C-A",
+       "label": "C-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[C-A].facts.fictional_record"
+      },
+      {
+       "id": "C-A",
+       "label": "C-A",
+       "name": "record_source",
+       "value": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+       "where": "units[C-A].facts.record_source"
+      },
+      {
+       "id": "C-A",
+       "label": "C-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[C-A].facts.record_revision"
+      },
+      {
+       "id": "C-A",
+       "label": "C-A",
+       "name": "record_available",
+       "value": false,
+       "where": "units[C-A].facts.record_available"
+      },
+      {
+       "id": "C-A",
+       "label": "C-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[C-A].facts.record_authority"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual system/end-use requirements and matched pressure/location/time records, peak demand, distribution/component drops, storage/control and manufacturer constraints with the responsible specialist before a pressure decision. Highest scalar need plus an assumed loss alone does not authorize lowering a setpoint. Unknown scope or dynamic basis remains a records question, and suitable existing operation or nonapplicability may be acknowledged; no operating change or site savings are calculated.",
+   "typical_benefit": {
+    "wording": "S11 explains that pressure can affect compressor power and unregulated demand, with effects depending on compressor/control type, pressure range and operating conditions. Review manufacturer/system performance and required end-use pressure; no universal saving per pressure step or site benefit is asserted.",
+    "source": [
+     "S11",
+     "S24"
+    ],
+    "arc": "2.4231 (IAC/ITAC browse page: 6,522 recommendations, 0.5 yr average payback, 51.6% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S11: Improving Compressed Air System Performance: A Sourcebook for Industry, 3rd ed. (DOE + Compressed Air Challenge)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: S11 printed28-36/PDF33-41, including full pressure/control context. Its printed31 increase and printed34 decrease passages give inconsistent combined percentage ranges; no corrected number is chosen. Original numeric wording remains historical, not a universal target or a reason to compromise minimum end-use pressure.",
+   "status": "asked"
+  },
+  {
+   "id": "E19@C-B",
+   "question_id": "E19",
+   "family": "energy",
+   "question": "What do existing records establish about this air-system candidate's pressure requirements, losses and control/storage constraints?",
+   "about": "C-B",
+   "assets": [
+    {
+     "id": "C-B",
+     "tag": "C-B"
+    },
+    {
+     "id": "PIC-A",
+     "tag": "PIC-A"
+    },
+    {
+     "id": "PIC-W",
+     "tag": "PIC-W"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "equipment C-B reads \"C-B AIR COMPRESSOR B\"",
+     "field": "units[C-B]"
+    },
+    {
+     "role": "unverified pressure/control record; system association not inferred",
+     "id": "PIC-A",
+     "tag": "PIC-A",
+     "text": "instrument PIC-A reads \"PIC-A Supplied pressure/control candidate\" at C-A",
+     "field": "instruments[PIC-A]"
+    },
+    {
+     "role": "unverified pressure/control record; system association not inferred",
+     "id": "PIC-W",
+     "tag": "PIC-W",
+     "text": "instrument PIC-W reads \"PIC-W Pressure-control named but flow-variable record\"",
+     "field": "instruments[PIC-W]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "C-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[C-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "C-B record_source = \"Fictional signal-locator source note, Figure 11; no actual series or plant record\"; present; meaning and suitability unverified",
+     "field": "units[C-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "C-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[C-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "C-B record_available = false; present; meaning and suitability unverified",
+     "field": "units[C-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "C-B record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[C-B].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-A",
+     "tag": "PIC-A",
+     "text": "PIC-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "instruments[PIC-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-A",
+     "tag": "PIC-A",
+     "text": "PIC-A record_source = \"Fictional signal-locator source note, Figure 11; no actual series or plant record\"; present; meaning and suitability unverified",
+     "field": "instruments[PIC-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-A",
+     "tag": "PIC-A",
+     "text": "PIC-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "instruments[PIC-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-A",
+     "tag": "PIC-A",
+     "text": "PIC-A record_available = false; present; meaning and suitability unverified",
+     "field": "instruments[PIC-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-A",
+     "tag": "PIC-A",
+     "text": "PIC-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "instruments[PIC-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-A",
+     "tag": "PIC-A",
+     "text": "PIC-A record_scope = \"foreignrefrigerationorunknownairassociation\"; present; meaning and suitability unverified",
+     "field": "instruments[PIC-A].facts.record_scope"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-A",
+     "tag": "PIC-A",
+     "text": "PIC-A measurement_target = null; blank; meaning and suitability unverified",
+     "field": "instruments[PIC-A].facts.measurement_target"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-W",
+     "tag": "PIC-W",
+     "text": "PIC-W fictional_record = true; present; meaning and suitability unverified",
+     "field": "instruments[PIC-W].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-W",
+     "tag": "PIC-W",
+     "text": "PIC-W record_source = \"Fictional signal-locator source note, Figure 11; no actual series or plant record\"; present; meaning and suitability unverified",
+     "field": "instruments[PIC-W].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-W",
+     "tag": "PIC-W",
+     "text": "PIC-W record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "instruments[PIC-W].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-W",
+     "tag": "PIC-W",
+     "text": "PIC-W record_available = false; present; meaning and suitability unverified",
+     "field": "instruments[PIC-W].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PIC-W",
+     "tag": "PIC-W",
+     "text": "PIC-W record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "instruments[PIC-W].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-B fictional_record = True",
+     "field": "units[C-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-B record_source = Fictional signal-locator source note, Figure 11; no actual series or plant record",
+     "field": "units[C-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-B record_revision = R1",
+     "field": "units[C-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-B record_available = False",
+     "field": "units[C-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-B record_authority = unverified",
+     "field": "units[C-B].facts.record_authority"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing named-system service, pressure/end-use and dynamic control/storage basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing actual compressor/system and controls, pressure location and discharge/header/point-of-use profiles, actual end-use requirements, distribution/treatment losses, peak/transient demand, storage/control range and manufacturer constraints; exact source/owner/revision, units/time/availability and coverage retained.",
+      "site records: The following pressure/control tag/series locations are candidate-only lookup aids from supplied records; compressor/system association, source identity, availability, measurement location and requirements remain unverified. Do not treat a foreign or unknown candidate as this compressor's measured header pressure or minimum end-use requirement.",
+      "historian / recorded data: PIC-A: digitized series 'SYNTHETIC_SC11_PRESSURE' (from the source report's Fig 11)",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
+     ],
+     "how": "A pressure record anywhere is not this compressor's control or another user's requirement, and missing control representation is not closure. Known helpers/process-gas/refrigeration compressors are not air subjects; an air-compressor package is not disqualified merely because its name also mentions a dryer. Establish actual service/requirements and match quantities, locations and dynamic operating coverage. Review appropriate existing records and component/storage/control constraints before considering pressure changes. Suitable requirements or existing configuration can be acknowledged without new tests or lower-setpoint instructions.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "C-B",
+       "label": "C-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[C-B].facts.fictional_record"
+      },
+      {
+       "id": "C-B",
+       "label": "C-B",
+       "name": "record_source",
+       "value": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+       "where": "units[C-B].facts.record_source"
+      },
+      {
+       "id": "C-B",
+       "label": "C-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[C-B].facts.record_revision"
+      },
+      {
+       "id": "C-B",
+       "label": "C-B",
+       "name": "record_available",
+       "value": false,
+       "where": "units[C-B].facts.record_available"
+      },
+      {
+       "id": "C-B",
+       "label": "C-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[C-B].facts.record_authority"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual system/end-use requirements and matched pressure/location/time records, peak demand, distribution/component drops, storage/control and manufacturer constraints with the responsible specialist before a pressure decision. Highest scalar need plus an assumed loss alone does not authorize lowering a setpoint. Unknown scope or dynamic basis remains a records question, and suitable existing operation or nonapplicability may be acknowledged; no operating change or site savings are calculated.",
+   "typical_benefit": {
+    "wording": "S11 explains that pressure can affect compressor power and unregulated demand, with effects depending on compressor/control type, pressure range and operating conditions. Review manufacturer/system performance and required end-use pressure; no universal saving per pressure step or site benefit is asserted.",
+    "source": [
+     "S11",
+     "S24"
+    ],
+    "arc": "2.4231 (IAC/ITAC browse page: 6,522 recommendations, 0.5 yr average payback, 51.6% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S11: Improving Compressed Air System Performance: A Sourcebook for Industry, 3rd ed. (DOE + Compressed Air Challenge)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: S11 printed28-36/PDF33-41, including full pressure/control context. Its printed31 increase and printed34 decrease passages give inconsistent combined percentage ranges; no corrected number is chosen. Original numeric wording remains historical, not a universal target or a reason to compromise minimum end-use pressure.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

@@ -83,7 +83,12 @@ class DescriptionWorkflowTests(unittest.TestCase):
             self.assertIn('no automatic unloading shutdown', claims['alarm_action_basis'])
             text = (result / 'exports/svg/HYPO_BULK.svg').read_text(encoding='utf-8')
             self.assertIn('LI_HYPO', text)
-            self.assertEqual(json.loads((result / 'questions/questions.json').read_bytes())['counts']['findings'], 0)
+            # The source-policy revision asks about the represented level measurement's purpose.
+            # It does not diagnose the incident or establish a shutdown/safeguard requirement.
+            questions = json.loads((result / 'questions/questions.json').read_bytes())['questions']
+            self.assertEqual([q['id'] for q in questions], ['C2@model'])
+            self.assertEqual([a['id'] for a in questions[0]['assets']], ['LI_HYPO'])
+            self.assertTrue(questions[0]['data_requests'])
         model = json.loads((case / 'model-expanded-source.json').read_bytes())
         false = json.loads((case / 'controls/false-shutdown.json').read_bytes())
         # Pin the exposed limit: alarm semantics are retained in output but not graded by native-facts-v1.

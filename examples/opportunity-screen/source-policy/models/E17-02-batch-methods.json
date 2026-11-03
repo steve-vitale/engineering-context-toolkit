@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "title": "Fictional source-led heating/integration/air controls",
+    "unknowns": [
+      "Actualstate, sourceauthority and engineering/human acceptance unknown"
+    ],
+    "assumptions": [
+      "Allrecordidentities/values fictional before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "F-A",
+      "name": "Fictional FURNACE",
+      "type": "furnace",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "firedflue",
+        "operation_mode": "batch",
+        "flue_temperature": 900,
+        "temperature_unit": "F",
+        "flue_flow": "largeunknown",
+        "receiving_duty": "possiblewaterheating, timingunassessed"
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    },
+    {
+      "id": "F-B",
+      "name": "Fictional FURNACE",
+      "type": "furnace",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "firedflue",
+        "operation_mode": "continuous",
+        "flue_temperature": 1200,
+        "temperature_unit": "F",
+        "flue_cleanliness": "unknown",
+        "prior_loss_reduction": "notreviewed"
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "manual_valves": [],
+  "final_elements": [],
+  "controllers": [],
+  "unplaced": []
+}

@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "title": "Fictional original-source question control",
+    "unknowns": [
+      "Actual operating state, source authority and human usefulness not established"
+    ],
+    "assumptions": [
+      "All identifiers/values authored for development before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "ST-A",
+      "name": "Steam trap sourceA",
+      "type": "steam_trap",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development packet; no plant or human approval",
+        "record_revision": "R1",
+        "record_available": false,
+        "record_authority": "unverified",
+        "steam_service": true,
+        "record_scope": "foreignsiteST-A",
+        "survey_status": "reportedworking, notlocalverified",
+        "survey_method": "oldvisualrecord"
+      },
+      "assigned_tag": true,
+      "source": "Fictional source-defined record, no physical existence implied"
+    },
+    {
+      "id": "ST-B",
+      "name": "Steam trap sourceB",
+      "type": "steam_trap",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development packet; no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "steam_service": true,
+        "record_scope": "localST-B fictionalperiod",
+        "survey_status": "suppliedprogram currentandcomplete",
+        "survey_method": "qualifiedmethod/source unknown"
+      },
+      "assigned_tag": true,
+      "source": "Fictional source-defined record, no physical existence implied"
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "final_elements": [],
+  "manual_valves": [],
+  "controllers": []
+}

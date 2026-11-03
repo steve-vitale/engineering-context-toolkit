@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "title": "Fictional final-six source/collection controls",
+    "unknowns": [
+      "Actual operation, engineering/source authority and human acceptance unknown"
+    ],
+    "assumptions": [
+      "All supplied identities/values/relations fictional before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "PW-A",
+      "name": "TANK TO ATM",
+      "type": "potable_water_tank",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "declaredcleanpotablewaternotHC"
+      },
+      "source": "Fictional source role",
+      "assigned_tag": true
+    },
+    {
+      "id": "N2-B",
+      "name": "VESSEL TO ATM",
+      "type": "nitrogen_receiver",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "declarednitrogenonly"
+      },
+      "source": "Fictional source role",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "controllers": [],
+  "interlocks": [],
+  "manual_valves": [],
+  "final_elements": [],
+  "relief_devices": [],
+  "unplaced": []
+}

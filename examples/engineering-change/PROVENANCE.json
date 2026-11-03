@@ -22,13 +22,17 @@
     "catalog_sha256_raw": "5aa92c8be6e629be784b9eb4150d0e1c57533cfc5563d656014c0e863fdffeec"
   },
   "public_selection": {
-    "expected/A/model.json": {
-      "sha256_raw": "dd3ede7d91872aed9b926712d93b800b5b6b62a1bb5f5bc224a1927a1ab82b43",
-      "bytes": 1375
+    "expected/CHANGE-REVIEW.json": {
+      "sha256_raw": "4b15fc421f63674acb164568049ec8cb9f58a0f21f73a30dd61e2c52c8f4c9a4",
+      "bytes": 3865
     },
-    "expected/A/graph.json": {
-      "sha256_raw": "0790c2a47c39d6d737403b4de1fe491d4c61d9fa014297bb5b2520b608bd845a",
-      "bytes": 8848
+    "expected/question_catalog.json": {
+      "sha256_raw": "164452c9b274be0fd1f21800f7bc4e52759798b34a3da23fa0f25048101b55f3",
+      "bytes": 335035
+    },
+    "expected/A/context.json": {
+      "sha256_raw": "975cc7e1233c29d73176b55230dcb980b26ebfe11e992882d1bd42f2a6bffc48",
+      "bytes": 10622
     },
     "expected/A/D1.png": {
       "sha256_raw": "3db9950ef4b34bd19ebafa6a2bc5a2fcdd62b12760a9337c36b58920479a7955",
@@ -38,33 +42,33 @@
       "sha256_raw": "badbe2442754ee84946cb279486b4d5f8ede4e76e80675b80472d1fce003061a",
       "bytes": 16565
     },
+    "expected/A/enriched_graph.json": {
+      "sha256_raw": "e287330e923a6d29f7f2bf9a064ba647de09dd6c74e2e1de68135be4d1a9cacc",
+      "bytes": 16160
+    },
+    "expected/A/graph.json": {
+      "sha256_raw": "0790c2a47c39d6d737403b4de1fe491d4c61d9fa014297bb5b2520b608bd845a",
+      "bytes": 8848
+    },
     "expected/A/ignition-tags.json": {
       "sha256_raw": "d950b454d36849a91e0dbfe0cd49262589032b30b3ff85ee29b4d4c1c9c85333",
       "bytes": 1742
+    },
+    "expected/A/model.json": {
+      "sha256_raw": "dd3ede7d91872aed9b926712d93b800b5b6b62a1bb5f5bc224a1927a1ab82b43",
+      "bytes": 1375
     },
     "expected/A/pi-af.csv": {
       "sha256_raw": "a66ce29b6c82f94ca2957282646f8edcf112bee88710f8d358feb754a34da508",
       "bytes": 539
     },
-    "expected/A/context.json": {
-      "sha256_raw": "975cc7e1233c29d73176b55230dcb980b26ebfe11e992882d1bd42f2a6bffc48",
-      "bytes": 10622
-    },
-    "expected/A/enriched_graph.json": {
-      "sha256_raw": "e287330e923a6d29f7f2bf9a064ba647de09dd6c74e2e1de68135be4d1a9cacc",
-      "bytes": 16160
-    },
     "expected/A/questions.json": {
-      "sha256_raw": "6a3e43f7ff1121a7892dbe2bc7e2d0b58d62dbe9fdb19049fab9009528839b48",
-      "bytes": 6160
+      "sha256_raw": "01f77fe42e85c8a8a9ec1bf9fab090b6d31bc88548a11091fc38f8d127c75e9c",
+      "bytes": 6051
     },
-    "expected/B/model.json": {
-      "sha256_raw": "d02879d9aa2e5667c60709895dee7e6de5699ca39b875ce98c068829f4b13547",
-      "bytes": 1799
-    },
-    "expected/B/graph.json": {
-      "sha256_raw": "3e9c59091fb5f045ba16c0061204f79d88ec5ad8ef0a9ae80e7a712de4a7d077",
-      "bytes": 11027
+    "expected/B/context.json": {
+      "sha256_raw": "6d3ad6c458d6bbfcfd862fcaf0e049b30d884912fafd5fcb1d64043209e89e8f",
+      "bytes": 11004
     },
     "expected/B/D1.png": {
       "sha256_raw": "a5567881558ae7612494a00a15a4ca7d6e2c08a17731925bf9bc9077bd15ec8b",
@@ -74,33 +78,29 @@
       "sha256_raw": "8858a94915edd8c2e26c64db63171e2c4ba2f1b9cf34086ba1bcb33a457f3eb8",
       "bytes": 18496
     },
+    "expected/B/enriched_graph.json": {
+      "sha256_raw": "e1659ecc5db09ccd2f114a833e5213d5fb93c93e91a7d19963e34d26fc7136b3",
+      "bytes": 19188
+    },
+    "expected/B/graph.json": {
+      "sha256_raw": "3e9c59091fb5f045ba16c0061204f79d88ec5ad8ef0a9ae80e7a712de4a7d077",
+      "bytes": 11027
+    },
     "expected/B/ignition-tags.json": {
       "sha256_raw": "2b5de621ba9c2584d4402617d9c1e43db551f9c9071cccfbf3134e1155b37c10",
       "bytes": 2506
+    },
+    "expected/B/model.json": {
+      "sha256_raw": "d02879d9aa2e5667c60709895dee7e6de5699ca39b875ce98c068829f4b13547",
+      "bytes": 1799
     },
     "expected/B/pi-af.csv": {
       "sha256_raw": "1e21e96e0e504fe798d0632c7d0c03d052e9f29645763da790f960e75e8a23d1",
       "bytes": 663
     },
-    "expected/B/context.json": {
-      "sha256_raw": "6d3ad6c458d6bbfcfd862fcaf0e049b30d884912fafd5fcb1d64043209e89e8f",
-      "bytes": 11004
-    },
-    "expected/B/enriched_graph.json": {
-      "sha256_raw": "e1659ecc5db09ccd2f114a833e5213d5fb93c93e91a7d19963e34d26fc7136b3",
-      "bytes": 19188
-    },
     "expected/B/questions.json": {
-      "sha256_raw": "118175948b2917b756466701f9bbabebab6e6a9c42abd5165ccd4f8c559c1c4a",
-      "bytes": 6434
-    },
-    "expected/CHANGE-REVIEW.json": {
-      "sha256_raw": "4b15fc421f63674acb164568049ec8cb9f58a0f21f73a30dd61e2c52c8f4c9a4",
-      "bytes": 3865
-    },
-    "expected/question_catalog.json": {
-      "sha256_raw": "56898b126cd4c98ee2b1d153a8323b8fecbd004d9e2594cf9d8aa941c7be3527",
-      "bytes": 244079
+      "sha256_raw": "3ebf0b3809d418c22ee9d72bbe602ff76b389023a7d61a5d5216d070a4833ceb",
+      "bytes": 6325
     }
   },
   "not_established": [
@@ -122,5 +122,52 @@
     "scope": "Two actual A/B builds consumed the identical current default catalog; only its selected public snapshot and this provenance change. All models, drawings, generated questions, source inputs, proposed answer and decision/ownership histories remain exact. No template/test/runner/acceptance-key change or company/plant validation.",
     "original_catalog_history": "../opportunity-screen/water-valve-records/history/catalog-before.json",
     "CI_failure": "Original review commit74cf2bd push41562733068 and PR41562777038 report74/75 with the engineering-change saved-catalog assertion failing. Those failures remain distinct; SDK successes do not close them."
-  }
+  },
+  "catalog_successors": [
+    {
+      "utc": "2026-11-03T05:37:04.801879+00:00",
+      "reason": "22-rule source-policy adoption and presentation clarification, renewed through actual fixed-example CLI producer.",
+      "before_catalog_sha256_raw": "56898b126cd4c98ee2b1d153a8323b8fecbd004d9e2594cf9d8aa941c7be3527",
+      "after_catalog_sha256_raw": "f37ccad4ab28a43a054cfa8713245b3f50ba03d0164bd8d7564d89daeba95cd3",
+      "actual_jobs": 14,
+      "checks": 56,
+      "intended_exit2_refusals": 4,
+      "changed_selected_files": [
+        "expected/A/questions.json",
+        "expected/B/questions.json",
+        "expected/question_catalog.json"
+      ],
+      "other17selected_files_raw_exact": true,
+      "question_difference": "Only top-level note, not_checked C2/C6 source-policy eligibility/reasons and did_not_fire classification; complete finding payloads and all context decision/ownership history remain exact.",
+      "scope": "Actual successor, not a restamp or original-run rewrite; no company or plant acceptance."
+    },
+    {
+      "utc": "2026-11-03T05:43:59.115336+00:00",
+      "reason": "Restore two E18 quantity-aware historian locators after actual integration exposed their loss; all previous actual runs retained.",
+      "before_catalog_sha256_raw": "f37ccad4ab28a43a054cfa8713245b3f50ba03d0164bd8d7564d89daeba95cd3",
+      "after_catalog_sha256_raw": "b525dcf416f27fed5fdf2c2801b44b07eb4027d261cc0da7ed7a7fa4f1e3eefb",
+      "actual_jobs": 14,
+      "checks": 56,
+      "intended_exit2_refusals": 4,
+      "changed_selected_files": [
+        "expected/question_catalog.json"
+      ],
+      "other19selected_files_raw_exact": true,
+      "scope": "New actual A/B builds consume the carrier successor catalog; all selected engineering/question/context payloads remain exact against the preceding publication successor."
+    },
+    {
+      "utc": "2026-11-03T06:05:59.270827+00:00",
+      "reason": "Five quantity-aware locator repairs after broader role/no-op audit, consumed through actual fresh A/B builds.",
+      "before_catalog_sha256_raw": "b525dcf416f27fed5fdf2c2801b44b07eb4027d261cc0da7ed7a7fa4f1e3eefb",
+      "after_catalog_sha256_raw": "164452c9b274be0fd1f21800f7bc4e52759798b34a3da23fa0f25048101b55f3",
+      "actual_jobs": 14,
+      "checks": 56,
+      "intended_exit2_refusals": 4,
+      "changed_selected_files": [
+        "expected/question_catalog.json"
+      ],
+      "other19selected_files_raw_exact": true,
+      "scope": "All19other selected artifacts match both the previous current publication and actual new producer bytes; original and prior successor metadata remain historical."
+    }
+  ]
 }

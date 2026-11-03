@@ -1,0 +1,448 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/models/E12-02-access-purpose.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E12"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "energy": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E12@model",
+   "question_id": "E12",
+   "family": "energy",
+   "question": "What do existing records establish about these hot-service valve candidates' actual temperature, insulation condition and access requirements?",
+   "about": "HV-A, HV-B",
+   "assets": [
+    {
+     "id": "HV-A",
+     "tag": "HV-A"
+    },
+    {
+     "id": "HV-B",
+     "tag": "HV-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "HV-A",
+     "tag": "HV-A",
+     "text": "hand valve HV-A reads \"HV-A Fictional hotservicevalve candidate\"; owning equipment unknown; no unit inferred; supplied source interpretation, not installed truth; Recorded qualifiers: {\"tag\": \"HV-A\", \"kind\": \"manual_valve\", \"unit\": null, \"source\": \"Fictional record, not measuredplantstate\", \"assigned_tag\": true, \"unplaced_reason\": \"Fictional valve; no inventoried equipmentowner\"}; Assigned identifier; an operating tag has not been verified",
+     "field": "unplaced[HV-A]",
+     "provenance": {
+      "kind": "native-unplaced-source-context-1",
+      "model_role": "manual_valve",
+      "record_fields": {
+       "tag": "HV-A",
+       "kind": "manual_valve",
+       "unit": null,
+       "source": "Fictional record, not measuredplantstate",
+       "assigned_tag": true,
+       "unplaced_reason": "Fictional valve; no inventoried equipmentowner"
+      },
+      "placement": "owning equipment unknown; no unit inferred"
+     }
+    },
+    {
+     "role": "trigger",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "hand valve HV-B reads \"HV-B Fictional hotservicevalve candidate\"; owning equipment unknown; no unit inferred; supplied source interpretation, not installed truth; Recorded qualifiers: {\"tag\": \"HV-B\", \"kind\": \"manual_valve\", \"unit\": null, \"source\": \"Fictional record, not measuredplantstate\", \"assigned_tag\": true, \"unplaced_reason\": \"Fictional valve; no inventoried equipmentowner\"}; Assigned identifier; an operating tag has not been verified",
+     "field": "unplaced[HV-B]",
+     "provenance": {
+      "kind": "native-unplaced-source-context-1",
+      "model_role": "manual_valve",
+      "record_fields": {
+       "tag": "HV-B",
+       "kind": "manual_valve",
+       "unit": null,
+       "source": "Fictional record, not measuredplantstate",
+       "assigned_tag": true,
+       "unplaced_reason": "Fictional valve; no inventoried equipmentowner"
+      },
+      "placement": "owning equipment unknown; no unit inferred"
+     }
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-A",
+     "tag": "HV-A",
+     "text": "HV-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "unplaced[HV-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-A",
+     "tag": "HV-A",
+     "text": "HV-A record_source = \"Fictional development record; no company or human approval\"; present; meaning and suitability unverified",
+     "field": "unplaced[HV-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-A",
+     "tag": "HV-A",
+     "text": "HV-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "unplaced[HV-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-A",
+     "tag": "HV-A",
+     "text": "HV-A record_available = true; present; meaning and suitability unverified",
+     "field": "unplaced[HV-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-A",
+     "tag": "HV-A",
+     "text": "HV-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "unplaced[HV-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-A",
+     "tag": "HV-A",
+     "text": "HV-A operating_temperature_C = 100; present; meaning and suitability unverified",
+     "field": "unplaced[HV-A].facts.operating_temperature_C"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-A",
+     "tag": "HV-A",
+     "text": "HV-A insulation_status = \"bare sourceassertion\"; present; meaning and suitability unverified",
+     "field": "unplaced[HV-A].facts.insulation_status"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-A",
+     "tag": "HV-A",
+     "text": "HV-A access_need = \"periodicinspectionandrepair\"; present; meaning and suitability unverified",
+     "field": "unplaced[HV-A].facts.access_need"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-A",
+     "tag": "HV-A",
+     "text": "HV-A inspection_frequency = \"weeklyfictional\"; present; meaning and suitability unverified",
+     "field": "unplaced[HV-A].facts.inspection_frequency"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-A",
+     "tag": "HV-A",
+     "text": "HV-A manufacturer_requirement = \"unknown\"; blank; meaning and suitability unverified",
+     "field": "unplaced[HV-A].facts.manufacturer_requirement"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "unplaced[HV-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B record_source = \"Fictional development record; no company or human approval\"; present; meaning and suitability unverified",
+     "field": "unplaced[HV-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "unplaced[HV-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B record_available = true; present; meaning and suitability unverified",
+     "field": "unplaced[HV-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "unplaced[HV-B].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B operating_temperature_C = 100; present; meaning and suitability unverified",
+     "field": "unplaced[HV-B].facts.operating_temperature_C"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B insulation_status = \"bare sourceassertion\"; present; meaning and suitability unverified",
+     "field": "unplaced[HV-B].facts.insulation_status"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B access_need = \"rareopening\"; present; meaning and suitability unverified",
+     "field": "unplaced[HV-B].facts.access_need"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B inspection_frequency = \"unknown\"; blank; meaning and suitability unverified",
+     "field": "unplaced[HV-B].facts.inspection_frequency"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: HV-A fictional_record = True",
+     "field": "unplaced[HV-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: HV-B fictional_record = True",
+     "field": "unplaced[HV-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: HV-A record_source = Fictional development record; no company or human approval",
+     "field": "unplaced[HV-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: HV-B record_source = Fictional development record; no company or human approval",
+     "field": "unplaced[HV-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: HV-A record_revision = R1",
+     "field": "unplaced[HV-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: HV-B record_revision = R1",
+     "field": "unplaced[HV-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: HV-A record_available = True",
+     "field": "unplaced[HV-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: HV-B record_available = True",
+     "field": "unplaced[HV-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: HV-A record_authority = unverified",
+     "field": "unplaced[HV-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: HV-B record_authority = unverified",
+     "field": "unplaced[HV-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: HV-A operating_temperature_C = 100",
+     "field": "unplaced[HV-A].facts.operating_temperature_C"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: HV-B operating_temperature_C = 100",
+     "field": "unplaced[HV-B].facts.operating_temperature_C"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: HV-A insulation_status = bare sourceassertion",
+     "field": "unplaced[HV-A].facts.insulation_status"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: HV-B insulation_status = bare sourceassertion",
+     "field": "unplaced[HV-B].facts.insulation_status"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: HV-A access_need = periodicinspectionandrepair",
+     "field": "unplaced[HV-A].facts.access_need"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: HV-B access_need = rareopening",
+     "field": "unplaced[HV-B].facts.access_need"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: HV-A inspection_frequency = weeklyfictional",
+     "field": "unplaced[HV-A].facts.inspection_frequency"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing valve service, actual insulation/temperature and safe-access basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing per-valve/fitting service and size, operating/design/surface temperature distinction and units, actual installed insulation condition, access/periodic inspection/repair and manufacturer instructions, source/revision/availability and any removal/material hazards.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "A stated hot/design temperature or missing insulation field is not proof of a bare surface or heat loss. Review existing suitable insulation and records first. DOE Tip17 explicitly describes removable reusable covers for periodic inspection or repair, so frequent access does not itself rule them out. Review actual fit/material/function/access and applicable manufacturer guidance; existing insulation removal must follow qualified safe procedures, including potential hazardous-material assessment. A suitable current arrangement may be acknowledged without new field measurement or jacket installation. Source table temperatures, sizes and heat-loss examples are not automatic site prescriptions or savings.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "HV-A",
+       "label": "HV-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "unplaced[HV-A].facts.fictional_record"
+      },
+      {
+       "id": "HV-B",
+       "label": "HV-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "unplaced[HV-B].facts.fictional_record"
+      },
+      {
+       "id": "HV-A",
+       "label": "HV-A",
+       "name": "record_source",
+       "value": "Fictional development record; no company or human approval",
+       "where": "unplaced[HV-A].facts.record_source"
+      },
+      {
+       "id": "HV-B",
+       "label": "HV-B",
+       "name": "record_source",
+       "value": "Fictional development record; no company or human approval",
+       "where": "unplaced[HV-B].facts.record_source"
+      },
+      {
+       "id": "HV-A",
+       "label": "HV-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "unplaced[HV-A].facts.record_revision"
+      },
+      {
+       "id": "HV-B",
+       "label": "HV-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "unplaced[HV-B].facts.record_revision"
+      },
+      {
+       "id": "HV-A",
+       "label": "HV-A",
+       "name": "record_available",
+       "value": true,
+       "where": "unplaced[HV-A].facts.record_available"
+      },
+      {
+       "id": "HV-B",
+       "label": "HV-B",
+       "name": "record_available",
+       "value": true,
+       "where": "unplaced[HV-B].facts.record_available"
+      },
+      {
+       "id": "HV-A",
+       "label": "HV-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "unplaced[HV-A].facts.record_authority"
+      },
+      {
+       "id": "HV-B",
+       "label": "HV-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "unplaced[HV-B].facts.record_authority"
+      },
+      {
+       "id": "HV-A",
+       "label": "HV-A",
+       "name": "operating_temperature_C",
+       "value": 100,
+       "where": "unplaced[HV-A].facts.operating_temperature_C"
+      },
+      {
+       "id": "HV-B",
+       "label": "HV-B",
+       "name": "operating_temperature_C",
+       "value": 100,
+       "where": "unplaced[HV-B].facts.operating_temperature_C"
+      },
+      {
+       "id": "HV-A",
+       "label": "HV-A",
+       "name": "insulation_status",
+       "value": "bare sourceassertion",
+       "where": "unplaced[HV-A].facts.insulation_status"
+      },
+      {
+       "id": "HV-B",
+       "label": "HV-B",
+       "name": "insulation_status",
+       "value": "bare sourceassertion",
+       "where": "unplaced[HV-B].facts.insulation_status"
+      },
+      {
+       "id": "HV-A",
+       "label": "HV-A",
+       "name": "access_need",
+       "value": "periodicinspectionandrepair",
+       "where": "unplaced[HV-A].facts.access_need"
+      },
+      {
+       "id": "HV-B",
+       "label": "HV-B",
+       "name": "access_need",
+       "value": "rareopening",
+       "where": "unplaced[HV-B].facts.access_need"
+      },
+      {
+       "id": "HV-A",
+       "label": "HV-A",
+       "name": "inspection_frequency",
+       "value": "weeklyfictional",
+       "where": "unplaced[HV-A].facts.inspection_frequency"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual service/temperature, installed condition, periodic access, manufacturer/function and safe-handling requirements before any insulation decision. Do not infer bare valves or automatically fit jackets from a model temperature, and do not reject removable covers merely because inspection/repair access is frequent. Acknowledge suitable existing insulation or unresolved applicability; no compulsory removal, retrofit or site benefit is authorized.",
+   "typical_benefit": {
+    "wording": "\"a 6-inch gate valve may have more than 6 square feet of surface area.\" The source tabulates heat saved by valve size and temperature. No % stated.",
+    "source": [
+     "S1",
+     "S2"
+    ],
+    "arc": "2.2136 (by description)",
+    "source_titles": [
+     "S1: DOE AMO Steam Tip Sheet #2, Insulate Steam Distribution and Condensate Return Lines (DOE/GO-102012-3404, Jan 2012)",
+     "S2: Steam Tip #17, Install Removable Insulation on Valves and Fittings (DOE/GO-102012-3403)"
+    ]
+   },
+   "limits": "Source review: complete S1/Tip2 and S2/Tip17 pp1–2. Removable-cover guidance includes periodic inspection/repair; trap-specific manufacturer instructions and existing-material hazards are conditional where applicable, not a blanket instruction to cover/remove every surface. Existing source examples depend on declared size/temperature/ambient/material/time conditions, not current installed truth.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

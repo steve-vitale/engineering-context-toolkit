@@ -7499,3 +7499,51 @@ See [the tool tutorial](../examples/batch-analysis/record-joins/README.md),
 [initial criteria](../examples/batch-analysis/record-joins/ACCEPTANCE.json),
 [public actual replay](../examples/batch-analysis/record-joins/worked/result.json) and
 [provenance](../examples/batch-analysis/record-joins/PROVENANCE.json).
+
+
+## 163. Complete the bounded source-policy review without dropping useful signal references
+
+Reviewed the remaining 22 catalog rules against original source material and prospective collection criteria.
+The existing question engine now keeps exact service/quantity/time/coverage and source applicability open
+while showing supplied candidates. Existing records come first; labels, scalars, unrelated monitoring or a
+quiet screen do not establish installed absence, correct operation or approval to modify equipment. All 50 rules
+and 126 requests retain bounded collection reviews, not a whole-catalog correctness or usefulness guarantee.
+
+The public tutorial retains 88 unchanged exposed fictional models, their 176 original reports, source identities,
+criteria and actual final 176 reports. Original PDFs are not redistributed. Source interpretations and conditional
+questions were independently reviewed; E18/E19/E21/E25/E26 benefit wording was qualified without introducing
+new site estimates. The other 28 rule objects, shared objects, other 45 benefit objects and structured source/quantitative fields
+remain unchanged. Historical S19 experience and unverified S24 figures retain their limitations.
+
+Receiving rejected an E18 residual pairwise-only limit and a C1 change that lost a useful valve-position
+diagnostic. Their rejected proposals and matched repairs remain private. Integration then found a second E18
+regression: replacing its tasks had dropped existing temperature/flow historian locators. The matched failure
+is preserved; exactly two old quantity-aware locators were restored into the new first request. Actual TE and
+represented-flow controls preserve supplied quantity-specific signal references and distinguish valve position
+from measured flow.
+New records-first tasks and process-wide/time-aware constraints remain intact. A cross-rule audit then
+reviewed six other removed locator declarations. Five request-location lists now preserve useful lookup or
+position-warning behavior; E15/E19 global candidates carry explicit unverified-association qualifications.
+E14's old equipment-only lookup was a no-op and remains disclosed rather than being presented as a recovered
+measurement. Twelve separate synthetic symbolic-pointer controls retain matched original/successor reports;
+there are no actual time series, additional source-reviewed rules or plants. Renderer text now distinguishes
+source quotations from contextual paraphrases instead of falsely calling every benefit entry verbatim.
+
+Separate actual publication cohorts retain common-path original runs, adopted-policy runs, the presentation
+successor and final locator successor. No earlier run is relabelled as the final method. Current screens/rollup,
+description bundles and equipment-change catalog were rebuilt with actual producers. Description examples now
+include a C2 measurement-purpose inquiry. The Bayer register keeps both complete proposed decisions and no
+ownership history; its earlier partial response was already stale and remains so. Explicit refresh adds no answer,
+and the old sheet still refuses. The new local SDK sample was captured rather than given a replacement digest;
+its complete asset response is unchanged apart from graph identity and actual load time.
+
+These are exposed source/software controls without model/provider calls or plant data. They do not measure
+human effort, savings, generalization or company acceptance. The intended recipient is an engineer or manager;
+no actual participant, company tenant, records or access was supplied. Real reconstruction/effort/outcome and
+approved receiving-system revision tests remain standing-goal requirements. Investigation/hypothesis outcome
+retention and its own-input demonstration also remain work; the batch joins are not a finished investigation.
+
+See [the source-policy tutorial](../examples/opportunity-screen/source-policy/README.md),
+[criteria](../examples/opportunity-screen/source-policy/expected/source-criteria.json),
+[provenance](../examples/opportunity-screen/source-policy/PROVENANCE.json) and
+[current boundaries](STATUS.md#open-work-and-company-handoff).

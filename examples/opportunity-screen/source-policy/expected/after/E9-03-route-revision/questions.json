@@ -1,0 +1,640 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/models/E9-03-route-revision.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E9"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "energy": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E9@model",
+   "question_id": "E9",
+   "family": "energy",
+   "question": "What do existing records establish about these drain-labelled condensate candidates' actual service, route and any suitable recovery question?",
+   "about": "CR-A, CR-B",
+   "assets": [
+    {
+     "id": "CR-A",
+     "tag": "CR-A"
+    },
+    {
+     "id": "CR-B",
+     "tag": "CR-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "CR-A",
+     "tag": "CR-A",
+     "text": "equipment CR-A reads \"CR-A CONDENSATE TO DRAIN historicalcaption\"",
+     "field": "units[CR-A]"
+    },
+    {
+     "role": "trigger",
+     "id": "CR-B",
+     "tag": "CR-B",
+     "text": "equipment CR-B reads \"CR-B CONDENSATE TO DRAIN historicalcaption\"",
+     "field": "units[CR-B]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CR-A",
+     "tag": "CR-A",
+     "text": "CR-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[CR-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CR-A",
+     "tag": "CR-A",
+     "text": "CR-A record_source = \"Fictional development packet; no plant or human approval\"; present; meaning and suitability unverified",
+     "field": "units[CR-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CR-A",
+     "tag": "CR-A",
+     "text": "CR-A record_revision = \"R2\"; present; meaning and suitability unverified",
+     "field": "units[CR-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CR-A",
+     "tag": "CR-A",
+     "text": "CR-A record_available = true; present; meaning and suitability unverified",
+     "field": "units[CR-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CR-A",
+     "tag": "CR-A",
+     "text": "CR-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[CR-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CR-A",
+     "tag": "CR-A",
+     "text": "CR-A service = \"steamwater\"; present; meaning and suitability unverified",
+     "field": "units[CR-A].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CR-A",
+     "tag": "CR-A",
+     "text": "CR-A route_basis = \"R1captiondrain; suppliedR2record saysreturn\"; present; meaning and suitability unverified",
+     "field": "units[CR-A].facts.route_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CR-A",
+     "tag": "CR-A",
+     "text": "CR-A receiving_system = \"capacity/pressure unverified\"; present; meaning and suitability unverified",
+     "field": "units[CR-A].facts.receiving_system"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CR-A",
+     "tag": "CR-A",
+     "text": "CR-A flash_fraction = 0.12; present; meaning and suitability unverified",
+     "field": "units[CR-A].facts.flash_fraction"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CR-A",
+     "tag": "CR-A",
+     "text": "CR-A temperature = 180; present; meaning and suitability unverified",
+     "field": "units[CR-A].facts.temperature"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CR-A",
+     "tag": "CR-A",
+     "text": "CR-A temperature_unit = \"F\"; present; meaning and suitability unverified",
+     "field": "units[CR-A].facts.temperature_unit"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CR-B",
+     "tag": "CR-B",
+     "text": "CR-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[CR-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CR-B",
+     "tag": "CR-B",
+     "text": "CR-B record_source = \"foreignCR-B\"; present; meaning and suitability unverified",
+     "field": "units[CR-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CR-B",
+     "tag": "CR-B",
+     "text": "CR-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[CR-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CR-B",
+     "tag": "CR-B",
+     "text": "CR-B record_available = false; present; meaning and suitability unverified",
+     "field": "units[CR-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CR-B",
+     "tag": "CR-B",
+     "text": "CR-B record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[CR-B].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CR-B",
+     "tag": "CR-B",
+     "text": "CR-B service = \"steamwater\"; present; meaning and suitability unverified",
+     "field": "units[CR-B].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CR-B",
+     "tag": "CR-B",
+     "text": "CR-B route_basis = null; blank; meaning and suitability unverified",
+     "field": "units[CR-B].facts.route_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CR-B",
+     "tag": "CR-B",
+     "text": "CR-B flash_fraction = null; blank; meaning and suitability unverified",
+     "field": "units[CR-B].facts.flash_fraction"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A fictional_record = True",
+     "field": "units[CR-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-B fictional_record = True",
+     "field": "units[CR-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A record_source = Fictional development packet; no plant or human approval",
+     "field": "units[CR-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-B record_source = foreignCR-B",
+     "field": "units[CR-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A record_revision = R2",
+     "field": "units[CR-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-B record_revision = R1",
+     "field": "units[CR-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A record_available = True",
+     "field": "units[CR-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-B record_available = False",
+     "field": "units[CR-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A record_authority = unverified",
+     "field": "units[CR-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-B record_authority = unverified",
+     "field": "units[CR-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A service = steamwater",
+     "field": "units[CR-A].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-B service = steamwater",
+     "field": "units[CR-B].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A route_basis = R1captiondrain; suppliedR2record saysreturn",
+     "field": "units[CR-A].facts.route_basis"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A receiving_system = capacity/pressure unverified",
+     "field": "units[CR-A].facts.receiving_system"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A flash_fraction = 0.12",
+     "field": "units[CR-A].facts.flash_fraction"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A temperature = 180",
+     "field": "units[CR-A].facts.temperature"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A temperature_unit = F",
+     "field": "units[CR-A].facts.temperature_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A fictional_record = True",
+     "field": "units[CR-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-B fictional_record = True",
+     "field": "units[CR-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A record_source = Fictional development packet; no plant or human approval",
+     "field": "units[CR-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-B record_source = foreignCR-B",
+     "field": "units[CR-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A record_revision = R2",
+     "field": "units[CR-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-B record_revision = R1",
+     "field": "units[CR-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A record_available = True",
+     "field": "units[CR-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-B record_available = False",
+     "field": "units[CR-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A record_authority = unverified",
+     "field": "units[CR-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-B record_authority = unverified",
+     "field": "units[CR-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A service = steamwater",
+     "field": "units[CR-A].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-B service = steamwater",
+     "field": "units[CR-B].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A route_basis = R1captiondrain; suppliedR2record saysreturn",
+     "field": "units[CR-A].facts.route_basis"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A receiving_system = capacity/pressure unverified",
+     "field": "units[CR-A].facts.receiving_system"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A flash_fraction = 0.12",
+     "field": "units[CR-A].facts.flash_fraction"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A temperature = 180",
+     "field": "units[CR-A].facts.temperature"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CR-A temperature_unit = F",
+     "field": "units[CR-A].facts.temperature_unit"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing per-candidate service, route and comparable water/mass-balance records",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing exact-source/stream steam-water service and actual route/revision, return/makeup/feedwater/blowdown and other-loss/inventory records, temperatures/pressures/flash, actual flow/duration, quantity units and matching sample/operating boundaries.",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
+     ],
+     "how": "A drain caption may be historical or nonwater; establish service/current route before interpreting it as lost boiler-water condensate. Known hydrocarbon condensate is not this boiler-return task; unknown service remains conditional. Do not present1-makeup/feedwater as exact return percent without a justified boundary, denominator, losses/blowdown/inventory and matched quantities/units/time/conversions. Preserve source-qualified values and uncertainty, not an automatic quotient.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[CR-A].facts.fictional_record"
+      },
+      {
+       "id": "CR-B",
+       "label": "CR-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[CR-B].facts.fictional_record"
+      },
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "record_source",
+       "value": "Fictional development packet; no plant or human approval",
+       "where": "units[CR-A].facts.record_source"
+      },
+      {
+       "id": "CR-B",
+       "label": "CR-B",
+       "name": "record_source",
+       "value": "foreignCR-B",
+       "where": "units[CR-B].facts.record_source"
+      },
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "record_revision",
+       "value": "R2",
+       "where": "units[CR-A].facts.record_revision"
+      },
+      {
+       "id": "CR-B",
+       "label": "CR-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[CR-B].facts.record_revision"
+      },
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "record_available",
+       "value": true,
+       "where": "units[CR-A].facts.record_available"
+      },
+      {
+       "id": "CR-B",
+       "label": "CR-B",
+       "name": "record_available",
+       "value": false,
+       "where": "units[CR-B].facts.record_available"
+      },
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[CR-A].facts.record_authority"
+      },
+      {
+       "id": "CR-B",
+       "label": "CR-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[CR-B].facts.record_authority"
+      },
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "service",
+       "value": "steamwater",
+       "where": "units[CR-A].facts.service"
+      },
+      {
+       "id": "CR-B",
+       "label": "CR-B",
+       "name": "service",
+       "value": "steamwater",
+       "where": "units[CR-B].facts.service"
+      },
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "route_basis",
+       "value": "R1captiondrain; suppliedR2record saysreturn",
+       "where": "units[CR-A].facts.route_basis"
+      },
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "receiving_system",
+       "value": "capacity/pressure unverified",
+       "where": "units[CR-A].facts.receiving_system"
+      },
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "flash_fraction",
+       "value": 0.12,
+       "where": "units[CR-A].facts.flash_fraction"
+      },
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "temperature",
+       "value": 180,
+       "where": "units[CR-A].facts.temperature"
+      },
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "temperature_unit",
+       "value": "F",
+       "where": "units[CR-A].facts.temperature_unit"
+      }
+     ]
+    },
+    {
+     "item": "Existing quality, treatment, receiving-system and feasibility basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing stream-specific quality/contamination and sampling records, potential dissolved/particulate sources, treatment/cleanup options, routing/receiving capacity and pressure, flash/safety/material constraints and economic/operating coverage; source/revision/availability retained.",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
+     ],
+     "how": "Clean or steady alone does not authorize return equipment, and contaminated or small streams are not automatically required to remain at drain: review suitable treatment, route, receiving and economic constraints with the responsible engineer. S8 printed20–21 and supplemental DOE Tip8 pp1–2 discuss actual recovery equipment, cleanup and explicit example assumptions. Acknowledge an existing suitable route/treatment without new measurements or changes; source examples are not site savings.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[CR-A].facts.fictional_record"
+      },
+      {
+       "id": "CR-B",
+       "label": "CR-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[CR-B].facts.fictional_record"
+      },
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "record_source",
+       "value": "Fictional development packet; no plant or human approval",
+       "where": "units[CR-A].facts.record_source"
+      },
+      {
+       "id": "CR-B",
+       "label": "CR-B",
+       "name": "record_source",
+       "value": "foreignCR-B",
+       "where": "units[CR-B].facts.record_source"
+      },
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "record_revision",
+       "value": "R2",
+       "where": "units[CR-A].facts.record_revision"
+      },
+      {
+       "id": "CR-B",
+       "label": "CR-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[CR-B].facts.record_revision"
+      },
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "record_available",
+       "value": true,
+       "where": "units[CR-A].facts.record_available"
+      },
+      {
+       "id": "CR-B",
+       "label": "CR-B",
+       "name": "record_available",
+       "value": false,
+       "where": "units[CR-B].facts.record_available"
+      },
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[CR-A].facts.record_authority"
+      },
+      {
+       "id": "CR-B",
+       "label": "CR-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[CR-B].facts.record_authority"
+      },
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "service",
+       "value": "steamwater",
+       "where": "units[CR-A].facts.service"
+      },
+      {
+       "id": "CR-B",
+       "label": "CR-B",
+       "name": "service",
+       "value": "steamwater",
+       "where": "units[CR-B].facts.service"
+      },
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "route_basis",
+       "value": "R1captiondrain; suppliedR2record saysreturn",
+       "where": "units[CR-A].facts.route_basis"
+      },
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "receiving_system",
+       "value": "capacity/pressure unverified",
+       "where": "units[CR-A].facts.receiving_system"
+      },
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "flash_fraction",
+       "value": 0.12,
+       "where": "units[CR-A].facts.flash_fraction"
+      },
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "temperature",
+       "value": 180,
+       "where": "units[CR-A].facts.temperature"
+      },
+      {
+       "id": "CR-A",
+       "label": "CR-A",
+       "name": "temperature_unit",
+       "value": "F",
+       "where": "units[CR-A].facts.temperature_unit"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual steam-water service, current route and stream-specific quality/treatment, flow/duty, temperature/pressure/flash and receiving/economic constraints before a recovery decision. Do not automatically return clean/steady flow or permanently reject contaminated/small flow; neither label nor a simple unqualified makeup quotient establishes suitability or benefit. Existing suitable basis or nonapplicability may be acknowledged; unresolved data remains a records question with no operational/hardware authorization.",
+   "typical_benefit": {
+    "wording": "Enthalpy difference \"generally over 120 Btu/lb, an amount of energy that is often more than 10% of the energy in the boiler generated steam.\" LBNL (as reported in LBNL-56183): \"Condensate Return Alone 10%\", 1.1 yr.",
+    "source": [
+     "S8",
+     "S19",
+     "S24"
+    ],
+    "arc": "2.2121 (IAC/ITAC browse page: 354 recommendations, 1.2 yr average payback, 50.9% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S8: Improving Steam System Performance: A Sourcebook for Industry, 2nd ed. (DOE/GO-102012-3423, rev. Oct 2012)",
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: S8 printed20–21 covers condensate recovery/cleanup and system constraints. Supplemental original DOE Tip8 (https://www.energy.gov/sites/prod/files/2014/05/f16/steam8_boiler.pdf), completepp1–2, was admitted before criteria and provides conditional data-driven recovery/treatment and explicit heat/flash/economic examples. Inherited S19/S24 figures are not reverified here or current site benefits.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

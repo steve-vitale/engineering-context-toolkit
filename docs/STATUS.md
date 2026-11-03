@@ -13,15 +13,14 @@ Company review, accepted identities and receiving-system checks determine what c
 
 ## Current verification
 
-The recorded full-suite release baseline is **`245eb6a`**:
-[main CI run 41573867276](https://github.com/steve-vitale/engineering-context-toolkit/actions/runs/41573867276).
-It passed **76/76 test programs**, with **18 individual unittest cases skipped**, plus six saved task/model
+The recorded full-suite release baseline is **`07fa45f`**:
+[main CI run 41579129327](https://github.com/steve-vitale/engineering-context-toolkit/actions/runs/41579129327).
+It passed **77/77 test programs**, with **18 individual unittest cases skipped**, plus six saved task/model
 benchmark suites and the optional MCP/protocol job. This is software evidence, not human usefulness,
 company-client acceptance or plant validation. Check [committed-version CI](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml)
 for later revisions; the dated development records below apply only to their stated inputs and versions.
 
-The current runner registers 59 source-only and 77 full-suite programs; the batch-join follow-up adds one
-program beyond the recorded release baseline above. Offline publication checks match
+The current runner registers 59 source-only and 77 full-suite programs. Offline publication checks match
 41 numerical claims and identify one prose-only claim. The 95-cell workflow matrix records
 **64 pass / 23 fail / 8 n/a**; its failures are retained research results, not failing unit tests.
 Pipeline freshness remains **50/52**: manual `te.pid_live` and `te.replay` receipts are stale.
@@ -74,7 +73,7 @@ actual participant, recipient, native-system and tenant observations remain **no
 
 | Work category | Remaining work | Completion evidence |
 |---|---|---|
-| Engineering question quality | N065/N082: source adequacy and useful questions. Of 50 rules/126 request bundles, 28 rules have bounded collection reviews; 22 still await original-source adequacy review. Scoped MGPI is development evidence; default MGPI still produces zero findings. | Prospective expected/unacceptable questions, source/key review and actual engineer/recipient usefulness observations. |
+| Engineering question quality | N082's bounded source/collection review now covers all 50 rules/126 requests; N065 and actual usefulness remain open. The final 22 add 88 exposed fictional controls. Default MGPI now asks C2 about represented measurement purpose; that is not a finding of the incident's missing safeguards. | Independent source/collection and matched software checks exist; actual engineer/recipient usefulness, unfamiliar-company coverage and engineering acceptance remain to be observed. |
 | Evaluation and transfer | N086 original-source/key engineering acceptance, Native placement gaps, existing matrix failures, unfamiliar-source coverage, scorer limits and five missing historical prediction tables. | Matched experiments with frozen criteria, retained failures, exposure/split labels and independent source/key review. More files or rerunning familiar inputs is not generalization. |
 | Optional adapters and receiving projections | General inverse graph conversion, captured-source consumers, managed-section merging and particular incumbent-system connectors are not implemented. Test changed/removed identifiers and complete retained history for the selected route. | A demonstrated engineering job, explicit supported contract, source preservation and subsequent-revision readback. Add only the adapter that job needs. |
 | Review-history handoff | N107 now preserves selected JSON intact and unbound, then attaches events only through [individual supplied associations](REVIEW_HISTORY.md) to exact model/record bytes. Complete earlier history remains readable; full/core retain its qualifications. | Review the source/revision relationship in the company process. Matching hashes cannot detect a false supplied basis or establish writer lineage, reviewer authority, approval or permission to share. |
@@ -99,7 +98,7 @@ No permitted IT/OT route means disconnected work or an approved released snapsho
    exercise supplies reproducible preservation checks; run the real recipient comparison when permitted.
 2. Close the job's evidence and calculation-continuity gaps. Before broad analysis features, demonstrate the required
    record joins, quality/time basis, competing explanations and retained outcome on that question.
-3. Audit the remaining 22 collection/source contracts and evaluate useful questions before adding catalog breadth.
+3. Evaluate question usefulness with the engineer or manager using their permitted records before adding catalog breadth.
 4. Improve corpus failures through matched source-informed experiments; reserve unfamiliar inputs before tuning.
 5. Add only the receiving adapter or projection needed by an actual team, then test its next revision and permissions.
    Hand shared identity, concurrent work and release operations to a sustainably operated company service.

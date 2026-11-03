@@ -268,16 +268,26 @@ class ExpectedFindings(unittest.TestCase):
         self.assertIn("TT-122", {a["id"] for a in finding(doc, "H4@E-101")["assets"]})
         self.assertIn("FT-119", {a["id"] for a in finding(doc, "E18@model")["assets"]})
         self.assertIsNotNone(finding(doc, "H2@C-101"))
-        # stripper steam is metered (FT-119); condenser and reactor cooling water are not
-        self.assertNotIn("C1@C-101", ids(doc))
-        self.assertEqual({"C1@R-101", "C1@E-101"}, {i for i in ids(doc) if i.startswith("C1@")})
+        # FT-119 is a represented steam-flow candidate, not proof of usable user-level data.
+        # Both represented and unrepresented measurements retain source/coverage review.
+        self.assertEqual({"C1@C-101", "C1@R-101", "C1@E-101"},
+                         {i for i in ids(doc) if i.startswith("C1@")})
+        metered = finding(doc, "C1@C-101")
+        self.assertIn("FT-119", {a["id"] for a in metered["assets"]})
+        self.assertIn("Utility flow to this user", {r["item"] for r in metered["data_requests"]})
         # no pumps in this model: no pump questions; a process recycle compressor is not an air compressor
         for q in ("E1", "E2", "E3", "E4", "E19", "E20", "E21", "E22", "E23", "C7"):
             self.assertIn(q, doc["did_not_fire"])
-        # loop list read: the uncontrolled measurements are exactly the eight without a loop
+        # Represented readers are evidence, not proof of complete current logic coverage.
+        # Controlled and controllerless measurements both retain the purpose/source inquiry.
         c2 = finding(doc, "C2@model")
-        self.assertEqual({a["id"] for a in c2["assets"]},
-                         {"FT-106", "PT-107", "TT-111", "PT-113", "FT-114", "PT-116", "JT-120", "TT-122"})
+        model = json.loads((ROOT / "data/te_process_model.json").read_text(encoding="utf-8"))
+        variables = {"flow", "pressure", "level", "temperature", "composition", "power"}
+        self.assertEqual({e["id"] for e in c2["evidence"] if e["role"] == "trigger"},
+                         {i["tag"] for i in model["instruments"] if i.get("variable") in variables})
+        self.assertTrue(any(e.get("id") == "FIC-101" and e["role"].startswith("supplied controller reader")
+                            for e in c2["evidence"]))
+        self.assertTrue(c2["data_requests"])
         # historian names come from the model's recorded-signal index
         e6_text = json.dumps(e6)
         self.assertIn("XMV(5)", e6_text)
@@ -295,8 +305,9 @@ class ExpectedFindings(unittest.TestCase):
         self.assertNotIn("E2@P-1", ids(doc))
         self.assertNotIn("E3@P-1", ids(doc))
         self.assertNotIn("C1@RT-1", ids(doc))
-        # the steam heater is metered (FT-106); the 80 C water cooler is not
-        self.assertEqual({i for i in ids(doc) if i.startswith("C1@")}, {"C1@E-3"})
+        # The heater's FT-106 remains a candidate; its source/coverage is still a question.
+        self.assertEqual({i for i in ids(doc) if i.startswith("C1@")}, {"C1@E-2", "C1@E-3"})
+        self.assertIn("FT-106", {a["id"] for a in finding(doc, "C1@E-2")["assets"]})
 
     def test_open100(self):
         doc = load("open100")
@@ -319,8 +330,10 @@ class ExpectedFindings(unittest.TestCase):
         self.assertIn("E13", doc["did_not_fire"])
         self.assertIn("H3", doc["did_not_fire"])
         self.assertIn("RCS-EX-105", sum(doc["left_out"].values(), []))
-        # no controller list in an extracted drawing: controller questions are reported as not checked
-        self.assertEqual({n["question_id"] for n in doc["not_checked"]}, {"C2", "C6"})
+        # A partial drawing can still prompt C2 source/purpose clarification.
+        # C6 requires the controller model and remains explicitly not checked.
+        self.assertEqual({n["question_id"] for n in doc["not_checked"]}, {"C6"})
+        self.assertIsNotNone(finding(doc, "C2@model"))
 
     def test_new_questions_stay_quiet_on_the_chemical_and_power_examples(self):
         """No refrigerant, oven, dryer or fryer is drawn in TE, Bayer or OPEN100: TE's recycle compressor K-101, its
@@ -454,11 +467,16 @@ class Rollup(unittest.TestCase):
                     self.assertEqual(len(s["where"]), len(set(s["where"])))
                     for b in s["where_by_finding"]:
                         self.assertFalse(set(b["where"]) & set(s["where"]))
-        # places shared by a site's findings are listed once; each meter-less valve stays with its own finding
+        # Shared records/conditional observations are listed once; the represented flow
+        # candidate and each valve's missing-flow diagnostic keep their finding identity.
         c1 = {r["item"]: r for r in by["C1"]["data_requests"]}["Utility flow to this user"]
         food = next(s for s in c1["sites"] if s["site"] == "food")
-        self.assertTrue(any(w.startswith("a walkdown: clamp-on") for w in food["where"]))
-        self.assertEqual({b["finding_id"] for b in food["where_by_finding"]}, {"C1@O-302", "C1@F-303", "C1@WH-401"})
+        self.assertTrue(any(w.startswith("site records:") for w in food["where"]))
+        observations = [w for w in food["where"] if w.startswith("a walkdown:")]
+        self.assertTrue(observations)
+        self.assertTrue(all("Only if" in w and "responsible engineer" in w for w in observations))
+        self.assertEqual({b["finding_id"] for b in food["where_by_finding"]},
+                         {"C1@D-301", "C1@O-302", "C1@F-303", "C1@WH-401"})
         self.assertEqual([s["site"] for s in by["E27"]["sites"]], ["food"])
         self.assertIn("bayer", by["E27"]["quiet_at"])
         text = (EX / "rollup-food-bayer" / "rollup.md").read_text(encoding="utf-8")
@@ -852,10 +870,14 @@ class CollectionContractRepairs(unittest.TestCase):
                 self.cli(["--model", path, "--catalog", self.source_example / "catalog.json", "--out", base / str(n)])
                 doc = json.loads((base / str(n) / "questions.json").read_text(encoding="utf-8"))
                 self.assertEqual(doc["questions"], [])
-            # Default remains an honest zero; this authored recipe is not a generalization improvement.
+            # Default C2 can ask about the supplied level reading's purpose/coverage;
+            # that does not adopt this source-specific incident recipe as a generic rule.
             self.cli(["--model", ROOT / "examples/from-description/mgpi/model-expanded-source.json",
                       "--out", base / "default"])
-            self.assertEqual(json.loads((base / "default/questions.json").read_text(encoding="utf-8"))["questions"], [])
+            default = json.loads((base / "default/questions.json").read_text(encoding="utf-8"))
+            self.assertEqual(ids(default), {"C2@model"})
+            self.assertEqual({e["id"] for e in finding(default, "C2@model")["evidence"]
+                              if e["role"] == "trigger"}, {"LI_HYPO"})
 
     def intake(self, base, facts=None):
         model = {"meta": {"model_kind": "extracted_twin", "title": "fictional field intake"},
@@ -1381,6 +1403,423 @@ class MachineFunctionCollectionContracts(unittest.TestCase):
             self.assertFalse((base / "rollup").exists())
 
 
+class AirUtilityCollectionContracts(unittest.TestCase):
+    """Source-policy counterexamples, not installed-state or engineering-accuracy tests.
+
+    E21/E22/E23 use DOE/CAC S11 fact sheets 2, 6 and 9 (printed24-27,
+    43-44, 58-59), with DOE S10 tip9 for storage. C1 uses PNNL-23892 S22
+    metering planning/performance guidance and the qualified S19 table5.
+    E18 retains its accepted S19 process-wide investigation (printed43-45)
+    while preserving quantity-specific signal candidates and qualifications.
+    The inline models are fictional. The positive signal control uses the
+    retained public TE model/loop list in RUNS, not a plant or new measurement.
+    """
+
+    def screen(self, base, model, qid):
+        source = base / "model.json"
+        source.write_text(json.dumps(model, ensure_ascii=False), encoding="utf-8")
+        before = source.read_bytes()
+        out = base / "screen"
+        out.mkdir()
+        rc, doc = run(["--model", str(source), "--question", qid], out)
+        self.assertEqual(rc, 0)
+        self.assertEqual(source.read_bytes(), before)
+        return doc
+
+    @staticmethod
+    def model(units, streams=None, instruments=None, valves=None):
+        return {"meta": {"title": "Fictional air/utility collection counterexample",
+                         "assumptions": ["Supplied records, source authority and installed function unverified"]},
+                "units": units, "streams": streams or [], "instruments": instruments or [],
+                "final_elements": valves or []}
+
+    def utility_model(self, meter=False):
+        model = self.model(
+            [{"id": "U-1", "type": "process_user", "name": "Utility user"}],
+            [{"id": "S-1", "name": "STEAM SUPPLY", "from": "BL", "to": "U-1", "utility": True}],
+            valves=[{"tag": "TV-1", "unit": "U-1", "stream": "S-1",
+                     "description": "STEAM supply valve", "xmv": 99}])
+        if meter:
+            model["instruments"].append(
+                {"tag": "FT-1", "unit": "U-1", "stream": "S-1", "variable": "flow",
+                 "description": "STEAM flow candidate", "xmeas": 99,
+                 "facts": {"record_available": False, "quality": "FAULT", "flow": 0,
+                           "flow_unit": "actual m3/h", "sample_period": None,
+                           "measurement_target": "S-1 declared, source coverage unverified"}})
+        return model
+
+    def heat_integration_model(self):
+        return self.model(
+            [{"id": "COOL-1", "type": "heat_exchanger", "name": "Process cooler"},
+             {"id": "HEAT-1", "type": "heat_exchanger", "name": "Process heater"}],
+            instruments=[
+                {"tag": "FT-CW", "unit": "COOL-1", "variable": "flow", "xmeas": 91,
+                 "description": "COOLING WATER supply flow"},
+                {"tag": "TT-CW", "unit": "COOL-1", "variable": "temperature", "xmeas": 92,
+                 "description": "COOLING WATER supply temperature"},
+                {"tag": "FT-ST", "unit": "HEAT-1", "variable": "flow", "xmeas": 93,
+                 "description": "STEAM supply flow"}],
+            valves=[{"tag": "TV-CW", "unit": "COOL-1", "xmv": 91,
+                     "description": "COOLING WATER supply valve"},
+                    {"tag": "FV-ST", "unit": "HEAT-1", "xmv": 92,
+                     "description": "STEAM supply valve"}])
+
+    def test_unmetered_TE_valve_keeps_the_quantity_specific_signal_warning(self):
+        # Preserve the working aid that an early C1 source-policy candidate lost.
+        with tempfile.TemporaryDirectory() as tmp:
+            rc, doc = run([*RUNS["te"], "--question", "C1"], tmp)
+        self.assertEqual(rc, 0)
+        selected = finding(doc, "C1@R-101")
+        request = next(r for r in selected["data_requests"] if r["item"] == "Utility flow to this user")
+        warning = next(w for w in request["where"] if "only the valve position is recorded" in w)
+        self.assertIn("TV-121", warning)
+        self.assertIn("XMV(10)", warning)
+        self.assertIn("flow needs a meter or a calibrated valve curve", warning)
+        self.assertNotIn("historian / recorded data: TV-121", " ".join(request["where"]))
+
+    def test_flow_candidate_is_named_without_valve_contradiction_or_collection_completion(self):
+        for quality, available in [("FAULT", False), ("GOOD, supplied claim", True)]:
+            with self.subTest(quality=quality), tempfile.TemporaryDirectory() as tmp:
+                model = self.utility_model(meter=True)
+                model["instruments"][0]["facts"].update(quality=quality, record_available=available)
+                doc = self.screen(Path(tmp), model, "C1")
+            selected = finding(doc, "C1@U-1")
+            self.assertIsNotNone(selected)  # a represented meter is not verified usable coverage
+            requests = {r["item"]: r for r in selected["data_requests"]}
+            self.assertIn("Who would use the reading", requests)
+            request = requests["Utility flow to this user"]
+            where = " ".join(request["where"])
+            self.assertIn("FT-1", where)
+            self.assertIn("XMEAS(99)", where)
+            self.assertNotIn("only the valve position is recorded", where)
+            self.assertNotIn("only a valve", where)
+            self.assertNotIn("TV-1: recorded signal XMV(99)", where)
+            self.assertNotIn("already_on_drawing", request)
+            # The source values remain visible even though they cannot close the review.
+            evidence = " ".join(e["text"] for e in selected["evidence"])
+            self.assertIn(json.dumps(quality), evidence)
+            self.assertIn("record_available = " + json.dumps(available), evidence)
+            self.assertIn("flow = 0", evidence)
+            self.assertIn("sample_period = null", evidence)
+
+    def test_one_branch_meter_cannot_clear_another_branch_on_the_same_user(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            model = self.utility_model(meter=True)
+            model["streams"].append({"id": "S-2", "name": "STEAM SUPPLY second branch",
+                                     "from": "BL", "to": "U-1", "utility": True,
+                                     "facts": {"branch": "not covered by FT-1", "record_available": False}})
+            doc = self.screen(Path(tmp), model, "C1")
+        selected = finding(doc, "C1@U-1")
+        self.assertIsNotNone(selected)
+        triggers = {e["id"] for e in selected["evidence"] if e["role"] == "trigger"}
+        self.assertLessEqual({"stream:S-1", "stream:S-2"}, triggers)
+        self.assertIn("FT-1", {a["id"] for a in selected["assets"]})
+        request = next(r for r in selected["data_requests"] if r["item"] == "Utility flow to this user")
+        values = {(v["id"], v["name"]): v["value"] for v in request["candidate_facts"]}
+        self.assertIs(values[("stream:S-2", "record_available")], False)
+        self.assertEqual(values[("stream:S-2", "branch")], "not covered by FT-1")
+        self.assertNotIn("already_on_drawing", request)
+
+    def test_missing_meter_drawing_does_not_order_a_field_measurement(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            selected = finding(self.screen(Path(tmp), self.utility_model(), "C1"), "C1@U-1")
+        for request in selected["data_requests"]:
+            self.assertTrue(any(w.startswith("site records:") for w in request["where"]))
+            walkdowns = [w for w in request["where"] if w.startswith("a walkdown:")]
+            self.assertTrue(walkdowns)
+            self.assertTrue(all("Only if" in w and "responsible engineer" in w for w in walkdowns))
+            self.assertFalse(any(w.startswith("a walkdown: clamp-on") for w in walkdowns))
+
+    def test_air_end_use_keeps_intermittent_vacuum_but_excludes_known_purge_and_nonair(self):
+        model = self.model([
+            {"id": "VG-1", "type": "vacuum_generator", "name": "Compressed AIR VENTURI vacuum",
+             "facts": {"service": "compressed air", "duty_percent": 12, "shutoff_control": True,
+                       "flow": 0, "flow_unit": "reference conditions unknown", "process_requirement": None}},
+            {"id": "PG-1", "type": "panel_purge", "name": "AIR CABINET COOL protective purge"},
+            {"id": "B-1", "type": "air_blower", "name": "Ambient AIR BLOWER SPARGING"},
+            {"id": "WE-1", "type": "water_eductor", "name": "AIR-labelled VENTURI water eductor"}])
+        with tempfile.TemporaryDirectory() as tmp:
+            doc = self.screen(Path(tmp), model, "E21")
+        selected = finding(doc, "E21@model")
+        self.assertIsNotNone(selected)
+        self.assertEqual({e["id"] for e in selected["evidence"] if e["role"] == "trigger"}, {"VG-1"})
+        request = selected["data_requests"][0]
+        values = {(v["id"], v["name"]): v["value"] for v in request["candidate_facts"]}
+        self.assertEqual(values[("VG-1", "duty_percent")], 12)
+        self.assertIs(values[("VG-1", "shutoff_control")], True)
+        self.assertIn("process_requirement = null", " ".join(e["text"] for e in selected["evidence"]))
+        self.assertNotIn("already_on_drawing", request)
+
+    def test_storage_labels_do_not_suppress_air_system_demand_and_control_review(self):
+        for storage_type, storage_name, target in [("water_tank", "WATER STORAGE TANK", "water users"),
+                                                   ("air_receiver", "AIR RECEIVER", "K-2 only")]:
+            with self.subTest(storage=storage_type), tempfile.TemporaryDirectory() as tmp:
+                model = self.model([
+                    {"id": "K-1", "type": "air_compressor", "name": "AIR COMPRESSOR one"},
+                    {"id": "K-2", "type": "air_compressor", "name": "AIR COMPRESSOR two"},
+                    {"id": "ST-1", "type": storage_type, "name": storage_name,
+                     "facts": {"target_subject": target, "storage_volume": 0, "volume_unit": "m3"}}])
+                doc = self.screen(Path(tmp), model, "E22")
+            self.assertEqual(ids(doc), {"E22@K-1", "E22@K-2"})
+            for selected in doc["questions"]:
+                self.assertIn("ST-1", {a["id"] for a in selected["assets"]})
+                self.assertTrue(selected["data_requests"])
+                self.assertFalse(any("already_on_drawing" in r for r in selected["data_requests"]))
+                self.assertFalse(any(e.get("role") == "absence" for e in selected["evidence"]))
+
+    def test_air_compressor_package_is_not_a_dryer_or_nonair_compressor(self):
+        model = self.model([
+            {"id": "DR-1", "type": "air_dryer", "name": "AIR COMPRESSOR helper"},
+            {"id": "K-1", "type": "air_compressor", "name": "AIR COMPRESSOR package with DRYER"},
+            {"id": "RC-1", "type": "refrigeration_compressor", "name": "INSTRUMENT AIR wrong label"},
+            {"id": "GC-1", "type": "process_gas_compressor", "name": "PLANT AIR wrong label"}])
+        for qid in ("E22", "E23"):
+            with self.subTest(question=qid), tempfile.TemporaryDirectory() as tmp:
+                doc = self.screen(Path(tmp), model, qid)
+            self.assertEqual(ids(doc), {qid + "@K-1"})
+            self.assertEqual({e["id"] for e in doc["questions"][0]["evidence"] if e["role"] == "trigger"},
+                             {"K-1"})
+
+    def test_existing_heat_recovery_and_noncoincident_sink_remain_reviewable_records(self):
+        supplied = {"service": "compressed air", "cooling_medium": "air", "available_heat": 100,
+                    "heat_unit": "kW thermal", "heat_temperature": 50, "temperature_unit": "C",
+                    "receiver_required_temperature": 180, "receiver_duty": 80,
+                    "existing_recovery": {"target": "HW-1", "reviewed": False},
+                    "operating_schedule": "summer only", "receiver_schedule": "winter only",
+                    "cooling_constraint": "normal rejection remains required", "displaced_energy": None}
+        model = self.model([{"id": "K-1", "type": "air_compressor", "name": "AIR COMPRESSOR",
+                             "facts": supplied}])
+        with tempfile.TemporaryDirectory() as tmp:
+            selected = finding(self.screen(Path(tmp), model, "E23"), "E23@K-1")
+        self.assertIsNotNone(selected)
+        request = selected["data_requests"][0]
+        self.assertIn("candidate_facts", request)
+        values = {v["name"]: v["value"] for v in request["candidate_facts"]}
+        for name in ("available_heat", "heat_unit", "receiver_required_temperature", "existing_recovery",
+                     "operating_schedule", "receiver_schedule", "cooling_constraint"):
+            self.assertEqual(json.dumps(values[name], sort_keys=True), json.dumps(supplied[name], sort_keys=True))
+        self.assertNotIn("already_on_drawing", request)
+        self.assertIn("displaced_energy = null", " ".join(e["text"] for e in selected["evidence"]))
+
+    def test_source_policy_corpus_retains_whole_findings_and_named_rollup_inputs(self):
+        # A bounded synthetic corpus joins all four reviewed policies. Compare the
+        # whole typed finding payload, not just discovery IDs or selected text.
+        model = self.utility_model(meter=True)
+        model["units"] += [
+            {"id": "K-1", "type": "air_compressor", "name": "AIR COMPRESSOR with DRYER",
+             "facts": {"record_available": False, "storage_volume": 0, "volume_unit": "m3",
+                       "cooling_medium": None, "existing_recovery": {"declared": False, "value": 0}}},
+            {"id": "VG-1", "type": "vacuum_generator", "name": "Compressed AIR VENTURI",
+             "facts": {"duty_percent": 12, "shutoff_control": True, "flow": 0,
+                       "record_scope": {"source": "fictional Δ", "values": [None, False, 0]}}}]
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            source = base / "model.json"
+            source.write_text(json.dumps(model, ensure_ascii=False), encoding="utf-8")
+            screen = base / "screen"
+            screen.mkdir()
+            selection = [arg for qid in ("E21", "E22", "E23", "C1") for arg in ("--question", qid)]
+            rc, doc = run(["--model", str(source), *selection], screen)
+            self.assertEqual(rc, 0)
+            self.assertEqual({f["question_id"] for f in doc["questions"]}, {"E21", "E22", "E23", "C1"})
+            protected = {p: p.read_bytes() for p in (source, screen / "questions.json", screen / "screen.md")}
+            graph = gx.build(source, questions=screen / "questions.json")
+            typed = lambda value: json.dumps(value, ensure_ascii=False, sort_keys=True)
+            self.assertEqual(typed(graph["questions"]), typed(doc["questions"]))
+            rolled = qe.rollup(["Fictional=" + str(screen)], CAT)
+            by_id = {q["question_id"]: q for q in rolled["questions"]}
+            for selected in doc["questions"]:
+                combined = by_id[selected["question_id"]]
+                self.assertEqual(typed(combined["typical_benefit"]), typed(selected["typical_benefit"]))
+                self.assertEqual(combined["decision_rule"], selected["decision_rule"])
+                requests = {r["item"]: r for r in combined["data_requests"]}
+                for request in selected["data_requests"]:
+                    merged = requests[request["item"]]
+                    self.assertEqual(merged["how"], request["how"])
+                    site = merged["sites"][0]
+                    self.assertEqual(site["site"], "Fictional")
+                    self.assertEqual(site["states"], [request["state"]])
+                    self.assertEqual(site["where"], request["where"])
+                    details = {k: v for k, v in request.items() if k not in ("item", "how", "state", "where")}
+                    self.assertEqual(typed([d for d in site["coverage_by_finding"]
+                                            if d["finding_id"] == selected["id"]]),
+                                     typed([{"finding_id": selected["id"], **details}]))
+            self.assertEqual({p: p.read_bytes() for p in protected}, protected)
+
+    def test_heat_integration_names_represented_quantities_without_valve_contradiction(self):
+        # The broader process-duty investigation must retain useful quantity-specific
+        # receiving, without calling utility signals verified process heat duties.
+        with tempfile.TemporaryDirectory() as tmp:
+            selected = finding(self.screen(Path(tmp), self.heat_integration_model(), "E18"), "E18@model")
+        request = next(r for r in selected["data_requests"]
+                       if r["item"] == "Existing exact process-stream identities, temperature-enthalpy and duty basis")
+        where = " ".join(request["where"])
+        for tag, signal in (("FT-CW", "XMEAS(91)"), ("TT-CW", "XMEAS(92)"), ("FT-ST", "XMEAS(93)")):
+            self.assertIn(tag, where)
+            self.assertIn(signal, where)
+        self.assertNotIn("only the valve position is recorded", where)
+        self.assertNotIn("only a valve", where)
+        self.assertNotIn("XMV(91)", where)
+        self.assertNotIn("XMV(92)", where)
+        self.assertEqual(len(selected["data_requests"]), 3)
+        self.assertFalse(any("already_on_drawing" in r for r in selected["data_requests"]))
+
+
+class RetainedSourcePolicyCorpus(unittest.TestCase):
+    def test_all_declared_after_reports_replay_exactly_without_changing_sources_or_history(self):
+        """Replay the retained exposed corpus; exact reports do not validate engineering truth."""
+        import hashlib
+        packet = EX / "source-policy"
+        declared = json.loads((packet / "expected/cases.json").read_text(encoding="utf-8"))
+        cases = declared["cases"]
+        self.assertEqual(len(cases), 88)
+        self.assertEqual(len({c["id"] for c in cases}), 88)
+        self.assertEqual(len({c["rule"] for c in cases}), 22)
+        self.assertEqual({c["rule"] for c in cases}, set(declared["proposed_current_rule_sha256_canonical"]))
+        provenance = json.loads((packet / "PROVENANCE.json").read_text(encoding="utf-8"))
+        actual_map = json.loads((packet / "history/ACTUAL-MAP.json").read_text(encoding="utf-8"))
+        protected = {}
+
+        def retain(path, expected=None):
+            path = path.resolve()
+            self.assertTrue(path.is_relative_to(packet.resolve()), path)
+            raw = path.read_bytes()
+            if expected is not None:
+                self.assertEqual(hashlib.sha256(raw).hexdigest(), expected["sha256_raw"], path)
+                if "bytes" in expected:
+                    self.assertEqual(len(raw), expected["bytes"], path)
+            if path in protected:
+                self.assertEqual(protected[path], raw)
+            protected[path] = raw
+            return raw
+
+        for name in ("expected/cases.json", "expected/source-criteria.json", "history/ACTUAL-MAP.json",
+                     "PROVENANCE.json", "SOURCES.json", "EXPOSURE.md", "reproduce.py"):
+            retain(packet / name)
+        retain(packet / declared["before_catalog"], provenance["historical_catalog"])
+        for record in actual_map["files"]:
+            retain(ROOT / record["publication"], record["raw"])
+        current_reports = provenance["current_main_execution"]["files"]
+        self.assertEqual(len(current_reports), 176)
+        self.assertEqual(len({r["file"] for r in current_reports}), 176)
+        for record in current_reports:
+            retain(packet / record["file"], record)
+        expected_after = {}
+        for case in cases:
+            retain(ROOT / case["model"], {"sha256_raw": case["model_sha256_raw"]})
+            for name, raw in case["before_raw"].items():
+                retain(packet / case["before"] / name, raw)
+            for name in ("questions.json", "screen.md"):
+                expected_after[(case["id"], name)] = retain(packet / "expected/after" / case["id"] / name)
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "all-after"
+            try:
+                result = subprocess.run(
+                    [sys.executable, "-B", "-S", str(packet / "reproduce.py"),
+                     "--all", "--stage", "after", "--out", str(out)],
+                    cwd=ROOT, capture_output=True, text=True, encoding="utf-8")
+                self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+                receipt = json.loads((out / "RESULT.json").read_text(encoding="utf-8"))
+                self.assertIs(receipt["passed"], True)
+                self.assertEqual(receipt["stage"], "after")
+                self.assertEqual([j["case"] for j in receipt["jobs"]], [c["id"] for c in cases])
+                self.assertEqual(len(receipt["jobs"]), 88)
+                self.assertTrue(all(j["exit"] == 0 for j in receipt["jobs"]))
+                for (case_id, name), expected in expected_after.items():
+                    with self.subTest(case=case_id, report=name):
+                        self.assertEqual((out / case_id / name).read_bytes(), expected)
+            finally:
+                self.assertEqual({p: p.read_bytes() for p in protected}, protected)
+
+    def test_supplementary_quantity_locators_reproduce_without_rewriting_source_policy_or_history(self):
+        """Twelve symbolic-pointer controls are separate from the 88 source-policy cases."""
+        import hashlib
+        packet = EX / "source-policy/signal-retention"
+        declared = json.loads((packet / "expected/cases.json").read_text(encoding="utf-8"))
+        cases = declared["cases"]
+        self.assertEqual(len(cases), 12)
+        self.assertEqual(len({c["id"] for c in cases}), 12)
+        self.assertEqual(set(declared["rules_proposed_for_locator_change"]), {"E3", "E7", "E10", "E15", "E19"})
+        self.assertEqual({c["rule"] for c in cases}, {"E3", "E7", "E10", "E14", "E15", "E19"})
+        criteria = json.loads((packet / "criteria.json").read_text(encoding="utf-8"))
+        provenance = json.loads((packet / "PROVENANCE.json").read_text(encoding="utf-8"))
+        note = (packet / "source-note.txt").read_text(encoding="utf-8")
+        self.assertEqual(note, criteria["synthetic_source_limit"])
+        self.assertIn("SYNTHETIC_", note)
+        self.assertIn("No numeric time series", note)
+        protected = {}
+
+        def retain(path, expected=None):
+            path = path.resolve()
+            self.assertTrue(path.is_relative_to(packet.resolve()), path)
+            raw = path.read_bytes()
+            if expected is not None:
+                self.assertEqual(hashlib.sha256(raw).hexdigest(), expected["sha256_raw"], path)
+                if "bytes" in expected:
+                    self.assertEqual(len(raw), expected["bytes"], path)
+            if path in protected:
+                self.assertEqual(protected[path], raw)
+            protected[path] = raw
+            return raw
+
+        for name in ("expected/cases.json", "criteria.json", "source-note.txt", "PROVENANCE.json"):
+            retain(packet / name)
+        retain(packet / provenance["historical_catalog"]["file"], provenance["historical_catalog"])
+        for name, record in provenance["inputs"].items():
+            retain(packet.parent / name, record)
+        for stage in ("before", "current_after"):
+            reports = provenance[stage]["files"]
+            self.assertEqual(len(reports), 24)
+            self.assertEqual(len({r["file"] for r in reports}), 24)
+            for record in reports:
+                retain(packet.parent / record["file"], record)
+        expected = {}
+        for case in cases:
+            model = ROOT / case["model"]
+            self.assertEqual(hashlib.sha256(retain(model)).hexdigest(), case["model_sha256_raw"])
+            self.assertTrue(case["source_qualification"])
+            for name in ("questions.json", "screen.md"):
+                retain(packet / case["expected_before"] / name)
+                expected[(case["id"], name)] = retain(packet / case["expected_after"] / name)
+        typed = lambda value: json.dumps(value, ensure_ascii=False, sort_keys=True)
+        with tempfile.TemporaryDirectory() as tmp:
+            try:
+                for case in cases:
+                    with self.subTest(case=case["id"]):
+                        out = Path(tmp) / case["id"]
+                        result = subprocess.run(
+                            [sys.executable, "-B", "-S", str(ROOT / "scripts/question_engine.py"),
+                             "--model", case["model"], "--question", case["rule"], "--out", str(out)],
+                            cwd=ROOT, capture_output=True, text=True, encoding="utf-8")
+                        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+                        for name in ("questions.json", "screen.md"):
+                            self.assertEqual((out / name).read_bytes(), expected[(case["id"], name)])
+                        after = json.loads((out / "questions.json").read_text(encoding="utf-8"))
+                        before = json.loads(protected[(packet / case["expected_before"] /
+                                                       "questions.json").resolve()].decode("utf-8"))
+                        self.assertEqual(sorted(ids(after)), sorted(case["expected_finding_ids"]))
+                        self.assertEqual(ids(before), ids(after))
+                        by_id = {q["id"]: q for q in before["questions"]}
+                        where = []
+                        index = case["expected_after_data_request_index"]
+                        self.assertIs(case["expect_all_existing_fields_unchanged_except_declared_where"], True)
+                        for question in after["questions"]:
+                            original = copy.deepcopy(by_id[question["id"]])
+                            old_locations = original["data_requests"][index]["where"]
+                            new_locations = question["data_requests"][index]["where"]
+                            self.assertTrue(all(w in new_locations for w in old_locations))
+                            original["data_requests"][index]["where"] = new_locations
+                            self.assertEqual(typed(original), typed(question))
+                            where.extend(new_locations)
+                        text = "\n".join(where)
+                        for fragment in case["required_where_fragments"]:
+                            self.assertIn(fragment, text)
+                        for fragment in case["forbidden_where_fragments"]:
+                            self.assertNotIn(fragment, text)
+            finally:
+                self.assertEqual({p: p.read_bytes() for p in protected}, protected)
+
+
 class ServiceReconciliation(unittest.TestCase):
     """Exact imported service choices replace input-order selection, without claiming approval."""
 
@@ -1790,7 +2229,7 @@ class ReviewFixes(unittest.TestCase):
         """2026-10-29: a flow request said 'only a valve is drawn on this line, with no flow measurement' next to the
         flow meter on the same line (TE FT-119 with FV-119, the food dryer's FT-301 with TV-301)."""
         e18 = {r["item"]: r for r in finding(load("te"), "E18@model")["data_requests"]}
-        where = " ".join(e18["Temperatures and duties of the cooled and the heated streams"]["where"])
+        where = " ".join(e18["Existing exact process-stream identities, temperature-enthalpy and duty basis"]["where"])
         self.assertIn("FT-119", where)
         self.assertNotIn("XMV(9)", where)
         self.assertIn("XMV(10)", where)  # the unmetered cooling water side keeps its caveat
@@ -1997,14 +2436,17 @@ class ReviewRefresh(unittest.TestCase):
         self.assertNotIn("FT", model.by_id)
         self.assertNotIn("O", model.by_id)
 
-    def test_rejected_controller_does_not_satisfy_needs_model(self):
+    def test_rejected_controller_leaves_source_review_without_recreating_its_evidence(self):
         source = self.food()
         for c in source["controllers"]:
             c["ops_review"] = {"status": "rejected"}
         model = self.load_model(source)
         found, nc, *_ = qe.screen(model, CAT, ["C2"])
-        self.assertFalse(found)
-        self.assertEqual([n["question_id"] for n in nc], ["C2"])
+        self.assertEqual(nc, [])
+        self.assertEqual([f["id"] for f in found], ["C2@model"])
+        rejected = {c["tag"] for c in source["controllers"]}
+        self.assertFalse(any(e.get("id") in rejected for e in found[0]["evidence"]))
+        self.assertTrue(found[0]["data_requests"])
 
     def test_loop_list_cannot_reinstate_rejected_hand_controller(self):
         source = self.food()
@@ -2854,10 +3296,14 @@ class ExplicitHeatingRoles(unittest.TestCase):
 
     def test_food_typed_recoverer_is_context_not_another_process_subject(self):
         _, controls = self._controls()
-        found, not_checked, _, _ = qe.screen(qe.Model(EX / "food_plant_model.json"), CAT)
+        found, not_checked, _, _ = qe.screen(qe.Model(EX / "food_plant_model.json"), CAT, ["E31", "E32", "H6"])
         self.assertEqual(not_checked, [])
         expected = controls["actual_food_expected"]
-        self.assertEqual(len(found), expected["findings"])
+        # Check this test's heating subjects rather than a historical whole-catalog
+        # count that changes when unrelated source/coverage questions remain open.
+        self.assertEqual({f["id"] for f in found},
+                         {qid + "@" + uid for qid in ("E31", "E32", "H6")
+                          for uid in ("D-301", "O-302", "F-303")})
         self.assertFalse({f["id"] for f in found} & set(expected["forbidden_ids"]))
         for fid in ("E31@F-303", "H6@F-303"):
             self.assertIn("HX-303", {a["id"] for f in found if f["id"] == fid for a in f["assets"]})
@@ -4216,11 +4662,34 @@ class CompressorRecycleBasisRecordReview(unittest.TestCase):
                 self.assertEqual([q["id"] for q in questions], case["expected_E6_ids"])
                 self.assertEqual([a["id"] for q in questions for a in q["assets"]], case["expected_E6_assets"])
                 before = json.loads((self.packet / case["original_output_folder"] / "questions.json").read_bytes())
+                # The later source-policy correction deliberately changes these three
+                # air-system questions on this rotary/unknown-role counterexample.
+                # Keep every other whole finding tied to immutable history, while the
+                # complete current report above binds the reviewed successor output.
+                successors = ({"E19", "E22", "E23"}
+                              if case["case"] == "E6-S03-noncentrifugal-and-unknown-boundaries" else set())
                 self.assertEqual(
-                    json.dumps([q for q in doc["questions"] if q["question_id"] != "E6"],
+                    json.dumps([q for q in doc["questions"] if q["question_id"] not in {"E6", *successors}],
                                sort_keys=True, ensure_ascii=True),
-                    json.dumps([q for q in before["questions"] if q["question_id"] != "E6"],
+                    json.dumps([q for q in before["questions"] if q["question_id"] not in {"E6", *successors}],
                                sort_keys=True, ensure_ascii=True))
+                if successors:
+                    self.assertEqual({q["question_id"] for q in doc["questions"]
+                                      if q["question_id"] in successors}, successors)
+                    admitted = json.loads((self.packet / case["expected_output_folder"] /
+                                           "questions.json").read_text(encoding="utf-8"))
+                    changed = [q for q in doc["questions"] if q["question_id"] in successors]
+                    self.assertEqual(json.dumps(changed, sort_keys=True, ensure_ascii=True),
+                                     json.dumps([q for q in admitted["questions"]
+                                                 if q["question_id"] in successors],
+                                                sort_keys=True, ensure_ascii=True))
+                    for question in changed:
+                        self.assertEqual(question["status"], "asked")
+                        self.assertTrue(question["data_requests"])
+                        self.assertTrue(all(r["state"] == "not_on_drawing" and "already_on_drawing" not in r
+                                            for r in question["data_requests"]))
+                        self.assertTrue(any(v["id"] == "K-R" and v["name"] == "service" and v["value"] == "air"
+                                            for r in question["data_requests"] for v in r["candidate_facts"]))
                 readable, rows = self._readable_pairs(markdown), {}
                 for question in questions:
                     self.assertEqual(question["status"], "asked")
@@ -4355,19 +4824,34 @@ class WaterValveRecordReview(unittest.TestCase):
     def test_recorded_originals_and_current_reports_match_their_manifests(self):
         import hashlib
         provenance = json.loads((self.BASE / "history/PROVENANCE.json").read_text(encoding="utf-8"))
+        renewal = json.loads((self.BASE / "PUBLICATION-RENEWAL.json").read_text(encoding="utf-8"))
         digest = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
         self.assertEqual(digest(self.BASE / "history/catalog-before.json"),
                          provenance["original_catalog_sha256_raw"])
+        previous_catalog = self.BASE / renewal["previous_catalog_retained_at"]
+        self.assertEqual(digest(previous_catalog), provenance["current_catalog_sha256_raw"])
+        self.assertEqual(digest(previous_catalog), renewal["previous_catalog"]["sha256_raw"])
+        self.assertEqual(previous_catalog.stat().st_size, renewal["previous_catalog"]["bytes"])
         # Conservation of the other 47 rules is an adoption-time comparison. Do not
         # permanently prevent independently reviewed future improvements to those rules.
         for key, folder in (("E13_original_reports", "history/before"),
                             ("C4_E24_original_reports", "history/before"),
                             ("AX_original_reports", "history/before"),
-                            ("current_reports", "expected/after")):
+                            ("current_reports", renewal["previous_outputs_retained_at"])):
             for case, files in provenance[key].items():
                 for name, expected in files.items():
                     with self.subTest(manifest=key, case=case, file=name):
                         self.assertEqual(digest(self.BASE / folder / case / name), expected)
+        # Historical "current_reports" describe the released predecessor above.
+        # The additive renewal binds every complete present report independently.
+        current = renewal["current_outputs"]
+        self.assertEqual(set(current), {f"expected/after/{case['id']}/{name}"
+                                       for case, _ in self.cases() for name in ("questions.json", "screen.md")})
+        for name, record in current.items():
+            with self.subTest(current_report=name):
+                report = self.BASE / name
+                self.assertEqual(digest(report), record["sha256_raw"])
+                self.assertEqual(report.stat().st_size, record["bytes"])
 
 
 if __name__ == "__main__":

@@ -1,0 +1,2645 @@
+{
+  "scope": "Exact successful original reports and final admitted models from author experiments; no raw report path/caption rewritten. Five groups were separately exposed, not88independent plants.",
+  "files": [
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E3-01-protection-duty/questions.json",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E3-01-protection-duty/questions.json",
+      "raw": {
+        "sha256_raw": "a8b45587b02d58a8c7145dfd9f58b684377a55f5dac0f352981896c2c1f610aa",
+        "bytes": 4890
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E3-01-protection-duty/screen.md",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E3-01-protection-duty/screen.md",
+      "raw": {
+        "sha256_raw": "944c7f081f59849adb6056038491f6dcbb6f7b194c48ea53226a73dc6bf0bd37",
+        "bytes": 4340
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E3-01-protection-duty.json",
+      "source_group": "01",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree-v2/examples/opportunity-screen/steam-pump-records/models/E3-01-protection-duty.json",
+      "raw": {
+        "sha256_raw": "bf40744828b7823616655862813323feafff1531a498b0bdc380ef6f6c3f006d",
+        "bytes": 2881
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E3-02-association/questions.json",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E3-02-association/questions.json",
+      "raw": {
+        "sha256_raw": "9d89f85ccf2efe50fd427bcc82a5b5dbdc02a35e409c29d7d76f02ca494cfe67",
+        "bytes": 4885
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E3-02-association/screen.md",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E3-02-association/screen.md",
+      "raw": {
+        "sha256_raw": "c73d939b447ced12b99f97af6d1e78de8d5a3121df5aab82769fc4642c3498d2",
+        "bytes": 4335
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E3-02-association.json",
+      "source_group": "01",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree-v2/examples/opportunity-screen/steam-pump-records/models/E3-02-association.json",
+      "raw": {
+        "sha256_raw": "b5fe1147e796ede00d31f9825fb86476fdef46208371470075f0a401f8bbd08e",
+        "bytes": 2476
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E3-03-units-source/questions.json",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E3-03-units-source/questions.json",
+      "raw": {
+        "sha256_raw": "ec728d8004c5018eca6ad94eb415c6c7595b57632eeecf76ac33d10978d4f5dd",
+        "bytes": 4887
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E3-03-units-source/screen.md",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E3-03-units-source/screen.md",
+      "raw": {
+        "sha256_raw": "b419f9d46f2202561baaac03b631b913002385d07f412e10acb6e4f50beb09e4",
+        "bytes": 4337
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E3-03-units-source.json",
+      "source_group": "01",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree-v2/examples/opportunity-screen/steam-pump-records/models/E3-03-units-source.json",
+      "raw": {
+        "sha256_raw": "6ae8c1679f4cecac9cdf5a56c4fce8440f30b27bd2f04cf4857758e47f150a5b",
+        "bytes": 2814
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E3-04-known-role/questions.json",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E3-04-known-role/questions.json",
+      "raw": {
+        "sha256_raw": "9de232a02c4dedc944275d731ba479422db391b8a1c58f0571abc5ff07c95d4d",
+        "bytes": 4885
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E3-04-known-role/screen.md",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E3-04-known-role/screen.md",
+      "raw": {
+        "sha256_raw": "7d48f35cdbe60da726e6ff3319945333e09654a9024e64c3370809e3f7552906",
+        "bytes": 4335
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E3-04-known-role.json",
+      "source_group": "01",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree-v2/examples/opportunity-screen/steam-pump-records/models/E3-04-known-role.json",
+      "raw": {
+        "sha256_raw": "997a7ea7e4e0fe56882c852d737737d571c99e2d2237c81fec604f4e04ead480",
+        "bytes": 2478
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E7-01-screening-thresholds/questions.json",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E7-01-screening-thresholds/questions.json",
+      "raw": {
+        "sha256_raw": "d96d7ed98482f651e10c2b5997a566ec466e1ebf566f41f1c8b043dce36def5f",
+        "bytes": 6539
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E7-01-screening-thresholds/screen.md",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E7-01-screening-thresholds/screen.md",
+      "raw": {
+        "sha256_raw": "4de61a3cf61491b62e66880b6a0c24d51fda5d1e24378a9cf1ee11cf6d07a290",
+        "bytes": 5293
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E7-01-screening-thresholds.json",
+      "source_group": "01",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree-v2/examples/opportunity-screen/steam-pump-records/models/E7-01-screening-thresholds.json",
+      "raw": {
+        "sha256_raw": "8d622afb4c24347c5283ac1b268202f8b22e2998ee9effbd8c1730497a153a92",
+        "bytes": 2068
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E7-02-service-design/questions.json",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E7-02-service-design/questions.json",
+      "raw": {
+        "sha256_raw": "a4a17e804bc2c3332a0c4077f447cf969327fc9ad98b93792aef5343148224ad",
+        "bytes": 6531
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E7-02-service-design/screen.md",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E7-02-service-design/screen.md",
+      "raw": {
+        "sha256_raw": "bc8f30eb56b11f14ce4873feed7e0bb5a05209e9498fde9edf7289557a04b2b5",
+        "bytes": 5285
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E7-02-service-design.json",
+      "source_group": "01",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree-v2/examples/opportunity-screen/steam-pump-records/models/E7-02-service-design.json",
+      "raw": {
+        "sha256_raw": "85d8499ec60c4db2709776f022ad9245873e5427ff9b43123b0a0a75c57408f9",
+        "bytes": 1885
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E7-03-existing-constraints/questions.json",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E7-03-existing-constraints/questions.json",
+      "raw": {
+        "sha256_raw": "ca48287e0b557ecc9260a12895380312fec32ae03bab928dd4760444c7cc0d64",
+        "bytes": 6527
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E7-03-existing-constraints/screen.md",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E7-03-existing-constraints/screen.md",
+      "raw": {
+        "sha256_raw": "f46ab235f3fbc8f2fedc9a7bcacd95bd50e61fe5e0786e6f02fa007f5252300a",
+        "bytes": 5281
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E7-03-existing-constraints.json",
+      "source_group": "01",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree-v2/examples/opportunity-screen/steam-pump-records/models/E7-03-existing-constraints.json",
+      "raw": {
+        "sha256_raw": "7689d1ce79323c6e2e4f29018d0331f133b0482acd01a6c30ccd388a9bef7fc5",
+        "bytes": 1915
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E7-04-unknown-excluded/questions.json",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E7-04-unknown-excluded/questions.json",
+      "raw": {
+        "sha256_raw": "f6e2c3efd88e80f215b2e4aee7e39147f3cad8b9e035dfb4bcad9d074920301d",
+        "bytes": 3561
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E7-04-unknown-excluded/screen.md",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E7-04-unknown-excluded/screen.md",
+      "raw": {
+        "sha256_raw": "77f1b1037516f0c0116fce2fa16c2baa39bd089d6779bb1b4d0352b7bfa27f87",
+        "bytes": 3346
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E7-04-unknown-excluded.json",
+      "source_group": "01",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree-v2/examples/opportunity-screen/steam-pump-records/models/E7-04-unknown-excluded.json",
+      "raw": {
+        "sha256_raw": "324a16a696d09d53c3b46d648b462bb0d05266e857431fd94c3c6ccfe791e041",
+        "bytes": 1667
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E8-01-pressure-program/questions.json",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E8-01-pressure-program/questions.json",
+      "raw": {
+        "sha256_raw": "a05a95a8dd08ceb81cefa514cd4fc1a7a6283db3ff4caab8d0747b4574ae363e",
+        "bytes": 2993
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E8-01-pressure-program/screen.md",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E8-01-pressure-program/screen.md",
+      "raw": {
+        "sha256_raw": "b2b8c9b4e4b28860006360444e63775236ccb46b4faa1912ced383a04f3fd55b",
+        "bytes": 3397
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E8-01-pressure-program.json",
+      "source_group": "01",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree-v2/examples/opportunity-screen/steam-pump-records/models/E8-01-pressure-program.json",
+      "raw": {
+        "sha256_raw": "a5d438f16e114ec322dcd760dedeb29db5b86d88d7b23aa20ed1191206fe3adc",
+        "bytes": 1756
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E8-02-trap-service/questions.json",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E8-02-trap-service/questions.json",
+      "raw": {
+        "sha256_raw": "f156a8d16d9dee932b9895ddc683b67bdaf49d44d5423e063199449ef6dd9ea5",
+        "bytes": 3212
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E8-02-trap-service/screen.md",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E8-02-trap-service/screen.md",
+      "raw": {
+        "sha256_raw": "6df555e2da89fb5647e39088582dec3350b0e596ae4bba9df191cc9a91a8bf03",
+        "bytes": 3469
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E8-02-trap-service.json",
+      "source_group": "01",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree-v2/examples/opportunity-screen/steam-pump-records/models/E8-02-trap-service.json",
+      "raw": {
+        "sha256_raw": "d7a6c90000b1f68ff06ddb6a243b206900376256cdd4235d5a764af1467f2a9b",
+        "bytes": 2009
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E8-03-source-coverage/questions.json",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E8-03-source-coverage/questions.json",
+      "raw": {
+        "sha256_raw": "5a1bd82050ca8645db6dd2c3ea24fb1230a40b2a7ad887b450e4fae5133cef10",
+        "bytes": 2976
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E8-03-source-coverage/screen.md",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E8-03-source-coverage/screen.md",
+      "raw": {
+        "sha256_raw": "58f53993179323bdaac9395470dc1580ac4275d2f3b85c3f1d3a49e13e56ee47",
+        "bytes": 3380
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E8-03-source-coverage.json",
+      "source_group": "01",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree-v2/examples/opportunity-screen/steam-pump-records/models/E8-03-source-coverage.json",
+      "raw": {
+        "sha256_raw": "81a46e0b20c74ef7f66219bffa9d0dbb599a7168d068633999dac9615fc6e91c",
+        "bytes": 1714
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E8-04-nonsteam-control/questions.json",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E8-04-nonsteam-control/questions.json",
+      "raw": {
+        "sha256_raw": "35e55968b4b02ce65445022c7a22603d675293d52768a351183b4a7c87a7ee08",
+        "bytes": 2960
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E8-04-nonsteam-control/screen.md",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E8-04-nonsteam-control/screen.md",
+      "raw": {
+        "sha256_raw": "3fca70821d15f7b720b5eabf280ecf64900ba2db1243b160d0c5dba791043e50",
+        "bytes": 3364
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E8-04-nonsteam-control.json",
+      "source_group": "01",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree-v2/examples/opportunity-screen/steam-pump-records/models/E8-04-nonsteam-control.json",
+      "raw": {
+        "sha256_raw": "e2c0921ab000001b6d23d9ae882fbca1723d7236e774330a971068422ea6cc2d",
+        "bytes": 1373
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E9-01-quality-treatment/questions.json",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E9-01-quality-treatment/questions.json",
+      "raw": {
+        "sha256_raw": "38b4e5ee4fa18a758352fa4683f0fce4603d4db0d27e5682dba9b6a7bed68e30",
+        "bytes": 3080
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E9-01-quality-treatment/screen.md",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E9-01-quality-treatment/screen.md",
+      "raw": {
+        "sha256_raw": "dd965ec3eb6edc54cc40aca8a23272edef6c2e02ea3216f0cfc0a53899f2a0e9",
+        "bytes": 3487
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E9-01-quality-treatment.json",
+      "source_group": "01",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree-v2/examples/opportunity-screen/steam-pump-records/models/E9-01-quality-treatment.json",
+      "raw": {
+        "sha256_raw": "7d8c4a5ccf9f8b7000ceb484188e7c53b30f0c288349b152b03cc401b71cf14f",
+        "bytes": 1809
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E9-02-balance-boundaries/questions.json",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E9-02-balance-boundaries/questions.json",
+      "raw": {
+        "sha256_raw": "c633472d22ec5fa34190b3178c8fd8bc85572b9bb061f4ebaa447d53db1f4040",
+        "bytes": 3071
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E9-02-balance-boundaries/screen.md",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E9-02-balance-boundaries/screen.md",
+      "raw": {
+        "sha256_raw": "24ac5e9fbe4c13ed7ff02dcc0157637c9dfcefa851615b6eba8757b739845903",
+        "bytes": 3478
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E9-02-balance-boundaries.json",
+      "source_group": "01",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree-v2/examples/opportunity-screen/steam-pump-records/models/E9-02-balance-boundaries.json",
+      "raw": {
+        "sha256_raw": "9608423930fcfaf6ac007943039ea8ccd16c1a21e1c51622a29377bd934499d9",
+        "bytes": 1848
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E9-03-route-revision/questions.json",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E9-03-route-revision/questions.json",
+      "raw": {
+        "sha256_raw": "72961c57369809af343781a813dcf0cb38ef0c4597891d4de13c2660b700fb4a",
+        "bytes": 3083
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E9-03-route-revision/screen.md",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E9-03-route-revision/screen.md",
+      "raw": {
+        "sha256_raw": "0ac32ca8318046477da4b1a6114364274ce0140a180a6a42f9d1b515635908d1",
+        "bytes": 3490
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E9-03-route-revision.json",
+      "source_group": "01",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree-v2/examples/opportunity-screen/steam-pump-records/models/E9-03-route-revision.json",
+      "raw": {
+        "sha256_raw": "12da3660470030b56c230021183ecddc3e1b6a50208566065f1a19da912c31e5",
+        "bytes": 1689
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E9-04-service-scope/questions.json",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E9-04-service-scope/questions.json",
+      "raw": {
+        "sha256_raw": "04c79ea67719ec85da9b9db6859634962584940ef892e98c09a2190f8b18bfed",
+        "bytes": 3073
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E9-04-service-scope/screen.md",
+      "source_group": "01",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-v2/E9-04-service-scope/screen.md",
+      "raw": {
+        "sha256_raw": "385c9fd00e9639373c10fe1118e514f7e333ec0ae277077102a486f0c85e5935",
+        "bytes": 3480
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E9-04-service-scope.json",
+      "source_group": "01",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree-v2/examples/opportunity-screen/steam-pump-records/models/E9-04-service-scope.json",
+      "raw": {
+        "sha256_raw": "53586ee905c4b26a1da0e1a081a5e5f242786893f737fba89239d77effa7807c",
+        "bytes": 1446
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E10-01-actual-vent/questions.json",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E10-01-actual-vent/questions.json",
+      "raw": {
+        "sha256_raw": "eda7573a2846c757b607d3e35cace19bb0b84db5773780af6164afec732dc990",
+        "bytes": 4263
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E10-01-actual-vent/screen.md",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E10-01-actual-vent/screen.md",
+      "raw": {
+        "sha256_raw": "b8faac2e9720c0638f26122aae790e512d66f97cca8d0f11acc2527ada3022c5",
+        "bytes": 4040
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E10-01-actual-vent.json",
+      "source_group": "02",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/thermal-recovery-records/models/E10-01-actual-vent.json",
+      "raw": {
+        "sha256_raw": "7efddf5795b5f1616b0cda1c5d94ebfa4b7380f4666b15821e25fae019070f0c",
+        "bytes": 1612
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E10-02-service-boundary/questions.json",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E10-02-service-boundary/questions.json",
+      "raw": {
+        "sha256_raw": "b4075c4183a62b5acc3cd732d3df541e8e5c510c98fb55945c2f3367acf9aad3",
+        "bytes": 4268
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E10-02-service-boundary/screen.md",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E10-02-service-boundary/screen.md",
+      "raw": {
+        "sha256_raw": "55a636fafc4909c0c656c42ab5d3bdca4f99c859d90e4e0c59f3f970e45f3eb4",
+        "bytes": 4042
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E10-02-service-boundary.json",
+      "source_group": "02",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/thermal-recovery-records/models/E10-02-service-boundary.json",
+      "raw": {
+        "sha256_raw": "5e5547b097cec7bb2638bcba4e56b9916b971b6f7c3c49a8da2a46e50772cd61",
+        "bytes": 1548
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E10-03-sink-time-source/questions.json",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E10-03-sink-time-source/questions.json",
+      "raw": {
+        "sha256_raw": "79662e42d541dfcebb4bb0f120fde715dad7df5f9c77079fb70f9432357ec193",
+        "bytes": 4255
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E10-03-sink-time-source/screen.md",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E10-03-sink-time-source/screen.md",
+      "raw": {
+        "sha256_raw": "69a6c0743a182fbf65f2eb53f217ac1b8d27917739dde0ad6a763f2d98264ed6",
+        "bytes": 4032
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E10-03-sink-time-source.json",
+      "source_group": "02",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/thermal-recovery-records/models/E10-03-sink-time-source.json",
+      "raw": {
+        "sha256_raw": "33e1820240eaa8754b8c58f14c652fa924b1d58ea942c387dfc3c8d98bf19d02",
+        "bytes": 1792
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E10-04-no-representation/questions.json",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E10-04-no-representation/questions.json",
+      "raw": {
+        "sha256_raw": "ff51e0ec1dbf18b57827bc46f2e8ba9b884a563196b5b78cdedcb112deba8d74",
+        "bytes": 595
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E10-04-no-representation/screen.md",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E10-04-no-representation/screen.md",
+      "raw": {
+        "sha256_raw": "4d187d4f838713d5830b67ee2ee2db331d01e0bf9ac8bfb04ab3dd3962cbf710",
+        "bytes": 1374
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E10-04-no-representation.json",
+      "source_group": "02",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/thermal-recovery-records/models/E10-04-no-representation.json",
+      "raw": {
+        "sha256_raw": "9d36514dfd9573287ee8504e679ab1477f952f68bd9b2fd047a9143e20a749f2",
+        "bytes": 918
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E12-01-design-surface/questions.json",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E12-01-design-surface/questions.json",
+      "raw": {
+        "sha256_raw": "7177d01e66da76d308eeabb65fe8680c7c144ff166da1c9a5079a2f150f8ef4c",
+        "bytes": 3947
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E12-01-design-surface/screen.md",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E12-01-design-surface/screen.md",
+      "raw": {
+        "sha256_raw": "3b1190869981b3670d2485f797df9272e09c4187fd9f41d2fa93a811fa55e3eb",
+        "bytes": 3398
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E12-01-design-surface.json",
+      "source_group": "02",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/thermal-recovery-records/models/E12-01-design-surface.json",
+      "raw": {
+        "sha256_raw": "015afeba189b1ab1bb994c9bdbb0be2477420f1c8765f134f221acff39223d95",
+        "bytes": 1876
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E12-02-access-purpose/questions.json",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E12-02-access-purpose/questions.json",
+      "raw": {
+        "sha256_raw": "a9ee0fe47151049a95d5485eb4b4ef48987d43ffff8e67823d4d9a26e61457d8",
+        "bytes": 3947
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E12-02-access-purpose/screen.md",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E12-02-access-purpose/screen.md",
+      "raw": {
+        "sha256_raw": "adcb2f52bd42dfdb072560d469cb9d8cd9bca792a358e5bbbfe4ba8de4f51333",
+        "bytes": 3398
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E12-02-access-purpose.json",
+      "source_group": "02",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/thermal-recovery-records/models/E12-02-access-purpose.json",
+      "raw": {
+        "sha256_raw": "ed4b0b5a04e66c2c381fbfd8734b1ce2f1e4bdd58c4c2a7bd96cd5f00fc3e52a",
+        "bytes": 1953
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E12-03-condition-source/questions.json",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E12-03-condition-source/questions.json",
+      "raw": {
+        "sha256_raw": "74164a5fbaba47ae3a7d08ad4a71912ec8a50c051558f9402be70afce3ffa765",
+        "bytes": 3949
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E12-03-condition-source/screen.md",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E12-03-condition-source/screen.md",
+      "raw": {
+        "sha256_raw": "f05b5f1b1a7891915ec7be12542b3e71b3a4be54bd4dc712db78c410082b591a",
+        "bytes": 3400
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E12-03-condition-source.json",
+      "source_group": "02",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/thermal-recovery-records/models/E12-03-condition-source.json",
+      "raw": {
+        "sha256_raw": "48d948f0e029595500eb153fa49d38797d1065f9e8ddd4dcb72feea79104c22b",
+        "bytes": 1942
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E12-04-cold-unknown/questions.json",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E12-04-cold-unknown/questions.json",
+      "raw": {
+        "sha256_raw": "8a7391d349eb1f5b70db0791d728cb5ce3b79edaab1a550c46de717023909e36",
+        "bytes": 590
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E12-04-cold-unknown/screen.md",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E12-04-cold-unknown/screen.md",
+      "raw": {
+        "sha256_raw": "37800358fda768e326c47e131bbd81e676c041315a3c423432504d61f5de4487",
+        "bytes": 1369
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E12-04-cold-unknown.json",
+      "source_group": "02",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/thermal-recovery-records/models/E12-04-cold-unknown.json",
+      "raw": {
+        "sha256_raw": "5462aa3ff3b66c01a1e67c5991b3e8dd2b60a6429936d700d59475476a5feabe",
+        "bytes": 1684
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E14-01-global-label/questions.json",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E14-01-global-label/questions.json",
+      "raw": {
+        "sha256_raw": "715b2c5f2ae92fcb9b20a3f7c5e0641db115f651742f2f0e6dc532fe670c13fb",
+        "bytes": 590
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E14-01-global-label/screen.md",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E14-01-global-label/screen.md",
+      "raw": {
+        "sha256_raw": "837e87bfd6c64dd2932dda9fc7cd2fb778e149d134db80305c8acd010f41ac51",
+        "bytes": 1369
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E14-01-global-label.json",
+      "source_group": "02",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/thermal-recovery-records/models/E14-01-global-label.json",
+      "raw": {
+        "sha256_raw": "5143c6d2fa7b0ade2364ee326dd41b50f319a9976e043732c77f960aafb9f665",
+        "bytes": 1985
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E14-02-dry-service/questions.json",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E14-02-dry-service/questions.json",
+      "raw": {
+        "sha256_raw": "deca6bbdf786da2951938d267ff75ddccb2751a280204c6cc8d7f415b87b85dc",
+        "bytes": 4489
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E14-02-dry-service/screen.md",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E14-02-dry-service/screen.md",
+      "raw": {
+        "sha256_raw": "0a7860fd5ac4952f7fe7af837aa7f2cfcf0e5f35abfb8ff6f6375521e872267b",
+        "bytes": 4203
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E14-02-dry-service.json",
+      "source_group": "02",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/thermal-recovery-records/models/E14-02-dry-service.json",
+      "raw": {
+        "sha256_raw": "d9babcbaf3bef7eb2d8d1942d95c667eaa8c05370c5aed38bfec183f035c945e",
+        "bytes": 1454
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E14-03-heat-source/questions.json",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E14-03-heat-source/questions.json",
+      "raw": {
+        "sha256_raw": "bb54fcd2a0cda7b8979774789f5db5f55436c9e973acfe856a31cf0837cdf8c0",
+        "bytes": 2543
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E14-03-heat-source/screen.md",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E14-03-heat-source/screen.md",
+      "raw": {
+        "sha256_raw": "55eab92b554cc11aa7efce6d7f61e161fd10e43dc82cc98d1c4168fbfd9a15e1",
+        "bytes": 2863
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E14-03-heat-source.json",
+      "source_group": "02",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/thermal-recovery-records/models/E14-03-heat-source.json",
+      "raw": {
+        "sha256_raw": "3885cf32b20e4d492072271ff1a9f002039494525538a8080ed2e0d429ddcda7",
+        "bytes": 1470
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E14-04-operating-limits/questions.json",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E14-04-operating-limits/questions.json",
+      "raw": {
+        "sha256_raw": "57e1e145c8605c54809cb44162308ac3403c2a26c480a072b29091b3ed2893d3",
+        "bytes": 4503
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E14-04-operating-limits/screen.md",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E14-04-operating-limits/screen.md",
+      "raw": {
+        "sha256_raw": "b802d23e86964517a1ba219537196dd2700057d62e0de2eb99f885000860c45b",
+        "bytes": 4217
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E14-04-operating-limits.json",
+      "source_group": "02",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/thermal-recovery-records/models/E14-04-operating-limits.json",
+      "raw": {
+        "sha256_raw": "ac8a4e0e500b70837c395193c6b33a1a243ec2ba07d5d0ab11f7de3f4891bb8f",
+        "bytes": 1817
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E15-01-load-association/questions.json",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E15-01-load-association/questions.json",
+      "raw": {
+        "sha256_raw": "92bddc44a7f805096c4a237faade6060acd33ad256854ae8a22c50b149ab5861",
+        "bytes": 3857
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E15-01-load-association/screen.md",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E15-01-load-association/screen.md",
+      "raw": {
+        "sha256_raw": "291f890839f8dc391124b867d7f981db0650433404504c538e6111e4acca41a7",
+        "bytes": 3365
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E15-01-load-association.json",
+      "source_group": "02",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/thermal-recovery-records/models/E15-01-load-association.json",
+      "raw": {
+        "sha256_raw": "a5859479169a6a1c2041cbd2639d5c2e17f5b60daee127e20bbb82e8e51e994f",
+        "bytes": 2014
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E15-02-oil-unknown-sink/questions.json",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E15-02-oil-unknown-sink/questions.json",
+      "raw": {
+        "sha256_raw": "815c92e12c57ce7e29bfdb9a0f26e0a09907530efbf5ee50bc5d07f3e55cbbae",
+        "bytes": 594
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E15-02-oil-unknown-sink/screen.md",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E15-02-oil-unknown-sink/screen.md",
+      "raw": {
+        "sha256_raw": "7cef5efdd450c46696d7329b5d24856ddc9cd5b4bbc5bcc60fad8c60301537ec",
+        "bytes": 1373
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E15-02-oil-unknown-sink.json",
+      "source_group": "02",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/thermal-recovery-records/models/E15-02-oil-unknown-sink.json",
+      "raw": {
+        "sha256_raw": "ff0200e5ba04592e568e6b438b4aa140d6a0676dc647af23eea9acdf1d1d28a1",
+        "bytes": 1523
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E15-03-system-constraints/questions.json",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E15-03-system-constraints/questions.json",
+      "raw": {
+        "sha256_raw": "d039f48a5b9955bfc4ff6b21ba4660ee5d664fddfb9c3d67616dc41346332ebf",
+        "bytes": 3859
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E15-03-system-constraints/screen.md",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E15-03-system-constraints/screen.md",
+      "raw": {
+        "sha256_raw": "9639666bcb85b66b72d1c2f22abb14b1d032883a3dae649c329d87be8b98c52b",
+        "bytes": 3367
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E15-03-system-constraints.json",
+      "source_group": "02",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/thermal-recovery-records/models/E15-03-system-constraints.json",
+      "raw": {
+        "sha256_raw": "27c563654d49090132483fc367c643962bdf8716fe2be1969ba78848da3279b0",
+        "bytes": 2451
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E15-04-role-generator/questions.json",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E15-04-role-generator/questions.json",
+      "raw": {
+        "sha256_raw": "88488512f7b17a5ed001a47cb20b3a8474d5962da69f598ccf473ace288be5f7",
+        "bytes": 2245
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E15-04-role-generator/screen.md",
+      "source_group": "02",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E15-04-role-generator/screen.md",
+      "raw": {
+        "sha256_raw": "8f4bd93d68c448cfeae6522514ce627e1a5dc093fb20250fbef8a7ad7c14d1b5",
+        "bytes": 2397
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E15-04-role-generator.json",
+      "source_group": "02",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/thermal-recovery-records/models/E15-04-role-generator.json",
+      "raw": {
+        "sha256_raw": "9befb4768b52963cc33fd3326cb7497a37d26fd2e1e7c0896ffcc314378da289",
+        "bytes": 1917
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E17-01-global-coverage/questions.json",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E17-01-global-coverage/questions.json",
+      "raw": {
+        "sha256_raw": "bcb91bec694a7a5fa4d8025b9f54cb69601be660bae1ec7d96f967949d3421a6",
+        "bytes": 2581
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E17-01-global-coverage/screen.md",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E17-01-global-coverage/screen.md",
+      "raw": {
+        "sha256_raw": "294958a3ba7d222ef2135ad5db1ffdb5594dc8bfa04491d7bc67fb35445aff2f",
+        "bytes": 2924
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E17-01-global-coverage.json",
+      "source_group": "03",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/integration-air-records/models/E17-01-global-coverage.json",
+      "raw": {
+        "sha256_raw": "9de6cb12b52ef1db7d252a472831a07e1a7210e1b0cce45ff2c11fb1523fab17",
+        "bytes": 1907
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E17-02-batch-methods/questions.json",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E17-02-batch-methods/questions.json",
+      "raw": {
+        "sha256_raw": "473a4b4a260279dc7da6e7471af6a359c3de43d9f693afbcf0b2086b0430586a",
+        "bytes": 4521
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E17-02-batch-methods/screen.md",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E17-02-batch-methods/screen.md",
+      "raw": {
+        "sha256_raw": "8f3b50470f2ebab80bf6dfcc105d97a0670226a1eae7881bb2a0a13191b621c4",
+        "bytes": 4209
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E17-02-batch-methods.json",
+      "source_group": "03",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/integration-air-records/models/E17-02-batch-methods.json",
+      "raw": {
+        "sha256_raw": "844b74bf45e3023f97949a8d2e16c5dcd206e15b339f46e326be03da108146d6",
+        "bytes": 1728
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E17-03-heat-service/questions.json",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E17-03-heat-service/questions.json",
+      "raw": {
+        "sha256_raw": "6f5c95bef1370d4f6c8f980e33a8da74ba953e27843dd53c381a578752736ff5",
+        "bytes": 4519
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E17-03-heat-service/screen.md",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E17-03-heat-service/screen.md",
+      "raw": {
+        "sha256_raw": "cac4f80eaf19eff8bd4c41755119035b05249576eb2c9d67fecc3276dedaf3bb",
+        "bytes": 4207
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E17-03-heat-service.json",
+      "source_group": "03",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/integration-air-records/models/E17-03-heat-service.json",
+      "raw": {
+        "sha256_raw": "d522f55873323401776da40851248411a979f341cd124409497c040af7a93adb",
+        "bytes": 1883
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E17-04-helper-control/questions.json",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E17-04-helper-control/questions.json",
+      "raw": {
+        "sha256_raw": "1e2c932cd36d673da229fd7fe24301a9b4c84c04c83f7b83562b78132aab1e00",
+        "bytes": 2577
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E17-04-helper-control/screen.md",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E17-04-helper-control/screen.md",
+      "raw": {
+        "sha256_raw": "0bb82ebeedf69c442b2ef0f4cd58aa758c2c9869b7a4ea8839943bf8b07c9303",
+        "bytes": 2920
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E17-04-helper-control.json",
+      "source_group": "03",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/integration-air-records/models/E17-04-helper-control.json",
+      "raw": {
+        "sha256_raw": "787e86063cacfb6d312a4c998fdc4f5c3d0a0bbb9d574ba4142d44b43a27f132",
+        "bytes": 1360
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E18-01-overlap-profile/questions.json",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E18-01-overlap-profile/questions.json",
+      "raw": {
+        "sha256_raw": "b198b8f3092c03e81bed5c146e51eeca2e14ce7208a2de62507f1f3fd8288d0c",
+        "bytes": 3837
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E18-01-overlap-profile/screen.md",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E18-01-overlap-profile/screen.md",
+      "raw": {
+        "sha256_raw": "4a8dd229ac8ae06e99e985c4e7add219bf878959aac58890149355fdffda4204",
+        "bytes": 4100
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E18-01-overlap-profile.json",
+      "source_group": "03",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/integration-air-records/models/E18-01-overlap-profile.json",
+      "raw": {
+        "sha256_raw": "959961c8a82325027bf7b12e4374ce71bb505780d744bffa0397dae69a9cc803",
+        "bytes": 2769
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E18-02-batch-time/questions.json",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E18-02-batch-time/questions.json",
+      "raw": {
+        "sha256_raw": "14d7f999a370f821e8e51e82cbd1289532714dd1981435980060c743a59d7ed0",
+        "bytes": 3832
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E18-02-batch-time/screen.md",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E18-02-batch-time/screen.md",
+      "raw": {
+        "sha256_raw": "54dc9c6e3739c354e48e5e80c7b2f3d9581ded177a8c67e138401ae78062243f",
+        "bytes": 4095
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E18-02-batch-time.json",
+      "source_group": "03",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/integration-air-records/models/E18-02-batch-time.json",
+      "raw": {
+        "sha256_raw": "2edc4b0cd4345b14eacb5b316451f1fe1983450f1c41d8ce1b341b24e45294f6",
+        "bytes": 2587
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E18-03-source-hazard/questions.json",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E18-03-source-hazard/questions.json",
+      "raw": {
+        "sha256_raw": "77b8b4432df4a962c8d2f0f498dbd02b000fb38288cb5eea03ffe4b51de570b7",
+        "bytes": 3835
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E18-03-source-hazard/screen.md",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E18-03-source-hazard/screen.md",
+      "raw": {
+        "sha256_raw": "a1973725f2b469caf99d3578926730e4a87e394d06813653bc9ac36f913756a8",
+        "bytes": 4098
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E18-03-source-hazard.json",
+      "source_group": "03",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/integration-air-records/models/E18-03-source-hazard.json",
+      "raw": {
+        "sha256_raw": "3e1b20932ffb2ac893535d25e830dccde5d4169028fdff509fd98fbbacbe2d9a",
+        "bytes": 2738
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E18-04-no-pair/questions.json",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E18-04-no-pair/questions.json",
+      "raw": {
+        "sha256_raw": "c6e01c1ed43d53b7763ca531c14850604cf033e9a1defd43465667dd3ec2bff2",
+        "bytes": 584
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E18-04-no-pair/screen.md",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E18-04-no-pair/screen.md",
+      "raw": {
+        "sha256_raw": "3514fc931c5c61de1023a9dc04a1e0bf9801267888e398567f3c04acc763bd4f",
+        "bytes": 1371
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E18-04-no-pair.json",
+      "source_group": "03",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/integration-air-records/models/E18-04-no-pair.json",
+      "raw": {
+        "sha256_raw": "6ebc97a50b8abce871edb1275f9376d26510484c49bfde3bc5af20c7ea2aa2e4",
+        "bytes": 2287
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E19-01-missing-control/questions.json",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E19-01-missing-control/questions.json",
+      "raw": {
+        "sha256_raw": "e51c39bf7d5922913373d56878b9d4307635196c6aacbe94fc1ff4f7a1b5ce3d",
+        "bytes": 592
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E19-01-missing-control/screen.md",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E19-01-missing-control/screen.md",
+      "raw": {
+        "sha256_raw": "ec474707f246c87fe81f20f1f5bcea5d565e1e04f9dd42da7ae1cc470fed8dbc",
+        "bytes": 1379
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E19-01-missing-control.json",
+      "source_group": "03",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/integration-air-records/models/E19-01-missing-control.json",
+      "raw": {
+        "sha256_raw": "3b68dac6c564a8e0fb282c83a02f9d4aadccfca20943a5640e3c371e9bdc0f41",
+        "bytes": 1577
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E19-02-global-record/questions.json",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E19-02-global-record/questions.json",
+      "raw": {
+        "sha256_raw": "f87a7ab6060c148797be93f8a45e1e8d17885b59192c99dd1b0dea70d0cae952",
+        "bytes": 4781
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E19-02-global-record/screen.md",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E19-02-global-record/screen.md",
+      "raw": {
+        "sha256_raw": "33a1d5474988f0b71dcbdf95f17ad5804be120db1044e386c265afc4a2ef8279",
+        "bytes": 4533
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E19-02-global-record.json",
+      "source_group": "03",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/integration-air-records/models/E19-02-global-record.json",
+      "raw": {
+        "sha256_raw": "96a5b47dccf17813831038126f867cd166ca523888f9468c921495c21abb406e",
+        "bytes": 2036
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E19-03-dynamics-units/questions.json",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E19-03-dynamics-units/questions.json",
+      "raw": {
+        "sha256_raw": "a19f501594b27082141dd345ad02f54c8363c7ff95e4dffe6ffd3d2bdb5e31f5",
+        "bytes": 4796
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E19-03-dynamics-units/screen.md",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E19-03-dynamics-units/screen.md",
+      "raw": {
+        "sha256_raw": "807ef40df9d1756646de625617283f6c76040caf316c07b04f84903b819131c3",
+        "bytes": 4548
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E19-03-dynamics-units.json",
+      "source_group": "03",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/integration-air-records/models/E19-03-dynamics-units.json",
+      "raw": {
+        "sha256_raw": "22d5e06211f1d514f800221462a6d7a24c8214ad806788fdce08a9f763fd511b",
+        "bytes": 2441
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E19-04-role-package/questions.json",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E19-04-role-package/questions.json",
+      "raw": {
+        "sha256_raw": "20e1f96cbbd9ee4ae0ef01742064684cfaaba56336d9462b40cc64c937551f69",
+        "bytes": 4777
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E19-04-role-package/screen.md",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E19-04-role-package/screen.md",
+      "raw": {
+        "sha256_raw": "acf7e4feb3ba7ffe74d4c07760f84a1062a32d9f53d7ca931d8a6f5973c82006",
+        "bytes": 4529
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E19-04-role-package.json",
+      "source_group": "03",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/integration-air-records/models/E19-04-role-package.json",
+      "raw": {
+        "sha256_raw": "e956985190ce0259db3fd580e22200b5159db24ed138158b790030a0d6f61444",
+        "bytes": 2350
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E20-01-program-existing/questions.json",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E20-01-program-existing/questions.json",
+      "raw": {
+        "sha256_raw": "63675366d26b245f558e25385a899f59a870770e0b627cebbc2d15a61e9d5195",
+        "bytes": 2390
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E20-01-program-existing/screen.md",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E20-01-program-existing/screen.md",
+      "raw": {
+        "sha256_raw": "70ffae112d58490312a709f760580384f5684634a2d1be14274f8309ac48936c",
+        "bytes": 2747
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E20-01-program-existing.json",
+      "source_group": "03",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/integration-air-records/models/E20-01-program-existing.json",
+      "raw": {
+        "sha256_raw": "bba18cecdcc5dac920537d282de2810c114096c311875523980c3f1c21bf728e",
+        "bytes": 1528
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E20-02-control-method/questions.json",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E20-02-control-method/questions.json",
+      "raw": {
+        "sha256_raw": "6f58a0a664b75698dcaf10c38f96f10c5b1d9c16e7c1384b5298bbdcf6151b43",
+        "bytes": 2385
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E20-02-control-method/screen.md",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E20-02-control-method/screen.md",
+      "raw": {
+        "sha256_raw": "dbcd1488b21693ad65fe21e926524c2382d107860bf6008cda555c93dacca87d",
+        "bytes": 2739
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E20-02-control-method.json",
+      "source_group": "03",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/integration-air-records/models/E20-02-control-method.json",
+      "raw": {
+        "sha256_raw": "3fcdf264ee69467da1928a1f278caa7b22b4752e210af1868606d698a3ce8c78",
+        "bytes": 1751
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E20-03-purpose-source/questions.json",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E20-03-purpose-source/questions.json",
+      "raw": {
+        "sha256_raw": "8f2f1d926ed16f6c6617407741927e9a18f8d2d60cce9d2a63d28a6cdc0691b8",
+        "bytes": 2385
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E20-03-purpose-source/screen.md",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E20-03-purpose-source/screen.md",
+      "raw": {
+        "sha256_raw": "827af57c55d714c9a8111979a76165ae5973d81ac1c753618f0753cc4b46a4c2",
+        "bytes": 2739
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E20-03-purpose-source.json",
+      "source_group": "03",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/integration-air-records/models/E20-03-purpose-source.json",
+      "raw": {
+        "sha256_raw": "85d2aa1eed386360c72fdab7228fb02bd8366713d227ea49dc1c01b11613a85d",
+        "bytes": 1594
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E20-04-nonair-control/questions.json",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E20-04-nonair-control/questions.json",
+      "raw": {
+        "sha256_raw": "3d9adb9a238165df3a6aea18e7714b405f6cff875741f4df3e908edec2f5e6ac",
+        "bytes": 2406
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E20-04-nonair-control/screen.md",
+      "source_group": "03",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E20-04-nonair-control/screen.md",
+      "raw": {
+        "sha256_raw": "55435bd80e0ca665cf3a521e7269fa4703df0a17a2db925998311008a321f3b4",
+        "bytes": 2763
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E20-04-nonair-control.json",
+      "source_group": "03",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/integration-air-records/models/E20-04-nonair-control.json",
+      "raw": {
+        "sha256_raw": "5e0ef4fe7081415a27e0242f1605aed2bb8bce64595eb5ecc8112841e901b024",
+        "bytes": 1373
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E21-01-cyclic-vacuum/questions.json",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E21-01-cyclic-vacuum/questions.json",
+      "raw": {
+        "sha256_raw": "1a82ebbaf7fa8a6495ca5da348c2c78efae96813f5ea4fecaa052492d14cca35",
+        "bytes": 2398
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E21-01-cyclic-vacuum/screen.md",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E21-01-cyclic-vacuum/screen.md",
+      "raw": {
+        "sha256_raw": "5c8c15a8aa9bd231eef5c51e2b59632bdf208deb81138a98d58912a79e3b6c23",
+        "bytes": 2834
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E21-01-cyclic-vacuum.json",
+      "source_group": "04",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/air-utility-records/models/E21-01-cyclic-vacuum.json",
+      "raw": {
+        "sha256_raw": "81a56293225e1558512f79e3331783a481b0038c349fc4f7c24686b71a344024",
+        "bytes": 1691
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E21-02-purge-cooling/questions.json",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E21-02-purge-cooling/questions.json",
+      "raw": {
+        "sha256_raw": "8a0ec91aa6b903efc4c0b3fae33b5a6028b1637ed87145e9134b6342907ac2f9",
+        "bytes": 2400
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E21-02-purge-cooling/screen.md",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E21-02-purge-cooling/screen.md",
+      "raw": {
+        "sha256_raw": "f64f825e7886d52d3413f7f876766d009a1cb47c8329852c32bcd820739ef262",
+        "bytes": 2836
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E21-02-purge-cooling.json",
+      "source_group": "04",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/air-utility-records/models/E21-02-purge-cooling.json",
+      "raw": {
+        "sha256_raw": "100af6a9419d5372ecab063b2fe81fed4e5dca059418ab7763c39eeb462d2028",
+        "bytes": 1621
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E21-03-purpose-source/questions.json",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E21-03-purpose-source/questions.json",
+      "raw": {
+        "sha256_raw": "238ed461909b258ccbf9c111554965abdd2dcf0e60a044501d36fe5e65ec4c59",
+        "bytes": 2386
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E21-03-purpose-source/screen.md",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E21-03-purpose-source/screen.md",
+      "raw": {
+        "sha256_raw": "228eb8f02f1f7bbf92f8468e535cc88477ccc51120f1b17e66a539fbde15db8f",
+        "bytes": 2822
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E21-03-purpose-source.json",
+      "source_group": "04",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/air-utility-records/models/E21-03-purpose-source.json",
+      "raw": {
+        "sha256_raw": "8d64f9f3e9ea04b96998067d7e1f85fa473ae572abc657b50e1614ce970b4663",
+        "bytes": 1713
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E21-04-nonair-helper/questions.json",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E21-04-nonair-helper/questions.json",
+      "raw": {
+        "sha256_raw": "77eb061cbc651135090139921a9c1cf933f58124ba7f53456e437419e616e3b8",
+        "bytes": 2187
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E21-04-nonair-helper/screen.md",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E21-04-nonair-helper/screen.md",
+      "raw": {
+        "sha256_raw": "5b8b708ab6fdcab78b07a480e9545c59bd8ddb0874098e4485ca3142a24b4108",
+        "bytes": 2764
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E21-04-nonair-helper.json",
+      "source_group": "04",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/air-utility-records/models/E21-04-nonair-helper.json",
+      "raw": {
+        "sha256_raw": "1ffd186181ec1200c68c8890d5faff3075b67d9105c29c2ce1997d8aaf4ff6c4",
+        "bytes": 1427
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E22-01-global-storage/questions.json",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E22-01-global-storage/questions.json",
+      "raw": {
+        "sha256_raw": "1edd69a23e031c7fe2ea13c88f93a086a63cf622b61b4432bcfb95c4cf911985",
+        "bytes": 587
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E22-01-global-storage/screen.md",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E22-01-global-storage/screen.md",
+      "raw": {
+        "sha256_raw": "43e68188fdc853f1aafe1f30cec14e7103d7eca5bf119f348f0e3857a9d12cda",
+        "bytes": 1384
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E22-01-global-storage.json",
+      "source_group": "04",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/air-utility-records/models/E22-01-global-storage.json",
+      "raw": {
+        "sha256_raw": "afb14266ac700c843cb9973a3580c0e1954883ce5b808ab021ccc778c642842f",
+        "bytes": 2004
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E22-02-local-receiver/questions.json",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E22-02-local-receiver/questions.json",
+      "raw": {
+        "sha256_raw": "f29e389eda09158beb61e0bd01a95cce58b5a874bd7c1d4e854e31724bd911e5",
+        "bytes": 587
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E22-02-local-receiver/screen.md",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E22-02-local-receiver/screen.md",
+      "raw": {
+        "sha256_raw": "e278694fedae68002168b097ef02be41f2edd587a7112940a1b70b7ac882e9db",
+        "bytes": 1384
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E22-02-local-receiver.json",
+      "source_group": "04",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/air-utility-records/models/E22-02-local-receiver.json",
+      "raw": {
+        "sha256_raw": "787c662afa9f86bbd4cf9d614bfb0327796f86b1c3c5a7f6e9cf1a1deccc4121",
+        "bytes": 2129
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E22-03-pressure-time/questions.json",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E22-03-pressure-time/questions.json",
+      "raw": {
+        "sha256_raw": "8d26d7b0d440eb6688a08f11470becee9b1a0a7e2284847c2b92fce144aef7b7",
+        "bytes": 3869
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E22-03-pressure-time/screen.md",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E22-03-pressure-time/screen.md",
+      "raw": {
+        "sha256_raw": "97c1177bcd85ac8b2b87563a58f786c216856ce1e83be22984caa6701bf25b46",
+        "bytes": 3738
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E22-03-pressure-time.json",
+      "source_group": "04",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/air-utility-records/models/E22-03-pressure-time.json",
+      "raw": {
+        "sha256_raw": "b349f3f7235af0b909dd9a3e4258229b29349d053dc67bcb284877361b02433a",
+        "bytes": 1823
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E22-04-role-package/questions.json",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E22-04-role-package/questions.json",
+      "raw": {
+        "sha256_raw": "58c7c6fac6796a056fbd92261a5142c1823ec7ce1ebde35329cc15b3b03c290a",
+        "bytes": 3885
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E22-04-role-package/screen.md",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E22-04-role-package/screen.md",
+      "raw": {
+        "sha256_raw": "4fa9cf6bc02009af4b68d3956fb446eefa54e113984706e4009305d9c33e210d",
+        "bytes": 3754
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E22-04-role-package.json",
+      "source_group": "04",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/air-utility-records/models/E22-04-role-package.json",
+      "raw": {
+        "sha256_raw": "4c34b4fd0c2d6928da4dce22cf6d2b6b93a9738eaa7c27f704962f8b36018890",
+        "bytes": 1911
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E23-01-heat-quantity/questions.json",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E23-01-heat-quantity/questions.json",
+      "raw": {
+        "sha256_raw": "1b8dfc55f7553809df568d0f7b7f22f54a31c6f3c6bbf21ea6ac400a3a140e09",
+        "bytes": 3135
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E23-01-heat-quantity/screen.md",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E23-01-heat-quantity/screen.md",
+      "raw": {
+        "sha256_raw": "ff8dd47dd102961f2704bf69ab66bef3ee5f5119fdc923dd8a2f6aa101382d9e",
+        "bytes": 3158
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E23-01-heat-quantity.json",
+      "source_group": "04",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/air-utility-records/models/E23-01-heat-quantity.json",
+      "raw": {
+        "sha256_raw": "558042a99c2f0894c5d66113c07cd91ca1b9889d254ac58ace2be95600947411",
+        "bytes": 1862
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E23-02-existing-season/questions.json",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E23-02-existing-season/questions.json",
+      "raw": {
+        "sha256_raw": "af658b8cbb5271d3bfe032f606a684c8b1ef537c9c844254e05853e7fe915a71",
+        "bytes": 3137
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E23-02-existing-season/screen.md",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E23-02-existing-season/screen.md",
+      "raw": {
+        "sha256_raw": "2cf1f356c3688304bef5582f3ef162fd00e2b1435705f01520f030ddb85858be",
+        "bytes": 3160
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E23-02-existing-season.json",
+      "source_group": "04",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/air-utility-records/models/E23-02-existing-season.json",
+      "raw": {
+        "sha256_raw": "ba0014099a56b07a69c96e3bc865fc34bdbdbfcc1d1fd57ff197195cff9bcae2",
+        "bytes": 1746
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E23-03-source-constraints/questions.json",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E23-03-source-constraints/questions.json",
+      "raw": {
+        "sha256_raw": "bdc6bf195af0afbe41529a9a536511369f50d2d8bc13e5e944a8f815c216c152",
+        "bytes": 3140
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E23-03-source-constraints/screen.md",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E23-03-source-constraints/screen.md",
+      "raw": {
+        "sha256_raw": "8f3bb0eceaee36764a41edf7d71be1726975439c45b7cad08ac3ce0f34ed517f",
+        "bytes": 3163
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E23-03-source-constraints.json",
+      "source_group": "04",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/air-utility-records/models/E23-03-source-constraints.json",
+      "raw": {
+        "sha256_raw": "c90ba0b895e1fc057c23347401d31be36a0f9674c607d7ea46951ccd1ccdbcba",
+        "bytes": 1741
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E23-04-role-package/questions.json",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E23-04-role-package/questions.json",
+      "raw": {
+        "sha256_raw": "13889d38092c4951063a9dc5e6b661ebcd1704ccd6ae59b9c89996c9755ace57",
+        "bytes": 3151
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E23-04-role-package/screen.md",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/E23-04-role-package/screen.md",
+      "raw": {
+        "sha256_raw": "55a982e18ffa4fc84f33a318a7b1b8dfb5ac7cb90312c63a3be6267a76d6f73e",
+        "bytes": 3174
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E23-04-role-package.json",
+      "source_group": "04",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/air-utility-records/models/E23-04-role-package.json",
+      "raw": {
+        "sha256_raw": "4c34b4fd0c2d6928da4dce22cf6d2b6b93a9738eaa7c27f704962f8b36018890",
+        "bytes": 1911
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C1-01-false-samestream/questions.json",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/C1-01-false-samestream/questions.json",
+      "raw": {
+        "sha256_raw": "04f346288c77f52bab1555d79b858dea26033c56150efb1fda0645e12b137cf7",
+        "bytes": 586
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C1-01-false-samestream/screen.md",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/C1-01-false-samestream/screen.md",
+      "raw": {
+        "sha256_raw": "4060d3d5ba35e9e401a38f5be8c98281a944d2572e038c71d52fd72d2c1cb07a",
+        "bytes": 1384
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/C1-01-false-samestream.json",
+      "source_group": "04",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/air-utility-records/models/C1-01-false-samestream.json",
+      "raw": {
+        "sha256_raw": "358588a014b6d94166ca5442e034c374f07adb6ac21d6446f23ec8ea716dbce1",
+        "bytes": 2267
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C1-02-branch-coverage/questions.json",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/C1-02-branch-coverage/questions.json",
+      "raw": {
+        "sha256_raw": "d26ed09e9c792b06283546b4aa0bdf422342e46e6f5ed458cc3d22f77e0d0d91",
+        "bytes": 585
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C1-02-branch-coverage/screen.md",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/C1-02-branch-coverage/screen.md",
+      "raw": {
+        "sha256_raw": "1d059fc0950e45a7b872bbbabaf1f986e3a44433fcf5fb22e6382567523bc2c5",
+        "bytes": 1383
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/C1-02-branch-coverage.json",
+      "source_group": "04",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/air-utility-records/models/C1-02-branch-coverage.json",
+      "raw": {
+        "sha256_raw": "644cbcfe7debf000d25bbadf6e24e6dc6baf41c261976e90dc7574a846cbea42",
+        "bytes": 2705
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C1-03-existing-fit/questions.json",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/C1-03-existing-fit/questions.json",
+      "raw": {
+        "sha256_raw": "7604b4f59189eeba1133478c056a040fe16c99524e11119bd311647973cb115a",
+        "bytes": 582
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C1-03-existing-fit/screen.md",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/C1-03-existing-fit/screen.md",
+      "raw": {
+        "sha256_raw": "70e6f09f5751b3023424b0cb531257ee7be3c19f73ffaa9edcb895e1cfaf303e",
+        "bytes": 1380
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/C1-03-existing-fit.json",
+      "source_group": "04",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/air-utility-records/models/C1-03-existing-fit.json",
+      "raw": {
+        "sha256_raw": "425873ac054c074263d3e9034768c474b2341a3d3d17007b9cf1e84800679c77",
+        "bytes": 2519
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C1-04-excluded-return/questions.json",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/C1-04-excluded-return/questions.json",
+      "raw": {
+        "sha256_raw": "5e4c1fdaa66f6c5cb8ded278f4581c4a9976b4ef97c1bdf3f9d8d7bd01a7e95a",
+        "bytes": 585
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C1-04-excluded-return/screen.md",
+      "source_group": "04",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/C1-04-excluded-return/screen.md",
+      "raw": {
+        "sha256_raw": "8adb5d4036605bffb02114ed6ccd813b173ff805a01d89ee95f2e50e7c7520f3",
+        "bytes": 1383
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/C1-04-excluded-return.json",
+      "source_group": "04",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/air-utility-records/models/C1-04-excluded-return.json",
+      "raw": {
+        "sha256_raw": "bbe08984076a6b660a23218dc48efcd54ad3f614771c83d8302da54bf27715f3",
+        "bytes": 1729
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C2-01-no-controllers/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/C2-01-no-controllers/questions.json",
+      "raw": {
+        "sha256_raw": "e76097f90c68bfb2b444ff4a5841db343b82912f9e336582078fdcea87d863ef",
+        "bytes": 733
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C2-01-no-controllers/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/C2-01-no-controllers/screen.md",
+      "raw": {
+        "sha256_raw": "35bc9c8c582dd0b52fbfc86f7ec2c0954c934428004ca6a975c56d1b129d5ecc",
+        "bytes": 1295
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/C2-01-no-controllers.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/C2-01-no-controllers.json",
+      "raw": {
+        "sha256_raw": "1f69b9c6a48a8f098008b864850a08ed569d514fc658cda652a8424396dd7ea1",
+        "bytes": 1679
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C2-02-reader-coverage/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/C2-02-reader-coverage/questions.json",
+      "raw": {
+        "sha256_raw": "4cdbffc54463ff50c471981105802174651474b0a1cf0f346e5ed376e0e41e4e",
+        "bytes": 2766
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C2-02-reader-coverage/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/C2-02-reader-coverage/screen.md",
+      "raw": {
+        "sha256_raw": "fa75acd2063fcb9289817031e148b2bd0b9bbfdb69b49d2a426247c8e3664ffb",
+        "bytes": 3090
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/C2-02-reader-coverage.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/C2-02-reader-coverage.json",
+      "raw": {
+        "sha256_raw": "cb7c64a660982f2da25b7c4b8ab8ab7040db4fcecadcc1fe29f9c3daaaed95ca",
+        "bytes": 3135
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C2-03-abnormal-purpose/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/C2-03-abnormal-purpose/questions.json",
+      "raw": {
+        "sha256_raw": "f178b160079b77a4508e2261913ee1288ce221b824436b7165933e98a891f1b1",
+        "bytes": 3052
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C2-03-abnormal-purpose/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/C2-03-abnormal-purpose/screen.md",
+      "raw": {
+        "sha256_raw": "1147ce00b716c74164e69e66f4458310fbea95784f105c1fef1a4839a75ca454",
+        "bytes": 3238
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/C2-03-abnormal-purpose.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/C2-03-abnormal-purpose.json",
+      "raw": {
+        "sha256_raw": "ba213a0e7c1b6c866db7e31679df7722a15be6911981b9cd457d47bc1cf91a04",
+        "bytes": 3632
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C2-04-outside-variable-scope/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/C2-04-outside-variable-scope/questions.json",
+      "raw": {
+        "sha256_raw": "3839d4120837016b00e9cbe75639011cc6f1eadbaf17b24961aa571311059421",
+        "bytes": 741
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C2-04-outside-variable-scope/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/C2-04-outside-variable-scope/screen.md",
+      "raw": {
+        "sha256_raw": "d627b40dd620c0bf76c431f24a86a2b021768e1d54b8f3314ff2ae30a54b5ce6",
+        "bytes": 1303
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/C2-04-outside-variable-scope.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/C2-04-outside-variable-scope.json",
+      "raw": {
+        "sha256_raw": "75087a1fbbfc76993f78c0f3639517d7264c5219f76af3867f09f3bc91150d65",
+        "bytes": 1018
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C6-01-dynamics-source/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/C6-01-dynamics-source/questions.json",
+      "raw": {
+        "sha256_raw": "18d9950baba57453d26be66812b598e535d9903c70017d59a98ff15e5e62b6fb",
+        "bytes": 2801
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C6-01-dynamics-source/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original/C6-01-dynamics-source/screen.md",
+      "raw": {
+        "sha256_raw": "65bbc7bd55717b8d5c4e253e2e9e6873ef9356186ed98393aa17c19a1200607a",
+        "bytes": 2661
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/C6-01-dynamics-source.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/C6-01-dynamics-source.json",
+      "raw": {
+        "sha256_raw": "150fda5b0c7031a8250f29818b275f7be7d63bfa9a6892d01b338e00244d7e4b",
+        "bytes": 3282
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C6-02-dual-writer/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C6-02-dual-writer/questions.json",
+      "raw": {
+        "sha256_raw": "45f5ac746bc65994d64a221d126e452e7ff79d239ce20d099e2a8730d710ada7",
+        "bytes": 582
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C6-02-dual-writer/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C6-02-dual-writer/screen.md",
+      "raw": {
+        "sha256_raw": "109b3fc217a9d0cb86bc81852dd5ea9fc7d9d51f4614ef34f0855cba7ae0b392",
+        "bytes": 1363
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/C6-02-dual-writer.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/C6-02-dual-writer.json",
+      "raw": {
+        "sha256_raw": "7a583e26161c0d60bba028fd12f164daa11afc128b11a114abb7039d3389c410",
+        "bytes": 3814
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C6-03-already-cascade/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C6-03-already-cascade/questions.json",
+      "raw": {
+        "sha256_raw": "eba11c2a376dbca2fd5d89df8ddb7561a6dbd9c476135949a70890172ae29f71",
+        "bytes": 586
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C6-03-already-cascade/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C6-03-already-cascade/screen.md",
+      "raw": {
+        "sha256_raw": "ac1c3004b2991dbe52b5e8ec28073639271017bd792075ab4444fcffdbccdae5",
+        "bytes": 1367
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/C6-03-already-cascade.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/C6-03-already-cascade.json",
+      "raw": {
+        "sha256_raw": "661bae93b6494f2516c556fda04b6f19a7d1cd6ba69e4211ee8e6b55682944bf",
+        "bytes": 3742
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C6-04-nonsteam/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C6-04-nonsteam/questions.json",
+      "raw": {
+        "sha256_raw": "5b91992e180ea8f908065ad0b74ba6396d0fc313982435fff1cba3d0f5984e0a",
+        "bytes": 579
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C6-04-nonsteam/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C6-04-nonsteam/screen.md",
+      "raw": {
+        "sha256_raw": "1410a516e7116b7303c5de50a3555295c8afd14bd22ce680d75225d7beffd3aa",
+        "bytes": 1360
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/C6-04-nonsteam.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/C6-04-nonsteam.json",
+      "raw": {
+        "sha256_raw": "08360729a712350fd19811783ea8ab9780b4b71413e2061fbc02722248d96934",
+        "bytes": 3123
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C7-01-global-master/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C7-01-global-master/questions.json",
+      "raw": {
+        "sha256_raw": "6903c443cc7445f6f391422b31dd589e6547772f05e1abca54f8cf028b5fa9aa",
+        "bytes": 584
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C7-01-global-master/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C7-01-global-master/screen.md",
+      "raw": {
+        "sha256_raw": "05904fd78cea3e026130a74e513e03eeae87413ab24b1f667474164b98037ffc",
+        "bytes": 1365
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/C7-01-global-master.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/C7-01-global-master.json",
+      "raw": {
+        "sha256_raw": "95048d20d9ee422de273c7cb523fff2004e0286eba447b210062522aa39c84b1",
+        "bytes": 1828
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C7-02-separate-systems/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C7-02-separate-systems/questions.json",
+      "raw": {
+        "sha256_raw": "f7c412957c2fd28b9ba02b482ef8b9ed48d1e90c5f7dafa35376133f5ed3b4dc",
+        "bytes": 2639
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C7-02-separate-systems/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C7-02-separate-systems/screen.md",
+      "raw": {
+        "sha256_raw": "3e5142e9ec756d35bb10c289a691e826d1bc82c1e04685a54137ab3b6deb152d",
+        "bytes": 3015
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/C7-02-separate-systems.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/C7-02-separate-systems.json",
+      "raw": {
+        "sha256_raw": "e3d936f02be85f8d1640132a7eef0cd9f101b0cc1f046467f553442e95775d15",
+        "bytes": 1810
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C7-03-role-package/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C7-03-role-package/questions.json",
+      "raw": {
+        "sha256_raw": "29f4f325ba4c617d5cdc49cd21cf7615d0704742b4f3de65b510b0077306c972",
+        "bytes": 2642
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C7-03-role-package/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C7-03-role-package/screen.md",
+      "raw": {
+        "sha256_raw": "1967bd66e3732e4e7b8d96c90cd5516418931ebfd204f5729c237bb0b31b199b",
+        "bytes": 3018
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/C7-03-role-package.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/C7-03-role-package.json",
+      "raw": {
+        "sha256_raw": "dfa07e1cd34580a413c947be1fa751414a2a23d6a8ed7705143fa253c36c6ebd",
+        "bytes": 1837
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C7-04-single-machine/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C7-04-single-machine/questions.json",
+      "raw": {
+        "sha256_raw": "5084674178fd2cd108e1c006cb07f099b7d051ccab90d3085bbba9bc8b91de5d",
+        "bytes": 585
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C7-04-single-machine/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C7-04-single-machine/screen.md",
+      "raw": {
+        "sha256_raw": "25ad082d26a7e549e1141e7214290ca9c0837d67fa84c15131f3d8969fd2faa5",
+        "bytes": 1366
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/C7-04-single-machine.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/C7-04-single-machine.json",
+      "raw": {
+        "sha256_raw": "85c37c03c2f81ad053291ea81faaca256dba3c267ba9572c03d3a1a6d40ce380",
+        "bytes": 918
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C10-01-global-UT/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C10-01-global-UT/questions.json",
+      "raw": {
+        "sha256_raw": "73279658ed7ccadc76d79e5a20c4807fb5d26211b81d149268d1fa94f0b935f9",
+        "bytes": 583
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C10-01-global-UT/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C10-01-global-UT/screen.md",
+      "raw": {
+        "sha256_raw": "cf3c1b4e0d30df4911c975d7747c12ddeccbbd35cdb12ce85902502f0e1b09a6",
+        "bytes": 1363
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/C10-01-global-UT.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/C10-01-global-UT.json",
+      "raw": {
+        "sha256_raw": "20242c829a546e7a974e0aed0d3188dc92325ad6674c7e58ae3944e5af36103d",
+        "bytes": 1866
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C10-02-local-monitor/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C10-02-local-monitor/questions.json",
+      "raw": {
+        "sha256_raw": "70881f8232aa1cb3f0017682df0159572ae792df120aee8408fc19c8678f2c19",
+        "bytes": 2152
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C10-02-local-monitor/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C10-02-local-monitor/screen.md",
+      "raw": {
+        "sha256_raw": "1a73c528722ba1c3ee3c55f5fa3e9509cc24b82280e306b53570c994a9c880c7",
+        "bytes": 2726
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/C10-02-local-monitor.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/C10-02-local-monitor.json",
+      "raw": {
+        "sha256_raw": "b00eff5e1cb77db8249d451152835a72e43b4f805d412a1a1c22837de2334e28",
+        "bytes": 1922
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C10-03-program/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C10-03-program/questions.json",
+      "raw": {
+        "sha256_raw": "591a62939b9441799b03f101d2dc08d58fe4ef4d83e0f4fedc74a92443a2b6c6",
+        "bytes": 2362
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C10-03-program/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C10-03-program/screen.md",
+      "raw": {
+        "sha256_raw": "ebdede0da0953edb74a03478334a214af80505399f120a3da9e85bfe004eede2",
+        "bytes": 2789
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/C10-03-program.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/C10-03-program.json",
+      "raw": {
+        "sha256_raw": "1e59141bd1723063a78cbd2d83305cf12fdd4b35f019e92ae500609b7845f4e3",
+        "bytes": 1777
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C10-04-nonsteam/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C10-04-nonsteam/questions.json",
+      "raw": {
+        "sha256_raw": "fcac6a8d2b6000f3c55e8771f29dfad450e51a3f6ea51948a61914221526200c",
+        "bytes": 2361
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/C10-04-nonsteam/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/C10-04-nonsteam/screen.md",
+      "raw": {
+        "sha256_raw": "a0db4447e02a4c456d433e299b66aad8a90a349177ee8960d2a5e15175c49598",
+        "bytes": 2788
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/C10-04-nonsteam.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/C10-04-nonsteam.json",
+      "raw": {
+        "sha256_raw": "1684d916c5fb9aa6719b74c6f470777475141deabb3b961621e22b7300df1042",
+        "bytes": 1363
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E25-01-blanket-scope/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/E25-01-blanket-scope/questions.json",
+      "raw": {
+        "sha256_raw": "2ec27c4a6361f498971fb59437eb38e5859e08a45a56ba8a5bcbfe73c12da316",
+        "bytes": 587
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E25-01-blanket-scope/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/E25-01-blanket-scope/screen.md",
+      "raw": {
+        "sha256_raw": "8cb23aa8a8c66db4d1096a3fe3e71d8c5b7ac0d308ea8491217d84d77f53b768",
+        "bytes": 1367
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E25-01-blanket-scope.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/E25-01-blanket-scope.json",
+      "raw": {
+        "sha256_raw": "ac24f91c1a05eacec695d7c6b7b86e66571791d1438d578669b41343ed859b91",
+        "bytes": 1917
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E25-02-recovery-coverage/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/E25-02-recovery-coverage/questions.json",
+      "raw": {
+        "sha256_raw": "e3651160581b274ceb1edafdf0794964721797fd662c29dd9d2935db06e9dfe3",
+        "bytes": 591
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E25-02-recovery-coverage/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/E25-02-recovery-coverage/screen.md",
+      "raw": {
+        "sha256_raw": "88328ad997896d382a12faa45eea5461b128424c0c770467539dc460f883b6ca",
+        "bytes": 1371
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E25-02-recovery-coverage.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/E25-02-recovery-coverage.json",
+      "raw": {
+        "sha256_raw": "40785b3c26d3820a3fafcf984fb0b536aa9ea35b11293cd1cedd30f4af79740d",
+        "bytes": 2049
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E25-03-quantity-time/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/E25-03-quantity-time/questions.json",
+      "raw": {
+        "sha256_raw": "743a9c7e15e3e02d40a1463f2af8c2cc66002f2a133a1f88a1df0cbe3769449f",
+        "bytes": 3599
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E25-03-quantity-time/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/E25-03-quantity-time/screen.md",
+      "raw": {
+        "sha256_raw": "613cd25115428b2da4d228f9cf77b379238644ede9ee81e53a3f07c283f3d5d9",
+        "bytes": 3411
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E25-03-quantity-time.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/E25-03-quantity-time.json",
+      "raw": {
+        "sha256_raw": "733fe90e889d5c5a07fc6f503c32f3ec3de52189326a1df1ad2b31e337e0cb52",
+        "bytes": 1900
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E25-04-known-nonHC/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/E25-04-known-nonHC/questions.json",
+      "raw": {
+        "sha256_raw": "e3371c3d727d5a506e35ffa75b4bbe41d5aa8afa7caba35876854d3c686edf30",
+        "bytes": 3599
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E25-04-known-nonHC/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/E25-04-known-nonHC/screen.md",
+      "raw": {
+        "sha256_raw": "2906aa9d7d8cde42929d29398ec4ab2927fc033ea7abce89ce860c8e61b2d08e",
+        "bytes": 3411
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E25-04-known-nonHC.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/E25-04-known-nonHC.json",
+      "raw": {
+        "sha256_raw": "587527702510cc965a1bb76fb567690fe442053b231c4bbeea3bd7fdb2b20b98",
+        "bytes": 1409
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E26-01-flow-source/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/E26-01-flow-source/questions.json",
+      "raw": {
+        "sha256_raw": "0639eee372c899fc3b8d9238e1a928f57fead06df70c78b463f43dae5976d44a",
+        "bytes": 2258
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E26-01-flow-source/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/E26-01-flow-source/screen.md",
+      "raw": {
+        "sha256_raw": "0136ef378280559817496e660b44f0daa016db25d0f05f566cdf4c61236263f1",
+        "bytes": 2637
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E26-01-flow-source.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/E26-01-flow-source.json",
+      "raw": {
+        "sha256_raw": "0b06d6c193d4e308344d1f87b8df1cc2e5bdafef6b32a2000fac294f43e718c9",
+        "bytes": 2557
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E26-02-rare-relief/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/E26-02-rare-relief/questions.json",
+      "raw": {
+        "sha256_raw": "bad3b5229c1371aac2e41e36773c2cbdf9aaf10c4c48559155e827b2178221f8",
+        "bytes": 2503
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E26-02-rare-relief/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/E26-02-rare-relief/screen.md",
+      "raw": {
+        "sha256_raw": "033d74f781697ffef880e2dbdd6a1791abd8402fe5237016741a9c08b6e18256",
+        "bytes": 2732
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E26-02-rare-relief.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/E26-02-rare-relief.json",
+      "raw": {
+        "sha256_raw": "a2cc1b49a7195ff6eb5ae5aa76188f54c259d5d49bcf0dd6e3da01aef7993d81",
+        "bytes": 2142
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E26-03-existing-records/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/E26-03-existing-records/questions.json",
+      "raw": {
+        "sha256_raw": "22fdc2237d7aa2d825c475e141a787626beac3896ef2f3e2f4442a00865e1a87",
+        "bytes": 590
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E26-03-existing-records/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/E26-03-existing-records/screen.md",
+      "raw": {
+        "sha256_raw": "1164c72795e2bd49a18b96bc1791a806daee860d38b36e094601da0e2413e206",
+        "bytes": 1370
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E26-03-existing-records.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/E26-03-existing-records.json",
+      "raw": {
+        "sha256_raw": "e7990d7dabbbba49bbbd243adf100a644f7cdc76e97702596d81fdc3bd4a66cf",
+        "bytes": 2333
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E26-04-exhaust-boundary/questions.json",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/E26-04-exhaust-boundary/questions.json",
+      "raw": {
+        "sha256_raw": "eea8de64f52abe2cb184f863670261786007502328c25f4c8d083bc48b8cfdbf",
+        "bytes": 590
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/history/before/E26-04-exhaust-boundary/screen.md",
+      "source_group": "05",
+      "source_role": "Exact successful author-original report; historical source_model/caption unchanged",
+      "source_relative": "actual-original-continuation/E26-04-exhaust-boundary/screen.md",
+      "raw": {
+        "sha256_raw": "bf46643c1b67577619f18c7b0f53967d63cfab6f5370e730153f2ce249edbad5",
+        "bytes": 1370
+      }
+    },
+    {
+      "publication": "examples/opportunity-screen/source-policy/models/E26-04-exhaust-boundary.json",
+      "source_group": "05",
+      "source_role": "Exact final admitted author model; group01 E7 uses supported unplaced layoutv2",
+      "source_relative": "tree/examples/opportunity-screen/control-vent-records/models/E26-04-exhaust-boundary.json",
+      "raw": {
+        "sha256_raw": "550eadcec7aaeff13c22c939767465dc04ab2961ae0ec83917fc6820d1950ebb",
+        "bytes": 1372
+      }
+    }
+  ]
+}

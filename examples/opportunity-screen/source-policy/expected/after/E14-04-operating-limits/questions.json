@@ -1,0 +1,838 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/models/E14-04-operating-limits.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E14"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E14@B-A",
+   "question_id": "E14",
+   "family": "energy",
+   "question": "What do existing records establish about this boiler/steam-generator candidate's flue/feedwater service and current heat-recovery coverage?",
+   "about": "B-A",
+   "assets": [
+    {
+     "id": "B-A",
+     "tag": "B-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "equipment B-A reads \"B-A Fictional gas boiler\"",
+     "field": "units[B-A]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A record_source = \"Fictional development record; no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A record_available = true; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A service = \"steamwaterflue\"; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A stack_temperature = 500; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.stack_temperature"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A temperature_unit = \"Fdesignvalueonly\"; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.temperature_unit"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A tuning_basis = \"notaftertuning\"; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.tuning_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A fuel_basis = \"naturalgasdeclared\"; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.fuel_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A dewpoint_basis = null; blank; meaning and suitability unverified",
+     "field": "units[B-A].facts.dewpoint_basis"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A fictional_record = True",
+     "field": "units[B-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_source = Fictional development record; no company or human approval",
+     "field": "units[B-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_revision = R1",
+     "field": "units[B-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_available = True",
+     "field": "units[B-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_authority = unverified",
+     "field": "units[B-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A service = steamwaterflue",
+     "field": "units[B-A].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A stack_temperature = 500",
+     "field": "units[B-A].facts.stack_temperature"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A temperature_unit = Fdesignvalueonly",
+     "field": "units[B-A].facts.temperature_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A tuning_basis = notaftertuning",
+     "field": "units[B-A].facts.tuning_basis"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A fuel_basis = naturalgasdeclared",
+     "field": "units[B-A].facts.fuel_basis"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A fictional_record = True",
+     "field": "units[B-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_source = Fictional development record; no company or human approval",
+     "field": "units[B-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_revision = R1",
+     "field": "units[B-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_available = True",
+     "field": "units[B-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_authority = unverified",
+     "field": "units[B-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A service = steamwaterflue",
+     "field": "units[B-A].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A stack_temperature = 500",
+     "field": "units[B-A].facts.stack_temperature"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A temperature_unit = Fdesignvalueonly",
+     "field": "units[B-A].facts.temperature_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A tuning_basis = notaftertuning",
+     "field": "units[B-A].facts.tuning_basis"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A fuel_basis = naturalgasdeclared",
+     "field": "units[B-A].facts.fuel_basis"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing named-boiler flue/feedwater service and recovery association",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing exact-subject boiler/steam-water, heat-source/flue and feedwater duty, installed recovery/route/coverage and source/revision/availability records; retain foreign or uncertain economizer associations explicitly.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "One economizer label anywhere cannot establish installed coverage, suitability or closure for every boiler. Establish relevant actual service and named coverage; known dry furnace/nonwater helper or electric/no-flue service is not this flue/feedwater task, and unknown service remains conditional. A source-labelled steam generator is reviewed for its actual function without inventing a fuel or drum. Acknowledge suitable existing records or nonapplicability before new observations.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[B-A].facts.fictional_record"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_source",
+       "value": "Fictional development record; no company or human approval",
+       "where": "units[B-A].facts.record_source"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[B-A].facts.record_revision"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_available",
+       "value": true,
+       "where": "units[B-A].facts.record_available"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[B-A].facts.record_authority"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "service",
+       "value": "steamwaterflue",
+       "where": "units[B-A].facts.service"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "stack_temperature",
+       "value": 500,
+       "where": "units[B-A].facts.stack_temperature"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "temperature_unit",
+       "value": "Fdesignvalueonly",
+       "where": "units[B-A].facts.temperature_unit"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "tuning_basis",
+       "value": "notaftertuning",
+       "where": "units[B-A].facts.tuning_basis"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "fuel_basis",
+       "value": "naturalgasdeclared",
+       "where": "units[B-A].facts.fuel_basis"
+      }
+     ]
+    },
+    {
+     "item": "Existing tuned operating, receiving-feedwater and cold-end feasibility basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing actual stack temperature/load/hours after appropriate tuning/cleaning, fuel/composition, feedwater/receiving duty, dewpoint/corrosion/material and practical/economic constraints, with matched units/time and source coverage.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "S4 describes reviewing stack operation after tuning to manufacturer specifications, suitable excess air and clean heat-transfer surfaces; design/high stack temperature alone is not a recovery decision. Review fuel, dewpoint/cold-end corrosion and useful receiving duty before considering a remaining opportunity. Its example temperatures, efficiency increments and savings/paybacks are contextual, not universal limits or this site's benefit. Existing suitable operation can be acknowledged without a compulsory thermometer, quote or retrofit.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[B-A].facts.fictional_record"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_source",
+       "value": "Fictional development record; no company or human approval",
+       "where": "units[B-A].facts.record_source"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[B-A].facts.record_revision"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_available",
+       "value": true,
+       "where": "units[B-A].facts.record_available"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[B-A].facts.record_authority"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "service",
+       "value": "steamwaterflue",
+       "where": "units[B-A].facts.service"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "stack_temperature",
+       "value": 500,
+       "where": "units[B-A].facts.stack_temperature"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "temperature_unit",
+       "value": "Fdesignvalueonly",
+       "where": "units[B-A].facts.temperature_unit"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "tuning_basis",
+       "value": "notaftertuning",
+       "where": "units[B-A].facts.tuning_basis"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "fuel_basis",
+       "value": "naturalgasdeclared",
+       "where": "units[B-A].facts.fuel_basis"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual boiler/flue/feedwater function, existing named recovery coverage, tuned operating/load records and cold-end/receiving/economic constraints with the responsible engineer. No global economizer label, high temperature or fuel label alone establishes absence, adequacy or a reason to obtain equipment quotes. Suitable existing coverage or nonapplicability may be acknowledged; unknown basis remains a records question with no operating or hardware authorization.",
+   "typical_benefit": {
+    "wording": "Efficiency \"can be increased by 1% for every 40°F reduction in flue gas temperature.\" An economizer \"can often reduce fuel requirements by 5% to 10% and pay for itself in less than 2 years.\"",
+    "source": [
+     "S4",
+     "S24"
+    ],
+    "arc": "2.242x (by description) (IAC/ITAC browse page: 635 recommendations, 2.1 yr average payback, 24.3% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S4: Steam Tip #3, Use Feedwater Economizers for Waste Heat Recovery",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: complete S4/Tip3 pp1–2 is steam-boiler/feedwater guidance, conditional on tuning/cleanliness, fuel/cold-end and system economics. The inherited general efficiency/payback examples are not universal temperature targets or transferred site savings. Unknown heat-source/service does not establish applicability.",
+   "status": "asked"
+  },
+  {
+   "id": "E14@B-B",
+   "question_id": "E14",
+   "family": "energy",
+   "question": "What do existing records establish about this boiler/steam-generator candidate's flue/feedwater service and current heat-recovery coverage?",
+   "about": "B-B",
+   "assets": [
+    {
+     "id": "B-B",
+     "tag": "B-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "equipment B-B reads \"B-B Fictional gas boiler\"",
+     "field": "units[B-B]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "B-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[B-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "B-B record_source = \"Fictional development record; no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[B-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "B-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[B-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "B-B record_available = true; present; meaning and suitability unverified",
+     "field": "units[B-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "B-B record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[B-B].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "B-B service = \"steamwaterflue\"; present; meaning and suitability unverified",
+     "field": "units[B-B].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "B-B stack_temperature = 400; present; meaning and suitability unverified",
+     "field": "units[B-B].facts.stack_temperature"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "B-B temperature_unit = \"Factualmatchedinterval\"; present; meaning and suitability unverified",
+     "field": "units[B-B].facts.temperature_unit"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "B-B tuning_basis = \"suppliedclean/tunedrecord\"; present; meaning and suitability unverified",
+     "field": "units[B-B].facts.tuning_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "B-B fuel_basis = \"lightoilunknownsulfur\"; present; meaning and suitability unverified",
+     "field": "units[B-B].facts.fuel_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "B-B dewpoint_basis = \"corrosionlimitunreviewed\"; present; meaning and suitability unverified",
+     "field": "units[B-B].facts.dewpoint_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "B-B operating_hours = 4000; present; meaning and suitability unverified",
+     "field": "units[B-B].facts.operating_hours"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B fictional_record = True",
+     "field": "units[B-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B record_source = Fictional development record; no company or human approval",
+     "field": "units[B-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B record_revision = R1",
+     "field": "units[B-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B record_available = True",
+     "field": "units[B-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B record_authority = unverified",
+     "field": "units[B-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B service = steamwaterflue",
+     "field": "units[B-B].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B stack_temperature = 400",
+     "field": "units[B-B].facts.stack_temperature"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B temperature_unit = Factualmatchedinterval",
+     "field": "units[B-B].facts.temperature_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B tuning_basis = suppliedclean/tunedrecord",
+     "field": "units[B-B].facts.tuning_basis"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B fuel_basis = lightoilunknownsulfur",
+     "field": "units[B-B].facts.fuel_basis"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B dewpoint_basis = corrosionlimitunreviewed",
+     "field": "units[B-B].facts.dewpoint_basis"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B operating_hours = 4000",
+     "field": "units[B-B].facts.operating_hours"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B fictional_record = True",
+     "field": "units[B-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B record_source = Fictional development record; no company or human approval",
+     "field": "units[B-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B record_revision = R1",
+     "field": "units[B-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B record_available = True",
+     "field": "units[B-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B record_authority = unverified",
+     "field": "units[B-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B service = steamwaterflue",
+     "field": "units[B-B].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B stack_temperature = 400",
+     "field": "units[B-B].facts.stack_temperature"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B temperature_unit = Factualmatchedinterval",
+     "field": "units[B-B].facts.temperature_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B tuning_basis = suppliedclean/tunedrecord",
+     "field": "units[B-B].facts.tuning_basis"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B fuel_basis = lightoilunknownsulfur",
+     "field": "units[B-B].facts.fuel_basis"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B dewpoint_basis = corrosionlimitunreviewed",
+     "field": "units[B-B].facts.dewpoint_basis"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-B operating_hours = 4000",
+     "field": "units[B-B].facts.operating_hours"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing named-boiler flue/feedwater service and recovery association",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing exact-subject boiler/steam-water, heat-source/flue and feedwater duty, installed recovery/route/coverage and source/revision/availability records; retain foreign or uncertain economizer associations explicitly.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "One economizer label anywhere cannot establish installed coverage, suitability or closure for every boiler. Establish relevant actual service and named coverage; known dry furnace/nonwater helper or electric/no-flue service is not this flue/feedwater task, and unknown service remains conditional. A source-labelled steam generator is reviewed for its actual function without inventing a fuel or drum. Acknowledge suitable existing records or nonapplicability before new observations.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[B-B].facts.fictional_record"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "record_source",
+       "value": "Fictional development record; no company or human approval",
+       "where": "units[B-B].facts.record_source"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[B-B].facts.record_revision"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "record_available",
+       "value": true,
+       "where": "units[B-B].facts.record_available"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[B-B].facts.record_authority"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "service",
+       "value": "steamwaterflue",
+       "where": "units[B-B].facts.service"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "stack_temperature",
+       "value": 400,
+       "where": "units[B-B].facts.stack_temperature"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "temperature_unit",
+       "value": "Factualmatchedinterval",
+       "where": "units[B-B].facts.temperature_unit"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "tuning_basis",
+       "value": "suppliedclean/tunedrecord",
+       "where": "units[B-B].facts.tuning_basis"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "fuel_basis",
+       "value": "lightoilunknownsulfur",
+       "where": "units[B-B].facts.fuel_basis"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "dewpoint_basis",
+       "value": "corrosionlimitunreviewed",
+       "where": "units[B-B].facts.dewpoint_basis"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "operating_hours",
+       "value": 4000,
+       "where": "units[B-B].facts.operating_hours"
+      }
+     ]
+    },
+    {
+     "item": "Existing tuned operating, receiving-feedwater and cold-end feasibility basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing actual stack temperature/load/hours after appropriate tuning/cleaning, fuel/composition, feedwater/receiving duty, dewpoint/corrosion/material and practical/economic constraints, with matched units/time and source coverage.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "S4 describes reviewing stack operation after tuning to manufacturer specifications, suitable excess air and clean heat-transfer surfaces; design/high stack temperature alone is not a recovery decision. Review fuel, dewpoint/cold-end corrosion and useful receiving duty before considering a remaining opportunity. Its example temperatures, efficiency increments and savings/paybacks are contextual, not universal limits or this site's benefit. Existing suitable operation can be acknowledged without a compulsory thermometer, quote or retrofit.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[B-B].facts.fictional_record"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "record_source",
+       "value": "Fictional development record; no company or human approval",
+       "where": "units[B-B].facts.record_source"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[B-B].facts.record_revision"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "record_available",
+       "value": true,
+       "where": "units[B-B].facts.record_available"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[B-B].facts.record_authority"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "service",
+       "value": "steamwaterflue",
+       "where": "units[B-B].facts.service"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "stack_temperature",
+       "value": 400,
+       "where": "units[B-B].facts.stack_temperature"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "temperature_unit",
+       "value": "Factualmatchedinterval",
+       "where": "units[B-B].facts.temperature_unit"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "tuning_basis",
+       "value": "suppliedclean/tunedrecord",
+       "where": "units[B-B].facts.tuning_basis"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "fuel_basis",
+       "value": "lightoilunknownsulfur",
+       "where": "units[B-B].facts.fuel_basis"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "dewpoint_basis",
+       "value": "corrosionlimitunreviewed",
+       "where": "units[B-B].facts.dewpoint_basis"
+      },
+      {
+       "id": "B-B",
+       "label": "B-B",
+       "name": "operating_hours",
+       "value": 4000,
+       "where": "units[B-B].facts.operating_hours"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual boiler/flue/feedwater function, existing named recovery coverage, tuned operating/load records and cold-end/receiving/economic constraints with the responsible engineer. No global economizer label, high temperature or fuel label alone establishes absence, adequacy or a reason to obtain equipment quotes. Suitable existing coverage or nonapplicability may be acknowledged; unknown basis remains a records question with no operating or hardware authorization.",
+   "typical_benefit": {
+    "wording": "Efficiency \"can be increased by 1% for every 40°F reduction in flue gas temperature.\" An economizer \"can often reduce fuel requirements by 5% to 10% and pay for itself in less than 2 years.\"",
+    "source": [
+     "S4",
+     "S24"
+    ],
+    "arc": "2.242x (by description) (IAC/ITAC browse page: 635 recommendations, 2.1 yr average payback, 24.3% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S4: Steam Tip #3, Use Feedwater Economizers for Waste Heat Recovery",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: complete S4/Tip3 pp1–2 is steam-boiler/feedwater guidance, conditional on tuning/cleanliness, fuel/cold-end and system economics. The inherited general efficiency/payback examples are not universal temperature targets or transferred site savings. Unknown heat-source/service does not establish applicability.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

@@ -33,4 +33,5 @@ changes. No recipient, acceptance, company import or operating action is recorde
 **Trial not run; benefit not measured.** No baseline, observations or decision-maker are invented. The draft
 remains a source-investigation handoff with **needs owner**, rather than a completed pilot. The separate
 [claim-label exercise](../../../benchmarks/source-support-development.json) tests a scorer contract; it does not
-review this brief, prove question usefulness or improve the question engine's current zero findings.
+review this brief or prove question usefulness. The current default screen asks C2 about measurement purpose;
+that does not answer this source-specific alarm-action investigation.

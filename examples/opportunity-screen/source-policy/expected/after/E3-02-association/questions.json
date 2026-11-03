@@ -1,0 +1,625 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/models/E3-02-association.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E3"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E3@P-A",
+   "question_id": "E3",
+   "family": "energy",
+   "question": "What do existing records establish about this pump candidate's minimum-flow protection, return-line duty and remaining recirculation question?",
+   "about": "P-A",
+   "assets": [
+    {
+     "id": "P-A",
+     "tag": "P-A"
+    },
+    {
+     "id": "RO-A",
+     "tag": "RO-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "P-A",
+     "tag": "P-A",
+     "text": "equipment P-A reads \"P-A Fictional pumpA\"",
+     "field": "units[P-A]"
+    },
+    {
+     "role": "minimum-flow line",
+     "id": "RO-A",
+     "tag": "RO-A",
+     "text": "hand valve RO-A reads \"RO-A RO sample line, not verified return\" at P-A",
+     "field": "manual_valves[RO-A]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "P-A",
+     "tag": "P-A",
+     "text": "P-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[P-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "P-A",
+     "tag": "P-A",
+     "text": "P-A record_source = \"Fictional development packet; no plant or human approval\"; present; meaning and suitability unverified",
+     "field": "units[P-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "P-A",
+     "tag": "P-A",
+     "text": "P-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[P-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "P-A",
+     "tag": "P-A",
+     "text": "P-A record_available = true; present; meaning and suitability unverified",
+     "field": "units[P-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "P-A",
+     "tag": "P-A",
+     "text": "P-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[P-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "P-A",
+     "tag": "P-A",
+     "text": "P-A line_purpose = \"sameunitRO sample/reverseosmosis, actualreturn unknown\"; present; meaning and suitability unverified",
+     "field": "units[P-A].facts.line_purpose"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "RO-A",
+     "tag": "RO-A",
+     "text": "RO-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "manual_valves[RO-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "RO-A",
+     "tag": "RO-A",
+     "text": "RO-A record_source = \"Fictional development packet; no plant or human approval\"; present; meaning and suitability unverified",
+     "field": "manual_valves[RO-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "RO-A",
+     "tag": "RO-A",
+     "text": "RO-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "manual_valves[RO-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "RO-A",
+     "tag": "RO-A",
+     "text": "RO-A record_available = true; present; meaning and suitability unverified",
+     "field": "manual_valves[RO-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "RO-A",
+     "tag": "RO-A",
+     "text": "RO-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "manual_valves[RO-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "RO-A",
+     "tag": "RO-A",
+     "text": "RO-A line_purpose = \"source-declared candidate; exactdischarge-return association unverified\"; present; meaning and suitability unverified",
+     "field": "manual_valves[RO-A].facts.line_purpose"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-A fictional_record = True",
+     "field": "units[P-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-A record_source = Fictional development packet; no plant or human approval",
+     "field": "units[P-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-A record_revision = R1",
+     "field": "units[P-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-A record_available = True",
+     "field": "units[P-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-A record_authority = unverified",
+     "field": "units[P-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-A line_purpose = sameunitRO sample/reverseosmosis, actualreturn unknown",
+     "field": "units[P-A].facts.line_purpose"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-A fictional_record = True",
+     "field": "units[P-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-A record_source = Fictional development packet; no plant or human approval",
+     "field": "units[P-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-A record_revision = R1",
+     "field": "units[P-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-A record_available = True",
+     "field": "units[P-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-A record_authority = unverified",
+     "field": "units[P-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-A line_purpose = sameunitRO sample/reverseosmosis, actualreturn unknown",
+     "field": "units[P-A].facts.line_purpose"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing named-pump service, protective minimum-flow and line-association basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing pump/vendor minimum-flow and service/curve records, actual return-line purpose and routing, protective control function and operating modes; retain exact pump/source/revision/availability and uncertainty.",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
+     ],
+     "how": "A nearby MIN FLOW, RO or automatic-recirculation label is a candidate, not proof of measured continuous discharge-return flow. Establish the actual pump/service and association first, and retain the vendor minimum-flow protection. Known positive-displacement/vacuum/metering or helper equipment is outside this bounded centrifugal-pump investigation; unknown eligible service stays conditional. Suitable protective operation and existing reviewed records may be acknowledged without a new measurement.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "P-A",
+       "label": "P-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[P-A].facts.fictional_record"
+      },
+      {
+       "id": "P-A",
+       "label": "P-A",
+       "name": "record_source",
+       "value": "Fictional development packet; no plant or human approval",
+       "where": "units[P-A].facts.record_source"
+      },
+      {
+       "id": "P-A",
+       "label": "P-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[P-A].facts.record_revision"
+      },
+      {
+       "id": "P-A",
+       "label": "P-A",
+       "name": "record_available",
+       "value": true,
+       "where": "units[P-A].facts.record_available"
+      },
+      {
+       "id": "P-A",
+       "label": "P-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[P-A].facts.record_authority"
+      },
+      {
+       "id": "P-A",
+       "label": "P-A",
+       "name": "line_purpose",
+       "value": "sameunitRO sample/reverseosmosis, actualreturn unknown",
+       "where": "units[P-A].facts.line_purpose"
+      }
+     ]
+    },
+    {
+     "item": "Existing comparable forward/return flow and duration records",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing actual forward and recirculation flow/operating logs with quantities, units, measurement versus valve command, sampling/availability and matching periods/ranges.",
+      "only a valve (RO-A) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
+     ],
+     "how": "Preserve source and units; do not substitute valve command for measured flow or divide unconverted/nonmatching records. Review whether sustained bypass is necessary for protection or system function before investigating a remaining energy question. This does not prescribe changing flow, a speed drive, bypass position or protection.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "P-A",
+       "label": "P-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[P-A].facts.fictional_record"
+      },
+      {
+       "id": "P-A",
+       "label": "P-A",
+       "name": "record_source",
+       "value": "Fictional development packet; no plant or human approval",
+       "where": "units[P-A].facts.record_source"
+      },
+      {
+       "id": "P-A",
+       "label": "P-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[P-A].facts.record_revision"
+      },
+      {
+       "id": "P-A",
+       "label": "P-A",
+       "name": "record_available",
+       "value": true,
+       "where": "units[P-A].facts.record_available"
+      },
+      {
+       "id": "P-A",
+       "label": "P-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[P-A].facts.record_authority"
+      },
+      {
+       "id": "P-A",
+       "label": "P-A",
+       "name": "line_purpose",
+       "value": "sameunitRO sample/reverseosmosis, actualreturn unknown",
+       "where": "units[P-A].facts.line_purpose"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review the whole pump/system duty and actual operating records with the responsible engineer. Continuous recirculation, an open orifice or missing model data alone is not a diagnosis or instruction to remove/restrict protection. Acknowledge appropriate automatic low-flow operation or suitable existing basis; unresolved minimum-flow, association, quantities or coverage remains a records question. No automatic action or site savings follow.",
+   "typical_benefit": {
+    "wording": "\"the energy needed to push fluid through bypass lines is wasted.\" No % stated.",
+    "source": [
+     "S13"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S13: Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079)"
+    ]
+   },
+   "limits": "Minimum flow protects the pump; never remove it without the pump vendor's minimum continuous flow. Source review: S13 printed8,15,26,51–52 supports vendor minimum-flow protection and system-dependent bypass analysis, not a universal retrofit. The inherited bypass-energy quotation omits this surrounding protective/system context and is not site savings. Candidate values/labels are not accepted operating evidence.",
+   "status": "asked"
+  },
+  {
+   "id": "E3@P-B",
+   "question_id": "E3",
+   "family": "energy",
+   "question": "What do existing records establish about this pump candidate's minimum-flow protection, return-line duty and remaining recirculation question?",
+   "about": "P-B",
+   "assets": [
+    {
+     "id": "P-B",
+     "tag": "P-B"
+    },
+    {
+     "id": "HV-B",
+     "tag": "HV-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "P-B",
+     "tag": "P-B",
+     "text": "equipment P-B reads \"P-B Fictional pumpB\"",
+     "field": "units[P-B]"
+    },
+    {
+     "role": "minimum-flow line",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "hand valve HV-B reads \"HV-B Minimum-flow recirculation candidate\" at P-B",
+     "field": "manual_valves[HV-B]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "P-B",
+     "tag": "P-B",
+     "text": "P-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[P-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "P-B",
+     "tag": "P-B",
+     "text": "P-B record_source = \"Fictional development packet; no plant or human approval\"; present; meaning and suitability unverified",
+     "field": "units[P-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "P-B",
+     "tag": "P-B",
+     "text": "P-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[P-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "P-B",
+     "tag": "P-B",
+     "text": "P-B record_available = true; present; meaning and suitability unverified",
+     "field": "units[P-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "P-B",
+     "tag": "P-B",
+     "text": "P-B record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[P-B].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "P-B",
+     "tag": "P-B",
+     "text": "P-B line_purpose = \"declared minflow label, topology unavailable\"; present; meaning and suitability unverified",
+     "field": "units[P-B].facts.line_purpose"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B record_source = \"Fictional development packet; no plant or human approval\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B record_available = true; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-B].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "HV-B line_purpose = \"source-declared candidate; exactdischarge-return association unverified\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-B].facts.line_purpose"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-B fictional_record = True",
+     "field": "units[P-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-B record_source = Fictional development packet; no plant or human approval",
+     "field": "units[P-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-B record_revision = R1",
+     "field": "units[P-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-B record_available = True",
+     "field": "units[P-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-B record_authority = unverified",
+     "field": "units[P-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-B line_purpose = declared minflow label, topology unavailable",
+     "field": "units[P-B].facts.line_purpose"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-B fictional_record = True",
+     "field": "units[P-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-B record_source = Fictional development packet; no plant or human approval",
+     "field": "units[P-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-B record_revision = R1",
+     "field": "units[P-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-B record_available = True",
+     "field": "units[P-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-B record_authority = unverified",
+     "field": "units[P-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: P-B line_purpose = declared minflow label, topology unavailable",
+     "field": "units[P-B].facts.line_purpose"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing named-pump service, protective minimum-flow and line-association basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing pump/vendor minimum-flow and service/curve records, actual return-line purpose and routing, protective control function and operating modes; retain exact pump/source/revision/availability and uncertainty.",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
+     ],
+     "how": "A nearby MIN FLOW, RO or automatic-recirculation label is a candidate, not proof of measured continuous discharge-return flow. Establish the actual pump/service and association first, and retain the vendor minimum-flow protection. Known positive-displacement/vacuum/metering or helper equipment is outside this bounded centrifugal-pump investigation; unknown eligible service stays conditional. Suitable protective operation and existing reviewed records may be acknowledged without a new measurement.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "P-B",
+       "label": "P-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[P-B].facts.fictional_record"
+      },
+      {
+       "id": "P-B",
+       "label": "P-B",
+       "name": "record_source",
+       "value": "Fictional development packet; no plant or human approval",
+       "where": "units[P-B].facts.record_source"
+      },
+      {
+       "id": "P-B",
+       "label": "P-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[P-B].facts.record_revision"
+      },
+      {
+       "id": "P-B",
+       "label": "P-B",
+       "name": "record_available",
+       "value": true,
+       "where": "units[P-B].facts.record_available"
+      },
+      {
+       "id": "P-B",
+       "label": "P-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[P-B].facts.record_authority"
+      },
+      {
+       "id": "P-B",
+       "label": "P-B",
+       "name": "line_purpose",
+       "value": "declared minflow label, topology unavailable",
+       "where": "units[P-B].facts.line_purpose"
+      }
+     ]
+    },
+    {
+     "item": "Existing comparable forward/return flow and duration records",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing actual forward and recirculation flow/operating logs with quantities, units, measurement versus valve command, sampling/availability and matching periods/ranges.",
+      "only a valve (HV-B) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
+     ],
+     "how": "Preserve source and units; do not substitute valve command for measured flow or divide unconverted/nonmatching records. Review whether sustained bypass is necessary for protection or system function before investigating a remaining energy question. This does not prescribe changing flow, a speed drive, bypass position or protection.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "P-B",
+       "label": "P-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[P-B].facts.fictional_record"
+      },
+      {
+       "id": "P-B",
+       "label": "P-B",
+       "name": "record_source",
+       "value": "Fictional development packet; no plant or human approval",
+       "where": "units[P-B].facts.record_source"
+      },
+      {
+       "id": "P-B",
+       "label": "P-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[P-B].facts.record_revision"
+      },
+      {
+       "id": "P-B",
+       "label": "P-B",
+       "name": "record_available",
+       "value": true,
+       "where": "units[P-B].facts.record_available"
+      },
+      {
+       "id": "P-B",
+       "label": "P-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[P-B].facts.record_authority"
+      },
+      {
+       "id": "P-B",
+       "label": "P-B",
+       "name": "line_purpose",
+       "value": "declared minflow label, topology unavailable",
+       "where": "units[P-B].facts.line_purpose"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review the whole pump/system duty and actual operating records with the responsible engineer. Continuous recirculation, an open orifice or missing model data alone is not a diagnosis or instruction to remove/restrict protection. Acknowledge appropriate automatic low-flow operation or suitable existing basis; unresolved minimum-flow, association, quantities or coverage remains a records question. No automatic action or site savings follow.",
+   "typical_benefit": {
+    "wording": "\"the energy needed to push fluid through bypass lines is wasted.\" No % stated.",
+    "source": [
+     "S13"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S13: Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079)"
+    ]
+   },
+   "limits": "Minimum flow protects the pump; never remove it without the pump vendor's minimum continuous flow. Source review: S13 printed8,15,26,51–52 supports vendor minimum-flow protection and system-dependent bypass analysis, not a universal retrofit. The inherited bypass-energy quotation omits this surrounding protective/system context and is not site savings. Candidate values/labels are not accepted operating evidence.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "title": "Fictional source-led heating/integration/air controls",
+    "unknowns": [
+      "Actualstate, sourceauthority and engineering/human acceptance unknown"
+    ],
+    "assumptions": [
+      "Allrecordidentities/values fictional before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "TD-A",
+      "name": "TIMER DRAIN",
+      "type": "air_drain",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "compressedair",
+        "authorized_purge": true,
+        "leakage_percent": 0,
+        "measurement_basis": "purposefuldraincycle, notverifiedleak",
+        "record_scope": "localdrainonly"
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    },
+    {
+      "id": "FRL-B",
+      "name": "FRL",
+      "type": "air_frl",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R0",
+        "record_available": false,
+        "record_authority": "unverified",
+        "service": "unknown",
+        "record_scope": "foreignsiteFRL-B",
+        "program_status": "oldsurvey10%, notlocalbasis"
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "manual_valves": [],
+  "final_elements": [],
+  "controllers": [],
+  "unplaced": []
+}

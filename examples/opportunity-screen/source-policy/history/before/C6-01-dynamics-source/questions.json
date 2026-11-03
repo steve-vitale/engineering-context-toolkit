@@ -1,0 +1,99 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/control-vent-records/models/C6-01-dynamics-source.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "C6"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "controls": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "C6@TV-A",
+   "question_id": "C6",
+   "family": "controls",
+   "question": "Does a temperature controller write straight to a steam valve with no flow controller underneath (a cascade candidate)?",
+   "about": "TV-A",
+   "assets": [
+    {
+     "id": "TV-A",
+     "tag": "TV-A"
+    },
+    {
+     "id": "TIC-A",
+     "tag": "TIC-A"
+    },
+    {
+     "id": "FT-A",
+     "tag": "FT-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "TV-A",
+     "tag": "TV-A",
+     "text": "valve TV-A reads \"TV-A STEAM valve\" at U-A",
+     "field": "final_elements[TV-A]"
+    },
+    {
+     "role": "temperature controller",
+     "id": "TIC-A",
+     "tag": "TIC-A",
+     "text": "controller TIC-A reads \"TIC-A Fictional supplied controller\" at U-A",
+     "field": "controllers[TIC-A]"
+    },
+    {
+     "role": "steam flow measurement",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "instrument FT-A reads \"FT-A STEAM flow\" at U-A",
+     "field": "instruments[FT-A]"
+    },
+    {
+     "role": "checked, none found",
+     "text": "no flow controller between the temperature controller and the valve",
+     "field": "applies_when.without"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Loop behaviour",
+     "state": "not_on_drawing",
+     "where": [
+      "DCS/PLC configuration: controller tuning and output history"
+     ],
+     "how": "Look for oscillation or slow recovery after steam pressure changes."
+    },
+    {
+     "item": "Steam header pressure swings",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: steam header pressure trend"
+     ],
+     "how": "Note how often supply pressure moves."
+    }
+   ],
+   "decision_rule": "A flow slave helps when steam supply pressure swings disturb the temperature; a steady header and a well-behaved loop close this screening investigation.",
+   "typical_benefit": {
+    "wording": "No public numeric source found. Report as qualitative only.",
+    "source": [],
+    "arc": null,
+    "source_titles": []
+   },
+   "limits": "Also covers heating and cooling valves on one exchanger with separate controllers that could fight; that pattern is not detected automatically yet.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

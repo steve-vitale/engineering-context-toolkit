@@ -1,0 +1,259 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/signal-retention/models/SC03-E7-position-only.json",
+ "catalog": "examples/opportunity-screen/source-policy/signal-retention/history/catalog-before.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E7"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "energy": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E7@PCV-A",
+   "question_id": "E7",
+   "family": "energy",
+   "question": "What do existing records establish about this header-letdown candidate's steam service and any backpressure-generation feasibility question?",
+   "about": "PCV-A",
+   "assets": [
+    {
+     "id": "PCV-A",
+     "tag": "PCV-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "PCV-A",
+     "tag": "PCV-A",
+     "text": "valve PCV-A reads \"PCV-A PRV HP HEADER letdown\"; owning equipment unknown; no unit inferred; supplied source interpretation, not installed truth; Recorded qualifiers: {\"tag\": \"PCV-A\", \"kind\": \"final_element\", \"unit\": null, \"source\": \"Fictional valve command pointer, not measured flow\", \"assigned_tag\": true, \"unplaced_reason\": \"Explicit fictional partial record; no inventoried owning equipment supplied\"}; Assigned identifier; an operating tag has not been verified",
+     "field": "unplaced[PCV-A]",
+     "provenance": {
+      "kind": "native-unplaced-source-context-1",
+      "model_role": "final_element",
+      "record_fields": {
+       "tag": "PCV-A",
+       "kind": "final_element",
+       "unit": null,
+       "source": "Fictional valve command pointer, not measured flow",
+       "assigned_tag": true,
+       "unplaced_reason": "Explicit fictional partial record; no inventoried owning equipment supplied"
+      },
+      "placement": "owning equipment unknown; no unit inferred"
+     }
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-A",
+     "tag": "PCV-A",
+     "text": "PCV-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-A",
+     "tag": "PCV-A",
+     "text": "PCV-A record_source = \"Fictional signal-locator source note, Figure 11; no actual series or plant record\"; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-A",
+     "tag": "PCV-A",
+     "text": "PCV-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-A",
+     "tag": "PCV-A",
+     "text": "PCV-A record_available = false; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-A",
+     "tag": "PCV-A",
+     "text": "PCV-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-A",
+     "tag": "PCV-A",
+     "text": "PCV-A service = null; blank; meaning and suitability unverified",
+     "field": "unplaced[PCV-A].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A fictional_record = True",
+     "field": "unplaced[PCV-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A record_source = Fictional signal-locator source note, Figure 11; no actual series or plant record",
+     "field": "unplaced[PCV-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A record_revision = R1",
+     "field": "unplaced[PCV-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A record_available = False",
+     "field": "unplaced[PCV-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A record_authority = unverified",
+     "field": "unplaced[PCV-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A fictional_record = True",
+     "field": "unplaced[PCV-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A record_source = Fictional signal-locator source note, Figure 11; no actual series or plant record",
+     "field": "unplaced[PCV-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A record_revision = R1",
+     "field": "unplaced[PCV-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A record_available = False",
+     "field": "unplaced[PCV-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A record_authority = unverified",
+     "field": "unplaced[PCV-A].facts.record_authority"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing station service, steam balance and flow-duration records",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing named-station service and current steam balance, actual flow-duration/operating coverage and represented PRV/turbine arrangement; exact source/revision, quantity units, sample period and availability.",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
+     ],
+     "how": "Establish steam service first: a PRV/PCV or HP/MP/LP/header label alone does not prove steam or two-sided physical topology. Known nonsteam service is not applicable to this steam-turbine question; acknowledge that without a compulsory steam measurement. Missing/unknown data remains qualified. Review existing suitable function before proposing further study.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "unplaced[PCV-A].facts.fictional_record"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "record_source",
+       "value": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+       "where": "unplaced[PCV-A].facts.record_source"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "unplaced[PCV-A].facts.record_revision"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "record_available",
+       "value": false,
+       "where": "unplaced[PCV-A].facts.record_available"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "unplaced[PCV-A].facts.record_authority"
+      }
+     ]
+    },
+    {
+     "item": "Existing actual pressure/thermal, boiler, electrical and feasibility basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing actual inlet/exhaust pressures and steam condition, process heat requirements, boiler-throughput/capacity implications, annual duty, fuel/electricity/voltage and practical/economic constraints; distinguish design ratings from operating records.",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
+     ],
+     "how": "The DOE Tip20 source screening figures (3000lb/hr and100psi) describe when to consider further study in its stated context, not automatic install/close thresholds. Do not close an unresolved investigation because data are variable, below an example, unconverted or absent. A backpressure turbine is generally considered in parallel with a PRV and removes energy needed downstream; source prices, graph assumptions/efficiencies and installation percentages are historical examples, not current site savings. Acknowledge an existing suitable function without new measurements or replacement.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "unplaced[PCV-A].facts.fictional_record"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "record_source",
+       "value": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+       "where": "unplaced[PCV-A].facts.record_source"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "unplaced[PCV-A].facts.record_revision"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "record_available",
+       "value": false,
+       "where": "unplaced[PCV-A].facts.record_available"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "unplaced[PCV-A].facts.record_authority"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual named-station steam service, current balance/flow-duration, process pressure/heat, boiler, electrical and economic constraints before any backpressure-generation feasibility decision. Do not install a turbine or automatically close an unresolved investigation from source thresholds, design pressures or a label alone. Known nonsteam scope can be acknowledged as not applicable; unknown source, association or operating basis remains explicit. No site benefit or operating authorization is calculated.",
+   "typical_benefit": {
+    "wording": "Consider when a PRV has \"constant steam flows of at least 3,000 pounds per hour (lb/hr), and when the steam pressure drop is at least 100 psi.\" Installation costs \"typically average 75% of equipment costs\".",
+    "source": [
+     "S6"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S6: Steam Tip #20, Replace Pressure-Reducing Valves with Backpressure Turbogenerators (DOE/GO-102012-3409)"
+    ]
+   },
+   "limits": "S6 also quotes cost per kW figures; they are deliberately not repeated here. No IAC code maps to turbines (2.2134 covers PRV-station leaks). Source review: complete S6 pp1–2 includes current steam balance/actual process requirements, parallel arrangement, downstream heat/boiler-throughput implications and historical calculation assumptions. Inherited source threshold/cost quotation is not a universal cutoff, present-day quotation or engineering approval.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

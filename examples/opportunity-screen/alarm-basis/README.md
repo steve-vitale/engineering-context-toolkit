@@ -61,3 +61,7 @@ gap. [Provenance](history/PROVENANCE.json) distinguishes that raw capture from c
 rate targets are historical investigation context, not universal compliance thresholds or a replacement
 standard. Current HSE guidance identifies BS EN 62682 as the benchmark; review the site's applicable requirements.
 Source locators, scope and exposed-field limits are in [SOURCES.json](SOURCES.json).
+
+The [current publication renewal](PUBLICATION-RENEWAL.json) records actual rebuilds after catalog and
+renderer maintenance, with complete prior/current output identities. It distinguishes unchanged subject
+evidence from new measurement-purpose questions or presentation changes; historical captures are retained.

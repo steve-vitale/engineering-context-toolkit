@@ -1,0 +1,395 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/models/E26-01-flow-source.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E26"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "emissions": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E26@model",
+   "question_id": "E26",
+   "family": "emissions",
+   "question": "What do existing records establish about these relief/flare/vent candidates' actual events, measurement/composition and source coverage?",
+   "about": "V-A, V-B",
+   "assets": [
+    {
+     "id": "stream:V-A",
+     "tag": "V-A"
+    },
+    {
+     "id": "stream:V-B",
+     "tag": "V-B"
+    },
+    {
+     "id": "FT-A",
+     "tag": "FT-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "stream V-A (asset stream:V-A) reads \"PROCESS VENT TO FLARE\"",
+     "field": "streams[V-A]"
+    },
+    {
+     "role": "trigger",
+     "id": "stream:V-B",
+     "tag": "V-B",
+     "text": "stream V-B (asset stream:V-B) reads \"VENT HEADER TO FLARE\"",
+     "field": "streams[V-B]"
+    },
+    {
+     "role": "unverified flow candidate; quantity/composition/event/source coverage not established",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "instrument FT-A reads \"FT-A Vent flow candidate\" at U-A",
+     "field": "instruments[FT-A]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "V-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "streams[V-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "V-A record_source = \"Fictional pre-call record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "streams[V-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "V-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "streams[V-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "V-A record_available = true; present; meaning and suitability unverified",
+     "field": "streams[V-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "V-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "streams[V-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "V-A service = \"processgas\"; present; meaning and suitability unverified",
+     "field": "streams[V-A].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "V-A event_mode = \"unknown\"; blank; meaning and suitability unverified",
+     "field": "streams[V-A].facts.event_mode"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "V-A composition = null; blank; meaning and suitability unverified",
+     "field": "streams[V-A].facts.composition"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-B",
+     "tag": "V-B",
+     "text": "V-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "streams[V-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-B",
+     "tag": "V-B",
+     "text": "V-B record_source = \"Fictional pre-call record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "streams[V-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-B",
+     "tag": "V-B",
+     "text": "V-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "streams[V-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-B",
+     "tag": "V-B",
+     "text": "V-B record_available = true; present; meaning and suitability unverified",
+     "field": "streams[V-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-B",
+     "tag": "V-B",
+     "text": "V-B record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "streams[V-B].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-B",
+     "tag": "V-B",
+     "text": "V-B service = null; blank; meaning and suitability unverified",
+     "field": "streams[V-B].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A record_source = \"Fictional pre-call record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A record_available = false; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A measurement_target = \"foreignV-A\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.measurement_target"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A quantity = \"uncorrectedtotalvolume\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.quantity"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A flow = 99; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.flow"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A flow_unit = \"m3total\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.flow_unit"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A quality = \"FAULT\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.quality"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A fictional_record = True",
+     "field": "streams[V-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-B fictional_record = True",
+     "field": "streams[V-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A record_source = Fictional pre-call record, no company or human approval",
+     "field": "streams[V-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-B record_source = Fictional pre-call record, no company or human approval",
+     "field": "streams[V-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A record_revision = R1",
+     "field": "streams[V-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-B record_revision = R1",
+     "field": "streams[V-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A record_available = True",
+     "field": "streams[V-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-B record_available = True",
+     "field": "streams[V-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A record_authority = unverified",
+     "field": "streams[V-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-B record_authority = unverified",
+     "field": "streams[V-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A service = processgas",
+     "field": "streams[V-A].facts.service"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Flare or vent flow and composition",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing exact service/path and measurement/source/event associations; quantity/rate/total/reference units, sample periods and quality/availability/gaps, composition/variability and planned intermittent/continuous versus upset/blowdown/relief records, purge/pilot/manufacturer requirements and safety/environmental basis.",
+      "site records: Review existing relief-valve lift, flare/vent and operating-event records with their actual time/source coverage.",
+      "a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
+     ],
+     "how": "Same-stream flow labeling is useful candidate evidence, not complete current flow/composition/event coverage. Retain foreign, inaccessible, FAULT or unqualified totalizer data without treating it as suitable. S19 printed34-35 distinguishes planned intermittent/continuous background from upset-blowdown and describes manufacturer minimum-flow context; rare relief events or a zero lift count alone do not automatically close source/safety/environmental review. Review suitable existing records first; no generic analyzer or meter closes all quantities. Any additional measurement/recovery proposal must preserve safety paths and undergo responsible hazard/environmental review, not be imposed from a drawing clue.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "stream:V-A",
+       "label": "V-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "streams[V-A].facts.fictional_record"
+      },
+      {
+       "id": "stream:V-B",
+       "label": "V-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "streams[V-B].facts.fictional_record"
+      },
+      {
+       "id": "stream:V-A",
+       "label": "V-A",
+       "name": "record_source",
+       "value": "Fictional pre-call record, no company or human approval",
+       "where": "streams[V-A].facts.record_source"
+      },
+      {
+       "id": "stream:V-B",
+       "label": "V-B",
+       "name": "record_source",
+       "value": "Fictional pre-call record, no company or human approval",
+       "where": "streams[V-B].facts.record_source"
+      },
+      {
+       "id": "stream:V-A",
+       "label": "V-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "streams[V-A].facts.record_revision"
+      },
+      {
+       "id": "stream:V-B",
+       "label": "V-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "streams[V-B].facts.record_revision"
+      },
+      {
+       "id": "stream:V-A",
+       "label": "V-A",
+       "name": "record_available",
+       "value": true,
+       "where": "streams[V-A].facts.record_available"
+      },
+      {
+       "id": "stream:V-B",
+       "label": "V-B",
+       "name": "record_available",
+       "value": true,
+       "where": "streams[V-B].facts.record_available"
+      },
+      {
+       "id": "stream:V-A",
+       "label": "V-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "streams[V-A].facts.record_authority"
+      },
+      {
+       "id": "stream:V-B",
+       "label": "V-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "streams[V-B].facts.record_authority"
+      },
+      {
+       "id": "stream:V-A",
+       "label": "V-A",
+       "name": "service",
+       "value": "processgas",
+       "where": "streams[V-A].facts.service"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review exact relief/vent/flare service, planned and abnormal event coverage and usable quantity/composition/time/source records with the responsible safety/environmental and operating specialists. A flow candidate or rare-event label does not establish suitable data, completeness or safe closure. Existing appropriate records/nonapplicability can be acknowledged; unresolved evidence remains explicit. No live metering, recovery modification, reduced purge/minimum flow or operating change is authorized.",
+   "typical_benefit": {
+    "wording": "S19 reports that background flaring in offshore cases can be as much as50% of all flared gas, while refinery shares generally depend on individual practices and are lower. This historical reported share is neither a recovery fraction nor a site benefit or a reason to compromise required flare operation.",
+    "source": [
+     "S19"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)"
+    ]
+   },
+   "limits": "Source review: S19 originalLBNL56183 printed34-35/PDF42-43 full flaregas section. Offshore versus refinery source scope, planned/intermittent/continuous versus upset/blowdown and manufacturer minimum-flow context retained. Existing dryer/oven/fryer/exhaust-air exclusions remain. Relief paths are safety systems; additional observation, metering or recovery changes require appropriate hazard/environmental review, not automatic closure from rare operation or an inferred saving.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

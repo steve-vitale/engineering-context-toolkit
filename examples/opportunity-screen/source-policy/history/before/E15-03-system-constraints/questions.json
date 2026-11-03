@@ -1,0 +1,151 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/thermal-recovery-records/models/E15-03-system-constraints.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E15"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E15@B-A",
+   "question_id": "E15",
+   "family": "energy",
+   "question": "Could a condensing economizer serve a cold makeup or process-water heating load?",
+   "about": "B-A",
+   "assets": [
+    {
+     "id": "B-A",
+     "tag": "B-A"
+    },
+    {
+     "id": "W-A",
+     "tag": "W-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "equipment B-A reads \"B-A Fictional gas boiler\"",
+     "field": "units[B-A]"
+    },
+    {
+     "role": "low-temperature water load",
+     "id": "W-A",
+     "tag": "W-A",
+     "text": "equipment W-A reads \"W-A MAKEUP WATER load\"",
+     "field": "units[W-A]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Stack temperature and moisture",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: flue gas analysis"
+     ],
+     "how": "Record at normal firing."
+    },
+    {
+     "item": "Size of the low-temperature heat sink",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: makeup water flow"
+     ],
+     "how": "Flow and temperature rise needed."
+    }
+   ],
+   "decision_rule": "Worth a quote when a steady cold water load exists near the stack.",
+   "typical_benefit": {
+    "wording": "Can \"increase overall heat recovery and steam system efficiency by up to 10%.\" \"Simple paybacks... are often less than 2 years.\"",
+    "source": [
+     "S7"
+    ],
+    "arc": "2.242x (by description)",
+    "source_titles": [
+     "S7: Steam Tip #26B, Considerations When Selecting a Condensing Economizer (DOE/GO-102012-3397)"
+    ]
+   },
+   "limits": null,
+   "status": "asked"
+  },
+  {
+   "id": "E15@B-B",
+   "question_id": "E15",
+   "family": "energy",
+   "question": "Could a condensing economizer serve a cold makeup or process-water heating load?",
+   "about": "B-B",
+   "assets": [
+    {
+     "id": "B-B",
+     "tag": "B-B"
+    },
+    {
+     "id": "W-A",
+     "tag": "W-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "B-B",
+     "tag": "B-B",
+     "text": "equipment B-B reads \"B-B Fictional gas boiler\"",
+     "field": "units[B-B]"
+    },
+    {
+     "role": "low-temperature water load",
+     "id": "W-A",
+     "tag": "W-A",
+     "text": "equipment W-A reads \"W-A MAKEUP WATER load\"",
+     "field": "units[W-A]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Stack temperature and moisture",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: flue gas analysis"
+     ],
+     "how": "Record at normal firing."
+    },
+    {
+     "item": "Size of the low-temperature heat sink",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: makeup water flow"
+     ],
+     "how": "Flow and temperature rise needed."
+    }
+   ],
+   "decision_rule": "Worth a quote when a steady cold water load exists near the stack.",
+   "typical_benefit": {
+    "wording": "Can \"increase overall heat recovery and steam system efficiency by up to 10%.\" \"Simple paybacks... are often less than 2 years.\"",
+    "source": [
+     "S7"
+    ],
+    "arc": "2.242x (by description)",
+    "source_titles": [
+     "S7: Steam Tip #26B, Considerations When Selecting a Condensing Economizer (DOE/GO-102012-3397)"
+    ]
+   },
+   "limits": null,
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

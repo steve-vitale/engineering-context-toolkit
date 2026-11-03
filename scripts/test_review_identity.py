@@ -76,7 +76,24 @@ class ReviewIdentity(unittest.TestCase):
                          list(map(edge, new_graph['edges'])))
         self.cli('question_engine.py', '--model', self.path, '--question', 'C2', '--out', self.root / 'after-screen')
         findings = lambda p: json.loads((self.root / p / 'questions.json').read_text(encoding='utf-8'))['questions']
-        self.assertEqual(findings('before-screen'), findings('after-screen'))
+        # C2 now retains controlled measurements too. Their generated identity locators
+        # must follow the rename; all other source/question content stays exact.
+        expected = copy.deepcopy(findings('before-screen'))
+        for question in expected:
+            for old, new in names.items():
+                question['about'] = question['about'].replace(old, new)
+            for asset in question['assets']:
+                for key in ('id', 'tag'):
+                    if key in asset:
+                        asset[key] = names.get(asset[key], asset[key])
+            for evidence in question['evidence']:
+                if evidence['id'] in names:
+                    old, new = evidence['id'], names[evidence['id']]
+                    evidence['id'] = new
+                    evidence['tag'] = new
+                    for key in ('text', 'field'):
+                        evidence[key] = evidence[key].replace(old, new)
+        self.assertEqual(expected, findings('after-screen'))
         for group in ('instruments', 'final_elements'):
             for original, revised in zip(before[group], after[group]):
                 revised = copy.deepcopy(revised)

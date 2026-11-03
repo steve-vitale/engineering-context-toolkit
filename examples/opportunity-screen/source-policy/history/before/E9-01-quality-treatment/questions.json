@@ -1,0 +1,92 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/steam-pump-records/models/E9-01-quality-treatment.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E9"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "energy": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E9@model",
+   "question_id": "E9",
+   "family": "energy",
+   "question": "Is condensate going to drain instead of back to the boiler?",
+   "about": "CR-A, CR-B",
+   "assets": [
+    {
+     "id": "CR-A",
+     "tag": "CR-A"
+    },
+    {
+     "id": "CR-B",
+     "tag": "CR-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "CR-A",
+     "tag": "CR-A",
+     "text": "equipment CR-A reads \"CR-A Steam CONDENSATE TO DRAIN receiver\"",
+     "field": "units[CR-A]"
+    },
+    {
+     "role": "trigger",
+     "id": "CR-B",
+     "tag": "CR-B",
+     "text": "equipment CR-B reads \"CR-B Steam CONDENSATE TO DRAIN receiver\"",
+     "field": "units[CR-B]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Condensate return percentage and makeup flow",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: boiler house makeup and feedwater meters",
+      "utility bills or the site energy report: water and fuel"
+     ],
+     "how": "Return % = 1 - makeup flow / feedwater flow."
+    },
+    {
+     "item": "Contamination risk of each drained stream",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: process knowledge of possible leaks into the condensate"
+     ],
+     "how": "List what could contaminate it."
+    }
+   ],
+   "decision_rule": "Worth returning where the drained condensate is clean and the flow is steady; contaminated or tiny streams stay at drain.",
+   "typical_benefit": {
+    "wording": "Enthalpy difference \"generally over 120 Btu/lb, an amount of energy that is often more than 10% of the energy in the boiler generated steam.\" LBNL (as reported in LBNL-56183): \"Condensate Return Alone 10%\", 1.1 yr.",
+    "source": [
+     "S8",
+     "S19",
+     "S24"
+    ],
+    "arc": "2.2121 (IAC/ITAC browse page: 354 recommendations, 1.2 yr average payback, 50.9% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S8: Improving Steam System Performance: A Sourcebook for Industry, 2nd ed. (DOE/GO-102012-3423, rev. Oct 2012)",
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

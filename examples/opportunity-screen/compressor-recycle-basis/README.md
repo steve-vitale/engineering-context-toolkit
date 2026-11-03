@@ -48,10 +48,11 @@ blank state; `False`, zero, null, lists and nested qualifiers are not coerced or
 [Original full-catalog captures](history/PROVENANCE.json) retain the earlier collection wording and projection gap.
 The [shared-record result](expected/after/E6-06-power-and-sibling-coverage-A/screen.md) and
 [K-A-only comparison](expected/after/E6-06-power-and-sibling-coverage-B/screen.md) are actual public-path outputs.
-Fifteen normal full-catalog calls produced all 30 after reports. They retain the accepted private result
-content; only the declared model/catalog display labels differ. The focused corpus regression passed one
-test covering all 15 cases; checkout policy passed three tests. These are bounded local checks, not a full CI
-run, plant assessment or review by operators.
+The initial publication used fifteen normal full-catalog calls, with only model/catalog display-label changes
+from its accepted private results. That is historical evidence. The current [publication renewal](PUBLICATION-RENEWAL.json)
+records another fifteen actual calls: E6 and its supplied records remain exact; C2 eligibility metadata changes,
+and the S03 boundary case receives the separately reviewed E19/E22/E23 questions. These are bounded local
+checks, not plant acceptance or review by operators.
 [SOURCES.json](SOURCES.json) identifies the official DOE/CAC third-edition compressed-air sourcebook, checksum,
 printed/PDF locators and transfer limits. Its 2016 guidance is not a process-gas design standard or site acceptance.
 The book/pages are not redistributed. No quantified savings or retrofit follows from this screen.

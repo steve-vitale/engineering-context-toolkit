@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "title": "Fictional source-series locator control",
+    "source_document": "Fictional signal-locator source-note.txt, Figure 11",
+    "unknowns": [
+      "No real time series, physical measurement, source authority or engineering acceptance supplied"
+    ],
+    "assumptions": [
+      "Synthetic symbolic fig11_series pointers exercise existing Native lookup grammar only; no actual TE/Bayer/source series is asserted"
+    ]
+  },
+  "units": [
+    {
+      "id": "B-A",
+      "name": "BOILER A",
+      "type": "boiler",
+      "source": "Fictional fixture source role, no operational authority",
+      "assigned_tag": true,
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+        "record_revision": "R1",
+        "record_available": false,
+        "record_authority": "unverified",
+        "typed_fixture_control": {
+          "false": false,
+          "zero": 0,
+          "null": null,
+          "unknown": "unknown",
+          "empty": []
+        }
+      }
+    },
+    {
+      "id": "B-B",
+      "name": "BOILER B",
+      "type": "boiler",
+      "source": "Fictional fixture source role, no operational authority",
+      "assigned_tag": true,
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+        "record_revision": "R1",
+        "record_available": false,
+        "record_authority": "unverified",
+        "typed_fixture_control": {
+          "false": false,
+          "zero": 0,
+          "null": null,
+          "unknown": "unknown",
+          "empty": []
+        }
+      }
+    }
+  ],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "FT-W",
+      "unit": null,
+      "variable": "flow",
+      "description": "MAKE-UP WATER candidate",
+      "source": "Fictional source-note, Figure 11 symbolic pointer only",
+      "assigned_tag": true,
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+        "record_revision": "R1",
+        "record_available": false,
+        "record_authority": "unverified",
+        "typed_fixture_control": {
+          "false": false,
+          "zero": 0,
+          "null": null,
+          "unknown": "unknown",
+          "empty": []
+        },
+        "record_scope": "foreignorunknownboiler, notestablishedAorB",
+        "measurement_target": null
+      },
+      "fig11_series": "SYNTHETIC_SC09_WATER_FLOW"
+    },
+    {
+      "tag": "TT-W",
+      "unit": null,
+      "variable": "temperature",
+      "description": "HOT WATER candidate",
+      "source": "Fictional source-note, Figure 11 symbolic pointer only",
+      "assigned_tag": true,
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+        "record_revision": "R1",
+        "record_available": false,
+        "record_authority": "unverified",
+        "typed_fixture_control": {
+          "false": false,
+          "zero": 0,
+          "null": null,
+          "unknown": "unknown",
+          "empty": []
+        }
+      },
+      "fig11_series": "SYNTHETIC_SC09_WRONG_TEMPERATURE"
+    },
+    {
+      "tag": "FT-U",
+      "unit": "B-A",
+      "variable": "flow",
+      "description": "Unrelated process flow",
+      "source": "Fictional source-note, Figure 11 symbolic pointer only",
+      "assigned_tag": true,
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+        "record_revision": "R1",
+        "record_available": false,
+        "record_authority": "unverified",
+        "typed_fixture_control": {
+          "false": false,
+          "zero": 0,
+          "null": null,
+          "unknown": "unknown",
+          "empty": []
+        }
+      },
+      "fig11_series": "SYNTHETIC_SC09_UNRELATED_FLOW"
+    }
+  ],
+  "controllers": [],
+  "final_elements": [],
+  "unplaced": []
+}

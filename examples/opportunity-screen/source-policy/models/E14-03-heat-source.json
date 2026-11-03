@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "title": "Fictional source-led thermal/recovery control",
+    "unknowns": [
+      "Physicalstate, sourceauthority and engineering suitability unproven"
+    ],
+    "assumptions": [
+      "All names/values fictional and authored before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "E-A",
+      "name": "Electric boiler",
+      "type": "boiler",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "steamwater electric, noflue",
+        "stack_temperature": null
+      },
+      "source": "Fictional source-defined context",
+      "assigned_tag": true
+    },
+    {
+      "id": "SG-B",
+      "name": "Steam Generator",
+      "type": "steam_generator",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "declaredcombustionsteamwater",
+        "fuel_basis": null,
+        "feedwater_basis": "unknown"
+      },
+      "source": "Fictional source-defined context",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "unplaced": [],
+  "instruments": [],
+  "controllers": [],
+  "final_elements": [],
+  "manual_valves": []
+}

@@ -1,0 +1,511 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/models/E17-03-heat-service.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E17"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E17@F-B",
+   "question_id": "E17",
+   "family": "energy",
+   "question": "What do existing records establish about this heating candidate's actual fired/flue service, recovery coverage and remaining compatible duty?",
+   "about": "F-B",
+   "assets": [
+    {
+     "id": "F-B",
+     "tag": "F-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "equipment F-B reads \"F-B Fictional FURNACE\"",
+     "field": "units[F-B]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "F-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[F-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "F-B record_source = \"Fictional development record; no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[F-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "F-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[F-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "F-B record_available = true; present; meaning and suitability unverified",
+     "field": "units[F-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "F-B record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[F-B].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "F-B service = null; blank; meaning and suitability unverified",
+     "field": "units[F-B].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "F-B fuel_basis = null; blank; meaning and suitability unverified",
+     "field": "units[F-B].facts.fuel_basis"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-B fictional_record = True",
+     "field": "units[F-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-B record_source = Fictional development record; no company or human approval",
+     "field": "units[F-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-B record_revision = R1",
+     "field": "units[F-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-B record_available = True",
+     "field": "units[F-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-B record_authority = unverified",
+     "field": "units[F-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-B fictional_record = True",
+     "field": "units[F-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-B record_source = Fictional development record; no company or human approval",
+     "field": "units[F-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-B record_revision = R1",
+     "field": "units[F-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-B record_available = True",
+     "field": "units[F-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-B record_authority = unverified",
+     "field": "units[F-B].facts.record_authority"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing actual heating/flue service and recovery/loss-reduction coverage",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing named-subject service, heat source and flue/recovery routing, installed function/coverage, prior loss-reduction and source/revision/availability records.",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
+     ],
+     "how": "A heating name is not proof of combustion or hot gas vented straight to a stack. One recovery label anywhere does not settle another subject or demonstrate complete useful coverage. Known noncombustion/electric and typed recovery helpers are not fired subjects; unknown service remains conditional without inventing fuel or flue flow. Review existing suitable function and avoidable losses first, acknowledging suitable coverage or nonapplicability before further work.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "F-B",
+       "label": "F-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[F-B].facts.fictional_record"
+      },
+      {
+       "id": "F-B",
+       "label": "F-B",
+       "name": "record_source",
+       "value": "Fictional development record; no company or human approval",
+       "where": "units[F-B].facts.record_source"
+      },
+      {
+       "id": "F-B",
+       "label": "F-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[F-B].facts.record_revision"
+      },
+      {
+       "id": "F-B",
+       "label": "F-B",
+       "name": "record_available",
+       "value": true,
+       "where": "units[F-B].facts.record_available"
+      },
+      {
+       "id": "F-B",
+       "label": "F-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[F-B].facts.record_authority"
+      }
+     ]
+    },
+    {
+     "item": "Existing source/receiving duty, schedule and feasibility basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing actual exhaust temperature/flow/composition/cleanliness, load and operating schedule, receiving air/water/steam/load requirements, compatibility/timing and practical/material/economic constraints, with exact units/time/source coverage.",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
+     ],
+     "how": "S18 distinguishes combustion-air, steam/water and load-preheating methods. A continuous-load-preheating preference does not exclude every batch recovery option: waste-heat steam is available only while its fired source operates, and useful receiving duty must match. Hot/clean gas, proximity, a source example or an unconverted value alone does not authorize recovery equipment, field tests or site savings. Suitable existing records can be acknowledged.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "F-B",
+       "label": "F-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[F-B].facts.fictional_record"
+      },
+      {
+       "id": "F-B",
+       "label": "F-B",
+       "name": "record_source",
+       "value": "Fictional development record; no company or human approval",
+       "where": "units[F-B].facts.record_source"
+      },
+      {
+       "id": "F-B",
+       "label": "F-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[F-B].facts.record_revision"
+      },
+      {
+       "id": "F-B",
+       "label": "F-B",
+       "name": "record_available",
+       "value": true,
+       "where": "units[F-B].facts.record_available"
+      },
+      {
+       "id": "F-B",
+       "label": "F-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[F-B].facts.record_authority"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual heating/flue service, existing recovery and prior loss-reduction coverage, source/receiving duty and operating schedules with the responsible engineer. Do not infer installed absence or wasted heat from names or global labels, and do not automatically close batch service or prescribe a retrofit from a continuous/clean pattern. Suitable existing basis or nonapplicability may be acknowledged; unresolved source, function, time or units remains a records question.",
+   "typical_benefit": {
+    "wording": "\"Energy consumption can typically be reduced 5% to 30%.\" Load preheating is \"best suited for continuous rather than batch furnaces.\"",
+    "source": [
+     "S18",
+     "S24"
+    ],
+    "arc": "2.241x (IAC/ITAC browse page: 1,936 recommendations, 2.0 yr average payback, 20.0% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S18: Process Heating Tip #8, Install Waste Heat Recovery Systems for Fuel-Fired Furnaces (DOE/GO-102005-2181, Sep 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: complete S18 process-heating Tip8 pp1-2 distinguishes recovery methods, prior loss reduction and operating constraints; S4 Tip3 pp1-2 additionally bounds boiler-flue/feedwater function. Source 5%-30% is contextual historical guidance, not this subject's measured savings. Named records and capabilities are unverified candidates.",
+   "status": "asked"
+  },
+  {
+   "id": "E17@SG-C",
+   "question_id": "E17",
+   "family": "energy",
+   "question": "What do existing records establish about this heating candidate's actual fired/flue service, recovery coverage and remaining compatible duty?",
+   "about": "SG-C",
+   "assets": [
+    {
+     "id": "SG-C",
+     "tag": "SG-C"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "SG-C",
+     "tag": "SG-C",
+     "text": "equipment SG-C reads \"SG-C Steam Generator\"",
+     "field": "units[SG-C]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SG-C",
+     "tag": "SG-C",
+     "text": "SG-C fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[SG-C].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SG-C",
+     "tag": "SG-C",
+     "text": "SG-C record_source = \"Fictional development record; no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[SG-C].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SG-C",
+     "tag": "SG-C",
+     "text": "SG-C record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[SG-C].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SG-C",
+     "tag": "SG-C",
+     "text": "SG-C record_available = true; present; meaning and suitability unverified",
+     "field": "units[SG-C].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SG-C",
+     "tag": "SG-C",
+     "text": "SG-C record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[SG-C].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SG-C",
+     "tag": "SG-C",
+     "text": "SG-C service = \"steamwaterheat-sourceunknown\"; present; meaning and suitability unverified",
+     "field": "units[SG-C].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SG-C",
+     "tag": "SG-C",
+     "text": "SG-C fuel_basis = null; blank; meaning and suitability unverified",
+     "field": "units[SG-C].facts.fuel_basis"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SG-C fictional_record = True",
+     "field": "units[SG-C].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SG-C record_source = Fictional development record; no company or human approval",
+     "field": "units[SG-C].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SG-C record_revision = R1",
+     "field": "units[SG-C].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SG-C record_available = True",
+     "field": "units[SG-C].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SG-C record_authority = unverified",
+     "field": "units[SG-C].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SG-C service = steamwaterheat-sourceunknown",
+     "field": "units[SG-C].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SG-C fictional_record = True",
+     "field": "units[SG-C].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SG-C record_source = Fictional development record; no company or human approval",
+     "field": "units[SG-C].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SG-C record_revision = R1",
+     "field": "units[SG-C].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SG-C record_available = True",
+     "field": "units[SG-C].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SG-C record_authority = unverified",
+     "field": "units[SG-C].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SG-C service = steamwaterheat-sourceunknown",
+     "field": "units[SG-C].facts.service"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing actual heating/flue service and recovery/loss-reduction coverage",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing named-subject service, heat source and flue/recovery routing, installed function/coverage, prior loss-reduction and source/revision/availability records.",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
+     ],
+     "how": "A heating name is not proof of combustion or hot gas vented straight to a stack. One recovery label anywhere does not settle another subject or demonstrate complete useful coverage. Known noncombustion/electric and typed recovery helpers are not fired subjects; unknown service remains conditional without inventing fuel or flue flow. Review existing suitable function and avoidable losses first, acknowledging suitable coverage or nonapplicability before further work.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "SG-C",
+       "label": "SG-C",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[SG-C].facts.fictional_record"
+      },
+      {
+       "id": "SG-C",
+       "label": "SG-C",
+       "name": "record_source",
+       "value": "Fictional development record; no company or human approval",
+       "where": "units[SG-C].facts.record_source"
+      },
+      {
+       "id": "SG-C",
+       "label": "SG-C",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[SG-C].facts.record_revision"
+      },
+      {
+       "id": "SG-C",
+       "label": "SG-C",
+       "name": "record_available",
+       "value": true,
+       "where": "units[SG-C].facts.record_available"
+      },
+      {
+       "id": "SG-C",
+       "label": "SG-C",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[SG-C].facts.record_authority"
+      },
+      {
+       "id": "SG-C",
+       "label": "SG-C",
+       "name": "service",
+       "value": "steamwaterheat-sourceunknown",
+       "where": "units[SG-C].facts.service"
+      }
+     ]
+    },
+    {
+     "item": "Existing source/receiving duty, schedule and feasibility basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing actual exhaust temperature/flow/composition/cleanliness, load and operating schedule, receiving air/water/steam/load requirements, compatibility/timing and practical/material/economic constraints, with exact units/time/source coverage.",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
+     ],
+     "how": "S18 distinguishes combustion-air, steam/water and load-preheating methods. A continuous-load-preheating preference does not exclude every batch recovery option: waste-heat steam is available only while its fired source operates, and useful receiving duty must match. Hot/clean gas, proximity, a source example or an unconverted value alone does not authorize recovery equipment, field tests or site savings. Suitable existing records can be acknowledged.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "SG-C",
+       "label": "SG-C",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[SG-C].facts.fictional_record"
+      },
+      {
+       "id": "SG-C",
+       "label": "SG-C",
+       "name": "record_source",
+       "value": "Fictional development record; no company or human approval",
+       "where": "units[SG-C].facts.record_source"
+      },
+      {
+       "id": "SG-C",
+       "label": "SG-C",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[SG-C].facts.record_revision"
+      },
+      {
+       "id": "SG-C",
+       "label": "SG-C",
+       "name": "record_available",
+       "value": true,
+       "where": "units[SG-C].facts.record_available"
+      },
+      {
+       "id": "SG-C",
+       "label": "SG-C",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[SG-C].facts.record_authority"
+      },
+      {
+       "id": "SG-C",
+       "label": "SG-C",
+       "name": "service",
+       "value": "steamwaterheat-sourceunknown",
+       "where": "units[SG-C].facts.service"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual heating/flue service, existing recovery and prior loss-reduction coverage, source/receiving duty and operating schedules with the responsible engineer. Do not infer installed absence or wasted heat from names or global labels, and do not automatically close batch service or prescribe a retrofit from a continuous/clean pattern. Suitable existing basis or nonapplicability may be acknowledged; unresolved source, function, time or units remains a records question.",
+   "typical_benefit": {
+    "wording": "\"Energy consumption can typically be reduced 5% to 30%.\" Load preheating is \"best suited for continuous rather than batch furnaces.\"",
+    "source": [
+     "S18",
+     "S24"
+    ],
+    "arc": "2.241x (IAC/ITAC browse page: 1,936 recommendations, 2.0 yr average payback, 20.0% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S18: Process Heating Tip #8, Install Waste Heat Recovery Systems for Fuel-Fired Furnaces (DOE/GO-102005-2181, Sep 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: complete S18 process-heating Tip8 pp1-2 distinguishes recovery methods, prior loss reduction and operating constraints; S4 Tip3 pp1-2 additionally bounds boiler-flue/feedwater function. Source 5%-30% is contextual historical guidance, not this subject's measured savings. Named records and capabilities are unverified candidates.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

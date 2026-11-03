@@ -1,0 +1,125 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/control-vent-records/models/E25-04-known-nonHC.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E25"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "emissions": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E25@PW-A",
+   "question_id": "E25",
+   "family": "emissions",
+   "question": "Are tank vapors vented to atmosphere with no vapor recovery?",
+   "about": "PW-A",
+   "assets": [
+    {
+     "id": "PW-A",
+     "tag": "PW-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "PW-A",
+     "tag": "PW-A",
+     "text": "equipment PW-A reads \"PW-A TANK TO ATM\"",
+     "field": "units[PW-A]"
+    },
+    {
+     "role": "checked, none found",
+     "text": "no vapor recovery or blanket gas anywhere in the model",
+     "field": "applies_when.without"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Vapor volume and composition",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: vent flow measurement and a gas sample",
+      "site records: tank throughput and product vapor pressure"
+     ],
+     "how": "Estimate vented volume from throughput and breathing."
+    }
+   ],
+   "decision_rule": "Worth a VRU study when hydrocarbon vapor volume is steady and large.",
+   "typical_benefit": {
+    "wording": "\"VRUs can recover over 95 percent of the hydrocarbon...\" vapors; \"payback in as little as two months\" (partner experience).",
+    "source": [
+     "S20"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S20: EPA Natural Gas STAR Lessons Learned, Installing Vapor Recovery Units on Storage Tanks"
+    ]
+   },
+   "limits": "The source also quotes a partner's annual dollar figure; it is deliberately not repeated.",
+   "status": "asked"
+  },
+  {
+   "id": "E25@N2-B",
+   "question_id": "E25",
+   "family": "emissions",
+   "question": "Are tank vapors vented to atmosphere with no vapor recovery?",
+   "about": "N2-B",
+   "assets": [
+    {
+     "id": "N2-B",
+     "tag": "N2-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "N2-B",
+     "tag": "N2-B",
+     "text": "equipment N2-B reads \"N2-B VESSEL TO ATM\"",
+     "field": "units[N2-B]"
+    },
+    {
+     "role": "checked, none found",
+     "text": "no vapor recovery or blanket gas anywhere in the model",
+     "field": "applies_when.without"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Vapor volume and composition",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: vent flow measurement and a gas sample",
+      "site records: tank throughput and product vapor pressure"
+     ],
+     "how": "Estimate vented volume from throughput and breathing."
+    }
+   ],
+   "decision_rule": "Worth a VRU study when hydrocarbon vapor volume is steady and large.",
+   "typical_benefit": {
+    "wording": "\"VRUs can recover over 95 percent of the hydrocarbon...\" vapors; \"payback in as little as two months\" (partner experience).",
+    "source": [
+     "S20"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S20: EPA Natural Gas STAR Lessons Learned, Installing Vapor Recovery Units on Storage Tanks"
+    ]
+   },
+   "limits": "The source also quotes a partner's annual dollar figure; it is deliberately not repeated.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

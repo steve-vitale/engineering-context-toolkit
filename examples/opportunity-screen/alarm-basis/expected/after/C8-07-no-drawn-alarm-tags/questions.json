@@ -57,17 +57,76 @@
   "C11",
   "C12"
  ],
- "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
  "counts": {
-  "findings": 0,
-  "by_family": {}
+  "findings": 1,
+  "by_family": {
+   "controls": 1
+  }
  },
- "questions": [],
- "not_checked": [
+ "questions": [
   {
+   "id": "C2@model",
    "question_id": "C2",
-   "reason": "the model holds no controllers; give a loop list with --loops (controller,measurement,output) to check this"
-  },
+   "family": "controls",
+   "question": "What do existing records establish about these measurements' purpose, readers and remaining source/logic coverage?",
+   "about": "TI-101",
+   "assets": [
+    {
+     "id": "TI-101",
+     "tag": "TI-101"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "TI-101",
+     "tag": "TI-101",
+     "text": "instrument TI-101 reads \"TI-101 Statusindicator; completealarmconfigurationunknown\" at U-A",
+     "field": "instruments[TI-101]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Whether operators adjust anything by hand from these readings",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing exact measurement/source identity and quantity, actual indication/control/alarm/protection/recording purpose, normal and abnormal decisions, operator logs/round sheets and current availability/quality/coverage; retain per-subject association and source/revision.",
+      "a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
+     ],
+     "how": "Frequent manual adjustment can justify a control investigation, not automatic automation. A reading with no routine manual action may have a legitimate abnormal/alarm/protection/indication purpose; do not close it solely because nobody regularly acts. Acknowledge suitable existing purpose, manual or automatic operation, and record unresolved function/source suitability. No operator trial, live change or benefit is inferred.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
+    },
+    {
+     "item": "The control system's own loop list",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing current loop/point list, cause/effect, alarm/sequence/configuration and represented reader/interlock/source records; preserve exact endpoints and identify missing model coverage before concluding indication-only.",
+      "DCS/PLC configuration: Review a permitted current loop/point/configuration export, if available, as an existing source rather than a complete plant-truth inventory.",
+      "a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
+     ],
+     "how": "A controller or interlock reference is useful supplied evidence, not proof of complete current logic, correct process meaning, safety adequacy or measurement authority. A partial model without controllers can still prompt existing-record clarification; it does not prove no installed controls or require a fabricated loop list. S19 printed30 is broad monitoring/process-control guidance, not a per-reading automation acceptance test.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
+    }
+   ],
+   "decision_rule": "Review measurement purpose and actual normal/abnormal decisions, represented readers and source/logic coverage with the responsible specialist. Neither a missing model controller nor a represented reader settles installed control completeness or the need for automation. Suitable existing use or nonapplicability can be acknowledged; unresolved records remain explicit. No automatic upgrade, safety acceptance or source-reported saving is assigned.",
+   "typical_benefit": {
+    "wording": "\"energy and cost savings are around 5% or more for many industrial applications of process control systems\" (for plants without updated controls). Process control: \"Typically 2-18% savings.\" The source says these figures \"cannot be added\".",
+    "source": [
+     "S19"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)"
+    ]
+   },
+   "limits": "Source review: S19 originalLBNL56183 official mirror printed30/PDF38, monitoring/process-control section and historical nonadditive table. This supports a bounded records investigation, not an automation decision, current control-system completeness or a measurement's safety/function truth. Six existing variable classes retained; other instrument classes remain outside this selector. Generic historical savings are not this plant's benefit.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [
   {
    "question_id": "C6",
    "reason": "the model holds no controllers; give a loop list with --loops to check this"

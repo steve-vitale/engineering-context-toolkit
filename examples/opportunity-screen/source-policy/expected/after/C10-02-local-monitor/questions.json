@@ -1,0 +1,401 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/models/C10-02-local-monitor.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "C10"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "controls": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "C10@model",
+   "question_id": "C10",
+   "family": "controls",
+   "question": "What do existing records establish about these trap candidates' actual steam service, importance and maintenance/monitoring coverage?",
+   "about": "ST-A, ST-B",
+   "assets": [
+    {
+     "id": "ST-A",
+     "tag": "ST-A"
+    },
+    {
+     "id": "ST-B",
+     "tag": "ST-B"
+    },
+    {
+     "id": "TM-X",
+     "tag": "TM-X"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "ST-A",
+     "tag": "ST-A",
+     "text": "equipment ST-A reads \"ST-A STEAM TRAP\"",
+     "field": "units[ST-A]"
+    },
+    {
+     "role": "trigger",
+     "id": "ST-B",
+     "tag": "ST-B",
+     "text": "equipment ST-B reads \"ST-B STEAM TRAP\"",
+     "field": "units[ST-B]"
+    },
+    {
+     "role": "unverified monitor/UT record; trap purpose, source association and coverage not established",
+     "id": "TM-X",
+     "tag": "TM-X",
+     "text": "equipment TM-X reads \"TM-X TRAP MONITOR\"",
+     "field": "units[TM-X]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ST-A",
+     "tag": "ST-A",
+     "text": "ST-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[ST-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ST-A",
+     "tag": "ST-A",
+     "text": "ST-A record_source = \"Fictional pre-call record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[ST-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ST-A",
+     "tag": "ST-A",
+     "text": "ST-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[ST-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ST-A",
+     "tag": "ST-A",
+     "text": "ST-A record_available = true; present; meaning and suitability unverified",
+     "field": "units[ST-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ST-A",
+     "tag": "ST-A",
+     "text": "ST-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[ST-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ST-A",
+     "tag": "ST-A",
+     "text": "ST-A service = \"steam\"; present; meaning and suitability unverified",
+     "field": "units[ST-A].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ST-A",
+     "tag": "ST-A",
+     "text": "ST-A monitoring_basis = \"recordforAonly\"; present; meaning and suitability unverified",
+     "field": "units[ST-A].facts.monitoring_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ST-B",
+     "tag": "ST-B",
+     "text": "ST-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[ST-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ST-B",
+     "tag": "ST-B",
+     "text": "ST-B record_source = \"Fictional pre-call record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[ST-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ST-B",
+     "tag": "ST-B",
+     "text": "ST-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[ST-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ST-B",
+     "tag": "ST-B",
+     "text": "ST-B record_available = true; present; meaning and suitability unverified",
+     "field": "units[ST-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ST-B",
+     "tag": "ST-B",
+     "text": "ST-B record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[ST-B].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ST-B",
+     "tag": "ST-B",
+     "text": "ST-B service = \"steam\"; present; meaning and suitability unverified",
+     "field": "units[ST-B].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "ST-B",
+     "tag": "ST-B",
+     "text": "ST-B monitoring_basis = null; blank; meaning and suitability unverified",
+     "field": "units[ST-B].facts.monitoring_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TM-X",
+     "tag": "TM-X",
+     "text": "TM-X fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[TM-X].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TM-X",
+     "tag": "TM-X",
+     "text": "TM-X record_source = \"Fictional pre-call record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[TM-X].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TM-X",
+     "tag": "TM-X",
+     "text": "TM-X record_revision = \"R0\"; present; meaning and suitability unverified",
+     "field": "units[TM-X].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TM-X",
+     "tag": "TM-X",
+     "text": "TM-X record_available = false; present; meaning and suitability unverified",
+     "field": "units[TM-X].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TM-X",
+     "tag": "TM-X",
+     "text": "TM-X record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[TM-X].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TM-X",
+     "tag": "TM-X",
+     "text": "TM-X record_scope = \"Aprovisional\"; present; meaning and suitability unverified",
+     "field": "units[TM-X].facts.record_scope"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TM-X",
+     "tag": "TM-X",
+     "text": "TM-X target_subject = \"ST-Aonly\"; present; meaning and suitability unverified",
+     "field": "units[TM-X].facts.target_subject"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: ST-A fictional_record = True",
+     "field": "units[ST-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: ST-B fictional_record = True",
+     "field": "units[ST-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: ST-A record_source = Fictional pre-call record, no company or human approval",
+     "field": "units[ST-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: ST-B record_source = Fictional pre-call record, no company or human approval",
+     "field": "units[ST-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: ST-A record_revision = R1",
+     "field": "units[ST-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: ST-B record_revision = R1",
+     "field": "units[ST-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: ST-A record_available = True",
+     "field": "units[ST-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: ST-B record_available = True",
+     "field": "units[ST-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: ST-A record_authority = unverified",
+     "field": "units[ST-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: ST-B record_authority = unverified",
+     "field": "units[ST-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: ST-A service = steam",
+     "field": "units[ST-A].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: ST-B service = steam",
+     "field": "units[ST-B].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: ST-A monitoring_basis = recordforAonly",
+     "field": "units[ST-A].facts.monitoring_basis"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Which traps are critical",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing exact trap/service/function and criticality/failure consequence, source/current list and associations, current inspection/test/monitor/report/repair/verification program, method/interval/result and responsible response coverage.",
+      "a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
+     ],
+     "how": "A TRAP name is not established steam service or failure, and generic UT or another trap's monitor does not settle this record. S3 completepp1-2 calls for systematic inspection/testing/repair and considers online monitoring for important traps/processes; it describes different methods and contextual intervals, not a universal mandate. S19 printed40-42 presents automatic monitoring in conjunction with regular maintenance. Review suitable existing program and consequences first, acknowledging effective records or nonapplicability without obligatory new online hardware or survey. Foreign/old/unavailable and blank records remain explicit.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "ST-A",
+       "label": "ST-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[ST-A].facts.fictional_record"
+      },
+      {
+       "id": "ST-B",
+       "label": "ST-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[ST-B].facts.fictional_record"
+      },
+      {
+       "id": "ST-A",
+       "label": "ST-A",
+       "name": "record_source",
+       "value": "Fictional pre-call record, no company or human approval",
+       "where": "units[ST-A].facts.record_source"
+      },
+      {
+       "id": "ST-B",
+       "label": "ST-B",
+       "name": "record_source",
+       "value": "Fictional pre-call record, no company or human approval",
+       "where": "units[ST-B].facts.record_source"
+      },
+      {
+       "id": "ST-A",
+       "label": "ST-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[ST-A].facts.record_revision"
+      },
+      {
+       "id": "ST-B",
+       "label": "ST-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[ST-B].facts.record_revision"
+      },
+      {
+       "id": "ST-A",
+       "label": "ST-A",
+       "name": "record_available",
+       "value": true,
+       "where": "units[ST-A].facts.record_available"
+      },
+      {
+       "id": "ST-B",
+       "label": "ST-B",
+       "name": "record_available",
+       "value": true,
+       "where": "units[ST-B].facts.record_available"
+      },
+      {
+       "id": "ST-A",
+       "label": "ST-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[ST-A].facts.record_authority"
+      },
+      {
+       "id": "ST-B",
+       "label": "ST-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[ST-B].facts.record_authority"
+      },
+      {
+       "id": "ST-A",
+       "label": "ST-A",
+       "name": "service",
+       "value": "steam",
+       "where": "units[ST-A].facts.service"
+      },
+      {
+       "id": "ST-B",
+       "label": "ST-B",
+       "name": "service",
+       "value": "steam",
+       "where": "units[ST-B].facts.service"
+      },
+      {
+       "id": "ST-A",
+       "label": "ST-A",
+       "name": "monitoring_basis",
+       "value": "recordforAonly",
+       "where": "units[ST-A].facts.monitoring_basis"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual steam-trap service, importance, existing maintenance/inspection/monitor and response/verification coverage with the responsible specialist. Neither a global monitor label nor a criticality name establishes coverage, failure or a need for online monitoring. Suitable existing strategy or nonapplicability can be acknowledged; unresolved records remain a question, not an inspection/repair instruction or transferred source benefit.",
+   "typical_benefit": {
+    "wording": "LBNL (as reported in LBNL-56183): \"Automatic Steam Trap Monitoring 5%\", 1 yr. DOE tip sheet: \"Consider online monitoring of the most important steam traps\".",
+    "source": [
+     "S19",
+     "S3",
+     "S24"
+    ],
+    "arc": "2.211x (category only)",
+    "source_titles": [
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S3: Steam Tip #1, Inspect and Repair Steam Traps (DOE/GO-102012-3401)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "Source review: complete S3 SteamTip1 pp1-2 and S19 originalLBNL printed40-42/PDF48-50. Historical additional5% estimate is relative to regular maintenance and based on secondary reports, with contextual payback assumptions; it is not installed failure or a site benefit. UT may be an unrelated ultrasonic measurement; type/source/purpose/coverage must be reviewed. No generic-analyzer suppression or current monitoring authority is inferred.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

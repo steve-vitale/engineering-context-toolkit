@@ -4959,6 +4959,23 @@
         "examples/batch-analysis/record-joins/PROVENANCE.json",
         "scripts/test_join_batch_records.py"
       ]
+    },
+    {
+      "id": "A317",
+      "function": "intake_and_reuse",
+      "date": "2026-11-03",
+      "change": "Complete source/collection review for the remaining 22 rules, preserve original outputs and repair lost quantity-aware historian references during integration.",
+      "hypothesis": "Existing records with exact service, quantity, period, coverage and source applicability produce better bounded engineering questions than labels, scalar completion or compulsory measurements.",
+      "evidence": "88 unchanged fictional cases retain 176 historical and 176 actual final reports. A separate 12 symbolic-pointer control cohort retains 48 before/after reports. Independent source/collection receiving accepted the 22 policies after rejected E18 limits and C1 diagnostic proposals were preserved. Integration exposed E18 signal-reference loss; matched TE and represented-meter controls pass after two historian locators were restored. A further six-rule audit supports five location-only repairs and an explicit E14 no-op limit. Current screens, rollup, two description builds, context/history/refusal and SDK sample were renewed with actual producers. The other 28 rule objects, shared objects and 45 benefit objects remain exact; five benefit wordings were qualified. There remain 50 rules and 126 requests.",
+      "runs": "Exposed authored source/collection controls and actual deterministic local producers, with prior cohorts and observer failures retained distinctly. No model/provider run, unfamiliar plant study, timed human benefit or company acceptance.",
+      "verdict": "kept",
+      "why": "Closes N082 bounded source-policy work without treating a supplied field or historical percentage as engineering acceptance. Real usefulness, investigation/outcome retention and approved company import/readback remain open.",
+      "source": [
+        "docs/JOURNAL.md#163-complete-the-bounded-source-policy-review-without-dropping-useful-signal-references",
+        "examples/opportunity-screen/source-policy/README.md",
+        "examples/opportunity-screen/source-policy/PROVENANCE.json",
+        "scripts/test_question_engine.py"
+      ]
     }
   ],
   "not_tried": [
@@ -5831,9 +5848,9 @@
     {
       "id": "N082",
       "function": "intake_and_reuse",
-      "status": "not-done",
+      "status": "done",
       "idea": "Source-review the remaining 22 catalog rules within the 50-rule/126-request inventory with prospective expected/unacceptable questions, exact collection scope and independent source review.",
-      "why_not_yet": "Twenty-eight named rules have bounded source-informed collection reviews after A313, adding E13 boiler blowdown, C4 valve/bypass and E24 tower water to the earlier 25; 22 remain. The 25 fictional controls and matched source-policy reviews do not establish whole-catalog engineering adequacy, source authority, installed operation, compliance or human usefulness. N065 and actual engineer/recipient acceptance remain open.",
+      "why_not_yet": "Completed A317: the remaining 22 rules were independently source/collection reviewed using prospective expected/unacceptable criteria, 88 unchanged exposed fictional cases, retained originals and matched successor receiving. All 50 rules and 126 requests have bounded collection review. This does not establish whole-catalog correctness, site benefit, unfamiliar-input generalization or human usefulness. N065/N062/N063 remain open.",
       "source": [
         "docs/JOURNAL.md#115-repair-the-audit-gaps-with-owned-workstreams-and-independent-handoffs",
         "docs/STATUS.md",
@@ -5849,7 +5866,10 @@
         "docs/JOURNAL.md#151-review-compressor-recycle-from-existing-records-and-applicable-duty",
         "examples/opportunity-screen/compressor-recycle-basis/SOURCES.json",
         "docs/JOURNAL.md#159-review-blowdown-valves-and-tower-water-from-existing-records",
-        "examples/opportunity-screen/water-valve-records/SOURCES.json"
+        "examples/opportunity-screen/water-valve-records/SOURCES.json",
+        "docs/JOURNAL.md#163-complete-the-bounded-source-policy-review-without-dropping-useful-signal-references",
+        "examples/opportunity-screen/source-policy/README.md",
+        "examples/opportunity-screen/source-policy/PROVENANCE.json"
       ]
     },
     {

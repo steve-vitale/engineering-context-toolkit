@@ -60,14 +60,14 @@
   "C11",
   "C12"
  ],
- "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
  "counts": {
-  "findings": 29,
+  "findings": 35,
   "by_family": {
-   "controls": 1,
-   "energy": 16,
+   "controls": 2,
+   "energy": 19,
    "heat_grade": 4,
-   "metering": 7,
+   "metering": 9,
    "safety_question": 1
   }
  },
@@ -2178,6 +2178,221 @@
    "status": "asked"
   },
   {
+   "id": "E14@S0-TK002",
+   "question_id": "E14",
+   "family": "energy",
+   "question": "What do existing records establish about this boiler/steam-generator candidate's flue/feedwater service and current heat-recovery coverage?",
+   "about": "RCS-SG-100",
+   "assets": [
+    {
+     "id": "S0-TK002",
+     "tag": "RCS-SG-100"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "S0-TK002",
+     "tag": "RCS-SG-100",
+     "text": "equipment RCS-SG-100 (asset S0-TK002) reads \"RCS-SG-100 STEAM GENERATOR\" on sheet 0",
+     "field": "units[S0-TK002]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing named-boiler flue/feedwater service and recovery association",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing exact-subject boiler/steam-water, heat-source/flue and feedwater duty, installed recovery/route/coverage and source/revision/availability records; retain foreign or uncertain economizer associations explicitly.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "One economizer label anywhere cannot establish installed coverage, suitability or closure for every boiler. Establish relevant actual service and named coverage; known dry furnace/nonwater helper or electric/no-flue service is not this flue/feedwater task, and unknown service remains conditional. A source-labelled steam generator is reviewed for its actual function without inventing a fuel or drum. Acknowledge suitable existing records or nonapplicability before new observations.",
+     "candidate_scope": "unit",
+     "candidate_facts": []
+    },
+    {
+     "item": "Existing tuned operating, receiving-feedwater and cold-end feasibility basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing actual stack temperature/load/hours after appropriate tuning/cleaning, fuel/composition, feedwater/receiving duty, dewpoint/corrosion/material and practical/economic constraints, with matched units/time and source coverage.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "S4 describes reviewing stack operation after tuning to manufacturer specifications, suitable excess air and clean heat-transfer surfaces; design/high stack temperature alone is not a recovery decision. Review fuel, dewpoint/cold-end corrosion and useful receiving duty before considering a remaining opportunity. Its example temperatures, efficiency increments and savings/paybacks are contextual, not universal limits or this site's benefit. Existing suitable operation can be acknowledged without a compulsory thermometer, quote or retrofit.",
+     "candidate_scope": "unit",
+     "candidate_facts": []
+    }
+   ],
+   "decision_rule": "Review actual boiler/flue/feedwater function, existing named recovery coverage, tuned operating/load records and cold-end/receiving/economic constraints with the responsible engineer. No global economizer label, high temperature or fuel label alone establishes absence, adequacy or a reason to obtain equipment quotes. Suitable existing coverage or nonapplicability may be acknowledged; unknown basis remains a records question with no operating or hardware authorization.",
+   "typical_benefit": {
+    "wording": "Efficiency \"can be increased by 1% for every 40°F reduction in flue gas temperature.\" An economizer \"can often reduce fuel requirements by 5% to 10% and pay for itself in less than 2 years.\"",
+    "source": [
+     "S4",
+     "S24"
+    ],
+    "arc": "2.242x (by description) (IAC/ITAC browse page: 635 recommendations, 2.1 yr average payback, 24.3% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S4: Steam Tip #3, Use Feedwater Economizers for Waste Heat Recovery",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: complete S4/Tip3 pp1–2 is steam-boiler/feedwater guidance, conditional on tuning/cleanliness, fuel/cold-end and system economics. The inherited general efficiency/payback examples are not universal temperature targets or transferred site savings. Unknown heat-source/service does not establish applicability.",
+   "status": "asked"
+  },
+  {
+   "id": "E15@S0-TK002",
+   "question_id": "E15",
+   "family": "energy",
+   "question": "What do existing records establish about this boiler/steam-generator candidate's applicable condensing-recovery function, receiving duty and system constraints?",
+   "about": "RCS-SG-100",
+   "assets": [
+    {
+     "id": "S0-TK002",
+     "tag": "RCS-SG-100"
+    },
+    {
+     "id": "S2-OP003",
+     "tag": null
+    },
+    {
+     "id": "S4-OP004",
+     "tag": null
+    },
+    {
+     "id": "S7-OP001",
+     "tag": null
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "S0-TK002",
+     "tag": "RCS-SG-100",
+     "text": "equipment RCS-SG-100 (asset S0-TK002) reads \"RCS-SG-100 STEAM GENERATOR\" on sheet 0",
+     "field": "units[S0-TK002]"
+    },
+    {
+     "role": "unverified receiving-water record; compatibility not inferred",
+     "id": "S2-OP003",
+     "tag": null,
+     "text": "offpage \"WTS PID 200-4 MAKE-UP WATER\" (S2-OP003) on sheet 2 at CND-TK-160 (by the extraction's attribution)",
+     "field": "offpage_connectors[S2-OP003].text"
+    },
+    {
+     "role": "unverified receiving-water record; compatibility not inferred",
+     "id": "S4-OP004",
+     "tag": null,
+     "text": "offpage \"WTS PID 200-4 MAKE-UP WATER\" (S4-OP004) on sheet 4",
+     "field": "offpage_connectors[S4-OP004].text"
+    },
+    {
+     "role": "unverified receiving-water record; compatibility not inferred",
+     "id": "S7-OP001",
+     "tag": null,
+     "text": "offpage \"WTS PID 160-1 MAKE-UP WATER\" (S7-OP001) on sheet 7",
+     "field": "offpage_connectors[S7-OP001].text"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing boiler/flue/fuel and installed-recovery operating basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing named-subject actual boiler/flue/fuel and recovery arrangement, capacity/load/hours/fuel use, stack temperature/moisture and gas condition, source/revision/units/time/availability and unknowns.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "Establish relevant actual flue/boiler service first; known nonflue/electric or nonwater helper scope is not applicable and unknown service remains conditional. Missing GAS text, an unrecorded sink or unknown fuel is not proof that no records investigation is needed. S7 covers natural-gas and light-oil examples with different acid/material/treatment qualifications, not automatic suitability for any fuel. Acknowledge suitable existing recovery before considering further work.",
+     "candidate_scope": "unit",
+     "candidate_facts": []
+    },
+    {
+     "item": "Existing matched receiving duty, water quality and whole-system feasibility basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing actual receiving-water/process duty, temperature/flow/timing, exact association/source/quality and practical access; condensate acidity/treatment/materials, emissions/stack dispersion, deaerator/steam/turbine/blowdown-heat interactions and economic constraints.",
+      "site records: The following receiving-water tag/series locations are candidate-only lookup aids from supplied records; boiler/system association, source identity, availability, compatible duty and water quality remain unverified. Do not treat a foreign or unknown candidate as this boiler's measured heat sink.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "A nearby or anywhere MAKEUP/PROCESS/HOT WATER label is not proof of a cold, available, compatible or steady heat sink. Review source and receiving duty together with acid-condensate/water-quality treatment, design/material and whole-steam-system effects. S7 explicitly requires site-specific engineering and water-chemistry understanding; direct/indirect configurations and source examples are not interchangeable site prescriptions. Acknowledge suitable existing basis or unknowns without compulsory flue analysis, new measurements, equipment quotes or retrofit; no current site saving is calculated.",
+     "candidate_scope": "unit",
+     "candidate_facts": []
+    }
+   ],
+   "decision_rule": "Review actual service/fuel, installed recovery and matched receiving duty/quality/timing with acid-condensate, materials, dispersion, whole-system and economic constraints before a feasibility decision. Do not obtain quotes or prescribe a condensing economizer from a GAS label plus nearby water, nor silently close unknown/oil/missing-sink records. Suitable existing function or nonapplicability may be acknowledged. No chemical, hardware, operating or site-benefit authorization follows.",
+   "typical_benefit": {
+    "wording": "Can \"increase overall heat recovery and steam system efficiency by up to 10%.\" \"Simple paybacks... are often less than 2 years.\"",
+    "source": [
+     "S7"
+    ],
+    "arc": "2.242x (by description)",
+    "source_titles": [
+     "S7: Steam Tip #26B, Considerations When Selecting a Condensing Economizer (DOE/GO-102012-3397)"
+    ]
+   },
+   "limits": "Source review: complete S7/Tip26B pp1–3 includes natural-gas/light-oil table qualifications, acid water/treatment/materials, system/stack-dispersion interactions and explicit site-specific engineering. Inherited up-to efficiency and payback examples are not present-day quotes or this site's outcomes. Supplied field/association values are unverified candidates, not completion.",
+   "status": "asked"
+  },
+  {
+   "id": "E17@S0-TK002",
+   "question_id": "E17",
+   "family": "energy",
+   "question": "What do existing records establish about this heating candidate's actual fired/flue service, recovery coverage and remaining compatible duty?",
+   "about": "RCS-SG-100",
+   "assets": [
+    {
+     "id": "S0-TK002",
+     "tag": "RCS-SG-100"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "S0-TK002",
+     "tag": "RCS-SG-100",
+     "text": "equipment RCS-SG-100 (asset S0-TK002) reads \"RCS-SG-100 STEAM GENERATOR\" on sheet 0",
+     "field": "units[S0-TK002]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing actual heating/flue service and recovery/loss-reduction coverage",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing named-subject service, heat source and flue/recovery routing, installed function/coverage, prior loss-reduction and source/revision/availability records.",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
+     ],
+     "how": "A heating name is not proof of combustion or hot gas vented straight to a stack. One recovery label anywhere does not settle another subject or demonstrate complete useful coverage. Known noncombustion/electric and typed recovery helpers are not fired subjects; unknown service remains conditional without inventing fuel or flue flow. Review existing suitable function and avoidable losses first, acknowledging suitable coverage or nonapplicability before further work.",
+     "candidate_scope": "unit",
+     "candidate_facts": []
+    },
+    {
+     "item": "Existing source/receiving duty, schedule and feasibility basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing actual exhaust temperature/flow/composition/cleanliness, load and operating schedule, receiving air/water/steam/load requirements, compatibility/timing and practical/material/economic constraints, with exact units/time/source coverage.",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
+     ],
+     "how": "S18 distinguishes combustion-air, steam/water and load-preheating methods. A continuous-load-preheating preference does not exclude every batch recovery option: waste-heat steam is available only while its fired source operates, and useful receiving duty must match. Hot/clean gas, proximity, a source example or an unconverted value alone does not authorize recovery equipment, field tests or site savings. Suitable existing records can be acknowledged.",
+     "candidate_scope": "unit",
+     "candidate_facts": []
+    }
+   ],
+   "decision_rule": "Review actual heating/flue service, existing recovery and prior loss-reduction coverage, source/receiving duty and operating schedules with the responsible engineer. Do not infer installed absence or wasted heat from names or global labels, and do not automatically close batch service or prescribe a retrofit from a continuous/clean pattern. Suitable existing basis or nonapplicability may be acknowledged; unresolved source, function, time or units remains a records question.",
+   "typical_benefit": {
+    "wording": "\"Energy consumption can typically be reduced 5% to 30%.\" Load preheating is \"best suited for continuous rather than batch furnaces.\"",
+    "source": [
+     "S18",
+     "S24"
+    ],
+    "arc": "2.241x (IAC/ITAC browse page: 1,936 recommendations, 2.0 yr average payback, 20.0% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S18: Process Heating Tip #8, Install Waste Heat Recovery Systems for Fuel-Fired Furnaces (DOE/GO-102005-2181, Sep 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: complete S18 process-heating Tip8 pp1-2 distinguishes recovery methods, prior loss reduction and operating constraints; S4 Tip3 pp1-2 additionally bounds boiler-flue/feedwater function. Source 5%-30% is contextual historical guidance, not this subject's measured savings. Named records and capabilities are unverified candidates.",
+   "status": "asked"
+  },
+  {
    "id": "H1@S4-TK001",
    "question_id": "H1",
    "family": "heat_grade",
@@ -2699,7 +2914,7 @@
    "id": "C1@S0-OP001",
    "question_id": "C1",
    "family": "metering",
-   "question": "Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?",
+   "question": "What do existing records establish about this utility user's measurement coverage, usable data and intended decision?",
    "about": "\"EXTRACTION STEAM ES PID 180-1\" (S0-OP001)",
    "assets": [
     {
@@ -2714,11 +2929,6 @@
      "tag": null,
      "text": "offpage \"EXTRACTION STEAM ES PID 180-1\" (S0-OP001) on sheet 0 at MSS-XSS-140 (by the extraction's attribution)",
      "field": "offpage_connectors[S0-OP001].text"
-    },
-    {
-     "role": "checked, none found",
-     "text": "no flow measurement on the same stream, none on the same user for the same utility, and (on an extracted drawing) no flow element within three drawn links on the same sheet",
-     "field": "applies_when.without"
     }
    ],
    "data_requests": [
@@ -2726,21 +2936,26 @@
      "item": "Utility flow to this user",
      "state": "not_on_drawing",
      "where": [
-      "a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading",
-      "utility bills or the site energy report: site-level meter readings to apportion"
+      "site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
      ],
-     "how": "Measure flow over a representative period and compare with production."
+     "how": "A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
     },
     {
      "item": "Who would use the reading",
      "state": "not_on_drawing",
      "where": [
-      "site records: energy or production reporting"
+      "site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
      ],
-     "how": "Name the report the meter would feed."
+     "how": "S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
     }
    ],
-   "decision_rule": "Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.",
+   "decision_rule": "Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.",
    "typical_benefit": {
     "wording": "\"You can't manage what do don't measure\" [sic]. Buildings: \"efficiency improvements of 10-20%.\" The guide warns \"only success stories are published\" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): \"Typical savings 4-17%, average 8%\" (UK experience).",
     "source": [
@@ -2753,14 +2968,14 @@
      "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)"
     ]
    },
-   "limits": "On an extracted drawing the check is 'no flow element within three drawn links on this sheet'; the meter may be on the sheet the line comes from.",
+   "limits": "Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.",
    "status": "asked"
   },
   {
    "id": "C1@S2-OP003",
    "question_id": "C1",
    "family": "metering",
-   "question": "Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?",
+   "question": "What do existing records establish about this utility user's measurement coverage, usable data and intended decision?",
    "about": "\"WTS PID 200-4 MAKE-UP WATER\" (S2-OP003)",
    "assets": [
     {
@@ -2775,11 +2990,6 @@
      "tag": null,
      "text": "offpage \"WTS PID 200-4 MAKE-UP WATER\" (S2-OP003) on sheet 2 at CND-TK-160 (by the extraction's attribution)",
      "field": "offpage_connectors[S2-OP003].text"
-    },
-    {
-     "role": "checked, none found",
-     "text": "no flow measurement on the same stream, none on the same user for the same utility, and (on an extracted drawing) no flow element within three drawn links on the same sheet",
-     "field": "applies_when.without"
     }
    ],
    "data_requests": [
@@ -2787,21 +2997,26 @@
      "item": "Utility flow to this user",
      "state": "not_on_drawing",
      "where": [
-      "a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading",
-      "utility bills or the site energy report: site-level meter readings to apportion"
+      "site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
      ],
-     "how": "Measure flow over a representative period and compare with production."
+     "how": "A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
     },
     {
      "item": "Who would use the reading",
      "state": "not_on_drawing",
      "where": [
-      "site records: energy or production reporting"
+      "site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
      ],
-     "how": "Name the report the meter would feed."
+     "how": "S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
     }
    ],
-   "decision_rule": "Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.",
+   "decision_rule": "Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.",
    "typical_benefit": {
     "wording": "\"You can't manage what do don't measure\" [sic]. Buildings: \"efficiency improvements of 10-20%.\" The guide warns \"only success stories are published\" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): \"Typical savings 4-17%, average 8%\" (UK experience).",
     "source": [
@@ -2814,14 +3029,14 @@
      "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)"
     ]
    },
-   "limits": "On an extracted drawing the check is 'no flow element within three drawn links on this sheet'; the meter may be on the sheet the line comes from.",
+   "limits": "Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.",
    "status": "asked"
   },
   {
    "id": "C1@S4-OP004",
    "question_id": "C1",
    "family": "metering",
-   "question": "Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?",
+   "question": "What do existing records establish about this utility user's measurement coverage, usable data and intended decision?",
    "about": "\"WTS PID 200-4 MAKE-UP WATER\" (S4-OP004)",
    "assets": [
     {
@@ -2836,11 +3051,6 @@
      "tag": null,
      "text": "offpage \"WTS PID 200-4 MAKE-UP WATER\" (S4-OP004) on sheet 4",
      "field": "offpage_connectors[S4-OP004].text"
-    },
-    {
-     "role": "checked, none found",
-     "text": "no flow measurement on the same stream, none on the same user for the same utility, and (on an extracted drawing) no flow element within three drawn links on the same sheet",
-     "field": "applies_when.without"
     }
    ],
    "data_requests": [
@@ -2848,21 +3058,26 @@
      "item": "Utility flow to this user",
      "state": "not_on_drawing",
      "where": [
-      "a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading",
-      "utility bills or the site energy report: site-level meter readings to apportion"
+      "site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
      ],
-     "how": "Measure flow over a representative period and compare with production."
+     "how": "A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
     },
     {
      "item": "Who would use the reading",
      "state": "not_on_drawing",
      "where": [
-      "site records: energy or production reporting"
+      "site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
      ],
-     "how": "Name the report the meter would feed."
+     "how": "S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
     }
    ],
-   "decision_rule": "Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.",
+   "decision_rule": "Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.",
    "typical_benefit": {
     "wording": "\"You can't manage what do don't measure\" [sic]. Buildings: \"efficiency improvements of 10-20%.\" The guide warns \"only success stories are published\" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): \"Typical savings 4-17%, average 8%\" (UK experience).",
     "source": [
@@ -2875,14 +3090,14 @@
      "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)"
     ]
    },
-   "limits": "On an extracted drawing the check is 'no flow element within three drawn links on this sheet'; the meter may be on the sheet the line comes from.",
+   "limits": "Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.",
    "status": "asked"
   },
   {
    "id": "C1@S4-OP005",
    "question_id": "C1",
    "family": "metering",
-   "question": "Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?",
+   "question": "What do existing records establish about this utility user's measurement coverage, usable data and intended decision?",
    "about": "\"MSS PID 140-1 PEGGING STEAM\" (S4-OP005)",
    "assets": [
     {
@@ -2897,11 +3112,6 @@
      "tag": null,
      "text": "offpage \"MSS PID 140-1 PEGGING STEAM\" (S4-OP005) on sheet 4 at ESS-HTR-180 (by the extraction's attribution)",
      "field": "offpage_connectors[S4-OP005].text"
-    },
-    {
-     "role": "checked, none found",
-     "text": "no flow measurement on the same stream, none on the same user for the same utility, and (on an extracted drawing) no flow element within three drawn links on the same sheet",
-     "field": "applies_when.without"
     }
    ],
    "data_requests": [
@@ -2909,21 +3119,26 @@
      "item": "Utility flow to this user",
      "state": "not_on_drawing",
      "where": [
-      "a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading",
-      "utility bills or the site energy report: site-level meter readings to apportion"
+      "site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
      ],
-     "how": "Measure flow over a representative period and compare with production."
+     "how": "A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
     },
     {
      "item": "Who would use the reading",
      "state": "not_on_drawing",
      "where": [
-      "site records: energy or production reporting"
+      "site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
      ],
-     "how": "Name the report the meter would feed."
+     "how": "S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
     }
    ],
-   "decision_rule": "Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.",
+   "decision_rule": "Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.",
    "typical_benefit": {
     "wording": "\"You can't manage what do don't measure\" [sic]. Buildings: \"efficiency improvements of 10-20%.\" The guide warns \"only success stories are published\" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): \"Typical savings 4-17%, average 8%\" (UK experience).",
     "source": [
@@ -2936,14 +3151,14 @@
      "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)"
     ]
    },
-   "limits": "On an extracted drawing the check is 'no flow element within three drawn links on this sheet'; the meter may be on the sheet the line comes from.",
+   "limits": "Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.",
    "status": "asked"
   },
   {
    "id": "C1@S4-OP006",
    "question_id": "C1",
    "family": "metering",
-   "question": "Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?",
+   "question": "What do existing records establish about this utility user's measurement coverage, usable data and intended decision?",
    "about": "\"TBS PID 240-1 (E-1) LP EXTRACTION STEAM\" (S4-OP006)",
    "assets": [
     {
@@ -2958,11 +3173,6 @@
      "tag": null,
      "text": "offpage \"TBS PID 240-1 (E-1) LP EXTRACTION STEAM\" (S4-OP006) on sheet 4 at CND-HTR-166 (by the extraction's attribution)",
      "field": "offpage_connectors[S4-OP006].text"
-    },
-    {
-     "role": "checked, none found",
-     "text": "no flow measurement on the same stream, none on the same user for the same utility, and (on an extracted drawing) no flow element within three drawn links on the same sheet",
-     "field": "applies_when.without"
     }
    ],
    "data_requests": [
@@ -2970,21 +3180,26 @@
      "item": "Utility flow to this user",
      "state": "not_on_drawing",
      "where": [
-      "a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading",
-      "utility bills or the site energy report: site-level meter readings to apportion"
+      "site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
      ],
-     "how": "Measure flow over a representative period and compare with production."
+     "how": "A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
     },
     {
      "item": "Who would use the reading",
      "state": "not_on_drawing",
      "where": [
-      "site records: energy or production reporting"
+      "site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
      ],
-     "how": "Name the report the meter would feed."
+     "how": "S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
     }
    ],
-   "decision_rule": "Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.",
+   "decision_rule": "Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.",
    "typical_benefit": {
     "wording": "\"You can't manage what do don't measure\" [sic]. Buildings: \"efficiency improvements of 10-20%.\" The guide warns \"only success stories are published\" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): \"Typical savings 4-17%, average 8%\" (UK experience).",
     "source": [
@@ -2997,14 +3212,14 @@
      "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)"
     ]
    },
-   "limits": "On an extracted drawing the check is 'no flow element within three drawn links on this sheet'; the meter may be on the sheet the line comes from.",
+   "limits": "Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.",
    "status": "asked"
   },
   {
    "id": "C1@S4-OP008",
    "question_id": "C1",
    "family": "metering",
-   "question": "Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?",
+   "question": "What do existing records establish about this utility user's measurement coverage, usable data and intended decision?",
    "about": "\"TBS PID 240-1 (D-1) HP EXTRACTION STEAM\" (S4-OP008)",
    "assets": [
     {
@@ -3019,11 +3234,6 @@
      "tag": null,
      "text": "offpage \"TBS PID 240-1 (D-1) HP EXTRACTION STEAM\" (S4-OP008) on sheet 4",
      "field": "offpage_connectors[S4-OP008].text"
-    },
-    {
-     "role": "checked, none found",
-     "text": "no flow measurement on the same stream, none on the same user for the same utility, and (on an extracted drawing) no flow element within three drawn links on the same sheet",
-     "field": "applies_when.without"
     }
    ],
    "data_requests": [
@@ -3031,21 +3241,26 @@
      "item": "Utility flow to this user",
      "state": "not_on_drawing",
      "where": [
-      "a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading",
-      "utility bills or the site energy report: site-level meter readings to apportion"
+      "site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
      ],
-     "how": "Measure flow over a representative period and compare with production."
+     "how": "A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
     },
     {
      "item": "Who would use the reading",
      "state": "not_on_drawing",
      "where": [
-      "site records: energy or production reporting"
+      "site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
      ],
-     "how": "Name the report the meter would feed."
+     "how": "S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
     }
    ],
-   "decision_rule": "Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.",
+   "decision_rule": "Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.",
    "typical_benefit": {
     "wording": "\"You can't manage what do don't measure\" [sic]. Buildings: \"efficiency improvements of 10-20%.\" The guide warns \"only success stories are published\" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): \"Typical savings 4-17%, average 8%\" (UK experience).",
     "source": [
@@ -3058,14 +3273,14 @@
      "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)"
     ]
    },
-   "limits": "On an extracted drawing the check is 'no flow element within three drawn links on this sheet'; the meter may be on the sheet the line comes from.",
+   "limits": "Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.",
    "status": "asked"
   },
   {
    "id": "C1@S7-OP001",
    "question_id": "C1",
    "family": "metering",
-   "question": "Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?",
+   "question": "What do existing records establish about this utility user's measurement coverage, usable data and intended decision?",
    "about": "\"WTS PID 160-1 MAKE-UP WATER\" (S7-OP001)",
    "assets": [
     {
@@ -3080,11 +3295,6 @@
      "tag": null,
      "text": "offpage \"WTS PID 160-1 MAKE-UP WATER\" (S7-OP001) on sheet 7",
      "field": "offpage_connectors[S7-OP001].text"
-    },
-    {
-     "role": "checked, none found",
-     "text": "no flow measurement on the same stream, none on the same user for the same utility, and (on an extracted drawing) no flow element within three drawn links on the same sheet",
-     "field": "applies_when.without"
     }
    ],
    "data_requests": [
@@ -3092,21 +3302,26 @@
      "item": "Utility flow to this user",
      "state": "not_on_drawing",
      "where": [
-      "a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading",
-      "utility bills or the site energy report: site-level meter readings to apportion"
+      "site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
      ],
-     "how": "Measure flow over a representative period and compare with production."
+     "how": "A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
     },
     {
      "item": "Who would use the reading",
      "state": "not_on_drawing",
      "where": [
-      "site records: energy or production reporting"
+      "site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
      ],
-     "how": "Name the report the meter would feed."
+     "how": "S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
     }
    ],
-   "decision_rule": "Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.",
+   "decision_rule": "Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.",
    "typical_benefit": {
     "wording": "\"You can't manage what do don't measure\" [sic]. Buildings: \"efficiency improvements of 10-20%.\" The guide warns \"only success stories are published\" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): \"Typical savings 4-17%, average 8%\" (UK experience).",
     "source": [
@@ -3119,8 +3334,1755 @@
      "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)"
     ]
    },
-   "limits": "On an extracted drawing the check is 'no flow element within three drawn links on this sheet'; the meter may be on the sheet the line comes from.",
+   "limits": "Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.",
    "status": "asked"
+  },
+  {
+   "id": "C1@S7-OP002",
+   "question_id": "C1",
+   "family": "metering",
+   "question": "What do existing records establish about this utility user's measurement coverage, usable data and intended decision?",
+   "about": "\"ACW PID 210-2 (F-1) AUX COOLING WATER SYSTEM\" (S7-OP002)",
+   "assets": [
+    {
+     "id": "S7-OP002",
+     "tag": null
+    },
+    {
+     "id": "S7-IN021",
+     "tag": "FO-XXX"
+    },
+    {
+     "id": "S7-IN022",
+     "tag": "FT-XXX"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "S7-OP002",
+     "tag": null,
+     "text": "offpage \"ACW PID 210-2 (F-1) AUX COOLING WATER SYSTEM\" (S7-OP002) on sheet 7 at LUBE-OIL-COOLER (by the extraction's attribution)",
+     "field": "offpage_connectors[S7-OP002].text"
+    },
+    {
+     "role": "unverified flow/quantity candidate; utility/user coverage and usable data not established",
+     "id": "S7-IN021",
+     "tag": "FO-XXX",
+     "text": "instrument FO-XXX (asset S7-IN021) [placeholder tag on the drawing] on sheet 7 at FWS-PU-170B (by the extraction's attribution)",
+     "field": "instruments[S7-IN021]"
+    },
+    {
+     "role": "unverified flow/quantity candidate; utility/user coverage and usable data not established",
+     "id": "S7-IN022",
+     "tag": "FT-XXX",
+     "text": "instrument FT-XXX (asset S7-IN022) [placeholder tag on the drawing] on sheet 7 at FWS-PU-170B (by the extraction's attribution)",
+     "field": "instruments[S7-IN022]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Utility flow to this user",
+     "state": "not_on_drawing",
+     "where": [
+      "historian or DCS trend for FO-XXX, FT-XXX (no historian tag is mapped in this model for these)",
+      "site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
+     ],
+     "how": "A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
+    },
+    {
+     "item": "Who would use the reading",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
+     ],
+     "how": "S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
+    }
+   ],
+   "decision_rule": "Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.",
+   "typical_benefit": {
+    "wording": "\"You can't manage what do don't measure\" [sic]. Buildings: \"efficiency improvements of 10-20%.\" The guide warns \"only success stories are published\" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): \"Typical savings 4-17%, average 8%\" (UK experience).",
+    "source": [
+     "S22",
+     "S19"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S22: FEMP Metering Best Practices: A Guide to Achieving Utility Resource Efficiency, Release 3.0 (PNNL-23892, Mar 2015)",
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)"
+    ]
+   },
+   "limits": "Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.",
+   "status": "asked"
+  },
+  {
+   "id": "C1@S7-OP007",
+   "question_id": "C1",
+   "family": "metering",
+   "question": "What do existing records establish about this utility user's measurement coverage, usable data and intended decision?",
+   "about": "\"ACW PID 210-2 AUX COOLING WATER SYSTEM\" (S7-OP007)",
+   "assets": [
+    {
+     "id": "S7-OP007",
+     "tag": null
+    },
+    {
+     "id": "S7-IN021",
+     "tag": "FO-XXX"
+    },
+    {
+     "id": "S7-IN022",
+     "tag": "FT-XXX"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "S7-OP007",
+     "tag": null,
+     "text": "offpage \"ACW PID 210-2 AUX COOLING WATER SYSTEM\" (S7-OP007) on sheet 7 at FWS-PU-170B (by the extraction's attribution)",
+     "field": "offpage_connectors[S7-OP007].text"
+    },
+    {
+     "role": "unverified flow/quantity candidate; utility/user coverage and usable data not established",
+     "id": "S7-IN021",
+     "tag": "FO-XXX",
+     "text": "instrument FO-XXX (asset S7-IN021) [placeholder tag on the drawing] on sheet 7 at FWS-PU-170B (by the extraction's attribution)",
+     "field": "instruments[S7-IN021]"
+    },
+    {
+     "role": "unverified flow/quantity candidate; utility/user coverage and usable data not established",
+     "id": "S7-IN022",
+     "tag": "FT-XXX",
+     "text": "instrument FT-XXX (asset S7-IN022) [placeholder tag on the drawing] on sheet 7 at FWS-PU-170B (by the extraction's attribution)",
+     "field": "instruments[S7-IN022]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Utility flow to this user",
+     "state": "not_on_drawing",
+     "where": [
+      "historian or DCS trend for FO-XXX, FT-XXX (no historian tag is mapped in this model for these)",
+      "site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
+     ],
+     "how": "A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
+    },
+    {
+     "item": "Who would use the reading",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
+     ],
+     "how": "S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
+    }
+   ],
+   "decision_rule": "Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.",
+   "typical_benefit": {
+    "wording": "\"You can't manage what do don't measure\" [sic]. Buildings: \"efficiency improvements of 10-20%.\" The guide warns \"only success stories are published\" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): \"Typical savings 4-17%, average 8%\" (UK experience).",
+    "source": [
+     "S22",
+     "S19"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S22: FEMP Metering Best Practices: A Guide to Achieving Utility Resource Efficiency, Release 3.0 (PNNL-23892, Mar 2015)",
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)"
+    ]
+   },
+   "limits": "Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.",
+   "status": "asked"
+  },
+  {
+   "id": "C2@model",
+   "question_id": "C2",
+   "family": "controls",
+   "question": "What do existing records establish about these measurements' purpose, readers and remaining source/logic coverage?",
+   "about": "FT-1401, FT-1401, TE-14084A, TE-14084B, PT-14085, PT-14086 and 98 more",
+   "assets": [
+    {
+     "id": "S0-IN002",
+     "tag": "FT-1401"
+    },
+    {
+     "id": "S0-IN003",
+     "tag": "FT-1401"
+    },
+    {
+     "id": "S0-IN004",
+     "tag": "TE-14084A"
+    },
+    {
+     "id": "S0-IN005",
+     "tag": "TE-14084B"
+    },
+    {
+     "id": "S0-IN007",
+     "tag": "PT-14085"
+    },
+    {
+     "id": "S0-IN008",
+     "tag": "PT-14086"
+    },
+    {
+     "id": "S0-IN009",
+     "tag": "PT-14087"
+    },
+    {
+     "id": "S0-IN010",
+     "tag": "PT-14088"
+    },
+    {
+     "id": "S0-IN011",
+     "tag": "TE-14089A"
+    },
+    {
+     "id": "S0-IN012",
+     "tag": "TE-14089B"
+    },
+    {
+     "id": "S0-IN022",
+     "tag": "TE-14090A"
+    },
+    {
+     "id": "S0-IN023",
+     "tag": "TE-14090B"
+    },
+    {
+     "id": "S0-IN025",
+     "tag": "TE-14091A"
+    },
+    {
+     "id": "S0-IN026",
+     "tag": "TE-14091B"
+    },
+    {
+     "id": "S0-IN029",
+     "tag": "TE-14092A"
+    },
+    {
+     "id": "S0-IN030",
+     "tag": "TE-14092B"
+    },
+    {
+     "id": "S0-IN032",
+     "tag": "TE-14093B"
+    },
+    {
+     "id": "S0-IN033",
+     "tag": "TE-14093A"
+    },
+    {
+     "id": "S1-IN002",
+     "tag": "LIT-25094A"
+    },
+    {
+     "id": "S1-IN003",
+     "tag": "LIT-25094B"
+    },
+    {
+     "id": "S1-IN008",
+     "tag": "LIT-25094A"
+    },
+    {
+     "id": "S1-IN009",
+     "tag": "LIT-25094B"
+    },
+    {
+     "id": "S2-IN001",
+     "tag": "TE-16096B"
+    },
+    {
+     "id": "S2-IN002",
+     "tag": "TE-16096A"
+    },
+    {
+     "id": "S2-IN005",
+     "tag": "PIT-16095"
+    },
+    {
+     "id": "S2-IN007",
+     "tag": "LIT-16097A"
+    },
+    {
+     "id": "S2-IN008",
+     "tag": "LIT-16097B"
+    },
+    {
+     "id": "S2-IN009",
+     "tag": "LIT-16098A"
+    },
+    {
+     "id": "S2-IN010",
+     "tag": "LIT-16098B"
+    },
+    {
+     "id": "S2-IN014",
+     "tag": "LIT-161103"
+    },
+    {
+     "id": "S2-IN015",
+     "tag": "FIT-16299"
+    },
+    {
+     "id": "S2-IN016",
+     "tag": "TE-162109B"
+    },
+    {
+     "id": "S2-IN017",
+     "tag": "TE-162109A"
+    },
+    {
+     "id": "S2-IN018",
+     "tag": "FO-1621"
+    },
+    {
+     "id": "S2-IN019",
+     "tag": "FT-XXX"
+    },
+    {
+     "id": "S2-IN020",
+     "tag": "FIT-163101"
+    },
+    {
+     "id": "S2-IN021",
+     "tag": "FIT-164102"
+    },
+    {
+     "id": "S2-IN023",
+     "tag": "LIT-161103"
+    },
+    {
+     "id": "S3-IN001",
+     "tag": "PIT-160104"
+    },
+    {
+     "id": "S3-IN002",
+     "tag": "TE-160105B"
+    },
+    {
+     "id": "S3-IN003",
+     "tag": "TE-160105A"
+    },
+    {
+     "id": "S3-IN004",
+     "tag": "TE-160106A"
+    },
+    {
+     "id": "S3-IN005",
+     "tag": "TE-160106B"
+    },
+    {
+     "id": "S3-IN007",
+     "tag": "PIT-165107"
+    },
+    {
+     "id": "S3-IN008",
+     "tag": "LIT-165108A"
+    },
+    {
+     "id": "S3-IN009",
+     "tag": "LIT-165108B"
+    },
+    {
+     "id": "S3-IN010",
+     "tag": "LIT-165109A"
+    },
+    {
+     "id": "S3-IN011",
+     "tag": "LIT-165109B"
+    },
+    {
+     "id": "S3-IN012",
+     "tag": "TE-165110A"
+    },
+    {
+     "id": "S3-IN013",
+     "tag": "TE-165110B"
+    },
+    {
+     "id": "S3-IN014",
+     "tag": "PIT-165112"
+    },
+    {
+     "id": "S3-IN015",
+     "tag": "PIT-170115"
+    },
+    {
+     "id": "S3-IN018",
+     "tag": "PIT-170116"
+    },
+    {
+     "id": "S3-IN020",
+     "tag": "PIT-170118"
+    },
+    {
+     "id": "S3-IN021",
+     "tag": "TE-170117A"
+    },
+    {
+     "id": "S3-IN022",
+     "tag": "TE-170117B"
+    },
+    {
+     "id": "S3-IN024",
+     "tag": "PIT-165111"
+    },
+    {
+     "id": "S3-IN025",
+     "tag": "PIT-170113"
+    },
+    {
+     "id": "S3-IN027",
+     "tag": "TE-170135A"
+    },
+    {
+     "id": "S3-IN028",
+     "tag": "TE-170135B"
+    },
+    {
+     "id": "S3-IN031",
+     "tag": "PIT-170114"
+    },
+    {
+     "id": "S4-IN002",
+     "tag": "TE-180137A"
+    },
+    {
+     "id": "S4-IN003",
+     "tag": "TE-180137B"
+    },
+    {
+     "id": "S4-IN004",
+     "tag": "PIT-180138A"
+    },
+    {
+     "id": "S4-IN005",
+     "tag": "PIT-180138B"
+    },
+    {
+     "id": "S4-IN008",
+     "tag": "FO-1661"
+    },
+    {
+     "id": "S4-IN009",
+     "tag": "FO-1662"
+    },
+    {
+     "id": "S4-IN018",
+     "tag": "TE-250136B"
+    },
+    {
+     "id": "S4-IN019",
+     "tag": "TE-250136A"
+    },
+    {
+     "id": "S4-IN020",
+     "tag": "PT-250135A"
+    },
+    {
+     "id": "S4-IN021",
+     "tag": "PT-250135B"
+    },
+    {
+     "id": "S4-IN022",
+     "tag": "PIT-250142"
+    },
+    {
+     "id": "S4-IN023",
+     "tag": "PI-250141"
+    },
+    {
+     "id": "S4-IN024",
+     "tag": "PT-250139A"
+    },
+    {
+     "id": "S4-IN025",
+     "tag": "PT-250139B"
+    },
+    {
+     "id": "S4-IN026",
+     "tag": "TE-250140A"
+    },
+    {
+     "id": "S4-IN027",
+     "tag": "TE-250140B"
+    },
+    {
+     "id": "S4-IN028",
+     "tag": "TE-161143B"
+    },
+    {
+     "id": "S4-IN029",
+     "tag": "TE-161143A"
+    },
+    {
+     "id": "S4-IN030",
+     "tag": "LIT-161144A"
+    },
+    {
+     "id": "S4-IN031",
+     "tag": "LIT-161144B"
+    },
+    {
+     "id": "S4-IN032",
+     "tag": "LVC-16115"
+    },
+    {
+     "id": "S7-IN002",
+     "tag": "LG-212204"
+    },
+    {
+     "id": "S7-IN003",
+     "tag": "LIT-212205"
+    },
+    {
+     "id": "S7-IN004",
+     "tag": "LIT-212206"
+    },
+    {
+     "id": "S7-IN005",
+     "tag": "TE-210207A"
+    },
+    {
+     "id": "S7-IN006",
+     "tag": "TE-210207B"
+    },
+    {
+     "id": "S7-IN007",
+     "tag": "TE-170215A"
+    },
+    {
+     "id": "S7-IN008",
+     "tag": "TE-170215B"
+    },
+    {
+     "id": "S7-IN011",
+     "tag": "TE-170213B"
+    },
+    {
+     "id": "S7-IN012",
+     "tag": "TE-170213A"
+    },
+    {
+     "id": "S7-IN013",
+     "tag": "PIT-210208"
+    },
+    {
+     "id": "S7-IN014",
+     "tag": "PIT-210208"
+    },
+    {
+     "id": "S7-IN015",
+     "tag": "PIT-210209"
+    },
+    {
+     "id": "S7-IN016",
+     "tag": "PIT-211210"
+    },
+    {
+     "id": "S7-IN017",
+     "tag": "PIT-211210"
+    },
+    {
+     "id": "S7-IN018",
+     "tag": "PIT-211211"
+    },
+    {
+     "id": "S7-IN019",
+     "tag": "TE-211212A"
+    },
+    {
+     "id": "S7-IN020",
+     "tag": "TE-211212B"
+    },
+    {
+     "id": "S7-IN021",
+     "tag": "FO-XXX"
+    },
+    {
+     "id": "S7-IN022",
+     "tag": "FT-XXX"
+    },
+    {
+     "id": "S7-IN023",
+     "tag": "PIT-211212"
+    },
+    {
+     "id": "S7-IN025",
+     "tag": "TE-170214A"
+    },
+    {
+     "id": "S7-IN026",
+     "tag": "TE-170214B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "S0-IN002",
+     "tag": "FT-1401",
+     "text": "instrument FT-1401 (asset S0-IN002) on sheet 0 at MSS-XSS-140 (by the extraction's attribution)",
+     "field": "instruments[S0-IN002]"
+    },
+    {
+     "role": "trigger",
+     "id": "S0-IN003",
+     "tag": "FT-1401",
+     "text": "instrument FT-1401 (asset S0-IN003) on sheet 0 at MSS-XSS-140 (by the extraction's attribution)",
+     "field": "instruments[S0-IN003]"
+    },
+    {
+     "role": "trigger",
+     "id": "S0-IN004",
+     "tag": "TE-14084A",
+     "text": "instrument TE-14084A (asset S0-IN004) on sheet 0 at MSS-XSS-140 (by the extraction's attribution)",
+     "field": "instruments[S0-IN004]"
+    },
+    {
+     "role": "trigger",
+     "id": "S0-IN005",
+     "tag": "TE-14084B",
+     "text": "instrument TE-14084B (asset S0-IN005) on sheet 0 at MSS-XSS-140 (by the extraction's attribution)",
+     "field": "instruments[S0-IN005]"
+    },
+    {
+     "role": "trigger",
+     "id": "S0-IN007",
+     "tag": "PT-14085",
+     "text": "instrument PT-14085 (asset S0-IN007) on sheet 0 at MSS-XSS-140 (by the extraction's attribution)",
+     "field": "instruments[S0-IN007]"
+    },
+    {
+     "role": "trigger",
+     "id": "S0-IN008",
+     "tag": "PT-14086",
+     "text": "instrument PT-14086 (asset S0-IN008) on sheet 0 at MSS-XSS-140 (by the extraction's attribution)",
+     "field": "instruments[S0-IN008]"
+    },
+    {
+     "role": "trigger",
+     "id": "S0-IN009",
+     "tag": "PT-14087",
+     "text": "instrument PT-14087 (asset S0-IN009) on sheet 0 at MSS-XSS-140 (by the extraction's attribution)",
+     "field": "instruments[S0-IN009]"
+    },
+    {
+     "role": "trigger",
+     "id": "S0-IN010",
+     "tag": "PT-14088",
+     "text": "instrument PT-14088 (asset S0-IN010) on sheet 0 at MSS-XSS-140 (by the extraction's attribution)",
+     "field": "instruments[S0-IN010]"
+    },
+    {
+     "role": "trigger",
+     "id": "S0-IN011",
+     "tag": "TE-14089A",
+     "text": "instrument TE-14089A (asset S0-IN011) on sheet 0 at MSS-XSS-140 (by the extraction's attribution)",
+     "field": "instruments[S0-IN011]"
+    },
+    {
+     "role": "trigger",
+     "id": "S0-IN012",
+     "tag": "TE-14089B",
+     "text": "instrument TE-14089B (asset S0-IN012) on sheet 0 at MSS-XSS-140 (by the extraction's attribution)",
+     "field": "instruments[S0-IN012]"
+    },
+    {
+     "role": "trigger",
+     "id": "S0-IN022",
+     "tag": "TE-14090A",
+     "text": "instrument TE-14090A (asset S0-IN022) on sheet 0 at MSS-XSS-140 (by the extraction's attribution)",
+     "field": "instruments[S0-IN022]"
+    },
+    {
+     "role": "trigger",
+     "id": "S0-IN023",
+     "tag": "TE-14090B",
+     "text": "instrument TE-14090B (asset S0-IN023) on sheet 0 at MSS-XSS-140 (by the extraction's attribution)",
+     "field": "instruments[S0-IN023]"
+    },
+    {
+     "role": "trigger",
+     "id": "S0-IN025",
+     "tag": "TE-14091A",
+     "text": "instrument TE-14091A (asset S0-IN025) on sheet 0 at MSS-XSS-140 (by the extraction's attribution)",
+     "field": "instruments[S0-IN025]"
+    },
+    {
+     "role": "trigger",
+     "id": "S0-IN026",
+     "tag": "TE-14091B",
+     "text": "instrument TE-14091B (asset S0-IN026) on sheet 0 at MSS-XSS-140 (by the extraction's attribution)",
+     "field": "instruments[S0-IN026]"
+    },
+    {
+     "role": "trigger",
+     "id": "S0-IN029",
+     "tag": "TE-14092A",
+     "text": "instrument TE-14092A (asset S0-IN029) on sheet 0 at MSS-XSS-140 (by the extraction's attribution)",
+     "field": "instruments[S0-IN029]"
+    },
+    {
+     "role": "trigger",
+     "id": "S0-IN030",
+     "tag": "TE-14092B",
+     "text": "instrument TE-14092B (asset S0-IN030) on sheet 0 at MSS-XSS-140 (by the extraction's attribution)",
+     "field": "instruments[S0-IN030]"
+    },
+    {
+     "role": "trigger",
+     "id": "S0-IN032",
+     "tag": "TE-14093B",
+     "text": "instrument TE-14093B (asset S0-IN032) on sheet 0 at MSS-XSS-140 (by the extraction's attribution)",
+     "field": "instruments[S0-IN032]"
+    },
+    {
+     "role": "trigger",
+     "id": "S0-IN033",
+     "tag": "TE-14093A",
+     "text": "instrument TE-14093A (asset S0-IN033) on sheet 0 at MSS-XSS-140 (by the extraction's attribution)",
+     "field": "instruments[S0-IN033]"
+    },
+    {
+     "role": "trigger",
+     "id": "S1-IN002",
+     "tag": "LIT-25094A",
+     "text": "instrument LIT-25094A (asset S1-IN002) on sheet 1 at ACC-AC-150 (by the extraction's attribution)",
+     "field": "instruments[S1-IN002]"
+    },
+    {
+     "role": "trigger",
+     "id": "S1-IN003",
+     "tag": "LIT-25094B",
+     "text": "instrument LIT-25094B (asset S1-IN003) on sheet 1 at ACC-AC-150 (by the extraction's attribution)",
+     "field": "instruments[S1-IN003]"
+    },
+    {
+     "role": "trigger",
+     "id": "S1-IN008",
+     "tag": "LIT-25094A",
+     "text": "instrument LIT-25094A (asset S1-IN008) on sheet 1 at TURBINE-EXHAUST-DUCT (by the extraction's attribution)",
+     "field": "instruments[S1-IN008]"
+    },
+    {
+     "role": "trigger",
+     "id": "S1-IN009",
+     "tag": "LIT-25094B",
+     "text": "instrument LIT-25094B (asset S1-IN009) on sheet 1 at TURBINE-EXHAUST-DUCT (by the extraction's attribution)",
+     "field": "instruments[S1-IN009]"
+    },
+    {
+     "role": "trigger",
+     "id": "S2-IN001",
+     "tag": "TE-16096B",
+     "text": "instrument TE-16096B (asset S2-IN001) on sheet 2 at CND-TK-160 (by the extraction's attribution)",
+     "field": "instruments[S2-IN001]"
+    },
+    {
+     "role": "trigger",
+     "id": "S2-IN002",
+     "tag": "TE-16096A",
+     "text": "instrument TE-16096A (asset S2-IN002) on sheet 2 at CND-TK-160 (by the extraction's attribution)",
+     "field": "instruments[S2-IN002]"
+    },
+    {
+     "role": "trigger",
+     "id": "S2-IN005",
+     "tag": "PIT-16095",
+     "text": "instrument PIT-16095 (asset S2-IN005) on sheet 2 at CND-TK-160 (by the extraction's attribution)",
+     "field": "instruments[S2-IN005]"
+    },
+    {
+     "role": "trigger",
+     "id": "S2-IN007",
+     "tag": "LIT-16097A",
+     "text": "instrument LIT-16097A (asset S2-IN007) on sheet 2 at CND-TK-160 (by the extraction's attribution)",
+     "field": "instruments[S2-IN007]"
+    },
+    {
+     "role": "trigger",
+     "id": "S2-IN008",
+     "tag": "LIT-16097B",
+     "text": "instrument LIT-16097B (asset S2-IN008) on sheet 2 at CND-TK-160 (by the extraction's attribution)",
+     "field": "instruments[S2-IN008]"
+    },
+    {
+     "role": "trigger",
+     "id": "S2-IN009",
+     "tag": "LIT-16098A",
+     "text": "instrument LIT-16098A (asset S2-IN009) on sheet 2 at CND-TK-160 (by the extraction's attribution)",
+     "field": "instruments[S2-IN009]"
+    },
+    {
+     "role": "trigger",
+     "id": "S2-IN010",
+     "tag": "LIT-16098B",
+     "text": "instrument LIT-16098B (asset S2-IN010) on sheet 2 at CND-TK-160 (by the extraction's attribution)",
+     "field": "instruments[S2-IN010]"
+    },
+    {
+     "role": "trigger",
+     "id": "S2-IN014",
+     "tag": "LIT-161103",
+     "text": "instrument LIT-161103 (asset S2-IN014) on sheet 2",
+     "field": "instruments[S2-IN014]"
+    },
+    {
+     "role": "trigger",
+     "id": "S2-IN015",
+     "tag": "FIT-16299",
+     "text": "instrument FIT-16299 (asset S2-IN015) on sheet 2 at CND-PU-162 (by the extraction's attribution)",
+     "field": "instruments[S2-IN015]"
+    },
+    {
+     "role": "trigger",
+     "id": "S2-IN016",
+     "tag": "TE-162109B",
+     "text": "instrument TE-162109B (asset S2-IN016) on sheet 2 at CND-PU-162 (by the extraction's attribution)",
+     "field": "instruments[S2-IN016]"
+    },
+    {
+     "role": "trigger",
+     "id": "S2-IN017",
+     "tag": "TE-162109A",
+     "text": "instrument TE-162109A (asset S2-IN017) on sheet 2 at CND-PU-162 (by the extraction's attribution)",
+     "field": "instruments[S2-IN017]"
+    },
+    {
+     "role": "trigger",
+     "id": "S2-IN018",
+     "tag": "FO-1621",
+     "text": "instrument FO-1621 (asset S2-IN018) on sheet 2 at CND-PU-162 (by the extraction's attribution)",
+     "field": "instruments[S2-IN018]"
+    },
+    {
+     "role": "trigger",
+     "id": "S2-IN019",
+     "tag": "FT-XXX",
+     "text": "instrument FT-XXX (asset S2-IN019) [placeholder tag on the drawing] on sheet 2 at CND-PU-162 (by the extraction's attribution)",
+     "field": "instruments[S2-IN019]"
+    },
+    {
+     "role": "trigger",
+     "id": "S2-IN020",
+     "tag": "FIT-163101",
+     "text": "instrument FIT-163101 (asset S2-IN020) on sheet 2 at CND-PU-163 (by the extraction's attribution)",
+     "field": "instruments[S2-IN020]"
+    },
+    {
+     "role": "trigger",
+     "id": "S2-IN021",
+     "tag": "FIT-164102",
+     "text": "instrument FIT-164102 (asset S2-IN021) on sheet 2 at CND-PU-164 (by the extraction's attribution)",
+     "field": "instruments[S2-IN021]"
+    },
+    {
+     "role": "trigger",
+     "id": "S2-IN023",
+     "tag": "LIT-161103",
+     "text": "instrument LIT-161103 (asset S2-IN023) on sheet 2 at CND-HTR-161 (by the extraction's attribution)",
+     "field": "instruments[S2-IN023]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN001",
+     "tag": "PIT-160104",
+     "text": "instrument PIT-160104 (asset S3-IN001) on sheet 3 at CND-HTR-160 (by the extraction's attribution)",
+     "field": "instruments[S3-IN001]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN002",
+     "tag": "TE-160105B",
+     "text": "instrument TE-160105B (asset S3-IN002) on sheet 3 at CND-HTR-160 (by the extraction's attribution)",
+     "field": "instruments[S3-IN002]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN003",
+     "tag": "TE-160105A",
+     "text": "instrument TE-160105A (asset S3-IN003) on sheet 3 at CND-HTR-160 (by the extraction's attribution)",
+     "field": "instruments[S3-IN003]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN004",
+     "tag": "TE-160106A",
+     "text": "instrument TE-160106A (asset S3-IN004) on sheet 3 at CND-HTR-160 (by the extraction's attribution)",
+     "field": "instruments[S3-IN004]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN005",
+     "tag": "TE-160106B",
+     "text": "instrument TE-160106B (asset S3-IN005) on sheet 3 at FWS-PU-170A (by the extraction's attribution)",
+     "field": "instruments[S3-IN005]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN007",
+     "tag": "PIT-165107",
+     "text": "instrument PIT-165107 (asset S3-IN007) on sheet 3 at CND-TK-165 (by the extraction's attribution)",
+     "field": "instruments[S3-IN007]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN008",
+     "tag": "LIT-165108A",
+     "text": "instrument LIT-165108A (asset S3-IN008) on sheet 3",
+     "field": "instruments[S3-IN008]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN009",
+     "tag": "LIT-165108B",
+     "text": "instrument LIT-165108B (asset S3-IN009) on sheet 3 at FWS-PU-170A (by the extraction's attribution)",
+     "field": "instruments[S3-IN009]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN010",
+     "tag": "LIT-165109A",
+     "text": "instrument LIT-165109A (asset S3-IN010) on sheet 3",
+     "field": "instruments[S3-IN010]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN011",
+     "tag": "LIT-165109B",
+     "text": "instrument LIT-165109B (asset S3-IN011) on sheet 3",
+     "field": "instruments[S3-IN011]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN012",
+     "tag": "TE-165110A",
+     "text": "instrument TE-165110A (asset S3-IN012) on sheet 3 at CND-TK-165 (by the extraction's attribution)",
+     "field": "instruments[S3-IN012]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN013",
+     "tag": "TE-165110B",
+     "text": "instrument TE-165110B (asset S3-IN013) on sheet 3 at CND-TK-165 (by the extraction's attribution)",
+     "field": "instruments[S3-IN013]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN014",
+     "tag": "PIT-165112",
+     "text": "instrument PIT-165112 (asset S3-IN014) on sheet 3 at FWS-PU-170A (by the extraction's attribution)",
+     "field": "instruments[S3-IN014]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN015",
+     "tag": "PIT-170115",
+     "text": "instrument PIT-170115 (asset S3-IN015) on sheet 3 at FWS-PU-170A (by the extraction's attribution)",
+     "field": "instruments[S3-IN015]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN018",
+     "tag": "PIT-170116",
+     "text": "instrument PIT-170116 (asset S3-IN018) on sheet 3 at FWS-HTR-170 (by the extraction's attribution)",
+     "field": "instruments[S3-IN018]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN020",
+     "tag": "PIT-170118",
+     "text": "instrument PIT-170118 (asset S3-IN020) on sheet 3 at FWS-HTR-170 (by the extraction's attribution)",
+     "field": "instruments[S3-IN020]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN021",
+     "tag": "TE-170117A",
+     "text": "instrument TE-170117A (asset S3-IN021) on sheet 3 at FWS-HTR-170 (by the extraction's attribution)",
+     "field": "instruments[S3-IN021]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN022",
+     "tag": "TE-170117B",
+     "text": "instrument TE-170117B (asset S3-IN022) on sheet 3 at FWS-HTR-170 (by the extraction's attribution)",
+     "field": "instruments[S3-IN022]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN024",
+     "tag": "PIT-165111",
+     "text": "instrument PIT-165111 (asset S3-IN024) on sheet 3 at FWS-PU-170B (by the extraction's attribution)",
+     "field": "instruments[S3-IN024]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN025",
+     "tag": "PIT-170113",
+     "text": "instrument PIT-170113 (asset S3-IN025) on sheet 3 at FWS-PU-170B (by the extraction's attribution)",
+     "field": "instruments[S3-IN025]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN027",
+     "tag": "TE-170135A",
+     "text": "instrument TE-170135A (asset S3-IN027) on sheet 3 at FWS-PU-170A (by the extraction's attribution)",
+     "field": "instruments[S3-IN027]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN028",
+     "tag": "TE-170135B",
+     "text": "instrument TE-170135B (asset S3-IN028) on sheet 3 at FWS-PU-170A (by the extraction's attribution)",
+     "field": "instruments[S3-IN028]"
+    },
+    {
+     "role": "trigger",
+     "id": "S3-IN031",
+     "tag": "PIT-170114",
+     "text": "instrument PIT-170114 (asset S3-IN031) on sheet 3 at FWS-HTR-170 (by the extraction's attribution)",
+     "field": "instruments[S3-IN031]"
+    },
+    {
+     "role": "trigger",
+     "id": "S4-IN002",
+     "tag": "TE-180137A",
+     "text": "instrument TE-180137A (asset S4-IN002) on sheet 4 at ESS-HTR-180 (by the extraction's attribution)",
+     "field": "instruments[S4-IN002]"
+    },
+    {
+     "role": "trigger",
+     "id": "S4-IN003",
+     "tag": "TE-180137B",
+     "text": "instrument TE-180137B (asset S4-IN003) on sheet 4 at ESS-HTR-180 (by the extraction's attribution)",
+     "field": "instruments[S4-IN003]"
+    },
+    {
+     "role": "trigger",
+     "id": "S4-IN004",
+     "tag": "PIT-180138A",
+     "text": "instrument PIT-180138A (asset S4-IN004) on sheet 4 at ESS-HTR-180 (by the extraction's attribution)",
+     "field": "instruments[S4-IN004]"
+    },
+    {
+     "role": "trigger",
+     "id": "S4-IN005",
+     "tag": "PIT-180138B",
+     "text": "instrument PIT-180138B (asset S4-IN005) on sheet 4 at ESS-HTR-180 (by the extraction's attribution)",
+     "field": "instruments[S4-IN005]"
+    },
+    {
+     "role": "trigger",
+     "id": "S4-IN008",
+     "tag": "FO-1661",
+     "text": "instrument FO-1661 (asset S4-IN008) on sheet 4 at CND-HTR-166 (by the extraction's attribution)",
+     "field": "instruments[S4-IN008]"
+    },
+    {
+     "role": "trigger",
+     "id": "S4-IN009",
+     "tag": "FO-1662",
+     "text": "instrument FO-1662 (asset S4-IN009) on sheet 4 at CND-HTR-166 (by the extraction's attribution)",
+     "field": "instruments[S4-IN009]"
+    },
+    {
+     "role": "trigger",
+     "id": "S4-IN018",
+     "tag": "TE-250136B",
+     "text": "instrument TE-250136B (asset S4-IN018) on sheet 4 at CND-HTR-166 (by the extraction's attribution)",
+     "field": "instruments[S4-IN018]"
+    },
+    {
+     "role": "trigger",
+     "id": "S4-IN019",
+     "tag": "TE-250136A",
+     "text": "instrument TE-250136A (asset S4-IN019) on sheet 4 at CND-HTR-166 (by the extraction's attribution)",
+     "field": "instruments[S4-IN019]"
+    },
+    {
+     "role": "trigger",
+     "id": "S4-IN020",
+     "tag": "PT-250135A",
+     "text": "instrument PT-250135A (asset S4-IN020) on sheet 4 at CND-HTR-166 (by the extraction's attribution)",
+     "field": "instruments[S4-IN020]"
+    },
+    {
+     "role": "trigger",
+     "id": "S4-IN021",
+     "tag": "PT-250135B",
+     "text": "instrument PT-250135B (asset S4-IN021) on sheet 4 at CND-HTR-166 (by the extraction's attribution)",
+     "field": "instruments[S4-IN021]"
+    },
+    {
+     "role": "trigger",
+     "id": "S4-IN022",
+     "tag": "PIT-250142",
+     "text": "instrument PIT-250142 (asset S4-IN022) on sheet 4",
+     "field": "instruments[S4-IN022]"
+    },
+    {
+     "role": "trigger",
+     "id": "S4-IN023",
+     "tag": "PI-250141",
+     "text": "instrument PI-250141 (asset S4-IN023) on sheet 4",
+     "field": "instruments[S4-IN023]"
+    },
+    {
+     "role": "trigger",
+     "id": "S4-IN024",
+     "tag": "PT-250139A",
+     "text": "instrument PT-250139A (asset S4-IN024) on sheet 4",
+     "field": "instruments[S4-IN024]"
+    },
+    {
+     "role": "trigger",
+     "id": "S4-IN025",
+     "tag": "PT-250139B",
+     "text": "instrument PT-250139B (asset S4-IN025) on sheet 4",
+     "field": "instruments[S4-IN025]"
+    },
+    {
+     "role": "trigger",
+     "id": "S4-IN026",
+     "tag": "TE-250140A",
+     "text": "instrument TE-250140A (asset S4-IN026) on sheet 4",
+     "field": "instruments[S4-IN026]"
+    },
+    {
+     "role": "trigger",
+     "id": "S4-IN027",
+     "tag": "TE-250140B",
+     "text": "instrument TE-250140B (asset S4-IN027) on sheet 4",
+     "field": "instruments[S4-IN027]"
+    },
+    {
+     "role": "trigger",
+     "id": "S4-IN028",
+     "tag": "TE-161143B",
+     "text": "instrument TE-161143B (asset S4-IN028) on sheet 4",
+     "field": "instruments[S4-IN028]"
+    },
+    {
+     "role": "trigger",
+     "id": "S4-IN029",
+     "tag": "TE-161143A",
+     "text": "instrument TE-161143A (asset S4-IN029) on sheet 4 at FWS-HTR-161 (by the extraction's attribution)",
+     "field": "instruments[S4-IN029]"
+    },
+    {
+     "role": "trigger",
+     "id": "S4-IN030",
+     "tag": "LIT-161144A",
+     "text": "instrument LIT-161144A (asset S4-IN030) on sheet 4 at CND-HTR-166 (by the extraction's attribution)",
+     "field": "instruments[S4-IN030]"
+    },
+    {
+     "role": "trigger",
+     "id": "S4-IN031",
+     "tag": "LIT-161144B",
+     "text": "instrument LIT-161144B (asset S4-IN031) on sheet 4 at FWS-HTR-161 (by the extraction's attribution)",
+     "field": "instruments[S4-IN031]"
+    },
+    {
+     "role": "trigger",
+     "id": "S4-IN032",
+     "tag": "LVC-16115",
+     "text": "instrument LVC-16115 (asset S4-IN032) on sheet 4 at CND-HTR-166 (by the extraction's attribution)",
+     "field": "instruments[S4-IN032]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN002",
+     "tag": "LG-212204",
+     "text": "instrument LG-212204 (asset S7-IN002) on sheet 7 at ACW-TK-212 (by the extraction's attribution)",
+     "field": "instruments[S7-IN002]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN003",
+     "tag": "LIT-212205",
+     "text": "instrument LIT-212205 (asset S7-IN003) on sheet 7 at ACW-TK-212 (by the extraction's attribution)",
+     "field": "instruments[S7-IN003]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN004",
+     "tag": "LIT-212206",
+     "text": "instrument LIT-212206 (asset S7-IN004) on sheet 7 at ACW-TK-212 (by the extraction's attribution)",
+     "field": "instruments[S7-IN004]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN005",
+     "tag": "TE-210207A",
+     "text": "instrument TE-210207A (asset S7-IN005) on sheet 7 at ACW-AXC-210 (by the extraction's attribution)",
+     "field": "instruments[S7-IN005]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN006",
+     "tag": "TE-210207B",
+     "text": "instrument TE-210207B (asset S7-IN006) on sheet 7 at ACW-AXC-210 (by the extraction's attribution)",
+     "field": "instruments[S7-IN006]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN007",
+     "tag": "TE-170215A",
+     "text": "instrument TE-170215A (asset S7-IN007) on sheet 7 at ACW-AXC-210 (by the extraction's attribution)",
+     "field": "instruments[S7-IN007]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN008",
+     "tag": "TE-170215B",
+     "text": "instrument TE-170215B (asset S7-IN008) on sheet 7 at LUBE-OIL-COOLER (by the extraction's attribution)",
+     "field": "instruments[S7-IN008]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN011",
+     "tag": "TE-170213B",
+     "text": "instrument TE-170213B (asset S7-IN011) on sheet 7 at LUBE-OIL-COOLER (by the extraction's attribution)",
+     "field": "instruments[S7-IN011]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN012",
+     "tag": "TE-170213A",
+     "text": "instrument TE-170213A (asset S7-IN012) on sheet 7 at LUBE-OIL-COOLER (by the extraction's attribution)",
+     "field": "instruments[S7-IN012]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN013",
+     "tag": "PIT-210208",
+     "text": "instrument PIT-210208 (asset S7-IN013) on sheet 7 at ACW-PU-211A (by the extraction's attribution)",
+     "field": "instruments[S7-IN013]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN014",
+     "tag": "PIT-210208",
+     "text": "instrument PIT-210208 (asset S7-IN014) on sheet 7 at ACW-PU-211B (by the extraction's attribution)",
+     "field": "instruments[S7-IN014]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN015",
+     "tag": "PIT-210209",
+     "text": "instrument PIT-210209 (asset S7-IN015) on sheet 7 at ACW-PU-211C (by the extraction's attribution)",
+     "field": "instruments[S7-IN015]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN016",
+     "tag": "PIT-211210",
+     "text": "instrument PIT-211210 (asset S7-IN016) on sheet 7 at ACW-PU-211A (by the extraction's attribution)",
+     "field": "instruments[S7-IN016]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN017",
+     "tag": "PIT-211210",
+     "text": "instrument PIT-211210 (asset S7-IN017) on sheet 7 at ACW-PU-211B (by the extraction's attribution)",
+     "field": "instruments[S7-IN017]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN018",
+     "tag": "PIT-211211",
+     "text": "instrument PIT-211211 (asset S7-IN018) on sheet 7 at ACW-PU-211C (by the extraction's attribution)",
+     "field": "instruments[S7-IN018]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN019",
+     "tag": "TE-211212A",
+     "text": "instrument TE-211212A (asset S7-IN019) on sheet 7 at FWS-PU-170B (by the extraction's attribution)",
+     "field": "instruments[S7-IN019]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN020",
+     "tag": "TE-211212B",
+     "text": "instrument TE-211212B (asset S7-IN020) on sheet 7 at FWS-PU-170B (by the extraction's attribution)",
+     "field": "instruments[S7-IN020]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN021",
+     "tag": "FO-XXX",
+     "text": "instrument FO-XXX (asset S7-IN021) [placeholder tag on the drawing] on sheet 7 at FWS-PU-170B (by the extraction's attribution)",
+     "field": "instruments[S7-IN021]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN022",
+     "tag": "FT-XXX",
+     "text": "instrument FT-XXX (asset S7-IN022) [placeholder tag on the drawing] on sheet 7 at FWS-PU-170B (by the extraction's attribution)",
+     "field": "instruments[S7-IN022]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN023",
+     "tag": "PIT-211212",
+     "text": "instrument PIT-211212 (asset S7-IN023) on sheet 7 at FWS-PU-170B (by the extraction's attribution)",
+     "field": "instruments[S7-IN023]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN025",
+     "tag": "TE-170214A",
+     "text": "instrument TE-170214A (asset S7-IN025) on sheet 7 at FWS-PU-170B (by the extraction's attribution)",
+     "field": "instruments[S7-IN025]"
+    },
+    {
+     "role": "trigger",
+     "id": "S7-IN026",
+     "tag": "TE-170214B",
+     "text": "instrument TE-170214B (asset S7-IN026) on sheet 7 at FWS-PU-170B (by the extraction's attribution)",
+     "field": "instruments[S7-IN026]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Whether operators adjust anything by hand from these readings",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing exact measurement/source identity and quantity, actual indication/control/alarm/protection/recording purpose, normal and abnormal decisions, operator logs/round sheets and current availability/quality/coverage; retain per-subject association and source/revision.",
+      "a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
+     ],
+     "how": "Frequent manual adjustment can justify a control investigation, not automatic automation. A reading with no routine manual action may have a legitimate abnormal/alarm/protection/indication purpose; do not close it solely because nobody regularly acts. Acknowledge suitable existing purpose, manual or automatic operation, and record unresolved function/source suitability. No operator trial, live change or benefit is inferred.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
+    },
+    {
+     "item": "The control system's own loop list",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing current loop/point list, cause/effect, alarm/sequence/configuration and represented reader/interlock/source records; preserve exact endpoints and identify missing model coverage before concluding indication-only.",
+      "DCS/PLC configuration: Review a permitted current loop/point/configuration export, if available, as an existing source rather than a complete plant-truth inventory.",
+      "a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
+     ],
+     "how": "A controller or interlock reference is useful supplied evidence, not proof of complete current logic, correct process meaning, safety adequacy or measurement authority. A partial model without controllers can still prompt existing-record clarification; it does not prove no installed controls or require a fabricated loop list. S19 printed30 is broad monitoring/process-control guidance, not a per-reading automation acceptance test.",
+     "candidate_scope": "anchors",
+     "candidate_facts": []
+    }
+   ],
+   "decision_rule": "Review measurement purpose and actual normal/abnormal decisions, represented readers and source/logic coverage with the responsible specialist. Neither a missing model controller nor a represented reader settles installed control completeness or the need for automation. Suitable existing use or nonapplicability can be acknowledged; unresolved records remain explicit. No automatic upgrade, safety acceptance or source-reported saving is assigned.",
+   "typical_benefit": {
+    "wording": "\"energy and cost savings are around 5% or more for many industrial applications of process control systems\" (for plants without updated controls). Process control: \"Typically 2-18% savings.\" The source says these figures \"cannot be added\".",
+    "source": [
+     "S19"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)"
+    ]
+   },
+   "limits": "Source review: S19 originalLBNL56183 official mirror printed30/PDF38, monitoring/process-control section and historical nonadditive table. This supports a bounded records investigation, not an automation decision, current control-system completeness or a measurement's safety/function truth. Six existing variable classes retained; other instrument classes remain outside this selector. Generic historical savings are not this plant's benefit.",
+   "status": "asked",
+   "mapping_descriptions": [
+    {
+     "asset_id": "S0-IN004",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "TE_14084A"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 2"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       2,
+       2
+      ],
+      "logical_row": 2
+     },
+     "description": "synthetic demo point",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    },
+    {
+     "asset_id": "S0-IN005",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "TE_14084B"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 3"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       3,
+       3
+      ],
+      "logical_row": 3
+     },
+     "description": "synthetic demo point",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    },
+    {
+     "asset_id": "S0-IN007",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "PT_14085"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 14"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       14,
+       14
+      ],
+      "logical_row": 14
+     },
+     "description": "synthetic demo point",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    },
+    {
+     "asset_id": "S0-IN008",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "PT_14086"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 15"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       15,
+       15
+      ],
+      "logical_row": 15
+     },
+     "description": "synthetic demo point",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    },
+    {
+     "asset_id": "S0-IN009",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "PT_14087"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 16"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       16,
+       16
+      ],
+      "logical_row": 16
+     },
+     "description": "synthetic demo point",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    },
+    {
+     "asset_id": "S0-IN010",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "PT_14088"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 17"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       17,
+       17
+      ],
+      "logical_row": 17
+     },
+     "description": "synthetic demo point",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    },
+    {
+     "asset_id": "S0-IN011",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "TE_14089A"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 4"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       4,
+       4
+      ],
+      "logical_row": 4
+     },
+     "description": "synthetic demo point",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    },
+    {
+     "asset_id": "S0-IN012",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "TE_14089B"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 5"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       5,
+       5
+      ],
+      "logical_row": 5
+     },
+     "description": "synthetic demo point",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    },
+    {
+     "asset_id": "S0-IN022",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "TE_14090A"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 6"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       6,
+       6
+      ],
+      "logical_row": 6
+     },
+     "description": "synthetic demo point",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    },
+    {
+     "asset_id": "S0-IN023",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "TE_14090B"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 7"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       7,
+       7
+      ],
+      "logical_row": 7
+     },
+     "description": "synthetic demo point",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    },
+    {
+     "asset_id": "S0-IN025",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "TE_14091A"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 8"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       8,
+       8
+      ],
+      "logical_row": 8
+     },
+     "description": "synthetic demo point",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    },
+    {
+     "asset_id": "S0-IN026",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "TE_14091B"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 9"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       9,
+       9
+      ],
+      "logical_row": 9
+     },
+     "description": "synthetic demo point",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    },
+    {
+     "asset_id": "S0-IN029",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "TE_14092A"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 10"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       10,
+       10
+      ],
+      "logical_row": 10
+     },
+     "description": "synthetic demo point",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    },
+    {
+     "asset_id": "S0-IN030",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "TE_14092B"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 11"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       11,
+       11
+      ],
+      "logical_row": 11
+     },
+     "description": "synthetic demo point",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    },
+    {
+     "asset_id": "S0-IN032",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "TE_14093B"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 13"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       13,
+       13
+      ],
+      "logical_row": 13
+     },
+     "description": "synthetic demo point",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    },
+    {
+     "asset_id": "S0-IN033",
+     "status": "unverified_legacy",
+     "mapping": {
+      "server": "OPEN100-Demo",
+      "base_path": "nsu=urn:pid-digital-twin:open100-demo;s=PLANT",
+      "point": "TE_14093A"
+     },
+     "mapping_source": {
+      "source": "open100_sheet0_demo.csv row 12"
+     },
+     "selected_source": {
+      "file": "open100_sheet0_demo.csv",
+      "sha256": "8cf3457547537d7113cc52f6c5ef44b70d668d08295afc7bca7cec95a6aec857",
+      "bytes": 3108,
+      "source_lines": [
+       12,
+       12
+      ],
+      "logical_row": 12
+     },
+     "description": "synthetic demo point",
+     "reason": "selected legacy row and address only; historical source identity unverified"
+    }
+   ]
   },
   {
    "id": "C3@model",
@@ -3787,10 +5749,6 @@
  ],
  "not_checked": [
   {
-   "question_id": "C2",
-   "reason": "the model holds no controllers; give a loop list with --loops (controller,measurement,output) to check this"
-  },
-  {
    "question_id": "C6",
    "reason": "the model holds no controllers; give a loop list with --loops to check this"
   }
@@ -3807,10 +5765,7 @@
   "E11",
   "E12",
   "E13",
-  "E14",
-  "E15",
   "E16",
-  "E17",
   "E18",
   "E19",
   "E20",

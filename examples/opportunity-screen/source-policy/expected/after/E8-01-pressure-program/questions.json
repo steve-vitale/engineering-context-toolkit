@@ -1,0 +1,733 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/models/E8-01-pressure-program.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E8"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "energy": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E8@model",
+   "question_id": "E8",
+   "family": "energy",
+   "question": "What do existing records establish about the represented trap candidates' steam service, inventory coverage and current inspection program?",
+   "about": "TR-A, TR-B",
+   "assets": [
+    {
+     "id": "TR-A",
+     "tag": "TR-A"
+    },
+    {
+     "id": "TR-B",
+     "tag": "TR-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "TR-A",
+     "tag": "TR-A",
+     "text": "equipment TR-A reads \"TR-A Steam trap smallpopulation\"",
+     "field": "units[TR-A]"
+    },
+    {
+     "role": "trigger",
+     "id": "TR-B",
+     "tag": "TR-B",
+     "text": "equipment TR-B reads \"TR-B Steam trap largepopulation\"",
+     "field": "units[TR-B]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-A",
+     "tag": "TR-A",
+     "text": "TR-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[TR-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-A",
+     "tag": "TR-A",
+     "text": "TR-A record_source = \"Fictional development packet; no plant or human approval\"; present; meaning and suitability unverified",
+     "field": "units[TR-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-A",
+     "tag": "TR-A",
+     "text": "TR-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[TR-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-A",
+     "tag": "TR-A",
+     "text": "TR-A record_available = true; present; meaning and suitability unverified",
+     "field": "units[TR-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-A",
+     "tag": "TR-A",
+     "text": "TR-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[TR-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-A",
+     "tag": "TR-A",
+     "text": "TR-A steam_service = true; present; meaning and suitability unverified",
+     "field": "units[TR-A].facts.steam_service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-A",
+     "tag": "TR-A",
+     "text": "TR-A represented_population = 20; present; meaning and suitability unverified",
+     "field": "units[TR-A].facts.represented_population"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-A",
+     "tag": "TR-A",
+     "text": "TR-A pressure = 200; present; meaning and suitability unverified",
+     "field": "units[TR-A].facts.pressure"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-A",
+     "tag": "TR-A",
+     "text": "TR-A pressure_unit = \"psig\"; present; meaning and suitability unverified",
+     "field": "units[TR-A].facts.pressure_unit"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-A",
+     "tag": "TR-A",
+     "text": "TR-A last_survey = \"fictional lastmonth\"; present; meaning and suitability unverified",
+     "field": "units[TR-A].facts.last_survey"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-A",
+     "tag": "TR-A",
+     "text": "TR-A survey_scope = \"oneunitonly\"; present; meaning and suitability unverified",
+     "field": "units[TR-A].facts.survey_scope"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-A",
+     "tag": "TR-A",
+     "text": "TR-A condition = \"unknown\"; blank; meaning and suitability unverified",
+     "field": "units[TR-A].facts.condition"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-B",
+     "tag": "TR-B",
+     "text": "TR-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[TR-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-B",
+     "tag": "TR-B",
+     "text": "TR-B record_source = \"Fictional development packet; no plant or human approval\"; present; meaning and suitability unverified",
+     "field": "units[TR-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-B",
+     "tag": "TR-B",
+     "text": "TR-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[TR-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-B",
+     "tag": "TR-B",
+     "text": "TR-B record_available = true; present; meaning and suitability unverified",
+     "field": "units[TR-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-B",
+     "tag": "TR-B",
+     "text": "TR-B record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[TR-B].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-B",
+     "tag": "TR-B",
+     "text": "TR-B steam_service = true; present; meaning and suitability unverified",
+     "field": "units[TR-B].facts.steam_service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-B",
+     "tag": "TR-B",
+     "text": "TR-B represented_population = 1000; present; meaning and suitability unverified",
+     "field": "units[TR-B].facts.represented_population"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-B",
+     "tag": "TR-B",
+     "text": "TR-B pressure = 15; present; meaning and suitability unverified",
+     "field": "units[TR-B].facts.pressure"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-B",
+     "tag": "TR-B",
+     "text": "TR-B pressure_unit = \"psig\"; present; meaning and suitability unverified",
+     "field": "units[TR-B].facts.pressure_unit"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TR-B",
+     "tag": "TR-B",
+     "text": "TR-B last_survey = null; blank; meaning and suitability unverified",
+     "field": "units[TR-B].facts.last_survey"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A fictional_record = True",
+     "field": "units[TR-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-B fictional_record = True",
+     "field": "units[TR-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A record_source = Fictional development packet; no plant or human approval",
+     "field": "units[TR-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-B record_source = Fictional development packet; no plant or human approval",
+     "field": "units[TR-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A record_revision = R1",
+     "field": "units[TR-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-B record_revision = R1",
+     "field": "units[TR-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A record_available = True",
+     "field": "units[TR-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-B record_available = True",
+     "field": "units[TR-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A record_authority = unverified",
+     "field": "units[TR-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-B record_authority = unverified",
+     "field": "units[TR-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A steam_service = True",
+     "field": "units[TR-A].facts.steam_service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-B steam_service = True",
+     "field": "units[TR-B].facts.steam_service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A represented_population = 20",
+     "field": "units[TR-A].facts.represented_population"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-B represented_population = 1000",
+     "field": "units[TR-B].facts.represented_population"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A pressure = 200",
+     "field": "units[TR-A].facts.pressure"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-B pressure = 15",
+     "field": "units[TR-B].facts.pressure"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A pressure_unit = psig",
+     "field": "units[TR-A].facts.pressure_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-B pressure_unit = psig",
+     "field": "units[TR-B].facts.pressure_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A last_survey = fictional lastmonth",
+     "field": "units[TR-A].facts.last_survey"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A survey_scope = oneunitonly",
+     "field": "units[TR-A].facts.survey_scope"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A fictional_record = True",
+     "field": "units[TR-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-B fictional_record = True",
+     "field": "units[TR-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A record_source = Fictional development packet; no plant or human approval",
+     "field": "units[TR-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-B record_source = Fictional development packet; no plant or human approval",
+     "field": "units[TR-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A record_revision = R1",
+     "field": "units[TR-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-B record_revision = R1",
+     "field": "units[TR-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A record_available = True",
+     "field": "units[TR-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-B record_available = True",
+     "field": "units[TR-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A record_authority = unverified",
+     "field": "units[TR-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-B record_authority = unverified",
+     "field": "units[TR-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A steam_service = True",
+     "field": "units[TR-A].facts.steam_service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-B steam_service = True",
+     "field": "units[TR-B].facts.steam_service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A represented_population = 20",
+     "field": "units[TR-A].facts.represented_population"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-B represented_population = 1000",
+     "field": "units[TR-B].facts.represented_population"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A pressure = 200",
+     "field": "units[TR-A].facts.pressure"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-B pressure = 15",
+     "field": "units[TR-B].facts.pressure"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A pressure_unit = psig",
+     "field": "units[TR-A].facts.pressure_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-B pressure_unit = psig",
+     "field": "units[TR-B].facts.pressure_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A last_survey = fictional lastmonth",
+     "field": "units[TR-A].facts.last_survey"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TR-A survey_scope = oneunitonly",
+     "field": "units[TR-A].facts.survey_scope"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing steam-trap identity, service and inventory/program coverage",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing named trap/service inventory, represented versus actual population, pressure ranges, inspection/maintenance dates and coverage; retain each source/revision, availability and authority limits.",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
+     ],
+     "how": "Establish steam-trap service before applying steam guidance; known grease/oil/sand/air traps are not steam traps, and ambiguous TRAP/ST labels need conditional service review. The source500-trap and3–5year loss examples are not universal program thresholds or actual population/failure estimates. Its pressure-dependent intervals are source guidance to review in context, not automatic site schedules.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[TR-A].facts.fictional_record"
+      },
+      {
+       "id": "TR-B",
+       "label": "TR-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[TR-B].facts.fictional_record"
+      },
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "record_source",
+       "value": "Fictional development packet; no plant or human approval",
+       "where": "units[TR-A].facts.record_source"
+      },
+      {
+       "id": "TR-B",
+       "label": "TR-B",
+       "name": "record_source",
+       "value": "Fictional development packet; no plant or human approval",
+       "where": "units[TR-B].facts.record_source"
+      },
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[TR-A].facts.record_revision"
+      },
+      {
+       "id": "TR-B",
+       "label": "TR-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[TR-B].facts.record_revision"
+      },
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "record_available",
+       "value": true,
+       "where": "units[TR-A].facts.record_available"
+      },
+      {
+       "id": "TR-B",
+       "label": "TR-B",
+       "name": "record_available",
+       "value": true,
+       "where": "units[TR-B].facts.record_available"
+      },
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[TR-A].facts.record_authority"
+      },
+      {
+       "id": "TR-B",
+       "label": "TR-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[TR-B].facts.record_authority"
+      },
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "steam_service",
+       "value": true,
+       "where": "units[TR-A].facts.steam_service"
+      },
+      {
+       "id": "TR-B",
+       "label": "TR-B",
+       "name": "steam_service",
+       "value": true,
+       "where": "units[TR-B].facts.steam_service"
+      },
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "represented_population",
+       "value": 20,
+       "where": "units[TR-A].facts.represented_population"
+      },
+      {
+       "id": "TR-B",
+       "label": "TR-B",
+       "name": "represented_population",
+       "value": 1000,
+       "where": "units[TR-B].facts.represented_population"
+      },
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "pressure",
+       "value": 200,
+       "where": "units[TR-A].facts.pressure"
+      },
+      {
+       "id": "TR-B",
+       "label": "TR-B",
+       "name": "pressure",
+       "value": 15,
+       "where": "units[TR-B].facts.pressure"
+      },
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "pressure_unit",
+       "value": "psig",
+       "where": "units[TR-A].facts.pressure_unit"
+      },
+      {
+       "id": "TR-B",
+       "label": "TR-B",
+       "name": "pressure_unit",
+       "value": "psig",
+       "where": "units[TR-B].facts.pressure_unit"
+      },
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "last_survey",
+       "value": "fictional lastmonth",
+       "where": "units[TR-A].facts.last_survey"
+      },
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "survey_scope",
+       "value": "oneunitonly",
+       "where": "units[TR-A].facts.survey_scope"
+      }
+     ]
+    },
+    {
+     "item": "Existing qualified inspection results and remaining uncertainty",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing per-trap testing methods, service/pressure and operating conditions, observed condition with uncertainty, repair/retest/report history and unresolved coverage.",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
+     ],
+     "how": "Review suitable existing records before any new field survey. Temperature, sound, visual or electronic indications require service/method interpretation and do not turn a symbol into failed-open/closed truth. Preserve unknown or foreign results for each candidate; one survey cannot clear another source/population. A suitable current program may be acknowledged without a new measurement or blanket retrofit.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[TR-A].facts.fictional_record"
+      },
+      {
+       "id": "TR-B",
+       "label": "TR-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[TR-B].facts.fictional_record"
+      },
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "record_source",
+       "value": "Fictional development packet; no plant or human approval",
+       "where": "units[TR-A].facts.record_source"
+      },
+      {
+       "id": "TR-B",
+       "label": "TR-B",
+       "name": "record_source",
+       "value": "Fictional development packet; no plant or human approval",
+       "where": "units[TR-B].facts.record_source"
+      },
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[TR-A].facts.record_revision"
+      },
+      {
+       "id": "TR-B",
+       "label": "TR-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[TR-B].facts.record_revision"
+      },
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "record_available",
+       "value": true,
+       "where": "units[TR-A].facts.record_available"
+      },
+      {
+       "id": "TR-B",
+       "label": "TR-B",
+       "name": "record_available",
+       "value": true,
+       "where": "units[TR-B].facts.record_available"
+      },
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[TR-A].facts.record_authority"
+      },
+      {
+       "id": "TR-B",
+       "label": "TR-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[TR-B].facts.record_authority"
+      },
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "steam_service",
+       "value": true,
+       "where": "units[TR-A].facts.steam_service"
+      },
+      {
+       "id": "TR-B",
+       "label": "TR-B",
+       "name": "steam_service",
+       "value": true,
+       "where": "units[TR-B].facts.steam_service"
+      },
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "represented_population",
+       "value": 20,
+       "where": "units[TR-A].facts.represented_population"
+      },
+      {
+       "id": "TR-B",
+       "label": "TR-B",
+       "name": "represented_population",
+       "value": 1000,
+       "where": "units[TR-B].facts.represented_population"
+      },
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "pressure",
+       "value": 200,
+       "where": "units[TR-A].facts.pressure"
+      },
+      {
+       "id": "TR-B",
+       "label": "TR-B",
+       "name": "pressure",
+       "value": 15,
+       "where": "units[TR-B].facts.pressure"
+      },
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "pressure_unit",
+       "value": "psig",
+       "where": "units[TR-A].facts.pressure_unit"
+      },
+      {
+       "id": "TR-B",
+       "label": "TR-B",
+       "name": "pressure_unit",
+       "value": "psig",
+       "where": "units[TR-B].facts.pressure_unit"
+      },
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "last_survey",
+       "value": "fictional lastmonth",
+       "where": "units[TR-A].facts.last_survey"
+      },
+      {
+       "id": "TR-A",
+       "label": "TR-A",
+       "name": "survey_scope",
+       "value": "oneunitonly",
+       "where": "units[TR-A].facts.survey_scope"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review the applicable steam-trap service, pressure, importance and existing inspection/repair reporting coverage with the responsible engineer. No universal500-trap or3–5year cutoff establishes whether a program is worthwhile, current, complete or unnecessary, and historical source failure percentages are not this site's condition. Acknowledge suitable existing program or nonapplicability; retain missing identity, method or coverage as a records question rather than a compulsory survey or failure diagnosis.",
+   "typical_benefit": {
+    "wording": "Unmaintained 3-5 years: \"between 15% to 30% of the installed steam traps may have failed.\" With a program, \"less than 5%.\" LBNL refinery table (as reported in LBNL-56183): trap maintenance 10-15% fuel saved, 0.5 yr payback.",
+    "source": [
+     "S3",
+     "S19",
+     "S24"
+    ],
+    "arc": "2.2113 (IAC/ITAC browse page: 445 recommendations, 0.6 yr average payback, 80.1% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S3: Steam Tip #1, Inspect and Repair Steam Traps (DOE/GO-102012-3401)",
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: complete S3 pp1–2 includes systematic reporting, testing-method qualification and pressure-dependent suggested intervals. Represented count is not installed population. S19/S24 figures are inherited historical context, not reverified here or transferred to a site.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

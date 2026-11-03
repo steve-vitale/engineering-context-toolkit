@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "title": "Fictional air end-use/storage/heat and utility-metering records",
+    "unknowns": [
+      "Actual operation, installed truth and engineering/human acceptance unknown"
+    ],
+    "assumptions": [
+      "All identities, values and relationships fictional before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "C-A",
+      "name": "AIR COMPRESSOR",
+      "type": "air_compressor",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call development record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "compressedair",
+        "existing_storage": "suppliedreceiverAonly"
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    },
+    {
+      "id": "C-B",
+      "name": "AIR COMPRESSOR",
+      "type": "air_compressor",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call development record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "compressedair",
+        "existing_storage": null
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    },
+    {
+      "id": "AR-X",
+      "name": "AIR RECEIVER",
+      "type": "air_receiver",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call development record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "target_subject": "C-A only provisional",
+        "record_scope": "C-Aonly",
+        "storage_volume": 500,
+        "volume_unit": "gallons",
+        "peak_duration": null,
+        "replenishment_time": null
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "controllers": [],
+  "manual_valves": [],
+  "final_elements": [],
+  "unplaced": []
+}

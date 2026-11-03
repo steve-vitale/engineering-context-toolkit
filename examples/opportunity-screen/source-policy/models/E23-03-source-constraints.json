@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "title": "Fictional air end-use/storage/heat and utility-metering records",
+    "unknowns": [
+      "Actual operation, installed truth and engineering/human acceptance unknown"
+    ],
+    "assumptions": [
+      "All identities, values and relationships fictional before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "C-A",
+      "name": "AIR COMPRESSOR",
+      "type": "air_compressor",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call development record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": false,
+        "record_authority": "unverified",
+        "service": "compressedair",
+        "existing_recovery": "foreignrecord",
+        "record_scope": "foreignC-A",
+        "ventilation_backpressure": "unassessed",
+        "cooling_constraint": "mustretaincooling",
+        "water_quality": "unknown",
+        "displaced_energy": "unknown"
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    },
+    {
+      "id": "C-B",
+      "name": "AIR COMPRESSOR",
+      "type": "air_compressor",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call development record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": null,
+        "compressor_type": null,
+        "cooling_medium": null,
+        "heat_temperature": null
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "controllers": [],
+  "manual_valves": [],
+  "final_elements": [],
+  "unplaced": []
+}

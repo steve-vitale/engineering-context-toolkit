@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "title": "Fictional source-led thermal/recovery control",
+    "unknowns": [
+      "Physicalstate, sourceauthority and engineering suitability unproven"
+    ],
+    "assumptions": [
+      "All names/values fictional and authored before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "HC-A",
+      "name": "FLASH TANK hydrocarbon",
+      "type": "hydrocarbon_flash_tank",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "knownhydrocarbonnotboilerwater"
+      },
+      "source": "Fictional source-defined context",
+      "assigned_tag": true
+    },
+    {
+      "id": "F-B",
+      "name": "FLASH VESSEL water",
+      "type": "flash_vessel",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "steamwatercondensate",
+        "pressure": 200,
+        "pressure_unit": "designratingnotoperating",
+        "flow": 5000,
+        "flow_unit": "lb/hr",
+        "sample_period": null
+      },
+      "source": "Fictional source-defined context",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "unplaced": [],
+  "instruments": [],
+  "controllers": [],
+  "final_elements": [],
+  "manual_valves": []
+}

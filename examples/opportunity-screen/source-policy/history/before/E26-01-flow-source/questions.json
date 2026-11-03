@@ -1,0 +1,74 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/control-vent-records/models/E26-01-flow-source.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E26"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "emissions": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E26@model",
+   "question_id": "E26",
+   "family": "emissions",
+   "question": "Are relief and vent flows to the flare or atmosphere unmetered?",
+   "about": "V-B",
+   "assets": [
+    {
+     "id": "stream:V-B",
+     "tag": "V-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "stream:V-B",
+     "tag": "V-B",
+     "text": "stream V-B (asset stream:V-B) reads \"VENT HEADER TO FLARE\"",
+     "field": "streams[V-B]"
+    },
+    {
+     "role": "checked, none found",
+     "text": "no flow measurement on these streams",
+     "field": "applies_when.without"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Flare or vent flow and composition",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: ultrasonic flare-gas meter or a temporary vent flow measurement",
+      "site records: relief valve lift records"
+     ],
+     "how": "Separate continuous (background) flow from relief events."
+    }
+   ],
+   "decision_rule": "Worth metering when background flow is continuous; relief-only lines that seldom lift close the question.",
+   "typical_benefit": {
+    "wording": "Background flaring \"can be as much as 50% of all flared gases (Miles, 2001).\" In refineries it \"will generally be less than 50%.\" No recovery % stated.",
+    "source": [
+     "S19"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)"
+    ]
+   },
+   "limits": "Relief paths are safety systems; metering or recovery changes go through a hazard review.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

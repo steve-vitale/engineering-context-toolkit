@@ -61,8 +61,8 @@ No general success rate or model ranking follows from these rows. The [false-shu
 is a deliberately wrong artifact, not an alternative design. Source review must catch its invented automatic
 unloading shutdown. Structure checks, quotation matching and selected-field scores cannot do that work alone.
 
-The [question-engine screen](result/questions/screen.md) currently produces zero findings on this sparse model.
-That is a coverage limit, not a clean bill of health. A useful manual source question is: **does the recorded
+The [question-engine screen](result/questions/screen.md) asks C2 about the represented level measurement's
+purpose and source basis. It does not establish the alarm action or diagnose the incident. A useful source question is: **does the recorded
 level alarm stop unloading, or only notify operators?** The selected historical record supports notification
 only. Installed-state evidence, present-day protections, numerical settings, complete controls, responsible
 owners and accepted decisions are outside this example. Carry the question, source revision, qualification and
@@ -73,8 +73,8 @@ installed-state evidence and unassigned recipient. No company handoff has occurr
 The separate [fixed-claim label exercise](../../../benchmarks/results/source-support-development.md) includes the
 false automatic-shutdown claim and historical/current distinctions. Its twelve supplied claims across MGPI and
 NIST use explicit project paraphrases and a separately frozen agent-authored key. Results are synthetic scorer
-controls, not model trials, raw-report comprehension or a useful-question benchmark. The fact scorer and
-question-engine catalog remain unchanged.
+controls, not model trials, raw-report comprehension or a useful-question benchmark. That separate exercise changed neither the fact scorer nor
+question-engine catalog.
 
 ## Check the original source
 

@@ -1,0 +1,596 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/models/E18-03-source-hazard.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E18"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "energy": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E18@model",
+   "question_id": "E18",
+   "family": "energy",
+   "question": "What do existing records establish about these cooling/steam-labelled candidates' process-stream duties and any system-level heat-integration question?",
+   "about": "FT-A",
+   "assets": [
+    {
+     "id": "FT-A",
+     "tag": "FT-A"
+    },
+    {
+     "id": "FV-B",
+     "tag": "FV-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "instrument FT-A reads \"FT-A COOLING WATER supply candidate\" at U-A",
+     "field": "instruments[FT-A]"
+    },
+    {
+     "role": "steam-heated user",
+     "id": "FV-B",
+     "tag": "FV-B",
+     "text": "valve FV-B reads \"FV-B STEAM heating supply candidate\" at U-B",
+     "field": "final_elements[FV-B]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A record_source = \"Fictional development record; no company or human approval\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A record_available = false; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A record_scope = \"foreignhotstream\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.record_scope"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A process_role = \"coolinglabel, heatrejectionunverified\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.process_role"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A duty = null; blank; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.duty"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A duty_unit = \"notestablished\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.duty_unit"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A reactive_service = true; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.reactive_service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A hazard_review = null; blank; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.hazard_review"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A fouling = \"unknown\"; blank; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.fouling"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-B",
+     "tag": "FV-B",
+     "text": "FV-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "final_elements[FV-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-B",
+     "tag": "FV-B",
+     "text": "FV-B record_source = \"Fictional development record; no company or human approval\"; present; meaning and suitability unverified",
+     "field": "final_elements[FV-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-B",
+     "tag": "FV-B",
+     "text": "FV-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "final_elements[FV-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-B",
+     "tag": "FV-B",
+     "text": "FV-B record_available = true; present; meaning and suitability unverified",
+     "field": "final_elements[FV-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-B",
+     "tag": "FV-B",
+     "text": "FV-B record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "final_elements[FV-B].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-B",
+     "tag": "FV-B",
+     "text": "FV-B process_role = \"steamvalvecommand, notprocessduty\"; present; meaning and suitability unverified",
+     "field": "final_elements[FV-B].facts.process_role"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-B",
+     "tag": "FV-B",
+     "text": "FV-B duty = 10; present; meaning and suitability unverified",
+     "field": "final_elements[FV-B].facts.duty"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-B",
+     "tag": "FV-B",
+     "text": "FV-B duty_unit = \"unknownbasis\"; present; meaning and suitability unverified",
+     "field": "final_elements[FV-B].facts.duty_unit"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-B",
+     "tag": "FV-B",
+     "text": "FV-B sample_period = \"differentperiod\"; present; meaning and suitability unverified",
+     "field": "final_elements[FV-B].facts.sample_period"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-B",
+     "tag": "FV-B",
+     "text": "FV-B cross_contamination = \"unreviewed\"; present; meaning and suitability unverified",
+     "field": "final_elements[FV-B].facts.cross_contamination"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FV-B",
+     "tag": "FV-B",
+     "text": "FV-B pressure_constraints = \"unreviewed\"; present; meaning and suitability unverified",
+     "field": "final_elements[FV-B].facts.pressure_constraints"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A fictional_record = True",
+     "field": "instruments[FT-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A record_source = Fictional development record; no company or human approval",
+     "field": "instruments[FT-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A record_revision = R1",
+     "field": "instruments[FT-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A record_available = False",
+     "field": "instruments[FT-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A record_authority = unverified",
+     "field": "instruments[FT-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A record_scope = foreignhotstream",
+     "field": "instruments[FT-A].facts.record_scope"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A process_role = coolinglabel, heatrejectionunverified",
+     "field": "instruments[FT-A].facts.process_role"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A duty_unit = notestablished",
+     "field": "instruments[FT-A].facts.duty_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A reactive_service = True",
+     "field": "instruments[FT-A].facts.reactive_service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A fictional_record = True",
+     "field": "instruments[FT-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A record_source = Fictional development record; no company or human approval",
+     "field": "instruments[FT-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A record_revision = R1",
+     "field": "instruments[FT-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A record_available = False",
+     "field": "instruments[FT-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A record_authority = unverified",
+     "field": "instruments[FT-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A record_scope = foreignhotstream",
+     "field": "instruments[FT-A].facts.record_scope"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A process_role = coolinglabel, heatrejectionunverified",
+     "field": "instruments[FT-A].facts.process_role"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A duty_unit = notestablished",
+     "field": "instruments[FT-A].facts.duty_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A reactive_service = True",
+     "field": "instruments[FT-A].facts.reactive_service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A fictional_record = True",
+     "field": "instruments[FT-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A record_source = Fictional development record; no company or human approval",
+     "field": "instruments[FT-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A record_revision = R1",
+     "field": "instruments[FT-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A record_available = False",
+     "field": "instruments[FT-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A record_authority = unverified",
+     "field": "instruments[FT-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A record_scope = foreignhotstream",
+     "field": "instruments[FT-A].facts.record_scope"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A process_role = coolinglabel, heatrejectionunverified",
+     "field": "instruments[FT-A].facts.process_role"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A duty_unit = notestablished",
+     "field": "instruments[FT-A].facts.duty_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-A reactive_service = True",
+     "field": "instruments[FT-A].facts.reactive_service"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing exact process-stream identities, temperature-enthalpy and duty basis",
+     "state": "not_on_drawing",
+     "where": [
+      "historian or DCS trend for FT-A (no historian tag is mapped in this model for these)",
+      "only a valve (FV-B) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve",
+      "site records: Existing process/utility identities and directions, actual supply/target temperatures, flows, heat-capacity/phase/duty and operating coverage for each represented cooling and steam candidate; source/revision/availability, quantity units and matching sample periods retained.",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
+     ],
+     "how": "A CW or steam valve/instrument label is a proxy, not measured process heat rejection/heating, a process-stream identity or a flow signal. Retain each owner/source separately, including related steam-record values shown as candidate evidence. Review actual comparable process duties and uncertainty before inferring any match; command values, foreign data or incompatible units/periods cannot settle it.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "instruments[FT-A].facts.fictional_record"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "record_source",
+       "value": "Fictional development record; no company or human approval",
+       "where": "instruments[FT-A].facts.record_source"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "instruments[FT-A].facts.record_revision"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "record_available",
+       "value": false,
+       "where": "instruments[FT-A].facts.record_available"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "instruments[FT-A].facts.record_authority"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "record_scope",
+       "value": "foreignhotstream",
+       "where": "instruments[FT-A].facts.record_scope"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "process_role",
+       "value": "coolinglabel, heatrejectionunverified",
+       "where": "instruments[FT-A].facts.process_role"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "duty_unit",
+       "value": "notestablished",
+       "where": "instruments[FT-A].facts.duty_unit"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "reactive_service",
+       "value": true,
+       "where": "instruments[FT-A].facts.reactive_service"
+      }
+     ]
+    },
+    {
+     "item": "Existing process-wide targets and time-aware operating constraints",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing heat/material balance, process-wide temperature-enthalpy/composite profiles and utility targets, batch sequences and timing, current studies and alternatives, with source scope and economic/operating assumptions.",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
+     ],
+     "how": "S19 printed43-45 describes process-wide composite curves, approach/capital-energy tradeoffs and developments for batch/time-aware integration and heat pumps/transformers. Do not replace that analysis with a rule that all hot temperatures must exceed all cold temperatures, or automatically close every non-simultaneous/batch pair. Conversely, overlapping ideal profiles or an alternative technology name is not proof of feasible recovery. Review the appropriate system and timing model before deciding.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "instruments[FT-A].facts.fictional_record"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "record_source",
+       "value": "Fictional development record; no company or human approval",
+       "where": "instruments[FT-A].facts.record_source"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "instruments[FT-A].facts.record_revision"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "record_available",
+       "value": false,
+       "where": "instruments[FT-A].facts.record_available"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "instruments[FT-A].facts.record_authority"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "record_scope",
+       "value": "foreignhotstream",
+       "where": "instruments[FT-A].facts.record_scope"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "process_role",
+       "value": "coolinglabel, heatrejectionunverified",
+       "where": "instruments[FT-A].facts.process_role"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "duty_unit",
+       "value": "notestablished",
+       "where": "instruments[FT-A].facts.duty_unit"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "reactive_service",
+       "value": true,
+       "where": "instruments[FT-A].facts.reactive_service"
+      }
+     ]
+    },
+    {
+     "item": "Existing physical, material, fouling and hazard/feasibility basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing layout/routing and fouling/cleaning records, composition/pressure/material and cross-contamination constraints, reactive/process hazard review, existing exchanger/network function and economic/practical basis; authority and missing records remain explicit.",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
+     ],
+     "how": "Existing suitable studies may be acknowledged without new measurements or a compulsory exchanger study. On reactive service an integration change needs the applicable hazard review; a missing review, supplied Boolean or source label is not protection acceptance. No piping connection, operating change, whole-process completeness or site saving follows from the represented pair.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "instruments[FT-A].facts.fictional_record"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "record_source",
+       "value": "Fictional development record; no company or human approval",
+       "where": "instruments[FT-A].facts.record_source"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "instruments[FT-A].facts.record_revision"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "record_available",
+       "value": false,
+       "where": "instruments[FT-A].facts.record_available"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "instruments[FT-A].facts.record_authority"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "record_scope",
+       "value": "foreignhotstream",
+       "where": "instruments[FT-A].facts.record_scope"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "process_role",
+       "value": "coolinglabel, heatrejectionunverified",
+       "where": "instruments[FT-A].facts.process_role"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "duty_unit",
+       "value": "notestablished",
+       "where": "instruments[FT-A].facts.duty_unit"
+      },
+      {
+       "id": "FT-A",
+       "label": "FT-A",
+       "name": "reactive_service",
+       "value": true,
+       "where": "instruments[FT-A].facts.reactive_service"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review the actual process-wide temperature-enthalpy/utility targets, stream identities and duty/time basis, practical approach/capital tradeoffs and physical/material/hazard constraints before an integration decision. Do not prescribe a connection or automatically close a question from a pairwise temperature-range, simultaneity, hours or distance shortcut. Suitable existing analysis or nonapplicability may be acknowledged; missing or contradictory source/units/time remains explicit.",
+   "typical_benefit": {
+    "wording": "The source describes systematic process-wide temperature-enthalpy targeting and matching of heating/cooling demands, including time-aware batch approaches and alternatives. Potential depends on the actual process and capital-energy tradeoffs; this screen establishes no universal superiority, quantified benefit or site saving.",
+    "source": [
+     "S19",
+     "S24"
+    ],
+    "arc": "2.243x; 2.244x (IAC/ITAC browse page: 2.243x: 3,673 recommendations, 1.4 yr average payback, 31.2% implemented; 2.244x: 1,466 recommendations, 1.7 yr, 28.6%; average dollar figure omitted)",
+    "source_titles": [
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "The represented cooling-water and other-unit steam labels are screening proxies, not established process-stream duties or a feasible heat match. Review process-wide temperature-enthalpy targets, duty/time coverage and practical constraints; pairwise temperature ranges or simultaneity alone do not decide broader integration potential. On a reactive system any heat-integration change needs a hazard review first. IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: original LBNL-56183 printed43-45/PDF51-53 from the official ENERGY STAR mirror; raw equivalence to inaccessible catalog OSTI bytes is not claimed. The original far-exceeds comparative quotation remains historical; it is not evidence for this pair or a guarantee. Reactive-system hazard-review requirement is retained.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

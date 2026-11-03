@@ -1,0 +1,440 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/models/E26-02-rare-relief.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E26"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "emissions": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E26@model",
+   "question_id": "E26",
+   "family": "emissions",
+   "question": "What do existing records establish about these relief/flare/vent candidates' actual events, measurement/composition and source coverage?",
+   "about": "V-A, PSV-A",
+   "assets": [
+    {
+     "id": "stream:V-A",
+     "tag": "V-A"
+    },
+    {
+     "id": "PSV-A",
+     "tag": "PSV-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "stream V-A (asset stream:V-A) reads \"PROCESS VENT TO FLARE\"",
+     "field": "streams[V-A]"
+    },
+    {
+     "role": "trigger",
+     "id": "PSV-A",
+     "tag": "PSV-A",
+     "text": "relief PSV-A reads \"PSV-A Relief to FLARE\" at U-A",
+     "field": "relief_devices[PSV-A]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "V-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "streams[V-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "V-A record_source = \"Fictional pre-call record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "streams[V-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "V-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "streams[V-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "V-A record_available = true; present; meaning and suitability unverified",
+     "field": "streams[V-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "V-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "streams[V-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "V-A service = \"hydrocarbongas\"; present; meaning and suitability unverified",
+     "field": "streams[V-A].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "V-A event_mode = \"reliefonly\"; present; meaning and suitability unverified",
+     "field": "streams[V-A].facts.event_mode"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "V-A composition = null; blank; meaning and suitability unverified",
+     "field": "streams[V-A].facts.composition"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "V-A lift_count = 0; present; meaning and suitability unverified",
+     "field": "streams[V-A].facts.lift_count"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "V-A observation_period = \"suppliedR0year\"; present; meaning and suitability unverified",
+     "field": "streams[V-A].facts.observation_period"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "V-A purge_pilot_requirement = \"notreviewed\"; present; meaning and suitability unverified",
+     "field": "streams[V-A].facts.purge_pilot_requirement"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:V-A",
+     "tag": "V-A",
+     "text": "V-A environmental_basis = null; blank; meaning and suitability unverified",
+     "field": "streams[V-A].facts.environmental_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PSV-A",
+     "tag": "PSV-A",
+     "text": "PSV-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "relief_devices[PSV-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PSV-A",
+     "tag": "PSV-A",
+     "text": "PSV-A record_source = \"Fictional pre-call record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "relief_devices[PSV-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PSV-A",
+     "tag": "PSV-A",
+     "text": "PSV-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "relief_devices[PSV-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PSV-A",
+     "tag": "PSV-A",
+     "text": "PSV-A record_available = true; present; meaning and suitability unverified",
+     "field": "relief_devices[PSV-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PSV-A",
+     "tag": "PSV-A",
+     "text": "PSV-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "relief_devices[PSV-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PSV-A",
+     "tag": "PSV-A",
+     "text": "PSV-A record_scope = \"V-Aprovisional\"; present; meaning and suitability unverified",
+     "field": "relief_devices[PSV-A].facts.record_scope"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PSV-A",
+     "tag": "PSV-A",
+     "text": "PSV-A service = \"safetyrelief\"; present; meaning and suitability unverified",
+     "field": "relief_devices[PSV-A].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PSV-A",
+     "tag": "PSV-A",
+     "text": "PSV-A event_mode = \"rareevents\"; present; meaning and suitability unverified",
+     "field": "relief_devices[PSV-A].facts.event_mode"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A fictional_record = True",
+     "field": "streams[V-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PSV-A fictional_record = True",
+     "field": "relief_devices[PSV-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A record_source = Fictional pre-call record, no company or human approval",
+     "field": "streams[V-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PSV-A record_source = Fictional pre-call record, no company or human approval",
+     "field": "relief_devices[PSV-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A record_revision = R1",
+     "field": "streams[V-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PSV-A record_revision = R1",
+     "field": "relief_devices[PSV-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A record_available = True",
+     "field": "streams[V-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PSV-A record_available = True",
+     "field": "relief_devices[PSV-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A record_authority = unverified",
+     "field": "streams[V-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PSV-A record_authority = unverified",
+     "field": "relief_devices[PSV-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PSV-A record_scope = V-Aprovisional",
+     "field": "relief_devices[PSV-A].facts.record_scope"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A service = hydrocarbongas",
+     "field": "streams[V-A].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PSV-A service = safetyrelief",
+     "field": "relief_devices[PSV-A].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A event_mode = reliefonly",
+     "field": "streams[V-A].facts.event_mode"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PSV-A event_mode = rareevents",
+     "field": "relief_devices[PSV-A].facts.event_mode"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A lift_count = 0",
+     "field": "streams[V-A].facts.lift_count"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A observation_period = suppliedR0year",
+     "field": "streams[V-A].facts.observation_period"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A purge_pilot_requirement = notreviewed",
+     "field": "streams[V-A].facts.purge_pilot_requirement"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Flare or vent flow and composition",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing exact service/path and measurement/source/event associations; quantity/rate/total/reference units, sample periods and quality/availability/gaps, composition/variability and planned intermittent/continuous versus upset/blowdown/relief records, purge/pilot/manufacturer requirements and safety/environmental basis.",
+      "site records: Review existing relief-valve lift, flare/vent and operating-event records with their actual time/source coverage.",
+      "a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
+     ],
+     "how": "Same-stream flow labeling is useful candidate evidence, not complete current flow/composition/event coverage. Retain foreign, inaccessible, FAULT or unqualified totalizer data without treating it as suitable. S19 printed34-35 distinguishes planned intermittent/continuous background from upset-blowdown and describes manufacturer minimum-flow context; rare relief events or a zero lift count alone do not automatically close source/safety/environmental review. Review suitable existing records first; no generic analyzer or meter closes all quantities. Any additional measurement/recovery proposal must preserve safety paths and undergo responsible hazard/environmental review, not be imposed from a drawing clue.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "stream:V-A",
+       "label": "V-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "streams[V-A].facts.fictional_record"
+      },
+      {
+       "id": "PSV-A",
+       "label": "PSV-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "relief_devices[PSV-A].facts.fictional_record"
+      },
+      {
+       "id": "stream:V-A",
+       "label": "V-A",
+       "name": "record_source",
+       "value": "Fictional pre-call record, no company or human approval",
+       "where": "streams[V-A].facts.record_source"
+      },
+      {
+       "id": "PSV-A",
+       "label": "PSV-A",
+       "name": "record_source",
+       "value": "Fictional pre-call record, no company or human approval",
+       "where": "relief_devices[PSV-A].facts.record_source"
+      },
+      {
+       "id": "stream:V-A",
+       "label": "V-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "streams[V-A].facts.record_revision"
+      },
+      {
+       "id": "PSV-A",
+       "label": "PSV-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "relief_devices[PSV-A].facts.record_revision"
+      },
+      {
+       "id": "stream:V-A",
+       "label": "V-A",
+       "name": "record_available",
+       "value": true,
+       "where": "streams[V-A].facts.record_available"
+      },
+      {
+       "id": "PSV-A",
+       "label": "PSV-A",
+       "name": "record_available",
+       "value": true,
+       "where": "relief_devices[PSV-A].facts.record_available"
+      },
+      {
+       "id": "stream:V-A",
+       "label": "V-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "streams[V-A].facts.record_authority"
+      },
+      {
+       "id": "PSV-A",
+       "label": "PSV-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "relief_devices[PSV-A].facts.record_authority"
+      },
+      {
+       "id": "PSV-A",
+       "label": "PSV-A",
+       "name": "record_scope",
+       "value": "V-Aprovisional",
+       "where": "relief_devices[PSV-A].facts.record_scope"
+      },
+      {
+       "id": "stream:V-A",
+       "label": "V-A",
+       "name": "service",
+       "value": "hydrocarbongas",
+       "where": "streams[V-A].facts.service"
+      },
+      {
+       "id": "PSV-A",
+       "label": "PSV-A",
+       "name": "service",
+       "value": "safetyrelief",
+       "where": "relief_devices[PSV-A].facts.service"
+      },
+      {
+       "id": "stream:V-A",
+       "label": "V-A",
+       "name": "event_mode",
+       "value": "reliefonly",
+       "where": "streams[V-A].facts.event_mode"
+      },
+      {
+       "id": "PSV-A",
+       "label": "PSV-A",
+       "name": "event_mode",
+       "value": "rareevents",
+       "where": "relief_devices[PSV-A].facts.event_mode"
+      },
+      {
+       "id": "stream:V-A",
+       "label": "V-A",
+       "name": "lift_count",
+       "value": 0,
+       "where": "streams[V-A].facts.lift_count"
+      },
+      {
+       "id": "stream:V-A",
+       "label": "V-A",
+       "name": "observation_period",
+       "value": "suppliedR0year",
+       "where": "streams[V-A].facts.observation_period"
+      },
+      {
+       "id": "stream:V-A",
+       "label": "V-A",
+       "name": "purge_pilot_requirement",
+       "value": "notreviewed",
+       "where": "streams[V-A].facts.purge_pilot_requirement"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review exact relief/vent/flare service, planned and abnormal event coverage and usable quantity/composition/time/source records with the responsible safety/environmental and operating specialists. A flow candidate or rare-event label does not establish suitable data, completeness or safe closure. Existing appropriate records/nonapplicability can be acknowledged; unresolved evidence remains explicit. No live metering, recovery modification, reduced purge/minimum flow or operating change is authorized.",
+   "typical_benefit": {
+    "wording": "S19 reports that background flaring in offshore cases can be as much as50% of all flared gas, while refinery shares generally depend on individual practices and are lower. This historical reported share is neither a recovery fraction nor a site benefit or a reason to compromise required flare operation.",
+    "source": [
+     "S19"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)"
+    ]
+   },
+   "limits": "Source review: S19 originalLBNL56183 printed34-35/PDF42-43 full flaregas section. Offshore versus refinery source scope, planned/intermittent/continuous versus upset/blowdown and manufacturer minimum-flow context retained. Existing dryer/oven/fryer/exhaust-air exclusions remain. Relief paths are safety systems; additional observation, metering or recovery changes require appropriate hazard/environmental review, not automatic closure from rare operation or an inferred saving.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

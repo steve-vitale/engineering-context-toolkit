@@ -1,0 +1,463 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/models/C1-03-existing-fit.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "C1"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "metering": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "C1@U-A",
+   "question_id": "C1",
+   "family": "metering",
+   "question": "What do existing records establish about this utility user's measurement coverage, usable data and intended decision?",
+   "about": "U-A",
+   "assets": [
+    {
+     "id": "U-A",
+     "tag": "U-A"
+    },
+    {
+     "id": "stream:S-A",
+     "tag": "S-A"
+    },
+    {
+     "id": "FT-A",
+     "tag": "FT-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "stream:S-A",
+     "tag": "S-A",
+     "text": "stream S-A (asset stream:S-A) reads \"STEAM SUPPLY\" at U-A",
+     "field": "streams[S-A]"
+    },
+    {
+     "role": "unverified flow/quantity candidate; utility/user coverage and usable data not established",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "instrument FT-A reads \"FT-A STEAM flow candidate\" at U-A",
+     "field": "instruments[FT-A]"
+    },
+    {
+     "role": "equipment",
+     "id": "U-A",
+     "tag": "U-A",
+     "text": "equipment U-A reads \"U-A Fictional utility user\"",
+     "field": "units[U-A]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:S-A",
+     "tag": "S-A",
+     "text": "S-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "streams[S-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:S-A",
+     "tag": "S-A",
+     "text": "S-A record_source = \"Fictional pre-call development record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "streams[S-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:S-A",
+     "tag": "S-A",
+     "text": "S-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "streams[S-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:S-A",
+     "tag": "S-A",
+     "text": "S-A record_available = true; present; meaning and suitability unverified",
+     "field": "streams[S-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:S-A",
+     "tag": "S-A",
+     "text": "S-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "streams[S-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "stream:S-A",
+     "tag": "S-A",
+     "text": "S-A utility_quantity = \"massflow\"; present; meaning and suitability unverified",
+     "field": "streams[S-A].facts.utility_quantity"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A record_source = \"Fictional pre-call development record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A record_available = true; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A record_scope = \"localstreamdeclared\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.record_scope"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A flow = 7; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.flow"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A flow_unit = \"kg/h\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.flow_unit"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A measurement_target = \"S-Adeclared\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.measurement_target"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A quantity = \"compensatedmassflow\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.quantity"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A sample_period = \"fictionalrepresentativeinterval\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.sample_period"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A quality = \"declaredgoodunverified\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.quality"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A calibration_basis = \"suppliedcurrentrecord, notaccepted\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.calibration_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A meter_range = \"1-10kg/h\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.meter_range"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A installation_basis = \"suppliednotverified\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.installation_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A data_gaps = []; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.data_gaps"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A report_use = \"suppliedweeklyproductionreport\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.report_use"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "U-A",
+     "tag": "U-A",
+     "text": "U-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[U-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "U-A",
+     "tag": "U-A",
+     "text": "U-A record_source = \"Fictional pre-call development record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[U-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "U-A",
+     "tag": "U-A",
+     "text": "U-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[U-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "U-A",
+     "tag": "U-A",
+     "text": "U-A record_available = true; present; meaning and suitability unverified",
+     "field": "units[U-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "U-A",
+     "tag": "U-A",
+     "text": "U-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[U-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "U-A",
+     "tag": "U-A",
+     "text": "U-A metering_purpose = \"suppliedweeklyproductionreport\"; present; meaning and suitability unverified",
+     "field": "units[U-A].facts.metering_purpose"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "U-A",
+     "tag": "U-A",
+     "text": "U-A data_owner = \"fictionalenergyreviewer\"; present; meaning and suitability unverified",
+     "field": "units[U-A].facts.data_owner"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: S-A fictional_record = True",
+     "field": "streams[S-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: S-A record_source = Fictional pre-call development record, no company or human approval",
+     "field": "streams[S-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: S-A record_revision = R1",
+     "field": "streams[S-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: S-A record_available = True",
+     "field": "streams[S-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: S-A record_authority = unverified",
+     "field": "streams[S-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: S-A utility_quantity = massflow",
+     "field": "streams[S-A].facts.utility_quantity"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: S-A fictional_record = True",
+     "field": "streams[S-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: S-A record_source = Fictional pre-call development record, no company or human approval",
+     "field": "streams[S-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: S-A record_revision = R1",
+     "field": "streams[S-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: S-A record_available = True",
+     "field": "streams[S-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: S-A record_authority = unverified",
+     "field": "streams[S-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: S-A utility_quantity = massflow",
+     "field": "streams[S-A].facts.utility_quantity"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Utility flow to this user",
+     "state": "not_on_drawing",
+     "where": [
+      "historian or DCS trend for FT-A (no historian tag is mapped in this model for these)",
+      "site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
+     ],
+     "how": "A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "stream:S-A",
+       "label": "S-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "streams[S-A].facts.fictional_record"
+      },
+      {
+       "id": "stream:S-A",
+       "label": "S-A",
+       "name": "record_source",
+       "value": "Fictional pre-call development record, no company or human approval",
+       "where": "streams[S-A].facts.record_source"
+      },
+      {
+       "id": "stream:S-A",
+       "label": "S-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "streams[S-A].facts.record_revision"
+      },
+      {
+       "id": "stream:S-A",
+       "label": "S-A",
+       "name": "record_available",
+       "value": true,
+       "where": "streams[S-A].facts.record_available"
+      },
+      {
+       "id": "stream:S-A",
+       "label": "S-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "streams[S-A].facts.record_authority"
+      },
+      {
+       "id": "stream:S-A",
+       "label": "S-A",
+       "name": "utility_quantity",
+       "value": "massflow",
+       "where": "streams[S-A].facts.utility_quantity"
+      }
+     ]
+    },
+    {
+     "item": "Who would use the reading",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
+     ],
+     "how": "S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "stream:S-A",
+       "label": "S-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "streams[S-A].facts.fictional_record"
+      },
+      {
+       "id": "stream:S-A",
+       "label": "S-A",
+       "name": "record_source",
+       "value": "Fictional pre-call development record, no company or human approval",
+       "where": "streams[S-A].facts.record_source"
+      },
+      {
+       "id": "stream:S-A",
+       "label": "S-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "streams[S-A].facts.record_revision"
+      },
+      {
+       "id": "stream:S-A",
+       "label": "S-A",
+       "name": "record_available",
+       "value": true,
+       "where": "streams[S-A].facts.record_available"
+      },
+      {
+       "id": "stream:S-A",
+       "label": "S-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "streams[S-A].facts.record_authority"
+      },
+      {
+       "id": "stream:S-A",
+       "label": "S-A",
+       "name": "utility_quantity",
+       "value": "massflow",
+       "where": "streams[S-A].facts.utility_quantity"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.",
+   "typical_benefit": {
+    "wording": "\"You can't manage what do don't measure\" [sic]. Buildings: \"efficiency improvements of 10-20%.\" The guide warns \"only success stories are published\" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): \"Typical savings 4-17%, average 8%\" (UK experience).",
+    "source": [
+     "S22",
+     "S19"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S22: FEMP Metering Best Practices: A Guide to Achieving Utility Resource Efficiency, Release 3.0 (PNNL-23892, Mar 2015)",
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)"
+    ]
+   },
+   "limits": "Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

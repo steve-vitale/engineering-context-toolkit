@@ -1,0 +1,679 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/signal-retention/models/SC05-E10-instrument-trigger.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E10"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 3,
+  "by_family": {
+   "energy": 3
+  }
+ },
+ "questions": [
+  {
+   "id": "E10@PT-A",
+   "question_id": "E10",
+   "family": "energy",
+   "question": "What do existing records establish about this flash-vessel candidate's actual service, vent/recovery route and compatible low-pressure duty?",
+   "about": "PT-A",
+   "assets": [
+    {
+     "id": "PT-A",
+     "tag": "PT-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "PT-A",
+     "tag": "PT-A",
+     "text": "instrument PT-A reads \"PT-A FLASH TANK condensate source pressure\"",
+     "field": "instruments[PT-A]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PT-A",
+     "tag": "PT-A",
+     "text": "PT-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "instruments[PT-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PT-A",
+     "tag": "PT-A",
+     "text": "PT-A record_source = \"Fictional signal-locator source note, Figure 11; no actual series or plant record\"; present; meaning and suitability unverified",
+     "field": "instruments[PT-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PT-A",
+     "tag": "PT-A",
+     "text": "PT-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "instruments[PT-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PT-A",
+     "tag": "PT-A",
+     "text": "PT-A record_available = false; present; meaning and suitability unverified",
+     "field": "instruments[PT-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PT-A",
+     "tag": "PT-A",
+     "text": "PT-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "instruments[PT-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PT-A fictional_record = True",
+     "field": "instruments[PT-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PT-A record_source = Fictional signal-locator source note, Figure 11; no actual series or plant record",
+     "field": "instruments[PT-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PT-A record_revision = R1",
+     "field": "instruments[PT-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PT-A record_available = False",
+     "field": "instruments[PT-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PT-A record_authority = unverified",
+     "field": "instruments[PT-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PT-A fictional_record = True",
+     "field": "instruments[PT-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PT-A record_source = Fictional signal-locator source note, Figure 11; no actual series or plant record",
+     "field": "instruments[PT-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PT-A record_revision = R1",
+     "field": "instruments[PT-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PT-A record_available = False",
+     "field": "instruments[PT-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PT-A record_authority = unverified",
+     "field": "instruments[PT-A].facts.record_authority"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing source-specific condensate service, vent/recovery and actual operating basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing named-vessel/condensate source service and current vent/recovery/route records, actual pressure/temperature, flow and duration with quantity/units, sample time, revision, availability and operating coverage.",
+      "historian / recorded data: PT-A: digitized series 'SYNTHETIC_SC05_PRESSURE' (from the source report's Fig 11)",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "A FLASH TANK/VESSEL/DRUM label is not proof of steam-water service, atmospheric venting, measured steam loss or an unused recovery opportunity. Establish actual current function and distinguish known nonsteam/hydrocarbon context from unknown applicable service. Review suitable existing recovery before requesting more data; pressure ratings or a plume alone do not establish a flash fraction or source quality.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "PT-A",
+       "label": "PT-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "instruments[PT-A].facts.fictional_record"
+      },
+      {
+       "id": "PT-A",
+       "label": "PT-A",
+       "name": "record_source",
+       "value": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+       "where": "instruments[PT-A].facts.record_source"
+      },
+      {
+       "id": "PT-A",
+       "label": "PT-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "instruments[PT-A].facts.record_revision"
+      },
+      {
+       "id": "PT-A",
+       "label": "PT-A",
+       "name": "record_available",
+       "value": false,
+       "where": "instruments[PT-A].facts.record_available"
+      },
+      {
+       "id": "PT-A",
+       "label": "PT-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "instruments[PT-A].facts.record_authority"
+      }
+     ]
+    },
+    {
+     "item": "Existing compatible receiving-duty, association and feasibility basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing exact-source low-pressure user pressure/quality, flow/heat duty and operating-time requirements, piping/route/distance and system/practical/economic constraints.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "Review actual source/receiving pressure, timing and compatible duty together; a nearby or foreign/seasonal low-pressure label is not a matched sink. Supplemental original DOE Tip12 pp1–2 requires flow/duration, compatible uses and cost-effective equipment/piping, with return alternatives and availability/use considered. Acknowledge an existing suitable route or nonapplicability without a new field task. No recovery installation, physical connection, flash calculation or site savings follow from this screen.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "PT-A",
+       "label": "PT-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "instruments[PT-A].facts.fictional_record"
+      },
+      {
+       "id": "PT-A",
+       "label": "PT-A",
+       "name": "record_source",
+       "value": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+       "where": "instruments[PT-A].facts.record_source"
+      },
+      {
+       "id": "PT-A",
+       "label": "PT-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "instruments[PT-A].facts.record_revision"
+      },
+      {
+       "id": "PT-A",
+       "label": "PT-A",
+       "name": "record_available",
+       "value": false,
+       "where": "instruments[PT-A].facts.record_available"
+      },
+      {
+       "id": "PT-A",
+       "label": "PT-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "instruments[PT-A].facts.record_authority"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual steam-water condensate service, current vent/recovery and matched source/receiving duty, routing and economic constraints with the responsible engineer. Steady flow or a close low-pressure label alone does not establish unused recoverable steam or justify hardware/operating changes. Suitable existing recovery or nonapplicability may be acknowledged; unknown route, units, source or timing remains a qualified records question.",
+   "typical_benefit": {
+    "wording": "Flash vessels allow \"recovery of steam... used in low-pressure steam applications.\" No % stated.",
+    "source": [
+     "S8",
+     "S24"
+    ],
+    "arc": "2.2127 (IAC/ITAC browse page: 31 recommendations, 1.0 yr average payback, 39.3% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S8: Improving Steam System Performance: A Sourcebook for Industry, 2nd ed. (DOE/GO-102012-3423, rev. Oct 2012)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: S8 printed21 and supplemental original DOE Tip12 (https://www.energy.gov/sites/prod/files/2014/05/f16/steam12_lowpressure_steam.pdf), completepp1–2, admitted before criteria. Its pressure/flow/duty/economic example is not this site's result. Missing representation is not installed absence.",
+   "status": "asked"
+  },
+  {
+   "id": "E10@FT-B",
+   "question_id": "E10",
+   "family": "energy",
+   "question": "What do existing records establish about this flash-vessel candidate's actual service, vent/recovery route and compatible low-pressure duty?",
+   "about": "FT-B",
+   "assets": [
+    {
+     "id": "FT-B",
+     "tag": "FT-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "FT-B",
+     "tag": "FT-B",
+     "text": "instrument FT-B reads \"FT-B FLASH VESSEL condensate source flow\"",
+     "field": "instruments[FT-B]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-B",
+     "tag": "FT-B",
+     "text": "FT-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "instruments[FT-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-B",
+     "tag": "FT-B",
+     "text": "FT-B record_source = \"Fictional signal-locator source note, Figure 11; no actual series or plant record\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-B",
+     "tag": "FT-B",
+     "text": "FT-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-B",
+     "tag": "FT-B",
+     "text": "FT-B record_available = false; present; meaning and suitability unverified",
+     "field": "instruments[FT-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-B",
+     "tag": "FT-B",
+     "text": "FT-B record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-B fictional_record = True",
+     "field": "instruments[FT-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-B record_source = Fictional signal-locator source note, Figure 11; no actual series or plant record",
+     "field": "instruments[FT-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-B record_revision = R1",
+     "field": "instruments[FT-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-B record_available = False",
+     "field": "instruments[FT-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-B record_authority = unverified",
+     "field": "instruments[FT-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-B fictional_record = True",
+     "field": "instruments[FT-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-B record_source = Fictional signal-locator source note, Figure 11; no actual series or plant record",
+     "field": "instruments[FT-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-B record_revision = R1",
+     "field": "instruments[FT-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-B record_available = False",
+     "field": "instruments[FT-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FT-B record_authority = unverified",
+     "field": "instruments[FT-B].facts.record_authority"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing source-specific condensate service, vent/recovery and actual operating basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing named-vessel/condensate source service and current vent/recovery/route records, actual pressure/temperature, flow and duration with quantity/units, sample time, revision, availability and operating coverage.",
+      "historian / recorded data: FT-B: digitized series 'SYNTHETIC_SC05_FLOW' (from the source report's Fig 11)",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "A FLASH TANK/VESSEL/DRUM label is not proof of steam-water service, atmospheric venting, measured steam loss or an unused recovery opportunity. Establish actual current function and distinguish known nonsteam/hydrocarbon context from unknown applicable service. Review suitable existing recovery before requesting more data; pressure ratings or a plume alone do not establish a flash fraction or source quality.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "FT-B",
+       "label": "FT-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "instruments[FT-B].facts.fictional_record"
+      },
+      {
+       "id": "FT-B",
+       "label": "FT-B",
+       "name": "record_source",
+       "value": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+       "where": "instruments[FT-B].facts.record_source"
+      },
+      {
+       "id": "FT-B",
+       "label": "FT-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "instruments[FT-B].facts.record_revision"
+      },
+      {
+       "id": "FT-B",
+       "label": "FT-B",
+       "name": "record_available",
+       "value": false,
+       "where": "instruments[FT-B].facts.record_available"
+      },
+      {
+       "id": "FT-B",
+       "label": "FT-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "instruments[FT-B].facts.record_authority"
+      }
+     ]
+    },
+    {
+     "item": "Existing compatible receiving-duty, association and feasibility basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing exact-source low-pressure user pressure/quality, flow/heat duty and operating-time requirements, piping/route/distance and system/practical/economic constraints.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "Review actual source/receiving pressure, timing and compatible duty together; a nearby or foreign/seasonal low-pressure label is not a matched sink. Supplemental original DOE Tip12 pp1–2 requires flow/duration, compatible uses and cost-effective equipment/piping, with return alternatives and availability/use considered. Acknowledge an existing suitable route or nonapplicability without a new field task. No recovery installation, physical connection, flash calculation or site savings follow from this screen.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "FT-B",
+       "label": "FT-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "instruments[FT-B].facts.fictional_record"
+      },
+      {
+       "id": "FT-B",
+       "label": "FT-B",
+       "name": "record_source",
+       "value": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+       "where": "instruments[FT-B].facts.record_source"
+      },
+      {
+       "id": "FT-B",
+       "label": "FT-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "instruments[FT-B].facts.record_revision"
+      },
+      {
+       "id": "FT-B",
+       "label": "FT-B",
+       "name": "record_available",
+       "value": false,
+       "where": "instruments[FT-B].facts.record_available"
+      },
+      {
+       "id": "FT-B",
+       "label": "FT-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "instruments[FT-B].facts.record_authority"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual steam-water condensate service, current vent/recovery and matched source/receiving duty, routing and economic constraints with the responsible engineer. Steady flow or a close low-pressure label alone does not establish unused recoverable steam or justify hardware/operating changes. Suitable existing recovery or nonapplicability may be acknowledged; unknown route, units, source or timing remains a qualified records question.",
+   "typical_benefit": {
+    "wording": "Flash vessels allow \"recovery of steam... used in low-pressure steam applications.\" No % stated.",
+    "source": [
+     "S8",
+     "S24"
+    ],
+    "arc": "2.2127 (IAC/ITAC browse page: 31 recommendations, 1.0 yr average payback, 39.3% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S8: Improving Steam System Performance: A Sourcebook for Industry, 2nd ed. (DOE/GO-102012-3423, rev. Oct 2012)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: S8 printed21 and supplemental original DOE Tip12 (https://www.energy.gov/sites/prod/files/2014/05/f16/steam12_lowpressure_steam.pdf), completepp1–2, admitted before criteria. Its pressure/flow/duty/economic example is not this site's result. Missing representation is not installed absence.",
+   "status": "asked"
+  },
+  {
+   "id": "E10@TT-C",
+   "question_id": "E10",
+   "family": "energy",
+   "question": "What do existing records establish about this flash-vessel candidate's actual service, vent/recovery route and compatible low-pressure duty?",
+   "about": "TT-C",
+   "assets": [
+    {
+     "id": "TT-C",
+     "tag": "TT-C"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "TT-C",
+     "tag": "TT-C",
+     "text": "instrument TT-C reads \"TT-C FLASH DRUM temperature\"",
+     "field": "instruments[TT-C]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TT-C",
+     "tag": "TT-C",
+     "text": "TT-C fictional_record = true; present; meaning and suitability unverified",
+     "field": "instruments[TT-C].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TT-C",
+     "tag": "TT-C",
+     "text": "TT-C record_source = \"Fictional signal-locator source note, Figure 11; no actual series or plant record\"; present; meaning and suitability unverified",
+     "field": "instruments[TT-C].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TT-C",
+     "tag": "TT-C",
+     "text": "TT-C record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "instruments[TT-C].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TT-C",
+     "tag": "TT-C",
+     "text": "TT-C record_available = false; present; meaning and suitability unverified",
+     "field": "instruments[TT-C].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TT-C",
+     "tag": "TT-C",
+     "text": "TT-C record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "instruments[TT-C].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TT-C fictional_record = True",
+     "field": "instruments[TT-C].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TT-C record_source = Fictional signal-locator source note, Figure 11; no actual series or plant record",
+     "field": "instruments[TT-C].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TT-C record_revision = R1",
+     "field": "instruments[TT-C].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TT-C record_available = False",
+     "field": "instruments[TT-C].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TT-C record_authority = unverified",
+     "field": "instruments[TT-C].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TT-C fictional_record = True",
+     "field": "instruments[TT-C].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TT-C record_source = Fictional signal-locator source note, Figure 11; no actual series or plant record",
+     "field": "instruments[TT-C].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TT-C record_revision = R1",
+     "field": "instruments[TT-C].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TT-C record_available = False",
+     "field": "instruments[TT-C].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TT-C record_authority = unverified",
+     "field": "instruments[TT-C].facts.record_authority"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing source-specific condensate service, vent/recovery and actual operating basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing named-vessel/condensate source service and current vent/recovery/route records, actual pressure/temperature, flow and duration with quantity/units, sample time, revision, availability and operating coverage.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "A FLASH TANK/VESSEL/DRUM label is not proof of steam-water service, atmospheric venting, measured steam loss or an unused recovery opportunity. Establish actual current function and distinguish known nonsteam/hydrocarbon context from unknown applicable service. Review suitable existing recovery before requesting more data; pressure ratings or a plume alone do not establish a flash fraction or source quality.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "TT-C",
+       "label": "TT-C",
+       "name": "fictional_record",
+       "value": true,
+       "where": "instruments[TT-C].facts.fictional_record"
+      },
+      {
+       "id": "TT-C",
+       "label": "TT-C",
+       "name": "record_source",
+       "value": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+       "where": "instruments[TT-C].facts.record_source"
+      },
+      {
+       "id": "TT-C",
+       "label": "TT-C",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "instruments[TT-C].facts.record_revision"
+      },
+      {
+       "id": "TT-C",
+       "label": "TT-C",
+       "name": "record_available",
+       "value": false,
+       "where": "instruments[TT-C].facts.record_available"
+      },
+      {
+       "id": "TT-C",
+       "label": "TT-C",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "instruments[TT-C].facts.record_authority"
+      }
+     ]
+    },
+    {
+     "item": "Existing compatible receiving-duty, association and feasibility basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing exact-source low-pressure user pressure/quality, flow/heat duty and operating-time requirements, piping/route/distance and system/practical/economic constraints.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "Review actual source/receiving pressure, timing and compatible duty together; a nearby or foreign/seasonal low-pressure label is not a matched sink. Supplemental original DOE Tip12 pp1–2 requires flow/duration, compatible uses and cost-effective equipment/piping, with return alternatives and availability/use considered. Acknowledge an existing suitable route or nonapplicability without a new field task. No recovery installation, physical connection, flash calculation or site savings follow from this screen.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "TT-C",
+       "label": "TT-C",
+       "name": "fictional_record",
+       "value": true,
+       "where": "instruments[TT-C].facts.fictional_record"
+      },
+      {
+       "id": "TT-C",
+       "label": "TT-C",
+       "name": "record_source",
+       "value": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+       "where": "instruments[TT-C].facts.record_source"
+      },
+      {
+       "id": "TT-C",
+       "label": "TT-C",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "instruments[TT-C].facts.record_revision"
+      },
+      {
+       "id": "TT-C",
+       "label": "TT-C",
+       "name": "record_available",
+       "value": false,
+       "where": "instruments[TT-C].facts.record_available"
+      },
+      {
+       "id": "TT-C",
+       "label": "TT-C",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "instruments[TT-C].facts.record_authority"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual steam-water condensate service, current vent/recovery and matched source/receiving duty, routing and economic constraints with the responsible engineer. Steady flow or a close low-pressure label alone does not establish unused recoverable steam or justify hardware/operating changes. Suitable existing recovery or nonapplicability may be acknowledged; unknown route, units, source or timing remains a qualified records question.",
+   "typical_benefit": {
+    "wording": "Flash vessels allow \"recovery of steam... used in low-pressure steam applications.\" No % stated.",
+    "source": [
+     "S8",
+     "S24"
+    ],
+    "arc": "2.2127 (IAC/ITAC browse page: 31 recommendations, 1.0 yr average payback, 39.3% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S8: Improving Steam System Performance: A Sourcebook for Industry, 2nd ed. (DOE/GO-102012-3423, rev. Oct 2012)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: S8 printed21 and supplemental original DOE Tip12 (https://www.energy.gov/sites/prod/files/2014/05/f16/steam12_lowpressure_steam.pdf), completepp1–2, admitted before criteria. Its pressure/flow/duty/economic example is not this site's result. Missing representation is not installed absence.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

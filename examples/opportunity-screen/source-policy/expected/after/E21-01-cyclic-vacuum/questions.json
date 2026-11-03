@@ -1,0 +1,417 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/models/E21-01-cyclic-vacuum.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E21"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "energy": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E21@model",
+   "question_id": "E21",
+   "family": "energy",
+   "question": "What do existing records establish about these air-labelled end-use candidates, their required function and any suitable alternative?",
+   "about": "V-A, V-B",
+   "assets": [
+    {
+     "id": "V-A",
+     "tag": "V-A"
+    },
+    {
+     "id": "V-B",
+     "tag": "V-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "V-A",
+     "tag": "V-A",
+     "text": "equipment V-A reads \"V-A AIR VENTURI vacuum\"",
+     "field": "units[V-A]"
+    },
+    {
+     "role": "trigger",
+     "id": "V-B",
+     "tag": "V-B",
+     "text": "equipment V-B reads \"V-B AIR VENTURI vacuum\"",
+     "field": "units[V-B]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "V-A",
+     "tag": "V-A",
+     "text": "V-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[V-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "V-A",
+     "tag": "V-A",
+     "text": "V-A record_source = \"Fictional pre-call development record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[V-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "V-A",
+     "tag": "V-A",
+     "text": "V-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[V-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "V-A",
+     "tag": "V-A",
+     "text": "V-A record_available = true; present; meaning and suitability unverified",
+     "field": "units[V-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "V-A",
+     "tag": "V-A",
+     "text": "V-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[V-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "V-A",
+     "tag": "V-A",
+     "text": "V-A service = \"compressedair\"; present; meaning and suitability unverified",
+     "field": "units[V-A].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "V-A",
+     "tag": "V-A",
+     "text": "V-A end_use = \"cyclicvacuum\"; present; meaning and suitability unverified",
+     "field": "units[V-A].facts.end_use"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "V-A",
+     "tag": "V-A",
+     "text": "V-A duty_percent = 20; present; meaning and suitability unverified",
+     "field": "units[V-A].facts.duty_percent"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "V-A",
+     "tag": "V-A",
+     "text": "V-A shutoff_control = true; present; meaning and suitability unverified",
+     "field": "units[V-A].facts.shutoff_control"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "V-A",
+     "tag": "V-A",
+     "text": "V-A safety_function = \"declaredsparkingconstraint, notapproved\"; present; meaning and suitability unverified",
+     "field": "units[V-A].facts.safety_function"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "V-A",
+     "tag": "V-A",
+     "text": "V-A lifecycle_basis = null; blank; meaning and suitability unverified",
+     "field": "units[V-A].facts.lifecycle_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "V-B",
+     "tag": "V-B",
+     "text": "V-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[V-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "V-B",
+     "tag": "V-B",
+     "text": "V-B record_source = \"Fictional pre-call development record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[V-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "V-B",
+     "tag": "V-B",
+     "text": "V-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[V-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "V-B",
+     "tag": "V-B",
+     "text": "V-B record_available = true; present; meaning and suitability unverified",
+     "field": "units[V-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "V-B",
+     "tag": "V-B",
+     "text": "V-B record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[V-B].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "V-B",
+     "tag": "V-B",
+     "text": "V-B service = null; blank; meaning and suitability unverified",
+     "field": "units[V-B].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "V-B",
+     "tag": "V-B",
+     "text": "V-B end_use = \"unknownvacuum\"; present; meaning and suitability unverified",
+     "field": "units[V-B].facts.end_use"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "V-B",
+     "tag": "V-B",
+     "text": "V-B duty_percent = null; blank; meaning and suitability unverified",
+     "field": "units[V-B].facts.duty_percent"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "V-B",
+     "tag": "V-B",
+     "text": "V-B shutoff_control = null; blank; meaning and suitability unverified",
+     "field": "units[V-B].facts.shutoff_control"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A fictional_record = True",
+     "field": "units[V-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-B fictional_record = True",
+     "field": "units[V-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A record_source = Fictional pre-call development record, no company or human approval",
+     "field": "units[V-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-B record_source = Fictional pre-call development record, no company or human approval",
+     "field": "units[V-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A record_revision = R1",
+     "field": "units[V-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-B record_revision = R1",
+     "field": "units[V-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A record_available = True",
+     "field": "units[V-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-B record_available = True",
+     "field": "units[V-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A record_authority = unverified",
+     "field": "units[V-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-B record_authority = unverified",
+     "field": "units[V-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A service = compressedair",
+     "field": "units[V-A].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A end_use = cyclicvacuum",
+     "field": "units[V-A].facts.end_use"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-B end_use = unknownvacuum",
+     "field": "units[V-B].facts.end_use"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A duty_percent = 20",
+     "field": "units[V-A].facts.duty_percent"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A shutoff_control = True",
+     "field": "units[V-A].facts.shutoff_control"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: V-A safety_function = declaredsparkingconstraint, notapproved",
+     "field": "units[V-A].facts.safety_function"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing end-use, function, demand and alternative/lifecycle basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing exact end-use/system and compressed-air service, process and safety purpose, required quality/pressure/flow and duty/load pattern, shutoff/control and current solution, source/owner/revision/availability and lifecycle/system constraints.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
+     ],
+     "how": "S11 printed24-27 describes potentially inappropriate uses and context-dependent alternatives, not an equipment replacement instruction from a name. Establish actual compressed-air service and task requirements. Cabinet cooling is not protective panel purging. Intermittent/cyclic vacuum with suitable control and safety/practical constraints can justify a venturi; a generic load-factor example alone does not decide this installation or establish a central-pump alternative. Review existing suitable arrangements and full-system/lifecycle implications with the responsible specialist. Retain foreign, missing, zero and uncertain values; no blanket blower/fan/pump substitution or compulsory new survey follows.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "V-A",
+       "label": "V-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[V-A].facts.fictional_record"
+      },
+      {
+       "id": "V-B",
+       "label": "V-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[V-B].facts.fictional_record"
+      },
+      {
+       "id": "V-A",
+       "label": "V-A",
+       "name": "record_source",
+       "value": "Fictional pre-call development record, no company or human approval",
+       "where": "units[V-A].facts.record_source"
+      },
+      {
+       "id": "V-B",
+       "label": "V-B",
+       "name": "record_source",
+       "value": "Fictional pre-call development record, no company or human approval",
+       "where": "units[V-B].facts.record_source"
+      },
+      {
+       "id": "V-A",
+       "label": "V-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[V-A].facts.record_revision"
+      },
+      {
+       "id": "V-B",
+       "label": "V-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[V-B].facts.record_revision"
+      },
+      {
+       "id": "V-A",
+       "label": "V-A",
+       "name": "record_available",
+       "value": true,
+       "where": "units[V-A].facts.record_available"
+      },
+      {
+       "id": "V-B",
+       "label": "V-B",
+       "name": "record_available",
+       "value": true,
+       "where": "units[V-B].facts.record_available"
+      },
+      {
+       "id": "V-A",
+       "label": "V-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[V-A].facts.record_authority"
+      },
+      {
+       "id": "V-B",
+       "label": "V-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[V-B].facts.record_authority"
+      },
+      {
+       "id": "V-A",
+       "label": "V-A",
+       "name": "service",
+       "value": "compressedair",
+       "where": "units[V-A].facts.service"
+      },
+      {
+       "id": "V-A",
+       "label": "V-A",
+       "name": "end_use",
+       "value": "cyclicvacuum",
+       "where": "units[V-A].facts.end_use"
+      },
+      {
+       "id": "V-B",
+       "label": "V-B",
+       "name": "end_use",
+       "value": "unknownvacuum",
+       "where": "units[V-B].facts.end_use"
+      },
+      {
+       "id": "V-A",
+       "label": "V-A",
+       "name": "duty_percent",
+       "value": 20,
+       "where": "units[V-A].facts.duty_percent"
+      },
+      {
+       "id": "V-A",
+       "label": "V-A",
+       "name": "shutoff_control",
+       "value": true,
+       "where": "units[V-A].facts.shutoff_control"
+      },
+      {
+       "id": "V-A",
+       "label": "V-A",
+       "name": "safety_function",
+       "value": "declaredsparkingconstraint, notapproved",
+       "where": "units[V-A].facts.safety_function"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual compressed-air end-use/function, safety and quality requirements, matched demand/control records and practical lifecycle/system alternatives with the responsible specialist. A source list of potentially inappropriate uses is a collection prompt, not proof of waste. Suitable existing use or nonapplicability can be acknowledged; unknown service, scope or duty remains explicit without mandatory replacement or transferred source savings.",
+   "typical_benefit": {
+    "wording": "S11 identifies potentially inappropriate compressed-air uses and discusses task-specific alternatives and lifecycle/system tradeoffs. The pressure-sensitive unregulated-demand share is not the fraction removable by substitution. No generic end-use saving, avoidable share or site benefit is asserted.",
+    "source": [
+     "S11",
+     "S24"
+    ],
+    "arc": "2.4239; 2.4237; 2.4238 (IAC/ITAC browse page: 2.4239: 2,697 recommendations, 1.0 yr average payback, 48.4% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S11: Improving Compressed Air System Performance: A Sourcebook for Industry, 3rd ed. (DOE + Compressed Air Challenge)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: S11 printed24-27/PDF29-32 includes intermittent vacuum and explicitly distinguishes cabinet cooling from panel purging. Its historical unregulated-demand percentage concerns pressure-sensitive demand, not automatically inappropriate use, retrofit eligibility or savings. Known non-compressed-air and protective-purge roles are not cooling/sparging/vacuum subjects; unknown service is conditional.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

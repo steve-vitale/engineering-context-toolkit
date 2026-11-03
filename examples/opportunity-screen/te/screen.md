@@ -4,8 +4,8 @@ Model: `data/te_process_model.json`. Questions: `data/questions.json`. Loop list
 
 **How to read this.** This is a screen, not an audit. Each finding is a question the drawing or model
 raises, with the evidence found, what to collect (and exactly where), and how the collected data settles it. Nothing
-here says the plant wastes energy, and no savings are computed: the "what the source says" lines are the cited
-sources' general figures for plants in general, quoted as written, never an estimate for this plant. Data requests
+here says the plant wastes energy, and no savings are computed: the "what the source says" lines include source
+quotations and contextual paraphrases, retaining their qualifications, never estimates for this plant. Data requests
 are in one of three states: **on drawing** (the value is on the drawing or model and is quoted as evidence),
 **blank on drawing** (the drawing prints a field for it but leaves it empty, so fill that field), and **not on
 drawing** (collect it from the place named). Systems listed under "Left out" were not screened.
@@ -14,7 +14,7 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 |---|---|
 | Energy | 2 |
 | Heat grade (high-grade heat for low-grade duty) | 3 |
-| Metering | 2 |
+| Metering | 3 |
 | Controls and automation | 2 |
 | Emissions | 0 |
 | Safety questions to verify | 1 |
@@ -46,7 +46,7 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 
 **Limits:** S11 describes compressed-air systems, including centrifugal-air controls; its examples and figures do not automatically apply to process gas, rotary or unknown machines. Establish machine/service applicability first. Supplied machine_class, service and control_records values are unverified claims, including approval/quality fields; showing them does not authenticate their source or establish installed function, protection adequacy or complete coverage. Keep unmatched records, unclear shared coverage and missing reference conditions unresolved. This screen authorizes no operation, test or protection/settings change; any proposed change needs responsible machinery/vendor expertise and the company change-review process.
 
-### E18: Is heat rejected to cooling water in one place while steam heats a colder stream in another (a heat-integration question)?
+### E18: What do existing records establish about these cooling/steam-labelled candidates' process-stream duties and any system-level heat-integration question?
 
 **About:** TT-121, TT-122, TV-121, FV-117  
 
@@ -64,16 +64,16 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 
 **Data to collect**
 
-- Temperatures and duties of the cooled and the heated streams [not on drawing]. Where: historian / recorded data: TT-121: recorded signal XMEAS(21) in the TE data files; TT-122: recorded signal XMEAS(22) in the TE data files; only the valve position is recorded (FV-117: recorded signal XMV(11) in the TE data files; TV-121: recorded signal XMV(10) in the TE data files); flow needs a meter or a calibrated valve curve; then historian / recorded data: FT-119: recorded signal XMEAS(19) in the TE data files; then site records: heat and material balance. How: For each stream: supply and target temperature and duty.
-- Whether the duties overlap in time [not on drawing]. Where: site records: operating sequence: are both duties needed at the same time?. How: Mark each duty continuous, batch or startup-only.
-- Layout distance and fouling [not on drawing]. Where: a walkdown: distance between the two exchangers; then maintenance records: cleaning history. How: Note pipe run and fouling service.
+- Existing exact process-stream identities, temperature-enthalpy and duty basis [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: historian / recorded data: TT-121: recorded signal XMEAS(21) in the TE data files; TT-122: recorded signal XMEAS(22) in the TE data files; only the valve position is recorded (FV-117: recorded signal XMV(11) in the TE data files; TV-121: recorded signal XMV(10) in the TE data files); flow needs a meter or a calibrated valve curve; then historian / recorded data: FT-119: recorded signal XMEAS(19) in the TE data files; then site records: Existing process/utility identities and directions, actual supply/target temperatures, flows, heat-capacity/phase/duty and operating coverage for each represented cooling and steam candidate; source/revision/availability, quantity units and matching sample periods retained.; then a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit.. How: A CW or steam valve/instrument label is a proxy, not measured process heat rejection/heating, a process-stream identity or a flow signal. Retain each owner/source separately, including related steam-record values shown as candidate evidence. Review actual comparable process duties and uncertainty before inferring any match; command values, foreign data or incompatible units/periods cannot settle it.
+- Existing process-wide targets and time-aware operating constraints [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing heat/material balance, process-wide temperature-enthalpy/composite profiles and utility targets, batch sequences and timing, current studies and alternatives, with source scope and economic/operating assumptions.; then a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit.. How: S19 printed43-45 describes process-wide composite curves, approach/capital-energy tradeoffs and developments for batch/time-aware integration and heat pumps/transformers. Do not replace that analysis with a rule that all hot temperatures must exceed all cold temperatures, or automatically close every non-simultaneous/batch pair. Conversely, overlapping ideal profiles or an alternative technology name is not proof of feasible recovery. Review the appropriate system and timing model before deciding.
+- Existing physical, material, fouling and hazard/feasibility basis [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing layout/routing and fouling/cleaning records, composition/pressure/material and cross-contamination constraints, reactive/process hazard review, existing exchanger/network function and economic/practical basis; authority and missing records remain explicit.; then a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit.. How: Existing suitable studies may be acknowledged without new measurements or a compulsory exchanger study. On reactive service an integration change needs the applicable hazard review; a missing review, supplied Boolean or source label is not protection acceptance. No piping connection, operating change, whole-process completeness or site saving follows from the represented pair.
 
-**How it is decided:** Worth a pinch or exchanger study only when the hot stream's temperature range sits above the cold stream's with a practical approach, both run at the same time for long hours, and they are close enough to connect. Otherwise close this screening investigation.
+**How it is decided:** Review the actual process-wide temperature-enthalpy/utility targets, stream identities and duty/time basis, practical approach/capital tradeoffs and physical/material/hazard constraints before an integration decision. Do not prescribe a connection or automatically close a question from a pairwise temperature-range, simultaneity, hours or distance shortcut. Suitable existing analysis or nonapplicability may be acknowledged; missing or contradictory source/units/time remains explicit.
 
-**What the source says (S19, S24):** Pinch potential "far exceeds that from well-known conventional techniques such as heat recovery from boiler flue gas, insulation and steam trap management." No % stated in that section.
+**What the source says (S19, S24):** The source describes systematic process-wide temperature-enthalpy targeting and matching of heating/cooling demands, including time-aware batch approaches and alternatives. Potential depends on the actual process and capital-energy tradeoffs; this screen establishes no universal superiority, quantified benefit or site saving.
 IAC/ITAC recommendation code: 2.243x; 2.244x (IAC/ITAC browse page: 2.243x: 3,673 recommendations, 1.4 yr average payback, 31.2% implemented; 2.244x: 1,466 recommendations, 1.7 yr, 28.6%; average dollar figure omitted).
 
-**Limits:** A screen pairs any cooling-water-cooled item with any steam-heated item; the temperatures decide. On a reactive system any heat-integration change needs a hazard review first. IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.
+**Limits:** The represented cooling-water and other-unit steam labels are screening proxies, not established process-stream duties or a feasible heat match. Review process-wide temperature-enthalpy targets, duty/time coverage and practical constraints; pairwise temperature ranges or simultaneity alone do not decide broader integration potential. On a reactive system any heat-integration change needs a hazard review first. IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: original LBNL-56183 printed43-45/PDF51-53 from the official ENERGY STAR mirror; raw equivalence to inaccessible catalog OSTI bytes is not claimed. The original far-exceeds comparative quotation remains historical; it is not evidence for this pair or a guarantee. Reactive-system hazard-review requirement is retained.
 
 ## Heat grade (high-grade heat for low-grade duty)
 
@@ -163,7 +163,31 @@ IAC/ITAC recommendation code: 2.243x (by description).
 
 ## Metering
 
-### C1: Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?
+### C1: What do existing records establish about this utility user's measurement coverage, usable data and intended decision?
+
+**About:** C-101  
+
+**Finding reference (JSON string):** `"C1@C-101"`
+**Asset IDs (JSON array):** `["C-101", "FV-119", "FT-119"]`
+
+**Evidence on the drawing / model**
+
+- valve FV-119 reads "FV-119 Stripper steam valve" at C-101 (`final_elements[FV-119]`)
+- Unverified flow/quantity candidate; utility/user coverage and usable data not established: instrument FT-119 reads "FT-119 Stripper steam flow" at C-101 (`instruments[FT-119]`)
+- Equipment: equipment C-101 reads "C-101 Product Stripper" (`units[C-101]`)
+
+**Data to collect**
+
+- Utility flow to this user [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: historian / recorded data: FT-119: recorded signal XMEAS(19) in the TE data files; then site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.
+- Who would use the reading [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.
+
+**How it is decided:** Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.
+
+**What the source says (S22, S19):** "You can't manage what do don't measure" [sic]. Buildings: "efficiency improvements of 10-20%." The guide warns "only success stories are published" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): "Typical savings 4-17%, average 8%" (UK experience).
+
+**Limits:** Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.
+
+### C1: What do existing records establish about this utility user's measurement coverage, usable data and intended decision?
 
 **About:** R-101  
 
@@ -175,20 +199,19 @@ IAC/ITAC recommendation code: 2.243x (by description).
 - valve TV-121 reads "TV-121 Reactor cooling water flow valve" at R-101 (`final_elements[TV-121]`)
 - Utility temperature or pressure: instrument TT-121 reads "TT-121 Reactor cooling water outlet temperature" at R-101 (`instruments[TT-121]`)
 - Equipment: equipment R-101 reads "R-101 Reactor" (`units[R-101]`)
-- Checked, none found: no flow measurement on the same stream, none on the same user for the same utility, and (on an extracted drawing) no flow element within three drawn links on the same sheet (`applies_when.without`)
 
 **Data to collect**
 
-- Utility flow to this user [not on drawing]. Where: only the valve position is recorded (TV-121: recorded signal XMV(10) in the TE data files); flow needs a meter or a calibrated valve curve; then a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading; then utility bills or the site energy report: site-level meter readings to apportion. How: Measure flow over a representative period and compare with production.
-- Who would use the reading [not on drawing]. Where: site records: energy or production reporting. How: Name the report the meter would feed.
+- Utility flow to this user [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: only the valve position is recorded (TV-121: recorded signal XMV(10) in the TE data files); flow needs a meter or a calibrated valve curve; then site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.
+- Who would use the reading [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.
 
-**How it is decided:** Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.
+**How it is decided:** Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.
 
 **What the source says (S22, S19):** "You can't manage what do don't measure" [sic]. Buildings: "efficiency improvements of 10-20%." The guide warns "only success stories are published" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): "Typical savings 4-17%, average 8%" (UK experience).
 
-**Limits:** On an extracted drawing the check is 'no flow element within three drawn links on this sheet'; the meter may be on the sheet the line comes from.
+**Limits:** Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.
 
-### C1: Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?
+### C1: What do existing records establish about this utility user's measurement coverage, usable data and intended decision?
 
 **About:** E-101  
 
@@ -200,50 +223,84 @@ IAC/ITAC recommendation code: 2.243x (by description).
 - valve FV-117 reads "FV-117 Condenser cooling water flow valve" at E-101 (`final_elements[FV-117]`)
 - Utility temperature or pressure: instrument TT-122 reads "TT-122 Separator Cooling Water Outlet Temp" at E-101 (`instruments[TT-122]`)
 - Equipment: equipment E-101 reads "E-101 Product Condenser" (`units[E-101]`)
-- Checked, none found: no flow measurement on the same stream, none on the same user for the same utility, and (on an extracted drawing) no flow element within three drawn links on the same sheet (`applies_when.without`)
 
 **Data to collect**
 
-- Utility flow to this user [not on drawing]. Where: only the valve position is recorded (FV-117: recorded signal XMV(11) in the TE data files); flow needs a meter or a calibrated valve curve; then a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading; then utility bills or the site energy report: site-level meter readings to apportion. How: Measure flow over a representative period and compare with production.
-- Who would use the reading [not on drawing]. Where: site records: energy or production reporting. How: Name the report the meter would feed.
+- Utility flow to this user [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: only the valve position is recorded (FV-117: recorded signal XMV(11) in the TE data files); flow needs a meter or a calibrated valve curve; then site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.
+- Who would use the reading [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.
 
-**How it is decided:** Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.
+**How it is decided:** Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.
 
 **What the source says (S22, S19):** "You can't manage what do don't measure" [sic]. Buildings: "efficiency improvements of 10-20%." The guide warns "only success stories are published" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): "Typical savings 4-17%, average 8%" (UK experience).
 
-**Limits:** On an extracted drawing the check is 'no flow element within three drawn links on this sheet'; the meter may be on the sheet the line comes from.
+**Limits:** Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.
 
 ## Controls and automation
 
-### C2: Which measurements have no controller (read by people, or by nothing)?
+### C2: What do existing records establish about these measurements' purpose, readers and remaining source/logic coverage?
 
-**About:** FT-106, PT-107, TT-111, PT-113, FT-114, PT-116 and 2 more  
+**About:** FT-101, FT-102, FT-103, FT-104, FT-105, FT-106 and 19 more  
 
 **Finding reference (JSON string):** `"C2@model"`
-**Asset IDs (JSON array):** `["FT-106", "PT-107", "TT-111", "PT-113", "FT-114", "PT-116", "JT-120", "TT-122"]`
+**Asset IDs (JSON array):** `["FT-101", "FT-102", "FT-103", "FT-104", "FT-105", "FT-106", "PT-107", "LT-108", "TT-109", "FT-110", "TT-111", "LT-112", "PT-113", "FT-114", "LT-115", "PT-116", "FT-117", "TT-118", "FT-119", "JT-120", "TT-121", "TT-122", "AT-123", "AT-129", "AT-137", "FIC-101", "FIC-102", "FIC-103", "FIC-104", "FIC-105", "LIC-108", "TIC-109", "FIC-110", "LIC-112", "LIC-115", "FIC-117", "TIC-118", "FIC-119", "TIC-121", "AIC-123A", "AIC-123D", "AIC-123E", "AIC-129", "AIC-137"]`
 
 **Evidence on the drawing / model**
 
+- instrument FT-101 reads "FT-101 A feed flow" at U-100 (`instruments[FT-101]`)
+- instrument FT-102 reads "FT-102 D feed flow" at U-100 (`instruments[FT-102]`)
+- instrument FT-103 reads "FT-103 E feed flow" at U-100 (`instruments[FT-103]`)
+- instrument FT-104 reads "FT-104 A and C feed flow" at C-101 (`instruments[FT-104]`)
+- instrument FT-105 reads "FT-105 Recycle flow" at K-101 (`instruments[FT-105]`)
 - instrument FT-106 reads "FT-106 Reactor feed rate" at R-101 (`instruments[FT-106]`)
 - instrument PT-107 reads "PT-107 Reactor pressure" at R-101 (`instruments[PT-107]`)
+- instrument LT-108 reads "LT-108 Reactor level" at R-101 (`instruments[LT-108]`)
+- instrument TT-109 reads "TT-109 Reactor temperature" at R-101 (`instruments[TT-109]`)
+- instrument FT-110 reads "FT-110 Purge rate" at V-101 (`instruments[FT-110]`)
 - instrument TT-111 reads "TT-111 Separator temperature" at V-101 (`instruments[TT-111]`)
+- instrument LT-112 reads "LT-112 Separator level" at V-101 (`instruments[LT-112]`)
 - instrument PT-113 reads "PT-113 Separator pressure" at V-101 (`instruments[PT-113]`)
 - instrument FT-114 reads "FT-114 Separator underflow" at V-101 (`instruments[FT-114]`)
+- instrument LT-115 reads "LT-115 Stripper level" at C-101 (`instruments[LT-115]`)
 - instrument PT-116 reads "PT-116 Stripper pressure" at C-101 (`instruments[PT-116]`)
+- instrument FT-117 reads "FT-117 Stripper underflow (product)" at C-101 (`instruments[FT-117]`)
+- instrument TT-118 reads "TT-118 Stripper temperature" at C-101 (`instruments[TT-118]`)
+- instrument FT-119 reads "FT-119 Stripper steam flow" at C-101 (`instruments[FT-119]`)
 - instrument JT-120 reads "JT-120 Compressor work" at K-101 (`instruments[JT-120]`)
+- instrument TT-121 reads "TT-121 Reactor cooling water outlet temperature" at R-101 (`instruments[TT-121]`)
 - instrument TT-122 reads "TT-122 Separator Cooling Water Outlet Temp" at E-101 (`instruments[TT-122]`)
-- Checked, none found: no controller in the model or loop list reads these measurements (`applies_when.without`)
+- instrument AT-123 reads "AT-123 Reactor feed analyzer (components A-F)" at R-101 (`instruments[AT-123]`)
+- instrument AT-129 reads "AT-129 Purge gas analyzer (components A-H)" at V-101 (`instruments[AT-129]`)
+- instrument AT-137 reads "AT-137 Product analyzer (components D-H)" at C-101 (`instruments[AT-137]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller FIC-101 reads "FIC-101 A feed flow controller" at U-100 (`controllers[FIC-101]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller FIC-102 reads "FIC-102 D feed flow controller" at U-100 (`controllers[FIC-102]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller FIC-103 reads "FIC-103 E feed flow controller" at U-100 (`controllers[FIC-103]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller FIC-104 reads "FIC-104 A and C feed flow controller" at C-101 (`controllers[FIC-104]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller FIC-105 reads "FIC-105 Recycle flow controller" at K-101 (`controllers[FIC-105]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller LIC-108 reads "LIC-108 Reactor level controller" at R-101 (`controllers[LIC-108]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller TIC-109 reads "TIC-109 Reactor temperature controller" at R-101 (`controllers[TIC-109]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller FIC-110 reads "FIC-110 Purge rate controller" at V-101 (`controllers[FIC-110]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller LIC-112 reads "LIC-112 Separator level controller" at V-101 (`controllers[LIC-112]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller LIC-115 reads "LIC-115 Stripper level controller" at C-101 (`controllers[LIC-115]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller FIC-117 reads "FIC-117 Stripper underflow (product) controller" at C-101 (`controllers[FIC-117]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller TIC-118 reads "TIC-118 Stripper temperature controller" at C-101 (`controllers[TIC-118]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller FIC-119 reads "FIC-119 Stripper steam flow controller" at C-101 (`controllers[FIC-119]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller TIC-121 reads "TIC-121 Reactor cooling water outlet temperature controller" at R-101 (`controllers[TIC-121]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller AIC-123A reads "AIC-123A Reactor feed analyzer (components A-F) (A) controller" at R-101 (`controllers[AIC-123A]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller AIC-123D reads "AIC-123D Reactor feed analyzer (components A-F) (D) controller" at R-101 (`controllers[AIC-123D]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller AIC-123E reads "AIC-123E Reactor feed analyzer (components A-F) (E) controller" at R-101 (`controllers[AIC-123E]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller AIC-129 reads "AIC-129 Purge gas analyzer (components A-H) (B) controller" at V-101 (`controllers[AIC-129]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller AIC-137 reads "AIC-137 Product analyzer (components D-H) (E) controller" at C-101 (`controllers[AIC-137]`)
 
 **Data to collect**
 
-- Whether operators adjust anything by hand from these readings [not on drawing]. Where: site records: operator logs and round sheets; then ask the operators which of these they act on, and how often. How: Note manual adjustments per shift tied to each reading.
-- The control system's own loop list [not on drawing]. Where: DCS/PLC configuration: export the loop and point list. How: Confirm the reading is indication-only and not read by logic the model lacks.
+- Whether operators adjust anything by hand from these readings [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing exact measurement/source identity and quantity, actual indication/control/alarm/protection/recording purpose, normal and abnormal decisions, operator logs/round sheets and current availability/quality/coverage; retain per-subject association and source/revision.; then a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change.. How: Frequent manual adjustment can justify a control investigation, not automatic automation. A reading with no routine manual action may have a legitimate abnormal/alarm/protection/indication purpose; do not close it solely because nobody regularly acts. Acknowledge suitable existing purpose, manual or automatic operation, and record unresolved function/source suitability. No operator trial, live change or benefit is inferred.
+- The control system's own loop list [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing current loop/point list, cause/effect, alarm/sequence/configuration and represented reader/interlock/source records; preserve exact endpoints and identify missing model coverage before concluding indication-only.; then DCS/PLC configuration: Review a permitted current loop/point/configuration export, if available, as an existing source rather than a complete plant-truth inventory.; then a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change.. How: A controller or interlock reference is useful supplied evidence, not proof of complete current logic, correct process meaning, safety adequacy or measurement authority. A partial model without controllers can still prompt existing-record clarification; it does not prove no installed controls or require a fabricated loop list. S19 printed30 is broad monitoring/process-control guidance, not a per-reading automation acceptance test.
 
-**How it is decided:** Worth automating a reading that operators adjust by hand often, on a service where steadier control saves energy or quality; indication-only readings nobody acts on close the question.
+**How it is decided:** Review measurement purpose and actual normal/abnormal decisions, represented readers and source/logic coverage with the responsible specialist. Neither a missing model controller nor a represented reader settles installed control completeness or the need for automation. Suitable existing use or nonapplicability can be acknowledged; unresolved records remain explicit. No automatic upgrade, safety acceptance or source-reported saving is assigned.
 
 **What the source says (S19):** "energy and cost savings are around 5% or more for many industrial applications of process control systems" (for plants without updated controls). Process control: "Typically 2-18% savings." The source says these figures "cannot be added".
 
-**Limits:** The model or loop list may be incomplete; an uncontrolled reading may be read by logic not in the model.
+**Limits:** Source review: S19 originalLBNL56183 official mirror printed30/PDF38, monitoring/process-control section and historical nonadditive table. This supports a bounded records investigation, not an automation decision, current control-system completeness or a measurement's safety/function truth. Six existing variable classes retained; other instrument classes remain outside this selector. Generic historical savings are not this plant's benefit.
 
 ### C3: What valve-position feedback and diagnostic records are available for these control valves?
 

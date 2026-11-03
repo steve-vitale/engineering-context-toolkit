@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "title": "Fictional final-six source/collection controls",
+    "unknowns": [
+      "Actual operation, engineering/source authority and human acceptance unknown"
+    ],
+    "assumptions": [
+      "All supplied identities/values/relations fictional before calls"
+    ]
+  },
+  "units": [],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "VT-A",
+      "variable": "vibration",
+      "unit": null,
+      "stream": null,
+      "description": "Supplied fictional instrument",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "purpose": "outsideexisting6variableclasses"
+      },
+      "source": "Fictional source/association",
+      "assigned_tag": true
+    }
+  ],
+  "controllers": [],
+  "interlocks": [],
+  "manual_valves": [],
+  "final_elements": [],
+  "relief_devices": [],
+  "unplaced": []
+}

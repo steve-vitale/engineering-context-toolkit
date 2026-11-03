@@ -4,8 +4,8 @@ Model: `model.json`. Questions: `question_catalog.json`.
 
 **How to read this.** This is a screen, not an audit. Each finding is a question the drawing or model
 raises, with the evidence found, what to collect (and exactly where), and how the collected data settles it. Nothing
-here says the plant wastes energy, and no savings are computed: the "what the source says" lines are the cited
-sources' general figures for plants in general, quoted as written, never an estimate for this plant. Data requests
+here says the plant wastes energy, and no savings are computed: the "what the source says" lines include source
+quotations and contextual paraphrases, retaining their qualifications, never estimates for this plant. Data requests
 are in one of three states: **on drawing** (the value is on the drawing or model and is quoted as evidence),
 **blank on drawing** (the drawing prints a field for it but leaves it empty, so fill that field), and **not on
 drawing** (collect it from the place named). Systems listed under "Left out" were not screened.
@@ -15,7 +15,7 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 | Energy | 1 |
 | Heat grade (high-grade heat for low-grade duty) | 0 |
 | Metering | 0 |
-| Controls and automation | 1 |
+| Controls and automation | 2 |
 | Emissions | 0 |
 | Safety questions to verify | 1 |
 
@@ -53,6 +53,29 @@ IAC/ITAC recommendation code: 2.4146 (IAC/ITAC browse page: 5,227 recommendation
 **Limits:** On a hand-built model the valve sits on a stream leaving the pump. On an extracted drawing the links have no direction, so the rule takes a control valve within four drawn links that do not pass through other equipment; it may still be on a branch or the suction side, so check the drawing. IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.
 
 ## Controls and automation
+
+### C2: What do existing records establish about these measurements' purpose, readers and remaining source/logic coverage?
+
+**About:** FT-101\
+
+**Finding reference (JSON string):** `"C2@model"`
+**Asset IDs (JSON array):** `["FT-101", "FIC-101"]`
+
+**Evidence on the drawing / model**
+
+- instrument FT-101 reads "FT-101 Discharge flow measurement" at P-1 (`instruments[FT-101]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller FIC-101 at P-1 (`controllers[FIC-101]`)
+
+**Data to collect**
+
+- Whether operators adjust anything by hand from these readings [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing exact measurement/source identity and quantity, actual indication/control/alarm/protection/recording purpose, normal and abnormal decisions, operator logs/round sheets and current availability/quality/coverage; retain per-subject association and source/revision.; then a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change.. How: Frequent manual adjustment can justify a control investigation, not automatic automation. A reading with no routine manual action may have a legitimate abnormal/alarm/protection/indication purpose; do not close it solely because nobody regularly acts. Acknowledge suitable existing purpose, manual or automatic operation, and record unresolved function/source suitability. No operator trial, live change or benefit is inferred.
+- The control system's own loop list [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing current loop/point list, cause/effect, alarm/sequence/configuration and represented reader/interlock/source records; preserve exact endpoints and identify missing model coverage before concluding indication-only.; then DCS/PLC configuration: Review a permitted current loop/point/configuration export, if available, as an existing source rather than a complete plant-truth inventory.; then a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change.. How: A controller or interlock reference is useful supplied evidence, not proof of complete current logic, correct process meaning, safety adequacy or measurement authority. A partial model without controllers can still prompt existing-record clarification; it does not prove no installed controls or require a fabricated loop list. S19 printed30 is broad monitoring/process-control guidance, not a per-reading automation acceptance test.
+
+**How it is decided:** Review measurement purpose and actual normal/abnormal decisions, represented readers and source/logic coverage with the responsible specialist. Neither a missing model controller nor a represented reader settles installed control completeness or the need for automation. Suitable existing use or nonapplicability can be acknowledged; unresolved records remain explicit. No automatic upgrade, safety acceptance or source-reported saving is assigned.
+
+**What the source says (S19):** "energy and cost savings are around 5% or more for many industrial applications of process control systems" (for plants without updated controls). Process control: "Typically 2-18% savings." The source says these figures "cannot be added".
+
+**Limits:** Source review: S19 originalLBNL56183 official mirror printed30/PDF38, monitoring/process-control section and historical nonadditive table. This supports a bounded records investigation, not an automation decision, current control-system completeness or a measurement's safety/function truth. Six existing variable classes retained; other instrument classes remain outside this selector. Generic historical savings are not this plant's benefit.
 
 ### C3: What valve-position feedback and diagnostic records are available for these control valves?
 
@@ -103,12 +126,13 @@ IAC/ITAC recommendation code: 2.4146 (IAC/ITAC browse page: 5,227 recommendation
 
 ## Questions that found nothing to ask here
 
-No item in this model matched these questions' triggers. That is not a clean bill of health: the model may simply not show what the question looks for. E2, E3, E4, E5, E6, E7, E8, E9, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21, E22, E23, E24, H1, H2, H3, H4, C1, C2, C4, C5, C6, C7, C10, C8, E25, E26, E27, E28, E29, E30, E31, E32, H5, H6, C11, C12.
+No item in this model matched these questions' triggers. That is not a clean bill of health: the model may simply not show what the question looks for. E2, E3, E4, E5, E6, E7, E8, E9, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21, E22, E23, E24, H1, H2, H3, H4, C1, C4, C5, C6, C7, C10, C8, E25, E26, E27, E28, E29, E30, E31, E32, H5, H6, C11, C12.
 
 ## Sources cited above
 
 - S13: Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079). https://www.energy.gov/sites/prod/files/2014/05/f16/pump.pdf (license: Federal, co-developed with HI: unclear for HI content)
 - S15: Variable Speed Pumping: A Guide to Successful Applications, Executive Summary (DOE ITP with Europump/HI, DOE/GO-102004-1913, May 2004). https://www.energy.gov/sites/prod/files/2014/05/f16/variable_speed_pumping.pdf (license: Unclear (joint with Europump/HI))
+- S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005). https://www.osti.gov/servlets/purl/862119 (license: DOE-lab (contractor) report: unclear, but freely citable. Its tables quote older secondary sources, so figures are cited as reported in LBNL-56183)
 - S24: DOE IAC/ITAC database: browse pages, download, schema document. https://itac.university/index/arc/2. (license: No license or terms stated: unclear)
 - S29: Emerson Automation Experts, Providing Operators Process Control Valve Position Feedback (2014-01-10; vendor guidance). https://www.emersonautomationexperts.com/2014/valves-actuators-regulators/providing-operators-process-control-valve-position-feedback/ (license: Copyright Emerson; source link and bounded paraphrase only. No source text or PDF redistributed.)
 - S30: Emerson, Valve Positioners (product overview and digital-controller FAQ; vendor-specific). https://www.emerson.com/en/final-control/catalog/products-and-software/valve-actuator-regulator-instrumentation/valve-positioners (license: Copyright Emerson; source link and bounded paraphrase only. No source text or PDF redistributed.)

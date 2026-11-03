@@ -1,0 +1,92 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/steam-pump-records/models/E8-03-source-coverage.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E8"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "energy": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E8@model",
+   "question_id": "E8",
+   "family": "energy",
+   "question": "Is there a steam trap population large enough to justify a trap survey program?",
+   "about": "ST-A, ST-B",
+   "assets": [
+    {
+     "id": "ST-A",
+     "tag": "ST-A"
+    },
+    {
+     "id": "ST-B",
+     "tag": "ST-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "ST-A",
+     "tag": "ST-A",
+     "text": "equipment ST-A reads \"ST-A Steam trap sourceA\"",
+     "field": "units[ST-A]"
+    },
+    {
+     "role": "trigger",
+     "id": "ST-B",
+     "tag": "ST-B",
+     "text": "equipment ST-B reads \"ST-B Steam trap sourceB\"",
+     "field": "units[ST-B]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Trap inventory and last survey date",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: trap list",
+      "maintenance records: trap survey history"
+     ],
+     "how": "Count traps by type and service."
+    },
+    {
+     "item": "Trap condition",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: ultrasonic or thermal survey of each trap"
+     ],
+     "how": "Classify each trap working / failed open / failed closed."
+    }
+   ],
+   "decision_rule": "A survey is likely worthwhile above about 500 traps or when no survey has been done in 3 to 5 years; otherwise fold traps into routine maintenance.",
+   "typical_benefit": {
+    "wording": "Unmaintained 3-5 years: \"between 15% to 30% of the installed steam traps may have failed.\" With a program, \"less than 5%.\" LBNL refinery table (as reported in LBNL-56183): trap maintenance 10-15% fuel saved, 0.5 yr payback.",
+    "source": [
+     "S3",
+     "S19",
+     "S24"
+    ],
+    "arc": "2.2113 (IAC/ITAC browse page: 445 recommendations, 0.6 yr average payback, 80.1% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S3: Steam Tip #1, Inspect and Repair Steam Traps (DOE/GO-102012-3401)",
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

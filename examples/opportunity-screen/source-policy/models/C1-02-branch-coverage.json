@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "title": "Fictional air end-use/storage/heat and utility-metering records",
+    "unknowns": [
+      "Actual operation, installed truth and engineering/human acceptance unknown"
+    ],
+    "assumptions": [
+      "All identities, values and relationships fictional before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "U-A",
+      "name": "Fictional utility user",
+      "type": "process_user",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call development record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "metering_purpose": "branchenergyreview",
+        "data_owner": "fictionalreviewer"
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [
+    {
+      "id": "S-A1",
+      "name": "COOLING WATER SUPPLY branch1",
+      "from": "BL",
+      "to": "U-A",
+      "utility": true,
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call development record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "branch": "branch1"
+      },
+      "source": "Fictional utility/user association"
+    },
+    {
+      "id": "S-A2",
+      "name": "COOLING WATER SUPPLY branch2",
+      "from": "BL",
+      "to": "U-A",
+      "utility": true,
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call development record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "branch": "branch2"
+      },
+      "source": "Fictional utility/user association"
+    }
+  ],
+  "instruments": [
+    {
+      "tag": "FT-A",
+      "unit": "U-A",
+      "stream": "S-A1",
+      "variable": "flow",
+      "description": "COOLING WATER flow candidate",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call development record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "measurement_target": "S-A1only",
+        "record_scope": "branch1notbranch2",
+        "flow": 10,
+        "flow_unit": "gpm",
+        "sample_period": "fictionalinterval",
+        "quality": "declaredgoodunverified"
+      },
+      "source": "Supplied fictional source, association unverified",
+      "assigned_tag": true
+    }
+  ],
+  "controllers": [],
+  "manual_valves": [],
+  "final_elements": [],
+  "unplaced": []
+}

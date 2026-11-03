@@ -1,0 +1,155 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/steam-pump-records/models/E3-01-protection-duty.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E3"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E3@P-A",
+   "question_id": "E3",
+   "family": "energy",
+   "question": "Does this pump recirculate flow continuously through a minimum-flow line?",
+   "about": "P-A",
+   "assets": [
+    {
+     "id": "P-A",
+     "tag": "P-A"
+    },
+    {
+     "id": "HV-A",
+     "tag": "HV-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "P-A",
+     "tag": "P-A",
+     "text": "equipment P-A reads \"P-A Fictional pumpA\"",
+     "field": "units[P-A]"
+    },
+    {
+     "role": "minimum-flow line",
+     "id": "HV-A",
+     "tag": "HV-A",
+     "text": "hand valve HV-A reads \"HV-A Minimum-flow recirculation candidate\" at P-A",
+     "field": "manual_valves[HV-A]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Recirculation flow versus forward flow",
+     "state": "not_on_drawing",
+     "where": [
+      "only a valve (HV-A) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve",
+      "a walkdown: clamp-on ultrasonic flow meter on the recirculation line"
+     ],
+     "how": "Measure both flows at normal operation."
+    },
+    {
+     "item": "Hours the recirculation is open",
+     "state": "not_on_drawing",
+     "where": [
+      "only a valve (HV-A) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve",
+      "site records: operator logs"
+     ],
+     "how": "Count hours with recirculation flow."
+    }
+   ],
+   "decision_rule": "Worth action when recirculation flows continuously at normal throughput (an orifice that is always open, or a valve that never closes); an automatic valve that only opens at low forward flow is doing its job.",
+   "typical_benefit": {
+    "wording": "\"the energy needed to push fluid through bypass lines is wasted.\" No % stated.",
+    "source": [
+     "S13"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S13: Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079)"
+    ]
+   },
+   "limits": "Minimum flow protects the pump; never remove it without the pump vendor's minimum continuous flow.",
+   "status": "asked"
+  },
+  {
+   "id": "E3@P-B",
+   "question_id": "E3",
+   "family": "energy",
+   "question": "Does this pump recirculate flow continuously through a minimum-flow line?",
+   "about": "P-B",
+   "assets": [
+    {
+     "id": "P-B",
+     "tag": "P-B"
+    },
+    {
+     "id": "HV-B",
+     "tag": "HV-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "P-B",
+     "tag": "P-B",
+     "text": "equipment P-B reads \"P-B Fictional pumpB\"",
+     "field": "units[P-B]"
+    },
+    {
+     "role": "minimum-flow line",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "hand valve HV-B reads \"HV-B Minimum-flow recirculation candidate\" at P-B",
+     "field": "manual_valves[HV-B]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Recirculation flow versus forward flow",
+     "state": "not_on_drawing",
+     "where": [
+      "only a valve (HV-B) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve",
+      "a walkdown: clamp-on ultrasonic flow meter on the recirculation line"
+     ],
+     "how": "Measure both flows at normal operation."
+    },
+    {
+     "item": "Hours the recirculation is open",
+     "state": "not_on_drawing",
+     "where": [
+      "only a valve (HV-B) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve",
+      "site records: operator logs"
+     ],
+     "how": "Count hours with recirculation flow."
+    }
+   ],
+   "decision_rule": "Worth action when recirculation flows continuously at normal throughput (an orifice that is always open, or a valve that never closes); an automatic valve that only opens at low forward flow is doing its job.",
+   "typical_benefit": {
+    "wording": "\"the energy needed to push fluid through bypass lines is wasted.\" No % stated.",
+    "source": [
+     "S13"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S13: Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079)"
+    ]
+   },
+   "limits": "Minimum flow protects the pump; never remove it without the pump vendor's minimum continuous flow.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

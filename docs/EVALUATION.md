@@ -488,8 +488,9 @@ separate, so their score difference is not model improvement. The author saw a s
 the input is adapted prose. This is not the unfamiliar-original-description measurement planned above.
 
 Its wrong-endpoint control is detected by the selected-field scorer; its false automatic-shutdown claim is not.
-The generated question screen also has zero findings on this sparse case. Source/claim interpretation, useful
-question coverage and rendered engineering quality therefore remain separate assessments. No timed engineer
+The question screen had zero findings at that recorded stage. The current source-policy revision asks C2
+about measurement purpose; it does not diagnose the incident or alter the saved model/scorer results. Source/claim
+interpretation, useful question coverage and rendered engineering quality remain separate assessments. No timed engineer
 trial, held-out accuracy, or broad description-to-P&ID success rate is claimed. The source inventory is agent
 work, not human approval. Existing historical criteria and results retain their original scopes.
 

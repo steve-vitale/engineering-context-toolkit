@@ -1,0 +1,159 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/steam-pump-records/models/E7-03-existing-constraints.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E7"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E7@PCV-A",
+   "question_id": "E7",
+   "family": "energy",
+   "question": "Does a steam pressure-reducing valve between headers pass enough steam to drive a backpressure turbogenerator instead?",
+   "about": "PCV-A",
+   "assets": [
+    {
+     "id": "PCV-A",
+     "tag": "PCV-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "PCV-A",
+     "tag": "PCV-A",
+     "text": "valve PCV-A reads \"PCV-A PRV Steam HEADER candidate\"; owning equipment unknown; no unit inferred; supplied source interpretation, not installed truth; Recorded qualifiers: {\"tag\": \"PCV-A\", \"kind\": \"final_element\", \"unit\": null, \"source\": \"Fictional candidate station, not installed-state proof\", \"assigned_tag\": true, \"unplaced_reason\": \"Fictional explicitly unplaced station; no inventoried equipment owner\"}; Assigned identifier; an operating tag has not been verified",
+     "field": "unplaced[PCV-A]",
+     "provenance": {
+      "kind": "native-unplaced-source-context-1",
+      "model_role": "final_element",
+      "record_fields": {
+       "tag": "PCV-A",
+       "kind": "final_element",
+       "unit": null,
+       "source": "Fictional candidate station, not installed-state proof",
+       "assigned_tag": true,
+       "unplaced_reason": "Fictional explicitly unplaced station; no inventoried equipment owner"
+      },
+      "placement": "owning equipment unknown; no unit inferred"
+     }
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Steam flow through the station over a year",
+     "state": "not_on_drawing",
+     "where": [
+      "only a valve (PCV-A) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve",
+      "site records: steam balance"
+     ],
+     "how": "\"Develop steam flow/duration curves for each PRV station\"."
+    },
+    {
+     "item": "Upstream and downstream pressures",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: gauges either side of the station",
+      "site records: header design pressures"
+     ],
+     "how": "Record both at normal operation."
+    }
+   ],
+   "decision_rule": "Consider a backpressure turbogenerator only if the station passes a constant flow of at least 3,000 lb/hr with a pressure drop of at least 100 psi (S6's condition); otherwise close this screening investigation.",
+   "typical_benefit": {
+    "wording": "Consider when a PRV has \"constant steam flows of at least 3,000 pounds per hour (lb/hr), and when the steam pressure drop is at least 100 psi.\" Installation costs \"typically average 75% of equipment costs\".",
+    "source": [
+     "S6"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S6: Steam Tip #20, Replace Pressure-Reducing Valves with Backpressure Turbogenerators (DOE/GO-102012-3409)"
+    ]
+   },
+   "limits": "S6 also quotes cost per kW figures; they are deliberately not repeated here. No IAC code maps to turbines (2.2134 covers PRV-station leaks).",
+   "status": "asked"
+  },
+  {
+   "id": "E7@PCV-B",
+   "question_id": "E7",
+   "family": "energy",
+   "question": "Does a steam pressure-reducing valve between headers pass enough steam to drive a backpressure turbogenerator instead?",
+   "about": "PCV-B",
+   "assets": [
+    {
+     "id": "PCV-B",
+     "tag": "PCV-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "PCV-B",
+     "tag": "PCV-B",
+     "text": "valve PCV-B reads \"PCV-B PRV Steam HEADER candidate\"; owning equipment unknown; no unit inferred; supplied source interpretation, not installed truth; Recorded qualifiers: {\"tag\": \"PCV-B\", \"kind\": \"final_element\", \"unit\": null, \"source\": \"Fictional candidate station, not installed-state proof\", \"assigned_tag\": true, \"unplaced_reason\": \"Fictional explicitly unplaced station; no inventoried equipment owner\"}; Assigned identifier; an operating tag has not been verified",
+     "field": "unplaced[PCV-B]",
+     "provenance": {
+      "kind": "native-unplaced-source-context-1",
+      "model_role": "final_element",
+      "record_fields": {
+       "tag": "PCV-B",
+       "kind": "final_element",
+       "unit": null,
+       "source": "Fictional candidate station, not installed-state proof",
+       "assigned_tag": true,
+       "unplaced_reason": "Fictional explicitly unplaced station; no inventoried equipment owner"
+      },
+      "placement": "owning equipment unknown; no unit inferred"
+     }
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Steam flow through the station over a year",
+     "state": "not_on_drawing",
+     "where": [
+      "only a valve (PCV-B) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve",
+      "site records: steam balance"
+     ],
+     "how": "\"Develop steam flow/duration curves for each PRV station\"."
+    },
+    {
+     "item": "Upstream and downstream pressures",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: gauges either side of the station",
+      "site records: header design pressures"
+     ],
+     "how": "Record both at normal operation."
+    }
+   ],
+   "decision_rule": "Consider a backpressure turbogenerator only if the station passes a constant flow of at least 3,000 lb/hr with a pressure drop of at least 100 psi (S6's condition); otherwise close this screening investigation.",
+   "typical_benefit": {
+    "wording": "Consider when a PRV has \"constant steam flows of at least 3,000 pounds per hour (lb/hr), and when the steam pressure drop is at least 100 psi.\" Installation costs \"typically average 75% of equipment costs\".",
+    "source": [
+     "S6"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S6: Steam Tip #20, Replace Pressure-Reducing Valves with Backpressure Turbogenerators (DOE/GO-102012-3409)"
+    ]
+   },
+   "limits": "S6 also quotes cost per kW figures; they are deliberately not repeated here. No IAC code maps to turbines (2.2134 covers PRV-station leaks).",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

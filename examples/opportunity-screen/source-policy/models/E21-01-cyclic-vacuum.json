@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "title": "Fictional air end-use/storage/heat and utility-metering records",
+    "unknowns": [
+      "Actual operation, installed truth and engineering/human acceptance unknown"
+    ],
+    "assumptions": [
+      "All identities, values and relationships fictional before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "V-A",
+      "name": "AIR VENTURI vacuum",
+      "type": "vacuum_generator",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call development record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "compressedair",
+        "end_use": "cyclicvacuum",
+        "duty_percent": 20,
+        "shutoff_control": true,
+        "safety_function": "declaredsparkingconstraint, notapproved",
+        "lifecycle_basis": null
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    },
+    {
+      "id": "V-B",
+      "name": "AIR VENTURI vacuum",
+      "type": "vacuum_generator",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call development record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": null,
+        "end_use": "unknownvacuum",
+        "duty_percent": null,
+        "shutoff_control": null
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "controllers": [],
+  "manual_valves": [],
+  "final_elements": [],
+  "unplaced": []
+}

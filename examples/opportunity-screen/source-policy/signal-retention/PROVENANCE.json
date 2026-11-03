@@ -1,0 +1,704 @@
+{
+  "schema": "source-policy-signal-retention-provenance-v1",
+  "status": "Twelve post-audit fictional controls were executed with the retained before catalog, a matched private candidate, and then the adopted normal default catalog. The published before and after reports are exact actual outputs, not rewritten candidate reports.",
+  "cohorts": {
+    "parent_collection_policy_cases": 88,
+    "later_signal_retention_controls": 12,
+    "catalog_rules": 50,
+    "new_source_reviews_from_supplement": 0,
+    "scope": "Two exposed development cohorts, not 100 plants, new rule reviews, held-out generalization or engineering approval."
+  },
+  "current_catalog": {
+    "file": "data/questions.json",
+    "sha256_raw": "164452c9b274be0fd1f21800f7bc4e52759798b34a3da23fa0f25048101b55f3",
+    "bytes": 335035
+  },
+  "historical_catalog": {
+    "file": "history/catalog-before.json",
+    "sha256_raw": "b525dcf416f27fed5fdf2c2801b44b07eb4027d261cc0da7ed7a7fa4f1e3eefb",
+    "bytes": 333377
+  },
+  "method": {
+    "file": "scripts/question_engine.py",
+    "sha256_raw": "29080480178e3cab8ec283a0320328dd5360193dac464fb3213ae83893ea7576",
+    "bytes": 125898,
+    "ordinary_CRLF_folded_LF_sha256": "9d148f8f0d4258dbc418e39be8933d0ecac9d0a9d1341000b4f7240b5cad889b",
+    "identity_limit": "The actual executed working-source raw identity and calculated ordinary LF form are distinct. The calculated LF form is not claimed to be a committed blob before commit."
+  },
+  "inputs": {
+    "signal-retention/criteria.json": {
+      "sha256_raw": "abfd3105a4c7cfb50dd573aec9cb2ae555be7fa81e207cc3ab51e691ea78e667",
+      "bytes": 8522
+    },
+    "signal-retention/expected/cases.json": {
+      "sha256_raw": "452b5f4cf2eb5e87d37b80f02d2e0de93fa2e5d4ffde77379d0a84d6b823e8a6",
+      "bytes": 13892
+    },
+    "signal-retention/history/catalog-before.json": {
+      "sha256_raw": "b525dcf416f27fed5fdf2c2801b44b07eb4027d261cc0da7ed7a7fa4f1e3eefb",
+      "bytes": 333377
+    },
+    "signal-retention/models/SC01-E3-selected-flow.json": {
+      "sha256_raw": "9d8f966fc1f439936da10f3980a0c6835042517cfc31a4c6d934bfeda1e1e7aa",
+      "bytes": 4134
+    },
+    "signal-retention/models/SC02-E3-position-only.json": {
+      "sha256_raw": "64174d5c514d8d1ca29301ce1cb2c846b22d79b74f697a47ba9cdee098c15b29",
+      "bytes": 2659
+    },
+    "signal-retention/models/SC03-E7-position-only.json": {
+      "sha256_raw": "dc676567e499edd6323b29a26976b1284046d546b3d1488d50bae01539f9a777",
+      "bytes": 2157
+    },
+    "signal-retention/models/SC04-E7-quiet.json": {
+      "sha256_raw": "a32e161e8ba3f001ec742f386be8dd8c0dcc016ebbf60a2ec9fb07214c092e75",
+      "bytes": 1403
+    },
+    "signal-retention/models/SC05-E10-instrument-trigger.json": {
+      "sha256_raw": "c51b1dc7d87834c3bc465fe58fadca13fd922f7b74246f094205104a44a0ce02",
+      "bytes": 3521
+    },
+    "signal-retention/models/SC06-E10-equipment-noop.json": {
+      "sha256_raw": "373ffe71ac20533442f719aeef26905a3e1eb491dc4032395717eb78bfcf24de",
+      "bytes": 3329
+    },
+    "signal-retention/models/SC07-E14-equipment-noop.json": {
+      "sha256_raw": "a1d98df7081b42091f269801c00aeab9ffeba69da095f17e5e7b68613db4a9aa",
+      "bytes": 2638
+    },
+    "signal-retention/models/SC08-E14-excluded.json": {
+      "sha256_raw": "2c39554ffe039467e31e775590ce4dabc82518e430c8aa59ba600110c1f6dc1d",
+      "bytes": 3243
+    },
+    "signal-retention/models/SC09-E15-candidate-flow.json": {
+      "sha256_raw": "5310d77380c0123d592f9a2b2779f7eea62641aa1b4819a6600f48ae55e2392b",
+      "bytes": 4147
+    },
+    "signal-retention/models/SC10-E15-position-only.json": {
+      "sha256_raw": "34936e8488533a9f05e4c2eb7e53abcbb401045ac4421530f5bdb14290423592",
+      "bytes": 3410
+    },
+    "signal-retention/models/SC11-E19-candidate-pressure.json": {
+      "sha256_raw": "37f1682b4c19a1cd04c7f7bdd43734d9d88d52c94232bdf7698b85b45510cebf",
+      "bytes": 4214
+    },
+    "signal-retention/models/SC12-E19-nonmeasurement.json": {
+      "sha256_raw": "8280cd70748ad3f58dc0a6ca6abcb8913087d09adf0186095a4c4b7a50647c56",
+      "bytes": 4770
+    },
+    "signal-retention/source-note.txt": {
+      "sha256_raw": "2119271d75a00ab5803cd7d9630a15e4f8b14f7dab6abe4c7750089d82a724fa",
+      "bytes": 663
+    }
+  },
+  "synthetic_source_limit": "SYNTHETIC_SCxx fig11_series values are fictional symbolic mapper pointers to source-note.txt. They are not actual report series, TE channels, time series, measurements, historian access or external source authority. Source-family prose emitted by the mapper does not establish that data exist.",
+  "behavior_scope": "Quantity-appropriate lookup aids and position-not-flow warnings are retained; wrong quantities, unassociated records and equipment-only no-op controls remain qualified. Global E15/E19 candidates are not accepted as this boiler or compressor system evidence.",
+  "before": {
+    "commands": 12,
+    "exit0": 12,
+    "jobs": [
+      {
+        "case": "SC01-E3-selected-flow",
+        "rule": "E3",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC01-E3-selected-flow.json",
+        "model_sha256_raw": "9d8f966fc1f439936da10f3980a0c6835042517cfc31a4c6d934bfeda1e1e7aa",
+        "pid": 96640,
+        "start_utc": "2026-11-03T06:01:36.351417+00:00",
+        "end_utc": "2026-11-03T06:01:36.584552+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC02-E3-position-only",
+        "rule": "E3",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC02-E3-position-only.json",
+        "model_sha256_raw": "64174d5c514d8d1ca29301ce1cb2c846b22d79b74f697a47ba9cdee098c15b29",
+        "pid": 95104,
+        "start_utc": "2026-11-03T06:01:36.816763+00:00",
+        "end_utc": "2026-11-03T06:01:36.989284+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC03-E7-position-only",
+        "rule": "E7",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC03-E7-position-only.json",
+        "model_sha256_raw": "dc676567e499edd6323b29a26976b1284046d546b3d1488d50bae01539f9a777",
+        "pid": 82832,
+        "start_utc": "2026-11-03T06:01:37.170750+00:00",
+        "end_utc": "2026-11-03T06:01:37.345890+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC04-E7-quiet",
+        "rule": "E7",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC04-E7-quiet.json",
+        "model_sha256_raw": "a32e161e8ba3f001ec742f386be8dd8c0dcc016ebbf60a2ec9fb07214c092e75",
+        "pid": 94852,
+        "start_utc": "2026-11-03T06:01:37.533816+00:00",
+        "end_utc": "2026-11-03T06:01:37.686025+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC05-E10-instrument-trigger",
+        "rule": "E10",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC05-E10-instrument-trigger.json",
+        "model_sha256_raw": "c51b1dc7d87834c3bc465fe58fadca13fd922f7b74246f094205104a44a0ce02",
+        "pid": 85076,
+        "start_utc": "2026-11-03T06:01:37.859628+00:00",
+        "end_utc": "2026-11-03T06:01:38.017641+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC06-E10-equipment-noop",
+        "rule": "E10",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC06-E10-equipment-noop.json",
+        "model_sha256_raw": "373ffe71ac20533442f719aeef26905a3e1eb491dc4032395717eb78bfcf24de",
+        "pid": 95680,
+        "start_utc": "2026-11-03T06:01:38.193936+00:00",
+        "end_utc": "2026-11-03T06:01:38.370409+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC07-E14-equipment-noop",
+        "rule": "E14",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC07-E14-equipment-noop.json",
+        "model_sha256_raw": "a1d98df7081b42091f269801c00aeab9ffeba69da095f17e5e7b68613db4a9aa",
+        "pid": 100324,
+        "start_utc": "2026-11-03T06:01:38.537619+00:00",
+        "end_utc": "2026-11-03T06:01:38.681324+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC08-E14-excluded",
+        "rule": "E14",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC08-E14-excluded.json",
+        "model_sha256_raw": "2c39554ffe039467e31e775590ce4dabc82518e430c8aa59ba600110c1f6dc1d",
+        "pid": 44568,
+        "start_utc": "2026-11-03T06:01:38.848055+00:00",
+        "end_utc": "2026-11-03T06:01:38.991523+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC09-E15-candidate-flow",
+        "rule": "E15",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC09-E15-candidate-flow.json",
+        "model_sha256_raw": "5310d77380c0123d592f9a2b2779f7eea62641aa1b4819a6600f48ae55e2392b",
+        "pid": 98748,
+        "start_utc": "2026-11-03T06:01:39.153070+00:00",
+        "end_utc": "2026-11-03T06:01:39.310708+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC10-E15-position-only",
+        "rule": "E15",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC10-E15-position-only.json",
+        "model_sha256_raw": "34936e8488533a9f05e4c2eb7e53abcbb401045ac4421530f5bdb14290423592",
+        "pid": 1716,
+        "start_utc": "2026-11-03T06:01:39.480700+00:00",
+        "end_utc": "2026-11-03T06:01:39.644483+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC11-E19-candidate-pressure",
+        "rule": "E19",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC11-E19-candidate-pressure.json",
+        "model_sha256_raw": "37f1682b4c19a1cd04c7f7bdd43734d9d88d52c94232bdf7698b85b45510cebf",
+        "pid": 68544,
+        "start_utc": "2026-11-03T06:01:39.822267+00:00",
+        "end_utc": "2026-11-03T06:01:39.971329+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC12-E19-nonmeasurement",
+        "rule": "E19",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC12-E19-nonmeasurement.json",
+        "model_sha256_raw": "8280cd70748ad3f58dc0a6ca6abcb8913087d09adf0186095a4c4b7a50647c56",
+        "pid": 99600,
+        "start_utc": "2026-11-03T06:01:40.125956+00:00",
+        "end_utc": "2026-11-03T06:01:40.271482+00:00",
+        "exit": 0
+      }
+    ],
+    "files": [
+      {
+        "file": "signal-retention/history/before/SC01-E3-selected-flow/questions.json",
+        "case": "SC01-E3-selected-flow",
+        "stage": "signal historical before",
+        "sha256_raw": "ab8e398a0dcef6074d242bb27f92acc088ec4e5740b89ae0de4c7d14c717a566",
+        "bytes": 14309
+      },
+      {
+        "file": "signal-retention/history/before/SC01-E3-selected-flow/screen.md",
+        "case": "SC01-E3-selected-flow",
+        "stage": "signal historical before",
+        "sha256_raw": "2d3ef475b956e25beb4b0aa9e72c8580bdb4df275f3307224033dfb23fef6b66",
+        "bytes": 11133
+      },
+      {
+        "file": "signal-retention/history/before/SC02-E3-position-only/questions.json",
+        "case": "SC02-E3-position-only",
+        "stage": "signal historical before",
+        "sha256_raw": "64c657f892d7f648fbb0356ac7210794aed1a43d5384167c56742972b8ec2d77",
+        "bytes": 11235
+      },
+      {
+        "file": "signal-retention/history/before/SC02-E3-position-only/screen.md",
+        "case": "SC02-E3-position-only",
+        "stage": "signal historical before",
+        "sha256_raw": "a056f7399494545cba8fca605ea4e21fb0d1b0dfaff5d640881d3e163573e000",
+        "bytes": 9205
+      },
+      {
+        "file": "signal-retention/history/before/SC03-E7-position-only/questions.json",
+        "case": "SC03-E7-position-only",
+        "stage": "signal historical before",
+        "sha256_raw": "9adb2e52e9c63a922ac7f192305e6a441027e68605ac706535f0be8f4cb598d1",
+        "bytes": 11498
+      },
+      {
+        "file": "signal-retention/history/before/SC03-E7-position-only/screen.md",
+        "case": "SC03-E7-position-only",
+        "stage": "signal historical before",
+        "sha256_raw": "b01db5b423b7d7148dcd5a99d7dbf79a0ff276ec9ebf3b588c040884fa7fd1d6",
+        "bytes": 9426
+      },
+      {
+        "file": "signal-retention/history/before/SC04-E7-quiet/questions.json",
+        "case": "SC04-E7-quiet",
+        "stage": "signal historical before",
+        "sha256_raw": "e47c6b4a74cc0c18e19d720428491e9594e3b95f206200884304eef3c26fd423",
+        "bytes": 702
+      },
+      {
+        "file": "signal-retention/history/before/SC04-E7-quiet/screen.md",
+        "case": "SC04-E7-quiet",
+        "stage": "signal historical before",
+        "sha256_raw": "2d1392228b305a776f5301581c812bf07499eb21a394830ba4a9846ca5ddd059",
+        "bytes": 1432
+      },
+      {
+        "file": "signal-retention/history/before/SC05-E10-instrument-trigger/questions.json",
+        "case": "SC05-E10-instrument-trigger",
+        "stage": "signal historical before",
+        "sha256_raw": "b1fe87f6fa6f5e0419bb0da09f167241fab6667d82eb17d7012079fe947576d1",
+        "bytes": 29492
+      },
+      {
+        "file": "signal-retention/history/before/SC05-E10-instrument-trigger/screen.md",
+        "case": "SC05-E10-instrument-trigger",
+        "stage": "signal historical before",
+        "sha256_raw": "98e0e732237fbeb47c6712243eb9f727d1a1758fcc7dbd29a05e0ae8270d5e46",
+        "bytes": 23472
+      },
+      {
+        "file": "signal-retention/history/before/SC06-E10-equipment-noop/questions.json",
+        "case": "SC06-E10-equipment-noop",
+        "stage": "signal historical before",
+        "sha256_raw": "8dcbbce3a3f62ef50ae476d3e59ff0ca31af6612aa99ca0f67339859811beed8",
+        "bytes": 10142
+      },
+      {
+        "file": "signal-retention/history/before/SC06-E10-equipment-noop/screen.md",
+        "case": "SC06-E10-equipment-noop",
+        "stage": "signal historical before",
+        "sha256_raw": "22fa59cab7c7218b07ed8e2e110f703b445df93c7f064fdc49b5766f149f095e",
+        "bytes": 8748
+      },
+      {
+        "file": "signal-retention/history/before/SC07-E14-equipment-noop/questions.json",
+        "case": "SC07-E14-equipment-noop",
+        "stage": "signal historical before",
+        "sha256_raw": "1941f56df4f8232bde8ed77048138761e65cb8746ea8c764efc108e5e2d3fd9f",
+        "bytes": 12084
+      },
+      {
+        "file": "signal-retention/history/before/SC07-E14-equipment-noop/screen.md",
+        "case": "SC07-E14-equipment-noop",
+        "stage": "signal historical before",
+        "sha256_raw": "9902df2ac9005c99fb23c4d44f4870394fe74dd775b2f8c8519ca5a99242334a",
+        "bytes": 10041
+      },
+      {
+        "file": "signal-retention/history/before/SC08-E14-excluded/questions.json",
+        "case": "SC08-E14-excluded",
+        "stage": "signal historical before",
+        "sha256_raw": "a9b0278d170e649aeac3bfcfdc202df2ee4468754e1748a975a96f0cf817c5ac",
+        "bytes": 708
+      },
+      {
+        "file": "signal-retention/history/before/SC08-E14-excluded/screen.md",
+        "case": "SC08-E14-excluded",
+        "stage": "signal historical before",
+        "sha256_raw": "9c7ec6c542db4e0a0b5485f550683a6f037d2a141a7ade595a9e8920524edc36",
+        "bytes": 1437
+      },
+      {
+        "file": "signal-retention/history/before/SC09-E15-candidate-flow/questions.json",
+        "case": "SC09-E15-candidate-flow",
+        "stage": "signal historical before",
+        "sha256_raw": "26f6bdfb1c726d3d5aae64fee83320bc75dcc96f3bae7157c5eb8650255d5b14",
+        "bytes": 26273
+      },
+      {
+        "file": "signal-retention/history/before/SC09-E15-candidate-flow/screen.md",
+        "case": "SC09-E15-candidate-flow",
+        "stage": "signal historical before",
+        "sha256_raw": "afd3009c6ed711533ac4b8214ca52b553bc05b28ecd3b02de620d9014b029963",
+        "bytes": 20153
+      },
+      {
+        "file": "signal-retention/history/before/SC10-E15-position-only/questions.json",
+        "case": "SC10-E15-position-only",
+        "stage": "signal historical before",
+        "sha256_raw": "97bbaa2cc7bdf3c176ce418e009f18f4258e3ec16fabc131e07bb79ce9b15ca4",
+        "bytes": 13482
+      },
+      {
+        "file": "signal-retention/history/before/SC10-E15-position-only/screen.md",
+        "case": "SC10-E15-position-only",
+        "stage": "signal historical before",
+        "sha256_raw": "c70ca6e06c75cb84fada065bd3dd5a1bed462595275e01c5ae477430c971ac45",
+        "bytes": 10798
+      },
+      {
+        "file": "signal-retention/history/before/SC11-E19-candidate-pressure/questions.json",
+        "case": "SC11-E19-candidate-pressure",
+        "stage": "signal historical before",
+        "sha256_raw": "446771d60c7675c947973cba5e0cf791402a3e12fd9781f8dd8dc4a6ce5c01de",
+        "bytes": 22173
+      },
+      {
+        "file": "signal-retention/history/before/SC11-E19-candidate-pressure/screen.md",
+        "case": "SC11-E19-candidate-pressure",
+        "stage": "signal historical before",
+        "sha256_raw": "ea2bf29a54566e9b7f1c19e33a3c6c944207a7b7dbba4f0db22ce5ebe0e0c259",
+        "bytes": 17331
+      },
+      {
+        "file": "signal-retention/history/before/SC12-E19-nonmeasurement/questions.json",
+        "case": "SC12-E19-nonmeasurement",
+        "stage": "signal historical before",
+        "sha256_raw": "dbd1ca822cd120ef7b7dc655d8d2a51ae6c9e60df53ecd47afd6ec01836fef4a",
+        "bytes": 10944
+      },
+      {
+        "file": "signal-retention/history/before/SC12-E19-nonmeasurement/screen.md",
+        "case": "SC12-E19-nonmeasurement",
+        "stage": "signal historical before",
+        "sha256_raw": "7d3526640b0acbcd2c0697f09437a2d9bef809c19bb88da7c0ee040f992ded93",
+        "bytes": 9220
+      }
+    ],
+    "result_opaque_sha256_raw": "742caa9eb39c8b4cca9b06fd952d65d568488c98de71161ee6e9fffda989f190",
+    "caption": "The actual retained public history/catalog-before.json caption is unchanged."
+  },
+  "private_matched_candidate": {
+    "commands": 12,
+    "exit0": 12,
+    "publication": "Not selected as default-after outputs. They remain a separate saved comparison cohort.",
+    "independent_receipt_opaque_sha256_raw": "a902e594a1944c554931146960668e23b3c4d283857c4fa7ee47f9d6aa02bd2b"
+  },
+  "current_after": {
+    "commands": 12,
+    "exit0": 12,
+    "jobs": [
+      {
+        "case": "SC01-E3-selected-flow",
+        "rule": "E3",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC01-E3-selected-flow.json",
+        "model_sha256_raw": "9d8f966fc1f439936da10f3980a0c6835042517cfc31a4c6d934bfeda1e1e7aa",
+        "pid": 99840,
+        "start_utc": "2026-11-03T06:03:30.184650+00:00",
+        "end_utc": "2026-11-03T06:03:30.343493+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC02-E3-position-only",
+        "rule": "E3",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC02-E3-position-only.json",
+        "model_sha256_raw": "64174d5c514d8d1ca29301ce1cb2c846b22d79b74f697a47ba9cdee098c15b29",
+        "pid": 98416,
+        "start_utc": "2026-11-03T06:03:30.369531+00:00",
+        "end_utc": "2026-11-03T06:03:30.516731+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC03-E7-position-only",
+        "rule": "E7",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC03-E7-position-only.json",
+        "model_sha256_raw": "dc676567e499edd6323b29a26976b1284046d546b3d1488d50bae01539f9a777",
+        "pid": 93592,
+        "start_utc": "2026-11-03T06:03:30.538332+00:00",
+        "end_utc": "2026-11-03T06:03:30.690468+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC04-E7-quiet",
+        "rule": "E7",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC04-E7-quiet.json",
+        "model_sha256_raw": "a32e161e8ba3f001ec742f386be8dd8c0dcc016ebbf60a2ec9fb07214c092e75",
+        "pid": 71492,
+        "start_utc": "2026-11-03T06:03:30.713115+00:00",
+        "end_utc": "2026-11-03T06:03:30.875766+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC05-E10-instrument-trigger",
+        "rule": "E10",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC05-E10-instrument-trigger.json",
+        "model_sha256_raw": "c51b1dc7d87834c3bc465fe58fadca13fd922f7b74246f094205104a44a0ce02",
+        "pid": 96332,
+        "start_utc": "2026-11-03T06:03:30.896884+00:00",
+        "end_utc": "2026-11-03T06:03:31.049221+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC06-E10-equipment-noop",
+        "rule": "E10",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC06-E10-equipment-noop.json",
+        "model_sha256_raw": "373ffe71ac20533442f719aeef26905a3e1eb491dc4032395717eb78bfcf24de",
+        "pid": 91248,
+        "start_utc": "2026-11-03T06:03:31.072593+00:00",
+        "end_utc": "2026-11-03T06:03:31.221067+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC07-E14-equipment-noop",
+        "rule": "E14",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC07-E14-equipment-noop.json",
+        "model_sha256_raw": "a1d98df7081b42091f269801c00aeab9ffeba69da095f17e5e7b68613db4a9aa",
+        "pid": 93884,
+        "start_utc": "2026-11-03T06:03:31.248007+00:00",
+        "end_utc": "2026-11-03T06:03:31.395255+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC08-E14-excluded",
+        "rule": "E14",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC08-E14-excluded.json",
+        "model_sha256_raw": "2c39554ffe039467e31e775590ce4dabc82518e430c8aa59ba600110c1f6dc1d",
+        "pid": 80456,
+        "start_utc": "2026-11-03T06:03:31.417136+00:00",
+        "end_utc": "2026-11-03T06:03:31.563836+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC09-E15-candidate-flow",
+        "rule": "E15",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC09-E15-candidate-flow.json",
+        "model_sha256_raw": "5310d77380c0123d592f9a2b2779f7eea62641aa1b4819a6600f48ae55e2392b",
+        "pid": 96132,
+        "start_utc": "2026-11-03T06:03:31.582740+00:00",
+        "end_utc": "2026-11-03T06:03:31.794722+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC10-E15-position-only",
+        "rule": "E15",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC10-E15-position-only.json",
+        "model_sha256_raw": "34936e8488533a9f05e4c2eb7e53abcbb401045ac4421530f5bdb14290423592",
+        "pid": 88120,
+        "start_utc": "2026-11-03T06:03:31.831788+00:00",
+        "end_utc": "2026-11-03T06:03:32.059049+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC11-E19-candidate-pressure",
+        "rule": "E19",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC11-E19-candidate-pressure.json",
+        "model_sha256_raw": "37f1682b4c19a1cd04c7f7bdd43734d9d88d52c94232bdf7698b85b45510cebf",
+        "pid": 99268,
+        "start_utc": "2026-11-03T06:03:32.083893+00:00",
+        "end_utc": "2026-11-03T06:03:32.247069+00:00",
+        "exit": 0
+      },
+      {
+        "case": "SC12-E19-nonmeasurement",
+        "rule": "E19",
+        "model": "examples/opportunity-screen/source-policy/signal-retention/models/SC12-E19-nonmeasurement.json",
+        "model_sha256_raw": "8280cd70748ad3f58dc0a6ca6abcb8913087d09adf0186095a4c4b7a50647c56",
+        "pid": 87724,
+        "start_utc": "2026-11-03T06:03:32.275185+00:00",
+        "end_utc": "2026-11-03T06:03:32.498841+00:00",
+        "exit": 0
+      }
+    ],
+    "files": [
+      {
+        "file": "signal-retention/expected/after/SC01-E3-selected-flow/questions.json",
+        "case": "SC01-E3-selected-flow",
+        "stage": "signal current after",
+        "sha256_raw": "2c25a076d9e1e522d31b4cd482722ed7e0e0f106abdea602fd6273d527e594e4",
+        "bytes": 14364
+      },
+      {
+        "file": "signal-retention/expected/after/SC01-E3-selected-flow/screen.md",
+        "case": "SC01-E3-selected-flow",
+        "stage": "signal current after",
+        "sha256_raw": "03d8912416811fa8edb7b2054c8c474b2636f64927247717b539a04f3846f773",
+        "bytes": 11185
+      },
+      {
+        "file": "signal-retention/expected/after/SC02-E3-position-only/questions.json",
+        "case": "SC02-E3-position-only",
+        "stage": "signal current after",
+        "sha256_raw": "95036d7fd3207950a72830c606244784fd5ec0d3a030e3de2c897c858b4f097a",
+        "bytes": 11346
+      },
+      {
+        "file": "signal-retention/expected/after/SC02-E3-position-only/screen.md",
+        "case": "SC02-E3-position-only",
+        "stage": "signal current after",
+        "sha256_raw": "e6970f4270355bb9c964c7d242bcfdf87c9268b7d717a3026eb25929b83a7268",
+        "bytes": 9313
+      },
+      {
+        "file": "signal-retention/expected/after/SC03-E7-position-only/questions.json",
+        "case": "SC03-E7-position-only",
+        "stage": "signal current after",
+        "sha256_raw": "171640aa76188ff6c9f2d529dd2fb68d236377c0cc483f0ada424244e56a83b7",
+        "bytes": 11610
+      },
+      {
+        "file": "signal-retention/expected/after/SC03-E7-position-only/screen.md",
+        "case": "SC03-E7-position-only",
+        "stage": "signal current after",
+        "sha256_raw": "aeb012d53c9c64debd77f2246487266615dfe65787b68ce8d824fa97d6e18cf2",
+        "bytes": 9535
+      },
+      {
+        "file": "signal-retention/expected/after/SC04-E7-quiet/questions.json",
+        "case": "SC04-E7-quiet",
+        "stage": "signal current after",
+        "sha256_raw": "913aabf40562ddc6b068b6173a877cdf006c50e830a19a306a6a7ed7a9a35992",
+        "bytes": 635
+      },
+      {
+        "file": "signal-retention/expected/after/SC04-E7-quiet/screen.md",
+        "case": "SC04-E7-quiet",
+        "stage": "signal current after",
+        "sha256_raw": "7ea70aa1fb19429a929ce98f51a3348016e15753791dc9a54f5faf4df3399925",
+        "bytes": 1365
+      },
+      {
+        "file": "signal-retention/expected/after/SC05-E10-instrument-trigger/questions.json",
+        "case": "SC05-E10-instrument-trigger",
+        "stage": "signal current after",
+        "sha256_raw": "7149c682fafcf407b2c9001de1b3fbc9169228ec2f969948919a78dd79a3b115",
+        "bytes": 29659
+      },
+      {
+        "file": "signal-retention/expected/after/SC05-E10-instrument-trigger/screen.md",
+        "case": "SC05-E10-instrument-trigger",
+        "stage": "signal current after",
+        "sha256_raw": "635debf31c9bdd60406b4c45d9a5f498ef99b992f900f9ccb6c2dc8df5cb0061",
+        "bytes": 23633
+      },
+      {
+        "file": "signal-retention/expected/after/SC06-E10-equipment-noop/questions.json",
+        "case": "SC06-E10-equipment-noop",
+        "stage": "signal current after",
+        "sha256_raw": "4b764685992a46add51f95b467ad677d3ba7e8e111bf073269a2b3b8b91dd650",
+        "bytes": 10075
+      },
+      {
+        "file": "signal-retention/expected/after/SC06-E10-equipment-noop/screen.md",
+        "case": "SC06-E10-equipment-noop",
+        "stage": "signal current after",
+        "sha256_raw": "01c22ea229c689626970a044b44f48bf990fe038ac4dae84f77a1c6231078495",
+        "bytes": 8681
+      },
+      {
+        "file": "signal-retention/expected/after/SC07-E14-equipment-noop/questions.json",
+        "case": "SC07-E14-equipment-noop",
+        "stage": "signal current after",
+        "sha256_raw": "fc6b7a6b4a7e64dbb43fb5b51bfde7f4e670422449d2ed34a052d39b2cbb97f0",
+        "bytes": 12017
+      },
+      {
+        "file": "signal-retention/expected/after/SC07-E14-equipment-noop/screen.md",
+        "case": "SC07-E14-equipment-noop",
+        "stage": "signal current after",
+        "sha256_raw": "7cfbf2016de621f4725baf8d25ae9fa85f8c43636b4b6fc4416a52901ad8df2a",
+        "bytes": 9974
+      },
+      {
+        "file": "signal-retention/expected/after/SC08-E14-excluded/questions.json",
+        "case": "SC08-E14-excluded",
+        "stage": "signal current after",
+        "sha256_raw": "9f2ea0cc6d06ac922a025cc297800706798f8e04b34acf2bd9357abe9de6f022",
+        "bytes": 641
+      },
+      {
+        "file": "signal-retention/expected/after/SC08-E14-excluded/screen.md",
+        "case": "SC08-E14-excluded",
+        "stage": "signal current after",
+        "sha256_raw": "391321541efa35a1cb02143e80c0e36c652951b68a553010918ca1a31badb581",
+        "bytes": 1370
+      },
+      {
+        "file": "signal-retention/expected/after/SC09-E15-candidate-flow/questions.json",
+        "case": "SC09-E15-candidate-flow",
+        "stage": "signal current after",
+        "sha256_raw": "4192fecfb1e628b139de3a66a2e32a471ca547e819f36fc0eb0b3e07a86f839f",
+        "bytes": 27088
+      },
+      {
+        "file": "signal-retention/expected/after/SC09-E15-candidate-flow/screen.md",
+        "case": "SC09-E15-candidate-flow",
+        "stage": "signal current after",
+        "sha256_raw": "07e74254d129f354b7ba7981fe2bd8747337ece6cd5fbbc328eec35719e4090f",
+        "bytes": 20956
+      },
+      {
+        "file": "signal-retention/expected/after/SC10-E15-position-only/questions.json",
+        "case": "SC10-E15-position-only",
+        "stage": "signal current after",
+        "sha256_raw": "c97b457924e397f0b6fe2f5332e1ef993babf8e5c4ea44009a597e41b3feea61",
+        "bytes": 13913
+      },
+      {
+        "file": "signal-retention/expected/after/SC10-E15-position-only/screen.md",
+        "case": "SC10-E15-position-only",
+        "stage": "signal current after",
+        "sha256_raw": "ed538788bd385ebc4604bc5c709a46a04865a38e41f548b33689c3085b15c6f6",
+        "bytes": 11223
+      },
+      {
+        "file": "signal-retention/expected/after/SC11-E19-candidate-pressure/questions.json",
+        "case": "SC11-E19-candidate-pressure",
+        "stage": "signal current after",
+        "sha256_raw": "7392b516a02e06504da3668a3016310ff438987e35553dd2b52590fa3cef8df4",
+        "bytes": 23086
+      },
+      {
+        "file": "signal-retention/expected/after/SC11-E19-candidate-pressure/screen.md",
+        "case": "SC11-E19-candidate-pressure",
+        "stage": "signal current after",
+        "sha256_raw": "b7760a274851c7a73f89625b98c7037e94329315c88f7855142d09bb2c619233",
+        "bytes": 18232
+      },
+      {
+        "file": "signal-retention/expected/after/SC12-E19-nonmeasurement/questions.json",
+        "case": "SC12-E19-nonmeasurement",
+        "stage": "signal current after",
+        "sha256_raw": "8a2e03bb92e2a12f3fcf4d93d516afc38e2e54188661ae7aa30a114f34695445",
+        "bytes": 11247
+      },
+      {
+        "file": "signal-retention/expected/after/SC12-E19-nonmeasurement/screen.md",
+        "case": "SC12-E19-nonmeasurement",
+        "stage": "signal current after",
+        "sha256_raw": "00aa6ade9ec2c74f0b49af7ff741f2bf3b1b9443c11652a65da2c3a8b4bc357e",
+        "bytes": 9520
+      }
+    ],
+    "result_opaque_sha256_raw": "de32deca07dfc96ee9de84dd992993147fa18a805507ef383578af40e2747159",
+    "precall_opaque_sha256_raw": "ea0fad32867a60437030bf7decdb5de36339fa9855369fee8039b35d38ddf30c",
+    "selection": "All 24 reports are exact fresh normal default-catalog outputs. Whole pairs match the private candidate after only its catalog display caption changes to data/questions.json."
+  },
+  "correspondence_receipt": {
+    "sha256_raw": "4956e14f9e9475600f674a907ce9c7f47d02ce66142821ad06951bc647400e38",
+    "bytes": 57631
+  },
+  "runtime_limit": "No source fetch, provider/model call, SDK, MCP transport, listener or plant connection was used in these saved question CLI cohorts. No company, human or plant benefit was evaluated."
+}

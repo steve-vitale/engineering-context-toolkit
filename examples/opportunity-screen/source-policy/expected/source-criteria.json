@@ -1,0 +1,370 @@
+{
+  "scope": "Original prospective minimum/allowed/unacceptable collection criteria, separated from exact chosen traces and field display. Coding-agent source review is not human/plant acceptance.",
+  "rules": {
+    "E3": {
+      "sources": [
+        "S13 printed8/PDF12; printed15/PDF19; printed26/PDF30; printed51–52/PDF55–56, fullpages read"
+      ],
+      "support": "Minimum-flow requirements protect pumps; bypasses can protect equipment and system functions, while energy investigation must consider the whole system. Manufacturer limits, duty and qualified flow/time basis precede any change.",
+      "minimum": [
+        "Establish exact pump/service, represented return-line association/purpose and vendor minimum-flow basis before calling it continuous recirculation",
+        "Review existing forward/return flow records with actual quantity, units, time and operating range; distinguish valve command from flow and missing data from installed deficiency",
+        "Acknowledge protective automatic low-flow operation/suitable existing basis; no automatic restriction/removal or compulsory new field test"
+      ],
+      "unacceptable": [
+        "Continuous bypass label alone means action/removal",
+        "Assume near RO/restriction orifice proves discharge-return topology or hydraulicflow",
+        "Ignore declared positive-displacement/helper roles or foreign vendor record"
+      ],
+      "allowed": "Existing adequate records can be acknowledged; uncertain named candidates stay conditional, not an instruction to alter protection."
+    },
+    "E7": {
+      "sources": [
+        "S6 DOE/GO-102012-3409 pp1–2 complete"
+      ],
+      "support": "Source proposes a backpressure turbine generally in parallel with PRV, using actual steam balance/pressure needs and flow-duration curves, with downstream heat/boiler throughput, electrical and economic conditions. Published thresholds are a source screening context, not universal denial/acceptance or site savings.",
+      "minimum": [
+        "Establish actual steam service/station identity; nonsteam header candidates are not steam-turbine tasks",
+        "Review matched actual flow-duration and inlet/exhaust pressures with units/times, not design pressure alone; retain unknown source and availability",
+        "Review thermal/process duty, boiler implications, existing turbine/PRV function, electricity/fuel/voltage and feasibility records before suggesting an investment"
+      ],
+      "unacceptable": [
+        "Automatically close below3000lb/h or100psi despite unknown/variable/current data",
+        "Automatically install atthresholds or transfer historical source prices/costs/efficiencies to this site",
+        "Treat designpressure orairheader as actualsteamoperatingbasis"
+      ],
+      "allowed": "Qualified acknowledgment of existing suitable function or scoped nonapplicability; no forced new measurement, replacement, retrofit or saving."
+    },
+    "E8": {
+      "sources": [
+        "S3 DOE/GO-102012-3401 completepp1–2; pressure-dependent intervals and testing-method qualification"
+      ],
+      "support": "The500trap and3–5year statements are contextual probableloss examples. The source also recommends regular systematic inspection/reporting and pressure-dependent testing intervals. Representation/count does not establish installed population or condition.",
+      "minimum": [
+        "Establish steam-trap identity/service and actual inventory/coverage, keeping nonsteam/unknown roles distinct",
+        "Review existing survey/maintenance methods, dates, pressure/service, status and unresolved coverage by represented subject/source",
+        "Retain test uncertainty and apparent steam/condensate context; no forced new survey or automatic failed-open/closed truth from symbols"
+      ],
+      "unacceptable": [
+        "Below500 orrecentdate automatically means routine-only/no current investigation",
+        "Treat drawn trapcount as installedpopulation or historical percentage as currentfailure rate",
+        "Apply steamtrap testing to known grease/oil/sand traps"
+      ],
+      "allowed": "Suitable current program can be acknowledged; unknowns scoped to existing records before new field work; known nonsteam contextquiet or explicitNA."
+    },
+    "E9": {
+      "sources": [
+        "S8 printed20–21/PDF26–27 complete; supplemental DOE Tip8/GO-102012-3410 completepp1–2, declared before criteria"
+      ],
+      "support": "Condensate return may conserve heat/water/treatment but requires routes/equipment/cleanup, appropriate quality, flash and economic basis. Source examples have explicit assumptions; contamination may call for treatment/assessment, not an automatic permanentdrain rule.",
+      "minimum": [
+        "Establish steam/water condensate service and actual current route for each named candidate; labels/oldrecords are not currentdrainage proof",
+        "Review actual quality/contamination, temperature/pressure/flash, flow/duty and receiving/treatment/routing constraints with source/revision/time/units",
+        "Use matched water/mass balance with clear boundaries and denominator, blowdown/otherlosses/inventory/conversions; do not assert1-makeup/feedwater as an exact returnfraction without conditions"
+      ],
+      "unacceptable": [
+        "Cleansteady alone means return hardware; contaminated/tiny automaticallymustremaindrained",
+        "Infer return% from unmatched/mixed units or unqualified makeup/feedwater quotient",
+        "Treat hydrocarbon/processcondensate as boilerwater or historicaldrain label as currentroute"
+      ],
+      "allowed": "Existing suitable return/treatment or nonapplicability can be acknowledged; unresolved sources remain qualified records tasks, no automatic return/plant saving."
+    },
+    "E10": {
+      "locators": [
+        "S8 printed21/PDF27 fullpage",
+        "Supplement DOE Tip12/GO-102012-3400 pp1–2, admitted before criteria"
+      ],
+      "basis": "Flashvessel may recover steam at suitablepressure; source suggests actual condensate flow/duration, compatibleLPuses and cost of equipment/piping, with availability/demand match and alternatives. A name proves neither steamwaterservice nor actual atmosphericvent.",
+      "minimum": [
+        "Establish current condensateservice/actual vent and existingrecovery/route, source/time/units and pressure/temperature/flow/duration",
+        "Review compatible LPuse pressure/quality/duty/time and actualroute/distance/constraints; nearby water/steamlabels alone are not a qualified sink",
+        "Acknowledge existing suitable recovery or nonapplicability before asking for new measurements or hardware"
+      ],
+      "unacceptable": [
+        "Flashname implies ventingtoatmosphere or wastedenergy",
+        "Steadyflow/proximity alone authorizesrecovery or transferssourceexample savings",
+        "Treat knownhydrocarbonflash assteamwater or foreignseasonalload asmatchedlocalsink"
+      ]
+    },
+    "E12": {
+      "locators": [
+        "S1/DOE Tip2 pp1–2 complete",
+        "S2/DOE Tip17 pp1–2 complete"
+      ],
+      "basis": "Source describes reusablepads for periodicinspection/repair, not onlyrareopening; existingcondition/access/manufacturer and safehandling matter. Temperature/table examples are conditional, not evidence of bare surface or siteheatloss.",
+      "minimum": [
+        "Review actual service/operating versusdesign/surface temperature, units, size, installedinsulationcondition and existingrecords before callingbare",
+        "Retain periodicaccess/inspection/repair needs, fit/material/safety constraints and applicablemanufacturer directions; existinginsulation/removalhazards matter",
+        "Suitable existing insulation or records may be acknowledged without compulsory walkdown, jacket or operatingchange"
+      ],
+      "unacceptable": [
+        "Hot/modeltemperature alone proves bare/uninsulated",
+        "Recommend jackets onlywhere notopenedoften or installautomatically",
+        "Apply exampleheatsavings/sitefuel benefit without actualconditions or removeinsulation withoutqualifiedsafeprocedure"
+      ]
+    },
+    "E14": {
+      "locators": [
+        "S4/DOE Tip3/GO-102012-3412 pp1–2 complete"
+      ],
+      "basis": "Guidance is feedwater/steam-boiler heatrecovery after tuning, cleanheattransfer/appropriateair and operatingload; coldend dewpoint/corrosion/fuel and economics constrain. One economizerlabel anywhere does not establish coverage ofeveryboiler.",
+      "minimum": [
+        "Establish relevant boiler/steamwater/combustion/flueservice and existingrecovery/feedwaterassociation for eachsubject; knownnonflue/electric or drynonwater context NA, unknownconditional",
+        "Review existing tuned actualstack/load/operation/fuel/composition/corrosion/dewpoint and receivingfeedwaterbasis with exactsource/time/units",
+        "Acknowledge suitableexistingcoverage; no compulsoryfieldtest/quote or sourceuniversalminimumtemperature"
+      ],
+      "unacceptable": [
+        "Global foreign/unrelatedeconomizerlabel quiets allboilers",
+        "Furnace/kilnname alone creates boilerfeedwatermeasurements",
+        "Highstacktemperature plusfuel alone mandatesquote or transfers1%/40F and5–10%/paybackexample tosite"
+      ]
+    },
+    "E15": {
+      "locators": [
+        "S7/DOE Tip26B/GO-102012-3397 completepp1–3 incltable/footnotes/systemeffects"
+      ],
+      "basis": "Source covers direct/indirect designs and naturagas/lightoil with treatment/material/corrosion qualifications; substantialcompatible lowtemperature duty, condensate/waterquality, draught/emissions/deaerator/turbine effects and economics matter. Nearbylabel is not a suitableload orfit proof.",
+      "minimum": [
+        "Establish applicable boiler/flueservice and existingheat-recovery configuration; do notquiet merelybecausefuel/sinkrecords are absent or notnamedGAS",
+        "Review actualfuel/gas/moisture/temp/duty plus receivingloadtemperature/flow/time/quality/source association, treating unknowns explicitly",
+        "Retain acidcondensate/treatment/material/stackdispersion/systemeffects and practical/economic constraints; suitableexistingbasis may be acknowledged"
+      ],
+      "unacceptable": [
+        "GASlabel plusanywherewatertext establishescoldmatchingload orquote",
+        "Silentlyexclude lightoil/unknownfuel or unknownsinkfromrecordsreview",
+        "Recommend installation/chemistry/hardware/sitebenefit withoutsitespecificengineering or inferfluecondensate reusablewaterpurity"
+      ]
+    },
+    "E17": {
+      "locators": [
+        "S18/DOE processheatingTip8 completepp1–2",
+        "Explicit additional S4/SteamTip3 completepp1–2 forboilerflue/feedwaterfunction boundary, previouslyread/copiedraw"
+      ],
+      "minimum": [
+        "Establish actual fired/flue service and current recovery purpose/coverage bysubject, not a label anywhere",
+        "Review existing source/receiving duty, flue flow/temperature/composition/cleanliness, priorlossreduction and actual continuous/batch schedule/compatibility",
+        "Acknowledge suitableexistingcoverage/noncombustionNA; unknown service/source/coverage conditional, no forced new fieldtest or retrofit"
+      ],
+      "unacceptable": [
+        "Global economizer/recuperator label clears everyfiredasset",
+        "Assume barefurnace/boilername means hotcleanvent or fuel; typedhelper/electric classes promoted",
+        "Treat continuousload-preheat preference as exclusion of allbatch wasteheat options or transfer5–30% tosite"
+      ],
+      "source_scope": "S18 distinguishes air/steam-water/load methods, says reduce lossesfirst and wasteheatsteam exists onlywhen firedprocessruns; sourceexamples do not replace systemsengineering."
+    },
+    "E18": {
+      "locators": [
+        "S19 original LBNL56183 officialENERGYSTARmirror, printed43–45/PDF51–53 complete; catalogOSTIweb502 notrawverified"
+      ],
+      "minimum": [
+        "Review actual processstream identity/direction, temperatures, targets, capacity/duty/phase and operating-time/source basis rather than treating CW/steamlabels as measuredheat roles",
+        "Review process-wide temperature-enthalpy/utility targets and practicalapproach/capitaltradeoffs; batch/time-aware methods and alternatives maymatter",
+        "Retain fouling/composition/pressure/reactivity/hazard/currentlayout constraints and existingstudies, no connection or automaticclose from pairwisepattern"
+      ],
+      "unacceptable": [
+        "Pairingutilitylabels establishes a heatmatch or guaranteed savings",
+        "Reject alloverlapping temperatureranges or allnon-simultaneous/batch profiles without appropriateanalysis",
+        "Foreign/unavailable streamfacts or unreviewed hazardstate become currentauthority"
+      ],
+      "benefit_gap": "Current far-exceeds comparative quote is in source but its process-wide/context limits absent as a universal-looking headline; propose a source-qualified qualitative summary, original retained. No claimedactualsaving."
+    },
+    "E19": {
+      "locators": [
+        "S11 compressedairsourcebook printed28–36/PDF33–41; pressure/control portions printed31–36/PDF36–41 complete"
+      ],
+      "minimum": [
+        "Establish actual aircompressor/system and scope of control/pressure/end-use records; one pressurelabel anywhere doesnot complete anotherunit",
+        "Review matched discharge/header/point-of-use pressure/units/time, requiredend-use demand, dynamicdrops, components/storage/controlrange/manufacturer constraints before a change",
+        "Suitableexistingrequirements/configuration maybeacknowledged; missingcontrolrecord stillneeds scopedexistingbasis, no auto setpointlowering"
+      ],
+      "unacceptable": [
+        "PositiveglobalPIC/PRV or no label closes/opens purported installeddeficiency",
+        "Lowerpressure solelyhighestscalarneedplusassumedlosses ignoringtransients/storage/control and userrequirements",
+        "Apply a2psi rule toanycompressor/pressure or claimsourceinconsistent combinedrange is asitebenefit"
+      ],
+      "benefit_gap": "Printed31 describes combined1.6–2%increase; printed34 describes combined1–1.6%decrease despitecomponent descriptions. No correctedpercentage is chosen; qualitative source-qualified wording proposed, original preserved."
+    },
+    "E20": {
+      "locators": [
+        "S9/DOE compressedairTip3 completepp1–2",
+        "S11 printed28–30/PDF33–35 leakmethods/program; printed35–36/PDF40–41 controlmodes complete"
+      ],
+      "minimum": [
+        "Establish actual compressedair service and exact component/authorizeduses; proxylabels/counts are not leakmeasurements",
+        "Review existing survey/repair/verification/program and matchedmeasurement/control/pressure/time/scope/quantity basis before new tests",
+        "Load/unload/startstop timing estimate requires appropriatecontrol and no actualdemand; productionstopped alone notproof, legitimatepurges/drains/unknowns retained"
+      ],
+      "unacceptable": [
+        "Names imply likelyleaks or historical20–30% here",
+        "Apply load/unload timing toVSD/modulating/unknown control or activeenduses; use5–10% as universal programstart/stop cutoff",
+        "Prescribe shuttingproduction/adjustingcompressor or treat hydraulic/steam components as compressedair leakfaults"
+      ],
+      "source_scope": "S9 callsfor ongoing identification/tagging/repair/verification and supply/controlreevaluation afterrepair; S11 methodpercent capacity isnot automatically percentpower. Existinggoodprogram canbeacknowledged without a forcedfieldtest."
+    },
+    "E21": {
+      "locators": [
+        "S11 printed24-27/PDF29-32 complete, especially intermittent vacuum and cabinet-cooling versus panel-purging",
+        "S11 pressure-context printed31/34 already-read prior cohort: unregulated demand is not inappropriate-use savings"
+      ],
+      "minimum": [
+        "Establish actual compressed-air end use, process/safety/function and required quality/pressure/flow/duty from existing records before identifying an inappropriate application",
+        "Distinguish cabinet cooling from protective panel purging; review actual load pattern, shutoff/controls and lifecycle/system effects for vacuum, blowing and sparging",
+        "Acknowledge a suitable existing solution or nonapplicability; unknown service/association remains conditional without mandatory new survey or equipment replacement"
+      ],
+      "unacceptable": [
+        "A name alone establishes inappropriate installed use or requires a blower/fan/vacuum pump",
+        "Treat every intermittent venturi as inferior irrespective of duty/control/safety/system effects",
+        "Treat unregulated30-50% air demand or IAC historical browse statistics as avoidable end-use share or site savings"
+      ],
+      "predeclared_benefit_change": "E21 wording only: qualitative end-use/lifecycle/system-context statement instead of conflating pressure-sensitive demand with inappropriate-use savings. S11/S24 refs/arc retained and historical IAC limits explicit."
+    },
+    "E22": {
+      "locators": [
+        "S10 complete2pages",
+        "S11 printed43-44/PDF48-49 complete"
+      ],
+      "minimum": [
+        "Review actual compressor/system, end-use demand/quality/critical pressure, control mode, existing receiver volume/location and source association",
+        "Retain pressure differential, peak duration/recovery time, supply during events and replenishment/control constraints before judging storage adequacy",
+        "Existing receiver presence is not coverage or adequacy for another subject; useful existing records may be acknowledged without adding a vessel or mandatory one-week logging"
+      ],
+      "unacceptable": [
+        "Any water/process storage or receiver anywhere suppresses another compressor review",
+        "Infer missing or insufficient installed storage from absence in partial model",
+        "Prescribe extra storage just because another compressor starts, ignore controls/air quality/recovery time or apply universal gallons/cfm rule"
+      ],
+      "source_scope": "S10 presents storage as conditional; S11 rejects old universal receiver-sizing rule and retains pressure-vessel/maintenance constraints. No sizing calculation, design approval or pressure change is performed."
+    },
+    "E23": {
+      "locators": [
+        "S11 printed58-59/PDF63-64 complete"
+      ],
+      "minimum": [
+        "Review actual compressor type, cooling arrangement, available heat quantity/temperature/load/schedule and existing recovery/source coverage",
+        "Review receiving heat duty, timing/seasonality, quality/material/cooling and ventilation/backpressure/control constraints and displaced energy before feasibility",
+        "Known helper/nonair machines are not air-compressor heat subjects; package containing dryer stays eligible, unknown function conditional; suitable existing recovery can be acknowledged"
+      ],
+      "unacceptable": [
+        "Nearby user/long run hours establish recoverable useful duty or authorize a retrofit",
+        "Confuse80-93% electrical-to-heat and50-90% available-thermal recovery with electrical/site saving or steam generation promise",
+        "Ignore added fan/exchanger/cooling effects, existing recovery or non-coincident demand"
+      ],
+      "benefit_policy": "Existing E23 numeric wording retained, but limits must explicitly identify available thermal energy, compressor/configuration/design and receiving-duty dependence, not site savings."
+    },
+    "C1": {
+      "locators": [
+        "S22 PNNL23892 printed3.1-3.2/PDF23-24;3.5-3.8/PDF27-30;3.10-3.14/PDF32-36;4.1-4.5/PDF37-41;4.12-4.14/PDF48-50 complete",
+        "S19 printed30/PDF38 whole page: historical Monitoring&Targeting table, secondary UK experience, overlapping effects not additive"
+      ],
+      "minimum": [
+        "Review exact utility/user/branch/quantity, purpose and intended decision/report and existing meter/source/data availability before claiming metering absent or complete",
+        "Retain actual source/owner/coverage, units and rate versus total/energy basis, interval/time/quality/gaps, calibration/range/installation/maintenance and access constraints",
+        "Nearby/same-medium/same-stream candidate is not suitable collected end-use data; existing fit-for-purpose records may be acknowledged, unresolved association stays explicit",
+        "Additional observation or metering requires responsible-engineer review of purpose and technology/installation/lifecycle constraints; site bills are not automatic per-user allocation"
+      ],
+      "unacceptable": [
+        "A flow tag anywhere near/on a branch settles the whole user despite foreign/partial/stale or inaccessible data",
+        "Mandate temporary spool or clamp-on for every case regardless of fluid/quality/range/installation and purpose",
+        "Transfer building10-20% or reported UK4-17% savings to this utility or imply a meter saves energy by itself"
+      ],
+      "source_scope": "S22 is federal building/utility metering guidance, not universal industrial design or compliance approval. C1 source selection is guidance adaptation; S19 table is historical reported experience, not verified local savings."
+    },
+    "C2": {
+      "locators": [
+        "S19 originalLBNL56183 officialmirror printed30/PDF38 wholepage"
+      ],
+      "minimum": [
+        "Review actual measurement identity/purpose and current source coverage, normal/abnormal operating decisions and represented/unrepresented readers before declaring unused or uncontrolled",
+        "Controller/interlock/name/list presence is not complete current logic or usable measurement authority; partial model with no controllers can support conditional existing-record review",
+        "Existing appropriate indication/manual/automatic/alarm/protection use can be acknowledged; absence of frequent manual action does not prove no legitimate purpose"
+      ],
+      "unacceptable": [
+        "A represented controller reading makes source/purpose/logic coverage automatically complete",
+        "Require automation from frequent manual adjustment alone or close a measurement merely because nobody routinely acts",
+        "Transfer broad historical process-control savings or infer missing installed controls from partial model"
+      ],
+      "boundary": "S19 supports monitoring/control as a general energy-management topic, not this particular automation decision, logic completeness, safety-function adequacy or operator usefulness. Six existing variable classes retained."
+    },
+    "C6": {
+      "locators": [
+        "Explicit additional manufacturer original Siemens AD353-128 rev2 April2012 CascadeControl pp1-4 and6-7 complete; all raw/pages retained, no catalogsource registry object added"
+      ],
+      "minimum": [
+        "Review exact current controller/measurement/valve and setpoint-chain identities, active modes and supplied configuration, process objective/disturbance and measurement suitability",
+        "Cascade secondary must be a measurable/controllable variable affecting primary, include relevant disturbance and respond substantially faster; review operating ranges/limits/transfer/reset/actuator dynamics before considering any change",
+        "Two controllers writing a valve do not establish nested cascade; a proper already-represented setpoint cascade may be outside this direct-temperature-to-steam-valve selector and quiet without global adequacy claim"
+      ],
+      "unacceptable": [
+        "A flow controller anywhere on the same output suppresses dual-writer/configuration review or establishes cascade",
+        "Pressure swing or oscillation alone requires a flow slave; add tuning/test/setpoint change without approved basis",
+        "Claim flow cascade fixes all outside-secondary disturbances or universal numeric speed/benefit"
+      ],
+      "boundary": "Manufacturer example supports principles, not procurement/system-specific tuning or a universal10x acceptance threshold. Existing no-numeric-benefit object retained."
+    },
+    "C7": {
+      "locators": [
+        "S11 printed34-39/PDF39-44 and42/PDF47 whole relevant control pages"
+      ],
+      "minimum": [
+        "Review actual air-compressor/system identities and shared-header/operating association, current local/network/master control and source coverage before inferring concurrency or absence",
+        "Review matched demand/pressure/load/power/control/storage histories, trim/base roles and capability/compatibility/required-pressure constraints",
+        "A label anywhere does not cover all machines; local/network methods may be suitable and mixed/variable-speed arrangements need specialist/manufacturer context; suitable existing strategy may be acknowledged"
+      ],
+      "unacceptable": [
+        "Two names prove shared system or simultaneous part-loading",
+        "Always add master sequencing when machines part-load, ignore trim machine, local/network control or storage/system requirements",
+        "Treat pressure/flow regulator as compressor sequencer or historical IAC averages as saving"
+      ],
+      "boundary": "Keep model-level at-least2 eligible candidates as a review prompt, not topology discovery. Typed helper/nonair exclusions and known package retention; unknown service conditional."
+    },
+    "C10": {
+      "locators": [
+        "S3 DOE SteamTip1 completepp1-2",
+        "S19 printed40-42/PDF48-50 complete including monitoring prose/footnote"
+      ],
+      "minimum": [
+        "Establish actual steam-trap service/function, importance and failure consequence from existing trap list/source records, not TRAP name alone",
+        "Review existing maintenance/inspection/test/monitor/reporting/repair/verification method and coverage before deciding what is unresolved",
+        "A supplied monitor or UT anywhere is not this trap's source/coverage/effective monitoring; online monitoring is an option for important traps, not mandatory for every drawing clue"
+      ],
+      "unacceptable": [
+        "Generic UT or foreign monitor clears all traps; known air/nonsteam trap/helper becomes steam subject",
+        "Automatically prescribe online monitoring for important names and survey all others without existing strategy, conditions or specialist review",
+        "Transfer reported additional5%/one-year benefit or failure percentages as installed failure/guaranteed saving"
+      ],
+      "boundary": "S19 additional5% is estimated on top of regular maintenance, historical secondary sources; S3 distinguishes methods and appropriate intervals. No inspection/repair or safety acceptance performed."
+    },
+    "E25": {
+      "locators": [
+        "S20 EPA NaturalGasSTAR InstallingVaporRecoveryUnitsOnStorageTanks Oct2006 complete9pages, especially1-7/footer9"
+      ],
+      "minimum": [
+        "Review actual tank/product/composition/vent-routing/service and existing recovery/emission-control coverage, not blanket/VRU label or absent drawing",
+        "Review flash/working/standing sources, tank/upstreampressure-temperature/throughput/ambient cycles, quantity/rate/basis/uncertainty, peak versus total and actual economic outlet/operability",
+        "Existing suitable controls or known nonhydrocarbon service may be acknowledged; unknown/produced-water service not automatically nonemitting. Additional observation/sampling/recovery requires responsible safety/environmental review"
+      ],
+      "unacceptable": [
+        "Blanketing automatically equals vapor recovery or covers all tanks",
+        "Generic tank vent mandates gas sampling/VRU or guarantees95%/two-month site benefit",
+        "Treat a simple average/GOR estimate as measured composition/speciation or sufficient peak duty/lowpressuremeter basis"
+      ],
+      "predeclared_benefit_change": "E25 wording-only qualification: EPA historical crudeoil/condensate-tank cases/report context, not universal vapor fraction or payback; ellipsis not carried forward as a generalized headline. All references/arcs retained."
+    },
+    "E26": {
+      "locators": [
+        "S19 printed34-35/PDF42-43 complete, flaregasrecovery section and case continuation"
+      ],
+      "minimum": [
+        "Review exact relief/flare/vent paths and actual service/source association and existing measurement/event/composition basis, preserving safety system and unresolved coverage",
+        "Distinguish planned intermittent/continuous background, purge/pilot requirements and abnormal/upset/blowdown/relief events using current records and quantity/time/units/quality",
+        "Flow candidate does not establish usable flow/composition or event coverage; rare/relief-only service needs appropriate source/safety/environmental review rather than blanket closure or forced online meter"
+      ],
+      "unacceptable": [
+        "Same-stream flow tag closes composition/event/source question irrespective of availability/quantity",
+        "Close all relief-only lines solely because lift is rare or prescribe temporary metering/recovery without safety review",
+        "Generalize offshore up-to50% background to all sites or infer source example/site recovery savings"
+      ],
+      "predeclared_benefit_change": "E26 wording-only: explicitly offshore historical upper share and refinery dependence, no recovery/site benefit; source ids/arc retained."
+    }
+  }
+}

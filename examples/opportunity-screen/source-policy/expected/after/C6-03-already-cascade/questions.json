@@ -1,0 +1,22 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/models/C6-03-already-cascade.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "C6"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 0,
+  "by_family": {}
+ },
+ "questions": [],
+ "not_checked": [],
+ "did_not_fire": [
+  "C6"
+ ],
+ "left_out": {}
+}

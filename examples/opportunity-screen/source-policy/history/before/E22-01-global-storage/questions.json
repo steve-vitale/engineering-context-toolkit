@@ -1,0 +1,22 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/air-utility-records/models/E22-01-global-storage.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E22"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 0,
+  "by_family": {}
+ },
+ "questions": [],
+ "not_checked": [],
+ "did_not_fire": [
+  "E22"
+ ],
+ "left_out": {}
+}

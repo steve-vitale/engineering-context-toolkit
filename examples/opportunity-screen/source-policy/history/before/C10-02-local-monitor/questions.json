@@ -1,0 +1,77 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/control-vent-records/models/C10-02-local-monitor.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "C10"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "controls": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "C10@model",
+   "question_id": "C10",
+   "family": "controls",
+   "question": "Are critical steam traps monitored automatically?",
+   "about": "TM-X",
+   "assets": [
+    {
+     "id": "TM-X",
+     "tag": "TM-X"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "TM-X",
+     "tag": "TM-X",
+     "text": "equipment TM-X reads \"TM-X TRAP MONITOR\"",
+     "field": "units[TM-X]"
+    },
+    {
+     "role": "checked, none found",
+     "text": "no trap monitoring shown",
+     "field": "applies_when.without"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Which traps are critical",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: trap list with service"
+     ],
+     "how": "Mark traps whose failure costs most."
+    }
+   ],
+   "decision_rule": "Monitor the most important traps online; survey the rest.",
+   "typical_benefit": {
+    "wording": "LBNL (as reported in LBNL-56183): \"Automatic Steam Trap Monitoring 5%\", 1 yr. DOE tip sheet: \"Consider online monitoring of the most important steam traps\".",
+    "source": [
+     "S19",
+     "S3",
+     "S24"
+    ],
+    "arc": "2.211x (category only)",
+    "source_titles": [
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S3: Steam Tip #1, Inspect and Repair Steam Traps (DOE/GO-102012-3401)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": null,
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

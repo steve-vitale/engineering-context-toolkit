@@ -1,0 +1,170 @@
+{
+  "schema": "current-question-corpus-renewal-1",
+  "role": "Explicit current-output successor; original history/provenance remains historical, not a new source/plant study.",
+  "base_commit": "07fa45f3f37f07fdfd2ae2d556b3d67d8f5cf8f7",
+  "catalog": {
+    "sha256_raw": "164452c9b274be0fd1f21800f7bc4e52759798b34a3da23fa0f25048101b55f3",
+    "bytes": 335035
+  },
+  "engine_sha256_text_lf": "9d148f8f0d4258dbc418e39be8933d0ecac9d0a9d1341000b4f7240b5cad889b",
+  "actual": {
+    "calls": 9,
+    "all_exit_zero": true,
+    "started_utc": "2026-11-03T06:02:42.911825+00:00",
+    "finished_utc": "2026-11-03T06:02:44.751785+00:00",
+    "mode": "Normal offline CLI; complete process records/logs retained privately. Public inputs, cases and prior history remained raw-exact."
+  },
+  "change_scope": "Each of nine cases adds C2 measurement-purpose review. Every pre-existing whole finding, including C8, stays exact; note, counts and eligibility/quiet metadata are current.",
+  "previous_released_outputs": {
+    "expected/after/C8-01-record-availability/questions.json": {
+      "sha256_raw": "f34806ccc7cc8aa88cf13b87fa74f9a54e152dc4e3ab7ec71dd0ab5bc738d09f",
+      "bytes": 11855
+    },
+    "expected/after/C8-01-record-availability/screen.md": {
+      "sha256_raw": "6006a834d6cf1ac89e133fd3c81fce38e4b45d0ff92b0ac08d64b3f1e060c3a7",
+      "bytes": 9126
+    },
+    "expected/after/C8-02-normal-versus-upset/questions.json": {
+      "sha256_raw": "5fd50e84e51eba43c62a10f238c2d7d628b0001c351b03a913121c3f62444f02",
+      "bytes": 13024
+    },
+    "expected/after/C8-02-normal-versus-upset/screen.md": {
+      "sha256_raw": "cbaf545e3f1298780671753d7bd5391b2b13ddfefcba86ae237974a5be60168a",
+      "bytes": 9921
+    },
+    "expected/after/C8-03-standing-and-response/questions.json": {
+      "sha256_raw": "a7874ac05f8de88151d7c172ade9a2dca4b1007a0bdb48fb6e67d36e44eda72b",
+      "bytes": 12527
+    },
+    "expected/after/C8-03-standing-and-response/screen.md": {
+      "sha256_raw": "35a3ec252640b9d5f9a40e8bbb93fecaf78e999975ac0d67f44e593fdf31003d",
+      "bytes": 9617
+    },
+    "expected/after/C8-04-operator-scope/questions.json": {
+      "sha256_raw": "dfcae67dc86eee3db8861a9b5e58f05a2b3ac0ba8e0ae2afdb6e2b2e17d6dc71",
+      "bytes": 12527
+    },
+    "expected/after/C8-04-operator-scope/screen.md": {
+      "sha256_raw": "beb5f9ed75cb86f731eaecffa277100021265e7be874afc381034881df7e2a6b",
+      "bytes": 9607
+    },
+    "expected/after/C8-05-alarm-definition/questions.json": {
+      "sha256_raw": "309a1978255a47c2821ceaf859a5da3ae733181f7e4ba4bd9e13f5bc71e1233c",
+      "bytes": 13339
+    },
+    "expected/after/C8-05-alarm-definition/screen.md": {
+      "sha256_raw": "f77271e85425ac3509dfde808b4eb4299fc9233512a01034333e50a5ca827e0d",
+      "bytes": 10138
+    },
+    "expected/after/C8-06-foreign-versus-matched-record/questions.json": {
+      "sha256_raw": "8f2b966c9e1a0ac5085ee43b7912071373f7d0264025b5268aba51547d650944",
+      "bytes": 13385
+    },
+    "expected/after/C8-06-foreign-versus-matched-record/screen.md": {
+      "sha256_raw": "da5fd5236b6a4142a26ab8d0fe5d165df98ffd7c75d5588cb97e75ab536592d4",
+      "bytes": 10197
+    },
+    "expected/after/C8-07-no-drawn-alarm-tags/questions.json": {
+      "sha256_raw": "206cd362bd37d27c7f4ee26af50b1b9beecdb9a791382ed526c8146dafb51fbf",
+      "bytes": 1682
+    },
+    "expected/after/C8-07-no-drawn-alarm-tags/screen.md": {
+      "sha256_raw": "bd27ad341c5ff9a6b193add28799e57c40cf1a7bf3cf64ed4ac851c58a39589a",
+      "bytes": 1768
+    },
+    "expected/after/C8-S01-shared-operator-record/questions.json": {
+      "sha256_raw": "fca937d2be77e6cee51424271bdbbc4de335f0e92b8472cdd979532f3b39be37",
+      "bytes": 18004
+    },
+    "expected/after/C8-S01-shared-operator-record/screen.md": {
+      "sha256_raw": "9a25962ea6b427b3bd7cefd8915a4379fa312b5428af2b36a766e504f1f22bbd",
+      "bytes": 13589
+    },
+    "expected/after/C8-S02-repeated-label-foreign-scopes/questions.json": {
+      "sha256_raw": "876c45b5fa0d425b8f8169eb2bc0f9a782f784281c3d6d3662cfd70ab3b8f760",
+      "bytes": 15397
+    },
+    "expected/after/C8-S02-repeated-label-foreign-scopes/screen.md": {
+      "sha256_raw": "5a29afd7cc81a20c8a0dc29481828444d3fd515a8790d7e223d613cfd15cf375",
+      "bytes": 11741
+    }
+  },
+  "current_outputs": {
+    "expected/after/C8-01-record-availability/questions.json": {
+      "sha256_raw": "f4c18d903e5888136df095c8d57f45beea64b578f06c3e1360d91114b13ace69",
+      "bytes": 17901
+    },
+    "expected/after/C8-01-record-availability/screen.md": {
+      "sha256_raw": "af82ddf36818afbe1acf44deebc8702a1c91cba2ad6d23c2afe25ae66327b038",
+      "bytes": 14516
+    },
+    "expected/after/C8-02-normal-versus-upset/questions.json": {
+      "sha256_raw": "0685cabcc81b7c981b03e162b3b350f1b32152aad135f9f55dd82af53bc14de9",
+      "bytes": 19070
+    },
+    "expected/after/C8-02-normal-versus-upset/screen.md": {
+      "sha256_raw": "19a237a4fab56407227de73cb84876aef481a84c11a3a9d2445d66e736faa2e2",
+      "bytes": 15311
+    },
+    "expected/after/C8-03-standing-and-response/questions.json": {
+      "sha256_raw": "f3aaf87d4f60e2c9f181eef108e66c24f55268852de7ce282ec8caa1a9e6517f",
+      "bytes": 17805
+    },
+    "expected/after/C8-03-standing-and-response/screen.md": {
+      "sha256_raw": "c1438cde1bb637031445807c1e5fd5dd49a0f09816ed91af182dd2b695c50167",
+      "bytes": 14541
+    },
+    "expected/after/C8-04-operator-scope/questions.json": {
+      "sha256_raw": "c399c4b28effbd0060379ef3e02bc950d12cef8be9b535eec483ee0b7cf7de53",
+      "bytes": 17805
+    },
+    "expected/after/C8-04-operator-scope/screen.md": {
+      "sha256_raw": "30c025463c39f617d4b43b6781bd09eb9474909d620e43b598462356fe067252",
+      "bytes": 14531
+    },
+    "expected/after/C8-05-alarm-definition/questions.json": {
+      "sha256_raw": "f0cc2111d626d7c82050ea71defc7e836566a7c89af5d2c553eb86d471c34a4c",
+      "bytes": 18617
+    },
+    "expected/after/C8-05-alarm-definition/screen.md": {
+      "sha256_raw": "23f183b2df0d101803868b2045894aacf677cff969cff10bb2c9c145206a275f",
+      "bytes": 15062
+    },
+    "expected/after/C8-06-foreign-versus-matched-record/questions.json": {
+      "sha256_raw": "825e37e0cf39c3f29564ed2f50d6d34b1173c5bc7b3da147f8e28595b23b9a79",
+      "bytes": 20209
+    },
+    "expected/after/C8-06-foreign-versus-matched-record/screen.md": {
+      "sha256_raw": "2aa1b3b1fd8fd201ceb145d466fcd8443dd470300de366bc3972ca1b62e8427b",
+      "bytes": 16061
+    },
+    "expected/after/C8-07-no-drawn-alarm-tags/questions.json": {
+      "sha256_raw": "d0e6e80975318487b3d732137ed8917b130377f61e2ccf0521d1f8abb494ce9f",
+      "bytes": 6139
+    },
+    "expected/after/C8-07-no-drawn-alarm-tags/screen.md": {
+      "sha256_raw": "58eba59ffa8e64132d67ac8046c6cc9e430f9e215c8e5d1f6a0a1da701c09e33",
+      "bytes": 6243
+    },
+    "expected/after/C8-S01-shared-operator-record/questions.json": {
+      "sha256_raw": "df69994786d4645cdf53788fa5ad66eb646ecd84e63cd97e4189619107ced27e",
+      "bytes": 24794
+    },
+    "expected/after/C8-S01-shared-operator-record/screen.md": {
+      "sha256_raw": "23726eea623a227d48ffef30c8112bca24f2c726bb1929b274e78a78093d0fda",
+      "bytes": 19419
+    },
+    "expected/after/C8-S02-repeated-label-foreign-scopes/questions.json": {
+      "sha256_raw": "65e0b019f28e3e234d6575c59777833f5e602ae1379eff60eaf8634dfcc5a1ba",
+      "bytes": 22187
+    },
+    "expected/after/C8-S02-repeated-label-foreign-scopes/screen.md": {
+      "sha256_raw": "d4478d9c101c82a4073eeacc1461e27e94e16c6a97ab629007279aadcf702b08",
+      "bytes": 17571
+    }
+  },
+  "limits": [
+    "No models, original source policies/criteria or historical before reports rewritten.",
+    "Exposed software fixtures; no unfamiliar plant, measured benefit, source authority or engineering approval."
+  ]
+}

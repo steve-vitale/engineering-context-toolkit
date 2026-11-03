@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "title": "Fictional air end-use/storage/heat and utility-metering records",
+    "unknowns": [
+      "Actual operation, installed truth and engineering/human acceptance unknown"
+    ],
+    "assumptions": [
+      "All identities, values and relationships fictional before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "P-A",
+      "name": "AIR CABINET COOL label",
+      "type": "panel_purge",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call development record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "protectivepanelpurge",
+        "end_use": "purge, notcooling",
+        "safety_function": "declaredhazardousareaprotection"
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    },
+    {
+      "id": "C-B",
+      "name": "AIR CABINET COOL",
+      "type": "cabinet_cooler",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call development record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "compressedaircooling",
+        "end_use": "cabinetcooling",
+        "heat_duty": null,
+        "quality_requirement": "unknown"
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "controllers": [],
+  "manual_valves": [],
+  "final_elements": [],
+  "unplaced": []
+}

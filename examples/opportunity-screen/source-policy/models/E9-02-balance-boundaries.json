@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "title": "Fictional original-source question control",
+    "unknowns": [
+      "Actual operating state, source authority and human usefulness not established"
+    ],
+    "assumptions": [
+      "All identifiers/values authored for development before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "CR-A",
+      "name": "CONDENSATE TO DRAIN candidate",
+      "type": "condensate_receiver",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development packet; no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "steamwater",
+        "makeup_flow": 20,
+        "feedwater_flow": 100,
+        "blowdown_flow": 10,
+        "flow_unit": "allmasslb/hr",
+        "balance_boundary": "includesblowdown; returnpercentdenominatornotdeclared",
+        "sample_period": "samefictionalinterval"
+      },
+      "assigned_tag": true,
+      "source": "Fictional source-defined record, no physical existence implied"
+    },
+    {
+      "id": "CR-B",
+      "name": "CONDENSATE TO DRAIN candidate",
+      "type": "condensate_receiver",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development packet; no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "steamwater",
+        "makeup_flow": 20,
+        "feedwater_flow": 100,
+        "flow_unit": "makeupm3/h; feedwaterlb/hr",
+        "sample_period": "differentintervals"
+      },
+      "assigned_tag": true,
+      "source": "Fictional source-defined record, no physical existence implied"
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "final_elements": [],
+  "manual_valves": [],
+  "controllers": []
+}

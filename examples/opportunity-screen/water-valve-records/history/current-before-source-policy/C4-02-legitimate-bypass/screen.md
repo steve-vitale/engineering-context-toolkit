@@ -1,0 +1,112 @@
+# Opportunity screen: Fictional source-led C4/E24 control
+
+Model: `examples/opportunity-screen/water-valve-records/models/C4-02-legitimate-bypass.json`. Questions: `data/questions.json`.
+
+**How to read this.** This is a screen, not an audit. Each finding is a question the drawing or model
+raises, with the evidence found, what to collect (and exactly where), and how the collected data settles it. Nothing
+here says the plant wastes energy, and no savings are computed: the "what the source says" lines are the cited
+sources' general figures for plants in general, quoted as written, never an estimate for this plant. Data requests
+are in one of three states: **on drawing** (the value is on the drawing or model and is quoted as evidence),
+**blank on drawing** (the drawing prints a field for it but leaves it empty, so fill that field), and **not on
+drawing** (collect it from the place named). Systems listed under "Left out" were not screened.
+
+| Family | Findings |
+|---|---|
+| Energy | 0 |
+| Heat grade (high-grade heat for low-grade duty) | 0 |
+| Metering | 0 |
+| Controls and automation | 2 |
+| Emissions | 0 |
+| Safety questions to verify | 0 |
+
+## Controls and automation
+
+### C4: What do existing valve, bypass and operating records establish about this candidate's control performance and sizing basis?
+
+**About:** FV-A  
+
+**Finding reference (JSON string):** `"C4@FV-A"`
+**Asset IDs (JSON array):** `["FV-A", "HV-A"]`
+
+**Evidence on the drawing / model**
+
+- valve FV-A reads "FV-A Fictional flow control valve" at U-A (`final_elements[FV-A]`)
+- Bypass valve: hand valve HV-A reads "HV-A Fictional bypass valve" at U-A (`manual_valves[HV-A]`)
+- Supplied candidate field: `"FV-A fictional_record = true; present; meaning and suitability unverified"` (`"final_elements[FV-A].facts.fictional_record"`)
+- Supplied candidate field: `"FV-A record_source = \"Fictional training record, no plant or human approval\"; present; meaning and suitability unverified"` (`"final_elements[FV-A].facts.record_source"`)
+- Supplied candidate field: `"FV-A record_revision = \"R1\"; present; meaning and suitability unverified"` (`"final_elements[FV-A].facts.record_revision"`)
+- Supplied candidate field: `"FV-A record_available = true; present; meaning and suitability unverified"` (`"final_elements[FV-A].facts.record_available"`)
+- Supplied candidate field: `"FV-A record_authority = \"not authenticated\"; present; meaning and suitability unverified"` (`"final_elements[FV-A].facts.record_authority"`)
+- Supplied candidate field: `"FV-A bypass_purpose = \"pressure-differential protection\"; present; meaning and suitability unverified"` (`"final_elements[FV-A].facts.bypass_purpose"`)
+- Supplied candidate field: `"FV-A service = \"pump minimum-flow protection; limits source not approved\"; present; meaning and suitability unverified"` (`"final_elements[FV-A].facts.service"`)
+- Supplied candidate field: `"HV-A fictional_record = true; present; meaning and suitability unverified"` (`"manual_valves[HV-A].facts.fictional_record"`)
+- Supplied candidate field: `"HV-A record_source = \"Fictional training record, no plant or human approval\"; present; meaning and suitability unverified"` (`"manual_valves[HV-A].facts.record_source"`)
+- Supplied candidate field: `"HV-A record_revision = \"R1\"; present; meaning and suitability unverified"` (`"manual_valves[HV-A].facts.record_revision"`)
+- Supplied candidate field: `"HV-A record_available = true; present; meaning and suitability unverified"` (`"manual_valves[HV-A].facts.record_available"`)
+- Supplied candidate field: `"HV-A record_authority = \"not authenticated\"; present; meaning and suitability unverified"` (`"manual_valves[HV-A].facts.record_authority"`)
+- Supplied candidate field: `"HV-A bypass_position = \"cracked open\"; present; meaning and suitability unverified"` (`"manual_valves[HV-A].facts.bypass_position"`)
+- Supplied candidate field: `"HV-A bypass_association = \"protective function, not proof valve oversized\"; present; meaning and suitability unverified"` (`"manual_valves[HV-A].facts.bypass_association"`)
+- On drawing: Supplied candidate fact, basis unverified: FV-A fictional_record = True (`final_elements[FV-A].facts.fictional_record`)
+- On drawing: Supplied candidate fact, basis unverified: FV-A record_source = Fictional training record, no plant or human approval (`final_elements[FV-A].facts.record_source`)
+- On drawing: Supplied candidate fact, basis unverified: FV-A record_revision = R1 (`final_elements[FV-A].facts.record_revision`)
+- On drawing: Supplied candidate fact, basis unverified: FV-A record_available = True (`final_elements[FV-A].facts.record_available`)
+- On drawing: Supplied candidate fact, basis unverified: FV-A record_authority = not authenticated (`final_elements[FV-A].facts.record_authority`)
+- On drawing: Supplied candidate fact, basis unverified: FV-A bypass_purpose = pressure-differential protection (`final_elements[FV-A].facts.bypass_purpose`)
+- On drawing: Supplied candidate fact, basis unverified: FV-A service = pump minimum-flow protection; limits source not approved (`final_elements[FV-A].facts.service`)
+
+**Data to collect**
+
+- Existing named-valve and bypass function, characteristic and operating basis [not on drawing]. Candidate scope: anchors. Supplied candidate facts (meaning and suitability unverified): FV-A (FV-A) fictional_record = true [final_elements[FV-A].facts.fictional_record]; FV-A (FV-A) record_source = "Fictional training record, no plant or human approval" [final_elements[FV-A].facts.record_source]; FV-A (FV-A) record_revision = "R1" [final_elements[FV-A].facts.record_revision]; FV-A (FV-A) record_available = true [final_elements[FV-A].facts.record_available]; FV-A (FV-A) record_authority = "not authenticated" [final_elements[FV-A].facts.record_authority]; FV-A (FV-A) bypass_purpose = "pressure-differential protection" [final_elements[FV-A].facts.bypass_purpose]; FV-A (FV-A) service = "pump minimum-flow protection; limits source not approved" [final_elements[FV-A].facts.service]. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing named-valve sizing/Cv and characteristic, process/system/pump duty and pressure/flow range, control-performance and bypass function/normal-position records. Retain exact asset/source/revision, availability and operating/sample coverage; do not substitute another site or valve.; then historian or DCS trend for FV-A (no historian tag is mapped in this model for these); then a walkdown: Only if existing records cannot settle an applicable question: agree safe observations with the responsible engineer, including actual bypass function/position or measured travel association. No automatic field test, bypass closure or equipment change.. How: First establish the actual valve/bypass service and association: same-stream presence does not prove a physical bypass around this valve. Distinguish command/indication from measured valve travel, and review the valve characteristic and matched operating/control-performance basis. Low opening, an open/cracked bypass or a source example alone does not prove oversizing or justify resize/trim; bypasses can perform legitimate differential-pressure protection or temperature control. Acknowledge suitable existing records without compulsory new measurement; retain unknown or foreign/unavailable evidence as qualified context.
+
+**How it is decided:** Review whether existing service, valve characteristic, system/pump operating range, control performance and actual bypass purpose establish a remaining investigation. No universal 50%-open criterion, commanded position, cracked bypass or absent record authorizes resize/trim, bypass closure or other hardware/operating change. Suitable existing records may be acknowledged; unresolved applicability or association remains a records question for the responsible engineer.
+
+**What the source says (S13):** S13, printed pp. 25–26: highly throttled operation is a clue to review pump/system duty, valve sizing, characterization and control performance. Bypasses can have protective or temperature-control functions. This source supports investigation, not a universal opening threshold or a quantified site benefit.
+
+**Limits:** Source-informed records review: S13 printed pp. 25–26 / PDF pp. 29–30, including valve-characterization qualifications and protective/temperature bypass functions. The earlier ellipsis omitted intervening characterization context; its exact old wording remains in history. Opening or a bypass label alone does not establish suitability, source authority or permission to modify equipment. Supplied fields remain candidates.
+
+### C4: What do existing valve, bypass and operating records establish about this candidate's control performance and sizing basis?
+
+**About:** FV-B  
+
+**Finding reference (JSON string):** `"C4@FV-B"`
+**Asset IDs (JSON array):** `["FV-B", "HV-B"]`
+
+**Evidence on the drawing / model**
+
+- valve FV-B reads "FV-B Fictional flow control valve" at U-B (`final_elements[FV-B]`)
+- Bypass valve: hand valve HV-B reads "HV-B Fictional bypass valve" at U-B (`manual_valves[HV-B]`)
+- Supplied candidate field: `"FV-B fictional_record = true; present; meaning and suitability unverified"` (`"final_elements[FV-B].facts.fictional_record"`)
+- Supplied candidate field: `"FV-B record_source = \"Fictional training record, no plant or human approval\"; present; meaning and suitability unverified"` (`"final_elements[FV-B].facts.record_source"`)
+- Supplied candidate field: `"FV-B record_revision = \"R1\"; present; meaning and suitability unverified"` (`"final_elements[FV-B].facts.record_revision"`)
+- Supplied candidate field: `"FV-B record_available = true; present; meaning and suitability unverified"` (`"final_elements[FV-B].facts.record_available"`)
+- Supplied candidate field: `"FV-B record_authority = \"not authenticated\"; present; meaning and suitability unverified"` (`"final_elements[FV-B].facts.record_authority"`)
+- Supplied candidate field: `"FV-B bypass_purpose = \"temperature-control function\"; present; meaning and suitability unverified"` (`"final_elements[FV-B].facts.bypass_purpose"`)
+- Supplied candidate field: `"FV-B service = \"heat-exchanger process temperature control\"; present; meaning and suitability unverified"` (`"final_elements[FV-B].facts.service"`)
+- Supplied candidate field: `"HV-B fictional_record = true; present; meaning and suitability unverified"` (`"manual_valves[HV-B].facts.fictional_record"`)
+- Supplied candidate field: `"HV-B record_source = \"Fictional training record, no plant or human approval\"; present; meaning and suitability unverified"` (`"manual_valves[HV-B].facts.record_source"`)
+- Supplied candidate field: `"HV-B record_revision = \"R1\"; present; meaning and suitability unverified"` (`"manual_valves[HV-B].facts.record_revision"`)
+- Supplied candidate field: `"HV-B record_available = true; present; meaning and suitability unverified"` (`"manual_valves[HV-B].facts.record_available"`)
+- Supplied candidate field: `"HV-B record_authority = \"not authenticated\"; present; meaning and suitability unverified"` (`"manual_valves[HV-B].facts.record_authority"`)
+- Supplied candidate field: `"HV-B bypass_position = \"open\"; present; meaning and suitability unverified"` (`"manual_valves[HV-B].facts.bypass_position"`)
+- Supplied candidate field: `"HV-B bypass_association = \"temperature control, not proof valve oversized\"; present; meaning and suitability unverified"` (`"manual_valves[HV-B].facts.bypass_association"`)
+- On drawing: Supplied candidate fact, basis unverified: FV-B fictional_record = True (`final_elements[FV-B].facts.fictional_record`)
+- On drawing: Supplied candidate fact, basis unverified: FV-B record_source = Fictional training record, no plant or human approval (`final_elements[FV-B].facts.record_source`)
+- On drawing: Supplied candidate fact, basis unverified: FV-B record_revision = R1 (`final_elements[FV-B].facts.record_revision`)
+- On drawing: Supplied candidate fact, basis unverified: FV-B record_available = True (`final_elements[FV-B].facts.record_available`)
+- On drawing: Supplied candidate fact, basis unverified: FV-B record_authority = not authenticated (`final_elements[FV-B].facts.record_authority`)
+- On drawing: Supplied candidate fact, basis unverified: FV-B bypass_purpose = temperature-control function (`final_elements[FV-B].facts.bypass_purpose`)
+- On drawing: Supplied candidate fact, basis unverified: FV-B service = heat-exchanger process temperature control (`final_elements[FV-B].facts.service`)
+
+**Data to collect**
+
+- Existing named-valve and bypass function, characteristic and operating basis [not on drawing]. Candidate scope: anchors. Supplied candidate facts (meaning and suitability unverified): FV-B (FV-B) fictional_record = true [final_elements[FV-B].facts.fictional_record]; FV-B (FV-B) record_source = "Fictional training record, no plant or human approval" [final_elements[FV-B].facts.record_source]; FV-B (FV-B) record_revision = "R1" [final_elements[FV-B].facts.record_revision]; FV-B (FV-B) record_available = true [final_elements[FV-B].facts.record_available]; FV-B (FV-B) record_authority = "not authenticated" [final_elements[FV-B].facts.record_authority]; FV-B (FV-B) bypass_purpose = "temperature-control function" [final_elements[FV-B].facts.bypass_purpose]; FV-B (FV-B) service = "heat-exchanger process temperature control" [final_elements[FV-B].facts.service]. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing named-valve sizing/Cv and characteristic, process/system/pump duty and pressure/flow range, control-performance and bypass function/normal-position records. Retain exact asset/source/revision, availability and operating/sample coverage; do not substitute another site or valve.; then historian or DCS trend for FV-B (no historian tag is mapped in this model for these); then a walkdown: Only if existing records cannot settle an applicable question: agree safe observations with the responsible engineer, including actual bypass function/position or measured travel association. No automatic field test, bypass closure or equipment change.. How: First establish the actual valve/bypass service and association: same-stream presence does not prove a physical bypass around this valve. Distinguish command/indication from measured valve travel, and review the valve characteristic and matched operating/control-performance basis. Low opening, an open/cracked bypass or a source example alone does not prove oversizing or justify resize/trim; bypasses can perform legitimate differential-pressure protection or temperature control. Acknowledge suitable existing records without compulsory new measurement; retain unknown or foreign/unavailable evidence as qualified context.
+
+**How it is decided:** Review whether existing service, valve characteristic, system/pump operating range, control performance and actual bypass purpose establish a remaining investigation. No universal 50%-open criterion, commanded position, cracked bypass or absent record authorizes resize/trim, bypass closure or other hardware/operating change. Suitable existing records may be acknowledged; unresolved applicability or association remains a records question for the responsible engineer.
+
+**What the source says (S13):** S13, printed pp. 25–26: highly throttled operation is a clue to review pump/system duty, valve sizing, characterization and control performance. Bypasses can have protective or temperature-control functions. This source supports investigation, not a universal opening threshold or a quantified site benefit.
+
+**Limits:** Source-informed records review: S13 printed pp. 25–26 / PDF pp. 29–30, including valve-characterization qualifications and protective/temperature bypass functions. The earlier ellipsis omitted intervening characterization context; its exact old wording remains in history. Opening or a bypass label alone does not establish suitability, source authority or permission to modify equipment. Supplied fields remain candidates.
+
+## Sources cited above
+
+- S13: Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079). https://www.energy.gov/sites/prod/files/2014/05/f16/pump.pdf (license: Federal, co-developed with HI: unclear for HI content)

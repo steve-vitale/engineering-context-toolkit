@@ -1,0 +1,81 @@
+{
+  "meta": {
+    "title": "Fictional final-six source/collection controls",
+    "unknowns": [
+      "Actual operation, engineering/source authority and human acceptance unknown"
+    ],
+    "assumptions": [
+      "All supplied identities/values/relations fictional before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "U-A",
+      "name": "Fictional process unit",
+      "type": "process_unit",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified"
+      },
+      "source": "Fictional source role",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [
+    {
+      "id": "V-A",
+      "name": "PROCESS VENT HEADER",
+      "from": "U-A",
+      "to": "BL",
+      "utility": false,
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "processgas",
+        "event_mode": "plannedintermittent+background",
+        "flow": 5,
+        "flow_unit": "kg/h",
+        "sample_period": "fictionalinterval",
+        "composition": "suppliedbutunverified",
+        "record_scope": "currentdeclaredV-A",
+        "measurement_basis": "suppliedexistingmeter",
+        "quality": "declaredgoodunverified"
+      },
+      "source": "Fictional processvent/relief association"
+    }
+  ],
+  "instruments": [
+    {
+      "tag": "FT-A",
+      "variable": "flow",
+      "unit": "U-A",
+      "stream": "V-A",
+      "description": "Vent flow",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "measurement_target": "V-Adeclared",
+        "quantity": "massflow",
+        "flow_unit": "kg/h",
+        "record_scope": "declaredlocal"
+      },
+      "source": "Fictional source/association",
+      "assigned_tag": true
+    }
+  ],
+  "controllers": [],
+  "interlocks": [],
+  "manual_valves": [],
+  "final_elements": [],
+  "relief_devices": [],
+  "unplaced": []
+}

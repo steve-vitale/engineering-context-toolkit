@@ -1,0 +1,707 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/models/E7-02-service-design.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E7"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E7@PCV-A",
+   "question_id": "E7",
+   "family": "energy",
+   "question": "What do existing records establish about this header-letdown candidate's steam service and any backpressure-generation feasibility question?",
+   "about": "PCV-A",
+   "assets": [
+    {
+     "id": "PCV-A",
+     "tag": "PCV-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "PCV-A",
+     "tag": "PCV-A",
+     "text": "valve PCV-A reads \"PCV-A PRV Steam HP HEADER station\"; owning equipment unknown; no unit inferred; supplied source interpretation, not installed truth; Recorded qualifiers: {\"tag\": \"PCV-A\", \"kind\": \"final_element\", \"unit\": null, \"source\": \"Fictional candidate station, not installed-state proof\", \"assigned_tag\": true, \"unplaced_reason\": \"Fictional explicitly unplaced station; no inventoried equipment owner\"}; Assigned identifier; an operating tag has not been verified",
+     "field": "unplaced[PCV-A]",
+     "provenance": {
+      "kind": "native-unplaced-source-context-1",
+      "model_role": "final_element",
+      "record_fields": {
+       "tag": "PCV-A",
+       "kind": "final_element",
+       "unit": null,
+       "source": "Fictional candidate station, not installed-state proof",
+       "assigned_tag": true,
+       "unplaced_reason": "Fictional explicitly unplaced station; no inventoried equipment owner"
+      },
+      "placement": "owning equipment unknown; no unit inferred"
+     }
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-A",
+     "tag": "PCV-A",
+     "text": "PCV-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-A",
+     "tag": "PCV-A",
+     "text": "PCV-A record_source = \"Fictional development packet; no plant or human approval\"; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-A",
+     "tag": "PCV-A",
+     "text": "PCV-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-A",
+     "tag": "PCV-A",
+     "text": "PCV-A record_available = true; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-A",
+     "tag": "PCV-A",
+     "text": "PCV-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-A",
+     "tag": "PCV-A",
+     "text": "PCV-A service = \"steam\"; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-A].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-A",
+     "tag": "PCV-A",
+     "text": "PCV-A inlet_pressure = 400; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-A].facts.inlet_pressure"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-A",
+     "tag": "PCV-A",
+     "text": "PCV-A outlet_pressure = 100; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-A].facts.outlet_pressure"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-A",
+     "tag": "PCV-A",
+     "text": "PCV-A pressure_unit = \"designpsig only, notoperating\"; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-A].facts.pressure_unit"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-A",
+     "tag": "PCV-A",
+     "text": "PCV-A sample_period = null; blank; meaning and suitability unverified",
+     "field": "unplaced[PCV-A].facts.sample_period"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A fictional_record = True",
+     "field": "unplaced[PCV-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A record_source = Fictional development packet; no plant or human approval",
+     "field": "unplaced[PCV-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A record_revision = R1",
+     "field": "unplaced[PCV-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A record_available = True",
+     "field": "unplaced[PCV-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A record_authority = unverified",
+     "field": "unplaced[PCV-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A service = steam",
+     "field": "unplaced[PCV-A].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A inlet_pressure = 400",
+     "field": "unplaced[PCV-A].facts.inlet_pressure"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A outlet_pressure = 100",
+     "field": "unplaced[PCV-A].facts.outlet_pressure"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A pressure_unit = designpsig only, notoperating",
+     "field": "unplaced[PCV-A].facts.pressure_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A fictional_record = True",
+     "field": "unplaced[PCV-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A record_source = Fictional development packet; no plant or human approval",
+     "field": "unplaced[PCV-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A record_revision = R1",
+     "field": "unplaced[PCV-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A record_available = True",
+     "field": "unplaced[PCV-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A record_authority = unverified",
+     "field": "unplaced[PCV-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A service = steam",
+     "field": "unplaced[PCV-A].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A inlet_pressure = 400",
+     "field": "unplaced[PCV-A].facts.inlet_pressure"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A outlet_pressure = 100",
+     "field": "unplaced[PCV-A].facts.outlet_pressure"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-A pressure_unit = designpsig only, notoperating",
+     "field": "unplaced[PCV-A].facts.pressure_unit"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing station service, steam balance and flow-duration records",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing named-station service and current steam balance, actual flow-duration/operating coverage and represented PRV/turbine arrangement; exact source/revision, quantity units, sample period and availability.",
+      "only a valve (PCV-A) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
+     ],
+     "how": "Establish steam service first: a PRV/PCV or HP/MP/LP/header label alone does not prove steam or two-sided physical topology. Known nonsteam service is not applicable to this steam-turbine question; acknowledge that without a compulsory steam measurement. Missing/unknown data remains qualified. Review existing suitable function before proposing further study.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "unplaced[PCV-A].facts.fictional_record"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "record_source",
+       "value": "Fictional development packet; no plant or human approval",
+       "where": "unplaced[PCV-A].facts.record_source"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "unplaced[PCV-A].facts.record_revision"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "record_available",
+       "value": true,
+       "where": "unplaced[PCV-A].facts.record_available"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "unplaced[PCV-A].facts.record_authority"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "service",
+       "value": "steam",
+       "where": "unplaced[PCV-A].facts.service"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "inlet_pressure",
+       "value": 400,
+       "where": "unplaced[PCV-A].facts.inlet_pressure"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "outlet_pressure",
+       "value": 100,
+       "where": "unplaced[PCV-A].facts.outlet_pressure"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "pressure_unit",
+       "value": "designpsig only, notoperating",
+       "where": "unplaced[PCV-A].facts.pressure_unit"
+      }
+     ]
+    },
+    {
+     "item": "Existing actual pressure/thermal, boiler, electrical and feasibility basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing actual inlet/exhaust pressures and steam condition, process heat requirements, boiler-throughput/capacity implications, annual duty, fuel/electricity/voltage and practical/economic constraints; distinguish design ratings from operating records.",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
+     ],
+     "how": "The DOE Tip20 source screening figures (3000lb/hr and100psi) describe when to consider further study in its stated context, not automatic install/close thresholds. Do not close an unresolved investigation because data are variable, below an example, unconverted or absent. A backpressure turbine is generally considered in parallel with a PRV and removes energy needed downstream; source prices, graph assumptions/efficiencies and installation percentages are historical examples, not current site savings. Acknowledge an existing suitable function without new measurements or replacement.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "unplaced[PCV-A].facts.fictional_record"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "record_source",
+       "value": "Fictional development packet; no plant or human approval",
+       "where": "unplaced[PCV-A].facts.record_source"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "unplaced[PCV-A].facts.record_revision"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "record_available",
+       "value": true,
+       "where": "unplaced[PCV-A].facts.record_available"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "unplaced[PCV-A].facts.record_authority"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "service",
+       "value": "steam",
+       "where": "unplaced[PCV-A].facts.service"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "inlet_pressure",
+       "value": 400,
+       "where": "unplaced[PCV-A].facts.inlet_pressure"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "outlet_pressure",
+       "value": 100,
+       "where": "unplaced[PCV-A].facts.outlet_pressure"
+      },
+      {
+       "id": "PCV-A",
+       "label": "PCV-A",
+       "name": "pressure_unit",
+       "value": "designpsig only, notoperating",
+       "where": "unplaced[PCV-A].facts.pressure_unit"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual named-station steam service, current balance/flow-duration, process pressure/heat, boiler, electrical and economic constraints before any backpressure-generation feasibility decision. Do not install a turbine or automatically close an unresolved investigation from source thresholds, design pressures or a label alone. Known nonsteam scope can be acknowledged as not applicable; unknown source, association or operating basis remains explicit. No site benefit or operating authorization is calculated.",
+   "typical_benefit": {
+    "wording": "Consider when a PRV has \"constant steam flows of at least 3,000 pounds per hour (lb/hr), and when the steam pressure drop is at least 100 psi.\" Installation costs \"typically average 75% of equipment costs\".",
+    "source": [
+     "S6"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S6: Steam Tip #20, Replace Pressure-Reducing Valves with Backpressure Turbogenerators (DOE/GO-102012-3409)"
+    ]
+   },
+   "limits": "S6 also quotes cost per kW figures; they are deliberately not repeated here. No IAC code maps to turbines (2.2134 covers PRV-station leaks). Source review: complete S6 pp1–2 includes current steam balance/actual process requirements, parallel arrangement, downstream heat/boiler-throughput implications and historical calculation assumptions. Inherited source threshold/cost quotation is not a universal cutoff, present-day quotation or engineering approval.",
+   "status": "asked"
+  },
+  {
+   "id": "E7@PCV-B",
+   "question_id": "E7",
+   "family": "energy",
+   "question": "What do existing records establish about this header-letdown candidate's steam service and any backpressure-generation feasibility question?",
+   "about": "PCV-B",
+   "assets": [
+    {
+     "id": "PCV-B",
+     "tag": "PCV-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "PCV-B",
+     "tag": "PCV-B",
+     "text": "valve PCV-B reads \"PCV-B PCV Compressedair HP HEADER station\"; owning equipment unknown; no unit inferred; supplied source interpretation, not installed truth; Recorded qualifiers: {\"tag\": \"PCV-B\", \"kind\": \"final_element\", \"unit\": null, \"source\": \"Fictional candidate station, not installed-state proof\", \"assigned_tag\": true, \"unplaced_reason\": \"Fictional explicitly unplaced station; no inventoried equipment owner\"}; Assigned identifier; an operating tag has not been verified",
+     "field": "unplaced[PCV-B]",
+     "provenance": {
+      "kind": "native-unplaced-source-context-1",
+      "model_role": "final_element",
+      "record_fields": {
+       "tag": "PCV-B",
+       "kind": "final_element",
+       "unit": null,
+       "source": "Fictional candidate station, not installed-state proof",
+       "assigned_tag": true,
+       "unplaced_reason": "Fictional explicitly unplaced station; no inventoried equipment owner"
+      },
+      "placement": "owning equipment unknown; no unit inferred"
+     }
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-B",
+     "tag": "PCV-B",
+     "text": "PCV-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-B",
+     "tag": "PCV-B",
+     "text": "PCV-B record_source = \"Fictional development packet; no plant or human approval\"; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-B",
+     "tag": "PCV-B",
+     "text": "PCV-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-B",
+     "tag": "PCV-B",
+     "text": "PCV-B record_available = true; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-B",
+     "tag": "PCV-B",
+     "text": "PCV-B record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-B].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-B",
+     "tag": "PCV-B",
+     "text": "PCV-B service = \"known compressedair, notsteam\"; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-B].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-B",
+     "tag": "PCV-B",
+     "text": "PCV-B station_flow = 4000; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-B].facts.station_flow"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "PCV-B",
+     "tag": "PCV-B",
+     "text": "PCV-B flow_unit = \"airscfm\"; present; meaning and suitability unverified",
+     "field": "unplaced[PCV-B].facts.flow_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-B fictional_record = True",
+     "field": "unplaced[PCV-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-B record_source = Fictional development packet; no plant or human approval",
+     "field": "unplaced[PCV-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-B record_revision = R1",
+     "field": "unplaced[PCV-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-B record_available = True",
+     "field": "unplaced[PCV-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-B record_authority = unverified",
+     "field": "unplaced[PCV-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-B service = known compressedair, notsteam",
+     "field": "unplaced[PCV-B].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-B station_flow = 4000",
+     "field": "unplaced[PCV-B].facts.station_flow"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-B flow_unit = airscfm",
+     "field": "unplaced[PCV-B].facts.flow_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-B fictional_record = True",
+     "field": "unplaced[PCV-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-B record_source = Fictional development packet; no plant or human approval",
+     "field": "unplaced[PCV-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-B record_revision = R1",
+     "field": "unplaced[PCV-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-B record_available = True",
+     "field": "unplaced[PCV-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-B record_authority = unverified",
+     "field": "unplaced[PCV-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-B service = known compressedair, notsteam",
+     "field": "unplaced[PCV-B].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-B station_flow = 4000",
+     "field": "unplaced[PCV-B].facts.station_flow"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: PCV-B flow_unit = airscfm",
+     "field": "unplaced[PCV-B].facts.flow_unit"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing station service, steam balance and flow-duration records",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing named-station service and current steam balance, actual flow-duration/operating coverage and represented PRV/turbine arrangement; exact source/revision, quantity units, sample period and availability.",
+      "only a valve (PCV-B) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
+     ],
+     "how": "Establish steam service first: a PRV/PCV or HP/MP/LP/header label alone does not prove steam or two-sided physical topology. Known nonsteam service is not applicable to this steam-turbine question; acknowledge that without a compulsory steam measurement. Missing/unknown data remains qualified. Review existing suitable function before proposing further study.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "PCV-B",
+       "label": "PCV-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "unplaced[PCV-B].facts.fictional_record"
+      },
+      {
+       "id": "PCV-B",
+       "label": "PCV-B",
+       "name": "record_source",
+       "value": "Fictional development packet; no plant or human approval",
+       "where": "unplaced[PCV-B].facts.record_source"
+      },
+      {
+       "id": "PCV-B",
+       "label": "PCV-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "unplaced[PCV-B].facts.record_revision"
+      },
+      {
+       "id": "PCV-B",
+       "label": "PCV-B",
+       "name": "record_available",
+       "value": true,
+       "where": "unplaced[PCV-B].facts.record_available"
+      },
+      {
+       "id": "PCV-B",
+       "label": "PCV-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "unplaced[PCV-B].facts.record_authority"
+      },
+      {
+       "id": "PCV-B",
+       "label": "PCV-B",
+       "name": "service",
+       "value": "known compressedair, notsteam",
+       "where": "unplaced[PCV-B].facts.service"
+      },
+      {
+       "id": "PCV-B",
+       "label": "PCV-B",
+       "name": "station_flow",
+       "value": 4000,
+       "where": "unplaced[PCV-B].facts.station_flow"
+      },
+      {
+       "id": "PCV-B",
+       "label": "PCV-B",
+       "name": "flow_unit",
+       "value": "airscfm",
+       "where": "unplaced[PCV-B].facts.flow_unit"
+      }
+     ]
+    },
+    {
+     "item": "Existing actual pressure/thermal, boiler, electrical and feasibility basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing actual inlet/exhaust pressures and steam condition, process heat requirements, boiler-throughput/capacity implications, annual duty, fuel/electricity/voltage and practical/economic constraints; distinguish design ratings from operating records.",
+      "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
+     ],
+     "how": "The DOE Tip20 source screening figures (3000lb/hr and100psi) describe when to consider further study in its stated context, not automatic install/close thresholds. Do not close an unresolved investigation because data are variable, below an example, unconverted or absent. A backpressure turbine is generally considered in parallel with a PRV and removes energy needed downstream; source prices, graph assumptions/efficiencies and installation percentages are historical examples, not current site savings. Acknowledge an existing suitable function without new measurements or replacement.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "PCV-B",
+       "label": "PCV-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "unplaced[PCV-B].facts.fictional_record"
+      },
+      {
+       "id": "PCV-B",
+       "label": "PCV-B",
+       "name": "record_source",
+       "value": "Fictional development packet; no plant or human approval",
+       "where": "unplaced[PCV-B].facts.record_source"
+      },
+      {
+       "id": "PCV-B",
+       "label": "PCV-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "unplaced[PCV-B].facts.record_revision"
+      },
+      {
+       "id": "PCV-B",
+       "label": "PCV-B",
+       "name": "record_available",
+       "value": true,
+       "where": "unplaced[PCV-B].facts.record_available"
+      },
+      {
+       "id": "PCV-B",
+       "label": "PCV-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "unplaced[PCV-B].facts.record_authority"
+      },
+      {
+       "id": "PCV-B",
+       "label": "PCV-B",
+       "name": "service",
+       "value": "known compressedair, notsteam",
+       "where": "unplaced[PCV-B].facts.service"
+      },
+      {
+       "id": "PCV-B",
+       "label": "PCV-B",
+       "name": "station_flow",
+       "value": 4000,
+       "where": "unplaced[PCV-B].facts.station_flow"
+      },
+      {
+       "id": "PCV-B",
+       "label": "PCV-B",
+       "name": "flow_unit",
+       "value": "airscfm",
+       "where": "unplaced[PCV-B].facts.flow_unit"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual named-station steam service, current balance/flow-duration, process pressure/heat, boiler, electrical and economic constraints before any backpressure-generation feasibility decision. Do not install a turbine or automatically close an unresolved investigation from source thresholds, design pressures or a label alone. Known nonsteam scope can be acknowledged as not applicable; unknown source, association or operating basis remains explicit. No site benefit or operating authorization is calculated.",
+   "typical_benefit": {
+    "wording": "Consider when a PRV has \"constant steam flows of at least 3,000 pounds per hour (lb/hr), and when the steam pressure drop is at least 100 psi.\" Installation costs \"typically average 75% of equipment costs\".",
+    "source": [
+     "S6"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S6: Steam Tip #20, Replace Pressure-Reducing Valves with Backpressure Turbogenerators (DOE/GO-102012-3409)"
+    ]
+   },
+   "limits": "S6 also quotes cost per kW figures; they are deliberately not repeated here. No IAC code maps to turbines (2.2134 covers PRV-station leaks). Source review: complete S6 pp1–2 includes current steam balance/actual process requirements, parallel arrangement, downstream heat/boiler-throughput implications and historical calculation assumptions. Inherited source threshold/cost quotation is not a universal cutoff, present-day quotation or engineering approval.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

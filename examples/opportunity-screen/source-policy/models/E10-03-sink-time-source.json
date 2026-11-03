@@ -1,0 +1,61 @@
+{
+  "meta": {
+    "title": "Fictional source-led thermal/recovery control",
+    "unknowns": [
+      "Physicalstate, sourceauthority and engineering suitability unproven"
+    ],
+    "assumptions": [
+      "All names/values fictional and authored before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "F-A",
+      "name": "FLASH DRUM sourceA",
+      "type": "flash_drum",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": false,
+        "record_authority": "unverified",
+        "service": "steamwater",
+        "flow": 5000,
+        "flow_unit": "lb/hr",
+        "sample_period": "winteronly",
+        "sink_target": "foreignsiteLP1",
+        "sink_duty": "summeronly"
+      },
+      "source": "Fictional source-defined context",
+      "assigned_tag": true
+    },
+    {
+      "id": "F-B",
+      "name": "FLASH TANK sourceB",
+      "type": "flash_tank",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "steamwater",
+        "flow": 5000,
+        "flow_unit": "lb/hr",
+        "sample_period": "fictional sameinterval",
+        "sink_target": "localLP2",
+        "sink_duty": "declaredcompatibleprovisional",
+        "receiving_pressure": "unknown",
+        "route_basis": "distance/pipingnotassessed"
+      },
+      "source": "Fictional source-defined context",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "unplaced": [],
+  "instruments": [],
+  "controllers": [],
+  "final_elements": [],
+  "manual_valves": []
+}

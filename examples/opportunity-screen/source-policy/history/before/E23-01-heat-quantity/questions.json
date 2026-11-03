@@ -1,0 +1,115 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/air-utility-records/models/E23-01-heat-quantity.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E23"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E23@C-A",
+   "question_id": "E23",
+   "family": "energy",
+   "question": "Is air compressor heat rejected when it could heat something?",
+   "about": "C-A",
+   "assets": [
+    {
+     "id": "C-A",
+     "tag": "C-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "equipment C-A reads \"C-A AIR COMPRESSOR\"",
+     "field": "units[C-A]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Load hours and a nearby heat sink",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: compressor run hours",
+      "a walkdown: space or water heating needs nearby"
+     ],
+     "how": "List heat users within reach."
+    }
+   ],
+   "decision_rule": "Worth a look when the compressor runs long hours and a low-temperature heat user is nearby.",
+   "typical_benefit": {
+    "wording": "\"As much as 80 to 93 percent of the electrical energy\" becomes heat; recovery \"anywhere from 50 to 90 percent of this\".",
+    "source": [
+     "S11"
+    ],
+    "arc": "2.243x (by description)",
+    "source_titles": [
+     "S11: Improving Compressed Air System Performance: A Sourcebook for Industry, 3rd ed. (DOE + Compressed Air Challenge)"
+    ]
+   },
+   "limits": null,
+   "status": "asked"
+  },
+  {
+   "id": "E23@C-B",
+   "question_id": "E23",
+   "family": "energy",
+   "question": "Is air compressor heat rejected when it could heat something?",
+   "about": "C-B",
+   "assets": [
+    {
+     "id": "C-B",
+     "tag": "C-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "equipment C-B reads \"C-B AIR COMPRESSOR\"",
+     "field": "units[C-B]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Load hours and a nearby heat sink",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: compressor run hours",
+      "a walkdown: space or water heating needs nearby"
+     ],
+     "how": "List heat users within reach."
+    }
+   ],
+   "decision_rule": "Worth a look when the compressor runs long hours and a low-temperature heat user is nearby.",
+   "typical_benefit": {
+    "wording": "\"As much as 80 to 93 percent of the electrical energy\" becomes heat; recovery \"anywhere from 50 to 90 percent of this\".",
+    "source": [
+     "S11"
+    ],
+    "arc": "2.243x (by description)",
+    "source_titles": [
+     "S11: Improving Compressed Air System Performance: A Sourcebook for Industry, 3rd ed. (DOE + Compressed Air Challenge)"
+    ]
+   },
+   "limits": null,
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

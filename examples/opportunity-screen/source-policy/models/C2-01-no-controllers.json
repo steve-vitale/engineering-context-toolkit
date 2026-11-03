@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "title": "Fictional final-six source/collection controls",
+    "unknowns": [
+      "Actual operation, engineering/source authority and human acceptance unknown"
+    ],
+    "assumptions": [
+      "All supplied identities/values/relations fictional before calls"
+    ]
+  },
+  "units": [],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "PT-A",
+      "variable": "pressure",
+      "unit": null,
+      "stream": null,
+      "description": "Supplied fictional instrument",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "purpose": "unknown",
+        "source_coverage": "partialdrawing",
+        "logic_coverage": null
+      },
+      "source": "Fictional source/association",
+      "assigned_tag": true
+    },
+    {
+      "tag": "TT-B",
+      "variable": "temperature",
+      "unit": null,
+      "stream": null,
+      "description": "Supplied fictional instrument",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "purpose": "indicationdeclared",
+        "source_coverage": "partialdrawing",
+        "manual_adjustments": 0
+      },
+      "source": "Fictional source/association",
+      "assigned_tag": true
+    }
+  ],
+  "controllers": [],
+  "interlocks": [],
+  "manual_valves": [],
+  "final_elements": [],
+  "relief_devices": [],
+  "unplaced": []
+}

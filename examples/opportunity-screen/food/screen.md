@@ -4,8 +4,8 @@ Model: `examples/opportunity-screen/food_plant_model.json`. Questions: `data/que
 
 **How to read this.** This is a screen, not an audit. Each finding is a question the drawing or model
 raises, with the evidence found, what to collect (and exactly where), and how the collected data settles it. Nothing
-here says the plant wastes energy, and no savings are computed: the "what the source says" lines are the cited
-sources' general figures for plants in general, quoted as written, never an estimate for this plant. Data requests
+here says the plant wastes energy, and no savings are computed: the "what the source says" lines include source
+quotations and contextual paraphrases, retaining their qualifications, never estimates for this plant. Data requests
 are in one of three states: **on drawing** (the value is on the drawing or model and is quoted as evidence),
 **blank on drawing** (the drawing prints a field for it but leaves it empty, so fill that field), and **not on
 drawing** (collect it from the place named). Systems listed under "Left out" were not screened.
@@ -14,14 +14,14 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 |---|---|
 | Energy | 16 |
 | Heat grade (high-grade heat for low-grade duty) | 4 |
-| Metering | 4 |
+| Metering | 5 |
 | Controls and automation | 4 |
 | Emissions | 0 |
 | Safety questions to verify | 1 |
 
 ## Energy
 
-### E19: Is the compressed air header pressure higher than the end users need?
+### E19: What do existing records establish about this air-system candidate's pressure requirements, losses and control/storage constraints?
 
 **About:** AC-501  
 
@@ -31,22 +31,22 @@ drawing** (collect it from the place named). Systems listed under "Left out" wer
 **Evidence on the drawing / model**
 
 - equipment AC-501 reads "AC-501 Instrument air compressor" (`units[AC-501]`)
-- Pressure control or regulator: controller PIC-202 reads "PIC-202 High-stage suction pressure control, loads and unloads K-202 and K-203" at K-202 (`controllers[PIC-202]`)
-- Pressure control or regulator: controller PIC-203 reads "PIC-203 Head pressure control at a fixed setpoint, on the condenser fans" at C-201 (`controllers[PIC-203]`)
-- Pressure control or regulator: controller PIC-501 reads "PIC-501 Instrument air header pressure control" at AC-501 (`controllers[PIC-501]`)
+- Unverified pressure/control record; system association not inferred: controller PIC-202 reads "PIC-202 High-stage suction pressure control, loads and unloads K-202 and K-203" at K-202 (`controllers[PIC-202]`)
+- Unverified pressure/control record; system association not inferred: controller PIC-203 reads "PIC-203 Head pressure control at a fixed setpoint, on the condenser fans" at C-201 (`controllers[PIC-203]`)
+- Unverified pressure/control record; system association not inferred: controller PIC-501 reads "PIC-501 Instrument air header pressure control" at AC-501 (`controllers[PIC-501]`)
 
 **Data to collect**
 
-- Header pressure profile and the minimum end-use pressure [not on drawing]. Where: a walkdown: pressure at the farthest and most demanding users. How: Find the highest pressure any user truly needs.
+- Existing named-system service, pressure/end-use and dynamic control/storage basis [not on drawing]. Candidate scope: unit. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing actual compressor/system and controls, pressure location and discharge/header/point-of-use profiles, actual end-use requirements, distribution/treatment losses, peak/transient demand, storage/control range and manufacturer constraints; exact source/owner/revision, units/time/availability and coverage retained.; then site records: The following pressure/control tag/series locations are candidate-only lookup aids from supplied records; compressor/system association, source identity, availability, measurement location and requirements remain unverified. Do not treat a foreign or unknown candidate as this compressor's measured header pressure or minimum end-use requirement.; then a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit.. How: A pressure record anywhere is not this compressor's control or another user's requirement, and missing control representation is not closure. Known helpers/process-gas/refrigeration compressors are not air subjects; an air-compressor package is not disqualified merely because its name also mentions a dryer. Establish actual service/requirements and match quantities, locations and dynamic operating coverage. Review appropriate existing records and component/storage/control constraints before considering pressure changes. Suitable requirements or existing configuration can be acknowledged without new tests or lower-setpoint instructions.
 
-**How it is decided:** Lower the setpoint toward the highest true end-use need plus distribution losses.
+**How it is decided:** Review actual system/end-use requirements and matched pressure/location/time records, peak demand, distribution/component drops, storage/control and manufacturer constraints with the responsible specialist before a pressure decision. Highest scalar need plus an assumed loss alone does not authorize lowering a setpoint. Unknown scope or dynamic basis remains a records question, and suitable existing operation or nonapplicability may be acknowledged; no operating change or site savings are calculated.
 
-**What the source says (S11, S24):** "for every 2 psi decrease in discharge pressure, energy consumption will decrease by approximately 1 percent at full output flow." With 30-50% unregulated usage, "about 1 to 1.6 percent for every 2 psi."
+**What the source says (S11, S24):** S11 explains that pressure can affect compressor power and unregulated demand, with effects depending on compressor/control type, pressure range and operating conditions. Review manufacturer/system performance and required end-use pressure; no universal saving per pressure step or site benefit is asserted.
 IAC/ITAC recommendation code: 2.4231 (IAC/ITAC browse page: 6,522 recommendations, 0.5 yr average payback, 51.6% implemented; average dollar figure omitted).
 
-**Limits:** IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.
+**Limits:** IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: S11 printed28-36/PDF33-41, including full pressure/control context. Its printed31 increase and printed34 decrease passages give inconsistent combined percentage ranges; no corrected number is chosen. Original numeric wording remains historical, not a universal target or a reason to compromise minimum end-use pressure.
 
-### E22: Does the air compressor lack enough storage for intermittent large users?
+### E22: What do existing records establish about this air-system candidate's demand events, controls and existing storage coverage/adequacy?
 
 **About:** AC-501  
 
@@ -56,20 +56,19 @@ IAC/ITAC recommendation code: 2.4231 (IAC/ITAC browse page: 6,522 recommendation
 **Evidence on the drawing / model**
 
 - equipment AC-501 reads "AC-501 Instrument air compressor" (`units[AC-501]`)
-- Checked, none found: no receiver or air storage anywhere in the model (`applies_when.without`)
 
 **Data to collect**
 
-- Demand profile [not on drawing]. Where: a walkdown: data-log compressor load and header pressure for a week. How: Find short high-demand events.
+- Existing system/end-use demand, control and storage basis [not on drawing]. Candidate scope: unit. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing actual compressor/system, critical end-use pressure and air quality, control/capacity mode, receiver volumes and location/coverage, peak magnitude/duration and interval, pressure differential, available compressor supply during events and replenishment/recovery time; source, units and comparable operating periods retained.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: A receiver/storage label anywhere is not this air system's coverage or sufficient capacity, and missing representation is not installed absence. Review actual demand patterns, controls and current receivers first; the appropriate strategy depends on quantity/quality and pressure requirements, event and refill timing and compressor/control characteristics. S11 printed43-44 does not endorse a universal gallons-per-cfm rule. A known compressor package is not excluded merely because its name mentions a dryer; helpers and known nonair machines are not air subjects. Acknowledge suitable existing coverage before additional work; no obligatory one-week logging, receiver installation, compressor stop or pressure change is authorized.
 
-**How it is decided:** Add storage when short peaks force an extra compressor on.
+**How it is decided:** Review actual system and critical end-use requirements, existing receiver coverage, pressure/demand/event and refill profiles and interacting compressor/control constraints with the responsible specialist. Short peaks or an extra unit starting are not by themselves an instruction to add storage. Suitable existing strategy or nonapplicability can be acknowledged; unresolved service, source, quantity, quality, pressure or timing remains a records question, not a sizing or vessel-safety approval.
 
 **What the source says (S10, S24):** Storage "may allow such a compressor to be turned off." No % stated.
 IAC/ITAC recommendation code: 2.422x (category only) (IAC/ITAC browse page: 8,589 recommendations, 1.2 yr average payback, 46.5% implemented; average dollar figure omitted).
 
-**Limits:** IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.
+**Limits:** IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: S10 complete pp1-2 and S11 printed43-44/PDF48-49 make storage conditional on demand/quality/control and location/replenishment constraints; existing generic storage does not clear all systems. Pressure-vessel safety, relief, condensate/drain and maintenance constraints remain engineering responsibilities. No universal receiver volume or site savings is computed.
 
-### E23: Is air compressor heat rejected when it could heat something?
+### E23: What do existing records establish about this air-compressor candidate's actual heat availability, existing recovery and compatible receiving duty?
 
 **About:** AC-501  
 
@@ -82,12 +81,14 @@ IAC/ITAC recommendation code: 2.422x (category only) (IAC/ITAC browse page: 8,58
 
 **Data to collect**
 
-- Load hours and a nearby heat sink [not on drawing]. Where: site records: compressor run hours; then a walkdown: space or water heating needs nearby. How: List heat users within reach.
+- Existing compressor/cooling, recovery and receiving-duty basis [not on drawing]. Candidate scope: unit. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing actual compressor type/cooling arrangement and performance, available thermal quantity/temperature and load/run schedule, existing recovery/coverage and receiving heat duty/temperature/time/seasonality, displaced energy and quality/material/cooling/ventilation/backpressure/control constraints, with exact units/source/owner/revision/availability.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: S11 printed58-59 describes heat fractions and different air-cooled/water-cooled arrangements. Electrical input converted to heat and a recovered fraction of available thermal energy are not electrical savings or a useful site duty. Establish compatible temperatures, coincident demand and source/configuration first; the source says this heat is usually insufficient for direct steam production. Nearby load or long hours alone is insufficient. Retain required compressor cooling, ventilation/backpressure, water-quality/material and control constraints and added fan/exchanger effects. Acknowledge suitable existing recovery or nonapplicability; missing coverage remains conditional rather than a forced field test or new exchanger.
 
-**How it is decided:** Worth a look when the compressor runs long hours and a low-temperature heat user is nearby.
+**How it is decided:** Review actual compressor/cooling performance, existing recovery and useful receiving duty, temperature, timing and operating/material/control constraints with the responsible specialist. Do not infer feasibility, useful output or a required retrofit from proximity/run hours or source heat percentages. Suitable existing recovery or nonapplicability may be acknowledged; unresolved source, service, units or duty remains explicit. No heat-recovery design, steam promise or site savings is produced.
 
 **What the source says (S11):** "As much as 80 to 93 percent of the electrical energy" becomes heat; recovery "anywhere from 50 to 90 percent of this".
 IAC/ITAC recommendation code: 2.243x (by description).
+
+**Limits:** Source review: S11 printed58-59/PDF63-64, full heat-recovery context. Its80-93% electrical-to-heat fraction and50-90% recovery of available thermal energy are contextual source figures, not electricity or site savings; compressor/cooling/design and compatible receiving duty matter. The worked example omits additional fan power and warns of exchanger effects. Actual energy displacement and ventilation/cooling/quality constraints require review.
 
 ### E27: Is this refrigeration condenser train's head pressure appropriate for its weather, operating limits and actual reset coverage?
 
@@ -567,7 +568,32 @@ IAC/ITAC recommendation code: 2.243x (by description).
 
 ## Metering
 
-### C1: Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?
+### C1: What do existing records establish about this utility user's measurement coverage, usable data and intended decision?
+
+**About:** D-301  
+
+**Finding reference (JSON string):** `"C1@D-301"`
+**Asset IDs (JSON array):** `["D-301", "stream:U1", "TV-301", "FT-301"]`
+
+**Evidence on the drawing / model**
+
+- stream U1 (asset stream:U1) reads "Natural gas to the dryer burner" at D-301 (`streams[U1]`)
+- valve TV-301 reads "TV-301 Dryer burner natural gas control valve" at D-301 (`final_elements[TV-301]`)
+- Unverified flow/quantity candidate; utility/user coverage and usable data not established: instrument FT-301 reads "FT-301 Dryer burner natural gas flow" at D-301 (`instruments[FT-301]`)
+- Equipment: equipment D-301 reads "D-301 Gas-fired product dryer (continuous belt)" (`units[D-301]`)
+
+**Data to collect**
+
+- Utility flow to this user [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: historian or DCS trend for FT-301 (no historian tag is mapped in this model for these); then site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.
+- Who would use the reading [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.
+
+**How it is decided:** Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.
+
+**What the source says (S22, S19):** "You can't manage what do don't measure" [sic]. Buildings: "efficiency improvements of 10-20%." The guide warns "only success stories are published" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): "Typical savings 4-17%, average 8%" (UK experience).
+
+**Limits:** Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.
+
+### C1: What do existing records establish about this utility user's measurement coverage, usable data and intended decision?
 
 **About:** O-302  
 
@@ -579,20 +605,19 @@ IAC/ITAC recommendation code: 2.243x (by description).
 - stream U2 (asset stream:U2) reads "Natural gas to the oven burners" at O-302 (`streams[U2]`)
 - valve TV-302 reads "TV-302 Oven burner natural gas control valve" at O-302 (`final_elements[TV-302]`)
 - Equipment: equipment O-302 reads "O-302 Gas-fired tunnel oven" (`units[O-302]`)
-- Checked, none found: no flow measurement on the same stream, none on the same user for the same utility, and (on an extracted drawing) no flow element within three drawn links on the same sheet (`applies_when.without`)
 
 **Data to collect**
 
-- Utility flow to this user [not on drawing]. Where: only a valve (TV-302) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve; then a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading; then utility bills or the site energy report: site-level meter readings to apportion. How: Measure flow over a representative period and compare with production.
-- Who would use the reading [not on drawing]. Where: site records: energy or production reporting. How: Name the report the meter would feed.
+- Utility flow to this user [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: only a valve (TV-302) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve; then site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.
+- Who would use the reading [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.
 
-**How it is decided:** Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.
+**How it is decided:** Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.
 
 **What the source says (S22, S19):** "You can't manage what do don't measure" [sic]. Buildings: "efficiency improvements of 10-20%." The guide warns "only success stories are published" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): "Typical savings 4-17%, average 8%" (UK experience).
 
-**Limits:** On an extracted drawing the check is 'no flow element within three drawn links on this sheet'; the meter may be on the sheet the line comes from.
+**Limits:** Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.
 
-### C1: Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?
+### C1: What do existing records establish about this utility user's measurement coverage, usable data and intended decision?
 
 **About:** F-303  
 
@@ -604,20 +629,19 @@ IAC/ITAC recommendation code: 2.243x (by description).
 - stream U3 (asset stream:U3) reads "Natural gas to the fryer burner" at F-303 (`streams[U3]`)
 - valve TV-303 reads "TV-303 Fryer burner natural gas control valve" at F-303 (`final_elements[TV-303]`)
 - Equipment: equipment F-303 reads "F-303 Gas-fired continuous fryer" (`units[F-303]`)
-- Checked, none found: no flow measurement on the same stream, none on the same user for the same utility, and (on an extracted drawing) no flow element within three drawn links on the same sheet (`applies_when.without`)
 
 **Data to collect**
 
-- Utility flow to this user [not on drawing]. Where: only a valve (TV-303) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve; then a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading; then utility bills or the site energy report: site-level meter readings to apportion. How: Measure flow over a representative period and compare with production.
-- Who would use the reading [not on drawing]. Where: site records: energy or production reporting. How: Name the report the meter would feed.
+- Utility flow to this user [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: only a valve (TV-303) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve; then site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.
+- Who would use the reading [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.
 
-**How it is decided:** Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.
+**How it is decided:** Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.
 
 **What the source says (S22, S19):** "You can't manage what do don't measure" [sic]. Buildings: "efficiency improvements of 10-20%." The guide warns "only success stories are published" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): "Typical savings 4-17%, average 8%" (UK experience).
 
-**Limits:** On an extracted drawing the check is 'no flow element within three drawn links on this sheet'; the meter may be on the sheet the line comes from.
+**Limits:** Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.
 
-### C1: Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?
+### C1: What do existing records establish about this utility user's measurement coverage, usable data and intended decision?
 
 **About:** WH-401  
 
@@ -629,18 +653,17 @@ IAC/ITAC recommendation code: 2.243x (by description).
 - stream U4 (asset stream:U4) reads "Natural gas to the water heater" at WH-401 (`streams[U4]`)
 - valve TV-401 reads "TV-401 Water heater burner natural gas control valve" at WH-401 (`final_elements[TV-401]`)
 - Equipment: equipment WH-401 reads "WH-401 Gas-fired water heater, CIP and wash hot water" (`units[WH-401]`)
-- Checked, none found: no flow measurement on the same stream, none on the same user for the same utility, and (on an extracted drawing) no flow element within three drawn links on the same sheet (`applies_when.without`)
 
 **Data to collect**
 
-- Utility flow to this user [not on drawing]. Where: only a valve (TV-401) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve; then a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading; then utility bills or the site energy report: site-level meter readings to apportion. How: Measure flow over a representative period and compare with production.
-- Who would use the reading [not on drawing]. Where: site records: energy or production reporting. How: Name the report the meter would feed.
+- Utility flow to this user [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: only a valve (TV-401) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve; then site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.
+- Who would use the reading [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.
 
-**How it is decided:** Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.
+**How it is decided:** Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.
 
 **What the source says (S22, S19):** "You can't manage what do don't measure" [sic]. Buildings: "efficiency improvements of 10-20%." The guide warns "only success stories are published" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): "Typical savings 4-17%, average 8%" (UK experience).
 
-**Limits:** On an extracted drawing the check is 'no flow element within three drawn links on this sheet'; the meter may be on the sheet the line comes from.
+**Limits:** Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.
 
 ### C12: Is representative real input power available for each refrigeration compressor, with a usable coincident load and operating basis?
 
@@ -673,37 +696,50 @@ IAC/ITAC recommendation code: 2.243x (by description).
 
 ## Controls and automation
 
-### C2: Which measurements have no controller (read by people, or by nothing)?
+### C2: What do existing records establish about these measurements' purpose, readers and remaining source/logic coverage?
 
-**About:** PT-201, JT-201, TT-202, TT-205, TT-206, PDT-206 and 4 more  
+**About:** PT-201, JT-201, PT-202, TT-202, PT-203, TT-205 and 11 more  
 
 **Finding reference (JSON string):** `"C2@model"`
-**Asset IDs (JSON array):** `["PT-201", "JT-201", "TT-202", "TT-205", "TT-206", "PDT-206", "TT-304", "FT-301", "TT-305", "AT-302"]`
+**Asset IDs (JSON array):** `["PT-201", "JT-201", "PT-202", "TT-202", "PT-203", "TT-205", "TT-206", "PDT-206", "TT-301", "TT-304", "FT-301", "TT-302", "TT-305", "AT-302", "TT-303", "TT-401", "PT-501", "PIC-202", "PIC-203", "TIC-301", "TIC-302", "TIC-303", "TIC-401", "PIC-501"]`
 
 **Evidence on the drawing / model**
 
 - instrument PT-201 reads "PT-201 Low-stage suction pressure" at K-201 (`instruments[PT-201]`)
 - instrument JT-201 reads "JT-201 Low-stage compressor motor power" at K-201 (`instruments[JT-201]`)
+- instrument PT-202 reads "PT-202 High-stage suction pressure" at K-202 (`instruments[PT-202]`)
 - instrument TT-202 reads "TT-202 Compressor discharge temperature" at K-202 (`instruments[TT-202]`)
+- instrument PT-203 reads "PT-203 Condenser head (discharge) pressure" at C-201 (`instruments[PT-203]`)
 - instrument TT-205 reads "TT-205 Spiral freezer air temperature" at EV-201 (`instruments[TT-205]`)
 - instrument TT-206 reads "TT-206 Frozen store air temperature" at EV-202 (`instruments[TT-206]`)
 - instrument PDT-206 reads "PDT-206 Unit cooler coil air-side differential pressure (demand defrost initiation)" at EV-202 (`instruments[PDT-206]`)
+- instrument TT-301 reads "TT-301 Dryer inlet air temperature" at D-301 (`instruments[TT-301]`)
 - instrument TT-304 reads "TT-304 Dryer exhaust air temperature" at D-301 (`instruments[TT-304]`)
 - instrument FT-301 reads "FT-301 Dryer burner natural gas flow" at D-301 (`instruments[FT-301]`)
+- instrument TT-302 reads "TT-302 Oven zone temperature" at O-302 (`instruments[TT-302]`)
 - instrument TT-305 reads "TT-305 Oven exhaust temperature" at O-302 (`instruments[TT-305]`)
 - instrument AT-302 reads "AT-302 Oven flue O2 analyser" at O-302 (`instruments[AT-302]`)
-- Checked, none found: no controller in the model or loop list reads these measurements (`applies_when.without`)
+- instrument TT-303 reads "TT-303 Fryer oil temperature" at F-303 (`instruments[TT-303]`)
+- instrument TT-401 reads "TT-401 CIP and wash hot water supply temperature" at WH-401 (`instruments[TT-401]`)
+- instrument PT-501 reads "PT-501 Instrument air header pressure" at AC-501 (`instruments[PT-501]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller PIC-202 reads "PIC-202 High-stage suction pressure control, loads and unloads K-202 and K-203" at K-202 (`controllers[PIC-202]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller PIC-203 reads "PIC-203 Head pressure control at a fixed setpoint, on the condenser fans" at C-201 (`controllers[PIC-203]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller TIC-301 reads "TIC-301 Dryer inlet air temperature control" at D-301 (`controllers[TIC-301]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller TIC-302 reads "TIC-302 Oven zone temperature control" at O-302 (`controllers[TIC-302]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller TIC-303 reads "TIC-303 Fryer oil temperature control" at F-303 (`controllers[TIC-303]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller TIC-401 reads "TIC-401 Hot water supply temperature control" at WH-401 (`controllers[TIC-401]`)
+- Supplied controller reader; complete current logic/source coverage not established: controller PIC-501 reads "PIC-501 Instrument air header pressure control" at AC-501 (`controllers[PIC-501]`)
 
 **Data to collect**
 
-- Whether operators adjust anything by hand from these readings [not on drawing]. Where: site records: operator logs and round sheets; then ask the operators which of these they act on, and how often. How: Note manual adjustments per shift tied to each reading.
-- The control system's own loop list [not on drawing]. Where: DCS/PLC configuration: export the loop and point list. How: Confirm the reading is indication-only and not read by logic the model lacks.
+- Whether operators adjust anything by hand from these readings [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing exact measurement/source identity and quantity, actual indication/control/alarm/protection/recording purpose, normal and abnormal decisions, operator logs/round sheets and current availability/quality/coverage; retain per-subject association and source/revision.; then a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change.. How: Frequent manual adjustment can justify a control investigation, not automatic automation. A reading with no routine manual action may have a legitimate abnormal/alarm/protection/indication purpose; do not close it solely because nobody regularly acts. Acknowledge suitable existing purpose, manual or automatic operation, and record unresolved function/source suitability. No operator trial, live change or benefit is inferred.
+- The control system's own loop list [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing current loop/point list, cause/effect, alarm/sequence/configuration and represented reader/interlock/source records; preserve exact endpoints and identify missing model coverage before concluding indication-only.; then DCS/PLC configuration: Review a permitted current loop/point/configuration export, if available, as an existing source rather than a complete plant-truth inventory.; then a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change.. How: A controller or interlock reference is useful supplied evidence, not proof of complete current logic, correct process meaning, safety adequacy or measurement authority. A partial model without controllers can still prompt existing-record clarification; it does not prove no installed controls or require a fabricated loop list. S19 printed30 is broad monitoring/process-control guidance, not a per-reading automation acceptance test.
 
-**How it is decided:** Worth automating a reading that operators adjust by hand often, on a service where steadier control saves energy or quality; indication-only readings nobody acts on close the question.
+**How it is decided:** Review measurement purpose and actual normal/abnormal decisions, represented readers and source/logic coverage with the responsible specialist. Neither a missing model controller nor a represented reader settles installed control completeness or the need for automation. Suitable existing use or nonapplicability can be acknowledged; unresolved records remain explicit. No automatic upgrade, safety acceptance or source-reported saving is assigned.
 
 **What the source says (S19):** "energy and cost savings are around 5% or more for many industrial applications of process control systems" (for plants without updated controls). Process control: "Typically 2-18% savings." The source says these figures "cannot be added".
 
-**Limits:** The model or loop list may be incomplete; an uncontrolled reading may be read by logic not in the model.
+**Limits:** Source review: S19 originalLBNL56183 official mirror printed30/PDF38, monitoring/process-control section and historical nonadditive table. This supports a bounded records investigation, not an automation decision, current control-system completeness or a measurement's safety/function truth. Six existing variable classes retained; other instrument classes remain outside this selector. Generic historical savings are not this plant's benefit.
 
 ### C3: What valve-position feedback and diagnostic records are available for these control valves?
 

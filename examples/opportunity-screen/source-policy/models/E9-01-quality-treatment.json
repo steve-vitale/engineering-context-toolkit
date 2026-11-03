@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "title": "Fictional original-source question control",
+    "unknowns": [
+      "Actual operating state, source authority and human usefulness not established"
+    ],
+    "assumptions": [
+      "All identifiers/values authored for development before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "CR-A",
+      "name": "Steam CONDENSATE TO DRAIN receiver",
+      "type": "condensate_receiver",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development packet; no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "steam-watercondensate",
+        "quality_basis": "supplied cleanassertion, notapproved",
+        "return_flow": 1000,
+        "flow_unit": "lb/hr",
+        "sample_period": "fictional steadyinterval"
+      },
+      "assigned_tag": true,
+      "source": "Fictional source-defined record, no physical existence implied"
+    },
+    {
+      "id": "CR-B",
+      "name": "Steam CONDENSATE TO DRAIN receiver",
+      "type": "condensate_receiver",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development packet; no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "steam-watercondensate",
+        "quality_basis": "dissolvedcontaminant suspected",
+        "treatment_option": "cleanupunassessed",
+        "return_flow": 1000,
+        "flow_unit": "lb/hr"
+      },
+      "assigned_tag": true,
+      "source": "Fictional source-defined record, no physical existence implied"
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "final_elements": [],
+  "manual_valves": [],
+  "controllers": []
+}

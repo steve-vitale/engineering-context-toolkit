@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "title": "Fictional source-led thermal/recovery control",
+    "unknowns": [
+      "Physicalstate, sourceauthority and engineering suitability unproven"
+    ],
+    "assumptions": [
+      "All names/values fictional and authored before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "F-A",
+      "name": "FLASH TANK existingrecovery",
+      "type": "flash_tank",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "steamwatercondensate",
+        "vent_basis": "closedflashsteamrecovery, noatmosphericvent declared",
+        "existing_recovery": "suitablesourceassertion, notapproved",
+        "pressure": 150,
+        "pressure_unit": "psig"
+      },
+      "source": "Fictional source-defined context",
+      "assigned_tag": true
+    },
+    {
+      "id": "F-B",
+      "name": "FLASH TANK unknownvent",
+      "type": "flash_tank",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": null,
+        "vent_basis": null,
+        "pressure": null
+      },
+      "source": "Fictional source-defined context",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "unplaced": [],
+  "instruments": [],
+  "controllers": [],
+  "final_elements": [],
+  "manual_valves": []
+}

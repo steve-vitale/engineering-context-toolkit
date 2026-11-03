@@ -1,0 +1,81 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/integration-air-records/models/E20-02-control-method.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E20"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "energy": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E20@model",
+   "question_id": "E20",
+   "family": "energy",
+   "question": "Are compressed air leaks likely, given many quick-disconnects, hose drops or timer drains?",
+   "about": "FRL-A, TD-B",
+   "assets": [
+    {
+     "id": "FRL-A",
+     "tag": "FRL-A"
+    },
+    {
+     "id": "TD-B",
+     "tag": "TD-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "FRL-A",
+     "tag": "FRL-A",
+     "text": "equipment FRL-A reads \"FRL-A FRL\"",
+     "field": "units[FRL-A]"
+    },
+    {
+     "role": "trigger",
+     "id": "TD-B",
+     "tag": "TD-B",
+     "text": "equipment TD-B reads \"TD-B TIMER DRAIN\"",
+     "field": "units[TD-B]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Leak rate",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: ultrasonic leak survey; a no-load test with production stopped"
+     ],
+     "how": "Leakage % from load/unload times at no demand."
+    }
+   ],
+   "decision_rule": "Run a leak program when leakage is well above the 5-10% target.",
+   "typical_benefit": {
+    "wording": "Leaks are \"often wasting as much as 20%-30% of the compressor's output\"; target \"5%-10% of total system flow.\"",
+    "source": [
+     "S9",
+     "S24"
+    ],
+    "arc": "2.4236 (IAC/ITAC browse page: 11,223 recommendations, 0.5 yr average payback, 81.4% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S9: Compressed Air Tip #3, Minimize Compressed Air Leaks (DOE/GO-102004-1964, Aug 2004)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

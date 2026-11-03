@@ -1,0 +1,141 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/integration-air-records/models/E19-02-global-record.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E19"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E19@C-A",
+   "question_id": "E19",
+   "family": "energy",
+   "question": "Is the compressed air header pressure higher than the end users need?",
+   "about": "C-A",
+   "assets": [
+    {
+     "id": "C-A",
+     "tag": "C-A"
+    },
+    {
+     "id": "PIC-A",
+     "tag": "PIC-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "equipment C-A reads \"C-A Fictional AIR COMPRESSOR\"",
+     "field": "units[C-A]"
+    },
+    {
+     "role": "pressure control or regulator",
+     "id": "PIC-A",
+     "tag": "PIC-A",
+     "text": "instrument PIC-A reads \"PIC-A Supplied pressurecontrol candidate\"",
+     "field": "instruments[PIC-A]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Header pressure profile and the minimum end-use pressure",
+     "state": "not_on_drawing",
+     "where": [
+      "historian or DCS trend for PIC-A (no historian tag is mapped in this model for these)",
+      "a walkdown: pressure at the farthest and most demanding users"
+     ],
+     "how": "Find the highest pressure any user truly needs."
+    }
+   ],
+   "decision_rule": "Lower the setpoint toward the highest true end-use need plus distribution losses.",
+   "typical_benefit": {
+    "wording": "\"for every 2 psi decrease in discharge pressure, energy consumption will decrease by approximately 1 percent at full output flow.\" With 30-50% unregulated usage, \"about 1 to 1.6 percent for every 2 psi.\"",
+    "source": [
+     "S11",
+     "S24"
+    ],
+    "arc": "2.4231 (IAC/ITAC browse page: 6,522 recommendations, 0.5 yr average payback, 51.6% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S11: Improving Compressed Air System Performance: A Sourcebook for Industry, 3rd ed. (DOE + Compressed Air Challenge)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.",
+   "status": "asked"
+  },
+  {
+   "id": "E19@C-B",
+   "question_id": "E19",
+   "family": "energy",
+   "question": "Is the compressed air header pressure higher than the end users need?",
+   "about": "C-B",
+   "assets": [
+    {
+     "id": "C-B",
+     "tag": "C-B"
+    },
+    {
+     "id": "PIC-A",
+     "tag": "PIC-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "equipment C-B reads \"C-B Fictional AIR COMPRESSOR\"",
+     "field": "units[C-B]"
+    },
+    {
+     "role": "pressure control or regulator",
+     "id": "PIC-A",
+     "tag": "PIC-A",
+     "text": "instrument PIC-A reads \"PIC-A Supplied pressurecontrol candidate\"",
+     "field": "instruments[PIC-A]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Header pressure profile and the minimum end-use pressure",
+     "state": "not_on_drawing",
+     "where": [
+      "historian or DCS trend for PIC-A (no historian tag is mapped in this model for these)",
+      "a walkdown: pressure at the farthest and most demanding users"
+     ],
+     "how": "Find the highest pressure any user truly needs."
+    }
+   ],
+   "decision_rule": "Lower the setpoint toward the highest true end-use need plus distribution losses.",
+   "typical_benefit": {
+    "wording": "\"for every 2 psi decrease in discharge pressure, energy consumption will decrease by approximately 1 percent at full output flow.\" With 30-50% unregulated usage, \"about 1 to 1.6 percent for every 2 psi.\"",
+    "source": [
+     "S11",
+     "S24"
+    ],
+    "arc": "2.4231 (IAC/ITAC browse page: 6,522 recommendations, 0.5 yr average payback, 51.6% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S11: Improving Compressed Air System Performance: A Sourcebook for Industry, 3rd ed. (DOE + Compressed Air Challenge)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

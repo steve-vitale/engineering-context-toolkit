@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "title": "Fictional source-led thermal/recovery control",
+    "unknowns": [
+      "Physicalstate, sourceauthority and engineering suitability unproven"
+    ],
+    "assumptions": [
+      "All names/values fictional and authored before calls"
+    ]
+  },
+  "units": [],
+  "streams": [],
+  "unplaced": [
+    {
+      "tag": "HV-A",
+      "kind": "manual_valve",
+      "unit": null,
+      "unplaced_reason": "Fictional valve; no inventoried equipmentowner",
+      "description": "Fictional hotservicevalve candidate",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "operating_temperature_C": 20,
+        "insulation_status": null
+      },
+      "assigned_tag": true,
+      "source": "Fictional record, not measuredplantstate"
+    },
+    {
+      "tag": "HV-B",
+      "kind": "manual_valve",
+      "unit": null,
+      "unplaced_reason": "Fictional valve; no inventoried equipmentowner",
+      "description": "Fictional hotservicevalve candidate",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "operating_temperature_C": null,
+        "insulation_status": null
+      },
+      "assigned_tag": true,
+      "source": "Fictional record, not measuredplantstate"
+    }
+  ],
+  "instruments": [],
+  "controllers": [],
+  "final_elements": [],
+  "manual_valves": []
+}

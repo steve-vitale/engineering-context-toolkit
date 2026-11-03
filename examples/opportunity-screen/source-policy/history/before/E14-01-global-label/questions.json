@@ -1,0 +1,22 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/thermal-recovery-records/models/E14-01-global-label.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E14"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 0,
+  "by_family": {}
+ },
+ "questions": [],
+ "not_checked": [],
+ "did_not_fire": [
+  "E14"
+ ],
+ "left_out": {}
+}

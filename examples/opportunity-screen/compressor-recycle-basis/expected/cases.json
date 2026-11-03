@@ -1,6 +1,6 @@
 {
   "schema": "compressor-recycle-source-cases-1",
-  "state": "After outputs absent pending actual public-path production. IDs/minimum criteria prospective; assets observed in original selection.",
+  "state": "Source-policy criteria retained; expected/after contains current actual reports. PUBLICATION-RENEWAL.json separates the explicit current rebuild from original history.",
   "cases": [
     {
       "case": "E6-01-service-transfer-A",
@@ -481,5 +481,6 @@
     "record_ids": 14,
     "record_references": 20
   },
-  "grouping": "Native equipment anchor uses exact equipment ID, not plant-area grouping.02/06retain K-A/K-B; equal lists reference one authored record set, not independent reports."
+  "grouping": "Native equipment anchor uses exact equipment ID, not plant-area grouping.02/06retain K-A/K-B; equal lists reference one authored record set, not independent reports.",
+  "historical_preparation_state": "After outputs absent pending actual public-path production. IDs/minimum criteria prospective; assets observed in original selection."
 }

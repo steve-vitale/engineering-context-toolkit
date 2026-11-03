@@ -1,0 +1,53 @@
+{
+  "meta": {
+    "title": "Fictional source-led heating/integration/air controls",
+    "unknowns": [
+      "Actualstate, sourceauthority and engineering/human acceptance unknown"
+    ],
+    "assumptions": [
+      "Allrecordidentities/values fictional before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "QD-A",
+      "name": "QUICK-DISCONNECT",
+      "type": "air_coupling",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "compressedair",
+        "program_status": "suppliedrepaired/verifiedrecord",
+        "leakage_percent": 3,
+        "measurement_basis": "qualifiedsourceassertion, notacceptedsite"
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    },
+    {
+      "id": "HD-B",
+      "name": "HOSE DROP",
+      "type": "line_component",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": null,
+        "program_status": null
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "manual_valves": [],
+  "final_elements": [],
+  "controllers": [],
+  "unplaced": []
+}

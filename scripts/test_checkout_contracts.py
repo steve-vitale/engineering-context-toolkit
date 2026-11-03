@@ -45,6 +45,15 @@ TARGETS += [path.relative_to(ROOT).as_posix()
             if path.is_file() and path.suffix in ('.json', '.csv', '.md', '.py')
             and '__pycache__' not in path.parts
             and 'public-distillation/source/' not in path.as_posix()]
+# The source-policy corpus carries raw LF identities for every retained input/report.
+TARGETS += [path.relative_to(ROOT).as_posix()
+            for path in sorted((ROOT / 'examples/opportunity-screen/source-policy').rglob('*'))
+            if path.is_file() and '__pycache__' not in path.parts]
+TARGETS += ['examples/internal-mcp/history/before-source-policy/' + name
+            for name in ('sample_asset.json', 'sample_provenance.json')]
+TARGETS += [path.relative_to(ROOT).as_posix()
+            for path in sorted((ROOT / 'examples/opportunity-screen/water-valve-records/history/current-before-source-policy').rglob('*'))
+            if path.is_file()]
 RAW_FAMILIES = ('out/review_kit', 'examples/review-and-mapping',
                 'examples/own-drawing/deliverable', 'examples/from-description/assisted',
                 'examples/from-description/mgpi', 'examples/pump-revision/inputs',

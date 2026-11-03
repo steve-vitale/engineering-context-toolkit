@@ -1,0 +1,3090 @@
+{
+  "schema": "source-policy-cases-v1",
+  "scope": "88 exposed fictional collection-policy controls for 22 source-informed rule reviews. The separate signal-retention supplement has 12 later controls; neither cohort represents plants, blind generalization or comprehensive engineering adequacy. Exact current-method traces and source minimum/allowed/unacceptable criteria remain separate.",
+  "before_catalog": "history/catalog-before.json",
+  "proposed_current_rule_sha256_canonical": {
+    "E3": "d67a324829a1015621958d45abe87f0b91f10c7875c81539f3350e665f01a85f",
+    "E7": "5c3c4cc25f2973219ab5527267f5d9c889d8383790bf70ef29ffd2450db453ca",
+    "E8": "79bfd7283acf1c621207bf8346dc12c2d0cd551cdcaacfad8920f95593042275",
+    "E9": "0485e6742b4bb8ff4a315ac11d59769a168654a9d6ba62ae8543fa2cd28e37c9",
+    "E10": "4da9aa25d14548350446475eb01cf38ac702d79ef26bc638618ecb89c957f924",
+    "E12": "4e574572a661522ed8708f05ad9aa4780c30ba9dd47a914c1ab4df85a0cdc186",
+    "E14": "3384ce15c164f24ba234c1571ee0ece4e6dd523862757d8673821a5645ce26c3",
+    "E15": "07a411df5836860495e236c02a2372aa30876053f7f1948ff43be427f14ba04a",
+    "E17": "204de96d30371c9e9a22ee1066cee97ad2f545d3373d7e9e64d8e5ff5dba6867",
+    "E18": "de82adb7bb1c58a6fa448d510021a86e5daeeef61d6e74ff6b14ff73553c96b1",
+    "E19": "8b5365ec7303c83bae7ec6c477674170334e3f33eba2e680d738122fd30adb5b",
+    "E20": "428f07f9e03750c023e7f7f39a7fc2fd5b65adfc2f91e09f28c50c2b355e1b62",
+    "E21": "f2f6163ea6e51f840accb4655ac08e463b782f14a44f087591c213e9376c838d",
+    "E22": "fb4b46e699d042e39bd6997f91c7c87c44dd2623b47951efbc8c0e7b6b3e70bd",
+    "E23": "03c9435f49d5653b1ff48fb2434281ca8b4c32a608f0c8bf57f8b310a9c8e5d1",
+    "C1": "c03b77206f9504522a9335c0f0b69eabe5d84d9777f9a64628280c034dcbc409",
+    "C2": "943ef18ff63007d205a2f1fe7fef7f5700f6a8772aa70c209e333b324a96f09c",
+    "C6": "8d5cbd2f298a22c64d9c716b995bca98adfd311861075c473e62eaefb3b1e249",
+    "C7": "c358035589d6c206e82f3a0ea02632e576e2b383d6875c5fa7ff2441ff0d8f80",
+    "C10": "16ffacb3f35dd8459bf61123f1a5ece21b6d3edee634f7f34493f34a58ced7b9",
+    "E25": "8b6f843b1171d6443b090519af898bb2e1add0bc35331ca8fc3d3828c8bf22de",
+    "E26": "12ebd53748d9ea93d5292f656daac934ef3bfbab4fb55353d7c58042bb659c8d"
+  },
+  "cases": [
+    {
+      "id": "E3-01-protection-duty",
+      "rule": "E3",
+      "group": "01",
+      "model": "examples/opportunity-screen/source-policy/models/E3-01-protection-duty.json",
+      "model_sha256_raw": "bf40744828b7823616655862813323feafff1531a498b0bdc380ef6f6c3f006d",
+      "historical_source_model": "examples/opportunity-screen/steam-pump-records/models/E3-01-protection-duty.json",
+      "before": "history/before/E3-01-protection-duty",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "a8b45587b02d58a8c7145dfd9f58b684377a55f5dac0f352981896c2c1f610aa",
+          "bytes": 4890
+        },
+        "screen.md": {
+          "sha256_raw": "944c7f081f59849adb6056038491f6dcbb6f7b194c48ea53226a73dc6bf0bd37",
+          "bytes": 4340
+        }
+      },
+      "original_finding_ids": [
+        "E3@P-A",
+        "E3@P-B"
+      ],
+      "original_asset_ids": [
+        "HV-A",
+        "HV-B",
+        "P-A",
+        "P-B"
+      ],
+      "proposed_finding_ids": [
+        "E3@P-A",
+        "E3@P-B"
+      ],
+      "proposed_asset_ids": [
+        "HV-A",
+        "HV-B",
+        "P-A",
+        "P-B"
+      ],
+      "source_job": "Protectvendorbasis; continuousorifice alone is not instruction; qualifiedautomatic lowduty mayacknowledge.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E3-02-association",
+      "rule": "E3",
+      "group": "01",
+      "model": "examples/opportunity-screen/source-policy/models/E3-02-association.json",
+      "model_sha256_raw": "b5fe1147e796ede00d31f9825fb86476fdef46208371470075f0a401f8bbd08e",
+      "historical_source_model": "examples/opportunity-screen/steam-pump-records/models/E3-02-association.json",
+      "before": "history/before/E3-02-association",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "9d89f85ccf2efe50fd427bcc82a5b5dbdc02a35e409c29d7d76f02ca494cfe67",
+          "bytes": 4885
+        },
+        "screen.md": {
+          "sha256_raw": "c73d939b447ced12b99f97af6d1e78de8d5a3121df5aab82769fc4642c3498d2",
+          "bytes": 4335
+        }
+      },
+      "original_finding_ids": [
+        "E3@P-A",
+        "E3@P-B"
+      ],
+      "original_asset_ids": [
+        "HV-B",
+        "P-A",
+        "P-B",
+        "RO-A"
+      ],
+      "proposed_finding_ids": [
+        "E3@P-A",
+        "E3@P-B"
+      ],
+      "proposed_asset_ids": [
+        "HV-B",
+        "P-A",
+        "P-B",
+        "RO-A"
+      ],
+      "source_job": "Nearlabelis candidate only; never assert actualdischarge-to-suction continuity ormeasuredflow.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E3-03-units-source",
+      "rule": "E3",
+      "group": "01",
+      "model": "examples/opportunity-screen/source-policy/models/E3-03-units-source.json",
+      "model_sha256_raw": "6ae8c1679f4cecac9cdf5a56c4fce8440f30b27bd2f04cf4857758e47f150a5b",
+      "historical_source_model": "examples/opportunity-screen/steam-pump-records/models/E3-03-units-source.json",
+      "before": "history/before/E3-03-units-source",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "ec728d8004c5018eca6ad94eb415c6c7595b57632eeecf76ac33d10978d4f5dd",
+          "bytes": 4887
+        },
+        "screen.md": {
+          "sha256_raw": "b419f9d46f2202561baaac03b631b913002385d07f412e10acb6e4f50beb09e4",
+          "bytes": 4337
+        }
+      },
+      "original_finding_ids": [
+        "E3@P-A",
+        "E3@P-B"
+      ],
+      "original_asset_ids": [
+        "HV-A",
+        "HV-B",
+        "P-A",
+        "P-B"
+      ],
+      "proposed_finding_ids": [
+        "E3@P-A",
+        "E3@P-B"
+      ],
+      "proposed_asset_ids": [
+        "HV-A",
+        "HV-B",
+        "P-A",
+        "P-B"
+      ],
+      "source_job": "Retain False/null/source/units; command/mixedperiods cannotprovideflows orprotective limit.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E3-04-known-role",
+      "rule": "E3",
+      "group": "01",
+      "model": "examples/opportunity-screen/source-policy/models/E3-04-known-role.json",
+      "model_sha256_raw": "997a7ea7e4e0fe56882c852d737737d571c99e2d2237c81fec604f4e04ead480",
+      "historical_source_model": "examples/opportunity-screen/steam-pump-records/models/E3-04-known-role.json",
+      "before": "history/before/E3-04-known-role",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "9de232a02c4dedc944275d731ba479422db391b8a1c58f0571abc5ff07c95d4d",
+          "bytes": 4885
+        },
+        "screen.md": {
+          "sha256_raw": "7d48f35cdbe60da726e6ff3319945333e09654a9024e64c3370809e3f7552906",
+          "bytes": 4335
+        }
+      },
+      "original_finding_ids": [
+        "E3@P-A",
+        "E3@P-B"
+      ],
+      "original_asset_ids": [
+        "HV-A",
+        "HV-B",
+        "P-A",
+        "P-B"
+      ],
+      "proposed_finding_ids": [
+        "E3@P-B"
+      ],
+      "proposed_asset_ids": [
+        "HV-B",
+        "P-B"
+      ],
+      "source_job": "KnownPD type mustnot evade documented exclusions solelybecause name lackswords; retaincentrifugal candidate.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E7-01-screening-thresholds",
+      "rule": "E7",
+      "group": "01",
+      "model": "examples/opportunity-screen/source-policy/models/E7-01-screening-thresholds.json",
+      "model_sha256_raw": "8d622afb4c24347c5283ac1b268202f8b22e2998ee9effbd8c1730497a153a92",
+      "historical_source_model": "examples/opportunity-screen/steam-pump-records/models/E7-01-screening-thresholds.json",
+      "before": "history/before/E7-01-screening-thresholds",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "d96d7ed98482f651e10c2b5997a566ec466e1ebf566f41f1c8b043dce36def5f",
+          "bytes": 6539
+        },
+        "screen.md": {
+          "sha256_raw": "4de61a3cf61491b62e66880b6a0c24d51fda5d1e24378a9cf1ee11cf6d07a290",
+          "bytes": 5293
+        }
+      },
+      "original_finding_ids": [
+        "E7@PCV-A",
+        "E7@PCV-B"
+      ],
+      "original_asset_ids": [
+        "PCV-A",
+        "PCV-B"
+      ],
+      "proposed_finding_ids": [
+        "E7@PCV-A",
+        "E7@PCV-B"
+      ],
+      "proposed_asset_ids": [
+        "PCV-A",
+        "PCV-B"
+      ],
+      "source_job": "Thresholdscontextnotautomaticinstall/close; actualduration/heat/economicbasis unresolved.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E7-02-service-design",
+      "rule": "E7",
+      "group": "01",
+      "model": "examples/opportunity-screen/source-policy/models/E7-02-service-design.json",
+      "model_sha256_raw": "85d8499ec60c4db2709776f022ad9245873e5427ff9b43123b0a0a75c57408f9",
+      "historical_source_model": "examples/opportunity-screen/steam-pump-records/models/E7-02-service-design.json",
+      "before": "history/before/E7-02-service-design",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "a4a17e804bc2c3332a0c4077f447cf969327fc9ad98b93792aef5343148224ad",
+          "bytes": 6531
+        },
+        "screen.md": {
+          "sha256_raw": "bc8f30eb56b11f14ce4873feed7e0bb5a05209e9498fde9edf7289557a04b2b5",
+          "bytes": 5285
+        }
+      },
+      "original_finding_ids": [
+        "E7@PCV-A",
+        "E7@PCV-B"
+      ],
+      "original_asset_ids": [
+        "PCV-A",
+        "PCV-B"
+      ],
+      "proposed_finding_ids": [
+        "E7@PCV-A",
+        "E7@PCV-B"
+      ],
+      "proposed_asset_ids": [
+        "PCV-A",
+        "PCV-B"
+      ],
+      "source_job": "Operatingpressure notdesign; knownnonsteam mustreceive explicitNA/conditionalrecords acknowledgment notcompulsorysteamdata.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E7-03-existing-constraints",
+      "rule": "E7",
+      "group": "01",
+      "model": "examples/opportunity-screen/source-policy/models/E7-03-existing-constraints.json",
+      "model_sha256_raw": "7689d1ce79323c6e2e4f29018d0331f133b0482acd01a6c30ccd388a9bef7fc5",
+      "historical_source_model": "examples/opportunity-screen/steam-pump-records/models/E7-03-existing-constraints.json",
+      "before": "history/before/E7-03-existing-constraints",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "ca48287e0b557ecc9260a12895380312fec32ae03bab928dd4760444c7cc0d64",
+          "bytes": 6527
+        },
+        "screen.md": {
+          "sha256_raw": "f46ab235f3fbc8f2fedc9a7bcacd95bd50e61fe5e0786e6f02fa007f5252300a",
+          "bytes": 5281
+        }
+      },
+      "original_finding_ids": [
+        "E7@PCV-A",
+        "E7@PCV-B"
+      ],
+      "original_asset_ids": [
+        "PCV-A",
+        "PCV-B"
+      ],
+      "proposed_finding_ids": [
+        "E7@PCV-A",
+        "E7@PCV-B"
+      ],
+      "proposed_asset_ids": [
+        "PCV-A",
+        "PCV-B"
+      ],
+      "source_job": "Existingfunction/thermal/electrical constraints and foreignsource retained; noforcedturbine.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E7-04-unknown-excluded",
+      "rule": "E7",
+      "group": "01",
+      "model": "examples/opportunity-screen/source-policy/models/E7-04-unknown-excluded.json",
+      "model_sha256_raw": "324a16a696d09d53c3b46d648b462bb0d05266e857431fd94c3c6ccfe791e041",
+      "historical_source_model": "examples/opportunity-screen/steam-pump-records/models/E7-04-unknown-excluded.json",
+      "before": "history/before/E7-04-unknown-excluded",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "f6e2c3efd88e80f215b2e4aee7e39147f3cad8b9e035dfb4bcad9d074920301d",
+          "bytes": 3561
+        },
+        "screen.md": {
+          "sha256_raw": "77f1b1037516f0c0116fce2fa16c2baa39bd089d6779bb1b4d0352b7bfa27f87",
+          "bytes": 3346
+        }
+      },
+      "original_finding_ids": [
+        "E7@PCV-A"
+      ],
+      "original_asset_ids": [
+        "PCV-A"
+      ],
+      "proposed_finding_ids": [
+        "E7@PCV-A"
+      ],
+      "proposed_asset_ids": [
+        "PCV-A"
+      ],
+      "source_job": "Unknownserviceconditional, existingfeedwaterexclusion unchanged; quietnotabsenceproof.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E8-01-pressure-program",
+      "rule": "E8",
+      "group": "01",
+      "model": "examples/opportunity-screen/source-policy/models/E8-01-pressure-program.json",
+      "model_sha256_raw": "a5d438f16e114ec322dcd760dedeb29db5b86d88d7b23aa20ed1191206fe3adc",
+      "historical_source_model": "examples/opportunity-screen/steam-pump-records/models/E8-01-pressure-program.json",
+      "before": "history/before/E8-01-pressure-program",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "a05a95a8dd08ceb81cefa514cd4fc1a7a6283db3ff4caab8d0747b4574ae363e",
+          "bytes": 2993
+        },
+        "screen.md": {
+          "sha256_raw": "b2b8c9b4e4b28860006360444e63775236ccb46b4faa1912ced383a04f3fd55b",
+          "bytes": 3397
+        }
+      },
+      "original_finding_ids": [
+        "E8@model"
+      ],
+      "original_asset_ids": [
+        "TR-A",
+        "TR-B"
+      ],
+      "proposed_finding_ids": [
+        "E8@model"
+      ],
+      "proposed_asset_ids": [
+        "TR-A",
+        "TR-B"
+      ],
+      "source_job": "Below500/recentdate notuniversalroutine-only; pressure/service/coverage programs reviewexistingrecords.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E8-02-trap-service",
+      "rule": "E8",
+      "group": "01",
+      "model": "examples/opportunity-screen/source-policy/models/E8-02-trap-service.json",
+      "model_sha256_raw": "d7a6c90000b1f68ff06ddb6a243b206900376256cdd4235d5a764af1467f2a9b",
+      "historical_source_model": "examples/opportunity-screen/steam-pump-records/models/E8-02-trap-service.json",
+      "before": "history/before/E8-02-trap-service",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "f156a8d16d9dee932b9895ddc683b67bdaf49d44d5423e063199449ef6dd9ea5",
+          "bytes": 3212
+        },
+        "screen.md": {
+          "sha256_raw": "6df555e2da89fb5647e39088582dec3350b0e596ae4bba9df191cc9a91a8bf03",
+          "bytes": 3469
+        }
+      },
+      "original_finding_ids": [
+        "E8@model"
+      ],
+      "original_asset_ids": [
+        "ST-A",
+        "TR-B",
+        "TR-C"
+      ],
+      "proposed_finding_ids": [
+        "E8@model"
+      ],
+      "proposed_asset_ids": [
+        "ST-A",
+        "TR-C"
+      ],
+      "source_job": "Excludeexactknownnonsteamtype; unknownTRAPrequiresserviceclarification, notinstalledfailure.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E8-03-source-coverage",
+      "rule": "E8",
+      "group": "01",
+      "model": "examples/opportunity-screen/source-policy/models/E8-03-source-coverage.json",
+      "model_sha256_raw": "81a46e0b20c74ef7f66219bffa9d0dbb599a7168d068633999dac9615fc6e91c",
+      "historical_source_model": "examples/opportunity-screen/steam-pump-records/models/E8-03-source-coverage.json",
+      "before": "history/before/E8-03-source-coverage",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "5a1bd82050ca8645db6dd2c3ea24fb1230a40b2a7ad887b450e4fae5133cef10",
+          "bytes": 2976
+        },
+        "screen.md": {
+          "sha256_raw": "58f53993179323bdaac9395470dc1580ac4275d2f3b85c3f1d3a49e13e56ee47",
+          "bytes": 3380
+        }
+      },
+      "original_finding_ids": [
+        "E8@model"
+      ],
+      "original_asset_ids": [
+        "ST-A",
+        "ST-B"
+      ],
+      "proposed_finding_ids": [
+        "E8@model"
+      ],
+      "proposed_asset_ids": [
+        "ST-A",
+        "ST-B"
+      ],
+      "source_job": "Groupmodel mustretain eachsource/owner/coverage, nooneforeignsurvey clearswholepopulation.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E8-04-nonsteam-control",
+      "rule": "E8",
+      "group": "01",
+      "model": "examples/opportunity-screen/source-policy/models/E8-04-nonsteam-control.json",
+      "model_sha256_raw": "e2c0921ab000001b6d23d9ae882fbca1723d7236e774330a971068422ea6cc2d",
+      "historical_source_model": "examples/opportunity-screen/steam-pump-records/models/E8-04-nonsteam-control.json",
+      "before": "history/before/E8-04-nonsteam-control",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "35e55968b4b02ce65445022c7a22603d675293d52768a351183b4a7c87a7ee08",
+          "bytes": 2960
+        },
+        "screen.md": {
+          "sha256_raw": "3fca70821d15f7b720b5eabf280ecf64900ba2db1243b160d0c5dba791043e50",
+          "bytes": 3364
+        }
+      },
+      "original_finding_ids": [
+        "E8@model"
+      ],
+      "original_asset_ids": [
+        "TR-A",
+        "TR-B"
+      ],
+      "proposed_finding_ids": [],
+      "proposed_asset_ids": [],
+      "source_job": "Knownnonsteam-only cohortquiet/NA; notsteamtrapconditiontask.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E9-01-quality-treatment",
+      "rule": "E9",
+      "group": "01",
+      "model": "examples/opportunity-screen/source-policy/models/E9-01-quality-treatment.json",
+      "model_sha256_raw": "7d8c4a5ccf9f8b7000ceb484188e7c53b30f0c288349b152b03cc401b71cf14f",
+      "historical_source_model": "examples/opportunity-screen/steam-pump-records/models/E9-01-quality-treatment.json",
+      "before": "history/before/E9-01-quality-treatment",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "38b4e5ee4fa18a758352fa4683f0fce4603d4db0d27e5682dba9b6a7bed68e30",
+          "bytes": 3080
+        },
+        "screen.md": {
+          "sha256_raw": "dd965ec3eb6edc54cc40aca8a23272edef6c2e02ea3216f0cfc0a53899f2a0e9",
+          "bytes": 3487
+        }
+      },
+      "original_finding_ids": [
+        "E9@model"
+      ],
+      "original_asset_ids": [
+        "CR-A",
+        "CR-B"
+      ],
+      "proposed_finding_ids": [
+        "E9@model"
+      ],
+      "proposed_asset_ids": [
+        "CR-A",
+        "CR-B"
+      ],
+      "source_job": "Cleansteady notautomaticreturn; contaminationnotforeverdrain: reviewtreatment/routeandconstraints.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E9-02-balance-boundaries",
+      "rule": "E9",
+      "group": "01",
+      "model": "examples/opportunity-screen/source-policy/models/E9-02-balance-boundaries.json",
+      "model_sha256_raw": "9608423930fcfaf6ac007943039ea8ccd16c1a21e1c51622a29377bd934499d9",
+      "historical_source_model": "examples/opportunity-screen/steam-pump-records/models/E9-02-balance-boundaries.json",
+      "before": "history/before/E9-02-balance-boundaries",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "c633472d22ec5fa34190b3178c8fd8bc85572b9bb061f4ebaa447d53db1f4040",
+          "bytes": 3071
+        },
+        "screen.md": {
+          "sha256_raw": "24ac5e9fbe4c13ed7ff02dcc0157637c9dfcefa851615b6eba8757b739845903",
+          "bytes": 3478
+        }
+      },
+      "original_finding_ids": [
+        "E9@model"
+      ],
+      "original_asset_ids": [
+        "CR-A",
+        "CR-B"
+      ],
+      "proposed_finding_ids": [
+        "E9@model"
+      ],
+      "proposed_asset_ids": [
+        "CR-A",
+        "CR-B"
+      ],
+      "source_job": "Noautomatic1-makeup/feedwaterpercent withlosses, boundary/mixedunits/timeuncertain.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E9-03-route-revision",
+      "rule": "E9",
+      "group": "01",
+      "model": "examples/opportunity-screen/source-policy/models/E9-03-route-revision.json",
+      "model_sha256_raw": "12da3660470030b56c230021183ecddc3e1b6a50208566065f1a19da912c31e5",
+      "historical_source_model": "examples/opportunity-screen/steam-pump-records/models/E9-03-route-revision.json",
+      "before": "history/before/E9-03-route-revision",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "72961c57369809af343781a813dcf0cb38ef0c4597891d4de13c2660b700fb4a",
+          "bytes": 3083
+        },
+        "screen.md": {
+          "sha256_raw": "0ac32ca8318046477da4b1a6114364274ce0140a180a6a42f9d1b515635908d1",
+          "bytes": 3490
+        }
+      },
+      "original_finding_ids": [
+        "E9@model"
+      ],
+      "original_asset_ids": [
+        "CR-A",
+        "CR-B"
+      ],
+      "proposed_finding_ids": [
+        "E9@model"
+      ],
+      "proposed_asset_ids": [
+        "CR-A",
+        "CR-B"
+      ],
+      "source_job": "Labelnotcurrentrouteproof; pressure/temp/flash/source scopes retained; noactualsource/plantauthority.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E9-04-service-scope",
+      "rule": "E9",
+      "group": "01",
+      "model": "examples/opportunity-screen/source-policy/models/E9-04-service-scope.json",
+      "model_sha256_raw": "53586ee905c4b26a1da0e1a081a5e5f242786893f737fba89239d77effa7807c",
+      "historical_source_model": "examples/opportunity-screen/steam-pump-records/models/E9-04-service-scope.json",
+      "before": "history/before/E9-04-service-scope",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "04c79ea67719ec85da9b9db6859634962584940ef892e98c09a2190f8b18bfed",
+          "bytes": 3073
+        },
+        "screen.md": {
+          "sha256_raw": "385c9fd00e9639373c10fe1118e514f7e333ec0ae277077102a486f0c85e5935",
+          "bytes": 3480
+        }
+      },
+      "original_finding_ids": [
+        "E9@model"
+      ],
+      "original_asset_ids": [
+        "CR-B",
+        "HC-A"
+      ],
+      "proposed_finding_ids": [
+        "E9@model"
+      ],
+      "proposed_asset_ids": [
+        "CR-B"
+      ],
+      "source_job": "Knownhydrocarbonnotboilerwater; unknownserviceconditional, noforcedreturn/cleanlinessclaim.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E10-01-actual-vent",
+      "rule": "E10",
+      "group": "02",
+      "model": "examples/opportunity-screen/source-policy/models/E10-01-actual-vent.json",
+      "model_sha256_raw": "7efddf5795b5f1616b0cda1c5d94ebfa4b7380f4666b15821e25fae019070f0c",
+      "historical_source_model": "examples/opportunity-screen/thermal-recovery-records/models/E10-01-actual-vent.json",
+      "before": "history/before/E10-01-actual-vent",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "eda7573a2846c757b607d3e35cace19bb0b84db5773780af6164afec732dc990",
+          "bytes": 4263
+        },
+        "screen.md": {
+          "sha256_raw": "b8faac2e9720c0638f26122aae790e512d66f97cca8d0f11acc2527ada3022c5",
+          "bytes": 4040
+        }
+      },
+      "original_finding_ids": [
+        "E10@F-A",
+        "E10@F-B"
+      ],
+      "original_asset_ids": [
+        "F-A",
+        "F-B"
+      ],
+      "proposed_finding_ids": [
+        "E10@F-A",
+        "E10@F-B"
+      ],
+      "proposed_asset_ids": [
+        "F-A",
+        "F-B"
+      ],
+      "source_job": "Acknowledge closedrecovery; namealone notatmosphericvent orloss, unknownserviceconditional.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E10-02-service-boundary",
+      "rule": "E10",
+      "group": "02",
+      "model": "examples/opportunity-screen/source-policy/models/E10-02-service-boundary.json",
+      "model_sha256_raw": "5e5547b097cec7bb2638bcba4e56b9916b971b6f7c3c49a8da2a46e50772cd61",
+      "historical_source_model": "examples/opportunity-screen/thermal-recovery-records/models/E10-02-service-boundary.json",
+      "before": "history/before/E10-02-service-boundary",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "b4075c4183a62b5acc3cd732d3df541e8e5c510c98fb55945c2f3367acf9aad3",
+          "bytes": 4268
+        },
+        "screen.md": {
+          "sha256_raw": "55a636fafc4909c0c656c42ab5d3bdca4f99c859d90e4e0c59f3f970e45f3eb4",
+          "bytes": 4042
+        }
+      },
+      "original_finding_ids": [
+        "E10@HC-A",
+        "E10@F-B"
+      ],
+      "original_asset_ids": [
+        "F-B",
+        "HC-A"
+      ],
+      "proposed_finding_ids": [
+        "E10@F-B"
+      ],
+      "proposed_asset_ids": [
+        "F-B"
+      ],
+      "source_job": "Excludeknownhydrocarbonclass; designpressure/notmatchedflow noflashcalculation orrecoverydecision.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E10-03-sink-time-source",
+      "rule": "E10",
+      "group": "02",
+      "model": "examples/opportunity-screen/source-policy/models/E10-03-sink-time-source.json",
+      "model_sha256_raw": "33e1820240eaa8754b8c58f14c652fa924b1d58ea942c387dfc3c8d98bf19d02",
+      "historical_source_model": "examples/opportunity-screen/thermal-recovery-records/models/E10-03-sink-time-source.json",
+      "before": "history/before/E10-03-sink-time-source",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "79662e42d541dfcebb4bb0f120fde715dad7df5f9c77079fb70f9432357ec193",
+          "bytes": 4255
+        },
+        "screen.md": {
+          "sha256_raw": "69a6c0743a182fbf65f2eb53f217ac1b8d27917739dde0ad6a763f2d98264ed6",
+          "bytes": 4032
+        }
+      },
+      "original_finding_ids": [
+        "E10@F-A",
+        "E10@F-B"
+      ],
+      "original_asset_ids": [
+        "F-A",
+        "F-B"
+      ],
+      "proposed_finding_ids": [
+        "E10@F-A",
+        "E10@F-B"
+      ],
+      "proposed_asset_ids": [
+        "F-A",
+        "F-B"
+      ],
+      "source_job": "Foreign/seasonalmismatch notsuitablelocalsink; exactsources/availability/receivingpressure retained.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E10-04-no-representation",
+      "rule": "E10",
+      "group": "02",
+      "model": "examples/opportunity-screen/source-policy/models/E10-04-no-representation.json",
+      "model_sha256_raw": "9d36514dfd9573287ee8504e679ab1477f952f68bd9b2fd047a9143e20a749f2",
+      "historical_source_model": "examples/opportunity-screen/thermal-recovery-records/models/E10-04-no-representation.json",
+      "before": "history/before/E10-04-no-representation",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "ff51e0ec1dbf18b57827bc46f2e8ba9b884a563196b5b78cdedcb112deba8d74",
+          "bytes": 595
+        },
+        "screen.md": {
+          "sha256_raw": "4d187d4f838713d5830b67ee2ee2db331d01e0bf9ac8bfb04ab3dd3962cbf710",
+          "bytes": 1374
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [],
+      "proposed_asset_ids": [],
+      "source_job": "NoFLASHpatternquiet is not proof of noinstalledflash/vent; no fabricatedphysicalconclusion.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E12-01-design-surface",
+      "rule": "E12",
+      "group": "02",
+      "model": "examples/opportunity-screen/source-policy/models/E12-01-design-surface.json",
+      "model_sha256_raw": "015afeba189b1ab1bb994c9bdbb0be2477420f1c8765f134f221acff39223d95",
+      "historical_source_model": "examples/opportunity-screen/thermal-recovery-records/models/E12-01-design-surface.json",
+      "before": "history/before/E12-01-design-surface",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "7177d01e66da76d308eeabb65fe8680c7c144ff166da1c9a5079a2f150f8ef4c",
+          "bytes": 3947
+        },
+        "screen.md": {
+          "sha256_raw": "3b1190869981b3670d2485f797df9272e09c4187fd9f41d2fa93a811fa55e3eb",
+          "bytes": 3398
+        }
+      },
+      "original_finding_ids": [
+        "E12@model"
+      ],
+      "original_asset_ids": [
+        "HV-A",
+        "HV-B"
+      ],
+      "proposed_finding_ids": [
+        "E12@model"
+      ],
+      "proposed_asset_ids": [
+        "HV-A",
+        "HV-B"
+      ],
+      "source_job": "Design/hotprocessvalue notbaresurface; actualinsulation/currentcondition separate.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E12-02-access-purpose",
+      "rule": "E12",
+      "group": "02",
+      "model": "examples/opportunity-screen/source-policy/models/E12-02-access-purpose.json",
+      "model_sha256_raw": "ed4b0b5a04e66c2c381fbfd8734b1ce2f1e4bdd58c4c2a7bd96cd5f00fc3e52a",
+      "historical_source_model": "examples/opportunity-screen/thermal-recovery-records/models/E12-02-access-purpose.json",
+      "before": "history/before/E12-02-access-purpose",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "a9ee0fe47151049a95d5485eb4b4ef48987d43ffff8e67823d4d9a26e61457d8",
+          "bytes": 3947
+        },
+        "screen.md": {
+          "sha256_raw": "adcb2f52bd42dfdb072560d469cb9d8cd9bca792a358e5bbbfe4ba8de4f51333",
+          "bytes": 3398
+        }
+      },
+      "original_finding_ids": [
+        "E12@model"
+      ],
+      "original_asset_ids": [
+        "HV-A",
+        "HV-B"
+      ],
+      "proposed_finding_ids": [
+        "E12@model"
+      ],
+      "proposed_asset_ids": [
+        "HV-A",
+        "HV-B"
+      ],
+      "source_job": "Periodicaccess doesnotdisqualify removablepads; noautomaticfit or compulsorynewwalkdown.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E12-03-condition-source",
+      "rule": "E12",
+      "group": "02",
+      "model": "examples/opportunity-screen/source-policy/models/E12-03-condition-source.json",
+      "model_sha256_raw": "48d948f0e029595500eb153fa49d38797d1065f9e8ddd4dcb72feea79104c22b",
+      "historical_source_model": "examples/opportunity-screen/thermal-recovery-records/models/E12-03-condition-source.json",
+      "before": "history/before/E12-03-condition-source",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "74164a5fbaba47ae3a7d08ad4a71912ec8a50c051558f9402be70afce3ffa765",
+          "bytes": 3949
+        },
+        "screen.md": {
+          "sha256_raw": "f05b5f1b1a7891915ec7be12542b3e71b3a4be54bd4dc712db78c410082b591a",
+          "bytes": 3400
+        }
+      },
+      "original_finding_ids": [
+        "E12@model"
+      ],
+      "original_asset_ids": [
+        "HV-A",
+        "HV-B"
+      ],
+      "proposed_finding_ids": [
+        "E12@model"
+      ],
+      "proposed_asset_ids": [
+        "HV-A",
+        "HV-B"
+      ],
+      "source_job": "Existingcondition/source/availability/removalrisk retained; acknowledgegoodjacket, noforcedreplacement.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E12-04-cold-unknown",
+      "rule": "E12",
+      "group": "02",
+      "model": "examples/opportunity-screen/source-policy/models/E12-04-cold-unknown.json",
+      "model_sha256_raw": "5462aa3ff3b66c01a1e67c5991b3e8dd2b60a6429936d700d59475476a5feabe",
+      "historical_source_model": "examples/opportunity-screen/thermal-recovery-records/models/E12-04-cold-unknown.json",
+      "before": "history/before/E12-04-cold-unknown",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "8a7391d349eb1f5b70db0791d728cb5ce3b79edaab1a550c46de717023909e36",
+          "bytes": 590
+        },
+        "screen.md": {
+          "sha256_raw": "37800358fda768e326c47e131bbd81e676c041315a3c423432504d61f5de4487",
+          "bytes": 1369
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [],
+      "proposed_asset_ids": [],
+      "source_job": "Below/unknownthresholdquiet notinstalledinsulationacceptance orproofnoloss.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E14-01-global-label",
+      "rule": "E14",
+      "group": "02",
+      "model": "examples/opportunity-screen/source-policy/models/E14-01-global-label.json",
+      "model_sha256_raw": "5143c6d2fa7b0ade2364ee326dd41b50f319a9976e043732c77f960aafb9f665",
+      "historical_source_model": "examples/opportunity-screen/thermal-recovery-records/models/E14-01-global-label.json",
+      "before": "history/before/E14-01-global-label",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "715b2c5f2ae92fcb9b20a3f7c5e0641db115f651742f2f0e6dc532fe670c13fb",
+          "bytes": 590
+        },
+        "screen.md": {
+          "sha256_raw": "837e87bfd6c64dd2932dda9fc7cd2fb778e149d134db80305c8acd010f41ac51",
+          "bytes": 1369
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [
+        "E14@B-A",
+        "E14@B-B"
+      ],
+      "proposed_asset_ids": [
+        "B-A",
+        "B-B",
+        "EC-A"
+      ],
+      "source_job": "Oneeconomizerlabel/sourceA cannotquietB orprovecoverage; relatedrecordassociation remainsliteral.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E14-02-dry-service",
+      "rule": "E14",
+      "group": "02",
+      "model": "examples/opportunity-screen/source-policy/models/E14-02-dry-service.json",
+      "model_sha256_raw": "d9babcbaf3bef7eb2d8d1942d95c667eaa8c05370c5aed38bfec183f035c945e",
+      "historical_source_model": "examples/opportunity-screen/thermal-recovery-records/models/E14-02-dry-service.json",
+      "before": "history/before/E14-02-dry-service",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "deca6bbdf786da2951938d267ff75ddccb2751a280204c6cc8d7f415b87b85dc",
+          "bytes": 4489
+        },
+        "screen.md": {
+          "sha256_raw": "0a7860fd5ac4952f7fe7af837aa7f2cfcf0e5f35abfb8ff6f6375521e872267b",
+          "bytes": 4203
+        }
+      },
+      "original_finding_ids": [
+        "E14@B-A",
+        "E14@DRY"
+      ],
+      "original_asset_ids": [
+        "B-A",
+        "DRY"
+      ],
+      "proposed_finding_ids": [
+        "E14@B-A"
+      ],
+      "proposed_asset_ids": [
+        "B-A"
+      ],
+      "source_job": "Knownfurnaceisnotfeedwaterboiler; noforcedstack/watertask onnonwater.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E14-03-heat-source",
+      "rule": "E14",
+      "group": "02",
+      "model": "examples/opportunity-screen/source-policy/models/E14-03-heat-source.json",
+      "model_sha256_raw": "3885cf32b20e4d492072271ff1a9f002039494525538a8080ed2e0d429ddcda7",
+      "historical_source_model": "examples/opportunity-screen/thermal-recovery-records/models/E14-03-heat-source.json",
+      "before": "history/before/E14-03-heat-source",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "bb54fcd2a0cda7b8979774789f5db5f55436c9e973acfe856a31cf0837cdf8c0",
+          "bytes": 2543
+        },
+        "screen.md": {
+          "sha256_raw": "55eab92b554cc11aa7efce6d7f61e161fd10e43dc82cc98d1c4168fbfd9a15e1",
+          "bytes": 2863
+        }
+      },
+      "original_finding_ids": [
+        "E14@E-A"
+      ],
+      "original_asset_ids": [
+        "E-A"
+      ],
+      "proposed_finding_ids": [
+        "E14@E-A",
+        "E14@SG-B"
+      ],
+      "proposed_asset_ids": [
+        "E-A",
+        "SG-B"
+      ],
+      "source_job": "Electricnoflue acknowledgedNA; steamgeneratorfunction reviewedwithoutinventingfuel/drum.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E14-04-operating-limits",
+      "rule": "E14",
+      "group": "02",
+      "model": "examples/opportunity-screen/source-policy/models/E14-04-operating-limits.json",
+      "model_sha256_raw": "ac8a4e0e500b70837c395193c6b33a1a243ec2ba07d5d0ab11f7de3f4891bb8f",
+      "historical_source_model": "examples/opportunity-screen/thermal-recovery-records/models/E14-04-operating-limits.json",
+      "before": "history/before/E14-04-operating-limits",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "57e1e145c8605c54809cb44162308ac3403c2a26c480a072b29091b3ed2893d3",
+          "bytes": 4503
+        },
+        "screen.md": {
+          "sha256_raw": "b802d23e86964517a1ba219537196dd2700057d62e0de2eb99f885000860c45b",
+          "bytes": 4217
+        }
+      },
+      "original_finding_ids": [
+        "E14@B-A",
+        "E14@B-B"
+      ],
+      "original_asset_ids": [
+        "B-A",
+        "B-B"
+      ],
+      "proposed_finding_ids": [
+        "E14@B-A",
+        "E14@B-B"
+      ],
+      "proposed_asset_ids": [
+        "B-A",
+        "B-B"
+      ],
+      "source_job": "Temperaturealone notquote; actualtuning/cleanliness/fuel/coldend/feedingload andtime matter.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E15-01-load-association",
+      "rule": "E15",
+      "group": "02",
+      "model": "examples/opportunity-screen/source-policy/models/E15-01-load-association.json",
+      "model_sha256_raw": "a5859479169a6a1c2041cbd2639d5c2e17f5b60daee127e20bbb82e8e51e994f",
+      "historical_source_model": "examples/opportunity-screen/thermal-recovery-records/models/E15-01-load-association.json",
+      "before": "history/before/E15-01-load-association",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "92bddc44a7f805096c4a237faade6060acd33ad256854ae8a22c50b149ab5861",
+          "bytes": 3857
+        },
+        "screen.md": {
+          "sha256_raw": "291f890839f8dc391124b867d7f981db0650433404504c538e6111e4acca41a7",
+          "bytes": 3365
+        }
+      },
+      "original_finding_ids": [
+        "E15@B-A",
+        "E15@B-B"
+      ],
+      "original_asset_ids": [
+        "B-A",
+        "B-B",
+        "W-A"
+      ],
+      "proposed_finding_ids": [
+        "E15@B-A",
+        "E15@B-B"
+      ],
+      "proposed_asset_ids": [
+        "B-A",
+        "B-B",
+        "W-A"
+      ],
+      "source_job": "Anywherewaterlabel notmatchedcoldtime/qualitysink andcannotsettlebothboilers.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E15-02-oil-unknown-sink",
+      "rule": "E15",
+      "group": "02",
+      "model": "examples/opportunity-screen/source-policy/models/E15-02-oil-unknown-sink.json",
+      "model_sha256_raw": "ff0200e5ba04592e568e6b438b4aa140d6a0676dc647af23eea9acdf1d1d28a1",
+      "historical_source_model": "examples/opportunity-screen/thermal-recovery-records/models/E15-02-oil-unknown-sink.json",
+      "before": "history/before/E15-02-oil-unknown-sink",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "815c92e12c57ce7e29bfdb9a0f26e0a09907530efbf5ee50bc5d07f3e55cbbae",
+          "bytes": 594
+        },
+        "screen.md": {
+          "sha256_raw": "7cef5efdd450c46696d7329b5d24856ddc9cd5b4bbc5bcc60fad8c60301537ec",
+          "bytes": 1373
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [
+        "E15@B-A",
+        "E15@B-B"
+      ],
+      "proposed_asset_ids": [
+        "B-A",
+        "B-B"
+      ],
+      "source_job": "Lightoil andunknownfuel/sink needconditionalexistingrecordsreview, notpositiveGAS/sinklabel gate.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E15-03-system-constraints",
+      "rule": "E15",
+      "group": "02",
+      "model": "examples/opportunity-screen/source-policy/models/E15-03-system-constraints.json",
+      "model_sha256_raw": "27c563654d49090132483fc367c643962bdf8716fe2be1969ba78848da3279b0",
+      "historical_source_model": "examples/opportunity-screen/thermal-recovery-records/models/E15-03-system-constraints.json",
+      "before": "history/before/E15-03-system-constraints",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "d039f48a5b9955bfc4ff6b21ba4660ee5d664fddfb9c3d67616dc41346332ebf",
+          "bytes": 3859
+        },
+        "screen.md": {
+          "sha256_raw": "9639666bcb85b66b72d1c2f22abb14b1d032883a3dae649c329d87be8b98c52b",
+          "bytes": 3367
+        }
+      },
+      "original_finding_ids": [
+        "E15@B-A",
+        "E15@B-B"
+      ],
+      "original_asset_ids": [
+        "B-A",
+        "B-B",
+        "W-A"
+      ],
+      "proposed_finding_ids": [
+        "E15@B-A",
+        "E15@B-B"
+      ],
+      "proposed_asset_ids": [
+        "B-A",
+        "B-B",
+        "W-A"
+      ],
+      "source_job": "Retainexistingfunction/acidmaterials/waterquality/dispersion/systemeffects; noforcedquotefromsteadysink.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E15-04-role-generator",
+      "rule": "E15",
+      "group": "02",
+      "model": "examples/opportunity-screen/source-policy/models/E15-04-role-generator.json",
+      "model_sha256_raw": "9befb4768b52963cc33fd3326cb7497a37d26fd2e1e7c0896ffcc314378da289",
+      "historical_source_model": "examples/opportunity-screen/thermal-recovery-records/models/E15-04-role-generator.json",
+      "before": "history/before/E15-04-role-generator",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "88488512f7b17a5ed001a47cb20b3a8474d5962da69f598ccf473ace288be5f7",
+          "bytes": 2245
+        },
+        "screen.md": {
+          "sha256_raw": "8f4bd93d68c448cfeae6522514ce627e1a5dc093fb20250fbef8a7ad7c14d1b5",
+          "bytes": 2397
+        }
+      },
+      "original_finding_ids": [
+        "E15@HX-A"
+      ],
+      "original_asset_ids": [
+        "HX-A",
+        "W-A"
+      ],
+      "proposed_finding_ids": [
+        "E15@SG-B"
+      ],
+      "proposed_asset_ids": [
+        "SG-B",
+        "W-A"
+      ],
+      "source_job": "Typedhelpernotboilersubject; actualsteamgeneratorserviceconditional, donotdropitsolelyname.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E17-01-global-coverage",
+      "rule": "E17",
+      "group": "03",
+      "model": "examples/opportunity-screen/source-policy/models/E17-01-global-coverage.json",
+      "model_sha256_raw": "9de6cb12b52ef1db7d252a472831a07e1a7210e1b0cce45ff2c11fb1523fab17",
+      "historical_source_model": "examples/opportunity-screen/integration-air-records/models/E17-01-global-coverage.json",
+      "before": "history/before/E17-01-global-coverage",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "bcb91bec694a7a5fa4d8025b9f54cb69601be660bae1ec7d96f967949d3421a6",
+          "bytes": 2581
+        },
+        "screen.md": {
+          "sha256_raw": "294958a3ba7d222ef2135ad5db1ffdb5594dc8bfa04491d7bc67fb35445aff2f",
+          "bytes": 2924
+        }
+      },
+      "original_finding_ids": [
+        "E17@HX-A"
+      ],
+      "original_asset_ids": [
+        "HX-A"
+      ],
+      "proposed_finding_ids": [
+        "E17@F-A",
+        "E17@F-B"
+      ],
+      "proposed_asset_ids": [
+        "F-A",
+        "F-B",
+        "HX-A"
+      ],
+      "source_job": "Globalrecuperator label notcoverage; typedhelper excluded and foreignscope retained.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E17-02-batch-methods",
+      "rule": "E17",
+      "group": "03",
+      "model": "examples/opportunity-screen/source-policy/models/E17-02-batch-methods.json",
+      "model_sha256_raw": "844b74bf45e3023f97949a8d2e16c5dcd206e15b339f46e326be03da108146d6",
+      "historical_source_model": "examples/opportunity-screen/integration-air-records/models/E17-02-batch-methods.json",
+      "before": "history/before/E17-02-batch-methods",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "473a4b4a260279dc7da6e7471af6a359c3de43d9f693afbcf0b2086b0430586a",
+          "bytes": 4521
+        },
+        "screen.md": {
+          "sha256_raw": "8f3b50470f2ebab80bf6dfcc105d97a0670226a1eae7881bb2a0a13191b621c4",
+          "bytes": 4209
+        }
+      },
+      "original_finding_ids": [
+        "E17@F-A",
+        "E17@F-B"
+      ],
+      "original_asset_ids": [
+        "F-A",
+        "F-B"
+      ],
+      "proposed_finding_ids": [
+        "E17@F-A",
+        "E17@F-B"
+      ],
+      "proposed_asset_ids": [
+        "F-A",
+        "F-B"
+      ],
+      "source_job": "Batchnotallrecoveryexcluded; sourceflow/temperature/loss/receiver basis beforequote.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E17-03-heat-service",
+      "rule": "E17",
+      "group": "03",
+      "model": "examples/opportunity-screen/source-policy/models/E17-03-heat-service.json",
+      "model_sha256_raw": "d522f55873323401776da40851248411a979f341cd124409497c040af7a93adb",
+      "historical_source_model": "examples/opportunity-screen/integration-air-records/models/E17-03-heat-service.json",
+      "before": "history/before/E17-03-heat-service",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "6f5c95bef1370d4f6c8f980e33a8da74ba953e27843dd53c381a578752736ff5",
+          "bytes": 4519
+        },
+        "screen.md": {
+          "sha256_raw": "cac4f80eaf19eff8bd4c41755119035b05249576eb2c9d67fecc3276dedaf3bb",
+          "bytes": 4207
+        }
+      },
+      "original_finding_ids": [
+        "E17@E-A",
+        "E17@F-B"
+      ],
+      "original_asset_ids": [
+        "E-A",
+        "F-B"
+      ],
+      "proposed_finding_ids": [
+        "E17@F-B",
+        "E17@SG-C"
+      ],
+      "proposed_asset_ids": [
+        "F-B",
+        "SG-C"
+      ],
+      "source_job": "Knownnoncombustionquiet; unknownfired/steamgeneratorconditional withoutinventedfuel/flue.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E17-04-helper-control",
+      "rule": "E17",
+      "group": "03",
+      "model": "examples/opportunity-screen/source-policy/models/E17-04-helper-control.json",
+      "model_sha256_raw": "787e86063cacfb6d312a4c998fdc4f5c3d0a0bbb9d574ba4142d44b43a27f132",
+      "historical_source_model": "examples/opportunity-screen/integration-air-records/models/E17-04-helper-control.json",
+      "before": "history/before/E17-04-helper-control",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "1e2c932cd36d673da229fd7fe24301a9b4c84c04c83f7b83562b78132aab1e00",
+          "bytes": 2577
+        },
+        "screen.md": {
+          "sha256_raw": "0bb82ebeedf69c442b2ef0f4cd58aa758c2c9869b7a4ea8839943bf8b07c9303",
+          "bytes": 2920
+        }
+      },
+      "original_finding_ids": [
+        "E17@HX-A"
+      ],
+      "original_asset_ids": [
+        "HX-A"
+      ],
+      "proposed_finding_ids": [],
+      "proposed_asset_ids": [],
+      "source_job": "Knownhelpernotfiredsubject, existingreactorexclusion retained; quietnotinstalledabsence.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E18-01-overlap-profile",
+      "rule": "E18",
+      "group": "03",
+      "model": "examples/opportunity-screen/source-policy/models/E18-01-overlap-profile.json",
+      "model_sha256_raw": "959961c8a82325027bf7b12e4374ce71bb505780d744bffa0397dae69a9cc803",
+      "historical_source_model": "examples/opportunity-screen/integration-air-records/models/E18-01-overlap-profile.json",
+      "before": "history/before/E18-01-overlap-profile",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "b198b8f3092c03e81bed5c146e51eeca2e14ce7208a2de62507f1f3fd8288d0c",
+          "bytes": 3837
+        },
+        "screen.md": {
+          "sha256_raw": "4a8dd229ac8ae06e99e985c4e7add219bf878959aac58890149355fdffda4204",
+          "bytes": 4100
+        }
+      },
+      "original_finding_ids": [
+        "E18@model"
+      ],
+      "original_asset_ids": [
+        "FT-A",
+        "FV-B"
+      ],
+      "proposed_finding_ids": [
+        "E18@model"
+      ],
+      "proposed_asset_ids": [
+        "FT-A",
+        "FV-B"
+      ],
+      "source_job": "Overlappingranges notautomaticrejection: idealprofiles/duties retain butnoactualfeasibilityclaim, composite/systemconstraints matter.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E18-02-batch-time",
+      "rule": "E18",
+      "group": "03",
+      "model": "examples/opportunity-screen/source-policy/models/E18-02-batch-time.json",
+      "model_sha256_raw": "2edc4b0cd4345b14eacb5b316451f1fe1983450f1c41d8ce1b341b24e45294f6",
+      "historical_source_model": "examples/opportunity-screen/integration-air-records/models/E18-02-batch-time.json",
+      "before": "history/before/E18-02-batch-time",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "14d7f999a370f821e8e51e82cbd1289532714dd1981435980060c743a59d7ed0",
+          "bytes": 3832
+        },
+        "screen.md": {
+          "sha256_raw": "54dc9c6e3739c354e48e5e80c7b2f3d9581ded177a8c67e138401ae78062243f",
+          "bytes": 4095
+        }
+      },
+      "original_finding_ids": [
+        "E18@model"
+      ],
+      "original_asset_ids": [
+        "FT-A",
+        "FV-B"
+      ],
+      "proposed_finding_ids": [
+        "E18@model"
+      ],
+      "proposed_asset_ids": [
+        "FT-A",
+        "FV-B"
+      ],
+      "source_job": "Timeawarebatchanalysis maymatter; neitherautomaticclosure norpromiseofstorage/heatpumpfeasibility.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E18-03-source-hazard",
+      "rule": "E18",
+      "group": "03",
+      "model": "examples/opportunity-screen/source-policy/models/E18-03-source-hazard.json",
+      "model_sha256_raw": "3e1b20932ffb2ac893535d25e830dccde5d4169028fdff509fd98fbbacbe2d9a",
+      "historical_source_model": "examples/opportunity-screen/integration-air-records/models/E18-03-source-hazard.json",
+      "before": "history/before/E18-03-source-hazard",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "77b8b4432df4a962c8d2f0f498dbd02b000fb38288cb5eea03ffe4b51de570b7",
+          "bytes": 3835
+        },
+        "screen.md": {
+          "sha256_raw": "a1973725f2b469caf99d3578926730e4a87e394d06813653bc9ac36f913756a8",
+          "bytes": 4098
+        }
+      },
+      "original_finding_ids": [
+        "E18@model"
+      ],
+      "original_asset_ids": [
+        "FT-A",
+        "FV-B"
+      ],
+      "proposed_finding_ids": [
+        "E18@model"
+      ],
+      "proposed_asset_ids": [
+        "FT-A",
+        "FV-B"
+      ],
+      "source_job": "Utilitylabels notmeasuredprocessduties; wholeforeign/reactive/source/time/constraint literals retained, noautoconnection.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E18-04-no-pair",
+      "rule": "E18",
+      "group": "03",
+      "model": "examples/opportunity-screen/source-policy/models/E18-04-no-pair.json",
+      "model_sha256_raw": "6ebc97a50b8abce871edb1275f9376d26510484c49bfde3bc5af20c7ea2aa2e4",
+      "historical_source_model": "examples/opportunity-screen/integration-air-records/models/E18-04-no-pair.json",
+      "before": "history/before/E18-04-no-pair",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "c6e01c1ed43d53b7763ca531c14850604cf033e9a1defd43465667dd3ec2bff2",
+          "bytes": 584
+        },
+        "screen.md": {
+          "sha256_raw": "3514fc931c5c61de1023a9dc04a1e0bf9801267888e398567f3c04acc763bd4f",
+          "bytes": 1371
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [],
+      "proposed_asset_ids": [],
+      "source_job": "Excludedreturn/traplabels do notcreatepair; quietnotwholeintegrationapproval.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E19-01-missing-control",
+      "rule": "E19",
+      "group": "03",
+      "model": "examples/opportunity-screen/source-policy/models/E19-01-missing-control.json",
+      "model_sha256_raw": "3b68dac6c564a8e0fb282c83a02f9d4aadccfca20943a5640e3c371e9bdc0f41",
+      "historical_source_model": "examples/opportunity-screen/integration-air-records/models/E19-01-missing-control.json",
+      "before": "history/before/E19-01-missing-control",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "e51c39bf7d5922913373d56878b9d4307635196c6aacbe94fc1ff4f7a1b5ce3d",
+          "bytes": 592
+        },
+        "screen.md": {
+          "sha256_raw": "ec474707f246c87fe81f20f1f5bcea5d565e1e04f9dd42da7ae1cc470fed8dbc",
+          "bytes": 1379
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [
+        "E19@C-A",
+        "E19@C-B"
+      ],
+      "proposed_asset_ids": [
+        "C-A",
+        "C-B"
+      ],
+      "source_job": "NoPICrepresentation notclosure; existingoperating/endusebasis neededwithoutsetpointinstruction.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E19-02-global-record",
+      "rule": "E19",
+      "group": "03",
+      "model": "examples/opportunity-screen/source-policy/models/E19-02-global-record.json",
+      "model_sha256_raw": "96a5b47dccf17813831038126f867cd166ca523888f9468c921495c21abb406e",
+      "historical_source_model": "examples/opportunity-screen/integration-air-records/models/E19-02-global-record.json",
+      "before": "history/before/E19-02-global-record",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "f87a7ab6060c148797be93f8a45e1e8d17885b59192c99dd1b0dea70d0cae952",
+          "bytes": 4781
+        },
+        "screen.md": {
+          "sha256_raw": "33a1d5474988f0b71dcbdf95f17ad5804be120db1044e386c265afc4a2ef8279",
+          "bytes": 4533
+        }
+      },
+      "original_finding_ids": [
+        "E19@C-A",
+        "E19@C-B"
+      ],
+      "original_asset_ids": [
+        "C-A",
+        "C-B",
+        "PIC-A"
+      ],
+      "proposed_finding_ids": [
+        "E19@C-A",
+        "E19@C-B"
+      ],
+      "proposed_asset_ids": [
+        "C-A",
+        "C-B",
+        "PIC-A"
+      ],
+      "source_job": "ForeignPICglobalgate doesnotestablishsystemassociation/requirements; retainunknownscope.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E19-03-dynamics-units",
+      "rule": "E19",
+      "group": "03",
+      "model": "examples/opportunity-screen/source-policy/models/E19-03-dynamics-units.json",
+      "model_sha256_raw": "22d5e06211f1d514f800221462a6d7a24c8214ad806788fdce08a9f763fd511b",
+      "historical_source_model": "examples/opportunity-screen/integration-air-records/models/E19-03-dynamics-units.json",
+      "before": "history/before/E19-03-dynamics-units",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "a19f501594b27082141dd345ad02f54c8363c7ff95e4dffe6ffd3d2bdb5e31f5",
+          "bytes": 4796
+        },
+        "screen.md": {
+          "sha256_raw": "807ef40df9d1756646de625617283f6c76040caf316c07b04f84903b819131c3",
+          "bytes": 4548
+        }
+      },
+      "original_finding_ids": [
+        "E19@C-A",
+        "E19@C-B"
+      ],
+      "original_asset_ids": [
+        "C-A",
+        "C-B",
+        "PIC-A"
+      ],
+      "proposed_finding_ids": [
+        "E19@C-A",
+        "E19@C-B"
+      ],
+      "proposed_asset_ids": [
+        "C-A",
+        "C-B",
+        "PIC-A"
+      ],
+      "source_job": "Highestscalar+losses notsetpointauthorization; matchunits/time/peaks/storage/control/manufacturerconstraints.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E19-04-role-package",
+      "rule": "E19",
+      "group": "03",
+      "model": "examples/opportunity-screen/source-policy/models/E19-04-role-package.json",
+      "model_sha256_raw": "e956985190ce0259db3fd580e22200b5159db24ed138158b790030a0d6f61444",
+      "historical_source_model": "examples/opportunity-screen/integration-air-records/models/E19-04-role-package.json",
+      "before": "history/before/E19-04-role-package",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "20e1f96cbbd9ee4ae0ef01742064684cfaaba56336d9462b40cc64c937551f69",
+          "bytes": 4777
+        },
+        "screen.md": {
+          "sha256_raw": "acf7e4feb3ba7ffe74d4c07760f84a1062a32d9f53d7ca931d8a6f5973c82006",
+          "bytes": 4529
+        }
+      },
+      "original_finding_ids": [
+        "E19@D-A",
+        "E19@G-C"
+      ],
+      "original_asset_ids": [
+        "D-A",
+        "G-C",
+        "PIC-A"
+      ],
+      "proposed_finding_ids": [
+        "E19@C-B"
+      ],
+      "proposed_asset_ids": [
+        "C-B",
+        "PIC-A"
+      ],
+      "source_job": "Typedhelper/nonair excluded; knowncompressorpackage notquiet merelybecause namedDRYER.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E20-01-program-existing",
+      "rule": "E20",
+      "group": "03",
+      "model": "examples/opportunity-screen/source-policy/models/E20-01-program-existing.json",
+      "model_sha256_raw": "bba18cecdcc5dac920537d282de2810c114096c311875523980c3f1c21bf728e",
+      "historical_source_model": "examples/opportunity-screen/integration-air-records/models/E20-01-program-existing.json",
+      "before": "history/before/E20-01-program-existing",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "63675366d26b245f558e25385a899f59a870770e0b627cebbc2d15a61e9d5195",
+          "bytes": 2390
+        },
+        "screen.md": {
+          "sha256_raw": "70ffae112d58490312a709f760580384f5684634a2d1be14274f8309ac48936c",
+          "bytes": 2747
+        }
+      },
+      "original_finding_ids": [
+        "E20@model"
+      ],
+      "original_asset_ids": [
+        "HD-B",
+        "QD-A"
+      ],
+      "proposed_finding_ids": [
+        "E20@model"
+      ],
+      "proposed_asset_ids": [
+        "HD-B",
+        "QD-A"
+      ],
+      "source_job": "Namesnotleaks; belowtypicalrange notprogramclosure, suitableexistingrecords acknowledged.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E20-02-control-method",
+      "rule": "E20",
+      "group": "03",
+      "model": "examples/opportunity-screen/source-policy/models/E20-02-control-method.json",
+      "model_sha256_raw": "3fcdf264ee69467da1928a1f278caa7b22b4752e210af1868606d698a3ce8c78",
+      "historical_source_model": "examples/opportunity-screen/integration-air-records/models/E20-02-control-method.json",
+      "before": "history/before/E20-02-control-method",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "6f58a0a664b75698dcaf10c38f96f10c5b1d9c16e7c1384b5298bbdcf6151b43",
+          "bytes": 2385
+        },
+        "screen.md": {
+          "sha256_raw": "dbcd1488b21693ad65fe21e926524c2382d107860bf6008cda555c93dacca87d",
+          "bytes": 2739
+        }
+      },
+      "original_finding_ids": [
+        "E20@model"
+      ],
+      "original_asset_ids": [
+        "FRL-A",
+        "TD-B"
+      ],
+      "proposed_finding_ids": [
+        "E20@model"
+      ],
+      "proposed_asset_ids": [
+        "FRL-A",
+        "TD-B"
+      ],
+      "source_job": "Loadtimingonlymatchedcontrol/noactualdemand; productionstopnotproof, distinguishauthorizedconsumption/unknowns.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E20-03-purpose-source",
+      "rule": "E20",
+      "group": "03",
+      "model": "examples/opportunity-screen/source-policy/models/E20-03-purpose-source.json",
+      "model_sha256_raw": "85d2aa1eed386360c72fdab7228fb02bd8366713d227ea49dc1c01b11613a85d",
+      "historical_source_model": "examples/opportunity-screen/integration-air-records/models/E20-03-purpose-source.json",
+      "before": "history/before/E20-03-purpose-source",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "8f2f1d926ed16f6c6617407741927e9a18f8d2d60cce9d2a63d28a6cdc0691b8",
+          "bytes": 2385
+        },
+        "screen.md": {
+          "sha256_raw": "827af57c55d714c9a8111979a76165ae5973d81ac1c753618f0753cc4b46a4c2",
+          "bytes": 2739
+        }
+      },
+      "original_finding_ids": [
+        "E20@model"
+      ],
+      "original_asset_ids": [
+        "FRL-B",
+        "TD-A"
+      ],
+      "proposed_finding_ids": [
+        "E20@model"
+      ],
+      "proposed_asset_ids": [
+        "FRL-B",
+        "TD-A"
+      ],
+      "source_job": "Authorizeddrainuse/0/foreignavailability retained; oldsurvey notcurrentwholeprogram oractualleaktruth.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E20-04-nonair-control",
+      "rule": "E20",
+      "group": "03",
+      "model": "examples/opportunity-screen/source-policy/models/E20-04-nonair-control.json",
+      "model_sha256_raw": "5e0ef4fe7081415a27e0242f1605aed2bb8bce64595eb5ecc8112841e901b024",
+      "historical_source_model": "examples/opportunity-screen/integration-air-records/models/E20-04-nonair-control.json",
+      "before": "history/before/E20-04-nonair-control",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "3d9adb9a238165df3a6aea18e7714b405f6cff875741f4df3e908edec2f5e6ac",
+          "bytes": 2406
+        },
+        "screen.md": {
+          "sha256_raw": "55435bd80e0ca665cf3a521e7269fa4703df0a17a2db925998311008a321f3b4",
+          "bytes": 2763
+        }
+      },
+      "original_finding_ids": [
+        "E20@model"
+      ],
+      "original_asset_ids": [
+        "HY-A",
+        "ST-B"
+      ],
+      "proposed_finding_ids": [],
+      "proposed_asset_ids": [],
+      "source_job": "Knownnonaircomponentsquiet/NA, notcompressedairleaktest.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E21-01-cyclic-vacuum",
+      "rule": "E21",
+      "group": "04",
+      "model": "examples/opportunity-screen/source-policy/models/E21-01-cyclic-vacuum.json",
+      "model_sha256_raw": "81a56293225e1558512f79e3331783a481b0038c349fc4f7c24686b71a344024",
+      "historical_source_model": "examples/opportunity-screen/air-utility-records/models/E21-01-cyclic-vacuum.json",
+      "before": "history/before/E21-01-cyclic-vacuum",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "1a82ebbaf7fa8a6495ca5da348c2c78efae96813f5ea4fecaa052492d14cca35",
+          "bytes": 2398
+        },
+        "screen.md": {
+          "sha256_raw": "5c8c15a8aa9bd231eef5c51e2b59632bdf208deb81138a98d58912a79e3b6c23",
+          "bytes": 2834
+        }
+      },
+      "original_finding_ids": [
+        "E21@model"
+      ],
+      "original_asset_ids": [
+        "V-A",
+        "V-B"
+      ],
+      "proposed_finding_ids": [
+        "E21@model"
+      ],
+      "proposed_asset_ids": [
+        "V-A",
+        "V-B"
+      ],
+      "source_job": "Intermittent/control/safety/lifecycle basis, not automatic vacuum-pump substitution or30% universal decision.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E21-02-purge-cooling",
+      "rule": "E21",
+      "group": "04",
+      "model": "examples/opportunity-screen/source-policy/models/E21-02-purge-cooling.json",
+      "model_sha256_raw": "100af6a9419d5372ecab063b2fe81fed4e5dca059418ab7763c39eeb462d2028",
+      "historical_source_model": "examples/opportunity-screen/air-utility-records/models/E21-02-purge-cooling.json",
+      "before": "history/before/E21-02-purge-cooling",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "8a0ec91aa6b903efc4c0b3fae33b5a6028b1637ed87145e9134b6342907ac2f9",
+          "bytes": 2400
+        },
+        "screen.md": {
+          "sha256_raw": "f64f825e7886d52d3413f7f876766d009a1cb47c8329852c32bcd820739ef262",
+          "bytes": 2836
+        }
+      },
+      "original_finding_ids": [
+        "E21@model"
+      ],
+      "original_asset_ids": [
+        "C-B",
+        "P-A"
+      ],
+      "proposed_finding_ids": [
+        "E21@model"
+      ],
+      "proposed_asset_ids": [
+        "C-B"
+      ],
+      "source_job": "Explicit protective panel purge not inferred cabinet cooling; actual cooling remains conditional.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E21-03-purpose-source",
+      "rule": "E21",
+      "group": "04",
+      "model": "examples/opportunity-screen/source-policy/models/E21-03-purpose-source.json",
+      "model_sha256_raw": "8d64f9f3e9ea04b96998067d7e1f85fa473ae572abc657b50e1614ce970b4663",
+      "historical_source_model": "examples/opportunity-screen/air-utility-records/models/E21-03-purpose-source.json",
+      "before": "history/before/E21-03-purpose-source",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "238ed461909b258ccbf9c111554965abdd2dcf0e60a044501d36fe5e65ec4c59",
+          "bytes": 2386
+        },
+        "screen.md": {
+          "sha256_raw": "228eb8f02f1f7bbf92f8468e535cc88477ccc51120f1b17e66a539fbde15db8f",
+          "bytes": 2822
+        }
+      },
+      "original_finding_ids": [
+        "E21@model"
+      ],
+      "original_asset_ids": [
+        "B-B",
+        "S-A"
+      ],
+      "proposed_finding_ids": [
+        "E21@model"
+      ],
+      "proposed_asset_ids": [
+        "B-B",
+        "S-A"
+      ],
+      "source_job": "Retain zero/null/foreign/quality and function; no mere-name waste finding or forced blower.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E21-04-nonair-helper",
+      "rule": "E21",
+      "group": "04",
+      "model": "examples/opportunity-screen/source-policy/models/E21-04-nonair-helper.json",
+      "model_sha256_raw": "1ffd186181ec1200c68c8890d5faff3075b67d9105c29c2ce1997d8aaf4ff6c4",
+      "historical_source_model": "examples/opportunity-screen/air-utility-records/models/E21-04-nonair-helper.json",
+      "before": "history/before/E21-04-nonair-helper",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "77eb061cbc651135090139921a9c1cf933f58124ba7f53456e437419e616e3b8",
+          "bytes": 2187
+        },
+        "screen.md": {
+          "sha256_raw": "5b8b708ab6fdcab78b07a480e9545c59bd8ddb0874098e4485ca3142a24b4108",
+          "bytes": 2764
+        }
+      },
+      "original_finding_ids": [
+        "E21@model"
+      ],
+      "original_asset_ids": [
+        "WE-B"
+      ],
+      "proposed_finding_ids": [],
+      "proposed_asset_ids": [],
+      "source_job": "Known non-compressed-air/helper roles quiet/NA; no installed absence claim.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E22-01-global-storage",
+      "rule": "E22",
+      "group": "04",
+      "model": "examples/opportunity-screen/source-policy/models/E22-01-global-storage.json",
+      "model_sha256_raw": "afb14266ac700c843cb9973a3580c0e1954883ce5b808ab021ccc778c642842f",
+      "historical_source_model": "examples/opportunity-screen/air-utility-records/models/E22-01-global-storage.json",
+      "before": "history/before/E22-01-global-storage",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "1edd69a23e031c7fe2ea13c88f93a086a63cf622b61b4432bcfb95c4cf911985",
+          "bytes": 587
+        },
+        "screen.md": {
+          "sha256_raw": "43e68188fdc853f1aafe1f30cec14e7103d7eca5bf119f348f0e3857a9d12cda",
+          "bytes": 1384
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [
+        "E22@C-A",
+        "E22@C-B"
+      ],
+      "proposed_asset_ids": [
+        "C-A",
+        "C-B",
+        "WT-X"
+      ],
+      "source_job": "Water storage anywhere cannot establish air storage/coverage or clear either system.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E22-02-local-receiver",
+      "rule": "E22",
+      "group": "04",
+      "model": "examples/opportunity-screen/source-policy/models/E22-02-local-receiver.json",
+      "model_sha256_raw": "787c662afa9f86bbd4cf9d614bfb0327796f86b1c3c5a7f6e9cf1a1deccc4121",
+      "historical_source_model": "examples/opportunity-screen/air-utility-records/models/E22-02-local-receiver.json",
+      "before": "history/before/E22-02-local-receiver",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "f29e389eda09158beb61e0bd01a95cce58b5a874bd7c1d4e854e31724bd911e5",
+          "bytes": 587
+        },
+        "screen.md": {
+          "sha256_raw": "e278694fedae68002168b097ef02be41f2edd587a7112940a1b70b7ac882e9db",
+          "bytes": 1384
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [
+        "E22@C-A",
+        "E22@C-B"
+      ],
+      "proposed_asset_ids": [
+        "AR-X",
+        "C-A",
+        "C-B"
+      ],
+      "source_job": "Known receiver not adequacy/whole-system association; both review coverage without compelled new vessel.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E22-03-pressure-time",
+      "rule": "E22",
+      "group": "04",
+      "model": "examples/opportunity-screen/source-policy/models/E22-03-pressure-time.json",
+      "model_sha256_raw": "b349f3f7235af0b909dd9a3e4258229b29349d053dc67bcb284877361b02433a",
+      "historical_source_model": "examples/opportunity-screen/air-utility-records/models/E22-03-pressure-time.json",
+      "before": "history/before/E22-03-pressure-time",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "8d26d7b0d440eb6688a08f11470becee9b1a0a7e2284847c2b92fce144aef7b7",
+          "bytes": 3869
+        },
+        "screen.md": {
+          "sha256_raw": "97c1177bcd85ac8b2b87563a58f786c216856ce1e83be22984caa6701bf25b46",
+          "bytes": 3738
+        }
+      },
+      "original_finding_ids": [
+        "E22@C-A",
+        "E22@C-B"
+      ],
+      "original_asset_ids": [
+        "C-A",
+        "C-B"
+      ],
+      "proposed_finding_ids": [
+        "E22@C-A",
+        "E22@C-B"
+      ],
+      "proposed_asset_ids": [
+        "C-A",
+        "C-B"
+      ],
+      "source_job": "No receiver sizing from alone transient or invented absent storage; units/time/control/quality/supply unknown retained.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E22-04-role-package",
+      "rule": "E22",
+      "group": "04",
+      "model": "examples/opportunity-screen/source-policy/models/E22-04-role-package.json",
+      "model_sha256_raw": "4c34b4fd0c2d6928da4dce22cf6d2b6b93a9738eaa7c27f704962f8b36018890",
+      "historical_source_model": "examples/opportunity-screen/air-utility-records/models/E22-04-role-package.json",
+      "before": "history/before/E22-04-role-package",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "58c7c6fac6796a056fbd92261a5142c1823ec7ce1ebde35329cc15b3b03c290a",
+          "bytes": 3885
+        },
+        "screen.md": {
+          "sha256_raw": "4fa9cf6bc02009af4b68d3956fb446eefa54e113984706e4009305d9c33e210d",
+          "bytes": 3754
+        }
+      },
+      "original_finding_ids": [
+        "E22@D-A",
+        "E22@G-C"
+      ],
+      "original_asset_ids": [
+        "D-A",
+        "G-C"
+      ],
+      "proposed_finding_ids": [
+        "E22@C-B"
+      ],
+      "proposed_asset_ids": [
+        "C-B"
+      ],
+      "source_job": "Known helpers/nonair quiet; known compressor package not excluded by dryer name.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E23-01-heat-quantity",
+      "rule": "E23",
+      "group": "04",
+      "model": "examples/opportunity-screen/source-policy/models/E23-01-heat-quantity.json",
+      "model_sha256_raw": "558042a99c2f0894c5d66113c07cd91ca1b9889d254ac58ace2be95600947411",
+      "historical_source_model": "examples/opportunity-screen/air-utility-records/models/E23-01-heat-quantity.json",
+      "before": "history/before/E23-01-heat-quantity",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "1b8dfc55f7553809df568d0f7b7f22f54a31c6f3c6bbf21ea6ac400a3a140e09",
+          "bytes": 3135
+        },
+        "screen.md": {
+          "sha256_raw": "ff8dd47dd102961f2704bf69ab66bef3ee5f5119fdc923dd8a2f6aa101382d9e",
+          "bytes": 3158
+        }
+      },
+      "original_finding_ids": [
+        "E23@C-A",
+        "E23@C-B"
+      ],
+      "original_asset_ids": [
+        "C-A",
+        "C-B"
+      ],
+      "proposed_finding_ids": [
+        "E23@C-A",
+        "E23@C-B"
+      ],
+      "proposed_asset_ids": [
+        "C-A",
+        "C-B"
+      ],
+      "source_job": "Thermal fraction not electricity/site saving; actual temperature/receiver/cooling configuration required, no steam promise.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E23-02-existing-season",
+      "rule": "E23",
+      "group": "04",
+      "model": "examples/opportunity-screen/source-policy/models/E23-02-existing-season.json",
+      "model_sha256_raw": "ba0014099a56b07a69c96e3bc865fc34bdbdbfcc1d1fd57ff197195cff9bcae2",
+      "historical_source_model": "examples/opportunity-screen/air-utility-records/models/E23-02-existing-season.json",
+      "before": "history/before/E23-02-existing-season",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "af658b8cbb5271d3bfe032f606a684c8b1ef537c9c844254e05853e7fe915a71",
+          "bytes": 3137
+        },
+        "screen.md": {
+          "sha256_raw": "2cf1f356c3688304bef5582f3ef162fd00e2b1435705f01520f030ddb85858be",
+          "bytes": 3160
+        }
+      },
+      "original_finding_ids": [
+        "E23@C-A",
+        "E23@C-B"
+      ],
+      "original_asset_ids": [
+        "C-A",
+        "C-B"
+      ],
+      "proposed_finding_ids": [
+        "E23@C-A",
+        "E23@C-B"
+      ],
+      "proposed_asset_ids": [
+        "C-A",
+        "C-B"
+      ],
+      "source_job": "Existing recovery acknowledged; nearby/longhours not matching useful seasonal duty or retrofit decision.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E23-03-source-constraints",
+      "rule": "E23",
+      "group": "04",
+      "model": "examples/opportunity-screen/source-policy/models/E23-03-source-constraints.json",
+      "model_sha256_raw": "c90ba0b895e1fc057c23347401d31be36a0f9674c607d7ea46951ccd1ccdbcba",
+      "historical_source_model": "examples/opportunity-screen/air-utility-records/models/E23-03-source-constraints.json",
+      "before": "history/before/E23-03-source-constraints",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "bdc6bf195af0afbe41529a9a536511369f50d2d8bc13e5e944a8f815c216c152",
+          "bytes": 3140
+        },
+        "screen.md": {
+          "sha256_raw": "8f3bb0eceaee36764a41edf7d71be1726975439c45b7cad08ac3ce0f34ed517f",
+          "bytes": 3163
+        }
+      },
+      "original_finding_ids": [
+        "E23@C-A",
+        "E23@C-B"
+      ],
+      "original_asset_ids": [
+        "C-A",
+        "C-B"
+      ],
+      "proposed_finding_ids": [
+        "E23@C-A",
+        "E23@C-B"
+      ],
+      "proposed_asset_ids": [
+        "C-A",
+        "C-B"
+      ],
+      "source_job": "Foreign records/unknown service, pressure/quality/cooling and displaced heat basis before any design or source savings.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E23-04-role-package",
+      "rule": "E23",
+      "group": "04",
+      "model": "examples/opportunity-screen/source-policy/models/E23-04-role-package.json",
+      "model_sha256_raw": "4c34b4fd0c2d6928da4dce22cf6d2b6b93a9738eaa7c27f704962f8b36018890",
+      "historical_source_model": "examples/opportunity-screen/air-utility-records/models/E23-04-role-package.json",
+      "before": "history/before/E23-04-role-package",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "13889d38092c4951063a9dc5e6b661ebcd1704ccd6ae59b9c89996c9755ace57",
+          "bytes": 3151
+        },
+        "screen.md": {
+          "sha256_raw": "55a982e18ffa4fc84f33a318a7b1b8dfb5ac7cb90312c63a3be6267a76d6f73e",
+          "bytes": 3174
+        }
+      },
+      "original_finding_ids": [
+        "E23@D-A",
+        "E23@G-C"
+      ],
+      "original_asset_ids": [
+        "D-A",
+        "G-C"
+      ],
+      "proposed_finding_ids": [
+        "E23@C-B"
+      ],
+      "proposed_asset_ids": [
+        "C-B"
+      ],
+      "source_job": "Typed helper/nonair quiet; actual compressor package retained for conditional cooling review.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "C1-01-false-samestream",
+      "rule": "C1",
+      "group": "04",
+      "model": "examples/opportunity-screen/source-policy/models/C1-01-false-samestream.json",
+      "model_sha256_raw": "358588a014b6d94166ca5442e034c374f07adb6ac21d6446f23ec8ea716dbce1",
+      "historical_source_model": "examples/opportunity-screen/air-utility-records/models/C1-01-false-samestream.json",
+      "before": "history/before/C1-01-false-samestream",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "04f346288c77f52bab1555d79b858dea26033c56150efb1fda0645e12b137cf7",
+          "bytes": 586
+        },
+        "screen.md": {
+          "sha256_raw": "4060d3d5ba35e9e401a38f5be8c98281a944d2572e038c71d52fd72d2c1cb07a",
+          "bytes": 1384
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [
+        "C1@U-A"
+      ],
+      "proposed_asset_ids": [
+        "FT-A",
+        "U-A",
+        "stream:S-A"
+      ],
+      "source_job": "Same-stream declaration cannot settle foreign/unavailable quantity/time/quality coverage; preserve source candidates and unknownowner.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "C1-02-branch-coverage",
+      "rule": "C1",
+      "group": "04",
+      "model": "examples/opportunity-screen/source-policy/models/C1-02-branch-coverage.json",
+      "model_sha256_raw": "644cbcfe7debf000d25bbadf6e24e6dc6baf41c261976e90dc7574a846cbea42",
+      "historical_source_model": "examples/opportunity-screen/air-utility-records/models/C1-02-branch-coverage.json",
+      "before": "history/before/C1-02-branch-coverage",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "d26ed09e9c792b06283546b4aa0bdf422342e46e6f5ed458cc3d22f77e0d0d91",
+          "bytes": 585
+        },
+        "screen.md": {
+          "sha256_raw": "1d059fc0950e45a7b872bbbabaf1f986e3a44433fcf5fb22e6382567523bc2c5",
+          "bytes": 1383
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [
+        "C1@U-A"
+      ],
+      "proposed_asset_ids": [
+        "FT-A",
+        "U-A",
+        "stream:S-A1",
+        "stream:S-A2"
+      ],
+      "source_job": "Sameunit/medium not everybranch coverage; no globalmeter completion or per-userbill allocation.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "C1-03-existing-fit",
+      "rule": "C1",
+      "group": "04",
+      "model": "examples/opportunity-screen/source-policy/models/C1-03-existing-fit.json",
+      "model_sha256_raw": "425873ac054c074263d3e9034768c474b2341a3d3d17007b9cf1e84800679c77",
+      "historical_source_model": "examples/opportunity-screen/air-utility-records/models/C1-03-existing-fit.json",
+      "before": "history/before/C1-03-existing-fit",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "7604b4f59189eeba1133478c056a040fe16c99524e11119bd311647973cb115a",
+          "bytes": 582
+        },
+        "screen.md": {
+          "sha256_raw": "70e6f09f5751b3023424b0cb531257ee7be3c19f73ffaa9edcb895e1cfaf303e",
+          "bytes": 1380
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [
+        "C1@U-A"
+      ],
+      "proposed_asset_ids": [
+        "FT-A",
+        "U-A",
+        "stream:S-A"
+      ],
+      "source_job": "Primary permits quiet or acknowledgment of suitable records, no mandatory newmeter; development chooses always-open qualified acknowledgment, not engineering approval.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "C1-04-excluded-return",
+      "rule": "C1",
+      "group": "04",
+      "model": "examples/opportunity-screen/source-policy/models/C1-04-excluded-return.json",
+      "model_sha256_raw": "bbe08984076a6b660a23218dc48efcd54ad3f614771c83d8302da54bf27715f3",
+      "historical_source_model": "examples/opportunity-screen/air-utility-records/models/C1-04-excluded-return.json",
+      "before": "history/before/C1-04-excluded-return",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "5e4c1fdaa66f6c5cb8ded278f4581c4a9976b4ef97c1bdf3f9d8d7bd01a7e95a",
+          "bytes": 585
+        },
+        "screen.md": {
+          "sha256_raw": "8adb5d4036605bffb02114ed6ccd813b173ff805a01d89ee95f2e50e7c7520f3",
+          "bytes": 1383
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [],
+      "proposed_asset_ids": [],
+      "source_job": "No utility supply eligible; quiet not whole-plant meter acceptance.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "C2-01-no-controllers",
+      "rule": "C2",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/C2-01-no-controllers.json",
+      "model_sha256_raw": "1f69b9c6a48a8f098008b864850a08ed569d514fc658cda652a8424396dd7ea1",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/C2-01-no-controllers.json",
+      "before": "history/before/C2-01-no-controllers",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "e76097f90c68bfb2b444ff4a5841db343b82912f9e336582078fdcea87d863ef",
+          "bytes": 733
+        },
+        "screen.md": {
+          "sha256_raw": "35bc9c8c582dd0b52fbfc86f7ec2c0954c934428004ca6a975c56d1b129d5ecc",
+          "bytes": 1295
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [
+        "C2@model"
+      ],
+      "proposed_asset_ids": [
+        "PT-A",
+        "TT-B"
+      ],
+      "source_job": "Partial instrument-only Native is valid; no controller representation permits conditional record review, not mandated installed automation.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "C2-02-reader-coverage",
+      "rule": "C2",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/C2-02-reader-coverage.json",
+      "model_sha256_raw": "cb7c64a660982f2da25b7c4b8ab8ab7040db4fcecadcc1fe29f9c3daaaed95ca",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/C2-02-reader-coverage.json",
+      "before": "history/before/C2-02-reader-coverage",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "4cdbffc54463ff50c471981105802174651474b0a1cf0f346e5ed376e0e41e4e",
+          "bytes": 2766
+        },
+        "screen.md": {
+          "sha256_raw": "fa75acd2063fcb9289817031e148b2bd0b9bbfdb69b49d2a426247c8e3664ffb",
+          "bytes": 3090
+        }
+      },
+      "original_finding_ids": [
+        "C2@model"
+      ],
+      "original_asset_ids": [
+        "PT-B"
+      ],
+      "proposed_finding_ids": [
+        "C2@model"
+      ],
+      "proposed_asset_ids": [
+        "FIC-A",
+        "FT-A",
+        "PT-B"
+      ],
+      "source_job": "Represented reader not proof of current usable measurement/source or full logic; retain endpoints and foreign availability.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "C2-03-abnormal-purpose",
+      "rule": "C2",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/C2-03-abnormal-purpose.json",
+      "model_sha256_raw": "ba213a0e7c1b6c866db7e31679df7722a15be6911981b9cd457d47bc1cf91a04",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/C2-03-abnormal-purpose.json",
+      "before": "history/before/C2-03-abnormal-purpose",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "f178b160079b77a4508e2261913ee1288ce221b824436b7165933e98a891f1b1",
+          "bytes": 3052
+        },
+        "screen.md": {
+          "sha256_raw": "1147ce00b716c74164e69e66f4458310fbea95784f105c1fef1a4839a75ca454",
+          "bytes": 3238
+        }
+      },
+      "original_finding_ids": [
+        "C2@model"
+      ],
+      "original_asset_ids": [
+        "IL-B",
+        "PT-B"
+      ],
+      "proposed_finding_ids": [
+        "C2@model"
+      ],
+      "proposed_asset_ids": [
+        "FIC-A",
+        "FT-A",
+        "IL-B",
+        "PT-B"
+      ],
+      "source_job": "No frequent manual adjustments does not mean no legitimate abnormal/alarm/protection purpose; no safety acceptance.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "C2-04-outside-variable-scope",
+      "rule": "C2",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/C2-04-outside-variable-scope.json",
+      "model_sha256_raw": "75087a1fbbfc76993f78c0f3639517d7264c5219f76af3867f09f3bc91150d65",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/C2-04-outside-variable-scope.json",
+      "before": "history/before/C2-04-outside-variable-scope",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "3839d4120837016b00e9cbe75639011cc6f1eadbaf17b24961aa571311059421",
+          "bytes": 741
+        },
+        "screen.md": {
+          "sha256_raw": "d627b40dd620c0bf76c431f24a86a2b021768e1d54b8f3314ff2ae30a54b5ce6",
+          "bytes": 1303
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [],
+      "proposed_asset_ids": [],
+      "source_job": "Existing six variable classes retained; quiet is explicit scope boundary, not all-instrument audit.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "C6-01-dynamics-source",
+      "rule": "C6",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/C6-01-dynamics-source.json",
+      "model_sha256_raw": "150fda5b0c7031a8250f29818b275f7be7d63bfa9a6892d01b338e00244d7e4b",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/C6-01-dynamics-source.json",
+      "before": "history/before/C6-01-dynamics-source",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "18d9950baba57453d26be66812b598e535d9903c70017d59a98ff15e5e62b6fb",
+          "bytes": 2801
+        },
+        "screen.md": {
+          "sha256_raw": "65bbc7bd55717b8d5c4e253e2e9e6873ef9356186ed98393aa17c19a1200607a",
+          "bytes": 2661
+        }
+      },
+      "original_finding_ids": [
+        "C6@TV-A"
+      ],
+      "original_asset_ids": [
+        "FT-A",
+        "TIC-A",
+        "TV-A"
+      ],
+      "proposed_finding_ids": [
+        "C6@TV-A"
+      ],
+      "proposed_asset_ids": [
+        "FT-A",
+        "TIC-A",
+        "TV-A"
+      ],
+      "source_job": "No cascade recommendation from pressure/oscillation alone; actual relative dynamics/disturbance/measurement basis retained.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "C6-02-dual-writer",
+      "rule": "C6",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/C6-02-dual-writer.json",
+      "model_sha256_raw": "7a583e26161c0d60bba028fd12f164daa11afc128b11a114abb7039d3389c410",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/C6-02-dual-writer.json",
+      "before": "history/before/C6-02-dual-writer",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "45f5ac746bc65994d64a221d126e452e7ff79d239ce20d099e2a8730d710ada7",
+          "bytes": 582
+        },
+        "screen.md": {
+          "sha256_raw": "109b3fc217a9d0cb86bc81852dd5ea9fc7d9d51f4614ef34f0855cba7ae0b392",
+          "bytes": 1363
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [
+        "C6@TV-A"
+      ],
+      "proposed_asset_ids": [
+        "FIC-A",
+        "FT-A",
+        "TIC-A",
+        "TV-A"
+      ],
+      "source_job": "Two controllers with same output not verified cascade; existing F writer must not suppress direct-T review.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "C6-03-already-cascade",
+      "rule": "C6",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/C6-03-already-cascade.json",
+      "model_sha256_raw": "661bae93b6494f2516c556fda04b6f19a7d1cd6ba69e4211ee8e6b55682944bf",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/C6-03-already-cascade.json",
+      "before": "history/before/C6-03-already-cascade",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "eba11c2a376dbca2fd5d89df8ddb7561a6dbd9c476135949a70890172ae29f71",
+          "bytes": 586
+        },
+        "screen.md": {
+          "sha256_raw": "ac1c3004b2991dbe52b5e8ec28073639271017bd792075ab4444fcffdbccdae5",
+          "bytes": 1367
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [],
+      "proposed_asset_ids": [],
+      "source_job": "Already represented nested setpoint chain outside direct-temperature-output selector, quiet not engineering adequacy.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "C6-04-nonsteam",
+      "rule": "C6",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/C6-04-nonsteam.json",
+      "model_sha256_raw": "08360729a712350fd19811783ea8ab9780b4b71413e2061fbc02722248d96934",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/C6-04-nonsteam.json",
+      "before": "history/before/C6-04-nonsteam",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "5b91992e180ea8f908065ad0b74ba6396d0fc313982435fff1cba3d0f5984e0a",
+          "bytes": 579
+        },
+        "screen.md": {
+          "sha256_raw": "1410a516e7116b7303c5de50a3555295c8afd14bd22ce680d75225d7beffd3aa",
+          "bytes": 1360
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [],
+      "proposed_asset_ids": [],
+      "source_job": "Current steam-specific scope retained, no automatic heat/cool-fighting detector claim.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "C7-01-global-master",
+      "rule": "C7",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/C7-01-global-master.json",
+      "model_sha256_raw": "95048d20d9ee422de273c7cb523fff2004e0286eba447b210062522aa39c84b1",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/C7-01-global-master.json",
+      "before": "history/before/C7-01-global-master",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "6903c443cc7445f6f391422b31dd589e6547772f05e1abca54f8cf028b5fa9aa",
+          "bytes": 584
+        },
+        "screen.md": {
+          "sha256_raw": "05904fd78cea3e026130a74e513e03eeae87413ab24b1f667474164b98037ffc",
+          "bytes": 1365
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [
+        "C7@model"
+      ],
+      "proposed_asset_ids": [
+        "C-A",
+        "C-B",
+        "MS-X"
+      ],
+      "source_job": "Foreign master label not covered air-system operation; preserve source and unknown grouping.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "C7-02-separate-systems",
+      "rule": "C7",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/C7-02-separate-systems.json",
+      "model_sha256_raw": "e3d936f02be85f8d1640132a7eef0cd9f101b0cc1f046467f553442e95775d15",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/C7-02-separate-systems.json",
+      "before": "history/before/C7-02-separate-systems",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "f7c412957c2fd28b9ba02b482ef8b9ed48d1e90c5f7dafa35376133f5ed3b4dc",
+          "bytes": 2639
+        },
+        "screen.md": {
+          "sha256_raw": "3e5142e9ec756d35bb10c289a691e826d1bc82c1e04685a54137ab3b6deb152d",
+          "bytes": 3015
+        }
+      },
+      "original_finding_ids": [
+        "C7@model"
+      ],
+      "original_asset_ids": [
+        "C-A",
+        "C-B"
+      ],
+      "proposed_finding_ids": [
+        "C7@model"
+      ],
+      "proposed_asset_ids": [
+        "C-A",
+        "C-B"
+      ],
+      "source_job": "Two names/partload fractions do not imply commonheader, concurrency or mandatory master; local strategy/trim acknowledged.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "C7-03-role-package",
+      "rule": "C7",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/C7-03-role-package.json",
+      "model_sha256_raw": "dfa07e1cd34580a413c947be1fa751414a2a23d6a8ed7705143fa253c36c6ebd",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/C7-03-role-package.json",
+      "before": "history/before/C7-03-role-package",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "29f4f325ba4c617d5cdc49cd21cf7615d0704742b4f3de65b510b0077306c972",
+          "bytes": 2642
+        },
+        "screen.md": {
+          "sha256_raw": "1967bd66e3732e4e7b8d96c90cd5516418931ebfd204f5729c237bb0b31b199b",
+          "bytes": 3018
+        }
+      },
+      "original_finding_ids": [
+        "C7@model"
+      ],
+      "original_asset_ids": [
+        "C-C",
+        "D-A"
+      ],
+      "proposed_finding_ids": [
+        "C7@model"
+      ],
+      "proposed_asset_ids": [
+        "C-B",
+        "C-C"
+      ],
+      "source_job": "Typed helper versus real package; unknown service and common-system/control/storage basis remain conditional.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "C7-04-single-machine",
+      "rule": "C7",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/C7-04-single-machine.json",
+      "model_sha256_raw": "85c37c03c2f81ad053291ea81faaca256dba3c267ba9572c03d3a1a6d40ce380",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/C7-04-single-machine.json",
+      "before": "history/before/C7-04-single-machine",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "5084674178fd2cd108e1c006cb07f099b7d051ccab90d3085bbba9bc8b91de5d",
+          "bytes": 585
+        },
+        "screen.md": {
+          "sha256_raw": "25ad082d26a7e549e1141e7214290ca9c0837d67fa84c15131f3d8969fd2faa5",
+          "bytes": 1366
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [],
+      "proposed_asset_ids": [],
+      "source_job": "At-least2candidate scope retained, quiet not single-machine performance approval.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "C10-01-global-UT",
+      "rule": "C10",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/C10-01-global-UT.json",
+      "model_sha256_raw": "20242c829a546e7a974e0aed0d3188dc92325ad6674c7e58ae3944e5af36103d",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/C10-01-global-UT.json",
+      "before": "history/before/C10-01-global-UT",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "73279658ed7ccadc76d79e5a20c4807fb5d26211b81d149268d1fa94f0b935f9",
+          "bytes": 583
+        },
+        "screen.md": {
+          "sha256_raw": "cf3c1b4e0d30df4911c975d7747c12ddeccbbd35cdb12ce85902502f0e1b09a6",
+          "bytes": 1363
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [
+        "C10@model"
+      ],
+      "proposed_asset_ids": [
+        "ST-A",
+        "ST-B",
+        "UT-X"
+      ],
+      "source_job": "Generic UT not steam-trap-monitor coverage; actual service/importance unknown, no mandatory online-monitor.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "C10-02-local-monitor",
+      "rule": "C10",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/C10-02-local-monitor.json",
+      "model_sha256_raw": "b00eff5e1cb77db8249d451152835a72e43b4f805d412a1a1c22837de2334e28",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/C10-02-local-monitor.json",
+      "before": "history/before/C10-02-local-monitor",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "70881f8232aa1cb3f0017682df0159572ae792df120aee8408fc19c8678f2c19",
+          "bytes": 2152
+        },
+        "screen.md": {
+          "sha256_raw": "1a73c528722ba1c3ee3c55f5fa3e9509cc24b82280e306b53570c994a9c880c7",
+          "bytes": 2726
+        }
+      },
+      "original_finding_ids": [
+        "C10@model"
+      ],
+      "original_asset_ids": [
+        "TM-X"
+      ],
+      "proposed_finding_ids": [
+        "C10@model"
+      ],
+      "proposed_asset_ids": [
+        "ST-A",
+        "ST-B",
+        "TM-X"
+      ],
+      "source_job": "Local/old monitor record not wholetrap coverage; monitor helper not a trap subject.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "C10-03-program",
+      "rule": "C10",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/C10-03-program.json",
+      "model_sha256_raw": "1e59141bd1723063a78cbd2d83305cf12fdd4b35f019e92ae500609b7845f4e3",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/C10-03-program.json",
+      "before": "history/before/C10-03-program",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "591a62939b9441799b03f101d2dc08d58fe4ef4d83e0f4fedc74a92443a2b6c6",
+          "bytes": 2362
+        },
+        "screen.md": {
+          "sha256_raw": "ebdede0da0953edb74a03478334a214af80505399f120a3da9e85bfe004eede2",
+          "bytes": 2789
+        }
+      },
+      "original_finding_ids": [
+        "C10@model"
+      ],
+      "original_asset_ids": [
+        "ST-A",
+        "ST-B"
+      ],
+      "proposed_finding_ids": [
+        "C10@model"
+      ],
+      "proposed_asset_ids": [
+        "ST-A",
+        "ST-B"
+      ],
+      "source_job": "Suitable existing inspection/program may be acknowledged; importance alone no imposed monitoring, quoted5% not site benefit.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "C10-04-nonsteam",
+      "rule": "C10",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/C10-04-nonsteam.json",
+      "model_sha256_raw": "1684d916c5fb9aa6719b74c6f470777475141deabb3b961621e22b7300df1042",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/C10-04-nonsteam.json",
+      "before": "history/before/C10-04-nonsteam",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "fcac6a8d2b6000f3c55e8771f29dfad450e51a3f6ea51948a61914221526200c",
+          "bytes": 2361
+        },
+        "screen.md": {
+          "sha256_raw": "a0db4447e02a4c456d433e299b66aad8a90a349177ee8960d2a5e15175c49598",
+          "bytes": 2788
+        }
+      },
+      "original_finding_ids": [
+        "C10@model"
+      ],
+      "original_asset_ids": [
+        "AT-A",
+        "WT-B"
+      ],
+      "proposed_finding_ids": [],
+      "proposed_asset_ids": [],
+      "source_job": "Known nonsteam trap roles quiet/NA, not steam maintenance evidence.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E25-01-blanket-scope",
+      "rule": "E25",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/E25-01-blanket-scope.json",
+      "model_sha256_raw": "ac24f91c1a05eacec695d7c6b7b86e66571791d1438d578669b41343ed859b91",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/E25-01-blanket-scope.json",
+      "before": "history/before/E25-01-blanket-scope",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "2ec27c4a6361f498971fb59437eb38e5859e08a45a56ba8a5bcbfe73c12da316",
+          "bytes": 587
+        },
+        "screen.md": {
+          "sha256_raw": "8cb23aa8a8c66db4d1096a3fe3e71d8c5b7ac0d308ea8491217d84d77f53b768",
+          "bytes": 1367
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [
+        "E25@TK-A",
+        "E25@TK-B"
+      ],
+      "proposed_asset_ids": [
+        "BG-X",
+        "TK-A",
+        "TK-B"
+      ],
+      "source_job": "Blanketing not recovery and foreign global label not coverage of both tank vents.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E25-02-recovery-coverage",
+      "rule": "E25",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/E25-02-recovery-coverage.json",
+      "model_sha256_raw": "40785b3c26d3820a3fafcf984fb0b536aa9ea35b11293cd1cedd30f4af79740d",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/E25-02-recovery-coverage.json",
+      "before": "history/before/E25-02-recovery-coverage",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "e3651160581b274ceb1edafdf0794964721797fd662c29dd9d2935db06e9dfe3",
+          "bytes": 591
+        },
+        "screen.md": {
+          "sha256_raw": "88328ad997896d382a12faa45eea5461b128424c0c770467539dc460f883b6ca",
+          "bytes": 1371
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [
+        "E25@TK-A",
+        "E25@TK-B"
+      ],
+      "proposed_asset_ids": [
+        "TK-A",
+        "TK-B",
+        "VR-X"
+      ],
+      "source_job": "Recovery/95claim forA not B coverage or current authority; producedwater not automatically clean/nonemitting.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E25-03-quantity-time",
+      "rule": "E25",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/E25-03-quantity-time.json",
+      "model_sha256_raw": "733fe90e889d5c5a07fc6f503c32f3ec3de52189326a1df1ad2b31e337e0cb52",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/E25-03-quantity-time.json",
+      "before": "history/before/E25-03-quantity-time",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "743a9c7e15e3e02d40a1463f2af8c2cc66002f2a133a1f88a1df0cbe3769449f",
+          "bytes": 3599
+        },
+        "screen.md": {
+          "sha256_raw": "613cd25115428b2da4d228f9cf77b379238644ede9ee81e53a3f07c283f3d5d9",
+          "bytes": 3411
+        }
+      },
+      "original_finding_ids": [
+        "E25@TK-A",
+        "E25@TK-B"
+      ],
+      "original_asset_ids": [
+        "TK-A",
+        "TK-B"
+      ],
+      "proposed_finding_ids": [
+        "E25@TK-A",
+        "E25@TK-B"
+      ],
+      "proposed_asset_ids": [
+        "TK-A",
+        "TK-B"
+      ],
+      "source_job": "Zero/unknown/time/source/peak-versus-total and outlet required; simpleestimate not speciation or sampling mandate.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E25-04-known-nonHC",
+      "rule": "E25",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/E25-04-known-nonHC.json",
+      "model_sha256_raw": "587527702510cc965a1bb76fb567690fe442053b231c4bbeea3bd7fdb2b20b98",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/E25-04-known-nonHC.json",
+      "before": "history/before/E25-04-known-nonHC",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "e3371c3d727d5a506e35ffa75b4bbe41d5aa8afa7caba35876854d3c686edf30",
+          "bytes": 3599
+        },
+        "screen.md": {
+          "sha256_raw": "2906aa9d7d8cde42929d29398ec4ab2927fc033ea7abce89ce860c8e61b2d08e",
+          "bytes": 3411
+        }
+      },
+      "original_finding_ids": [
+        "E25@PW-A",
+        "E25@N2-B"
+      ],
+      "original_asset_ids": [
+        "N2-B",
+        "PW-A"
+      ],
+      "proposed_finding_ids": [],
+      "proposed_asset_ids": [],
+      "source_job": "Specific known nonhydrocarbon roles quiet/NA; no exclusion of every generic/producedwater tank.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E26-01-flow-source",
+      "rule": "E26",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/E26-01-flow-source.json",
+      "model_sha256_raw": "0b06d6c193d4e308344d1f87b8df1cc2e5bdafef6b32a2000fac294f43e718c9",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/E26-01-flow-source.json",
+      "before": "history/before/E26-01-flow-source",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "0639eee372c899fc3b8d9238e1a928f57fead06df70c78b463f43dae5976d44a",
+          "bytes": 2258
+        },
+        "screen.md": {
+          "sha256_raw": "0136ef378280559817496e660b44f0daa016db25d0f05f566cdf4c61236263f1",
+          "bytes": 2637
+        }
+      },
+      "original_finding_ids": [
+        "E26@model"
+      ],
+      "original_asset_ids": [
+        "stream:V-B"
+      ],
+      "proposed_finding_ids": [
+        "E26@model"
+      ],
+      "proposed_asset_ids": [
+        "FT-A",
+        "stream:V-A",
+        "stream:V-B"
+      ],
+      "source_job": "A same-stream FAULT/foreign flow candidate not usable volume/composition/event basis; preserve bothvent scopes.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E26-02-rare-relief",
+      "rule": "E26",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/E26-02-rare-relief.json",
+      "model_sha256_raw": "a2cc1b49a7195ff6eb5ae5aa76188f54c259d5d49bcf0dd6e3da01aef7993d81",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/E26-02-rare-relief.json",
+      "before": "history/before/E26-02-rare-relief",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "bad3b5229c1371aac2e41e36773c2cbdf9aaf10c4c48559155e827b2178221f8",
+          "bytes": 2503
+        },
+        "screen.md": {
+          "sha256_raw": "033d74f781697ffef880e2dbdd6a1791abd8402fe5237016741a9c08b6e18256",
+          "bytes": 2732
+        }
+      },
+      "original_finding_ids": [
+        "E26@model"
+      ],
+      "original_asset_ids": [
+        "PSV-A",
+        "stream:V-A"
+      ],
+      "proposed_finding_ids": [
+        "E26@model"
+      ],
+      "proposed_asset_ids": [
+        "PSV-A",
+        "stream:V-A"
+      ],
+      "source_job": "Rare/liftzero not automatic close; appropriate safety/event/source review, no new online meter mandate.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E26-03-existing-records",
+      "rule": "E26",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/E26-03-existing-records.json",
+      "model_sha256_raw": "e7990d7dabbbba49bbbd243adf100a644f7cdc76e97702596d81fdc3bd4a66cf",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/E26-03-existing-records.json",
+      "before": "history/before/E26-03-existing-records",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "22fdc2237d7aa2d825c475e141a787626beac3896ef2f3e2f4442a00865e1a87",
+          "bytes": 590
+        },
+        "screen.md": {
+          "sha256_raw": "1164c72795e2bd49a18b96bc1791a806daee860d38b36e094601da0e2413e206",
+          "bytes": 1370
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [
+        "E26@model"
+      ],
+      "proposed_asset_ids": [
+        "FT-A",
+        "stream:V-A"
+      ],
+      "source_job": "Existing compatible records acknowledged not forcedmeter; composition/event/context still reviewed, no automatic recovery.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    },
+    {
+      "id": "E26-04-exhaust-boundary",
+      "rule": "E26",
+      "group": "05",
+      "model": "examples/opportunity-screen/source-policy/models/E26-04-exhaust-boundary.json",
+      "model_sha256_raw": "550eadcec7aaeff13c22c939767465dc04ab2961ae0ec83917fc6820d1950ebb",
+      "historical_source_model": "examples/opportunity-screen/control-vent-records/models/E26-04-exhaust-boundary.json",
+      "before": "history/before/E26-04-exhaust-boundary",
+      "before_raw": {
+        "questions.json": {
+          "sha256_raw": "eea8de64f52abe2cb184f863670261786007502328c25f4c8d083bc48b8cfdbf",
+          "bytes": 590
+        },
+        "screen.md": {
+          "sha256_raw": "bf46643c1b67577619f18c7b0f53967d63cfab6f5370e730153f2ce249edbad5",
+          "bytes": 1370
+        }
+      },
+      "original_finding_ids": [],
+      "original_asset_ids": [],
+      "proposed_finding_ids": [],
+      "proposed_asset_ids": [],
+      "source_job": "PriorA181 dryer/oven/fryer/exhaustair exclusion retained; quiet not environmental compliance.",
+      "optional_quiet_qualification": "Exact proposed trace is current-method behavior, not a universal primary-source requirement; source criteria may allow quiet or acknowledgment for suitable existing records. Quiet is not literal-display or engineering completion.",
+      "proposal_state": "Included in the adopted bounded collection policy; source-informed receiving is not engineering or plant acceptance."
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "title": "Fictional final-six source/collection controls",
+    "unknowns": [
+      "Actual operation, engineering/source authority and human acceptance unknown"
+    ],
+    "assumptions": [
+      "All supplied identities/values/relations fictional before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "ST-A",
+      "name": "STEAM TRAP",
+      "type": "steam_trap",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "steam",
+        "monitoring_basis": "recordforAonly"
+      },
+      "source": "Fictional source role",
+      "assigned_tag": true
+    },
+    {
+      "id": "ST-B",
+      "name": "STEAM TRAP",
+      "type": "steam_trap",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "steam",
+        "monitoring_basis": null
+      },
+      "source": "Fictional source role",
+      "assigned_tag": true
+    },
+    {
+      "id": "TM-X",
+      "name": "TRAP MONITOR",
+      "type": "trap_monitor",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R0",
+        "record_available": false,
+        "record_authority": "unverified",
+        "target_subject": "ST-Aonly",
+        "record_scope": "Aprovisional"
+      },
+      "source": "Fictional source role",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "controllers": [],
+  "interlocks": [],
+  "manual_valves": [],
+  "final_elements": [],
+  "relief_devices": [],
+  "unplaced": []
+}

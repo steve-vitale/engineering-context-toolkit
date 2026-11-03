@@ -62,6 +62,13 @@ data/te_pid_layout.json text eol=lf
 # Retain each recorded model's raw line endings and treat CRLF as an ending, not trailing whitespace.
 /examples/opportunity-screen/water-valve-records/models/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 /examples/opportunity-screen/water-valve-records/**/screen.md whitespace=-blank-at-eol
+# Retained fictional source-policy inputs and complete reports declare portable LF identities.
+/examples/opportunity-screen/source-policy/** text eol=lf
+/examples/opportunity-screen/source-policy/**/screen.md whitespace=-blank-at-eol
+# Generated question screens deliberately use Markdown's two-space line breaks.
+/examples/opportunity-screen/**/screen.md whitespace=-blank-at-eol
+# These historical public captures retain their released canonical LF bytes.
+/examples/internal-mcp/history/before-source-policy/** text eol=lf
 
 # Onboarding packet/source raw identities must be stable across operating systems.
 /examples/engineering-onboarding/** text eol=lf

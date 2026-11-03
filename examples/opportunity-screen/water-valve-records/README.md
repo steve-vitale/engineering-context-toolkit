@@ -76,3 +76,7 @@ from whether a useful investigation may be acknowledged without opening another 
 Historical reports retain their original relative model/catalog labels, including an earlier E13 folder name;
 those are captured-run labels, not current command paths. No source PDF is redistributed here. The controls
 do not establish human usefulness, current plant conditions, installed safeguards, savings or operating acceptance.
+
+The [current publication renewal](PUBLICATION-RENEWAL.json) records actual rebuilds after catalog and
+renderer maintenance, with complete prior/current output identities. It distinguishes unchanged subject
+evidence from new measurement-purpose questions or presentation changes; historical captures are retained.

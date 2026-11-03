@@ -3,7 +3,7 @@
   "questions": [
     {
       "question_id": "E8",
-      "question": "Is there a steam trap population large enough to justify a trap survey program?",
+      "question": "What do existing records establish about the represented trap candidates' steam service, inventory coverage and current inspection program?",
       "family": "energy",
       "estimate_forms": [
         "steam"

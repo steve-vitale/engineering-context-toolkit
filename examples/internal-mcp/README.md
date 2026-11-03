@@ -189,5 +189,7 @@ a question update can require a fresh sample even when the returned asset is unc
 
 The [previous sample](history/before-screening-wording/sample_asset.json) and its
 [provenance](history/before-screening-wording/sample_provenance.json) are retained byte for byte.
-The current stdio capture follows E1/E18/H2/C6 screening-wording revisions: only the graph fingerprint and
-local load time changed; the complete returned asset remains unchanged.
+The [capture before source-policy integration](history/before-source-policy/sample_asset.json) and its
+[provenance](history/before-source-policy/sample_provenance.json) retain the next historical revision. The current
+stdio capture follows source-policy integration: only the graph fingerprint and local load time changed; the
+complete returned asset remains unchanged.

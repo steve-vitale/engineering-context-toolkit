@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "title": "Fictional source-led thermal/recovery control",
+    "unknowns": [
+      "Physicalstate, sourceauthority and engineering suitability unproven"
+    ],
+    "assumptions": [
+      "All names/values fictional and authored before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "B-A",
+      "name": "Fictional gas boiler",
+      "type": "boiler",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "steamwaterflue",
+        "existing_recovery": "suppliedEC-Aassociationonly"
+      },
+      "source": "Fictional source-defined context",
+      "assigned_tag": true
+    },
+    {
+      "id": "B-B",
+      "name": "Fictional gas boiler",
+      "type": "boiler",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "steamwaterflue",
+        "existing_recovery": null
+      },
+      "source": "Fictional source-defined context",
+      "assigned_tag": true
+    },
+    {
+      "id": "EC-A",
+      "name": "ECONOMIZER foreign/sourceA",
+      "type": "heat_exchanger",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": false,
+        "record_authority": "unverified",
+        "target_boiler": "B-A sourceassertion, notverified",
+        "record_scope": "foreignsiteonly"
+      },
+      "source": "Fictional source-defined context",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "unplaced": [],
+  "instruments": [],
+  "controllers": [],
+  "final_elements": [],
+  "manual_valves": []
+}

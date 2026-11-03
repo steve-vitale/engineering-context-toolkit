@@ -1,0 +1,127 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/air-utility-records/models/E22-04-role-package.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E22"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E22@D-A",
+   "question_id": "E22",
+   "family": "energy",
+   "question": "Does the air compressor lack enough storage for intermittent large users?",
+   "about": "D-A",
+   "assets": [
+    {
+     "id": "D-A",
+     "tag": "D-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "D-A",
+     "tag": "D-A",
+     "text": "equipment D-A reads \"D-A AIR COMPRESSOR helper\"",
+     "field": "units[D-A]"
+    },
+    {
+     "role": "checked, none found",
+     "text": "no receiver or air storage anywhere in the model",
+     "field": "applies_when.without"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Demand profile",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: data-log compressor load and header pressure for a week"
+     ],
+     "how": "Find short high-demand events."
+    }
+   ],
+   "decision_rule": "Add storage when short peaks force an extra compressor on.",
+   "typical_benefit": {
+    "wording": "Storage \"may allow such a compressor to be turned off.\" No % stated.",
+    "source": [
+     "S10",
+     "S24"
+    ],
+    "arc": "2.422x (category only) (IAC/ITAC browse page: 8,589 recommendations, 1.2 yr average payback, 46.5% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S10: Compressed Air Tip #9, Compressed Air Storage Strategies (DOE/GO-102004-1965)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.",
+   "status": "asked"
+  },
+  {
+   "id": "E22@G-C",
+   "question_id": "E22",
+   "family": "energy",
+   "question": "Does the air compressor lack enough storage for intermittent large users?",
+   "about": "G-C",
+   "assets": [
+    {
+     "id": "G-C",
+     "tag": "G-C"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "G-C",
+     "tag": "G-C",
+     "text": "equipment G-C reads \"G-C INSTRUMENT AIR candidate\"",
+     "field": "units[G-C]"
+    },
+    {
+     "role": "checked, none found",
+     "text": "no receiver or air storage anywhere in the model",
+     "field": "applies_when.without"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Demand profile",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: data-log compressor load and header pressure for a week"
+     ],
+     "how": "Find short high-demand events."
+    }
+   ],
+   "decision_rule": "Add storage when short peaks force an extra compressor on.",
+   "typical_benefit": {
+    "wording": "Storage \"may allow such a compressor to be turned off.\" No % stated.",
+    "source": [
+     "S10",
+     "S24"
+    ],
+    "arc": "2.422x (category only) (IAC/ITAC browse page: 8,589 recommendations, 1.2 yr average payback, 46.5% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S10: Compressed Air Tip #9, Compressed Air Storage Strategies (DOE/GO-102004-1965)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

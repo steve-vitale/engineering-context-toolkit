@@ -1,0 +1,87 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/control-vent-records/models/C7-03-role-package.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "C7"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "controls": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "C7@model",
+   "question_id": "C7",
+   "family": "controls",
+   "question": "Do several air compressors run with no master sequencer?",
+   "about": "D-A, C-C",
+   "assets": [
+    {
+     "id": "D-A",
+     "tag": "D-A"
+    },
+    {
+     "id": "C-C",
+     "tag": "C-C"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "D-A",
+     "tag": "D-A",
+     "text": "equipment D-A reads \"D-A AIR COMPRESSOR helper\"",
+     "field": "units[D-A]"
+    },
+    {
+     "role": "trigger",
+     "id": "C-C",
+     "tag": "C-C",
+     "text": "equipment C-C reads \"C-C AIR COMPRESSOR\"",
+     "field": "units[C-C]"
+    },
+    {
+     "role": "checked, none found",
+     "text": "no sequencer or master controller anywhere in the model",
+     "field": "applies_when.without"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Control narrative and load/unload history",
+     "state": "not_on_drawing",
+     "where": [
+      "DCS/PLC configuration: compressor control settings",
+      "a walkdown: data-log each compressor's load state"
+     ],
+     "how": "Look for several compressors part-loaded at once."
+    }
+   ],
+   "decision_rule": "Add sequencing when several machines part-load together.",
+   "typical_benefit": {
+    "wording": "Control objective \"is also to shut off unneeded compressors or delay bringing on additional compressors until needed.\" No % stated.",
+    "source": [
+     "S11",
+     "S24"
+    ],
+    "arc": "2.423x (operations, category only) (IAC/ITAC browse page: 20,819 recommendations, 0.5 yr average payback, 67.4% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S11: Improving Compressed Air System Performance: A Sourcebook for Industry, 3rd ed. (DOE + Compressed Air Challenge)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

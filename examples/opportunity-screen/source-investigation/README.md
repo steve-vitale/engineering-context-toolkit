@@ -2,7 +2,8 @@
 
 This source-scoped catalog demonstrates an authored investigation that the default pattern catalog misses.
 It uses the existing MGPI development model and CSB report. It does not add a generic alarm rule or claim that
-two generated questions prove usefulness. The default catalog still produces zero findings for this model.
+two generated questions prove usefulness. The default catalog now asks C2 about measurement purpose, but
+does not generate these two source-specific alarm-action and transfer-endpoint investigations.
 
 Run offline from the repository root:
 

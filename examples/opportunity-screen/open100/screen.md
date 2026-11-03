@@ -116,18 +116,18 @@ These exact source selections affect screening eligibility. Draft/reviewed label
 
 **How to read this.** This is a screen, not an audit. Each finding is a question the drawing or model
 raises, with the evidence found, what to collect (and exactly where), and how the collected data settles it. Nothing
-here says the plant wastes energy, and no savings are computed: the "what the source says" lines are the cited
-sources' general figures for plants in general, quoted as written, never an estimate for this plant. Data requests
+here says the plant wastes energy, and no savings are computed: the "what the source says" lines include source
+quotations and contextual paraphrases, retaining their qualifications, never estimates for this plant. Data requests
 are in one of three states: **on drawing** (the value is on the drawing or model and is quoted as evidence),
 **blank on drawing** (the drawing prints a field for it but leaves it empty, so fill that field), and **not on
 drawing** (collect it from the place named). Systems listed under "Left out" were not screened.
 
 | Family | Findings |
 |---|---|
-| Energy | 16 |
+| Energy | 19 |
 | Heat grade (high-grade heat for low-grade duty) | 4 |
-| Metering | 7 |
-| Controls and automation | 1 |
+| Metering | 9 |
+| Controls and automation | 2 |
 | Emissions | 0 |
 | Safety questions to verify | 1 |
 
@@ -569,6 +569,78 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 
 **Limits:** Fires only where the drawing carries a motor rating field (filled or blank); a drawing without one gives no trigger. IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.
 
+### E14: What do existing records establish about this boiler/steam-generator candidate's flue/feedwater service and current heat-recovery coverage?
+
+**About:** RCS-SG-100  
+
+**Finding reference (JSON string):** `"E14@S0-TK002"`
+**Asset IDs (JSON array):** `["S0-TK002"]`
+
+**Evidence on the drawing / model**
+
+- equipment RCS-SG-100 (asset S0-TK002) reads "RCS-SG-100 STEAM GENERATOR" on sheet 0 (`units[S0-TK002]`)
+
+**Data to collect**
+
+- Existing named-boiler flue/feedwater service and recovery association [not on drawing]. Candidate scope: unit. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing exact-subject boiler/steam-water, heat-source/flue and feedwater duty, installed recovery/route/coverage and source/revision/availability records; retain foreign or uncertain economizer associations explicitly.; then a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit.. How: One economizer label anywhere cannot establish installed coverage, suitability or closure for every boiler. Establish relevant actual service and named coverage; known dry furnace/nonwater helper or electric/no-flue service is not this flue/feedwater task, and unknown service remains conditional. A source-labelled steam generator is reviewed for its actual function without inventing a fuel or drum. Acknowledge suitable existing records or nonapplicability before new observations.
+- Existing tuned operating, receiving-feedwater and cold-end feasibility basis [not on drawing]. Candidate scope: unit. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing actual stack temperature/load/hours after appropriate tuning/cleaning, fuel/composition, feedwater/receiving duty, dewpoint/corrosion/material and practical/economic constraints, with matched units/time and source coverage.; then a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit.. How: S4 describes reviewing stack operation after tuning to manufacturer specifications, suitable excess air and clean heat-transfer surfaces; design/high stack temperature alone is not a recovery decision. Review fuel, dewpoint/cold-end corrosion and useful receiving duty before considering a remaining opportunity. Its example temperatures, efficiency increments and savings/paybacks are contextual, not universal limits or this site's benefit. Existing suitable operation can be acknowledged without a compulsory thermometer, quote or retrofit.
+
+**How it is decided:** Review actual boiler/flue/feedwater function, existing named recovery coverage, tuned operating/load records and cold-end/receiving/economic constraints with the responsible engineer. No global economizer label, high temperature or fuel label alone establishes absence, adequacy or a reason to obtain equipment quotes. Suitable existing coverage or nonapplicability may be acknowledged; unknown basis remains a records question with no operating or hardware authorization.
+
+**What the source says (S4, S24):** Efficiency "can be increased by 1% for every 40°F reduction in flue gas temperature." An economizer "can often reduce fuel requirements by 5% to 10% and pay for itself in less than 2 years."
+IAC/ITAC recommendation code: 2.242x (by description) (IAC/ITAC browse page: 635 recommendations, 2.1 yr average payback, 24.3% implemented; average dollar figure omitted).
+
+**Limits:** IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: complete S4/Tip3 pp1–2 is steam-boiler/feedwater guidance, conditional on tuning/cleanliness, fuel/cold-end and system economics. The inherited general efficiency/payback examples are not universal temperature targets or transferred site savings. Unknown heat-source/service does not establish applicability.
+
+### E15: What do existing records establish about this boiler/steam-generator candidate's applicable condensing-recovery function, receiving duty and system constraints?
+
+**About:** RCS-SG-100  
+
+**Finding reference (JSON string):** `"E15@S0-TK002"`
+**Asset IDs (JSON array):** `["S0-TK002", "S2-OP003", "S4-OP004", "S7-OP001"]`
+
+**Evidence on the drawing / model**
+
+- equipment RCS-SG-100 (asset S0-TK002) reads "RCS-SG-100 STEAM GENERATOR" on sheet 0 (`units[S0-TK002]`)
+- Unverified receiving-water record; compatibility not inferred: offpage "WTS PID 200-4 MAKE-UP WATER" (S2-OP003) on sheet 2 at CND-TK-160 (by the extraction's attribution) (`offpage_connectors[S2-OP003].text`)
+- Unverified receiving-water record; compatibility not inferred: offpage "WTS PID 200-4 MAKE-UP WATER" (S4-OP004) on sheet 4 (`offpage_connectors[S4-OP004].text`)
+- Unverified receiving-water record; compatibility not inferred: offpage "WTS PID 160-1 MAKE-UP WATER" (S7-OP001) on sheet 7 (`offpage_connectors[S7-OP001].text`)
+
+**Data to collect**
+
+- Existing boiler/flue/fuel and installed-recovery operating basis [not on drawing]. Candidate scope: unit. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing named-subject actual boiler/flue/fuel and recovery arrangement, capacity/load/hours/fuel use, stack temperature/moisture and gas condition, source/revision/units/time/availability and unknowns.; then a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit.. How: Establish relevant actual flue/boiler service first; known nonflue/electric or nonwater helper scope is not applicable and unknown service remains conditional. Missing GAS text, an unrecorded sink or unknown fuel is not proof that no records investigation is needed. S7 covers natural-gas and light-oil examples with different acid/material/treatment qualifications, not automatic suitability for any fuel. Acknowledge suitable existing recovery before considering further work.
+- Existing matched receiving duty, water quality and whole-system feasibility basis [not on drawing]. Candidate scope: unit. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing actual receiving-water/process duty, temperature/flow/timing, exact association/source/quality and practical access; condensate acidity/treatment/materials, emissions/stack dispersion, deaerator/steam/turbine/blowdown-heat interactions and economic constraints.; then site records: The following receiving-water tag/series locations are candidate-only lookup aids from supplied records; boiler/system association, source identity, availability, compatible duty and water quality remain unverified. Do not treat a foreign or unknown candidate as this boiler's measured heat sink.; then a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit.. How: A nearby or anywhere MAKEUP/PROCESS/HOT WATER label is not proof of a cold, available, compatible or steady heat sink. Review source and receiving duty together with acid-condensate/water-quality treatment, design/material and whole-steam-system effects. S7 explicitly requires site-specific engineering and water-chemistry understanding; direct/indirect configurations and source examples are not interchangeable site prescriptions. Acknowledge suitable existing basis or unknowns without compulsory flue analysis, new measurements, equipment quotes or retrofit; no current site saving is calculated.
+
+**How it is decided:** Review actual service/fuel, installed recovery and matched receiving duty/quality/timing with acid-condensate, materials, dispersion, whole-system and economic constraints before a feasibility decision. Do not obtain quotes or prescribe a condensing economizer from a GAS label plus nearby water, nor silently close unknown/oil/missing-sink records. Suitable existing function or nonapplicability may be acknowledged. No chemical, hardware, operating or site-benefit authorization follows.
+
+**What the source says (S7):** Can "increase overall heat recovery and steam system efficiency by up to 10%." "Simple paybacks... are often less than 2 years."
+IAC/ITAC recommendation code: 2.242x (by description).
+
+**Limits:** Source review: complete S7/Tip26B pp1–3 includes natural-gas/light-oil table qualifications, acid water/treatment/materials, system/stack-dispersion interactions and explicit site-specific engineering. Inherited up-to efficiency and payback examples are not present-day quotes or this site's outcomes. Supplied field/association values are unverified candidates, not completion.
+
+### E17: What do existing records establish about this heating candidate's actual fired/flue service, recovery coverage and remaining compatible duty?
+
+**About:** RCS-SG-100  
+
+**Finding reference (JSON string):** `"E17@S0-TK002"`
+**Asset IDs (JSON array):** `["S0-TK002"]`
+
+**Evidence on the drawing / model**
+
+- equipment RCS-SG-100 (asset S0-TK002) reads "RCS-SG-100 STEAM GENERATOR" on sheet 0 (`units[S0-TK002]`)
+
+**Data to collect**
+
+- Existing actual heating/flue service and recovery/loss-reduction coverage [not on drawing]. Candidate scope: unit. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing named-subject service, heat source and flue/recovery routing, installed function/coverage, prior loss-reduction and source/revision/availability records.; then a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit.. How: A heating name is not proof of combustion or hot gas vented straight to a stack. One recovery label anywhere does not settle another subject or demonstrate complete useful coverage. Known noncombustion/electric and typed recovery helpers are not fired subjects; unknown service remains conditional without inventing fuel or flue flow. Review existing suitable function and avoidable losses first, acknowledging suitable coverage or nonapplicability before further work.
+- Existing source/receiving duty, schedule and feasibility basis [not on drawing]. Candidate scope: unit. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing actual exhaust temperature/flow/composition/cleanliness, load and operating schedule, receiving air/water/steam/load requirements, compatibility/timing and practical/material/economic constraints, with exact units/time/source coverage.; then a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit.. How: S18 distinguishes combustion-air, steam/water and load-preheating methods. A continuous-load-preheating preference does not exclude every batch recovery option: waste-heat steam is available only while its fired source operates, and useful receiving duty must match. Hot/clean gas, proximity, a source example or an unconverted value alone does not authorize recovery equipment, field tests or site savings. Suitable existing records can be acknowledged.
+
+**How it is decided:** Review actual heating/flue service, existing recovery and prior loss-reduction coverage, source/receiving duty and operating schedules with the responsible engineer. Do not infer installed absence or wasted heat from names or global labels, and do not automatically close batch service or prescribe a retrofit from a continuous/clean pattern. Suitable existing basis or nonapplicability may be acknowledged; unresolved source, function, time or units remains a records question.
+
+**What the source says (S18, S24):** "Energy consumption can typically be reduced 5% to 30%." Load preheating is "best suited for continuous rather than batch furnaces."
+IAC/ITAC recommendation code: 2.241x (IAC/ITAC browse page: 1,936 recommendations, 2.0 yr average payback, 20.0% implemented; average dollar figure omitted).
+
+**Limits:** IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: complete S18 process-heating Tip8 pp1-2 distinguishes recovery methods, prior loss reduction and operating constraints; S4 Tip3 pp1-2 additionally bounds boiler-flue/feedwater function. Source 5%-30% is contextual historical guidance, not this subject's measured savings. Named records and capabilities are unverified candidates.
+
 ## Heat grade (high-grade heat for low-grade duty)
 
 ### H1: Is high-grade steam let down, bypassed or desuperheated for a duty a lower grade could serve?
@@ -680,7 +752,7 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 
 ## Metering
 
-### C1: Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?
+### C1: What do existing records establish about this utility user's measurement coverage, usable data and intended decision?
 
 **About:** "EXTRACTION STEAM ES PID 180-1" (S0-OP001)  
 
@@ -690,20 +762,19 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 **Evidence on the drawing / model**
 
 - offpage "EXTRACTION STEAM ES PID 180-1" (S0-OP001) on sheet 0 at MSS-XSS-140 (by the extraction's attribution) (`offpage_connectors[S0-OP001].text`)
-- Checked, none found: no flow measurement on the same stream, none on the same user for the same utility, and (on an extracted drawing) no flow element within three drawn links on the same sheet (`applies_when.without`)
 
 **Data to collect**
 
-- Utility flow to this user [not on drawing]. Where: a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading; then utility bills or the site energy report: site-level meter readings to apportion. How: Measure flow over a representative period and compare with production.
-- Who would use the reading [not on drawing]. Where: site records: energy or production reporting. How: Name the report the meter would feed.
+- Utility flow to this user [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.
+- Who would use the reading [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.
 
-**How it is decided:** Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.
+**How it is decided:** Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.
 
 **What the source says (S22, S19):** "You can't manage what do don't measure" [sic]. Buildings: "efficiency improvements of 10-20%." The guide warns "only success stories are published" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): "Typical savings 4-17%, average 8%" (UK experience).
 
-**Limits:** On an extracted drawing the check is 'no flow element within three drawn links on this sheet'; the meter may be on the sheet the line comes from.
+**Limits:** Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.
 
-### C1: Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?
+### C1: What do existing records establish about this utility user's measurement coverage, usable data and intended decision?
 
 **About:** "WTS PID 200-4 MAKE-UP WATER" (S2-OP003)  
 
@@ -713,20 +784,19 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 **Evidence on the drawing / model**
 
 - offpage "WTS PID 200-4 MAKE-UP WATER" (S2-OP003) on sheet 2 at CND-TK-160 (by the extraction's attribution) (`offpage_connectors[S2-OP003].text`)
-- Checked, none found: no flow measurement on the same stream, none on the same user for the same utility, and (on an extracted drawing) no flow element within three drawn links on the same sheet (`applies_when.without`)
 
 **Data to collect**
 
-- Utility flow to this user [not on drawing]. Where: a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading; then utility bills or the site energy report: site-level meter readings to apportion. How: Measure flow over a representative period and compare with production.
-- Who would use the reading [not on drawing]. Where: site records: energy or production reporting. How: Name the report the meter would feed.
+- Utility flow to this user [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.
+- Who would use the reading [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.
 
-**How it is decided:** Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.
+**How it is decided:** Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.
 
 **What the source says (S22, S19):** "You can't manage what do don't measure" [sic]. Buildings: "efficiency improvements of 10-20%." The guide warns "only success stories are published" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): "Typical savings 4-17%, average 8%" (UK experience).
 
-**Limits:** On an extracted drawing the check is 'no flow element within three drawn links on this sheet'; the meter may be on the sheet the line comes from.
+**Limits:** Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.
 
-### C1: Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?
+### C1: What do existing records establish about this utility user's measurement coverage, usable data and intended decision?
 
 **About:** "WTS PID 200-4 MAKE-UP WATER" (S4-OP004)  
 
@@ -736,20 +806,19 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 **Evidence on the drawing / model**
 
 - offpage "WTS PID 200-4 MAKE-UP WATER" (S4-OP004) on sheet 4 (`offpage_connectors[S4-OP004].text`)
-- Checked, none found: no flow measurement on the same stream, none on the same user for the same utility, and (on an extracted drawing) no flow element within three drawn links on the same sheet (`applies_when.without`)
 
 **Data to collect**
 
-- Utility flow to this user [not on drawing]. Where: a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading; then utility bills or the site energy report: site-level meter readings to apportion. How: Measure flow over a representative period and compare with production.
-- Who would use the reading [not on drawing]. Where: site records: energy or production reporting. How: Name the report the meter would feed.
+- Utility flow to this user [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.
+- Who would use the reading [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.
 
-**How it is decided:** Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.
+**How it is decided:** Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.
 
 **What the source says (S22, S19):** "You can't manage what do don't measure" [sic]. Buildings: "efficiency improvements of 10-20%." The guide warns "only success stories are published" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): "Typical savings 4-17%, average 8%" (UK experience).
 
-**Limits:** On an extracted drawing the check is 'no flow element within three drawn links on this sheet'; the meter may be on the sheet the line comes from.
+**Limits:** Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.
 
-### C1: Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?
+### C1: What do existing records establish about this utility user's measurement coverage, usable data and intended decision?
 
 **About:** "MSS PID 140-1 PEGGING STEAM" (S4-OP005)  
 
@@ -759,20 +828,19 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 **Evidence on the drawing / model**
 
 - offpage "MSS PID 140-1 PEGGING STEAM" (S4-OP005) on sheet 4 at ESS-HTR-180 (by the extraction's attribution) (`offpage_connectors[S4-OP005].text`)
-- Checked, none found: no flow measurement on the same stream, none on the same user for the same utility, and (on an extracted drawing) no flow element within three drawn links on the same sheet (`applies_when.without`)
 
 **Data to collect**
 
-- Utility flow to this user [not on drawing]. Where: a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading; then utility bills or the site energy report: site-level meter readings to apportion. How: Measure flow over a representative period and compare with production.
-- Who would use the reading [not on drawing]. Where: site records: energy or production reporting. How: Name the report the meter would feed.
+- Utility flow to this user [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.
+- Who would use the reading [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.
 
-**How it is decided:** Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.
+**How it is decided:** Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.
 
 **What the source says (S22, S19):** "You can't manage what do don't measure" [sic]. Buildings: "efficiency improvements of 10-20%." The guide warns "only success stories are published" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): "Typical savings 4-17%, average 8%" (UK experience).
 
-**Limits:** On an extracted drawing the check is 'no flow element within three drawn links on this sheet'; the meter may be on the sheet the line comes from.
+**Limits:** Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.
 
-### C1: Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?
+### C1: What do existing records establish about this utility user's measurement coverage, usable data and intended decision?
 
 **About:** "TBS PID 240-1 (E-1) LP EXTRACTION STEAM" (S4-OP006)  
 
@@ -782,20 +850,19 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 **Evidence on the drawing / model**
 
 - offpage "TBS PID 240-1 (E-1) LP EXTRACTION STEAM" (S4-OP006) on sheet 4 at CND-HTR-166 (by the extraction's attribution) (`offpage_connectors[S4-OP006].text`)
-- Checked, none found: no flow measurement on the same stream, none on the same user for the same utility, and (on an extracted drawing) no flow element within three drawn links on the same sheet (`applies_when.without`)
 
 **Data to collect**
 
-- Utility flow to this user [not on drawing]. Where: a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading; then utility bills or the site energy report: site-level meter readings to apportion. How: Measure flow over a representative period and compare with production.
-- Who would use the reading [not on drawing]. Where: site records: energy or production reporting. How: Name the report the meter would feed.
+- Utility flow to this user [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.
+- Who would use the reading [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.
 
-**How it is decided:** Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.
+**How it is decided:** Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.
 
 **What the source says (S22, S19):** "You can't manage what do don't measure" [sic]. Buildings: "efficiency improvements of 10-20%." The guide warns "only success stories are published" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): "Typical savings 4-17%, average 8%" (UK experience).
 
-**Limits:** On an extracted drawing the check is 'no flow element within three drawn links on this sheet'; the meter may be on the sheet the line comes from.
+**Limits:** Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.
 
-### C1: Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?
+### C1: What do existing records establish about this utility user's measurement coverage, usable data and intended decision?
 
 **About:** "TBS PID 240-1 (D-1) HP EXTRACTION STEAM" (S4-OP008)  
 
@@ -805,20 +872,19 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 **Evidence on the drawing / model**
 
 - offpage "TBS PID 240-1 (D-1) HP EXTRACTION STEAM" (S4-OP008) on sheet 4 (`offpage_connectors[S4-OP008].text`)
-- Checked, none found: no flow measurement on the same stream, none on the same user for the same utility, and (on an extracted drawing) no flow element within three drawn links on the same sheet (`applies_when.without`)
 
 **Data to collect**
 
-- Utility flow to this user [not on drawing]. Where: a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading; then utility bills or the site energy report: site-level meter readings to apportion. How: Measure flow over a representative period and compare with production.
-- Who would use the reading [not on drawing]. Where: site records: energy or production reporting. How: Name the report the meter would feed.
+- Utility flow to this user [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.
+- Who would use the reading [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.
 
-**How it is decided:** Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.
+**How it is decided:** Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.
 
 **What the source says (S22, S19):** "You can't manage what do don't measure" [sic]. Buildings: "efficiency improvements of 10-20%." The guide warns "only success stories are published" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): "Typical savings 4-17%, average 8%" (UK experience).
 
-**Limits:** On an extracted drawing the check is 'no flow element within three drawn links on this sheet'; the meter may be on the sheet the line comes from.
+**Limits:** Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.
 
-### C1: Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?
+### C1: What do existing records establish about this utility user's measurement coverage, usable data and intended decision?
 
 **About:** "WTS PID 160-1 MAKE-UP WATER" (S7-OP001)  
 
@@ -828,20 +894,192 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 **Evidence on the drawing / model**
 
 - offpage "WTS PID 160-1 MAKE-UP WATER" (S7-OP001) on sheet 7 (`offpage_connectors[S7-OP001].text`)
-- Checked, none found: no flow measurement on the same stream, none on the same user for the same utility, and (on an extracted drawing) no flow element within three drawn links on the same sheet (`applies_when.without`)
 
 **Data to collect**
 
-- Utility flow to this user [not on drawing]. Where: a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading; then utility bills or the site energy report: site-level meter readings to apportion. How: Measure flow over a representative period and compare with production.
-- Who would use the reading [not on drawing]. Where: site records: energy or production reporting. How: Name the report the meter would feed.
+- Utility flow to this user [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.
+- Who would use the reading [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.
 
-**How it is decided:** Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.
+**How it is decided:** Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.
 
 **What the source says (S22, S19):** "You can't manage what do don't measure" [sic]. Buildings: "efficiency improvements of 10-20%." The guide warns "only success stories are published" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): "Typical savings 4-17%, average 8%" (UK experience).
 
-**Limits:** On an extracted drawing the check is 'no flow element within three drawn links on this sheet'; the meter may be on the sheet the line comes from.
+**Limits:** Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.
+
+### C1: What do existing records establish about this utility user's measurement coverage, usable data and intended decision?
+
+**About:** "ACW PID 210-2 (F-1) AUX COOLING WATER SYSTEM" (S7-OP002)  
+
+**Finding reference (JSON string):** `"C1@S7-OP002"`
+**Asset IDs (JSON array):** `["S7-OP002", "S7-IN021", "S7-IN022"]`
+
+**Evidence on the drawing / model**
+
+- offpage "ACW PID 210-2 (F-1) AUX COOLING WATER SYSTEM" (S7-OP002) on sheet 7 at LUBE-OIL-COOLER (by the extraction's attribution) (`offpage_connectors[S7-OP002].text`)
+- Unverified flow/quantity candidate; utility/user coverage and usable data not established: instrument FO-XXX (asset S7-IN021) [placeholder tag on the drawing] on sheet 7 at FWS-PU-170B (by the extraction's attribution) (`instruments[S7-IN021]`)
+- Unverified flow/quantity candidate; utility/user coverage and usable data not established: instrument FT-XXX (asset S7-IN022) [placeholder tag on the drawing] on sheet 7 at FWS-PU-170B (by the extraction's attribution) (`instruments[S7-IN022]`)
+
+**Data to collect**
+
+- Utility flow to this user [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: historian or DCS trend for FO-XXX, FT-XXX (no historian tag is mapped in this model for these); then site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.
+- Who would use the reading [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.
+
+**How it is decided:** Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.
+
+**What the source says (S22, S19):** "You can't manage what do don't measure" [sic]. Buildings: "efficiency improvements of 10-20%." The guide warns "only success stories are published" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): "Typical savings 4-17%, average 8%" (UK experience).
+
+**Limits:** Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.
+
+### C1: What do existing records establish about this utility user's measurement coverage, usable data and intended decision?
+
+**About:** "ACW PID 210-2 AUX COOLING WATER SYSTEM" (S7-OP007)  
+
+**Finding reference (JSON string):** `"C1@S7-OP007"`
+**Asset IDs (JSON array):** `["S7-OP007", "S7-IN021", "S7-IN022"]`
+
+**Evidence on the drawing / model**
+
+- offpage "ACW PID 210-2 AUX COOLING WATER SYSTEM" (S7-OP007) on sheet 7 at FWS-PU-170B (by the extraction's attribution) (`offpage_connectors[S7-OP007].text`)
+- Unverified flow/quantity candidate; utility/user coverage and usable data not established: instrument FO-XXX (asset S7-IN021) [placeholder tag on the drawing] on sheet 7 at FWS-PU-170B (by the extraction's attribution) (`instruments[S7-IN021]`)
+- Unverified flow/quantity candidate; utility/user coverage and usable data not established: instrument FT-XXX (asset S7-IN022) [placeholder tag on the drawing] on sheet 7 at FWS-PU-170B (by the extraction's attribution) (`instruments[S7-IN022]`)
+
+**Data to collect**
+
+- Utility flow to this user [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: historian or DCS trend for FO-XXX, FT-XXX (no historian tag is mapped in this model for these); then site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.
+- Who would use the reading [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.; then a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement.. How: S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.
+
+**How it is decided:** Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.
+
+**What the source says (S22, S19):** "You can't manage what do don't measure" [sic]. Buildings: "efficiency improvements of 10-20%." The guide warns "only success stories are published" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): "Typical savings 4-17%, average 8%" (UK experience).
+
+**Limits:** Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.
 
 ## Controls and automation
+
+### C2: What do existing records establish about these measurements' purpose, readers and remaining source/logic coverage?
+
+**About:** FT-1401, FT-1401, TE-14084A, TE-14084B, PT-14085, PT-14086 and 98 more  
+
+**Finding reference (JSON string):** `"C2@model"`
+**Asset IDs (JSON array):** `["S0-IN002", "S0-IN003", "S0-IN004", "S0-IN005", "S0-IN007", "S0-IN008", "S0-IN009", "S0-IN010", "S0-IN011", "S0-IN012", "S0-IN022", "S0-IN023", "S0-IN025", "S0-IN026", "S0-IN029", "S0-IN030", "S0-IN032", "S0-IN033", "S1-IN002", "S1-IN003", "S1-IN008", "S1-IN009", "S2-IN001", "S2-IN002", "S2-IN005", "S2-IN007", "S2-IN008", "S2-IN009", "S2-IN010", "S2-IN014", "S2-IN015", "S2-IN016", "S2-IN017", "S2-IN018", "S2-IN019", "S2-IN020", "S2-IN021", "S2-IN023", "S3-IN001", "S3-IN002", "S3-IN003", "S3-IN004", "S3-IN005", "S3-IN007", "S3-IN008", "S3-IN009", "S3-IN010", "S3-IN011", "S3-IN012", "S3-IN013", "S3-IN014", "S3-IN015", "S3-IN018", "S3-IN020", "S3-IN021", "S3-IN022", "S3-IN024", "S3-IN025", "S3-IN027", "S3-IN028", "S3-IN031", "S4-IN002", "S4-IN003", "S4-IN004", "S4-IN005", "S4-IN008", "S4-IN009", "S4-IN018", "S4-IN019", "S4-IN020", "S4-IN021", "S4-IN022", "S4-IN023", "S4-IN024", "S4-IN025", "S4-IN026", "S4-IN027", "S4-IN028", "S4-IN029", "S4-IN030", "S4-IN031", "S4-IN032", "S7-IN002", "S7-IN003", "S7-IN004", "S7-IN005", "S7-IN006", "S7-IN007", "S7-IN008", "S7-IN011", "S7-IN012", "S7-IN013", "S7-IN014", "S7-IN015", "S7-IN016", "S7-IN017", "S7-IN018", "S7-IN019", "S7-IN020", "S7-IN021", "S7-IN022", "S7-IN023", "S7-IN025", "S7-IN026"]`
+
+**Evidence on the drawing / model**
+
+- instrument FT-1401 (asset S0-IN002) on sheet 0 at MSS-XSS-140 (by the extraction's attribution) (`instruments[S0-IN002]`)
+- instrument FT-1401 (asset S0-IN003) on sheet 0 at MSS-XSS-140 (by the extraction's attribution) (`instruments[S0-IN003]`)
+- instrument TE-14084A (asset S0-IN004) on sheet 0 at MSS-XSS-140 (by the extraction's attribution) (`instruments[S0-IN004]`)
+- instrument TE-14084B (asset S0-IN005) on sheet 0 at MSS-XSS-140 (by the extraction's attribution) (`instruments[S0-IN005]`)
+- instrument PT-14085 (asset S0-IN007) on sheet 0 at MSS-XSS-140 (by the extraction's attribution) (`instruments[S0-IN007]`)
+- instrument PT-14086 (asset S0-IN008) on sheet 0 at MSS-XSS-140 (by the extraction's attribution) (`instruments[S0-IN008]`)
+- instrument PT-14087 (asset S0-IN009) on sheet 0 at MSS-XSS-140 (by the extraction's attribution) (`instruments[S0-IN009]`)
+- instrument PT-14088 (asset S0-IN010) on sheet 0 at MSS-XSS-140 (by the extraction's attribution) (`instruments[S0-IN010]`)
+- instrument TE-14089A (asset S0-IN011) on sheet 0 at MSS-XSS-140 (by the extraction's attribution) (`instruments[S0-IN011]`)
+- instrument TE-14089B (asset S0-IN012) on sheet 0 at MSS-XSS-140 (by the extraction's attribution) (`instruments[S0-IN012]`)
+- instrument TE-14090A (asset S0-IN022) on sheet 0 at MSS-XSS-140 (by the extraction's attribution) (`instruments[S0-IN022]`)
+- instrument TE-14090B (asset S0-IN023) on sheet 0 at MSS-XSS-140 (by the extraction's attribution) (`instruments[S0-IN023]`)
+- instrument TE-14091A (asset S0-IN025) on sheet 0 at MSS-XSS-140 (by the extraction's attribution) (`instruments[S0-IN025]`)
+- instrument TE-14091B (asset S0-IN026) on sheet 0 at MSS-XSS-140 (by the extraction's attribution) (`instruments[S0-IN026]`)
+- instrument TE-14092A (asset S0-IN029) on sheet 0 at MSS-XSS-140 (by the extraction's attribution) (`instruments[S0-IN029]`)
+- instrument TE-14092B (asset S0-IN030) on sheet 0 at MSS-XSS-140 (by the extraction's attribution) (`instruments[S0-IN030]`)
+- instrument TE-14093B (asset S0-IN032) on sheet 0 at MSS-XSS-140 (by the extraction's attribution) (`instruments[S0-IN032]`)
+- instrument TE-14093A (asset S0-IN033) on sheet 0 at MSS-XSS-140 (by the extraction's attribution) (`instruments[S0-IN033]`)
+- instrument LIT-25094A (asset S1-IN002) on sheet 1 at ACC-AC-150 (by the extraction's attribution) (`instruments[S1-IN002]`)
+- instrument LIT-25094B (asset S1-IN003) on sheet 1 at ACC-AC-150 (by the extraction's attribution) (`instruments[S1-IN003]`)
+- instrument LIT-25094A (asset S1-IN008) on sheet 1 at TURBINE-EXHAUST-DUCT (by the extraction's attribution) (`instruments[S1-IN008]`)
+- instrument LIT-25094B (asset S1-IN009) on sheet 1 at TURBINE-EXHAUST-DUCT (by the extraction's attribution) (`instruments[S1-IN009]`)
+- instrument TE-16096B (asset S2-IN001) on sheet 2 at CND-TK-160 (by the extraction's attribution) (`instruments[S2-IN001]`)
+- instrument TE-16096A (asset S2-IN002) on sheet 2 at CND-TK-160 (by the extraction's attribution) (`instruments[S2-IN002]`)
+- instrument PIT-16095 (asset S2-IN005) on sheet 2 at CND-TK-160 (by the extraction's attribution) (`instruments[S2-IN005]`)
+- instrument LIT-16097A (asset S2-IN007) on sheet 2 at CND-TK-160 (by the extraction's attribution) (`instruments[S2-IN007]`)
+- instrument LIT-16097B (asset S2-IN008) on sheet 2 at CND-TK-160 (by the extraction's attribution) (`instruments[S2-IN008]`)
+- instrument LIT-16098A (asset S2-IN009) on sheet 2 at CND-TK-160 (by the extraction's attribution) (`instruments[S2-IN009]`)
+- instrument LIT-16098B (asset S2-IN010) on sheet 2 at CND-TK-160 (by the extraction's attribution) (`instruments[S2-IN010]`)
+- instrument LIT-161103 (asset S2-IN014) on sheet 2 (`instruments[S2-IN014]`)
+- instrument FIT-16299 (asset S2-IN015) on sheet 2 at CND-PU-162 (by the extraction's attribution) (`instruments[S2-IN015]`)
+- instrument TE-162109B (asset S2-IN016) on sheet 2 at CND-PU-162 (by the extraction's attribution) (`instruments[S2-IN016]`)
+- instrument TE-162109A (asset S2-IN017) on sheet 2 at CND-PU-162 (by the extraction's attribution) (`instruments[S2-IN017]`)
+- instrument FO-1621 (asset S2-IN018) on sheet 2 at CND-PU-162 (by the extraction's attribution) (`instruments[S2-IN018]`)
+- instrument FT-XXX (asset S2-IN019) [placeholder tag on the drawing] on sheet 2 at CND-PU-162 (by the extraction's attribution) (`instruments[S2-IN019]`)
+- instrument FIT-163101 (asset S2-IN020) on sheet 2 at CND-PU-163 (by the extraction's attribution) (`instruments[S2-IN020]`)
+- instrument FIT-164102 (asset S2-IN021) on sheet 2 at CND-PU-164 (by the extraction's attribution) (`instruments[S2-IN021]`)
+- instrument LIT-161103 (asset S2-IN023) on sheet 2 at CND-HTR-161 (by the extraction's attribution) (`instruments[S2-IN023]`)
+- instrument PIT-160104 (asset S3-IN001) on sheet 3 at CND-HTR-160 (by the extraction's attribution) (`instruments[S3-IN001]`)
+- instrument TE-160105B (asset S3-IN002) on sheet 3 at CND-HTR-160 (by the extraction's attribution) (`instruments[S3-IN002]`)
+- instrument TE-160105A (asset S3-IN003) on sheet 3 at CND-HTR-160 (by the extraction's attribution) (`instruments[S3-IN003]`)
+- instrument TE-160106A (asset S3-IN004) on sheet 3 at CND-HTR-160 (by the extraction's attribution) (`instruments[S3-IN004]`)
+- instrument TE-160106B (asset S3-IN005) on sheet 3 at FWS-PU-170A (by the extraction's attribution) (`instruments[S3-IN005]`)
+- instrument PIT-165107 (asset S3-IN007) on sheet 3 at CND-TK-165 (by the extraction's attribution) (`instruments[S3-IN007]`)
+- instrument LIT-165108A (asset S3-IN008) on sheet 3 (`instruments[S3-IN008]`)
+- instrument LIT-165108B (asset S3-IN009) on sheet 3 at FWS-PU-170A (by the extraction's attribution) (`instruments[S3-IN009]`)
+- instrument LIT-165109A (asset S3-IN010) on sheet 3 (`instruments[S3-IN010]`)
+- instrument LIT-165109B (asset S3-IN011) on sheet 3 (`instruments[S3-IN011]`)
+- instrument TE-165110A (asset S3-IN012) on sheet 3 at CND-TK-165 (by the extraction's attribution) (`instruments[S3-IN012]`)
+- instrument TE-165110B (asset S3-IN013) on sheet 3 at CND-TK-165 (by the extraction's attribution) (`instruments[S3-IN013]`)
+- instrument PIT-165112 (asset S3-IN014) on sheet 3 at FWS-PU-170A (by the extraction's attribution) (`instruments[S3-IN014]`)
+- instrument PIT-170115 (asset S3-IN015) on sheet 3 at FWS-PU-170A (by the extraction's attribution) (`instruments[S3-IN015]`)
+- instrument PIT-170116 (asset S3-IN018) on sheet 3 at FWS-HTR-170 (by the extraction's attribution) (`instruments[S3-IN018]`)
+- instrument PIT-170118 (asset S3-IN020) on sheet 3 at FWS-HTR-170 (by the extraction's attribution) (`instruments[S3-IN020]`)
+- instrument TE-170117A (asset S3-IN021) on sheet 3 at FWS-HTR-170 (by the extraction's attribution) (`instruments[S3-IN021]`)
+- instrument TE-170117B (asset S3-IN022) on sheet 3 at FWS-HTR-170 (by the extraction's attribution) (`instruments[S3-IN022]`)
+- instrument PIT-165111 (asset S3-IN024) on sheet 3 at FWS-PU-170B (by the extraction's attribution) (`instruments[S3-IN024]`)
+- instrument PIT-170113 (asset S3-IN025) on sheet 3 at FWS-PU-170B (by the extraction's attribution) (`instruments[S3-IN025]`)
+- instrument TE-170135A (asset S3-IN027) on sheet 3 at FWS-PU-170A (by the extraction's attribution) (`instruments[S3-IN027]`)
+- instrument TE-170135B (asset S3-IN028) on sheet 3 at FWS-PU-170A (by the extraction's attribution) (`instruments[S3-IN028]`)
+- instrument PIT-170114 (asset S3-IN031) on sheet 3 at FWS-HTR-170 (by the extraction's attribution) (`instruments[S3-IN031]`)
+- instrument TE-180137A (asset S4-IN002) on sheet 4 at ESS-HTR-180 (by the extraction's attribution) (`instruments[S4-IN002]`)
+- instrument TE-180137B (asset S4-IN003) on sheet 4 at ESS-HTR-180 (by the extraction's attribution) (`instruments[S4-IN003]`)
+- instrument PIT-180138A (asset S4-IN004) on sheet 4 at ESS-HTR-180 (by the extraction's attribution) (`instruments[S4-IN004]`)
+- instrument PIT-180138B (asset S4-IN005) on sheet 4 at ESS-HTR-180 (by the extraction's attribution) (`instruments[S4-IN005]`)
+- instrument FO-1661 (asset S4-IN008) on sheet 4 at CND-HTR-166 (by the extraction's attribution) (`instruments[S4-IN008]`)
+- instrument FO-1662 (asset S4-IN009) on sheet 4 at CND-HTR-166 (by the extraction's attribution) (`instruments[S4-IN009]`)
+- instrument TE-250136B (asset S4-IN018) on sheet 4 at CND-HTR-166 (by the extraction's attribution) (`instruments[S4-IN018]`)
+- instrument TE-250136A (asset S4-IN019) on sheet 4 at CND-HTR-166 (by the extraction's attribution) (`instruments[S4-IN019]`)
+- instrument PT-250135A (asset S4-IN020) on sheet 4 at CND-HTR-166 (by the extraction's attribution) (`instruments[S4-IN020]`)
+- instrument PT-250135B (asset S4-IN021) on sheet 4 at CND-HTR-166 (by the extraction's attribution) (`instruments[S4-IN021]`)
+- instrument PIT-250142 (asset S4-IN022) on sheet 4 (`instruments[S4-IN022]`)
+- instrument PI-250141 (asset S4-IN023) on sheet 4 (`instruments[S4-IN023]`)
+- instrument PT-250139A (asset S4-IN024) on sheet 4 (`instruments[S4-IN024]`)
+- instrument PT-250139B (asset S4-IN025) on sheet 4 (`instruments[S4-IN025]`)
+- instrument TE-250140A (asset S4-IN026) on sheet 4 (`instruments[S4-IN026]`)
+- instrument TE-250140B (asset S4-IN027) on sheet 4 (`instruments[S4-IN027]`)
+- instrument TE-161143B (asset S4-IN028) on sheet 4 (`instruments[S4-IN028]`)
+- instrument TE-161143A (asset S4-IN029) on sheet 4 at FWS-HTR-161 (by the extraction's attribution) (`instruments[S4-IN029]`)
+- instrument LIT-161144A (asset S4-IN030) on sheet 4 at CND-HTR-166 (by the extraction's attribution) (`instruments[S4-IN030]`)
+- instrument LIT-161144B (asset S4-IN031) on sheet 4 at FWS-HTR-161 (by the extraction's attribution) (`instruments[S4-IN031]`)
+- instrument LVC-16115 (asset S4-IN032) on sheet 4 at CND-HTR-166 (by the extraction's attribution) (`instruments[S4-IN032]`)
+- instrument LG-212204 (asset S7-IN002) on sheet 7 at ACW-TK-212 (by the extraction's attribution) (`instruments[S7-IN002]`)
+- instrument LIT-212205 (asset S7-IN003) on sheet 7 at ACW-TK-212 (by the extraction's attribution) (`instruments[S7-IN003]`)
+- instrument LIT-212206 (asset S7-IN004) on sheet 7 at ACW-TK-212 (by the extraction's attribution) (`instruments[S7-IN004]`)
+- instrument TE-210207A (asset S7-IN005) on sheet 7 at ACW-AXC-210 (by the extraction's attribution) (`instruments[S7-IN005]`)
+- instrument TE-210207B (asset S7-IN006) on sheet 7 at ACW-AXC-210 (by the extraction's attribution) (`instruments[S7-IN006]`)
+- instrument TE-170215A (asset S7-IN007) on sheet 7 at ACW-AXC-210 (by the extraction's attribution) (`instruments[S7-IN007]`)
+- instrument TE-170215B (asset S7-IN008) on sheet 7 at LUBE-OIL-COOLER (by the extraction's attribution) (`instruments[S7-IN008]`)
+- instrument TE-170213B (asset S7-IN011) on sheet 7 at LUBE-OIL-COOLER (by the extraction's attribution) (`instruments[S7-IN011]`)
+- instrument TE-170213A (asset S7-IN012) on sheet 7 at LUBE-OIL-COOLER (by the extraction's attribution) (`instruments[S7-IN012]`)
+- instrument PIT-210208 (asset S7-IN013) on sheet 7 at ACW-PU-211A (by the extraction's attribution) (`instruments[S7-IN013]`)
+- instrument PIT-210208 (asset S7-IN014) on sheet 7 at ACW-PU-211B (by the extraction's attribution) (`instruments[S7-IN014]`)
+- instrument PIT-210209 (asset S7-IN015) on sheet 7 at ACW-PU-211C (by the extraction's attribution) (`instruments[S7-IN015]`)
+- instrument PIT-211210 (asset S7-IN016) on sheet 7 at ACW-PU-211A (by the extraction's attribution) (`instruments[S7-IN016]`)
+- instrument PIT-211210 (asset S7-IN017) on sheet 7 at ACW-PU-211B (by the extraction's attribution) (`instruments[S7-IN017]`)
+- instrument PIT-211211 (asset S7-IN018) on sheet 7 at ACW-PU-211C (by the extraction's attribution) (`instruments[S7-IN018]`)
+- instrument TE-211212A (asset S7-IN019) on sheet 7 at FWS-PU-170B (by the extraction's attribution) (`instruments[S7-IN019]`)
+- instrument TE-211212B (asset S7-IN020) on sheet 7 at FWS-PU-170B (by the extraction's attribution) (`instruments[S7-IN020]`)
+- instrument FO-XXX (asset S7-IN021) [placeholder tag on the drawing] on sheet 7 at FWS-PU-170B (by the extraction's attribution) (`instruments[S7-IN021]`)
+- instrument FT-XXX (asset S7-IN022) [placeholder tag on the drawing] on sheet 7 at FWS-PU-170B (by the extraction's attribution) (`instruments[S7-IN022]`)
+- instrument PIT-211212 (asset S7-IN023) on sheet 7 at FWS-PU-170B (by the extraction's attribution) (`instruments[S7-IN023]`)
+- instrument TE-170214A (asset S7-IN025) on sheet 7 at FWS-PU-170B (by the extraction's attribution) (`instruments[S7-IN025]`)
+- instrument TE-170214B (asset S7-IN026) on sheet 7 at FWS-PU-170B (by the extraction's attribution) (`instruments[S7-IN026]`)
+
+**Data to collect**
+
+- Whether operators adjust anything by hand from these readings [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing exact measurement/source identity and quantity, actual indication/control/alarm/protection/recording purpose, normal and abnormal decisions, operator logs/round sheets and current availability/quality/coverage; retain per-subject association and source/revision.; then a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change.. How: Frequent manual adjustment can justify a control investigation, not automatic automation. A reading with no routine manual action may have a legitimate abnormal/alarm/protection/indication purpose; do not close it solely because nobody regularly acts. Acknowledge suitable existing purpose, manual or automatic operation, and record unresolved function/source suitability. No operator trial, live change or benefit is inferred.
+- The control system's own loop list [not on drawing]. Candidate scope: anchors. No candidate values found in the selected model records. The collection/review request remains open; supplied values or document references do not settle it. Where: site records: Existing current loop/point list, cause/effect, alarm/sequence/configuration and represented reader/interlock/source records; preserve exact endpoints and identify missing model coverage before concluding indication-only.; then DCS/PLC configuration: Review a permitted current loop/point/configuration export, if available, as an existing source rather than a complete plant-truth inventory.; then a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change.. How: A controller or interlock reference is useful supplied evidence, not proof of complete current logic, correct process meaning, safety adequacy or measurement authority. A partial model without controllers can still prompt existing-record clarification; it does not prove no installed controls or require a fabricated loop list. S19 printed30 is broad monitoring/process-control guidance, not a per-reading automation acceptance test.
+
+**How it is decided:** Review measurement purpose and actual normal/abnormal decisions, represented readers and source/logic coverage with the responsible specialist. Neither a missing model controller nor a represented reader settles installed control completeness or the need for automation. Suitable existing use or nonapplicability can be acknowledged; unresolved records remain explicit. No automatic upgrade, safety acceptance or source-reported saving is assigned.
+
+**What the source says (S19):** "energy and cost savings are around 5% or more for many industrial applications of process control systems" (for plants without updated controls). Process control: "Typically 2-18% savings." The source says these figures "cannot be added".
+
+**Limits:** Source review: S19 originalLBNL56183 official mirror printed30/PDF38, monitoring/process-control section and historical nonadditive table. This supports a bounded records investigation, not an automation decision, current control-system completeness or a measurement's safety/function truth. Six existing variable classes retained; other instrument classes remain outside this selector. Generic historical savings are not this plant's benefit.
 
 ### C3: What valve-position feedback and diagnostic records are available for these control valves?
 
@@ -927,12 +1165,11 @@ IAC/ITAC recommendation code: 2.41xx (category only) (IAC/ITAC browse page: moto
 
 ## Not checked
 
-- C2: the model holds no controllers; give a loop list with --loops (controller,measurement,output) to check this
 - C6: the model holds no controllers; give a loop list with --loops to check this
 
 ## Questions that found nothing to ask here
 
-No item in this model matched these questions' triggers. That is not a clean bill of health: the model may simply not show what the question looks for. E2, E3, E5, E6, E7, E8, E9, E10, E11, E12, E13, E14, E15, E16, E17, E18, E19, E20, E21, E22, E23, E24, H3, H4, C4, C5, C7, C10, C8, E25, E26, E27, E28, E29, E30, E31, E32, H5, H6, C11, C12.
+No item in this model matched these questions' triggers. That is not a clean bill of health: the model may simply not show what the question looks for. E2, E3, E5, E6, E7, E8, E9, E10, E11, E12, E13, E16, E18, E19, E20, E21, E22, E23, E24, H3, H4, C4, C5, C7, C10, C8, E25, E26, E27, E28, E29, E30, E31, E32, H5, H6, C11, C12.
 
 ## Left out of the screen
 
@@ -940,10 +1177,13 @@ No item in this model matched these questions' triggers. That is not a clean bil
 
 ## Sources cited above
 
+- S4: Steam Tip #3, Use Feedwater Economizers for Waste Heat Recovery. https://www.energy.gov/sites/prod/files/2014/05/f16/steam3_recovery.pdf (license: Public domain)
 - S6: Steam Tip #20, Replace Pressure-Reducing Valves with Backpressure Turbogenerators (DOE/GO-102012-3409). https://www.energy.gov/sites/prod/files/2014/05/f16/steam20_turbogenerators.pdf (license: Public domain)
+- S7: Steam Tip #26B, Considerations When Selecting a Condensing Economizer (DOE/GO-102012-3397). https://www.energy.gov/sites/prod/files/2014/05/f16/steam26b_condensing.pdf (license: Public domain)
 - S13: Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079). https://www.energy.gov/sites/prod/files/2014/05/f16/pump.pdf (license: Federal, co-developed with HI: unclear for HI content)
 - S15: Variable Speed Pumping: A Guide to Successful Applications, Executive Summary (DOE ITP with Europump/HI, DOE/GO-102004-1913, May 2004). https://www.energy.gov/sites/prod/files/2014/05/f16/variable_speed_pumping.pdf (license: Unclear (joint with Europump/HI))
 - S16: Improving Motor and Drive System Performance: A Sourcebook for Industry (DOE/GO-102014-4356, Feb 2014; prepared by WSU Energy Program + NREL). https://www.energy.gov/sites/prod/files/2014/04/f15/amo_motors_sourcebook_web.pdf (license: Federal publication; contractor-prepared, so unclear but citable)
+- S18: Process Heating Tip #8, Install Waste Heat Recovery Systems for Fuel-Fired Furnaces (DOE/GO-102005-2181, Sep 2005). https://www.energy.gov/sites/prod/files/2014/05/f16/install_waste_heat_process_htgts8.pdf (license: Public domain)
 - S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005). https://www.osti.gov/servlets/purl/862119 (license: DOE-lab (contractor) report: unclear, but freely citable. Its tables quote older secondary sources, so figures are cited as reported in LBNL-56183)
 - S22: FEMP Metering Best Practices: A Guide to Achieving Utility Resource Efficiency, Release 3.0 (PNNL-23892, Mar 2015). https://www.wbdg.org/FFC/DOE/NLCRIT/mbpg_2015.pdf (license: Contractor-prepared federal guide: unclear. Its savings figures are buildings-focused)
 - S24: DOE IAC/ITAC database: browse pages, download, schema document. https://itac.university/index/arc/2. (license: No license or terms stated: unclear)

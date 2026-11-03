@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "title": "Fictional original-source question control",
+    "unknowns": [
+      "Actual operating state, source authority and human usefulness not established"
+    ],
+    "assumptions": [
+      "All identifiers/values authored for development before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "TR-A",
+      "name": "Grease TRAP",
+      "type": "grease_trap",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development packet; no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "steam_service": false
+      },
+      "assigned_tag": true,
+      "source": "Fictional source-defined record, no physical existence implied"
+    },
+    {
+      "id": "TR-B",
+      "name": "Oil TRAP",
+      "type": "oil_trap",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development packet; no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "steam_service": false
+      },
+      "assigned_tag": true,
+      "source": "Fictional source-defined record, no physical existence implied"
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "final_elements": [],
+  "manual_valves": [],
+  "controllers": []
+}

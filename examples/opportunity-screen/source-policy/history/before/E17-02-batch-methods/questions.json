@@ -1,0 +1,143 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/integration-air-records/models/E17-02-batch-methods.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E17"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E17@F-A",
+   "question_id": "E17",
+   "family": "energy",
+   "question": "Does this furnace or fired heater send hot flue gas straight to the stack?",
+   "about": "F-A",
+   "assets": [
+    {
+     "id": "F-A",
+     "tag": "F-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "F-A",
+     "tag": "F-A",
+     "text": "equipment F-A reads \"F-A Fictional FURNACE\"",
+     "field": "units[F-A]"
+    },
+    {
+     "role": "checked, none found",
+     "text": "no recuperator, air preheater, economizer or waste heat recovery anywhere in the model",
+     "field": "applies_when.without"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Flue temperature and cleanliness",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: flue gas thermometer"
+     ],
+     "how": "Record at normal firing."
+    },
+    {
+     "item": "Continuous or batch operation",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: production schedule"
+     ],
+     "how": "Load preheating suits continuous furnaces."
+    }
+   ],
+   "decision_rule": "Worth a look for continuous furnaces with hot, clean flue gas.",
+   "typical_benefit": {
+    "wording": "\"Energy consumption can typically be reduced 5% to 30%.\" Load preheating is \"best suited for continuous rather than batch furnaces.\"",
+    "source": [
+     "S18",
+     "S24"
+    ],
+    "arc": "2.241x (IAC/ITAC browse page: 1,936 recommendations, 2.0 yr average payback, 20.0% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S18: Process Heating Tip #8, Install Waste Heat Recovery Systems for Fuel-Fired Furnaces (DOE/GO-102005-2181, Sep 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.",
+   "status": "asked"
+  },
+  {
+   "id": "E17@F-B",
+   "question_id": "E17",
+   "family": "energy",
+   "question": "Does this furnace or fired heater send hot flue gas straight to the stack?",
+   "about": "F-B",
+   "assets": [
+    {
+     "id": "F-B",
+     "tag": "F-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "equipment F-B reads \"F-B Fictional FURNACE\"",
+     "field": "units[F-B]"
+    },
+    {
+     "role": "checked, none found",
+     "text": "no recuperator, air preheater, economizer or waste heat recovery anywhere in the model",
+     "field": "applies_when.without"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Flue temperature and cleanliness",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: flue gas thermometer"
+     ],
+     "how": "Record at normal firing."
+    },
+    {
+     "item": "Continuous or batch operation",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: production schedule"
+     ],
+     "how": "Load preheating suits continuous furnaces."
+    }
+   ],
+   "decision_rule": "Worth a look for continuous furnaces with hot, clean flue gas.",
+   "typical_benefit": {
+    "wording": "\"Energy consumption can typically be reduced 5% to 30%.\" Load preheating is \"best suited for continuous rather than batch furnaces.\"",
+    "source": [
+     "S18",
+     "S24"
+    ],
+    "arc": "2.241x (IAC/ITAC browse page: 1,936 recommendations, 2.0 yr average payback, 20.0% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S18: Process Heating Tip #8, Install Waste Heat Recovery Systems for Fuel-Fired Furnaces (DOE/GO-102005-2181, Sep 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

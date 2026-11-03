@@ -1,0 +1,24 @@
+# Opportunity screen: Fictional original-source question control
+
+Model: `examples/opportunity-screen/source-policy/models/E8-04-nonsteam-control.json`. Questions: `data/questions.json`.
+
+**How to read this.** This is a screen, not an audit. Each finding is a question the drawing or model
+raises, with the evidence found, what to collect (and exactly where), and how the collected data settles it. Nothing
+here says the plant wastes energy, and no savings are computed: the "what the source says" lines include source
+quotations and contextual paraphrases, retaining their qualifications, never estimates for this plant. Data requests
+are in one of three states: **on drawing** (the value is on the drawing or model and is quoted as evidence),
+**blank on drawing** (the drawing prints a field for it but leaves it empty, so fill that field), and **not on
+drawing** (collect it from the place named). Systems listed under "Left out" were not screened.
+
+| Family | Findings |
+|---|---|
+| Energy | 0 |
+| Heat grade (high-grade heat for low-grade duty) | 0 |
+| Metering | 0 |
+| Controls and automation | 0 |
+| Emissions | 0 |
+| Safety questions to verify | 0 |
+
+## Questions that found nothing to ask here
+
+No item in this model matched these questions' triggers. That is not a clean bill of health: the model may simply not show what the question looks for. E8.

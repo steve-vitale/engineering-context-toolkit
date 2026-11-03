@@ -1,0 +1,111 @@
+{
+  "independent_criteria_identity": {
+    "sha256_raw": "d6529a45a6bd48fb8ba639c22d816798ab7f9848f3ce0683693d90b0cf1156aa",
+    "bytes": 10712
+  },
+  "independent_criteria_authored_before_controls": true,
+  "minimum": "Retain useful exact existing-role quantity locators without turning command/temperature/foreign records into accepted measured flow or own-system association. Preserve current scope/criteria, IDs/assets/typed evidence and source policy.",
+  "allowed_catalog_delta": "Only five request.where arrays; E14 completely unchanged. Existing records/how/eligibility/task/decision/limits/benefits/shared data untouched.",
+  "synthetic_source_limit": "Fictional source document: Signal locator exercise, Figure 11.\nAll SYNTHETIC_SCxx_* labels below are explicitly fictional symbolic source-series pointers authored\nfor the existing Native fig11_series field. No numeric time series, actual figure/data collection,\nTE channel, historian connection, company record or physical measurement is supplied or asserted.\nThe native renderer's phrase \"from the source report's Fig 11\" is exercised against THIS fictional\nsource note only. Its emitted pointer proves literal lookup retention, not external evidence existence.\nFalse, zero, null, unknown and empty values remain typed fictional inputs; no value is an approval.\n",
+  "criteria": [
+    {
+      "id": "SC01",
+      "rule": "E3",
+      "construction": "Eligible named pump with near named minimum-flow FT record, distinct mapped flow signal, and matching line valve with mapped position; unrelated same-unit FT and TT controls.",
+      "expected": "Restore the selected minimum-flow role actual flow locator in the comparable flow/duration request(s). Do not present unrelated FT/TT as selected recirculation measurement. If a valid selected flow meter exists, do not falsely claim no flow measurement merely because a valve is also present."
+    },
+    {
+      "id": "SC02",
+      "rule": "E3",
+      "construction": "Same qualifying minimum-flow valve but no selected-role flow meter; valve has position output and unrelated pump forward-flow FT exists.",
+      "expected": "Retain position-only limitation; valve output is not measured recirculation flow. A nonselected forward-flow FT cannot suppress that limitation or become assumed minimum-flow proof."
+    },
+    {
+      "id": "SC03",
+      "rule": "E7",
+      "construction": "Eligible PRV/letdown-header valve trigger with mapped position, optional unrelated FT/PT records elsewhere.",
+      "expected": "Retained historian helper may expose position only with explicit no-flow/calibrated-curve qualification. It must not invent measured station flow or borrow unrelated FT/PT solely to make a positive signal. Only documented eligible role records can supply locators."
+    },
+    {
+      "id": "SC04",
+      "rule": "E7",
+      "construction": "Quiet non-station or explicitly ineligible service control from admitted models.",
+      "expected": "No new finding or measurement-availability assertion. Existing pressure/thermal and feasibility coverage/task/how/source qualifiers remain intact."
+    },
+    {
+      "id": "SC05",
+      "rule": "E10",
+      "construction": "Eligible condensate/flash record with a representation that the current original role resolver actually admits, containing mapped pressure/flow quantity record(s), plus temperature-only/foreign controls.",
+      "expected": "Preserve exact admitted trigger pressure/flow locators; unrelated temperature or valve position cannot be offered as those quantities. Do not infer a neighboring receiver meter if trigger semantics never selected it."
+    },
+    {
+      "id": "SC06",
+      "rule": "E10",
+      "construction": "Eligible equipment-only flash vessel with no instrument admitted by the old trigger mapper, plus unrelated signal elsewhere; separate known excluded hydrocarbon/oil flash service.",
+      "expected": "Equipment does not become a recorded pressure/flow signal. Signal absence remains absence; excluded service remains quiet. A restored catalog place that is a no-op under current representation is disclosed, not counted as demonstrated carrier recovery."
+    },
+    {
+      "id": "SC07",
+      "rule": "E14",
+      "construction": "Eligible boiler/steam generator equipment-only anchor; stack-temperature TT supplied separately and a foreign economizer record.",
+      "expected": "Respect actual role resolution: equipment-only trigger is not itself a usable historian tag; do not silently include the TT unless an explicit supported association selects it. Preserve foreign economizer as unverified/coverage-not-inferred. Catalog-only no-op restoration is not an actual mapped-signal recovery."
+    },
+    {
+      "id": "SC08",
+      "rule": "E14",
+      "construction": "Known excluded furnace/fired-heater/kiln/heat-exchanger/pump or reactor control and missing stack data.",
+      "expected": "Do not widen selector to recover a signal, create findings on excluded service, or imply no installed economizer from incomplete model. Retain tuned-operation, cold-end and matched source/time constraints."
+    },
+    {
+      "id": "SC09",
+      "rule": "E15",
+      "construction": "Eligible boiler with supplied makeup/process/hot-water FT candidate (mapped flow); same/foreign/unknown source or unit association explicitly declared and retained.",
+      "expected": "Correct renamed unverified receiving-water role supplies only its candidate flow locator. Exact FT/tag/signal retained, but this does not accept matching duty, compatible water quality, connected system or installed recovery; foreign/unknown cases stay visibly unresolved."
+    },
+    {
+      "id": "SC10",
+      "rule": "E15",
+      "construction": "Receiving-water valve position or TT-only record, no candidate flow meter; optional unrelated FT with nonmatching label.",
+      "expected": "No unrelated flow locator, no temperature/position-as-flow. If old-helper valve-only warning applies to the selected role it remains qualified. No automatic closure from adequate-looking candidate facts or receiving-load availability."
+    },
+    {
+      "id": "SC11",
+      "rule": "E19",
+      "construction": "Eligible air-compressor system plus pressure/control candidate admitted by current ISA/kind semantics and mapped pressure signal; own and foreign/unknown supplied associations.",
+      "expected": "Correct renamed unverified pressure/control role retains the literal pressure locator only where current mapper admits it. Anywhere matching is not verified same-system association, header position, valid pressure setpoint or minimum end-use requirement. Keep source/owner/unit/time/coverage uncertainty."
+    },
+    {
+      "id": "SC12",
+      "rule": "E19",
+      "construction": "Only controller-kind/valve-position candidate or unrelated FT/TT plus no admitted pressure instrument; known excluded process-gas/refrigeration compressor controls.",
+      "expected": "Do not offer controller output/valve travel/flow/temperature as measured pressure. Existing helper excludes some kinds; disclose no-op configuration rather than claim new mapped pressure coverage. Excluded machines stay quiet."
+    },
+    {
+      "id": "SC13",
+      "rule": [
+        "E3",
+        "E7",
+        "E10",
+        "E14",
+        "E15",
+        "E19"
+      ],
+      "construction": "Exact admitted finite source cases with complete facts including nested False/0/null/unknown/empty and original document/record identities.",
+      "expected": "Before/after whole typed JSON conserves all finding/asset IDs, sources/benefits/statuses, evidence/candidate_facts/field coverage, task identities/how/decision/limits and all unaffected requests. Only explicitly frozen relevant where lists (and a justified represented availability state) may change. No changed counts/eligibility merely for an observer."
+    },
+    {
+      "id": "SC14",
+      "rule": [
+        "E3",
+        "E7",
+        "E10",
+        "E14",
+        "E15",
+        "E19"
+      ],
+      "construction": "No applicable records/empty role and same model evaluated under before/successor; empty/quiet scope controls.",
+      "expected": "No findings or signals fabricated, no quiet result described as proven adequacy/nonapplicability. Unknown representation/source remains unknown. Full output/Markdown and raw source/model/control/code identities retained; no result edited to satisfy a key."
+    }
+  ],
+  "state": "Data-only control/proposal preparation; no product calls yet."
+}

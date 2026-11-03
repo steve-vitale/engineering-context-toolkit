@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "title": "Fictional source-led heating/integration/air controls",
+    "unknowns": [
+      "Actualstate, sourceauthority and engineering/human acceptance unknown"
+    ],
+    "assumptions": [
+      "Allrecordidentities/values fictional before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "HY-A",
+      "name": "Hydraulic QUICK-DISCONNECT",
+      "type": "hydraulic_coupling",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "knownhydraulicnotair"
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    },
+    {
+      "id": "ST-B",
+      "name": "Steam TIMER DRAIN",
+      "type": "steam_drain",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "knownsteamnotair"
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "manual_valves": [],
+  "final_elements": [],
+  "controllers": [],
+  "unplaced": []
+}

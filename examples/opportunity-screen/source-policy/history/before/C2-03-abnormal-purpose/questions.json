@@ -1,0 +1,93 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/control-vent-records/models/C2-03-abnormal-purpose.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "C2"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "controls": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "C2@model",
+   "question_id": "C2",
+   "family": "controls",
+   "question": "Which measurements have no controller (read by people, or by nothing)?",
+   "about": "PT-B",
+   "assets": [
+    {
+     "id": "PT-B",
+     "tag": "PT-B"
+    },
+    {
+     "id": "IL-B",
+     "tag": "IL-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "PT-B",
+     "tag": "PT-B",
+     "text": "instrument PT-B reads \"PT-B Supplied fictional instrument\" at U-A",
+     "field": "instruments[PT-B]"
+    },
+    {
+     "role": "interlock that reads it",
+     "id": "IL-B",
+     "tag": "IL-B",
+     "text": "interlock IL-B reads \"IL-B Fictional pressurecondition Fictional valveaction, notapproved\"",
+     "field": "interlocks[IL-B]"
+    },
+    {
+     "role": "checked, none found",
+     "text": "no controller in the model or loop list reads these measurements",
+     "field": "applies_when.without"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Whether operators adjust anything by hand from these readings",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: operator logs and round sheets",
+      "ask the operators which of these they act on, and how often"
+     ],
+     "how": "Note manual adjustments per shift tied to each reading."
+    },
+    {
+     "item": "The control system's own loop list",
+     "state": "not_on_drawing",
+     "where": [
+      "DCS/PLC configuration: export the loop and point list"
+     ],
+     "how": "Confirm the reading is indication-only and not read by logic the model lacks."
+    }
+   ],
+   "decision_rule": "Worth automating a reading that operators adjust by hand often, on a service where steadier control saves energy or quality; indication-only readings nobody acts on close the question.",
+   "typical_benefit": {
+    "wording": "\"energy and cost savings are around 5% or more for many industrial applications of process control systems\" (for plants without updated controls). Process control: \"Typically 2-18% savings.\" The source says these figures \"cannot be added\".",
+    "source": [
+     "S19"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)"
+    ]
+   },
+   "limits": "The model or loop list may be incomplete; an uncontrolled reading may be read by logic not in the model.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

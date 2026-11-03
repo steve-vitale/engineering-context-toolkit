@@ -1,0 +1,107 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/thermal-recovery-records/models/E12-01-design-surface.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E12"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "energy": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E12@model",
+   "question_id": "E12",
+   "family": "energy",
+   "question": "Are large valves and flanges on hot service left bare?",
+   "about": "HV-A, HV-B",
+   "assets": [
+    {
+     "id": "HV-A",
+     "tag": "HV-A"
+    },
+    {
+     "id": "HV-B",
+     "tag": "HV-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "HV-A",
+     "tag": "HV-A",
+     "text": "hand valve HV-A reads \"HV-A Fictional hotservicevalve candidate\"; owning equipment unknown; no unit inferred; supplied source interpretation, not installed truth; Recorded qualifiers: {\"tag\": \"HV-A\", \"kind\": \"manual_valve\", \"unit\": null, \"source\": \"Fictional record, not measuredplantstate\", \"assigned_tag\": true, \"unplaced_reason\": \"Fictional valve; no inventoried equipmentowner\"}; Assigned identifier; an operating tag has not been verified",
+     "field": "unplaced[HV-A]",
+     "provenance": {
+      "kind": "native-unplaced-source-context-1",
+      "model_role": "manual_valve",
+      "record_fields": {
+       "tag": "HV-A",
+       "kind": "manual_valve",
+       "unit": null,
+       "source": "Fictional record, not measuredplantstate",
+       "assigned_tag": true,
+       "unplaced_reason": "Fictional valve; no inventoried equipmentowner"
+      },
+      "placement": "owning equipment unknown; no unit inferred"
+     }
+    },
+    {
+     "role": "trigger",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "hand valve HV-B reads \"HV-B Fictional hotservicevalve candidate\"; owning equipment unknown; no unit inferred; supplied source interpretation, not installed truth; Recorded qualifiers: {\"tag\": \"HV-B\", \"kind\": \"manual_valve\", \"unit\": null, \"source\": \"Fictional record, not measuredplantstate\", \"assigned_tag\": true, \"unplaced_reason\": \"Fictional valve; no inventoried equipmentowner\"}; Assigned identifier; an operating tag has not been verified",
+     "field": "unplaced[HV-B]",
+     "provenance": {
+      "kind": "native-unplaced-source-context-1",
+      "model_role": "manual_valve",
+      "record_fields": {
+       "tag": "HV-B",
+       "kind": "manual_valve",
+       "unit": null,
+       "source": "Fictional record, not measuredplantstate",
+       "assigned_tag": true,
+       "unplaced_reason": "Fictional valve; no inventoried equipmentowner"
+      },
+      "placement": "owning equipment unknown; no unit inferred"
+     }
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Bare valves and flanges by size",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: count bare valves and flanges by size; infrared camera"
+     ],
+     "how": "Count by size and temperature."
+    }
+   ],
+   "decision_rule": "Fit removable jackets on bare hot valves and flanges that are not opened often.",
+   "typical_benefit": {
+    "wording": "\"a 6-inch gate valve may have more than 6 square feet of surface area.\" The source tabulates heat saved by valve size and temperature. No % stated.",
+    "source": [
+     "S1",
+     "S2"
+    ],
+    "arc": "2.2136 (by description)",
+    "source_titles": [
+     "S1: DOE AMO Steam Tip Sheet #2, Insulate Steam Distribution and Condensate Return Lines (DOE/GO-102012-3404, Jan 2012)",
+     "S2: Steam Tip #17, Install Removable Insulation on Valves and Fittings (DOE/GO-102012-3403)"
+    ]
+   },
+   "limits": null,
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

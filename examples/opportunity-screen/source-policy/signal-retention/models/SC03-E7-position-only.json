@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "title": "Fictional source-series locator control",
+    "source_document": "Fictional signal-locator source-note.txt, Figure 11",
+    "unknowns": [
+      "No real time series, physical measurement, source authority or engineering acceptance supplied"
+    ],
+    "assumptions": [
+      "Synthetic symbolic fig11_series pointers exercise existing Native lookup grammar only; no actual TE/Bayer/source series is asserted"
+    ]
+  },
+  "units": [],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "FT-X",
+      "unit": null,
+      "variable": "flow",
+      "description": "Unrelated service flow",
+      "source": "Fictional source-note, Figure 11 symbolic pointer only",
+      "assigned_tag": true,
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+        "record_revision": "R1",
+        "record_available": false,
+        "record_authority": "unverified",
+        "typed_fixture_control": {
+          "false": false,
+          "zero": 0,
+          "null": null,
+          "unknown": "unknown",
+          "empty": []
+        }
+      },
+      "fig11_series": "SYNTHETIC_SC03_FOREIGN_FLOW"
+    }
+  ],
+  "controllers": [],
+  "final_elements": [],
+  "unplaced": [
+    {
+      "tag": "PCV-A",
+      "unit": null,
+      "description": "PRV HP HEADER letdown",
+      "source": "Fictional valve command pointer, not measured flow",
+      "assigned_tag": true,
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+        "record_revision": "R1",
+        "record_available": false,
+        "record_authority": "unverified",
+        "typed_fixture_control": {
+          "false": false,
+          "zero": 0,
+          "null": null,
+          "unknown": "unknown",
+          "empty": []
+        },
+        "service": null
+      },
+      "fig11_series": "SYNTHETIC_SC03_POSITION",
+      "kind": "final_element",
+      "unplaced_reason": "Explicit fictional partial record; no inventoried owning equipment supplied"
+    }
+  ]
+}

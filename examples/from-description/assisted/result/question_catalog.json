@@ -519,7 +519,7 @@
     {
       "id": "E3",
       "family": "energy",
-      "question": "Does this pump recirculate flow continuously through a minimum-flow line?",
+      "question": "What do existing records establish about this pump candidate's minimum-flow protection, return-line duty and remaining recirculation question?",
       "applies_when": {
         "anchor": {
           "kind": [
@@ -527,7 +527,8 @@
           ],
           "type_text": "pump",
           "not_text": "POSITIVE DISPLACEMENT|VACUUM|METERING",
-          "tagged": true
+          "tagged": true,
+          "not_type_text": "^(?:(?:positive[ _-]?displacement|vacuum|metering)[ _-]?pump|heat[ _-]?exchanger|cooler)$"
         },
         "group_by": "unit",
         "with": [
@@ -551,13 +552,48 @@
         ]
       },
       "evidence_fields": [
-        "pump tag",
-        "restriction orifice, MIN FLOW or automatic recirculation valve on a line from discharge back to suction or tank"
+        "pump candidate",
+        "near minimum-flow/RO candidate; actual discharge-return association and flow unverified"
       ],
       "data_requests": [
         {
-          "item": "Recirculation flow versus forward flow",
+          "item": "Existing named-pump service, protective minimum-flow and line-association basis",
           "where": [
+            {
+              "place": "records",
+              "what": "Existing pump/vendor minimum-flow and service/curve records, actual return-line purpose and routing, protective control function and operating modes; retain exact pump/source/revision/availability and uncertainty."
+            },
+            {
+              "place": "walkdown",
+              "what": "Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
+            }
+          ],
+          "how": "A nearby MIN FLOW, RO or automatic-recirculation label is a candidate, not proof of measured continuous discharge-return flow. Establish the actual pump/service and association first, and retain the vendor minimum-flow protection. Known positive-displacement/vacuum/metering or helper equipment is outside this bounded centrifugal-pump investigation; unknown eligible service stays conditional. Suitable protective operation and existing reviewed records may be acknowledged without a new measurement.",
+          "field_scope": "unit",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "line_purpose",
+            "operation_mode",
+            "vendor_min_flow",
+            "flow_quantity",
+            "flow_unit",
+            "forward_flow",
+            "return_flow",
+            "sample_period"
+          ]
+        },
+        {
+          "item": "Existing comparable forward/return flow and duration records",
+          "where": [
+            {
+              "place": "records",
+              "what": "Existing actual forward and recirculation flow/operating logs with quantities, units, measurement versus valve command, sampling/availability and matching periods/ranges."
+            },
             {
               "place": "historian",
               "for": "minimum-flow line",
@@ -565,28 +601,30 @@
             },
             {
               "place": "walkdown",
-              "what": "clamp-on ultrasonic flow meter on the recirculation line"
+              "what": "Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
             }
           ],
-          "how": "Measure both flows at normal operation."
-        },
-        {
-          "item": "Hours the recirculation is open",
-          "where": [
-            {
-              "place": "historian",
-              "for": "minimum-flow line",
-              "quantity": "flow"
-            },
-            {
-              "place": "records",
-              "what": "operator logs"
-            }
-          ],
-          "how": "Count hours with recirculation flow."
+          "how": "Preserve source and units; do not substitute valve command for measured flow or divide unconverted/nonmatching records. Review whether sustained bypass is necessary for protection or system function before investigating a remaining energy question. This does not prescribe changing flow, a speed drive, bypass position or protection.",
+          "field_scope": "unit",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "line_purpose",
+            "operation_mode",
+            "vendor_min_flow",
+            "flow_quantity",
+            "flow_unit",
+            "forward_flow",
+            "return_flow",
+            "sample_period"
+          ]
         }
       ],
-      "decision_rule": "Worth action when recirculation flows continuously at normal throughput (an orifice that is always open, or a valve that never closes); an automatic valve that only opens at low forward flow is doing its job.",
+      "decision_rule": "Review the whole pump/system duty and actual operating records with the responsible engineer. Continuous recirculation, an open orifice or missing model data alone is not a diagnosis or instruction to remove/restrict protection. Acknowledge appropriate automatic low-flow operation or suitable existing basis; unresolved minimum-flow, association, quantities or coverage remains a records question. No automatic action or site savings follow.",
       "typical_benefit": {
         "wording": "\"the energy needed to push fluid through bypass lines is wasted.\" No % stated.",
         "source": [
@@ -594,7 +632,23 @@
         ],
         "arc": null
       },
-      "limits": "Minimum flow protects the pump; never remove it without the pump vendor's minimum continuous flow."
+      "limits": "Minimum flow protects the pump; never remove it without the pump vendor's minimum continuous flow. Source review: S13 printed8,15,26,51–52 supports vendor minimum-flow protection and system-dependent bypass analysis, not a universal retrofit. The inherited bypass-energy quotation omits this surrounding protective/system context and is not site savings. Candidate values/labels are not accepted operating evidence.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "line_purpose",
+        "operation_mode",
+        "vendor_min_flow",
+        "flow_quantity",
+        "flow_unit",
+        "forward_flow",
+        "return_flow",
+        "sample_period"
+      ]
     },
     {
       "id": "E4",
@@ -930,7 +984,7 @@
     {
       "id": "E7",
       "family": "energy",
-      "question": "Does a steam pressure-reducing valve between headers pass enough steam to drive a backpressure turbogenerator instead?",
+      "question": "What do existing records establish about this header-letdown candidate's steam service and any backpressure-generation feasibility question?",
       "applies_when": {
         "anchor": {
           "kind": [
@@ -949,41 +1003,91 @@
         "group_by": "item"
       },
       "evidence_fields": [
-        "PRV / letdown valve tag",
-        "header text on both sides (HP/MP/LP or pressure rating)"
+        "header-letdown candidate",
+        "actual steam service, two-sided operating requirements and flow-duration association unverified"
       ],
       "data_requests": [
         {
-          "item": "Steam flow through the station over a year",
+          "item": "Existing station service, steam balance and flow-duration records",
           "where": [
+            {
+              "place": "records",
+              "what": "Existing named-station service and current steam balance, actual flow-duration/operating coverage and represented PRV/turbine arrangement; exact source/revision, quantity units, sample period and availability."
+            },
             {
               "place": "historian",
               "for": "trigger",
               "quantity": "flow"
             },
             {
-              "place": "records",
-              "what": "steam balance"
+              "place": "walkdown",
+              "what": "Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
             }
           ],
-          "how": "\"Develop steam flow/duration curves for each PRV station\"."
+          "how": "Establish steam service first: a PRV/PCV or HP/MP/LP/header label alone does not prove steam or two-sided physical topology. Known nonsteam service is not applicable to this steam-turbine question; acknowledge that without a compulsory steam measurement. Missing/unknown data remains qualified. Review existing suitable function before proposing further study.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "station_flow",
+            "flow_unit",
+            "inlet_pressure",
+            "outlet_pressure",
+            "pressure_unit",
+            "duty",
+            "sample_period",
+            "existing_function",
+            "steam_condition",
+            "downstream_heat",
+            "boiler_capacity",
+            "electrical_voltage",
+            "economic_basis"
+          ]
         },
         {
-          "item": "Upstream and downstream pressures",
+          "item": "Existing actual pressure/thermal, boiler, electrical and feasibility basis",
           "where": [
             {
-              "place": "walkdown",
-              "what": "gauges either side of the station"
+              "place": "records",
+              "what": "Existing actual inlet/exhaust pressures and steam condition, process heat requirements, boiler-throughput/capacity implications, annual duty, fuel/electricity/voltage and practical/economic constraints; distinguish design ratings from operating records."
             },
             {
-              "place": "records",
-              "what": "header design pressures"
+              "place": "walkdown",
+              "what": "Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
             }
           ],
-          "how": "Record both at normal operation."
+          "how": "The DOE Tip20 source screening figures (3000lb/hr and100psi) describe when to consider further study in its stated context, not automatic install/close thresholds. Do not close an unresolved investigation because data are variable, below an example, unconverted or absent. A backpressure turbine is generally considered in parallel with a PRV and removes energy needed downstream; source prices, graph assumptions/efficiencies and installation percentages are historical examples, not current site savings. Acknowledge an existing suitable function without new measurements or replacement.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "station_flow",
+            "flow_unit",
+            "inlet_pressure",
+            "outlet_pressure",
+            "pressure_unit",
+            "duty",
+            "sample_period",
+            "existing_function",
+            "steam_condition",
+            "downstream_heat",
+            "boiler_capacity",
+            "electrical_voltage",
+            "economic_basis"
+          ]
         }
       ],
-      "decision_rule": "Consider a backpressure turbogenerator only if the station passes a constant flow of at least 3,000 lb/hr with a pressure drop of at least 100 psi (S6's condition); otherwise close this screening investigation.",
+      "decision_rule": "Review actual named-station steam service, current balance/flow-duration, process pressure/heat, boiler, electrical and economic constraints before any backpressure-generation feasibility decision. Do not install a turbine or automatically close an unresolved investigation from source thresholds, design pressures or a label alone. Known nonsteam scope can be acknowledged as not applicable; unknown source, association or operating basis remains explicit. No site benefit or operating authorization is calculated.",
       "typical_benefit": {
         "wording": "Consider when a PRV has \"constant steam flows of at least 3,000 pounds per hour (lb/hr), and when the steam pressure drop is at least 100 psi.\" Installation costs \"typically average 75% of equipment costs\".",
         "source": [
@@ -991,48 +1095,113 @@
         ],
         "arc": null
       },
-      "limits": "S6 also quotes cost per kW figures; they are deliberately not repeated here. No IAC code maps to turbines (2.2134 covers PRV-station leaks)."
+      "limits": "S6 also quotes cost per kW figures; they are deliberately not repeated here. No IAC code maps to turbines (2.2134 covers PRV-station leaks). Source review: complete S6 pp1–2 includes current steam balance/actual process requirements, parallel arrangement, downstream heat/boiler-throughput implications and historical calculation assumptions. Inherited source threshold/cost quotation is not a universal cutoff, present-day quotation or engineering approval.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "service",
+        "station_flow",
+        "flow_unit",
+        "inlet_pressure",
+        "outlet_pressure",
+        "pressure_unit",
+        "duty",
+        "sample_period",
+        "existing_function",
+        "steam_condition",
+        "downstream_heat",
+        "boiler_capacity",
+        "electrical_voltage",
+        "economic_basis"
+      ]
     },
     {
       "id": "E8",
       "family": "energy",
-      "question": "Is there a steam trap population large enough to justify a trap survey program?",
+      "question": "What do existing records establish about the represented trap candidates' steam service, inventory coverage and current inspection program?",
       "applies_when": {
         "anchor": {
-          "text": "STEAM TRAP|\\bTRAP\\b|\\bST-\\d"
+          "text": "STEAM TRAP|\\bTRAP\\b|\\bST-\\d",
+          "not_type_text": "^(?:grease|oil|sand|air)[ _-]?trap$"
         },
         "group_by": "model"
       },
       "evidence_fields": [
-        "count and tags of trap symbols"
+        "represented trap candidates, not installed population or failure count"
       ],
       "data_requests": [
         {
-          "item": "Trap inventory and last survey date",
+          "item": "Existing steam-trap identity, service and inventory/program coverage",
           "where": [
             {
               "place": "records",
-              "what": "trap list"
+              "what": "Existing named trap/service inventory, represented versus actual population, pressure ranges, inspection/maintenance dates and coverage; retain each source/revision, availability and authority limits."
             },
             {
-              "place": "maintenance",
-              "what": "trap survey history"
+              "place": "walkdown",
+              "what": "Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
             }
           ],
-          "how": "Count traps by type and service."
+          "how": "Establish steam-trap service before applying steam guidance; known grease/oil/sand/air traps are not steam traps, and ambiguous TRAP/ST labels need conditional service review. The source500-trap and3–5year loss examples are not universal program thresholds or actual population/failure estimates. Its pressure-dependent intervals are source guidance to review in context, not automatic site schedules.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "steam_service",
+            "represented_population",
+            "pressure",
+            "pressure_unit",
+            "last_survey",
+            "survey_scope",
+            "condition",
+            "trap_type",
+            "survey_method",
+            "survey_status"
+          ]
         },
         {
-          "item": "Trap condition",
+          "item": "Existing qualified inspection results and remaining uncertainty",
           "where": [
             {
+              "place": "records",
+              "what": "Existing per-trap testing methods, service/pressure and operating conditions, observed condition with uncertainty, repair/retest/report history and unresolved coverage."
+            },
+            {
               "place": "walkdown",
-              "what": "ultrasonic or thermal survey of each trap"
+              "what": "Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
             }
           ],
-          "how": "Classify each trap working / failed open / failed closed."
+          "how": "Review suitable existing records before any new field survey. Temperature, sound, visual or electronic indications require service/method interpretation and do not turn a symbol into failed-open/closed truth. Preserve unknown or foreign results for each candidate; one survey cannot clear another source/population. A suitable current program may be acknowledged without a new measurement or blanket retrofit.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "steam_service",
+            "represented_population",
+            "pressure",
+            "pressure_unit",
+            "last_survey",
+            "survey_scope",
+            "condition",
+            "trap_type",
+            "survey_method",
+            "survey_status"
+          ]
         }
       ],
-      "decision_rule": "A survey is likely worthwhile above about 500 traps or when no survey has been done in 3 to 5 years; otherwise fold traps into routine maintenance.",
+      "decision_rule": "Review the applicable steam-trap service, pressure, importance and existing inspection/repair reporting coverage with the responsible engineer. No universal500-trap or3–5year cutoff establishes whether a program is worthwhile, current, complete or unnecessary, and historical source failure percentages are not this site's condition. Acknowledge suitable existing program or nonapplicability; retain missing identity, method or coverage as a records question rather than a compulsory survey or failure diagnosis.",
       "typical_benefit": {
         "wording": "Unmaintained 3-5 years: \"between 15% to 30% of the installed steam traps may have failed.\" With a program, \"less than 5%.\" LBNL refinery table (as reported in LBNL-56183): trap maintenance 10-15% fuel saved, 0.5 yr payback.",
         "source": [
@@ -1042,51 +1211,122 @@
         ],
         "arc": "2.2113 (IAC/ITAC browse page: 445 recommendations, 0.6 yr average payback, 80.1% implemented; average dollar figure omitted)"
       },
-      "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers."
+      "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: complete S3 pp1–2 includes systematic reporting, testing-method qualification and pressure-dependent suggested intervals. Represented count is not installed population. S19/S24 figures are inherited historical context, not reverified here or transferred to a site.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "steam_service",
+        "represented_population",
+        "pressure",
+        "pressure_unit",
+        "last_survey",
+        "survey_scope",
+        "condition",
+        "trap_type",
+        "survey_method",
+        "survey_status"
+      ]
     },
     {
       "id": "E9",
       "family": "energy",
-      "question": "Is condensate going to drain instead of back to the boiler?",
+      "question": "What do existing records establish about these drain-labelled condensate candidates' actual service, route and any suitable recovery question?",
       "applies_when": {
         "anchor": {
           "text_all": [
             "CONDENSATE|\\bTRAP\\b",
             "TO (DRAIN|SEWER|GRADE)"
-          ]
+          ],
+          "not_type_text": "^(?:hydrocarbon|oil)[ _-]?condensate[ _-]?(?:receiver|tank)$"
         },
         "group_by": "model"
       },
       "evidence_fields": [
-        "trap or condensate outlets marked to drain, sewer or grade"
+        "drain-labelled condensate candidate, current service and route unverified"
       ],
       "data_requests": [
         {
-          "item": "Condensate return percentage and makeup flow",
+          "item": "Existing per-candidate service, route and comparable water/mass-balance records",
           "where": [
             {
               "place": "records",
-              "what": "boiler house makeup and feedwater meters"
+              "what": "Existing exact-source/stream steam-water service and actual route/revision, return/makeup/feedwater/blowdown and other-loss/inventory records, temperatures/pressures/flash, actual flow/duration, quantity units and matching sample/operating boundaries."
             },
             {
-              "place": "bills",
-              "what": "water and fuel"
+              "place": "walkdown",
+              "what": "Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
             }
           ],
-          "how": "Return % = 1 - makeup flow / feedwater flow."
+          "how": "A drain caption may be historical or nonwater; establish service/current route before interpreting it as lost boiler-water condensate. Known hydrocarbon condensate is not this boiler-return task; unknown service remains conditional. Do not present1-makeup/feedwater as exact return percent without a justified boundary, denominator, losses/blowdown/inventory and matched quantities/units/time/conversions. Preserve source-qualified values and uncertainty, not an automatic quotient.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "quality_basis",
+            "return_flow",
+            "flow_unit",
+            "sample_period",
+            "treatment_option",
+            "makeup_flow",
+            "feedwater_flow",
+            "blowdown_flow",
+            "balance_boundary",
+            "route_basis",
+            "receiving_system",
+            "flash_fraction",
+            "temperature",
+            "temperature_unit"
+          ]
         },
         {
-          "item": "Contamination risk of each drained stream",
+          "item": "Existing quality, treatment, receiving-system and feasibility basis",
           "where": [
             {
               "place": "records",
-              "what": "process knowledge of possible leaks into the condensate"
+              "what": "Existing stream-specific quality/contamination and sampling records, potential dissolved/particulate sources, treatment/cleanup options, routing/receiving capacity and pressure, flash/safety/material constraints and economic/operating coverage; source/revision/availability retained."
+            },
+            {
+              "place": "walkdown",
+              "what": "Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new field test, operating change or retrofit."
             }
           ],
-          "how": "List what could contaminate it."
+          "how": "Clean or steady alone does not authorize return equipment, and contaminated or small streams are not automatically required to remain at drain: review suitable treatment, route, receiving and economic constraints with the responsible engineer. S8 printed20–21 and supplemental DOE Tip8 pp1–2 discuss actual recovery equipment, cleanup and explicit example assumptions. Acknowledge an existing suitable route/treatment without new measurements or changes; source examples are not site savings.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "quality_basis",
+            "return_flow",
+            "flow_unit",
+            "sample_period",
+            "treatment_option",
+            "makeup_flow",
+            "feedwater_flow",
+            "blowdown_flow",
+            "balance_boundary",
+            "route_basis",
+            "receiving_system",
+            "flash_fraction",
+            "temperature",
+            "temperature_unit"
+          ]
         }
       ],
-      "decision_rule": "Worth returning where the drained condensate is clean and the flow is steady; contaminated or tiny streams stay at drain.",
+      "decision_rule": "Review actual steam-water service, current route and stream-specific quality/treatment, flow/duty, temperature/pressure/flash and receiving/economic constraints before a recovery decision. Do not automatically return clean/steady flow or permanently reject contaminated/small flow; neither label nor a simple unqualified makeup quotient establishes suitability or benefit. Existing suitable basis or nonapplicability may be acknowledged; unresolved data remains a records question with no operational/hardware authorization.",
       "typical_benefit": {
         "wording": "Enthalpy difference \"generally over 120 Btu/lb, an amount of energy that is often more than 10% of the energy in the boiler generated steam.\" LBNL (as reported in LBNL-56183): \"Condensate Return Alone 10%\", 1.1 yr.",
         "source": [
@@ -1096,25 +1336,53 @@
         ],
         "arc": "2.2121 (IAC/ITAC browse page: 354 recommendations, 1.2 yr average payback, 50.9% implemented; average dollar figure omitted)"
       },
-      "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers."
+      "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: S8 printed20–21 covers condensate recovery/cleanup and system constraints. Supplemental original DOE Tip8 (https://www.energy.gov/sites/prod/files/2014/05/f16/steam8_boiler.pdf), completepp1–2, was admitted before criteria and provides conditional data-driven recovery/treatment and explicit heat/flash/economic examples. Inherited S19/S24 figures are not reverified here or current site benefits.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "service",
+        "quality_basis",
+        "return_flow",
+        "flow_unit",
+        "sample_period",
+        "treatment_option",
+        "makeup_flow",
+        "feedwater_flow",
+        "blowdown_flow",
+        "balance_boundary",
+        "route_basis",
+        "receiving_system",
+        "flash_fraction",
+        "temperature",
+        "temperature_unit"
+      ]
     },
     {
       "id": "E10",
       "family": "energy",
-      "question": "Is high-pressure condensate flashing to atmosphere when the flash steam could be used?",
+      "question": "What do existing records establish about this flash-vessel candidate's actual service, vent/recovery route and compatible low-pressure duty?",
       "applies_when": {
         "anchor": {
-          "text": "FLASH (TANK|VESSEL|DRUM)"
+          "text": "FLASH (TANK|VESSEL|DRUM)",
+          "not_type_text": "^(?:hydrocarbon|oil)[ _-]?flash[ _-]?(?:tank|vessel|drum)$"
         },
         "group_by": "item"
       },
       "evidence_fields": [
-        "flash or vented receiver tag and its vent"
+        "flash-vessel candidate; steam-water service, atmospheric venting and recovery state not established by a name"
       ],
       "data_requests": [
         {
-          "item": "Condensate pressure and flow into the receiver",
+          "item": "Existing source-specific condensate service, vent/recovery and actual operating basis",
           "where": [
+            {
+              "place": "records",
+              "what": "Existing named-vessel/condensate source service and current vent/recovery/route records, actual pressure/temperature, flow and duration with quantity/units, sample time, revision, availability and operating coverage."
+            },
             {
               "place": "historian",
               "for": "trigger",
@@ -1125,27 +1393,69 @@
             },
             {
               "place": "walkdown",
-              "what": "pressure gauge and vent plume"
+              "what": "Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
             }
           ],
-          "how": "Record pressure and estimate flow."
+          "how": "A FLASH TANK/VESSEL/DRUM label is not proof of steam-water service, atmospheric venting, measured steam loss or an unused recovery opportunity. Establish actual current function and distinguish known nonsteam/hydrocarbon context from unknown applicable service. Review suitable existing recovery before requesting more data; pressure ratings or a plume alone do not establish a flash fraction or source quality.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "vent_basis",
+            "existing_recovery",
+            "pressure",
+            "pressure_unit",
+            "flow",
+            "flow_unit",
+            "sample_period",
+            "sink_target",
+            "sink_duty",
+            "receiving_pressure",
+            "route_basis"
+          ]
         },
         {
-          "item": "A low-pressure steam user nearby",
+          "item": "Existing compatible receiving-duty, association and feasibility basis",
           "where": [
             {
               "place": "records",
-              "what": "steam users list"
+              "what": "Existing exact-source low-pressure user pressure/quality, flow/heat duty and operating-time requirements, piping/route/distance and system/practical/economic constraints."
             },
             {
               "place": "walkdown",
-              "what": "nearby LP users"
+              "what": "Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
             }
           ],
-          "how": "List LP users within reach."
+          "how": "Review actual source/receiving pressure, timing and compatible duty together; a nearby or foreign/seasonal low-pressure label is not a matched sink. Supplemental original DOE Tip12 pp1–2 requires flow/duration, compatible uses and cost-effective equipment/piping, with return alternatives and availability/use considered. Acknowledge an existing suitable route or nonapplicability without a new field task. No recovery installation, physical connection, flash calculation or site savings follow from this screen.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "vent_basis",
+            "existing_recovery",
+            "pressure",
+            "pressure_unit",
+            "flow",
+            "flow_unit",
+            "sample_period",
+            "sink_target",
+            "sink_duty",
+            "receiving_pressure",
+            "route_basis"
+          ]
         }
       ],
-      "decision_rule": "Worth a look when a steady high-pressure condensate flow vents and a low-pressure user is close by.",
+      "decision_rule": "Review actual steam-water condensate service, current vent/recovery and matched source/receiving duty, routing and economic constraints with the responsible engineer. Steady flow or a close low-pressure label alone does not establish unused recoverable steam or justify hardware/operating changes. Suitable existing recovery or nonapplicability may be acknowledged; unknown route, units, source or timing remains a qualified records question.",
       "typical_benefit": {
         "wording": "Flash vessels allow \"recovery of steam... used in low-pressure steam applications.\" No % stated.",
         "source": [
@@ -1154,7 +1464,27 @@
         ],
         "arc": "2.2127 (IAC/ITAC browse page: 31 recommendations, 1.0 yr average payback, 39.3% implemented; average dollar figure omitted)"
       },
-      "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers."
+      "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: S8 printed21 and supplemental original DOE Tip12 (https://www.energy.gov/sites/prod/files/2014/05/f16/steam12_lowpressure_steam.pdf), completepp1–2, admitted before criteria. Its pressure/flow/duty/economic example is not this site's result. Missing representation is not installed absence.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "service",
+        "vent_basis",
+        "existing_recovery",
+        "pressure",
+        "pressure_unit",
+        "flow",
+        "flow_unit",
+        "sample_period",
+        "sink_target",
+        "sink_duty",
+        "receiving_pressure",
+        "route_basis"
+      ]
     },
     {
       "id": "E11",
@@ -1255,7 +1585,7 @@
     {
       "id": "E12",
       "family": "energy",
-      "question": "Are large valves and flanges on hot service left bare?",
+      "question": "What do existing records establish about these hot-service valve candidates' actual temperature, insulation condition and access requirements?",
       "applies_when": {
         "anchor": {
           "kind": [
@@ -1268,21 +1598,44 @@
         "group_by": "model"
       },
       "evidence_fields": [
-        "valve on a line with a stated hot temperature"
+        "hot-temperature valve candidates, not verified bare surface, size or insulation condition"
       ],
       "data_requests": [
         {
-          "item": "Bare valves and flanges by size",
+          "item": "Existing valve service, actual insulation/temperature and safe-access basis",
           "where": [
             {
+              "place": "records",
+              "what": "Existing per-valve/fitting service and size, operating/design/surface temperature distinction and units, actual installed insulation condition, access/periodic inspection/repair and manufacturer instructions, source/revision/availability and any removal/material hazards."
+            },
+            {
               "place": "walkdown",
-              "what": "count bare valves and flanges by size; infrared camera"
+              "what": "Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
             }
           ],
-          "how": "Count by size and temperature."
+          "how": "A stated hot/design temperature or missing insulation field is not proof of a bare surface or heat loss. Review existing suitable insulation and records first. DOE Tip17 explicitly describes removable reusable covers for periodic inspection or repair, so frequent access does not itself rule them out. Review actual fit/material/function/access and applicable manufacturer guidance; existing insulation removal must follow qualified safe procedures, including potential hazardous-material assessment. A suitable current arrangement may be acknowledged without new field measurement or jacket installation. Source table temperatures, sizes and heat-loss examples are not automatic site prescriptions or savings.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "operating_temperature_C",
+            "design_temperature_C",
+            "insulation_status",
+            "surface_temperature",
+            "valve_size",
+            "size_unit",
+            "access_need",
+            "inspection_frequency",
+            "manufacturer_requirement",
+            "removal_hazard"
+          ]
         }
       ],
-      "decision_rule": "Fit removable jackets on bare hot valves and flanges that are not opened often.",
+      "decision_rule": "Review actual service/temperature, installed condition, periodic access, manufacturer/function and safe-handling requirements before any insulation decision. Do not infer bare valves or automatically fit jackets from a model temperature, and do not reject removable covers merely because inspection/repair access is frequent. Acknowledge suitable existing insulation or unresolved applicability; no compulsory removal, retrofit or site benefit is authorized.",
       "typical_benefit": {
         "wording": "\"a 6-inch gate valve may have more than 6 square feet of surface area.\" The source tabulates heat saved by valve size and temperature. No % stated.",
         "source": [
@@ -1291,7 +1644,25 @@
         ],
         "arc": "2.2136 (by description)"
       },
-      "limits": null
+      "limits": "Source review: complete S1/Tip2 and S2/Tip17 pp1–2. Removable-cover guidance includes periodic inspection/repair; trap-specific manufacturer instructions and existing-material hazards are conditional where applicable, not a blanket instruction to cover/remove every surface. Existing source examples depend on declared size/temperature/ambient/material/time conditions, not current installed truth.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "operating_temperature_C",
+        "design_temperature_C",
+        "insulation_status",
+        "surface_temperature",
+        "valve_size",
+        "size_unit",
+        "access_need",
+        "inspection_frequency",
+        "manufacturer_requirement",
+        "removal_hazard"
+      ]
     },
     {
       "id": "E13",
@@ -1414,58 +1785,100 @@
     {
       "id": "E14",
       "family": "energy",
-      "question": "Does this boiler stack have no feedwater economizer?",
+      "question": "What do existing records establish about this boiler/steam-generator candidate's flue/feedwater service and current heat-recovery coverage?",
       "applies_when": {
-        "absent_note": "no economizer anywhere in the model",
         "anchor": {
           "kind": [
             "equipment"
           ],
-          "type_text": "BOILER|FIRED HEATER|FURNACE|\\bKILN\\b",
-          "not_text": "STEAM GENERATOR|REACTOR"
+          "type_text": "BOILER|STEAM[ _-]?GENERATOR",
+          "not_text": "REACTOR",
+          "not_type_text": "^(?:heat[ _-]?exchanger|pump|cooler|economizer|furnace|fired[ _-]?heater|kiln)$"
         },
         "group_by": "unit",
-        "without": [
+        "also_show": [
           {
             "select": {
               "text": "ECONOMI[SZ]ER"
             },
-            "relation": "anywhere"
+            "relation": "anywhere",
+            "as": "unverified economizer record; coverage not inferred"
           }
         ]
       },
       "evidence_fields": [
-        "boiler",
-        "no economizer anywhere on the model"
+        "boiler/steam-generator service candidate",
+        "supplied economizer records with unverified owner/coverage"
       ],
       "data_requests": [
         {
-          "item": "Stack temperature",
+          "item": "Existing named-boiler flue/feedwater service and recovery association",
           "where": [
             {
-              "place": "historian",
-              "for": "trigger",
-              "quantity": "temperature"
+              "place": "records",
+              "what": "Existing exact-subject boiler/steam-water, heat-source/flue and feedwater duty, installed recovery/route/coverage and source/revision/availability records; retain foreign or uncertain economizer associations explicitly."
             },
             {
               "place": "walkdown",
-              "what": "flue gas thermometer at the stack"
+              "what": "Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
             }
           ],
-          "how": "Record at normal firing."
+          "how": "One economizer label anywhere cannot establish installed coverage, suitability or closure for every boiler. Establish relevant actual service and named coverage; known dry furnace/nonwater helper or electric/no-flue service is not this flue/feedwater task, and unknown service remains conditional. A source-labelled steam generator is reviewed for its actual function without inventing a fuel or drum. Acknowledge suitable existing records or nonapplicability before new observations.",
+          "field_scope": "unit",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "existing_recovery",
+            "target_boiler",
+            "feedwater_basis",
+            "stack_temperature",
+            "temperature_unit",
+            "tuning_basis",
+            "fuel_basis",
+            "dewpoint_basis",
+            "operating_hours"
+          ]
         },
         {
-          "item": "Fuel sulfur content",
+          "item": "Existing tuned operating, receiving-feedwater and cold-end feasibility basis",
           "where": [
             {
-              "place": "bills",
-              "what": "fuel specification"
+              "place": "records",
+              "what": "Existing actual stack temperature/load/hours after appropriate tuning/cleaning, fuel/composition, feedwater/receiving duty, dewpoint/corrosion/material and practical/economic constraints, with matched units/time and source coverage."
+            },
+            {
+              "place": "walkdown",
+              "what": "Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
             }
           ],
-          "how": "Limits how low the flue gas can be cooled."
+          "how": "S4 describes reviewing stack operation after tuning to manufacturer specifications, suitable excess air and clean heat-transfer surfaces; design/high stack temperature alone is not a recovery decision. Review fuel, dewpoint/cold-end corrosion and useful receiving duty before considering a remaining opportunity. Its example temperatures, efficiency increments and savings/paybacks are contextual, not universal limits or this site's benefit. Existing suitable operation can be acknowledged without a compulsory thermometer, quote or retrofit.",
+          "field_scope": "unit",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "existing_recovery",
+            "target_boiler",
+            "feedwater_basis",
+            "stack_temperature",
+            "temperature_unit",
+            "tuning_basis",
+            "fuel_basis",
+            "dewpoint_basis",
+            "operating_hours"
+          ]
         }
       ],
-      "decision_rule": "Worth a quote when stack temperature is high and the fuel allows cooling the flue gas.",
+      "decision_rule": "Review actual boiler/flue/feedwater function, existing named recovery coverage, tuned operating/load records and cold-end/receiving/economic constraints with the responsible engineer. No global economizer label, high temperature or fuel label alone establishes absence, adequacy or a reason to obtain equipment quotes. Suitable existing coverage or nonapplicability may be acknowledged; unknown basis remains a records question with no operating or hardware authorization.",
       "typical_benefit": {
         "wording": "Efficiency \"can be increased by 1% for every 40°F reduction in flue gas temperature.\" An economizer \"can often reduce fuel requirements by 5% to 10% and pay for itself in less than 2 years.\"",
         "source": [
@@ -1474,64 +1887,142 @@
         ],
         "arc": "2.242x (by description) (IAC/ITAC browse page: 635 recommendations, 2.1 yr average payback, 24.3% implemented; average dollar figure omitted)"
       },
-      "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers."
+      "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: complete S4/Tip3 pp1–2 is steam-boiler/feedwater guidance, conditional on tuning/cleanliness, fuel/cold-end and system economics. The inherited general efficiency/payback examples are not universal temperature targets or transferred site savings. Unknown heat-source/service does not establish applicability.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "service",
+        "existing_recovery",
+        "target_boiler",
+        "feedwater_basis",
+        "stack_temperature",
+        "temperature_unit",
+        "tuning_basis",
+        "fuel_basis",
+        "dewpoint_basis",
+        "operating_hours"
+      ]
     },
     {
       "id": "E15",
       "family": "energy",
-      "question": "Could a condensing economizer serve a cold makeup or process-water heating load?",
+      "question": "What do existing records establish about this boiler/steam-generator candidate's applicable condensing-recovery function, receiving duty and system constraints?",
       "applies_when": {
         "anchor": {
           "kind": [
             "equipment"
           ],
-          "type_text": "BOILER|FIRED HEATER|FURNACE|\\bKILN\\b",
-          "not_text": "STEAM GENERATOR|REACTOR",
-          "text": "GAS"
+          "type_text": "BOILER|STEAM[ _-]?GENERATOR",
+          "not_text": "REACTOR",
+          "not_type_text": "^(?:heat[ _-]?exchanger|pump|cooler|economizer|furnace|fired[ _-]?heater|kiln)$"
         },
         "group_by": "unit",
-        "with": [
+        "also_show": [
           {
             "select": {
               "text": "MAKE-?UP WATER|PROCESS WATER|HOT WATER"
             },
             "relation": "anywhere",
-            "as": "low-temperature water load"
+            "as": "unverified receiving-water record; compatibility not inferred"
           }
         ]
       },
       "evidence_fields": [
-        "gas-fired boiler",
-        "cold makeup or process water heating load"
+        "boiler/steam-generator service candidate",
+        "supplied receiving-water records, association/time/temperature compatibility unverified"
       ],
       "data_requests": [
         {
-          "item": "Stack temperature and moisture",
+          "item": "Existing boiler/flue/fuel and installed-recovery operating basis",
           "where": [
+            {
+              "place": "records",
+              "what": "Existing named-subject actual boiler/flue/fuel and recovery arrangement, capacity/load/hours/fuel use, stack temperature/moisture and gas condition, source/revision/units/time/availability and unknowns."
+            },
             {
               "place": "walkdown",
-              "what": "flue gas analysis"
+              "what": "Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
             }
           ],
-          "how": "Record at normal firing."
+          "how": "Establish relevant actual flue/boiler service first; known nonflue/electric or nonwater helper scope is not applicable and unknown service remains conditional. Missing GAS text, an unrecorded sink or unknown fuel is not proof that no records investigation is needed. S7 covers natural-gas and light-oil examples with different acid/material/treatment qualifications, not automatic suitability for any fuel. Acknowledge suitable existing recovery before considering further work.",
+          "field_scope": "unit",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "fuel_basis",
+            "sink_basis",
+            "condensate_quality",
+            "load_target",
+            "load_duty",
+            "load_temperature",
+            "temperature_unit",
+            "existing_recovery",
+            "acid_treatment",
+            "stack_dispersion",
+            "steam_balance",
+            "operating_hours",
+            "load_flow",
+            "flow_unit"
+          ]
         },
         {
-          "item": "Size of the low-temperature heat sink",
+          "item": "Existing matched receiving duty, water quality and whole-system feasibility basis",
           "where": [
             {
-              "place": "historian",
-              "for": "low-temperature water load",
-              "quantity": "flow"
+              "place": "records",
+              "what": "Existing actual receiving-water/process duty, temperature/flow/timing, exact association/source/quality and practical access; condensate acidity/treatment/materials, emissions/stack dispersion, deaerator/steam/turbine/blowdown-heat interactions and economic constraints."
             },
             {
               "place": "records",
-              "what": "makeup water flow"
+              "what": "The following receiving-water tag/series locations are candidate-only lookup aids from supplied records; boiler/system association, source identity, availability, compatible duty and water quality remain unverified. Do not treat a foreign or unknown candidate as this boiler's measured heat sink."
+            },
+            {
+              "place": "historian",
+              "for": "unverified receiving-water record; compatibility not inferred",
+              "quantity": "flow"
+            },
+            {
+              "place": "walkdown",
+              "what": "Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
             }
           ],
-          "how": "Flow and temperature rise needed."
+          "how": "A nearby or anywhere MAKEUP/PROCESS/HOT WATER label is not proof of a cold, available, compatible or steady heat sink. Review source and receiving duty together with acid-condensate/water-quality treatment, design/material and whole-steam-system effects. S7 explicitly requires site-specific engineering and water-chemistry understanding; direct/indirect configurations and source examples are not interchangeable site prescriptions. Acknowledge suitable existing basis or unknowns without compulsory flue analysis, new measurements, equipment quotes or retrofit; no current site saving is calculated.",
+          "field_scope": "unit",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "fuel_basis",
+            "sink_basis",
+            "condensate_quality",
+            "load_target",
+            "load_duty",
+            "load_temperature",
+            "temperature_unit",
+            "existing_recovery",
+            "acid_treatment",
+            "stack_dispersion",
+            "steam_balance",
+            "operating_hours",
+            "load_flow",
+            "flow_unit"
+          ]
         }
       ],
-      "decision_rule": "Worth a quote when a steady cold water load exists near the stack.",
+      "decision_rule": "Review actual service/fuel, installed recovery and matched receiving duty/quality/timing with acid-condensate, materials, dispersion, whole-system and economic constraints before a feasibility decision. Do not obtain quotes or prescribe a condensing economizer from a GAS label plus nearby water, nor silently close unknown/oil/missing-sink records. Suitable existing function or nonapplicability may be acknowledged. No chemical, hardware, operating or site-benefit authorization follows.",
       "typical_benefit": {
         "wording": "Can \"increase overall heat recovery and steam system efficiency by up to 10%.\" \"Simple paybacks... are often less than 2 years.\"",
         "source": [
@@ -1539,7 +2030,30 @@
         ],
         "arc": "2.242x (by description)"
       },
-      "limits": null
+      "limits": "Source review: complete S7/Tip26B pp1–3 includes natural-gas/light-oil table qualifications, acid water/treatment/materials, system/stack-dispersion interactions and explicit site-specific engineering. Inherited up-to efficiency and payback examples are not present-day quotes or this site's outcomes. Supplied field/association values are unverified candidates, not completion.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "service",
+        "fuel_basis",
+        "sink_basis",
+        "condensate_quality",
+        "load_target",
+        "load_duty",
+        "load_temperature",
+        "temperature_unit",
+        "existing_recovery",
+        "acid_treatment",
+        "stack_dispersion",
+        "steam_balance",
+        "operating_hours",
+        "load_flow",
+        "flow_unit"
+      ]
     },
     {
       "id": "E16",
@@ -1670,53 +2184,102 @@
     {
       "id": "E17",
       "family": "energy",
-      "question": "Does this furnace or fired heater send hot flue gas straight to the stack?",
+      "question": "What do existing records establish about this heating candidate's actual fired/flue service, recovery coverage and remaining compatible duty?",
       "applies_when": {
-        "absent_note": "no recuperator, air preheater, economizer or waste heat recovery anywhere in the model",
         "anchor": {
           "kind": [
             "equipment"
           ],
-          "type_text": "BOILER|FIRED HEATER|FURNACE|\\bKILN\\b",
-          "not_text": "STEAM GENERATOR|REACTOR"
+          "type_text": "BOILER|FIRED[ _-]?HEATER|FURNACE|\\bKILN\\b|STEAM[ _-]?GENERATOR",
+          "not_text": "REACTOR",
+          "not_type_text": "^(?:heat[ _-]?exchanger|recuperator|regenerator|air[ _-]?preheater|economizer|pump|cooler|electric[ _-]?(?:furnace|boiler)|induction[ _-]?furnace)$"
         },
         "group_by": "unit",
-        "without": [
+        "also_show": [
           {
             "select": {
               "text": "RECUPERAT|AIR PREHEAT|ECONOMI[SZ]ER|WASTE HEAT"
             },
-            "relation": "anywhere"
+            "relation": "anywhere",
+            "as": "unverified recovery record; coverage not inferred"
           }
         ]
       },
       "evidence_fields": [
-        "fired equipment",
-        "no recuperator, air preheater or load preheat"
+        "heating service candidate",
+        "supplied recovery records, exact owner and residual duty unverified"
       ],
       "data_requests": [
         {
-          "item": "Flue temperature and cleanliness",
-          "where": [
-            {
-              "place": "walkdown",
-              "what": "flue gas thermometer"
-            }
-          ],
-          "how": "Record at normal firing."
-        },
-        {
-          "item": "Continuous or batch operation",
+          "item": "Existing actual heating/flue service and recovery/loss-reduction coverage",
           "where": [
             {
               "place": "records",
-              "what": "production schedule"
+              "what": "Existing named-subject service, heat source and flue/recovery routing, installed function/coverage, prior loss-reduction and source/revision/availability records."
+            },
+            {
+              "place": "walkdown",
+              "what": "Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
             }
           ],
-          "how": "Load preheating suits continuous furnaces."
+          "how": "A heating name is not proof of combustion or hot gas vented straight to a stack. One recovery label anywhere does not settle another subject or demonstrate complete useful coverage. Known noncombustion/electric and typed recovery helpers are not fired subjects; unknown service remains conditional without inventing fuel or flue flow. Review existing suitable function and avoidable losses first, acknowledging suitable coverage or nonapplicability before further work.",
+          "field_scope": "unit",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "existing_recovery",
+            "target_subject",
+            "operation_mode",
+            "flue_temperature",
+            "temperature_unit",
+            "flue_flow",
+            "receiving_duty",
+            "flue_cleanliness",
+            "prior_loss_reduction",
+            "fuel_basis"
+          ]
+        },
+        {
+          "item": "Existing source/receiving duty, schedule and feasibility basis",
+          "where": [
+            {
+              "place": "records",
+              "what": "Existing actual exhaust temperature/flow/composition/cleanliness, load and operating schedule, receiving air/water/steam/load requirements, compatibility/timing and practical/material/economic constraints, with exact units/time/source coverage."
+            },
+            {
+              "place": "walkdown",
+              "what": "Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
+            }
+          ],
+          "how": "S18 distinguishes combustion-air, steam/water and load-preheating methods. A continuous-load-preheating preference does not exclude every batch recovery option: waste-heat steam is available only while its fired source operates, and useful receiving duty must match. Hot/clean gas, proximity, a source example or an unconverted value alone does not authorize recovery equipment, field tests or site savings. Suitable existing records can be acknowledged.",
+          "field_scope": "unit",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "existing_recovery",
+            "target_subject",
+            "operation_mode",
+            "flue_temperature",
+            "temperature_unit",
+            "flue_flow",
+            "receiving_duty",
+            "flue_cleanliness",
+            "prior_loss_reduction",
+            "fuel_basis"
+          ]
         }
       ],
-      "decision_rule": "Worth a look for continuous furnaces with hot, clean flue gas.",
+      "decision_rule": "Review actual heating/flue service, existing recovery and prior loss-reduction coverage, source/receiving duty and operating schedules with the responsible engineer. Do not infer installed absence or wasted heat from names or global labels, and do not automatically close batch service or prescribe a retrofit from a continuous/clean pattern. Suitable existing basis or nonapplicability may be acknowledged; unresolved source, function, time or units remains a records question.",
       "typical_benefit": {
         "wording": "\"Energy consumption can typically be reduced 5% to 30%.\" Load preheating is \"best suited for continuous rather than batch furnaces.\"",
         "source": [
@@ -1725,12 +2288,31 @@
         ],
         "arc": "2.241x (IAC/ITAC browse page: 1,936 recommendations, 2.0 yr average payback, 20.0% implemented; average dollar figure omitted)"
       },
-      "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers."
+      "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: complete S18 process-heating Tip8 pp1-2 distinguishes recovery methods, prior loss reduction and operating constraints; S4 Tip3 pp1-2 additionally bounds boiler-flue/feedwater function. Source 5%-30% is contextual historical guidance, not this subject's measured savings. Named records and capabilities are unverified candidates.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "service",
+        "existing_recovery",
+        "target_subject",
+        "operation_mode",
+        "flue_temperature",
+        "temperature_unit",
+        "flue_flow",
+        "receiving_duty",
+        "flue_cleanliness",
+        "prior_loss_reduction",
+        "fuel_basis"
+      ]
     },
     {
       "id": "E18",
       "family": "energy",
-      "question": "Is heat rejected to cooling water in one place while steam heats a colder stream in another (a heat-integration question)?",
+      "question": "What do existing records establish about these cooling/steam-labelled candidates' process-stream duties and any system-level heat-integration question?",
       "applies_when": {
         "anchor": {
           "kind": [
@@ -1763,12 +2345,11 @@
         ]
       },
       "evidence_fields": [
-        "equipment cooled with cooling water and its temperature tags",
-        "equipment heated with steam and its temperature tags"
+        "cooling-water and other-unit steam candidates, not established process heat roles, temperatures or physical connections"
       ],
       "data_requests": [
         {
-          "item": "Temperatures and duties of the cooled and the heated streams",
+          "item": "Existing exact process-stream identities, temperature-enthalpy and duty basis",
           "where": [
             {
               "place": "historian",
@@ -1788,128 +2369,311 @@
             },
             {
               "place": "records",
-              "what": "heat and material balance"
+              "what": "Existing process/utility identities and directions, actual supply/target temperatures, flows, heat-capacity/phase/duty and operating coverage for each represented cooling and steam candidate; source/revision/availability, quantity units and matching sample periods retained."
+            },
+            {
+              "place": "walkdown",
+              "what": "Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
             }
           ],
-          "how": "For each stream: supply and target temperature and duty."
+          "how": "A CW or steam valve/instrument label is a proxy, not measured process heat rejection/heating, a process-stream identity or a flow signal. Retain each owner/source separately, including related steam-record values shown as candidate evidence. Review actual comparable process duties and uncertainty before inferring any match; command values, foreign data or incompatible units/periods cannot settle it.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "process_role",
+            "hot_supply_C",
+            "hot_target_C",
+            "cold_supply_C",
+            "cold_target_C",
+            "heat_capacity_flow",
+            "capacity_unit",
+            "duty",
+            "duty_unit",
+            "sample_period",
+            "operation_mode",
+            "system_alternatives",
+            "reactive_service",
+            "hazard_review",
+            "fouling",
+            "cross_contamination",
+            "pressure_constraints"
+          ]
         },
         {
-          "item": "Whether the duties overlap in time",
+          "item": "Existing process-wide targets and time-aware operating constraints",
           "where": [
             {
               "place": "records",
-              "what": "operating sequence: are both duties needed at the same time?"
-            }
-          ],
-          "how": "Mark each duty continuous, batch or startup-only."
-        },
-        {
-          "item": "Layout distance and fouling",
-          "where": [
-            {
-              "place": "walkdown",
-              "what": "distance between the two exchangers"
+              "what": "Existing heat/material balance, process-wide temperature-enthalpy/composite profiles and utility targets, batch sequences and timing, current studies and alternatives, with source scope and economic/operating assumptions."
             },
             {
-              "place": "maintenance",
-              "what": "cleaning history"
+              "place": "walkdown",
+              "what": "Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
             }
           ],
-          "how": "Note pipe run and fouling service."
+          "how": "S19 printed43-45 describes process-wide composite curves, approach/capital-energy tradeoffs and developments for batch/time-aware integration and heat pumps/transformers. Do not replace that analysis with a rule that all hot temperatures must exceed all cold temperatures, or automatically close every non-simultaneous/batch pair. Conversely, overlapping ideal profiles or an alternative technology name is not proof of feasible recovery. Review the appropriate system and timing model before deciding.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "process_role",
+            "hot_supply_C",
+            "hot_target_C",
+            "cold_supply_C",
+            "cold_target_C",
+            "heat_capacity_flow",
+            "capacity_unit",
+            "duty",
+            "duty_unit",
+            "sample_period",
+            "operation_mode",
+            "system_alternatives",
+            "reactive_service",
+            "hazard_review",
+            "fouling",
+            "cross_contamination",
+            "pressure_constraints"
+          ]
+        },
+        {
+          "item": "Existing physical, material, fouling and hazard/feasibility basis",
+          "where": [
+            {
+              "place": "records",
+              "what": "Existing layout/routing and fouling/cleaning records, composition/pressure/material and cross-contamination constraints, reactive/process hazard review, existing exchanger/network function and economic/practical basis; authority and missing records remain explicit."
+            },
+            {
+              "place": "walkdown",
+              "what": "Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
+            }
+          ],
+          "how": "Existing suitable studies may be acknowledged without new measurements or a compulsory exchanger study. On reactive service an integration change needs the applicable hazard review; a missing review, supplied Boolean or source label is not protection acceptance. No piping connection, operating change, whole-process completeness or site saving follows from the represented pair.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "process_role",
+            "hot_supply_C",
+            "hot_target_C",
+            "cold_supply_C",
+            "cold_target_C",
+            "heat_capacity_flow",
+            "capacity_unit",
+            "duty",
+            "duty_unit",
+            "sample_period",
+            "operation_mode",
+            "system_alternatives",
+            "reactive_service",
+            "hazard_review",
+            "fouling",
+            "cross_contamination",
+            "pressure_constraints"
+          ]
         }
       ],
-      "decision_rule": "Worth a pinch or exchanger study only when the hot stream's temperature range sits above the cold stream's with a practical approach, both run at the same time for long hours, and they are close enough to connect. Otherwise close this screening investigation.",
+      "decision_rule": "Review the actual process-wide temperature-enthalpy/utility targets, stream identities and duty/time basis, practical approach/capital tradeoffs and physical/material/hazard constraints before an integration decision. Do not prescribe a connection or automatically close a question from a pairwise temperature-range, simultaneity, hours or distance shortcut. Suitable existing analysis or nonapplicability may be acknowledged; missing or contradictory source/units/time remains explicit.",
       "typical_benefit": {
-        "wording": "Pinch potential \"far exceeds that from well-known conventional techniques such as heat recovery from boiler flue gas, insulation and steam trap management.\" No % stated in that section.",
+        "wording": "The source describes systematic process-wide temperature-enthalpy targeting and matching of heating/cooling demands, including time-aware batch approaches and alternatives. Potential depends on the actual process and capital-energy tradeoffs; this screen establishes no universal superiority, quantified benefit or site saving.",
         "source": [
           "S19",
           "S24"
         ],
         "arc": "2.243x; 2.244x (IAC/ITAC browse page: 2.243x: 3,673 recommendations, 1.4 yr average payback, 31.2% implemented; 2.244x: 1,466 recommendations, 1.7 yr, 28.6%; average dollar figure omitted)"
       },
-      "limits": "A screen pairs any cooling-water-cooled item with any steam-heated item; the temperatures decide. On a reactive system any heat-integration change needs a hazard review first. IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers."
+      "limits": "The represented cooling-water and other-unit steam labels are screening proxies, not established process-stream duties or a feasible heat match. Review process-wide temperature-enthalpy targets, duty/time coverage and practical constraints; pairwise temperature ranges or simultaneity alone do not decide broader integration potential. On a reactive system any heat-integration change needs a hazard review first. IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: original LBNL-56183 printed43-45/PDF51-53 from the official ENERGY STAR mirror; raw equivalence to inaccessible catalog OSTI bytes is not claimed. The original far-exceeds comparative quotation remains historical; it is not evidence for this pair or a guarantee. Reactive-system hazard-review requirement is retained.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "process_role",
+        "hot_supply_C",
+        "hot_target_C",
+        "cold_supply_C",
+        "cold_target_C",
+        "heat_capacity_flow",
+        "capacity_unit",
+        "duty",
+        "duty_unit",
+        "sample_period",
+        "operation_mode",
+        "system_alternatives",
+        "reactive_service",
+        "hazard_review",
+        "fouling",
+        "cross_contamination",
+        "pressure_constraints"
+      ]
     },
     {
       "id": "E19",
       "family": "energy",
-      "question": "Is the compressed air header pressure higher than the end users need?",
+      "question": "What do existing records establish about this air-system candidate's pressure requirements, losses and control/storage constraints?",
       "applies_when": {
         "anchor": {
           "kind": [
             "equipment"
           ],
-          "text": "AIR COMPRESSOR|INSTRUMENT AIR|PLANT AIR|COMPRESSED AIR",
-          "not_text": "DRYER|DRIER|FILTER|SEPARATOR|RECEIVER|AFTERCOOLER"
+          "type_text": "AIR[ _-]?COMPRESSOR|INSTRUMENT AIR|PLANT AIR|COMPRESSED AIR",
+          "not_type_text": "^(?:air[ _-]?(?:dryer|drier|filter|separator|receiver|aftercooler)|(?:process[ _-]?gas|gas|refrigeration)[ _-]?compressor|dryer|drier|filter|separator|receiver|aftercooler)$"
         },
         "group_by": "unit",
-        "with": [
+        "also_show": [
           {
             "select": {
               "isa": "^P(I?C|CV|RV)$"
             },
             "relation": "anywhere",
-            "as": "pressure control or regulator"
+            "as": "unverified pressure/control record; system association not inferred"
           }
         ]
       },
       "evidence_fields": [
-        "air compressor and its pressure control",
-        "point-of-use regulators"
+        "air-system candidate",
+        "supplied pressure/control records, source location and coverage unverified"
       ],
       "data_requests": [
         {
-          "item": "Header pressure profile and the minimum end-use pressure",
+          "item": "Existing named-system service, pressure/end-use and dynamic control/storage basis",
           "where": [
             {
+              "place": "records",
+              "what": "Existing actual compressor/system and controls, pressure location and discharge/header/point-of-use profiles, actual end-use requirements, distribution/treatment losses, peak/transient demand, storage/control range and manufacturer constraints; exact source/owner/revision, units/time/availability and coverage retained."
+            },
+            {
+              "place": "records",
+              "what": "The following pressure/control tag/series locations are candidate-only lookup aids from supplied records; compressor/system association, source identity, availability, measurement location and requirements remain unverified. Do not treat a foreign or unknown candidate as this compressor's measured header pressure or minimum end-use requirement."
+            },
+            {
               "place": "historian",
-              "for": "pressure control or regulator",
+              "for": "unverified pressure/control record; system association not inferred",
               "quantity": "pressure"
             },
             {
               "place": "walkdown",
-              "what": "pressure at the farthest and most demanding users"
+              "what": "Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
             }
           ],
-          "how": "Find the highest pressure any user truly needs."
+          "how": "A pressure record anywhere is not this compressor's control or another user's requirement, and missing control representation is not closure. Known helpers/process-gas/refrigeration compressors are not air subjects; an air-compressor package is not disqualified merely because its name also mentions a dryer. Establish actual service/requirements and match quantities, locations and dynamic operating coverage. Review appropriate existing records and component/storage/control constraints before considering pressure changes. Suitable requirements or existing configuration can be acknowledged without new tests or lower-setpoint instructions.",
+          "field_scope": "unit",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "discharge_pressure",
+            "required_end_pressure",
+            "pressure_unit",
+            "sample_period",
+            "pressure_location",
+            "measurement_target",
+            "dynamic_demand",
+            "storage_basis",
+            "control_range",
+            "manufacturer_basis"
+          ]
         }
       ],
-      "decision_rule": "Lower the setpoint toward the highest true end-use need plus distribution losses.",
+      "decision_rule": "Review actual system/end-use requirements and matched pressure/location/time records, peak demand, distribution/component drops, storage/control and manufacturer constraints with the responsible specialist before a pressure decision. Highest scalar need plus an assumed loss alone does not authorize lowering a setpoint. Unknown scope or dynamic basis remains a records question, and suitable existing operation or nonapplicability may be acknowledged; no operating change or site savings are calculated.",
       "typical_benefit": {
-        "wording": "\"for every 2 psi decrease in discharge pressure, energy consumption will decrease by approximately 1 percent at full output flow.\" With 30-50% unregulated usage, \"about 1 to 1.6 percent for every 2 psi.\"",
+        "wording": "S11 explains that pressure can affect compressor power and unregulated demand, with effects depending on compressor/control type, pressure range and operating conditions. Review manufacturer/system performance and required end-use pressure; no universal saving per pressure step or site benefit is asserted.",
         "source": [
           "S11",
           "S24"
         ],
         "arc": "2.4231 (IAC/ITAC browse page: 6,522 recommendations, 0.5 yr average payback, 51.6% implemented; average dollar figure omitted)"
       },
-      "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers."
+      "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: S11 printed28-36/PDF33-41, including full pressure/control context. Its printed31 increase and printed34 decrease passages give inconsistent combined percentage ranges; no corrected number is chosen. Original numeric wording remains historical, not a universal target or a reason to compromise minimum end-use pressure.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "service",
+        "discharge_pressure",
+        "required_end_pressure",
+        "pressure_unit",
+        "sample_period",
+        "pressure_location",
+        "measurement_target",
+        "dynamic_demand",
+        "storage_basis",
+        "control_range",
+        "manufacturer_basis"
+      ]
     },
     {
       "id": "E20",
       "family": "energy",
-      "question": "Are compressed air leaks likely, given many quick-disconnects, hose drops or timer drains?",
+      "question": "What do existing records establish about these connection/drain candidates' compressed-air service, measured leakage and ongoing prevention program?",
       "applies_when": {
         "anchor": {
-          "text": "QUICK.?DISCONNECT|HOSE DROP|\\bFRL\\b|TIMER DRAIN"
+          "text": "QUICK.?DISCONNECT|HOSE DROP|\\bFRL\\b|TIMER DRAIN",
+          "not_type_text": "^(?:hydraulic[ _-]?(?:coupling|hose|fitting)|steam[ _-]?(?:drain|trap))$"
         },
         "group_by": "model"
       },
       "evidence_fields": [
-        "count of quick-disconnects, hose drops, FRLs, timer drains (proxy evidence only)"
+        "represented connection/drain proxies, not observed leaks, measured rates or installed population"
       ],
       "data_requests": [
         {
-          "item": "Leak rate",
+          "item": "Existing component/service, leak-measurement and repair/verification program basis",
           "where": [
             {
+              "place": "records",
+              "what": "Existing exact component/system compressed-air service, authorized purge/drain/end-use demands, measurement method/control mode/pressure/capacity or volume/time basis, survey/repair/verification history and continuing program coverage; source/revision/units/availability and scope retained."
+            },
+            {
               "place": "walkdown",
-              "what": "ultrasonic leak survey; a no-load test with production stopped"
+              "what": "Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
             }
           ],
-          "how": "Leakage % from load/unload times at no demand."
+          "how": "Names/counts are potential inspection clues, not actual leaks or a rate. Known hydraulic/steam components are not compressed-air leak subjects; unknown service remains conditional. Review existing suitable records first. S11 printed28-30 permits load/unload or start/stop timing estimates only with the appropriate control and actual no-demand conditions; production stopped alone does not establish that. VSD/modulating/unknown control, intentional purges/drains, active end uses and unverified boundaries require a suitable different basis, not blind use of the same timing quotient. Distinguish capacity/flow percentage from power savings and retain uncertainty. S9/S11 describe ongoing identification, repair and verification, not a program started or stopped solely by a universal5%-10% cutoff. No compulsory survey, shutdown or control adjustment is authorized.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "program_status",
+            "leakage_percent",
+            "measurement_basis",
+            "control_mode",
+            "onload_time",
+            "offload_time",
+            "time_unit",
+            "all_enduses_off",
+            "production_stopped",
+            "authorized_purge"
+          ]
         }
       ],
-      "decision_rule": "Run a leak program when leakage is well above the 5-10% target.",
+      "decision_rule": "Review actual compressed-air service, qualified leak evidence and authorized demands, repair/verification and ongoing program coverage with the responsible specialist. Do not diagnose leakage from component labels, apply an incompatible no-load timing method or mandate a program only above a generic target. Suitable existing prevention or nonapplicability may be acknowledged; unresolved measurement/source/control/scope remains explicit. No production stop, repair instruction, compressor adjustment or site benefit follows from this screen.",
       "typical_benefit": {
         "wording": "Leaks are \"often wasting as much as 20%-30% of the compressor's output\"; target \"5%-10% of total system flow.\"",
         "source": [
@@ -1918,89 +2682,186 @@
         ],
         "arc": "2.4236 (IAC/ITAC browse page: 11,223 recommendations, 0.5 yr average payback, 81.4% implemented; average dollar figure omitted)"
       },
-      "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers."
+      "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: complete S9 compressed-air Tip3 pp1-2, with S11 printed28-30 leak methods/program and printed35-36 controls. Typical source leak percentages and example energy costs are not this system's leakage, targets or savings; scope/quantity and legitimate demand must be established.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "service",
+        "program_status",
+        "leakage_percent",
+        "measurement_basis",
+        "control_mode",
+        "onload_time",
+        "offload_time",
+        "time_unit",
+        "all_enduses_off",
+        "production_stopped",
+        "authorized_purge"
+      ]
     },
     {
       "id": "E21",
       "family": "energy",
-      "question": "Is compressed air used for open blowing, sparging, venturi vacuum or cabinet cooling?",
+      "question": "What do existing records establish about these air-labelled end-use candidates, their required function and any suitable alternative?",
       "applies_when": {
         "anchor": {
           "text_all": [
             "\\bAIR\\b",
             "BLOW|SPARG|VENTURI|EDUCTOR|VORTEX|CABINET COOL"
           ],
-          "not_text": "BLOWDOWN|BLOWER"
+          "not_text": "BLOWDOWN",
+          "not_type_text": "^(?:air[ _-]?blower|(?:water|steam)[ _-]?eductor|(?:panel|cabinet)[ _-]?purge)$"
         },
         "group_by": "model"
       },
       "evidence_fields": [
-        "compressed air line to an open-blowing, sparging, venturi or cooling use"
+        "air-labelled end-use candidates, not established inappropriate use or avoidable consumption"
       ],
       "data_requests": [
         {
-          "item": "End-use inventory with flow",
+          "item": "Existing end-use, function, demand and alternative/lifecycle basis",
           "where": [
             {
+              "place": "records",
+              "what": "Existing exact end-use/system and compressed-air service, process and safety purpose, required quality/pressure/flow and duty/load pattern, shutoff/control and current solution, source/owner/revision/availability and lifecycle/system constraints."
+            },
+            {
               "place": "walkdown",
-              "what": "list every air end use and estimate its flow"
+              "what": "Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
             }
           ],
-          "how": "Flag uses a blower, pump or fan could do."
+          "how": "S11 printed24-27 describes potentially inappropriate uses and context-dependent alternatives, not an equipment replacement instruction from a name. Establish actual compressed-air service and task requirements. Cabinet cooling is not protective panel purging. Intermittent/cyclic vacuum with suitable control and safety/practical constraints can justify a venturi; a generic load-factor example alone does not decide this installation or establish a central-pump alternative. Review existing suitable arrangements and full-system/lifecycle implications with the responsible specialist. Retain foreign, missing, zero and uncertain values; no blanket blower/fan/pump substitution or compulsory new survey follows.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "end_use",
+            "duty_percent",
+            "shutoff_control",
+            "safety_function",
+            "lifecycle_basis",
+            "heat_duty",
+            "quality_requirement",
+            "flow",
+            "flow_unit",
+            "pressure",
+            "pressure_unit",
+            "process_requirement"
+          ]
         }
       ],
-      "decision_rule": "Replace inappropriate uses with a blower, vacuum pump or fan where practical.",
+      "decision_rule": "Review actual compressed-air end-use/function, safety and quality requirements, matched demand/control records and practical lifecycle/system alternatives with the responsible specialist. A source list of potentially inappropriate uses is a collection prompt, not proof of waste. Suitable existing use or nonapplicability can be acknowledged; unknown service, scope or duty remains explicit without mandatory replacement or transferred source savings.",
       "typical_benefit": {
-        "wording": "\"unregulated usage is commonly as high as 30 to 50 percent of air demand.\"",
+        "wording": "S11 identifies potentially inappropriate compressed-air uses and discusses task-specific alternatives and lifecycle/system tradeoffs. The pressure-sensitive unregulated-demand share is not the fraction removable by substitution. No generic end-use saving, avoidable share or site benefit is asserted.",
         "source": [
           "S11",
           "S24"
         ],
         "arc": "2.4239; 2.4237; 2.4238 (IAC/ITAC browse page: 2.4239: 2,697 recommendations, 1.0 yr average payback, 48.4% implemented; average dollar figure omitted)"
       },
-      "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers."
+      "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: S11 printed24-27/PDF29-32 includes intermittent vacuum and explicitly distinguishes cabinet cooling from panel purging. Its historical unregulated-demand percentage concerns pressure-sensitive demand, not automatically inappropriate use, retrofit eligibility or savings. Known non-compressed-air and protective-purge roles are not cooling/sparging/vacuum subjects; unknown service is conditional.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "service",
+        "end_use",
+        "duty_percent",
+        "shutoff_control",
+        "safety_function",
+        "lifecycle_basis",
+        "heat_duty",
+        "quality_requirement",
+        "flow",
+        "flow_unit",
+        "pressure",
+        "pressure_unit",
+        "process_requirement"
+      ]
     },
     {
       "id": "E22",
       "family": "energy",
-      "question": "Does the air compressor lack enough storage for intermittent large users?",
+      "question": "What do existing records establish about this air-system candidate's demand events, controls and existing storage coverage/adequacy?",
       "applies_when": {
-        "absent_note": "no receiver or air storage anywhere in the model",
         "anchor": {
           "kind": [
             "equipment"
           ],
-          "text": "AIR COMPRESSOR|INSTRUMENT AIR|PLANT AIR|COMPRESSED AIR",
-          "not_text": "DRYER|DRIER|FILTER|SEPARATOR|RECEIVER|AFTERCOOLER"
+          "type_text": "AIR[ _-]?COMPRESSOR|INSTRUMENT AIR|PLANT AIR|COMPRESSED AIR",
+          "not_type_text": "^(?:air[ _-]?(?:dryer|drier|filter|separator|receiver|aftercooler)|(?:process[ _-]?gas|gas|refrigeration)[ _-]?compressor|dryer|drier|filter|separator|receiver|aftercooler)$"
         },
         "group_by": "unit",
-        "without": [
+        "also_show": [
           {
             "select": {
               "text": "RECEIVER|AIR TANK|STORAGE",
               "not_text": "AMMONIA|\\bNH3\\b|\\bR-?717\\b|REFRIGERA|\\bFREON\\b|\\bR-?(134A|404A|407[ACF]|410A|448A|449A|507A?|744)\\b|COLD STOR"
             },
-            "relation": "anywhere"
+            "relation": "anywhere",
+            "as": "unverified storage record; air-system association and adequacy not inferred"
           }
         ]
       },
       "evidence_fields": [
-        "air compressor",
-        "no receiver drawn"
+        "air-system candidate",
+        "supplied storage/receiver records without inferred coverage or installed absence"
       ],
       "data_requests": [
         {
-          "item": "Demand profile",
+          "item": "Existing system/end-use demand, control and storage basis",
           "where": [
             {
+              "place": "records",
+              "what": "Existing actual compressor/system, critical end-use pressure and air quality, control/capacity mode, receiver volumes and location/coverage, peak magnitude/duration and interval, pressure differential, available compressor supply during events and replenishment/recovery time; source, units and comparable operating periods retained."
+            },
+            {
               "place": "walkdown",
-              "what": "data-log compressor load and header pressure for a week"
+              "what": "Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
             }
           ],
-          "how": "Find short high-demand events."
+          "how": "A receiver/storage label anywhere is not this air system's coverage or sufficient capacity, and missing representation is not installed absence. Review actual demand patterns, controls and current receivers first; the appropriate strategy depends on quantity/quality and pressure requirements, event and refill timing and compressor/control characteristics. S11 printed43-44 does not endorse a universal gallons-per-cfm rule. A known compressor package is not excluded merely because its name mentions a dryer; helpers and known nonair machines are not air subjects. Acknowledge suitable existing coverage before additional work; no obligatory one-week logging, receiver installation, compressor stop or pressure change is authorized.",
+          "field_scope": "unit",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "existing_storage",
+            "storage_volume",
+            "volume_unit",
+            "target_subject",
+            "peak_duration",
+            "replenishment_time",
+            "control_mode",
+            "recovery_time",
+            "time_unit",
+            "peak_flow",
+            "flow_unit",
+            "max_pressure",
+            "min_pressure",
+            "pressure_unit",
+            "air_quality",
+            "supply_during_event"
+          ]
         }
       ],
-      "decision_rule": "Add storage when short peaks force an extra compressor on.",
+      "decision_rule": "Review actual system and critical end-use requirements, existing receiver coverage, pressure/demand/event and refill profiles and interacting compressor/control constraints with the responsible specialist. Short peaks or an extra unit starting are not by themselves an instruction to add storage. Suitable existing strategy or nonapplicability can be acknowledged; unresolved service, source, quantity, quality, pressure or timing remains a records question, not a sizing or vessel-safety approval.",
       "typical_benefit": {
         "wording": "Storage \"may allow such a compressor to be turned off.\" No % stated.",
         "source": [
@@ -2009,43 +2870,94 @@
         ],
         "arc": "2.422x (category only) (IAC/ITAC browse page: 8,589 recommendations, 1.2 yr average payback, 46.5% implemented; average dollar figure omitted)"
       },
-      "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers."
+      "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: S10 complete pp1-2 and S11 printed43-44/PDF48-49 make storage conditional on demand/quality/control and location/replenishment constraints; existing generic storage does not clear all systems. Pressure-vessel safety, relief, condensate/drain and maintenance constraints remain engineering responsibilities. No universal receiver volume or site savings is computed.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "service",
+        "existing_storage",
+        "storage_volume",
+        "volume_unit",
+        "target_subject",
+        "peak_duration",
+        "replenishment_time",
+        "control_mode",
+        "recovery_time",
+        "time_unit",
+        "peak_flow",
+        "flow_unit",
+        "max_pressure",
+        "min_pressure",
+        "pressure_unit",
+        "air_quality",
+        "supply_during_event"
+      ]
     },
     {
       "id": "E23",
       "family": "energy",
-      "question": "Is air compressor heat rejected when it could heat something?",
+      "question": "What do existing records establish about this air-compressor candidate's actual heat availability, existing recovery and compatible receiving duty?",
       "applies_when": {
         "anchor": {
           "kind": [
             "equipment"
           ],
-          "text": "AIR COMPRESSOR|INSTRUMENT AIR|PLANT AIR|COMPRESSED AIR",
-          "not_text": "DRYER|DRIER|FILTER|SEPARATOR|RECEIVER|AFTERCOOLER"
+          "type_text": "AIR[ _-]?COMPRESSOR|INSTRUMENT AIR|PLANT AIR|COMPRESSED AIR",
+          "not_type_text": "^(?:air[ _-]?(?:dryer|drier|filter|separator|receiver|aftercooler)|(?:process[ _-]?gas|gas|refrigeration)[ _-]?compressor|dryer|drier|filter|separator|receiver|aftercooler)$"
         },
         "group_by": "unit"
       },
       "evidence_fields": [
-        "air compressor",
-        "its cooling medium"
+        "air-compressor/cooling candidate, not established recoverable useful heat or a feasible retrofit"
       ],
       "data_requests": [
         {
-          "item": "Load hours and a nearby heat sink",
+          "item": "Existing compressor/cooling, recovery and receiving-duty basis",
           "where": [
             {
               "place": "records",
-              "what": "compressor run hours"
+              "what": "Existing actual compressor type/cooling arrangement and performance, available thermal quantity/temperature and load/run schedule, existing recovery/coverage and receiving heat duty/temperature/time/seasonality, displaced energy and quality/material/cooling/ventilation/backpressure/control constraints, with exact units/source/owner/revision/availability."
             },
             {
               "place": "walkdown",
-              "what": "space or water heating needs nearby"
+              "what": "Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
             }
           ],
-          "how": "List heat users within reach."
+          "how": "S11 printed58-59 describes heat fractions and different air-cooled/water-cooled arrangements. Electrical input converted to heat and a recovered fraction of available thermal energy are not electrical savings or a useful site duty. Establish compatible temperatures, coincident demand and source/configuration first; the source says this heat is usually insufficient for direct steam production. Nearby load or long hours alone is insufficient. Retain required compressor cooling, ventilation/backpressure, water-quality/material and control constraints and added fan/exchanger effects. Acknowledge suitable existing recovery or nonapplicability; missing coverage remains conditional rather than a forced field test or new exchanger.",
+          "field_scope": "unit",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "compressor_type",
+            "cooling_medium",
+            "available_heat",
+            "heat_unit",
+            "heat_temperature",
+            "temperature_unit",
+            "receiver_duty",
+            "receiver_required_temperature",
+            "existing_recovery",
+            "operating_schedule",
+            "receiver_schedule",
+            "heat_duty",
+            "bypass_control",
+            "ventilation_backpressure",
+            "cooling_constraint",
+            "water_quality",
+            "displaced_energy"
+          ]
         }
       ],
-      "decision_rule": "Worth a look when the compressor runs long hours and a low-temperature heat user is nearby.",
+      "decision_rule": "Review actual compressor/cooling performance, existing recovery and useful receiving duty, temperature, timing and operating/material/control constraints with the responsible specialist. Do not infer feasibility, useful output or a required retrofit from proximity/run hours or source heat percentages. Suitable existing recovery or nonapplicability may be acknowledged; unresolved source, service, units or duty remains explicit. No heat-recovery design, steam promise or site savings is produced.",
       "typical_benefit": {
         "wording": "\"As much as 80 to 93 percent of the electrical energy\" becomes heat; recovery \"anywhere from 50 to 90 percent of this\".",
         "source": [
@@ -2053,7 +2965,33 @@
         ],
         "arc": "2.243x (by description)"
       },
-      "limits": null
+      "limits": "Source review: S11 printed58-59/PDF63-64, full heat-recovery context. Its80-93% electrical-to-heat fraction and50-90% recovery of available thermal energy are contextual source figures, not electricity or site savings; compressor/cooling/design and compatible receiving duty matter. The worked example omits additional fan power and warns of exchanger effects. Actual energy displacement and ventilation/cooling/quality constraints require review.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "service",
+        "compressor_type",
+        "cooling_medium",
+        "available_heat",
+        "heat_unit",
+        "heat_temperature",
+        "temperature_unit",
+        "receiver_duty",
+        "receiver_required_temperature",
+        "existing_recovery",
+        "operating_schedule",
+        "receiver_schedule",
+        "heat_duty",
+        "bypass_control",
+        "ventilation_backpressure",
+        "cooling_constraint",
+        "water_quality",
+        "displaced_energy"
+      ]
     },
     {
       "id": "E24",
@@ -2742,9 +3680,8 @@
     {
       "id": "C1",
       "family": "metering",
-      "question": "Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?",
+      "question": "What do existing records establish about this utility user's measurement coverage, usable data and intended decision?",
       "applies_when": {
-        "absent_note": "no flow measurement on the same stream, none on the same user for the same utility, and (on an extracted drawing) no flow element within three drawn links on the same sheet",
         "anchor": [
           {
             "kind": [
@@ -2773,41 +3710,6 @@
           }
         ],
         "group_by": "unit",
-        "without": [
-          {
-            "select": {
-              "kind": [
-                "instrument"
-              ],
-              "variable": [
-                "flow"
-              ]
-            },
-            "relation": "same_stream"
-          },
-          {
-            "select": {
-              "kind": [
-                "instrument"
-              ],
-              "variable": [
-                "flow"
-              ]
-            },
-            "relation": "same_unit_same_medium"
-          },
-          {
-            "select": {
-              "kind": [
-                "instrument"
-              ],
-              "isa": "^F(T|E|IT|I|O|Q|QI)$"
-            },
-            "relation": "near",
-            "max_hops": 3,
-            "twin_only": true
-          }
-        ],
         "also_show": [
           {
             "select": {
@@ -2821,12 +3723,48 @@
             },
             "relation": "same_unit_same_medium",
             "as": "utility temperature or pressure"
+          },
+          {
+            "select": {
+              "kind": [
+                "instrument"
+              ],
+              "variable": [
+                "flow"
+              ]
+            },
+            "relation": "same_stream",
+            "as": "unverified flow/quantity candidate; utility/user coverage and usable data not established"
+          },
+          {
+            "select": {
+              "kind": [
+                "instrument"
+              ],
+              "variable": [
+                "flow"
+              ]
+            },
+            "relation": "same_unit_same_medium",
+            "as": "unverified flow/quantity candidate; utility/user coverage and usable data not established"
+          },
+          {
+            "select": {
+              "kind": [
+                "instrument"
+              ],
+              "isa": "^F(T|E|IT|I|O|Q|QI)$"
+            },
+            "relation": "near",
+            "max_hops": 3,
+            "twin_only": true,
+            "as": "unverified flow/quantity candidate; utility/user coverage and usable data not established"
           }
         ]
       },
       "evidence_fields": [
-        "utility supply (stream, valve or off-page connector) into a user",
-        "no flow meter on it"
+        "utility supply candidate into a user",
+        "supplied measurement candidates, not proof of collected/suitable data or installed meter absence"
       ],
       "data_requests": [
         {
@@ -2834,32 +3772,86 @@
           "where": [
             {
               "place": "historian",
-              "for": "trigger",
+              "for": "unverified flow/quantity candidate; utility/user coverage and usable data not established",
               "quantity": "flow"
             },
             {
-              "place": "walkdown",
-              "what": "clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading"
+              "place": "records",
+              "what": "Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records."
             },
             {
-              "place": "bills",
-              "what": "site-level meter readings to apportion"
+              "place": "walkdown",
+              "what": "Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
             }
           ],
-          "how": "Measure flow over a representative period and compare with production."
+          "how": "A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "metering_purpose",
+            "data_owner",
+            "utility_quantity",
+            "flow",
+            "flow_unit",
+            "measurement_target",
+            "quantity",
+            "sample_period",
+            "quality",
+            "branch",
+            "calibration_basis",
+            "meter_range",
+            "installation_basis",
+            "data_gaps",
+            "report_use"
+          ]
         },
         {
           "item": "Who would use the reading",
           "where": [
             {
               "place": "records",
-              "what": "energy or production reporting"
+              "what": "Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement."
+            },
+            {
+              "place": "walkdown",
+              "what": "Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
             }
           ],
-          "how": "Name the report the meter would feed."
+          "how": "S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "metering_purpose",
+            "data_owner",
+            "utility_quantity",
+            "flow",
+            "flow_unit",
+            "measurement_target",
+            "quantity",
+            "sample_period",
+            "quality",
+            "branch",
+            "calibration_basis",
+            "meter_range",
+            "installation_basis",
+            "data_gaps",
+            "report_use"
+          ]
         }
       ],
-      "decision_rule": "Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.",
+      "decision_rule": "Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.",
       "typical_benefit": {
         "wording": "\"You can't manage what do don't measure\" [sic]. Buildings: \"efficiency improvements of 10-20%.\" The guide warns \"only success stories are published\" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): \"Typical savings 4-17%, average 8%\" (UK experience).",
         "source": [
@@ -2868,14 +3860,37 @@
         ],
         "arc": null
       },
-      "limits": "On an extracted drawing the check is 'no flow element within three drawn links on this sheet'; the meter may be on the sheet the line comes from."
+      "limits": "Source review: S22 original PNNL23892 metering-planning/data-quality/performance pages and S19 printed30/PDF38 historical monitoring table. S22 focuses on federal buildings and utilities; its general planning principles are adapted here, not an industrial design or compliance approval. Source building savings and reported UK monitoring ranges are historical, application-specific and nonadditive, not this user's benefit. Drawn proximity or shared medium/owner is an unverified candidate association; source/coverage and current usable records require review.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "service",
+        "metering_purpose",
+        "data_owner",
+        "utility_quantity",
+        "flow",
+        "flow_unit",
+        "measurement_target",
+        "quantity",
+        "sample_period",
+        "quality",
+        "branch",
+        "calibration_basis",
+        "meter_range",
+        "installation_basis",
+        "data_gaps",
+        "report_use"
+      ]
     },
     {
       "id": "C2",
       "family": "controls",
-      "question": "Which measurements have no controller (read by people, or by nothing)?",
+      "question": "What do existing records establish about these measurements' purpose, readers and remaining source/logic coverage?",
       "applies_when": {
-        "absent_note": "no controller in the model or loop list reads these measurements",
         "anchor": {
           "kind": [
             "instrument"
@@ -2890,20 +3905,6 @@
           ]
         },
         "group_by": "model",
-        "needs_model": [
-          "controller"
-        ],
-        "needs_reason": "the model holds no controllers; give a loop list with --loops (controller,measurement,output) to check this",
-        "without": [
-          {
-            "select": {
-              "kind": [
-                "controller"
-              ]
-            },
-            "relation": "reads"
-          }
-        ],
         "also_show": [
           {
             "select": {
@@ -2913,11 +3914,20 @@
             },
             "relation": "reads",
             "as": "interlock that reads it"
+          },
+          {
+            "select": {
+              "kind": [
+                "controller"
+              ]
+            },
+            "relation": "reads",
+            "as": "supplied controller reader; complete current logic/source coverage not established"
           }
         ]
       },
       "evidence_fields": [
-        "measurement tags not read by any controller in the model or loop list"
+        "measurements in the existing six variable classes and represented readers, not established unused signals or missing installed control"
       ],
       "data_requests": [
         {
@@ -2925,27 +3935,65 @@
           "where": [
             {
               "place": "records",
-              "what": "operator logs and round sheets"
+              "what": "Existing exact measurement/source identity and quantity, actual indication/control/alarm/protection/recording purpose, normal and abnormal decisions, operator logs/round sheets and current availability/quality/coverage; retain per-subject association and source/revision."
             },
             {
-              "place": "text",
-              "text": "ask the operators which of these they act on, and how often"
+              "place": "walkdown",
+              "what": "Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
             }
           ],
-          "how": "Note manual adjustments per shift tied to each reading."
+          "how": "Frequent manual adjustment can justify a control investigation, not automatic automation. A reading with no routine manual action may have a legitimate abnormal/alarm/protection/indication purpose; do not close it solely because nobody regularly acts. Acknowledge suitable existing purpose, manual or automatic operation, and record unresolved function/source suitability. No operator trial, live change or benefit is inferred.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "purpose",
+            "source_coverage",
+            "logic_coverage",
+            "manual_adjustments",
+            "mode",
+            "alarm_action"
+          ]
         },
         {
           "item": "The control system's own loop list",
           "where": [
             {
+              "place": "records",
+              "what": "Existing current loop/point list, cause/effect, alarm/sequence/configuration and represented reader/interlock/source records; preserve exact endpoints and identify missing model coverage before concluding indication-only."
+            },
+            {
               "place": "dcs",
-              "what": "export the loop and point list"
+              "what": "Review a permitted current loop/point/configuration export, if available, as an existing source rather than a complete plant-truth inventory."
+            },
+            {
+              "place": "walkdown",
+              "what": "Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
             }
           ],
-          "how": "Confirm the reading is indication-only and not read by logic the model lacks."
+          "how": "A controller or interlock reference is useful supplied evidence, not proof of complete current logic, correct process meaning, safety adequacy or measurement authority. A partial model without controllers can still prompt existing-record clarification; it does not prove no installed controls or require a fabricated loop list. S19 printed30 is broad monitoring/process-control guidance, not a per-reading automation acceptance test.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "purpose",
+            "source_coverage",
+            "logic_coverage",
+            "manual_adjustments",
+            "mode",
+            "alarm_action"
+          ]
         }
       ],
-      "decision_rule": "Worth automating a reading that operators adjust by hand often, on a service where steadier control saves energy or quality; indication-only readings nobody acts on close the question.",
+      "decision_rule": "Review measurement purpose and actual normal/abnormal decisions, represented readers and source/logic coverage with the responsible specialist. Neither a missing model controller nor a represented reader settles installed control completeness or the need for automation. Suitable existing use or nonapplicability can be acknowledged; unresolved records remain explicit. No automatic upgrade, safety acceptance or source-reported saving is assigned.",
       "typical_benefit": {
         "wording": "\"energy and cost savings are around 5% or more for many industrial applications of process control systems\" (for plants without updated controls). Process control: \"Typically 2-18% savings.\" The source says these figures \"cannot be added\".",
         "source": [
@@ -2953,7 +4001,21 @@
         ],
         "arc": null
       },
-      "limits": "The model or loop list may be incomplete; an uncontrolled reading may be read by logic not in the model."
+      "limits": "Source review: S19 originalLBNL56183 official mirror printed30/PDF38, monitoring/process-control section and historical nonadditive table. This supports a bounded records investigation, not an automation decision, current control-system completeness or a measurement's safety/function truth. Six existing variable classes retained; other instrument classes remain outside this selector. Generic historical savings are not this plant's benefit.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "purpose",
+        "source_coverage",
+        "logic_coverage",
+        "manual_adjustments",
+        "mode",
+        "alarm_action"
+      ]
     },
     {
       "id": "C3",
@@ -3401,9 +4463,8 @@
     {
       "id": "C6",
       "family": "controls",
-      "question": "Does a temperature controller write straight to a steam valve with no flow controller underneath (a cascade candidate)?",
+      "question": "What do existing records establish about this direct temperature-to-steam-valve control candidate's configuration, disturbances and suitable dynamics?",
       "applies_when": {
-        "absent_note": "no flow controller between the temperature controller and the valve",
         "anchor": {
           "kind": [
             "valve"
@@ -3427,17 +4488,6 @@
             "as": "temperature controller"
           }
         ],
-        "without": [
-          {
-            "select": {
-              "kind": [
-                "controller"
-              ],
-              "isa": "^F"
-            },
-            "relation": "drives"
-          }
-        ],
         "also_show": [
           {
             "select": {
@@ -3451,93 +4501,189 @@
             },
             "relation": "same_stream",
             "as": "steam flow measurement"
+          },
+          {
+            "select": {
+              "kind": [
+                "controller"
+              ],
+              "isa": "^F"
+            },
+            "relation": "drives",
+            "as": "supplied flow-controller output; nested setpoint cascade and effective mode not established"
           }
         ]
       },
       "evidence_fields": [
-        "steam valve",
-        "temperature controller driving it directly",
-        "steam flow measurement if one exists"
+        "steam valve with a represented direct temperature-controller output",
+        "supplied flow/controller candidates, not verified missing or installed cascade"
       ],
       "data_requests": [
         {
           "item": "Loop behaviour",
           "where": [
             {
+              "place": "records",
+              "what": "Existing exact measurement/controller/output and setpoint-chain/configuration, active modes, source/coverage, process objective and matched primary/secondary response, flow measurement/actuator suitability and existing load-disturbance histories."
+            },
+            {
               "place": "historian",
               "for": "temperature controller"
             },
             {
               "place": "dcs",
-              "what": "controller tuning and output history"
+              "what": "Review existing controller configuration, tuning/modes and output history; no change is requested."
+            },
+            {
+              "place": "walkdown",
+              "what": "Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
             }
           ],
-          "how": "Look for oscillation or slow recovery after steam pressure changes."
+          "how": "A flow-controller reference sharing the valve does not prove a nested cascade or justify suppression of conflicting/unknown configuration. The explicit additional Siemens AD353-128 rev2 April2012 pp1-4 describes a measurable/controllable secondary affecting the primary, encompassing the relevant disturbance and responding substantially faster. It also identifies disturbances outside that secondary loop and alternative secondary variables. Review the actual chain/dynamics, operating range and required behavior first; neither an oscillation nor a pressure swing alone authorizes a flow slave or tuning test. Suitable existing operation can be acknowledged.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "quantity",
+            "flow_unit",
+            "primary_response_time",
+            "secondary_response_time",
+            "time_unit",
+            "disturbance",
+            "mode",
+            "output_role"
+          ]
         },
         {
           "item": "Steam header pressure swings",
           "where": [
             {
               "place": "records",
-              "what": "steam header pressure trend"
+              "what": "Existing comparable header/valve/flow/primary-variable pressure and disturbance records, sample periods and units, control ranges/limits, transfer/tracking/reset/anti-windup and actuator/measurement constraints."
+            },
+            {
+              "place": "walkdown",
+              "what": "Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
             }
           ],
-          "how": "Note how often supply pressure moves."
+          "how": "The manufacturer example is contextual application engineering, not a universal speed ratio, procurement or tuning requirement. Confirm that a secondary could address the relevant disturbance before any proposed design. Preserve limits and suitable transfer/reset/operating modes; a proper represented temperature-to-flow-setpoint chain is outside this direct-output pattern, not proof every cascade is adequate. No step test, setpoint/pressure change or equipment addition follows.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "quantity",
+            "flow_unit",
+            "primary_response_time",
+            "secondary_response_time",
+            "time_unit",
+            "disturbance",
+            "mode",
+            "output_role"
+          ]
         }
       ],
-      "decision_rule": "A flow slave helps when steam supply pressure swings disturb the temperature; a steady header and a well-behaved loop close this screening investigation.",
+      "decision_rule": "Review actual direct-output versus nested setpoint configuration, modes, relevant disturbance paths, measurement/actuator suitability and relative process dynamics with the responsible control engineer. Shared output labels or supply-pressure variation do not establish a cascade, its absence or a requirement to add one. Suitable existing control or nonapplicability can be acknowledged; unresolved configuration/source evidence remains a records question without tuning or operating authority.",
       "typical_benefit": {
         "wording": "No public numeric source found. Report as qualitative only.",
         "source": [],
         "arc": null
       },
-      "limits": "Also covers heating and cooling valves on one exchanger with separate controllers that could fight; that pattern is not detected automatically yet."
+      "limits": "Explicit additional source: Siemens Procidia CascadeControl AD353-128 rev2 April2012, complete pp1-4 and6-7, https://cache.industry.siemens.com/dl/files/372/51436372/att_88120/v1/AD353-128_r2.pdf . Manufacturer example, not independent plant or procurement acceptance. Existing direct-temperature/steam-valve and represented-controller scope retained; no claim to automatically detect heating/cooling controller fighting or all existing cascades. Numeric benefit object unchanged and no universal tuning ratio imposed.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "service",
+        "quantity",
+        "flow_unit",
+        "primary_response_time",
+        "secondary_response_time",
+        "time_unit",
+        "disturbance",
+        "mode",
+        "output_role"
+      ]
     },
     {
       "id": "C7",
       "family": "controls",
-      "question": "Do several air compressors run with no master sequencer?",
+      "question": "What do existing records establish about these air-compressor candidates' shared-system operation and coordinated control strategy?",
       "applies_when": {
-        "absent_note": "no sequencer or master controller anywhere in the model",
         "anchor": {
           "kind": [
             "equipment"
           ],
-          "text": "AIR COMPRESSOR|INSTRUMENT AIR|PLANT AIR|COMPRESSED AIR",
-          "not_text": "DRYER|DRIER|FILTER|SEPARATOR|RECEIVER|AFTERCOOLER"
+          "type_text": "AIR[ _-]?COMPRESSOR|INSTRUMENT AIR|PLANT AIR|COMPRESSED AIR",
+          "not_type_text": "^(?:air[ _-]?(?:dryer|drier|filter|separator|receiver|aftercooler)|(?:process[ _-]?gas|gas|refrigeration)[ _-]?compressor|dryer|drier|filter|separator|receiver|aftercooler)$"
         },
         "group_by": "model",
         "min_anchors": 2,
-        "without": [
+        "also_show": [
           {
             "select": {
               "text": "SEQUENC|MASTER"
             },
-            "relation": "anywhere"
+            "relation": "anywhere",
+            "as": "unverified sequencing/master record; air-system association and coverage not inferred"
           }
         ]
       },
       "evidence_fields": [
-        "two or more air compressors",
-        "no sequencer or master controller"
+        "at least2 represented air-system candidates, not proven common header or simultaneous operation",
+        "supplied coordinating-control records, not coverage or installed absence"
       ],
       "data_requests": [
         {
           "item": "Control narrative and load/unload history",
           "where": [
             {
+              "place": "records",
+              "what": "Existing exact compressor/service/system and shared-header boundaries, current local/network/master narrative/settings/capability and source coverage, matched demand/pressure/load/power/time and storage/treatment records, base/trim roles, requirements and manufacturer/compatibility constraints."
+            },
+            {
               "place": "dcs",
-              "what": "compressor control settings"
+              "what": "Review permitted existing compressor control settings/narratives with their coverage and active modes."
             },
             {
               "place": "walkdown",
-              "what": "data-log each compressor's load state"
+              "what": "Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
             }
           ],
-          "how": "Look for several compressors part-loaded at once."
+          "how": "Two names or part-load scalar values do not show shared system or concurrent operation, and a global MASTER/SEQUENCER label does not cover every machine. S11 printed34-39/42 supports different local/network/master arrangements depending on equipment, requirements, demand/storage and complexity; part-loading of a suitable trim unit is not automatically waste. Known helper/nonair types are not air machines, but a compressor package is not omitted merely because its name mentions a dryer. Review suitable existing strategy and source/units/operating coverage before further work, consulting specialists for mixed/variable-speed arrangements. No automatic master addition, compressor stop or new logging is required.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "system_id",
+            "shared_header",
+            "simultaneous_operation",
+            "control_mode",
+            "load_fraction",
+            "power",
+            "power_unit",
+            "sample_period"
+          ]
         }
       ],
-      "decision_rule": "Add sequencing when several machines part-load together.",
+      "decision_rule": "Review actual shared-system membership and concurrency, requirements, current local/network/master coordination, base/trim capabilities, demand/storage/pressure/power and source/time coverage with the responsible specialist. Multiple names or simultaneous part-load labels alone do not require sequencing hardware. Suitable existing strategy or nonapplicability can be acknowledged; unresolved scope/operation remains explicit without pressure/control or equipment-change authority.",
       "typical_benefit": {
         "wording": "Control objective \"is also to shut off unneeded compressors or delay bringing on additional compressors until needed.\" No % stated.",
         "source": [
@@ -3546,30 +4692,47 @@
         ],
         "arc": "2.423x (operations, category only) (IAC/ITAC browse page: 20,819 recommendations, 0.5 yr average payback, 67.4% implemented; average dollar figure omitted)"
       },
-      "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers."
+      "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: S11 printed34-39/PDF39-44 and42/PDF47, full relevant control pages. Model-level at-least2 candidates is a records prompt, not inferred topology/concurrency or a claim the installed system lacks master control. Existing strategies and compatible operating requirements matter; source objective and IAC history are not site savings.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "service",
+        "system_id",
+        "shared_header",
+        "simultaneous_operation",
+        "control_mode",
+        "load_fraction",
+        "power",
+        "power_unit",
+        "sample_period"
+      ]
     },
     {
       "id": "C10",
       "family": "controls",
-      "question": "Are critical steam traps monitored automatically?",
+      "question": "What do existing records establish about these trap candidates' actual steam service, importance and maintenance/monitoring coverage?",
       "applies_when": {
-        "absent_note": "no trap monitoring shown",
         "anchor": {
-          "text": "STEAM TRAP|\\bTRAP\\b"
+          "text": "STEAM TRAP|\\bTRAP\\b",
+          "not_type_text": "^(?:air[ _-]?(?:drain|trap)|water[ _-]?trap|trap[ _-]?monitor|monitoring[ _-]?instrument)$"
         },
         "group_by": "model",
-        "without": [
+        "also_show": [
           {
             "select": {
               "text": "TRAP MONITOR|\\bUT\\b"
             },
-            "relation": "anywhere"
+            "relation": "anywhere",
+            "as": "unverified monitor/UT record; trap purpose, source association and coverage not established"
           }
         ]
       },
       "evidence_fields": [
-        "steam traps",
-        "no monitoring shown"
+        "trap-labelled records, not observed failed steam traps or missing effective monitoring"
       ],
       "data_requests": [
         {
@@ -3577,13 +4740,36 @@
           "where": [
             {
               "place": "records",
-              "what": "trap list with service"
+              "what": "Existing exact trap/service/function and criticality/failure consequence, source/current list and associations, current inspection/test/monitor/report/repair/verification program, method/interval/result and responsible response coverage."
+            },
+            {
+              "place": "walkdown",
+              "what": "Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
             }
           ],
-          "how": "Mark traps whose failure costs most."
+          "how": "A TRAP name is not established steam service or failure, and generic UT or another trap's monitor does not settle this record. S3 completepp1-2 calls for systematic inspection/testing/repair and considers online monitoring for important traps/processes; it describes different methods and contextual intervals, not a universal mandate. S19 printed40-42 presents automatic monitoring in conjunction with regular maintenance. Review suitable existing program and consequences first, acknowledging effective records or nonapplicability without obligatory new online hardware or survey. Foreign/old/unavailable and blank records remain explicit.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "criticality",
+            "monitoring_basis",
+            "quantity",
+            "target_subject",
+            "failure_consequence",
+            "existing_program",
+            "inspection_method",
+            "last_result",
+            "response_owner"
+          ]
         }
       ],
-      "decision_rule": "Monitor the most important traps online; survey the rest.",
+      "decision_rule": "Review actual steam-trap service, importance, existing maintenance/inspection/monitor and response/verification coverage with the responsible specialist. Neither a global monitor label nor a criticality name establishes coverage, failure or a need for online monitoring. Suitable existing strategy or nonapplicability can be acknowledged; unresolved records remain a question, not an inspection/repair instruction or transferred source benefit.",
       "typical_benefit": {
         "wording": "LBNL (as reported in LBNL-56183): \"Automatic Steam Trap Monitoring 5%\", 1 yr. DOE tip sheet: \"Consider online monitoring of the most important steam traps\".",
         "source": [
@@ -3593,7 +4779,25 @@
         ],
         "arc": "2.211x (category only)"
       },
-      "limits": null
+      "limits": "Source review: complete S3 SteamTip1 pp1-2 and S19 originalLBNL printed40-42/PDF48-50. Historical additional5% estimate is relative to regular maintenance and based on secondary reports, with contextual payback assumptions; it is not installed failure or a site benefit. UT may be an unrelated ultrasonic measurement; type/source/purpose/coverage must be reviewed. No generic-analyzer suppression or current monitoring authority is inferred.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "service",
+        "criticality",
+        "monitoring_basis",
+        "quantity",
+        "target_subject",
+        "failure_consequence",
+        "existing_program",
+        "inspection_method",
+        "last_result",
+        "response_owner"
+      ]
     },
     {
       "id": "C8",
@@ -3767,61 +4971,113 @@
     {
       "id": "E25",
       "family": "emissions",
-      "question": "Are tank vapors vented to atmosphere with no vapor recovery?",
+      "question": "What do existing records establish about this tank/vent candidate's actual product, vapor sources and recovery/control coverage?",
       "applies_when": {
-        "absent_note": "no vapor recovery or blanket gas anywhere in the model",
         "anchor": {
           "text_all": [
             "TANK|VESSEL",
             "TO ATM|ATMOSPHER"
-          ]
+          ],
+          "not_type_text": "^(?:potable[ _-]?water[ _-]?tank|air[ _-]?receiver|nitrogen[ _-]?receiver|vapor[ _-]?recovery[ _-]?unit)$"
         },
         "group_by": "item",
-        "without": [
+        "also_show": [
           {
             "select": {
               "text": "\\bVRU\\b|VAPOU?R RECOVERY|BLANKET"
             },
-            "relation": "anywhere"
+            "relation": "anywhere",
+            "as": "unverified recovery/blanketing record; actual capture and tank coverage not established"
           }
         ]
       },
       "evidence_fields": [
-        "atmospheric tank vent to atmosphere",
-        "no VRU or blanket-gas recovery"
+        "tank/vessel and atmospheric-vent label, not established hydrocarbon emission or installed recovery absence"
       ],
       "data_requests": [
         {
           "item": "Vapor volume and composition",
           "where": [
             {
-              "place": "walkdown",
-              "what": "vent flow measurement and a gas sample"
+              "place": "records",
+              "what": "Existing exact tank/product/composition and vent/control/recovery source associations, current service and upstream/tank pressure-temperature/throughput/ambient cycles, flash/working/standing loss sources, quantity/rate/reference/peak-versus-total/uncertainty basis and compatible outlet/operability/environmental constraints."
             },
             {
-              "place": "records",
-              "what": "tank throughput and product vapor pressure"
+              "place": "walkdown",
+              "what": "Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
             }
           ],
-          "how": "Estimate vented volume from throughput and breathing."
+          "how": "A blanket-gas label is not vapor recovery, and a VRU record elsewhere cannot settle this tank's actual capture/coverage. S20 concerns crudeoil/condensate storage: known clean potable-water or inert-only service can be nonapplicable, but unknown or produced-water service must not be declared clean merely by name. Review existing qualified measurements/estimates and their limits before proposing new observations. EPA's simple GOR/throughput example does not provide composition/speciation, low-pressure total-volume metering or verified peak duty; actual pressure/temperature/composition/time and outlet matter. Suitable existing controls can be acknowledged. Any new sample, vent measurement or recovery change requires responsible safety/environmental review, not a generic instruction from this screen.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "existing_recovery",
+            "blanketing_purpose",
+            "target_subject",
+            "capture_claim",
+            "capture_unit",
+            "loss_sources",
+            "throughput",
+            "throughput_unit",
+            "upstream_pressure",
+            "pressure_unit",
+            "temperature",
+            "temperature_unit",
+            "composition",
+            "peak_vapor_rate",
+            "average_vapor_rate",
+            "vapor_unit",
+            "outlet_basis"
+          ]
         }
       ],
-      "decision_rule": "Worth a VRU study when hydrocarbon vapor volume is steady and large.",
+      "decision_rule": "Review actual product/vent/loss-source and existing control/recovery coverage, qualified quantity/composition/peak/time basis, compatible outlet and operating/environmental constraints with the responsible specialist. Blanketing or another VRU label is not proof of capture or global coverage. Suitable current control or nonapplicability can be acknowledged; unresolved service/source/duty remains explicit without mandated sampling, recovery equipment or site payback.",
       "typical_benefit": {
-        "wording": "\"VRUs can recover over 95 percent of the hydrocarbon...\" vapors; \"payback in as little as two months\" (partner experience).",
+        "wording": "S20 reports high hydrocarbon-vapor capture and partner economics for particular crude-oil/condensate storage-tank VRU applications. These historical examples depend on vapor source, quantity/composition, operating conditions and a suitable outlet; no universal recovery fraction, payback or site benefit is assigned.",
         "source": [
           "S20"
         ],
         "arc": null
       },
-      "limits": "The source also quotes a partner's annual dollar figure; it is deliberately not repeated."
+      "limits": "Source review: complete S20 EPA NaturalGasSTAR LessonsLearned Oct2006 pp1-9. Original95%/two-month headline remains historical; partner reports/examples are not this tank's verified capture or economics. Flash/working/standing and maximum versus total emissions differ; low tank pressures, control/vacuum prevention and outlet constraints matter. Additional measurement/sampling/design or emission-control decisions need applicable safety/environmental review. No current legal compliance or installed emissions are determined.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "service",
+        "existing_recovery",
+        "blanketing_purpose",
+        "target_subject",
+        "capture_claim",
+        "capture_unit",
+        "loss_sources",
+        "throughput",
+        "throughput_unit",
+        "upstream_pressure",
+        "pressure_unit",
+        "temperature",
+        "temperature_unit",
+        "composition",
+        "peak_vapor_rate",
+        "average_vapor_rate",
+        "vapor_unit",
+        "outlet_basis"
+      ]
     },
     {
       "id": "E26",
       "family": "emissions",
-      "question": "Are relief and vent flows to the flare or atmosphere unmetered?",
+      "question": "What do existing records establish about these relief/flare/vent candidates' actual events, measurement/composition and source coverage?",
       "applies_when": {
-        "absent_note": "no flow measurement on these streams",
         "anchor": {
           "kind": [
             "stream",
@@ -3832,19 +5088,6 @@
           "not_text": "EXHAUST AIR|DRYER|\\bOVEN|FRYER"
         },
         "group_by": "model",
-        "without": [
-          {
-            "select": {
-              "kind": [
-                "instrument"
-              ],
-              "variable": [
-                "flow"
-              ]
-            },
-            "relation": "same_stream"
-          }
-        ],
         "also_show": [
           {
             "select": {
@@ -3854,17 +5097,33 @@
             },
             "relation": "anywhere",
             "as": "relief device"
+          },
+          {
+            "select": {
+              "kind": [
+                "instrument"
+              ],
+              "variable": [
+                "flow"
+              ]
+            },
+            "relation": "same_stream",
+            "as": "unverified flow candidate; quantity/composition/event/source coverage not established"
           }
         ]
       },
       "evidence_fields": [
-        "streams or reliefs to the flare, vent header or atmosphere",
-        "no flow meter or analyzer on them"
+        "represented relief/flare/vent path candidates",
+        "supplied flow/event/relief records, not collected composition or proof of absent installed metering"
       ],
       "data_requests": [
         {
           "item": "Flare or vent flow and composition",
           "where": [
+            {
+              "place": "records",
+              "what": "Existing exact service/path and measurement/source/event associations; quantity/rate/total/reference units, sample periods and quality/availability/gaps, composition/variability and planned intermittent/continuous versus upset/blowdown/relief records, purge/pilot/manufacturer requirements and safety/environmental basis."
+            },
             {
               "place": "historian",
               "for": "trigger",
@@ -3874,26 +5133,71 @@
               ]
             },
             {
-              "place": "walkdown",
-              "what": "ultrasonic flare-gas meter or a temporary vent flow measurement"
+              "place": "records",
+              "what": "Review existing relief-valve lift, flare/vent and operating-event records with their actual time/source coverage."
             },
             {
-              "place": "records",
-              "what": "relief valve lift records"
+              "place": "walkdown",
+              "what": "Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
             }
           ],
-          "how": "Separate continuous (background) flow from relief events."
+          "how": "Same-stream flow labeling is useful candidate evidence, not complete current flow/composition/event coverage. Retain foreign, inaccessible, FAULT or unqualified totalizer data without treating it as suitable. S19 printed34-35 distinguishes planned intermittent/continuous background from upset-blowdown and describes manufacturer minimum-flow context; rare relief events or a zero lift count alone do not automatically close source/safety/environmental review. Review suitable existing records first; no generic analyzer or meter closes all quantities. Any additional measurement/recovery proposal must preserve safety paths and undergo responsible hazard/environmental review, not be imposed from a drawing clue.",
+          "field_scope": "anchors",
+          "show_fields": [
+            "fictional_record",
+            "record_source",
+            "record_revision",
+            "record_available",
+            "record_authority",
+            "record_scope",
+            "service",
+            "event_mode",
+            "composition",
+            "measurement_target",
+            "quantity",
+            "flow",
+            "flow_unit",
+            "quality",
+            "lift_count",
+            "observation_period",
+            "purge_pilot_requirement",
+            "environmental_basis",
+            "sample_period",
+            "measurement_basis"
+          ]
         }
       ],
-      "decision_rule": "Worth metering when background flow is continuous; relief-only lines that seldom lift close the question.",
+      "decision_rule": "Review exact relief/vent/flare service, planned and abnormal event coverage and usable quantity/composition/time/source records with the responsible safety/environmental and operating specialists. A flow candidate or rare-event label does not establish suitable data, completeness or safe closure. Existing appropriate records/nonapplicability can be acknowledged; unresolved evidence remains explicit. No live metering, recovery modification, reduced purge/minimum flow or operating change is authorized.",
       "typical_benefit": {
-        "wording": "Background flaring \"can be as much as 50% of all flared gases (Miles, 2001).\" In refineries it \"will generally be less than 50%.\" No recovery % stated.",
+        "wording": "S19 reports that background flaring in offshore cases can be as much as50% of all flared gas, while refinery shares generally depend on individual practices and are lower. This historical reported share is neither a recovery fraction nor a site benefit or a reason to compromise required flare operation.",
         "source": [
           "S19"
         ],
         "arc": null
       },
-      "limits": "Relief paths are safety systems; metering or recovery changes go through a hazard review."
+      "limits": "Source review: S19 originalLBNL56183 printed34-35/PDF42-43 full flaregas section. Offshore versus refinery source scope, planned/intermittent/continuous versus upset/blowdown and manufacturer minimum-flow context retained. Existing dryer/oven/fryer/exhaust-air exclusions remain. Relief paths are safety systems; additional observation, metering or recovery changes require appropriate hazard/environmental review, not automatic closure from rare operation or an inferred saving.",
+      "evidence_show_fields": [
+        "fictional_record",
+        "record_source",
+        "record_revision",
+        "record_available",
+        "record_authority",
+        "record_scope",
+        "service",
+        "event_mode",
+        "composition",
+        "measurement_target",
+        "quantity",
+        "flow",
+        "flow_unit",
+        "quality",
+        "lift_count",
+        "observation_period",
+        "purge_pilot_requirement",
+        "environmental_basis",
+        "sample_period",
+        "measurement_basis"
+      ]
     },
     {
       "id": "E27",

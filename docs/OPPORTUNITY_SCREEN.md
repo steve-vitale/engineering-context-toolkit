@@ -263,10 +263,18 @@ shows this handoff; its [source boundaries](../examples/opportunity-screen/compr
 distinguish centrifugal compressed-air guidance from process-gas, rotary and unknown machinery. Neither an
 open valve nor turndown/upset-only activity settles this screening investigation or authorizes changes.
 
-The catalog has 50 rules and 126 collection requests. Twenty-eight rules have bounded source-informed collection
-reviews; the other 22 still need original-source adequacy review. These controls do not establish whole-catalog
-engineering correctness or human usefulness. The [worked food screen](../examples/opportunity-screen/food/screen.md)
+The catalog has 50 rules and 126 collection requests. All 50 now have bounded source-informed collection
+reviews; the [remaining-22 tutorial](../examples/opportunity-screen/source-policy/README.md) retains 88 exposed
+fictional controls and their original outputs. These reviews check the questions and collection boundaries,
+not whole-catalog engineering correctness or human usefulness. The [worked food screen](../examples/opportunity-screen/food/screen.md)
 shows the retained candidates and open coverage tasks.
+
+The updated heat, steam, compressed-air, tank and controls questions start with applicable existing records.
+Keep exact equipment/service, quantity, period, coverage and source qualifications attached; an unrelated
+analyzer, controller or filled field cannot settle the investigation. Quantity-aware historian references remain
+usable, including the distinction between measured flow and valve position. Additional observations require
+the responsible engineer's decision. The screen identifies what to investigate; the company's retained answer,
+review and ownership process determines what can be acted on.
 
 E13, C4 and E24 now begin with existing service and operating records. E13 distinguishes bottom/mud from
 surface blowdown, retains proportional makeup-water control as a possible existing arrangement and keeps

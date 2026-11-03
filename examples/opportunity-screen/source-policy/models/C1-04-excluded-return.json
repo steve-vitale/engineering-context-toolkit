@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "title": "Fictional air end-use/storage/heat and utility-metering records",
+    "unknowns": [
+      "Actual operation, installed truth and engineering/human acceptance unknown"
+    ],
+    "assumptions": [
+      "All identities, values and relationships fictional before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "U-A",
+      "name": "Fictional process user",
+      "type": "process_user",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call development record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified"
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [
+    {
+      "id": "P-A",
+      "name": "PROCESS WATER RETURN",
+      "from": "U-A",
+      "to": "BL",
+      "utility": false,
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call development record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "processreturn"
+      }
+    }
+  ],
+  "instruments": [],
+  "controllers": [],
+  "manual_valves": [
+    {
+      "tag": "HV-R",
+      "unit": "U-A",
+      "description": "STEAM CONDENSATE RETURN",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call development record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "excludedreturn"
+      }
+    }
+  ],
+  "final_elements": [],
+  "unplaced": []
+}

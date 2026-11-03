@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "title": "Fictional original-source question control",
+    "unknowns": [
+      "Actual operating state, source authority and human usefulness not established"
+    ],
+    "assumptions": [
+      "All identifiers/values authored for development before calls"
+    ]
+  },
+  "units": [],
+  "streams": [],
+  "instruments": [],
+  "manual_valves": [],
+  "controllers": [],
+  "unplaced": [
+    {
+      "tag": "PCV-A",
+      "description": "PRV Steam HP HEADER station",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development packet; no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "steam",
+        "inlet_pressure": 400,
+        "outlet_pressure": 100,
+        "pressure_unit": "designpsig only, notoperating",
+        "sample_period": null
+      },
+      "assigned_tag": true,
+      "source": "Fictional candidate station, not installed-state proof",
+      "kind": "final_element",
+      "unit": null,
+      "unplaced_reason": "Fictional explicitly unplaced station; no inventoried equipment owner"
+    },
+    {
+      "tag": "PCV-B",
+      "description": "PCV Compressedair HP HEADER station",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development packet; no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "known compressedair, notsteam",
+        "station_flow": 4000,
+        "flow_unit": "airscfm"
+      },
+      "assigned_tag": true,
+      "source": "Fictional candidate station, not installed-state proof",
+      "kind": "final_element",
+      "unit": null,
+      "unplaced_reason": "Fictional explicitly unplaced station; no inventoried equipment owner"
+    }
+  ]
+}

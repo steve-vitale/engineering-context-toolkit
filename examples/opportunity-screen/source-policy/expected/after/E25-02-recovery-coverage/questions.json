@@ -1,0 +1,523 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/models/E25-02-recovery-coverage.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E25"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "emissions": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E25@TK-A",
+   "question_id": "E25",
+   "family": "emissions",
+   "question": "What do existing records establish about this tank/vent candidate's actual product, vapor sources and recovery/control coverage?",
+   "about": "TK-A",
+   "assets": [
+    {
+     "id": "TK-A",
+     "tag": "TK-A"
+    },
+    {
+     "id": "VR-X",
+     "tag": "VR-X"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "TK-A",
+     "tag": "TK-A",
+     "text": "equipment TK-A reads \"TK-A TANK TO ATM\"",
+     "field": "units[TK-A]"
+    },
+    {
+     "role": "unverified recovery/blanketing record; actual capture and tank coverage not established",
+     "id": "VR-X",
+     "tag": "VR-X",
+     "text": "equipment VR-X reads \"VR-X VRU VAPOR RECOVERY\"",
+     "field": "units[VR-X]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TK-A",
+     "tag": "TK-A",
+     "text": "TK-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[TK-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TK-A",
+     "tag": "TK-A",
+     "text": "TK-A record_source = \"Fictional pre-call record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[TK-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TK-A",
+     "tag": "TK-A",
+     "text": "TK-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[TK-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TK-A",
+     "tag": "TK-A",
+     "text": "TK-A record_available = true; present; meaning and suitability unverified",
+     "field": "units[TK-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TK-A",
+     "tag": "TK-A",
+     "text": "TK-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[TK-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TK-A",
+     "tag": "TK-A",
+     "text": "TK-A service = \"crudeoil\"; present; meaning and suitability unverified",
+     "field": "units[TK-A].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TK-A",
+     "tag": "TK-A",
+     "text": "TK-A existing_recovery = \"suppliedlocalVRU\"; present; meaning and suitability unverified",
+     "field": "units[TK-A].facts.existing_recovery"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "VR-X",
+     "tag": "VR-X",
+     "text": "VR-X fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[VR-X].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "VR-X",
+     "tag": "VR-X",
+     "text": "VR-X record_source = \"Fictional pre-call record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[VR-X].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "VR-X",
+     "tag": "VR-X",
+     "text": "VR-X record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[VR-X].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "VR-X",
+     "tag": "VR-X",
+     "text": "VR-X record_available = true; present; meaning and suitability unverified",
+     "field": "units[VR-X].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "VR-X",
+     "tag": "VR-X",
+     "text": "VR-X record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[VR-X].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "VR-X",
+     "tag": "VR-X",
+     "text": "VR-X record_scope = \"suppliedAonly\"; present; meaning and suitability unverified",
+     "field": "units[VR-X].facts.record_scope"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "VR-X",
+     "tag": "VR-X",
+     "text": "VR-X target_subject = \"TK-Aonly\"; present; meaning and suitability unverified",
+     "field": "units[VR-X].facts.target_subject"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "VR-X",
+     "tag": "VR-X",
+     "text": "VR-X capture_claim = 95; present; meaning and suitability unverified",
+     "field": "units[VR-X].facts.capture_claim"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "VR-X",
+     "tag": "VR-X",
+     "text": "VR-X capture_unit = \"percentunverified\"; present; meaning and suitability unverified",
+     "field": "units[VR-X].facts.capture_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TK-A fictional_record = True",
+     "field": "units[TK-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TK-A record_source = Fictional pre-call record, no company or human approval",
+     "field": "units[TK-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TK-A record_revision = R1",
+     "field": "units[TK-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TK-A record_available = True",
+     "field": "units[TK-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TK-A record_authority = unverified",
+     "field": "units[TK-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TK-A service = crudeoil",
+     "field": "units[TK-A].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TK-A existing_recovery = suppliedlocalVRU",
+     "field": "units[TK-A].facts.existing_recovery"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Vapor volume and composition",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing exact tank/product/composition and vent/control/recovery source associations, current service and upstream/tank pressure-temperature/throughput/ambient cycles, flash/working/standing loss sources, quantity/rate/reference/peak-versus-total/uncertainty basis and compatible outlet/operability/environmental constraints.",
+      "a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
+     ],
+     "how": "A blanket-gas label is not vapor recovery, and a VRU record elsewhere cannot settle this tank's actual capture/coverage. S20 concerns crudeoil/condensate storage: known clean potable-water or inert-only service can be nonapplicable, but unknown or produced-water service must not be declared clean merely by name. Review existing qualified measurements/estimates and their limits before proposing new observations. EPA's simple GOR/throughput example does not provide composition/speciation, low-pressure total-volume metering or verified peak duty; actual pressure/temperature/composition/time and outlet matter. Suitable existing controls can be acknowledged. Any new sample, vent measurement or recovery change requires responsible safety/environmental review, not a generic instruction from this screen.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "TK-A",
+       "label": "TK-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[TK-A].facts.fictional_record"
+      },
+      {
+       "id": "TK-A",
+       "label": "TK-A",
+       "name": "record_source",
+       "value": "Fictional pre-call record, no company or human approval",
+       "where": "units[TK-A].facts.record_source"
+      },
+      {
+       "id": "TK-A",
+       "label": "TK-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[TK-A].facts.record_revision"
+      },
+      {
+       "id": "TK-A",
+       "label": "TK-A",
+       "name": "record_available",
+       "value": true,
+       "where": "units[TK-A].facts.record_available"
+      },
+      {
+       "id": "TK-A",
+       "label": "TK-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[TK-A].facts.record_authority"
+      },
+      {
+       "id": "TK-A",
+       "label": "TK-A",
+       "name": "service",
+       "value": "crudeoil",
+       "where": "units[TK-A].facts.service"
+      },
+      {
+       "id": "TK-A",
+       "label": "TK-A",
+       "name": "existing_recovery",
+       "value": "suppliedlocalVRU",
+       "where": "units[TK-A].facts.existing_recovery"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual product/vent/loss-source and existing control/recovery coverage, qualified quantity/composition/peak/time basis, compatible outlet and operating/environmental constraints with the responsible specialist. Blanketing or another VRU label is not proof of capture or global coverage. Suitable current control or nonapplicability can be acknowledged; unresolved service/source/duty remains explicit without mandated sampling, recovery equipment or site payback.",
+   "typical_benefit": {
+    "wording": "S20 reports high hydrocarbon-vapor capture and partner economics for particular crude-oil/condensate storage-tank VRU applications. These historical examples depend on vapor source, quantity/composition, operating conditions and a suitable outlet; no universal recovery fraction, payback or site benefit is assigned.",
+    "source": [
+     "S20"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S20: EPA Natural Gas STAR Lessons Learned, Installing Vapor Recovery Units on Storage Tanks"
+    ]
+   },
+   "limits": "Source review: complete S20 EPA NaturalGasSTAR LessonsLearned Oct2006 pp1-9. Original95%/two-month headline remains historical; partner reports/examples are not this tank's verified capture or economics. Flash/working/standing and maximum versus total emissions differ; low tank pressures, control/vacuum prevention and outlet constraints matter. Additional measurement/sampling/design or emission-control decisions need applicable safety/environmental review. No current legal compliance or installed emissions are determined.",
+   "status": "asked"
+  },
+  {
+   "id": "E25@TK-B",
+   "question_id": "E25",
+   "family": "emissions",
+   "question": "What do existing records establish about this tank/vent candidate's actual product, vapor sources and recovery/control coverage?",
+   "about": "TK-B",
+   "assets": [
+    {
+     "id": "TK-B",
+     "tag": "TK-B"
+    },
+    {
+     "id": "VR-X",
+     "tag": "VR-X"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "TK-B",
+     "tag": "TK-B",
+     "text": "equipment TK-B reads \"TK-B TANK TO ATM\"",
+     "field": "units[TK-B]"
+    },
+    {
+     "role": "unverified recovery/blanketing record; actual capture and tank coverage not established",
+     "id": "VR-X",
+     "tag": "VR-X",
+     "text": "equipment VR-X reads \"VR-X VRU VAPOR RECOVERY\"",
+     "field": "units[VR-X]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TK-B",
+     "tag": "TK-B",
+     "text": "TK-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[TK-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TK-B",
+     "tag": "TK-B",
+     "text": "TK-B record_source = \"Fictional pre-call record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[TK-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TK-B",
+     "tag": "TK-B",
+     "text": "TK-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[TK-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TK-B",
+     "tag": "TK-B",
+     "text": "TK-B record_available = true; present; meaning and suitability unverified",
+     "field": "units[TK-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TK-B",
+     "tag": "TK-B",
+     "text": "TK-B record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[TK-B].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TK-B",
+     "tag": "TK-B",
+     "text": "TK-B service = \"producedwaterunknownhydrocarbons\"; present; meaning and suitability unverified",
+     "field": "units[TK-B].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TK-B",
+     "tag": "TK-B",
+     "text": "TK-B existing_recovery = null; blank; meaning and suitability unverified",
+     "field": "units[TK-B].facts.existing_recovery"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "VR-X",
+     "tag": "VR-X",
+     "text": "VR-X fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[VR-X].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "VR-X",
+     "tag": "VR-X",
+     "text": "VR-X record_source = \"Fictional pre-call record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[VR-X].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "VR-X",
+     "tag": "VR-X",
+     "text": "VR-X record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[VR-X].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "VR-X",
+     "tag": "VR-X",
+     "text": "VR-X record_available = true; present; meaning and suitability unverified",
+     "field": "units[VR-X].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "VR-X",
+     "tag": "VR-X",
+     "text": "VR-X record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[VR-X].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "VR-X",
+     "tag": "VR-X",
+     "text": "VR-X record_scope = \"suppliedAonly\"; present; meaning and suitability unverified",
+     "field": "units[VR-X].facts.record_scope"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "VR-X",
+     "tag": "VR-X",
+     "text": "VR-X target_subject = \"TK-Aonly\"; present; meaning and suitability unverified",
+     "field": "units[VR-X].facts.target_subject"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "VR-X",
+     "tag": "VR-X",
+     "text": "VR-X capture_claim = 95; present; meaning and suitability unverified",
+     "field": "units[VR-X].facts.capture_claim"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "VR-X",
+     "tag": "VR-X",
+     "text": "VR-X capture_unit = \"percentunverified\"; present; meaning and suitability unverified",
+     "field": "units[VR-X].facts.capture_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TK-B fictional_record = True",
+     "field": "units[TK-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TK-B record_source = Fictional pre-call record, no company or human approval",
+     "field": "units[TK-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TK-B record_revision = R1",
+     "field": "units[TK-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TK-B record_available = True",
+     "field": "units[TK-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TK-B record_authority = unverified",
+     "field": "units[TK-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TK-B service = producedwaterunknownhydrocarbons",
+     "field": "units[TK-B].facts.service"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Vapor volume and composition",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing exact tank/product/composition and vent/control/recovery source associations, current service and upstream/tank pressure-temperature/throughput/ambient cycles, flash/working/standing loss sources, quantity/rate/reference/peak-versus-total/uncertainty basis and compatible outlet/operability/environmental constraints.",
+      "a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
+     ],
+     "how": "A blanket-gas label is not vapor recovery, and a VRU record elsewhere cannot settle this tank's actual capture/coverage. S20 concerns crudeoil/condensate storage: known clean potable-water or inert-only service can be nonapplicable, but unknown or produced-water service must not be declared clean merely by name. Review existing qualified measurements/estimates and their limits before proposing new observations. EPA's simple GOR/throughput example does not provide composition/speciation, low-pressure total-volume metering or verified peak duty; actual pressure/temperature/composition/time and outlet matter. Suitable existing controls can be acknowledged. Any new sample, vent measurement or recovery change requires responsible safety/environmental review, not a generic instruction from this screen.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "TK-B",
+       "label": "TK-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[TK-B].facts.fictional_record"
+      },
+      {
+       "id": "TK-B",
+       "label": "TK-B",
+       "name": "record_source",
+       "value": "Fictional pre-call record, no company or human approval",
+       "where": "units[TK-B].facts.record_source"
+      },
+      {
+       "id": "TK-B",
+       "label": "TK-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[TK-B].facts.record_revision"
+      },
+      {
+       "id": "TK-B",
+       "label": "TK-B",
+       "name": "record_available",
+       "value": true,
+       "where": "units[TK-B].facts.record_available"
+      },
+      {
+       "id": "TK-B",
+       "label": "TK-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[TK-B].facts.record_authority"
+      },
+      {
+       "id": "TK-B",
+       "label": "TK-B",
+       "name": "service",
+       "value": "producedwaterunknownhydrocarbons",
+       "where": "units[TK-B].facts.service"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual product/vent/loss-source and existing control/recovery coverage, qualified quantity/composition/peak/time basis, compatible outlet and operating/environmental constraints with the responsible specialist. Blanketing or another VRU label is not proof of capture or global coverage. Suitable current control or nonapplicability can be acknowledged; unresolved service/source/duty remains explicit without mandated sampling, recovery equipment or site payback.",
+   "typical_benefit": {
+    "wording": "S20 reports high hydrocarbon-vapor capture and partner economics for particular crude-oil/condensate storage-tank VRU applications. These historical examples depend on vapor source, quantity/composition, operating conditions and a suitable outlet; no universal recovery fraction, payback or site benefit is assigned.",
+    "source": [
+     "S20"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S20: EPA Natural Gas STAR Lessons Learned, Installing Vapor Recovery Units on Storage Tanks"
+    ]
+   },
+   "limits": "Source review: complete S20 EPA NaturalGasSTAR LessonsLearned Oct2006 pp1-9. Original95%/two-month headline remains historical; partner reports/examples are not this tank's verified capture or economics. Flash/working/standing and maximum versus total emissions differ; low tank pressures, control/vacuum prevention and outlet constraints matter. Additional measurement/sampling/design or emission-control decisions need applicable safety/environmental review. No current legal compliance or installed emissions are determined.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

@@ -1,0 +1,266 @@
+{
+  "schema": "current-question-corpus-renewal-1",
+  "role": "Explicit current-output successor; original history/provenance remains historical, not a new source/plant study.",
+  "base_commit": "07fa45f3f37f07fdfd2ae2d556b3d67d8f5cf8f7",
+  "catalog": {
+    "sha256_raw": "164452c9b274be0fd1f21800f7bc4e52759798b34a3da23fa0f25048101b55f3",
+    "bytes": 335035
+  },
+  "engine_sha256_text_lf": "9d148f8f0d4258dbc418e39be8933d0ecac9d0a9d1341000b4f7240b5cad889b",
+  "actual": {
+    "calls": 15,
+    "all_exit_zero": true,
+    "started_utc": "2026-11-03T06:02:44.778235+00:00",
+    "finished_utc": "2026-11-03T06:02:47.759566+00:00",
+    "mode": "Normal offline CLI; complete process records/logs retained privately. Public inputs, cases and prior history remained raw-exact."
+  },
+  "change_scope": "Fourteen cases keep every whole finding exact while C2 eligibility/quiet metadata and presentation change. S03 additionally changes E19/E22/E23 under their reviewed air-service policies; E6 and all other whole findings stay exact.",
+  "previous_released_outputs": {
+    "expected/after/E6-01-service-transfer-A/questions.json": {
+      "sha256_raw": "cdb3216216d7a618eb383bed7a3b7e94fe050c7838dd8f3921ba20abfa8ddbe3",
+      "bytes": 11515
+    },
+    "expected/after/E6-01-service-transfer-A/screen.md": {
+      "sha256_raw": "70fd24092b53102a0de6991fbb2679d9d5c5c3205a177749f1d077cf1a0b4e69",
+      "bytes": 10563
+    },
+    "expected/after/E6-01-service-transfer-B/questions.json": {
+      "sha256_raw": "fb2e61f62cb1b8524e0ee8fdcca69b074ee1c111c3700fe5952d7ea637fbb908",
+      "bytes": 11512
+    },
+    "expected/after/E6-01-service-transfer-B/screen.md": {
+      "sha256_raw": "809b71b4a597be805bf9e2a9a3f141d480d256a7f515a6d25c1d908ad0d6cce0",
+      "bytes": 10560
+    },
+    "expected/after/E6-02-pairing-A/questions.json": {
+      "sha256_raw": "8a41bb150effc596d230ebf18027164eb1742b35bb5c3c519b8d2928cf64202e",
+      "bytes": 17768
+    },
+    "expected/after/E6-02-pairing-A/screen.md": {
+      "sha256_raw": "88ea134c45c2cb8f21ae558ce503ff87d9dc15dd71b160ae1fa516072aa6b3ed",
+      "bytes": 15974
+    },
+    "expected/after/E6-02-pairing-B/questions.json": {
+      "sha256_raw": "e0903e8eca4c655784663fd283bf9a0b40926ed9e191e5c8b2dafa6a61313d0a",
+      "bytes": 17762
+    },
+    "expected/after/E6-02-pairing-B/screen.md": {
+      "sha256_raw": "db357e5b848a69947cec69e73f2da755ab96e7d51764b534afb56050047ddf71",
+      "bytes": 15968
+    },
+    "expected/after/E6-03-signal-basis-A/questions.json": {
+      "sha256_raw": "6d7704fd542ec94754ef5d4aff4ead9d2baabdc04d9bb97f806102d8187905fe",
+      "bytes": 11161
+    },
+    "expected/after/E6-03-signal-basis-A/screen.md": {
+      "sha256_raw": "bbca97d06012bc590023f0ff5fabff9cf0e02c2f5ec561452a9c5269f2f00daa",
+      "bytes": 10375
+    },
+    "expected/after/E6-03-signal-basis-B/questions.json": {
+      "sha256_raw": "eb9c468f304e63d08f752e87e44dd97395bf9a28bd9e5871db1da83a8ad5e69a",
+      "bytes": 11263
+    },
+    "expected/after/E6-03-signal-basis-B/screen.md": {
+      "sha256_raw": "ae83c53fa7dff8c7ee1c1b3cb64e45ae9e41274312ec0e4d361371a137434303",
+      "bytes": 10477
+    },
+    "expected/after/E6-04-existing-period-coverage-A/questions.json": {
+      "sha256_raw": "15e7781d9b5495d0cba4a3afc213afc69d572080f5bd598ac4ceebcc96dbdcb5",
+      "bytes": 11249
+    },
+    "expected/after/E6-04-existing-period-coverage-A/screen.md": {
+      "sha256_raw": "0e0d0a772de6ef6d813d25728c5dced7c0a8f13f02a5512812c606c8f0de61ff",
+      "bytes": 10475
+    },
+    "expected/after/E6-04-existing-period-coverage-B/questions.json": {
+      "sha256_raw": "3e2a3149032e1308c88b38801dff0e30c8810ba0f886e7162f6e2c2532757886",
+      "bytes": 11224
+    },
+    "expected/after/E6-04-existing-period-coverage-B/screen.md": {
+      "sha256_raw": "1e4d6ce7389c00f10cbbdfcd3793de6cd4f715c5dfa52d818ab1c73198042fc4",
+      "bytes": 10450
+    },
+    "expected/after/E6-05-protection-revision-A/questions.json": {
+      "sha256_raw": "72a090842f00fe6fbd02e167c11c4a6d67052ca54193c65b37daede2d4e88b69",
+      "bytes": 11278
+    },
+    "expected/after/E6-05-protection-revision-A/screen.md": {
+      "sha256_raw": "a8f0c08d58c90a0cda5a6bafb39da7e9e8ab8928744deebcb14edff620a023d9",
+      "bytes": 10499
+    },
+    "expected/after/E6-05-protection-revision-B/questions.json": {
+      "sha256_raw": "2b3ce16d4f6c7dd6741a7dfe2758c8d056b4cbbc7b6acf4c31ac954ae200d34d",
+      "bytes": 11213
+    },
+    "expected/after/E6-05-protection-revision-B/screen.md": {
+      "sha256_raw": "4c79294e3392336eb0da856a51fc66ce3ea0f0fabca6be14f68b861e0eb3de3d",
+      "bytes": 10434
+    },
+    "expected/after/E6-06-power-and-sibling-coverage-A/questions.json": {
+      "sha256_raw": "42860cee3e7017cc45965a66d61e65779cec48794288974bbcc9f67857fd0e07",
+      "bytes": 17711
+    },
+    "expected/after/E6-06-power-and-sibling-coverage-A/screen.md": {
+      "sha256_raw": "52d992f71a3c213e88e80e2f12550765ccbbb0a283fc24d53f65503aee8f7117",
+      "bytes": 15936
+    },
+    "expected/after/E6-06-power-and-sibling-coverage-B/questions.json": {
+      "sha256_raw": "15b12b99fe465ae3c1178e6aaa46e156d9530d3a7e8a019b13e1df5022c50b37",
+      "bytes": 17557
+    },
+    "expected/after/E6-06-power-and-sibling-coverage-B/screen.md": {
+      "sha256_raw": "82810199bdbcf3f0083c2b5a6bea46a0bc63bde5a2447a97e7b1306cac5241e0",
+      "bytes": 15782
+    },
+    "expected/after/E6-S01-no-eligible-compressor/questions.json": {
+      "sha256_raw": "4b94ef91c9aa1dcfab89c07bdf0568c7b78e6a72e1d1ab3eba8fb5572a5b79fd",
+      "bytes": 8680
+    },
+    "expected/after/E6-S01-no-eligible-compressor/screen.md": {
+      "sha256_raw": "a4246c89084b1bdbb0a4491cf22f60101a3136317ec9ab4538aafb308d52d8ae",
+      "bytes": 7539
+    },
+    "expected/after/E6-S02-no-drawn-valve-candidate/questions.json": {
+      "sha256_raw": "9dc9320d2910f99519615ea54d0dda9b77d1aecb25d76b50f507d56ef8e80494",
+      "bytes": 5058
+    },
+    "expected/after/E6-S02-no-drawn-valve-candidate/screen.md": {
+      "sha256_raw": "6f292606ac957f0bce4156d43806cfc00d6e10d033ed8692a5e883bb909e7697",
+      "bytes": 4773
+    },
+    "expected/after/E6-S03-noncentrifugal-and-unknown-boundaries/questions.json": {
+      "sha256_raw": "b45c09ca7cf2226793df000078f15ba61d1050a84131aa17457608a1ba237cd9",
+      "bytes": 20199
+    },
+    "expected/after/E6-S03-noncentrifugal-and-unknown-boundaries/screen.md": {
+      "sha256_raw": "13dfb9b09d90eaeec2ff34810b298cdbde2f78634f3e7bef08e2c73506edb696",
+      "bytes": 17586
+    }
+  },
+  "current_outputs": {
+    "expected/after/E6-01-service-transfer-A/questions.json": {
+      "sha256_raw": "6984a91e75cecadca7d2459da2eac4fa35d19c5e4eaf33b3e1e21839788bfb12",
+      "bytes": 11414
+    },
+    "expected/after/E6-01-service-transfer-A/screen.md": {
+      "sha256_raw": "3b5365b29fc4a1a6cd8b2e63ee7d647c1d9218e2aa51dc8251fd46233b1880af",
+      "bytes": 10456
+    },
+    "expected/after/E6-01-service-transfer-B/questions.json": {
+      "sha256_raw": "8203e12ae02693815b00e867df743455d21d5f79e4e48d14da875a28bb0618ba",
+      "bytes": 11411
+    },
+    "expected/after/E6-01-service-transfer-B/screen.md": {
+      "sha256_raw": "642e3583fddce1a2a4ca84b6bf302048b86a77f0c65d11ab4cddf051bc7b1095",
+      "bytes": 10453
+    },
+    "expected/after/E6-02-pairing-A/questions.json": {
+      "sha256_raw": "b4866d92066bde9e5800cbedb28d48de53ad31ed9ed4c2307fa16802e2909d74",
+      "bytes": 17667
+    },
+    "expected/after/E6-02-pairing-A/screen.md": {
+      "sha256_raw": "9ead991455ae73e509d2ede3eaccc5d7b49c46d146f999ee9e60227f1958e2ff",
+      "bytes": 15867
+    },
+    "expected/after/E6-02-pairing-B/questions.json": {
+      "sha256_raw": "c92efeac6a562c5216b268c0af4209b337130b9dfc57d67fab2486e623616599",
+      "bytes": 17661
+    },
+    "expected/after/E6-02-pairing-B/screen.md": {
+      "sha256_raw": "9951004fd89a51b7d015b761f151a0ff0435a155f1161ec78fdadf67eafcd2c2",
+      "bytes": 15861
+    },
+    "expected/after/E6-03-signal-basis-A/questions.json": {
+      "sha256_raw": "2fb98491eff947f8d1cd689f539580e793f3e8cfe871dc8048fd9b138f819c37",
+      "bytes": 11060
+    },
+    "expected/after/E6-03-signal-basis-A/screen.md": {
+      "sha256_raw": "76f17a73e496c9079e549ec4b969325eb7f0c02dcbe3a896af0005fbcf677fa4",
+      "bytes": 10268
+    },
+    "expected/after/E6-03-signal-basis-B/questions.json": {
+      "sha256_raw": "bf8ebef06e8f396d609ac811761067704caa5ce02ae3a3f0ab42bce365873a2a",
+      "bytes": 11162
+    },
+    "expected/after/E6-03-signal-basis-B/screen.md": {
+      "sha256_raw": "f1e4527c31a13398f249cd6ac7c877288e2b935c987cacc764a19fa85d89c862",
+      "bytes": 10370
+    },
+    "expected/after/E6-04-existing-period-coverage-A/questions.json": {
+      "sha256_raw": "d39035db5812755392cdc8c6db83bb8e6320f8c8dcf488fef103ec60fc072d36",
+      "bytes": 11148
+    },
+    "expected/after/E6-04-existing-period-coverage-A/screen.md": {
+      "sha256_raw": "a0eedd8090658617a5fa5a7fb3a2665b03bdaddb13b2f88f8710b881f1982ca3",
+      "bytes": 10368
+    },
+    "expected/after/E6-04-existing-period-coverage-B/questions.json": {
+      "sha256_raw": "dea3ebc0837104b63ae3e94078d40fef8eb2377b3f6461125ee4010d844d264b",
+      "bytes": 11123
+    },
+    "expected/after/E6-04-existing-period-coverage-B/screen.md": {
+      "sha256_raw": "ab21834f3bbcbdb4e0299eac9d2378251b8ba2b938cba94aac63a1a51ce71855",
+      "bytes": 10343
+    },
+    "expected/after/E6-05-protection-revision-A/questions.json": {
+      "sha256_raw": "7e6bed887f6d17fd90e605159fa819d3be694a9da96af16cb2a10ebe4ed6b578",
+      "bytes": 11177
+    },
+    "expected/after/E6-05-protection-revision-A/screen.md": {
+      "sha256_raw": "0cafd8f86f2e468987cbc2fbe29b723ba9b0e6a8ce0dcfb4d8f9ec8744ce32cf",
+      "bytes": 10392
+    },
+    "expected/after/E6-05-protection-revision-B/questions.json": {
+      "sha256_raw": "6aaafc64fb1dcf5f8c7d4cb0d13052bfbfd07080e2cf51efecf40e1f13250af3",
+      "bytes": 11112
+    },
+    "expected/after/E6-05-protection-revision-B/screen.md": {
+      "sha256_raw": "d7df40eab5b88145b10262806d270268dc54bc6b854d98e2e6c7f4ca6e22044f",
+      "bytes": 10327
+    },
+    "expected/after/E6-06-power-and-sibling-coverage-A/questions.json": {
+      "sha256_raw": "f67da52b1a7f3100d63ef3f6a3c0f3d88c935fe6d73a9003e03bd4563f9ef3b1",
+      "bytes": 17610
+    },
+    "expected/after/E6-06-power-and-sibling-coverage-A/screen.md": {
+      "sha256_raw": "28b2f6dbf794d1913a8057a8fd85de4ab3792e942416573a6a83fc1ff392ea88",
+      "bytes": 15829
+    },
+    "expected/after/E6-06-power-and-sibling-coverage-B/questions.json": {
+      "sha256_raw": "7a03d71046ca914e7577e999308e1389eaa599916bba37963259b573c3080c44",
+      "bytes": 17456
+    },
+    "expected/after/E6-06-power-and-sibling-coverage-B/screen.md": {
+      "sha256_raw": "0cbeae024b13a45ba9c582b52b5003ea6b3d10a0887914de782f4e1ea114a0cd",
+      "bytes": 15675
+    },
+    "expected/after/E6-S01-no-eligible-compressor/questions.json": {
+      "sha256_raw": "97a3d1110acb17e53cc06561f07ee4641b4fb08c3e58b573b98e0aabd9d77b6e",
+      "bytes": 8579
+    },
+    "expected/after/E6-S01-no-eligible-compressor/screen.md": {
+      "sha256_raw": "b5798eeeb93c648abe50a1782696f39f2a1170d9fd336161c61e42763b6874eb",
+      "bytes": 7432
+    },
+    "expected/after/E6-S02-no-drawn-valve-candidate/questions.json": {
+      "sha256_raw": "bca8b6ab457ca454916fae2d02168743e7449975528ccb7e02fe194b17b239b7",
+      "bytes": 4957
+    },
+    "expected/after/E6-S02-no-drawn-valve-candidate/screen.md": {
+      "sha256_raw": "b05f4f9b2557e02d9e1064aaa7eca725e5c6976a797e2d7af28f48b0fe014a7b",
+      "bytes": 4666
+    },
+    "expected/after/E6-S03-noncentrifugal-and-unknown-boundaries/questions.json": {
+      "sha256_raw": "840ca78bef15f7bea9ccf28dcb3cc465547fc37caf30549236d4662add566a9c",
+      "bytes": 30197
+    },
+    "expected/after/E6-S03-noncentrifugal-and-unknown-boundaries/screen.md": {
+      "sha256_raw": "6d74a4704a1be135b32310768d1819dbcdabab02b0316c6d8931aabd8c8dc1ba",
+      "bytes": 26774
+    }
+  },
+  "limits": [
+    "No models, original source policies/criteria or historical before reports rewritten.",
+    "Exposed software fixtures; no unfamiliar plant, measured benefit, source authority or engineering approval."
+  ]
+}

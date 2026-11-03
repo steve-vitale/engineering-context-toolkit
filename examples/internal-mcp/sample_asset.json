@@ -1,6 +1,6 @@
 {
-  "snapshot_sha256": "4cd40bce11944dcf5a79099bdb9e3628e0a620381944127569a98656bd92ff4b",
-  "loaded_at": "2026-11-01T23:54:41.511874+00:00",
+  "snapshot_sha256": "67aff8acd609af83b9695be1540203a0108b50acd82b0eb061616ebe7a587400",
+  "loaded_at": "2026-11-03T06:06:02.158747+00:00",
   "data_mode": "supplied_snapshot",
   "live": false,
   "source_acquisition_time": null,

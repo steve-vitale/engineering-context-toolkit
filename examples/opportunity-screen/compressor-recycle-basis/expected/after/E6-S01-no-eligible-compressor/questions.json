@@ -57,7 +57,7 @@
   "C11",
   "C12"
  ],
- "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
  "counts": {
   "findings": 2,
   "by_family": {
@@ -232,10 +232,6 @@
  ],
  "not_checked": [
   {
-   "question_id": "C2",
-   "reason": "the model holds no controllers; give a loop list with --loops (controller,measurement,output) to check this"
-  },
-  {
    "question_id": "C6",
    "reason": "the model holds no controllers; give a loop list with --loops to check this"
   }
@@ -269,6 +265,7 @@
   "H3",
   "H4",
   "C1",
+  "C2",
   "C3",
   "C4",
   "C5",

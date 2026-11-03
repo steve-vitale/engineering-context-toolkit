@@ -1,0 +1,65 @@
+{
+  "meta": {
+    "title": "Fictional final-six source/collection controls",
+    "unknowns": [
+      "Actual operation, engineering/source authority and human acceptance unknown"
+    ],
+    "assumptions": [
+      "All supplied identities/values/relations fictional before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "C-A",
+      "name": "AIR COMPRESSOR",
+      "type": "air_compressor",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "system_id": "A",
+        "shared_header": false,
+        "simultaneous_operation": false,
+        "control_mode": "localcascade",
+        "load_fraction": 0.4,
+        "power": 20,
+        "power_unit": "kW",
+        "sample_period": "periodA"
+      },
+      "source": "Fictional source role",
+      "assigned_tag": true
+    },
+    {
+      "id": "C-B",
+      "name": "AIR COMPRESSOR",
+      "type": "air_compressor",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "system_id": "B",
+        "shared_header": false,
+        "simultaneous_operation": false,
+        "control_mode": "VSDtrim",
+        "load_fraction": 0.4,
+        "power": 5,
+        "power_unit": "kW",
+        "sample_period": "periodB"
+      },
+      "source": "Fictional source role",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "instruments": [],
+  "controllers": [],
+  "interlocks": [],
+  "manual_valves": [],
+  "final_elements": [],
+  "relief_devices": [],
+  "unplaced": []
+}

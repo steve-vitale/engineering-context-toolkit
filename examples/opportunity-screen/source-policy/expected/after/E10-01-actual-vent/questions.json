@@ -1,0 +1,635 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/models/E10-01-actual-vent.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E10"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E10@F-A",
+   "question_id": "E10",
+   "family": "energy",
+   "question": "What do existing records establish about this flash-vessel candidate's actual service, vent/recovery route and compatible low-pressure duty?",
+   "about": "F-A",
+   "assets": [
+    {
+     "id": "F-A",
+     "tag": "F-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "F-A",
+     "tag": "F-A",
+     "text": "equipment F-A reads \"F-A FLASH TANK existingrecovery\"",
+     "field": "units[F-A]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-A",
+     "tag": "F-A",
+     "text": "F-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[F-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-A",
+     "tag": "F-A",
+     "text": "F-A record_source = \"Fictional development record; no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[F-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-A",
+     "tag": "F-A",
+     "text": "F-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[F-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-A",
+     "tag": "F-A",
+     "text": "F-A record_available = true; present; meaning and suitability unverified",
+     "field": "units[F-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-A",
+     "tag": "F-A",
+     "text": "F-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[F-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-A",
+     "tag": "F-A",
+     "text": "F-A service = \"steamwatercondensate\"; present; meaning and suitability unverified",
+     "field": "units[F-A].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-A",
+     "tag": "F-A",
+     "text": "F-A vent_basis = \"closedflashsteamrecovery, noatmosphericvent declared\"; present; meaning and suitability unverified",
+     "field": "units[F-A].facts.vent_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-A",
+     "tag": "F-A",
+     "text": "F-A existing_recovery = \"suitablesourceassertion, notapproved\"; present; meaning and suitability unverified",
+     "field": "units[F-A].facts.existing_recovery"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-A",
+     "tag": "F-A",
+     "text": "F-A pressure = 150; present; meaning and suitability unverified",
+     "field": "units[F-A].facts.pressure"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-A",
+     "tag": "F-A",
+     "text": "F-A pressure_unit = \"psig\"; present; meaning and suitability unverified",
+     "field": "units[F-A].facts.pressure_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A fictional_record = True",
+     "field": "units[F-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A record_source = Fictional development record; no company or human approval",
+     "field": "units[F-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A record_revision = R1",
+     "field": "units[F-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A record_available = True",
+     "field": "units[F-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A record_authority = unverified",
+     "field": "units[F-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A service = steamwatercondensate",
+     "field": "units[F-A].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A vent_basis = closedflashsteamrecovery, noatmosphericvent declared",
+     "field": "units[F-A].facts.vent_basis"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A existing_recovery = suitablesourceassertion, notapproved",
+     "field": "units[F-A].facts.existing_recovery"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A pressure = 150",
+     "field": "units[F-A].facts.pressure"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A pressure_unit = psig",
+     "field": "units[F-A].facts.pressure_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A fictional_record = True",
+     "field": "units[F-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A record_source = Fictional development record; no company or human approval",
+     "field": "units[F-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A record_revision = R1",
+     "field": "units[F-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A record_available = True",
+     "field": "units[F-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A record_authority = unverified",
+     "field": "units[F-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A service = steamwatercondensate",
+     "field": "units[F-A].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A vent_basis = closedflashsteamrecovery, noatmosphericvent declared",
+     "field": "units[F-A].facts.vent_basis"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A existing_recovery = suitablesourceassertion, notapproved",
+     "field": "units[F-A].facts.existing_recovery"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A pressure = 150",
+     "field": "units[F-A].facts.pressure"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-A pressure_unit = psig",
+     "field": "units[F-A].facts.pressure_unit"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing source-specific condensate service, vent/recovery and actual operating basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing named-vessel/condensate source service and current vent/recovery/route records, actual pressure/temperature, flow and duration with quantity/units, sample time, revision, availability and operating coverage.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "A FLASH TANK/VESSEL/DRUM label is not proof of steam-water service, atmospheric venting, measured steam loss or an unused recovery opportunity. Establish actual current function and distinguish known nonsteam/hydrocarbon context from unknown applicable service. Review suitable existing recovery before requesting more data; pressure ratings or a plume alone do not establish a flash fraction or source quality.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[F-A].facts.fictional_record"
+      },
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "record_source",
+       "value": "Fictional development record; no company or human approval",
+       "where": "units[F-A].facts.record_source"
+      },
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[F-A].facts.record_revision"
+      },
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "record_available",
+       "value": true,
+       "where": "units[F-A].facts.record_available"
+      },
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[F-A].facts.record_authority"
+      },
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "service",
+       "value": "steamwatercondensate",
+       "where": "units[F-A].facts.service"
+      },
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "vent_basis",
+       "value": "closedflashsteamrecovery, noatmosphericvent declared",
+       "where": "units[F-A].facts.vent_basis"
+      },
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "existing_recovery",
+       "value": "suitablesourceassertion, notapproved",
+       "where": "units[F-A].facts.existing_recovery"
+      },
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "pressure",
+       "value": 150,
+       "where": "units[F-A].facts.pressure"
+      },
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "pressure_unit",
+       "value": "psig",
+       "where": "units[F-A].facts.pressure_unit"
+      }
+     ]
+    },
+    {
+     "item": "Existing compatible receiving-duty, association and feasibility basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing exact-source low-pressure user pressure/quality, flow/heat duty and operating-time requirements, piping/route/distance and system/practical/economic constraints.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "Review actual source/receiving pressure, timing and compatible duty together; a nearby or foreign/seasonal low-pressure label is not a matched sink. Supplemental original DOE Tip12 pp1–2 requires flow/duration, compatible uses and cost-effective equipment/piping, with return alternatives and availability/use considered. Acknowledge an existing suitable route or nonapplicability without a new field task. No recovery installation, physical connection, flash calculation or site savings follow from this screen.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[F-A].facts.fictional_record"
+      },
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "record_source",
+       "value": "Fictional development record; no company or human approval",
+       "where": "units[F-A].facts.record_source"
+      },
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[F-A].facts.record_revision"
+      },
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "record_available",
+       "value": true,
+       "where": "units[F-A].facts.record_available"
+      },
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[F-A].facts.record_authority"
+      },
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "service",
+       "value": "steamwatercondensate",
+       "where": "units[F-A].facts.service"
+      },
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "vent_basis",
+       "value": "closedflashsteamrecovery, noatmosphericvent declared",
+       "where": "units[F-A].facts.vent_basis"
+      },
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "existing_recovery",
+       "value": "suitablesourceassertion, notapproved",
+       "where": "units[F-A].facts.existing_recovery"
+      },
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "pressure",
+       "value": 150,
+       "where": "units[F-A].facts.pressure"
+      },
+      {
+       "id": "F-A",
+       "label": "F-A",
+       "name": "pressure_unit",
+       "value": "psig",
+       "where": "units[F-A].facts.pressure_unit"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual steam-water condensate service, current vent/recovery and matched source/receiving duty, routing and economic constraints with the responsible engineer. Steady flow or a close low-pressure label alone does not establish unused recoverable steam or justify hardware/operating changes. Suitable existing recovery or nonapplicability may be acknowledged; unknown route, units, source or timing remains a qualified records question.",
+   "typical_benefit": {
+    "wording": "Flash vessels allow \"recovery of steam... used in low-pressure steam applications.\" No % stated.",
+    "source": [
+     "S8",
+     "S24"
+    ],
+    "arc": "2.2127 (IAC/ITAC browse page: 31 recommendations, 1.0 yr average payback, 39.3% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S8: Improving Steam System Performance: A Sourcebook for Industry, 2nd ed. (DOE/GO-102012-3423, rev. Oct 2012)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: S8 printed21 and supplemental original DOE Tip12 (https://www.energy.gov/sites/prod/files/2014/05/f16/steam12_lowpressure_steam.pdf), completepp1–2, admitted before criteria. Its pressure/flow/duty/economic example is not this site's result. Missing representation is not installed absence.",
+   "status": "asked"
+  },
+  {
+   "id": "E10@F-B",
+   "question_id": "E10",
+   "family": "energy",
+   "question": "What do existing records establish about this flash-vessel candidate's actual service, vent/recovery route and compatible low-pressure duty?",
+   "about": "F-B",
+   "assets": [
+    {
+     "id": "F-B",
+     "tag": "F-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "equipment F-B reads \"F-B FLASH TANK unknownvent\"",
+     "field": "units[F-B]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "F-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[F-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "F-B record_source = \"Fictional development record; no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[F-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "F-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[F-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "F-B record_available = true; present; meaning and suitability unverified",
+     "field": "units[F-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "F-B record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[F-B].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "F-B service = null; blank; meaning and suitability unverified",
+     "field": "units[F-B].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "F-B vent_basis = null; blank; meaning and suitability unverified",
+     "field": "units[F-B].facts.vent_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "F-B pressure = null; blank; meaning and suitability unverified",
+     "field": "units[F-B].facts.pressure"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-B fictional_record = True",
+     "field": "units[F-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-B record_source = Fictional development record; no company or human approval",
+     "field": "units[F-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-B record_revision = R1",
+     "field": "units[F-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-B record_available = True",
+     "field": "units[F-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-B record_authority = unverified",
+     "field": "units[F-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-B fictional_record = True",
+     "field": "units[F-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-B record_source = Fictional development record; no company or human approval",
+     "field": "units[F-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-B record_revision = R1",
+     "field": "units[F-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-B record_available = True",
+     "field": "units[F-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: F-B record_authority = unverified",
+     "field": "units[F-B].facts.record_authority"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing source-specific condensate service, vent/recovery and actual operating basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing named-vessel/condensate source service and current vent/recovery/route records, actual pressure/temperature, flow and duration with quantity/units, sample time, revision, availability and operating coverage.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "A FLASH TANK/VESSEL/DRUM label is not proof of steam-water service, atmospheric venting, measured steam loss or an unused recovery opportunity. Establish actual current function and distinguish known nonsteam/hydrocarbon context from unknown applicable service. Review suitable existing recovery before requesting more data; pressure ratings or a plume alone do not establish a flash fraction or source quality.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "F-B",
+       "label": "F-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[F-B].facts.fictional_record"
+      },
+      {
+       "id": "F-B",
+       "label": "F-B",
+       "name": "record_source",
+       "value": "Fictional development record; no company or human approval",
+       "where": "units[F-B].facts.record_source"
+      },
+      {
+       "id": "F-B",
+       "label": "F-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[F-B].facts.record_revision"
+      },
+      {
+       "id": "F-B",
+       "label": "F-B",
+       "name": "record_available",
+       "value": true,
+       "where": "units[F-B].facts.record_available"
+      },
+      {
+       "id": "F-B",
+       "label": "F-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[F-B].facts.record_authority"
+      }
+     ]
+    },
+    {
+     "item": "Existing compatible receiving-duty, association and feasibility basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing exact-source low-pressure user pressure/quality, flow/heat duty and operating-time requirements, piping/route/distance and system/practical/economic constraints.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "Review actual source/receiving pressure, timing and compatible duty together; a nearby or foreign/seasonal low-pressure label is not a matched sink. Supplemental original DOE Tip12 pp1–2 requires flow/duration, compatible uses and cost-effective equipment/piping, with return alternatives and availability/use considered. Acknowledge an existing suitable route or nonapplicability without a new field task. No recovery installation, physical connection, flash calculation or site savings follow from this screen.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "F-B",
+       "label": "F-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[F-B].facts.fictional_record"
+      },
+      {
+       "id": "F-B",
+       "label": "F-B",
+       "name": "record_source",
+       "value": "Fictional development record; no company or human approval",
+       "where": "units[F-B].facts.record_source"
+      },
+      {
+       "id": "F-B",
+       "label": "F-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[F-B].facts.record_revision"
+      },
+      {
+       "id": "F-B",
+       "label": "F-B",
+       "name": "record_available",
+       "value": true,
+       "where": "units[F-B].facts.record_available"
+      },
+      {
+       "id": "F-B",
+       "label": "F-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[F-B].facts.record_authority"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual steam-water condensate service, current vent/recovery and matched source/receiving duty, routing and economic constraints with the responsible engineer. Steady flow or a close low-pressure label alone does not establish unused recoverable steam or justify hardware/operating changes. Suitable existing recovery or nonapplicability may be acknowledged; unknown route, units, source or timing remains a qualified records question.",
+   "typical_benefit": {
+    "wording": "Flash vessels allow \"recovery of steam... used in low-pressure steam applications.\" No % stated.",
+    "source": [
+     "S8",
+     "S24"
+    ],
+    "arc": "2.2127 (IAC/ITAC browse page: 31 recommendations, 1.0 yr average payback, 39.3% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S8: Improving Steam System Performance: A Sourcebook for Industry, 2nd ed. (DOE/GO-102012-3423, rev. Oct 2012)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: S8 printed21 and supplemental original DOE Tip12 (https://www.energy.gov/sites/prod/files/2014/05/f16/steam12_lowpressure_steam.pdf), completepp1–2, admitted before criteria. Its pressure/flow/duty/economic example is not this site's result. Missing representation is not installed absence.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

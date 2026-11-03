@@ -1,0 +1,294 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/signal-retention/models/SC07-E14-equipment-noop.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E14"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "energy": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E14@B-A",
+   "question_id": "E14",
+   "family": "energy",
+   "question": "What do existing records establish about this boiler/steam-generator candidate's flue/feedwater service and current heat-recovery coverage?",
+   "about": "B-A",
+   "assets": [
+    {
+     "id": "B-A",
+     "tag": "B-A"
+    },
+    {
+     "id": "EC-X",
+     "tag": "EC-X"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "equipment B-A reads \"B-A BOILER source\"",
+     "field": "units[B-A]"
+    },
+    {
+     "role": "unverified economizer record; coverage not inferred",
+     "id": "EC-X",
+     "tag": "EC-X",
+     "text": "equipment EC-X reads \"EC-X ECONOMIZER foreign\"",
+     "field": "units[EC-X]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A record_source = \"Fictional signal-locator source note, Figure 11; no actual series or plant record\"; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A record_available = false; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "B-A",
+     "tag": "B-A",
+     "text": "B-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[B-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "EC-X",
+     "tag": "EC-X",
+     "text": "EC-X fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[EC-X].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "EC-X",
+     "tag": "EC-X",
+     "text": "EC-X record_source = \"Fictional signal-locator source note, Figure 11; no actual series or plant record\"; present; meaning and suitability unverified",
+     "field": "units[EC-X].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "EC-X",
+     "tag": "EC-X",
+     "text": "EC-X record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[EC-X].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "EC-X",
+     "tag": "EC-X",
+     "text": "EC-X record_available = false; present; meaning and suitability unverified",
+     "field": "units[EC-X].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "EC-X",
+     "tag": "EC-X",
+     "text": "EC-X record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[EC-X].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "EC-X",
+     "tag": "EC-X",
+     "text": "EC-X record_scope = \"foreignB-X\"; present; meaning and suitability unverified",
+     "field": "units[EC-X].facts.record_scope"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A fictional_record = True",
+     "field": "units[B-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_source = Fictional signal-locator source note, Figure 11; no actual series or plant record",
+     "field": "units[B-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_revision = R1",
+     "field": "units[B-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_available = False",
+     "field": "units[B-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_authority = unverified",
+     "field": "units[B-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A fictional_record = True",
+     "field": "units[B-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_source = Fictional signal-locator source note, Figure 11; no actual series or plant record",
+     "field": "units[B-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_revision = R1",
+     "field": "units[B-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_available = False",
+     "field": "units[B-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: B-A record_authority = unverified",
+     "field": "units[B-A].facts.record_authority"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing named-boiler flue/feedwater service and recovery association",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing exact-subject boiler/steam-water, heat-source/flue and feedwater duty, installed recovery/route/coverage and source/revision/availability records; retain foreign or uncertain economizer associations explicitly.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "One economizer label anywhere cannot establish installed coverage, suitability or closure for every boiler. Establish relevant actual service and named coverage; known dry furnace/nonwater helper or electric/no-flue service is not this flue/feedwater task, and unknown service remains conditional. A source-labelled steam generator is reviewed for its actual function without inventing a fuel or drum. Acknowledge suitable existing records or nonapplicability before new observations.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[B-A].facts.fictional_record"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_source",
+       "value": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+       "where": "units[B-A].facts.record_source"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[B-A].facts.record_revision"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_available",
+       "value": false,
+       "where": "units[B-A].facts.record_available"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[B-A].facts.record_authority"
+      }
+     ]
+    },
+    {
+     "item": "Existing tuned operating, receiving-feedwater and cold-end feasibility basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing actual stack temperature/load/hours after appropriate tuning/cleaning, fuel/composition, feedwater/receiving duty, dewpoint/corrosion/material and practical/economic constraints, with matched units/time and source coverage.",
+      "a walkdown: Only if existing records cannot settle an applicable question, agree safe additional observations with the responsible engineer; no compulsory new measurement, operating change or retrofit."
+     ],
+     "how": "S4 describes reviewing stack operation after tuning to manufacturer specifications, suitable excess air and clean heat-transfer surfaces; design/high stack temperature alone is not a recovery decision. Review fuel, dewpoint/cold-end corrosion and useful receiving duty before considering a remaining opportunity. Its example temperatures, efficiency increments and savings/paybacks are contextual, not universal limits or this site's benefit. Existing suitable operation can be acknowledged without a compulsory thermometer, quote or retrofit.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[B-A].facts.fictional_record"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_source",
+       "value": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+       "where": "units[B-A].facts.record_source"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[B-A].facts.record_revision"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_available",
+       "value": false,
+       "where": "units[B-A].facts.record_available"
+      },
+      {
+       "id": "B-A",
+       "label": "B-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[B-A].facts.record_authority"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual boiler/flue/feedwater function, existing named recovery coverage, tuned operating/load records and cold-end/receiving/economic constraints with the responsible engineer. No global economizer label, high temperature or fuel label alone establishes absence, adequacy or a reason to obtain equipment quotes. Suitable existing coverage or nonapplicability may be acknowledged; unknown basis remains a records question with no operating or hardware authorization.",
+   "typical_benefit": {
+    "wording": "Efficiency \"can be increased by 1% for every 40°F reduction in flue gas temperature.\" An economizer \"can often reduce fuel requirements by 5% to 10% and pay for itself in less than 2 years.\"",
+    "source": [
+     "S4",
+     "S24"
+    ],
+    "arc": "2.242x (by description) (IAC/ITAC browse page: 635 recommendations, 2.1 yr average payback, 24.3% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S4: Steam Tip #3, Use Feedwater Economizers for Waste Heat Recovery",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: complete S4/Tip3 pp1–2 is steam-boiler/feedwater guidance, conditional on tuning/cleanliness, fuel/cold-end and system economics. The inherited general efficiency/payback examples are not universal temperature targets or transferred site savings. Unknown heat-source/service does not establish applicability.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

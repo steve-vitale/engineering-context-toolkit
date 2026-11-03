@@ -1,0 +1,94 @@
+{
+  "meta": {
+    "title": "Fictional source-led heating/integration/air controls",
+    "unknowns": [
+      "Actualstate, sourceauthority and engineering/human acceptance unknown"
+    ],
+    "assumptions": [
+      "Allrecordidentities/values fictional before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "U-A",
+      "name": "Fictional cooledprocess",
+      "type": "heat_exchanger",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified"
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    },
+    {
+      "id": "U-B",
+      "name": "Fictional heatedprocess",
+      "type": "heat_exchanger",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified"
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "FT-A",
+      "unit": "U-A",
+      "description": "COOLING WATER supply candidate",
+      "variable": "flow",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "process_role": "suppliedhotprocessstream",
+        "hot_supply_C": 300,
+        "hot_target_C": 100,
+        "heat_capacity_flow": 1,
+        "capacity_unit": "kW/K",
+        "duty": 200,
+        "duty_unit": "kW",
+        "sample_period": "samefictionalinterval"
+      },
+      "source": "Suppliedprocessrecord, notactualsignal",
+      "assigned_tag": true
+    }
+  ],
+  "manual_valves": [],
+  "final_elements": [
+    {
+      "tag": "FV-B",
+      "unit": "U-B",
+      "description": "STEAM heating supply candidate",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development record; no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "process_role": "suppliedcoldprocessstream",
+        "cold_supply_C": 50,
+        "cold_target_C": 250,
+        "heat_capacity_flow": 1,
+        "capacity_unit": "kW/K",
+        "duty": 200,
+        "duty_unit": "kW",
+        "sample_period": "samefictionalinterval"
+      },
+      "source": "Suppliedprocessrecord, notactualflow",
+      "assigned_tag": true
+    }
+  ],
+  "controllers": [],
+  "unplaced": []
+}

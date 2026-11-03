@@ -7,31 +7,53 @@
    "site": "food",
    "screen": "examples/opportunity-screen/food/questions.json",
    "source_model": "examples/opportunity-screen/food_plant_model.json",
-   "findings": 29,
+   "findings": 30,
    "questions_run": 50
   },
   {
    "site": "bayer",
    "screen": "examples/opportunity-screen/bayer/questions.json",
    "source_model": "data/bayer_rt/process_model.json",
-   "findings": 12,
+   "findings": 13,
    "questions_run": 50
   }
  ],
  "counts": {
   "questions_fired": 24,
-  "findings": 41,
+  "findings": 43,
   "fired_at_every_site": 4
  },
  "questions": [
   {
    "question_id": "C1",
-   "question": "Is utility use (steam, cooling water, air, fuel, makeup water) metered at this user?",
+   "question": "What do existing records establish about this utility user's measurement coverage, usable data and intended decision?",
    "family": "metering",
    "sites": [
     {
      "site": "food",
      "findings": [
+      {
+       "finding_id": "C1@D-301",
+       "about": "D-301",
+       "assets": [
+        {
+         "id": "D-301",
+         "tag": "D-301"
+        },
+        {
+         "id": "stream:U1",
+         "tag": "U1"
+        },
+        {
+         "id": "TV-301",
+         "tag": "TV-301"
+        },
+        {
+         "id": "FT-301",
+         "tag": "FT-301"
+        }
+       ]
+      },
       {
        "finding_id": "C1@O-302",
        "about": "O-302",
@@ -92,6 +114,32 @@
      "site": "bayer",
      "findings": [
       {
+       "finding_id": "C1@E-2",
+       "about": "E-2",
+       "assets": [
+        {
+         "id": "E-2",
+         "tag": "E-2"
+        },
+        {
+         "id": "stream:U1",
+         "tag": "U1"
+        },
+        {
+         "id": "TV-104C",
+         "tag": "TV-104C"
+        },
+        {
+         "id": "HV-108",
+         "tag": "HV-108"
+        },
+        {
+         "id": "FT-106",
+         "tag": "FT-106"
+        }
+       ]
+      },
+      {
        "finding_id": "C1@E-3",
        "about": "E-3",
        "assets": [
@@ -112,25 +160,53 @@
      ]
     }
    ],
-   "findings": 4,
+   "findings": 6,
    "quiet_at": [],
    "not_checked_at": [],
    "not_run_at": [],
    "data_requests": [
     {
      "item": "Utility flow to this user",
-     "how": "Measure flow over a representative period and compare with production.",
+     "how": "A same-stream, same-user/medium or nearby flow candidate may be useful evidence but does not automatically settle exact coverage, quantity, comparability or usable data. Another branch, foreign/unavailable or old/FAULT source, an unqualified totalizer and a site bill cannot establish this user's representative consumption. S22 distinguishes measurement approaches and their limitations; review fit-for-purpose existing records first, including suitable compensated steam data and fluid-dependent technology/installation constraints. No compulsory clamp-on/spool, production interruption or allocation from site totals is authorized.",
      "sites": [
       {
        "site": "food",
        "states": [
         "not_on_drawing"
        ],
+       "coverage_by_finding": [
+        {
+         "finding_id": "C1@D-301",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        },
+        {
+         "finding_id": "C1@O-302",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        },
+        {
+         "finding_id": "C1@F-303",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        },
+        {
+         "finding_id": "C1@WH-401",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        }
+       ],
        "where": [
-        "a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading",
-        "utility bills or the site energy report: site-level meter readings to apportion"
+        "site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.",
+        "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
        ],
        "where_by_finding": [
+        {
+         "finding_id": "C1@D-301",
+         "where": [
+          "historian or DCS trend for FT-301 (no historian tag is mapped in this model for these)"
+         ]
+        },
         {
          "finding_id": "C1@O-302",
          "where": [
@@ -156,26 +232,73 @@
        "states": [
         "not_on_drawing"
        ],
-       "where": [
-        "only a valve (HV-112) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve",
-        "a walkdown: clamp-on ultrasonic flow meter (water) or a vortex/orifice spool piece (steam, air) for a temporary reading",
-        "utility bills or the site energy report: site-level meter readings to apportion"
+       "coverage_by_finding": [
+        {
+         "finding_id": "C1@E-2",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        },
+        {
+         "finding_id": "C1@E-3",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        }
        ],
-       "where_by_finding": []
+       "where": [
+        "site records: Existing exact utility/branch/user and meter/tag/source associations; quantity and units, actual versus reference volume/mass/energy/rate/total basis and necessary compensation, sample interval/time/coverage and production basis; availability/access, quality/gaps, calibration/range/installation/maintenance and source/revision records.",
+        "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
+       ],
+       "where_by_finding": [
+        {
+         "finding_id": "C1@E-2",
+         "where": [
+          "historian or DCS trend for FT-106 (no historian tag is mapped in this model for these)"
+         ]
+        },
+        {
+         "finding_id": "C1@E-3",
+         "where": [
+          "only a valve (HV-112) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve"
+         ]
+        }
+       ]
       }
      ]
     },
     {
      "item": "Who would use the reading",
-     "how": "Name the report the meter would feed.",
+     "how": "S22 printed3.1-3.14 and4.1-4.5 distinguishes purpose and analysis/action from merely having a meter and requires ongoing quality/maintenance/data-loss review. Match resolution, coverage and usable records to the decision. Existing suitable data/report use can be acknowledged without another meter; an unread meter, arbitrary proximity or billing total alone does not establish a saving or meaningful end-use allocation. The guide's building examples and S19 historical monitoring table are not this process's measured benefit, design authority or compliance finding.",
      "sites": [
       {
        "site": "food",
        "states": [
         "not_on_drawing"
        ],
+       "coverage_by_finding": [
+        {
+         "finding_id": "C1@D-301",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        },
+        {
+         "finding_id": "C1@O-302",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        },
+        {
+         "finding_id": "C1@F-303",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        },
+        {
+         "finding_id": "C1@WH-401",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        }
+       ],
        "where": [
-        "site records: energy or production reporting"
+        "site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.",
+        "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
        ],
        "where_by_finding": []
       },
@@ -184,15 +307,28 @@
        "states": [
         "not_on_drawing"
        ],
+       "coverage_by_finding": [
+        {
+         "finding_id": "C1@E-2",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        },
+        {
+         "finding_id": "C1@E-3",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        }
+       ],
        "where": [
-        "site records: energy or production reporting"
+        "site records: Existing energy/production report or decision, intended data user and review responsibilities, required resolution/time and performance, lifecycle/installation/analysis resources and constraints; identify unresolved source/coverage and review any proposed additional measurement.",
+        "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
        ],
        "where_by_finding": []
       }
      ]
     }
    ],
-   "decision_rule": "Meter where the user is large enough that its use would change decisions; a meter nobody reads saves nothing.",
+   "decision_rule": "Review exact utility/user/branch and measurement/source associations, usable quantity/time/quality/coverage and the intended decision/report with the responsible specialist. Retain candidates and unknowns without inferring installed absence or completed data collection from a nearby flow tag. Acknowledge suitable existing measurement or nonapplicability before proposing further work; any new metering requires a purpose-specific technology, installation/lifecycle and access review. No automatic instrument installation, allocation or site savings follows.",
    "typical_benefit": {
     "wording": "\"You can't manage what do don't measure\" [sic]. Buildings: \"efficiency improvements of 10-20%.\" The guide warns \"only success stories are published\" and that savings come only if action is taken. LBNL Monitoring & Targeting (as reported in LBNL-56183): \"Typical savings 4-17%, average 8%\" (UK experience).",
     "source": [
@@ -208,7 +344,7 @@
   },
   {
    "question_id": "C2",
-   "question": "Which measurements have no controller (read by people, or by nothing)?",
+   "question": "What do existing records establish about these measurements' purpose, readers and remaining source/logic coverage?",
    "family": "controls",
    "sites": [
     {
@@ -216,7 +352,7 @@
      "findings": [
       {
        "finding_id": "C2@model",
-       "about": "PT-201, JT-201, TT-202, TT-205, TT-206, PDT-206 and 4 more",
+       "about": "PT-201, JT-201, PT-202, TT-202, PT-203, TT-205 and 11 more",
        "assets": [
         {
          "id": "PT-201",
@@ -227,8 +363,16 @@
          "tag": "JT-201"
         },
         {
+         "id": "PT-202",
+         "tag": "PT-202"
+        },
+        {
          "id": "TT-202",
          "tag": "TT-202"
+        },
+        {
+         "id": "PT-203",
+         "tag": "PT-203"
         },
         {
          "id": "TT-205",
@@ -243,6 +387,10 @@
          "tag": "PDT-206"
         },
         {
+         "id": "TT-301",
+         "tag": "TT-301"
+        },
+        {
          "id": "TT-304",
          "tag": "TT-304"
         },
@@ -251,12 +399,56 @@
          "tag": "FT-301"
         },
         {
+         "id": "TT-302",
+         "tag": "TT-302"
+        },
+        {
          "id": "TT-305",
          "tag": "TT-305"
         },
         {
          "id": "AT-302",
          "tag": "AT-302"
+        },
+        {
+         "id": "TT-303",
+         "tag": "TT-303"
+        },
+        {
+         "id": "TT-401",
+         "tag": "TT-401"
+        },
+        {
+         "id": "PT-501",
+         "tag": "PT-501"
+        },
+        {
+         "id": "PIC-202",
+         "tag": "PIC-202"
+        },
+        {
+         "id": "PIC-203",
+         "tag": "PIC-203"
+        },
+        {
+         "id": "TIC-301",
+         "tag": "TIC-301"
+        },
+        {
+         "id": "TIC-302",
+         "tag": "TIC-302"
+        },
+        {
+         "id": "TIC-303",
+         "tag": "TIC-303"
+        },
+        {
+         "id": "TIC-401",
+         "tag": "TIC-401"
+        },
+        {
+         "id": "PIC-501",
+         "tag": "PIC-501"
         }
        ]
       }
@@ -267,15 +459,23 @@
      "findings": [
       {
        "finding_id": "C2@model",
-       "about": "PT-101, FT-103, TT-105, FT-106",
+       "about": "PT-101, LT-102, FT-103, TT-104, TT-105, FT-106",
        "assets": [
         {
          "id": "PT-101",
          "tag": "PT-101"
         },
         {
+         "id": "LT-102",
+         "tag": "LT-102"
+        },
+        {
          "id": "FT-103",
          "tag": "FT-103"
+        },
+        {
+         "id": "TT-104",
+         "tag": "TT-104"
         },
         {
          "id": "TT-105",
@@ -292,6 +492,18 @@
         {
          "id": "IL-3",
          "tag": "IL-3"
+        },
+        {
+         "id": "IL-1",
+         "tag": "IL-1"
+        },
+        {
+         "id": "LIC-102",
+         "tag": "LIC-102"
+        },
+        {
+         "id": "TIC-104",
+         "tag": "TIC-104"
         }
        ]
       }
@@ -305,16 +517,23 @@
    "data_requests": [
     {
      "item": "Whether operators adjust anything by hand from these readings",
-     "how": "Note manual adjustments per shift tied to each reading.",
+     "how": "Frequent manual adjustment can justify a control investigation, not automatic automation. A reading with no routine manual action may have a legitimate abnormal/alarm/protection/indication purpose; do not close it solely because nobody regularly acts. Acknowledge suitable existing purpose, manual or automatic operation, and record unresolved function/source suitability. No operator trial, live change or benefit is inferred.",
      "sites": [
       {
        "site": "food",
        "states": [
         "not_on_drawing"
        ],
+       "coverage_by_finding": [
+        {
+         "finding_id": "C2@model",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        }
+       ],
        "where": [
-        "site records: operator logs and round sheets",
-        "ask the operators which of these they act on, and how often"
+        "site records: Existing exact measurement/source identity and quantity, actual indication/control/alarm/protection/recording purpose, normal and abnormal decisions, operator logs/round sheets and current availability/quality/coverage; retain per-subject association and source/revision.",
+        "a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
        ],
        "where_by_finding": []
       },
@@ -323,9 +542,16 @@
        "states": [
         "not_on_drawing"
        ],
+       "coverage_by_finding": [
+        {
+         "finding_id": "C2@model",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        }
+       ],
        "where": [
-        "site records: operator logs and round sheets",
-        "ask the operators which of these they act on, and how often"
+        "site records: Existing exact measurement/source identity and quantity, actual indication/control/alarm/protection/recording purpose, normal and abnormal decisions, operator logs/round sheets and current availability/quality/coverage; retain per-subject association and source/revision.",
+        "a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
        ],
        "where_by_finding": []
       }
@@ -333,15 +559,24 @@
     },
     {
      "item": "The control system's own loop list",
-     "how": "Confirm the reading is indication-only and not read by logic the model lacks.",
+     "how": "A controller or interlock reference is useful supplied evidence, not proof of complete current logic, correct process meaning, safety adequacy or measurement authority. A partial model without controllers can still prompt existing-record clarification; it does not prove no installed controls or require a fabricated loop list. S19 printed30 is broad monitoring/process-control guidance, not a per-reading automation acceptance test.",
      "sites": [
       {
        "site": "food",
        "states": [
         "not_on_drawing"
        ],
+       "coverage_by_finding": [
+        {
+         "finding_id": "C2@model",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        }
+       ],
        "where": [
-        "DCS/PLC configuration: export the loop and point list"
+        "site records: Existing current loop/point list, cause/effect, alarm/sequence/configuration and represented reader/interlock/source records; preserve exact endpoints and identify missing model coverage before concluding indication-only.",
+        "DCS/PLC configuration: Review a permitted current loop/point/configuration export, if available, as an existing source rather than a complete plant-truth inventory.",
+        "a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
        ],
        "where_by_finding": []
       },
@@ -350,15 +585,24 @@
        "states": [
         "not_on_drawing"
        ],
+       "coverage_by_finding": [
+        {
+         "finding_id": "C2@model",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        }
+       ],
        "where": [
-        "DCS/PLC configuration: export the loop and point list"
+        "site records: Existing current loop/point list, cause/effect, alarm/sequence/configuration and represented reader/interlock/source records; preserve exact endpoints and identify missing model coverage before concluding indication-only.",
+        "DCS/PLC configuration: Review a permitted current loop/point/configuration export, if available, as an existing source rather than a complete plant-truth inventory.",
+        "a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
        ],
        "where_by_finding": []
       }
      ]
     }
    ],
-   "decision_rule": "Worth automating a reading that operators adjust by hand often, on a service where steadier control saves energy or quality; indication-only readings nobody acts on close the question.",
+   "decision_rule": "Review measurement purpose and actual normal/abnormal decisions, represented readers and source/logic coverage with the responsible specialist. Neither a missing model controller nor a represented reader settles installed control completeness or the need for automation. Suitable existing use or nonapplicability can be acknowledged; unresolved records remain explicit. No automatic upgrade, safety acceptance or source-reported saving is assigned.",
    "typical_benefit": {
     "wording": "\"energy and cost savings are around 5% or more for many industrial applications of process control systems\" (for plants without updated controls). Process control: \"Typically 2-18% savings.\" The source says these figures \"cannot be added\".",
     "source": [
@@ -2141,7 +2385,7 @@
   },
   {
    "question_id": "E18",
-   "question": "Is heat rejected to cooling water in one place while steam heats a colder stream in another (a heat-integration question)?",
+   "question": "What do existing records establish about these cooling/steam-labelled candidates' process-stream duties and any system-level heat-integration question?",
    "family": "energy",
    "sites": [
     {
@@ -2188,60 +2432,83 @@
    "not_run_at": [],
    "data_requests": [
     {
-     "item": "Temperatures and duties of the cooled and the heated streams",
-     "how": "For each stream: supply and target temperature and duty.",
+     "item": "Existing exact process-stream identities, temperature-enthalpy and duty basis",
+     "how": "A CW or steam valve/instrument label is a proxy, not measured process heat rejection/heating, a process-stream identity or a flow signal. Retain each owner/source separately, including related steam-record values shown as candidate evidence. Review actual comparable process duties and uncertainty before inferring any match; command values, foreign data or incompatible units/periods cannot settle it.",
      "sites": [
       {
        "site": "bayer",
        "states": [
         "not_on_drawing"
+       ],
+       "coverage_by_finding": [
+        {
+         "finding_id": "E18@model",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        }
        ],
        "where": [
         "only a valve (HV-112) is drawn on this line, with no flow measurement; flow needs a meter or a calibrated valve curve",
         "historian or DCS trend for FT-106 (no historian tag is mapped in this model for these)",
-        "site records: heat and material balance"
+        "site records: Existing process/utility identities and directions, actual supply/target temperatures, flows, heat-capacity/phase/duty and operating coverage for each represented cooling and steam candidate; source/revision/availability, quantity units and matching sample periods retained.",
+        "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
        ],
        "where_by_finding": []
       }
      ]
     },
     {
-     "item": "Whether the duties overlap in time",
-     "how": "Mark each duty continuous, batch or startup-only.",
+     "item": "Existing process-wide targets and time-aware operating constraints",
+     "how": "S19 printed43-45 describes process-wide composite curves, approach/capital-energy tradeoffs and developments for batch/time-aware integration and heat pumps/transformers. Do not replace that analysis with a rule that all hot temperatures must exceed all cold temperatures, or automatically close every non-simultaneous/batch pair. Conversely, overlapping ideal profiles or an alternative technology name is not proof of feasible recovery. Review the appropriate system and timing model before deciding.",
      "sites": [
       {
        "site": "bayer",
        "states": [
         "not_on_drawing"
        ],
+       "coverage_by_finding": [
+        {
+         "finding_id": "E18@model",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        }
+       ],
        "where": [
-        "site records: operating sequence: are both duties needed at the same time?"
+        "site records: Existing heat/material balance, process-wide temperature-enthalpy/composite profiles and utility targets, batch sequences and timing, current studies and alternatives, with source scope and economic/operating assumptions.",
+        "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
        ],
        "where_by_finding": []
       }
      ]
     },
     {
-     "item": "Layout distance and fouling",
-     "how": "Note pipe run and fouling service.",
+     "item": "Existing physical, material, fouling and hazard/feasibility basis",
+     "how": "Existing suitable studies may be acknowledged without new measurements or a compulsory exchanger study. On reactive service an integration change needs the applicable hazard review; a missing review, supplied Boolean or source label is not protection acceptance. No piping connection, operating change, whole-process completeness or site saving follows from the represented pair.",
      "sites": [
       {
        "site": "bayer",
        "states": [
         "not_on_drawing"
        ],
+       "coverage_by_finding": [
+        {
+         "finding_id": "E18@model",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        }
+       ],
        "where": [
-        "a walkdown: distance between the two exchangers",
-        "maintenance records: cleaning history"
+        "site records: Existing layout/routing and fouling/cleaning records, composition/pressure/material and cross-contamination constraints, reactive/process hazard review, existing exchanger/network function and economic/practical basis; authority and missing records remain explicit.",
+        "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
        ],
        "where_by_finding": []
       }
      ]
     }
    ],
-   "decision_rule": "Worth a pinch or exchanger study only when the hot stream's temperature range sits above the cold stream's with a practical approach, both run at the same time for long hours, and they are close enough to connect. Otherwise close this screening investigation.",
+   "decision_rule": "Review the actual process-wide temperature-enthalpy/utility targets, stream identities and duty/time basis, practical approach/capital tradeoffs and physical/material/hazard constraints before an integration decision. Do not prescribe a connection or automatically close a question from a pairwise temperature-range, simultaneity, hours or distance shortcut. Suitable existing analysis or nonapplicability may be acknowledged; missing or contradictory source/units/time remains explicit.",
    "typical_benefit": {
-    "wording": "Pinch potential \"far exceeds that from well-known conventional techniques such as heat recovery from boiler flue gas, insulation and steam trap management.\" No % stated in that section.",
+    "wording": "The source describes systematic process-wide temperature-enthalpy targeting and matching of heating/cooling demands, including time-aware batch approaches and alternatives. Potential depends on the actual process and capital-energy tradeoffs; this screen establishes no universal superiority, quantified benefit or site saving.",
     "source": [
      "S19",
      "S24"
@@ -2255,7 +2522,7 @@
   },
   {
    "question_id": "E19",
-   "question": "Is the compressed air header pressure higher than the end users need?",
+   "question": "What do existing records establish about this air-system candidate's pressure requirements, losses and control/storage constraints?",
    "family": "energy",
    "sites": [
     {
@@ -2294,25 +2561,34 @@
    "not_run_at": [],
    "data_requests": [
     {
-     "item": "Header pressure profile and the minimum end-use pressure",
-     "how": "Find the highest pressure any user truly needs.",
+     "item": "Existing named-system service, pressure/end-use and dynamic control/storage basis",
+     "how": "A pressure record anywhere is not this compressor's control or another user's requirement, and missing control representation is not closure. Known helpers/process-gas/refrigeration compressors are not air subjects; an air-compressor package is not disqualified merely because its name also mentions a dryer. Establish actual service/requirements and match quantities, locations and dynamic operating coverage. Review appropriate existing records and component/storage/control constraints before considering pressure changes. Suitable requirements or existing configuration can be acknowledged without new tests or lower-setpoint instructions.",
      "sites": [
       {
        "site": "food",
        "states": [
         "not_on_drawing"
        ],
+       "coverage_by_finding": [
+        {
+         "finding_id": "E19@AC-501",
+         "candidate_scope": "unit",
+         "candidate_facts": []
+        }
+       ],
        "where": [
-        "a walkdown: pressure at the farthest and most demanding users"
+        "site records: Existing actual compressor/system and controls, pressure location and discharge/header/point-of-use profiles, actual end-use requirements, distribution/treatment losses, peak/transient demand, storage/control range and manufacturer constraints; exact source/owner/revision, units/time/availability and coverage retained.",
+        "site records: The following pressure/control tag/series locations are candidate-only lookup aids from supplied records; compressor/system association, source identity, availability, measurement location and requirements remain unverified. Do not treat a foreign or unknown candidate as this compressor's measured header pressure or minimum end-use requirement.",
+        "a walkdown: Only if existing records leave an applicable question unresolved, agree safe additional observations with the responsible engineer; no compulsory new measurement, production stop, setpoint change or retrofit."
        ],
        "where_by_finding": []
       }
      ]
     }
    ],
-   "decision_rule": "Lower the setpoint toward the highest true end-use need plus distribution losses.",
+   "decision_rule": "Review actual system/end-use requirements and matched pressure/location/time records, peak demand, distribution/component drops, storage/control and manufacturer constraints with the responsible specialist before a pressure decision. Highest scalar need plus an assumed loss alone does not authorize lowering a setpoint. Unknown scope or dynamic basis remains a records question, and suitable existing operation or nonapplicability may be acknowledged; no operating change or site savings are calculated.",
    "typical_benefit": {
-    "wording": "\"for every 2 psi decrease in discharge pressure, energy consumption will decrease by approximately 1 percent at full output flow.\" With 30-50% unregulated usage, \"about 1 to 1.6 percent for every 2 psi.\"",
+    "wording": "S11 explains that pressure can affect compressor power and unregulated demand, with effects depending on compressor/control type, pressure range and operating conditions. Review manufacturer/system performance and required end-use pressure; no universal saving per pressure step or site benefit is asserted.",
     "source": [
      "S11",
      "S24"
@@ -2326,7 +2602,7 @@
   },
   {
    "question_id": "E22",
-   "question": "Does the air compressor lack enough storage for intermittent large users?",
+   "question": "What do existing records establish about this air-system candidate's demand events, controls and existing storage coverage/adequacy?",
    "family": "energy",
    "sites": [
     {
@@ -2353,23 +2629,31 @@
    "not_run_at": [],
    "data_requests": [
     {
-     "item": "Demand profile",
-     "how": "Find short high-demand events.",
+     "item": "Existing system/end-use demand, control and storage basis",
+     "how": "A receiver/storage label anywhere is not this air system's coverage or sufficient capacity, and missing representation is not installed absence. Review actual demand patterns, controls and current receivers first; the appropriate strategy depends on quantity/quality and pressure requirements, event and refill timing and compressor/control characteristics. S11 printed43-44 does not endorse a universal gallons-per-cfm rule. A known compressor package is not excluded merely because its name mentions a dryer; helpers and known nonair machines are not air subjects. Acknowledge suitable existing coverage before additional work; no obligatory one-week logging, receiver installation, compressor stop or pressure change is authorized.",
      "sites": [
       {
        "site": "food",
        "states": [
         "not_on_drawing"
        ],
+       "coverage_by_finding": [
+        {
+         "finding_id": "E22@AC-501",
+         "candidate_scope": "unit",
+         "candidate_facts": []
+        }
+       ],
        "where": [
-        "a walkdown: data-log compressor load and header pressure for a week"
+        "site records: Existing actual compressor/system, critical end-use pressure and air quality, control/capacity mode, receiver volumes and location/coverage, peak magnitude/duration and interval, pressure differential, available compressor supply during events and replenishment/recovery time; source, units and comparable operating periods retained.",
+        "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
        ],
        "where_by_finding": []
       }
      ]
     }
    ],
-   "decision_rule": "Add storage when short peaks force an extra compressor on.",
+   "decision_rule": "Review actual system and critical end-use requirements, existing receiver coverage, pressure/demand/event and refill profiles and interacting compressor/control constraints with the responsible specialist. Short peaks or an extra unit starting are not by themselves an instruction to add storage. Suitable existing strategy or nonapplicability can be acknowledged; unresolved service, source, quantity, quality, pressure or timing remains a records question, not a sizing or vessel-safety approval.",
    "typical_benefit": {
     "wording": "Storage \"may allow such a compressor to be turned off.\" No % stated.",
     "source": [
@@ -2385,7 +2669,7 @@
   },
   {
    "question_id": "E23",
-   "question": "Is air compressor heat rejected when it could heat something?",
+   "question": "What do existing records establish about this air-compressor candidate's actual heat availability, existing recovery and compatible receiving duty?",
    "family": "energy",
    "sites": [
     {
@@ -2412,24 +2696,31 @@
    "not_run_at": [],
    "data_requests": [
     {
-     "item": "Load hours and a nearby heat sink",
-     "how": "List heat users within reach.",
+     "item": "Existing compressor/cooling, recovery and receiving-duty basis",
+     "how": "S11 printed58-59 describes heat fractions and different air-cooled/water-cooled arrangements. Electrical input converted to heat and a recovered fraction of available thermal energy are not electrical savings or a useful site duty. Establish compatible temperatures, coincident demand and source/configuration first; the source says this heat is usually insufficient for direct steam production. Nearby load or long hours alone is insufficient. Retain required compressor cooling, ventilation/backpressure, water-quality/material and control constraints and added fan/exchanger effects. Acknowledge suitable existing recovery or nonapplicability; missing coverage remains conditional rather than a forced field test or new exchanger.",
      "sites": [
       {
        "site": "food",
        "states": [
         "not_on_drawing"
        ],
+       "coverage_by_finding": [
+        {
+         "finding_id": "E23@AC-501",
+         "candidate_scope": "unit",
+         "candidate_facts": []
+        }
+       ],
        "where": [
-        "site records: compressor run hours",
-        "a walkdown: space or water heating needs nearby"
+        "site records: Existing actual compressor type/cooling arrangement and performance, available thermal quantity/temperature and load/run schedule, existing recovery/coverage and receiving heat duty/temperature/time/seasonality, displaced energy and quality/material/cooling/ventilation/backpressure/control constraints, with exact units/source/owner/revision/availability.",
+        "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
        ],
        "where_by_finding": []
       }
      ]
     }
    ],
-   "decision_rule": "Worth a look when the compressor runs long hours and a low-temperature heat user is nearby.",
+   "decision_rule": "Review actual compressor/cooling performance, existing recovery and useful receiving duty, temperature, timing and operating/material/control constraints with the responsible specialist. Do not infer feasibility, useful output or a required retrofit from proximity/run hours or source heat percentages. Suitable existing recovery or nonapplicability may be acknowledged; unresolved source, service, units or duty remains explicit. No heat-recovery design, steam promise or site savings is produced.",
    "typical_benefit": {
     "wording": "\"As much as 80 to 93 percent of the electrical energy\" becomes heat; recovery \"anywhere from 50 to 90 percent of this\".",
     "source": [
@@ -2746,7 +3037,7 @@
   },
   {
    "question_id": "C6",
-   "question": "Does a temperature controller write straight to a steam valve with no flow controller underneath (a cascade candidate)?",
+   "question": "What do existing records establish about this direct temperature-to-steam-valve control candidate's configuration, disturbances and suitable dynamics?",
    "family": "controls",
    "sites": [
     {
@@ -2782,15 +3073,24 @@
    "data_requests": [
     {
      "item": "Loop behaviour",
-     "how": "Look for oscillation or slow recovery after steam pressure changes.",
+     "how": "A flow-controller reference sharing the valve does not prove a nested cascade or justify suppression of conflicting/unknown configuration. The explicit additional Siemens AD353-128 rev2 April2012 pp1-4 describes a measurable/controllable secondary affecting the primary, encompassing the relevant disturbance and responding substantially faster. It also identifies disturbances outside that secondary loop and alternative secondary variables. Review the actual chain/dynamics, operating range and required behavior first; neither an oscillation nor a pressure swing alone authorizes a flow slave or tuning test. Suitable existing operation can be acknowledged.",
      "sites": [
       {
        "site": "bayer",
        "states": [
         "not_on_drawing"
        ],
+       "coverage_by_finding": [
+        {
+         "finding_id": "C6@TV-104C",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        }
+       ],
        "where": [
-        "DCS/PLC configuration: controller tuning and output history"
+        "site records: Existing exact measurement/controller/output and setpoint-chain/configuration, active modes, source/coverage, process objective and matched primary/secondary response, flow measurement/actuator suitability and existing load-disturbance histories.",
+        "DCS/PLC configuration: Review existing controller configuration, tuning/modes and output history; no change is requested.",
+        "a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
        ],
        "where_by_finding": []
       }
@@ -2798,22 +3098,30 @@
     },
     {
      "item": "Steam header pressure swings",
-     "how": "Note how often supply pressure moves.",
+     "how": "The manufacturer example is contextual application engineering, not a universal speed ratio, procurement or tuning requirement. Confirm that a secondary could address the relevant disturbance before any proposed design. Preserve limits and suitable transfer/reset/operating modes; a proper represented temperature-to-flow-setpoint chain is outside this direct-output pattern, not proof every cascade is adequate. No step test, setpoint/pressure change or equipment addition follows.",
      "sites": [
       {
        "site": "bayer",
        "states": [
         "not_on_drawing"
        ],
+       "coverage_by_finding": [
+        {
+         "finding_id": "C6@TV-104C",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        }
+       ],
        "where": [
-        "site records: steam header pressure trend"
+        "site records: Existing comparable header/valve/flow/primary-variable pressure and disturbance records, sample periods and units, control ranges/limits, transfer/tracking/reset/anti-windup and actuator/measurement constraints.",
+        "a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
        ],
        "where_by_finding": []
       }
      ]
     }
    ],
-   "decision_rule": "A flow slave helps when steam supply pressure swings disturb the temperature; a steady header and a well-behaved loop close this screening investigation.",
+   "decision_rule": "Review actual direct-output versus nested setpoint configuration, modes, relevant disturbance paths, measurement/actuator suitability and relative process dynamics with the responsible control engineer. Shared output labels or supply-pressure variation do not establish a cascade, its absence or a requirement to add one. Suitable existing control or nonapplicability can be acknowledged; unresolved configuration/source evidence remains a records question without tuning or operating authority.",
    "typical_benefit": {
     "wording": "No public numeric source found. Report as qualitative only.",
     "source": [],
@@ -2823,7 +3131,7 @@
   },
   {
    "question_id": "E26",
-   "question": "Are relief and vent flows to the flare or atmosphere unmetered?",
+   "question": "What do existing records establish about these relief/flare/vent candidates' actual events, measurement/composition and source coverage?",
    "family": "emissions",
    "sites": [
     {
@@ -2867,25 +3175,33 @@
    "data_requests": [
     {
      "item": "Flare or vent flow and composition",
-     "how": "Separate continuous (background) flow from relief events.",
+     "how": "Same-stream flow labeling is useful candidate evidence, not complete current flow/composition/event coverage. Retain foreign, inaccessible, FAULT or unqualified totalizer data without treating it as suitable. S19 printed34-35 distinguishes planned intermittent/continuous background from upset-blowdown and describes manufacturer minimum-flow context; rare relief events or a zero lift count alone do not automatically close source/safety/environmental review. Review suitable existing records first; no generic analyzer or meter closes all quantities. Any additional measurement/recovery proposal must preserve safety paths and undergo responsible hazard/environmental review, not be imposed from a drawing clue.",
      "sites": [
       {
        "site": "bayer",
        "states": [
         "not_on_drawing"
        ],
+       "coverage_by_finding": [
+        {
+         "finding_id": "E26@model",
+         "candidate_scope": "anchors",
+         "candidate_facts": []
+        }
+       ],
        "where": [
-        "a walkdown: ultrasonic flare-gas meter or a temporary vent flow measurement",
-        "site records: relief valve lift records"
+        "site records: Existing exact service/path and measurement/source/event associations; quantity/rate/total/reference units, sample periods and quality/availability/gaps, composition/variability and planned intermittent/continuous versus upset/blowdown/relief records, purge/pilot/manufacturer requirements and safety/environmental basis.",
+        "site records: Review existing relief-valve lift, flare/vent and operating-event records with their actual time/source coverage.",
+        "a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
        ],
        "where_by_finding": []
       }
      ]
     }
    ],
-   "decision_rule": "Worth metering when background flow is continuous; relief-only lines that seldom lift close the question.",
+   "decision_rule": "Review exact relief/vent/flare service, planned and abnormal event coverage and usable quantity/composition/time/source records with the responsible safety/environmental and operating specialists. A flow candidate or rare-event label does not establish suitable data, completeness or safe closure. Existing appropriate records/nonapplicability can be acknowledged; unresolved evidence remains explicit. No live metering, recovery modification, reduced purge/minimum flow or operating change is authorized.",
    "typical_benefit": {
-    "wording": "Background flaring \"can be as much as 50% of all flared gases (Miles, 2001).\" In refineries it \"will generally be less than 50%.\" No recovery % stated.",
+    "wording": "S19 reports that background flaring in offshore cases can be as much as50% of all flared gas, while refinery shares generally depend on individual practices and are lower. This historical reported share is neither a recovery fraction nor a site benefit or a reason to compromise required flare operation.",
     "source": [
      "S19"
     ],

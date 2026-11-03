@@ -1,0 +1,53 @@
+{
+  "meta": {
+    "title": "Fictional original-source question control",
+    "unknowns": [
+      "Actual operating state, source authority and human usefulness not established"
+    ],
+    "assumptions": [
+      "All identifiers/values authored for development before calls"
+    ]
+  },
+  "units": [],
+  "streams": [],
+  "instruments": [],
+  "manual_valves": [],
+  "controllers": [],
+  "unplaced": [
+    {
+      "tag": "PCV-A",
+      "description": "PRV HP HEADER unknownservice",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development packet; no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": null,
+        "station_flow": null
+      },
+      "assigned_tag": true,
+      "source": "Fictional candidate station, not installed-state proof",
+      "kind": "final_element",
+      "unit": null,
+      "unplaced_reason": "Fictional explicitly unplaced station; no inventoried equipment owner"
+    },
+    {
+      "tag": "FWS-A",
+      "description": "FEEDWATER PRV HP HEADER",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development packet; no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "feedwater"
+      },
+      "assigned_tag": true,
+      "source": "Fictional candidate station, not installed-state proof",
+      "kind": "final_element",
+      "unit": null,
+      "unplaced_reason": "Fictional explicitly unplaced station; no inventoried equipment owner"
+    }
+  ]
+}

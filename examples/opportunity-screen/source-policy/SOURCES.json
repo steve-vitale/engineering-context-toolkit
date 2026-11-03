@@ -1,0 +1,314 @@
+{
+  "scope": "Primary/original document identities/locators; no raw PDFs redistributed or download required for this fictional tutorial. S19 official mirror publication identity, not inaccessibleOSTI raw equivalence; quoted tables are historical secondary experience. S24 browse figures were not reverified. C6 additional manufacturer source is application guidance, not procurement recommendation.",
+  "documents": [
+    {
+      "id": "S6",
+      "url": "https://www.energy.gov/sites/prod/files/2014/05/f16/steam20_turbogenerators.pdf",
+      "raw_identity": {
+        "sha256_raw": "06ba8f20b605fa8aa950b257a3d201944d14486f508d432f65cbce7f83a7a378",
+        "bytes": 462417
+      },
+      "redistributed": false,
+      "role": "Original document retained privately; URL/hash identify source, not current plant authority",
+      "used_by_groups": [
+        "01"
+      ]
+    },
+    {
+      "id": "S3",
+      "url": "https://www.energy.gov/sites/prod/files/2014/05/f16/steam1_traps.pdf",
+      "raw_identity": {
+        "sha256_raw": "e93745d18501b040cccb32fc13644a4cd284b0f8de0066b3667fac787a14cdf8",
+        "bytes": 403223
+      },
+      "redistributed": false,
+      "role": "Original document retained privately; URL/hash identify source, not current plant authority",
+      "used_by_groups": [
+        "01",
+        "05"
+      ]
+    },
+    {
+      "id": "S8",
+      "url": "https://www.energy.gov/sites/prod/files/2014/05/f15/steamsourcebook.pdf",
+      "raw_identity": {
+        "sha256_raw": "7dc0b5cfd6d2c18f4808f93ad682ae17a65b2dbcaaf45422fffaac9ef21c5a21",
+        "bytes": 1944235
+      },
+      "redistributed": false,
+      "role": "Original document retained privately; URL/hash identify source, not current plant authority",
+      "used_by_groups": [
+        "01",
+        "02"
+      ]
+    },
+    {
+      "id": "S13",
+      "url": "https://www.energy.gov/sites/prod/files/2014/05/f16/pump.pdf",
+      "raw_identity": {
+        "sha256_raw": "e8975ae00a5d74bfb9f1512f8b2cd85a56359f61d8109bbb18bfdc6d3eb52eb4",
+        "bytes": 3229105
+      },
+      "redistributed": false,
+      "role": "Original document retained privately; URL/hash identify source, not current plant authority",
+      "used_by_groups": [
+        "01"
+      ]
+    },
+    {
+      "id": "supplement-tip8",
+      "url": "https://www.energy.gov/sites/prod/files/2014/05/f16/steam8_boiler.pdf",
+      "raw_identity": {
+        "sha256_raw": "25109bfc1e71557062c67400107d05ffb399e610dec7e65e89183ac70e0d60ba",
+        "bytes": 443938
+      },
+      "redistributed": false,
+      "role": "Original document retained privately; URL/hash identify source, not current plant authority",
+      "used_by_groups": [
+        "01"
+      ]
+    },
+    {
+      "id": "S1",
+      "url": "https://www.energy.gov/sites/default/files/2014/05/f16/steam2_insulate.pdf",
+      "raw_identity": {
+        "sha256_raw": "9e328834fbbfd704e0b2d001d432c1870b76dae4803483037908a15af007cd0b",
+        "bytes": 395073
+      },
+      "redistributed": false,
+      "role": "Original document retained privately; URL/hash identify source, not current plant authority",
+      "used_by_groups": [
+        "02"
+      ]
+    },
+    {
+      "id": "S2",
+      "url": "https://www.energy.gov/sites/prod/files/2014/05/f16/steam17_valves_fittings.pdf",
+      "raw_identity": {
+        "sha256_raw": "a43217db296f18a5de2dd4c1db4bf651f5cfd253f6704c492b68069edba30c78",
+        "bytes": 410569
+      },
+      "redistributed": false,
+      "role": "Original document retained privately; URL/hash identify source, not current plant authority",
+      "used_by_groups": [
+        "02"
+      ]
+    },
+    {
+      "id": "S4",
+      "url": "https://www.energy.gov/sites/prod/files/2014/05/f16/steam3_recovery.pdf",
+      "raw_identity": {
+        "sha256_raw": "caaaf9ad95b567a49c3b5a8321f24cc77e2ebf2e08e39dcdf4fca32e5ee8e235",
+        "bytes": 390210
+      },
+      "redistributed": false,
+      "role": "Original document retained privately; URL/hash identify source, not current plant authority",
+      "used_by_groups": [
+        "02",
+        "03"
+      ]
+    },
+    {
+      "id": "S7",
+      "url": "https://www.energy.gov/sites/prod/files/2014/05/f16/steam26b_condensing.pdf",
+      "raw_identity": {
+        "sha256_raw": "2782ba7ca28843f7667ec3f6c8bc603687e093f4241165eb2bfbd4361248caa9",
+        "bytes": 557974
+      },
+      "redistributed": false,
+      "role": "Original document retained privately; URL/hash identify source, not current plant authority",
+      "used_by_groups": [
+        "02"
+      ]
+    },
+    {
+      "id": "supplement-tip12",
+      "url": "https://www.energy.gov/sites/prod/files/2014/05/f16/steam12_lowpressure_steam.pdf",
+      "raw_identity": {
+        "sha256_raw": "fa6324f0ac86e5150d6f27055f6d0ae9d24f59ba3a4451f2014e5e5d7c39e8fd",
+        "bytes": 389804
+      },
+      "redistributed": false,
+      "role": "Original document retained privately; URL/hash identify source, not current plant authority",
+      "used_by_groups": [
+        "02"
+      ]
+    },
+    {
+      "id": "S18",
+      "url": "https://www.energy.gov/sites/prod/files/2014/05/f16/install_waste_heat_process_htgts8.pdf",
+      "raw_identity": {
+        "sha256_raw": "a75438328a0c139c0af251532cb2ea0d9680976ea701ec7c0b0245a3188b04b8",
+        "bytes": 287554
+      },
+      "redistributed": false,
+      "role": "Original document retained privately; URL/hash identify source, not current plant authority",
+      "used_by_groups": [
+        "03"
+      ]
+    },
+    {
+      "id": "S11",
+      "url": "https://www.energy.gov/sites/default/files/2016/03/f30/Improving%20Compressed%20Air%20Sourcebook%20version%203.pdf",
+      "raw_identity": {
+        "sha256_raw": "3280284235b8daef10f7d9e6a21aada90d7b804b805cc9ef842903aeca009c22",
+        "bytes": 2740595
+      },
+      "redistributed": false,
+      "role": "Original document retained privately; URL/hash identify source, not current plant authority",
+      "used_by_groups": [
+        "03",
+        "04",
+        "05"
+      ]
+    },
+    {
+      "id": "S9",
+      "url": "https://www.energy.gov/sites/prod/files/2014/05/f16/compressed_air3.pdf",
+      "raw_identity": {
+        "sha256_raw": "2d5c173c054d0fb1187a0944a5815f39afa44bde6d392ad55c9667ff2aa20017",
+        "bytes": 270691
+      },
+      "redistributed": false,
+      "role": "Original document retained privately; URL/hash identify source, not current plant authority",
+      "used_by_groups": [
+        "03"
+      ]
+    },
+    {
+      "id": "S19",
+      "url": "https://www.energystar.gov/sites/default/files/buildings/tools/ES_Petroleum_Energy_Guide.pdf",
+      "raw_identity": {
+        "sha256_raw": "ec65e5317b19ae032b50f9cd848b3d418d082b61809164226a0863d18972b715",
+        "bytes": 732043
+      },
+      "redistributed": false,
+      "role": "Original document retained privately; URL/hash identify source, not current plant authority",
+      "used_by_groups": [
+        "03",
+        "04",
+        "05"
+      ]
+    },
+    {
+      "id": "S10",
+      "url": "https://www.energy.gov/sites/prod/files/2014/05/f16/compressed_air9.pdf",
+      "raw_identity": {
+        "sha256_raw": "c41ab5c62d1b7583d2063b9c27abd1f06a20a387763ca9e969e78f48f62488c8",
+        "bytes": 264680
+      },
+      "redistributed": false,
+      "role": "Original document retained privately; URL/hash identify source, not current plant authority",
+      "used_by_groups": [
+        "04"
+      ]
+    },
+    {
+      "id": "S22",
+      "url": "https://www.pnnl.gov/main/publications/external/technical_reports/PNNL-23892.pdf",
+      "raw_identity": {
+        "sha256_raw": "feea918a03d16eeef3c3aead9351b25aee807b25c0035a58e8c014de30aae54d",
+        "bytes": 3872671
+      },
+      "redistributed": false,
+      "role": "Original document retained privately; URL/hash identify source, not current plant authority",
+      "used_by_groups": [
+        "04"
+      ]
+    },
+    {
+      "id": "S20",
+      "url": "https://19january2017snapshot.epa.gov/sites/production/files/2016-06/documents/ll_final_vap.pdf",
+      "raw_identity": {
+        "sha256_raw": "36965381dacaddd0c2cfd4a50a7c01719cf85e0fd533439fb0db07270faefe7c",
+        "bytes": 208471
+      },
+      "redistributed": false,
+      "role": "Original document retained privately; URL/hash identify source, not current plant authority",
+      "used_by_groups": [
+        "05"
+      ]
+    },
+    {
+      "id": "C6-additional",
+      "url": "https://cache.industry.siemens.com/dl/files/372/51436372/att_88120/v1/AD353-128_r2.pdf",
+      "raw_identity": {
+        "sha256_raw": "e2c444d5fd4bc31208d9323d555201bfbdc28c2d33b130422ca295d5204cb30e",
+        "bytes": 165817
+      },
+      "redistributed": false,
+      "role": "Original document retained privately; URL/hash identify source, not current plant authority",
+      "used_by_groups": [
+        "05"
+      ]
+    }
+  ],
+  "rule_locators": {
+    "E3": [],
+    "E7": [],
+    "E8": [],
+    "E9": [],
+    "E10": [
+      "S8 printed21/PDF27 fullpage",
+      "Supplement DOE Tip12/GO-102012-3400 pp1–2, admitted before criteria"
+    ],
+    "E12": [
+      "S1/DOE Tip2 pp1–2 complete",
+      "S2/DOE Tip17 pp1–2 complete"
+    ],
+    "E14": [
+      "S4/DOE Tip3/GO-102012-3412 pp1–2 complete"
+    ],
+    "E15": [
+      "S7/DOE Tip26B/GO-102012-3397 completepp1–3 incltable/footnotes/systemeffects"
+    ],
+    "E17": [
+      "S18/DOE processheatingTip8 completepp1–2",
+      "Explicit additional S4/SteamTip3 completepp1–2 forboilerflue/feedwaterfunction boundary, previouslyread/copiedraw"
+    ],
+    "E18": [
+      "S19 original LBNL56183 officialENERGYSTARmirror, printed43–45/PDF51–53 complete; catalogOSTIweb502 notrawverified"
+    ],
+    "E19": [
+      "S11 compressedairsourcebook printed28–36/PDF33–41; pressure/control portions printed31–36/PDF36–41 complete"
+    ],
+    "E20": [
+      "S9/DOE compressedairTip3 completepp1–2",
+      "S11 printed28–30/PDF33–35 leakmethods/program; printed35–36/PDF40–41 controlmodes complete"
+    ],
+    "E21": [
+      "S11 printed24-27/PDF29-32 complete, especially intermittent vacuum and cabinet-cooling versus panel-purging",
+      "S11 pressure-context printed31/34 already-read prior cohort: unregulated demand is not inappropriate-use savings"
+    ],
+    "E22": [
+      "S10 complete2pages",
+      "S11 printed43-44/PDF48-49 complete"
+    ],
+    "E23": [
+      "S11 printed58-59/PDF63-64 complete"
+    ],
+    "C1": [
+      "S22 PNNL23892 printed3.1-3.2/PDF23-24;3.5-3.8/PDF27-30;3.10-3.14/PDF32-36;4.1-4.5/PDF37-41;4.12-4.14/PDF48-50 complete",
+      "S19 printed30/PDF38 whole page: historical Monitoring&Targeting table, secondary UK experience, overlapping effects not additive"
+    ],
+    "C2": [
+      "S19 originalLBNL56183 officialmirror printed30/PDF38 wholepage"
+    ],
+    "C6": [
+      "Explicit additional manufacturer original Siemens AD353-128 rev2 April2012 CascadeControl pp1-4 and6-7 complete; all raw/pages retained, no catalogsource registry object added"
+    ],
+    "C7": [
+      "S11 printed34-39/PDF39-44 and42/PDF47 whole relevant control pages"
+    ],
+    "C10": [
+      "S3 DOE SteamTip1 completepp1-2",
+      "S19 printed40-42/PDF48-50 complete including monitoring prose/footnote"
+    ],
+    "E25": [
+      "S20 EPA NaturalGasSTAR InstallingVaporRecoveryUnitsOnStorageTanks Oct2006 complete9pages, especially1-7/footer9"
+    ],
+    "E26": [
+      "S19 printed34-35/PDF42-43 complete, flaregasrecovery section and case continuation"
+    ]
+  }
+}

@@ -1,0 +1,201 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/water-valve-records/models/AX04-steam-generator-name.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E13"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "energy": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E13@SG",
+   "question_id": "E13",
+   "family": "energy",
+   "question": "What do existing records establish about this boiler's blowdown function, water-treatment control and any remaining heat-recovery opportunity?",
+   "about": "SG",
+   "assets": [
+    {
+     "id": "SG",
+     "tag": "SG"
+    },
+    {
+     "id": "HV-AX-1",
+     "tag": "HV-AX-1"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "SG",
+     "tag": "SG",
+     "text": "equipment SG reads \"SG Steam Generator SG-AX\"",
+     "field": "units[SG]"
+    },
+    {
+     "role": "blowdown",
+     "id": "HV-AX-1",
+     "tag": "HV-AX-1",
+     "text": "hand valve HV-AX-1 reads \"HV-AX-1 Declared blowdown candidate\" at SG",
+     "field": "manual_valves[HV-AX-1]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SG",
+     "tag": "SG",
+     "text": "SG water_service = \"declared steam-water boiler\"; present; meaning and suitability unverified",
+     "field": "units[SG].facts.water_service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SG",
+     "tag": "SG",
+     "text": "SG blowdown_function = \"surface\"; present; meaning and suitability unverified",
+     "field": "units[SG].facts.blowdown_function"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SG",
+     "tag": "SG",
+     "text": "SG control_basis = \"existing water-service record, adequacy unresolved\"; present; meaning and suitability unverified",
+     "field": "units[SG].facts.control_basis"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SG",
+     "tag": "SG",
+     "text": "SG record_source = \"Fictional explicit original record, no company approval\"; present; meaning and suitability unverified",
+     "field": "units[SG].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SG",
+     "tag": "SG",
+     "text": "SG record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[SG].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SG",
+     "tag": "SG",
+     "text": "SG source_is_fictional = true; present; meaning and suitability unverified",
+     "field": "units[SG].facts.source_is_fictional"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SG water_service = declared steam-water boiler",
+     "field": "units[SG].facts.water_service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SG blowdown_function = surface",
+     "field": "units[SG].facts.blowdown_function"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SG control_basis = existing water-service record, adequacy unresolved",
+     "field": "units[SG].facts.control_basis"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SG record_source = Fictional explicit original record, no company approval",
+     "field": "units[SG].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SG record_revision = R1",
+     "field": "units[SG].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SG source_is_fictional = True",
+     "field": "units[SG].facts.source_is_fictional"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing boiler blowdown service, treatment/control and recovery basis (qualified records first)",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Named boiler operating and water-treatment records: distinguish bottom/mud removal of suspended solids from surface/skimming removal of dissolved solids; retain asset/source/revision, sample time, availability, quantity/units and operating coverage. Review existing suitable control and recovery before requesting more data.",
+      "a walkdown: Only if the relevant records cannot settle an applicable boiler-water question: agree with the responsible engineer what safe observation or measurement is still needed; no blanket new field measurement or hardware instruction."
+     ],
+     "how": "First establish the actual steam/water service and bottom versus surface function. Normally manual intermittent bottom blowdown alone is not an automation fault. An analyzer tag or nearby location does not prove boiler-water association, suitable control or adequate operation. Keep TDS and conductivity units, representative sampling and feedwater/makeup/condensate distinctions explicit. Any calculated blowdown fraction or percent must state its justified balance, denominator and time basis; do not impose the source's contextual range as a target. For applicable continuous surface duty, review pressure, actual rate/hours, installed recovery, receiving duty and constraints before considering an investigation. Known dry/non-water service is not applicable; unknown service needs clarification. Complete suitable records can be acknowledged without a new measurement or retrofit. Proportional makeup-water-flow control can be an existing surface-control arrangement; absence of a conductivity probe alone is not a control defect. Keep steam-flow and feedwater-flow rate denominators distinct; neither a source screening sentence nor its worked table supplies a universal target.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "SG",
+       "label": "SG",
+       "name": "water_service",
+       "value": "declared steam-water boiler",
+       "where": "units[SG].facts.water_service"
+      },
+      {
+       "id": "SG",
+       "label": "SG",
+       "name": "blowdown_function",
+       "value": "surface",
+       "where": "units[SG].facts.blowdown_function"
+      },
+      {
+       "id": "SG",
+       "label": "SG",
+       "name": "control_basis",
+       "value": "existing water-service record, adequacy unresolved",
+       "where": "units[SG].facts.control_basis"
+      },
+      {
+       "id": "SG",
+       "label": "SG",
+       "name": "record_source",
+       "value": "Fictional explicit original record, no company approval",
+       "where": "units[SG].facts.record_source"
+      },
+      {
+       "id": "SG",
+       "label": "SG",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[SG].facts.record_revision"
+      },
+      {
+       "id": "SG",
+       "label": "SG",
+       "name": "source_is_fictional",
+       "value": true,
+       "where": "units[SG].facts.source_is_fictional"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review records and unresolved applicability with the responsible engineer. Distinguish bottom/mud and surface/skimming functions; manual practice or a missing/generic analyzer does not authorize automation. Consider further control or heat-recovery investigation only if applicable service, treatment needs, actual operation and recovery/sink constraints establish a remaining question. No hardware decision, operating change, chemistry target or site saving follows from this screen.",
+   "typical_benefit": {
+    "wording": "\"Blowdown rates typically range from 4% to 8% of boiler feedwater flow rate, but can be as high as 10%.\" LBNL (as reported in LBNL-56183): blowdown heat recovery 1.3%, 1-2.7 yr.",
+    "source": [
+     "S5",
+     "S19",
+     "S24"
+    ],
+    "arc": "2.124x (IAC/ITAC browse page: 334 recommendations, 1.6 yr average payback, 36.7% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S5: Steam Tip #9, Minimize Boiler Blowdown (DOE/GO-102012-3406)",
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "Source-informed records review: DOE Steam Tip 9, pp. 1–2, distinguishes bottom and surface functions and includes proportional makeup-water-flow control. Supplemental Tip 10, pp. 1–2 (https://www.energy.gov/sites/prod/files/2014/05/f16/steam10_boiler_blowdown.pdf), qualifies recovery by actual source and receiving duty; its opening steam-rate screen and feedwater-based example have different denominators. Historical S19/S24/IAC benefit figures are inherited, not reverified, site-specific or current-standard acceptance. Supplied candidate fields do not establish engineering adequacy or source authority.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

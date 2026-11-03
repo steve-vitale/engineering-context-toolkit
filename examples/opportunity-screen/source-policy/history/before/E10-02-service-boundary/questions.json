@@ -1,0 +1,135 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/thermal-recovery-records/models/E10-02-service-boundary.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E10"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E10@HC-A",
+   "question_id": "E10",
+   "family": "energy",
+   "question": "Is high-pressure condensate flashing to atmosphere when the flash steam could be used?",
+   "about": "HC-A",
+   "assets": [
+    {
+     "id": "HC-A",
+     "tag": "HC-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "HC-A",
+     "tag": "HC-A",
+     "text": "equipment HC-A reads \"HC-A FLASH TANK hydrocarbon\"",
+     "field": "units[HC-A]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Condensate pressure and flow into the receiver",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: pressure gauge and vent plume"
+     ],
+     "how": "Record pressure and estimate flow."
+    },
+    {
+     "item": "A low-pressure steam user nearby",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: steam users list",
+      "a walkdown: nearby LP users"
+     ],
+     "how": "List LP users within reach."
+    }
+   ],
+   "decision_rule": "Worth a look when a steady high-pressure condensate flow vents and a low-pressure user is close by.",
+   "typical_benefit": {
+    "wording": "Flash vessels allow \"recovery of steam... used in low-pressure steam applications.\" No % stated.",
+    "source": [
+     "S8",
+     "S24"
+    ],
+    "arc": "2.2127 (IAC/ITAC browse page: 31 recommendations, 1.0 yr average payback, 39.3% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S8: Improving Steam System Performance: A Sourcebook for Industry, 2nd ed. (DOE/GO-102012-3423, rev. Oct 2012)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.",
+   "status": "asked"
+  },
+  {
+   "id": "E10@F-B",
+   "question_id": "E10",
+   "family": "energy",
+   "question": "Is high-pressure condensate flashing to atmosphere when the flash steam could be used?",
+   "about": "F-B",
+   "assets": [
+    {
+     "id": "F-B",
+     "tag": "F-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "F-B",
+     "tag": "F-B",
+     "text": "equipment F-B reads \"F-B FLASH VESSEL water\"",
+     "field": "units[F-B]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Condensate pressure and flow into the receiver",
+     "state": "not_on_drawing",
+     "where": [
+      "a walkdown: pressure gauge and vent plume"
+     ],
+     "how": "Record pressure and estimate flow."
+    },
+    {
+     "item": "A low-pressure steam user nearby",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: steam users list",
+      "a walkdown: nearby LP users"
+     ],
+     "how": "List LP users within reach."
+    }
+   ],
+   "decision_rule": "Worth a look when a steady high-pressure condensate flow vents and a low-pressure user is close by.",
+   "typical_benefit": {
+    "wording": "Flash vessels allow \"recovery of steam... used in low-pressure steam applications.\" No % stated.",
+    "source": [
+     "S8",
+     "S24"
+    ],
+    "arc": "2.2127 (IAC/ITAC browse page: 31 recommendations, 1.0 yr average payback, 39.3% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S8: Improving Steam System Performance: A Sourcebook for Industry, 2nd ed. (DOE/GO-102012-3423, rev. Oct 2012)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

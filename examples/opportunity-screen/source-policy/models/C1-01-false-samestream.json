@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "title": "Fictional air end-use/storage/heat and utility-metering records",
+    "unknowns": [
+      "Actual operation, installed truth and engineering/human acceptance unknown"
+    ],
+    "assumptions": [
+      "All identities, values and relationships fictional before calls"
+    ]
+  },
+  "units": [
+    {
+      "id": "U-A",
+      "name": "Fictional utility user",
+      "type": "process_user",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call development record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "metering_purpose": "productionreport",
+        "data_owner": null
+      },
+      "source": "Fictional source-defined role",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [
+    {
+      "id": "S-A",
+      "name": "STEAM SUPPLY",
+      "from": "BL",
+      "to": "U-A",
+      "utility": true,
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call development record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "utility_quantity": "massflow",
+        "flow": null,
+        "flow_unit": "kg/h"
+      },
+      "source": "Fictional utility/user association"
+    }
+  ],
+  "instruments": [
+    {
+      "tag": "FT-A",
+      "unit": "U-A",
+      "stream": "S-A",
+      "variable": "flow",
+      "description": "STEAM flow candidate",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional pre-call development record, no company or human approval",
+        "record_revision": "R1",
+        "record_available": false,
+        "record_authority": "unverified",
+        "measurement_target": "foreignS-A",
+        "record_scope": "foreignsite",
+        "quantity": "totalvolume",
+        "flow": 99,
+        "flow_unit": "m3,totalreferenceunknown",
+        "sample_period": "olderperiod",
+        "quality": "FAULT"
+      },
+      "source": "Supplied fictional source, association unverified",
+      "assigned_tag": true
+    }
+  ],
+  "controllers": [],
+  "manual_valves": [],
+  "final_elements": [],
+  "unplaced": []
+}

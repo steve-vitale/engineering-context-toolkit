@@ -1,0 +1,454 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/models/C6-02-dual-writer.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "C6"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "controls": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "C6@TV-A",
+   "question_id": "C6",
+   "family": "controls",
+   "question": "What do existing records establish about this direct temperature-to-steam-valve control candidate's configuration, disturbances and suitable dynamics?",
+   "about": "TV-A",
+   "assets": [
+    {
+     "id": "TV-A",
+     "tag": "TV-A"
+    },
+    {
+     "id": "TIC-A",
+     "tag": "TIC-A"
+    },
+    {
+     "id": "FT-A",
+     "tag": "FT-A"
+    },
+    {
+     "id": "FIC-A",
+     "tag": "FIC-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "TV-A",
+     "tag": "TV-A",
+     "text": "valve TV-A reads \"TV-A STEAM valve\" at U-A",
+     "field": "final_elements[TV-A]"
+    },
+    {
+     "role": "temperature controller",
+     "id": "TIC-A",
+     "tag": "TIC-A",
+     "text": "controller TIC-A reads \"TIC-A Fictional supplied controller\" at U-A",
+     "field": "controllers[TIC-A]"
+    },
+    {
+     "role": "steam flow measurement",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "instrument FT-A reads \"FT-A STEAM flow\" at U-A",
+     "field": "instruments[FT-A]"
+    },
+    {
+     "role": "supplied flow-controller output; nested setpoint cascade and effective mode not established",
+     "id": "FIC-A",
+     "tag": "FIC-A",
+     "text": "controller FIC-A reads \"FIC-A Fictional supplied controller\" at U-A",
+     "field": "controllers[FIC-A]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TV-A",
+     "tag": "TV-A",
+     "text": "TV-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "final_elements[TV-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TV-A",
+     "tag": "TV-A",
+     "text": "TV-A record_source = \"Fictional pre-call record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "final_elements[TV-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TV-A",
+     "tag": "TV-A",
+     "text": "TV-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "final_elements[TV-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TV-A",
+     "tag": "TV-A",
+     "text": "TV-A record_available = true; present; meaning and suitability unverified",
+     "field": "final_elements[TV-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TV-A",
+     "tag": "TV-A",
+     "text": "TV-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "final_elements[TV-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TV-A",
+     "tag": "TV-A",
+     "text": "TV-A service = \"steamsupply\"; present; meaning and suitability unverified",
+     "field": "final_elements[TV-A].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TIC-A",
+     "tag": "TIC-A",
+     "text": "TIC-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "controllers[TIC-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TIC-A",
+     "tag": "TIC-A",
+     "text": "TIC-A record_source = \"Fictional pre-call record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "controllers[TIC-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TIC-A",
+     "tag": "TIC-A",
+     "text": "TIC-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "controllers[TIC-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TIC-A",
+     "tag": "TIC-A",
+     "text": "TIC-A record_available = true; present; meaning and suitability unverified",
+     "field": "controllers[TIC-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TIC-A",
+     "tag": "TIC-A",
+     "text": "TIC-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "controllers[TIC-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TIC-A",
+     "tag": "TIC-A",
+     "text": "TIC-A mode = \"auto\"; present; meaning and suitability unverified",
+     "field": "controllers[TIC-A].facts.mode"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "TIC-A",
+     "tag": "TIC-A",
+     "text": "TIC-A output_role = \"directvalve\"; present; meaning and suitability unverified",
+     "field": "controllers[TIC-A].facts.output_role"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A record_source = \"Fictional pre-call record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A record_available = true; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A quantity = \"massflow\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.quantity"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-A",
+     "tag": "FT-A",
+     "text": "FT-A flow_unit = \"kg/h\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-A].facts.flow_unit"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FIC-A",
+     "tag": "FIC-A",
+     "text": "FIC-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "controllers[FIC-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FIC-A",
+     "tag": "FIC-A",
+     "text": "FIC-A record_source = \"Fictional pre-call record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "controllers[FIC-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FIC-A",
+     "tag": "FIC-A",
+     "text": "FIC-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "controllers[FIC-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FIC-A",
+     "tag": "FIC-A",
+     "text": "FIC-A record_available = false; present; meaning and suitability unverified",
+     "field": "controllers[FIC-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FIC-A",
+     "tag": "FIC-A",
+     "text": "FIC-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "controllers[FIC-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FIC-A",
+     "tag": "FIC-A",
+     "text": "FIC-A record_scope = \"foreignFIC-A\"; present; meaning and suitability unverified",
+     "field": "controllers[FIC-A].facts.record_scope"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FIC-A",
+     "tag": "FIC-A",
+     "text": "FIC-A mode = \"manualunknown\"; present; meaning and suitability unverified",
+     "field": "controllers[FIC-A].facts.mode"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FIC-A",
+     "tag": "FIC-A",
+     "text": "FIC-A output_role = \"secondwriter, notsetpointslave\"; present; meaning and suitability unverified",
+     "field": "controllers[FIC-A].facts.output_role"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TV-A fictional_record = True",
+     "field": "final_elements[TV-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TV-A record_source = Fictional pre-call record, no company or human approval",
+     "field": "final_elements[TV-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TV-A record_revision = R1",
+     "field": "final_elements[TV-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TV-A record_available = True",
+     "field": "final_elements[TV-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TV-A record_authority = unverified",
+     "field": "final_elements[TV-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TV-A service = steamsupply",
+     "field": "final_elements[TV-A].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TV-A fictional_record = True",
+     "field": "final_elements[TV-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TV-A record_source = Fictional pre-call record, no company or human approval",
+     "field": "final_elements[TV-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TV-A record_revision = R1",
+     "field": "final_elements[TV-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TV-A record_available = True",
+     "field": "final_elements[TV-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TV-A record_authority = unverified",
+     "field": "final_elements[TV-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: TV-A service = steamsupply",
+     "field": "final_elements[TV-A].facts.service"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Loop behaviour",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing exact measurement/controller/output and setpoint-chain/configuration, active modes, source/coverage, process objective and matched primary/secondary response, flow measurement/actuator suitability and existing load-disturbance histories.",
+      "DCS/PLC configuration: Review existing controller configuration, tuning/modes and output history; no change is requested.",
+      "a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
+     ],
+     "how": "A flow-controller reference sharing the valve does not prove a nested cascade or justify suppression of conflicting/unknown configuration. The explicit additional Siemens AD353-128 rev2 April2012 pp1-4 describes a measurable/controllable secondary affecting the primary, encompassing the relevant disturbance and responding substantially faster. It also identifies disturbances outside that secondary loop and alternative secondary variables. Review the actual chain/dynamics, operating range and required behavior first; neither an oscillation nor a pressure swing alone authorizes a flow slave or tuning test. Suitable existing operation can be acknowledged.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "TV-A",
+       "label": "TV-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "final_elements[TV-A].facts.fictional_record"
+      },
+      {
+       "id": "TV-A",
+       "label": "TV-A",
+       "name": "record_source",
+       "value": "Fictional pre-call record, no company or human approval",
+       "where": "final_elements[TV-A].facts.record_source"
+      },
+      {
+       "id": "TV-A",
+       "label": "TV-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "final_elements[TV-A].facts.record_revision"
+      },
+      {
+       "id": "TV-A",
+       "label": "TV-A",
+       "name": "record_available",
+       "value": true,
+       "where": "final_elements[TV-A].facts.record_available"
+      },
+      {
+       "id": "TV-A",
+       "label": "TV-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "final_elements[TV-A].facts.record_authority"
+      },
+      {
+       "id": "TV-A",
+       "label": "TV-A",
+       "name": "service",
+       "value": "steamsupply",
+       "where": "final_elements[TV-A].facts.service"
+      }
+     ]
+    },
+    {
+     "item": "Steam header pressure swings",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing comparable header/valve/flow/primary-variable pressure and disturbance records, sample periods and units, control ranges/limits, transfer/tracking/reset/anti-windup and actuator/measurement constraints.",
+      "a walkdown: Only if applicable questions remain after existing-record review, agree safe additional observations with the responsible specialist; no mandatory live test, sampling, shutdown, tuning, instrument or equipment change."
+     ],
+     "how": "The manufacturer example is contextual application engineering, not a universal speed ratio, procurement or tuning requirement. Confirm that a secondary could address the relevant disturbance before any proposed design. Preserve limits and suitable transfer/reset/operating modes; a proper represented temperature-to-flow-setpoint chain is outside this direct-output pattern, not proof every cascade is adequate. No step test, setpoint/pressure change or equipment addition follows.",
+     "candidate_scope": "anchors",
+     "candidate_facts": [
+      {
+       "id": "TV-A",
+       "label": "TV-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "final_elements[TV-A].facts.fictional_record"
+      },
+      {
+       "id": "TV-A",
+       "label": "TV-A",
+       "name": "record_source",
+       "value": "Fictional pre-call record, no company or human approval",
+       "where": "final_elements[TV-A].facts.record_source"
+      },
+      {
+       "id": "TV-A",
+       "label": "TV-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "final_elements[TV-A].facts.record_revision"
+      },
+      {
+       "id": "TV-A",
+       "label": "TV-A",
+       "name": "record_available",
+       "value": true,
+       "where": "final_elements[TV-A].facts.record_available"
+      },
+      {
+       "id": "TV-A",
+       "label": "TV-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "final_elements[TV-A].facts.record_authority"
+      },
+      {
+       "id": "TV-A",
+       "label": "TV-A",
+       "name": "service",
+       "value": "steamsupply",
+       "where": "final_elements[TV-A].facts.service"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual direct-output versus nested setpoint configuration, modes, relevant disturbance paths, measurement/actuator suitability and relative process dynamics with the responsible control engineer. Shared output labels or supply-pressure variation do not establish a cascade, its absence or a requirement to add one. Suitable existing control or nonapplicability can be acknowledged; unresolved configuration/source evidence remains a records question without tuning or operating authority.",
+   "typical_benefit": {
+    "wording": "No public numeric source found. Report as qualitative only.",
+    "source": [],
+    "arc": null,
+    "source_titles": []
+   },
+   "limits": "Explicit additional source: Siemens Procidia CascadeControl AD353-128 rev2 April2012, complete pp1-4 and6-7, https://cache.industry.siemens.com/dl/files/372/51436372/att_88120/v1/AD353-128_r2.pdf . Manufacturer example, not independent plant or procurement acceptance. Existing direct-temperature/steam-valve and represented-controller scope retained; no claim to automatically detect heating/cooling controller fighting or all existing cascades. Numeric benefit object unchanged and no universal tuning ratio imposed.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

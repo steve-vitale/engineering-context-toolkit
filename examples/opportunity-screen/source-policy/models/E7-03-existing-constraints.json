@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "title": "Fictional original-source question control",
+    "unknowns": [
+      "Actual operating state, source authority and human usefulness not established"
+    ],
+    "assumptions": [
+      "All identifiers/values authored for development before calls"
+    ]
+  },
+  "units": [],
+  "streams": [],
+  "instruments": [],
+  "manual_valves": [],
+  "controllers": [],
+  "unplaced": [
+    {
+      "tag": "PCV-A",
+      "description": "PRV Steam HEADER candidate",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional development packet; no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "unverified",
+        "service": "steam",
+        "existing_function": "supplied backpressureturbine inparallel",
+        "steam_condition": "dryness/superheat unknown",
+        "downstream_heat": "processduty unknown",
+        "boiler_capacity": false,
+        "electrical_voltage": "unavailable",
+        "economic_basis": "historicalsourceprices notsite"
+      },
+      "assigned_tag": true,
+      "source": "Fictional candidate station, not installed-state proof",
+      "kind": "final_element",
+      "unit": null,
+      "unplaced_reason": "Fictional explicitly unplaced station; no inventoried equipment owner"
+    },
+    {
+      "tag": "PCV-B",
+      "description": "PRV Steam HEADER candidate",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "foreignsitePRV-B",
+        "record_revision": "R0",
+        "record_available": false,
+        "record_authority": "unverified",
+        "service": "steam"
+      },
+      "assigned_tag": true,
+      "source": "Fictional candidate station, not installed-state proof",
+      "kind": "final_element",
+      "unit": null,
+      "unplaced_reason": "Fictional explicitly unplaced station; no inventoried equipment owner"
+    }
+  ]
+}

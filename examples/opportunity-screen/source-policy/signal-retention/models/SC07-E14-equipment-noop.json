@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "title": "Fictional source-series locator control",
+    "source_document": "Fictional signal-locator source-note.txt, Figure 11",
+    "unknowns": [
+      "No real time series, physical measurement, source authority or engineering acceptance supplied"
+    ],
+    "assumptions": [
+      "Synthetic symbolic fig11_series pointers exercise existing Native lookup grammar only; no actual TE/Bayer/source series is asserted"
+    ]
+  },
+  "units": [
+    {
+      "id": "B-A",
+      "name": "BOILER source",
+      "type": "boiler",
+      "source": "Fictional fixture source role, no operational authority",
+      "assigned_tag": true,
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+        "record_revision": "R1",
+        "record_available": false,
+        "record_authority": "unverified",
+        "typed_fixture_control": {
+          "false": false,
+          "zero": 0,
+          "null": null,
+          "unknown": "unknown",
+          "empty": []
+        }
+      }
+    },
+    {
+      "id": "EC-X",
+      "name": "ECONOMIZER foreign",
+      "type": "heat_exchanger",
+      "source": "Fictional fixture source role, no operational authority",
+      "assigned_tag": true,
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+        "record_revision": "R1",
+        "record_available": false,
+        "record_authority": "unverified",
+        "typed_fixture_control": {
+          "false": false,
+          "zero": 0,
+          "null": null,
+          "unknown": "unknown",
+          "empty": []
+        },
+        "record_scope": "foreignB-X"
+      }
+    }
+  ],
+  "streams": [],
+  "instruments": [
+    {
+      "tag": "TT-A",
+      "unit": "B-A",
+      "variable": "temperature",
+      "description": "Stack temperature",
+      "source": "Fictional source-note, Figure 11 symbolic pointer only",
+      "assigned_tag": true,
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional signal-locator source note, Figure 11; no actual series or plant record",
+        "record_revision": "R1",
+        "record_available": false,
+        "record_authority": "unverified",
+        "typed_fixture_control": {
+          "false": false,
+          "zero": 0,
+          "null": null,
+          "unknown": "unknown",
+          "empty": []
+        }
+      },
+      "fig11_series": "SYNTHETIC_SC07_STACK_TEMPERATURE"
+    }
+  ],
+  "controllers": [],
+  "final_elements": [],
+  "unplaced": []
+}

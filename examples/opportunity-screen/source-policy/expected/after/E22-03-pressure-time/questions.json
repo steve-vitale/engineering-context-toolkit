@@ -1,0 +1,559 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/source-policy/models/E22-03-pressure-time.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E22"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; referenced benefits include source quotations and contextual paraphrases, not estimates for this plant.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E22@C-A",
+   "question_id": "E22",
+   "family": "energy",
+   "question": "What do existing records establish about this air-system candidate's demand events, controls and existing storage coverage/adequacy?",
+   "about": "C-A",
+   "assets": [
+    {
+     "id": "C-A",
+     "tag": "C-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "equipment C-A reads \"C-A AIR COMPRESSOR\"",
+     "field": "units[C-A]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[C-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A record_source = \"Fictional pre-call development record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[C-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[C-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A record_available = true; present; meaning and suitability unverified",
+     "field": "units[C-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[C-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A service = \"compressedair\"; present; meaning and suitability unverified",
+     "field": "units[C-A].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A peak_duration = 5; present; meaning and suitability unverified",
+     "field": "units[C-A].facts.peak_duration"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A control_mode = \"loadunload\"; present; meaning and suitability unverified",
+     "field": "units[C-A].facts.control_mode"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A recovery_time = 2; present; meaning and suitability unverified",
+     "field": "units[C-A].facts.recovery_time"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A time_unit = \"seconds\"; present; meaning and suitability unverified",
+     "field": "units[C-A].facts.time_unit"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A peak_flow = 100; present; meaning and suitability unverified",
+     "field": "units[C-A].facts.peak_flow"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A flow_unit = \"scfm\"; present; meaning and suitability unverified",
+     "field": "units[C-A].facts.flow_unit"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A max_pressure = 100; present; meaning and suitability unverified",
+     "field": "units[C-A].facts.max_pressure"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A min_pressure = 95; present; meaning and suitability unverified",
+     "field": "units[C-A].facts.min_pressure"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A pressure_unit = \"psig\"; present; meaning and suitability unverified",
+     "field": "units[C-A].facts.pressure_unit"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A air_quality = \"criticaldry\"; present; meaning and suitability unverified",
+     "field": "units[C-A].facts.air_quality"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-A",
+     "tag": "C-A",
+     "text": "C-A supply_during_event = \"unknown\"; blank; meaning and suitability unverified",
+     "field": "units[C-A].facts.supply_during_event"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-A fictional_record = True",
+     "field": "units[C-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-A record_source = Fictional pre-call development record, no company or human approval",
+     "field": "units[C-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-A record_revision = R1",
+     "field": "units[C-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-A record_available = True",
+     "field": "units[C-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-A record_authority = unverified",
+     "field": "units[C-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-A service = compressedair",
+     "field": "units[C-A].facts.service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-A peak_duration = 5",
+     "field": "units[C-A].facts.peak_duration"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-A control_mode = loadunload",
+     "field": "units[C-A].facts.control_mode"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-A recovery_time = 2",
+     "field": "units[C-A].facts.recovery_time"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-A time_unit = seconds",
+     "field": "units[C-A].facts.time_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-A peak_flow = 100",
+     "field": "units[C-A].facts.peak_flow"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-A flow_unit = scfm",
+     "field": "units[C-A].facts.flow_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-A max_pressure = 100",
+     "field": "units[C-A].facts.max_pressure"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-A min_pressure = 95",
+     "field": "units[C-A].facts.min_pressure"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-A pressure_unit = psig",
+     "field": "units[C-A].facts.pressure_unit"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-A air_quality = criticaldry",
+     "field": "units[C-A].facts.air_quality"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing system/end-use demand, control and storage basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing actual compressor/system, critical end-use pressure and air quality, control/capacity mode, receiver volumes and location/coverage, peak magnitude/duration and interval, pressure differential, available compressor supply during events and replenishment/recovery time; source, units and comparable operating periods retained.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
+     ],
+     "how": "A receiver/storage label anywhere is not this air system's coverage or sufficient capacity, and missing representation is not installed absence. Review actual demand patterns, controls and current receivers first; the appropriate strategy depends on quantity/quality and pressure requirements, event and refill timing and compressor/control characteristics. S11 printed43-44 does not endorse a universal gallons-per-cfm rule. A known compressor package is not excluded merely because its name mentions a dryer; helpers and known nonair machines are not air subjects. Acknowledge suitable existing coverage before additional work; no obligatory one-week logging, receiver installation, compressor stop or pressure change is authorized.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "C-A",
+       "label": "C-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[C-A].facts.fictional_record"
+      },
+      {
+       "id": "C-A",
+       "label": "C-A",
+       "name": "record_source",
+       "value": "Fictional pre-call development record, no company or human approval",
+       "where": "units[C-A].facts.record_source"
+      },
+      {
+       "id": "C-A",
+       "label": "C-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[C-A].facts.record_revision"
+      },
+      {
+       "id": "C-A",
+       "label": "C-A",
+       "name": "record_available",
+       "value": true,
+       "where": "units[C-A].facts.record_available"
+      },
+      {
+       "id": "C-A",
+       "label": "C-A",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[C-A].facts.record_authority"
+      },
+      {
+       "id": "C-A",
+       "label": "C-A",
+       "name": "service",
+       "value": "compressedair",
+       "where": "units[C-A].facts.service"
+      },
+      {
+       "id": "C-A",
+       "label": "C-A",
+       "name": "peak_duration",
+       "value": 5,
+       "where": "units[C-A].facts.peak_duration"
+      },
+      {
+       "id": "C-A",
+       "label": "C-A",
+       "name": "control_mode",
+       "value": "loadunload",
+       "where": "units[C-A].facts.control_mode"
+      },
+      {
+       "id": "C-A",
+       "label": "C-A",
+       "name": "recovery_time",
+       "value": 2,
+       "where": "units[C-A].facts.recovery_time"
+      },
+      {
+       "id": "C-A",
+       "label": "C-A",
+       "name": "time_unit",
+       "value": "seconds",
+       "where": "units[C-A].facts.time_unit"
+      },
+      {
+       "id": "C-A",
+       "label": "C-A",
+       "name": "peak_flow",
+       "value": 100,
+       "where": "units[C-A].facts.peak_flow"
+      },
+      {
+       "id": "C-A",
+       "label": "C-A",
+       "name": "flow_unit",
+       "value": "scfm",
+       "where": "units[C-A].facts.flow_unit"
+      },
+      {
+       "id": "C-A",
+       "label": "C-A",
+       "name": "max_pressure",
+       "value": 100,
+       "where": "units[C-A].facts.max_pressure"
+      },
+      {
+       "id": "C-A",
+       "label": "C-A",
+       "name": "min_pressure",
+       "value": 95,
+       "where": "units[C-A].facts.min_pressure"
+      },
+      {
+       "id": "C-A",
+       "label": "C-A",
+       "name": "pressure_unit",
+       "value": "psig",
+       "where": "units[C-A].facts.pressure_unit"
+      },
+      {
+       "id": "C-A",
+       "label": "C-A",
+       "name": "air_quality",
+       "value": "criticaldry",
+       "where": "units[C-A].facts.air_quality"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual system and critical end-use requirements, existing receiver coverage, pressure/demand/event and refill profiles and interacting compressor/control constraints with the responsible specialist. Short peaks or an extra unit starting are not by themselves an instruction to add storage. Suitable existing strategy or nonapplicability can be acknowledged; unresolved service, source, quantity, quality, pressure or timing remains a records question, not a sizing or vessel-safety approval.",
+   "typical_benefit": {
+    "wording": "Storage \"may allow such a compressor to be turned off.\" No % stated.",
+    "source": [
+     "S10",
+     "S24"
+    ],
+    "arc": "2.422x (category only) (IAC/ITAC browse page: 8,589 recommendations, 1.2 yr average payback, 46.5% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S10: Compressed Air Tip #9, Compressed Air Storage Strategies (DOE/GO-102004-1965)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: S10 complete pp1-2 and S11 printed43-44/PDF48-49 make storage conditional on demand/quality/control and location/replenishment constraints; existing generic storage does not clear all systems. Pressure-vessel safety, relief, condensate/drain and maintenance constraints remain engineering responsibilities. No universal receiver volume or site savings is computed.",
+   "status": "asked"
+  },
+  {
+   "id": "E22@C-B",
+   "question_id": "E22",
+   "family": "energy",
+   "question": "What do existing records establish about this air-system candidate's demand events, controls and existing storage coverage/adequacy?",
+   "about": "C-B",
+   "assets": [
+    {
+     "id": "C-B",
+     "tag": "C-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "equipment C-B reads \"C-B AIR COMPRESSOR\"",
+     "field": "units[C-B]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "C-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[C-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "C-B record_source = \"Fictional pre-call development record, no company or human approval\"; present; meaning and suitability unverified",
+     "field": "units[C-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "C-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[C-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "C-B record_available = true; present; meaning and suitability unverified",
+     "field": "units[C-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "C-B record_authority = \"unverified\"; present; meaning and suitability unverified",
+     "field": "units[C-B].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "C-B service = null; blank; meaning and suitability unverified",
+     "field": "units[C-B].facts.service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "C-B peak_duration = null; blank; meaning and suitability unverified",
+     "field": "units[C-B].facts.peak_duration"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "C-B control_mode = null; blank; meaning and suitability unverified",
+     "field": "units[C-B].facts.control_mode"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "C-B",
+     "tag": "C-B",
+     "text": "C-B min_pressure = null; blank; meaning and suitability unverified",
+     "field": "units[C-B].facts.min_pressure"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-B fictional_record = True",
+     "field": "units[C-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-B record_source = Fictional pre-call development record, no company or human approval",
+     "field": "units[C-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-B record_revision = R1",
+     "field": "units[C-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-B record_available = True",
+     "field": "units[C-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: C-B record_authority = unverified",
+     "field": "units[C-B].facts.record_authority"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing system/end-use demand, control and storage basis",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing actual compressor/system, critical end-use pressure and air quality, control/capacity mode, receiver volumes and location/coverage, peak magnitude/duration and interval, pressure differential, available compressor supply during events and replenishment/recovery time; source, units and comparable operating periods retained.",
+      "a walkdown: Only if an applicable question remains after reviewing existing records, agree safe additional observations with the responsible engineer; no mandatory new meter, field test, operating change or equipment replacement."
+     ],
+     "how": "A receiver/storage label anywhere is not this air system's coverage or sufficient capacity, and missing representation is not installed absence. Review actual demand patterns, controls and current receivers first; the appropriate strategy depends on quantity/quality and pressure requirements, event and refill timing and compressor/control characteristics. S11 printed43-44 does not endorse a universal gallons-per-cfm rule. A known compressor package is not excluded merely because its name mentions a dryer; helpers and known nonair machines are not air subjects. Acknowledge suitable existing coverage before additional work; no obligatory one-week logging, receiver installation, compressor stop or pressure change is authorized.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "C-B",
+       "label": "C-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[C-B].facts.fictional_record"
+      },
+      {
+       "id": "C-B",
+       "label": "C-B",
+       "name": "record_source",
+       "value": "Fictional pre-call development record, no company or human approval",
+       "where": "units[C-B].facts.record_source"
+      },
+      {
+       "id": "C-B",
+       "label": "C-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[C-B].facts.record_revision"
+      },
+      {
+       "id": "C-B",
+       "label": "C-B",
+       "name": "record_available",
+       "value": true,
+       "where": "units[C-B].facts.record_available"
+      },
+      {
+       "id": "C-B",
+       "label": "C-B",
+       "name": "record_authority",
+       "value": "unverified",
+       "where": "units[C-B].facts.record_authority"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review actual system and critical end-use requirements, existing receiver coverage, pressure/demand/event and refill profiles and interacting compressor/control constraints with the responsible specialist. Short peaks or an extra unit starting are not by themselves an instruction to add storage. Suitable existing strategy or nonapplicability can be acknowledged; unresolved service, source, quantity, quality, pressure or timing remains a records question, not a sizing or vessel-safety approval.",
+   "typical_benefit": {
+    "wording": "Storage \"may allow such a compressor to be turned off.\" No % stated.",
+    "source": [
+     "S10",
+     "S24"
+    ],
+    "arc": "2.422x (category only) (IAC/ITAC browse page: 8,589 recommendations, 1.2 yr average payback, 46.5% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S10: Compressed Air Tip #9, Compressed Air Storage Strategies (DOE/GO-102004-1965)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source review: S10 complete pp1-2 and S11 printed43-44/PDF48-49 make storage conditional on demand/quality/control and location/replenishment constraints; existing generic storage does not clear all systems. Pressure-vessel safety, relief, condensate/drain and maintenance constraints remain engineering responsibilities. No universal receiver volume or site savings is computed.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}
