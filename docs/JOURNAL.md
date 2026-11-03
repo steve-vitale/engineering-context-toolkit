@@ -7451,3 +7451,51 @@ See [the worked contribution loop](../examples/engineering-onboarding/contributi
 [criteria](../examples/engineering-onboarding/contribution-loop/acceptance.json),
 [actual results](../examples/engineering-onboarding/contribution-loop/worked/result.json) and
 [provenance](../examples/engineering-onboarding/contribution-loop/PROVENANCE.json).
+
+
+## 162. Compare selected batch records and recheck the calculation underneath
+
+Added a reusable local `join_batch_records.py` route for explicitly selected batch, phase event, reported
+executed recipe, lab and outcome CSVs beside saved batch calculations. The operator-selected manifest names
+all files and exact record/window IDs; saved reports never choose paths. The existing basis checker first
+checks/reproduces report/CSV/plan/optional graph. Changed upstream files with an unchanged calculation
+withhold feed totals; rebuilding produces a new result without replacing the old one.
+
+The fictional source key is independent hand arithmetic: A/B feed2/4kg, reported assay10/12g/L and harvest
+volume900/920L. Their recorded differences are2kg/2g/L/20L, with no yield/causal or plant conclusion. The source
+and negative criteria were frozen before initial join implementation. Review exposed two source-contract
+refinements: analysis files need explicit availability declarations, and recipe revision labels alone need a
+selected reported executed recipe and full typed parameters. Original unqualified inputs, refinements and
+private first implementation results remain. The later qualification is informed development evidence,
+not blind preimplementation validation. Fictional January availability is not the November producer clock.
+
+The decision summary excludes late/unavailable selected values under supplied metadata; the complete audit
+and captured originals deliberately retain all selected/unselected/future rows. These are separate roles, not
+a leakage-free historical-access study or ready ML dataset. Identity, time, unit, quality, recipe, scale,
+method and source gaps block a complete comparison. Exact plan-window/event IDs matter even when all other
+event fields match. No automatic latest-result choice, normalization, imputation or semantic verification.
+
+Independent actual controls caught two admission defects: a different event ID with identical values could
+substitute for the referenced event, and whitespace-only method/sample/scale metadata could complete the
+comparison. The six original baseline calls and outputs remain private. The repairs add exact event-source
+binding and strip-aware missing checks without rewriting original lexical fields. The root's first null-quality
+test incorrectly retained a disallowed quality CSV column; its test fixture was corrected before checking the
+valid null-policy contract. An independent operator later stopped on duplicate log labels; its88actual calls
+and stop remain separate from the exclusive final103processcohort and5graphcontrols. No product failure or
+reproduction was invented to replace that observer error.
+
+The final exposed software cohort passes its frozen cases, including typedfalse/0 recipe parameters,
+availability/chronology, optional graph admission, stale inputs and complete output tampering. The fresh
+public exercise runs14CLIs with11checks, including3intended changed-result exits and1existing-output refusal.
+All182public outputs and19input/method files are pinned. Sixteen focused test methods cover source arithmetic,
+full field/raw capture, negatives, current-code/input reproduction and the actual case replay. Existing
+question rules and source-review counts remain unchanged; parallel rule audits are private/unadopted.
+
+This delivers bounded record joins and explicit upstream calculation freshness. Automatic/live ingestion,
+continuous source monitoring, accepted investigation/hypothesis outcomes, authenticated company import,
+actual recipient usefulness and plant/causal/kinetic acceptance remain open under the standing goal.
+
+See [the tool tutorial](../examples/batch-analysis/record-joins/README.md),
+[initial criteria](../examples/batch-analysis/record-joins/ACCEPTANCE.json),
+[public actual replay](../examples/batch-analysis/record-joins/worked/result.json) and
+[provenance](../examples/batch-analysis/record-joins/PROVENANCE.json).

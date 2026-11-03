@@ -1,0 +1,9 @@
+{
+  "schema": "batch-record-join-recipe-refinement-1",
+  "before_manifest_sha256": "3c3383e1051f07e7b6e0cb0ebfb3e97dc0205db288b3e21f5b0bb633a53d36ee",
+  "after_manifest_sha256": "b1a8462cddbc3316f75a236767dfe8fc388f7f590a7b88533547329da74d6c5e",
+  "recipe_source_sha256": "d2f526bbd2118505c69dd2760698559312821513e681f4adb423d3138c7bb444",
+  "reason": "Recipe revision labels alone are insufficient; explicitly select the reported executed recipe and retain/compare its full supplied parameter object. Original unqualified manifest remains a missing-recipe/availability control.",
+  "created_before_refined_join_execution": true,
+  "earlier_runs": "first-qualified and first-unqualified are preserved private development outputs of the earlier no-recipe-table implementation, not relabelled as this successor."
+}

@@ -1,0 +1,221 @@
+{
+  "schema": "fictional-record-join-replay-1",
+  "checks": {
+    "initial_arithmetic": true,
+    "original_unqualified_needs_review": true,
+    "late_lab_withheld": true,
+    "late_lab_not_a_difference": true,
+    "late_value_kept_only_for_audit": true,
+    "lab_revision_is_new_result": true,
+    "stale_upstream_withheld": true,
+    "regenerated_arithmetic": true,
+    "alternate_event_cannot_substitute": true,
+    "original_result_untouched": true,
+    "all_attempts_retained": true
+  },
+  "all_pass": true,
+  "actual_cli_calls": [
+    {
+      "label": "initial",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "examples\\batch-analysis\\record-joins\\worked\\sources\\initial\\manifest.json",
+        "--out",
+        "examples\\batch-analysis\\record-joins\\worked\\initial"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "initial-check",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "examples\\batch-analysis\\record-joins\\worked\\sources\\initial\\manifest.json",
+        "--check",
+        "examples\\batch-analysis\\record-joins\\worked\\initial\\batch_join.json"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "unqualified",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "examples\\batch-analysis\\record-joins\\worked\\sources\\unqualified\\manifest.json",
+        "--out",
+        "examples\\batch-analysis\\record-joins\\worked\\unqualified"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "future-lab",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "examples\\batch-analysis\\record-joins\\worked\\sources\\future-lab\\manifest.json",
+        "--out",
+        "examples\\batch-analysis\\record-joins\\worked\\future-lab"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "old-join-lab-check",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "examples\\batch-analysis\\record-joins\\worked\\sources\\revised-lab\\manifest.json",
+        "--check",
+        "examples\\batch-analysis\\record-joins\\worked\\initial\\batch_join.json"
+      ],
+      "returncode": 1,
+      "expected": 1
+    },
+    {
+      "label": "revised-lab",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "examples\\batch-analysis\\record-joins\\worked\\sources\\revised-lab\\manifest.json",
+        "--out",
+        "examples\\batch-analysis\\record-joins\\worked\\revised-lab"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "old-join-csv-check",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "examples\\batch-analysis\\record-joins\\worked\\sources\\changed-upstream\\manifest.json",
+        "--check",
+        "examples\\batch-analysis\\record-joins\\worked\\initial\\batch_join.json"
+      ],
+      "returncode": 1,
+      "expected": 1
+    },
+    {
+      "label": "stale-analysis",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "examples\\batch-analysis\\record-joins\\worked\\sources\\changed-upstream\\manifest.json",
+        "--out",
+        "examples\\batch-analysis\\record-joins\\worked\\stale-analysis"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "regenerate-analysis",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/batch_analysis.py",
+        "--csv",
+        "examples\\batch-analysis\\record-joins\\worked\\sources\\changed-upstream\\sources\\observations.csv",
+        "--plan",
+        "examples\\batch-analysis\\record-joins\\worked\\sources\\changed-upstream\\sources\\analysis.plan.json",
+        "--out",
+        "examples\\batch-analysis\\record-joins\\worked\\sources\\changed-upstream\\regenerated-analysis"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "regenerated",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "examples\\batch-analysis\\record-joins\\worked\\sources\\changed-upstream\\manifest.json",
+        "--out",
+        "examples\\batch-analysis\\record-joins\\worked\\regenerated"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "regenerated-check",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "examples\\batch-analysis\\record-joins\\worked\\sources\\changed-upstream\\manifest.json",
+        "--check",
+        "examples\\batch-analysis\\record-joins\\worked\\regenerated\\batch_join.json"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "alternate-event",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "examples\\batch-analysis\\record-joins\\worked\\sources\\alternate-event\\manifest.json",
+        "--out",
+        "examples\\batch-analysis\\record-joins\\worked\\alternate-event"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "forged-check",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "examples\\batch-analysis\\record-joins\\worked\\sources\\initial\\manifest.json",
+        "--check",
+        "examples\\batch-analysis\\record-joins\\worked\\forged-report.json"
+      ],
+      "returncode": 1,
+      "expected": 1
+    },
+    {
+      "label": "existing-output-refusal",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "examples\\batch-analysis\\record-joins\\worked\\sources\\initial\\manifest.json",
+        "--out",
+        "examples\\batch-analysis\\record-joins\\worked\\initial"
+      ],
+      "returncode": 2,
+      "expected": 2
+    }
+  ],
+  "exposure": "Authored fictional development fixture, all inputs/keys exposed. No human recipient or plant experiment.",
+  "availability": "Scenario declarations only; not actual January existence of this November-generated analysis.",
+  "human_usefulness": "not measured",
+  "company_acceptance": "not run"
+}

@@ -48,6 +48,7 @@ identities, relationships, generated files or mapped data.
 | Calculate impact from an actual measured change | [Impact estimate](IMPACT_ESTIMATE.md) |
 | Connect process observations to an investigation and choose an analysis | [Process analytics](PROCESS_ANALYTICS.md): historian bands, batch phases, measured impact and conditional modeling gaps |
 | Calculate recorded feed/energy by explicit phase, optionally bound to twin asset IDs | [Fictional batch tutorial and reusable tool](../examples/batch-analysis/README.md) |
+| Compare selected batch/event/recipe/lab/outcome records and check their calculation inputs | [Recorded batch joins](../examples/batch-analysis/record-joins/README.md): explicit identities, availability, gaps and retained originals |
 | Check a supplied loop list | [Loop audit](../examples/loop-audit/README.md) |
 | Exchange captured structured-source evidence | [Local source handoff](../examples/source-handoff/README.md) |
 | Compare saved model/method answers on declared tasks | [Task/model benchmarks](../benchmarks/README.md) |

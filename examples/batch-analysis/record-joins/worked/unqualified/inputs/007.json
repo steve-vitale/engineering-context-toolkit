@@ -1,0 +1,43 @@
+{
+  "schema": "batch-analysis-2",
+  "context": {
+    "site_id": "fictional-site",
+    "asset_id": "FERM-101",
+    "model_revision": "authored-no-installed-identity",
+    "recipe_id": "RCP-1",
+    "recipe_revision": "3"
+  },
+  "max_gap_s": 1800,
+  "signals": {
+    "FT-101": {
+      "unit": "kg/h",
+      "asset_id": "FT-101",
+      "source_ref": "Fictional supplied mass-rate export; installed identity not verified.",
+      "interpolation": "previous",
+      "quality": {
+        "column": "feed_quality",
+        "good_values": [
+          "GOOD"
+        ]
+      }
+    }
+  },
+  "windows": [
+    {
+      "id": "A-feed",
+      "batch_id": "A",
+      "phase": "feed",
+      "start_s": 0,
+      "end_s": 3600,
+      "source_ref": "A-phase"
+    },
+    {
+      "id": "B-feed",
+      "batch_id": "B",
+      "phase": "feed",
+      "start_s": 0,
+      "end_s": 3600,
+      "source_ref": "B-phase"
+    }
+  ]
+}

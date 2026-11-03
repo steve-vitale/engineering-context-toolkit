@@ -27,7 +27,8 @@ flowchart LR
 | Which recorded tags changed unusually? | Comparable normal/scoring exports and operating context | [Historian bands](../examples/historian-csv/README.md); inspect false flags and misses. | No kinetics. Baseline comparability matters; batch phases are not a daily cycle. |
 | How much feed or electricity was recorded during a batch phase? | Reviewed signal identity/units, explicit phase boundaries, quality and sampling semantics | [Batch phase analysis](../examples/batch-analysis/README.md), optionally bound to a selected graph; [explicit quality/interpolation choices](../examples/batch-analysis/semantics/README.md). | No kinetics. V1 uses linear interpolation; V2 requires a per-signal linear or previous-value choice and declared quality basis. |
 | What measured change could reduce annual energy/cost/emissions? | Before/after measurements, exposure and site constants | [Impact calculation](IMPACT_ESTIMATE.md). Transfer reviewed results explicitly; no automatic batch-report adapter. | No kinetics for the implemented calculation forms. Comparable duty and measurement uncertainty still matter. |
-| Why was yield lower or a phase longer? | Above plus lab outcomes, recipe/scale, feed lots, calibration, interventions and environmental context | Retain a [question brief](../examples/first-pilot/README.md) or [context answer](CONTEXT_REGISTER.md). Batch summaries can supply evidence. | Descriptive comparison can begin now. Causal attribution, automatic lab joins and yield modeling are not implemented. |
+| Can the supplied batches be compared, and what prevents a conclusion? | Reproduced phase calculations plus explicit batch/event/executed-recipe/lab/outcome records | [Local record joins](../examples/batch-analysis/record-joins/README.md) retain source/availability/quality gaps and check calculations against upstream inputs. | No kinetics. Declared record checks do not establish physical comparability or a historical-access/ML study. |
+| Why was yield lower or a phase longer? | Above plus feed lots, calibration, interventions, independent tests and environmental context | Retain a [question brief](../examples/first-pilot/README.md) or [context answer](CONTEXT_REGISTER.md). Qualified summaries can supply evidence. | Causal attribution, general live lab/event ingestion, yield modeling and accepted investigation outcomes are not implemented. |
 | What would happen under a different feed, aeration or temperature policy? | Validated dynamic equations or identified model, parameters, initial state, constraints and suitable data | **Proposed:** qualify and connect an external simulator; retain its input/output evidence. | Often kinetics, transfer/heat balances, or an independently validated empirical/hybrid model. Specify the prediction and operating envelope first. |
 
 The last two rows are investigation paths, not new automatic capabilities. Existing tools already provide the
@@ -66,7 +67,9 @@ Use the [worked analysis handoff](../examples/batch-analysis/context-handoff/REA
 [readiness worksheet](../examples/batch-analysis/context-handoff/readiness-review-template.csv) to keep these
 requests with the finding. It separates event/quality, executed recipe, lab/product and predictive-model needs,
 including sample time versus result availability, revision, units, reviewed joins and next roles. These are
-authored investigation questions, not new automatic catalog rules or an implemented lab/event join engine.
+authored investigation questions, not new automatic catalog rules. The separate
+[record-join tool](../examples/batch-analysis/record-joins/README.md) now checks explicitly supplied normalized
+batch/event/recipe/lab/outcome files; it does not discover joins, retrieve live records or infer source meaning.
 
 ## How the current pieces connect
 
@@ -131,6 +134,7 @@ not a fermentation experiment, original-sensor quality check or plant-performanc
 | Candidate | Useful beyond fermentation | Evidence needed before adding it |
 |---|---|---|
 | Phase/cycle calculations — **implemented** | CIP stages, thermal holds, machining cycles, utility energy by campaign | Explicit events, meaningful signal units and coverage review. The shipped teaching data are fictional. |
+| Selected batch-record joins — **implemented** | Compare recorded phase quantities beside reported executed recipes, lab results and outcomes | [Explicit normalized CSV/manifest contract](../examples/batch-analysis/record-joins/README.md), source/availability/quality gaps, no automatic record discovery, causation or actual historical-access proof. |
 | Material/energy balance residuals — **proposed** | Tanks, separation, heat exchangers, utilities | Boundary and accumulation terms, all relevant flows/compositions, time alignment and meter uncertainty. A residual is not automatically a leak. |
 | Batch outcomes and trajectory comparison — **proposed** | Quality, yield, cycle-time and downstream recovery investigations | Qualified event/lab joins, comparable recipe/scale cohorts, missingness policy, untouched batch-level evaluation. |
 | Soft sensors and hybrid models — **proposed** | Hard-to-measure composition, equipment condition, quality estimates | Independent reference measurements, availability timestamps, uncertainty, drift and out-of-envelope tests. |
@@ -138,8 +142,9 @@ not a fermentation experiment, original-sensor quality check or plant-performanc
 
 The [V2 signal contract](../examples/batch-analysis/semantics/README.md) implements explicit quality-token
 filtering and linear/previous-value choices. The readiness worksheet and context handoff are usable today for
-human qualification and retention. Automatic event/lab joins, predictive-model sufficiency checks, live historian
-access and company approval remain separate gaps. Source-specific lab arithmetic does not close them. A real
+human qualification and retention. Explicit local record joins and bounded upstream calculation checks now
+ship separately. General/live event or lab ingestion, predictive-model sufficiency checks, live historian
+access and company approval remain separate gaps. Source-specific arithmetic does not close them. A real
 pilot should name its question, permitted records, responsible recipient, success measure and stop conditions
 before adding those integrations. Do not treat an unknown field as proof that the underlying system lacks it.
 

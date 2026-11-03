@@ -1,0 +1,55 @@
+{
+  "schema": "batch-record-join-receipt-1",
+  "files": {
+    "batch_join.json": {
+      "raw_sha256": "4a2db3417f9c4d6c2d9fd1b530ff41e61be422fced85e72e82a90335929dea92",
+      "size_bytes": 10137
+    },
+    "audit.json": {
+      "raw_sha256": "b11230724cf952a5a0cbd979703c308492eecc206a02487261b49d15d0a5cee2",
+      "size_bytes": 15301
+    },
+    "batch_join.md": {
+      "raw_sha256": "2098a34829f9f7b441c81a52386c91a93846990b624300c9c542f16aaae0fd22",
+      "size_bytes": 1357
+    },
+    "inputs/000.json": {
+      "raw_sha256": "b1a8462cddbc3316f75a236767dfe8fc388f7f590a7b88533547329da74d6c5e",
+      "size_bytes": 1750
+    },
+    "inputs/001.csv": {
+      "raw_sha256": "cef62204c577a1b9c736355de95b3fff6020c8ea81c19a197aae271270ebc3be",
+      "size_bytes": 440
+    },
+    "inputs/002.csv": {
+      "raw_sha256": "5ff6174df2b77f3ac2cd2f27dd3bba23281ce7ab618e1c49aa45cb9c793e8bfb",
+      "size_bytes": 399
+    },
+    "inputs/003.csv": {
+      "raw_sha256": "d9188081d84faee8553ea641d0474133fc8164fc7af5f54b1b5b90cd2213da18",
+      "size_bytes": 460
+    },
+    "inputs/004.csv": {
+      "raw_sha256": "90a87232780b10541dcfaef0b7bb36e5b1f35e0fb42e348b70794e246bc37f6b",
+      "size_bytes": 444
+    },
+    "inputs/005.csv": {
+      "raw_sha256": "d2f526bbd2118505c69dd2760698559312821513e681f4adb423d3138c7bb444",
+      "size_bytes": 473
+    },
+    "inputs/006.json": {
+      "raw_sha256": "14131b8d4ad1e939216bcefaf62cdf7d5de29758ebc1c4d95657a0821311371b",
+      "size_bytes": 3367
+    },
+    "inputs/007.csv": {
+      "raw_sha256": "e24e260a05fe74539cf3aaef23542a9eb9fdffc3f432030c12d175d372c3fd6c",
+      "size_bytes": 114
+    },
+    "inputs/008.json": {
+      "raw_sha256": "5d85ecba4c2402736d11d2a82342e2bc033b8df3bed6c94bf7e14af4295a77aa",
+      "size_bytes": 902
+    }
+  },
+  "source_authority": "not_established",
+  "company_acceptance": "not_established"
+}

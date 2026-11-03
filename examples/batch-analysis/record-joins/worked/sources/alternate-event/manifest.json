@@ -1,0 +1,58 @@
+{
+  "schema": "batch-record-join-1",
+  "question": "Can the two supplied batches be compared on recorded feed, lab result and reported harvest volume? What evidence prevents a conclusion?",
+  "as_of": "2026-01-03T00:00:00Z",
+  "time_alignment_basis": "Authored common UTC and elapsed seconds from each declared batch start; physical clocks and installed mapping not verified.",
+  "analyses": [
+    {
+      "id": "feed",
+      "report": "analysis/batch_analysis.json",
+      "csv": "sources/observations.csv",
+      "plan": "sources/analysis.plan.json",
+      "graph": null,
+      "availability": {
+        "csv": "2026-01-02T01:20:00Z",
+        "plan": "2026-01-01T00:00:00Z",
+        "report": "2026-01-02T01:25:00Z",
+        "graph": null
+      }
+    }
+  ],
+  "records": {
+    "batches": "sources/batches.csv",
+    "events": "sources/events.csv",
+    "labs": "sources/labs.csv",
+    "outcomes": "sources/outcomes.csv",
+    "recipes": "sources/recipes.csv"
+  },
+  "quantities": {
+    "signal": "FT-101",
+    "integral_unit": "kg",
+    "lab_quantity": "reported_product_concentration",
+    "lab_unit": "g/L",
+    "outcome_quantity": "reported_harvest_volume",
+    "outcome_unit": "L"
+  },
+  "selections": [
+    {
+      "id": "A",
+      "analysis_id": "feed",
+      "window_id": "A-feed",
+      "batch_record_id": "A-batch",
+      "event_record_id": "A-different-event",
+      "lab_result_id": "A-lab",
+      "outcome_record_id": "A-outcome",
+      "recipe_record_id": "A-recipe"
+    },
+    {
+      "id": "B",
+      "analysis_id": "feed",
+      "window_id": "B-feed",
+      "batch_record_id": "B-batch",
+      "event_record_id": "B-phase",
+      "lab_result_id": "B-lab",
+      "outcome_record_id": "B-outcome",
+      "recipe_record_id": "B-recipe"
+    }
+  ]
+}

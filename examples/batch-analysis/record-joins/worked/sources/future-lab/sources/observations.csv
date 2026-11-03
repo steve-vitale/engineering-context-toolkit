@@ -1,0 +1,7 @@
+batch_id,time_s,FT-101,feed_quality
+A,0,2,GOOD
+A,1800,2,GOOD
+A,3600,2,GOOD
+B,0,4,GOOD
+B,1800,4,GOOD
+B,3600,4,GOOD

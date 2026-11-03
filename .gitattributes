@@ -144,6 +144,10 @@ data/te_pid_layout.json text eol=lf
 
 # Fictional batch-analysis records and byte-bound example reports use portable LF.
 /examples/batch-analysis/** text eol=lf
+# Preserve recorded process streams exactly; other record-join files use the scoped LF policy.
+/examples/batch-analysis/record-joins/worked/logs/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/scripts/join_batch_records.py text eol=lf
+/scripts/test_join_batch_records.py text eol=lf
 # Copied CC BY 4.0 experimental originals retain their exact publisher bytes.
 /examples/batch-analysis/public-distillation/source/operation.csv -text whitespace=-blank-at-eol
 /examples/batch-analysis/public-distillation/source/operation-log.csv -text whitespace=-blank-at-eol

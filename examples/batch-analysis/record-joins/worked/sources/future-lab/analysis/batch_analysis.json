@@ -1,0 +1,105 @@
+{
+  "schema": "batch-analysis-result-2",
+  "context": {
+    "site_id": "fictional-site",
+    "asset_id": "FERM-101",
+    "model_revision": "authored-no-installed-identity",
+    "recipe_id": "RCP-1",
+    "recipe_revision": "3"
+  },
+  "context_status": "supplied identities and revisions; not verified against installed assets",
+  "inputs": {
+    "csv_sha256": "9c6d87bb4f595d6296e7f8ad3c6e8f5966d9619976b825093b8986a4f2c91f67",
+    "plan_sha256": "5d85ecba4c2402736d11d2a82342e2bc033b8df3bed6c94bf7e14af4295a77aa"
+  },
+  "method": {
+    "name": "adjacent-sample-selected-interpolation-v1",
+    "max_gap_s": 1800,
+    "tool_sha256_lf": "bd65873d209bdec1746265735a37e0f843bd4fee993ae1c175a7fb9ae6e47ae0",
+    "assumption": "per-signal linear or previous-value hold between adjacent admitted observations; both endpoints required; no extrapolation or gap filling"
+  },
+  "signal_definitions": {
+    "FT-101": {
+      "unit": "kg/h",
+      "asset_id": "FT-101",
+      "source_ref": "Fictional supplied mass-rate export; installed identity not verified.",
+      "interpolation": "previous",
+      "quality": {
+        "column": "feed_quality",
+        "good_values": [
+          "GOOD"
+        ]
+      }
+    }
+  },
+  "windows": [
+    {
+      "id": "A-feed",
+      "batch_id": "A",
+      "phase": "feed",
+      "start_s": 0,
+      "end_s": 3600,
+      "source_ref": "A-phase",
+      "duration_s": 3600,
+      "signals": {
+        "FT-101": {
+          "unit": "kg/h",
+          "sample_count": 3,
+          "good_samples": 3,
+          "bad_sample_lines": [],
+          "sample_min": 2.0,
+          "sample_max": 2.0,
+          "covered_s": 3600.0,
+          "coverage_fraction": 1.0,
+          "coverage_status": "complete",
+          "time_weighted_mean_observed": 2.0,
+          "integral_unit": "kg",
+          "observed_integral": 2.0,
+          "full_window_integral": 2.0,
+          "interpolation": "previous",
+          "quality_policy": "explicit exact-token filter",
+          "excluded_samples": []
+        }
+      }
+    },
+    {
+      "id": "B-feed",
+      "batch_id": "B",
+      "phase": "feed",
+      "start_s": 0,
+      "end_s": 3600,
+      "source_ref": "B-phase",
+      "duration_s": 3600,
+      "signals": {
+        "FT-101": {
+          "unit": "kg/h",
+          "sample_count": 3,
+          "good_samples": 3,
+          "bad_sample_lines": [],
+          "sample_min": 4.0,
+          "sample_max": 4.0,
+          "covered_s": 3600.0,
+          "coverage_fraction": 1.0,
+          "coverage_status": "complete",
+          "time_weighted_mean_observed": 4.0,
+          "integral_unit": "kg",
+          "observed_integral": 4.0,
+          "full_window_integral": 4.0,
+          "interpolation": "previous",
+          "quality_policy": "explicit exact-token filter",
+          "excluded_samples": []
+        }
+      }
+    }
+  ],
+  "graph_binding": {
+    "status": "not selected; asset IDs are supplied labels only"
+  },
+  "limits": [
+    "Descriptive recorded-data calculation; no diagnosis, prediction or acceptance.",
+    "Sample extrema can miss excursions between observations.",
+    "Observed integrals over incomplete coverage are not full-phase totals.",
+    "Supplied phase labels, units and mappings require engineering review.",
+    "Accepted numeric samples and complete coverage do not verify source quality or original sensor continuity."
+  ]
+}

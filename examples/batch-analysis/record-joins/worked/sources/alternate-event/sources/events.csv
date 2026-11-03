@@ -1,0 +1,4 @@
+record_id,site_id,asset_id,batch_id,phase,recipe_id,recipe_revision,start_utc,end_utc,available_utc,source_revision,source_ref
+A-phase,fictional-site,FERM-101,A,feed,RCP-1,3,2026-01-01T00:00:00Z,2026-01-01T01:00:00Z,2026-01-01T01:01:00Z,1,Fictional phase event A
+B-phase,fictional-site,FERM-101,B,feed,RCP-1,3,2026-01-02T00:00:00Z,2026-01-02T01:00:00Z,2026-01-02T01:01:00Z,1,Fictional phase event B
+A-different-event,fictional-site,FERM-101,A,feed,RCP-1,3,2026-01-01T00:00:00Z,2026-01-01T01:00:00Z,2026-01-01T01:01:00Z,1,Fictional phase event A

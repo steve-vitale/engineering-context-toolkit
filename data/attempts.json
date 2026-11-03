@@ -4942,6 +4942,23 @@
         "examples/engineering-onboarding/contribution-loop/PROVENANCE.json",
         "scripts/test_knowledge_capture.py"
       ]
+    },
+    {
+      "id": "A316",
+      "function": "intake_and_reuse",
+      "date": "2026-11-03",
+      "change": "Join explicitly selected batch/event/executed-recipe/lab/outcome records beside reproduced calculations, with retained originals and source revisions.",
+      "hypothesis": "Explicit identity/time/recipe/quality checks and rechecking upstream calculation inputs let an engineer or manager see which records support a descriptive comparison and which evidence must be reconciled before reuse.",
+      "evidence": "Hand-key2/4kgfeed,10/12g/Lassay,900/920Lvolume. Public14actualCLIs/11checks,3intendedchanged-result/1existing-outputrefusal.16focusedtests. Independent103processcohort plus5graphcontrols passes after preserving actual wrong-event and whitespace admissions and matched repairs; an earlier88-process operatorstop remains separately qualified. All182publicoutputs pinned; everyadmittedCSVheader/token and rawinput retained in separate audit/captures. Decision summary withholds unavailable values and stale-feed quantities; explicit regeneration records6kgforB. No original finding/source overwritten.",
+      "runs": "Authored exposed fictional development inputs, source/availability/recipe refinements and independent software controls; no model calls, held-out plant family, causal study, actual participant timing or company acceptance.",
+      "verdict": "kept",
+      "why": "Closes explicit record-join and bounded upstream freshness gaps without silent result selection, normalization, physical truth or governance claims. Retains source-contract and actual failure history; actual receiver/investigation outcomes remain standing-goal requirements.",
+      "source": [
+        "docs/JOURNAL.md#162-compare-selected-batch-records-and-recheck-the-calculation-underneath",
+        "examples/batch-analysis/record-joins/README.md",
+        "examples/batch-analysis/record-joins/PROVENANCE.json",
+        "scripts/test_join_batch_records.py"
+      ]
     }
   ],
   "not_tried": [

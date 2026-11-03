@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE_TESTS = (
     "scripts/test_batch_analysis.py",
     "scripts/test_check_analysis_basis.py",
+    "scripts/test_join_batch_records.py",
     "scripts/test_benchmark.py",
     "scripts/test_source_support.py",
     "scripts/test_artifact_value_review.py",

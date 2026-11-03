@@ -1393,7 +1393,8 @@
       "title": "Recorded phase calculations linked to selected twin assets",
       "tools": [
         "scripts/batch_analysis.py",
-        "scripts/check_analysis_basis.py"
+        "scripts/check_analysis_basis.py",
+        "scripts/join_batch_records.py"
       ],
       "guide": "examples/batch-analysis/README.md",
       "example_outputs": [
@@ -1445,18 +1446,28 @@
         "examples/batch-analysis/context-handoff/tool-basis.json",
         "examples/batch-analysis/basis-check/README.md",
         "examples/batch-analysis/basis-check/reproduce.py",
-        "examples/batch-analysis/basis-check/expected/checks.json"
+        "examples/batch-analysis/basis-check/expected/checks.json",
+        "examples/batch-analysis/record-joins/ACCEPTANCE.json",
+        "examples/batch-analysis/record-joins/AVAILABILITY-REFINEMENT.json",
+        "examples/batch-analysis/record-joins/RECIPE-REFINEMENT.json",
+        "examples/batch-analysis/record-joins/manifest-qualified.json",
+        "examples/batch-analysis/record-joins/worked/result.json",
+        "examples/batch-analysis/record-joins/worked/initial/batch_join.md",
+        "examples/batch-analysis/record-joins/worked/future-lab/batch_join.json",
+        "examples/batch-analysis/record-joins/worked/stale-analysis/batch_join.json",
+        "examples/batch-analysis/record-joins/worked/regenerated/batch_join.md"
       ],
       "tests": [
         "scripts/test_batch_analysis.py",
         "scripts/test_checkout_contracts.py",
-        "scripts/test_check_analysis_basis.py"
+        "scripts/test_check_analysis_basis.py",
+        "scripts/test_join_batch_records.py"
       ],
       "job": "Calculate phase feed/energy from recorded data with coverage visible",
       "why": "Explicit recipe windows and units make recorded feed/energy calculations inspectable beside the twin; a bad sample cannot silently become a complete phase total.",
       "you_need": "A bounded elapsed-time CSV, supplied phase/unit plan and optional explicitly selected twin-graph-1; Python 3.10+, standard library only.",
       "time": "Not measured on plant-scale data.",
-      "you_get": "JSON/Markdown phase means, extrema, rate integrals and coverage, explicit V2 interpolation/quality policies, original source and method hashes, optional exact graph-ID binding; fictional controls and one measured laboratory-series calculation. No prediction, installed signal acceptance or live connector. Explicit selected-file/code basis checks reproduce the complete saved result when pins match; no automatic source monitoring or context refresh."
+      "you_get": "JSON/Markdown phase means, extrema, rate integrals and coverage, explicit V2 interpolation/quality policies, original source and method hashes, optional exact graph-ID binding; fictional controls and one measured laboratory-series calculation. No prediction, installed signal acceptance or live connector. Explicit selected-file/code basis checks reproduce the complete saved result when pins match; no automatic source monitoring or context refresh. Explicit local batch/event/executed-recipe/lab/outcome joins, declared availability/quality gaps, bounded upstream calculation freshness, full audit/raw originals and descriptive differences. No general/live ingestion, causal or yield inference, historical-access proof or accepted investigation outcome."
     }
   ]
 }

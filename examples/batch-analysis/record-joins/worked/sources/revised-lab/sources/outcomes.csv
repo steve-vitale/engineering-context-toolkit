@@ -1,0 +1,3 @@
+record_id,site_id,asset_id,batch_id,observed_utc,available_utc,quantity,value,unit,quality,basis,source_revision,source_ref
+A-outcome,fictional-site,FERM-101,A,2026-01-01T01:00:00Z,2026-01-01T01:30:00Z,reported_harvest_volume,900,L,valid,executed-harvest-record,1,Fictional outcome A
+B-outcome,fictional-site,FERM-101,B,2026-01-02T01:00:00Z,2026-01-02T01:30:00Z,reported_harvest_volume,920,L,valid,executed-harvest-record,1,Fictional outcome B

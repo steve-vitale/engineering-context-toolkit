@@ -1,0 +1,472 @@
+{
+  "schema": "batch-record-join-audit-1",
+  "purpose": "Complete originals and full selected/unselected/future records for audit; not an as-of inference or feature dataset.",
+  "tables": {
+    "batches": {
+      "columns": [
+        "record_id",
+        "site_id",
+        "asset_id",
+        "batch_id",
+        "recipe_id",
+        "recipe_revision",
+        "start_utc",
+        "end_utc",
+        "available_utc",
+        "scale_value",
+        "scale_unit",
+        "source_revision",
+        "source_ref"
+      ],
+      "records": [
+        {
+          "locator": "CSV record 2",
+          "data": {
+            "record_id": "A-batch",
+            "site_id": "fictional-site",
+            "asset_id": "FERM-101",
+            "batch_id": "A",
+            "recipe_id": "RCP-1",
+            "recipe_revision": "3",
+            "start_utc": "2026-01-01T00:00:00Z",
+            "end_utc": "2026-01-01T01:00:00Z",
+            "available_utc": "2026-01-01T01:01:00Z",
+            "scale_value": "1000",
+            "scale_unit": "L",
+            "source_revision": "1",
+            "source_ref": "Fictional executed batch record A"
+          }
+        },
+        {
+          "locator": "CSV record 3",
+          "data": {
+            "record_id": "B-batch",
+            "site_id": "fictional-site",
+            "asset_id": "FERM-101",
+            "batch_id": "B",
+            "recipe_id": "RCP-1",
+            "recipe_revision": "3",
+            "start_utc": "2026-01-02T00:00:00Z",
+            "end_utc": "2026-01-02T01:00:00Z",
+            "available_utc": "2026-01-02T01:01:00Z",
+            "scale_value": "1000",
+            "scale_unit": "L",
+            "source_revision": "1",
+            "source_ref": "Fictional executed batch record B"
+          }
+        }
+      ]
+    },
+    "events": {
+      "columns": [
+        "record_id",
+        "site_id",
+        "asset_id",
+        "batch_id",
+        "phase",
+        "recipe_id",
+        "recipe_revision",
+        "start_utc",
+        "end_utc",
+        "available_utc",
+        "source_revision",
+        "source_ref"
+      ],
+      "records": [
+        {
+          "locator": "CSV record 2",
+          "data": {
+            "record_id": "A-phase",
+            "site_id": "fictional-site",
+            "asset_id": "FERM-101",
+            "batch_id": "A",
+            "phase": "feed",
+            "recipe_id": "RCP-1",
+            "recipe_revision": "3",
+            "start_utc": "2026-01-01T00:00:00Z",
+            "end_utc": "2026-01-01T01:00:00Z",
+            "available_utc": "2026-01-01T01:01:00Z",
+            "source_revision": "1",
+            "source_ref": "Fictional phase event A"
+          }
+        },
+        {
+          "locator": "CSV record 3",
+          "data": {
+            "record_id": "B-phase",
+            "site_id": "fictional-site",
+            "asset_id": "FERM-101",
+            "batch_id": "B",
+            "phase": "feed",
+            "recipe_id": "RCP-1",
+            "recipe_revision": "3",
+            "start_utc": "2026-01-02T00:00:00Z",
+            "end_utc": "2026-01-02T01:00:00Z",
+            "available_utc": "2026-01-02T01:01:00Z",
+            "source_revision": "1",
+            "source_ref": "Fictional phase event B"
+          }
+        }
+      ]
+    },
+    "labs": {
+      "columns": [
+        "result_id",
+        "sample_id",
+        "site_id",
+        "asset_id",
+        "batch_id",
+        "sample_utc",
+        "available_utc",
+        "quantity",
+        "value",
+        "unit",
+        "quality",
+        "method_id",
+        "source_revision",
+        "source_ref"
+      ],
+      "records": [
+        {
+          "locator": "CSV record 2",
+          "data": {
+            "result_id": "A-lab",
+            "sample_id": "A-sample",
+            "site_id": "fictional-site",
+            "asset_id": "FERM-101",
+            "batch_id": "A",
+            "sample_utc": "2026-01-01T01:00:00Z",
+            "available_utc": "2026-01-01T03:00:00Z",
+            "quantity": "reported_product_concentration",
+            "value": "10",
+            "unit": "g/L",
+            "quality": "valid",
+            "method_id": "assay-method-1",
+            "source_revision": "1",
+            "source_ref": "Fictional assay A"
+          }
+        },
+        {
+          "locator": "CSV record 3",
+          "data": {
+            "result_id": "B-lab",
+            "sample_id": "B-sample",
+            "site_id": "fictional-site",
+            "asset_id": "FERM-101",
+            "batch_id": "B",
+            "sample_utc": "2026-01-02T01:00:00Z",
+            "available_utc": "2026-01-02T03:00:00Z",
+            "quantity": "reported_product_concentration",
+            "value": "12",
+            "unit": "g/L",
+            "quality": "valid",
+            "method_id": "assay-method-1",
+            "source_revision": "1",
+            "source_ref": "Fictional assay B"
+          }
+        }
+      ]
+    },
+    "outcomes": {
+      "columns": [
+        "record_id",
+        "site_id",
+        "asset_id",
+        "batch_id",
+        "observed_utc",
+        "available_utc",
+        "quantity",
+        "value",
+        "unit",
+        "quality",
+        "basis",
+        "source_revision",
+        "source_ref"
+      ],
+      "records": [
+        {
+          "locator": "CSV record 2",
+          "data": {
+            "record_id": "A-outcome",
+            "site_id": "fictional-site",
+            "asset_id": "FERM-101",
+            "batch_id": "A",
+            "observed_utc": "2026-01-01T01:00:00Z",
+            "available_utc": "2026-01-01T01:30:00Z",
+            "quantity": "reported_harvest_volume",
+            "value": "900",
+            "unit": "L",
+            "quality": "valid",
+            "basis": "executed-harvest-record",
+            "source_revision": "1",
+            "source_ref": "Fictional outcome A"
+          }
+        },
+        {
+          "locator": "CSV record 3",
+          "data": {
+            "record_id": "B-outcome",
+            "site_id": "fictional-site",
+            "asset_id": "FERM-101",
+            "batch_id": "B",
+            "observed_utc": "2026-01-02T01:00:00Z",
+            "available_utc": "2026-01-02T01:30:00Z",
+            "quantity": "reported_harvest_volume",
+            "value": "920",
+            "unit": "L",
+            "quality": "valid",
+            "basis": "executed-harvest-record",
+            "source_revision": "1",
+            "source_ref": "Fictional outcome B"
+          }
+        }
+      ]
+    },
+    "recipes": {
+      "columns": [
+        "record_id",
+        "site_id",
+        "asset_id",
+        "batch_id",
+        "recipe_id",
+        "recipe_revision",
+        "execution_basis",
+        "parameters_json",
+        "available_utc",
+        "source_revision",
+        "source_ref"
+      ],
+      "records": [
+        {
+          "locator": "CSV record 2",
+          "data": {
+            "record_id": "A-recipe",
+            "site_id": "fictional-site",
+            "asset_id": "FERM-101",
+            "batch_id": "A",
+            "recipe_id": "RCP-1",
+            "recipe_revision": "3",
+            "execution_basis": "reported_executed",
+            "parameters_json": "{\"feed_policy\": \"constant\", \"target_feed_kg\": 5}",
+            "available_utc": "2026-01-01T01:05:00Z",
+            "source_revision": "1",
+            "source_ref": "Fictional executed recipe A"
+          }
+        },
+        {
+          "locator": "CSV record 3",
+          "data": {
+            "record_id": "B-recipe",
+            "site_id": "fictional-site",
+            "asset_id": "FERM-101",
+            "batch_id": "B",
+            "recipe_id": "RCP-1",
+            "recipe_revision": "3",
+            "execution_basis": "reported_executed",
+            "parameters_json": "{\"feed_policy\": \"constant\", \"target_feed_kg\": 5}",
+            "available_utc": "2026-01-02T01:05:00Z",
+            "source_revision": "1",
+            "source_ref": "Fictional executed recipe B"
+          }
+        }
+      ]
+    }
+  },
+  "analyses": {
+    "feed": {
+      "report": {
+        "schema": "batch-analysis-result-2",
+        "context": {
+          "site_id": "fictional-site",
+          "asset_id": "FERM-101",
+          "model_revision": "authored-no-installed-identity",
+          "recipe_id": "RCP-1",
+          "recipe_revision": "3"
+        },
+        "context_status": "supplied identities and revisions; not verified against installed assets",
+        "inputs": {
+          "csv_sha256": "9c6d87bb4f595d6296e7f8ad3c6e8f5966d9619976b825093b8986a4f2c91f67",
+          "plan_sha256": "5d85ecba4c2402736d11d2a82342e2bc033b8df3bed6c94bf7e14af4295a77aa"
+        },
+        "method": {
+          "name": "adjacent-sample-selected-interpolation-v1",
+          "max_gap_s": 1800,
+          "tool_sha256_lf": "bd65873d209bdec1746265735a37e0f843bd4fee993ae1c175a7fb9ae6e47ae0",
+          "assumption": "per-signal linear or previous-value hold between adjacent admitted observations; both endpoints required; no extrapolation or gap filling"
+        },
+        "signal_definitions": {
+          "FT-101": {
+            "unit": "kg/h",
+            "asset_id": "FT-101",
+            "source_ref": "Fictional supplied mass-rate export; installed identity not verified.",
+            "interpolation": "previous",
+            "quality": {
+              "column": "feed_quality",
+              "good_values": [
+                "GOOD"
+              ]
+            }
+          }
+        },
+        "windows": [
+          {
+            "id": "A-feed",
+            "batch_id": "A",
+            "phase": "feed",
+            "start_s": 0,
+            "end_s": 3600,
+            "source_ref": "A-phase",
+            "duration_s": 3600,
+            "signals": {
+              "FT-101": {
+                "unit": "kg/h",
+                "sample_count": 3,
+                "good_samples": 3,
+                "bad_sample_lines": [],
+                "sample_min": 2.0,
+                "sample_max": 2.0,
+                "covered_s": 3600.0,
+                "coverage_fraction": 1.0,
+                "coverage_status": "complete",
+                "time_weighted_mean_observed": 2.0,
+                "integral_unit": "kg",
+                "observed_integral": 2.0,
+                "full_window_integral": 2.0,
+                "interpolation": "previous",
+                "quality_policy": "explicit exact-token filter",
+                "excluded_samples": []
+              }
+            }
+          },
+          {
+            "id": "B-feed",
+            "batch_id": "B",
+            "phase": "feed",
+            "start_s": 0,
+            "end_s": 3600,
+            "source_ref": "B-phase",
+            "duration_s": 3600,
+            "signals": {
+              "FT-101": {
+                "unit": "kg/h",
+                "sample_count": 3,
+                "good_samples": 3,
+                "bad_sample_lines": [],
+                "sample_min": 4.0,
+                "sample_max": 4.0,
+                "covered_s": 3600.0,
+                "coverage_fraction": 1.0,
+                "coverage_status": "complete",
+                "time_weighted_mean_observed": 4.0,
+                "integral_unit": "kg",
+                "observed_integral": 4.0,
+                "full_window_integral": 4.0,
+                "interpolation": "previous",
+                "quality_policy": "explicit exact-token filter",
+                "excluded_samples": []
+              }
+            }
+          }
+        ],
+        "graph_binding": {
+          "status": "not selected; asset IDs are supplied labels only"
+        },
+        "limits": [
+          "Descriptive recorded-data calculation; no diagnosis, prediction or acceptance.",
+          "Sample extrema can miss excursions between observations.",
+          "Observed integrals over incomplete coverage are not full-phase totals.",
+          "Supplied phase labels, units and mappings require engineering review.",
+          "Accepted numeric samples and complete coverage do not verify source quality or original sensor continuity."
+        ]
+      },
+      "basis_check": {
+        "schema": "analysis-basis-check-1",
+        "status": "matched_and_reproduced",
+        "report_sha256": "14131b8d4ad1e939216bcefaf62cdf7d5de29758ebc1c4d95657a0821311371b",
+        "checks": [
+          {
+            "role": "csv",
+            "status": "match",
+            "recorded_sha256": "9c6d87bb4f595d6296e7f8ad3c6e8f5966d9619976b825093b8986a4f2c91f67",
+            "selected_sha256": "9c6d87bb4f595d6296e7f8ad3c6e8f5966d9619976b825093b8986a4f2c91f67"
+          },
+          {
+            "role": "plan",
+            "status": "match",
+            "recorded_sha256": "5d85ecba4c2402736d11d2a82342e2bc033b8df3bed6c94bf7e14af4295a77aa",
+            "selected_sha256": "5d85ecba4c2402736d11d2a82342e2bc033b8df3bed6c94bf7e14af4295a77aa"
+          },
+          {
+            "role": "calculation_code_lf",
+            "status": "match",
+            "recorded_sha256": "bd65873d209bdec1746265735a37e0f843bd4fee993ae1c175a7fb9ae6e47ae0",
+            "selected_sha256": "bd65873d209bdec1746265735a37e0f843bd4fee993ae1c175a7fb9ae6e47ae0"
+          },
+          {
+            "role": "complete_result",
+            "status": "match"
+          }
+        ],
+        "limit": "Selected-file and current-code reproducibility only; no source authority, sensor quality, plant truth, automatic dependency monitoring or context refresh is established."
+      }
+    }
+  },
+  "operator_manifest": {
+    "schema": "batch-record-join-1",
+    "question": "Can the two supplied batches be compared on recorded feed, lab result and reported harvest volume? What evidence prevents a conclusion?",
+    "as_of": "2026-01-03T00:00:00Z",
+    "time_alignment_basis": "Authored common UTC and elapsed seconds from each declared batch start; physical clocks and installed mapping not verified.",
+    "analyses": [
+      {
+        "id": "feed",
+        "report": "analysis/batch_analysis.json",
+        "csv": "sources/observations.csv",
+        "plan": "sources/analysis.plan.json",
+        "graph": null,
+        "availability": {
+          "csv": "2026-01-02T01:20:00Z",
+          "plan": "2026-01-01T00:00:00Z",
+          "report": "2026-01-02T01:25:00Z",
+          "graph": null
+        }
+      }
+    ],
+    "records": {
+      "batches": "sources/batches.csv",
+      "events": "sources/events.csv",
+      "labs": "sources/labs.csv",
+      "outcomes": "sources/outcomes.csv",
+      "recipes": "sources/recipes.csv"
+    },
+    "quantities": {
+      "signal": "FT-101",
+      "integral_unit": "kg",
+      "lab_quantity": "reported_product_concentration",
+      "lab_unit": "g/L",
+      "outcome_quantity": "reported_harvest_volume",
+      "outcome_unit": "L"
+    },
+    "selections": [
+      {
+        "id": "A",
+        "analysis_id": "feed",
+        "window_id": "A-feed",
+        "batch_record_id": "A-batch",
+        "event_record_id": "A-phase",
+        "lab_result_id": "A-lab",
+        "outcome_record_id": "A-outcome",
+        "recipe_record_id": "A-recipe"
+      },
+      {
+        "id": "B",
+        "analysis_id": "feed",
+        "window_id": "B-feed",
+        "batch_record_id": "B-batch",
+        "event_record_id": "B-phase",
+        "lab_result_id": "B-lab",
+        "outcome_record_id": "B-outcome",
+        "recipe_record_id": "B-recipe"
+      }
+    ]
+  }
+}

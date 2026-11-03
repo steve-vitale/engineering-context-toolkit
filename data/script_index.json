@@ -496,6 +496,10 @@
     "scripts/knowledge_capture.py": {
       "kind": "tool",
       "guide": "examples/engineering-onboarding/contribution-loop/README.md"
+    },
+    "scripts/join_batch_records.py": {
+      "kind": "tool",
+      "guide": "examples/batch-analysis/record-joins/README.md"
     }
   }
 }

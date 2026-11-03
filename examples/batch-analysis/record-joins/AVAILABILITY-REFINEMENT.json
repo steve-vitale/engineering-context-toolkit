@@ -1,0 +1,9 @@
+{
+  "schema": "batch-record-join-availability-refinement-1",
+  "original_manifest_sha256": "829e4a2ce554ae752b04d1f8c61567719088572fffff92e59e2072b3c88ce61f",
+  "qualified_manifest_sha256": "3c3383e1051f07e7b6e0cb0ebfb3e97dc0205db288b3e21f5b0bb633a53d36ee",
+  "basis": "Fictional scenario declarations only; these are not the actual November producer clock, authenticated publication or independent historical availability.",
+  "expected_original": "Needs review: input availability absent; no complete comparison.",
+  "expected_qualified": "Declared known-at-as_of inputs admit source-key arithmetic only.",
+  "frozen_before_join_implementation": true
+}

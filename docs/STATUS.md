@@ -13,14 +13,14 @@ Company review, accepted identities and receiving-system checks determine what c
 
 ## Current verification
 
-The recorded full-suite release baseline is **`0785030`**:
-[main CI run 41565278413](https://github.com/steve-vitale/engineering-context-toolkit/actions/runs/41565278413).
-It passed **75/75 test programs**, with **18 individual unittest cases skipped**, plus six saved task/model
+The recorded full-suite release baseline is **`245eb6a`**:
+[main CI run 41573867276](https://github.com/steve-vitale/engineering-context-toolkit/actions/runs/41573867276).
+It passed **76/76 test programs**, with **18 individual unittest cases skipped**, plus six saved task/model
 benchmark suites and the optional MCP/protocol job. This is software evidence, not human usefulness,
 company-client acceptance or plant validation. Check [committed-version CI](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml)
 for later revisions; the dated development records below apply only to their stated inputs and versions.
 
-The current runner registers 58 source-only and 76 full-suite programs; the capture follow-up adds one
+The current runner registers 59 source-only and 77 full-suite programs; the batch-join follow-up adds one
 program beyond the recorded release baseline above. Offline publication checks match
 41 numerical claims and identify one prose-only claim. The 95-cell workflow matrix records
 **64 pass / 23 fail / 8 n/a**; its failures are retained research results, not failing unit tests.
@@ -49,6 +49,7 @@ create those controls.
 | Loop audit and vendor evaluation | Compare supplied loop truth or saved drawing answers with bounded scorers. | No installed safeguard/wiring acceptance or measured review-time result. |
 | Historian CSV and impact tools | Analyze supplied observations and calculate from supplied measurements/constants. | Qualified baseline, quality/time metadata, causal evidence and live connectors remain separate. |
 | Saved batch calculation basis check | Explicitly compare selected CSV/plan/graph and current code pins, then reproduce the complete typed report when they match. | No automatic dependency monitoring, source authority, method validation or context refresh. |
+| Selected batch-record joins | [Explicit batch/event/executed-recipe/lab/outcome selections](../examples/batch-analysis/record-joins/README.md), availability/quality gaps, reproduced calculation inputs, raw originals and descriptive differences. | Normalized local contracts; supplied metadata needs review. No record discovery, live connector, causal/yield model, actual historical-access proof or accepted investigation outcome. |
 | Question engine | Catalog screens produce investigations and collection requests; source-scoped recipes retain known answers. | No arbitrary natural-language diagnosis or broad usefulness/coverage benchmark. |
 | Model-bound context and graph snapshot | Retain supplied answers, source dependencies and decision/ownership history; explicitly refresh and read back the selected graph/context pair. | Supported model/question contracts and manual refresh/restart; no source fetching or shared company access service. |
 | Knowledge/workflow starter packet | [Author and read](../examples/engineering-onboarding/own-packet/README.md) a selected landing map, source references, roles and workflow/practice records without an asset model. | Reference data; the reader/MCP remains read-only. No workflow execution or authenticated assignment. |
@@ -77,7 +78,7 @@ actual participant, recipient, native-system and tenant observations remain **no
 | Evaluation and transfer | N086 original-source/key engineering acceptance, Native placement gaps, existing matrix failures, unfamiliar-source coverage, scorer limits and five missing historical prediction tables. | Matched experiments with frozen criteria, retained failures, exposure/split labels and independent source/key review. More files or rerunning familiar inputs is not generalization. |
 | Optional adapters and receiving projections | General inverse graph conversion, captured-source consumers, managed-section merging and particular incumbent-system connectors are not implemented. Test changed/removed identifiers and complete retained history for the selected route. | A demonstrated engineering job, explicit supported contract, source preservation and subsequent-revision readback. Add only the adapter that job needs. |
 | Review-history handoff | N107 now preserves selected JSON intact and unbound, then attaches events only through [individual supplied associations](REVIEW_HISTORY.md) to exact model/record bytes. Complete earlier history remains readable; full/core retain its qualifications. | Review the source/revision relationship in the company process. Matching hashes cannot detect a false supplied basis or establish writer lineage, reviewer authority, approval or permission to share. |
-| Document contributions and analysis continuity | Local text/claim capture and explicit combined-source review now have a [worked revision exercise](../examples/engineering-onboarding/contribution-loop/README.md). Accepted-answer disposition, semantic conflict resolution, automatic upstream calculation freshness, event/recipe/lab/outcome joins and investigation-outcome tracking remain separate work. | Preserve every admitted source, hypothesis/unknown, calculation basis and subsequent disposition for a demonstrated job; test a changed non-final input, missing evidence and an unsuccessful explanation. The new fictional capture example establishes none of the proposed analytics or kinetic-model capabilities. |
+| Document contributions and analysis continuity | Local text/claim capture and combined-source review have a [revision exercise](../examples/engineering-onboarding/contribution-loop/README.md). [Explicit record joins](../examples/batch-analysis/record-joins/README.md) now check their upstream calculation inputs. Accepted-answer disposition, semantic conflict resolution, automatic source monitoring, general/live joins and investigation-outcome tracking remain work. | Preserve admitted sources, hypotheses/unknowns, calculation basis and disposition for the job; test changed upstream input and unsuccessful explanations. The fictional examples establish no kinetics, actual recipient benefit or company acceptance. |
 | Company acceptance and benefit | N062/N063: real engineer/recipient investigation, authorized company import/readback, client permissions and a subsequent revision. | Actual observations from the [acceptance exercise](ACCEPTANCE.md), not an agent simulation. Native PI/gateway acceptance, accepted Copilot tenant and operational benefit remain unverified. |
 
 The [E13/C4/E24 source review](../examples/opportunity-screen/water-valve-records/README.md) repairs the known
@@ -118,7 +119,7 @@ Use the current verification and open-work sections above for today's status.
 
 ### Development snapshots preceding the verified release
 
-The current runner registers **58 source-only and 76 full-suite programs**. The preceding demo integration passes all
+The current runner registers **59 source-only and 77 full-suite programs**. The preceding demo integration passes all
 56 then-registered source-only programs with eight skipped unittest cases and three explanatory platform notices; four focused
 programs also pass 48 methods without skips. The basis-check follow-up's three focused programs pass 56 methods
 without skips, followed by 57/57 source-only programs with eight skipped cases and three platform notices.

@@ -1,0 +1,40 @@
+{
+  "schema": "batch-record-join-criteria-1",
+  "created_utc": "2026-11-03T03:58:13.780438+00:00",
+  "frozen_before_join_implementation": true,
+  "source_family": "One agent-authored fictional fermentation record family, exposed development controls; no plant source or human study.",
+  "source_truth": "Typed source-row identities/locators and independent arithmetic only. No actual feed truth, assay validity, recipe optimum, causation, yield, kinetics or approval established.",
+  "positive": {
+    "feed_kg": {
+      "A": 2,
+      "B": 4
+    },
+    "lab_g_per_L": {
+      "A": 10,
+      "B": 12
+    },
+    "reported_volume_L": {
+      "A": 900,
+      "B": 920
+    },
+    "B_minus_A": {
+      "feed": 2,
+      "lab": 2,
+      "outcome": 20
+    }
+  },
+  "control_requirements": [
+    "Positive: explicit site/asset/batch/window/event/recipe/lab/outcome matches admit reported arithmetic, not a causal or installed-state conclusion.",
+    "Availability: as_of before B-lab availability makes its metric unavailable; future value must be absent from decision comparison while originals remain in a separately labelled audit/capture.",
+    "Retain every admitted CSV field, logical record locator, original raw byte/hash/size and operator manifest; no silent extra-column or duplicate-ID collapse.",
+    "Missing/ambiguous/foreign identity, UTC, phase, event boundary, recipe, scale, method, quantity/unit, quality or coverage cannot produce a complete comparison.",
+    "Null quality policy or incomplete integration cannot become complete feed mass; retain original reported material separately.",
+    "Different recipe/scale/assay method/outcome basis requires review; no silent normalization or latest-result selection.",
+    "Explicit upstream report/CSV/plan/optionalgraph and method pins checked before reusing feed metrics. Changed CSV with unchanged saved report must block affected metrics.",
+    "Saved joined report check uses only the newly selected operator manifest, compares all direct/transitive input and code pins, and reproduces whole typed result; forged output with matching pins fails.",
+    "Revision rebuild creates a new directory; earlier result and original records remain exact. No physical-source watcher, automatic accepted-answer selection, shared writer or company authority.",
+    "Invalid contracts, nonfinite data, oversized inputs or existing destination refuse without source overwrite or partial claimed success."
+  ],
+  "human_usefulness": "not measured",
+  "actual_company_acceptance": "not run"
+}

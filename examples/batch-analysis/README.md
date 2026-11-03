@@ -16,6 +16,7 @@ prediction or a new feed policy needs more evidence and a suitable model.
 | [Quality and interpolation](semantics/README.md) | Fictional V2 controls: declare signal semantics and keep both assumption-sensitive results. |
 | [Measured laboratory record](public-distillation/README.md) | Fixed-source calculation and independently checked key, with the source's processing and anomaly qualifications. |
 | [Retain the finding](context-handoff/README.md) | Existing context tools and pure snapshot reader: keep missing event/recipe/lab/model evidence, then reopen an answer when its report changes. |
+| [Join batch, recipe, event, lab and outcome records](record-joins/README.md) | Reusable local manifest/CSV route: compare declared basis and availability, withhold incomplete metrics and check upstream calculations. Fictional source/revision tutorial; no causal or plant-acceptance claim. |
 
 ## Try it offline
 
