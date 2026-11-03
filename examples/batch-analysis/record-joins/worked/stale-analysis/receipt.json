@@ -2,7 +2,7 @@
   "schema": "batch-record-join-receipt-1",
   "files": {
     "batch_join.json": {
-      "raw_sha256": "4a2db3417f9c4d6c2d9fd1b530ff41e61be422fced85e72e82a90335929dea92",
+      "raw_sha256": "cd2e5d9d9c13f36e3f081d07692cf47c3198a3cf42b8cf60fb170a54a735c345",
       "size_bytes": 10137
     },
     "audit.json": {

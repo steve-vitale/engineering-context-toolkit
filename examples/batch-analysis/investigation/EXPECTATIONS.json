@@ -1,0 +1,102 @@
+{
+  "schema": "g02-semantic-handoff-expectations-1",
+  "state": "Frozen authored expectations before any product call in this task; root owns later actual composition.",
+  "independent_criteria": {
+    "sha256_raw": "1148b6cb9785fe3a26c7c66a384e7e0d95d0d5b307de51e30892e19ffaee75c0",
+    "bytes": 8921
+  },
+  "question": "Do different declared executed recipe revisions explain the reported A/B assay difference in the supplied FERM-101 records, and what remains unresolved?",
+  "initial_descriptive_values": {
+    "A": {
+      "feed_kg": 2.0,
+      "reported_assay_g_per_L": 10.0,
+      "reported_harvest_L": 900.0
+    },
+    "B": {
+      "feed_kg": 4.0,
+      "reported_assay_g_per_L": 12.0,
+      "reported_harvest_L": 920.0
+    },
+    "B_minus_A": {
+      "feed_kg": 2.0,
+      "reported_assay_g_per_L": 2.0,
+      "reported_harvest_L": 20.0
+    }
+  },
+  "recipe_check": {
+    "ids": [
+      "A-batch",
+      "B-batch",
+      "A-recipe",
+      "B-recipe"
+    ],
+    "expected_record_facts": {
+      "recipe_id": "RCP-1",
+      "recipe_revision": "3",
+      "execution_basis_for_recipe_rows": "reported_executed"
+    },
+    "expected_limited_disposition": "The different-declared-recipe-revision explanation is not supported by these selected records because both declare RCP-1 revision 3. This does not prove physical identity or another cause.",
+    "falsifier": "Both selected qualified batch and executed-recipe records declare the same revision. Missing or unavailable records produce unresolved, not a fabricated negative."
+  },
+  "revision_controls": [
+    {
+      "scenario": "Earlier cutoff",
+      "expected": "B lab_value null with labs_not_available_as_of; retained audit B=12 is not decision evidence, zero or a negative assay."
+    },
+    {
+      "scenario": "Explicit revised lab",
+      "expected": "B-lab source_revision 2 reports 13 g/L; original revision 1 at 12 g/L remains historical. Difference changes to 3 g/L. This is a source revision, not an intervention."
+    },
+    {
+      "scenario": "Changed observation CSV before regeneration",
+      "expected": "Both feed totals null with analysis_basis_changed; no silent reuse or repinning of the old calculation."
+    },
+    {
+      "scenario": "Explicit regeneration",
+      "expected": "B recorded feed 6 kg, A 2 kg, difference 4 kg. Retain old B=4 kg as historical. This is a changed source/calculation scenario, not an actual feed adjustment or trial."
+    }
+  ],
+  "suggested_capture_record_ids": {
+    "initial_sources": {
+      "JOIN-REPORT": "source:join-r1",
+      "RECIPE-RECORDS": "source:recipes-r1",
+      "BATCH-RECORDS": "source:batches-r1",
+      "LAB-RECORDS": "source:labs-r1"
+    },
+    "initial_claims": [
+      "observation:initial-records",
+      "check:recipe-revision-result",
+      "disposition:recipe-explanation",
+      "handoff:unresolved-evidence"
+    ],
+    "later_sources": {
+      "JOIN-REPORT": [
+        "source:join-lab-r2",
+        "source:join-feed-r2"
+      ],
+      "LAB-RECORDS": [
+        "source:labs-r2"
+      ]
+    },
+    "later_claims": [
+      "observation:lab-source-revision",
+      "observation:feed-source-revision",
+      "disposition:reopened-source-basis"
+    ]
+  },
+  "dependency_design": "Cited sources use selected_basis. The recorded recipe-check claim cites exact batch and recipe records and the selected join. The limited disposition depends on the actual check and all descriptive observations, and cites the selected join/source basis used. Later source/report selections append new records and change selected_sources without deleting or repinning earlier claims. The original hypothesis never depends on its later disposition; these prose roles are manual, not validated typed relations.",
+  "acceptance": [
+    "All ordinary claims remain proposed/unreviewed; no authenticated owner/reviewer/date is invented.",
+    "Preserve exact seed, every old source capture, hypothesis wording, original contradiction and before/change/knowledge/handoff/receipt outputs.",
+    "Knowledge readback shows full relevant records and selected-basis/dependency diagnostics; it does not rerun join --check or infer omitted dependencies.",
+    "An actual successful join --check is a dated selected-code/input observation, not a perpetual freshness certificate.",
+    "Root must preserve actual invocation/log/PID/status and first failures; this authoring freeze has no product result."
+  ],
+  "unacceptable": [
+    "Claim that recipe differences caused the assay difference despite equal declared revisions.",
+    "Claim that a failed explanation proves an equipment intervention was attempted or failed.",
+    "Convert unavailable lab evidence to zero, a negative result or eligible as-of evidence.",
+    "Declare yield, optimum, kinetics, physical comparability, source authority or plant/human benefit.",
+    "Present schema admission as typed hypothesis/test/outcome validation or scientific quality review."
+  ]
+}

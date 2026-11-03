@@ -1,0 +1,47 @@
+{
+  "schema": "knowledge-capture-receipt-1",
+  "captured_at": "2026-11-03T07:31:52.830732+00:00",
+  "packet_id": "fictional-ferm101-investigation",
+  "base_sha256": "0ab5a69c420f2a8e59916029a1c73320aa45bd0b1f282c570d7f3f1565fcc44f",
+  "knowledge_sha256": "c8025094d8ea7f2eb0e9d13a0ef2fc82384471e7d0cd5dcb5cbef94315b49a52",
+  "contributor_declaration": "Fictional example author; no authenticated identity.",
+  "reason": "Retain this explicit investigation contribution and its exact prior state.",
+  "company_acceptance": "not_established",
+  "source_currency": "selected_snapshot_only",
+  "added_record_ids": [
+    "source:notes-r1"
+  ],
+  "supplied_sources": [
+    {
+      "record_id": "source:notes-r1",
+      "raw_sha256": "667f18bf97596d3a83ca88e85756cdea1381912a848aefe635a874879e149d31",
+      "size_bytes": 2705
+    }
+  ],
+  "selected_source_changes": [
+    {
+      "document_id": "NOTES",
+      "before": null,
+      "after": "source:notes-r1"
+    }
+  ],
+  "changed_existing_diagnostics": [],
+  "files": {
+    "before.json": {
+      "raw_sha256": "0ab5a69c420f2a8e59916029a1c73320aa45bd0b1f282c570d7f3f1565fcc44f",
+      "size_bytes": 11231
+    },
+    "change.json": {
+      "raw_sha256": "eb32d22b2a622efef13b45e1d860d4ee94d85417e206bec0ad5d8f0460907216",
+      "size_bytes": 766
+    },
+    "knowledge.json": {
+      "raw_sha256": "c8025094d8ea7f2eb0e9d13a0ef2fc82384471e7d0cd5dcb5cbef94315b49a52",
+      "size_bytes": 15277
+    },
+    "handoff.md": {
+      "raw_sha256": "6e7dced70b2624321caca94007f4c84648e30f75b85dec3ae1d92bc10006d025",
+      "size_bytes": 3519
+    }
+  }
+}

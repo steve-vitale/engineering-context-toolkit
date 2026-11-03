@@ -2,16 +2,16 @@
   "schema": "batch-record-join-receipt-1",
   "files": {
     "batch_join.json": {
-      "raw_sha256": "5270cc5cd16c9662a1c991aa3e7d6598a81e435a51add17677c107a7c21d9d90",
-      "size_bytes": 9068
+      "raw_sha256": "a9087179c548be3af8de1c646b0bb80243ad38c03f84baedd3ee8a93e1d0a3df",
+      "size_bytes": 9106
     },
     "audit.json": {
       "raw_sha256": "f1273dbebaef339e4df8eabba10a4339f1b314df6b559bf117429ff6e7a4bc4c",
       "size_bytes": 13472
     },
     "batch_join.md": {
-      "raw_sha256": "09004aba220b247f7053dde739e52064adfcc4c24ebd6d51430748c5aeb626e8",
-      "size_bytes": 1793
+      "raw_sha256": "77e4eb71ebe932822b8db799932d50b5ce237c3ebcef039e0d6626c06df635da",
+      "size_bytes": 1909
     },
     "inputs/000.json": {
       "raw_sha256": "829e4a2ce554ae752b04d1f8c61567719088572fffff92e59e2072b3c88ce61f",

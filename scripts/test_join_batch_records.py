@@ -128,6 +128,97 @@ class BatchRecordJoin(unittest.TestCase):
                 self.assertIn('recipe_scale_method_or_outcome_basis_differs',result['comparison']['gaps'])
                 self.assertIsNone(result['comparison']['differences']);path.write_bytes(old)
 
+    def assert_original_tables_retained(self, result, audit, raw):
+        """A comparison diagnostic must not erase the unavailable source evidence."""
+        for role in join.HEADERS:
+            original=(self.folder/'sources'/(role+'.csv')).read_bytes()
+            reader=csv.DictReader(io.StringIO(original.decode('utf-8'),newline=''))
+            self.assertEqual(audit['tables'][role]['columns'],reader.fieldnames)
+            self.assertEqual([r['data'] for r in audit['tables'][role]['records']],list(reader))
+            self.assertEqual(raw['records:'+role],original)
+            self.assertEqual(result['inputs']['records:'+role]['raw_sha256'],join.sha(original))
+
+    def test_comparison_basis_unavailable_is_not_observed_difference(self):
+        originals={p:p.read_bytes() for p in [self.manifest,*((self.folder/'sources').glob('*.csv'))]}
+        variants=('earlier_cutoff','B_method_empty','B_method_whitespace','both_methods_empty',
+                  'B_outcome_basis_empty','B_recipe_parameters_empty')
+        for variant in variants:
+            with self.subTest(variant=variant):
+                for path,raw in originals.items():path.write_bytes(raw)
+                if variant=='earlier_cutoff':
+                    self.manifest_change(lambda m:m.update(as_of='2026-01-02T02:00:00Z'))
+                elif variant=='both_methods_empty':
+                    self.rows_change('labs',lambda rows:[r.update(method_id='') for r in rows])
+                elif variant.startswith('B_method_'):
+                    self.rows_change('labs',lambda rows:rows[1].update(method_id=' \t ' if variant.endswith('whitespace') else ''))
+                elif variant=='B_outcome_basis_empty':
+                    self.rows_change('outcomes',lambda rows:rows[1].update(basis=''))
+                else:
+                    self.rows_change('recipes',lambda rows:rows[1].update(parameters_json='{}'))
+                result,audit,raw=self.build()
+                self.assert_original_tables_retained(result,audit,raw)
+                role='outcomes' if variant=='B_outcome_basis_empty' else 'recipes' if variant=='B_recipe_parameters_empty' else 'labs'
+                self.assertNotIn(role,result['rows'][1]['eligible_records'])
+                if role=='labs':self.assertIsNone(result['rows'][1]['lab_value'])
+                if role=='outcomes':self.assertIsNone(result['rows'][1]['outcome_value'])
+                self.assertIsNone(result['comparison']['differences'])
+                self.assertIn('comparison_basis_unavailable',result['comparison']['gaps'])
+                self.assertNotIn('recipe_scale_method_or_outcome_basis_differs',result['comparison']['gaps'])
+
+    def test_known_recipe_or_scale_difference_survives_unavailable_lab(self):
+        self.manifest_change(lambda m:m.update(as_of='2026-01-02T02:00:00Z'))
+        for role,key,value in [('recipes','parameters_json','{"target_feed_kg":6,"feed_policy":"constant"}'),
+                               ('batches','scale_value','2000')]:
+            with self.subTest(role=role):
+                path=self.folder/'sources'/(role+'.csv');original=path.read_bytes()
+                self.rows_change(role,lambda rows:rows[1].update({key:value}))
+                try:
+                    result,audit,raw=self.build()
+                    self.assert_original_tables_retained(result,audit,raw)
+                    self.assertIsNone(result['rows'][1]['lab_value'])
+                    self.assertNotIn('labs',result['rows'][1]['eligible_records'])
+                    self.assertEqual(result['rows'][1]['eligible_records']['batch' if role=='batches' else role][key],value)
+                    self.assertIsNone(result['comparison']['differences'])
+                    self.assertIn('recipe_scale_method_or_outcome_basis_differs',result['comparison']['gaps'])
+                    self.assertIn('comparison_basis_unavailable',result['comparison']['gaps'])
+                finally:
+                    path.write_bytes(original)
+
+    def test_known_method_difference_stays_observed(self):
+        self.rows_change('labs',lambda rows:rows[1].update(method_id='other-method'))
+        result,audit,raw=self.build()
+        self.assert_original_tables_retained(result,audit,raw)
+        self.assertTrue(all(r['status']=='selected_records_align' and not r['gaps'] for r in result['rows']))
+        self.assertEqual([r['lab_value'] for r in result['rows']],[10,12])
+        self.assertEqual(result['comparison']['gaps'],['recipe_scale_method_or_outcome_basis_differs'])
+        self.assertIsNone(result['comparison']['differences'])
+
+    def test_false_and_zero_recipe_parameters_remain_distinct_with_missing_lab(self):
+        self.manifest_change(lambda m:m.update(as_of='2026-01-02T02:00:00Z'))
+        self.rows_change('recipes',lambda rows:[r.update(parameters_json=json.dumps(
+            {'target_feed_kg':False if i==0 else 0,'feed_policy':'constant'})) for i,r in enumerate(rows)])
+        result,audit,raw=self.build()
+        self.assert_original_tables_retained(result,audit,raw)
+        parameters=[json.loads(r['eligible_records']['recipes']['parameters_json'])['target_feed_kg'] for r in result['rows']]
+        self.assertIs(parameters[0],False)
+        self.assertIs(type(parameters[1]),int)
+        self.assertEqual(parameters[1],0)
+        self.assertIsNone(result['rows'][1]['lab_value'])
+        self.assertIn('recipe_scale_method_or_outcome_basis_differs',result['comparison']['gaps'])
+        self.assertIn('comparison_basis_unavailable',result['comparison']['gaps'])
+        self.assertIsNone(result['comparison']['differences'])
+
+    def test_zero_lab_value_remains_available_and_auditable(self):
+        self.rows_change('labs',lambda rows:rows[1].update(value='0'))
+        result,audit,raw=self.build()
+        self.assert_original_tables_retained(result,audit,raw)
+        self.assertIs(type(result['rows'][1]['lab_value']),float)
+        self.assertEqual(result['rows'][1]['lab_value'],0.0)
+        self.assertEqual(result['rows'][1]['eligible_records']['labs']['value'],'0')
+        self.assertEqual(result['comparison']['status'],'selected_records_align')
+        self.assertEqual(result['comparison']['gaps'],[])
+        self.assertEqual(result['comparison']['differences'][0]['difference']['lab_value'],-10.0)
+
     def test_matching_event_values_cannot_replace_the_referenced_record(self):
         def alternate(rows):
             other=copy.deepcopy(rows[0]);other['record_id']='A-different-event';rows.append(other)

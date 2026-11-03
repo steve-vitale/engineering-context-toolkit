@@ -1,0 +1,269 @@
+{
+  "schema": "batch-record-join-result-1",
+  "question": "Can the two supplied batches be compared on recorded feed, lab result and reported harvest volume? What evidence prevents a conclusion?",
+  "as_of": "2026-01-02T02:00:00Z",
+  "time_alignment_basis": "Authored common UTC and elapsed seconds from each declared batch start; physical clocks and installed mapping not verified.",
+  "method": {
+    "join_code_lf": "9661507948a440fbed57f86f18a433f945035f6b9b4db8fe76a68c0f5d062f09",
+    "basis_checker_code_lf": "9bb0b308e39d817b21fb439a1ac5b9f04c6f15caef33bff3fb6da860f7f44080",
+    "calculation_code_lf": "bd65873d209bdec1746265735a37e0f843bd4fee993ae1c175a7fb9ae6e47ae0"
+  },
+  "inputs": {
+    "manifest": {
+      "raw_sha256": "9b89f70cef608bc3ce381d0eb39cbe50f9d5f388fb36637dff8ab26be675de74",
+      "size_bytes": 1750,
+      "capture": "inputs/000.json"
+    },
+    "records:batches": {
+      "raw_sha256": "cef62204c577a1b9c736355de95b3fff6020c8ea81c19a197aae271270ebc3be",
+      "size_bytes": 440,
+      "capture": "inputs/001.csv"
+    },
+    "records:events": {
+      "raw_sha256": "5ff6174df2b77f3ac2cd2f27dd3bba23281ce7ab618e1c49aa45cb9c793e8bfb",
+      "size_bytes": 399,
+      "capture": "inputs/002.csv"
+    },
+    "records:labs": {
+      "raw_sha256": "d9188081d84faee8553ea641d0474133fc8164fc7af5f54b1b5b90cd2213da18",
+      "size_bytes": 460,
+      "capture": "inputs/003.csv"
+    },
+    "records:outcomes": {
+      "raw_sha256": "90a87232780b10541dcfaef0b7bb36e5b1f35e0fb42e348b70794e246bc37f6b",
+      "size_bytes": 444,
+      "capture": "inputs/004.csv"
+    },
+    "records:recipes": {
+      "raw_sha256": "d2f526bbd2118505c69dd2760698559312821513e681f4adb423d3138c7bb444",
+      "size_bytes": 473,
+      "capture": "inputs/005.csv"
+    },
+    "analysis:feed:report": {
+      "raw_sha256": "14131b8d4ad1e939216bcefaf62cdf7d5de29758ebc1c4d95657a0821311371b",
+      "size_bytes": 3367,
+      "capture": "inputs/006.json"
+    },
+    "analysis:feed:csv": {
+      "raw_sha256": "9c6d87bb4f595d6296e7f8ad3c6e8f5966d9619976b825093b8986a4f2c91f67",
+      "size_bytes": 114,
+      "capture": "inputs/007.csv"
+    },
+    "analysis:feed:plan": {
+      "raw_sha256": "5d85ecba4c2402736d11d2a82342e2bc033b8df3bed6c94bf7e14af4295a77aa",
+      "size_bytes": 902,
+      "capture": "inputs/008.json"
+    }
+  },
+  "rows": [
+    {
+      "selection": {
+        "id": "A",
+        "analysis_id": "feed",
+        "window_id": "A-feed",
+        "batch_record_id": "A-batch",
+        "event_record_id": "A-phase",
+        "lab_result_id": "A-lab",
+        "outcome_record_id": "A-outcome",
+        "recipe_record_id": "A-recipe"
+      },
+      "status": "selected_records_align",
+      "gaps": [],
+      "feed_integral": 2.0,
+      "lab_value": 10.0,
+      "outcome_value": 900.0,
+      "eligible_records": {
+        "batch": {
+          "record_id": "A-batch",
+          "site_id": "fictional-site",
+          "asset_id": "FERM-101",
+          "batch_id": "A",
+          "recipe_id": "RCP-1",
+          "recipe_revision": "3",
+          "start_utc": "2026-01-01T00:00:00Z",
+          "end_utc": "2026-01-01T01:00:00Z",
+          "available_utc": "2026-01-01T01:01:00Z",
+          "scale_value": "1000",
+          "scale_unit": "L",
+          "source_revision": "1",
+          "source_ref": "Fictional executed batch record A"
+        },
+        "events": {
+          "record_id": "A-phase",
+          "site_id": "fictional-site",
+          "asset_id": "FERM-101",
+          "batch_id": "A",
+          "phase": "feed",
+          "recipe_id": "RCP-1",
+          "recipe_revision": "3",
+          "start_utc": "2026-01-01T00:00:00Z",
+          "end_utc": "2026-01-01T01:00:00Z",
+          "available_utc": "2026-01-01T01:01:00Z",
+          "source_revision": "1",
+          "source_ref": "Fictional phase event A"
+        },
+        "labs": {
+          "result_id": "A-lab",
+          "sample_id": "A-sample",
+          "site_id": "fictional-site",
+          "asset_id": "FERM-101",
+          "batch_id": "A",
+          "sample_utc": "2026-01-01T01:00:00Z",
+          "available_utc": "2026-01-01T03:00:00Z",
+          "quantity": "reported_product_concentration",
+          "value": "10",
+          "unit": "g/L",
+          "quality": "valid",
+          "method_id": "assay-method-1",
+          "source_revision": "1",
+          "source_ref": "Fictional assay A"
+        },
+        "outcomes": {
+          "record_id": "A-outcome",
+          "site_id": "fictional-site",
+          "asset_id": "FERM-101",
+          "batch_id": "A",
+          "observed_utc": "2026-01-01T01:00:00Z",
+          "available_utc": "2026-01-01T01:30:00Z",
+          "quantity": "reported_harvest_volume",
+          "value": "900",
+          "unit": "L",
+          "quality": "valid",
+          "basis": "executed-harvest-record",
+          "source_revision": "1",
+          "source_ref": "Fictional outcome A"
+        },
+        "recipes": {
+          "record_id": "A-recipe",
+          "site_id": "fictional-site",
+          "asset_id": "FERM-101",
+          "batch_id": "A",
+          "recipe_id": "RCP-1",
+          "recipe_revision": "3",
+          "execution_basis": "reported_executed",
+          "parameters_json": "{\"feed_policy\": \"constant\", \"target_feed_kg\": 5}",
+          "available_utc": "2026-01-01T01:05:00Z",
+          "source_revision": "1",
+          "source_ref": "Fictional executed recipe A"
+        }
+      },
+      "record_locators": {
+        "batches": "CSV record 2",
+        "events": "CSV record 2",
+        "labs": "CSV record 2",
+        "outcomes": "CSV record 2",
+        "recipes": "CSV record 2"
+      },
+      "units": {
+        "feed": "kg",
+        "lab": "g/L",
+        "outcome": "L"
+      }
+    },
+    {
+      "selection": {
+        "id": "B",
+        "analysis_id": "feed",
+        "window_id": "B-feed",
+        "batch_record_id": "B-batch",
+        "event_record_id": "B-phase",
+        "lab_result_id": "B-lab",
+        "outcome_record_id": "B-outcome",
+        "recipe_record_id": "B-recipe"
+      },
+      "status": "needs_review",
+      "gaps": [
+        "labs_not_available_as_of"
+      ],
+      "feed_integral": 4.0,
+      "lab_value": null,
+      "outcome_value": 920.0,
+      "eligible_records": {
+        "batch": {
+          "record_id": "B-batch",
+          "site_id": "fictional-site",
+          "asset_id": "FERM-101",
+          "batch_id": "B",
+          "recipe_id": "RCP-1",
+          "recipe_revision": "3",
+          "start_utc": "2026-01-02T00:00:00Z",
+          "end_utc": "2026-01-02T01:00:00Z",
+          "available_utc": "2026-01-02T01:01:00Z",
+          "scale_value": "1000",
+          "scale_unit": "L",
+          "source_revision": "1",
+          "source_ref": "Fictional executed batch record B"
+        },
+        "events": {
+          "record_id": "B-phase",
+          "site_id": "fictional-site",
+          "asset_id": "FERM-101",
+          "batch_id": "B",
+          "phase": "feed",
+          "recipe_id": "RCP-1",
+          "recipe_revision": "3",
+          "start_utc": "2026-01-02T00:00:00Z",
+          "end_utc": "2026-01-02T01:00:00Z",
+          "available_utc": "2026-01-02T01:01:00Z",
+          "source_revision": "1",
+          "source_ref": "Fictional phase event B"
+        },
+        "outcomes": {
+          "record_id": "B-outcome",
+          "site_id": "fictional-site",
+          "asset_id": "FERM-101",
+          "batch_id": "B",
+          "observed_utc": "2026-01-02T01:00:00Z",
+          "available_utc": "2026-01-02T01:30:00Z",
+          "quantity": "reported_harvest_volume",
+          "value": "920",
+          "unit": "L",
+          "quality": "valid",
+          "basis": "executed-harvest-record",
+          "source_revision": "1",
+          "source_ref": "Fictional outcome B"
+        },
+        "recipes": {
+          "record_id": "B-recipe",
+          "site_id": "fictional-site",
+          "asset_id": "FERM-101",
+          "batch_id": "B",
+          "recipe_id": "RCP-1",
+          "recipe_revision": "3",
+          "execution_basis": "reported_executed",
+          "parameters_json": "{\"feed_policy\": \"constant\", \"target_feed_kg\": 5}",
+          "available_utc": "2026-01-02T01:05:00Z",
+          "source_revision": "1",
+          "source_ref": "Fictional executed recipe B"
+        }
+      },
+      "record_locators": {
+        "batches": "CSV record 3",
+        "events": "CSV record 3",
+        "labs": "CSV record 3",
+        "outcomes": "CSV record 3",
+        "recipes": "CSV record 3"
+      },
+      "units": {
+        "feed": "kg",
+        "lab": "g/L",
+        "outcome": "L"
+      }
+    }
+  ],
+  "comparison": {
+    "status": "needs_review",
+    "gaps": [
+      "one_or_more_selected_rows_need_review",
+      "recipe_scale_method_or_outcome_basis_differs"
+    ],
+    "differences": null
+  },
+  "limits": [
+    "Recorded-contract alignment and descriptive differences only; no physical comparability, yield, causation, prediction, control or approval.",
+    "Identities, source authority, units, clock alignment, quality and availability are supplied declarations, not verified installed facts or authenticated publication times.",
+    "As-of excludes late/unknown selected values under those declarations; it does not establish actual historical access or create a blinded/leakage-free study.",
+    "Complete originals and future/unselected records remain in the separately labelled audit and captured inputs; do not use those as an as-of feature dataset.",
+    "No latest-result choice, missing-value imputation, unit/scale normalization, source watching, source fetching or accepted-answer selection."
+  ]
+}

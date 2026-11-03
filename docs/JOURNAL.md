@@ -7547,3 +7547,52 @@ See [the source-policy tutorial](../examples/opportunity-screen/source-policy/RE
 [criteria](../examples/opportunity-screen/source-policy/expected/source-criteria.json),
 [provenance](../examples/opportunity-screen/source-policy/PROVENANCE.json) and
 [current boundaries](STATUS.md#open-work-and-company-handoff).
+
+
+## 164. Retain an investigation and distinguish missing evidence from a failed explanation
+
+The existing batch join/check, contribution capture and knowledge reader now have a worked investigation
+continuation. No new investigation engine, workflow kind, model dependency or approval service was added.
+An unbound packet retains an authored recipe-revision hypothesis and planned record check, then records
+contrary evidence, a limited proposed disposition, source revisions and the next evidence request.
+
+The fictional FERM-101 source key remains unchanged: A/B recorded feed 2/4 kg, reported concentration
+10/12 g/L and harvest 900/920 L. Both batch and reported-executed recipe rows declare RCP-1 revision 3.
+That does not support different declared recipe revisions as the explanation; it does not establish actual
+process identity or another cause. Later lab 13 g/L and regenerated feed 6 kg are separate source scenarios,
+not process interventions. The lab branch explicitly selects its baseline feed/calculation and retains the
+changed-feed branch. Final capture includes an actual successful join check bound to the final lab report;
+future reuse still needs an explicit current check.
+
+Independent receiving found a real defect despite the first runner's passing mechanical checks: an unavailable
+B lab was treated as a method mismatch. The join compared an absent method as None with an admitted method.
+Five frozen regression methods retained nine failing assertions. The repair compares known admitted basis
+components independently, reports unavailable basis explicitly and preserves observed differences in other
+components. Eleven matched whole cases retain exact audits/raw inputs, changing only the method pin and
+declared comparison-gap codes. A failing-baseline fixture had skipped cleanup after an assertion; unconditional
+cleanup and new matched old/current runs are retained rather than rewriting the original failed observation.
+
+The first 29-call investigation remains separately retained with its semantic failure. The corrected 29-call
+successor and final 30-call/24-check run are distinct. Twelve prospective retention criteria were frozen before
+implementation; optional typed-profile controls were kept separate. Final independent receiving checks exact
+sources, prior packet/claim preservation, complete readbacks, current check binding and genuine new stale-basis
+paths. An always-unknown hypothesis is not evidence that a changed source reopened its dependent disposition.
+
+All records remain proposed/unreviewed. A separate deliberately unsupported causal sentence is admitted by
+generic capture as unreviewed, demonstrating its semantic boundary. Hypothesis/test/result/disposition roles
+are authored prose; the tools do not validate scientific logic, infer omitted dependencies, select an accepted
+resolution, watch external files or execute operations. Company systems retain decisions, access and ownership.
+No human usefulness, company acceptance, causal/kinetic model or unfamiliar-plant result is claimed.
+
+The public example retains every capture revision, exact source/report/check evidence, readable handoffs and
+an own-input template. Raw process argv/logs remain private; public command displays are explicitly templates.
+The existing join tutorial was renewed through its actual 14-call/11-check producer after the repair, with the
+original method/provenance and a reproducible failing case retained. Older full receipts remain in Git/private
+archives. New end-to-end tests cover the complete composition, source-change paths, current final check and
+historical failure; earlier methods and all prior ledger/review records remain intact.
+
+See [the investigation tutorial](../examples/batch-analysis/investigation/README.md),
+[own-input guide](../examples/batch-analysis/investigation/OWN-INPUT.md),
+[prospective criteria](../examples/batch-analysis/investigation/ACCEPTANCE.json),
+[actual output manifest](../examples/batch-analysis/investigation/PROVENANCE.json) and
+[retained comparison-basis failure](../examples/batch-analysis/record-joins/history/before-comparison-basis/).

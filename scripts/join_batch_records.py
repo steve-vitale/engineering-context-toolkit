@@ -294,10 +294,15 @@ def build(manifest_path):
         result['gaps']=list(dict.fromkeys(gaps));result['status']='needs_review' if result['gaps'] else 'selected_records_align'
         rows.append(result)
         lab=result['eligible_records'].get('labs',{});outcome=result['eligible_records'].get('outcomes',{})
-        comparison_keys.append((b['recipe_id'],b['recipe_revision'],analysis_basis.canonical(recipe_parameters),scale,b['scale_unit'],lab.get('method_id'),outcome.get('basis')) if batch_ok else None)
+        comparison_keys.append((b['recipe_id'],b['recipe_revision'],analysis_basis.canonical(recipe_parameters) if recipe_parameters is not None else None,scale,b['scale_unit'],lab.get('method_id'),outcome.get('basis')) if batch_ok else None)
     comparison_gaps=[]
     if any(row['gaps'] for row in rows):comparison_gaps.append('one_or_more_selected_rows_need_review')
-    if any(key!=comparison_keys[0] for key in comparison_keys[1:]):comparison_gaps.append('recipe_scale_method_or_outcome_basis_differs')
+    # Missing/unqualified evidence is not an observed mismatch. Compare each component's
+    # admitted known values, retaining genuine differences even when another component is unavailable.
+    components=list(zip(*(key if key is not None else (None,)*7 for key in comparison_keys)))
+    if any(any(value is None for value in values) for values in components):comparison_gaps.append('comparison_basis_unavailable')
+    if any(len({analysis_basis.canonical(value) for value in values if value is not None})>1 for values in components):
+        comparison_gaps.append('recipe_scale_method_or_outcome_basis_differs')
     differences=None
     if not comparison_gaps:
         differences=[]
@@ -322,6 +327,7 @@ def markdown(report):
             'analysis_basis_changed':'The saved calculation differs from selected inputs or code. Reproduce and review it before reusing the feed total.',
             'event_window_source_ref_mismatch':'The calculation cites a different event record. Reconcile the plan/event association.',
             'recipe_scale_method_or_outcome_basis_differs':'Recipe/parameters, scale, assay method or outcome basis differs. Review comparability before using differences.',
+            'comparison_basis_unavailable':'Some comparison-basis records are unavailable or unqualified. Resolve those gaps before interpreting differences.',
             'feed_coverage_incomplete':'The feed record has missing coverage. Its observed integral is not a complete phase total.',
             'feed_quality_basis_not_declared':'The selected feed quality policy is not supplied. Obtain the data-quality basis.',
             'one_or_more_selected_rows_need_review':'At least one selected batch still has evidence gaps.',

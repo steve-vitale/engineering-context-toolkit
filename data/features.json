@@ -1418,7 +1418,9 @@
       "tools": [
         "scripts/batch_analysis.py",
         "scripts/check_analysis_basis.py",
-        "scripts/join_batch_records.py"
+        "scripts/join_batch_records.py",
+        "scripts/knowledge_capture.py",
+        "scripts/knowledge_snapshot.py"
       ],
       "guide": "examples/batch-analysis/README.md",
       "example_outputs": [
@@ -1479,13 +1481,26 @@
         "examples/batch-analysis/record-joins/worked/initial/batch_join.md",
         "examples/batch-analysis/record-joins/worked/future-lab/batch_join.json",
         "examples/batch-analysis/record-joins/worked/stale-analysis/batch_join.json",
-        "examples/batch-analysis/record-joins/worked/regenerated/batch_join.md"
+        "examples/batch-analysis/record-joins/worked/regenerated/batch_join.md",
+        "examples/batch-analysis/investigation/README.md",
+        "examples/batch-analysis/investigation/OWN-INPUT.md",
+        "examples/batch-analysis/investigation/REVIEW-TEMPLATE.md",
+        "examples/batch-analysis/investigation/seed.knowledge.json",
+        "examples/batch-analysis/investigation/EXPECTATIONS.json",
+        "examples/batch-analysis/investigation/PROVENANCE.json",
+        "examples/batch-analysis/investigation/worked/final/knowledge.json",
+        "examples/batch-analysis/investigation/worked/final/handoff.md",
+        "examples/batch-analysis/investigation/worked/final/receipt.json",
+        "examples/batch-analysis/investigation/worked/checks/15-current-lab-check.json",
+        "examples/batch-analysis/investigation/worked/readback/read-final-handoff.json",
+        "examples/batch-analysis/investigation/worked/reports/05-earlier-cutoff/batch_join.md"
       ],
       "tests": [
         "scripts/test_batch_analysis.py",
         "scripts/test_checkout_contracts.py",
         "scripts/test_check_analysis_basis.py",
-        "scripts/test_join_batch_records.py"
+        "scripts/test_join_batch_records.py",
+        "scripts/test_investigation_example.py"
       ],
       "job": "Calculate phase feed/energy from recorded data with coverage visible",
       "why": "Explicit recipe windows and units make recorded feed/energy calculations inspectable beside the twin; a bad sample cannot silently become a complete phase total.",

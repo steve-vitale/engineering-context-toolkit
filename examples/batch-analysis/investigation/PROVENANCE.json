@@ -1,0 +1,279 @@
+{
+  "schema": "investigation-example-provenance-1",
+  "state": "Current actual runtime received under the original 12 prospective criteria; publication/committed CI are separate gates.",
+  "source_family": "Existing exposed fictional FERM-101 records; no new plant/model/scientific trial.",
+  "actual_runtime": {
+    "calls": 30,
+    "checks": 24,
+    "all_expected_exits": true,
+    "raw_argv_and_process_logs": "Retained privately; worked/result.json contains explicit display templates only."
+  },
+  "original_semantic_failure": "Earlier runtime-v1 mechanical checks passed but independent review found the join tool falsely called unavailable method an observed mismatch. Original run, baseline failures and matched repair remain retained; the failing case is public under ../record-joins/history/before-comparison-basis/.",
+  "capture_scope": "Final ordinary packet and all six other capture revisions retained byte-for-byte; sources and claims remain proposed/unreviewed.",
+  "manual_profile_limit": "Investigation roles are prose in ordinary claim/workflow records. No typed role/relation/scientific validation, source authentication, automatic watcher, approval or execution.",
+  "method_files": {
+    "scripts/join_batch_records.py": {
+      "sha256_text_lf": "4c757c10a850aa99d796ef785ba9aef321f6e4ccd43951e3879955e862141e15"
+    },
+    "scripts/check_analysis_basis.py": {
+      "sha256_text_lf": "9bb0b308e39d817b21fb439a1ac5b9f04c6f15caef33bff3fb6da860f7f44080"
+    },
+    "scripts/batch_analysis.py": {
+      "sha256_text_lf": "bd65873d209bdec1746265735a37e0f843bd4fee993ae1c175a7fb9ae6e47ae0"
+    },
+    "scripts/knowledge_capture.py": {
+      "sha256_text_lf": "6281105d0c35ff100aa814fd907bd861f239589d3286d2cdb752d6cab2106c87"
+    },
+    "scripts/knowledge_snapshot.py": {
+      "sha256_text_lf": "6b88d2508a514e60c80a70d885c5e7fa3ff8068770dbe2ede053feacf0f906bb"
+    },
+    "examples/batch-analysis/investigation/reproduce.py": {
+      "sha256_text_lf": "68541a153d1200aa14c6c7b72f0d9b69af6c5ba071df40b1980653ba47086d7c"
+    }
+  },
+  "source_key": "SOURCE-LOCATORS.json retains exact pre-run stored evidence; EXPECTATIONS.json and original 12 criteria precede all product calls.",
+  "selected_actual_files": {
+    "worked/result.json": {
+      "raw_sha256": "3871388c50848ea6dd50ca3279942225c3d0e5ab1b5f59f30619953109b60481",
+      "size_bytes": 20037
+    },
+    "worked/checks/03-check-initial.json": {
+      "raw_sha256": "9e071f01499b04c3bb3db9e428b7f9595c1052e56eb1b80e0b358d2cc2e56894",
+      "size_bytes": 974
+    },
+    "worked/checks/07-old-join-feed-check.json": {
+      "raw_sha256": "6cf8efeaeab899826d6667e8e1aa53e80649eb446be8b11dfcdd8913323d6090",
+      "size_bytes": 1009
+    },
+    "worked/checks/12-regenerated-check.json": {
+      "raw_sha256": "c5d38f800a2a7a31bd7a3a30cdef3ae3e283363cfc23932c1eaad3e0cbe473c7",
+      "size_bytes": 974
+    },
+    "worked/checks/14-old-join-lab-check.json": {
+      "raw_sha256": "3f0335670d95326d86bb7ab489a3a537bfae42734946b0a62f3570d03b0d4214",
+      "size_bytes": 1004
+    },
+    "worked/checks/15-current-lab-check.json": {
+      "raw_sha256": "f3c8aaf632bd7dc86aff75072c4b41014ce1365cc770237fca80b744e35dad7f",
+      "size_bytes": 974
+    },
+    "worked/checks/recipe-record-result.json": {
+      "raw_sha256": "a226e74e3cabfd39f16337e6d39f88923a0e93b88695196d2be6c873f21ee00d",
+      "size_bytes": 3137
+    },
+    "worked/final/before.json": {
+      "raw_sha256": "b609bae8d53eb23d3345210e1989729a5145bb5bec5a394ea9dbae7d366e6207",
+      "size_bytes": 111267
+    },
+    "worked/final/change.json": {
+      "raw_sha256": "2a955948f656ddcb09de3d7eb827a1ec0d6f93a6a719b398f32c14cb846f34d1",
+      "size_bytes": 5935
+    },
+    "worked/final/handoff.md": {
+      "raw_sha256": "cd9962d8a852beab7e2289c5609e50a4d0b6e855cb460ac14b76485513c3433f",
+      "size_bytes": 16423
+    },
+    "worked/final/knowledge.json": {
+      "raw_sha256": "e2744897a1e7deb228e412d14170f40beb5b2649a3a53061f6d467f549c20de8",
+      "size_bytes": 139611
+    },
+    "worked/final/receipt.json": {
+      "raw_sha256": "1cdf6a106a34e9469797ac823dc858a654a2c79365d31f9552188caf3a091f2c",
+      "size_bytes": 26976
+    },
+    "worked/readback/read-feed-reopened.json": {
+      "raw_sha256": "e47e56a4e09e0895836dee341ef8c99029e7226124c9506329117d8043f37ae6",
+      "size_bytes": 7044
+    },
+    "worked/readback/read-final-handoff.json": {
+      "raw_sha256": "b84bbe447dc4b369406ba591214a423311f77c1e1948c017eff00de294595e9b",
+      "size_bytes": 4747
+    },
+    "worked/readback/read-initial-observation.json": {
+      "raw_sha256": "9ac3d76f7b7fd116133d5979f6f46b6c9ee229fe441c0493a80947d610d7b585",
+      "size_bytes": 6757
+    },
+    "worked/readback/read-new-lab.json": {
+      "raw_sha256": "651d40f452531dff021a77f4e8615a31e6b4ae0d5bb21c8ad8da96b2b82f39cf",
+      "size_bytes": 4111
+    },
+    "worked/readback/read-recorded-check.json": {
+      "raw_sha256": "db27381541e5fbca9906156acb1d97bd5eb88025ab3496c3ff97de10c2728dbd",
+      "size_bytes": 3759
+    },
+    "worked/readback/read-unsupported-control.json": {
+      "raw_sha256": "d4a0b542a6d98c1c9248b2468b1262e06c14fd43cb0a4ad829a54ee59bce4574",
+      "size_bytes": 1911
+    },
+    "worked/reports/02-join-initial/batch_join.json": {
+      "raw_sha256": "5e3c7f73da62c170d93c70caaf38c70335b40607dadd6161c390121457a7bcae",
+      "size_bytes": 10231
+    },
+    "worked/reports/02-join-initial/batch_join.md": {
+      "raw_sha256": "e5724b0ec624de99bdc7f4fd32fdeba0c2da3c02a7a6db505ae98c0278bd59be",
+      "size_bytes": 1302
+    },
+    "worked/reports/05-earlier-cutoff/batch_join.json": {
+      "raw_sha256": "fa12fd78a8d304b451b4e468e1a06a0ff27e40e782d69badbbbc749fba6c39ef",
+      "size_bytes": 9595
+    },
+    "worked/reports/05-earlier-cutoff/batch_join.md": {
+      "raw_sha256": "c094abb7e592bcf35cfa41322dc79d6ad168903f3dc069b59764e31a694f81df",
+      "size_bytes": 1318
+    },
+    "worked/reports/08-stale-calculation/batch_join.json": {
+      "raw_sha256": "cd2e5d9d9c13f36e3f081d07692cf47c3198a3cf42b8cf60fb170a54a735c345",
+      "size_bytes": 10137
+    },
+    "worked/reports/08-stale-calculation/batch_join.md": {
+      "raw_sha256": "2098a34829f9f7b441c81a52386c91a93846990b624300c9c542f16aaae0fd22",
+      "size_bytes": 1357
+    },
+    "worked/reports/11-regenerated-comparison/batch_join.json": {
+      "raw_sha256": "cc8076ecd18a73952745b72f380ebf9d38aa87096eb381fcbf485ea25b4102be",
+      "size_bytes": 10231
+    },
+    "worked/reports/11-regenerated-comparison/batch_join.md": {
+      "raw_sha256": "2737d37fe4fcf5752ea023f76c47d22b0cd5542767fad18014595f0bd0bc5d36",
+      "size_bytes": 1302
+    },
+    "worked/reports/15-revised-lab-comparison/batch_join.json": {
+      "raw_sha256": "14462cf2228afc0057e0302089e59850a7bf3a0951e4700cc06b4f0b17a82af5",
+      "size_bytes": 10231
+    },
+    "worked/reports/15-revised-lab-comparison/batch_join.md": {
+      "raw_sha256": "5a7bc32fda710c4cffa4d98f6a88879676da37eaeb28d78c4acbdd06cff1254f",
+      "size_bytes": 1302
+    },
+    "worked/history/01-plan/before.json": {
+      "raw_sha256": "0ab5a69c420f2a8e59916029a1c73320aa45bd0b1f282c570d7f3f1565fcc44f",
+      "size_bytes": 11231
+    },
+    "worked/history/01-plan/change.json": {
+      "raw_sha256": "eb32d22b2a622efef13b45e1d860d4ee94d85417e206bec0ad5d8f0460907216",
+      "size_bytes": 766
+    },
+    "worked/history/01-plan/handoff.md": {
+      "raw_sha256": "6e7dced70b2624321caca94007f4c84648e30f75b85dec3ae1d92bc10006d025",
+      "size_bytes": 3519
+    },
+    "worked/history/01-plan/knowledge.json": {
+      "raw_sha256": "c8025094d8ea7f2eb0e9d13a0ef2fc82384471e7d0cd5dcb5cbef94315b49a52",
+      "size_bytes": 15277
+    },
+    "worked/history/01-plan/receipt.json": {
+      "raw_sha256": "b49e2e8ffd12e693facc9e2eea3f887f2ed689bcf31d0d9c8752a616f5a12a3a",
+      "size_bytes": 1587
+    },
+    "worked/history/04-record-check/before.json": {
+      "raw_sha256": "c8025094d8ea7f2eb0e9d13a0ef2fc82384471e7d0cd5dcb5cbef94315b49a52",
+      "size_bytes": 15277
+    },
+    "worked/history/04-record-check/change.json": {
+      "raw_sha256": "87a2aee60977ee78ce4b10b0e1c390fb8dd96a31990f0448f178276d7745cb7f",
+      "size_bytes": 10112
+    },
+    "worked/history/04-record-check/handoff.md": {
+      "raw_sha256": "fafe2a641784ff10b0b8fed4e639acdc3c6899caf2833f54fbdd1527246815ae",
+      "size_bytes": 8421
+    },
+    "worked/history/04-record-check/knowledge.json": {
+      "raw_sha256": "fd9912e35ff2821c59b778f70bf23a9112be9e1e22d7641a697c5b30ea1f8050",
+      "size_bytes": 65582
+    },
+    "worked/history/04-record-check/receipt.json": {
+      "raw_sha256": "eb81e1abb9dbde4cd680faf1b6ee89efef8554601e4b3ee770d912e92dff1608",
+      "size_bytes": 4914
+    },
+    "worked/history/06-missing-evidence/before.json": {
+      "raw_sha256": "fd9912e35ff2821c59b778f70bf23a9112be9e1e22d7641a697c5b30ea1f8050",
+      "size_bytes": 65582
+    },
+    "worked/history/06-missing-evidence/change.json": {
+      "raw_sha256": "41e7eed63549b4340f94965055c521f7763d7dcf601f2e9035828bcfb64c9fc4",
+      "size_bytes": 1816
+    },
+    "worked/history/06-missing-evidence/handoff.md": {
+      "raw_sha256": "027463f7833320de4a10ee261300d9afebb6d833d4200d9489da3ac58fb35315",
+      "size_bytes": 9490
+    },
+    "worked/history/06-missing-evidence/knowledge.json": {
+      "raw_sha256": "7a3ad10d23be3f298e439ce4c4714b59788698fdc076dfacfe9d5fb61b94c1b1",
+      "size_bytes": 79192
+    },
+    "worked/history/06-missing-evidence/receipt.json": {
+      "raw_sha256": "d87ea66f37553439b6ca7f15efaac2b57dcdea2fa338050f6ab701c5436aace9",
+      "size_bytes": 1636
+    },
+    "worked/history/09-select-changed-feed/before.json": {
+      "raw_sha256": "7a3ad10d23be3f298e439ce4c4714b59788698fdc076dfacfe9d5fb61b94c1b1",
+      "size_bytes": 79192
+    },
+    "worked/history/09-select-changed-feed/change.json": {
+      "raw_sha256": "26298349d58471731168d77899a2cddb319ca090d1442ca145a099046b20cbe9",
+      "size_bytes": 2417
+    },
+    "worked/history/09-select-changed-feed/handoff.md": {
+      "raw_sha256": "9dcf7b1a7c570e5b200181b393468e7f95891fdb02ebfe92d03d19672e93da6e",
+      "size_bytes": 10838
+    },
+    "worked/history/09-select-changed-feed/knowledge.json": {
+      "raw_sha256": "26b96c6b9f381e53112a3ded084d33897885cd20ba232d55c3c98c2f6bd34c31",
+      "size_bytes": 85048
+    },
+    "worked/history/09-select-changed-feed/receipt.json": {
+      "raw_sha256": "4f1509100f984eb7364a537596c24559a622f0a57b7fafe7d9a3b81ea40eeb6e",
+      "size_bytes": 14615
+    },
+    "worked/history/13-regenerated-follow-up/before.json": {
+      "raw_sha256": "26b96c6b9f381e53112a3ded084d33897885cd20ba232d55c3c98c2f6bd34c31",
+      "size_bytes": 85048
+    },
+    "worked/history/13-regenerated-follow-up/change.json": {
+      "raw_sha256": "7425e7b6eee9eca5a88b5deccfb5a20d5afcc57c19a91c56a2071d8f84a32c14",
+      "size_bytes": 3546
+    },
+    "worked/history/13-regenerated-follow-up/handoff.md": {
+      "raw_sha256": "a3f9e8c9bd8805cefbb9089a25414736363efcb09cd6f612068c59b9ddd8937e",
+      "size_bytes": 12523
+    },
+    "worked/history/13-regenerated-follow-up/knowledge.json": {
+      "raw_sha256": "b609bae8d53eb23d3345210e1989729a5145bb5bec5a394ea9dbae7d366e6207",
+      "size_bytes": 111267
+    },
+    "worked/history/13-regenerated-follow-up/receipt.json": {
+      "raw_sha256": "1149be3883f688ac99a9e9ee16b02b4a0ed033b253276d48de328f0a3f513740",
+      "size_bytes": 17166
+    },
+    "worked/controls/control-unsupported-cause/before.json": {
+      "raw_sha256": "e2744897a1e7deb228e412d14170f40beb5b2649a3a53061f6d467f549c20de8",
+      "size_bytes": 139611
+    },
+    "worked/controls/control-unsupported-cause/change.json": {
+      "raw_sha256": "1426dd8f6fe473138705e9ddf04b0d0d64327fd7ee45a3023403539e71d0a03b",
+      "size_bytes": 1251
+    },
+    "worked/controls/control-unsupported-cause/handoff.md": {
+      "raw_sha256": "19d9a70af70e862a8fff182c2a8143d2994b444c7ed0a3bd5a24a3ea6fb0472b",
+      "size_bytes": 17259
+    },
+    "worked/controls/control-unsupported-cause/knowledge.json": {
+      "raw_sha256": "28d8b52c7ebc6250d124c96c9bc5bc8f7b309e98025756def57f972d603ce027",
+      "size_bytes": 141043
+    },
+    "worked/controls/control-unsupported-cause/receipt.json": {
+      "raw_sha256": "4018d5a10cf975b52eea62c877ad86408a69b30fb9bde1dd100e9e5a8e263888",
+      "size_bytes": 1335
+    }
+  },
+  "private_receiving": "Original pre-call and runtime stages, failures and final actual process records remain private; no unavailable raw PID/wire or company proof invented.",
+  "company_acceptance": "not_run",
+  "human_usefulness": "not_measured",
+  "private_receiving_proof_sha256": "4ebc8eb4301abf0f770c6572eb56de47f2477800083cb04075edd3299ebd01b8",
+  "prospective_criteria": {
+    "path": "ACCEPTANCE.json",
+    "raw_sha256": "1148b6cb9785fe3a26c7c66a384e7e0d95d0d5b307de51e30892e19ffaee75c0"
+  },
+  "runtime_successor": "Normal runtime-v4 follows two runner boundary controls; v1 semantic failure and v2/v3 accepted earlier scopes remain private and unmodified. Normal30calls/24checks unchanged.",
+  "byte_policy": "Captured process-output JSON under worked/checks retains exact producer bytes, including CRLF; other authored/generated text uses the declared LF policy. No captured stream was normalized to fit a hash."
+}

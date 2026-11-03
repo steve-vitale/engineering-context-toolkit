@@ -4976,6 +4976,24 @@
         "examples/opportunity-screen/source-policy/PROVENANCE.json",
         "scripts/test_question_engine.py"
       ]
+    },
+    {
+      "id": "A318",
+      "function": "intake_and_reuse",
+      "date": "2026-11-03",
+      "change": "Compose source-bound investigation retention with existing tools and repair missing-basis versus observed-difference reporting.",
+      "hypothesis": "A recipient needs the original explanation, planned check, actual contradictory evidence, source revisions and current reuse check together; existing capture/readback can retain this without another analysis or governance service.",
+      "evidence": "Twelve prospective retention criteria; final30 actual CLIs and24 checks, complete source/prior-packet/claim/readback retention and final report-bound successful check. Independent review caught an unavailable-method mismatch in the mechanically passing original run. Five frozen regression methods expose9 original failures;11 matched reports preserve whole audits/raw inputs and change only method/gap codes. Missing stays distinct from observed differences, including genuine typed parameter differences alongside unavailable evidence. Original29-call runs and observer/cleanup corrections remain retained.",
+      "runs": "One existing exposed fictional FERM-101 family, actual normal local tools and independent source/semantic receiving. No new model, plant, human/company trial, process execution, causal or kinetic validation.",
+      "verdict": "kept",
+      "why": "Delivers authored investigation and outcome retention as an existing-tool composition with concrete own-input steps. Roles/logic remain manual; accepted resolutions, authority, automatic monitoring and actual recipient/company acceptance remain open.",
+      "source": [
+        "docs/JOURNAL.md#164-retain-an-investigation-and-distinguish-missing-evidence-from-a-failed-explanation",
+        "examples/batch-analysis/investigation/README.md",
+        "examples/batch-analysis/investigation/PROVENANCE.json",
+        "scripts/test_investigation_example.py",
+        "scripts/test_join_batch_records.py"
+      ]
     }
   ],
   "not_tried": [

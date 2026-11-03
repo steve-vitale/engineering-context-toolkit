@@ -1,0 +1,131 @@
+{
+  "schema": "knowledge-capture-1",
+  "base_sha256": "b609bae8d53eb23d3345210e1989729a5145bb5bec5a394ea9dbae7d366e6207",
+  "revision": "16-lab-follow-up",
+  "contributor": "Fictional example author; no authenticated identity.",
+  "reason": "Retain this explicit investigation contribution and its exact prior state.",
+  "new_sources": [
+    {
+      "id": "source:join-lab-r2",
+      "document_id": "JOIN",
+      "source_revision": "2-lab",
+      "title": "Lab revision scenario with baseline feed",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/15-revised-lab-comparison/batch_join.json"
+    },
+    {
+      "id": "source:labs-r2",
+      "document_id": "LABS",
+      "source_revision": "2",
+      "title": "Explicit revised lab source",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/sources/revised-lab/sources/labs.csv"
+    },
+    {
+      "id": "source:lab-reuse-check",
+      "document_id": "LAB-REUSE-CHECK",
+      "source_revision": "1",
+      "title": "Dated lab-source change check",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/checks/14-old-join-lab-check.json"
+    },
+    {
+      "id": "source:manifest-lab-r2",
+      "document_id": "MANIFEST",
+      "source_revision": "2-lab",
+      "title": "Explicit lab-source scenario selection",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/sources/revised-lab/manifest.json"
+    },
+    {
+      "id": "source:join-check-lab-r2",
+      "document_id": "JOIN-CHECK",
+      "source_revision": "2-lab",
+      "title": "Dated successful final lab-report reproduction",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/checks/15-current-lab-check.json"
+    }
+  ],
+  "claims": [
+    {
+      "id": "observation:lab-source-revision",
+      "title": "Observation: revised reported assay",
+      "summary": "Authored investigation record; role is prose, not a validated type.",
+      "basis": "cited_record",
+      "statement": "In the separate lab-revision scenario, B-lab revision 2 reports 13 g/L, so the A/B reported concentration contrast is 3 g/L. Revision 1 at 12 g/L remains historical. This report uses baseline feed 2/4 kg; it is not the 2/6 kg feed branch and proves no intervention or cause.",
+      "evidence": [
+        {
+          "source_record_id": "source:join-lab-r2",
+          "locator": "/rows/1/lab_value; /comparison/differences/0",
+          "currency_requirement": "selected_basis"
+        },
+        {
+          "source_record_id": "source:labs-r2",
+          "locator": "CSV record 3: B-lab value and source_revision",
+          "currency_requirement": "selected_basis"
+        },
+        {
+          "source_record_id": "source:feed-r1",
+          "locator": "CSV records 5-7: historical B baseline-feed branch",
+          "currency_requirement": "snapshot_evidence"
+        },
+        {
+          "source_record_id": "source:join-check-lab-r2",
+          "locator": "/status; /saved_report_sha256; /changes",
+          "currency_requirement": "selected_basis"
+        }
+      ],
+      "depends_on": [],
+      "owner_roles": [],
+      "known_unknowns": [
+        "Actual process identity, execution, causation and company acceptance remain unverified."
+      ],
+      "interpretation_limit": "Proposed and unreviewed. A recorded-source result is not an approved decision or process intervention."
+    },
+    {
+      "id": "disposition:reopened-source-basis",
+      "title": "Proposed handoff: keep conflicting revisions and unresolved causes",
+      "summary": "Authored investigation record; role is prose, not a validated type.",
+      "basis": "interpretation",
+      "statement": "Retain H1, the recorded recipe check and its contrary evidence, the earlier 12 g/L report, the revised 13 g/L report and the separate feed-source scenario. The final lab-report join check matched the explicitly selected inputs during this run. Before future reuse, select a coherent manifest and rerun join --check. Request qualified execution, mapping, clock, sampling and assay evidence from the responsible engineer/lab owner. No causal conclusion, recipe adoption or operating change is approved; receiving owner remains unassigned.",
+      "evidence": [
+        {
+          "source_record_id": "source:join-lab-r2",
+          "locator": "/rows; /comparison; /limits",
+          "currency_requirement": "selected_basis"
+        },
+        {
+          "source_record_id": "source:labs-r2",
+          "locator": "CSV record 3: B-lab",
+          "currency_requirement": "selected_basis"
+        },
+        {
+          "source_record_id": "source:join-check-lab-r2",
+          "locator": "/status; /saved_report_sha256; /changes",
+          "currency_requirement": "selected_basis"
+        }
+      ],
+      "depends_on": [
+        "hypothesis:recipe-revision",
+        "check:recipe-revision-result",
+        "observation:initial-records",
+        "observation:lab-source-revision",
+        "observation:feed-source-revision"
+      ],
+      "owner_roles": [],
+      "known_unknowns": [
+        "Actual process identity, execution, causation and company acceptance remain unverified."
+      ],
+      "interpretation_limit": "Proposed and unreviewed. A recorded-source result is not an approved decision or process intervention."
+    }
+  ],
+  "select_sources": {
+    "JOIN": "source:join-lab-r2",
+    "LABS": "source:labs-r2",
+    "LAB-REUSE-CHECK": "source:lab-reuse-check",
+    "MANIFEST": "source:manifest-lab-r2",
+    "JOIN-CHECK": "source:join-check-lab-r2",
+    "FEED": "source:feed-r1",
+    "ANALYSIS": "source:analysis-r1"
+  }
+}

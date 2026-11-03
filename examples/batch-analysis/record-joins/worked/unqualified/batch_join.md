@@ -25,6 +25,7 @@ Complete originals and future/unselected records are in the separately labelled 
 - B: When the selected analysis plan became available is unknown; record that basis.
 - B: Supply the explicitly selected recipes record; none is chosen automatically.
 - At least one selected batch still has evidence gaps.
+- Some comparison-basis records are unavailable or unqualified. Resolve those gaps before interpreting differences.
 
 ## Continuing ownership
 

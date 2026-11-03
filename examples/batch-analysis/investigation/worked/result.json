@@ -1,0 +1,658 @@
+{
+  "schema": "fictional-investigation-composition-1",
+  "passed": true,
+  "failure": null,
+  "checks": {
+    "03-check-initial-report-bound": true,
+    "initial-values": true,
+    "same-declared-recipe": true,
+    "initial-observation-source-matches": true,
+    "missing-is-not-negative": true,
+    "feed-edit-target-exists": true,
+    "07-old-join-feed-check-report-bound": true,
+    "snapshot-is-not-external-freshness": true,
+    "stale-calculation-withholds-feed": true,
+    "selected-feed-reopens-review": true,
+    "feed-change-propagates-distinct-reason": true,
+    "12-regenerated-check-report-bound": true,
+    "regenerated-source-values": true,
+    "14-old-join-lab-check-report-bound": true,
+    "15-current-lab-check-report-bound": true,
+    "revised-lab-values": true,
+    "old-lab-source-reopens-review": true,
+    "final-handoff-retains-source-change-path": true,
+    "new-lab-does-not-hide-cross-scenario-feed": true,
+    "capture-is-not-scientific-approval": true,
+    "all-prior-records-exact": true,
+    "original-hypothesis-retained": true,
+    "all-claims-unreviewed": true,
+    "capture-receipts-complete": true
+  },
+  "commands": [
+    {
+      "label": "01-plan",
+      "exit": 0,
+      "expected": 0,
+      "pid": 70080,
+      "start_utc": "2026-11-03T07:31:52.726286+00:00",
+      "end_utc": "2026-11-03T07:31:52.859875+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/knowledge_capture.py",
+        "--knowledge",
+        "<toolkit>\\examples\\batch-analysis\\investigation\\seed.knowledge.json",
+        "--change",
+        "<exercise-output>\\requests\\01-plan.json",
+        "--out",
+        "<exercise-output>\\01-plan",
+        "--source",
+        "source:notes-r1",
+        "<toolkit>\\examples\\batch-analysis\\investigation\\INVESTIGATION-NOTES.md"
+      ]
+    },
+    {
+      "label": "02-join-initial",
+      "exit": 0,
+      "expected": 0,
+      "pid": 81724,
+      "start_utc": "2026-11-03T07:31:52.875907+00:00",
+      "end_utc": "2026-11-03T07:31:53.064776+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "<exercise-output>\\sources\\initial\\manifest.json",
+        "--out",
+        "<exercise-output>\\02-join-initial"
+      ]
+    },
+    {
+      "label": "03-check-initial",
+      "exit": 0,
+      "expected": 0,
+      "pid": 96288,
+      "start_utc": "2026-11-03T07:31:53.066614+00:00",
+      "end_utc": "2026-11-03T07:31:53.278519+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "<exercise-output>\\sources\\initial\\manifest.json",
+        "--check",
+        "<exercise-output>\\02-join-initial\\batch_join.json"
+      ]
+    },
+    {
+      "label": "04-record-check",
+      "exit": 0,
+      "expected": 0,
+      "pid": 90964,
+      "start_utc": "2026-11-03T07:31:53.297407+00:00",
+      "end_utc": "2026-11-03T07:31:53.477208+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/knowledge_capture.py",
+        "--knowledge",
+        "<exercise-output>\\01-plan\\knowledge.json",
+        "--change",
+        "<exercise-output>\\requests\\04-record-check.json",
+        "--out",
+        "<exercise-output>\\04-record-check",
+        "--source",
+        "source:join-r1",
+        "<exercise-output>\\02-join-initial\\batch_join.json",
+        "--source",
+        "source:join-check-r1",
+        "<exercise-output>\\checks\\03-check-initial.json",
+        "--source",
+        "source:recipe-check-r1",
+        "<exercise-output>\\checks\\recipe-record-result.json",
+        "--source",
+        "source:manifest-r1",
+        "<exercise-output>\\sources\\initial\\manifest.json",
+        "--source",
+        "source:plan-r1",
+        "<exercise-output>\\sources\\initial\\sources\\analysis.plan.json",
+        "--source",
+        "source:analysis-r1",
+        "<exercise-output>\\sources\\initial\\analysis\\batch_analysis.json",
+        "--source",
+        "source:events-r1",
+        "<exercise-output>\\sources\\initial\\sources\\events.csv",
+        "--source",
+        "source:feed-r1",
+        "<exercise-output>\\sources\\initial\\sources\\observations.csv",
+        "--source",
+        "source:labs-r1",
+        "<exercise-output>\\sources\\initial\\sources\\labs.csv",
+        "--source",
+        "source:outcomes-r1",
+        "<exercise-output>\\sources\\initial\\sources\\outcomes.csv",
+        "--source",
+        "source:recipes-r1",
+        "<exercise-output>\\sources\\initial\\sources\\recipes.csv",
+        "--source",
+        "source:batches-r1",
+        "<exercise-output>\\sources\\initial\\sources\\batches.csv"
+      ]
+    },
+    {
+      "label": "read-initial-observation",
+      "exit": 0,
+      "expected": 0,
+      "pid": 99136,
+      "start_utc": "2026-11-03T07:31:53.485422+00:00",
+      "end_utc": "2026-11-03T07:31:53.634186+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "<exercise-output>\\04-record-check\\knowledge.json",
+        "get",
+        "--record-id",
+        "observation:initial-records"
+      ]
+    },
+    {
+      "label": "read-hypothesis",
+      "exit": 0,
+      "expected": 0,
+      "pid": 102216,
+      "start_utc": "2026-11-03T07:31:53.643157+00:00",
+      "end_utc": "2026-11-03T07:31:53.769809+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "<exercise-output>\\04-record-check\\knowledge.json",
+        "get",
+        "--record-id",
+        "hypothesis:recipe-revision"
+      ]
+    },
+    {
+      "label": "read-plan",
+      "exit": 0,
+      "expected": 0,
+      "pid": 99760,
+      "start_utc": "2026-11-03T07:31:53.779430+00:00",
+      "end_utc": "2026-11-03T07:31:53.908921+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "<exercise-output>\\04-record-check\\knowledge.json",
+        "get",
+        "--record-id",
+        "plan:recipe-record-check"
+      ]
+    },
+    {
+      "label": "read-recorded-check",
+      "exit": 0,
+      "expected": 0,
+      "pid": 97744,
+      "start_utc": "2026-11-03T07:31:53.919663+00:00",
+      "end_utc": "2026-11-03T07:31:54.045848+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "<exercise-output>\\04-record-check\\knowledge.json",
+        "get",
+        "--record-id",
+        "check:recipe-revision-result"
+      ]
+    },
+    {
+      "label": "read-initial-disposition",
+      "exit": 0,
+      "expected": 0,
+      "pid": 98532,
+      "start_utc": "2026-11-03T07:31:54.054944+00:00",
+      "end_utc": "2026-11-03T07:31:54.173669+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "<exercise-output>\\04-record-check\\knowledge.json",
+        "get",
+        "--record-id",
+        "disposition:recipe-explanation"
+      ]
+    },
+    {
+      "label": "05-earlier-cutoff",
+      "exit": 0,
+      "expected": 0,
+      "pid": 87208,
+      "start_utc": "2026-11-03T07:31:54.190739+00:00",
+      "end_utc": "2026-11-03T07:31:54.354646+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "<exercise-output>\\sources\\earlier-cutoff\\manifest.json",
+        "--out",
+        "<exercise-output>\\05-earlier-cutoff"
+      ]
+    },
+    {
+      "label": "06-missing-evidence",
+      "exit": 0,
+      "expected": 0,
+      "pid": 98588,
+      "start_utc": "2026-11-03T07:31:54.365055+00:00",
+      "end_utc": "2026-11-03T07:31:54.533181+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/knowledge_capture.py",
+        "--knowledge",
+        "<exercise-output>\\04-record-check\\knowledge.json",
+        "--change",
+        "<exercise-output>\\requests\\06-missing-evidence.json",
+        "--out",
+        "<exercise-output>\\06-missing-evidence",
+        "--source",
+        "source:early-join",
+        "<exercise-output>\\05-earlier-cutoff\\batch_join.json"
+      ]
+    },
+    {
+      "label": "07-old-join-feed-check",
+      "exit": 1,
+      "expected": 1,
+      "pid": 100536,
+      "start_utc": "2026-11-03T07:31:54.551630+00:00",
+      "end_utc": "2026-11-03T07:31:54.712975+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "<exercise-output>\\sources\\changed-feed\\manifest.json",
+        "--check",
+        "<exercise-output>\\02-join-initial\\batch_join.json"
+      ]
+    },
+    {
+      "label": "read-snapshot-before-selection",
+      "exit": 0,
+      "expected": 0,
+      "pid": 93812,
+      "start_utc": "2026-11-03T07:31:54.716832+00:00",
+      "end_utc": "2026-11-03T07:31:54.870309+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "<exercise-output>\\06-missing-evidence\\knowledge.json",
+        "get",
+        "--record-id",
+        "observation:initial-records"
+      ]
+    },
+    {
+      "label": "08-stale-calculation",
+      "exit": 0,
+      "expected": 0,
+      "pid": 98488,
+      "start_utc": "2026-11-03T07:31:54.882005+00:00",
+      "end_utc": "2026-11-03T07:31:55.033989+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "<exercise-output>\\sources\\changed-feed\\manifest.json",
+        "--out",
+        "<exercise-output>\\08-stale-calculation"
+      ]
+    },
+    {
+      "label": "09-select-changed-feed",
+      "exit": 0,
+      "expected": 0,
+      "pid": 102076,
+      "start_utc": "2026-11-03T07:31:55.043029+00:00",
+      "end_utc": "2026-11-03T07:31:55.207511+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/knowledge_capture.py",
+        "--knowledge",
+        "<exercise-output>\\06-missing-evidence\\knowledge.json",
+        "--change",
+        "<exercise-output>\\requests\\09-select-changed-feed.json",
+        "--out",
+        "<exercise-output>\\09-select-changed-feed",
+        "--source",
+        "source:feed-r2",
+        "<exercise-output>\\sources\\changed-feed\\sources\\observations.csv",
+        "--source",
+        "source:join-check-failed",
+        "<exercise-output>\\checks\\07-old-join-feed-check.json"
+      ]
+    },
+    {
+      "label": "read-feed-reopened",
+      "exit": 0,
+      "expected": 0,
+      "pid": 92272,
+      "start_utc": "2026-11-03T07:31:55.217792+00:00",
+      "end_utc": "2026-11-03T07:31:55.371681+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "<exercise-output>\\09-select-changed-feed\\knowledge.json",
+        "get",
+        "--record-id",
+        "observation:initial-records"
+      ]
+    },
+    {
+      "label": "read-dependent-disposition",
+      "exit": 0,
+      "expected": 0,
+      "pid": 88636,
+      "start_utc": "2026-11-03T07:31:55.382100+00:00",
+      "end_utc": "2026-11-03T07:31:55.523085+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "<exercise-output>\\09-select-changed-feed\\knowledge.json",
+        "get",
+        "--record-id",
+        "disposition:recipe-explanation"
+      ]
+    },
+    {
+      "label": "10-regenerate-calculation",
+      "exit": 0,
+      "expected": 0,
+      "pid": 81616,
+      "start_utc": "2026-11-03T07:31:55.534786+00:00",
+      "end_utc": "2026-11-03T07:31:55.675372+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/batch_analysis.py",
+        "--csv",
+        "<exercise-output>\\sources\\changed-feed\\sources\\observations.csv",
+        "--plan",
+        "<exercise-output>\\sources\\changed-feed\\sources\\analysis.plan.json",
+        "--out",
+        "<exercise-output>\\sources\\changed-feed\\regenerated-analysis"
+      ]
+    },
+    {
+      "label": "11-regenerated-comparison",
+      "exit": 0,
+      "expected": 0,
+      "pid": 82728,
+      "start_utc": "2026-11-03T07:31:55.685700+00:00",
+      "end_utc": "2026-11-03T07:31:55.847348+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "<exercise-output>\\sources\\changed-feed\\manifest.json",
+        "--out",
+        "<exercise-output>\\11-regenerated-comparison"
+      ]
+    },
+    {
+      "label": "12-regenerated-check",
+      "exit": 0,
+      "expected": 0,
+      "pid": 96816,
+      "start_utc": "2026-11-03T07:31:55.849170+00:00",
+      "end_utc": "2026-11-03T07:31:55.999985+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "<exercise-output>\\sources\\changed-feed\\manifest.json",
+        "--check",
+        "<exercise-output>\\11-regenerated-comparison\\batch_join.json"
+      ]
+    },
+    {
+      "label": "13-regenerated-follow-up",
+      "exit": 0,
+      "expected": 0,
+      "pid": 94320,
+      "start_utc": "2026-11-03T07:31:56.005094+00:00",
+      "end_utc": "2026-11-03T07:31:56.178910+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/knowledge_capture.py",
+        "--knowledge",
+        "<exercise-output>\\09-select-changed-feed\\knowledge.json",
+        "--change",
+        "<exercise-output>\\requests\\13-regenerated-follow-up.json",
+        "--out",
+        "<exercise-output>\\13-regenerated-follow-up",
+        "--source",
+        "source:join-feed-r2",
+        "<exercise-output>\\11-regenerated-comparison\\batch_join.json",
+        "--source",
+        "source:join-check-r2",
+        "<exercise-output>\\checks\\12-regenerated-check.json",
+        "--source",
+        "source:analysis-r2",
+        "<exercise-output>\\sources\\changed-feed\\regenerated-analysis\\batch_analysis.json",
+        "--source",
+        "source:manifest-feed-r2",
+        "<exercise-output>\\sources\\changed-feed\\manifest.json"
+      ]
+    },
+    {
+      "label": "14-old-join-lab-check",
+      "exit": 1,
+      "expected": 1,
+      "pid": 93228,
+      "start_utc": "2026-11-03T07:31:56.199189+00:00",
+      "end_utc": "2026-11-03T07:31:56.355958+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "<exercise-output>\\sources\\revised-lab\\manifest.json",
+        "--check",
+        "<exercise-output>\\02-join-initial\\batch_join.json"
+      ]
+    },
+    {
+      "label": "15-revised-lab-comparison",
+      "exit": 0,
+      "expected": 0,
+      "pid": 101708,
+      "start_utc": "2026-11-03T07:31:56.361803+00:00",
+      "end_utc": "2026-11-03T07:31:56.513359+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "<exercise-output>\\sources\\revised-lab\\manifest.json",
+        "--out",
+        "<exercise-output>\\15-revised-lab-comparison"
+      ]
+    },
+    {
+      "label": "15-current-lab-check",
+      "exit": 0,
+      "expected": 0,
+      "pid": 101904,
+      "start_utc": "2026-11-03T07:31:56.515246+00:00",
+      "end_utc": "2026-11-03T07:31:56.660825+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/join_batch_records.py",
+        "--manifest",
+        "<exercise-output>\\sources\\revised-lab\\manifest.json",
+        "--check",
+        "<exercise-output>\\15-revised-lab-comparison\\batch_join.json"
+      ]
+    },
+    {
+      "label": "16-lab-follow-up",
+      "exit": 0,
+      "expected": 0,
+      "pid": 98852,
+      "start_utc": "2026-11-03T07:31:56.675517+00:00",
+      "end_utc": "2026-11-03T07:31:56.834300+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/knowledge_capture.py",
+        "--knowledge",
+        "<exercise-output>\\13-regenerated-follow-up\\knowledge.json",
+        "--change",
+        "<exercise-output>\\requests\\16-lab-follow-up.json",
+        "--out",
+        "<exercise-output>\\16-lab-follow-up",
+        "--source",
+        "source:join-lab-r2",
+        "<exercise-output>\\15-revised-lab-comparison\\batch_join.json",
+        "--source",
+        "source:labs-r2",
+        "<exercise-output>\\sources\\revised-lab\\sources\\labs.csv",
+        "--source",
+        "source:lab-reuse-check",
+        "<exercise-output>\\checks\\14-old-join-lab-check.json",
+        "--source",
+        "source:manifest-lab-r2",
+        "<exercise-output>\\sources\\revised-lab\\manifest.json",
+        "--source",
+        "source:join-check-lab-r2",
+        "<exercise-output>\\checks\\15-current-lab-check.json"
+      ]
+    },
+    {
+      "label": "read-retained-initial",
+      "exit": 0,
+      "expected": 0,
+      "pid": 100896,
+      "start_utc": "2026-11-03T07:31:56.843743+00:00",
+      "end_utc": "2026-11-03T07:31:56.991169+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "<exercise-output>\\16-lab-follow-up\\knowledge.json",
+        "get",
+        "--record-id",
+        "observation:initial-records"
+      ]
+    },
+    {
+      "label": "read-new-lab",
+      "exit": 0,
+      "expected": 0,
+      "pid": 101924,
+      "start_utc": "2026-11-03T07:31:57.001554+00:00",
+      "end_utc": "2026-11-03T07:31:57.144963+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "<exercise-output>\\16-lab-follow-up\\knowledge.json",
+        "get",
+        "--record-id",
+        "observation:lab-source-revision"
+      ]
+    },
+    {
+      "label": "read-final-handoff",
+      "exit": 0,
+      "expected": 0,
+      "pid": 93616,
+      "start_utc": "2026-11-03T07:31:57.155285+00:00",
+      "end_utc": "2026-11-03T07:31:57.290925+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "<exercise-output>\\16-lab-follow-up\\knowledge.json",
+        "get",
+        "--record-id",
+        "disposition:reopened-source-basis"
+      ]
+    },
+    {
+      "label": "control-unsupported-cause",
+      "exit": 0,
+      "expected": 0,
+      "pid": 98052,
+      "start_utc": "2026-11-03T07:31:57.301902+00:00",
+      "end_utc": "2026-11-03T07:31:57.461708+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/knowledge_capture.py",
+        "--knowledge",
+        "<exercise-output>\\16-lab-follow-up\\knowledge.json",
+        "--change",
+        "<exercise-output>\\requests\\control-unsupported-cause.json",
+        "--out",
+        "<exercise-output>\\control-unsupported-cause"
+      ]
+    },
+    {
+      "label": "read-unsupported-control",
+      "exit": 0,
+      "expected": 0,
+      "pid": 83952,
+      "start_utc": "2026-11-03T07:31:57.467536+00:00",
+      "end_utc": "2026-11-03T07:31:57.604667+00:00",
+      "display_template": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "<exercise-output>\\control-unsupported-cause\\knowledge.json",
+        "get",
+        "--record-id",
+        "control:unsupported-cause"
+      ]
+    }
+  ],
+  "selected_source_code_unchanged": true,
+  "scope": "Authored exposed fictional retention exercise. Display templates are not raw argv; ACTUAL-JOBS.json and logs retain actual invocations.",
+  "guarantees": [
+    "Exact source/prior-packet retention and declared-dependency diagnostics",
+    "Explicit current join reproduction when called"
+  ],
+  "not_established": [
+    "Scientific truth or typed investigation-role validation",
+    "Causation, kinetics, process execution or approval",
+    "Automatic external-file monitoring or accepted-resolution selection",
+    "Human usefulness or company acceptance"
+  ]
+}

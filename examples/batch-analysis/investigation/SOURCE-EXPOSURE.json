@@ -1,0 +1,223 @@
+{
+  "schema": "g02-source-exposure-1",
+  "family": "Previously exposed agent-authored fictional FERM-101 A/B record-joins family. Not a new plant, held-out evaluation or independent source judgment.",
+  "source_copies": {
+    "manifest-qualified.json": {
+      "original_repo_path": "examples/batch-analysis/record-joins/manifest-qualified.json",
+      "copy": "basis/manifest-qualified.json",
+      "sha256_raw": "b1a8462cddbc3316f75a236767dfe8fc388f7f590a7b88533547329da74d6c5e",
+      "bytes": 1750
+    },
+    "sources/batches.csv": {
+      "original_repo_path": "examples/batch-analysis/record-joins/sources/batches.csv",
+      "copy": "basis/sources/batches.csv",
+      "sha256_raw": "cef62204c577a1b9c736355de95b3fff6020c8ea81c19a197aae271270ebc3be",
+      "bytes": 440
+    },
+    "sources/events.csv": {
+      "original_repo_path": "examples/batch-analysis/record-joins/sources/events.csv",
+      "copy": "basis/sources/events.csv",
+      "sha256_raw": "5ff6174df2b77f3ac2cd2f27dd3bba23281ce7ab618e1c49aa45cb9c793e8bfb",
+      "bytes": 399
+    },
+    "sources/recipes.csv": {
+      "original_repo_path": "examples/batch-analysis/record-joins/sources/recipes.csv",
+      "copy": "basis/sources/recipes.csv",
+      "sha256_raw": "d2f526bbd2118505c69dd2760698559312821513e681f4adb423d3138c7bb444",
+      "bytes": 473
+    },
+    "sources/labs.csv": {
+      "original_repo_path": "examples/batch-analysis/record-joins/sources/labs.csv",
+      "copy": "basis/sources/labs.csv",
+      "sha256_raw": "d9188081d84faee8553ea641d0474133fc8164fc7af5f54b1b5b90cd2213da18",
+      "bytes": 460
+    },
+    "sources/outcomes.csv": {
+      "original_repo_path": "examples/batch-analysis/record-joins/sources/outcomes.csv",
+      "copy": "basis/sources/outcomes.csv",
+      "sha256_raw": "90a87232780b10541dcfaef0b7bb36e5b1f35e0fb42e348b70794e246bc37f6b",
+      "bytes": 444
+    },
+    "sources/observations.csv": {
+      "original_repo_path": "examples/batch-analysis/record-joins/sources/observations.csv",
+      "copy": "basis/sources/observations.csv",
+      "sha256_raw": "9c6d87bb4f595d6296e7f8ad3c6e8f5966d9619976b825093b8986a4f2c91f67",
+      "bytes": 114
+    },
+    "sources/analysis.plan.json": {
+      "original_repo_path": "examples/batch-analysis/record-joins/sources/analysis.plan.json",
+      "copy": "basis/sources/analysis.plan.json",
+      "sha256_raw": "5d85ecba4c2402736d11d2a82342e2bc033b8df3bed6c94bf7e14af4295a77aa",
+      "bytes": 902
+    },
+    "analysis/batch_analysis.json": {
+      "original_repo_path": "examples/batch-analysis/record-joins/analysis/batch_analysis.json",
+      "copy": "basis/analysis/batch_analysis.json",
+      "sha256_raw": "14131b8d4ad1e939216bcefaf62cdf7d5de29758ebc1c4d95657a0821311371b",
+      "bytes": 3367
+    },
+    "worked/initial/batch_join.json": {
+      "original_repo_path": "examples/batch-analysis/record-joins/worked/initial/batch_join.json",
+      "copy": "basis/worked/initial/batch_join.json",
+      "sha256_raw": "fb742d8b03e58de6a7a6d46ee94169e4073102d5d6ad359f3748562fc5fe674f",
+      "bytes": 10231
+    },
+    "worked/initial/batch_join.md": {
+      "original_repo_path": "examples/batch-analysis/record-joins/worked/initial/batch_join.md",
+      "copy": "basis/worked/initial/batch_join.md",
+      "sha256_raw": "e5724b0ec624de99bdc7f4fd32fdeba0c2da3c02a7a6db505ae98c0278bd59be",
+      "bytes": 1302
+    },
+    "worked/future-lab/batch_join.json": {
+      "original_repo_path": "examples/batch-analysis/record-joins/worked/future-lab/batch_join.json",
+      "copy": "basis/worked/future-lab/batch_join.json",
+      "sha256_raw": "2ff6e09927b109403b08fb5b28e383f0197f1ef3f539ba9fffcb113d6f0d9b04",
+      "bytes": 9611
+    },
+    "worked/future-lab/batch_join.md": {
+      "original_repo_path": "examples/batch-analysis/record-joins/worked/future-lab/batch_join.md",
+      "copy": "basis/worked/future-lab/batch_join.md",
+      "sha256_raw": "410a95cb5db440abac87242a66e4a34b12b37f5f589dc658b03aa37f3c6534a1",
+      "bytes": 1316
+    },
+    "worked/revised-lab/batch_join.json": {
+      "original_repo_path": "examples/batch-analysis/record-joins/worked/revised-lab/batch_join.json",
+      "copy": "basis/worked/revised-lab/batch_join.json",
+      "sha256_raw": "b8538f1146dba1b0ffab955a3f60e26cc1c1af2bde6a5547828d60f0c746dd3e",
+      "bytes": 10231
+    },
+    "worked/revised-lab/batch_join.md": {
+      "original_repo_path": "examples/batch-analysis/record-joins/worked/revised-lab/batch_join.md",
+      "copy": "basis/worked/revised-lab/batch_join.md",
+      "sha256_raw": "5a7bc32fda710c4cffa4d98f6a88879676da37eaeb28d78c4acbdd06cff1254f",
+      "bytes": 1302
+    },
+    "worked/stale-analysis/batch_join.json": {
+      "original_repo_path": "examples/batch-analysis/record-joins/worked/stale-analysis/batch_join.json",
+      "copy": "basis/worked/stale-analysis/batch_join.json",
+      "sha256_raw": "4a2db3417f9c4d6c2d9fd1b530ff41e61be422fced85e72e82a90335929dea92",
+      "bytes": 10137
+    },
+    "worked/stale-analysis/batch_join.md": {
+      "original_repo_path": "examples/batch-analysis/record-joins/worked/stale-analysis/batch_join.md",
+      "copy": "basis/worked/stale-analysis/batch_join.md",
+      "sha256_raw": "2098a34829f9f7b441c81a52386c91a93846990b624300c9c542f16aaae0fd22",
+      "bytes": 1357
+    },
+    "worked/regenerated/batch_join.json": {
+      "original_repo_path": "examples/batch-analysis/record-joins/worked/regenerated/batch_join.json",
+      "copy": "basis/worked/regenerated/batch_join.json",
+      "sha256_raw": "fb8f8462ed9ab530555ed97bfb5a4fbae772add004bb7803836d1f9635a4fd3b",
+      "bytes": 10231
+    },
+    "worked/regenerated/batch_join.md": {
+      "original_repo_path": "examples/batch-analysis/record-joins/worked/regenerated/batch_join.md",
+      "copy": "basis/worked/regenerated/batch_join.md",
+      "sha256_raw": "2737d37fe4fcf5752ea023f76c47d22b0cd5542767fad18014595f0bd0bc5d36",
+      "bytes": 1302
+    },
+    "worked/sources/revised-lab/sources/labs.csv": {
+      "original_repo_path": "examples/batch-analysis/record-joins/worked/sources/revised-lab/sources/labs.csv",
+      "copy": "basis/worked/sources/revised-lab/sources/labs.csv",
+      "sha256_raw": "00cd11921917df501cae01189f91dde86dc1d2f7def53143c08556978e42c9b8",
+      "bytes": 460
+    },
+    "worked/sources/changed-upstream/sources/observations.csv": {
+      "original_repo_path": "examples/batch-analysis/record-joins/worked/sources/changed-upstream/sources/observations.csv",
+      "copy": "basis/worked/sources/changed-upstream/sources/observations.csv",
+      "sha256_raw": "e24e260a05fe74539cf3aaef23542a9eb9fdffc3f432030c12d175d372c3fd6c",
+      "bytes": 114
+    },
+    "worked/initial/inputs/000.json": {
+      "original_repo_path": "examples/batch-analysis/record-joins/worked/initial/inputs/000.json",
+      "copy": "basis/worked/initial/inputs/000.json",
+      "sha256_raw": "b1a8462cddbc3316f75a236767dfe8fc388f7f590a7b88533547329da74d6c5e",
+      "bytes": 1750
+    },
+    "worked/initial/inputs/001.csv": {
+      "original_repo_path": "examples/batch-analysis/record-joins/worked/initial/inputs/001.csv",
+      "copy": "basis/worked/initial/inputs/001.csv",
+      "sha256_raw": "cef62204c577a1b9c736355de95b3fff6020c8ea81c19a197aae271270ebc3be",
+      "bytes": 440
+    },
+    "worked/initial/inputs/002.csv": {
+      "original_repo_path": "examples/batch-analysis/record-joins/worked/initial/inputs/002.csv",
+      "copy": "basis/worked/initial/inputs/002.csv",
+      "sha256_raw": "5ff6174df2b77f3ac2cd2f27dd3bba23281ce7ab618e1c49aa45cb9c793e8bfb",
+      "bytes": 399
+    },
+    "worked/initial/inputs/003.csv": {
+      "original_repo_path": "examples/batch-analysis/record-joins/worked/initial/inputs/003.csv",
+      "copy": "basis/worked/initial/inputs/003.csv",
+      "sha256_raw": "d9188081d84faee8553ea641d0474133fc8164fc7af5f54b1b5b90cd2213da18",
+      "bytes": 460
+    },
+    "worked/initial/inputs/004.csv": {
+      "original_repo_path": "examples/batch-analysis/record-joins/worked/initial/inputs/004.csv",
+      "copy": "basis/worked/initial/inputs/004.csv",
+      "sha256_raw": "90a87232780b10541dcfaef0b7bb36e5b1f35e0fb42e348b70794e246bc37f6b",
+      "bytes": 444
+    },
+    "worked/initial/inputs/005.csv": {
+      "original_repo_path": "examples/batch-analysis/record-joins/worked/initial/inputs/005.csv",
+      "copy": "basis/worked/initial/inputs/005.csv",
+      "sha256_raw": "d2f526bbd2118505c69dd2760698559312821513e681f4adb423d3138c7bb444",
+      "bytes": 473
+    },
+    "worked/initial/inputs/006.json": {
+      "original_repo_path": "examples/batch-analysis/record-joins/worked/initial/inputs/006.json",
+      "copy": "basis/worked/initial/inputs/006.json",
+      "sha256_raw": "14131b8d4ad1e939216bcefaf62cdf7d5de29758ebc1c4d95657a0821311371b",
+      "bytes": 3367
+    },
+    "worked/initial/inputs/007.csv": {
+      "original_repo_path": "examples/batch-analysis/record-joins/worked/initial/inputs/007.csv",
+      "copy": "basis/worked/initial/inputs/007.csv",
+      "sha256_raw": "9c6d87bb4f595d6296e7f8ad3c6e8f5966d9619976b825093b8986a4f2c91f67",
+      "bytes": 114
+    },
+    "worked/initial/inputs/008.json": {
+      "original_repo_path": "examples/batch-analysis/record-joins/worked/initial/inputs/008.json",
+      "copy": "basis/worked/initial/inputs/008.json",
+      "sha256_raw": "5d85ecba4c2402736d11d2a82342e2bc033b8df3bed6c94bf7e14af4295a77aa",
+      "bytes": 902
+    }
+  },
+  "code_read_only_pins": {
+    "scripts/knowledge_capture.py": {
+      "sha256_raw": "6281105d0c35ff100aa814fd907bd861f239589d3286d2cdb752d6cab2106c87",
+      "bytes": 14617
+    },
+    "scripts/knowledge_snapshot.py": {
+      "sha256_raw": "6b88d2508a514e60c80a70d885c5e7fa3ff8068770dbe2ede053feacf0f906bb",
+      "bytes": 33628
+    },
+    "scripts/join_batch_records.py": {
+      "sha256_raw": "9661507948a440fbed57f86f18a433f945035f6b9b4db8fe76a68c0f5d062f09",
+      "bytes": 26688
+    },
+    "scripts/check_analysis_basis.py": {
+      "sha256_raw": "9bb0b308e39d817b21fb439a1ac5b9f04c6f15caef33bff3fb6da860f7f44080",
+      "bytes": 5692
+    },
+    "scripts/batch_analysis.py": {
+      "sha256_raw": "bd65873d209bdec1746265735a37e0f843bd4fee993ae1c175a7fb9ae6e47ae0",
+      "bytes": 18129
+    },
+    "examples/batch-analysis/record-joins/reproduce.py": {
+      "sha256_raw": "9eef982cd8b5c5f3638440a031d445706e79a6cdc8191f30c81e09576ad64940",
+      "bytes": 7250
+    }
+  },
+  "independent_prospective_criteria": {
+    "sha256_raw": "1148b6cb9785fe3a26c7c66a384e7e0d95d0d5b307de51e30892e19ffaee75c0",
+    "bytes": 8921
+  },
+  "authoring_source": "The author read current scripts, saved reports, original CSVs, TRIED and the independent pre-call criteria. Values here are traced from those existing files. No product import/call or semantic validator was run.",
+  "scope_limits": [
+    "No actual process intervention, scientific causation, kinetics sufficiency or engineering approval.",
+    "Source/quality/time/identity/availability declarations are fictional, not authenticated historical access.",
+    "No public sources or metadata were changed; the root owns runtime composition and later public curation."
+  ],
+  "source_guard": "All selected original file bytes and code pins checked again at authoring end; no whole-working-tree immutability claim."
+}

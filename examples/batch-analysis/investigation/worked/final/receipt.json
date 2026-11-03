@@ -1,0 +1,728 @@
+{
+  "schema": "knowledge-capture-receipt-1",
+  "captured_at": "2026-11-03T07:31:56.798602+00:00",
+  "packet_id": "fictional-ferm101-investigation",
+  "base_sha256": "b609bae8d53eb23d3345210e1989729a5145bb5bec5a394ea9dbae7d366e6207",
+  "knowledge_sha256": "e2744897a1e7deb228e412d14170f40beb5b2649a3a53061f6d467f549c20de8",
+  "contributor_declaration": "Fictional example author; no authenticated identity.",
+  "reason": "Retain this explicit investigation contribution and its exact prior state.",
+  "company_acceptance": "not_established",
+  "source_currency": "selected_snapshot_only",
+  "added_record_ids": [
+    "source:join-lab-r2",
+    "source:labs-r2",
+    "source:lab-reuse-check",
+    "source:manifest-lab-r2",
+    "source:join-check-lab-r2",
+    "observation:lab-source-revision",
+    "disposition:reopened-source-basis"
+  ],
+  "supplied_sources": [
+    {
+      "record_id": "source:join-lab-r2",
+      "raw_sha256": "14462cf2228afc0057e0302089e59850a7bf3a0951e4700cc06b4f0b17a82af5",
+      "size_bytes": 10231
+    },
+    {
+      "record_id": "source:labs-r2",
+      "raw_sha256": "00cd11921917df501cae01189f91dde86dc1d2f7def53143c08556978e42c9b8",
+      "size_bytes": 460
+    },
+    {
+      "record_id": "source:lab-reuse-check",
+      "raw_sha256": "3f0335670d95326d86bb7ab489a3a537bfae42734946b0a62f3570d03b0d4214",
+      "size_bytes": 1004
+    },
+    {
+      "record_id": "source:manifest-lab-r2",
+      "raw_sha256": "b1a8462cddbc3316f75a236767dfe8fc388f7f590a7b88533547329da74d6c5e",
+      "size_bytes": 1750
+    },
+    {
+      "record_id": "source:join-check-lab-r2",
+      "raw_sha256": "f3c8aaf632bd7dc86aff75072c4b41014ce1365cc770237fca80b744e35dad7f",
+      "size_bytes": 974
+    }
+  ],
+  "selected_source_changes": [
+    {
+      "document_id": "ANALYSIS",
+      "before": "source:analysis-r2",
+      "after": "source:analysis-r1"
+    },
+    {
+      "document_id": "FEED",
+      "before": "source:feed-r2",
+      "after": "source:feed-r1"
+    },
+    {
+      "document_id": "JOIN",
+      "before": "source:join-feed-r2",
+      "after": "source:join-lab-r2"
+    },
+    {
+      "document_id": "JOIN-CHECK",
+      "before": "source:join-check-r2",
+      "after": "source:join-check-lab-r2"
+    },
+    {
+      "document_id": "LAB-REUSE-CHECK",
+      "before": null,
+      "after": "source:lab-reuse-check"
+    },
+    {
+      "document_id": "LABS",
+      "before": "source:labs-r1",
+      "after": "source:labs-r2"
+    },
+    {
+      "document_id": "MANIFEST",
+      "before": "source:manifest-feed-r2",
+      "after": "source:manifest-lab-r2"
+    }
+  ],
+  "changed_existing_diagnostics": [
+    {
+      "record_id": "observation:initial-records",
+      "before": {
+        "basis_state": "stale",
+        "basis_reasons": [
+          {
+            "code": "selected_basis_changed",
+            "path": "/records/20/evidence/0/source_record_id",
+            "source_record_id": "source:join-r1",
+            "selected_source_record_id": "source:join-feed-r2"
+          },
+          {
+            "code": "selected_basis_changed",
+            "path": "/records/20/evidence/1/source_record_id",
+            "source_record_id": "source:feed-r1",
+            "selected_source_record_id": "source:feed-r2"
+          },
+          {
+            "code": "selected_basis_changed",
+            "path": "/records/20/evidence/4/source_record_id",
+            "source_record_id": "source:manifest-r1",
+            "selected_source_record_id": "source:manifest-feed-r2"
+          },
+          {
+            "code": "selected_basis_changed",
+            "path": "/records/20/evidence/6/source_record_id",
+            "source_record_id": "source:analysis-r1",
+            "selected_source_record_id": "source:analysis-r2"
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_path": "/records/20/evidence/0",
+            "source_record_id": "source:join-r1",
+            "document_id": "JOIN",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "5e3c7f73da62c170d93c70caaf38c70335b40607dadd6161c390121457a7bcae",
+            "selected_source_record_id": "source:join-feed-r2",
+            "state": "stale",
+            "reason_codes": [
+              "selected_basis_changed"
+            ]
+          },
+          {
+            "evidence_path": "/records/20/evidence/1",
+            "source_record_id": "source:feed-r1",
+            "document_id": "FEED",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "9c6d87bb4f595d6296e7f8ad3c6e8f5966d9619976b825093b8986a4f2c91f67",
+            "selected_source_record_id": "source:feed-r2",
+            "state": "stale",
+            "reason_codes": [
+              "selected_basis_changed"
+            ]
+          },
+          {
+            "evidence_path": "/records/20/evidence/2",
+            "source_record_id": "source:labs-r1",
+            "document_id": "LABS",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "d9188081d84faee8553ea641d0474133fc8164fc7af5f54b1b5b90cd2213da18",
+            "selected_source_record_id": "source:labs-r1",
+            "state": "matches",
+            "reason_codes": []
+          },
+          {
+            "evidence_path": "/records/20/evidence/3",
+            "source_record_id": "source:outcomes-r1",
+            "document_id": "OUTCOMES",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "90a87232780b10541dcfaef0b7bb36e5b1f35e0fb42e348b70794e246bc37f6b",
+            "selected_source_record_id": "source:outcomes-r1",
+            "state": "matches",
+            "reason_codes": []
+          },
+          {
+            "evidence_path": "/records/20/evidence/4",
+            "source_record_id": "source:manifest-r1",
+            "document_id": "MANIFEST",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "b1a8462cddbc3316f75a236767dfe8fc388f7f590a7b88533547329da74d6c5e",
+            "selected_source_record_id": "source:manifest-feed-r2",
+            "state": "stale",
+            "reason_codes": [
+              "selected_basis_changed"
+            ]
+          },
+          {
+            "evidence_path": "/records/20/evidence/5",
+            "source_record_id": "source:plan-r1",
+            "document_id": "PLAN",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "5d85ecba4c2402736d11d2a82342e2bc033b8df3bed6c94bf7e14af4295a77aa",
+            "selected_source_record_id": "source:plan-r1",
+            "state": "matches",
+            "reason_codes": []
+          },
+          {
+            "evidence_path": "/records/20/evidence/6",
+            "source_record_id": "source:analysis-r1",
+            "document_id": "ANALYSIS",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "14131b8d4ad1e939216bcefaf62cdf7d5de29758ebc1c4d95657a0821311371b",
+            "selected_source_record_id": "source:analysis-r2",
+            "state": "stale",
+            "reason_codes": [
+              "selected_basis_changed"
+            ]
+          },
+          {
+            "evidence_path": "/records/20/evidence/7",
+            "source_record_id": "source:events-r1",
+            "document_id": "EVENTS",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "5ff6174df2b77f3ac2cd2f27dd3bba23281ce7ab618e1c49aa45cb9c793e8bfb",
+            "selected_source_record_id": "source:events-r1",
+            "state": "matches",
+            "reason_codes": []
+          }
+        ],
+        "dependency_state": "matches",
+        "dependency_reasons": [],
+        "basis_review_notice": "review_supplied_basis",
+        "next_review_step": "Review the supplied source basis and record any decision in the existing company process.",
+        "source_capture": null
+      },
+      "after": {
+        "basis_state": "stale",
+        "basis_reasons": [
+          {
+            "code": "selected_basis_changed",
+            "path": "/records/20/evidence/0/source_record_id",
+            "source_record_id": "source:join-r1",
+            "selected_source_record_id": "source:join-lab-r2"
+          },
+          {
+            "code": "selected_basis_changed",
+            "path": "/records/20/evidence/2/source_record_id",
+            "source_record_id": "source:labs-r1",
+            "selected_source_record_id": "source:labs-r2"
+          },
+          {
+            "code": "selected_basis_changed",
+            "path": "/records/20/evidence/4/source_record_id",
+            "source_record_id": "source:manifest-r1",
+            "selected_source_record_id": "source:manifest-lab-r2"
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_path": "/records/20/evidence/0",
+            "source_record_id": "source:join-r1",
+            "document_id": "JOIN",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "5e3c7f73da62c170d93c70caaf38c70335b40607dadd6161c390121457a7bcae",
+            "selected_source_record_id": "source:join-lab-r2",
+            "state": "stale",
+            "reason_codes": [
+              "selected_basis_changed"
+            ]
+          },
+          {
+            "evidence_path": "/records/20/evidence/1",
+            "source_record_id": "source:feed-r1",
+            "document_id": "FEED",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "9c6d87bb4f595d6296e7f8ad3c6e8f5966d9619976b825093b8986a4f2c91f67",
+            "selected_source_record_id": "source:feed-r1",
+            "state": "matches",
+            "reason_codes": []
+          },
+          {
+            "evidence_path": "/records/20/evidence/2",
+            "source_record_id": "source:labs-r1",
+            "document_id": "LABS",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "d9188081d84faee8553ea641d0474133fc8164fc7af5f54b1b5b90cd2213da18",
+            "selected_source_record_id": "source:labs-r2",
+            "state": "stale",
+            "reason_codes": [
+              "selected_basis_changed"
+            ]
+          },
+          {
+            "evidence_path": "/records/20/evidence/3",
+            "source_record_id": "source:outcomes-r1",
+            "document_id": "OUTCOMES",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "90a87232780b10541dcfaef0b7bb36e5b1f35e0fb42e348b70794e246bc37f6b",
+            "selected_source_record_id": "source:outcomes-r1",
+            "state": "matches",
+            "reason_codes": []
+          },
+          {
+            "evidence_path": "/records/20/evidence/4",
+            "source_record_id": "source:manifest-r1",
+            "document_id": "MANIFEST",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "b1a8462cddbc3316f75a236767dfe8fc388f7f590a7b88533547329da74d6c5e",
+            "selected_source_record_id": "source:manifest-lab-r2",
+            "state": "stale",
+            "reason_codes": [
+              "selected_basis_changed"
+            ]
+          },
+          {
+            "evidence_path": "/records/20/evidence/5",
+            "source_record_id": "source:plan-r1",
+            "document_id": "PLAN",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "5d85ecba4c2402736d11d2a82342e2bc033b8df3bed6c94bf7e14af4295a77aa",
+            "selected_source_record_id": "source:plan-r1",
+            "state": "matches",
+            "reason_codes": []
+          },
+          {
+            "evidence_path": "/records/20/evidence/6",
+            "source_record_id": "source:analysis-r1",
+            "document_id": "ANALYSIS",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "14131b8d4ad1e939216bcefaf62cdf7d5de29758ebc1c4d95657a0821311371b",
+            "selected_source_record_id": "source:analysis-r1",
+            "state": "matches",
+            "reason_codes": []
+          },
+          {
+            "evidence_path": "/records/20/evidence/7",
+            "source_record_id": "source:events-r1",
+            "document_id": "EVENTS",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "5ff6174df2b77f3ac2cd2f27dd3bba23281ce7ab618e1c49aa45cb9c793e8bfb",
+            "selected_source_record_id": "source:events-r1",
+            "state": "matches",
+            "reason_codes": []
+          }
+        ],
+        "dependency_state": "matches",
+        "dependency_reasons": [],
+        "basis_review_notice": "review_supplied_basis",
+        "next_review_step": "Review the supplied source basis and record any decision in the existing company process.",
+        "source_capture": null
+      }
+    },
+    {
+      "record_id": "disposition:recipe-explanation",
+      "before": {
+        "basis_state": "stale",
+        "basis_reasons": [
+          {
+            "code": "selected_basis_changed",
+            "path": "/records/22/evidence/0/source_record_id",
+            "source_record_id": "source:join-r1",
+            "selected_source_record_id": "source:join-feed-r2"
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_path": "/records/22/evidence/0",
+            "source_record_id": "source:join-r1",
+            "document_id": "JOIN",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "5e3c7f73da62c170d93c70caaf38c70335b40607dadd6161c390121457a7bcae",
+            "selected_source_record_id": "source:join-feed-r2",
+            "state": "stale",
+            "reason_codes": [
+              "selected_basis_changed"
+            ]
+          },
+          {
+            "evidence_path": "/records/22/evidence/1",
+            "source_record_id": "source:recipe-check-r1",
+            "document_id": "RECIPE-CHECK",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "a226e74e3cabfd39f16337e6d39f88923a0e93b88695196d2be6c873f21ee00d",
+            "selected_source_record_id": "source:recipe-check-r1",
+            "state": "matches",
+            "reason_codes": []
+          }
+        ],
+        "dependency_state": "needs_review",
+        "dependency_reasons": [
+          {
+            "path": [
+              "disposition:recipe-explanation",
+              "check:recipe-revision-result",
+              "plan:recipe-record-check"
+            ],
+            "basis_state": "unknown",
+            "reason_codes": [
+              "no_evidence_declared"
+            ]
+          },
+          {
+            "path": [
+              "disposition:recipe-explanation",
+              "hypothesis:recipe-revision"
+            ],
+            "basis_state": "unknown",
+            "reason_codes": [
+              "no_evidence_declared"
+            ]
+          },
+          {
+            "path": [
+              "disposition:recipe-explanation",
+              "hypothesis:recipe-revision",
+              "question:recipe-explanation"
+            ],
+            "basis_state": "unknown",
+            "reason_codes": [
+              "no_evidence_declared"
+            ]
+          },
+          {
+            "path": [
+              "disposition:recipe-explanation",
+              "observation:initial-records"
+            ],
+            "basis_state": "stale",
+            "reason_codes": [
+              "selected_basis_changed"
+            ]
+          }
+        ],
+        "basis_review_notice": "review_supplied_basis",
+        "next_review_step": "Review the supplied source basis and record any decision in the existing company process.",
+        "source_capture": null
+      },
+      "after": {
+        "basis_state": "stale",
+        "basis_reasons": [
+          {
+            "code": "selected_basis_changed",
+            "path": "/records/22/evidence/0/source_record_id",
+            "source_record_id": "source:join-r1",
+            "selected_source_record_id": "source:join-lab-r2"
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_path": "/records/22/evidence/0",
+            "source_record_id": "source:join-r1",
+            "document_id": "JOIN",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "5e3c7f73da62c170d93c70caaf38c70335b40607dadd6161c390121457a7bcae",
+            "selected_source_record_id": "source:join-lab-r2",
+            "state": "stale",
+            "reason_codes": [
+              "selected_basis_changed"
+            ]
+          },
+          {
+            "evidence_path": "/records/22/evidence/1",
+            "source_record_id": "source:recipe-check-r1",
+            "document_id": "RECIPE-CHECK",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "a226e74e3cabfd39f16337e6d39f88923a0e93b88695196d2be6c873f21ee00d",
+            "selected_source_record_id": "source:recipe-check-r1",
+            "state": "matches",
+            "reason_codes": []
+          }
+        ],
+        "dependency_state": "needs_review",
+        "dependency_reasons": [
+          {
+            "path": [
+              "disposition:recipe-explanation",
+              "check:recipe-revision-result",
+              "plan:recipe-record-check"
+            ],
+            "basis_state": "unknown",
+            "reason_codes": [
+              "no_evidence_declared"
+            ]
+          },
+          {
+            "path": [
+              "disposition:recipe-explanation",
+              "hypothesis:recipe-revision"
+            ],
+            "basis_state": "unknown",
+            "reason_codes": [
+              "no_evidence_declared"
+            ]
+          },
+          {
+            "path": [
+              "disposition:recipe-explanation",
+              "hypothesis:recipe-revision",
+              "question:recipe-explanation"
+            ],
+            "basis_state": "unknown",
+            "reason_codes": [
+              "no_evidence_declared"
+            ]
+          },
+          {
+            "path": [
+              "disposition:recipe-explanation",
+              "observation:initial-records"
+            ],
+            "basis_state": "stale",
+            "reason_codes": [
+              "selected_basis_changed"
+            ]
+          }
+        ],
+        "basis_review_notice": "review_supplied_basis",
+        "next_review_step": "Review the supplied source basis and record any decision in the existing company process.",
+        "source_capture": null
+      }
+    },
+    {
+      "record_id": "observation:reuse-needs-review",
+      "before": {
+        "basis_state": "matches",
+        "basis_reasons": [],
+        "evidence": [
+          {
+            "evidence_path": "/records/27/evidence/0",
+            "source_record_id": "source:join-check-failed",
+            "document_id": "EXTERNAL-REUSE-CHECK",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "6cf8efeaeab899826d6667e8e1aa53e80649eb446be8b11dfcdd8913323d6090",
+            "selected_source_record_id": "source:join-check-failed",
+            "state": "matches",
+            "reason_codes": []
+          },
+          {
+            "evidence_path": "/records/27/evidence/1",
+            "source_record_id": "source:feed-r2",
+            "document_id": "FEED",
+            "pinned_revision": "2",
+            "pinned_raw_sha256": "e24e260a05fe74539cf3aaef23542a9eb9fdffc3f432030c12d175d372c3fd6c",
+            "selected_source_record_id": "source:feed-r2",
+            "state": "matches",
+            "reason_codes": []
+          }
+        ],
+        "dependency_state": "matches",
+        "dependency_reasons": [],
+        "basis_review_notice": "none",
+        "next_review_step": null,
+        "source_capture": null
+      },
+      "after": {
+        "basis_state": "stale",
+        "basis_reasons": [
+          {
+            "code": "selected_basis_changed",
+            "path": "/records/27/evidence/1/source_record_id",
+            "source_record_id": "source:feed-r2",
+            "selected_source_record_id": "source:feed-r1"
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_path": "/records/27/evidence/0",
+            "source_record_id": "source:join-check-failed",
+            "document_id": "EXTERNAL-REUSE-CHECK",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "6cf8efeaeab899826d6667e8e1aa53e80649eb446be8b11dfcdd8913323d6090",
+            "selected_source_record_id": "source:join-check-failed",
+            "state": "matches",
+            "reason_codes": []
+          },
+          {
+            "evidence_path": "/records/27/evidence/1",
+            "source_record_id": "source:feed-r2",
+            "document_id": "FEED",
+            "pinned_revision": "2",
+            "pinned_raw_sha256": "e24e260a05fe74539cf3aaef23542a9eb9fdffc3f432030c12d175d372c3fd6c",
+            "selected_source_record_id": "source:feed-r1",
+            "state": "stale",
+            "reason_codes": [
+              "selected_basis_changed"
+            ]
+          }
+        ],
+        "dependency_state": "matches",
+        "dependency_reasons": [],
+        "basis_review_notice": "review_supplied_basis",
+        "next_review_step": "Review the supplied source basis and record any decision in the existing company process.",
+        "source_capture": null
+      }
+    },
+    {
+      "record_id": "observation:feed-source-revision",
+      "before": {
+        "basis_state": "matches",
+        "basis_reasons": [],
+        "evidence": [
+          {
+            "evidence_path": "/records/32/evidence/0",
+            "source_record_id": "source:join-feed-r2",
+            "document_id": "JOIN",
+            "pinned_revision": "2-feed",
+            "pinned_raw_sha256": "cc8076ecd18a73952745b72f380ebf9d38aa87096eb381fcbf485ea25b4102be",
+            "selected_source_record_id": "source:join-feed-r2",
+            "state": "matches",
+            "reason_codes": []
+          },
+          {
+            "evidence_path": "/records/32/evidence/1",
+            "source_record_id": "source:feed-r2",
+            "document_id": "FEED",
+            "pinned_revision": "2",
+            "pinned_raw_sha256": "e24e260a05fe74539cf3aaef23542a9eb9fdffc3f432030c12d175d372c3fd6c",
+            "selected_source_record_id": "source:feed-r2",
+            "state": "matches",
+            "reason_codes": []
+          },
+          {
+            "evidence_path": "/records/32/evidence/2",
+            "source_record_id": "source:analysis-r2",
+            "document_id": "ANALYSIS",
+            "pinned_revision": "2-feed",
+            "pinned_raw_sha256": "11a1742f77cd95b580fbd8b5ea3a12cf354714b8b26d86ee644b275a32ec5afa",
+            "selected_source_record_id": "source:analysis-r2",
+            "state": "matches",
+            "reason_codes": []
+          },
+          {
+            "evidence_path": "/records/32/evidence/3",
+            "source_record_id": "source:manifest-feed-r2",
+            "document_id": "MANIFEST",
+            "pinned_revision": "2-feed",
+            "pinned_raw_sha256": "41b7968d28ebfced33dd83b67b3a6a5a5048f4c2ff06311b21a99123d23e0345",
+            "selected_source_record_id": "source:manifest-feed-r2",
+            "state": "matches",
+            "reason_codes": []
+          }
+        ],
+        "dependency_state": "matches",
+        "dependency_reasons": [],
+        "basis_review_notice": "none",
+        "next_review_step": null,
+        "source_capture": null
+      },
+      "after": {
+        "basis_state": "stale",
+        "basis_reasons": [
+          {
+            "code": "selected_basis_changed",
+            "path": "/records/32/evidence/0/source_record_id",
+            "source_record_id": "source:join-feed-r2",
+            "selected_source_record_id": "source:join-lab-r2"
+          },
+          {
+            "code": "selected_basis_changed",
+            "path": "/records/32/evidence/1/source_record_id",
+            "source_record_id": "source:feed-r2",
+            "selected_source_record_id": "source:feed-r1"
+          },
+          {
+            "code": "selected_basis_changed",
+            "path": "/records/32/evidence/2/source_record_id",
+            "source_record_id": "source:analysis-r2",
+            "selected_source_record_id": "source:analysis-r1"
+          },
+          {
+            "code": "selected_basis_changed",
+            "path": "/records/32/evidence/3/source_record_id",
+            "source_record_id": "source:manifest-feed-r2",
+            "selected_source_record_id": "source:manifest-lab-r2"
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_path": "/records/32/evidence/0",
+            "source_record_id": "source:join-feed-r2",
+            "document_id": "JOIN",
+            "pinned_revision": "2-feed",
+            "pinned_raw_sha256": "cc8076ecd18a73952745b72f380ebf9d38aa87096eb381fcbf485ea25b4102be",
+            "selected_source_record_id": "source:join-lab-r2",
+            "state": "stale",
+            "reason_codes": [
+              "selected_basis_changed"
+            ]
+          },
+          {
+            "evidence_path": "/records/32/evidence/1",
+            "source_record_id": "source:feed-r2",
+            "document_id": "FEED",
+            "pinned_revision": "2",
+            "pinned_raw_sha256": "e24e260a05fe74539cf3aaef23542a9eb9fdffc3f432030c12d175d372c3fd6c",
+            "selected_source_record_id": "source:feed-r1",
+            "state": "stale",
+            "reason_codes": [
+              "selected_basis_changed"
+            ]
+          },
+          {
+            "evidence_path": "/records/32/evidence/2",
+            "source_record_id": "source:analysis-r2",
+            "document_id": "ANALYSIS",
+            "pinned_revision": "2-feed",
+            "pinned_raw_sha256": "11a1742f77cd95b580fbd8b5ea3a12cf354714b8b26d86ee644b275a32ec5afa",
+            "selected_source_record_id": "source:analysis-r1",
+            "state": "stale",
+            "reason_codes": [
+              "selected_basis_changed"
+            ]
+          },
+          {
+            "evidence_path": "/records/32/evidence/3",
+            "source_record_id": "source:manifest-feed-r2",
+            "document_id": "MANIFEST",
+            "pinned_revision": "2-feed",
+            "pinned_raw_sha256": "41b7968d28ebfced33dd83b67b3a6a5a5048f4c2ff06311b21a99123d23e0345",
+            "selected_source_record_id": "source:manifest-lab-r2",
+            "state": "stale",
+            "reason_codes": [
+              "selected_basis_changed"
+            ]
+          }
+        ],
+        "dependency_state": "matches",
+        "dependency_reasons": [],
+        "basis_review_notice": "review_supplied_basis",
+        "next_review_step": "Review the supplied source basis and record any decision in the existing company process.",
+        "source_capture": null
+      }
+    }
+  ],
+  "files": {
+    "before.json": {
+      "raw_sha256": "b609bae8d53eb23d3345210e1989729a5145bb5bec5a394ea9dbae7d366e6207",
+      "size_bytes": 111267
+    },
+    "change.json": {
+      "raw_sha256": "2a955948f656ddcb09de3d7eb827a1ec0d6f93a6a719b398f32c14cb846f34d1",
+      "size_bytes": 5935
+    },
+    "knowledge.json": {
+      "raw_sha256": "e2744897a1e7deb228e412d14170f40beb5b2649a3a53061f6d467f549c20de8",
+      "size_bytes": 139611
+    },
+    "handoff.md": {
+      "raw_sha256": "cd9962d8a852beab7e2289c5609e50a4d0b6e855cb460ac14b76485513c3433f",
+      "size_bytes": 16423
+    }
+  }
+}

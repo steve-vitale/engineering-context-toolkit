@@ -1,0 +1,21 @@
+{
+  "schema": "knowledge-capture-1",
+  "base_sha256": "0ab5a69c420f2a8e59916029a1c73320aa45bd0b1f282c570d7f3f1565fcc44f",
+  "revision": "01-plan",
+  "contributor": "Fictional example author; no authenticated identity.",
+  "reason": "Retain this explicit investigation contribution and its exact prior state.",
+  "new_sources": [
+    {
+      "id": "source:notes-r1",
+      "document_id": "NOTES",
+      "source_revision": "1",
+      "title": "Prospective authored hypothesis and check plan",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "examples/batch-analysis/investigation/INVESTIGATION-NOTES.md"
+    }
+  ],
+  "claims": [],
+  "select_sources": {
+    "NOTES": "source:notes-r1"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "schema": "fictional-recipe-record-check-1",
+  "state": "recorded",
+  "report_sha256": "5e3c7f73da62c170d93c70caaf38c70335b40607dadd6161c390121457a7bcae",
+  "join_check_sha256": "9e071f01499b04c3bb3db9e428b7f9595c1052e56eb1b80e0b358d2cc2e56894",
+  "as_of": "2026-01-03T00:00:00Z",
+  "records": [
+    {
+      "selection": {
+        "id": "A",
+        "analysis_id": "feed",
+        "window_id": "A-feed",
+        "batch_record_id": "A-batch",
+        "event_record_id": "A-phase",
+        "lab_result_id": "A-lab",
+        "outcome_record_id": "A-outcome",
+        "recipe_record_id": "A-recipe"
+      },
+      "batch": {
+        "record_id": "A-batch",
+        "site_id": "fictional-site",
+        "asset_id": "FERM-101",
+        "batch_id": "A",
+        "recipe_id": "RCP-1",
+        "recipe_revision": "3",
+        "start_utc": "2026-01-01T00:00:00Z",
+        "end_utc": "2026-01-01T01:00:00Z",
+        "available_utc": "2026-01-01T01:01:00Z",
+        "scale_value": "1000",
+        "scale_unit": "L",
+        "source_revision": "1",
+        "source_ref": "Fictional executed batch record A"
+      },
+      "reported_execution": {
+        "record_id": "A-recipe",
+        "site_id": "fictional-site",
+        "asset_id": "FERM-101",
+        "batch_id": "A",
+        "recipe_id": "RCP-1",
+        "recipe_revision": "3",
+        "execution_basis": "reported_executed",
+        "parameters_json": "{\"feed_policy\": \"constant\", \"target_feed_kg\": 5}",
+        "available_utc": "2026-01-01T01:05:00Z",
+        "source_revision": "1",
+        "source_ref": "Fictional executed recipe A"
+      }
+    },
+    {
+      "selection": {
+        "id": "B",
+        "analysis_id": "feed",
+        "window_id": "B-feed",
+        "batch_record_id": "B-batch",
+        "event_record_id": "B-phase",
+        "lab_result_id": "B-lab",
+        "outcome_record_id": "B-outcome",
+        "recipe_record_id": "B-recipe"
+      },
+      "batch": {
+        "record_id": "B-batch",
+        "site_id": "fictional-site",
+        "asset_id": "FERM-101",
+        "batch_id": "B",
+        "recipe_id": "RCP-1",
+        "recipe_revision": "3",
+        "start_utc": "2026-01-02T00:00:00Z",
+        "end_utc": "2026-01-02T01:00:00Z",
+        "available_utc": "2026-01-02T01:01:00Z",
+        "scale_value": "1000",
+        "scale_unit": "L",
+        "source_revision": "1",
+        "source_ref": "Fictional executed batch record B"
+      },
+      "reported_execution": {
+        "record_id": "B-recipe",
+        "site_id": "fictional-site",
+        "asset_id": "FERM-101",
+        "batch_id": "B",
+        "recipe_id": "RCP-1",
+        "recipe_revision": "3",
+        "execution_basis": "reported_executed",
+        "parameters_json": "{\"feed_policy\": \"constant\", \"target_feed_kg\": 5}",
+        "available_utc": "2026-01-02T01:05:00Z",
+        "source_revision": "1",
+        "source_ref": "Fictional executed recipe B"
+      }
+    }
+  ],
+  "result": "Different declared recipe revisions are not supported by these selected records.",
+  "limitation": "Not evidence of identical physical execution, another cause, or an attempted equipment/process change."
+}

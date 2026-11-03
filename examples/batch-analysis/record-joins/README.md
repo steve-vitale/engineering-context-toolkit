@@ -108,3 +108,10 @@ accepted outcome, updates company documents or runs operations. An engineer or m
 the reviewer/record owner and retains disposition in the approved company home. Test usefulness with the
 [recipient exercise](../../../docs/ACCEPTANCE.md); use the [scaling guide](../../../docs/SCALING_ENGINEERING_CONTEXT.md)
 when shared permissions, ownership, release and concurrent work need a sustainably operated service.
+
+Continue with the [investigation tutorial](../investigation/README.md) to retain an authored hypothesis,
+planned record check, contrary evidence, source revisions and proposed disposition using the existing
+capture/reader tools. Its records remain unreviewed; company decisions and ongoing ownership stay with
+the existing company process. Unavailable comparison basis is reported as missing evidence, not an
+observed recipe or assay-method difference. [The retained failing case](history/before-comparison-basis/)
+and current provenance document that repair.

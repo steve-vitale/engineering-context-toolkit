@@ -1,0 +1,56 @@
+{
+  "schema": "knowledge-capture-1",
+  "base_sha256": "7a3ad10d23be3f298e439ce4c4714b59788698fdc076dfacfe9d5fb61b94c1b1",
+  "revision": "09-select-changed-feed",
+  "contributor": "Fictional example author; no authenticated identity.",
+  "reason": "Retain this explicit investigation contribution and its exact prior state.",
+  "new_sources": [
+    {
+      "id": "source:feed-r2",
+      "document_id": "FEED",
+      "source_revision": "2",
+      "title": "Changed feed source scenario",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/sources/changed-feed/sources/observations.csv"
+    },
+    {
+      "id": "source:join-check-failed",
+      "document_id": "EXTERNAL-REUSE-CHECK",
+      "source_revision": "1",
+      "title": "Dated changed-input check",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/checks/07-old-join-feed-check.json"
+    }
+  ],
+  "claims": [
+    {
+      "id": "observation:reuse-needs-review",
+      "title": "Recorded check: saved join cannot be reused",
+      "summary": "Authored investigation record; role is prose, not a validated type.",
+      "basis": "cited_record",
+      "statement": "The operator-selected current feed CSV differs from the saved calculation/join. The actual join check reports changed; generation with the old calculation withholds both feed totals. Knowledge snapshot matching alone had not rechecked these external files.",
+      "evidence": [
+        {
+          "source_record_id": "source:join-check-failed",
+          "locator": "/status; /changes; /saved_report_sha256",
+          "currency_requirement": "selected_basis"
+        },
+        {
+          "source_record_id": "source:feed-r2",
+          "locator": "CSV record 5: batch_id B, time_s 0, FT-101 and feed_quality",
+          "currency_requirement": "selected_basis"
+        }
+      ],
+      "depends_on": [],
+      "owner_roles": [],
+      "known_unknowns": [
+        "Actual process identity, execution, causation and company acceptance remain unverified."
+      ],
+      "interpretation_limit": "Proposed and unreviewed. A recorded-source result is not an approved decision or process intervention."
+    }
+  ],
+  "select_sources": {
+    "FEED": "source:feed-r2",
+    "EXTERNAL-REUSE-CHECK": "source:join-check-failed"
+  }
+}

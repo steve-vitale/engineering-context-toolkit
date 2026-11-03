@@ -1,0 +1,42 @@
+{
+  "schema": "knowledge-capture-1",
+  "base_sha256": "REPLACE_WITH_EXACT_INPUT_PACKET_RAW_SHA256",
+  "revision": "your-review-r1",
+  "contributor": "REPLACE: supplied contributor declaration; no authenticated identity",
+  "reason": "REPLACE: one bounded source review and the next unresolved evidence request",
+  "new_sources": [
+    {
+      "id": "source:join-r1",
+      "document_id": "JOIN",
+      "source_revision": "your-selected-revision",
+      "title": "Your explicitly selected saved record comparison",
+      "source_authority": "REPLACE: supplied authority declaration and limitations; not verified by capture",
+      "original_reference": "REPLACE: approved private source/report identity; never publish a company path"
+    }
+  ],
+  "claims": [
+    {
+      "id": "observation:your-record-review",
+      "title": "REPLACE: one limited source-bound observation",
+      "summary": "Authored review; investigation role is prose, not a validated scientific type.",
+      "basis": "cited_record",
+      "statement": "REPLACE: what the exact selected source establishes, including missing evidence; no unsupported causal or operating conclusion.",
+      "evidence": [
+        {
+          "source_record_id": "source:join-r1",
+          "locator": "REPLACE: exact row/JSON pointer and quantity/unit/cutoff/assumption fields reviewed",
+          "currency_requirement": "selected_basis"
+        }
+      ],
+      "depends_on": [],
+      "known_unknowns": [
+        "REPLACE: unresolved execution, source validity and causal/comparability questions"
+      ],
+      "owner_roles": [],
+      "interpretation_limit": "Proposed/unreviewed; receiving owner and responsible reviewer remain unassigned until the existing company process identifies them."
+    }
+  ],
+  "select_sources": {
+    "JOIN": "source:join-r1"
+  }
+}

@@ -18,7 +18,7 @@ Complete originals and future/unselected records are in the separately labelled 
 
 - B: The selected labs was unavailable at the cutoff; its value is withheld.
 - At least one selected batch still has evidence gaps.
-- Recipe/parameters, scale, assay method or outcome basis differs. Review comparability before using differences.
+- Some comparison-basis records are unavailable or unqualified. Resolve those gaps before interpreting differences.
 
 ## Continuing ownership
 

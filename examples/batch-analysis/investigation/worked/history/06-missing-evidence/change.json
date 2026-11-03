@@ -1,0 +1,42 @@
+{
+  "schema": "knowledge-capture-1",
+  "base_sha256": "fd9912e35ff2821c59b778f70bf23a9112be9e1e22d7641a697c5b30ea1f8050",
+  "revision": "06-missing-evidence",
+  "contributor": "Fictional example author; no authenticated identity.",
+  "reason": "Retain this explicit investigation contribution and its exact prior state.",
+  "new_sources": [
+    {
+      "id": "source:early-join",
+      "document_id": "EARLIER-CUTOFF",
+      "source_revision": "1",
+      "title": "Earlier cutoff scenario",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/05-earlier-cutoff/batch_join.json"
+    }
+  ],
+  "claims": [
+    {
+      "id": "observation:missing-as-of",
+      "title": "Unresolved: assay not available at the earlier cutoff",
+      "summary": "Authored investigation record; role is prose, not a validated type.",
+      "basis": "cited_record",
+      "statement": "The earlier-cutoff decision view has no eligible B assay and no complete comparison. Missing is neither zero nor a negative assay. The audit retains later values; this packet is not a blinded or access-controlled as-of dataset.",
+      "evidence": [
+        {
+          "source_record_id": "source:early-join",
+          "locator": "/as_of; /rows/1/lab_value; /rows/1/gaps; /comparison/differences",
+          "currency_requirement": "snapshot_evidence"
+        }
+      ],
+      "depends_on": [],
+      "owner_roles": [],
+      "known_unknowns": [
+        "Actual process identity, execution, causation and company acceptance remain unverified."
+      ],
+      "interpretation_limit": "Proposed and unreviewed. A recorded-source result is not an approved decision or process intervention."
+    }
+  ],
+  "select_sources": {
+    "EARLIER-CUTOFF": "source:early-join"
+  }
+}

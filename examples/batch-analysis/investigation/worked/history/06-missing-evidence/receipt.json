@@ -1,0 +1,48 @@
+{
+  "schema": "knowledge-capture-receipt-1",
+  "captured_at": "2026-11-03T07:31:54.494725+00:00",
+  "packet_id": "fictional-ferm101-investigation",
+  "base_sha256": "fd9912e35ff2821c59b778f70bf23a9112be9e1e22d7641a697c5b30ea1f8050",
+  "knowledge_sha256": "7a3ad10d23be3f298e439ce4c4714b59788698fdc076dfacfe9d5fb61b94c1b1",
+  "contributor_declaration": "Fictional example author; no authenticated identity.",
+  "reason": "Retain this explicit investigation contribution and its exact prior state.",
+  "company_acceptance": "not_established",
+  "source_currency": "selected_snapshot_only",
+  "added_record_ids": [
+    "source:early-join",
+    "observation:missing-as-of"
+  ],
+  "supplied_sources": [
+    {
+      "record_id": "source:early-join",
+      "raw_sha256": "fa12fd78a8d304b451b4e468e1a06a0ff27e40e782d69badbbbc749fba6c39ef",
+      "size_bytes": 9595
+    }
+  ],
+  "selected_source_changes": [
+    {
+      "document_id": "EARLIER-CUTOFF",
+      "before": null,
+      "after": "source:early-join"
+    }
+  ],
+  "changed_existing_diagnostics": [],
+  "files": {
+    "before.json": {
+      "raw_sha256": "fd9912e35ff2821c59b778f70bf23a9112be9e1e22d7641a697c5b30ea1f8050",
+      "size_bytes": 65582
+    },
+    "change.json": {
+      "raw_sha256": "41e7eed63549b4340f94965055c521f7763d7dcf601f2e9035828bcfb64c9fc4",
+      "size_bytes": 1816
+    },
+    "knowledge.json": {
+      "raw_sha256": "7a3ad10d23be3f298e439ce4c4714b59788698fdc076dfacfe9d5fb61b94c1b1",
+      "size_bytes": 79192
+    },
+    "handoff.md": {
+      "raw_sha256": "027463f7833320de4a10ee261300d9afebb6d833d4200d9489da3ac58fb35315",
+      "size_bytes": 9490
+    }
+  }
+}

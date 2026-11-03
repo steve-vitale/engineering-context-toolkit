@@ -17,6 +17,7 @@ prediction or a new feed policy needs more evidence and a suitable model.
 | [Measured laboratory record](public-distillation/README.md) | Fixed-source calculation and independently checked key, with the source's processing and anomaly qualifications. |
 | [Retain the finding](context-handoff/README.md) | Existing context tools and pure snapshot reader: keep missing event/recipe/lab/model evidence, then reopen an answer when its report changes. |
 | [Join batch, recipe, event, lab and outcome records](record-joins/README.md) | Reusable local manifest/CSV route: compare declared basis and availability, withhold incomplete metrics and check upstream calculations. Fictional source/revision tutorial; no causal or plant-acceptance claim. |
+| [Keep an investigation reconstructable](investigation/README.md) | Follow a question through evidence, a contradicted explanation and source revisions. Use the [own-input guide](investigation/OWN-INPUT.md) to assemble a proposed colleague handoff; an engineer or manager still reviews the scientific meaning and owns the decision. |
 
 ## Try it offline
 

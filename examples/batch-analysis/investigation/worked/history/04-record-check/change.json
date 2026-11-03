@@ -1,0 +1,237 @@
+{
+  "schema": "knowledge-capture-1",
+  "base_sha256": "c8025094d8ea7f2eb0e9d13a0ef2fc82384471e7d0cd5dcb5cbef94315b49a52",
+  "revision": "04-record-check",
+  "contributor": "Fictional example author; no authenticated identity.",
+  "reason": "Retain this explicit investigation contribution and its exact prior state.",
+  "new_sources": [
+    {
+      "id": "source:join-r1",
+      "document_id": "JOIN",
+      "source_revision": "1",
+      "title": "Initial selected record comparison",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/02-join-initial/batch_join.json"
+    },
+    {
+      "id": "source:join-check-r1",
+      "document_id": "JOIN-CHECK",
+      "source_revision": "1",
+      "title": "Dated successful join reproduction",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/checks/03-check-initial.json"
+    },
+    {
+      "id": "source:recipe-check-r1",
+      "document_id": "RECIPE-CHECK",
+      "source_revision": "1",
+      "title": "Recorded declared-recipe check",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/checks/recipe-record-result.json"
+    },
+    {
+      "id": "source:manifest-r1",
+      "document_id": "MANIFEST",
+      "source_revision": "1",
+      "title": "Explicit original source selections and assumptions",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/sources/initial/manifest.json"
+    },
+    {
+      "id": "source:plan-r1",
+      "document_id": "PLAN",
+      "source_revision": "1",
+      "title": "Declared calculation plan",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/sources/initial/sources/analysis.plan.json"
+    },
+    {
+      "id": "source:analysis-r1",
+      "document_id": "ANALYSIS",
+      "source_revision": "1",
+      "title": "Original saved feed calculation",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/sources/initial/analysis/batch_analysis.json"
+    },
+    {
+      "id": "source:events-r1",
+      "document_id": "EVENTS",
+      "source_revision": "1",
+      "title": "Declared source event windows",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/sources/initial/sources/events.csv"
+    },
+    {
+      "id": "source:feed-r1",
+      "document_id": "FEED",
+      "source_revision": "1",
+      "title": "Recorded feed input",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/sources/initial/sources/observations.csv"
+    },
+    {
+      "id": "source:labs-r1",
+      "document_id": "LABS",
+      "source_revision": "1",
+      "title": "Reported assay records",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/sources/initial/sources/labs.csv"
+    },
+    {
+      "id": "source:outcomes-r1",
+      "document_id": "OUTCOMES",
+      "source_revision": "1",
+      "title": "Reported harvest records",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/sources/initial/sources/outcomes.csv"
+    },
+    {
+      "id": "source:recipes-r1",
+      "document_id": "RECIPES",
+      "source_revision": "1",
+      "title": "Reported executed recipes",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/sources/initial/sources/recipes.csv"
+    },
+    {
+      "id": "source:batches-r1",
+      "document_id": "BATCHES",
+      "source_revision": "1",
+      "title": "Batch identities and declared revisions",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/sources/initial/sources/batches.csv"
+    }
+  ],
+  "claims": [
+    {
+      "id": "observation:initial-records",
+      "title": "Observation: initial recorded comparison",
+      "summary": "Authored investigation record; role is prose, not a validated type.",
+      "basis": "cited_record",
+      "statement": "At the declared 2026-01-03 cutoff, A/B recorded feed is 2/4 kg, reported assay 10/12 g/L and harvest 900/920 L. Differences are 2 kg, 2 g/L and 20 L. These do not establish physical comparability, yield or cause.",
+      "evidence": [
+        {
+          "source_record_id": "source:join-r1",
+          "locator": "/rows/0 and /rows/1; /comparison/differences/0",
+          "currency_requirement": "selected_basis"
+        },
+        {
+          "source_record_id": "source:feed-r1",
+          "locator": "CSV records 2-7: batch_id, time_s, FT-101, feed_quality; complete selected calculation input",
+          "currency_requirement": "selected_basis"
+        },
+        {
+          "source_record_id": "source:labs-r1",
+          "locator": "CSV records 2 and 3, A-lab/B-lab value, unit, availability and source_revision",
+          "currency_requirement": "selected_basis"
+        },
+        {
+          "source_record_id": "source:outcomes-r1",
+          "locator": "CSV records 2 and 3, A-outcome/B-outcome value and unit",
+          "currency_requirement": "selected_basis"
+        },
+        {
+          "source_record_id": "source:manifest-r1",
+          "locator": "/as_of; /quantities; /analyses/0/availability; /time_alignment_basis",
+          "currency_requirement": "selected_basis"
+        },
+        {
+          "source_record_id": "source:plan-r1",
+          "locator": "/windows; full declared method/quality/unit basis",
+          "currency_requirement": "selected_basis"
+        },
+        {
+          "source_record_id": "source:analysis-r1",
+          "locator": "/windows; complete saved calculation and source/code pins",
+          "currency_requirement": "selected_basis"
+        },
+        {
+          "source_record_id": "source:events-r1",
+          "locator": "CSV records 2 and 3: A-phase/B-phase source windows",
+          "currency_requirement": "selected_basis"
+        }
+      ],
+      "depends_on": [],
+      "owner_roles": [],
+      "known_unknowns": [
+        "Actual process identity, execution, causation and company acceptance remain unverified."
+      ],
+      "interpretation_limit": "Proposed and unreviewed. A recorded-source result is not an approved decision or process intervention."
+    },
+    {
+      "id": "check:recipe-revision-result",
+      "title": "Recorded check: declared recipe revisions",
+      "summary": "Authored investigation record; role is prose, not a validated type.",
+      "basis": "cited_record",
+      "statement": "The recorded P1 check finds both selected batch and reported-executed recipe records declare RCP-1 revision 3. H1 is not supported as a different-declared-revision explanation. No operating trial or failed equipment change occurred in these sources.",
+      "evidence": [
+        {
+          "source_record_id": "source:recipe-check-r1",
+          "locator": "/records/0 and /records/1; /result",
+          "currency_requirement": "selected_basis"
+        },
+        {
+          "source_record_id": "source:recipes-r1",
+          "locator": "CSV records 2 and 3: A-recipe/B-recipe, recipe_id, recipe_revision, execution_basis",
+          "currency_requirement": "selected_basis"
+        },
+        {
+          "source_record_id": "source:batches-r1",
+          "locator": "CSV records 2 and 3: A-batch/B-batch, recipe_id, recipe_revision",
+          "currency_requirement": "selected_basis"
+        }
+      ],
+      "depends_on": [
+        "plan:recipe-record-check"
+      ],
+      "owner_roles": [],
+      "known_unknowns": [
+        "Actual process identity, execution, causation and company acceptance remain unverified."
+      ],
+      "interpretation_limit": "Proposed and unreviewed. A recorded-source result is not an approved decision or process intervention."
+    },
+    {
+      "id": "disposition:recipe-explanation",
+      "title": "Proposed disposition: retain the failed explanation",
+      "summary": "Authored investigation record; role is prose, not a validated type.",
+      "basis": "interpretation",
+      "statement": "Retain H1 and its contrary record evidence. Equal declared revisions do not prove identical execution or identify the cause of the reported assay contrast. No recipe adoption or process change is authorized; source owner and reviewer are unassigned.",
+      "evidence": [
+        {
+          "source_record_id": "source:join-r1",
+          "locator": "/comparison and /rows",
+          "currency_requirement": "selected_basis"
+        },
+        {
+          "source_record_id": "source:recipe-check-r1",
+          "locator": "/result and /limitation",
+          "currency_requirement": "selected_basis"
+        }
+      ],
+      "depends_on": [
+        "hypothesis:recipe-revision",
+        "observation:initial-records",
+        "check:recipe-revision-result"
+      ],
+      "owner_roles": [],
+      "known_unknowns": [
+        "Actual process identity, execution, causation and company acceptance remain unverified."
+      ],
+      "interpretation_limit": "Proposed and unreviewed. A recorded-source result is not an approved decision or process intervention."
+    }
+  ],
+  "select_sources": {
+    "JOIN": "source:join-r1",
+    "JOIN-CHECK": "source:join-check-r1",
+    "RECIPE-CHECK": "source:recipe-check-r1",
+    "MANIFEST": "source:manifest-r1",
+    "PLAN": "source:plan-r1",
+    "ANALYSIS": "source:analysis-r1",
+    "EVENTS": "source:events-r1",
+    "FEED": "source:feed-r1",
+    "LABS": "source:labs-r1",
+    "OUTCOMES": "source:outcomes-r1",
+    "RECIPES": "source:recipes-r1",
+    "BATCHES": "source:batches-r1"
+  }
+}

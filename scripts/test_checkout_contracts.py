@@ -44,6 +44,7 @@ TARGETS += [path.relative_to(ROOT).as_posix()
             for path in sorted((ROOT / 'examples/batch-analysis').rglob('*'))
             if path.is_file() and path.suffix in ('.json', '.csv', '.md', '.py')
             and '__pycache__' not in path.parts
+            and 'investigation/worked/checks/' not in path.as_posix()
             and 'public-distillation/source/' not in path.as_posix()]
 # The source-policy corpus carries raw LF identities for every retained input/report.
 TARGETS += [path.relative_to(ROOT).as_posix()
@@ -68,6 +69,7 @@ RAW_FAMILIES += ('examples/opportunity-screen/alarm-basis/models',
                  'examples/opportunity-screen/alarm-basis/history/before-shared-scope',
                  'examples/internal-mcp/history/before-screening-wording')
 RAW_FAMILIES += ('examples/batch-analysis/public-distillation/source',)
+RAW_FAMILIES += ('examples/batch-analysis/investigation/worked/checks',)
 TARGETS += [path.relative_to(ROOT).as_posix()
             for path in sorted((ROOT / 'examples/engineering-change').rglob('*'))
             if path.is_file() and path.suffix != '.png' and '__pycache__' not in path.parts]

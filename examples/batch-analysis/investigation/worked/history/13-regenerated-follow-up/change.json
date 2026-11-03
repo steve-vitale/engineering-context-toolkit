@@ -1,0 +1,84 @@
+{
+  "schema": "knowledge-capture-1",
+  "base_sha256": "26b96c6b9f381e53112a3ded084d33897885cd20ba232d55c3c98c2f6bd34c31",
+  "revision": "13-regenerated-follow-up",
+  "contributor": "Fictional example author; no authenticated identity.",
+  "reason": "Retain this explicit investigation contribution and its exact prior state.",
+  "new_sources": [
+    {
+      "id": "source:join-feed-r2",
+      "document_id": "JOIN",
+      "source_revision": "2-feed",
+      "title": "Regenerated comparison",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/11-regenerated-comparison/batch_join.json"
+    },
+    {
+      "id": "source:join-check-r2",
+      "document_id": "JOIN-CHECK",
+      "source_revision": "2",
+      "title": "Dated regenerated join check",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/checks/12-regenerated-check.json"
+    },
+    {
+      "id": "source:analysis-r2",
+      "document_id": "ANALYSIS",
+      "source_revision": "2-feed",
+      "title": "Regenerated feed calculation",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/sources/changed-feed/regenerated-analysis/batch_analysis.json"
+    },
+    {
+      "id": "source:manifest-feed-r2",
+      "document_id": "MANIFEST",
+      "source_revision": "2-feed",
+      "title": "Explicit regenerated-feed source selection",
+      "source_authority": "Fictional local teaching record; no authenticated company authority.",
+      "original_reference": "exercise/sources/changed-feed/manifest.json"
+    }
+  ],
+  "claims": [
+    {
+      "id": "observation:feed-source-revision",
+      "title": "Observation: regenerated feed-source scenario",
+      "summary": "Authored investigation record; role is prose, not a validated type.",
+      "basis": "cited_record",
+      "statement": "Explicit calculation regeneration reports A/B recorded feed 2/6 kg, difference 4 kg. The old 4 kg B result remains historical. A changed source/calculation scenario is not evidence of an actual feed adjustment or intervention.",
+      "evidence": [
+        {
+          "source_record_id": "source:join-feed-r2",
+          "locator": "/rows/0/feed_integral; /rows/1/feed_integral; /comparison/differences/0",
+          "currency_requirement": "selected_basis"
+        },
+        {
+          "source_record_id": "source:feed-r2",
+          "locator": "CSV records 5-7: B, time_s and FT-101",
+          "currency_requirement": "selected_basis"
+        },
+        {
+          "source_record_id": "source:analysis-r2",
+          "locator": "/windows; complete regenerated calculation",
+          "currency_requirement": "selected_basis"
+        },
+        {
+          "source_record_id": "source:manifest-feed-r2",
+          "locator": "/analyses; /quantities; /as_of",
+          "currency_requirement": "selected_basis"
+        }
+      ],
+      "depends_on": [],
+      "owner_roles": [],
+      "known_unknowns": [
+        "Actual process identity, execution, causation and company acceptance remain unverified."
+      ],
+      "interpretation_limit": "Proposed and unreviewed. A recorded-source result is not an approved decision or process intervention."
+    }
+  ],
+  "select_sources": {
+    "JOIN": "source:join-feed-r2",
+    "JOIN-CHECK": "source:join-check-r2",
+    "ANALYSIS": "source:analysis-r2",
+    "MANIFEST": "source:manifest-feed-r2"
+  }
+}

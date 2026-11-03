@@ -1,0 +1,122 @@
+{
+  "schema": "g02-prospective-criteria-1",
+  "frozen_at_utc": "2026-11-03T06:40:20.716208+00:00",
+  "exposure_sha256_raw": "edd11bced3927995222a98e485dafae7c3b5aa6700e56ac933f4bd3e3f5c5c6a",
+  "baseline_head": "a439f1431b28c1b60607a38e2a6565aeddb3fcde",
+  "status": "Prospective; no implementation/product probes run",
+  "source_family": "Existing exposed, agent-authored fictional FERM-101 A/B batch record family; not held-out or plant evidence",
+  "criteria": [
+    {
+      "id": "G02-01",
+      "scope": "Retention",
+      "acceptance": "A successor preserves exact originals, original join/calculation reports and prior investigation packet/change bytes; new report/capture destination does not overwrite the previous revision.",
+      "counterexample_or_control": "Change B feed source to the existing regenerated scenario; old B=4 kg and new B=6 kg remain separately source/version bound; no repinning old observation.",
+      "result": "not_run"
+    },
+    {
+      "id": "G02-02",
+      "scope": "Source-bound observation",
+      "acceptance": "An observation identifies the selected report/source revision and exact row or JSON locator, quantity/unit, source cutoff and calculation assumptions; source support is limited to the supplied fictional records.",
+      "counterexample_or_control": "Baseline A/B feed=2/4 kg, assay=10/12 g/L, harvest volume=900/920 L; differences=2 kg/2 g/L/20 L. Reject unsupported yield, optimum, kinetics or causation in the worked conclusion.",
+      "result": "not_run"
+    },
+    {
+      "id": "G02-03",
+      "scope": "Hypothesis separate from observation",
+      "acceptance": "A proposed explanation is visibly attributed as an authored hypothesis with its supporting and contradicting evidence, unknowns and next review, without being rendered as an observed fact.",
+      "counterexample_or_control": "Hypothesis: different declared recipe revisions account for the reported assay difference. Both selected recipe/batch rows say RCP-1 revision 3; record-level explanation is not supported, without proving physical process identity or any alternative cause.",
+      "result": "not_run"
+    },
+    {
+      "id": "G02-04",
+      "scope": "Planned test separate from recorded test",
+      "acceptance": "A proposed check lists a falsifiable question, expected/disconfirming condition and source/owner needed. It has no recorded outcome until a result with a cited basis is appended.",
+      "counterexample_or_control": "A plan to check recipe revision fields must not become a completed observation merely because text mentions the intended answer. No new process experiment or equipment change is claimed.",
+      "result": "not_run"
+    },
+    {
+      "id": "G02-05",
+      "scope": "Negative separate from missing",
+      "acceptance": "A completed deterministic check may explicitly record that a proposition fails on supplied records; an unavailable/unperformed/uninterpretable check remains unresolved with no negative result fabricated.",
+      "counterexample_or_control": "At the existing earlier cutoff B lab is null in the decision view with labs_not_available_as_of; retain B=12 g/L only in the audit/historical capture, never as zero, negative assay or eligible as-of evidence.",
+      "result": "not_run"
+    },
+    {
+      "id": "G02-06",
+      "scope": "Failed explanation separate from failed change",
+      "acceptance": "The failed declared-recipe-revision explanation is retained with the actual check and limited disposition. No equipment intervention, operating trial or failed change is inferred.",
+      "counterexample_or_control": "A record-check outcome is not evidence that a pump/feed adjustment was attempted or failed; supplied sources contain no such trial.",
+      "result": "not_run"
+    },
+    {
+      "id": "G02-07",
+      "scope": "Contradiction survives disposition",
+      "acceptance": "Appending a follow-up/disposition preserves original hypothesis wording, support, disconfirmation and source pins; the readable handoff includes contradictory evidence and unresolved alternatives.",
+      "counterexample_or_control": "A later 13 g/L B lab revision changes the descriptive contrast from 2 to 3 g/L; retain 12 g/L revision 1 and 13 g/L revision 2 without silently merging or selecting latest.",
+      "result": "not_run"
+    },
+    {
+      "id": "G02-08",
+      "scope": "Observed outcome separate from decision",
+      "acceptance": "Reported harvest volume and results of record checks are visibly distinct from an authored disposition; a proposed engineering disposition has unresolved owner/review rather than an authenticated approval.",
+      "counterexample_or_control": "900/920 L reported harvest is not a decision to adopt a recipe. Supplied reviewer/date strings are declarations, not company authority; no approvals invented.",
+      "result": "not_run"
+    },
+    {
+      "id": "G02-09",
+      "scope": "Explicit upstream freshness",
+      "acceptance": "Before reusing an investigation conclusion, check its exact linked join against an operator-selected current manifest using the existing join check; retain check output, code/input selection and linked report hash. A saved successful check is a dated observation, not permanent currency.",
+      "counterexample_or_control": "Changed observation CSV with unchanged analysis/join report is detected. Existing stale-analysis scenario withholds both feed totals; a snapshot-only knowledge read must not claim that it reverified current upstream files.",
+      "result": "not_run"
+    },
+    {
+      "id": "G02-10",
+      "scope": "Revision reopening",
+      "acceptance": "Selecting an explicit changed source revision reopens dependent current conclusions/review without deleting prior dispositions. Historical snapshot evidence remains historical; omitted dependencies are not inferred.",
+      "counterexample_or_control": "Selected changed lab/report/source propagates through authored dependent claim links. Do not repin a conclusion or omit one synthesis input simply to obtain matches.",
+      "result": "not_run"
+    },
+    {
+      "id": "G02-11",
+      "scope": "Reconstructable handoff",
+      "acceptance": "A recipient can retrieve each hypothesis, plan, recorded check, evidence, rejected explanation, current limitation and next source/reviewer role using exact IDs/links. Include an unassigned next owner where the fiction provides none.",
+      "counterexample_or_control": "Show both record-level recipe disconfirmation and absence of causal evidence, plus the next request for qualified installed/process/assay records. No claim that a human found it useful or fast.",
+      "result": "not_run"
+    },
+    {
+      "id": "G02-12",
+      "scope": "Bounded software acceptance",
+      "acceptance": "Any later actual composition exercise saves argv/PID/exit/stdout/stderr, raw input/output hashes, failed attempts and immutable before/after guards. Compare complete typed/readable outputs where claimed. No product calls occurred before this freeze.",
+      "counterexample_or_control": "A deliberately incorrect authored causal sentence may be admitted by generic capture as unreviewed; record that semantic non-enforcement honestly rather than treating schema admission as scientific validation.",
+      "result": "not_run"
+    }
+  ],
+  "manual_composition_boundary": "The goal is retention/reconstruction. A reviewed authored template plus existing captures/checks may satisfy it. Machine validation of hypothesis/test/outcome role relations is a separate, stronger guarantee and is not silently required to justify a new tool.",
+  "optional_structured_controls": [
+    {
+      "id": "S-01",
+      "expectation": "If a typed profile/checker is implemented, unknown/dangling hypothesis/test/result links and incompatible result states refuse or expose invalidity before publishing a complete receipt."
+    },
+    {
+      "id": "S-02",
+      "expectation": "A planned or missing result cannot carry an observed outcome; completed negative requires an explicit recorded test and evidence. This validates declarations, not physical truth."
+    },
+    {
+      "id": "S-03",
+      "expectation": "An explicit disconfirms/revises link does not create a circular depends_on DAG: typed relations and source dependencies are separate; the old hypothesis must not depend on its later disposition."
+    },
+    {
+      "id": "S-04",
+      "expectation": "A whole structured ledger merely captured as UTF-8 retains it but does not constitute field/link/status validation; label that guarantee accurately."
+    }
+  ],
+  "excluded_claims": [
+    "new empirical kinetics or causation",
+    "process test or equipment change execution",
+    "authenticated source authority or approval",
+    "company acceptance",
+    "human usefulness or time saved",
+    "automatic watcher or complete environment/transitive dependency lock",
+    "hidden model/provider calls"
+  ]
+}

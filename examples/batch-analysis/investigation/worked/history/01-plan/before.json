@@ -1,0 +1,273 @@
+{
+  "schema": "engineering-onboarding-1",
+  "packet_id": "fictional-ferm101-investigation",
+  "revision": "seed-planned",
+  "scope": "One exposed fictional FERM-101 A/B records investigation. Knowledge-only and unbound; authored question/hypothesis/plan remain proposed and unreviewed. No observations or completed check have been captured into this seed.",
+  "title": "Check a declared recipe explanation while retaining source history",
+  "landing_record_id": "start_here",
+  "selected_sources": {},
+  "records": [
+    {
+      "id": "role:reviewer-unassigned",
+      "kind": "role_reference",
+      "title": "Investigation recipient remains unassigned",
+      "summary": "A requested responsibility, not a person or authenticated appointment.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "proposed",
+      "audience_hints": [
+        "investigator",
+        "reviewer"
+      ],
+      "owner_roles": [],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": [],
+      "data": {
+        "responsibility": "Review the source-bound comparison, the proposed recipe explanation, contradictions and next evidence request. Identify the accountable process/recipe and assay source owners.",
+        "authenticated_identity": null,
+        "assignment_authority": "Not supplied. Assignment belongs to the existing company process."
+      }
+    },
+    {
+      "id": "system:review-home",
+      "kind": "system_reference",
+      "title": "Existing evidence and decision home to identify",
+      "summary": "No connected destination, approved access or company workflow is supplied.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "proposed",
+      "audience_hints": [
+        "investigator",
+        "reviewer"
+      ],
+      "owner_roles": [],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": [],
+      "data": {
+        "reference": "Unassigned; ask for the existing approved evidence and decision location.",
+        "availability": "not_connected",
+        "purpose": "Retain immutable observations, hypothesis, planned check, recorded result and proposed disposition as separate records.",
+        "source_access": "Not granted by this teaching packet."
+      }
+    },
+    {
+      "id": "question:recipe-explanation",
+      "kind": "claim",
+      "title": "The investigation question",
+      "summary": "An authored question, not an engineering conclusion.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "proposed",
+      "audience_hints": [
+        "investigator",
+        "reviewer"
+      ],
+      "owner_roles": [],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": [
+        "Receiving owner/reviewer and company context are unassigned."
+      ],
+      "data": {
+        "basis": "unknown",
+        "statement": "Do different declared executed recipe revisions explain the reported A/B assay difference in the supplied FERM-101 records, and what remains unresolved?",
+        "interpretation_limit": "No claim of physical comparability, yield, kinetics, causation, optimum or current plant truth."
+      }
+    },
+    {
+      "id": "hypothesis:recipe-revision",
+      "kind": "claim",
+      "title": "Proposed recipe-revision explanation",
+      "summary": "An untested authored hypothesis; it is not a source observation.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "proposed",
+      "audience_hints": [
+        "investigator",
+        "reviewer"
+      ],
+      "owner_roles": [],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [
+        "question:recipe-explanation"
+      ],
+      "known_unknowns": [
+        "Installed execution, undeclared changes, feed mapping, assay reliability and process mechanisms remain unverified."
+      ],
+      "data": {
+        "basis": "unknown",
+        "statement": "Hypothesis: different declared executed recipe revisions for A and B account for the reported assay difference. This explanation has not yet been checked in this packet.",
+        "interpretation_limit": "A record-level check can disconfirm the declared-revision explanation, but cannot establish actual process identity or another cause."
+      }
+    },
+    {
+      "id": "plan:recipe-record-check",
+      "kind": "workflow",
+      "title": "Plan a falsifiable records check",
+      "summary": "Template only; no result or process intervention has been recorded.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "proposed",
+      "audience_hints": [
+        "investigator",
+        "reviewer"
+      ],
+      "owner_roles": [],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": [],
+      "data": {
+        "purpose": "Compare exact batch and reported-executed recipe identities/revisions for A and B at the declared cutoff, using the selected join/source snapshots.",
+        "prerequisites": [
+          "question:recipe-explanation",
+          "hypothesis:recipe-revision"
+        ],
+        "steps": [
+          {
+            "id": "check:selected-basis",
+            "description": "Run the existing join --check with the operator-selected manifest and saved join. Retain actual status, code/source selection and raw report identity before citing it.",
+            "inputs": [
+              "question:recipe-explanation"
+            ],
+            "draft_output": "A dated recorded check, or an unresolved/missing-basis note. A prior successful check is not permanent currency."
+          },
+          {
+            "id": "check:declared-recipes",
+            "description": "Inspect A-batch/B-batch and A-recipe/B-recipe, including namespace, recipe_id, recipe_revision, execution_basis and source_revision. If both selected records declare the same recipe revision, the different-declared-revision explanation fails on those records. If any field is unavailable, unqualified or not available as of the cutoff, leave the check unresolved.",
+            "inputs": [
+              "hypothesis:recipe-revision"
+            ],
+            "draft_output": "A source-cited record-check claim distinct from the original hypothesis; never an equipment or process-test outcome."
+          },
+          {
+            "id": "check:limited-disposition",
+            "description": "Retain supporting and contradicting records and unresolved alternatives. Propose further source review without accepting a recipe, changing operations or assigning an authority that is not supplied.",
+            "inputs": [
+              "hypothesis:recipe-revision"
+            ],
+            "draft_output": "A proposed disposition and unassigned next source/reviewer request, with links to the actual check and descriptive observations."
+          }
+        ],
+        "stop_or_review_conditions": [
+          "Missing, stale or mismatched selected basis; unknown record association, units, quality or availability.",
+          "No safe process experiment, equipment change or operating action is authorized by this packet."
+        ],
+        "review_handoff": {
+          "reviewer_role": "role:reviewer-unassigned",
+          "system_reference": "system:review-home",
+          "deliverables": [
+            "Exact source/report locators and revision pins",
+            "Original hypothesis, falsifier, actual record check and limited proposed disposition",
+            "Unresolved alternatives and next required source/reviewer"
+          ],
+          "acceptance": "Source-bound reconstruction and retention only. Generic knowledge capture does not validate scientific roles, source meaning, causal reasoning or company approval."
+        },
+        "execution": "template_data_only"
+      }
+    },
+    {
+      "id": "unknowns:remaining-explanations",
+      "kind": "claim",
+      "title": "Alternatives remain unresolved",
+      "summary": "Do not substitute a rejected explanation with an untested causal story.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "proposed",
+      "audience_hints": [
+        "investigator",
+        "reviewer"
+      ],
+      "owner_roles": [],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [
+        "question:recipe-explanation"
+      ],
+      "known_unknowns": [],
+      "data": {
+        "basis": "unknown",
+        "statement": "Potential differences in actual feed delivery, substrate/composition, sampling and assay, volume basis, mapping, execution or biology remain unresolved. These are questions for qualified source review, not asserted causes.",
+        "interpretation_limit": "The supplied descriptive comparison does not establish consumed substrate, product mass, yield, kinetics, a better recipe or the effect of an intervention."
+      }
+    },
+    {
+      "id": "start_here",
+      "kind": "landing",
+      "title": "Review one explanation without losing its contradiction",
+      "summary": "Read the proposed hypothesis and planned check before adding source-bound observations or a disposition.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "proposed",
+      "audience_hints": [
+        "investigator",
+        "reviewer"
+      ],
+      "owner_roles": [],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": [],
+      "data": {
+        "start_here": [
+          {
+            "record_id": "question:recipe-explanation",
+            "reason": "Understand the bounded question."
+          },
+          {
+            "record_id": "hypothesis:recipe-revision",
+            "reason": "Keep the authored explanation separate from observations."
+          },
+          {
+            "record_id": "plan:recipe-record-check",
+            "reason": "See the falsifier, planned record check and missing owner."
+          },
+          {
+            "record_id": "unknowns:remaining-explanations",
+            "reason": "Retain uncertainty after a record-level explanation fails."
+          }
+        ],
+        "leader_preparation": [
+          "Identify an approved evidence home and responsible source/reviewer roles.",
+          "Check source access and confidentiality before substituting real records.",
+          "Review every actual check and source passage; do not treat pin equality as source authority."
+        ],
+        "new_engineer_outcome": "An unreviewed, reconstructable draft investigation with separated observations, hypothesis, record-check result and proposed disposition; no process action or approval."
+      }
+    }
+  ]
+}

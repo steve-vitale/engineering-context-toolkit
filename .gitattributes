@@ -153,6 +153,8 @@ data/te_pid_layout.json text eol=lf
 /examples/batch-analysis/** text eol=lf
 # Preserve recorded process streams exactly; other record-join files use the scoped LF policy.
 /examples/batch-analysis/record-joins/worked/logs/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# These JSON files are exact captured process streams, including the producer's CRLF.
+/examples/batch-analysis/investigation/worked/checks/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 /scripts/join_batch_records.py text eol=lf
 /scripts/test_join_batch_records.py text eol=lf
 # Copied CC BY 4.0 experimental originals retain their exact publisher bytes.
