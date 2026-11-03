@@ -1,0 +1,547 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/water-valve-records/models/BD08-foreign-or-unavailable-records.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E13"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E13@SITE-A",
+   "question_id": "E13",
+   "family": "energy",
+   "question": "What do existing records establish about this boiler's blowdown function, water-treatment control and any remaining heat-recovery opportunity?",
+   "about": "SITE-A",
+   "assets": [
+    {
+     "id": "SITE-A",
+     "tag": "SITE-A"
+    },
+    {
+     "id": "HV-1",
+     "tag": "HV-1"
+    },
+    {
+     "id": "AT-8",
+     "tag": "AT-8"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "SITE-A",
+     "tag": "SITE-A",
+     "text": "equipment SITE-A reads \"SITE-A SITE-A fictional boiler\"",
+     "field": "units[SITE-A]"
+    },
+    {
+     "role": "blowdown",
+     "id": "HV-1",
+     "tag": "HV-1",
+     "text": "hand valve HV-1 reads \"HV-1 Blowdown valve, fictional declared connection\" at SITE-A",
+     "field": "manual_valves[HV-1]"
+    },
+    {
+     "role": "unverified analyzer/control candidate",
+     "id": "AT-8",
+     "tag": "AT-8",
+     "text": "instrument AT-8 reads \"AT-8 supplied conductivity record\" at SITE-A",
+     "field": "instruments[AT-8]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SITE-A",
+     "tag": "SITE-A",
+     "text": "SITE-A water_service = \"steam-water boiler; explicit source declaration\"; present; meaning and suitability unverified",
+     "field": "units[SITE-A].facts.water_service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SITE-A",
+     "tag": "SITE-A",
+     "text": "SITE-A blowdown_function = \"surface\"; present; meaning and suitability unverified",
+     "field": "units[SITE-A].facts.blowdown_function"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SITE-A",
+     "tag": "SITE-A",
+     "text": "SITE-A record_source = \"Fictional training packet; no plant or engineering approval\"; present; meaning and suitability unverified",
+     "field": "units[SITE-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SITE-A",
+     "tag": "SITE-A",
+     "text": "SITE-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[SITE-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SITE-A",
+     "tag": "SITE-A",
+     "text": "SITE-A record_available = true; present; meaning and suitability unverified",
+     "field": "units[SITE-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SITE-A",
+     "tag": "SITE-A",
+     "text": "SITE-A record_scope = \"site A boiler label B1\"; present; meaning and suitability unverified",
+     "field": "units[SITE-A].facts.record_scope"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SITE-A",
+     "tag": "SITE-A",
+     "text": "SITE-A source_is_fictional = true; present; meaning and suitability unverified",
+     "field": "units[SITE-A].facts.source_is_fictional"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-1",
+     "tag": "HV-1",
+     "text": "HV-1 blowdown_function = \"surface\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-1].facts.blowdown_function"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-1",
+     "tag": "HV-1",
+     "text": "HV-1 record_source = \"Fictional training packet; no plant or engineering approval\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-1].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-1",
+     "tag": "HV-1",
+     "text": "HV-1 record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-1].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-1",
+     "tag": "HV-1",
+     "text": "HV-1 record_available = true; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-1].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-1",
+     "tag": "HV-1",
+     "text": "HV-1 source_is_fictional = true; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-1].facts.source_is_fictional"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AT-8",
+     "tag": "AT-8",
+     "text": "AT-8 analyzer_purpose = \"supplied conductivity record\"; present; meaning and suitability unverified",
+     "field": "instruments[AT-8].facts.analyzer_purpose"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AT-8",
+     "tag": "AT-8",
+     "text": "AT-8 analyzer_target = \"foreign site C B1\"; present; meaning and suitability unverified",
+     "field": "instruments[AT-8].facts.analyzer_target"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AT-8",
+     "tag": "AT-8",
+     "text": "AT-8 record_source = \"Fictional training packet; no plant or engineering approval\"; present; meaning and suitability unverified",
+     "field": "instruments[AT-8].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AT-8",
+     "tag": "AT-8",
+     "text": "AT-8 record_revision = \"R0\"; present; meaning and suitability unverified",
+     "field": "instruments[AT-8].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AT-8",
+     "tag": "AT-8",
+     "text": "AT-8 record_available = false; present; meaning and suitability unverified",
+     "field": "instruments[AT-8].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AT-8",
+     "tag": "AT-8",
+     "text": "AT-8 record_scope = \"foreign site C, not SITE-A\"; present; meaning and suitability unverified",
+     "field": "instruments[AT-8].facts.record_scope"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "AT-8",
+     "tag": "AT-8",
+     "text": "AT-8 source_is_fictional = true; present; meaning and suitability unverified",
+     "field": "instruments[AT-8].facts.source_is_fictional"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SITE-A water_service = steam-water boiler; explicit source declaration",
+     "field": "units[SITE-A].facts.water_service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SITE-A blowdown_function = surface",
+     "field": "units[SITE-A].facts.blowdown_function"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SITE-A record_source = Fictional training packet; no plant or engineering approval",
+     "field": "units[SITE-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SITE-A record_revision = R1",
+     "field": "units[SITE-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SITE-A record_available = True",
+     "field": "units[SITE-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SITE-A record_scope = site A boiler label B1",
+     "field": "units[SITE-A].facts.record_scope"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SITE-A source_is_fictional = True",
+     "field": "units[SITE-A].facts.source_is_fictional"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing boiler blowdown service, treatment/control and recovery basis (qualified records first)",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Named boiler operating and water-treatment records: distinguish bottom/mud removal of suspended solids from surface/skimming removal of dissolved solids; retain asset/source/revision, sample time, availability, quantity/units and operating coverage. Review existing suitable control and recovery before requesting more data.",
+      "a walkdown: Only if the relevant records cannot settle an applicable boiler-water question: agree with the responsible engineer what safe observation or measurement is still needed; no blanket new field measurement or hardware instruction."
+     ],
+     "how": "First establish the actual steam/water service and bottom versus surface function. Normally manual intermittent bottom blowdown alone is not an automation fault. An analyzer tag or nearby location does not prove boiler-water association, suitable control or adequate operation. Keep TDS and conductivity units, representative sampling and feedwater/makeup/condensate distinctions explicit. Any calculated blowdown fraction or percent must state its justified balance, denominator and time basis; do not impose the source's contextual range as a target. For applicable continuous surface duty, review pressure, actual rate/hours, installed recovery, receiving duty and constraints before considering an investigation. Known dry/non-water service is not applicable; unknown service needs clarification. Complete suitable records can be acknowledged without a new measurement or retrofit. Proportional makeup-water-flow control can be an existing surface-control arrangement; absence of a conductivity probe alone is not a control defect. Keep steam-flow and feedwater-flow rate denominators distinct; neither a source screening sentence nor its worked table supplies a universal target.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "SITE-A",
+       "label": "SITE-A",
+       "name": "water_service",
+       "value": "steam-water boiler; explicit source declaration",
+       "where": "units[SITE-A].facts.water_service"
+      },
+      {
+       "id": "SITE-A",
+       "label": "SITE-A",
+       "name": "blowdown_function",
+       "value": "surface",
+       "where": "units[SITE-A].facts.blowdown_function"
+      },
+      {
+       "id": "SITE-A",
+       "label": "SITE-A",
+       "name": "record_source",
+       "value": "Fictional training packet; no plant or engineering approval",
+       "where": "units[SITE-A].facts.record_source"
+      },
+      {
+       "id": "SITE-A",
+       "label": "SITE-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[SITE-A].facts.record_revision"
+      },
+      {
+       "id": "SITE-A",
+       "label": "SITE-A",
+       "name": "record_available",
+       "value": true,
+       "where": "units[SITE-A].facts.record_available"
+      },
+      {
+       "id": "SITE-A",
+       "label": "SITE-A",
+       "name": "record_scope",
+       "value": "site A boiler label B1",
+       "where": "units[SITE-A].facts.record_scope"
+      },
+      {
+       "id": "SITE-A",
+       "label": "SITE-A",
+       "name": "source_is_fictional",
+       "value": true,
+       "where": "units[SITE-A].facts.source_is_fictional"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review records and unresolved applicability with the responsible engineer. Distinguish bottom/mud and surface/skimming functions; manual practice or a missing/generic analyzer does not authorize automation. Consider further control or heat-recovery investigation only if applicable service, treatment needs, actual operation and recovery/sink constraints establish a remaining question. No hardware decision, operating change, chemistry target or site saving follows from this screen.",
+   "typical_benefit": {
+    "wording": "\"Blowdown rates typically range from 4% to 8% of boiler feedwater flow rate, but can be as high as 10%.\" LBNL (as reported in LBNL-56183): blowdown heat recovery 1.3%, 1-2.7 yr.",
+    "source": [
+     "S5",
+     "S19",
+     "S24"
+    ],
+    "arc": "2.124x (IAC/ITAC browse page: 334 recommendations, 1.6 yr average payback, 36.7% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S5: Steam Tip #9, Minimize Boiler Blowdown (DOE/GO-102012-3406)",
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "Source-informed records review: DOE Steam Tip 9, pp. 1–2, distinguishes bottom and surface functions and includes proportional makeup-water-flow control. Supplemental Tip 10, pp. 1–2 (https://www.energy.gov/sites/prod/files/2014/05/f16/steam10_boiler_blowdown.pdf), qualifies recovery by actual source and receiving duty; its opening steam-rate screen and feedwater-based example have different denominators. Historical S19/S24/IAC benefit figures are inherited, not reverified, site-specific or current-standard acceptance. Supplied candidate fields do not establish engineering adequacy or source authority.",
+   "status": "asked"
+  },
+  {
+   "id": "E13@SITE-B",
+   "question_id": "E13",
+   "family": "energy",
+   "question": "What do existing records establish about this boiler's blowdown function, water-treatment control and any remaining heat-recovery opportunity?",
+   "about": "SITE-B",
+   "assets": [
+    {
+     "id": "SITE-B",
+     "tag": "SITE-B"
+    },
+    {
+     "id": "HV-2",
+     "tag": "HV-2"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "SITE-B",
+     "tag": "SITE-B",
+     "text": "equipment SITE-B reads \"SITE-B SITE-B fictional boiler\"",
+     "field": "units[SITE-B]"
+    },
+    {
+     "role": "blowdown",
+     "id": "HV-2",
+     "tag": "HV-2",
+     "text": "hand valve HV-2 reads \"HV-2 Blowdown valve, fictional declared connection\" at SITE-B",
+     "field": "manual_valves[HV-2]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SITE-B",
+     "tag": "SITE-B",
+     "text": "SITE-B water_service = \"steam-water boiler; explicit source declaration\"; present; meaning and suitability unverified",
+     "field": "units[SITE-B].facts.water_service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SITE-B",
+     "tag": "SITE-B",
+     "text": "SITE-B blowdown_function = \"surface\"; present; meaning and suitability unverified",
+     "field": "units[SITE-B].facts.blowdown_function"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SITE-B",
+     "tag": "SITE-B",
+     "text": "SITE-B record_source = \"Fictional training packet; no plant or engineering approval\"; present; meaning and suitability unverified",
+     "field": "units[SITE-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SITE-B",
+     "tag": "SITE-B",
+     "text": "SITE-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[SITE-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SITE-B",
+     "tag": "SITE-B",
+     "text": "SITE-B record_available = true; present; meaning and suitability unverified",
+     "field": "units[SITE-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SITE-B",
+     "tag": "SITE-B",
+     "text": "SITE-B record_scope = \"site B boiler label B1; no available matching record\"; present; meaning and suitability unverified",
+     "field": "units[SITE-B].facts.record_scope"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "SITE-B",
+     "tag": "SITE-B",
+     "text": "SITE-B source_is_fictional = true; present; meaning and suitability unverified",
+     "field": "units[SITE-B].facts.source_is_fictional"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-2",
+     "tag": "HV-2",
+     "text": "HV-2 blowdown_function = \"surface\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-2].facts.blowdown_function"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-2",
+     "tag": "HV-2",
+     "text": "HV-2 record_source = \"Fictional training packet; no plant or engineering approval\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-2].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-2",
+     "tag": "HV-2",
+     "text": "HV-2 record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-2].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-2",
+     "tag": "HV-2",
+     "text": "HV-2 record_available = true; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-2].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-2",
+     "tag": "HV-2",
+     "text": "HV-2 source_is_fictional = true; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-2].facts.source_is_fictional"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SITE-B water_service = steam-water boiler; explicit source declaration",
+     "field": "units[SITE-B].facts.water_service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SITE-B blowdown_function = surface",
+     "field": "units[SITE-B].facts.blowdown_function"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SITE-B record_source = Fictional training packet; no plant or engineering approval",
+     "field": "units[SITE-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SITE-B record_revision = R1",
+     "field": "units[SITE-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SITE-B record_available = True",
+     "field": "units[SITE-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SITE-B record_scope = site B boiler label B1; no available matching record",
+     "field": "units[SITE-B].facts.record_scope"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: SITE-B source_is_fictional = True",
+     "field": "units[SITE-B].facts.source_is_fictional"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing boiler blowdown service, treatment/control and recovery basis (qualified records first)",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Named boiler operating and water-treatment records: distinguish bottom/mud removal of suspended solids from surface/skimming removal of dissolved solids; retain asset/source/revision, sample time, availability, quantity/units and operating coverage. Review existing suitable control and recovery before requesting more data.",
+      "a walkdown: Only if the relevant records cannot settle an applicable boiler-water question: agree with the responsible engineer what safe observation or measurement is still needed; no blanket new field measurement or hardware instruction."
+     ],
+     "how": "First establish the actual steam/water service and bottom versus surface function. Normally manual intermittent bottom blowdown alone is not an automation fault. An analyzer tag or nearby location does not prove boiler-water association, suitable control or adequate operation. Keep TDS and conductivity units, representative sampling and feedwater/makeup/condensate distinctions explicit. Any calculated blowdown fraction or percent must state its justified balance, denominator and time basis; do not impose the source's contextual range as a target. For applicable continuous surface duty, review pressure, actual rate/hours, installed recovery, receiving duty and constraints before considering an investigation. Known dry/non-water service is not applicable; unknown service needs clarification. Complete suitable records can be acknowledged without a new measurement or retrofit. Proportional makeup-water-flow control can be an existing surface-control arrangement; absence of a conductivity probe alone is not a control defect. Keep steam-flow and feedwater-flow rate denominators distinct; neither a source screening sentence nor its worked table supplies a universal target.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "SITE-B",
+       "label": "SITE-B",
+       "name": "water_service",
+       "value": "steam-water boiler; explicit source declaration",
+       "where": "units[SITE-B].facts.water_service"
+      },
+      {
+       "id": "SITE-B",
+       "label": "SITE-B",
+       "name": "blowdown_function",
+       "value": "surface",
+       "where": "units[SITE-B].facts.blowdown_function"
+      },
+      {
+       "id": "SITE-B",
+       "label": "SITE-B",
+       "name": "record_source",
+       "value": "Fictional training packet; no plant or engineering approval",
+       "where": "units[SITE-B].facts.record_source"
+      },
+      {
+       "id": "SITE-B",
+       "label": "SITE-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[SITE-B].facts.record_revision"
+      },
+      {
+       "id": "SITE-B",
+       "label": "SITE-B",
+       "name": "record_available",
+       "value": true,
+       "where": "units[SITE-B].facts.record_available"
+      },
+      {
+       "id": "SITE-B",
+       "label": "SITE-B",
+       "name": "record_scope",
+       "value": "site B boiler label B1; no available matching record",
+       "where": "units[SITE-B].facts.record_scope"
+      },
+      {
+       "id": "SITE-B",
+       "label": "SITE-B",
+       "name": "source_is_fictional",
+       "value": true,
+       "where": "units[SITE-B].facts.source_is_fictional"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review records and unresolved applicability with the responsible engineer. Distinguish bottom/mud and surface/skimming functions; manual practice or a missing/generic analyzer does not authorize automation. Consider further control or heat-recovery investigation only if applicable service, treatment needs, actual operation and recovery/sink constraints establish a remaining question. No hardware decision, operating change, chemistry target or site saving follows from this screen.",
+   "typical_benefit": {
+    "wording": "\"Blowdown rates typically range from 4% to 8% of boiler feedwater flow rate, but can be as high as 10%.\" LBNL (as reported in LBNL-56183): blowdown heat recovery 1.3%, 1-2.7 yr.",
+    "source": [
+     "S5",
+     "S19",
+     "S24"
+    ],
+    "arc": "2.124x (IAC/ITAC browse page: 334 recommendations, 1.6 yr average payback, 36.7% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S5: Steam Tip #9, Minimize Boiler Blowdown (DOE/GO-102012-3406)",
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "Source-informed records review: DOE Steam Tip 9, pp. 1–2, distinguishes bottom and surface functions and includes proportional makeup-water-flow control. Supplemental Tip 10, pp. 1–2 (https://www.energy.gov/sites/prod/files/2014/05/f16/steam10_boiler_blowdown.pdf), qualifies recovery by actual source and receiving duty; its opening steam-rate screen and feedwater-based example have different denominators. Historical S19/S24/IAC benefit figures are inherited, not reverified, site-specific or current-standard acceptance. Supplied candidate fields do not establish engineering adequacy or source authority.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

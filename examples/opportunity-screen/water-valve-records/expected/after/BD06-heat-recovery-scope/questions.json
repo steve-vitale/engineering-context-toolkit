@@ -1,0 +1,653 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/water-valve-records/models/BD06-heat-recovery-scope.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E13"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E13@CONTINUOUS",
+   "question_id": "E13",
+   "family": "energy",
+   "question": "What do existing records establish about this boiler's blowdown function, water-treatment control and any remaining heat-recovery opportunity?",
+   "about": "CONTINUOUS",
+   "assets": [
+    {
+     "id": "CONTINUOUS",
+     "tag": "CONTINUOUS"
+    },
+    {
+     "id": "HV-1",
+     "tag": "HV-1"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "CONTINUOUS",
+     "tag": "CONTINUOUS",
+     "text": "equipment CONTINUOUS reads \"CONTINUOUS CONTINUOUS fictional boiler\"",
+     "field": "units[CONTINUOUS]"
+    },
+    {
+     "role": "blowdown",
+     "id": "HV-1",
+     "tag": "HV-1",
+     "text": "hand valve HV-1 reads \"HV-1 Blowdown valve, fictional declared connection\" at CONTINUOUS",
+     "field": "manual_valves[HV-1]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CONTINUOUS",
+     "tag": "CONTINUOUS",
+     "text": "CONTINUOUS water_service = \"steam-water boiler; explicit source declaration\"; present; meaning and suitability unverified",
+     "field": "units[CONTINUOUS].facts.water_service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CONTINUOUS",
+     "tag": "CONTINUOUS",
+     "text": "CONTINUOUS blowdown_function = \"surface\"; present; meaning and suitability unverified",
+     "field": "units[CONTINUOUS].facts.blowdown_function"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CONTINUOUS",
+     "tag": "CONTINUOUS",
+     "text": "CONTINUOUS operation_mode = \"continuous\"; present; meaning and suitability unverified",
+     "field": "units[CONTINUOUS].facts.operation_mode"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CONTINUOUS",
+     "tag": "CONTINUOUS",
+     "text": "CONTINUOUS pressure_psig = 150; present; meaning and suitability unverified",
+     "field": "units[CONTINUOUS].facts.pressure_psig"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CONTINUOUS",
+     "tag": "CONTINUOUS",
+     "text": "CONTINUOUS blowdown_rate = \"fictional 400 lb/h\"; present; meaning and suitability unverified",
+     "field": "units[CONTINUOUS].facts.blowdown_rate"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CONTINUOUS",
+     "tag": "CONTINUOUS",
+     "text": "CONTINUOUS operating_hours = 4000; present; meaning and suitability unverified",
+     "field": "units[CONTINUOUS].facts.operating_hours"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CONTINUOUS",
+     "tag": "CONTINUOUS",
+     "text": "CONTINUOUS recovery_status = \"unknown\"; blank; meaning and suitability unverified",
+     "field": "units[CONTINUOUS].facts.recovery_status"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CONTINUOUS",
+     "tag": "CONTINUOUS",
+     "text": "CONTINUOUS receiving_duty = \"potential feedwater sink, suitability unverified\"; present; meaning and suitability unverified",
+     "field": "units[CONTINUOUS].facts.receiving_duty"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CONTINUOUS",
+     "tag": "CONTINUOUS",
+     "text": "CONTINUOUS record_source = \"Fictional training packet; no plant or engineering approval\"; present; meaning and suitability unverified",
+     "field": "units[CONTINUOUS].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CONTINUOUS",
+     "tag": "CONTINUOUS",
+     "text": "CONTINUOUS record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[CONTINUOUS].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CONTINUOUS",
+     "tag": "CONTINUOUS",
+     "text": "CONTINUOUS record_available = true; present; meaning and suitability unverified",
+     "field": "units[CONTINUOUS].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "CONTINUOUS",
+     "tag": "CONTINUOUS",
+     "text": "CONTINUOUS source_is_fictional = true; present; meaning and suitability unverified",
+     "field": "units[CONTINUOUS].facts.source_is_fictional"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-1",
+     "tag": "HV-1",
+     "text": "HV-1 blowdown_function = \"surface\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-1].facts.blowdown_function"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-1",
+     "tag": "HV-1",
+     "text": "HV-1 record_source = \"Fictional training packet; no plant or engineering approval\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-1].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-1",
+     "tag": "HV-1",
+     "text": "HV-1 record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-1].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-1",
+     "tag": "HV-1",
+     "text": "HV-1 record_available = true; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-1].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-1",
+     "tag": "HV-1",
+     "text": "HV-1 source_is_fictional = true; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-1].facts.source_is_fictional"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CONTINUOUS water_service = steam-water boiler; explicit source declaration",
+     "field": "units[CONTINUOUS].facts.water_service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CONTINUOUS blowdown_function = surface",
+     "field": "units[CONTINUOUS].facts.blowdown_function"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CONTINUOUS operation_mode = continuous",
+     "field": "units[CONTINUOUS].facts.operation_mode"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CONTINUOUS pressure_psig = 150",
+     "field": "units[CONTINUOUS].facts.pressure_psig"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CONTINUOUS blowdown_rate = fictional 400 lb/h",
+     "field": "units[CONTINUOUS].facts.blowdown_rate"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CONTINUOUS operating_hours = 4000",
+     "field": "units[CONTINUOUS].facts.operating_hours"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CONTINUOUS receiving_duty = potential feedwater sink, suitability unverified",
+     "field": "units[CONTINUOUS].facts.receiving_duty"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CONTINUOUS record_source = Fictional training packet; no plant or engineering approval",
+     "field": "units[CONTINUOUS].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CONTINUOUS record_revision = R1",
+     "field": "units[CONTINUOUS].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CONTINUOUS record_available = True",
+     "field": "units[CONTINUOUS].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: CONTINUOUS source_is_fictional = True",
+     "field": "units[CONTINUOUS].facts.source_is_fictional"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing boiler blowdown service, treatment/control and recovery basis (qualified records first)",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Named boiler operating and water-treatment records: distinguish bottom/mud removal of suspended solids from surface/skimming removal of dissolved solids; retain asset/source/revision, sample time, availability, quantity/units and operating coverage. Review existing suitable control and recovery before requesting more data.",
+      "a walkdown: Only if the relevant records cannot settle an applicable boiler-water question: agree with the responsible engineer what safe observation or measurement is still needed; no blanket new field measurement or hardware instruction."
+     ],
+     "how": "First establish the actual steam/water service and bottom versus surface function. Normally manual intermittent bottom blowdown alone is not an automation fault. An analyzer tag or nearby location does not prove boiler-water association, suitable control or adequate operation. Keep TDS and conductivity units, representative sampling and feedwater/makeup/condensate distinctions explicit. Any calculated blowdown fraction or percent must state its justified balance, denominator and time basis; do not impose the source's contextual range as a target. For applicable continuous surface duty, review pressure, actual rate/hours, installed recovery, receiving duty and constraints before considering an investigation. Known dry/non-water service is not applicable; unknown service needs clarification. Complete suitable records can be acknowledged without a new measurement or retrofit. Proportional makeup-water-flow control can be an existing surface-control arrangement; absence of a conductivity probe alone is not a control defect. Keep steam-flow and feedwater-flow rate denominators distinct; neither a source screening sentence nor its worked table supplies a universal target.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "CONTINUOUS",
+       "label": "CONTINUOUS",
+       "name": "water_service",
+       "value": "steam-water boiler; explicit source declaration",
+       "where": "units[CONTINUOUS].facts.water_service"
+      },
+      {
+       "id": "CONTINUOUS",
+       "label": "CONTINUOUS",
+       "name": "blowdown_function",
+       "value": "surface",
+       "where": "units[CONTINUOUS].facts.blowdown_function"
+      },
+      {
+       "id": "CONTINUOUS",
+       "label": "CONTINUOUS",
+       "name": "operation_mode",
+       "value": "continuous",
+       "where": "units[CONTINUOUS].facts.operation_mode"
+      },
+      {
+       "id": "CONTINUOUS",
+       "label": "CONTINUOUS",
+       "name": "pressure_psig",
+       "value": 150,
+       "where": "units[CONTINUOUS].facts.pressure_psig"
+      },
+      {
+       "id": "CONTINUOUS",
+       "label": "CONTINUOUS",
+       "name": "blowdown_rate",
+       "value": "fictional 400 lb/h",
+       "where": "units[CONTINUOUS].facts.blowdown_rate"
+      },
+      {
+       "id": "CONTINUOUS",
+       "label": "CONTINUOUS",
+       "name": "operating_hours",
+       "value": 4000,
+       "where": "units[CONTINUOUS].facts.operating_hours"
+      },
+      {
+       "id": "CONTINUOUS",
+       "label": "CONTINUOUS",
+       "name": "receiving_duty",
+       "value": "potential feedwater sink, suitability unverified",
+       "where": "units[CONTINUOUS].facts.receiving_duty"
+      },
+      {
+       "id": "CONTINUOUS",
+       "label": "CONTINUOUS",
+       "name": "record_source",
+       "value": "Fictional training packet; no plant or engineering approval",
+       "where": "units[CONTINUOUS].facts.record_source"
+      },
+      {
+       "id": "CONTINUOUS",
+       "label": "CONTINUOUS",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[CONTINUOUS].facts.record_revision"
+      },
+      {
+       "id": "CONTINUOUS",
+       "label": "CONTINUOUS",
+       "name": "record_available",
+       "value": true,
+       "where": "units[CONTINUOUS].facts.record_available"
+      },
+      {
+       "id": "CONTINUOUS",
+       "label": "CONTINUOUS",
+       "name": "source_is_fictional",
+       "value": true,
+       "where": "units[CONTINUOUS].facts.source_is_fictional"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review records and unresolved applicability with the responsible engineer. Distinguish bottom/mud and surface/skimming functions; manual practice or a missing/generic analyzer does not authorize automation. Consider further control or heat-recovery investigation only if applicable service, treatment needs, actual operation and recovery/sink constraints establish a remaining question. No hardware decision, operating change, chemistry target or site saving follows from this screen.",
+   "typical_benefit": {
+    "wording": "\"Blowdown rates typically range from 4% to 8% of boiler feedwater flow rate, but can be as high as 10%.\" LBNL (as reported in LBNL-56183): blowdown heat recovery 1.3%, 1-2.7 yr.",
+    "source": [
+     "S5",
+     "S19",
+     "S24"
+    ],
+    "arc": "2.124x (IAC/ITAC browse page: 334 recommendations, 1.6 yr average payback, 36.7% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S5: Steam Tip #9, Minimize Boiler Blowdown (DOE/GO-102012-3406)",
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "Source-informed records review: DOE Steam Tip 9, pp. 1–2, distinguishes bottom and surface functions and includes proportional makeup-water-flow control. Supplemental Tip 10, pp. 1–2 (https://www.energy.gov/sites/prod/files/2014/05/f16/steam10_boiler_blowdown.pdf), qualifies recovery by actual source and receiving duty; its opening steam-rate screen and feedwater-based example have different denominators. Historical S19/S24/IAC benefit figures are inherited, not reverified, site-specific or current-standard acceptance. Supplied candidate fields do not establish engineering adequacy or source authority.",
+   "status": "asked"
+  },
+  {
+   "id": "E13@INTERMITTENT",
+   "question_id": "E13",
+   "family": "energy",
+   "question": "What do existing records establish about this boiler's blowdown function, water-treatment control and any remaining heat-recovery opportunity?",
+   "about": "INTERMITTENT",
+   "assets": [
+    {
+     "id": "INTERMITTENT",
+     "tag": "INTERMITTENT"
+    },
+    {
+     "id": "HV-2",
+     "tag": "HV-2"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "INTERMITTENT",
+     "tag": "INTERMITTENT",
+     "text": "equipment INTERMITTENT reads \"INTERMITTENT INTERMITTENT fictional boiler\"",
+     "field": "units[INTERMITTENT]"
+    },
+    {
+     "role": "blowdown",
+     "id": "HV-2",
+     "tag": "HV-2",
+     "text": "hand valve HV-2 reads \"HV-2 Blowdown valve, fictional declared connection\" at INTERMITTENT",
+     "field": "manual_valves[HV-2]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "INTERMITTENT",
+     "tag": "INTERMITTENT",
+     "text": "INTERMITTENT water_service = \"steam-water boiler; explicit source declaration\"; present; meaning and suitability unverified",
+     "field": "units[INTERMITTENT].facts.water_service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "INTERMITTENT",
+     "tag": "INTERMITTENT",
+     "text": "INTERMITTENT blowdown_function = \"bottom\"; present; meaning and suitability unverified",
+     "field": "units[INTERMITTENT].facts.blowdown_function"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "INTERMITTENT",
+     "tag": "INTERMITTENT",
+     "text": "INTERMITTENT operation_mode = \"intermittent low duty\"; present; meaning and suitability unverified",
+     "field": "units[INTERMITTENT].facts.operation_mode"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "INTERMITTENT",
+     "tag": "INTERMITTENT",
+     "text": "INTERMITTENT pressure_psig = 15; present; meaning and suitability unverified",
+     "field": "units[INTERMITTENT].facts.pressure_psig"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "INTERMITTENT",
+     "tag": "INTERMITTENT",
+     "text": "INTERMITTENT blowdown_rate = \"unknown\"; blank; meaning and suitability unverified",
+     "field": "units[INTERMITTENT].facts.blowdown_rate"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "INTERMITTENT",
+     "tag": "INTERMITTENT",
+     "text": "INTERMITTENT operating_hours = 10; present; meaning and suitability unverified",
+     "field": "units[INTERMITTENT].facts.operating_hours"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "INTERMITTENT",
+     "tag": "INTERMITTENT",
+     "text": "INTERMITTENT recovery_status = \"not established\"; present; meaning and suitability unverified",
+     "field": "units[INTERMITTENT].facts.recovery_status"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "INTERMITTENT",
+     "tag": "INTERMITTENT",
+     "text": "INTERMITTENT receiving_duty = \"unrelated non-water process; no qualified sink\"; present; meaning and suitability unverified",
+     "field": "units[INTERMITTENT].facts.receiving_duty"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "INTERMITTENT",
+     "tag": "INTERMITTENT",
+     "text": "INTERMITTENT record_source = \"Fictional training packet; no plant or engineering approval\"; present; meaning and suitability unverified",
+     "field": "units[INTERMITTENT].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "INTERMITTENT",
+     "tag": "INTERMITTENT",
+     "text": "INTERMITTENT record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[INTERMITTENT].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "INTERMITTENT",
+     "tag": "INTERMITTENT",
+     "text": "INTERMITTENT record_available = true; present; meaning and suitability unverified",
+     "field": "units[INTERMITTENT].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "INTERMITTENT",
+     "tag": "INTERMITTENT",
+     "text": "INTERMITTENT source_is_fictional = true; present; meaning and suitability unverified",
+     "field": "units[INTERMITTENT].facts.source_is_fictional"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-2",
+     "tag": "HV-2",
+     "text": "HV-2 blowdown_function = \"bottom\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-2].facts.blowdown_function"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-2",
+     "tag": "HV-2",
+     "text": "HV-2 record_source = \"Fictional training packet; no plant or engineering approval\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-2].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-2",
+     "tag": "HV-2",
+     "text": "HV-2 record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-2].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-2",
+     "tag": "HV-2",
+     "text": "HV-2 record_available = true; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-2].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-2",
+     "tag": "HV-2",
+     "text": "HV-2 source_is_fictional = true; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-2].facts.source_is_fictional"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: INTERMITTENT water_service = steam-water boiler; explicit source declaration",
+     "field": "units[INTERMITTENT].facts.water_service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: INTERMITTENT blowdown_function = bottom",
+     "field": "units[INTERMITTENT].facts.blowdown_function"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: INTERMITTENT operation_mode = intermittent low duty",
+     "field": "units[INTERMITTENT].facts.operation_mode"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: INTERMITTENT pressure_psig = 15",
+     "field": "units[INTERMITTENT].facts.pressure_psig"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: INTERMITTENT operating_hours = 10",
+     "field": "units[INTERMITTENT].facts.operating_hours"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: INTERMITTENT recovery_status = not established",
+     "field": "units[INTERMITTENT].facts.recovery_status"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: INTERMITTENT receiving_duty = unrelated non-water process; no qualified sink",
+     "field": "units[INTERMITTENT].facts.receiving_duty"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: INTERMITTENT record_source = Fictional training packet; no plant or engineering approval",
+     "field": "units[INTERMITTENT].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: INTERMITTENT record_revision = R1",
+     "field": "units[INTERMITTENT].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: INTERMITTENT record_available = True",
+     "field": "units[INTERMITTENT].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: INTERMITTENT source_is_fictional = True",
+     "field": "units[INTERMITTENT].facts.source_is_fictional"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing boiler blowdown service, treatment/control and recovery basis (qualified records first)",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Named boiler operating and water-treatment records: distinguish bottom/mud removal of suspended solids from surface/skimming removal of dissolved solids; retain asset/source/revision, sample time, availability, quantity/units and operating coverage. Review existing suitable control and recovery before requesting more data.",
+      "a walkdown: Only if the relevant records cannot settle an applicable boiler-water question: agree with the responsible engineer what safe observation or measurement is still needed; no blanket new field measurement or hardware instruction."
+     ],
+     "how": "First establish the actual steam/water service and bottom versus surface function. Normally manual intermittent bottom blowdown alone is not an automation fault. An analyzer tag or nearby location does not prove boiler-water association, suitable control or adequate operation. Keep TDS and conductivity units, representative sampling and feedwater/makeup/condensate distinctions explicit. Any calculated blowdown fraction or percent must state its justified balance, denominator and time basis; do not impose the source's contextual range as a target. For applicable continuous surface duty, review pressure, actual rate/hours, installed recovery, receiving duty and constraints before considering an investigation. Known dry/non-water service is not applicable; unknown service needs clarification. Complete suitable records can be acknowledged without a new measurement or retrofit. Proportional makeup-water-flow control can be an existing surface-control arrangement; absence of a conductivity probe alone is not a control defect. Keep steam-flow and feedwater-flow rate denominators distinct; neither a source screening sentence nor its worked table supplies a universal target.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "INTERMITTENT",
+       "label": "INTERMITTENT",
+       "name": "water_service",
+       "value": "steam-water boiler; explicit source declaration",
+       "where": "units[INTERMITTENT].facts.water_service"
+      },
+      {
+       "id": "INTERMITTENT",
+       "label": "INTERMITTENT",
+       "name": "blowdown_function",
+       "value": "bottom",
+       "where": "units[INTERMITTENT].facts.blowdown_function"
+      },
+      {
+       "id": "INTERMITTENT",
+       "label": "INTERMITTENT",
+       "name": "operation_mode",
+       "value": "intermittent low duty",
+       "where": "units[INTERMITTENT].facts.operation_mode"
+      },
+      {
+       "id": "INTERMITTENT",
+       "label": "INTERMITTENT",
+       "name": "pressure_psig",
+       "value": 15,
+       "where": "units[INTERMITTENT].facts.pressure_psig"
+      },
+      {
+       "id": "INTERMITTENT",
+       "label": "INTERMITTENT",
+       "name": "operating_hours",
+       "value": 10,
+       "where": "units[INTERMITTENT].facts.operating_hours"
+      },
+      {
+       "id": "INTERMITTENT",
+       "label": "INTERMITTENT",
+       "name": "recovery_status",
+       "value": "not established",
+       "where": "units[INTERMITTENT].facts.recovery_status"
+      },
+      {
+       "id": "INTERMITTENT",
+       "label": "INTERMITTENT",
+       "name": "receiving_duty",
+       "value": "unrelated non-water process; no qualified sink",
+       "where": "units[INTERMITTENT].facts.receiving_duty"
+      },
+      {
+       "id": "INTERMITTENT",
+       "label": "INTERMITTENT",
+       "name": "record_source",
+       "value": "Fictional training packet; no plant or engineering approval",
+       "where": "units[INTERMITTENT].facts.record_source"
+      },
+      {
+       "id": "INTERMITTENT",
+       "label": "INTERMITTENT",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[INTERMITTENT].facts.record_revision"
+      },
+      {
+       "id": "INTERMITTENT",
+       "label": "INTERMITTENT",
+       "name": "record_available",
+       "value": true,
+       "where": "units[INTERMITTENT].facts.record_available"
+      },
+      {
+       "id": "INTERMITTENT",
+       "label": "INTERMITTENT",
+       "name": "source_is_fictional",
+       "value": true,
+       "where": "units[INTERMITTENT].facts.source_is_fictional"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review records and unresolved applicability with the responsible engineer. Distinguish bottom/mud and surface/skimming functions; manual practice or a missing/generic analyzer does not authorize automation. Consider further control or heat-recovery investigation only if applicable service, treatment needs, actual operation and recovery/sink constraints establish a remaining question. No hardware decision, operating change, chemistry target or site saving follows from this screen.",
+   "typical_benefit": {
+    "wording": "\"Blowdown rates typically range from 4% to 8% of boiler feedwater flow rate, but can be as high as 10%.\" LBNL (as reported in LBNL-56183): blowdown heat recovery 1.3%, 1-2.7 yr.",
+    "source": [
+     "S5",
+     "S19",
+     "S24"
+    ],
+    "arc": "2.124x (IAC/ITAC browse page: 334 recommendations, 1.6 yr average payback, 36.7% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S5: Steam Tip #9, Minimize Boiler Blowdown (DOE/GO-102012-3406)",
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "Source-informed records review: DOE Steam Tip 9, pp. 1–2, distinguishes bottom and surface functions and includes proportional makeup-water-flow control. Supplemental Tip 10, pp. 1–2 (https://www.energy.gov/sites/prod/files/2014/05/f16/steam10_boiler_blowdown.pdf), qualifies recovery by actual source and receiving duty; its opening steam-rate screen and feedwater-based example have different denominators. Historical S19/S24/IAC benefit figures are inherited, not reverified, site-specific or current-standard acceptance. Supplied candidate fields do not establish engineering adequacy or source authority.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

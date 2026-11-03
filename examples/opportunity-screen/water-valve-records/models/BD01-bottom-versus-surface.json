@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "title": "Fictional E13 development control; not a plant record",
+    "scope": "Source-job counterexamples, authored before product calls; not independent plants",
+    "unknowns": [
+      "Current operating suitability and authority are not established"
+    ],
+    "assumptions": [
+      "Every identifier and value is fictional"
+    ]
+  },
+  "units": [
+    {
+      "id": "BOTTOM",
+      "name": "BOTTOM fictional boiler",
+      "type": "boiler",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "water_service": "steam-water boiler; explicit source declaration",
+        "blowdown_function": "bottom/mud suspended-solids removal",
+        "operation_mode": "manual intermittent normal practice; adequacy not reviewed"
+      },
+      "source": "Fictional source-authored control; no physical existence implied",
+      "assigned_tag": true
+    },
+    {
+      "id": "SURFACE",
+      "name": "SURFACE fictional boiler",
+      "type": "boiler",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "water_service": "steam-water boiler; explicit source declaration",
+        "blowdown_function": "surface/skimming dissolved-solids removal",
+        "operation_mode": "continuous; chemistry basis unknown"
+      },
+      "source": "Fictional source-authored control; no physical existence implied",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "manual_valves": [
+    {
+      "tag": "HV-1",
+      "unit": "BOTTOM",
+      "description": "Blowdown valve, fictional declared connection",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "blowdown_function": "bottom/mud suspended-solids removal"
+      },
+      "source": "Fictional control"
+    },
+    {
+      "tag": "HV-2",
+      "unit": "SURFACE",
+      "description": "Blowdown valve, fictional declared connection",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "blowdown_function": "surface/skimming dissolved-solids removal"
+      },
+      "source": "Fictional control"
+    }
+  ],
+  "instruments": [],
+  "controllers": [],
+  "final_elements": []
+}

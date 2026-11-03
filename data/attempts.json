@@ -4892,6 +4892,39 @@
         "scripts/graph_export.py",
         "scripts/test_graph_export.py"
       ]
+    },
+    {
+      "id": "A313",
+      "function": "intake_and_reuse",
+      "date": "2026-11-03",
+      "change": "Source-review E13/C4/E24 as records-first investigations of distinct boiler blowdown, valve/bypass performance and chemistry-limited cooling-water management.",
+      "hypothesis": "Existing records should expose applicability, actual function, quantity/units, source scope and unresolved operation without generic-analyzer false quiet or compulsory retrofit from a drawing clue.",
+      "evidence": "Original four regression methods fail39 assertions on20 exposed cases; final five methods pass25 cases with complete current reports, selected-field presence and typed evidence. Eight earlier E13 original/candidate pairs and12 valve/tower pairs are retained; five further criteria have five separately matched original/successor calls. Final36 actual producer calls use declaredLF catalog bytes. Four common screens and rollup stay completeLF-exact with working bytes preserved; two description bundles retain65/69 raw files and update only2catalogs/2receipts. Three actual context revisions retain whole decision/ownership histories, reopen prior partial answers and refuse old sheets; six full/core pureSnapshot pairs read complete current/history. Question169methods pass with1optional skip; description23pass.",
+      "runs": "Exposed fictional source/collection controls, matched deterministic calls and actual producer/context receiving; no model/provider calls, plant data or measured human benefit. Earlier failed candidate/helper/observer invocations retained distinctly.",
+      "verdict": "kept",
+      "why": "Repair only three whole rules; preserve other47/shared catalog objects and other49benefits. Replace C4 misleading benefit ellipsis with qualified source context; retain its original. Increase bounded collection reviews25→28, leaving22/N082 and N065/human usefulness open. No engineering authority, installed truth, universal targets or company service is created.",
+      "source": [
+        "docs/JOURNAL.md#159-review-blowdown-valves-and-tower-water-from-existing-records",
+        "examples/opportunity-screen/water-valve-records/README.md",
+        "examples/opportunity-screen/water-valve-records/SOURCES.json",
+        "examples/opportunity-screen/water-valve-records/history/PROVENANCE.json"
+      ]
+    },
+    {
+      "id": "A314",
+      "function": "intake_and_reuse",
+      "date": "2026-11-03",
+      "change": "Renew the equipment-change tutorial's default-catalog snapshot from actual replay after full CI catches its stale selection.",
+      "hypothesis": "A worked tutorial that consumes the current default catalog must carry the exact consumed bytes while preserving unrelated engineering outputs and complete source/review history.",
+      "evidence": "Both original review runs at74cf2bd report74/75 full programs with one saved-catalog mismatch;18individual skips, zero platform/additional notices. SDK32assertions pass separately; six-suite step not reached. Actual fixed-example replay runs14CLIjobs with4intended refusals and56checks. Only1of20 selected artifacts changes: the catalog; other19rawexact. The selected replacement matches both actual A/B builds and current56898 catalog. Original run metadata/bytes remain historical; explicit successor provenance records the renewal. Targeted engineering-change module3/3passes without code/key/assertion changes.",
+      "runs": "One actual retained full tutorial replay plus targeted3-method module (which performs another replay); ordinary CI failures retained separately, no workflow rerun or model/provider call.",
+      "verdict": "kept",
+      "why": "Repair an omitted current-default consumer through actual production, not by changing the saved source/answer fingerprint or weakening equality. Preserve the prior243review records, all old attempts and all116ideas. Broad/source-only/CI scopes and historical source counts stay separate; new committed-version CI remains its own release gate.",
+      "source": [
+        "docs/JOURNAL.md#160-renew-the-catalog-captured-by-the-equipment-change-tutorial",
+        "examples/engineering-change/PROVENANCE.json",
+        "scripts/test_engineering_change.py"
+      ]
     }
   ],
   "not_tried": [
@@ -5765,8 +5798,8 @@
       "id": "N082",
       "function": "intake_and_reuse",
       "status": "not-done",
-      "idea": "Source-review the remaining 25 catalog rules within the 50-rule/126-request inventory with prospective expected/unacceptable questions, exact collection scope and independent source review.",
-      "why_not_yet": "Twenty-five named rules have bounded source-informed collection reviews after A303, including service-first E16/C5, scoped C3 valve feedback, C8 alarm records and E6 compressor/service, duty and real-power records; 25 remain. These are not whole-catalog engineering adequacy, installed protection/operation acceptance, source authentication, compliance or usefulness. N065 and real engineer/recipient acceptance remain open.",
+      "idea": "Source-review the remaining 22 catalog rules within the 50-rule/126-request inventory with prospective expected/unacceptable questions, exact collection scope and independent source review.",
+      "why_not_yet": "Twenty-eight named rules have bounded source-informed collection reviews after A313, adding E13 boiler blowdown, C4 valve/bypass and E24 tower water to the earlier 25; 22 remain. The 25 fictional controls and matched source-policy reviews do not establish whole-catalog engineering adequacy, source authority, installed operation, compliance or human usefulness. N065 and actual engineer/recipient acceptance remain open.",
       "source": [
         "docs/JOURNAL.md#115-repair-the-audit-gaps-with-owned-workstreams-and-independent-handoffs",
         "docs/STATUS.md",
@@ -5780,7 +5813,9 @@
         "docs/JOURNAL.md#150-review-alarm-records-in-their-operator-and-source-scope",
         "examples/opportunity-screen/alarm-basis/SOURCES.json",
         "docs/JOURNAL.md#151-review-compressor-recycle-from-existing-records-and-applicable-duty",
-        "examples/opportunity-screen/compressor-recycle-basis/SOURCES.json"
+        "examples/opportunity-screen/compressor-recycle-basis/SOURCES.json",
+        "docs/JOURNAL.md#159-review-blowdown-valves-and-tower-water-from-existing-records",
+        "examples/opportunity-screen/water-valve-records/SOURCES.json"
       ]
     },
     {

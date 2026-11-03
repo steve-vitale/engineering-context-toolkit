@@ -741,7 +741,21 @@
         "examples/opportunity-screen/compressor-recycle-basis/models/E6-06-power-and-sibling-coverage-B.json",
         "examples/opportunity-screen/compressor-recycle-basis/models/E6-S01-no-eligible-compressor.json",
         "examples/opportunity-screen/compressor-recycle-basis/models/E6-S02-no-drawn-valve-candidate.json",
-        "examples/opportunity-screen/compressor-recycle-basis/models/E6-S03-noncentrifugal-and-unknown-boundaries.json"
+        "examples/opportunity-screen/compressor-recycle-basis/models/E6-S03-noncentrifugal-and-unknown-boundaries.json",
+        "examples/opportunity-screen/water-valve-records/README.md",
+        "examples/opportunity-screen/water-valve-records/SOURCES.json",
+        "examples/opportunity-screen/water-valve-records/EXPOSURE.json",
+        "examples/opportunity-screen/water-valve-records/expected/cases.json",
+        "examples/opportunity-screen/water-valve-records/history/PROVENANCE.json",
+        "examples/opportunity-screen/water-valve-records/history/catalog-before.json",
+        "examples/opportunity-screen/water-valve-records/expected/after/BD02-generic-analyzer/questions.json",
+        "examples/opportunity-screen/water-valve-records/expected/after/BD02-generic-analyzer/screen.md",
+        "examples/opportunity-screen/water-valve-records/expected/after/C4-02-legitimate-bypass/questions.json",
+        "examples/opportunity-screen/water-valve-records/expected/after/C4-02-legitimate-bypass/screen.md",
+        "examples/opportunity-screen/water-valve-records/expected/after/CT-01-generic-analyzer/questions.json",
+        "examples/opportunity-screen/water-valve-records/expected/after/CT-01-generic-analyzer/screen.md",
+        "examples/opportunity-screen/water-valve-records/expected/after/AX04-steam-generator-name/questions.json",
+        "examples/opportunity-screen/water-valve-records/expected/after/AX04-steam-generator-name/screen.md"
       ],
       "tests": [
         "scripts/test_question_engine.py"

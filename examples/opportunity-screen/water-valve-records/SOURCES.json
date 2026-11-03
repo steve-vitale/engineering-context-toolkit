@@ -1,0 +1,40 @@
+{
+  "schema": "water-valve-source-review-1",
+  "reviewed_utc_date": "2026-11-03",
+  "rules": ["E13", "C4", "E24"],
+  "reading": [
+    {
+      "source": "S5",
+      "title": "DOE Steam Tip Sheet 9, Minimize Boiler Blowdown, January 2012",
+      "url": "https://www.energy.gov/sites/prod/files/2014/05/f16/steam9_blowdown.pdf",
+      "locator": "Complete pages 1–2, functions, conditional rates and automatic/proportional control alternatives",
+      "sha256_raw": "cf38568a74356246ddea7d0ee863e712ea8a580cc125940b375e2b7c1193aa58",
+      "scope": "Bottom/mud suspended-solids removal is distinct from surface dissolved-solids control. Rate context uses feedwater. Existing proportional makeup-water-flow control is an alternative; an analyzer tag alone establishes neither applicability nor adequacy. Historical standard references are not a current-standard review."
+    },
+    {
+      "source": "supplemental-tip10",
+      "title": "DOE Steam Tip Sheet 10, Recover Heat from Boiler Blowdown, January 2012",
+      "url": "https://www.energy.gov/sites/prod/files/2014/05/f16/steam10_boiler_blowdown.pdf",
+      "locator": "Complete pages 1–2, opening screening sentence, table/example and receiving uses",
+      "sha256_raw": "29c4e5e479ef6865fb5c616ef36287d2e144dfa3079d3cc6f84d1f8b2c57b73f",
+      "scope": "The opening steam-rate screen differs from the feedwater denominator in the table/example. Actual pressure, duty, hours, recovery and receiving conditions matter. No universal site target, retrofit instruction or saving follows. This supplement does not reverify inherited S19/S24/IAC benefit figures."
+    },
+    {
+      "source": "S13",
+      "title": "DOE and Hydraulic Institute, Improving Pumping System Performance, second edition",
+      "url": "https://www.energy.gov/sites/prod/files/2014/05/f16/pump.pdf",
+      "locator": "Printed pages 25–26 / PDF pages 29–30, highly throttled valves and bypass functions",
+      "scope": "Pump/system duty, valve characterization and control performance qualify the opening discussion. Bypasses may protect against pressure differential or serve temperature control. The old C4 excerpt omitted intervening characterization context; its replacement is a qualified paraphrase, not a universal opening threshold or quantified benefit."
+    },
+    {
+      "source": "S21",
+      "title": "DOE FEMP Best Management Practice 10, Cooling Tower Management",
+      "url": "https://www.energy.gov/cmei/femp/best-management-practice-10-cooling-tower-management",
+      "locator": "Overview and Operation and Maintenance: chemistry constraints, conductivity/flow comparisons, losses/components and logs",
+      "scope": "Evaporative recirculating-water management; treatment-limited targets, matched water/measurement records and unexplained losses. Conductivity and flow ratios need an appropriate quantity/unit/time basis. The source recommendations do not supply site authority or prove current installed coverage."
+    }
+  ],
+  "authorship": "Source-supported distinctions plus authored records-first collection and evidence-integrity policies. Informed independent agent review; not a human process-engineer approval, verified source authority, site acceptance or arbitrary diagnostic benchmark.",
+  "copyright_and_custody": "Original source bytes and page captures remain outside the public repository; only links, locators, hashes and bounded paraphrases are provided. Catalog attribution/licensing statements remain unchanged. No new redistribution assurance is made.",
+  "history": "history/PROVENANCE.json"
+}

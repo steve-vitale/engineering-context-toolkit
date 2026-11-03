@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "title": "Fictional E13 development control; not a plant record",
+    "scope": "Source-job counterexamples, authored before product calls; not independent plants",
+    "unknowns": [
+      "Current operating suitability and authority are not established"
+    ],
+    "assumptions": [
+      "Every identifier and value is fictional"
+    ]
+  },
+  "units": [
+    {
+      "id": "FEED",
+      "name": "FEED fictional boiler",
+      "type": "boiler",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "water_service": "steam-water boiler; explicit source declaration",
+        "blowdown_function": "surface",
+        "feedwater_tds": 100,
+        "boiler_tds": 2000,
+        "makeup_tds": 300,
+        "quantity_units": "all TDS mg/L",
+        "sample_period": "same fictional steady interval",
+        "fraction_denominator": "blowdown/feedwater, not steam"
+      },
+      "source": "Fictional source-authored control; no physical existence implied",
+      "assigned_tag": true
+    },
+    {
+      "id": "MISMATCH",
+      "name": "MISMATCH fictional boiler",
+      "type": "boiler",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "water_service": "steam-water boiler; explicit source declaration",
+        "blowdown_function": "surface",
+        "feedwater_tds": 100,
+        "boiler_tds": 2000,
+        "quantity_units": "feedwater mg/L TDS; boiler value conductivity microS/cm",
+        "sample_period": null,
+        "fraction_denominator": "not established"
+      },
+      "source": "Fictional source-authored control; no physical existence implied",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "manual_valves": [
+    {
+      "tag": "HV-1",
+      "unit": "FEED",
+      "description": "Blowdown valve, fictional declared connection",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "blowdown_function": "surface"
+      },
+      "source": "Fictional control"
+    },
+    {
+      "tag": "HV-2",
+      "unit": "MISMATCH",
+      "description": "Blowdown valve, fictional declared connection",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "blowdown_function": "surface"
+      },
+      "source": "Fictional control"
+    }
+  ],
+  "instruments": [],
+  "controllers": [],
+  "final_elements": []
+}

@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "Fictional E13 development control; not a plant record",
+    "scope": "Source-job counterexamples, authored before product calls; not independent plants",
+    "unknowns": [
+      "Current operating suitability and authority are not established"
+    ],
+    "assumptions": [
+      "Every identifier and value is fictional"
+    ]
+  },
+  "units": [
+    {
+      "id": "WET",
+      "name": "WET fictional boiler",
+      "type": "boiler",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "water_service": "steam-water boiler; explicit source declaration",
+        "blowdown_function": "surface"
+      },
+      "source": "Fictional source-authored control; no physical existence implied",
+      "assigned_tag": true
+    },
+    {
+      "id": "DRY",
+      "name": "Fictional dry process furnace",
+      "type": "furnace",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "water_service": "explicitly dry; no steam-water inventory",
+        "blowdown_function": "process-powder discharge called blowdown"
+      },
+      "source": "Fictional control",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "manual_valves": [
+    {
+      "tag": "HV-1",
+      "unit": "WET",
+      "description": "Blowdown valve, fictional declared connection",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "blowdown_function": "surface"
+      },
+      "source": "Fictional control"
+    },
+    {
+      "tag": "HV-2",
+      "unit": "DRY",
+      "description": "Blowdown valve, fictional declared connection",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "blowdown_function": "process-powder discharge called blowdown"
+      },
+      "source": "Fictional control"
+    }
+  ],
+  "instruments": [],
+  "controllers": [],
+  "final_elements": []
+}

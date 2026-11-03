@@ -1,0 +1,132 @@
+{
+  "meta": {
+    "title": "Fictional source-led C4/E24 control",
+    "unknowns": [
+      "Engineering suitability, physical state and source authority remain unknown"
+    ],
+    "assumptions": [
+      "Every name/value/association is fictional"
+    ]
+  },
+  "units": [
+    {
+      "id": "U-A",
+      "name": "Fictional process train A",
+      "type": "pump",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional training record, no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "not authenticated"
+      },
+      "assigned_tag": true,
+      "source": "Fictional declared context"
+    },
+    {
+      "id": "U-B",
+      "name": "Fictional process train B",
+      "type": "pump",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional training record, no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "not authenticated"
+      },
+      "assigned_tag": true,
+      "source": "Fictional declared context"
+    }
+  ],
+  "streams": [
+    {
+      "id": "S-A",
+      "name": "Fictional process service",
+      "from": "U-A",
+      "to": "BL"
+    },
+    {
+      "id": "S-B",
+      "name": "Fictional process service",
+      "from": "U-B",
+      "to": "BL"
+    }
+  ],
+  "final_elements": [
+    {
+      "tag": "FV-A",
+      "unit": "U-A",
+      "stream": "S-A",
+      "description": "Fictional flow control valve",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional training record, no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "not authenticated",
+        "position_value": 30,
+        "position_unit": "percent",
+        "position_quantity": "actual travel",
+        "cv_characteristic": "supplied suitable equal-percentage curve",
+        "operating_range": "supplied matched flow/pressure/DP range",
+        "sizing_basis": "fictional current named FV-A record; reviewer authority not established",
+        "control_performance": "supplied acceptable operating record"
+      },
+      "assigned_tag": true,
+      "source": "Fictional declared record"
+    },
+    {
+      "tag": "FV-B",
+      "unit": "U-B",
+      "stream": "S-B",
+      "description": "Fictional flow control valve",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional training record, no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "not authenticated",
+        "position_value": 30,
+        "position_unit": "percent",
+        "position_quantity": "unknown",
+        "sizing_basis": null
+      },
+      "assigned_tag": true,
+      "source": "Fictional declared record"
+    }
+  ],
+  "manual_valves": [
+    {
+      "tag": "HV-A",
+      "unit": "U-A",
+      "stream": "S-A",
+      "description": "Fictional bypass valve",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional training record, no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "not authenticated"
+      },
+      "source": "Fictional declared record",
+      "assigned_tag": true
+    },
+    {
+      "tag": "HV-B",
+      "unit": "U-B",
+      "stream": "S-B",
+      "description": "Fictional bypass valve",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional training record, no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "not authenticated"
+      },
+      "source": "Fictional declared record",
+      "assigned_tag": true
+    }
+  ],
+  "instruments": [],
+  "controllers": []
+}

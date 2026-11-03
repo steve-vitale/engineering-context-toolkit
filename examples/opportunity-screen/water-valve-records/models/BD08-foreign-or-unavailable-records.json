@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "Fictional E13 development control; not a plant record",
+    "scope": "Source-job counterexamples, authored before product calls; not independent plants",
+    "unknowns": [
+      "Current operating suitability and authority are not established"
+    ],
+    "assumptions": [
+      "Every identifier and value is fictional"
+    ]
+  },
+  "units": [
+    {
+      "id": "SITE-A",
+      "name": "SITE-A fictional boiler",
+      "type": "boiler",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "water_service": "steam-water boiler; explicit source declaration",
+        "blowdown_function": "surface",
+        "record_scope": "site A boiler label B1"
+      },
+      "source": "Fictional source-authored control; no physical existence implied",
+      "assigned_tag": true
+    },
+    {
+      "id": "SITE-B",
+      "name": "SITE-B fictional boiler",
+      "type": "boiler",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "water_service": "steam-water boiler; explicit source declaration",
+        "blowdown_function": "surface",
+        "record_scope": "site B boiler label B1; no available matching record"
+      },
+      "source": "Fictional source-authored control; no physical existence implied",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "manual_valves": [
+    {
+      "tag": "HV-1",
+      "unit": "SITE-A",
+      "description": "Blowdown valve, fictional declared connection",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "blowdown_function": "surface"
+      },
+      "source": "Fictional control"
+    },
+    {
+      "tag": "HV-2",
+      "unit": "SITE-B",
+      "description": "Blowdown valve, fictional declared connection",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "blowdown_function": "surface"
+      },
+      "source": "Fictional control"
+    }
+  ],
+  "instruments": [
+    {
+      "tag": "AT-8",
+      "unit": "SITE-A",
+      "description": "supplied conductivity record",
+      "variable": "analysis",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R0",
+        "record_available": false,
+        "analyzer_purpose": "supplied conductivity record",
+        "analyzer_target": "foreign site C B1",
+        "record_scope": "foreign site C, not SITE-A"
+      },
+      "source": "Fictional declared analyzer; association unverified",
+      "assigned_tag": true
+    }
+  ],
+  "controllers": [],
+  "final_elements": []
+}

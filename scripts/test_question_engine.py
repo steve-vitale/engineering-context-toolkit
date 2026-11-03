@@ -4262,5 +4262,113 @@ class CompressorRecycleBasisRecordReview(unittest.TestCase):
             self.assertEqual(left[0]["value"], 0)
 
 
+class WaterValveRecordReview(unittest.TestCase):
+    """Source-informed exposed controls, distinct from plant or human acceptance."""
+
+    BASE = EX / "water-valve-records"
+
+    def cases(self):
+        import hashlib
+        records = json.loads((self.BASE / "expected/cases.json").read_text(encoding="utf-8"))
+        self.assertEqual(records["schema"], "water-valve-source-cases-1")
+        for case in records["cases"]:
+            model = (self.BASE / case["model"]).resolve()
+            self.assertTrue(model.is_relative_to(self.BASE.resolve()))
+            self.assertEqual(hashlib.sha256(model.read_bytes()).hexdigest(), case["model_sha256_raw"])
+            yield case, model
+
+    def test_source_jobs_keep_missing_scope_and_reject_foreign_quiet(self):
+        for case, path in self.cases():
+            with self.subTest(case=case["id"]):
+                questions, _, _, _ = qe.screen(qe.Model(path), CAT, [case["question_id"]])
+                subjects = {q["about"] for q in questions}
+                self.assertEqual(len(subjects), len(questions))
+                self.assertLessEqual(set(case["minimum_subjects"]), subjects)
+                self.assertLessEqual(subjects, set(case["allowed_subjects"]))
+                for question in questions:
+                    self.assertEqual(question["question_id"], case["question_id"])
+                    self.assertIn(question["about"], {a["id"] for a in question["assets"]})
+
+    def test_supplied_candidates_keep_exact_types_scope_and_open_review(self):
+        compared = 0
+        for case, path in self.cases():
+            raw = json.loads(path.read_text(encoding="utf-8"))
+            supplied = {record.get("id", record.get("tag")): record
+                        for section in ("units", "final_elements", "instruments", "manual_valves")
+                        for record in raw.get(section, [])}
+            questions, _, _, _ = qe.screen(qe.Model(path), CAT, [case["question_id"]])
+            for question in questions:
+                with self.subTest(case=case["id"], subject=question["about"]):
+                    definition = next(q for q in CAT["questions"] if q["id"] == case["question_id"])
+                    shown = {name for r in definition["data_requests"] for name in r.get("show_fields", [])}
+                    self.assertTrue(shown, "the record basis must be inspectable, not just a new question label")
+                    requests = question["data_requests"]
+                    self.assertTrue(requests)
+                    for request in requests:
+                        self.assertEqual(request["state"], "not_on_drawing")
+                        self.assertTrue(request["where"][0].startswith("site records: "), request)
+                        self.assertNotIn("already_on_drawing", request)
+                    candidates = [f for r in requests for f in r.get("candidate_facts", [])]
+                    # For these frozen fixtures, null/empty/declared placeholders stay in explicit
+                    # field evidence; present selected values must not disappear from typed carriers.
+                    facts = supplied[question["about"]].get("facts", {})
+                    blank_tokens = {"", "unknown", "none", "tbd", "tba", "n/a", "na", "?", "xxx", "-"}
+                    selected = {name: value for name, value in facts.items() if name in shown}
+                    present = {name for name, value in selected.items()
+                               if value is not None and not (isinstance(value, str)
+                                   and value.strip().lower() in blank_tokens)}
+                    self.assertEqual({f["name"] for f in candidates}, present)
+                    for name in selected:
+                        self.assertTrue(any(e.get("field", "").endswith(
+                            f"[{question['about']}].facts.{name}") for e in question["evidence"]), name)
+                    for fact in candidates:
+                        self.assertEqual(fact["id"], question["about"])
+                        original = supplied[fact["id"]]["facts"][fact["name"]]
+                        self.assertEqual(json.dumps(fact["value"], ensure_ascii=True, sort_keys=True),
+                                         json.dumps(original, ensure_ascii=True, sort_keys=True))
+                        self.assertTrue(fact["where"].endswith(".facts." + fact["name"]))
+                        compared += 1
+        self.assertGreater(compared, 0)
+
+    def test_current_default_reports_regenerate_completely(self):
+        for case, model in self.cases():
+            with self.subTest(case=case["id"]), tempfile.TemporaryDirectory() as tmp:
+                rc, _ = run(["--model", str(model), "--question", case["question_id"]], tmp)
+                self.assertEqual(rc, 0)
+                for name in ("questions.json", "screen.md"):
+                    self.assertEqual((Path(tmp) / name).read_text(encoding="utf-8"),
+                                     (self.BASE / "expected/after" / case["id"] / name).read_text(encoding="utf-8"))
+
+    def test_records_review_does_not_prescribe_the_old_automatic_actions(self):
+        for qid in ("E13", "C4", "E24"):
+            with self.subTest(question=qid):
+                question = next(q for q in CAT["questions"] if q["id"] == qid)
+                self.assertNotRegex(question["decision_rule"],
+                                    r"Automate when|Resize or trim when|Raise cycles with")
+                for request in question["data_requests"]:
+                    self.assertFalse(request.get("fields"), "supplied labels cannot settle engineering suitability")
+                    self.assertTrue(request.get("show_fields"))
+                if qid in ("E13", "E24"):
+                    self.assertNotIn("without", question["applies_when"],
+                                     "a generic nearby analyzer cannot settle the named water function")
+
+    def test_recorded_originals_and_current_reports_match_their_manifests(self):
+        import hashlib
+        provenance = json.loads((self.BASE / "history/PROVENANCE.json").read_text(encoding="utf-8"))
+        digest = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
+        self.assertEqual(digest(self.BASE / "history/catalog-before.json"),
+                         provenance["original_catalog_sha256_raw"])
+        # Conservation of the other 47 rules is an adoption-time comparison. Do not
+        # permanently prevent independently reviewed future improvements to those rules.
+        for key, folder in (("E13_original_reports", "history/before"),
+                            ("C4_E24_original_reports", "history/before"),
+                            ("AX_original_reports", "history/before"),
+                            ("current_reports", "expected/after")):
+            for case, files in provenance[key].items():
+                for name, expected in files.items():
+                    with self.subTest(manifest=key, case=case, file=name):
+                        self.assertEqual(digest(self.BASE / folder / case / name), expected)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,129 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/water-valve-records/models/CT-05-service-boundary.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E24"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E24@DRY",
+   "question_id": "E24",
+   "family": "energy",
+   "question": "Is cooling tower blowdown manual, with no conductivity control or makeup and blowdown metering?",
+   "about": "DRY",
+   "assets": [
+    {
+     "id": "DRY",
+     "tag": "DRY"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "DRY",
+     "tag": "DRY",
+     "text": "equipment DRY reads \"DRY Fictional cooling tower dry cooler\"",
+     "field": "units[DRY]"
+    },
+    {
+     "role": "checked, none found",
+     "text": "no conductivity element or controller near the tower",
+     "field": "applies_when.without"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Cycles of concentration",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: water treatment log",
+      "a walkdown: conductivity of makeup and tower water"
+     ],
+     "how": "Cycles = tower conductivity / makeup conductivity."
+    }
+   ],
+   "decision_rule": "Raise cycles with a conductivity controller where the water chemistry allows.",
+   "typical_benefit": {
+    "wording": "\"Increasing cycles from three to six reduces cooling tower make-up water by 20% and cooling tower blowdown by 50%.\" Recommends a conductivity controller and makeup/blowdown flow meters. No energy % stated.",
+    "source": [
+     "S21",
+     "S24"
+    ],
+    "arc": "2.2611 (IAC/ITAC browse page: 55 recommendations, 0.9 yr average payback, 45.7% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S21: DOE FEMP, Best Management Practice #10: Cooling Tower Management",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.",
+   "status": "asked"
+  },
+  {
+   "id": "E24@UNKNOWN",
+   "question_id": "E24",
+   "family": "energy",
+   "question": "Is cooling tower blowdown manual, with no conductivity control or makeup and blowdown metering?",
+   "about": "UNKNOWN",
+   "assets": [
+    {
+     "id": "UNKNOWN",
+     "tag": "UNKNOWN"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "UNKNOWN",
+     "tag": "UNKNOWN",
+     "text": "equipment UNKNOWN reads \"UNKNOWN Fictional cooling tower service not established\"",
+     "field": "units[UNKNOWN]"
+    },
+    {
+     "role": "checked, none found",
+     "text": "no conductivity element or controller near the tower",
+     "field": "applies_when.without"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Cycles of concentration",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: water treatment log",
+      "a walkdown: conductivity of makeup and tower water"
+     ],
+     "how": "Cycles = tower conductivity / makeup conductivity."
+    }
+   ],
+   "decision_rule": "Raise cycles with a conductivity controller where the water chemistry allows.",
+   "typical_benefit": {
+    "wording": "\"Increasing cycles from three to six reduces cooling tower make-up water by 20% and cooling tower blowdown by 50%.\" Recommends a conductivity controller and makeup/blowdown flow meters. No energy % stated.",
+    "source": [
+     "S21",
+     "S24"
+    ],
+    "arc": "2.2611 (IAC/ITAC browse page: 55 recommendations, 0.9 yr average payback, 45.7% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S21: DOE FEMP, Best Management Practice #10: Cooling Tower Management",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

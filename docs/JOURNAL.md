@@ -7340,3 +7340,78 @@ review, private working paths, approved IT/OT placement, conditional onboarding 
 optional MCP/local reading and visual evidence labels. The feature catalog now explains its exact example-file
 badge predicate instead of implying current implementation/test freshness. No new dependency, company service,
 source authority, workflow execution or operational acceptance follows from those documentation changes.
+
+## 159. Review blowdown, valves and tower water from existing records
+
+Original-source review found three collection policies that could lead an engineer beyond the evidence.
+E13 confused normally manual bottom blowdown with surface control and let a nearby generic analyzer quiet
+the water question. C4 prescribed resize/trim from opening or bypass clues while its benefit excerpt omitted
+intervening valve-characterization context. E24 let a generic analyzer settle tower-water coverage and supplied
+an incomplete chemistry/water-balance investigation. Its unused absent-meter caption was a static catalog gap,
+not an observed emitted assertion that meters were missing.
+
+The [water and valve records tutorial](../examples/opportunity-screen/water-valve-records/README.md) shows the
+own-model route and useful contribution: existing function and source basis, unresolved coverage and next
+record recipient. [Primary-source scope](../examples/opportunity-screen/water-valve-records/SOURCES.json)
+distinguishes bottom/surface duties and proportional boiler control, valve/system characteristics and legitimate
+bypasses, and chemistry-constrained tower targets with matching conductivity/water records and loss review.
+Source examples do not supply site targets, savings, installed truth or operating authority.
+
+The final catalog changes only E13/C4/E24. Other 47 whole rules and shared catalog records remain exact;
+49 benefit objects remain exact. C4's misleading ellipsis is replaced by a qualified paraphrase, with the
+original retained. No screening-engine code or new dependency was needed. The catalog still has 50 rules and
+126 requests; 28 now have bounded source-informed collection reviews and 22 remain. N065 question usefulness,
+human/recipient acceptance and whole-catalog engineering adequacy remain open.
+
+Eight existing fictional E13 cases retain eight original and eight private candidate calls. Twelve valve/tower
+cases were frozen before twelve original and twelve private candidate calls. Independent review then froze
+five further E13 criteria: proportional control, rate denominators, typed unknowns, a known boiler named steam
+generator, and conflicting dry/unknown service. Their five exposed materializations have separate matched
+original/successor calls. [Exposure and history](../examples/opportunity-screen/water-valve-records/history/PROVENANCE.json)
+retain the exact original reports and distinguish those trials from current-default integration. None is a
+new independent plant, blind source or model-accuracy result.
+
+Four initial regression methods fail 39 assertions on the original 20-case catalog. The final five methods
+cover 25 cases, complete default report reproduction, selected-field presence and exact typed values,
+qualified unknowns and retained history hashes. Minimum/allowed source-job outcomes are separate from exact
+saved traces: an adequate existing function may be acknowledged without creating another project. Conservation
+of other rules is recorded at adoption; the suite does not prohibit later independently reviewed improvements.
+
+The first root successor copied an old metadata patch's invalid request-location shape rather than the corrected
+executed E13 catalog. That failed run remains; the list was restored from the actual executed input. Producer
+checks also retained a CRLF-versus-LF observer stop, an authored roll-up argument error, a description invocation
+that hid installed dependencies with `-S`, and an unsupported graph-export `--context` argument. These are
+separate from the source-job failures and are not relabelled as successful product runs.
+
+Final producer execution uses the catalog's declared LF bytes: 25 case screens, four complete common screens,
+one roll-up and six description prepare/check/build calls. Common screens and roll-up match complete earlier
+LF text and their original working bytes remain unchanged. Across the two description bundles, 65 of 69
+artifacts stay raw-exact; two catalog snapshots and two build receipts are actual successors. Models, geometry,
+answers and existing generated questions do not change. Earlier CRLF-bound producers remain distinct evidence.
+
+Three separate fictional context exercises carry old partial proposals through revised E13/C4/E24 questions.
+All preserve the complete decision and owner histories, reopen the answer, and refuse the old prepared sheet
+before output. The actual context-produced graphs and pure core projections validate, and six selected
+full/core Snapshot pairs return complete current/history records. This is local readback, not MCP transport,
+authenticated review or company integration. The question module passes 169 methods with one optional skip;
+description workflow passes 23 methods. Broader release checks remain separately recorded for their exact source.
+
+## 160. Renew the catalog captured by the equipment-change tutorial
+
+Both ordinary CI runs for `74cf2bd` report **74/75** full cached-data programs: the equipment-change tutorial's
+saved catalog still contains the earlier default. Its actual replay correctly consumes the revised default
+and the exact-catalog assertion catches the mismatch. The source-only suite excludes this drawing-dependent
+program, so its earlier 57/57 result did not cover the failed check. The optional MCP jobs passed separately;
+the six-suite comparison step was not reached in either failed run. These results remain failures.
+
+The existing [equipment-change runner](../examples/engineering-change/reproduce.py) was actually executed
+again: 14 CLI jobs, including four intended refusals, and 56 checks. Both revision builds capture the exact
+current default catalog. Of 20 selected public artifacts, 19 remain raw-identical, including the models,
+drawings, generated questions, context and complete prior decision/ownership histories. Only the selected
+catalog is replaced from the actual output. [Provenance](../examples/engineering-change/PROVENANCE.json)
+retains the original run identity and separately records this successor; original bytes remain in Git history.
+
+The runner, source/key, assertions, calculation/generation code and rules are unchanged. The three targeted
+engineering-change tests now pass, including an actual further replay and existing-output refusal. This closes
+the missed worked-example dependency rather than relaxing the test, backfilling an old producer receipt or
+claiming complete automatic dependency management. Later normal CI belongs to its own commit and run.

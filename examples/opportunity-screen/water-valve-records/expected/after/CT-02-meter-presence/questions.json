@@ -1,0 +1,525 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/water-valve-records/models/CT-02-meter-presence.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E24"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E24@T-A",
+   "question_id": "E24",
+   "family": "energy",
+   "question": "What do existing records establish about this cooling-tower candidate's water service, chemistry-limited cycles, control and water balance?",
+   "about": "T-A",
+   "assets": [
+    {
+     "id": "T-A",
+     "tag": "T-A"
+    },
+    {
+     "id": "FT-3",
+     "tag": "FT-3"
+    },
+    {
+     "id": "FT-4",
+     "tag": "FT-4"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "T-A",
+     "tag": "T-A",
+     "text": "equipment T-A reads \"T-A Fictional cooling tower T-A\"",
+     "field": "units[T-A]"
+    },
+    {
+     "role": "unverified water/control/meter candidate",
+     "id": "FT-3",
+     "tag": "FT-3",
+     "text": "instrument FT-3 reads \"FT-3 makeupflow\" at T-A",
+     "field": "instruments[FT-3]"
+    },
+    {
+     "role": "unverified water/control/meter candidate",
+     "id": "FT-4",
+     "tag": "FT-4",
+     "text": "instrument FT-4 reads \"FT-4 blowdownflow\" at T-A",
+     "field": "instruments[FT-4]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "T-A",
+     "tag": "T-A",
+     "text": "T-A fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[T-A].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "T-A",
+     "tag": "T-A",
+     "text": "T-A record_source = \"Fictional training record, no plant or human approval\"; present; meaning and suitability unverified",
+     "field": "units[T-A].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "T-A",
+     "tag": "T-A",
+     "text": "T-A record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[T-A].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "T-A",
+     "tag": "T-A",
+     "text": "T-A record_available = true; present; meaning and suitability unverified",
+     "field": "units[T-A].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "T-A",
+     "tag": "T-A",
+     "text": "T-A record_authority = \"not authenticated\"; present; meaning and suitability unverified",
+     "field": "units[T-A].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "T-A",
+     "tag": "T-A",
+     "text": "T-A water_service = \"evaporative recirculating cooling water\"; present; meaning and suitability unverified",
+     "field": "units[T-A].facts.water_service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "T-A",
+     "tag": "T-A",
+     "text": "T-A makeup_meter = \"FT-3, supplied current record\"; present; meaning and suitability unverified",
+     "field": "units[T-A].facts.makeup_meter"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "T-A",
+     "tag": "T-A",
+     "text": "T-A blowdown_meter = \"FT-4, supplied current record\"; present; meaning and suitability unverified",
+     "field": "units[T-A].facts.blowdown_meter"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-3",
+     "tag": "FT-3",
+     "text": "FT-3 fictional_record = true; present; meaning and suitability unverified",
+     "field": "instruments[FT-3].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-3",
+     "tag": "FT-3",
+     "text": "FT-3 record_source = \"Fictional training record, no plant or human approval\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-3].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-3",
+     "tag": "FT-3",
+     "text": "FT-3 record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-3].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-3",
+     "tag": "FT-3",
+     "text": "FT-3 record_available = true; present; meaning and suitability unverified",
+     "field": "instruments[FT-3].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-3",
+     "tag": "FT-3",
+     "text": "FT-3 record_authority = \"not authenticated\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-3].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-3",
+     "tag": "FT-3",
+     "text": "FT-3 measurement_purpose = \"makeupflow\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-3].facts.measurement_purpose"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-3",
+     "tag": "FT-3",
+     "text": "FT-3 measurement_target = \"T-A makeup\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-3].facts.measurement_target"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-4",
+     "tag": "FT-4",
+     "text": "FT-4 fictional_record = true; present; meaning and suitability unverified",
+     "field": "instruments[FT-4].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-4",
+     "tag": "FT-4",
+     "text": "FT-4 record_source = \"Fictional training record, no plant or human approval\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-4].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-4",
+     "tag": "FT-4",
+     "text": "FT-4 record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-4].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-4",
+     "tag": "FT-4",
+     "text": "FT-4 record_available = true; present; meaning and suitability unverified",
+     "field": "instruments[FT-4].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-4",
+     "tag": "FT-4",
+     "text": "FT-4 record_authority = \"not authenticated\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-4].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-4",
+     "tag": "FT-4",
+     "text": "FT-4 measurement_purpose = \"blowdownflow\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-4].facts.measurement_purpose"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FT-4",
+     "tag": "FT-4",
+     "text": "FT-4 measurement_target = \"T-A blowdown\"; present; meaning and suitability unverified",
+     "field": "instruments[FT-4].facts.measurement_target"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: T-A fictional_record = True",
+     "field": "units[T-A].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: T-A record_source = Fictional training record, no plant or human approval",
+     "field": "units[T-A].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: T-A record_revision = R1",
+     "field": "units[T-A].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: T-A record_available = True",
+     "field": "units[T-A].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: T-A record_authority = not authenticated",
+     "field": "units[T-A].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: T-A water_service = evaporative recirculating cooling water",
+     "field": "units[T-A].facts.water_service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: T-A makeup_meter = FT-3, supplied current record",
+     "field": "units[T-A].facts.makeup_meter"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: T-A blowdown_meter = FT-4, supplied current record",
+     "field": "units[T-A].facts.blowdown_meter"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing tower-water service, treatment target, conductivity and makeup/blowdown balance records",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing named tower/system service and water-treatment logs, chemistry limits/target basis, conductivity and makeup/blowdown flow or volume records, installed control/meter function and loss/component records. Retain source/revision, actual subject association, units, calibration/availability, sample times and matching operating intervals.",
+      "a walkdown: Only if existing records leave an applicable question unresolved: agree safe observations with the responsible water-treatment/engineering specialist. No compulsory new meter, measurement, chemical treatment or operating change."
+     ],
+     "how": "Establish evaporative recirculating-water applicability first; known dry-only air-cooled service is not applicable and unknown service remains conditional. A nearby generic analyzer or meter label does not prove the water function, suitability or absence of other meters. For comparable quantities/units and matched periods, review conductivity/concentration ratio together with the makeup-to-blowdown flow/volume ratio, the treatment specialist's chemistry-limited target and operating coverage. Preserve conversions and uncertainty; raw incompatible quantities or periods cannot be divided as if comparable. Disagreement calls for records/component/loss review including leaks, overflow, drift or other draw-off, not an automatic higher target. Complete suitable existing records or a justified chemistry limit may be acknowledged without a new measurement/retrofit; source examplecycles are not site targets.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "T-A",
+       "label": "T-A",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[T-A].facts.fictional_record"
+      },
+      {
+       "id": "T-A",
+       "label": "T-A",
+       "name": "record_source",
+       "value": "Fictional training record, no plant or human approval",
+       "where": "units[T-A].facts.record_source"
+      },
+      {
+       "id": "T-A",
+       "label": "T-A",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[T-A].facts.record_revision"
+      },
+      {
+       "id": "T-A",
+       "label": "T-A",
+       "name": "record_available",
+       "value": true,
+       "where": "units[T-A].facts.record_available"
+      },
+      {
+       "id": "T-A",
+       "label": "T-A",
+       "name": "record_authority",
+       "value": "not authenticated",
+       "where": "units[T-A].facts.record_authority"
+      },
+      {
+       "id": "T-A",
+       "label": "T-A",
+       "name": "water_service",
+       "value": "evaporative recirculating cooling water",
+       "where": "units[T-A].facts.water_service"
+      },
+      {
+       "id": "T-A",
+       "label": "T-A",
+       "name": "makeup_meter",
+       "value": "FT-3, supplied current record",
+       "where": "units[T-A].facts.makeup_meter"
+      },
+      {
+       "id": "T-A",
+       "label": "T-A",
+       "name": "blowdown_meter",
+       "value": "FT-4, supplied current record",
+       "where": "units[T-A].facts.blowdown_meter"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review existing chemistry/treatment limits, matched water balance and conductivity evidence, installed functions and unresolved losses with the responsible specialist before any change. Do not raise cycles, install a controller/meter or alter treatment from a manual/no-analyzer pattern or a source example alone. Existing suitable control and chemistry-limited operation may be acknowledged. Unknown source, association, units or time coverage remains explicit; this screen is not a hardware decision or site saving.",
+   "typical_benefit": {
+    "wording": "\"Increasing cycles from three to six reduces cooling tower make-up water by 20% and cooling tower blowdown by 50%.\" Recommends a conductivity controller and makeup/blowdown flow meters. No energy % stated.",
+    "source": [
+     "S21",
+     "S24"
+    ],
+    "arc": "2.2611 (IAC/ITAC browse page: 55 recommendations, 0.9 yr average payback, 45.7% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S21: DOE FEMP, Best Management Practice #10: Cooling Tower Management",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source-informed records review: S21 applies to evaporative tower-water management and requires chemistry-constrained targets, matched conductivity/flow logs and loss/component checks. Named instruments and filled fields are unverified candidates, not completion or source authority; inherited example benefits are not site savings.",
+   "status": "asked"
+  },
+  {
+   "id": "E24@T-B",
+   "question_id": "E24",
+   "family": "energy",
+   "question": "What do existing records establish about this cooling-tower candidate's water service, chemistry-limited cycles, control and water balance?",
+   "about": "T-B",
+   "assets": [
+    {
+     "id": "T-B",
+     "tag": "T-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "T-B",
+     "tag": "T-B",
+     "text": "equipment T-B reads \"T-B Fictional cooling tower T-B\"",
+     "field": "units[T-B]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "T-B",
+     "tag": "T-B",
+     "text": "T-B fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[T-B].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "T-B",
+     "tag": "T-B",
+     "text": "T-B record_source = \"Fictional training record, no plant or human approval\"; present; meaning and suitability unverified",
+     "field": "units[T-B].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "T-B",
+     "tag": "T-B",
+     "text": "T-B record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[T-B].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "T-B",
+     "tag": "T-B",
+     "text": "T-B record_available = true; present; meaning and suitability unverified",
+     "field": "units[T-B].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "T-B",
+     "tag": "T-B",
+     "text": "T-B record_authority = \"not authenticated\"; present; meaning and suitability unverified",
+     "field": "units[T-B].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "T-B",
+     "tag": "T-B",
+     "text": "T-B water_service = \"evaporative recirculating cooling water\"; present; meaning and suitability unverified",
+     "field": "units[T-B].facts.water_service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "T-B",
+     "tag": "T-B",
+     "text": "T-B makeup_meter = null; blank; meaning and suitability unverified",
+     "field": "units[T-B].facts.makeup_meter"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "T-B",
+     "tag": "T-B",
+     "text": "T-B blowdown_meter = \"unknown\"; blank; meaning and suitability unverified",
+     "field": "units[T-B].facts.blowdown_meter"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: T-B fictional_record = True",
+     "field": "units[T-B].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: T-B record_source = Fictional training record, no plant or human approval",
+     "field": "units[T-B].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: T-B record_revision = R1",
+     "field": "units[T-B].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: T-B record_available = True",
+     "field": "units[T-B].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: T-B record_authority = not authenticated",
+     "field": "units[T-B].facts.record_authority"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: T-B water_service = evaporative recirculating cooling water",
+     "field": "units[T-B].facts.water_service"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing tower-water service, treatment target, conductivity and makeup/blowdown balance records",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing named tower/system service and water-treatment logs, chemistry limits/target basis, conductivity and makeup/blowdown flow or volume records, installed control/meter function and loss/component records. Retain source/revision, actual subject association, units, calibration/availability, sample times and matching operating intervals.",
+      "a walkdown: Only if existing records leave an applicable question unresolved: agree safe observations with the responsible water-treatment/engineering specialist. No compulsory new meter, measurement, chemical treatment or operating change."
+     ],
+     "how": "Establish evaporative recirculating-water applicability first; known dry-only air-cooled service is not applicable and unknown service remains conditional. A nearby generic analyzer or meter label does not prove the water function, suitability or absence of other meters. For comparable quantities/units and matched periods, review conductivity/concentration ratio together with the makeup-to-blowdown flow/volume ratio, the treatment specialist's chemistry-limited target and operating coverage. Preserve conversions and uncertainty; raw incompatible quantities or periods cannot be divided as if comparable. Disagreement calls for records/component/loss review including leaks, overflow, drift or other draw-off, not an automatic higher target. Complete suitable existing records or a justified chemistry limit may be acknowledged without a new measurement/retrofit; source examplecycles are not site targets.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "T-B",
+       "label": "T-B",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[T-B].facts.fictional_record"
+      },
+      {
+       "id": "T-B",
+       "label": "T-B",
+       "name": "record_source",
+       "value": "Fictional training record, no plant or human approval",
+       "where": "units[T-B].facts.record_source"
+      },
+      {
+       "id": "T-B",
+       "label": "T-B",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[T-B].facts.record_revision"
+      },
+      {
+       "id": "T-B",
+       "label": "T-B",
+       "name": "record_available",
+       "value": true,
+       "where": "units[T-B].facts.record_available"
+      },
+      {
+       "id": "T-B",
+       "label": "T-B",
+       "name": "record_authority",
+       "value": "not authenticated",
+       "where": "units[T-B].facts.record_authority"
+      },
+      {
+       "id": "T-B",
+       "label": "T-B",
+       "name": "water_service",
+       "value": "evaporative recirculating cooling water",
+       "where": "units[T-B].facts.water_service"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review existing chemistry/treatment limits, matched water balance and conductivity evidence, installed functions and unresolved losses with the responsible specialist before any change. Do not raise cycles, install a controller/meter or alter treatment from a manual/no-analyzer pattern or a source example alone. Existing suitable control and chemistry-limited operation may be acknowledged. Unknown source, association, units or time coverage remains explicit; this screen is not a hardware decision or site saving.",
+   "typical_benefit": {
+    "wording": "\"Increasing cycles from three to six reduces cooling tower make-up water by 20% and cooling tower blowdown by 50%.\" Recommends a conductivity controller and makeup/blowdown flow meters. No energy % stated.",
+    "source": [
+     "S21",
+     "S24"
+    ],
+    "arc": "2.2611 (IAC/ITAC browse page: 55 recommendations, 0.9 yr average payback, 45.7% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S21: DOE FEMP, Best Management Practice #10: Cooling Tower Management",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source-informed records review: S21 applies to evaporative tower-water management and requires chemistry-constrained targets, matched conductivity/flow logs and loss/component checks. Named instruments and filled fields are unverified candidates, not completion or source authority; inherited example benefits are not site savings.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}
