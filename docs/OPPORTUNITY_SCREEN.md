@@ -489,6 +489,12 @@ Each question has: `applies_when` (the triggers), `evidence_fields`, `data_reque
 Add an entry to `questions` in `data/questions.json` or your working copy; no code change is needed for anything
 the trigger language covers. `fields_help` in the file documents every key. The example below illustrates that format:
 
+Changing the shared default also changes its captured bytes in the current
+[description bundles](../examples/from-description/README.md) and
+[equipment-change example](../examples/engineering-change/README.md). Run their actual producers and tests;
+renew current snapshots with provenance rather than patching hashes or weakening equality checks. Deliberately
+retained worked packets, historical catalogs and explicitly selected custom catalogs keep their own identities.
+
 ```json
 {"id": "E99", "family": "energy", "question": "Is this agitator running at full speed all the time?",
  "applies_when": {
@@ -525,7 +531,8 @@ the trigger language covers. `fields_help` in the file documents every key. The 
 - **show_fields** quotes present candidate facts from the same subjects without contributing to required-field
   completion. Preserve records and remaining review needs separately; do not encode a fan curve as HP/RPM or
   actual operation as a nameplate rating.
-- Copy the source's wording exactly. If no source has a number, say so in the wording (the tests insist that a
+- Keep direct quotations exact, including material qualifications; identify paraphrases and their source scope.
+  If no source has a number, say so in the wording (the tests insist that a
   question with no source key says it has none). Never write a figure for a specific plant.
 
 For changes to the repository catalog, run `python -S scripts/test_question_engine.py` and regenerate the examples

@@ -7395,3 +7395,23 @@ before output. The actual context-produced graphs and pure core projections vali
 full/core Snapshot pairs return complete current/history records. This is local readback, not MCP transport,
 authenticated review or company integration. The question module passes 169 methods with one optional skip;
 description workflow passes 23 methods. Broader release checks remain separately recorded for their exact source.
+
+## 160. Renew the catalog captured by the equipment-change tutorial
+
+Both ordinary CI runs for `74cf2bd` report **74/75** full cached-data programs: the equipment-change tutorial's
+saved catalog still contains the earlier default. Its actual replay correctly consumes the revised default
+and the exact-catalog assertion catches the mismatch. The source-only suite excludes this drawing-dependent
+program, so its earlier 57/57 result did not cover the failed check. The optional MCP jobs passed separately;
+the six-suite comparison step was not reached in either failed run. These results remain failures.
+
+The existing [equipment-change runner](../examples/engineering-change/reproduce.py) was actually executed
+again: 14 CLI jobs, including four intended refusals, and 56 checks. Both revision builds capture the exact
+current default catalog. Of 20 selected public artifacts, 19 remain raw-identical, including the models,
+drawings, generated questions, context and complete prior decision/ownership histories. Only the selected
+catalog is replaced from the actual output. [Provenance](../examples/engineering-change/PROVENANCE.json)
+retains the original run identity and separately records this successor; original bytes remain in Git history.
+
+The runner, source/key, assertions, calculation/generation code and rules are unchanged. The three targeted
+engineering-change tests now pass, including an actual further replay and existing-output refusal. This closes
+the missed worked-example dependency rather than relaxing the test, backfilling an old producer receipt or
+claiming complete automatic dependency management. Later normal CI belongs to its own commit and run.

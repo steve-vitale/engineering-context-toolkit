@@ -99,8 +99,8 @@
       "bytes": 3865
     },
     "expected/question_catalog.json": {
-      "sha256_raw": "5aa92c8be6e629be784b9eb4150d0e1c57533cfc5563d656014c0e863fdffeec",
-      "bytes": 232648
+      "sha256_raw": "56898b126cd4c98ee2b1d153a8323b8fecbd004d9e2594cf9d8aa941c7be3527",
+      "bytes": 244079
     }
   },
   "not_established": [
@@ -108,5 +108,19 @@
     "Company authentication/approval, maintained connectors, transitive freshness or complete engineering impact analysis",
     "Unfamiliar input accuracy, human acceptance/time benefit or enterprise capacity"
   ],
-  "review": "Independent saved-evidence and successor public/tutorial review passed for the bounded fictional workflow, source meaning, selected outputs, runner custody/controls and series navigation. Existing 56 description examples retain their separately matched prior review. The current 32-file addition does not establish plant acceptance, unfamiliar-input accuracy, authenticated governance or enterprise capacity."
+  "review": "Independent saved-evidence and successor public/tutorial review passed for the bounded fictional workflow, source meaning, selected outputs, runner custody/controls and series navigation. Existing 56 description examples retain their separately matched prior review. The current 32-file addition does not establish plant acceptance, unfamiliar-input accuracy, authenticated governance or enterprise capacity.",
+  "catalog_successor": {
+    "utc": "2026-11-03T02:01:32.213112+00:00",
+    "reason": "E13/C4/E24 default source-policy revision exposed one retained old default-catalog snapshot in full CI; actual current producer renewal, not a fingerprint restamp.",
+    "before_sha256_raw": "5aa92c8be6e629be784b9eb4150d0e1c57533cfc5563d656014c0e863fdffeec",
+    "after_sha256_raw": "56898b126cd4c98ee2b1d153a8323b8fecbd004d9e2594cf9d8aa941c7be3527",
+    "actual_jobs": 14,
+    "checks": 56,
+    "intended_exit2_refusals": 4,
+    "other19selected_files_raw_exact": true,
+    "original_actual_run": "The actual_run object above remains the earlier run with its original catalog identity. This successor is separately executed and recorded.",
+    "scope": "Two actual A/B builds consumed the identical current default catalog; only its selected public snapshot and this provenance change. All models, drawings, generated questions, source inputs, proposed answer and decision/ownership histories remain exact. No template/test/runner/acceptance-key change or company/plant validation.",
+    "original_catalog_history": "../opportunity-screen/water-valve-records/history/catalog-before.json",
+    "CI_failure": "Original review commit74cf2bd push41562733068 and PR41562777038 report74/75 with the engineering-change saved-catalog assertion failing. Those failures remain distinct; SDK successes do not close them."
+  }
 }

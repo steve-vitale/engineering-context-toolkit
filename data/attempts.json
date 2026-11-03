@@ -4909,6 +4909,22 @@
         "examples/opportunity-screen/water-valve-records/SOURCES.json",
         "examples/opportunity-screen/water-valve-records/history/PROVENANCE.json"
       ]
+    },
+    {
+      "id": "A314",
+      "function": "intake_and_reuse",
+      "date": "2026-11-03",
+      "change": "Renew the equipment-change tutorial's default-catalog snapshot from actual replay after full CI catches its stale selection.",
+      "hypothesis": "A worked tutorial that consumes the current default catalog must carry the exact consumed bytes while preserving unrelated engineering outputs and complete source/review history.",
+      "evidence": "Both original review runs at74cf2bd report74/75 full programs with one saved-catalog mismatch;18individual skips, zero platform/additional notices. SDK32assertions pass separately; six-suite step not reached. Actual fixed-example replay runs14CLIjobs with4intended refusals and56checks. Only1of20 selected artifacts changes: the catalog; other19rawexact. The selected replacement matches both actual A/B builds and current56898 catalog. Original run metadata/bytes remain historical; explicit successor provenance records the renewal. Targeted engineering-change module3/3passes without code/key/assertion changes.",
+      "runs": "One actual retained full tutorial replay plus targeted3-method module (which performs another replay); ordinary CI failures retained separately, no workflow rerun or model/provider call.",
+      "verdict": "kept",
+      "why": "Repair an omitted current-default consumer through actual production, not by changing the saved source/answer fingerprint or weakening equality. Preserve the prior243review records, all old attempts and all116ideas. Broad/source-only/CI scopes and historical source counts stay separate; new committed-version CI remains its own release gate.",
+      "source": [
+        "docs/JOURNAL.md#160-renew-the-catalog-captured-by-the-equipment-change-tutorial",
+        "examples/engineering-change/PROVENANCE.json",
+        "scripts/test_engineering_change.py"
+      ]
     }
   ],
   "not_tried": [
