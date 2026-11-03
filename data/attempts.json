@@ -4925,6 +4925,23 @@
         "examples/engineering-change/PROVENANCE.json",
         "scripts/test_engineering_change.py"
       ]
+    },
+    {
+      "id": "A315",
+      "function": "intake_and_reuse",
+      "date": "2026-11-03",
+      "change": "Add local model-free contribution capture and an exposed fictional fermentation record-to-handoff-to-revision exercise.",
+      "hypothesis": "Explicit source/claim additions and retained prior packets let another engineer reconstruct a partial finding and see when any declared synthesis input changes, without hand-editing the whole knowledge packet.",
+      "evidence": "One fresh recorded case:28actualCLIcalls,2intendedrefusals,16softwarechecks. Separate12-methodadversarialmodulepasses; existing29-methodreaderpasses. All prior records survive, complete source bytes and receipts match, changed recipe/export inputs reopen the synthesis and its dependent handoff, changed memory leaves the separate comparison intact, and a follow-up retains unresolved gaps. Unsupported authored prose is deliberately admitted as unreviewed; no semantic-verification claim.",
+      "runs": "Exposed deterministic development controls and actual local CLI readbacks; no model calls, plant data, held-out family, participant timing or real recipient trial.",
+      "verdict": "kept",
+      "why": "Closes hand-authored local capture/retention friction while leaving source interpretation and company acceptance explicit. Read-only MCP is unchanged; no shared service, automatic dependency watching, accepted-answer resolution or analysis joins are claimed.",
+      "source": [
+        "docs/JOURNAL.md#161-retain-a-document-only-contribution-and-reopen-its-combined-source-basis",
+        "examples/engineering-onboarding/contribution-loop/README.md",
+        "examples/engineering-onboarding/contribution-loop/PROVENANCE.json",
+        "scripts/test_knowledge_capture.py"
+      ]
     }
   ],
   "not_tried": [

@@ -1,0 +1,32 @@
+{
+  "source_family": "Authored fictional fermentation-record reconciliation",
+  "rights": "New synthetic text under repository MIT license; no company data.",
+  "source_truth": "The provided records establish only what their text says. They supply no physical feed measurement, causal diagnosis or site approval.",
+  "model_calls": false,
+  "source_files": {
+    "recipe-r3.txt": {
+      "raw_sha256": "aa0c602cd9ba6d39ce6f2af03e0de8dc596d25e5956679dd963a5d0de2650714",
+      "size_bytes": 137
+    },
+    "export-r1.txt": {
+      "raw_sha256": "4776b46c58f106c62a2c535ace8b7cc84773bc8454e340251a10a2940fa47c8f",
+      "size_bytes": 245
+    },
+    "peer-note.txt": {
+      "raw_sha256": "db993f11d54cffa255b6614b3106444ee06801fcf71fed5bedbd7a881b112f55",
+      "size_bytes": 212
+    },
+    "export-r2.txt": {
+      "raw_sha256": "497af7ae767fcb6c829ed762ba26b3c0e1d98898cda10d4c90bad566c5c5a2f1",
+      "size_bytes": 334
+    },
+    "recipe-r4.txt": {
+      "raw_sha256": "4dc8cd533df37373b414105045c060a5dcd8b0357dd114865fa7f3f94ae042f0",
+      "size_bytes": 165
+    },
+    "peer-note-r2.txt": {
+      "raw_sha256": "355e6d0dbe02103ee2d824f09184437702ab665afff96860f5ff0b59ffee6310",
+      "size_bytes": 192
+    }
+  }
+}

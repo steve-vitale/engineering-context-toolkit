@@ -492,6 +492,10 @@
     "scripts/check_analysis_basis.py": {
       "kind": "tool",
       "guide": "examples/batch-analysis/basis-check/README.md"
+    },
+    "scripts/knowledge_capture.py": {
+      "kind": "tool",
+      "guide": "examples/engineering-onboarding/contribution-loop/README.md"
     }
   }
 }

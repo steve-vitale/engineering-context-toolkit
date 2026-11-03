@@ -79,6 +79,11 @@ existing review process; this packet does not execute the handoff or track compl
 
 ## Keep the next revision reviewable
 
+The optional [local capture tool](../contribution-loop/README.md) performs additions and explicit source
+selection into a new directory, retaining the exact prior packet and authored change. It can capture complete
+UTF-8 source records and append authored claims with pinned citations and declared dependencies. It does not
+generate or approve the answer, reconcile graph/context companions, or replace the manual route below.
+
 Preserve the old packet and its supporting records. For a new document revision, add a new source record with a
 new ID and the **same document ID**, then select its ID in `selected_sources`. Keep older evidence rows pointing
 at their original source records until their content has been reviewed. A different selected record makes those

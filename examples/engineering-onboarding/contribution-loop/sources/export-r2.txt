@@ -1,0 +1,5 @@
+FICTIONAL Export EXP-102 revision 2, batch FT-102.
+End-of-batch feed total display: 120 kg.
+The supplied export declares a counter reset at batch start.
+Observation coverage is missing from 12:10 through 12:35; no retained quality flags are supplied.
+No reconciliation against executed batch or calibration records has been supplied.

@@ -5,6 +5,11 @@ corrected reference, missing source or qualified partial answer. Start with the 
 [first-question brief](../examples/first-pilot/README.md). Manual review or company-approved Copilot works without
 Python, an asset model or a custom agent. The [MCP starter](../examples/internal-mcp/README.md) is optional.
 
+When a structured packet helps the next handoff, the [local contribution tutorial](../examples/engineering-onboarding/contribution-loop/README.md)
+captures selected text and authored findings, retains prior versions and flags declared combined-source answers
+when a selected input changes. Its fermentation exercise demonstrates software behavior; a real recipient's
+reconstruction and useful next decision remain the acceptance test.
+
 ## For leaders and managers
 
 Use the [first organization assignment](ORGANIZATION_START.md) to distinguish what an engineer/agent can prepare

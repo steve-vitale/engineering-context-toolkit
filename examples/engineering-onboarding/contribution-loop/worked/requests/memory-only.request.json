@@ -1,0 +1,21 @@
+{
+  "schema": "knowledge-capture-1",
+  "base_sha256": "883de05a48d083ebbcd5972fca280b795e8cd6bd76e6a3a34a65f8fc0ac3bfda",
+  "revision": "memory-only",
+  "contributor": "Agent-authored fictional demonstration; no actual participant.",
+  "reason": "One-source counterfactual development control.",
+  "new_sources": [
+    {
+      "id": "source:peer-r2",
+      "document_id": "PEER-102",
+      "source_revision": "2",
+      "title": "Changed recollection",
+      "source_authority": "Fictional control; no plant authority.",
+      "original_reference": "sources/peer-note-r2.txt"
+    }
+  ],
+  "claims": [],
+  "select_sources": {
+    "PEER-102": "source:peer-r2"
+  }
+}

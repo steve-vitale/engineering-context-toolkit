@@ -66,7 +66,9 @@ Keep the result and the reasons behind it together; a saved note does not mainta
 
 Leaders and mentors can use the [onboarding guide](docs/ENGINEERING_ONBOARDING.md) to scope the assignment.
 The [knowledge-only exercise](examples/engineering-onboarding/README.md) includes a worked evidence note and
-a starter for your permitted records.
+a starter for your permitted records. The optional [contribution and revision tutorial](examples/engineering-onboarding/contribution-loop/README.md)
+shows how to capture your selected text records and authored findings, preserve a combined answer's dependencies,
+and reopen it when either source changes. It includes a fermentation-record example; practical team benefit remains unmeasured.
 
 <details>
 <summary>Tutorial: follow a pump from description to evidence request</summary>

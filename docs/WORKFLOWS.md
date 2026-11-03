@@ -17,6 +17,13 @@ revision through the existing description, generation and context contracts belo
 - **Maintained source-linked knowledge:** attach questions and answers to supported models with the context
   register, or author a selected [knowledge/workflow packet](../examples/engineering-onboarding/README.md)
   without an asset model. Read selected packets through Python or an approved MCP client.
+  The [local capture tool](../examples/engineering-onboarding/contribution-loop/README.md) accepts that unbound
+  packet, a `knowledge-capture-1` change request and explicitly supplied complete UTF-8 source files. It creates
+  a new `engineering-onboarding-1` packet, exact before/change copies, a readable handoff and a hash receipt;
+  it appends authored claims and sources without editing prior records. Declared combined-source dependencies
+  use the existing reader's review diagnostics. Source interpretation, semantic dependencies and company
+  acceptance are supplied work, not generated decisions. PDF/Office extraction and bound-companion reconciliation
+  are outside this route.
 - **Document clarification:** use the [plain brief](../examples/first-pilot/README.md) with permitted sources and
   a reviewer. A drawing, graph or server is optional when the job only needs a qualified source answer.
 

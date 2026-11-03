@@ -1,0 +1,35 @@
+{
+  "schema": "knowledge-capture-receipt-1",
+  "captured_at": "2026-11-03T03:29:28.375856+00:00",
+  "packet_id": "fictional-feed-review",
+  "base_sha256": "8779202892a977e615430a5060b24e7076c2af15b1c141129672b8d06942a85d",
+  "knowledge_sha256": "3b39f9d9d749942afe62d38cb310b256be6084913ee4354b4010619ed21a561d",
+  "contributor_declaration": "Agent-authored fictional demonstration; no actual participant.",
+  "reason": "Author a partial follow-up against the selected export while retaining earlier findings and the still-unverified recollection.",
+  "company_acceptance": "not_established",
+  "source_currency": "selected_snapshot_only",
+  "added_record_ids": [
+    "claim:follow-up"
+  ],
+  "supplied_sources": [],
+  "selected_source_changes": [],
+  "changed_existing_diagnostics": [],
+  "files": {
+    "before.json": {
+      "raw_sha256": "8779202892a977e615430a5060b24e7076c2af15b1c141129672b8d06942a85d",
+      "size_bytes": 15630
+    },
+    "change.json": {
+      "raw_sha256": "f63d8140222a800a880da43293fab5ea1759e9466dee2084631df47af46a4f6b",
+      "size_bytes": 1981
+    },
+    "knowledge.json": {
+      "raw_sha256": "3b39f9d9d749942afe62d38cb310b256be6084913ee4354b4010619ed21a561d",
+      "size_bytes": 18020
+    },
+    "handoff.md": {
+      "raw_sha256": "4ebe4d1cfd09ff034281dfc489c16dce57576185816ef763546b8a7712ff88b6",
+      "size_bytes": 6288
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schema": "fictional-contribution-acceptance-1",
+  "frozen_before_execution": true,
+  "key_provenance": "Agent-authored criteria and fictional evidence; exposed development controls, no blind or human-usefulness claim.",
+  "checks": [
+    "Every original packet record survives unchanged; new contributions are unreviewed and proposed.",
+    "Complete captured text re-encodes to the exact supplied source bytes, hash and size, without newline normalization.",
+    "Both comparison sources and their exact locators are available to the recipient.",
+    "The memory remains attributed with underlying_claim_verified=false; no cause or installed truth is asserted.",
+    "Changing only the export makes the prior comparison stale and its dependent handoff need review.",
+    "Changing only the recipe also makes the comparison stale and handoff need review.",
+    "Changing only the memory makes its claim stale and handoff need review while the comparison stays matched.",
+    "Historical snapshot evidence remains matched when its old source stays in the packet.",
+    "A follow-up claim can use current sources without deleting prior answers or silently repinning them.",
+    "Each revision retains the exact before-packet and requested change; receipt file hashes and sizes match.",
+    "The published handoff contains the answer, limits, evidence request, owner gap and readable stale status.",
+    "Wrong base, duplicate IDs, unavailable sources, cyclic dependencies, invented approval and existing output refuse."
+  ],
+  "human_usefulness": "not measured",
+  "company_receiving": "not run",
+  "timing": "not measured"
+}

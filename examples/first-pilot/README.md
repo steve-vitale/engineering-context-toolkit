@@ -46,7 +46,9 @@ Do not invent approval, deployment, measured benefit, identities or source finge
 Check the cited passages yourself before returning the draft. A useful unresolved disposition can stop here.
 If you want executable evidence of the next step, the existing [knowledge-packet example](../engineering-onboarding/README.md)
 uses standard-library Python to read authored workflow/source records and flag a changed selected basis.
-It does not automatically write the finding or ingest your documents. Add a model only when the job needs
+The optional [capture and revision tool](../engineering-onboarding/contribution-loop/README.md) retains supplied
+UTF-8 text and your authored findings without hand-editing the packet; it does not interpret documents or
+generate/approve an answer. Add a model only when the job needs
 equipment relationships, drawings, mappings or calculations; the [demo series](../../docs/DEMO_SERIES.md) shows those continuations.
 
 ## First, investigate the existing sources

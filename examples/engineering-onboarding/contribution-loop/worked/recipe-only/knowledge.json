@@ -1,0 +1,417 @@
+{
+  "schema": "engineering-onboarding-1",
+  "packet_id": "fictional-feed-review",
+  "revision": "recipe-only",
+  "scope": "Fictional fermentation records: do the recipe and export establish actual feed mass for FT-102? Return an evidence request to the process engineer; no operating action.",
+  "title": "Can we use the recorded feed total for FT-102?",
+  "landing_record_id": "start_here",
+  "selected_sources": {
+    "RCP-17": "source:recipe-r4",
+    "EXP-102": "source:export-r1",
+    "PEER-102": "source:peer-r1"
+  },
+  "records": [
+    {
+      "id": "role:reviewer-unassigned",
+      "kind": "role_reference",
+      "title": "Reviewer needed; unassigned",
+      "summary": "Requested responsibility, not an assigned or authenticated person.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "draft",
+      "audience_hints": [
+        "manager",
+        "investigator"
+      ],
+      "owner_roles": [],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": [
+        "Company reviewer and document owner must be identified."
+      ],
+      "data": {
+        "responsibility": "Review the evidence note and identify the accountable source owner.",
+        "authenticated_identity": null,
+        "assignment_authority": "Not supplied; assignment belongs to the existing company process."
+      }
+    },
+    {
+      "id": "system:review-route",
+      "kind": "system_reference",
+      "title": "Existing review location to confirm",
+      "summary": "No connected service or approved destination is supplied.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "draft",
+      "audience_hints": [
+        "manager",
+        "investigator"
+      ],
+      "owner_roles": [],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": [
+        "Approved location, recipient and access rules need company confirmation."
+      ],
+      "data": {
+        "reference": "Unknown; ask for the existing approved review location.",
+        "availability": "not_connected",
+        "purpose": "Retain the draft note and record its eventual disposition through existing controls.",
+        "source_access": "Not granted by this packet."
+      }
+    },
+    {
+      "id": "start_here",
+      "kind": "landing",
+      "title": "Review one feed-total discrepancy",
+      "summary": "Fictional source review; company recipient remains unassigned.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "draft",
+      "audience_hints": [
+        "manager",
+        "investigator"
+      ],
+      "owner_roles": [],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": [
+        "No source, reviewer, access or acceptance is established by loading this template."
+      ],
+      "data": {
+        "start_here": [
+          {
+            "record_id": "role:reviewer-unassigned",
+            "reason": "Identify the real reviewer through the company process."
+          },
+          {
+            "record_id": "system:review-route",
+            "reason": "Confirm the approved handoff location."
+          }
+        ],
+        "leader_preparation": [
+          "Confirm one question and permitted sources",
+          "Assign the real reviewer in the company process",
+          "Confirm the existing handoff location"
+        ],
+        "new_engineer_outcome": "Return a source-qualified finding and a missing-evidence request; no benefit measured."
+      }
+    },
+    {
+      "id": "source:recipe-r3",
+      "kind": "source",
+      "title": "Recipe target",
+      "summary": "Operator-supplied complete UTF-8 source; authority is a declaration.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "proposed",
+      "audience_hints": [],
+      "owner_roles": [],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": [],
+      "data": {
+        "document_id": "RCP-17",
+        "source_revision": "3",
+        "original_reference": "sources/recipe-r3.txt",
+        "original_raw_sha256": "aa0c602cd9ba6d39ce6f2af03e0de8dc596d25e5956679dd963a5d0de2650714",
+        "original_size_bytes": 137,
+        "capture_kind": "complete-utf8-text",
+        "capture_sha256": "aa0c602cd9ba6d39ce6f2af03e0de8dc596d25e5956679dd963a5d0de2650714",
+        "captured_text": "FICTIONAL Recipe RCP-17 revision 3.\nBatch FT-102 target cumulative feed: 120 kg.\nThis recipe target is not an executed feed measurement.\n",
+        "capture_complete": true,
+        "acquisition_time": "2026-11-03T03:29:28.060110+00:00",
+        "original_reverified_at_runtime": false,
+        "source_authority": "Fictional authored development record; no plant authority."
+      }
+    },
+    {
+      "id": "source:export-r1",
+      "kind": "source",
+      "title": "Displayed total with missing basis",
+      "summary": "Operator-supplied complete UTF-8 source; authority is a declaration.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "proposed",
+      "audience_hints": [],
+      "owner_roles": [],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": [],
+      "data": {
+        "document_id": "EXP-102",
+        "source_revision": "1",
+        "original_reference": "sources/export-r1.txt",
+        "original_raw_sha256": "4776b46c58f106c62a2c535ace8b7cc84773bc8454e340251a10a2940fa47c8f",
+        "original_size_bytes": 245,
+        "capture_kind": "complete-utf8-text",
+        "capture_sha256": "4776b46c58f106c62a2c535ace8b7cc84773bc8454e340251a10a2940fa47c8f",
+        "captured_text": "FICTIONAL Export EXP-102 revision 1, batch FT-102.\nEnd-of-batch feed total display: 120.\nEngineering unit and counter-reset convention were not included in this export.\nCoverage and quality of the underlying observations have not been supplied.\n",
+        "capture_complete": true,
+        "acquisition_time": "2026-11-03T03:29:28.060110+00:00",
+        "original_reverified_at_runtime": false,
+        "source_authority": "Fictional authored development record; no plant authority."
+      }
+    },
+    {
+      "id": "source:peer-r1",
+      "kind": "source",
+      "title": "Attributed transmitter recollection",
+      "summary": "Operator-supplied complete UTF-8 source; authority is a declaration.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "proposed",
+      "audience_hints": [],
+      "owner_roles": [],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": [],
+      "data": {
+        "document_id": "PEER-102",
+        "source_revision": "1",
+        "original_reference": "sources/peer-note.txt",
+        "original_raw_sha256": "db993f11d54cffa255b6614b3106444ee06801fcf71fed5bedbd7a881b112f55",
+        "original_size_bytes": 212,
+        "capture_kind": "complete-utf8-text",
+        "capture_sha256": "db993f11d54cffa255b6614b3106444ee06801fcf71fed5bedbd7a881b112f55",
+        "captured_text": "FICTIONAL attributed recollection, not a maintenance record.\nAn unnamed operator recalls a feed-transmitter replacement before FT-102.\nThe date, calibration record and applicability to this export are not known.\n",
+        "capture_complete": true,
+        "acquisition_time": "2026-11-03T03:29:28.060110+00:00",
+        "original_reverified_at_runtime": false,
+        "source_authority": "Fictional authored development record; no plant authority."
+      }
+    },
+    {
+      "id": "claim:comparison",
+      "kind": "claim",
+      "title": "Target and displayed total do not establish executed feed mass",
+      "summary": "Target and displayed total do not establish executed feed mass",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "proposed",
+      "audience_hints": [],
+      "owner_roles": [
+        "role:reviewer-unassigned"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [
+        {
+          "source_record_id": "source:recipe-r3",
+          "document_id": "RCP-17",
+          "revision": "3",
+          "raw_sha256": "aa0c602cd9ba6d39ce6f2af03e0de8dc596d25e5956679dd963a5d0de2650714",
+          "capture_sha256": "aa0c602cd9ba6d39ce6f2af03e0de8dc596d25e5956679dd963a5d0de2650714",
+          "locator": "lines 1-3",
+          "currency_requirement": "selected_basis"
+        },
+        {
+          "source_record_id": "source:export-r1",
+          "document_id": "EXP-102",
+          "revision": "1",
+          "raw_sha256": "4776b46c58f106c62a2c535ace8b7cc84773bc8454e340251a10a2940fa47c8f",
+          "capture_sha256": "4776b46c58f106c62a2c535ace8b7cc84773bc8454e340251a10a2940fa47c8f",
+          "locator": "lines 1-4",
+          "currency_requirement": "selected_basis"
+        }
+      ],
+      "depends_on": [
+        "source:recipe-r3",
+        "source:export-r1"
+      ],
+      "known_unknowns": [
+        "Obtain the applicable executed batch record and the unit/reset/coverage/quality basis from the record owner."
+      ],
+      "data": {
+        "basis": "interpretation",
+        "statement": "The recipe target is 120 kg and the export displays 120 without units or reset/coverage basis. These records do not establish that actual feed mass was 120 kg.",
+        "interpretation_limit": "No feed fault, cause, installed configuration or operating recommendation is established."
+      }
+    },
+    {
+      "id": "claim:memory",
+      "kind": "claim",
+      "title": "Keep the recollection separate from installed evidence",
+      "summary": "Keep the recollection separate from installed evidence",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "proposed",
+      "audience_hints": [],
+      "owner_roles": [
+        "role:reviewer-unassigned"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [
+        {
+          "source_record_id": "source:peer-r1",
+          "document_id": "PEER-102",
+          "revision": "1",
+          "raw_sha256": "db993f11d54cffa255b6614b3106444ee06801fcf71fed5bedbd7a881b112f55",
+          "capture_sha256": "db993f11d54cffa255b6614b3106444ee06801fcf71fed5bedbd7a881b112f55",
+          "locator": "lines 1-3",
+          "currency_requirement": "selected_basis"
+        }
+      ],
+      "depends_on": [
+        "source:peer-r1"
+      ],
+      "known_unknowns": [
+        "Obtain the dated maintenance/calibration record; do not infer replacement caused the discrepancy."
+      ],
+      "data": {
+        "basis": "attributed_memory",
+        "statement": "The operator recalls a transmitter replacement before the batch, but its date and relevance are unverified.",
+        "attribution": "Unnamed fictional operator; no authenticated identity.",
+        "underlying_claim_verified": false
+      }
+    },
+    {
+      "id": "claim:handoff",
+      "kind": "claim",
+      "title": "Request a qualified basis before using FT-102 in a comparison",
+      "summary": "Request a qualified basis before using FT-102 in a comparison",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "proposed",
+      "audience_hints": [],
+      "owner_roles": [
+        "role:reviewer-unassigned"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [
+        {
+          "source_record_id": "source:recipe-r3",
+          "document_id": "RCP-17",
+          "revision": "3",
+          "raw_sha256": "aa0c602cd9ba6d39ce6f2af03e0de8dc596d25e5956679dd963a5d0de2650714",
+          "capture_sha256": "aa0c602cd9ba6d39ce6f2af03e0de8dc596d25e5956679dd963a5d0de2650714",
+          "locator": "lines 1-3",
+          "currency_requirement": "selected_basis"
+        }
+      ],
+      "depends_on": [
+        "claim:comparison",
+        "claim:memory",
+        "source:recipe-r3"
+      ],
+      "known_unknowns": [
+        "Receiving process engineer and actual company review location remain unassigned."
+      ],
+      "data": {
+        "basis": "interpretation",
+        "statement": "The receiving process engineer should request executed batch and export-basis records, and a dated maintenance record if the recollection is relevant. Whether FT-102 is fit for a feed-performance comparison remains unresolved."
+      }
+    },
+    {
+      "id": "claim:historical",
+      "kind": "claim",
+      "title": "Retain what export revision 1 said",
+      "summary": "Retain what export revision 1 said",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "proposed",
+      "audience_hints": [],
+      "owner_roles": [
+        "role:reviewer-unassigned"
+      ],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [
+        {
+          "source_record_id": "source:export-r1",
+          "document_id": "EXP-102",
+          "revision": "1",
+          "raw_sha256": "4776b46c58f106c62a2c535ace8b7cc84773bc8454e340251a10a2940fa47c8f",
+          "capture_sha256": "4776b46c58f106c62a2c535ace8b7cc84773bc8454e340251a10a2940fa47c8f",
+          "locator": "lines 1-4",
+          "currency_requirement": "snapshot_evidence"
+        }
+      ],
+      "depends_on": [
+        "source:export-r1"
+      ],
+      "known_unknowns": [],
+      "data": {
+        "basis": "cited_record",
+        "statement": "The supplied export revision 1 displays 120 without an engineering unit."
+      }
+    },
+    {
+      "id": "source:recipe-r4",
+      "kind": "source",
+      "title": "Recipe with an unresolved effective date",
+      "summary": "Operator-supplied complete UTF-8 source; authority is a declaration.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "proposed",
+      "audience_hints": [],
+      "owner_roles": [],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": [],
+      "data": {
+        "document_id": "RCP-17",
+        "source_revision": "4",
+        "original_reference": "sources/recipe-r4.txt",
+        "original_raw_sha256": "4dc8cd533df37373b414105045c060a5dcd8b0357dd114865fa7f3f94ae042f0",
+        "original_size_bytes": 165,
+        "capture_kind": "complete-utf8-text",
+        "capture_sha256": "4dc8cd533df37373b414105045c060a5dcd8b0357dd114865fa7f3f94ae042f0",
+        "captured_text": "FICTIONAL Recipe RCP-17 revision 4.\nBatch FT-102 target cumulative feed: 125 kg.\nThe effective date and applicability to the executed FT-102 batch are not supplied.\n",
+        "capture_complete": true,
+        "acquisition_time": "2026-11-03T03:29:28.542974+00:00",
+        "original_reverified_at_runtime": false,
+        "source_authority": "Fictional control; no plant authority."
+      }
+    }
+  ]
+}

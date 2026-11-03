@@ -1,0 +1,187 @@
+{
+  "schema": "knowledge-capture-receipt-1",
+  "captured_at": "2026-11-03T03:29:28.542974+00:00",
+  "packet_id": "fictional-feed-review",
+  "base_sha256": "883de05a48d083ebbcd5972fca280b795e8cd6bd76e6a3a34a65f8fc0ac3bfda",
+  "knowledge_sha256": "7b268d802aa854597c3ecd3c371a231f045fa2bac090225607bdca7c22d33e14",
+  "contributor_declaration": "Agent-authored fictional demonstration; no actual participant.",
+  "reason": "One-source counterfactual development control.",
+  "company_acceptance": "not_established",
+  "source_currency": "selected_snapshot_only",
+  "added_record_ids": [
+    "source:recipe-r4"
+  ],
+  "supplied_sources": [
+    {
+      "record_id": "source:recipe-r4",
+      "raw_sha256": "4dc8cd533df37373b414105045c060a5dcd8b0357dd114865fa7f3f94ae042f0",
+      "size_bytes": 165
+    }
+  ],
+  "selected_source_changes": [
+    {
+      "document_id": "RCP-17",
+      "before": "source:recipe-r3",
+      "after": "source:recipe-r4"
+    }
+  ],
+  "changed_existing_diagnostics": [
+    {
+      "record_id": "claim:comparison",
+      "before": {
+        "basis_state": "matches",
+        "basis_reasons": [],
+        "evidence": [
+          {
+            "evidence_path": "/records/6/evidence/0",
+            "source_record_id": "source:recipe-r3",
+            "document_id": "RCP-17",
+            "pinned_revision": "3",
+            "pinned_raw_sha256": "aa0c602cd9ba6d39ce6f2af03e0de8dc596d25e5956679dd963a5d0de2650714",
+            "selected_source_record_id": "source:recipe-r3",
+            "state": "matches",
+            "reason_codes": []
+          },
+          {
+            "evidence_path": "/records/6/evidence/1",
+            "source_record_id": "source:export-r1",
+            "document_id": "EXP-102",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "4776b46c58f106c62a2c535ace8b7cc84773bc8454e340251a10a2940fa47c8f",
+            "selected_source_record_id": "source:export-r1",
+            "state": "matches",
+            "reason_codes": []
+          }
+        ],
+        "dependency_state": "matches",
+        "dependency_reasons": [],
+        "basis_review_notice": "none",
+        "next_review_step": null,
+        "source_capture": null
+      },
+      "after": {
+        "basis_state": "stale",
+        "basis_reasons": [
+          {
+            "code": "selected_basis_changed",
+            "path": "/records/6/evidence/0/source_record_id",
+            "source_record_id": "source:recipe-r3",
+            "selected_source_record_id": "source:recipe-r4"
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_path": "/records/6/evidence/0",
+            "source_record_id": "source:recipe-r3",
+            "document_id": "RCP-17",
+            "pinned_revision": "3",
+            "pinned_raw_sha256": "aa0c602cd9ba6d39ce6f2af03e0de8dc596d25e5956679dd963a5d0de2650714",
+            "selected_source_record_id": "source:recipe-r4",
+            "state": "stale",
+            "reason_codes": [
+              "selected_basis_changed"
+            ]
+          },
+          {
+            "evidence_path": "/records/6/evidence/1",
+            "source_record_id": "source:export-r1",
+            "document_id": "EXP-102",
+            "pinned_revision": "1",
+            "pinned_raw_sha256": "4776b46c58f106c62a2c535ace8b7cc84773bc8454e340251a10a2940fa47c8f",
+            "selected_source_record_id": "source:export-r1",
+            "state": "matches",
+            "reason_codes": []
+          }
+        ],
+        "dependency_state": "matches",
+        "dependency_reasons": [],
+        "basis_review_notice": "review_supplied_basis",
+        "next_review_step": "Review the supplied source basis and record any decision in the existing company process.",
+        "source_capture": null
+      }
+    },
+    {
+      "record_id": "claim:handoff",
+      "before": {
+        "basis_state": "matches",
+        "basis_reasons": [],
+        "evidence": [
+          {
+            "evidence_path": "/records/8/evidence/0",
+            "source_record_id": "source:recipe-r3",
+            "document_id": "RCP-17",
+            "pinned_revision": "3",
+            "pinned_raw_sha256": "aa0c602cd9ba6d39ce6f2af03e0de8dc596d25e5956679dd963a5d0de2650714",
+            "selected_source_record_id": "source:recipe-r3",
+            "state": "matches",
+            "reason_codes": []
+          }
+        ],
+        "dependency_state": "matches",
+        "dependency_reasons": [],
+        "basis_review_notice": "none",
+        "next_review_step": null,
+        "source_capture": null
+      },
+      "after": {
+        "basis_state": "stale",
+        "basis_reasons": [
+          {
+            "code": "selected_basis_changed",
+            "path": "/records/8/evidence/0/source_record_id",
+            "source_record_id": "source:recipe-r3",
+            "selected_source_record_id": "source:recipe-r4"
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_path": "/records/8/evidence/0",
+            "source_record_id": "source:recipe-r3",
+            "document_id": "RCP-17",
+            "pinned_revision": "3",
+            "pinned_raw_sha256": "aa0c602cd9ba6d39ce6f2af03e0de8dc596d25e5956679dd963a5d0de2650714",
+            "selected_source_record_id": "source:recipe-r4",
+            "state": "stale",
+            "reason_codes": [
+              "selected_basis_changed"
+            ]
+          }
+        ],
+        "dependency_state": "needs_review",
+        "dependency_reasons": [
+          {
+            "path": [
+              "claim:handoff",
+              "claim:comparison"
+            ],
+            "basis_state": "stale",
+            "reason_codes": [
+              "selected_basis_changed"
+            ]
+          }
+        ],
+        "basis_review_notice": "review_supplied_basis",
+        "next_review_step": "Review the supplied source basis and record any decision in the existing company process.",
+        "source_capture": null
+      }
+    }
+  ],
+  "files": {
+    "before.json": {
+      "raw_sha256": "883de05a48d083ebbcd5972fca280b795e8cd6bd76e6a3a34a65f8fc0ac3bfda",
+      "size_bytes": 14080
+    },
+    "change.json": {
+      "raw_sha256": "7d9142164a75481b7094d33f6513f7ff110cecb090cde58b8dd63d3e4c9c3f7a",
+      "size_bytes": 681
+    },
+    "knowledge.json": {
+      "raw_sha256": "7b268d802aa854597c3ecd3c371a231f045fa2bac090225607bdca7c22d33e14",
+      "size_bytes": 15461
+    },
+    "handoff.md": {
+      "raw_sha256": "f1f4a5dcff4fca8052ef13b2a27d4ba141965104fa282b020578430d8bed7c84",
+      "size_bytes": 4726
+    }
+  }
+}

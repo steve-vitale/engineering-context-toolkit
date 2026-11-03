@@ -1,0 +1,112 @@
+{
+  "schema": "engineering-onboarding-1",
+  "packet_id": "fictional-feed-review",
+  "revision": "0",
+  "scope": "Fictional fermentation records: do the recipe and export establish actual feed mass for FT-102? Return an evidence request to the process engineer; no operating action.",
+  "title": "Can we use the recorded feed total for FT-102?",
+  "landing_record_id": "start_here",
+  "selected_sources": {},
+  "records": [
+    {
+      "id": "role:reviewer-unassigned",
+      "kind": "role_reference",
+      "title": "Reviewer needed; unassigned",
+      "summary": "Requested responsibility, not an assigned or authenticated person.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "draft",
+      "audience_hints": [
+        "manager",
+        "investigator"
+      ],
+      "owner_roles": [],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": [
+        "Company reviewer and document owner must be identified."
+      ],
+      "data": {
+        "responsibility": "Review the evidence note and identify the accountable source owner.",
+        "authenticated_identity": null,
+        "assignment_authority": "Not supplied; assignment belongs to the existing company process."
+      }
+    },
+    {
+      "id": "system:review-route",
+      "kind": "system_reference",
+      "title": "Existing review location to confirm",
+      "summary": "No connected service or approved destination is supplied.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "draft",
+      "audience_hints": [
+        "manager",
+        "investigator"
+      ],
+      "owner_roles": [],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": [
+        "Approved location, recipient and access rules need company confirmation."
+      ],
+      "data": {
+        "reference": "Unknown; ask for the existing approved review location.",
+        "availability": "not_connected",
+        "purpose": "Retain the draft note and record its eventual disposition through existing controls.",
+        "source_access": "Not granted by this packet."
+      }
+    },
+    {
+      "id": "start_here",
+      "kind": "landing",
+      "title": "Review one feed-total discrepancy",
+      "summary": "Fictional source review; company recipient remains unassigned.",
+      "aliases": [],
+      "revision": "1",
+      "record_state": "draft",
+      "audience_hints": [
+        "manager",
+        "investigator"
+      ],
+      "owner_roles": [],
+      "review": {
+        "state": "unreviewed",
+        "reviewer_role": null,
+        "reviewed_on": null
+      },
+      "evidence": [],
+      "depends_on": [],
+      "known_unknowns": [
+        "No source, reviewer, access or acceptance is established by loading this template."
+      ],
+      "data": {
+        "start_here": [
+          {
+            "record_id": "role:reviewer-unassigned",
+            "reason": "Identify the real reviewer through the company process."
+          },
+          {
+            "record_id": "system:review-route",
+            "reason": "Confirm the approved handoff location."
+          }
+        ],
+        "leader_preparation": [
+          "Confirm one question and permitted sources",
+          "Assign the real reviewer in the company process",
+          "Confirm the existing handoff location"
+        ],
+        "new_engineer_outcome": "Return a source-qualified finding and a missing-evidence request; no benefit measured."
+      }
+    }
+  ]
+}

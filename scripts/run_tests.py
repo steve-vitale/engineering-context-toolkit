@@ -61,6 +61,7 @@ SOURCE_TESTS = (
     "scripts/test_graph_provenance.py",
     "scripts/test_snapshot_packet.py",
     "scripts/test_knowledge_snapshot.py",
+    "scripts/test_knowledge_capture.py",
     "scripts/test_feature_catalog.py",
     "scripts/test_corpus_matrix.py",
     "scripts/test_question_engine.py",

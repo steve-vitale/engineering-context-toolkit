@@ -1,0 +1,4 @@
+FICTIONAL Export EXP-102 revision 1, batch FT-102.
+End-of-batch feed total display: 120.
+Engineering unit and counter-reset convention were not included in this export.
+Coverage and quality of the underlying observations have not been supplied.

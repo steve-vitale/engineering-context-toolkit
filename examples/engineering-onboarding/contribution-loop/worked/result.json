@@ -1,0 +1,491 @@
+{
+  "schema": "fictional-contribution-result-1",
+  "checks": {
+    "all_prior_records_retained": true,
+    "original_base_records_retained": true,
+    "complete_source_bytes_retained": true,
+    "exact_before_and_request_retained": true,
+    "all_receipt_file_hashes_match": true,
+    "comparison_has_both_source_pins": true,
+    "memory_remains_unverified": true,
+    "export_change_reopens_combined_answer": true,
+    "recipe_change_reopens_combined_answer": true,
+    "memory_change_reopens_only_declared_path": true,
+    "historical_truth_not_rewritten": true,
+    "new_partial_answer_matches_declared_basis": true,
+    "old_answer_still_stale_after_followup": true,
+    "wrong_base_has_no_output": true,
+    "handoff_exposes_limits_and_next_request": true,
+    "no_company_approval": true
+  },
+  "all_pass": true,
+  "actual_cli_calls": [
+    {
+      "label": "01-contribute",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_capture.py",
+        "--knowledge",
+        "examples/engineering-onboarding/contribution-loop/base.json",
+        "--change",
+        "examples/engineering-onboarding/contribution-loop/changes/01-contribute.json",
+        "--out",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\01-contribute",
+        "--source",
+        "source:recipe-r3",
+        "examples/engineering-onboarding/contribution-loop/sources/recipe-r3.txt",
+        "--source",
+        "source:export-r1",
+        "examples/engineering-onboarding/contribution-loop/sources/export-r1.txt",
+        "--source",
+        "source:peer-r1",
+        "examples/engineering-onboarding/contribution-loop/sources/peer-note.txt"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "02-refresh",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_capture.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\01-contribute\\knowledge.json",
+        "--change",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\requests\\02-refresh.request.json",
+        "--out",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\02-refresh",
+        "--source",
+        "source:export-r2",
+        "examples/engineering-onboarding/contribution-loop/sources/export-r2.txt"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "03-follow-up",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_capture.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\02-refresh\\knowledge.json",
+        "--change",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\requests\\03-follow-up.request.json",
+        "--out",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\03-follow-up"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "recipe-only",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_capture.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\01-contribute\\knowledge.json",
+        "--change",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\requests\\recipe-only.request.json",
+        "--out",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\recipe-only",
+        "--source",
+        "source:recipe-r4",
+        "examples/engineering-onboarding/contribution-loop/sources/recipe-r4.txt"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "memory-only",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_capture.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\01-contribute\\knowledge.json",
+        "--change",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\requests\\memory-only.request.json",
+        "--out",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\memory-only",
+        "--source",
+        "source:peer-r2",
+        "examples/engineering-onboarding/contribution-loop/sources/peer-note-r2.txt"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "01-contribute-comparison",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\01-contribute\\knowledge.json",
+        "get",
+        "--record-id",
+        "claim:comparison"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "01-contribute-memory",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\01-contribute\\knowledge.json",
+        "get",
+        "--record-id",
+        "claim:memory"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "01-contribute-handoff",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\01-contribute\\knowledge.json",
+        "get",
+        "--record-id",
+        "claim:handoff"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "01-contribute-historical",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\01-contribute\\knowledge.json",
+        "get",
+        "--record-id",
+        "claim:historical"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "02-refresh-comparison",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\02-refresh\\knowledge.json",
+        "get",
+        "--record-id",
+        "claim:comparison"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "02-refresh-memory",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\02-refresh\\knowledge.json",
+        "get",
+        "--record-id",
+        "claim:memory"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "02-refresh-handoff",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\02-refresh\\knowledge.json",
+        "get",
+        "--record-id",
+        "claim:handoff"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "02-refresh-historical",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\02-refresh\\knowledge.json",
+        "get",
+        "--record-id",
+        "claim:historical"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "03-follow-up-comparison",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\03-follow-up\\knowledge.json",
+        "get",
+        "--record-id",
+        "claim:comparison"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "03-follow-up-memory",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\03-follow-up\\knowledge.json",
+        "get",
+        "--record-id",
+        "claim:memory"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "03-follow-up-handoff",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\03-follow-up\\knowledge.json",
+        "get",
+        "--record-id",
+        "claim:handoff"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "03-follow-up-historical",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\03-follow-up\\knowledge.json",
+        "get",
+        "--record-id",
+        "claim:historical"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "recipe-only-comparison",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\recipe-only\\knowledge.json",
+        "get",
+        "--record-id",
+        "claim:comparison"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "recipe-only-memory",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\recipe-only\\knowledge.json",
+        "get",
+        "--record-id",
+        "claim:memory"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "recipe-only-handoff",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\recipe-only\\knowledge.json",
+        "get",
+        "--record-id",
+        "claim:handoff"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "recipe-only-historical",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\recipe-only\\knowledge.json",
+        "get",
+        "--record-id",
+        "claim:historical"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "memory-only-comparison",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\memory-only\\knowledge.json",
+        "get",
+        "--record-id",
+        "claim:comparison"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "memory-only-memory",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\memory-only\\knowledge.json",
+        "get",
+        "--record-id",
+        "claim:memory"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "memory-only-handoff",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\memory-only\\knowledge.json",
+        "get",
+        "--record-id",
+        "claim:handoff"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "memory-only-historical",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\memory-only\\knowledge.json",
+        "get",
+        "--record-id",
+        "claim:historical"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "03-follow-up-new-claim",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_snapshot.py",
+        "--knowledge",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\03-follow-up\\knowledge.json",
+        "get",
+        "--record-id",
+        "claim:follow-up"
+      ],
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "label": "wrong-base-refusal",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_capture.py",
+        "--knowledge",
+        "examples/engineering-onboarding/contribution-loop/base.json",
+        "--change",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\requests\\wrong-base.request.json",
+        "--out",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\wrong-base",
+        "--source",
+        "source:recipe-r3",
+        "examples/engineering-onboarding/contribution-loop/sources/recipe-r3.txt",
+        "--source",
+        "source:export-r1",
+        "examples/engineering-onboarding/contribution-loop/sources/export-r1.txt",
+        "--source",
+        "source:peer-r1",
+        "examples/engineering-onboarding/contribution-loop/sources/peer-note.txt"
+      ],
+      "returncode": 2,
+      "expected": 2
+    },
+    {
+      "label": "01-contribute-refusal",
+      "argv": [
+        "-B",
+        "-S",
+        "scripts/knowledge_capture.py",
+        "--knowledge",
+        "examples/engineering-onboarding/contribution-loop/base.json",
+        "--change",
+        "examples/engineering-onboarding/contribution-loop/changes/01-contribute.json",
+        "--out",
+        "examples\\engineering-onboarding\\contribution-loop\\worked\\01-contribute",
+        "--source",
+        "source:recipe-r3",
+        "examples/engineering-onboarding/contribution-loop/sources/recipe-r3.txt",
+        "--source",
+        "source:export-r1",
+        "examples/engineering-onboarding/contribution-loop/sources/export-r1.txt",
+        "--source",
+        "source:peer-r1",
+        "examples/engineering-onboarding/contribution-loop/sources/peer-note.txt"
+      ],
+      "returncode": 2,
+      "expected": 2
+    }
+  ],
+  "source_family": "One exposed fictional fermentation-record family",
+  "interpretation": "Software retention, source-change and readback evidence only; no human usefulness or time-saving score.",
+  "human_trial": "not run",
+  "company_acceptance": "not established"
+}

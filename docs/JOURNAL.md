@@ -7415,3 +7415,39 @@ The runner, source/key, assertions, calculation/generation code and rules are un
 engineering-change tests now pass, including an actual further replay and existing-output refusal. This closes
 the missed worked-example dependency rather than relaxing the test, backfilling an old producer receipt or
 claiming complete automatic dependency management. Later normal CI belongs to its own commit and run.
+
+
+## 161. Retain a document-only contribution and reopen its combined source basis
+
+The document-only route could read an authored knowledge packet but required hand editing to retain new
+source captures and findings. Added `knowledge_capture.py`: an explicit local change request and selected
+complete UTF-8 records become a new packet, exact prior/change copies, readable handoff and hash receipt.
+Existing records remain unchanged; new claims are proposed/unreviewed. The snapshot reader and MCP stay
+read-only. Authoring an answer, checking its citations, selecting source authority, assigning a real recipient
+and recording company disposition remain human/company work.
+
+The fictional fermentation exercise asks whether a recipe target and displayed export establish actual feed
+mass. It retains conflicting/missing basis and attributed recollection; a newer export clarifies units/reset
+but leaves an observation gap. The old answer reopens, its dependent handoff needs review and a new partial
+answer retains the unresolved evidence request. FT-102 is the fictional batch/record identifier, not a verified
+instrument tag. Counterfactuals change the recipe and recollection separately; historical snapshot evidence
+remains readable and unrelated comparison evidence stays matched.
+
+The recorded fresh case runs 28 actual CLIs (two intended refusals) and passes 16 software checks under criteria
+written before execution. Twelve new test methods cover exact CRLF/Unicode/empty captures, existing-output
+preservation, bad-base/ID/source/schema/cycle/response refusals, false list values and Markdown as data. A
+deliberate wrong authored statement is admitted unreviewed: hashes and locators do not establish support for
+prose. Tests and source keys are exposed agent-authored development evidence, not blind plant interpretation
+or a human-recipient trial. All earlier attempts and all 116 ideas remain; N062/N063 and 22 source-rule reviews
+are still open.
+
+Development receiving caught wrong documentation parent paths; they were corrected. Prospective review also
+challenged false list values; all non-list inputs now refuse instead of being converted to empty lists. The case
+runner originally reused one log label for success and a later refusal; distinct labels and a duplicate guard
+retain all 56 raw streams in the fresh successor. Earlier runs remain private rather than being relabelled as
+that run. The handoff puts newly authored findings before retained older claims and shows both their status.
+
+See [the worked contribution loop](../examples/engineering-onboarding/contribution-loop/README.md),
+[criteria](../examples/engineering-onboarding/contribution-loop/acceptance.json),
+[actual results](../examples/engineering-onboarding/contribution-loop/worked/result.json) and
+[provenance](../examples/engineering-onboarding/contribution-loop/PROVENANCE.json).

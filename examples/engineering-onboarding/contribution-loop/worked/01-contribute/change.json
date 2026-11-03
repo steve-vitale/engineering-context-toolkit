@@ -1,0 +1,132 @@
+{
+  "schema": "knowledge-capture-1",
+  "base_sha256": "00d6991a0b810c2d5dbed96736cb0d58c334001d6ca0e4bbfcf87bd72fa30581",
+  "revision": "1",
+  "contributor": "Agent-authored fictional demonstration; no actual participant.",
+  "reason": "Resolve the difference between a target, a displayed total and recollection before using FT-102 in a feed-performance comparison.",
+  "new_sources": [
+    {
+      "id": "source:recipe-r3",
+      "document_id": "RCP-17",
+      "source_revision": "3",
+      "title": "Recipe target",
+      "source_authority": "Fictional authored development record; no plant authority.",
+      "original_reference": "sources/recipe-r3.txt"
+    },
+    {
+      "id": "source:export-r1",
+      "document_id": "EXP-102",
+      "source_revision": "1",
+      "title": "Displayed total with missing basis",
+      "source_authority": "Fictional authored development record; no plant authority.",
+      "original_reference": "sources/export-r1.txt"
+    },
+    {
+      "id": "source:peer-r1",
+      "document_id": "PEER-102",
+      "source_revision": "1",
+      "title": "Attributed transmitter recollection",
+      "source_authority": "Fictional authored development record; no plant authority.",
+      "original_reference": "sources/peer-note.txt"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim:comparison",
+      "title": "Target and displayed total do not establish executed feed mass",
+      "summary": "Target and displayed total do not establish executed feed mass",
+      "basis": "interpretation",
+      "statement": "The recipe target is 120 kg and the export displays 120 without units or reset/coverage basis. These records do not establish that actual feed mass was 120 kg.",
+      "evidence": [
+        {
+          "source_record_id": "source:recipe-r3",
+          "locator": "lines 1-3",
+          "currency_requirement": "selected_basis"
+        },
+        {
+          "source_record_id": "source:export-r1",
+          "locator": "lines 1-4",
+          "currency_requirement": "selected_basis"
+        }
+      ],
+      "depends_on": [],
+      "known_unknowns": [
+        "Obtain the applicable executed batch record and the unit/reset/coverage/quality basis from the record owner."
+      ],
+      "owner_roles": [
+        "role:reviewer-unassigned"
+      ],
+      "interpretation_limit": "No feed fault, cause, installed configuration or operating recommendation is established."
+    },
+    {
+      "id": "claim:memory",
+      "title": "Keep the recollection separate from installed evidence",
+      "summary": "Keep the recollection separate from installed evidence",
+      "basis": "attributed_memory",
+      "statement": "The operator recalls a transmitter replacement before the batch, but its date and relevance are unverified.",
+      "evidence": [
+        {
+          "source_record_id": "source:peer-r1",
+          "locator": "lines 1-3",
+          "currency_requirement": "selected_basis"
+        }
+      ],
+      "depends_on": [],
+      "known_unknowns": [
+        "Obtain the dated maintenance/calibration record; do not infer replacement caused the discrepancy."
+      ],
+      "owner_roles": [
+        "role:reviewer-unassigned"
+      ],
+      "attribution": "Unnamed fictional operator; no authenticated identity."
+    },
+    {
+      "id": "claim:handoff",
+      "title": "Request a qualified basis before using FT-102 in a comparison",
+      "summary": "Request a qualified basis before using FT-102 in a comparison",
+      "basis": "interpretation",
+      "statement": "The receiving process engineer should request executed batch and export-basis records, and a dated maintenance record if the recollection is relevant. Whether FT-102 is fit for a feed-performance comparison remains unresolved.",
+      "evidence": [
+        {
+          "source_record_id": "source:recipe-r3",
+          "locator": "lines 1-3",
+          "currency_requirement": "selected_basis"
+        }
+      ],
+      "depends_on": [
+        "claim:comparison",
+        "claim:memory"
+      ],
+      "known_unknowns": [
+        "Receiving process engineer and actual company review location remain unassigned."
+      ],
+      "owner_roles": [
+        "role:reviewer-unassigned"
+      ]
+    },
+    {
+      "id": "claim:historical",
+      "title": "Retain what export revision 1 said",
+      "summary": "Retain what export revision 1 said",
+      "basis": "cited_record",
+      "statement": "The supplied export revision 1 displays 120 without an engineering unit.",
+      "evidence": [
+        {
+          "source_record_id": "source:export-r1",
+          "locator": "lines 1-4",
+          "currency_requirement": "snapshot_evidence"
+        }
+      ],
+      "depends_on": [],
+      "known_unknowns": [],
+      "owner_roles": [
+        "role:reviewer-unassigned"
+      ]
+    }
+  ],
+  "select_sources": {
+    "RCP-17": "source:recipe-r3",
+    "EXP-102": "source:export-r1",
+    "PEER-102": "source:peer-r1"
+  }
+}

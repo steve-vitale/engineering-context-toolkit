@@ -65,6 +65,10 @@ data/te_pid_layout.json text eol=lf
 
 # Onboarding packet/source raw identities must be stable across operating systems.
 /examples/engineering-onboarding/** text eol=lf
+/scripts/knowledge_capture.py text eol=lf
+/scripts/test_knowledge_capture.py text eol=lf
+# Recorded process streams retain their actual Windows/POSIX bytes and raw receipt pins.
+/examples/engineering-onboarding/contribution-loop/worked/logs/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 
 # Synthetic function-basis inputs, oracles and retained reports have declared LF identities.
 /examples/opportunity-screen/function-basis/** text eol=lf

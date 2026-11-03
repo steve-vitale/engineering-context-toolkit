@@ -26524,6 +26524,73 @@
         "No complete automatic/transitive dependency management, new source-policy count, sourceauthority, human/company/OT, plant/safety/operability, savings or time benefit.",
         "Reviewfilehashes establish exact scoped output inheritance, not a guarantee that every future default/code is compatible or that historical supporting fingerprints are current."
       ]
+    },
+    {
+      "feature": "engineering-onboarding",
+      "date": "2026-11-03",
+      "reviewer": "Independent coding-agent source, actual CLI and saved-artifact review; informed exposed fictional development case, with disclosed private criteria-body custody gap",
+      "verdict": "pass",
+      "scope": "All eight registered examples: three A/B/C readbacks retain exact previously passing review 220 bytes (read/hash checked now, not rerun or newly claimed as current company evidence); five new registered contribution controls received against the complete 87-file public run and an independent frozen-source replay. The latter has 28 nested writer/reader CLI calls and 16 checks; 47 additional direct probes cover typed refusals, exact source capture and explicit non-verification limits. Actual export-only, recipe-only and recollection-only changes propagate through declared source/claim dependencies; historical snapshot claims and all earlier records remain exact. This is bounded software preservation/readback review, not interpretation accuracy or practical human benefit. The independent private prospective criteria body was accidentally overwritten by a case-insensitive receipt filename; only its historical digest survives. This row relies on retained source/actual-control evidence and the public exposed pre-execution criteria, not recoverable private prospective-case custody.",
+      "files": {
+        "examples/engineering-onboarding/actual/A-overview.json": "13280a7162e07d304573ab9627b2ca09b21d7bc9bf602b1c4678c73e89c12fc2",
+        "examples/engineering-onboarding/actual/B-workflow.json": "84a141c78f301901876b9be092b62a4095405ba9e3e2cd80f3848726d56b1270",
+        "examples/engineering-onboarding/actual/C-sources.json": "a3daa03e4681bf397f3165ed91fb928ebed80df6fee63f36873711ea3ee26aa5",
+        "examples/engineering-onboarding/contribution-loop/acceptance.json": "fd385c54ae85b54c1a79bedcc3f56bce22b699c223297b16028b062eeb7ef05b",
+        "examples/engineering-onboarding/contribution-loop/worked/result.json": "016496898de12b39f358ce8c0b4cfe5347b3ce6b3b512c712c9623aff904109b",
+        "examples/engineering-onboarding/contribution-loop/worked/01-contribute/handoff.md": "49c82b8ebe6a99783248f8479eb80e1f257b118829224ff18ae5051d5007d1ed",
+        "examples/engineering-onboarding/contribution-loop/worked/02-refresh/receipt.json": "061bc1377e91ce6038755c4772f00dbd960895612f6b4fbce71576126ac73ab3",
+        "examples/engineering-onboarding/contribution-loop/worked/03-follow-up/handoff.md": "4ebe4d1cfd09ff034281dfc489c16dce57576185816ef763546b8a7712ff88b6"
+      },
+      "fresh_registered_outputs": {
+        "examples/engineering-onboarding/contribution-loop/acceptance.json": "fd385c54ae85b54c1a79bedcc3f56bce22b699c223297b16028b062eeb7ef05b",
+        "examples/engineering-onboarding/contribution-loop/worked/result.json": "016496898de12b39f358ce8c0b4cfe5347b3ce6b3b512c712c9623aff904109b",
+        "examples/engineering-onboarding/contribution-loop/worked/01-contribute/handoff.md": "49c82b8ebe6a99783248f8479eb80e1f257b118829224ff18ae5051d5007d1ed",
+        "examples/engineering-onboarding/contribution-loop/worked/02-refresh/receipt.json": "061bc1377e91ce6038755c4772f00dbd960895612f6b4fbce71576126ac73ab3",
+        "examples/engineering-onboarding/contribution-loop/worked/03-follow-up/handoff.md": "4ebe4d1cfd09ff034281dfc489c16dce57576185816ef763546b8a7712ff88b6"
+      },
+      "inherited_registered_outputs": {
+        "examples/engineering-onboarding/actual/A-overview.json": "13280a7162e07d304573ab9627b2ca09b21d7bc9bf602b1c4678c73e89c12fc2",
+        "examples/engineering-onboarding/actual/B-workflow.json": "84a141c78f301901876b9be092b62a4095405ba9e3e2cd80f3848726d56b1270",
+        "examples/engineering-onboarding/actual/C-sources.json": "a3daa03e4681bf397f3165ed91fb928ebed80df6fee63f36873711ea3ee26aa5"
+      },
+      "supporting_files": {
+        "scripts/knowledge_capture.py": "6281105d0c35ff100aa814fd907bd861f239589d3286d2cdb752d6cab2106c87",
+        "scripts/knowledge_snapshot.py": "6b88d2508a514e60c80a70d885c5e7fa3ff8068770dbe2ede053feacf0f906bb",
+        "scripts/test_knowledge_capture.py": "5e81fc9206315e24e6e262efbfe6a2d5268e3464eca75180075679b7f3a46632",
+        "scripts/run_tests.py": "82b936d3fd393b624b5c5228b5d5422d7f54795c896a1db6c45bd2365a8ec720",
+        ".gitattributes": "6f71ce2fc38bfad70343d996373e907bdb62ac94afbe267d9987c5e52cc70b83",
+        "examples/engineering-onboarding/contribution-loop/reproduce.py": "ac0ccf465dcdb5a5f65ea50a5c48782817bb38f678d2635d52d2cc9fcf56ad83",
+        "examples/engineering-onboarding/contribution-loop/README.md": "c038b08f9326e758596a07f0d6865d21017b8db5d32e0dcbb92e0fe44df65722",
+        "examples/engineering-onboarding/contribution-loop/PROVENANCE.json": "42d21c783ec7caecae1c0ee49162914e74a91fdc83be5ea7ab666e0bb4621191",
+        "examples/engineering-onboarding/contribution-loop/base.json": "00d6991a0b810c2d5dbed96736cb0d58c334001d6ca0e4bbfcf87bd72fa30581",
+        "examples/engineering-onboarding/contribution-loop/sources/PROVENANCE.json": "c18d2dab79c32c008db48f4b6723a99228bfc0967e2aedea6b9fe325e305d9ed",
+        "README.md": "894d6704f0504c46a43e3cda4d771fbe2af23d51ec59fcfc0b2e134acd19b2ac",
+        "docs/README.md": "4c9e0a9ab1d3fe156440db09e745fb1cde3bf76d6aeaea14720d036bd268f91e",
+        "docs/ENGINEERING_ONBOARDING.md": "abbbc1fc34c3e1fbb4c40237ac4cd64cbe65c196a2b3bb2aaa524214092be020",
+        "docs/WORKFLOWS.md": "404ac694278795a7dee50576a1ff0056fe409b854149192e933386f0d66f5c8b",
+        "examples/engineering-onboarding/README.md": "d0583dc30ef770fe339a8f2a621851ea8c87afc572d90410a12b8fc4e9fe8c6e",
+        "examples/engineering-onboarding/own-packet/README.md": "69f55f6767e3f7cb2580ecab2d2bf64bad791cd154635450e0a84956b27cfb46",
+        "examples/first-pilot/README.md": "377f993ca40d84e94bbd5630f16977808364746cde489ad7d32cd99d654b0fbe"
+      },
+      "private_proofs_sha256": {
+        "independent_frozen_source": "53dac1e2a69f39919a590eea382187602f9ace40ffba6b1283879ba6431c60a1",
+        "independent_actual_execution": "d46e4563fb446188a9c6532b43c469a741676f6d55f3684267e770de7f78ed81",
+        "independent_saved_artifact_acceptance": "c09233b8eb20c270b7554683a4621c949ed6dd466df3501321026bf70035d042",
+        "public_exposed_preexecution_criteria": "fd385c54ae85b54c1a79bedcc3f56bce22b699c223297b16028b062eeb7ef05b",
+        "independent_custody_correction": "51ec7f7014c2b9956110c0304d817f799dd46874fcfde64b6c0ecbf73c2057a4"
+      },
+      "limits": [
+        "Informed independent coding-agent review of exposed fictional inputs; no blind or human/plant trial.",
+        "48 outer process rows include the runner; its 28 nested calls are separately reported, with no nested PIDs recorded or invented.",
+        "Two different actual runs have distinct acquisition/load clocks and derived packet/selection/base fingerprints. Each is checked against its own complete raw artifacts; whole cross-run byte equality is not claimed.",
+        "Unsupported authored 999 kg prose and an invented locator are admitted as proposed/unreviewed. This positively demonstrates lack of semantic/source-support verification.",
+        "Physical originals are not watched; selected snapshot matches do not establish currentness, authority, causation, process adequacy or company acceptance.",
+        "Existing packet records and previous findings remain complete; no automated accepted-answer disposition, semantic dependency discovery, authenticated identity, shared write service or concurrent merge is claimed.",
+        "Root reports full 76-program execution with 11 capture methods at that point, then a separate 12-method observer pass. This receiving independently verifies saved files and current 12-method source count, not an independently executed full suite.",
+        "Seven Windows CRLF process streams require the narrow raw-log -text policy; all 87 actual output staged blobs were independently checked against raw provenance pins.",
+        "Registered/supporting review hashes follow LF-folded text policy; actual producer receipts and 87 output pins are raw-byte identities. Prior unrelated supporting hashes are historical, not globally renewed.",
+        "Private independent prospective-body custody is unavailable after a Windows case-insensitive filename overwrite; the ca35 digest is historical only. Original final receipts are preserved and superseded additively. Actual source/control/artifact evidence is unchanged."
+      ]
     }
   ]
 }

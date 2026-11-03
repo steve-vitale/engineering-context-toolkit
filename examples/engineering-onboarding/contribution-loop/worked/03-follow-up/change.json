@@ -1,0 +1,40 @@
+{
+  "schema": "knowledge-capture-1",
+  "base_sha256": "8779202892a977e615430a5060b24e7076c2af15b1c141129672b8d06942a85d",
+  "revision": "3",
+  "contributor": "Agent-authored fictional demonstration; no actual participant.",
+  "reason": "Author a partial follow-up against the selected export while retaining earlier findings and the still-unverified recollection.",
+  "new_sources": [],
+  "claims": [
+    {
+      "id": "claim:follow-up",
+      "title": "Units clarified; executed feed mass still unresolved",
+      "summary": "New export clarifies units/reset but leaves a coverage gap.",
+      "basis": "interpretation",
+      "statement": "Export revision 2 declares kg and a batch-start counter reset, but documents missing observations from 12:10 to 12:35 and no retained quality flags. The recipe remains a target. These sources still do not establish actual feed mass or the cause of any difference. Request the executed batch record, export coverage/quality basis and reconciliation from the record owner.",
+      "evidence": [
+        {
+          "source_record_id": "source:recipe-r3",
+          "locator": "lines 1-3",
+          "currency_requirement": "selected_basis"
+        },
+        {
+          "source_record_id": "source:export-r2",
+          "locator": "lines 1-5",
+          "currency_requirement": "selected_basis"
+        }
+      ],
+      "depends_on": [],
+      "known_unknowns": [
+        "Do not close the original question until executed mass, coverage and quality are resolved by the responsible reviewer.",
+        "The transmitter recollection remains unverified; no maintenance record or causal attribution is established.",
+        "The process-engineer recipient and company review route are unassigned."
+      ],
+      "owner_roles": [
+        "role:reviewer-unassigned"
+      ],
+      "interpretation_limit": "This is a new partial draft, not an approval or a replacement for the retained historical findings."
+    }
+  ],
+  "select_sources": {}
+}

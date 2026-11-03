@@ -1,0 +1,21 @@
+{
+  "schema": "knowledge-capture-1",
+  "base_sha256": "883de05a48d083ebbcd5972fca280b795e8cd6bd76e6a3a34a65f8fc0ac3bfda",
+  "revision": "2",
+  "contributor": "Agent-authored fictional demonstration; no actual participant.",
+  "reason": "The export owner supplied a new revision. Retain the original answer and identify what must be reviewed before reusing it.",
+  "new_sources": [
+    {
+      "id": "source:export-r2",
+      "document_id": "EXP-102",
+      "source_revision": "2",
+      "title": "Export with units and a coverage gap",
+      "source_authority": "Fictional development record; no plant authority.",
+      "original_reference": "sources/export-r2.txt"
+    }
+  ],
+  "claims": [],
+  "select_sources": {
+    "EXP-102": "source:export-r2"
+  }
+}

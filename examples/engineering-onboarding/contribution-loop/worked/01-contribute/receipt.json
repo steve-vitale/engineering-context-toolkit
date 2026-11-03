@@ -1,0 +1,73 @@
+{
+  "schema": "knowledge-capture-receipt-1",
+  "captured_at": "2026-11-03T03:29:28.060110+00:00",
+  "packet_id": "fictional-feed-review",
+  "base_sha256": "00d6991a0b810c2d5dbed96736cb0d58c334001d6ca0e4bbfcf87bd72fa30581",
+  "knowledge_sha256": "883de05a48d083ebbcd5972fca280b795e8cd6bd76e6a3a34a65f8fc0ac3bfda",
+  "contributor_declaration": "Agent-authored fictional demonstration; no actual participant.",
+  "reason": "Resolve the difference between a target, a displayed total and recollection before using FT-102 in a feed-performance comparison.",
+  "company_acceptance": "not_established",
+  "source_currency": "selected_snapshot_only",
+  "added_record_ids": [
+    "source:recipe-r3",
+    "source:export-r1",
+    "source:peer-r1",
+    "claim:comparison",
+    "claim:memory",
+    "claim:handoff",
+    "claim:historical"
+  ],
+  "supplied_sources": [
+    {
+      "record_id": "source:recipe-r3",
+      "raw_sha256": "aa0c602cd9ba6d39ce6f2af03e0de8dc596d25e5956679dd963a5d0de2650714",
+      "size_bytes": 137
+    },
+    {
+      "record_id": "source:export-r1",
+      "raw_sha256": "4776b46c58f106c62a2c535ace8b7cc84773bc8454e340251a10a2940fa47c8f",
+      "size_bytes": 245
+    },
+    {
+      "record_id": "source:peer-r1",
+      "raw_sha256": "db993f11d54cffa255b6614b3106444ee06801fcf71fed5bedbd7a881b112f55",
+      "size_bytes": 212
+    }
+  ],
+  "selected_source_changes": [
+    {
+      "document_id": "EXP-102",
+      "before": null,
+      "after": "source:export-r1"
+    },
+    {
+      "document_id": "PEER-102",
+      "before": null,
+      "after": "source:peer-r1"
+    },
+    {
+      "document_id": "RCP-17",
+      "before": null,
+      "after": "source:recipe-r3"
+    }
+  ],
+  "changed_existing_diagnostics": [],
+  "files": {
+    "before.json": {
+      "raw_sha256": "00d6991a0b810c2d5dbed96736cb0d58c334001d6ca0e4bbfcf87bd72fa30581",
+      "size_bytes": 3677
+    },
+    "change.json": {
+      "raw_sha256": "da85f294073bd7d45b026fb8945a19f925eed8d450c35874ce756e3af97d19b6",
+      "size_bytes": 4926
+    },
+    "knowledge.json": {
+      "raw_sha256": "883de05a48d083ebbcd5972fca280b795e8cd6bd76e6a3a34a65f8fc0ac3bfda",
+      "size_bytes": 14080
+    },
+    "handoff.md": {
+      "raw_sha256": "49c82b8ebe6a99783248f8479eb80e1f257b118829224ff18ae5051d5007d1ed",
+      "size_bytes": 4464
+    }
+  }
+}

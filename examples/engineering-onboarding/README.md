@@ -7,6 +7,12 @@ review correction using this example's existing sources. Follow the [first-quest
 to substitute your permitted records without installation. The optional [six-record starter and private-copy guide](own-packet/README.md)
 helps author a structured packet; its unavailable originals do not supply the evidence for the worked note.
 
+To save a contribution without editing the packet by hand, use the separate local
+[capture and revision tutorial](contribution-loop/README.md). It retains supplied UTF-8 text, authored claims,
+the prior packet and changed-source diagnostics. The fictional fermentation example exercises combined-source
+answers and dependent handoffs. Answer authorship, citation review, source selection and company disposition
+remain active work; the reader and MCP operations below remain read-only.
+
 From the repository root, use Python 3.10+ and the standard library. No account, model or network is needed:
 
 ```sh

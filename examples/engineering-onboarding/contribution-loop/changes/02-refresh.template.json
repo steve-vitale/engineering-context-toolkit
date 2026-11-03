@@ -1,0 +1,21 @@
+{
+  "schema": "knowledge-capture-1",
+  "base_sha256": "REPLACE_WITH_EXACT_INPUT_PACKET_SHA256",
+  "revision": "2",
+  "contributor": "Agent-authored fictional demonstration; no actual participant.",
+  "reason": "The export owner supplied a new revision. Retain the original answer and identify what must be reviewed before reusing it.",
+  "new_sources": [
+    {
+      "id": "source:export-r2",
+      "document_id": "EXP-102",
+      "source_revision": "2",
+      "title": "Export with units and a coverage gap",
+      "source_authority": "Fictional development record; no plant authority.",
+      "original_reference": "sources/export-r2.txt"
+    }
+  ],
+  "claims": [],
+  "select_sources": {
+    "EXP-102": "source:export-r2"
+  }
+}
