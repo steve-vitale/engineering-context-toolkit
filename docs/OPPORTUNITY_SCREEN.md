@@ -263,20 +263,20 @@ shows this handoff; its [source boundaries](../examples/opportunity-screen/compr
 distinguish centrifugal compressed-air guidance from process-gas, rotary and unknown machinery. Neither an
 open valve nor turndown/upset-only activity settles this screening investigation or authorizes changes.
 
-The catalog has 50 rules and 126 collection requests. Twenty-five rules have bounded source-informed collection
-reviews; the other 25 still need original-source adequacy review. These controls do not establish whole-catalog
+The catalog has 50 rules and 126 collection requests. Twenty-eight rules have bounded source-informed collection
+reviews; the other 22 still need original-source adequacy review. These controls do not establish whole-catalog
 engineering correctness or human usefulness. The [worked food screen](../examples/opportunity-screen/food/screen.md)
 shows the retained candidates and open coverage tasks.
 
-**Known limitation in default E13 (boiler blowdown):** its broad equipment trigger, nearby-analyzer
-exclusion and decision text still need refinement. Treat its output as an invitation to review existing
-boiler/water-treatment records, not an approved automation or heat-recovery recommendation. DOE's
-[Steam Tip 9, pages 1–2](https://www.energy.gov/sites/prod/files/2014/05/f16/steam9_blowdown.pdf)
-distinguishes normally manual bottom/mud blowdown from surface blowdown; the automatic-control discussion
-concerns the latter. First establish applicable boiler/water service, blowdown function, actual control and
-recovery coverage, operating basis and responsible review. A generic analyzer label does not establish
-that coverage. The default rule remains unrepaired; this source assessment does not increase the 25-rule
-review count or establish usefulness at a plant.
+E13, C4 and E24 now begin with existing service and operating records. E13 distinguishes bottom/mud from
+surface blowdown, retains proportional makeup-water control as a possible existing arrangement and keeps
+steam/feedwater denominators distinct. C4 reviews valve characteristics, system duty and legitimate bypass
+functions before any sizing investigation. E24 reviews chemistry-limited targets, matched conductivity/water
+records and unexplained losses. A generic analyzer cannot settle either water function, and low valve opening
+does not authorize resize/trim. The [water and valve records tutorial](../examples/opportunity-screen/water-valve-records/README.md)
+shows the own-input route, 25 exposed fictional controls, original failures and qualified existing records.
+[Source boundaries](../examples/opportunity-screen/water-valve-records/SOURCES.json) distinguish the reviewed
+collection policies from historical benefit figures, current plant adequacy and permission to change operations.
 
 `candidate_facts` retains each supplied value, subject and locator; `candidate_scope` uses the request's subject
 scope. Missing/blank optional candidates receive no satisfaction credit and do not add required fields. With

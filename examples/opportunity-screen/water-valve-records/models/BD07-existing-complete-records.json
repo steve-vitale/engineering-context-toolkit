@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "title": "Fictional E13 development control; not a plant record",
+    "scope": "Source-job counterexamples, authored before product calls; not independent plants",
+    "unknowns": [
+      "Current operating suitability and authority are not established"
+    ],
+    "assumptions": [
+      "Every identifier and value is fictional"
+    ]
+  },
+  "units": [
+    {
+      "id": "COMPLETE",
+      "name": "COMPLETE fictional boiler",
+      "type": "boiler",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "water_service": "steam-water boiler; explicit source declaration",
+        "blowdown_function": "surface plus separate manual bottom",
+        "control_basis": "supplied complete treatment/control operating coverage, approval not asserted",
+        "chemistry_basis": "named water-treatment records for declared interval",
+        "recovery_status": "installed matched recovery; supplied suitable operating record",
+        "record_scope": "COMPLETE, stated R1 operating interval"
+      },
+      "source": "Fictional source-authored control; no physical existence implied",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "manual_valves": [
+    {
+      "tag": "HV-1",
+      "unit": "COMPLETE",
+      "description": "Blowdown valve, fictional declared connection",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "blowdown_function": "surface plus separate manual bottom"
+      },
+      "source": "Fictional control"
+    }
+  ],
+  "instruments": [
+    {
+      "tag": "CT-7",
+      "unit": "COMPLETE",
+      "description": "boiler-water conductivity",
+      "variable": "analysis",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "analyzer_purpose": "boiler-water conductivity",
+        "analyzer_target": "COMPLETE surface"
+      },
+      "source": "Fictional declared analyzer; association unverified",
+      "assigned_tag": true
+    }
+  ],
+  "controllers": [],
+  "final_elements": []
+}

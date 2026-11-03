@@ -1,0 +1,388 @@
+{
+  "schema": "water-valve-source-cases-1",
+  "cases": [
+    {
+      "id": "BD01-bottom-versus-surface",
+      "question_id": "E13",
+      "model": "models/BD01-bottom-versus-surface.json",
+      "model_sha256_raw": "b7c89d22374793068a19b140a2c0da0b8895e4bc28e787d6f30dc00ec0048421",
+      "minimum_subjects": [
+        "SURFACE"
+      ],
+      "allowed_subjects": [
+        "BOTTOM",
+        "SURFACE"
+      ],
+      "source_job_expectation": "Acknowledge normal bottom practice versus applicable surface records review; no manual-alone automation instruction.",
+      "exposure": "Existing exposed development case; authored against the original rule before its private candidate calls. No new held-out or independent-plant claim.",
+      "policy_note": "Minimum/allowed source-job scope is distinct from exact current saved-report reproduction; complete suitable records may be acknowledged without creating a compulsory task."
+    },
+    {
+      "id": "BD02-generic-analyzer",
+      "question_id": "E13",
+      "model": "models/BD02-generic-analyzer.json",
+      "model_sha256_raw": "35306e613d32de4d31d8d3a5e116800e3b94a6fa7de64e9d0b18d4845b2214a5",
+      "minimum_subjects": [
+        "FLUE"
+      ],
+      "allowed_subjects": [
+        "FLUE",
+        "WATER"
+      ],
+      "source_job_expectation": "Generic flue AT must not silently settle water control; water record may be acknowledged with suitability still qualified.",
+      "exposure": "Existing exposed development case; authored against the original rule before its private candidate calls. No new held-out or independent-plant claim.",
+      "policy_note": "Minimum/allowed source-job scope is distinct from exact current saved-report reproduction; complete suitable records may be acknowledged without creating a compulsory task."
+    },
+    {
+      "id": "BD03-service-boundary",
+      "question_id": "E13",
+      "model": "models/BD03-service-boundary.json",
+      "model_sha256_raw": "89cadc21d7e43c98e858c6176686b233354a49d85c9fb4680172b7e3ff5f7b79",
+      "minimum_subjects": [
+        "WET"
+      ],
+      "allowed_subjects": [
+        "WET"
+      ],
+      "source_job_expectation": "Known dry furnace must not receive compulsory boiler-water measurement; steam-water boiler remains reviewable.",
+      "exposure": "Existing exposed development case; authored against the original rule before its private candidate calls. No new held-out or independent-plant claim.",
+      "policy_note": "Minimum/allowed source-job scope is distinct from exact current saved-report reproduction; complete suitable records may be acknowledged without creating a compulsory task."
+    },
+    {
+      "id": "BD04-fuel-is-not-water-function",
+      "question_id": "E13",
+      "model": "models/BD04-fuel-is-not-water-function.json",
+      "model_sha256_raw": "8c7efd7177cc4e2f61e1cf3a2fd538960ff4e4ccb298fb0ac9433dd20afe938c",
+      "minimum_subjects": [
+        "ELECTRIC"
+      ],
+      "allowed_subjects": [
+        "ELECTRIC"
+      ],
+      "source_job_expectation": "No fuel record is not a reason to quiet applicable boiler-water review.",
+      "exposure": "Existing exposed development case; authored against the original rule before its private candidate calls. No new held-out or independent-plant claim.",
+      "policy_note": "Minimum/allowed source-job scope is distinct from exact current saved-report reproduction; complete suitable records may be acknowledged without creating a compulsory task."
+    },
+    {
+      "id": "BD05-rate-denominator-and-quantity",
+      "question_id": "E13",
+      "model": "models/BD05-rate-denominator-and-quantity.json",
+      "model_sha256_raw": "6c018f47a539edee886c7520b17c871f277d2abe371747493d732fbbfd275333",
+      "minimum_subjects": [
+        "FEED",
+        "MISMATCH"
+      ],
+      "allowed_subjects": [
+        "FEED",
+        "MISMATCH"
+      ],
+      "source_job_expectation": "Retain literal units/sample/denominator; no automatic ratio across incompatible quantities or imposed source target.",
+      "exposure": "Existing exposed development case; authored against the original rule before its private candidate calls. No new held-out or independent-plant claim.",
+      "policy_note": "Minimum/allowed source-job scope is distinct from exact current saved-report reproduction; complete suitable records may be acknowledged without creating a compulsory task."
+    },
+    {
+      "id": "BD06-heat-recovery-scope",
+      "question_id": "E13",
+      "model": "models/BD06-heat-recovery-scope.json",
+      "model_sha256_raw": "ed621e23d4e13c2295c59e95cc91073031a154a2c53926e312be9410ac94e7ca",
+      "minimum_subjects": [
+        "CONTINUOUS"
+      ],
+      "allowed_subjects": [
+        "CONTINUOUS",
+        "INTERMITTENT"
+      ],
+      "source_job_expectation": "Records can justify further continuous-duty recovery investigation; intermittent/source examples do not mandate equipment.",
+      "exposure": "Existing exposed development case; authored against the original rule before its private candidate calls. No new held-out or independent-plant claim.",
+      "policy_note": "Minimum/allowed source-job scope is distinct from exact current saved-report reproduction; complete suitable records may be acknowledged without creating a compulsory task."
+    },
+    {
+      "id": "BD07-existing-complete-records",
+      "question_id": "E13",
+      "model": "models/BD07-existing-complete-records.json",
+      "model_sha256_raw": "c1f4b55ddab8c2bbb299feb023642ca3f58a39392c41be89ab9dd686b9e175b5",
+      "minimum_subjects": [],
+      "allowed_subjects": [
+        "COMPLETE"
+      ],
+      "source_job_expectation": "Quiet or qualified acknowledgment allowed; development intentionally acknowledges records rather than mandates new measurement.",
+      "exposure": "Existing exposed development case; authored against the original rule before its private candidate calls. No new held-out or independent-plant claim.",
+      "policy_note": "Minimum/allowed source-job scope is distinct from exact current saved-report reproduction; complete suitable records may be acknowledged without creating a compulsory task."
+    },
+    {
+      "id": "BD08-foreign-or-unavailable-records",
+      "question_id": "E13",
+      "model": "models/BD08-foreign-or-unavailable-records.json",
+      "model_sha256_raw": "81fa7ee1bb240a62df5e06bc76eb313048d4f61bdb97b0a205670482437e34b0",
+      "minimum_subjects": [
+        "SITE-A",
+        "SITE-B"
+      ],
+      "allowed_subjects": [
+        "SITE-A",
+        "SITE-B"
+      ],
+      "source_job_expectation": "Reused label/nearby analyzer cannot clear local or sibling source scopes; literal foreign/unavailable qualifications retained.",
+      "exposure": "Existing exposed development case; authored against the original rule before its private candidate calls. No new held-out or independent-plant claim.",
+      "policy_note": "Minimum/allowed source-job scope is distinct from exact current saved-report reproduction; complete suitable records may be acknowledged without creating a compulsory task."
+    },
+    {
+      "id": "C4-01-command-travel",
+      "question_id": "C4",
+      "model": "models/C4-01-command-travel.json",
+      "model_sha256_raw": "d906cd8441871e705cab5beb3ef43a44b8bf29a51792ee01ff9f0f44a0f61b87",
+      "minimum_subjects": [
+        "FV-A",
+        "FV-B"
+      ],
+      "allowed_subjects": [
+        "FV-A",
+        "FV-B"
+      ],
+      "source_job_expectation": "No automatic resize/trim at20%; distinguish commanded position/actual travel and characteristic/system basis.",
+      "exposure": "Fictional source-informed development control frozen before original and private candidate calls; no external-plant or model-accuracy claim."
+    },
+    {
+      "id": "C4-02-legitimate-bypass",
+      "question_id": "C4",
+      "model": "models/C4-02-legitimate-bypass.json",
+      "model_sha256_raw": "72199d58ce29d03a354ce536f33a9ca44221845eb8aca64d3053a3772ed0f9da",
+      "minimum_subjects": [
+        "FV-B"
+      ],
+      "allowed_subjects": [
+        "FV-A",
+        "FV-B"
+      ],
+      "source_job_expectation": "Protective/temp functions can be acknowledged; investigation does not mandateclosing bypass/resize.",
+      "exposure": "Fictional source-informed development control frozen before original and private candidate calls; no external-plant or model-accuracy claim."
+    },
+    {
+      "id": "C4-03-existing-basis",
+      "question_id": "C4",
+      "model": "models/C4-03-existing-basis.json",
+      "model_sha256_raw": "09f40379f5632c4c94fe5770e9753aa67396caf00da4430d5cb9f8278b84a4ac",
+      "minimum_subjects": [
+        "FV-B"
+      ],
+      "allowed_subjects": [
+        "FV-A",
+        "FV-B"
+      ],
+      "source_job_expectation": "Complete existing basis can be acknowledged; unknown basis remains a records task, sameposition is not sameconclusion.",
+      "exposure": "Fictional source-informed development control frozen before original and private candidate calls; no external-plant or model-accuracy claim."
+    },
+    {
+      "id": "C4-04-foreign-record",
+      "question_id": "C4",
+      "model": "models/C4-04-foreign-record.json",
+      "model_sha256_raw": "92caaae0bb3457b3a72b448148ccbb77ec3fb2c9dae284a7d6f56d3c28270d0a",
+      "minimum_subjects": [
+        "FV-A",
+        "FV-B"
+      ],
+      "allowed_subjects": [
+        "FV-A",
+        "FV-B"
+      ],
+      "source_job_expectation": "Exact owner/source/revision/unavailability retained; foreigncurve does not settle localvalve.",
+      "exposure": "Fictional source-informed development control frozen before original and private candidate calls; no external-plant or model-accuracy claim."
+    },
+    {
+      "id": "C4-05-topology-and-marking",
+      "question_id": "C4",
+      "model": "models/C4-05-topology-and-marking.json",
+      "model_sha256_raw": "db690fa849b985d4face89504e445a93c6c61b0e2d1791bae0f57cec97f0693c",
+      "minimum_subjects": [
+        "FV-A",
+        "FV-B"
+      ],
+      "allowed_subjects": [
+        "FV-A",
+        "FV-B"
+      ],
+      "source_job_expectation": "Same-stream match is only a candidate; do notinvent around-valve topology or absence of NC/CSC.",
+      "exposure": "Fictional source-informed development control frozen before original and private candidate calls; no external-plant or model-accuracy claim."
+    },
+    {
+      "id": "C4-06-eligible-boundary",
+      "question_id": "C4",
+      "model": "models/C4-06-eligible-boundary.json",
+      "model_sha256_raw": "14ca3d38bfdf72106c982ad1c0d3111b57e801a2a188fcc58506db6ba7062dd2",
+      "minimum_subjects": [
+        "FV-A"
+      ],
+      "allowed_subjects": [
+        "FV-A"
+      ],
+      "source_job_expectation": "Only eligible control-valve anchor; handvalve-only sibling is not promoted to a controlvalve.",
+      "exposure": "Fictional source-informed development control frozen before original and private candidate calls; no external-plant or model-accuracy claim."
+    },
+    {
+      "id": "CT-01-generic-analyzer",
+      "question_id": "E24",
+      "model": "models/CT-01-generic-analyzer.json",
+      "model_sha256_raw": "6eb24cff4d86964b00e20587c2d79778c2e6347dd3f422ce8504c1d306c9b5a4",
+      "minimum_subjects": [
+        "T-A"
+      ],
+      "allowed_subjects": [
+        "T-A",
+        "T-B"
+      ],
+      "source_job_expectation": "Generic AT/flue record must not clear evaporative water review; scoped waterrecord acknowledged but not automaticadequacy.",
+      "exposure": "Fictional source-informed development control frozen before original and private candidate calls; no external-plant or model-accuracy claim."
+    },
+    {
+      "id": "CT-02-meter-presence",
+      "question_id": "E24",
+      "model": "models/CT-02-meter-presence.json",
+      "model_sha256_raw": "01243825069ab0c099e7b07b4148041d43d697e82e64eb1693a5bf333de671e1",
+      "minimum_subjects": [
+        "T-A",
+        "T-B"
+      ],
+      "allowed_subjects": [
+        "T-A",
+        "T-B"
+      ],
+      "source_job_expectation": "Retain present versus blankmeters, do not infer absence from missing conductivitylabel; no compulsorynewmeters.",
+      "exposure": "Fictional source-informed development control frozen before original and private candidate calls; no external-plant or model-accuracy claim."
+    },
+    {
+      "id": "CT-03-quantity-period",
+      "question_id": "E24",
+      "model": "models/CT-03-quantity-period.json",
+      "model_sha256_raw": "85d5d887ac6a1f5641cc2554ecb4031c4cba52023e89ee3b391f6c57306c4f84",
+      "minimum_subjects": [
+        "T-A",
+        "T-B"
+      ],
+      "allowed_subjects": [
+        "T-A",
+        "T-B"
+      ],
+      "source_job_expectation": "Keep units/sampleperiod, use justified conversions and comparableintervals; rawratio not automatically cycles.",
+      "exposure": "Fictional source-informed development control frozen before original and private candidate calls; no external-plant or model-accuracy claim."
+    },
+    {
+      "id": "CT-04-chemistry-and-losses",
+      "question_id": "E24",
+      "model": "models/CT-04-chemistry-and-losses.json",
+      "model_sha256_raw": "ed36f4c7a0eacc6bdc7f362cf9e861aec184572a925e1c4e540bf151386600dd",
+      "minimum_subjects": [
+        "T-B"
+      ],
+      "allowed_subjects": [
+        "T-A",
+        "T-B"
+      ],
+      "source_job_expectation": "Do not mandate6cycles orraisingtarget; suitablechemistrylimit acknowledged; unmatchedratios needloss/componentreview.",
+      "exposure": "Fictional source-informed development control frozen before original and private candidate calls; no external-plant or model-accuracy claim."
+    },
+    {
+      "id": "CT-05-service-boundary",
+      "question_id": "E24",
+      "model": "models/CT-05-service-boundary.json",
+      "model_sha256_raw": "0892560017dff540b063e91aaa600ec89d15b3b8e44ea62b39c1edeb067056dc",
+      "minimum_subjects": [
+        "UNKNOWN"
+      ],
+      "allowed_subjects": [
+        "UNKNOWN"
+      ],
+      "source_job_expectation": "Known dry-only classquiet/NA; name-only unknown remains conditional, no inventedwetchemistry/drum.",
+      "exposure": "Fictional source-informed development control frozen before original and private candidate calls; no external-plant or model-accuracy claim."
+    },
+    {
+      "id": "CT-06-foreign-scope",
+      "question_id": "E24",
+      "model": "models/CT-06-foreign-scope.json",
+      "model_sha256_raw": "ae2843e7bae4d36c78cdbac64ca143953f05e10885c68d17ec092c967388b615",
+      "minimum_subjects": [
+        "T-A",
+        "T-B"
+      ],
+      "allowed_subjects": [
+        "T-A",
+        "T-B"
+      ],
+      "source_job_expectation": "A foreign old unavailable analyzerrecord cannotclear local/siblingcoverage; false flag and exactsource retained.",
+      "exposure": "Fictional source-informed development control frozen before original and private candidate calls; no external-plant or model-accuracy claim."
+    },
+    {
+      "id": "AX01-proportional-control-alternative",
+      "question_id": "E13",
+      "model": "models/AX01-proportional-control-alternative.json",
+      "model_sha256_raw": "8c5a4efb5a4aa84aeaaf3c309ff5de31b6ca4c2a656a6fca1f6e24c7f1783fbb",
+      "minimum_subjects": [
+        "MISSING"
+      ],
+      "allowed_subjects": [
+        "PROPORTIONAL",
+        "MISSING"
+      ],
+      "source_job_expectation": "Independent prospective criterion AX01-proportional-control-alternative; retain named function, exact quantity/type/denominator, unknowns and conditional applicability without compulsory retrofit.",
+      "exposure": "Root-authored fictional materialization after independent criteria freeze, exposed to private/public candidate. Old/new matched calls are development controls, not generalization."
+    },
+    {
+      "id": "AX02-rate-denominators",
+      "question_id": "E13",
+      "model": "models/AX02-rate-denominators.json",
+      "model_sha256_raw": "e1c846ec9f8ee47253f43a76b3b1963bcfc59332769c903a6068432cf026a5bb",
+      "minimum_subjects": [
+        "STEAM",
+        "FEED"
+      ],
+      "allowed_subjects": [
+        "STEAM",
+        "FEED"
+      ],
+      "source_job_expectation": "Independent prospective criterion AX02-rate-denominators; retain named function, exact quantity/type/denominator, unknowns and conditional applicability without compulsory retrofit.",
+      "exposure": "Root-authored fictional materialization after independent criteria freeze, exposed to private/public candidate. Old/new matched calls are development controls, not generalization."
+    },
+    {
+      "id": "AX03-typed-unknowns",
+      "question_id": "E13",
+      "model": "models/AX03-typed-unknowns.json",
+      "model_sha256_raw": "f7d666ce58a30b60a6925f062217216b908a249216d0c7532e9c899fc5ffabd0",
+      "minimum_subjects": [
+        "TYPED"
+      ],
+      "allowed_subjects": [
+        "TYPED"
+      ],
+      "source_job_expectation": "Independent prospective criterion AX03-typed-unknowns; retain named function, exact quantity/type/denominator, unknowns and conditional applicability without compulsory retrofit.",
+      "exposure": "Root-authored fictional materialization after independent criteria freeze, exposed to private/public candidate. Old/new matched calls are development controls, not generalization."
+    },
+    {
+      "id": "AX04-steam-generator-name",
+      "question_id": "E13",
+      "model": "models/AX04-steam-generator-name.json",
+      "model_sha256_raw": "91085573bef69f47690bfb05f9ac8a65ee6953a80e1f59746b6e81cbca197b51",
+      "minimum_subjects": [
+        "SG"
+      ],
+      "allowed_subjects": [
+        "SG"
+      ],
+      "source_job_expectation": "Independent prospective criterion AX04-steam-generator-name; retain named function, exact quantity/type/denominator, unknowns and conditional applicability without compulsory retrofit.",
+      "exposure": "Root-authored fictional materialization after independent criteria freeze, exposed to private/public candidate. Old/new matched calls are development controls, not generalization."
+    },
+    {
+      "id": "AX05-conflicting-service",
+      "question_id": "E13",
+      "model": "models/AX05-conflicting-service.json",
+      "model_sha256_raw": "bce5df5f224e160c0c4249a4a7716f2306f3353deb93b48dea5f302926da7f83",
+      "minimum_subjects": [
+        "UNKNOWN"
+      ],
+      "allowed_subjects": [
+        "DRY",
+        "UNKNOWN"
+      ],
+      "source_job_expectation": "Independent prospective criterion AX05-conflicting-service; retain named function, exact quantity/type/denominator, unknowns and conditional applicability without compulsory retrofit.",
+      "exposure": "Root-authored fictional materialization after independent criteria freeze, exposed to private/public candidate. Old/new matched calls are development controls, not generalization."
+    }
+  ]
+}

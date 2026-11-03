@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "title": "Fictional E13 development control; not a plant record",
+    "scope": "Source-job counterexamples, authored before product calls; not independent plants",
+    "unknowns": [
+      "Current operating suitability and authority are not established"
+    ],
+    "assumptions": [
+      "Every identifier and value is fictional"
+    ]
+  },
+  "units": [
+    {
+      "id": "FLUE",
+      "name": "FLUE fictional boiler",
+      "type": "boiler",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "water_service": "steam-water boiler; explicit source declaration",
+        "blowdown_function": "surface",
+        "control_basis": "unknown water-control basis"
+      },
+      "source": "Fictional source-authored control; no physical existence implied",
+      "assigned_tag": true
+    },
+    {
+      "id": "WATER",
+      "name": "WATER fictional boiler",
+      "type": "boiler",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "water_service": "steam-water boiler; explicit source declaration",
+        "blowdown_function": "surface",
+        "control_basis": "supplied water conductivity control record; not engineering-approved"
+      },
+      "source": "Fictional source-authored control; no physical existence implied",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "manual_valves": [
+    {
+      "tag": "HV-1",
+      "unit": "FLUE",
+      "description": "Blowdown valve, fictional declared connection",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "blowdown_function": "surface"
+      },
+      "source": "Fictional control"
+    },
+    {
+      "tag": "HV-2",
+      "unit": "WATER",
+      "description": "Blowdown valve, fictional declared connection",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "blowdown_function": "surface"
+      },
+      "source": "Fictional control"
+    }
+  ],
+  "instruments": [
+    {
+      "tag": "AT-1",
+      "unit": "FLUE",
+      "description": "flue-gas oxygen",
+      "variable": "analysis",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "analyzer_purpose": "flue-gas oxygen",
+        "analyzer_target": "flue duct; not boiler water"
+      },
+      "source": "Fictional declared analyzer; association unverified",
+      "assigned_tag": true
+    },
+    {
+      "tag": "CT-2",
+      "unit": "WATER",
+      "description": "boiler-water conductivity",
+      "variable": "analysis",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "analyzer_purpose": "boiler-water conductivity",
+        "analyzer_target": "WATER surface blowdown"
+      },
+      "source": "Fictional declared analyzer; association unverified",
+      "assigned_tag": true
+    }
+  ],
+  "controllers": [],
+  "final_elements": []
+}

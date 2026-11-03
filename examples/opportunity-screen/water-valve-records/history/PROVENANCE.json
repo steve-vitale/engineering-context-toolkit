@@ -1,0 +1,226 @@
+{
+  "schema": "water-valve-source-history-1",
+  "base_commit": "f3cee81bd9ae47334860250ed0d7e849cf5023bb",
+  "original_catalog_sha256_raw": "5aa92c8be6e629be784b9eb4150d0e1c57533cfc5563d656014c0e863fdffeec",
+  "original_engine_sha256_raw": "1c800cf945d036e5130b6e69174948c70f935fb0986b695ec770ad92081f8ece",
+  "E13_original_reports": {
+    "BD01-bottom-versus-surface": {
+      "questions.json": "47ab6db5c0bfc4509946e8a83f8a894e06a6b45773b518bab522ebae26d012a7",
+      "screen.md": "6de55d5e81a7618ee6968fbb94b17c187c31aa33933fc9f4fca0a098f24f4093"
+    },
+    "BD02-generic-analyzer": {
+      "questions.json": "0a501f31b18d037c1750f0b8dd91b67dbc11a22696705d54b8a3d2a2d01ece88",
+      "screen.md": "633621202baa3ee02bb12880c877682c2d119c9de8cbc772a2160d9cc6b0dda4"
+    },
+    "BD03-service-boundary": {
+      "questions.json": "21a173585de7653575fb86ffb171787fe373de3d54454de8471034e71d2612e4",
+      "screen.md": "6df9ec0fd8484dcf30a59f73c7f7556d17af15e1b45651ea2e8c1344896da0d9"
+    },
+    "BD04-fuel-is-not-water-function": {
+      "questions.json": "7429a33c6a9ba06bd786b77872989bef827325038428bb1b5d426332ee94af64",
+      "screen.md": "6b4c5893017125da0efc08f64b944263ef87fe82fa3f996d50d3cbe16f141228"
+    },
+    "BD05-rate-denominator-and-quantity": {
+      "questions.json": "8e01ab932d0ed01881b3b43827950c986bca29ed2ce0a1b098095bc86ad8e410",
+      "screen.md": "b0f2bcc85636577486cec7dd125c56003c818d37febc4d80505ec1a66021018f"
+    },
+    "BD06-heat-recovery-scope": {
+      "questions.json": "828aac48b6405bbbdde02c3a0cdc1aabdab2787efdf88a86f537fc44b194889a",
+      "screen.md": "f6a82e66468a7823ae3ac450bb49eae90c36d7a0c90a00e0ed533b3344b7b4f8"
+    },
+    "BD07-existing-complete-records": {
+      "questions.json": "0137f32ad164149967078cd0f3f0bdd8ccc559857547b6b94fb42bd81b26f4c5",
+      "screen.md": "8b4435e07618a3a67d3f06e17cbf4465e81e06e1fe5b3ff5be1a0733c93c7cb3"
+    },
+    "BD08-foreign-or-unavailable-records": {
+      "questions.json": "09758d2d6e88aa94a45736a2fabff9b5c7ed2b4f27e1042c4d568746bd2b15dc",
+      "screen.md": "6bd911124cdfad680628e985bb9ff5200ef2b639f18ac2a1675b517929497a9b"
+    }
+  },
+  "qualification": "Historical whole reports and failed runs retained; no acceptance, source fingerprint or successful original was edited to match a successor. Process identity includes start time as well as PID. Original labels are captured provenance, not current paths.",
+  "current_catalog_sha256_raw": "56898b126cd4c98ee2b1d153a8323b8fecbd004d9e2594cf9d8aa941c7be3527",
+  "current_reports": {
+    "BD01-bottom-versus-surface": {
+      "questions.json": "6c1a83316d562d0053a6cceadd8b2d197e6aca486f675d36adb69e90d2e04fa6",
+      "screen.md": "aef08927956f5a11538148bee3729810df6996b4b88005a1afcf432a1030fc53"
+    },
+    "BD02-generic-analyzer": {
+      "questions.json": "e3486c00d36e4a29ea44b6aa22ba5e4e18f251615b804aacc5ade41096bc1d14",
+      "screen.md": "72085e960e78bf60c62bb1c912826dc946c412a8d95ca6754fca0f8d8d426e18"
+    },
+    "BD03-service-boundary": {
+      "questions.json": "3c32611668b3256038967d22c1d3b4507928f8adc691bc324b891718b59ff95f",
+      "screen.md": "7eac289495666cbc68c20265ea426dd41bac778adbd6b4a178d6f78bf0fd2613"
+    },
+    "BD04-fuel-is-not-water-function": {
+      "questions.json": "35ddc76516b6b344b01efb25dea009f29624e02880649aa2d03cb6625242c758",
+      "screen.md": "cc132c6523c72a603d734d876bf5692a4ec070a56489521c0729b4dda52ae576"
+    },
+    "BD05-rate-denominator-and-quantity": {
+      "questions.json": "b71e653295ce2abce40c6b324e0f708de587ba276f6b2909a2332024c89f71d1",
+      "screen.md": "104c2faf419a31841b5d8383e45c5b0b93976ee63a6a951834566504469db601"
+    },
+    "BD06-heat-recovery-scope": {
+      "questions.json": "a3fe172ecab6b3db63e64880e694746db61daf197bc466c5ab2c2280c7385a0b",
+      "screen.md": "b82a47a315e5d289068d9ce5b89d7ed4a2d7d1b1246672e3cc628d93ad3ee6b1"
+    },
+    "BD07-existing-complete-records": {
+      "questions.json": "eb34284e88c6139f85a1172348be1c356787ec6fd88dc8c6af6a8112b0ae430a",
+      "screen.md": "1012d62a720014f2331dfcee9e7ea1c74a5215704c751d4b410be3df613ac0bf"
+    },
+    "BD08-foreign-or-unavailable-records": {
+      "questions.json": "3596a90f33dad6443593c8dd2911f79ab561deb792ea4bd8791c929082e61126",
+      "screen.md": "80e82ed955ebeff5e400533cb5625cce40625db508146f4bfbdcba16641cb2ea"
+    },
+    "C4-01-command-travel": {
+      "questions.json": "fd52373a28f85626fc36a2b2b7557fa1959099564f8cb0924af57c64e6ddcf1e",
+      "screen.md": "8d6f63adcfc40f0af9adb8c12f9bb9c876de43cc210669035e28a81fafe03101"
+    },
+    "C4-02-legitimate-bypass": {
+      "questions.json": "e4fcd7cc3e3013665554881debcb1eb9ad0ae0384ec3b31a361bef35ec3662d1",
+      "screen.md": "cd7be3abfb24a4d2e9a3997e305ee4aa475e70e8762ce0157e1cc417e4b62643"
+    },
+    "C4-03-existing-basis": {
+      "questions.json": "0df8cb6450088d1eff32b8bb29f77f6fb2a533e1641dceac3150342e95752b1f",
+      "screen.md": "6208e3cc2c8e91de22137628203b028f324ea1ebb95869ce28c78be9f4a4fe05"
+    },
+    "C4-04-foreign-record": {
+      "questions.json": "dc8763e0d655fab1dda29f956748b150092f5ac4ec8023fe4ac2f3cc5a170e2f",
+      "screen.md": "a410276141d91e600f8b1abaa66670531329ffc8f0dadbfc3428fc8e11de9c02"
+    },
+    "C4-05-topology-and-marking": {
+      "questions.json": "7cb26e15106593160afd4326c9a03d9882fdb0e2f70b7dbd1e61d558a0a1405a",
+      "screen.md": "a7919e08f29c319e81345675f5103637e525bcaa872ef4e63a84679fbfb0703f"
+    },
+    "C4-06-eligible-boundary": {
+      "questions.json": "4338f7e4d0a3e27a601683ea1d56e5f2fe5f9ae09a41fb1c51aac296b12862a4",
+      "screen.md": "51197c02e5337ad03e904b5e7e8b677568e5429728fb2112fc661dbfe4bad6b2"
+    },
+    "CT-01-generic-analyzer": {
+      "questions.json": "fc371c225274f8f8b71805a47f240a54b0082ade4d739e3c7a0354a7c434b8c8",
+      "screen.md": "257cde588e63232b83edddd42bdc7ed89c6d20fb97ea2620a7affa8c30e2df90"
+    },
+    "CT-02-meter-presence": {
+      "questions.json": "c84a417900078f5c3ff26fa61591d9bf763a6a7d0e604f0edb92de14e5680b1f",
+      "screen.md": "083fd523c03b0ebfa36c9036d25822ae68fd43bdfb79a23be32488180e667887"
+    },
+    "CT-03-quantity-period": {
+      "questions.json": "6b47103fa6fd18404dc21ba00a60ab8729a4ea2af5df76b230cc2b75af5da16c",
+      "screen.md": "6cf0641c1c22d77f168b057d2b6ea7a29326b287295026cde58b651f91d0a8d3"
+    },
+    "CT-04-chemistry-and-losses": {
+      "questions.json": "21fe0d932cc4e8aa16b101dc0867f75fd87e4606410d7f851fa40f2aea11d1b1",
+      "screen.md": "c7492ef3e78746b1388b27d2e6af8291f4d074651c7fec7e292d15af724a7ee0"
+    },
+    "CT-05-service-boundary": {
+      "questions.json": "fbaa7a0367ddf3e8ce0d4c15125bb1727c27aed74ec340956cf28853e1836b2d",
+      "screen.md": "666e8d23d170a4f7753e3f4d5c7012d1c5de0781d6591bc2a5175a19b2d32da2"
+    },
+    "CT-06-foreign-scope": {
+      "questions.json": "c24072efceb522fc1339a2102e0c9746713a070ea18a6a5e4c2aec1f561a339c",
+      "screen.md": "91120c970a9d463d31f5d6dfac07a6df69bcccc9863fbf4fe0d302f40d38fb4f"
+    },
+    "AX01-proportional-control-alternative": {
+      "questions.json": "9eff65add04c4c951f3fc5aeb91d2455518d8fd8a8c6bc7e3af3f28b83af688f",
+      "screen.md": "6c4f3ed5b0bdcb5cb36aa5b82a6b5de51fced5f58f8399ce7f9df99f25b67c05"
+    },
+    "AX02-rate-denominators": {
+      "questions.json": "81057ca52301018ea920f0b942f0a4e18b749ac9cc9b798322788949e1615627",
+      "screen.md": "10ed0f2e3496928f6f0d1267cff5dda3c0fcb4e24e0ecdb709f8a9c81c7b5acb"
+    },
+    "AX03-typed-unknowns": {
+      "questions.json": "f2ab18bbcfd34510c61bfb83f30b9e977113f916ab2609c2d6175bbd49aefe7b",
+      "screen.md": "29de05f084a9eb82150f1725e2d681cf6b76cfe07088e1e0b453d8f10f6588f1"
+    },
+    "AX04-steam-generator-name": {
+      "questions.json": "21c7398023c7a65806d3d3ca0eb785793612abde9094f1be8a515b19ba123d0b",
+      "screen.md": "2bf266ca208ae02a484a8e289eb2f925be9c8663e9d5434b8b735bb25f491b05"
+    },
+    "AX05-conflicting-service": {
+      "questions.json": "2ca4c06e6a73c4c9afafa7b892774cc46aa1aa6037b7852bf7a32ddda968cb4d",
+      "screen.md": "f1ff8efe5eb0287ce8100391955908af6ca2ae1cc888eed6f492c0ae68b039bc"
+    }
+  },
+  "C4_E24_original_reports": {
+    "C4-01-command-travel": {
+      "questions.json": "bccf5c6c6473b4573687346e8e2a42551eeb2f75deb54a53dac1bca18b3da51f",
+      "screen.md": "b614f3fce8637abc54275b1354970b35b53de86a05a6382b80fd683422846688"
+    },
+    "C4-02-legitimate-bypass": {
+      "questions.json": "fa2c0b85297f222cd6dc911edbe24903ae1def785898205a1e14495bddc8e9b9",
+      "screen.md": "c3ed4adfdaf7f55cce46e8c7f8d3a2dcb7cda6478df2d406a86e45b143435392"
+    },
+    "C4-03-existing-basis": {
+      "questions.json": "8773d5a005060f13699a9859b6b0a45822be87d037544dae978d45d3b186a31f",
+      "screen.md": "7cd24fd877d547d4f4690775e830c3a1bb93976d73d5ef1c148dd4bc4e91c818"
+    },
+    "C4-04-foreign-record": {
+      "questions.json": "f69cb58d66c0e116151742a8ecdf3b1a0aadf1b89154c0ba1651f3bd729bc482",
+      "screen.md": "2a4c8b3a7b609ee6196d67a4adb3edeaeb77fb03e3c3004ec3f24058d23093ec"
+    },
+    "C4-05-topology-and-marking": {
+      "questions.json": "be7a1a67155339aec93f8463d6ac5c35d6d91eb06fb8bc1942d2293cc4781bd5",
+      "screen.md": "e5d254640033f1b66da6d186a97cac68b97c5d2b25740897656c17769fdb6ac4"
+    },
+    "C4-06-eligible-boundary": {
+      "questions.json": "d8f2e5a98924058a0e32ddcba64a582a45d443297c2e2226b06c6efc156cc49e",
+      "screen.md": "5b6d3e57e88437e527b3878d7724b63d649a0e2461ee269553af45509e5265ff"
+    },
+    "CT-01-generic-analyzer": {
+      "questions.json": "6052dd729a30acd3519bf26e1a6456c2156cd9a2ed405f522093aa49fb4df1b5",
+      "screen.md": "ff11abbccb1dbe54ada45c7fffa5925db2413293ecd0ade1b3cbb07fc59ed19b"
+    },
+    "CT-02-meter-presence": {
+      "questions.json": "0e2453b45dff5f60f2cd6e60082e375494ea6f5d4dbb114dba39ec30ee308541",
+      "screen.md": "8458936752a85c8a6a2f2bfd4bf3bb9fca7bebf251e12e738ce4a9342a586d9a"
+    },
+    "CT-03-quantity-period": {
+      "questions.json": "a3a9885f5d59f7244eecd94f4cc165414988ef4cdc445b1c8e758f3388653d16",
+      "screen.md": "7048c9be7a5a37c939ec7d967560ab6fbc9eaf3de206d7f55e28376a97cc52f5"
+    },
+    "CT-04-chemistry-and-losses": {
+      "questions.json": "aa20da416fdd597ad81d74740671acb9f37115b66752beac48884e35cedef138",
+      "screen.md": "ad6dbe7907f57f66dba35d360ff8954e079cde438327fe1901d25d54826da0f4"
+    },
+    "CT-05-service-boundary": {
+      "questions.json": "83cc660465f708e29338064da04da658403fac0122843da487583cdc9c339488",
+      "screen.md": "a144d795aebfe3432b90d962903808887b1bb35a21f285a6394cc5dbc045270f"
+    },
+    "CT-06-foreign-scope": {
+      "questions.json": "8e91e177cbcc727947a34fac539f9b868f61b900f2686eea7c7379699e75c4bd",
+      "screen.md": "13191c28d554de6925b1e18c6d760e1f8b0a881fa72b238eac4820f218bb77bb"
+    }
+  },
+  "successor_scope": "Only E13/C4/E24 whole rules change; other47 rules/shared catalog records and other49 benefit objects remain exact. C4 incomplete benefit ellipsis is replaced by a qualified source paraphrase; its original remains in catalog-before.json and original reports.",
+  "preserved_failures": [
+    "Earlier E13 author/request-shape and observer errors remain retained with private experiment lineage.",
+    "Original four regression methods on20 controls fail39 assertions; an earlier eight-case run and its labelled saved repeat fail17.",
+    "Root successor v1 copied an invalid old E13-PATCH request-location shape; v2 restores the list from the actual executed private catalog.",
+    "A producer guard first compared CRLF and LF raw bytes; complete LF text and JSON were equal. Existing common screen working bytes were preserved.",
+    "An authored rollup command omitted the second --rollup flag and exited2; a description check used -S and hid installed drawing dependencies, exiting2. Corrected invocations remain separate.",
+    "A context verification helper supplied unsupported graph-export --context; the existing context CLI enriched graph and pure profile API were used instead. The failed command remains separate."
+  ],
+  "final_catalog_encoding": "LF under existing data/questions.json eol policy; entire typed catalog equals prior CRLF successor. Final25case+4screen+rollup+6description jobs actually consumed these final bytes.",
+  "AX_original_reports": {
+    "AX01-proportional-control-alternative": {
+      "questions.json": "f1ef4d44324052658aba94d95a60b958cfcea2834efc5a0eda2cb75521928f5b",
+      "screen.md": "1beae798a3aee6380206a27a691050a409b2caeb9659dc442f69ff84492fd813"
+    },
+    "AX02-rate-denominators": {
+      "questions.json": "a462b9cabe8c37a5e37304d0c7d8e23ad8d440bcd45eecdebba2d9ca7726c679",
+      "screen.md": "0d8f0a7ad34f4f0d464267e573fdb27b6c6c7363aae9469147f0c7aa09241258"
+    },
+    "AX03-typed-unknowns": {
+      "questions.json": "011d6cb4af6eff05c5adbb4dfb8e9151b97f578c642705fe5e84aeffefa93064",
+      "screen.md": "18089b5434c9d1cee2929901f3905d8b51447c185621b16a6b3b431307a79e27"
+    },
+    "AX04-steam-generator-name": {
+      "questions.json": "5afacdd4a1efa4db27454c2c00c2c636061233b1a29625b195e4d16159158aea",
+      "screen.md": "6d86ebf13c757fdaa711b45ead04b2597cce7bcfab8de42ff66febd1c51638cd"
+    },
+    "AX05-conflicting-service": {
+      "questions.json": "6b5801aed730d0af1b10e91dd5645b4e53c69b11a6d889341ba2a918de68291b",
+      "screen.md": "794f0ff5170c0b89eace0742ee0db068e0aa841609dc97b997acd7982b33d92b"
+    }
+  }
+}

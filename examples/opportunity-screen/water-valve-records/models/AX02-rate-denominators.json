@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "title": "Fictional source-informed E13 controls; not a plant record",
+    "scope": "Materialized after independent criteria freeze, with author exposed to existing candidate. No held-out, site or human result."
+  },
+  "units": [
+    {
+      "id": "STEAM",
+      "name": "boiler steam-denominator record",
+      "type": "boiler",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional explicit original record, no company approval",
+        "record_revision": "R1",
+        "water_service": "declared steam-water boiler",
+        "blowdown_function": "surface",
+        "fraction_denominator": "blowdown / steam",
+        "blowdown_rate": 6,
+        "quantity_units": "lb/h",
+        "sample_period": "fictional interval A",
+        "receiving_duty": "unknown"
+      },
+      "source": "Fictional declared basis",
+      "assigned_tag": true
+    },
+    {
+      "id": "FEED",
+      "name": "boiler feedwater-denominator record",
+      "type": "boiler",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional explicit original record, no company approval",
+        "record_revision": "R1",
+        "water_service": "declared steam-water boiler",
+        "blowdown_function": "surface",
+        "fraction_denominator": "blowdown / feedwater",
+        "blowdown_rate": 6,
+        "quantity_units": "lb/h",
+        "sample_period": "fictional interval A",
+        "receiving_duty": "qualified existing recovery record, not acceptance"
+      },
+      "source": "Fictional declared basis",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "manual_valves": [
+    {
+      "tag": "HV-AX-1",
+      "unit": "STEAM",
+      "description": "Declared blowdown candidate",
+      "source": "Fictional connection, not physical verification"
+    },
+    {
+      "tag": "HV-AX-2",
+      "unit": "FEED",
+      "description": "Declared blowdown candidate",
+      "source": "Fictional connection, not physical verification"
+    }
+  ],
+  "instruments": [],
+  "controllers": [],
+  "final_elements": []
+}

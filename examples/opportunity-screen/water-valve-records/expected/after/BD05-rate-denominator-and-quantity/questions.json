@@ -1,0 +1,646 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/water-valve-records/models/BD05-rate-denominator-and-quantity.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E13"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E13@FEED",
+   "question_id": "E13",
+   "family": "energy",
+   "question": "What do existing records establish about this boiler's blowdown function, water-treatment control and any remaining heat-recovery opportunity?",
+   "about": "FEED",
+   "assets": [
+    {
+     "id": "FEED",
+     "tag": "FEED"
+    },
+    {
+     "id": "HV-1",
+     "tag": "HV-1"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "FEED",
+     "tag": "FEED",
+     "text": "equipment FEED reads \"FEED FEED fictional boiler\"",
+     "field": "units[FEED]"
+    },
+    {
+     "role": "blowdown",
+     "id": "HV-1",
+     "tag": "HV-1",
+     "text": "hand valve HV-1 reads \"HV-1 Blowdown valve, fictional declared connection\" at FEED",
+     "field": "manual_valves[HV-1]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FEED",
+     "tag": "FEED",
+     "text": "FEED water_service = \"steam-water boiler; explicit source declaration\"; present; meaning and suitability unverified",
+     "field": "units[FEED].facts.water_service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FEED",
+     "tag": "FEED",
+     "text": "FEED blowdown_function = \"surface\"; present; meaning and suitability unverified",
+     "field": "units[FEED].facts.blowdown_function"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FEED",
+     "tag": "FEED",
+     "text": "FEED feedwater_tds = 100; present; meaning and suitability unverified",
+     "field": "units[FEED].facts.feedwater_tds"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FEED",
+     "tag": "FEED",
+     "text": "FEED boiler_tds = 2000; present; meaning and suitability unverified",
+     "field": "units[FEED].facts.boiler_tds"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FEED",
+     "tag": "FEED",
+     "text": "FEED makeup_tds = 300; present; meaning and suitability unverified",
+     "field": "units[FEED].facts.makeup_tds"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FEED",
+     "tag": "FEED",
+     "text": "FEED quantity_units = \"all TDS mg/L\"; present; meaning and suitability unverified",
+     "field": "units[FEED].facts.quantity_units"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FEED",
+     "tag": "FEED",
+     "text": "FEED sample_period = \"same fictional steady interval\"; present; meaning and suitability unverified",
+     "field": "units[FEED].facts.sample_period"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FEED",
+     "tag": "FEED",
+     "text": "FEED fraction_denominator = \"blowdown/feedwater, not steam\"; present; meaning and suitability unverified",
+     "field": "units[FEED].facts.fraction_denominator"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FEED",
+     "tag": "FEED",
+     "text": "FEED record_source = \"Fictional training packet; no plant or engineering approval\"; present; meaning and suitability unverified",
+     "field": "units[FEED].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FEED",
+     "tag": "FEED",
+     "text": "FEED record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[FEED].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FEED",
+     "tag": "FEED",
+     "text": "FEED record_available = true; present; meaning and suitability unverified",
+     "field": "units[FEED].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "FEED",
+     "tag": "FEED",
+     "text": "FEED source_is_fictional = true; present; meaning and suitability unverified",
+     "field": "units[FEED].facts.source_is_fictional"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-1",
+     "tag": "HV-1",
+     "text": "HV-1 blowdown_function = \"surface\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-1].facts.blowdown_function"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-1",
+     "tag": "HV-1",
+     "text": "HV-1 record_source = \"Fictional training packet; no plant or engineering approval\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-1].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-1",
+     "tag": "HV-1",
+     "text": "HV-1 record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-1].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-1",
+     "tag": "HV-1",
+     "text": "HV-1 record_available = true; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-1].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-1",
+     "tag": "HV-1",
+     "text": "HV-1 source_is_fictional = true; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-1].facts.source_is_fictional"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FEED water_service = steam-water boiler; explicit source declaration",
+     "field": "units[FEED].facts.water_service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FEED blowdown_function = surface",
+     "field": "units[FEED].facts.blowdown_function"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FEED feedwater_tds = 100",
+     "field": "units[FEED].facts.feedwater_tds"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FEED boiler_tds = 2000",
+     "field": "units[FEED].facts.boiler_tds"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FEED makeup_tds = 300",
+     "field": "units[FEED].facts.makeup_tds"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FEED quantity_units = all TDS mg/L",
+     "field": "units[FEED].facts.quantity_units"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FEED sample_period = same fictional steady interval",
+     "field": "units[FEED].facts.sample_period"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FEED fraction_denominator = blowdown/feedwater, not steam",
+     "field": "units[FEED].facts.fraction_denominator"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FEED record_source = Fictional training packet; no plant or engineering approval",
+     "field": "units[FEED].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FEED record_revision = R1",
+     "field": "units[FEED].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FEED record_available = True",
+     "field": "units[FEED].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: FEED source_is_fictional = True",
+     "field": "units[FEED].facts.source_is_fictional"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing boiler blowdown service, treatment/control and recovery basis (qualified records first)",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Named boiler operating and water-treatment records: distinguish bottom/mud removal of suspended solids from surface/skimming removal of dissolved solids; retain asset/source/revision, sample time, availability, quantity/units and operating coverage. Review existing suitable control and recovery before requesting more data.",
+      "a walkdown: Only if the relevant records cannot settle an applicable boiler-water question: agree with the responsible engineer what safe observation or measurement is still needed; no blanket new field measurement or hardware instruction."
+     ],
+     "how": "First establish the actual steam/water service and bottom versus surface function. Normally manual intermittent bottom blowdown alone is not an automation fault. An analyzer tag or nearby location does not prove boiler-water association, suitable control or adequate operation. Keep TDS and conductivity units, representative sampling and feedwater/makeup/condensate distinctions explicit. Any calculated blowdown fraction or percent must state its justified balance, denominator and time basis; do not impose the source's contextual range as a target. For applicable continuous surface duty, review pressure, actual rate/hours, installed recovery, receiving duty and constraints before considering an investigation. Known dry/non-water service is not applicable; unknown service needs clarification. Complete suitable records can be acknowledged without a new measurement or retrofit. Proportional makeup-water-flow control can be an existing surface-control arrangement; absence of a conductivity probe alone is not a control defect. Keep steam-flow and feedwater-flow rate denominators distinct; neither a source screening sentence nor its worked table supplies a universal target.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "FEED",
+       "label": "FEED",
+       "name": "water_service",
+       "value": "steam-water boiler; explicit source declaration",
+       "where": "units[FEED].facts.water_service"
+      },
+      {
+       "id": "FEED",
+       "label": "FEED",
+       "name": "blowdown_function",
+       "value": "surface",
+       "where": "units[FEED].facts.blowdown_function"
+      },
+      {
+       "id": "FEED",
+       "label": "FEED",
+       "name": "feedwater_tds",
+       "value": 100,
+       "where": "units[FEED].facts.feedwater_tds"
+      },
+      {
+       "id": "FEED",
+       "label": "FEED",
+       "name": "boiler_tds",
+       "value": 2000,
+       "where": "units[FEED].facts.boiler_tds"
+      },
+      {
+       "id": "FEED",
+       "label": "FEED",
+       "name": "makeup_tds",
+       "value": 300,
+       "where": "units[FEED].facts.makeup_tds"
+      },
+      {
+       "id": "FEED",
+       "label": "FEED",
+       "name": "quantity_units",
+       "value": "all TDS mg/L",
+       "where": "units[FEED].facts.quantity_units"
+      },
+      {
+       "id": "FEED",
+       "label": "FEED",
+       "name": "sample_period",
+       "value": "same fictional steady interval",
+       "where": "units[FEED].facts.sample_period"
+      },
+      {
+       "id": "FEED",
+       "label": "FEED",
+       "name": "fraction_denominator",
+       "value": "blowdown/feedwater, not steam",
+       "where": "units[FEED].facts.fraction_denominator"
+      },
+      {
+       "id": "FEED",
+       "label": "FEED",
+       "name": "record_source",
+       "value": "Fictional training packet; no plant or engineering approval",
+       "where": "units[FEED].facts.record_source"
+      },
+      {
+       "id": "FEED",
+       "label": "FEED",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[FEED].facts.record_revision"
+      },
+      {
+       "id": "FEED",
+       "label": "FEED",
+       "name": "record_available",
+       "value": true,
+       "where": "units[FEED].facts.record_available"
+      },
+      {
+       "id": "FEED",
+       "label": "FEED",
+       "name": "source_is_fictional",
+       "value": true,
+       "where": "units[FEED].facts.source_is_fictional"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review records and unresolved applicability with the responsible engineer. Distinguish bottom/mud and surface/skimming functions; manual practice or a missing/generic analyzer does not authorize automation. Consider further control or heat-recovery investigation only if applicable service, treatment needs, actual operation and recovery/sink constraints establish a remaining question. No hardware decision, operating change, chemistry target or site saving follows from this screen.",
+   "typical_benefit": {
+    "wording": "\"Blowdown rates typically range from 4% to 8% of boiler feedwater flow rate, but can be as high as 10%.\" LBNL (as reported in LBNL-56183): blowdown heat recovery 1.3%, 1-2.7 yr.",
+    "source": [
+     "S5",
+     "S19",
+     "S24"
+    ],
+    "arc": "2.124x (IAC/ITAC browse page: 334 recommendations, 1.6 yr average payback, 36.7% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S5: Steam Tip #9, Minimize Boiler Blowdown (DOE/GO-102012-3406)",
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "Source-informed records review: DOE Steam Tip 9, pp. 1–2, distinguishes bottom and surface functions and includes proportional makeup-water-flow control. Supplemental Tip 10, pp. 1–2 (https://www.energy.gov/sites/prod/files/2014/05/f16/steam10_boiler_blowdown.pdf), qualifies recovery by actual source and receiving duty; its opening steam-rate screen and feedwater-based example have different denominators. Historical S19/S24/IAC benefit figures are inherited, not reverified, site-specific or current-standard acceptance. Supplied candidate fields do not establish engineering adequacy or source authority.",
+   "status": "asked"
+  },
+  {
+   "id": "E13@MISMATCH",
+   "question_id": "E13",
+   "family": "energy",
+   "question": "What do existing records establish about this boiler's blowdown function, water-treatment control and any remaining heat-recovery opportunity?",
+   "about": "MISMATCH",
+   "assets": [
+    {
+     "id": "MISMATCH",
+     "tag": "MISMATCH"
+    },
+    {
+     "id": "HV-2",
+     "tag": "HV-2"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "MISMATCH",
+     "tag": "MISMATCH",
+     "text": "equipment MISMATCH reads \"MISMATCH MISMATCH fictional boiler\"",
+     "field": "units[MISMATCH]"
+    },
+    {
+     "role": "blowdown",
+     "id": "HV-2",
+     "tag": "HV-2",
+     "text": "hand valve HV-2 reads \"HV-2 Blowdown valve, fictional declared connection\" at MISMATCH",
+     "field": "manual_valves[HV-2]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "MISMATCH",
+     "tag": "MISMATCH",
+     "text": "MISMATCH water_service = \"steam-water boiler; explicit source declaration\"; present; meaning and suitability unverified",
+     "field": "units[MISMATCH].facts.water_service"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "MISMATCH",
+     "tag": "MISMATCH",
+     "text": "MISMATCH blowdown_function = \"surface\"; present; meaning and suitability unverified",
+     "field": "units[MISMATCH].facts.blowdown_function"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "MISMATCH",
+     "tag": "MISMATCH",
+     "text": "MISMATCH feedwater_tds = 100; present; meaning and suitability unverified",
+     "field": "units[MISMATCH].facts.feedwater_tds"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "MISMATCH",
+     "tag": "MISMATCH",
+     "text": "MISMATCH boiler_tds = 2000; present; meaning and suitability unverified",
+     "field": "units[MISMATCH].facts.boiler_tds"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "MISMATCH",
+     "tag": "MISMATCH",
+     "text": "MISMATCH quantity_units = \"feedwater mg/L TDS; boiler value conductivity microS/cm\"; present; meaning and suitability unverified",
+     "field": "units[MISMATCH].facts.quantity_units"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "MISMATCH",
+     "tag": "MISMATCH",
+     "text": "MISMATCH sample_period = null; blank; meaning and suitability unverified",
+     "field": "units[MISMATCH].facts.sample_period"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "MISMATCH",
+     "tag": "MISMATCH",
+     "text": "MISMATCH fraction_denominator = \"not established\"; present; meaning and suitability unverified",
+     "field": "units[MISMATCH].facts.fraction_denominator"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "MISMATCH",
+     "tag": "MISMATCH",
+     "text": "MISMATCH record_source = \"Fictional training packet; no plant or engineering approval\"; present; meaning and suitability unverified",
+     "field": "units[MISMATCH].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "MISMATCH",
+     "tag": "MISMATCH",
+     "text": "MISMATCH record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[MISMATCH].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "MISMATCH",
+     "tag": "MISMATCH",
+     "text": "MISMATCH record_available = true; present; meaning and suitability unverified",
+     "field": "units[MISMATCH].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "MISMATCH",
+     "tag": "MISMATCH",
+     "text": "MISMATCH source_is_fictional = true; present; meaning and suitability unverified",
+     "field": "units[MISMATCH].facts.source_is_fictional"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-2",
+     "tag": "HV-2",
+     "text": "HV-2 blowdown_function = \"surface\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-2].facts.blowdown_function"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-2",
+     "tag": "HV-2",
+     "text": "HV-2 record_source = \"Fictional training packet; no plant or engineering approval\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-2].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-2",
+     "tag": "HV-2",
+     "text": "HV-2 record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-2].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-2",
+     "tag": "HV-2",
+     "text": "HV-2 record_available = true; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-2].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "HV-2",
+     "tag": "HV-2",
+     "text": "HV-2 source_is_fictional = true; present; meaning and suitability unverified",
+     "field": "manual_valves[HV-2].facts.source_is_fictional"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: MISMATCH water_service = steam-water boiler; explicit source declaration",
+     "field": "units[MISMATCH].facts.water_service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: MISMATCH blowdown_function = surface",
+     "field": "units[MISMATCH].facts.blowdown_function"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: MISMATCH feedwater_tds = 100",
+     "field": "units[MISMATCH].facts.feedwater_tds"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: MISMATCH boiler_tds = 2000",
+     "field": "units[MISMATCH].facts.boiler_tds"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: MISMATCH quantity_units = feedwater mg/L TDS; boiler value conductivity microS/cm",
+     "field": "units[MISMATCH].facts.quantity_units"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: MISMATCH fraction_denominator = not established",
+     "field": "units[MISMATCH].facts.fraction_denominator"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: MISMATCH record_source = Fictional training packet; no plant or engineering approval",
+     "field": "units[MISMATCH].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: MISMATCH record_revision = R1",
+     "field": "units[MISMATCH].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: MISMATCH record_available = True",
+     "field": "units[MISMATCH].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: MISMATCH source_is_fictional = True",
+     "field": "units[MISMATCH].facts.source_is_fictional"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing boiler blowdown service, treatment/control and recovery basis (qualified records first)",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Named boiler operating and water-treatment records: distinguish bottom/mud removal of suspended solids from surface/skimming removal of dissolved solids; retain asset/source/revision, sample time, availability, quantity/units and operating coverage. Review existing suitable control and recovery before requesting more data.",
+      "a walkdown: Only if the relevant records cannot settle an applicable boiler-water question: agree with the responsible engineer what safe observation or measurement is still needed; no blanket new field measurement or hardware instruction."
+     ],
+     "how": "First establish the actual steam/water service and bottom versus surface function. Normally manual intermittent bottom blowdown alone is not an automation fault. An analyzer tag or nearby location does not prove boiler-water association, suitable control or adequate operation. Keep TDS and conductivity units, representative sampling and feedwater/makeup/condensate distinctions explicit. Any calculated blowdown fraction or percent must state its justified balance, denominator and time basis; do not impose the source's contextual range as a target. For applicable continuous surface duty, review pressure, actual rate/hours, installed recovery, receiving duty and constraints before considering an investigation. Known dry/non-water service is not applicable; unknown service needs clarification. Complete suitable records can be acknowledged without a new measurement or retrofit. Proportional makeup-water-flow control can be an existing surface-control arrangement; absence of a conductivity probe alone is not a control defect. Keep steam-flow and feedwater-flow rate denominators distinct; neither a source screening sentence nor its worked table supplies a universal target.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "MISMATCH",
+       "label": "MISMATCH",
+       "name": "water_service",
+       "value": "steam-water boiler; explicit source declaration",
+       "where": "units[MISMATCH].facts.water_service"
+      },
+      {
+       "id": "MISMATCH",
+       "label": "MISMATCH",
+       "name": "blowdown_function",
+       "value": "surface",
+       "where": "units[MISMATCH].facts.blowdown_function"
+      },
+      {
+       "id": "MISMATCH",
+       "label": "MISMATCH",
+       "name": "feedwater_tds",
+       "value": 100,
+       "where": "units[MISMATCH].facts.feedwater_tds"
+      },
+      {
+       "id": "MISMATCH",
+       "label": "MISMATCH",
+       "name": "boiler_tds",
+       "value": 2000,
+       "where": "units[MISMATCH].facts.boiler_tds"
+      },
+      {
+       "id": "MISMATCH",
+       "label": "MISMATCH",
+       "name": "quantity_units",
+       "value": "feedwater mg/L TDS; boiler value conductivity microS/cm",
+       "where": "units[MISMATCH].facts.quantity_units"
+      },
+      {
+       "id": "MISMATCH",
+       "label": "MISMATCH",
+       "name": "fraction_denominator",
+       "value": "not established",
+       "where": "units[MISMATCH].facts.fraction_denominator"
+      },
+      {
+       "id": "MISMATCH",
+       "label": "MISMATCH",
+       "name": "record_source",
+       "value": "Fictional training packet; no plant or engineering approval",
+       "where": "units[MISMATCH].facts.record_source"
+      },
+      {
+       "id": "MISMATCH",
+       "label": "MISMATCH",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[MISMATCH].facts.record_revision"
+      },
+      {
+       "id": "MISMATCH",
+       "label": "MISMATCH",
+       "name": "record_available",
+       "value": true,
+       "where": "units[MISMATCH].facts.record_available"
+      },
+      {
+       "id": "MISMATCH",
+       "label": "MISMATCH",
+       "name": "source_is_fictional",
+       "value": true,
+       "where": "units[MISMATCH].facts.source_is_fictional"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review records and unresolved applicability with the responsible engineer. Distinguish bottom/mud and surface/skimming functions; manual practice or a missing/generic analyzer does not authorize automation. Consider further control or heat-recovery investigation only if applicable service, treatment needs, actual operation and recovery/sink constraints establish a remaining question. No hardware decision, operating change, chemistry target or site saving follows from this screen.",
+   "typical_benefit": {
+    "wording": "\"Blowdown rates typically range from 4% to 8% of boiler feedwater flow rate, but can be as high as 10%.\" LBNL (as reported in LBNL-56183): blowdown heat recovery 1.3%, 1-2.7 yr.",
+    "source": [
+     "S5",
+     "S19",
+     "S24"
+    ],
+    "arc": "2.124x (IAC/ITAC browse page: 334 recommendations, 1.6 yr average payback, 36.7% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S5: Steam Tip #9, Minimize Boiler Blowdown (DOE/GO-102012-3406)",
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "Source-informed records review: DOE Steam Tip 9, pp. 1–2, distinguishes bottom and surface functions and includes proportional makeup-water-flow control. Supplemental Tip 10, pp. 1–2 (https://www.energy.gov/sites/prod/files/2014/05/f16/steam10_boiler_blowdown.pdf), qualifies recovery by actual source and receiving duty; its opening steam-rate screen and feedwater-based example have different denominators. Historical S19/S24/IAC benefit figures are inherited, not reverified, site-specific or current-standard acceptance. Supplied candidate fields do not establish engineering adequacy or source authority.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

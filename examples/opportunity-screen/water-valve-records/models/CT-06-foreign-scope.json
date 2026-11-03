@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "title": "Fictional source-led C4/E24 control",
+    "unknowns": [
+      "Engineering suitability, physical state and source authority remain unknown"
+    ],
+    "assumptions": [
+      "Every name/value/association is fictional"
+    ]
+  },
+  "units": [
+    {
+      "id": "T-A",
+      "name": "Fictional cooling tower T-A",
+      "type": "cooling_tower",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional training record, no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "not authenticated",
+        "water_service": "evaporative recirculating cooling water",
+        "record_scope": "local towerA, labelCT1"
+      },
+      "assigned_tag": true,
+      "source": "Fictional declared context"
+    },
+    {
+      "id": "T-B",
+      "name": "Fictional cooling tower T-B",
+      "type": "cooling_tower",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional training record, no plant or human approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "record_authority": "not authenticated",
+        "water_service": "evaporative recirculating cooling water",
+        "record_scope": "different localtowerB, reusedCT1"
+      },
+      "assigned_tag": true,
+      "source": "Fictional declared context"
+    }
+  ],
+  "streams": [],
+  "final_elements": [],
+  "manual_valves": [],
+  "instruments": [
+    {
+      "tag": "AT-6",
+      "unit": "T-A",
+      "description": "supplied conductivityrecord",
+      "variable": "analysis",
+      "facts": {
+        "fictional_record": true,
+        "record_source": "Fictional training record, no plant or human approval",
+        "record_revision": "R0",
+        "record_available": false,
+        "record_authority": "not authenticated",
+        "measurement_purpose": "supplied conductivityrecord",
+        "measurement_target": "foreign siteCT1",
+        "record_scope": "foreign siteonly"
+      },
+      "assigned_tag": true,
+      "source": "Fictional source-qualified record, not verified signal"
+    }
+  ],
+  "controllers": []
+}

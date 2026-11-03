@@ -44,6 +44,10 @@ valve-duty and real-power records with their scope and unknowns. Its 15 fictiona
 reports exercise collection behavior; [source limits](compressor-recycle-basis/SOURCES.json) do not establish
 installed pairing, excessive recycle, protection adequacy or a retrofit need.
 
+The [water and valve records tutorial](water-valve-records/README.md) uses E13/C4/E24 to turn boiler-blowdown,
+valve/bypass and tower-water observations into qualified record requests. Its 25 fictional controls retain
+the original failures, existing suitable functions and unresolved source/operating coverage.
+
 The commands below regenerate tracked example outputs for contributors; the test checks them byte for byte.
 For a personal run, use a separate `--out` folder such as `../engineering-work/screen-te`. For a roll-up, point
 each `--rollup` at the corresponding working output folder.
