@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "title": "Fictional E13 development control; not a plant record",
+    "scope": "Source-job counterexamples, authored before product calls; not independent plants",
+    "unknowns": [
+      "Current operating suitability and authority are not established"
+    ],
+    "assumptions": [
+      "Every identifier and value is fictional"
+    ]
+  },
+  "units": [
+    {
+      "id": "CONTINUOUS",
+      "name": "CONTINUOUS fictional boiler",
+      "type": "boiler",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "water_service": "steam-water boiler; explicit source declaration",
+        "blowdown_function": "surface",
+        "operation_mode": "continuous",
+        "pressure_psig": 150,
+        "blowdown_rate": "fictional 400 lb/h",
+        "operating_hours": 4000,
+        "recovery_status": "unknown",
+        "receiving_duty": "potential feedwater sink, suitability unverified"
+      },
+      "source": "Fictional source-authored control; no physical existence implied",
+      "assigned_tag": true
+    },
+    {
+      "id": "INTERMITTENT",
+      "name": "INTERMITTENT fictional boiler",
+      "type": "boiler",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "water_service": "steam-water boiler; explicit source declaration",
+        "blowdown_function": "bottom",
+        "operation_mode": "intermittent low duty",
+        "pressure_psig": 15,
+        "blowdown_rate": "unknown",
+        "operating_hours": 10,
+        "recovery_status": "not established",
+        "receiving_duty": "unrelated non-water process; no qualified sink"
+      },
+      "source": "Fictional source-authored control; no physical existence implied",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "manual_valves": [
+    {
+      "tag": "HV-1",
+      "unit": "CONTINUOUS",
+      "description": "Blowdown valve, fictional declared connection",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "blowdown_function": "surface"
+      },
+      "source": "Fictional control"
+    },
+    {
+      "tag": "HV-2",
+      "unit": "INTERMITTENT",
+      "description": "Blowdown valve, fictional declared connection",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional training packet; no plant or engineering approval",
+        "record_revision": "R1",
+        "record_available": true,
+        "blowdown_function": "bottom"
+      },
+      "source": "Fictional control"
+    }
+  ],
+  "instruments": [],
+  "controllers": [],
+  "final_elements": []
+}

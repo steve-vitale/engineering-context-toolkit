@@ -1,0 +1,176 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/water-valve-records/models/CT-05-service-boundary.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E24"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 1,
+  "by_family": {
+   "energy": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "E24@UNKNOWN",
+   "question_id": "E24",
+   "family": "energy",
+   "question": "What do existing records establish about this cooling-tower candidate's water service, chemistry-limited cycles, control and water balance?",
+   "about": "UNKNOWN",
+   "assets": [
+    {
+     "id": "UNKNOWN",
+     "tag": "UNKNOWN"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "UNKNOWN",
+     "tag": "UNKNOWN",
+     "text": "equipment UNKNOWN reads \"UNKNOWN Fictional cooling tower service not established\"",
+     "field": "units[UNKNOWN]"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "UNKNOWN",
+     "tag": "UNKNOWN",
+     "text": "UNKNOWN fictional_record = true; present; meaning and suitability unverified",
+     "field": "units[UNKNOWN].facts.fictional_record"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "UNKNOWN",
+     "tag": "UNKNOWN",
+     "text": "UNKNOWN record_source = \"Fictional training record, no plant or human approval\"; present; meaning and suitability unverified",
+     "field": "units[UNKNOWN].facts.record_source"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "UNKNOWN",
+     "tag": "UNKNOWN",
+     "text": "UNKNOWN record_revision = \"R1\"; present; meaning and suitability unverified",
+     "field": "units[UNKNOWN].facts.record_revision"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "UNKNOWN",
+     "tag": "UNKNOWN",
+     "text": "UNKNOWN record_available = true; present; meaning and suitability unverified",
+     "field": "units[UNKNOWN].facts.record_available"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "UNKNOWN",
+     "tag": "UNKNOWN",
+     "text": "UNKNOWN record_authority = \"not authenticated\"; present; meaning and suitability unverified",
+     "field": "units[UNKNOWN].facts.record_authority"
+    },
+    {
+     "role": "supplied candidate field",
+     "id": "UNKNOWN",
+     "tag": "UNKNOWN",
+     "text": "UNKNOWN water_service = null; blank; meaning and suitability unverified",
+     "field": "units[UNKNOWN].facts.water_service"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: UNKNOWN fictional_record = True",
+     "field": "units[UNKNOWN].facts.fictional_record"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: UNKNOWN record_source = Fictional training record, no plant or human approval",
+     "field": "units[UNKNOWN].facts.record_source"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: UNKNOWN record_revision = R1",
+     "field": "units[UNKNOWN].facts.record_revision"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: UNKNOWN record_available = True",
+     "field": "units[UNKNOWN].facts.record_available"
+    },
+    {
+     "role": "on drawing",
+     "text": "Supplied candidate fact, basis unverified: UNKNOWN record_authority = not authenticated",
+     "field": "units[UNKNOWN].facts.record_authority"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Existing tower-water service, treatment target, conductivity and makeup/blowdown balance records",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: Existing named tower/system service and water-treatment logs, chemistry limits/target basis, conductivity and makeup/blowdown flow or volume records, installed control/meter function and loss/component records. Retain source/revision, actual subject association, units, calibration/availability, sample times and matching operating intervals.",
+      "a walkdown: Only if existing records leave an applicable question unresolved: agree safe observations with the responsible water-treatment/engineering specialist. No compulsory new meter, measurement, chemical treatment or operating change."
+     ],
+     "how": "Establish evaporative recirculating-water applicability first; known dry-only air-cooled service is not applicable and unknown service remains conditional. A nearby generic analyzer or meter label does not prove the water function, suitability or absence of other meters. For comparable quantities/units and matched periods, review conductivity/concentration ratio together with the makeup-to-blowdown flow/volume ratio, the treatment specialist's chemistry-limited target and operating coverage. Preserve conversions and uncertainty; raw incompatible quantities or periods cannot be divided as if comparable. Disagreement calls for records/component/loss review including leaks, overflow, drift or other draw-off, not an automatic higher target. Complete suitable existing records or a justified chemistry limit may be acknowledged without a new measurement/retrofit; source examplecycles are not site targets.",
+     "candidate_scope": "unit",
+     "candidate_facts": [
+      {
+       "id": "UNKNOWN",
+       "label": "UNKNOWN",
+       "name": "fictional_record",
+       "value": true,
+       "where": "units[UNKNOWN].facts.fictional_record"
+      },
+      {
+       "id": "UNKNOWN",
+       "label": "UNKNOWN",
+       "name": "record_source",
+       "value": "Fictional training record, no plant or human approval",
+       "where": "units[UNKNOWN].facts.record_source"
+      },
+      {
+       "id": "UNKNOWN",
+       "label": "UNKNOWN",
+       "name": "record_revision",
+       "value": "R1",
+       "where": "units[UNKNOWN].facts.record_revision"
+      },
+      {
+       "id": "UNKNOWN",
+       "label": "UNKNOWN",
+       "name": "record_available",
+       "value": true,
+       "where": "units[UNKNOWN].facts.record_available"
+      },
+      {
+       "id": "UNKNOWN",
+       "label": "UNKNOWN",
+       "name": "record_authority",
+       "value": "not authenticated",
+       "where": "units[UNKNOWN].facts.record_authority"
+      }
+     ]
+    }
+   ],
+   "decision_rule": "Review existing chemistry/treatment limits, matched water balance and conductivity evidence, installed functions and unresolved losses with the responsible specialist before any change. Do not raise cycles, install a controller/meter or alter treatment from a manual/no-analyzer pattern or a source example alone. Existing suitable control and chemistry-limited operation may be acknowledged. Unknown source, association, units or time coverage remains explicit; this screen is not a hardware decision or site saving.",
+   "typical_benefit": {
+    "wording": "\"Increasing cycles from three to six reduces cooling tower make-up water by 20% and cooling tower blowdown by 50%.\" Recommends a conductivity controller and makeup/blowdown flow meters. No energy % stated.",
+    "source": [
+     "S21",
+     "S24"
+    ],
+    "arc": "2.2611 (IAC/ITAC browse page: 55 recommendations, 0.9 yr average payback, 45.7% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S21: DOE FEMP, Best Management Practice #10: Cooling Tower Management",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers. Source-informed records review: S21 applies to evaporative tower-water management and requires chemistry-constrained targets, matched conductivity/flow logs and loss/component checks. Named instruments and filled fields are unverified candidates, not completion or source authority; inherited example benefits are not site savings.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

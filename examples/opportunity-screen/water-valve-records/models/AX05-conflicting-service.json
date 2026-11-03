@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "title": "Fictional source-informed E13 controls; not a plant record",
+    "scope": "Materialized after independent criteria freeze, with author exposed to existing candidate. No held-out, site or human result."
+  },
+  "units": [
+    {
+      "id": "DRY",
+      "name": "BOILER-labelled dry-service record",
+      "type": "boiler",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional explicit original record, no company approval",
+        "record_revision": "R1",
+        "water_service": "explicit dry/non-water process; boiler label conflicts with service record",
+        "blowdown_function": "surface"
+      },
+      "source": "Fictional declared basis",
+      "assigned_tag": true
+    },
+    {
+      "id": "UNKNOWN",
+      "name": "BOILER-labelled unknown service",
+      "type": "boiler",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional explicit original record, no company approval",
+        "record_revision": "R1",
+        "water_service": "unknown",
+        "blowdown_function": "surface"
+      },
+      "source": "Fictional declared basis",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "manual_valves": [
+    {
+      "tag": "HV-AX-1",
+      "unit": "DRY",
+      "description": "Declared blowdown candidate",
+      "source": "Fictional connection, not physical verification"
+    },
+    {
+      "tag": "HV-AX-2",
+      "unit": "UNKNOWN",
+      "description": "Declared blowdown candidate",
+      "source": "Fictional connection, not physical verification"
+    }
+  ],
+  "instruments": [],
+  "controllers": [],
+  "final_elements": []
+}

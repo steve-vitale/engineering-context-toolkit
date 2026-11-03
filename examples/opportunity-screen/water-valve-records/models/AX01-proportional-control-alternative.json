@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "title": "Fictional source-informed E13 controls; not a plant record",
+    "scope": "Materialized after independent criteria freeze, with author exposed to existing candidate. No held-out, site or human result."
+  },
+  "units": [
+    {
+      "id": "PROPORTIONAL",
+      "name": "boiler with existing proportional control",
+      "type": "boiler",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional explicit original record, no company approval",
+        "record_revision": "R1",
+        "water_service": "declared steam-water boiler",
+        "blowdown_function": "surface",
+        "control_basis": "Proportional surface blowdown to makeup-water flow; named boiler record, applicability and treatment still require review",
+        "sample_period": "fictional reviewed reporting interval",
+        "record_available": true
+      },
+      "source": "Fictional declared basis",
+      "assigned_tag": true
+    },
+    {
+      "id": "MISSING",
+      "name": "boiler with unavailable control basis",
+      "type": "boiler",
+      "facts": {
+        "source_is_fictional": true,
+        "record_source": "Fictional explicit original record, no company approval",
+        "record_revision": "R1",
+        "water_service": "declared steam-water boiler",
+        "blowdown_function": "surface",
+        "control_basis": "unknown",
+        "record_available": false
+      },
+      "source": "Fictional declared basis",
+      "assigned_tag": true
+    }
+  ],
+  "streams": [],
+  "manual_valves": [
+    {
+      "tag": "HV-AX-1",
+      "unit": "PROPORTIONAL",
+      "description": "Declared blowdown candidate",
+      "source": "Fictional connection, not physical verification"
+    },
+    {
+      "tag": "HV-AX-2",
+      "unit": "MISSING",
+      "description": "Declared blowdown candidate",
+      "source": "Fictional connection, not physical verification"
+    }
+  ],
+  "instruments": [],
+  "controllers": [],
+  "final_elements": []
+}

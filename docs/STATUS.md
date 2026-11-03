@@ -1,6 +1,6 @@
 # State of the toolkit
 
-Implementation snapshot: **2026-11-02, UTC**. The public package is **Engineering Context Toolkit**.
+Implementation snapshot: **2026-11-03, UTC**. The public package is **Engineering Context Toolkit**.
 Use the [job selector](../README.md#start-wherever-you-are) to choose a tool or the
 [first-question guide](../examples/first-pilot/README.md) for a no-install contribution.
 The [workflow map](WORKFLOWS.md) owns supported inputs and outputs; this page owns current readiness and gaps.
@@ -13,8 +13,8 @@ Company review, accepted identities and receiving-system checks determine what c
 
 ## Current verification
 
-The recorded full-suite release baseline is **`2b75f8c`**:
-[main CI run 41526066273](https://github.com/steve-vitale/engineering-context-toolkit/actions/runs/41526066273).
+The recorded full-suite release baseline is **`f3cee81`**:
+[main CI run 41537401273](https://github.com/steve-vitale/engineering-context-toolkit/actions/runs/41537401273).
 It passed **75/75 test programs**, with **18 individual unittest cases skipped**, plus six saved task/model
 benchmark suites and the optional MCP/protocol job. This is software evidence, not human usefulness,
 company-client acceptance or plant validation. Check [committed-version CI](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml)
@@ -71,15 +71,17 @@ actual participant, recipient, native-system and tenant observations remain **no
 
 | Work category | Remaining work | Completion evidence |
 |---|---|---|
-| Engineering question quality | N065/N082: source adequacy and useful questions. Of 50 rules/126 request bundles, 25 rules have bounded collection reviews; 25 still await original-source adequacy review. Scoped MGPI is development evidence; default MGPI still produces zero findings. | Prospective expected/unacceptable questions, source/key review and actual engineer/recipient usefulness observations. |
+| Engineering question quality | N065/N082: source adequacy and useful questions. Of 50 rules/126 request bundles, 28 rules have bounded collection reviews; 22 still await original-source adequacy review. Scoped MGPI is development evidence; default MGPI still produces zero findings. | Prospective expected/unacceptable questions, source/key review and actual engineer/recipient usefulness observations. |
 | Evaluation and transfer | N086 original-source/key engineering acceptance, Native placement gaps, existing matrix failures, unfamiliar-source coverage, scorer limits and five missing historical prediction tables. | Matched experiments with frozen criteria, retained failures, exposure/split labels and independent source/key review. More files or rerunning familiar inputs is not generalization. |
 | Optional adapters and receiving projections | General inverse graph conversion, captured-source consumers, managed-section merging and particular incumbent-system connectors are not implemented. Test changed/removed identifiers and complete retained history for the selected route. | A demonstrated engineering job, explicit supported contract, source preservation and subsequent-revision readback. Add only the adapter that job needs. |
 | Review-history handoff | N107 now preserves selected JSON intact and unbound, then attaches events only through [individual supplied associations](REVIEW_HISTORY.md) to exact model/record bytes. Complete earlier history remains readable; full/core retain its qualifications. | Review the source/revision relationship in the company process. Matching hashes cannot detect a false supplied basis or establish writer lineage, reviewer authority, approval or permission to share. |
 | Company acceptance and benefit | N062/N063: real engineer/recipient investigation, authorized company import/readback, client permissions and a subsequent revision. | Actual observations from the [acceptance exercise](ACCEPTANCE.md), not an agent simulation. Native PI/gateway acceptance, accepted Copilot tenant and operational benefit remain unverified. |
 
-The remaining question review includes a specific [default E13 limitation](OPPORTUNITY_SCREEN.md): its
-boiler-blowdown scope and action text conflate distinct functions. Original-source review identified it;
-the shared catalog is unchanged and needs a matched candidate/adoption review. It is not a closed rule repair.
+The [E13/C4/E24 source review](../examples/opportunity-screen/water-valve-records/README.md) repairs the known
+blowdown, valve/bypass and cooling-water collection/action gaps. Its 25 fictional controls and preserved
+original outputs support those bounded policies, not whole-catalog correctness or measured usefulness.
+Revised questions reopen earlier partial answers through explicit context refresh; retained history and an
+old-sheet refusal do not establish an authenticated company decision or complete physical impact analysis.
 
 The company retains authority over accepted context, access, controlled documents, work execution and ownership.
 Generic inverse graph conversion, live incumbent connectors, automatic managed-section merging and company

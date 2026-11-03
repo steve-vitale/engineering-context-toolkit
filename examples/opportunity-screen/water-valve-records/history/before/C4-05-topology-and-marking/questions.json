@@ -1,0 +1,137 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/water-valve-records/models/C4-05-topology-and-marking.json",
+ "catalog": "data/questions.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "C4"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "controls": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "C4@FV-A",
+   "question_id": "C4",
+   "family": "controls",
+   "question": "Is a control valve bypassed, or oversized for its line?",
+   "about": "FV-A",
+   "assets": [
+    {
+     "id": "FV-A",
+     "tag": "FV-A"
+    },
+    {
+     "id": "HV-A",
+     "tag": "HV-A"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "FV-A",
+     "tag": "FV-A",
+     "text": "valve FV-A reads \"FV-A Fictional flow control valve\" at U-A",
+     "field": "final_elements[FV-A]"
+    },
+    {
+     "role": "bypass valve",
+     "id": "HV-A",
+     "tag": "HV-A",
+     "text": "hand valve HV-A reads \"HV-A Fictional bypass valve\" at U-A",
+     "field": "manual_valves[HV-A]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Valve %-open history and bypass position",
+     "state": "not_on_drawing",
+     "where": [
+      "historian or DCS trend for FV-A (no historian tag is mapped in this model for these)",
+      "a walkdown: bypass valve position"
+     ],
+     "how": "Note typical opening."
+    }
+   ],
+   "decision_rule": "Resize or trim when the valve normally runs well under half open or the bypass is cracked open.",
+   "typical_benefit": {
+    "wording": "\"Many control valves normally operate at less than 50% open... a high degree of nonlinearity and thus inconsistent control performance.\" No % stated.",
+    "source": [
+     "S13"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S13: Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079)"
+    ]
+   },
+   "limits": null,
+   "status": "asked"
+  },
+  {
+   "id": "C4@FV-B",
+   "question_id": "C4",
+   "family": "controls",
+   "question": "Is a control valve bypassed, or oversized for its line?",
+   "about": "FV-B",
+   "assets": [
+    {
+     "id": "FV-B",
+     "tag": "FV-B"
+    },
+    {
+     "id": "HV-B",
+     "tag": "HV-B"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "FV-B",
+     "tag": "FV-B",
+     "text": "valve FV-B reads \"FV-B Fictional flow control valve\" at U-B",
+     "field": "final_elements[FV-B]"
+    },
+    {
+     "role": "bypass valve",
+     "id": "HV-B",
+     "tag": "HV-B",
+     "text": "hand valve HV-B reads \"HV-B Fictional bypass valve\" at U-B",
+     "field": "manual_valves[HV-B]"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Valve %-open history and bypass position",
+     "state": "not_on_drawing",
+     "where": [
+      "historian or DCS trend for FV-B (no historian tag is mapped in this model for these)",
+      "a walkdown: bypass valve position"
+     ],
+     "how": "Note typical opening."
+    }
+   ],
+   "decision_rule": "Resize or trim when the valve normally runs well under half open or the bypass is cracked open.",
+   "typical_benefit": {
+    "wording": "\"Many control valves normally operate at less than 50% open... a high degree of nonlinearity and thus inconsistent control performance.\" No % stated.",
+    "source": [
+     "S13"
+    ],
+    "arc": null,
+    "source_titles": [
+     "S13: Improving Pumping System Performance: A Sourcebook for Industry, 2nd ed. (DOE + Hydraulic Institute; DOE/GO-102006-2079)"
+    ]
+   },
+   "limits": null,
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}

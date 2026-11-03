@@ -1,0 +1,155 @@
+{
+ "schema": "opportunity-questions-1",
+ "source_model": "examples/opportunity-screen/boiler-blowdown-basis/models/BD01-bottom-versus-surface.json",
+ "catalog": "data/questions.original.json",
+ "loops": null,
+ "loop_rows_unmatched": [],
+ "schedules": [],
+ "questions_run": [
+  "E13"
+ ],
+ "note": "A screen, not an audit: questions worth asking and the data needed to answer them. No savings are computed; typical benefits are the cited sources' general wording.",
+ "counts": {
+  "findings": 2,
+  "by_family": {
+   "energy": 2
+  }
+ },
+ "questions": [
+  {
+   "id": "E13@BOTTOM",
+   "question_id": "E13",
+   "family": "energy",
+   "question": "Is boiler blowdown manual, with no automatic control or heat recovery?",
+   "about": "BOTTOM",
+   "assets": [
+    {
+     "id": "BOTTOM",
+     "tag": "BOTTOM"
+    },
+    {
+     "id": "HV-1",
+     "tag": "HV-1"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "BOTTOM",
+     "tag": "BOTTOM",
+     "text": "equipment BOTTOM reads \"BOTTOM BOTTOM fictional boiler\"",
+     "field": "units[BOTTOM]"
+    },
+    {
+     "role": "blowdown",
+     "id": "HV-1",
+     "tag": "HV-1",
+     "text": "hand valve HV-1 reads \"HV-1 Blowdown valve, fictional declared connection\" at BOTTOM",
+     "field": "manual_valves[HV-1]"
+    },
+    {
+     "role": "checked, none found",
+     "text": "no conductivity element or controller near the boiler",
+     "field": "applies_when.without"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Blowdown rate and TDS",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: water treatment log",
+      "a walkdown: conductivity of boiler water and feedwater"
+     ],
+     "how": "Blowdown % = feedwater TDS / boiler TDS."
+    }
+   ],
+   "decision_rule": "Automate when blowdown is manual and above what the water treatment needs; add heat recovery on steady continuous blowdown.",
+   "typical_benefit": {
+    "wording": "\"Blowdown rates typically range from 4% to 8% of boiler feedwater flow rate, but can be as high as 10%.\" LBNL (as reported in LBNL-56183): blowdown heat recovery 1.3%, 1-2.7 yr.",
+    "source": [
+     "S5",
+     "S19",
+     "S24"
+    ],
+    "arc": "2.124x (IAC/ITAC browse page: 334 recommendations, 1.6 yr average payback, 36.7% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S5: Steam Tip #9, Minimize Boiler Blowdown (DOE/GO-102012-3406)",
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.",
+   "status": "asked"
+  },
+  {
+   "id": "E13@SURFACE",
+   "question_id": "E13",
+   "family": "energy",
+   "question": "Is boiler blowdown manual, with no automatic control or heat recovery?",
+   "about": "SURFACE",
+   "assets": [
+    {
+     "id": "SURFACE",
+     "tag": "SURFACE"
+    },
+    {
+     "id": "HV-2",
+     "tag": "HV-2"
+    }
+   ],
+   "evidence": [
+    {
+     "role": "trigger",
+     "id": "SURFACE",
+     "tag": "SURFACE",
+     "text": "equipment SURFACE reads \"SURFACE SURFACE fictional boiler\"",
+     "field": "units[SURFACE]"
+    },
+    {
+     "role": "blowdown",
+     "id": "HV-2",
+     "tag": "HV-2",
+     "text": "hand valve HV-2 reads \"HV-2 Blowdown valve, fictional declared connection\" at SURFACE",
+     "field": "manual_valves[HV-2]"
+    },
+    {
+     "role": "checked, none found",
+     "text": "no conductivity element or controller near the boiler",
+     "field": "applies_when.without"
+    }
+   ],
+   "data_requests": [
+    {
+     "item": "Blowdown rate and TDS",
+     "state": "not_on_drawing",
+     "where": [
+      "site records: water treatment log",
+      "a walkdown: conductivity of boiler water and feedwater"
+     ],
+     "how": "Blowdown % = feedwater TDS / boiler TDS."
+    }
+   ],
+   "decision_rule": "Automate when blowdown is manual and above what the water treatment needs; add heat recovery on steady continuous blowdown.",
+   "typical_benefit": {
+    "wording": "\"Blowdown rates typically range from 4% to 8% of boiler feedwater flow rate, but can be as high as 10%.\" LBNL (as reported in LBNL-56183): blowdown heat recovery 1.3%, 1-2.7 yr.",
+    "source": [
+     "S5",
+     "S19",
+     "S24"
+    ],
+    "arc": "2.124x (IAC/ITAC browse page: 334 recommendations, 1.6 yr average payback, 36.7% implemented; average dollar figure omitted)",
+    "source_titles": [
+     "S5: Steam Tip #9, Minimize Boiler Blowdown (DOE/GO-102012-3406)",
+     "S19: Worrell & Galitsky, Energy Efficiency Improvement and Cost Saving Opportunities for Petroleum Refineries: An ENERGY STAR Guide (LBNL-56183, Feb 2005)",
+     "S24: DOE IAC/ITAC database: browse pages, download, schema document"
+    ]
+   },
+   "limits": "IAC/ITAC figures are browse-page averages read through a summarizing fetch and not re-verified against the downloadable database; averages are skewed by outliers.",
+   "status": "asked"
+  }
+ ],
+ "not_checked": [],
+ "did_not_fire": [],
+ "left_out": {}
+}
