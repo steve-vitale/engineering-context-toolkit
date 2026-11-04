@@ -53,6 +53,7 @@ identities, relationships, generated files or mapped data.
 | Exchange captured structured-source evidence | [Local source handoff](../examples/source-handoff/README.md) |
 | Compare saved model/method answers on declared tasks | [Task/model benchmarks](../benchmarks/README.md) |
 | Add a public P&ID with an independently verified answer key | [Contribute a P&ID](CONTRIBUTE_A_PID.md) |
+| Plug in a different drawing reader and compare readers | [Plug in a reader](PLUG_IN_A_READER.md) · [Reader leaderboard](../benchmarks/LEADERBOARD.md) |
 | Prepare a portable graph or inspect sourced statements | [Graph format](GRAPH_EXPORT.md) · [Statement review](STATEMENT_REVIEW.md) |
 | Retain answers and source-revision dependencies in a local packet | [Context register](CONTEXT_REGISTER.md) |
 | Put lists, drawings and documents for several plants in one graph, with owner-routed conflicts | [One map](ONE_MAP.md) |

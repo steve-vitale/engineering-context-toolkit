@@ -1,0 +1,11 @@
+{
+ "schema_version": "site-drawing-intake-1",
+ "drawing_id": "OPEN100-0",
+ "revision": "public",
+ "page": 1,
+ "image": "../../data/external/pid2graph/PID2Graph/Complete/PID2Graph OPEN100/0.png",
+ "extraction": "prediction_sheet0.json",
+ "extraction_format": "prediction",
+ "producer": {"method": "scripts/reader_template.py over the committed sheet-0 reading re-expressed in the template reader format (a format exercise, not a new reader)", "tool": "reader_template", "model": "gpt-6.1-sol"},
+ "system_name": "Public example: PID2Graph OPEN100 sheet 0 (CC BY-SA 4.0)"
+}

@@ -73,6 +73,10 @@ synthetic controls and corrected results visibly separate.
 
 ## Submit model and method results
 
+For a new drawing reader (a trained model, vendor API or fine-tuned model), start with
+[PLUG_IN_A_READER.md](docs/PLUG_IN_A_READER.md): the prediction slot, a template adapter, the development /
+validation / held-out claim levels and how a registered result reaches the [reader leaderboard](benchmarks/LEADERBOARD.md).
+
 Start from a [run manifest](benchmarks/runs/claude-r5-rep1.json). Give each genuine attempt a unique ID. Preserve
 the actual answer file; do not edit it into the expected answer or commit only the successful cases. Store parsed
 answers suitable for public rescoring; avoid raw transcripts containing private content. The existing

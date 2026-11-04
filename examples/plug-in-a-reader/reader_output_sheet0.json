@@ -1,0 +1,2592 @@
+{
+ "schema": "template-reader-output-1",
+ "image_px": [
+  2604,
+  1744
+ ],
+ "about": "The committed GPT reading of PID2Graph OPEN100 sheet 0 (examples/own-drawing/extraction_sheet0.json) re-expressed in the template reader format to exercise scripts/reader_template.py. Not a new reader.",
+ "symbols": [
+  {
+   "id": "sym-001",
+   "type": "vessel",
+   "tag": "MSS-XSS-140",
+   "box_px": [
+    590.07,
+    755.33,
+    674.44,
+    992.51
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-002",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    467.42,
+    702.48,
+    490.07,
+    740.33
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-003",
+   "type": "instrument bubble",
+   "tag": "TCV\n1401",
+   "box_px": [
+    487.21,
+    671.44,
+    528.09,
+    713.82
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-004",
+   "type": "fitting",
+   "tag": null,
+   "box_px": [
+    675.74,
+    783.58,
+    685.63,
+    799.62
+   ],
+   "score": 0.85
+  },
+  {
+   "id": "sym-005",
+   "type": "fitting",
+   "tag": "N1",
+   "box_px": [
+    575.74,
+    930.25,
+    587.2,
+    945.25
+   ],
+   "score": 0.94
+  },
+  {
+   "id": "sym-006",
+   "type": "fitting",
+   "tag": null,
+   "box_px": [
+    704.12,
+    606.39,
+    765.84,
+    669.52
+   ],
+   "score": 0.94
+  },
+  {
+   "id": "sym-007",
+   "type": "instrument bubble",
+   "tag": "FT\n1401",
+   "box_px": [
+    747.61,
+    617.72,
+    788.49,
+    658.19
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-008",
+   "type": "instrument bubble",
+   "tag": "FT\n1401",
+   "box_px": [
+    784.32,
+    617.72,
+    823.65,
+    658.19
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-009",
+   "type": "instrument bubble",
+   "tag": "TE\n14084A",
+   "box_px": [
+    642.15,
+    533.66,
+    681.47,
+    575.17
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-010",
+   "type": "instrument bubble",
+   "tag": "TE\n14084B",
+   "box_px": [
+    642.15,
+    570.46,
+    681.47,
+    611.1
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-011",
+   "type": "instrument bubble",
+   "tag": "RE\n1402",
+   "box_px": [
+    787.19,
+    388.56,
+    827.81,
+    430.94
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-012",
+   "type": "fitting",
+   "tag": null,
+   "box_px": [
+    785.63,
+    463.9,
+    829.37,
+    499.83
+   ],
+   "score": 0.86
+  },
+  {
+   "id": "sym-013",
+   "type": "instrument bubble",
+   "tag": "PT\n14085",
+   "box_px": [
+    878.59,
+    388.56,
+    919.47,
+    430.94
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-014",
+   "type": "instrument bubble",
+   "tag": "PT\n14086",
+   "box_px": [
+    933.53,
+    388.56,
+    974.42,
+    430.94
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-015",
+   "type": "instrument bubble",
+   "tag": "PT\n14087",
+   "box_px": [
+    986.92,
+    388.56,
+    1029.36,
+    430.94
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-016",
+   "type": "instrument bubble",
+   "tag": "PT\n14088",
+   "box_px": [
+    1043.42,
+    388.56,
+    1084.05,
+    430.94
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-017",
+   "type": "instrument bubble",
+   "tag": "TE\n14089A",
+   "box_px": [
+    922.34,
+    515.88,
+    962.96,
+    558.25
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-018",
+   "type": "instrument bubble",
+   "tag": "TE\n14089B",
+   "box_px": [
+    964.52,
+    515.88,
+    1005.4,
+    558.25
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-019",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    926.5,
+    596.97,
+    948.9,
+    635.51
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-020",
+   "type": "instrument bubble",
+   "tag": "TCV\n1402",
+   "box_px": [
+    944.73,
+    568.54,
+    985.61,
+    610.05
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-021",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    903.85,
+    650.69,
+    924.94,
+    667.6
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-022",
+   "type": "fitting",
+   "tag": "T",
+   "box_px": [
+    940.56,
+    650.69,
+    957.49,
+    669.52
+   ],
+   "score": 0.98
+  },
+  {
+   "id": "sym-023",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    971.55,
+    650.69,
+    993.95,
+    667.6
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-024",
+   "type": "fitting",
+   "tag": null,
+   "box_px": [
+    877.29,
+    690.28,
+    896.82,
+    702.48
+   ],
+   "score": 0.87
+  },
+  {
+   "id": "sym-025",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    895.52,
+    716.61,
+    917.91,
+    733.7
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-026",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    930.67,
+    716.61,
+    953.32,
+    733.7
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-027",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1115.03,
+    333.8,
+    1131.96,
+    356.47
+   ],
+   "score": 0.98
+  },
+  {
+   "id": "sym-028",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1093.94,
+    260.2,
+    1133.52,
+    282.88
+   ],
+   "score": 0.98
+  },
+  {
+   "id": "sym-029",
+   "type": "instrument bubble",
+   "tag": "AORV\nXXX",
+   "box_px": [
+    1069.98,
+    283.92,
+    1110.87,
+    325.26
+   ],
+   "score": 0.98
+  },
+  {
+   "id": "sym-030",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1154.61,
+    292.29,
+    1171.54,
+    319.68
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-031",
+   "type": "instrument bubble",
+   "tag": "PSV\n1404",
+   "box_px": [
+    1150.45,
+    248.0,
+    1191.07,
+    289.5
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-032",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1209.56,
+    292.29,
+    1226.48,
+    319.68
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-033",
+   "type": "instrument bubble",
+   "tag": "PSV\n1405",
+   "box_px": [
+    1205.13,
+    248.0,
+    1247.58,
+    289.5
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-034",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1262.94,
+    292.29,
+    1279.87,
+    319.68
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-035",
+   "type": "instrument bubble",
+   "tag": "PSV\n1406",
+   "box_px": [
+    1261.64,
+    248.0,
+    1303.82,
+    289.5
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-036",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1317.88,
+    292.29,
+    1334.81,
+    319.68
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-037",
+   "type": "instrument bubble",
+   "tag": "PSV\n1407",
+   "box_px": [
+    1316.58,
+    248.0,
+    1360.07,
+    289.5
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-038",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1331.95,
+    351.76,
+    1357.2,
+    390.48
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-039",
+   "type": "instrument bubble",
+   "tag": "MS\n4010",
+   "box_px": [
+    1356.42,
+    325.26,
+    1397.31,
+    365.89
+   ],
+   "score": 0.98
+  },
+  {
+   "id": "sym-040",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1277.0,
+    451.7,
+    1299.66,
+    489.37
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-041",
+   "type": "instrument bubble",
+   "tag": "MSIV\n1402",
+   "box_px": [
+    1237.68,
+    417.69,
+    1279.87,
+    458.32
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-042",
+   "type": "instrument bubble",
+   "tag": "RE\n1403",
+   "box_px": [
+    1342.36,
+    389.44,
+    1381.94,
+    429.02
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-043",
+   "type": "fitting",
+   "tag": null,
+   "box_px": [
+    1341.06,
+    461.99,
+    1384.55,
+    500.7
+   ],
+   "score": 0.88
+  },
+  {
+   "id": "sym-044",
+   "type": "instrument bubble",
+   "tag": "TE\n14090A",
+   "box_px": [
+    1193.93,
+    515.88,
+    1234.82,
+    558.25
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-045",
+   "type": "instrument bubble",
+   "tag": "TE\n14090B",
+   "box_px": [
+    1236.12,
+    515.88,
+    1277.0,
+    558.25
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-046",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1185.6,
+    596.97,
+    1209.56,
+    635.51
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-047",
+   "type": "instrument bubble",
+   "tag": "TCV\n1403",
+   "box_px": [
+    1203.83,
+    572.38,
+    1244.71,
+    613.89
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-048",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1177.01,
+    650.69,
+    1198.1,
+    667.6
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-049",
+   "type": "fitting",
+   "tag": "T",
+   "box_px": [
+    1212.16,
+    650.69,
+    1230.65,
+    669.52
+   ],
+   "score": 0.98
+  },
+  {
+   "id": "sym-050",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1244.71,
+    650.69,
+    1267.11,
+    667.6
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-051",
+   "type": "fitting",
+   "tag": null,
+   "box_px": [
+    1151.75,
+    690.28,
+    1171.54,
+    702.48
+   ],
+   "score": 0.87
+  },
+  {
+   "id": "sym-052",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1167.11,
+    716.61,
+    1189.77,
+    733.7
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-053",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1203.83,
+    716.61,
+    1226.48,
+    733.7
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-054",
+   "type": "gate valve",
+   "tag": "MSCV-XXX",
+   "box_px": [
+    1401.47,
+    469.66,
+    1429.86,
+    490.41
+   ],
+   "score": 0.97
+  },
+  {
+   "id": "sym-055",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1553.55,
+    444.2,
+    1570.47,
+    466.87
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-056",
+   "type": "off-page connector",
+   "tag": "EXTRACTION STEAM\nES PID 180-1",
+   "box_px": [
+    1998.57,
+    216.95,
+    2182.93,
+    256.54
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-057",
+   "type": "instrument bubble",
+   "tag": "TE\n14091A",
+   "box_px": [
+    1577.5,
+    406.35,
+    1618.39,
+    446.99
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-058",
+   "type": "instrument bubble",
+   "tag": "TE\n14091B",
+   "box_px": [
+    1619.69,
+    406.35,
+    1659.27,
+    446.99
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-059",
+   "type": "instrument bubble",
+   "tag": "MSV\n1404",
+   "box_px": [
+    1684.53,
+    422.4,
+    1725.41,
+    463.03
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-060",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1663.44,
+    472.45,
+    1686.09,
+    489.37
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-061",
+   "type": "fitting",
+   "tag": "H",
+   "box_px": [
+    1666.3,
+    447.86,
+    1680.36,
+    470.53
+   ],
+   "score": 0.92
+  },
+  {
+   "id": "sym-062",
+   "type": "instrument bubble",
+   "tag": "MSV\n1405",
+   "box_px": [
+    1763.43,
+    422.4,
+    1805.61,
+    463.03
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-063",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1739.47,
+    472.45,
+    1760.56,
+    489.37
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-064",
+   "type": "fitting",
+   "tag": "M",
+   "box_px": [
+    1742.34,
+    447.86,
+    1757.7,
+    470.53
+   ],
+   "score": 0.92
+  },
+  {
+   "id": "sym-065",
+   "type": "off-page connector",
+   "tag": "TBS PID 240-1\nTURBINE SYSTEM",
+   "box_px": [
+    1998.57,
+    461.99,
+    2182.93,
+    502.62
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-066",
+   "type": "off-page connector",
+   "tag": "TBS PID 240-1\nTURBINE SYSTEM",
+   "box_px": [
+    1998.57,
+    580.93,
+    2182.93,
+    621.39
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-067",
+   "type": "instrument bubble",
+   "tag": "TE\n14092A",
+   "box_px": [
+    1559.28,
+    534.71,
+    1600.16,
+    575.17
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-068",
+   "type": "instrument bubble",
+   "tag": "TE\n14092B",
+   "box_px": [
+    1603.02,
+    534.71,
+    1643.64,
+    575.17
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-069",
+   "type": "instrument bubble",
+   "tag": "TCV\n1406",
+   "box_px": [
+    1570.47,
+    578.14,
+    1611.36,
+    618.6
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-070",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1550.94,
+    598.89,
+    1573.34,
+    635.51
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-071",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1542.35,
+    653.48,
+    1563.44,
+    667.6
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-072",
+   "type": "fitting",
+   "tag": "T",
+   "box_px": [
+    1579.07,
+    650.69,
+    1597.29,
+    669.52
+   ],
+   "score": 0.98
+  },
+  {
+   "id": "sym-073",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1610.05,
+    653.48,
+    1632.45,
+    667.6
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-074",
+   "type": "fitting",
+   "tag": null,
+   "box_px": [
+    1515.53,
+    690.28,
+    1534.02,
+    702.48
+   ],
+   "score": 0.81
+  },
+  {
+   "id": "sym-075",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1531.15,
+    717.66,
+    1552.24,
+    732.65
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-076",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1567.61,
+    717.66,
+    1590.26,
+    732.65
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-077",
+   "type": "off-page connector",
+   "tag": "HIGH PRESSURE STEAM DRAINS\nHPD PID 190-1",
+   "box_px": [
+    1998.57,
+    743.12,
+    2182.93,
+    783.58
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-078",
+   "type": "instrument bubble",
+   "tag": "TE\n14093B",
+   "box_px": [
+    1528.29,
+    861.88,
+    1569.17,
+    902.52
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-079",
+   "type": "instrument bubble",
+   "tag": "TE\n14093A",
+   "box_px": [
+    1570.47,
+    861.88,
+    1611.36,
+    902.52
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-080",
+   "type": "instrument bubble",
+   "tag": "MSBV\n1407",
+   "box_px": [
+    1664.74,
+    867.64,
+    1707.18,
+    908.97
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-081",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1642.34,
+    909.5,
+    1670.47,
+    948.04
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-082",
+   "type": "off-page connector",
+   "tag": "MAIN STEAM BY-PASS",
+   "box_px": [
+    1997.27,
+    917.87,
+    2182.93,
+    957.46
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-083",
+   "type": "vessel",
+   "tag": "RCS-SG-100",
+   "box_px": [
+    222.38,
+    985.88,
+    312.48,
+    1327.18
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-084",
+   "type": "fitting",
+   "tag": "N2",
+   "box_px": [
+    260.4,
+    966.0,
+    274.46,
+    975.42
+   ],
+   "score": 0.94
+  },
+  {
+   "id": "sym-085",
+   "type": "fitting",
+   "tag": null,
+   "box_px": [
+    312.48,
+    1075.35,
+    332.27,
+    1089.48
+   ],
+   "score": 0.9
+  },
+  {
+   "id": "sym-086",
+   "type": "fitting",
+   "tag": null,
+   "box_px": [
+    299.98,
+    1277.13,
+    322.38,
+    1291.43
+   ],
+   "score": 0.9
+  },
+  {
+   "id": "sym-087",
+   "type": "instrument bubble",
+   "tag": "TCV\n1408",
+   "box_px": [
+    1610.05,
+    943.33,
+    1649.37,
+    982.92
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-088",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1635.31,
+    983.96,
+    1672.03,
+    1005.59
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-089",
+   "type": "off-page connector",
+   "tag": "FWS TO STM BYPASS\nFWS PID 170-1",
+   "box_px": [
+    1997.27,
+    1008.38,
+    2182.93,
+    1049.02
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-090",
+   "type": "instrument bubble",
+   "tag": "TCV\n1409",
+   "box_px": [
+    1518.39,
+    1041.52,
+    1559.28,
+    1081.98
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-091",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1501.47,
+    1070.64,
+    1522.56,
+    1108.49
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-092",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1479.07,
+    1124.53,
+    1500.16,
+    1139.53
+   ],
+   "score": 0.98
+  },
+  {
+   "id": "sym-093",
+   "type": "fitting",
+   "tag": "T",
+   "box_px": [
+    1515.53,
+    1123.48,
+    1531.15,
+    1140.4
+   ],
+   "score": 0.96
+  },
+  {
+   "id": "sym-094",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1546.52,
+    1124.53,
+    1569.17,
+    1139.53
+   ],
+   "score": 0.98
+  },
+  {
+   "id": "sym-095",
+   "type": "fitting",
+   "tag": null,
+   "box_px": [
+    1452.25,
+    1161.16,
+    1470.48,
+    1174.41
+   ],
+   "score": 0.79
+  },
+  {
+   "id": "sym-096",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1469.18,
+    1189.58,
+    1490.27,
+    1204.58
+   ],
+   "score": 0.98
+  },
+  {
+   "id": "sym-097",
+   "type": "gate valve",
+   "tag": null,
+   "box_px": [
+    1505.63,
+    1189.58,
+    1526.99,
+    1204.58
+   ],
+   "score": 0.97
+  },
+  {
+   "id": "sym-098",
+   "type": "off-page connector",
+   "tag": "HIGH PRESSURE STEAM DRAINS\nHPD PID 190-1",
+   "box_px": [
+    1997.27,
+    1197.95,
+    2182.93,
+    1238.59
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-099",
+   "type": "off-page connector",
+   "tag": "HIGH PRESSURE STEAM DRAINS\nHPD PID 190-1",
+   "box_px": [
+    1997.27,
+    1302.59,
+    2182.93,
+    1343.23
+   ],
+   "score": 0.99
+  },
+  {
+   "id": "sym-100",
+   "type": "off-page connector",
+   "tag": "HIGH PRESSURE STEAM DRAINS\nHPD PID 190-1",
+   "box_px": [
+    1997.27,
+    1408.28,
+    2182.93,
+    1448.92
+   ],
+   "score": 0.99
+  }
+ ],
+ "lines": [
+  {
+   "from": "sym-001",
+   "to": "sym-005"
+  },
+  {
+   "from": "sym-100",
+   "to": "sym-019"
+  },
+  {
+   "from": "sym-100",
+   "to": "sym-023"
+  },
+  {
+   "from": "sym-011",
+   "to": "sym-012"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-013"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-014"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-015"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-016"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-017"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-019"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-021"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-024"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-027"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-030"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-006"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-009"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-014"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-015"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-016"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-017"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-019"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-021"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-024"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-027"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-030"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-015"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-016"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-017"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-019"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-021"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-024"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-027"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-030"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-016"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-017"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-019"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-021"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-024"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-027"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-030"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-017"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-019"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-021"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-024"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-027"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-030"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-019"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-021"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-024"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-027"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-030"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-021"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-023"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-024"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-027"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-030"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-002",
+   "to": "sym-004"
+  },
+  {
+   "from": "sym-002",
+   "to": "sym-005"
+  },
+  {
+   "from": "sym-002",
+   "to": "sym-006"
+  },
+  {
+   "from": "sym-002",
+   "to": "sym-084"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-022"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-024"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-027"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-030"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-022",
+   "to": "sym-023"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-025"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-027"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-030"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-025",
+   "to": "sym-026"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-028"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-030"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-030",
+   "to": "sym-031"
+  },
+  {
+   "from": "sym-030",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-030",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-030",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-030",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-030",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-030",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-030",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-030",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-030",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-032",
+   "to": "sym-033"
+  },
+  {
+   "from": "sym-032",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-032",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-032",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-032",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-032",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-032",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-032",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-032",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-034",
+   "to": "sym-035"
+  },
+  {
+   "from": "sym-034",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-034",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-034",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-034",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-034",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-034",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-034",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-036",
+   "to": "sym-037"
+  },
+  {
+   "from": "sym-036",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-036",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-036",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-036",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-036",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-036",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-038",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-038",
+   "to": "sym-043"
+  },
+  {
+   "from": "sym-038",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-038",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-038",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-038",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-038",
+   "to": "sym-054"
+  },
+  {
+   "from": "sym-004",
+   "to": "sym-006"
+  },
+  {
+   "from": "sym-040",
+   "to": "sym-041"
+  },
+  {
+   "from": "sym-040",
+   "to": "sym-043"
+  },
+  {
+   "from": "sym-040",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-040",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-040",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-040",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-042",
+   "to": "sym-043"
+  },
+  {
+   "from": "sym-043",
+   "to": "sym-054"
+  },
+  {
+   "from": "sym-044",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-044",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-044",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-046",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-046",
+   "to": "sym-050"
+  },
+  {
+   "from": "sym-046",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-046",
+   "to": "sym-099"
+  },
+  {
+   "from": "sym-048",
+   "to": "sym-049"
+  },
+  {
+   "from": "sym-048",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-049",
+   "to": "sym-050"
+  },
+  {
+   "from": "sym-005",
+   "to": "sym-084"
+  },
+  {
+   "from": "sym-050",
+   "to": "sym-099"
+  },
+  {
+   "from": "sym-051",
+   "to": "sym-052"
+  },
+  {
+   "from": "sym-052",
+   "to": "sym-053"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-055"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-057"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-060"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-066"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-067"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-070"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-071"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-074"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-079"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-081"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-056"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-057"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-060"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-066"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-067"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-070"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-071"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-074"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-079"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-081"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-060"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-066"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-067"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-070"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-071"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-074"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-079"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-081"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-059",
+   "to": "sym-060"
+  },
+  {
+   "from": "sym-059",
+   "to": "sym-061"
+  },
+  {
+   "from": "sym-006",
+   "to": "sym-007"
+  },
+  {
+   "from": "sym-006",
+   "to": "sym-009"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-061"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-063"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-066"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-067"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-070"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-071"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-074"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-079"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-081"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-062",
+   "to": "sym-063"
+  },
+  {
+   "from": "sym-062",
+   "to": "sym-064"
+  },
+  {
+   "from": "sym-063",
+   "to": "sym-064"
+  },
+  {
+   "from": "sym-063",
+   "to": "sym-065"
+  },
+  {
+   "from": "sym-066",
+   "to": "sym-067"
+  },
+  {
+   "from": "sym-066",
+   "to": "sym-070"
+  },
+  {
+   "from": "sym-066",
+   "to": "sym-071"
+  },
+  {
+   "from": "sym-066",
+   "to": "sym-074"
+  },
+  {
+   "from": "sym-066",
+   "to": "sym-079"
+  },
+  {
+   "from": "sym-066",
+   "to": "sym-081"
+  },
+  {
+   "from": "sym-066",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-066",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-066",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-067",
+   "to": "sym-070"
+  },
+  {
+   "from": "sym-067",
+   "to": "sym-071"
+  },
+  {
+   "from": "sym-067",
+   "to": "sym-074"
+  },
+  {
+   "from": "sym-067",
+   "to": "sym-079"
+  },
+  {
+   "from": "sym-067",
+   "to": "sym-081"
+  },
+  {
+   "from": "sym-067",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-067",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-067",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-070",
+   "to": "sym-071"
+  },
+  {
+   "from": "sym-070",
+   "to": "sym-073"
+  },
+  {
+   "from": "sym-070",
+   "to": "sym-074"
+  },
+  {
+   "from": "sym-070",
+   "to": "sym-077"
+  },
+  {
+   "from": "sym-070",
+   "to": "sym-079"
+  },
+  {
+   "from": "sym-070",
+   "to": "sym-081"
+  },
+  {
+   "from": "sym-070",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-070",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-070",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-071",
+   "to": "sym-072"
+  },
+  {
+   "from": "sym-071",
+   "to": "sym-074"
+  },
+  {
+   "from": "sym-071",
+   "to": "sym-079"
+  },
+  {
+   "from": "sym-071",
+   "to": "sym-081"
+  },
+  {
+   "from": "sym-071",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-071",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-071",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-072",
+   "to": "sym-073"
+  },
+  {
+   "from": "sym-073",
+   "to": "sym-077"
+  },
+  {
+   "from": "sym-074",
+   "to": "sym-075"
+  },
+  {
+   "from": "sym-074",
+   "to": "sym-079"
+  },
+  {
+   "from": "sym-074",
+   "to": "sym-081"
+  },
+  {
+   "from": "sym-074",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-074",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-074",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-075",
+   "to": "sym-076"
+  },
+  {
+   "from": "sym-079",
+   "to": "sym-081"
+  },
+  {
+   "from": "sym-079",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-079",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-079",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-081",
+   "to": "sym-082"
+  },
+  {
+   "from": "sym-081",
+   "to": "sym-088"
+  },
+  {
+   "from": "sym-081",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-081",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-081",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-083",
+   "to": "sym-084"
+  },
+  {
+   "from": "sym-088",
+   "to": "sym-089"
+  },
+  {
+   "from": "sym-091",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-091",
+   "to": "sym-094"
+  },
+  {
+   "from": "sym-091",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-091",
+   "to": "sym-098"
+  },
+  {
+   "from": "sym-092",
+   "to": "sym-093"
+  },
+  {
+   "from": "sym-092",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-093",
+   "to": "sym-094"
+  },
+  {
+   "from": "sym-094",
+   "to": "sym-098"
+  },
+  {
+   "from": "sym-095",
+   "to": "sym-096"
+  },
+  {
+   "from": "sym-096",
+   "to": "sym-097"
+  }
+ ]
+}

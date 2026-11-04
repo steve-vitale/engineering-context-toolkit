@@ -157,6 +157,14 @@
       "kind": "check",
       "guide": "docs/REVIEWING.md"
     },
+    "scripts/reader_leaderboard.py": {
+      "kind": "check",
+      "guide": "docs/PLUG_IN_A_READER.md"
+    },
+    "scripts/reader_template.py": {
+      "kind": "tool",
+      "guide": "docs/PLUG_IN_A_READER.md"
+    },
     "scripts/pipeline.py": {
       "kind": "check",
       "guide": "docs/DATA_LINEAGE.md"

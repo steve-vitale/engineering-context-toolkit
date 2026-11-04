@@ -112,7 +112,9 @@ on one drawing family do not establish five independent source families or a new
 An answer status of `ok` means it was readable and scored, not that its engineering claims were correct. Inspect
 the category scores and missing/unexpected facts; execution failures and semantic mistakes are different findings.
 
-The machine-readable [registry](registry.json) lists the current reproducible snapshots. Their JSON retains exact
+The machine-readable [registry](registry.json) lists the current reproducible snapshots. Its drawing-reader results
+are also shown per reader, family and split, beside their controls, on the generated [reader leaderboard](LEADERBOARD.md)
+(`python scripts/reader_leaderboard.py --check`). The registered JSON retains exact
 counts, failed answers, coverage, dates, model/configuration declarations, recipe hashes and optional reported
 resources. Each replicate pools task counts before computing its metrics. Summaries average replicate metrics; tag rates also report how many repeats have a defined denominator. Range/SD describe those
 repeats; they do not establish statistical significance or a winner. Unknown model builds, cost and timing stay
