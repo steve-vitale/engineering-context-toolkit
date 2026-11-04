@@ -1,0 +1,91 @@
+{
+  "schema": "drawing-case/1",
+  "case_id": "open100-0-demo",
+  "demonstration": true,
+  "source": {
+    "url": "https://zenodo.org/records/14803338",
+    "license_id": "CC-BY-SA-4.0",
+    "attribution": "PID2Graph OPEN100 sheet 0 by the PID2Graph dataset authors (Zenodo record 14803338), CC BY-SA 4.0; see NOTICE.md",
+    "redistributable": true,
+    "family": "pid2graph-open100",
+    "notes": "Source family groups related drawings: ten crops of one sheet are one family."
+  },
+  "image": {
+    "sha256": "2451fbe9b8d0494a822901493cfbf1d2656f0bd7678f0f25bb2266b5e78a7dc9",
+    "width": 2604,
+    "height": 1744,
+    "original_name": "0.png",
+    "path": "../../../data/external/pid2graph/PID2Graph/Complete/PID2Graph OPEN100/0.png"
+  },
+  "split": "validation",
+  "key": {
+    "path": "key.graphml",
+    "origin": "model-drafted",
+    "author": "Example Author (fictional; scripted correction)",
+    "planned_reviewer": "Example Reviewer (fictional; scripted check)",
+    "drafted_from": {
+      "file": "extraction_sheet0.json",
+      "sha256": "fbb9c92c322c0b4dd8e5a48482b0dc13c52a3144f92c3c77c5f2d4a308d571de",
+      "model": "gpt-6.1-sol",
+      "image_sha256_in_record": "2451fbe9b8d0494a822901493cfbf1d2656f0bd7678f0f25bb2266b5e78a7dc9"
+    },
+    "draft": {
+      "path": "key.draft.graphml",
+      "sha256": "0f94f1860df3304d9b6f91c49102793ddcda5d4adff22b586dd80ff221c4479e",
+      "symbols": 100,
+      "links": 345,
+      "ignored_symbols": 0
+    }
+  },
+  "key_status": "demonstration-verified (scripted reviewer, not a person)",
+  "assistance_notes": "Key drafted from a saved GPT extraction (examples/own-drawing/extraction_sheet0.json); the correction is scripted against the published PID2Graph key, not done by a person",
+  "exposure_notes": "Public sheet and key; sheet 0 was used during this repository's method development, so it is not unseen by this repository's reader",
+  "verification": [
+    {
+      "reviewer": "Example Reviewer (fictional; scripted check)",
+      "date": "2026-11-04",
+      "key_sha256": "56456cda5c0512c11550613dea2d80be2412b35b34c6fb662477f20a4a449cd0",
+      "image_sha256": "2451fbe9b8d0494a822901493cfbf1d2656f0bd7678f0f25bb2266b5e78a7dc9",
+      "accepted": false,
+      "sample": {
+        "basis": "items the author left as the model drafted them (same label, pixel IoU >= 0.95; links between two such symbols that the draft also linked)",
+        "eligible_items": 417,
+        "key_items": 461,
+        "sample_size": 20,
+        "requested_size": 20,
+        "seed": "key sha256 prefix 56456cda5c0512c1",
+        "items_sha256": "d0d6ca723cb27304ad16187666e8dcff8599cc50ed68f947ba6af8116701d8b9"
+      },
+      "disagreements": 1,
+      "disagreement_items": [
+        "symbol:general_s4"
+      ],
+      "sheet": {
+        "path": "review/sample-56456cda5c05.csv",
+        "sha256": "bad9d7e924d01350a35d5d703f10fb8920dfc8994e17c4367c1d2df1cb47a382"
+      }
+    },
+    {
+      "reviewer": "Example Reviewer (fictional; scripted check)",
+      "date": "2026-11-04",
+      "key_sha256": "24c2e079ea998a8ef584ac71865f91b41e0f0f3a2d83a4161e5d5e13a56c4263",
+      "image_sha256": "2451fbe9b8d0494a822901493cfbf1d2656f0bd7678f0f25bb2266b5e78a7dc9",
+      "accepted": true,
+      "sample": {
+        "basis": "items the author left as the model drafted them (same label, pixel IoU >= 0.95; links between two such symbols that the draft also linked)",
+        "eligible_items": 363,
+        "key_items": 461,
+        "sample_size": 20,
+        "requested_size": 20,
+        "seed": "key sha256 prefix 24c2e079ea998a8e",
+        "items_sha256": "1dcbab9e0652a15fbe2fa5508a8d6957bacef0436872f31121840e8064e0b8f3"
+      },
+      "disagreements": 0,
+      "disagreement_items": [],
+      "sheet": {
+        "path": "review/sample-24c2e079ea99.csv",
+        "sha256": "7c1b5862056712973441411fe322c91f85ade072e2a28fdfe90b94b1ef1d2682"
+      }
+    }
+  ]
+}

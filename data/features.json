@@ -249,6 +249,29 @@
       "why": "Vendors quote accuracy on their own test drawings. Scoring them on yours, with a deliberately wrong answer scored beside them, shows whether the number means anything."
     },
     {
+      "id": "contribute-drawing-case",
+      "category": "check",
+      "title": "A public drawing added to the benchmark with an independently verified key",
+      "tools": [
+        "scripts/drawing_case.py"
+      ],
+      "guide": "docs/CONTRIBUTE_A_PID.md",
+      "example_outputs": [
+        "examples/contribute-a-pid/open100-0-demo/case.json",
+        "examples/contribute-a-pid/open100-0-demo/key.graphml",
+        "examples/contribute-a-pid/demo-suite.json",
+        "examples/contribute-a-pid/results/demo-suite-1-cases.md"
+      ],
+      "tests": [
+        "scripts/test_drawing_case.py"
+      ],
+      "job": "Add a public P&ID and its answer key so every drawing reader is measured on more sheets",
+      "you_need": "A public drawing whose license you have confirmed, a starting extraction or a blank key, and a second person to review a sample",
+      "time": "Minutes for the tool; correcting a key takes hours",
+      "you_get": "A case folder with source, license and exposure recorded, a review receipt bound to the key's hash, passing known-answer controls and a validation entry in a benchmark suite",
+      "why": "A reader is only as well measured as the drawings it is tested on. Each checked public drawing makes every comparison harder to fool; the review samples what the author left as the model drafted it, where anchoring hides."
+    },
+    {
       "id": "repo-checks",
       "category": "check",
       "title": "Checks a stranger (or their agent) can run on this repository",

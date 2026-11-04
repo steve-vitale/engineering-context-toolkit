@@ -1,0 +1,31 @@
+{
+  "cases": [
+    {
+      "evidence": "contributed demonstration case, model-drafted key, scripted sampled review, fictional roles; provenance in examples/contribute-a-pid/open100-0-demo/case.json",
+      "family": "pid2graph-open100",
+      "files": {
+        "input": {
+          "path": "data/external/pid2graph/PID2Graph/Complete/PID2Graph OPEN100/0.png",
+          "sha256": "2451fbe9b8d0494a822901493cfbf1d2656f0bd7678f0f25bb2266b5e78a7dc9"
+        },
+        "key": {
+          "path": "examples/contribute-a-pid/open100-0-demo/key.graphml",
+          "sha256": "24c2e079ea998a8ef584ac71865f91b41e0f0f3a2d83a4161e5d5e13a56c4263"
+        }
+      },
+      "id": "open100-0-demo",
+      "key_author": "Example Author (fictional; scripted correction) (key model-drafted); reviewed by Example Reviewer (fictional; scripted check)",
+      "license": "CC-BY-SA-4.0; PID2Graph OPEN100 sheet 0 by the PID2Graph dataset authors (Zenodo record 14803338), CC BY-SA 4.0; see NOTICE.md",
+      "source_url": "https://zenodo.org/records/14803338",
+      "split": "validation"
+    }
+  ],
+  "id": "demo-suite",
+  "protocol": "Contributed public drawings with human-verified PID2Graph-format keys (scripts/drawing_case.py). Six-class symbol F1 and asset-network F1 under the unchanged scorer. Tag text, line routes and flow direction are outside these metrics.",
+  "registration": "Demonstration suite: fictional, scripted author and reviewer. Not evidence about any reader or any person's labelling.",
+  "runs": [
+    "examples/contribute-a-pid/runs/demo-suite-empty-control.json"
+  ],
+  "task": "drawing-extraction",
+  "version": "1"
+}

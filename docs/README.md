@@ -52,6 +52,7 @@ identities, relationships, generated files or mapped data.
 | Check a supplied loop list | [Loop audit](../examples/loop-audit/README.md) |
 | Exchange captured structured-source evidence | [Local source handoff](../examples/source-handoff/README.md) |
 | Compare saved model/method answers on declared tasks | [Task/model benchmarks](../benchmarks/README.md) |
+| Add a public P&ID with an independently verified answer key | [Contribute a P&ID](CONTRIBUTE_A_PID.md) |
 | Prepare a portable graph or inspect sourced statements | [Graph format](GRAPH_EXPORT.md) · [Statement review](STATEMENT_REVIEW.md) |
 | Retain answers and source-revision dependencies in a local packet | [Context register](CONTEXT_REGISTER.md) |
 | Carry a selected source through a partial answer, revision and complete readback | [Retained-source tutorial](../examples/opportunity-screen/mapping-descriptions/retained-answer/README.md) |

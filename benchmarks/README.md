@@ -35,7 +35,8 @@ and whether a citation supports a claim are unscored**. Readable partial answers
 scored, not complete or reviewed. This adds no automatic claim discovery, useful-question score, question rule,
 current plant truth or human acceptance. Preserve genuine model attempts separately from these controls.
 
-Drawing cases pair a PNG input with a PID2Graph GraphML key; answers use `symbols`/`connections` or the existing
+To add a public drawing case with an independently verified key, follow
+[docs/CONTRIBUTE_A_PID.md](../docs/CONTRIBUTE_A_PID.md). Drawing cases pair a PNG input with a PID2Graph GraphML key; answers use `symbols`/`connections` or the existing
 saved prediction envelope. Description cases pair UTF-8 source text, a JSON `facts` key and an expected native
 model for the positive control. Submitted answers can be a native process model or the description workflow's
 `model`/`layout`/`evidence` wrapper. Keep evaluation keys/reference models out of the inference packet.

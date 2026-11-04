@@ -500,6 +500,10 @@
     "scripts/join_batch_records.py": {
       "kind": "tool",
       "guide": "examples/batch-analysis/record-joins/README.md"
+    },
+    "scripts/drawing_case.py": {
+      "kind": "tool",
+      "guide": "docs/CONTRIBUTE_A_PID.md"
     }
   }
 }

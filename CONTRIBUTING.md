@@ -1,5 +1,8 @@
 # Help the toolkit generalize
 
+**Adding a public P&ID with a verified answer key?** Follow the six steps in
+[docs/CONTRIBUTE_A_PID.md](docs/CONTRIBUTE_A_PID.md) (`scripts/drawing_case.py`).
+
 This project should improve as engineers contribute new cases, model runs and methods. A useful contribution
 leaves a reproducible answer to: **what task improved, on which inputs, compared with what, and what got worse?**
 A new symbol, unit type, document family or difficult failure is valuable even before a tool handles it.

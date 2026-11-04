@@ -1,0 +1,29 @@
+{
+  "cases": [
+    "open100-0-demo"
+  ],
+  "configuration": {},
+  "id": "demo-suite-empty-control",
+  "interface": "authored fixture",
+  "method": "empty answer",
+  "model": {
+    "id": "synthetic-control",
+    "provider": "none",
+    "version": "1"
+  },
+  "predictions": {
+    "open100-0-demo": {
+      "path": "examples/contribute-a-pid/controls/open100-0-demo-empty.json",
+      "sha256": "5cd039a9f72560061b0e00b17ae184a906f2404159b44a713be65452a22a4594"
+    }
+  },
+  "provenance": "Deterministic empty-answer control, no AI model run: the zero baseline every reader must beat. Add genuine reader runs as separate manifests.",
+  "ran_at": "not applicable (control)",
+  "recipe": [
+    {
+      "path": "extraction/prompt.md",
+      "role": "main_prompt",
+      "sha256": "c16899efee9c3769e51b17063183bccb869544dba36b439eaa1fa42ffe7e132b"
+    }
+  ]
+}

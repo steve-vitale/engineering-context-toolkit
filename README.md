@@ -22,7 +22,8 @@ relied on. When one of them is revised, refreshing reopens the answers that depe
 ([what already exists](docs/PRIOR_ART.md)). Everything around it is built to work with any reader: sources, a
 risk-sorted review queue, disagreements kept visible, sourced exports. A trained model or a vendor tool that outputs
 the documented format gets all of it, and the [vendor-evaluation kit](examples/vendor-evaluation/README.md) scores
-any reader on your own sheets. Improving the reader is the most welcome contribution.
+any reader on your own sheets. Improving the reader is the most welcome contribution; so is
+[adding a public drawing with a verified key](docs/CONTRIBUTE_A_PID.md) so every reader is measured on more sheets.
 
 These are prototypes tested on public and fictional drawings. Outputs are drafts for engineering review, not plant
 truth. The [demo series](docs/DEMO_SERIES.md) shows how the pieces connect.

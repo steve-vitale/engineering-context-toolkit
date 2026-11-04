@@ -167,3 +167,6 @@ data/te_pid_layout.json text eol=lf
 # Authored engineering-change sources and byte-bound selected text outputs use LF.
 /examples/engineering-change/** text eol=lf
 /examples/engineering-change/**/*.png -text
+
+# The contributed-case demonstration binds key, review-sheet and suite bytes; keep them LF on every OS.
+/examples/contribute-a-pid/** text eol=lf

@@ -57,6 +57,7 @@ SOURCE_TESTS = (
     "scripts/test_own_drawing_example.py",
     "scripts/test_loop_audit.py",
     "scripts/test_evaluate_vendor.py",
+    "scripts/test_drawing_case.py",
     "scripts/test_script_index.py",
     "scripts/test_attempts_ledger.py",
     "scripts/test_graph_export.py",
@@ -326,6 +327,12 @@ SOURCE_FILES = (
     "examples/engineering-onboarding/knowledge-A.json",
     "examples/engineering-onboarding/knowledge-B.json",
     "examples/engineering-onboarding/knowledge-C.json",
+    "scripts/drawing_case.py", "extraction/prompt.md", "examples/own-drawing/extraction_sheet0.json",
+    *(f"examples/contribute-a-pid/{name}" for name in
+      ("reproduce.py", "demo-suite.json", "runs/demo-suite-empty-control.json", "controls/open100-0-demo-empty.json",
+       "results/demo-suite-1-cases.json", "results/demo-suite-1-cases.md", "open100-0-demo/case.json",
+       "open100-0-demo/packet.json", "open100-0-demo/key.graphml", "open100-0-demo/key.draft.graphml",
+       "open100-0-demo/review/sample-56456cda5c05.csv", "open100-0-demo/review/sample-24c2e079ea99.csv")),
     "scripts/source_evidence.py", "scripts/source_handoff.py", ".gitattributes", "NOTICE.md",
     *(f"examples/source-handoff/fixture/{name}" for name in
       ("I01V01-VER.EX01.xml", "embedded.model.json", "PROVENANCE.json", "EXPECTED.json")),
