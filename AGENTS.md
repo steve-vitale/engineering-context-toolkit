@@ -18,6 +18,8 @@ duplicate tags, disagreements kept visible, answers that reopen when a source is
 deliberately wrong controls. The reader is replaceable: readings in the documented prediction format flow through the
 same pipeline (see the [DEXPI](scripts/adapt_dexpi.py) and [PID2Graph](docs/ADAPT_LABELED_DATASET.md) adapters).
 A better reader is the most valuable contribution; measure it with the frozen scorer before claiming a gain.
+[PLUG_IN_A_READER.md](docs/PLUG_IN_A_READER.md) has the slot, a template adapter and the claim levels; the
+[reader leaderboard](benchmarks/LEADERBOARD.md) separates development, validation and held-out results.
 
 ## What's a tool and what's a record
 
@@ -55,6 +57,7 @@ python scripts/pipeline.py status   # whether every output is fresh against the 
 python scripts/attempts_ledger.py --check   # the tuning ledger is complete, sourced and current
 python scripts/feature_catalog.py --check   # every feature, its evidence and its independent review status
 python scripts/corpus_matrix.py --check     # the generalization matrix page matches its results
+python scripts/reader_leaderboard.py --check   # the reader leaderboard matches the registered results
 python scripts/benchmark.py --registry benchmarks/registry.json  # saved model/task results reproduce offline
 python scripts/rescore.py --check           # re-score the committed predictions; diff every table against out/
 ```

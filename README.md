@@ -23,6 +23,7 @@ relied on. When one of them is revised, refreshing reopens the answers that depe
 risk-sorted review queue, disagreements kept visible, sourced exports. A trained model or a vendor tool that outputs
 the documented format gets all of it, and the [vendor-evaluation kit](examples/vendor-evaluation/README.md) scores
 any reader on your own sheets. Improving the reader is the most welcome contribution.
+To plug one in, see [PLUG_IN_A_READER.md](docs/PLUG_IN_A_READER.md); results so far are on the [reader leaderboard](benchmarks/LEADERBOARD.md).
 
 These are prototypes tested on public and fictional drawings. Outputs are drafts for engineering review, not plant
 truth. The [demo series](docs/DEMO_SERIES.md) shows how the pieces connect.

@@ -1,0 +1,2586 @@
+{
+ "symbols": [
+  {
+   "id": "sym-001",
+   "class": "tank",
+   "tag": "MSS-XSS-140",
+   "bbox": {
+    "x_min": 226.6,
+    "y_min": 433.1,
+    "x_max": 259.0,
+    "y_max": 569.1
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-002",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 179.5,
+    "y_min": 402.8,
+    "x_max": 188.2,
+    "y_max": 424.5
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-003",
+   "class": "instrumentation",
+   "tag": "TCV\n1401",
+   "bbox": {
+    "x_min": 187.1,
+    "y_min": 385.0,
+    "x_max": 202.8,
+    "y_max": 409.3
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-004",
+   "class": "general",
+   "tag": null,
+   "bbox": {
+    "x_min": 259.5,
+    "y_min": 449.3,
+    "x_max": 263.3,
+    "y_max": 458.5
+   },
+   "confidence": 0.85
+  },
+  {
+   "id": "sym-005",
+   "class": "general",
+   "tag": "N1",
+   "bbox": {
+    "x_min": 221.1,
+    "y_min": 533.4,
+    "x_max": 225.5,
+    "y_max": 542.0
+   },
+   "confidence": 0.94
+  },
+  {
+   "id": "sym-006",
+   "class": "general",
+   "tag": null,
+   "bbox": {
+    "x_min": 270.4,
+    "y_min": 347.7,
+    "x_max": 294.1,
+    "y_max": 383.9
+   },
+   "confidence": 0.94
+  },
+  {
+   "id": "sym-007",
+   "class": "instrumentation",
+   "tag": "FT\n1401",
+   "bbox": {
+    "x_min": 287.1,
+    "y_min": 354.2,
+    "x_max": 302.8,
+    "y_max": 377.4
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-008",
+   "class": "instrumentation",
+   "tag": "FT\n1401",
+   "bbox": {
+    "x_min": 301.2,
+    "y_min": 354.2,
+    "x_max": 316.3,
+    "y_max": 377.4
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-009",
+   "class": "instrumentation",
+   "tag": "TE\n14084A",
+   "bbox": {
+    "x_min": 246.6,
+    "y_min": 306.0,
+    "x_max": 261.7,
+    "y_max": 329.8
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-010",
+   "class": "instrumentation",
+   "tag": "TE\n14084B",
+   "bbox": {
+    "x_min": 246.6,
+    "y_min": 327.1,
+    "x_max": 261.7,
+    "y_max": 350.4
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-011",
+   "class": "instrumentation",
+   "tag": "RE\n1402",
+   "bbox": {
+    "x_min": 302.3,
+    "y_min": 222.8,
+    "x_max": 317.9,
+    "y_max": 247.1
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-012",
+   "class": "general",
+   "tag": null,
+   "bbox": {
+    "x_min": 301.7,
+    "y_min": 266.0,
+    "x_max": 318.5,
+    "y_max": 286.6
+   },
+   "confidence": 0.86
+  },
+  {
+   "id": "sym-013",
+   "class": "instrumentation",
+   "tag": "PT\n14085",
+   "bbox": {
+    "x_min": 337.4,
+    "y_min": 222.8,
+    "x_max": 353.1,
+    "y_max": 247.1
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-014",
+   "class": "instrumentation",
+   "tag": "PT\n14086",
+   "bbox": {
+    "x_min": 358.5,
+    "y_min": 222.8,
+    "x_max": 374.2,
+    "y_max": 247.1
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-015",
+   "class": "instrumentation",
+   "tag": "PT\n14087",
+   "bbox": {
+    "x_min": 379.0,
+    "y_min": 222.8,
+    "x_max": 395.3,
+    "y_max": 247.1
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-016",
+   "class": "instrumentation",
+   "tag": "PT\n14088",
+   "bbox": {
+    "x_min": 400.7,
+    "y_min": 222.8,
+    "x_max": 416.3,
+    "y_max": 247.1
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-017",
+   "class": "instrumentation",
+   "tag": "TE\n14089A",
+   "bbox": {
+    "x_min": 354.2,
+    "y_min": 295.8,
+    "x_max": 369.8,
+    "y_max": 320.1
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-018",
+   "class": "instrumentation",
+   "tag": "TE\n14089B",
+   "bbox": {
+    "x_min": 370.4,
+    "y_min": 295.8,
+    "x_max": 386.1,
+    "y_max": 320.1
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-019",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 355.8,
+    "y_min": 342.3,
+    "x_max": 364.4,
+    "y_max": 364.4
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-020",
+   "class": "instrumentation",
+   "tag": "TCV\n1402",
+   "bbox": {
+    "x_min": 362.8,
+    "y_min": 326.0,
+    "x_max": 378.5,
+    "y_max": 349.8
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-021",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 347.1,
+    "y_min": 373.1,
+    "x_max": 355.2,
+    "y_max": 382.8
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-022",
+   "class": "general",
+   "tag": "T",
+   "bbox": {
+    "x_min": 361.2,
+    "y_min": 373.1,
+    "x_max": 367.7,
+    "y_max": 383.9
+   },
+   "confidence": 0.98
+  },
+  {
+   "id": "sym-023",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 373.1,
+    "y_min": 373.1,
+    "x_max": 381.7,
+    "y_max": 382.8
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-024",
+   "class": "general",
+   "tag": null,
+   "bbox": {
+    "x_min": 336.9,
+    "y_min": 395.8,
+    "x_max": 344.4,
+    "y_max": 402.8
+   },
+   "confidence": 0.87
+  },
+  {
+   "id": "sym-025",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 343.9,
+    "y_min": 410.9,
+    "x_max": 352.5,
+    "y_max": 420.7
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-026",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 357.4,
+    "y_min": 410.9,
+    "x_max": 366.1,
+    "y_max": 420.7
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-027",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 428.2,
+    "y_min": 191.4,
+    "x_max": 434.7,
+    "y_max": 204.4
+   },
+   "confidence": 0.98
+  },
+  {
+   "id": "sym-028",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 420.1,
+    "y_min": 149.2,
+    "x_max": 435.3,
+    "y_max": 162.2
+   },
+   "confidence": 0.98
+  },
+  {
+   "id": "sym-029",
+   "class": "instrumentation",
+   "tag": "AORV\nXXX",
+   "bbox": {
+    "x_min": 410.9,
+    "y_min": 162.8,
+    "x_max": 426.6,
+    "y_max": 186.5
+   },
+   "confidence": 0.98
+  },
+  {
+   "id": "sym-030",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 443.4,
+    "y_min": 167.6,
+    "x_max": 449.9,
+    "y_max": 183.3
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-031",
+   "class": "instrumentation",
+   "tag": "PSV\n1404",
+   "bbox": {
+    "x_min": 441.8,
+    "y_min": 142.2,
+    "x_max": 457.4,
+    "y_max": 166.0
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-032",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 464.5,
+    "y_min": 167.6,
+    "x_max": 471.0,
+    "y_max": 183.3
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-033",
+   "class": "instrumentation",
+   "tag": "PSV\n1405",
+   "bbox": {
+    "x_min": 462.8,
+    "y_min": 142.2,
+    "x_max": 479.1,
+    "y_max": 166.0
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-034",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 485.0,
+    "y_min": 167.6,
+    "x_max": 491.5,
+    "y_max": 183.3
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-035",
+   "class": "instrumentation",
+   "tag": "PSV\n1406",
+   "bbox": {
+    "x_min": 484.5,
+    "y_min": 142.2,
+    "x_max": 500.7,
+    "y_max": 166.0
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-036",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 506.1,
+    "y_min": 167.6,
+    "x_max": 512.6,
+    "y_max": 183.3
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-037",
+   "class": "instrumentation",
+   "tag": "PSV\n1407",
+   "bbox": {
+    "x_min": 505.6,
+    "y_min": 142.2,
+    "x_max": 522.3,
+    "y_max": 166.0
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-038",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 511.5,
+    "y_min": 201.7,
+    "x_max": 521.2,
+    "y_max": 223.9
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-039",
+   "class": "instrumentation",
+   "tag": "MS\n4010",
+   "bbox": {
+    "x_min": 520.9,
+    "y_min": 186.5,
+    "x_max": 536.6,
+    "y_max": 209.8
+   },
+   "confidence": 0.98
+  },
+  {
+   "id": "sym-040",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 490.4,
+    "y_min": 259.0,
+    "x_max": 499.1,
+    "y_max": 280.6
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-041",
+   "class": "instrumentation",
+   "tag": "MSIV\n1402",
+   "bbox": {
+    "x_min": 475.3,
+    "y_min": 239.5,
+    "x_max": 491.5,
+    "y_max": 262.8
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-042",
+   "class": "instrumentation",
+   "tag": "RE\n1403",
+   "bbox": {
+    "x_min": 515.5,
+    "y_min": 223.3,
+    "x_max": 530.7,
+    "y_max": 246.0
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-043",
+   "class": "general",
+   "tag": null,
+   "bbox": {
+    "x_min": 515.0,
+    "y_min": 264.9,
+    "x_max": 531.7,
+    "y_max": 287.1
+   },
+   "confidence": 0.88
+  },
+  {
+   "id": "sym-044",
+   "class": "instrumentation",
+   "tag": "TE\n14090A",
+   "bbox": {
+    "x_min": 458.5,
+    "y_min": 295.8,
+    "x_max": 474.2,
+    "y_max": 320.1
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-045",
+   "class": "instrumentation",
+   "tag": "TE\n14090B",
+   "bbox": {
+    "x_min": 474.7,
+    "y_min": 295.8,
+    "x_max": 490.4,
+    "y_max": 320.1
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-046",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 455.3,
+    "y_min": 342.3,
+    "x_max": 464.5,
+    "y_max": 364.4
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-047",
+   "class": "instrumentation",
+   "tag": "TCV\n1403",
+   "bbox": {
+    "x_min": 462.3,
+    "y_min": 328.2,
+    "x_max": 478.0,
+    "y_max": 352.0
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-048",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 452.0,
+    "y_min": 373.1,
+    "x_max": 460.1,
+    "y_max": 382.8
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-049",
+   "class": "general",
+   "tag": "T",
+   "bbox": {
+    "x_min": 465.5,
+    "y_min": 373.1,
+    "x_max": 472.6,
+    "y_max": 383.9
+   },
+   "confidence": 0.98
+  },
+  {
+   "id": "sym-050",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 478.0,
+    "y_min": 373.1,
+    "x_max": 486.6,
+    "y_max": 382.8
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-051",
+   "class": "general",
+   "tag": null,
+   "bbox": {
+    "x_min": 442.3,
+    "y_min": 395.8,
+    "x_max": 449.9,
+    "y_max": 402.8
+   },
+   "confidence": 0.87
+  },
+  {
+   "id": "sym-052",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 448.2,
+    "y_min": 410.9,
+    "x_max": 456.9,
+    "y_max": 420.7
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-053",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 462.3,
+    "y_min": 410.9,
+    "x_max": 471.0,
+    "y_max": 420.7
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-054",
+   "class": "valve",
+   "tag": "MSCV-XXX",
+   "bbox": {
+    "x_min": 538.2,
+    "y_min": 269.3,
+    "x_max": 549.1,
+    "y_max": 281.2
+   },
+   "confidence": 0.97
+  },
+  {
+   "id": "sym-055",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 596.6,
+    "y_min": 254.7,
+    "x_max": 603.1,
+    "y_max": 267.7
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-056",
+   "class": "inlet/outlet",
+   "tag": "EXTRACTION STEAM\nES PID 180-1",
+   "bbox": {
+    "x_min": 767.5,
+    "y_min": 124.4,
+    "x_max": 838.3,
+    "y_max": 147.1
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-057",
+   "class": "instrumentation",
+   "tag": "TE\n14091A",
+   "bbox": {
+    "x_min": 605.8,
+    "y_min": 233.0,
+    "x_max": 621.5,
+    "y_max": 256.3
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-058",
+   "class": "instrumentation",
+   "tag": "TE\n14091B",
+   "bbox": {
+    "x_min": 622.0,
+    "y_min": 233.0,
+    "x_max": 637.2,
+    "y_max": 256.3
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-059",
+   "class": "instrumentation",
+   "tag": "MSV\n1404",
+   "bbox": {
+    "x_min": 646.9,
+    "y_min": 242.2,
+    "x_max": 662.6,
+    "y_max": 265.5
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-060",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 638.8,
+    "y_min": 270.9,
+    "x_max": 647.5,
+    "y_max": 280.6
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-061",
+   "class": "general",
+   "tag": "H",
+   "bbox": {
+    "x_min": 639.9,
+    "y_min": 256.8,
+    "x_max": 645.3,
+    "y_max": 269.8
+   },
+   "confidence": 0.92
+  },
+  {
+   "id": "sym-062",
+   "class": "instrumentation",
+   "tag": "MSV\n1405",
+   "bbox": {
+    "x_min": 677.2,
+    "y_min": 242.2,
+    "x_max": 693.4,
+    "y_max": 265.5
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-063",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 668.0,
+    "y_min": 270.9,
+    "x_max": 676.1,
+    "y_max": 280.6
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-064",
+   "class": "general",
+   "tag": "M",
+   "bbox": {
+    "x_min": 669.1,
+    "y_min": 256.8,
+    "x_max": 675.0,
+    "y_max": 269.8
+   },
+   "confidence": 0.92
+  },
+  {
+   "id": "sym-065",
+   "class": "inlet/outlet",
+   "tag": "TBS PID 240-1\nTURBINE SYSTEM",
+   "bbox": {
+    "x_min": 767.5,
+    "y_min": 264.9,
+    "x_max": 838.3,
+    "y_max": 288.2
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-066",
+   "class": "inlet/outlet",
+   "tag": "TBS PID 240-1\nTURBINE SYSTEM",
+   "bbox": {
+    "x_min": 767.5,
+    "y_min": 333.1,
+    "x_max": 838.3,
+    "y_max": 356.3
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-067",
+   "class": "instrumentation",
+   "tag": "TE\n14092A",
+   "bbox": {
+    "x_min": 598.8,
+    "y_min": 306.6,
+    "x_max": 614.5,
+    "y_max": 329.8
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-068",
+   "class": "instrumentation",
+   "tag": "TE\n14092B",
+   "bbox": {
+    "x_min": 615.6,
+    "y_min": 306.6,
+    "x_max": 631.2,
+    "y_max": 329.8
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-069",
+   "class": "instrumentation",
+   "tag": "TCV\n1406",
+   "bbox": {
+    "x_min": 603.1,
+    "y_min": 331.5,
+    "x_max": 618.8,
+    "y_max": 354.7
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-070",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 595.6,
+    "y_min": 343.4,
+    "x_max": 604.2,
+    "y_max": 364.4
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-071",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 592.3,
+    "y_min": 374.7,
+    "x_max": 600.4,
+    "y_max": 382.8
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-072",
+   "class": "general",
+   "tag": "T",
+   "bbox": {
+    "x_min": 606.4,
+    "y_min": 373.1,
+    "x_max": 613.4,
+    "y_max": 383.9
+   },
+   "confidence": 0.98
+  },
+  {
+   "id": "sym-073",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 618.3,
+    "y_min": 374.7,
+    "x_max": 626.9,
+    "y_max": 382.8
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-074",
+   "class": "general",
+   "tag": null,
+   "bbox": {
+    "x_min": 582.0,
+    "y_min": 395.8,
+    "x_max": 589.1,
+    "y_max": 402.8
+   },
+   "confidence": 0.81
+  },
+  {
+   "id": "sym-075",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 588.0,
+    "y_min": 411.5,
+    "x_max": 596.1,
+    "y_max": 420.1
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-076",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 602.0,
+    "y_min": 411.5,
+    "x_max": 610.7,
+    "y_max": 420.1
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-077",
+   "class": "inlet/outlet",
+   "tag": "HIGH PRESSURE STEAM DRAINS\nHPD PID 190-1",
+   "bbox": {
+    "x_min": 767.5,
+    "y_min": 426.1,
+    "x_max": 838.3,
+    "y_max": 449.3
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-078",
+   "class": "instrumentation",
+   "tag": "TE\n14093B",
+   "bbox": {
+    "x_min": 586.9,
+    "y_min": 494.2,
+    "x_max": 602.6,
+    "y_max": 517.5
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-079",
+   "class": "instrumentation",
+   "tag": "TE\n14093A",
+   "bbox": {
+    "x_min": 603.1,
+    "y_min": 494.2,
+    "x_max": 618.8,
+    "y_max": 517.5
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-080",
+   "class": "instrumentation",
+   "tag": "MSBV\n1407",
+   "bbox": {
+    "x_min": 639.3,
+    "y_min": 497.5,
+    "x_max": 655.6,
+    "y_max": 521.2
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-081",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 630.7,
+    "y_min": 521.5,
+    "x_max": 641.5,
+    "y_max": 543.6
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-082",
+   "class": "inlet/outlet",
+   "tag": "MAIN STEAM BY-PASS",
+   "bbox": {
+    "x_min": 767.0,
+    "y_min": 526.3,
+    "x_max": 838.3,
+    "y_max": 549.0
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-083",
+   "class": "tank",
+   "tag": "RCS-SG-100",
+   "bbox": {
+    "x_min": 85.4,
+    "y_min": 565.3,
+    "x_max": 120.0,
+    "y_max": 761.0
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-084",
+   "class": "general",
+   "tag": "N2",
+   "bbox": {
+    "x_min": 100.0,
+    "y_min": 553.9,
+    "x_max": 105.4,
+    "y_max": 559.3
+   },
+   "confidence": 0.94
+  },
+  {
+   "id": "sym-085",
+   "class": "general",
+   "tag": null,
+   "bbox": {
+    "x_min": 120.0,
+    "y_min": 616.6,
+    "x_max": 127.6,
+    "y_max": 624.7
+   },
+   "confidence": 0.9
+  },
+  {
+   "id": "sym-086",
+   "class": "general",
+   "tag": null,
+   "bbox": {
+    "x_min": 115.2,
+    "y_min": 732.3,
+    "x_max": 123.8,
+    "y_max": 740.5
+   },
+   "confidence": 0.9
+  },
+  {
+   "id": "sym-087",
+   "class": "instrumentation",
+   "tag": "TCV\n1408",
+   "bbox": {
+    "x_min": 618.3,
+    "y_min": 540.9,
+    "x_max": 633.4,
+    "y_max": 563.6
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-088",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 628.0,
+    "y_min": 564.2,
+    "x_max": 642.1,
+    "y_max": 576.6
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-089",
+   "class": "inlet/outlet",
+   "tag": "FWS TO STM BYPASS\nFWS PID 170-1",
+   "bbox": {
+    "x_min": 767.0,
+    "y_min": 578.2,
+    "x_max": 838.3,
+    "y_max": 601.5
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-090",
+   "class": "instrumentation",
+   "tag": "TCV\n1409",
+   "bbox": {
+    "x_min": 583.1,
+    "y_min": 597.2,
+    "x_max": 598.8,
+    "y_max": 620.4
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-091",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 576.6,
+    "y_min": 613.9,
+    "x_max": 584.7,
+    "y_max": 635.6
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-092",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 568.0,
+    "y_min": 644.8,
+    "x_max": 576.1,
+    "y_max": 653.4
+   },
+   "confidence": 0.98
+  },
+  {
+   "id": "sym-093",
+   "class": "general",
+   "tag": "T",
+   "bbox": {
+    "x_min": 582.0,
+    "y_min": 644.2,
+    "x_max": 588.0,
+    "y_max": 653.9
+   },
+   "confidence": 0.96
+  },
+  {
+   "id": "sym-094",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 593.9,
+    "y_min": 644.8,
+    "x_max": 602.6,
+    "y_max": 653.4
+   },
+   "confidence": 0.98
+  },
+  {
+   "id": "sym-095",
+   "class": "general",
+   "tag": null,
+   "bbox": {
+    "x_min": 557.7,
+    "y_min": 665.8,
+    "x_max": 564.7,
+    "y_max": 673.4
+   },
+   "confidence": 0.79
+  },
+  {
+   "id": "sym-096",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 564.2,
+    "y_min": 682.1,
+    "x_max": 572.3,
+    "y_max": 690.7
+   },
+   "confidence": 0.98
+  },
+  {
+   "id": "sym-097",
+   "class": "valve",
+   "tag": null,
+   "bbox": {
+    "x_min": 578.2,
+    "y_min": 682.1,
+    "x_max": 586.4,
+    "y_max": 690.7
+   },
+   "confidence": 0.97
+  },
+  {
+   "id": "sym-098",
+   "class": "inlet/outlet",
+   "tag": "HIGH PRESSURE STEAM DRAINS\nHPD PID 190-1",
+   "bbox": {
+    "x_min": 767.0,
+    "y_min": 686.9,
+    "x_max": 838.3,
+    "y_max": 710.2
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-099",
+   "class": "inlet/outlet",
+   "tag": "HIGH PRESSURE STEAM DRAINS\nHPD PID 190-1",
+   "bbox": {
+    "x_min": 767.0,
+    "y_min": 746.9,
+    "x_max": 838.3,
+    "y_max": 770.2
+   },
+   "confidence": 0.99
+  },
+  {
+   "id": "sym-100",
+   "class": "inlet/outlet",
+   "tag": "HIGH PRESSURE STEAM DRAINS\nHPD PID 190-1",
+   "bbox": {
+    "x_min": 767.0,
+    "y_min": 807.5,
+    "x_max": 838.3,
+    "y_max": 830.8
+   },
+   "confidence": 0.99
+  }
+ ],
+ "connections": [
+  {
+   "from": "sym-001",
+   "to": "sym-005"
+  },
+  {
+   "from": "sym-100",
+   "to": "sym-019"
+  },
+  {
+   "from": "sym-100",
+   "to": "sym-023"
+  },
+  {
+   "from": "sym-011",
+   "to": "sym-012"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-013"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-014"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-015"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-016"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-017"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-019"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-021"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-024"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-027"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-030"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-006"
+  },
+  {
+   "from": "sym-012",
+   "to": "sym-009"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-014"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-015"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-016"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-017"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-019"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-021"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-024"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-027"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-030"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-013",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-015"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-016"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-017"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-019"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-021"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-024"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-027"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-030"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-014",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-016"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-017"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-019"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-021"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-024"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-027"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-030"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-015",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-017"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-019"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-021"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-024"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-027"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-030"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-016",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-019"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-021"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-024"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-027"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-030"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-017",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-021"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-023"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-024"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-027"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-030"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-019",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-002",
+   "to": "sym-004"
+  },
+  {
+   "from": "sym-002",
+   "to": "sym-005"
+  },
+  {
+   "from": "sym-002",
+   "to": "sym-006"
+  },
+  {
+   "from": "sym-002",
+   "to": "sym-084"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-022"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-024"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-027"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-030"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-021",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-022",
+   "to": "sym-023"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-025"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-027"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-030"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-024",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-025",
+   "to": "sym-026"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-028"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-030"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-027",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-030",
+   "to": "sym-031"
+  },
+  {
+   "from": "sym-030",
+   "to": "sym-032"
+  },
+  {
+   "from": "sym-030",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-030",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-030",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-030",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-030",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-030",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-030",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-030",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-032",
+   "to": "sym-033"
+  },
+  {
+   "from": "sym-032",
+   "to": "sym-034"
+  },
+  {
+   "from": "sym-032",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-032",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-032",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-032",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-032",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-032",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-032",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-034",
+   "to": "sym-035"
+  },
+  {
+   "from": "sym-034",
+   "to": "sym-036"
+  },
+  {
+   "from": "sym-034",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-034",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-034",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-034",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-034",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-034",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-036",
+   "to": "sym-037"
+  },
+  {
+   "from": "sym-036",
+   "to": "sym-038"
+  },
+  {
+   "from": "sym-036",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-036",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-036",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-036",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-036",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-038",
+   "to": "sym-040"
+  },
+  {
+   "from": "sym-038",
+   "to": "sym-043"
+  },
+  {
+   "from": "sym-038",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-038",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-038",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-038",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-038",
+   "to": "sym-054"
+  },
+  {
+   "from": "sym-004",
+   "to": "sym-006"
+  },
+  {
+   "from": "sym-040",
+   "to": "sym-041"
+  },
+  {
+   "from": "sym-040",
+   "to": "sym-043"
+  },
+  {
+   "from": "sym-040",
+   "to": "sym-044"
+  },
+  {
+   "from": "sym-040",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-040",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-040",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-042",
+   "to": "sym-043"
+  },
+  {
+   "from": "sym-043",
+   "to": "sym-054"
+  },
+  {
+   "from": "sym-044",
+   "to": "sym-046"
+  },
+  {
+   "from": "sym-044",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-044",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-046",
+   "to": "sym-048"
+  },
+  {
+   "from": "sym-046",
+   "to": "sym-050"
+  },
+  {
+   "from": "sym-046",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-046",
+   "to": "sym-099"
+  },
+  {
+   "from": "sym-048",
+   "to": "sym-049"
+  },
+  {
+   "from": "sym-048",
+   "to": "sym-051"
+  },
+  {
+   "from": "sym-049",
+   "to": "sym-050"
+  },
+  {
+   "from": "sym-005",
+   "to": "sym-084"
+  },
+  {
+   "from": "sym-050",
+   "to": "sym-099"
+  },
+  {
+   "from": "sym-051",
+   "to": "sym-052"
+  },
+  {
+   "from": "sym-052",
+   "to": "sym-053"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-055"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-057"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-060"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-066"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-067"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-070"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-071"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-074"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-079"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-081"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-054",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-056"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-057"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-060"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-066"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-067"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-070"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-071"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-074"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-079"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-081"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-055",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-060"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-066"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-067"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-070"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-071"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-074"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-079"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-081"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-057",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-059",
+   "to": "sym-060"
+  },
+  {
+   "from": "sym-059",
+   "to": "sym-061"
+  },
+  {
+   "from": "sym-006",
+   "to": "sym-007"
+  },
+  {
+   "from": "sym-006",
+   "to": "sym-009"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-061"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-063"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-066"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-067"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-070"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-071"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-074"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-079"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-081"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-060",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-062",
+   "to": "sym-063"
+  },
+  {
+   "from": "sym-062",
+   "to": "sym-064"
+  },
+  {
+   "from": "sym-063",
+   "to": "sym-064"
+  },
+  {
+   "from": "sym-063",
+   "to": "sym-065"
+  },
+  {
+   "from": "sym-066",
+   "to": "sym-067"
+  },
+  {
+   "from": "sym-066",
+   "to": "sym-070"
+  },
+  {
+   "from": "sym-066",
+   "to": "sym-071"
+  },
+  {
+   "from": "sym-066",
+   "to": "sym-074"
+  },
+  {
+   "from": "sym-066",
+   "to": "sym-079"
+  },
+  {
+   "from": "sym-066",
+   "to": "sym-081"
+  },
+  {
+   "from": "sym-066",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-066",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-066",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-067",
+   "to": "sym-070"
+  },
+  {
+   "from": "sym-067",
+   "to": "sym-071"
+  },
+  {
+   "from": "sym-067",
+   "to": "sym-074"
+  },
+  {
+   "from": "sym-067",
+   "to": "sym-079"
+  },
+  {
+   "from": "sym-067",
+   "to": "sym-081"
+  },
+  {
+   "from": "sym-067",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-067",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-067",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-070",
+   "to": "sym-071"
+  },
+  {
+   "from": "sym-070",
+   "to": "sym-073"
+  },
+  {
+   "from": "sym-070",
+   "to": "sym-074"
+  },
+  {
+   "from": "sym-070",
+   "to": "sym-077"
+  },
+  {
+   "from": "sym-070",
+   "to": "sym-079"
+  },
+  {
+   "from": "sym-070",
+   "to": "sym-081"
+  },
+  {
+   "from": "sym-070",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-070",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-070",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-071",
+   "to": "sym-072"
+  },
+  {
+   "from": "sym-071",
+   "to": "sym-074"
+  },
+  {
+   "from": "sym-071",
+   "to": "sym-079"
+  },
+  {
+   "from": "sym-071",
+   "to": "sym-081"
+  },
+  {
+   "from": "sym-071",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-071",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-071",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-072",
+   "to": "sym-073"
+  },
+  {
+   "from": "sym-073",
+   "to": "sym-077"
+  },
+  {
+   "from": "sym-074",
+   "to": "sym-075"
+  },
+  {
+   "from": "sym-074",
+   "to": "sym-079"
+  },
+  {
+   "from": "sym-074",
+   "to": "sym-081"
+  },
+  {
+   "from": "sym-074",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-074",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-074",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-075",
+   "to": "sym-076"
+  },
+  {
+   "from": "sym-079",
+   "to": "sym-081"
+  },
+  {
+   "from": "sym-079",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-079",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-079",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-081",
+   "to": "sym-082"
+  },
+  {
+   "from": "sym-081",
+   "to": "sym-088"
+  },
+  {
+   "from": "sym-081",
+   "to": "sym-091"
+  },
+  {
+   "from": "sym-081",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-081",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-083",
+   "to": "sym-084"
+  },
+  {
+   "from": "sym-088",
+   "to": "sym-089"
+  },
+  {
+   "from": "sym-091",
+   "to": "sym-092"
+  },
+  {
+   "from": "sym-091",
+   "to": "sym-094"
+  },
+  {
+   "from": "sym-091",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-091",
+   "to": "sym-098"
+  },
+  {
+   "from": "sym-092",
+   "to": "sym-093"
+  },
+  {
+   "from": "sym-092",
+   "to": "sym-095"
+  },
+  {
+   "from": "sym-093",
+   "to": "sym-094"
+  },
+  {
+   "from": "sym-094",
+   "to": "sym-098"
+  },
+  {
+   "from": "sym-095",
+   "to": "sym-096"
+  },
+  {
+   "from": "sym-096",
+   "to": "sym-097"
+  }
+ ]
+}
