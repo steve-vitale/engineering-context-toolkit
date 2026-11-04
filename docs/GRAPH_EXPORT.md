@@ -342,6 +342,30 @@ appearance list. `core` removes its declared claims/links, while retaining these
 | `nodes[].placement` | text | Only on an item no owning unit could be found for (for example a valve on a line between two off-page connectors): it is still a node, with the reason, never left out |
 | `not_exported` | `section`, `items`, `why` | Every top-level section of the model that has no export rule, so nothing is dropped silently, plus an extracted twin's `dropped` (what the extraction itself dropped) and `offpage_pairs` when they are not empty. The Bayer model's incident timeline and named people are left out on purpose |
 
+## twin-graph-2: the one-map extension
+
+`scripts/one_map.py` writes `twin-graph-2`, which is twin-graph-1 plus the site-level plant half and the document
+half ([ONE_MAP.md](ONE_MAP.md)). Every twin-graph-1 rule above still applies to it, checked by `one_map.py check`
+with the same `problems()` code. `graph_export.py` and its `--check` are unchanged: they still accept only
+`twin-graph-1`, so existing exports, consumers and the reports that pin this file's bytes are unaffected.
+
+| Addition | Each entry has | Notes |
+|---|---|---|
+| node kinds `site`, `unit`, `scope` | the usual node fields | the hierarchy above equipment; ids are site-qualified (`S1`, `S1/P1`, `S1/P1/200`, `S1/UTIL`) and items are `SITE/PLANT/UNIT/TAG` |
+| node kind `document` | `document`: `id`, `revision`, `status` (draft, released), `owner`, `department`, `doc_type`, `sha256`, `path` | registered drawings and manifest documents |
+| node kind `conflict` | `conflict`: `type`, `what`, `subject`, `attribute`, `source_a`/`source_b` (`source`, `says`), `record_owner`, `parties`, `status` (open, disputed, resolved), `detected`, `history` | never resolved by software; a `concerns` edge joins it to its subject |
+| item fields | `scope`, `owner`, `listed_in` (list ids; empty = drawing-only), `appearances` (sheet, revision, zone, box) | where each listed tag was located |
+| edge `covers` | document → scope or item | declared, by exact id |
+| edge `mentions` | document → item; attributes `file`, `locator`, `matched_text`, `confidence` | exact, unambiguous matches only |
+| edge `based_on` | document → document; attribute `revision` | a mismatch with the current revision is a `superseded_basis` conflict |
+| edge `references` | off-page connector or boundary → shared system | how a plant reaches a system another scope owns |
+| edge `signal_line` | instrument → instrument | a drawn signal line (twin-graph-1's `instrument_connection` excludes controllers) |
+| `loops` (top level) | per listed loop: outcome, sheets, zones, missing, route | located and consistent, partly located, not found on any sheet |
+
+`python scripts/one_map.py check graph.json` adds the one-map rules: one site node, every id site-qualified, every
+system with exactly one owning scope, every document with revision, owner and status, every conflict with a known
+type, record owner, status and both sources, every mention with its locator and matched text.
+
 ## What it does not do
 
 It infers nothing. An item with no recorded status is exported as `unverified`; a drawn process connection with

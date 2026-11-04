@@ -1,0 +1,3 @@
+rank,tier,owner,plant,unit,item,kind,why,safety,spot_check
+9,red,Site utilities,UTIL,,S1/CONFLICT/C-993384f654,conflict: boundary,"sheet 300-01 claims to own shared system CW, which the site file gives to S1/UTIL; it stays with one owner (open)",,
+28,green,Maintenance,UTIL,,S1/UTIL/CWP-901,equipment,listed in CMMS-EQUIPMENT; located on CW-01:B2,,

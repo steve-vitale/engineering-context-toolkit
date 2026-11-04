@@ -1,0 +1,6 @@
+rank,tier,owner,plant,unit,item,kind,why,safety,spot_check
+1,red,Site utilities,,,S1/CONFLICT/C-faf476ece2,conflict: ambiguous_reference,"CW-N-01 names P-101 (line 5, column 27); the map has it in more than one scope and the document's covers do not choose; not asserted (open)",,
+12,red,Process,,,S1/CONFLICT/C-b6f2b34e21,conflict: superseded_basis,DB-P101 rev 3 is based on PID-P1-200-01 rev C; the current revision is D (open),,
+24,amber,Maintenance,,,S1/DOC/CK-300-01,mention,"near miss (suffix not on the map): 'P-101A' at line 5, column 27 (map has S1/P1/200/P-101, S1/P2/300/P-101); not asserted",,
+25,amber,Operations,,,S1/DOC/OP-200-07,mention,"near miss (spelling differs from the map): 'P101' at line 6, column 10 (map has S1/P1/200/P-101, S1/P2/300/P-101); not asserted",,
+26,amber,Operations,,,S1/DOC/OP-200-07,mention,"near miss (spelling differs from the map): 'PSV 204' at line 7, column 12 (map has S1/P1/200/PSV-204); not asserted",,

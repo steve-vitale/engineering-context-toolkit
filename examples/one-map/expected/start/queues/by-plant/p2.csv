@@ -1,0 +1,8 @@
+rank,tier,owner,plant,unit,item,kind,why,safety,spot_check
+8,red,Site utilities,P2,300,S1/CONFLICT/C-328949de42,conflict: boundary,the two ends of an off-page pair (P2 300-01 and UTIL CW-01) disagree on size (open),,
+16,amber,I&C,P2,300,S1/P2/300/FIC-3101,"drawn loop, no loop list yet","possible loop FIC-3101 with FT-3101, FV-3101 (loop_number + signal_line); no loop list covers S1/P2/300 yet: review the draft loop list from `one_map.py draft-lists`",,
+17,amber,I&C,P2,300,S1/P2/300/FIC-3101,"drawn, not yet listed",FIC-3101 read from sheet 300-01 zone D2; no instrument index covers S1/P2/300 yet: review the draft list from `one_map.py draft-lists`,,
+18,amber,I&C,P2,300,S1/P2/300/FT-3101,"drawn, not yet listed",FT-3101 read from sheet 300-01 zone D3; no instrument index covers S1/P2/300 yet: review the draft list from `one_map.py draft-lists`,,
+19,amber,Maintenance,P2,300,S1/P2/300/FV-3101,"drawn, not yet listed",FV-3101 read from sheet 300-01 zone D3; no maintenance export covers S1/P2/300 yet: review the draft list from `one_map.py draft-lists`,,
+20,amber,Maintenance,P2,300,S1/P2/300/P-101,"drawn, not yet listed",P-101 read from sheet 300-01 zone B3; no maintenance export covers S1/P2/300 yet: review the draft list from `one_map.py draft-lists`,,
+21,amber,Maintenance,P2,300,S1/P2/300/V-301,"drawn, not yet listed",V-301 read from sheet 300-01 zone C2; no maintenance export covers S1/P2/300 yet: review the draft list from `one_map.py draft-lists`,,

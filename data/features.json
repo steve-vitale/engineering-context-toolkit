@@ -1530,6 +1530,32 @@
       "you_need": "A bounded elapsed-time CSV, supplied phase/unit plan and optional explicitly selected twin-graph-1; Python 3.10+, standard library only.",
       "time": "Not measured on plant-scale data.",
       "you_get": "JSON/Markdown phase means, extrema, rate integrals and coverage, explicit V2 interpolation/quality policies, original source and method hashes, optional exact graph-ID binding; fictional controls and one measured laboratory-series calculation. No prediction, installed signal acceptance or live connector. Explicit selected-file/code basis checks reproduce the complete saved result when pins match; no automatic source monitoring or context refresh. Explicit local batch/event/executed-recipe/lab/outcome joins, declared availability/quality gaps, bounded upstream calculation freshness, full audit/raw originals and descriptive differences. No general/live ingestion, causal or yield inference, historical-access proof or accepted investigation outcome."
+    },
+    {
+      "id": "one-map",
+      "category": "export",
+      "title": "One map of lists, drawings and documents, with owner-routed conflicts",
+      "tools": [
+        "scripts/one_map.py"
+      ],
+      "guide": "docs/ONE_MAP.md",
+      "example_outputs": [
+        "examples/one-map/expected/start/report.md",
+        "examples/one-map/expected/start/conflicts.md",
+        "examples/one-map/expected/start/graph.json",
+        "examples/one-map/expected/start/queues/review_queue.csv",
+        "examples/one-map/expected/drafts/p2-300/loops.csv",
+        "examples/one-map/expected/after-review/report.md",
+        "examples/one-map/expected/open100-sheet0-loops.md"
+      ],
+      "tests": [
+        "scripts/test_one_map.py"
+      ],
+      "job": "Connect a site's plant records and documents across plants",
+      "you_need": "Either standard lists (maintenance export, instrument index, loop list) or drawing reads alone, a drawing register, and optionally a document manifest; a site file naming plants, units, shared systems and record owners",
+      "time": "Seconds",
+      "you_get": "A twin-graph-2 graph (site/plant/unit hierarchy, documents with covers/mentions/based_on), conflict records routed per owner, located-loop outcomes, risk-sorted queues split by owner/plant/unit, and draft lists when starting from drawings. Prototype on fictional data; no plant acceptance",
+      "why": "Departments keep their own lists and documents; disagreements between them stay invisible until someone compares by hand. One graph keeps each record's source and owner and sends each disagreement to the person who owns the record."
     }
   ]
 }

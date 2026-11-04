@@ -49,6 +49,7 @@ These tools accept your own records in their documented formats. Choose the work
 | Investigate controls or performance | [Loop list audit](examples/loop-audit/README.md) · [question engine](docs/OPPORTUNITY_SCREEN.md) · [process data and analytics](docs/PROCESS_ANALYTICS.md) | Explicit discrepancies, evidence requests, recorded-data bands and phase calculations beside the twin. |
 | Estimate a measured change | [Impact calculation](examples/impact-estimate/README.md) | First-draft energy, cost and CO2e calculations with measurements, assumptions and constants visible. |
 | Keep and exchange engineering context | [Context register](docs/CONTEXT_REGISTER.md) · [read-only MCP](examples/internal-mcp/README.md) · [owned team packets](examples/team-context/README.md) | Source dependencies, retained answers and selected snapshots to hand to the next team or company system. |
+| Connect plant records and documents site-wide | [One map](docs/ONE_MAP.md) · [two-plant example](examples/one-map/README.md) | One graph of lists, drawings and documents; disagreements as conflicts routed to each record's owner. |
 | Evaluate or improve a method | [Drawing comparison](examples/vendor-evaluation/README.md) · [task/model benchmarks](benchmarks/README.md) · [review a frozen model](benchmarks/source-support/artifact-values/README.md) | Compare saved answers against reviewed source/key cases, with missing answers, mistakes and evidence limits visible. |
 
 ## What connects today: the hub and spokes

@@ -170,3 +170,6 @@ data/te_pid_layout.json text eol=lf
 
 # The contributed-case demonstration binds key, review-sheet and suite bytes; keep them LF on every OS.
 /examples/contribute-a-pid/** text eol=lf
+
+# One-map example inputs are fingerprinted and its expected outputs compared byte for byte.
+/examples/one-map/** text eol=lf
