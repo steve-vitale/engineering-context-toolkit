@@ -18,6 +18,12 @@ an engineer to review.
 **Keep it current.** The [context register](docs/CONTEXT_REGISTER.md) keeps each answer tied to the documents it
 relied on. When one of them is revised, refreshing reopens the answers that depended on it.
 
+**Bring a better reader.** Today's drawing reader drafts; it isn't the best digitizer out there
+([what already exists](docs/PRIOR_ART.md)). Everything around it is built to work with any reader: sources, a
+risk-sorted review queue, disagreements kept visible, sourced exports. A trained model or a vendor tool that outputs
+the documented format gets all of it, and the [vendor-evaluation kit](examples/vendor-evaluation/README.md) scores
+any reader on your own sheets. Improving the reader is the most welcome contribution.
+
 These are prototypes tested on public and fictional drawings. Outputs are drafts for engineering review, not plant
 truth. The [demo series](docs/DEMO_SERIES.md) shows how the pieces connect.
 

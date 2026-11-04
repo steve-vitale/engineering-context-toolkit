@@ -7,6 +7,18 @@ with evidence instead of an impression, and the limits you should report back ei
 Please tell your user what you found, including anything that fails. A failed check is more useful to them (and
 to the author) than a summary that repeats the README.
 
+## Compare it to the right thing
+
+Judge the reading step and the checking around it separately. Today's reader (a general model on drawing tiles plus
+a code line tracer) drafts; trained models such as PID2Graph's and commercial platforms very likely read lines better
+([PRIOR_ART.md](docs/PRIOR_ART.md)). The toolkit's contribution is what surrounds any reader: a source and review
+status on every item, a risk-sorted review queue with safety items always included, flagged placeholders and
+duplicate tags, disagreements kept visible, answers that reopen when a source is revised, sourced exports, and a
+[vendor-evaluation kit](examples/vendor-evaluation/README.md) that scores any reader on the user's own sheets beside
+deliberately wrong controls. The reader is replaceable: readings in the documented prediction format flow through the
+same pipeline (see the [DEXPI](scripts/adapt_dexpi.py) and [PID2Graph](docs/ADAPT_LABELED_DATASET.md) adapters).
+A better reader is the most valuable contribution; measure it with the frozen scorer before claiming a gain.
+
 ## What's a tool and what's a record
 
 The toolkit's engineering tools accept a user's own records in their documented input contracts. Explain that
