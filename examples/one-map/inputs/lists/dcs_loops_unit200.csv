@@ -1,0 +1,5 @@
+# Fictional control-system loop export for Unit 200 (loop_audit.py input contract plus an optional status column)
+controller,measurement,output,description,status
+FIC-2203,FT-2203,FV-2203,Feed flow,unverified
+PIC-2210,PT-2210,PV-2211,Surge drum pressure,unverified
+LIC-2204,LT-2204,LV-2204,Surge drum level,unverified

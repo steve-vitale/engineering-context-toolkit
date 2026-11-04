@@ -1,0 +1,1583 @@
+"""Build one map: the plant half and the document half of a site in one twin-graph-2 graph, with every disagreement
+kept as a conflict record routed to the owner of the record, and review queues split by owner, plant and unit.
+
+    python scripts/one_map.py build examples/one-map/inputs/site.json --out out/one-map      # first or incremental run
+    python scripts/one_map.py draft-lists examples/one-map/inputs/site.json --out out/drafts # start from drawings
+    python scripts/one_map.py check out/one-map/graph.json                                  # validate a one-map graph
+    python scripts/one_map.py loops-from-graph examples/graph-export/sheet0_graph.json --out out/sheet0-loops.md
+    python scripts/one_map.py split-queue my-bundle/review_queue.csv --by belongs_to --out out/queues
+
+Two starts, one map. (A) From lists: a maintenance equipment export, an instrument index and a control-system loop
+list (loop_audit.py's input contract) form the skeleton; drawings listed in a drawing register locate each tag
+(sheet, zone), confirm signal lines and supply piping. (B) From drawings only: draft-lists writes draft lists in
+the same formats (status unverified, tiered for review with the safety floor); once reviewed they are ordinary lists
+and (A) applies on every later revision. A site can mix both, scope by scope.
+
+Identity is site-qualified (SITE/PLANT/UNIT/TAG); legacy tags are never renumbered and earlier tags stay as aliases.
+A shared utility system has exactly one owning scope and is referenced from plants across boundary nodes. Loops
+come from the list; drawing loop-number grouping only flags loops the list lacks. Documents (a context-sources-1
+manifest, fingerprinted by context_register.load_sources) cover scopes, mention tags (exact matching only: an
+ambiguous or near-miss tag is never asserted) and are based on other documents' revisions; a basis change reopens
+dependents. Conflicts are graph nodes with what each source says and a record owner; only a person's decision
+(--decisions) changes their status. Deterministic, offline, stdlib only; no model calls. See docs/ONE_MAP.md.
+"""
+import argparse
+import copy
+import csv
+import hashlib
+import io
+import json
+import re
+import sys
+from collections import defaultdict
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import graph_export as gx  # noqa: E402
+import loop_audit  # noqa: E402
+import context_register as cr  # noqa: E402
+
+SCHEMA = "twin-graph-2"
+SITE_SCHEMA = "one-map-site-1"
+SHEET_SCHEMA = "one-map-sheet-1"
+STATE_SCHEMA = "one-map-state-1"
+DOC_STATUSES = ("draft", "released")
+CONFLICT_STATUSES = ("open", "disputed", "resolved")
+CONFLICT_TYPES = {
+    "asset_presence": "an asset is in one source and not in the other",
+    "value_disagreement": "two sources give different values for the same attribute",
+    "mention_not_in_register": "a document mentions a tag the maintenance export does not hold",
+    "ambiguous_reference": "a document names a tag that exists in more than one scope it could mean",
+    "superseded_basis": "a document is based on a revision that has been superseded",
+    "loop_pairing": "the loop list and the drawings pair a controller differently",
+    "loop_reference": "the loop list names a tag the drawings of its unit do not show",
+    "boundary": "two sides of a plant or utility boundary disagree",
+    "unlisted_loop": "the drawings show a possible loop the loop list does not hold",
+}
+TIER_ORDER = {"red": 0, "amber": 1, "green": 2}
+QUEUE_COLS = ("rank", "tier", "owner", "plant", "unit", "item", "kind", "why", "safety", "spot_check")
+TAG_TEXT = re.compile(r"(?<![A-Za-z0-9/_.-])((?:[A-Z0-9]+/){1,3})?([A-Z]{1,5})([- ]?)(\d{2,5})([A-Z]{0,2})"
+                      r"(?![A-Za-z0-9_-])")
+CONTROLLER = re.compile(r"^[A-Z]D?I?C$")           # FIC, TIC, PC, PDIC; not FCV (ends in V)
+MEASUREMENT = re.compile(r"^[A-Z]D?[TE]$|^[A-Z]IT$")  # FT, TE, PT, PDT, RE, FIT
+FINAL = re.compile(r"^[A-Z]C?V$|^XV$|^[A-Z]Y$")      # FV, TCV, PV, LCV, XV; a transducer FY drives one
+TEXT_SUFFIXES = (".txt", ".md", ".csv")
+EQUIPMENT_KINDS = ("equipment", "final_element", "relief_device")
+# Columns a generated draft list adds for its reviewer; the import path reads them as review notes, not claims.
+DRAFT_COLS = {"review_tier", "how_found", "confidence", "located_on", "reviewed_by", "reviewed_on"}
+SCOPE_KINDS = ("system", "unit", "plant", "site", "scope")
+
+
+class InputError(ValueError):
+    pass
+
+
+# ---------------------------------------------------------------- small helpers
+
+def sha_bytes(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def short(value):
+    return hashlib.sha256(json.dumps(value, sort_keys=True, ensure_ascii=False).encode("utf-8")).hexdigest()[:10]
+
+
+def part(value, where):
+    """One identity segment: text without '/', no surrounding whitespace (never trimmed silently)."""
+    if not isinstance(value, str) or not value or value != value.strip() or "/" in value:
+        raise InputError(f"{where} must be nonempty text without '/' or surrounding spaces (got {value!r})")
+    return value
+
+
+def qid(*parts):
+    return "/".join(parts)
+
+
+def norm(tag):
+    return re.sub(r"[\s\-_]", "", tag or "").upper()
+
+
+def loop_key(tag):
+    """(letters, loop number, suffix) from 'FV-2203A' -> ('FV', '2203', 'A'); None when it is not a loop tag."""
+    m = re.fullmatch(r"([A-Z]{1,5})[\s-]*(\d{2,6})([A-Z]{0,2})", (tag or "").strip().upper())
+    return (m.group(1), m.group(2), m.group(3)) if m else None
+
+
+def role_of(letters):
+    if letters is None:
+        return None
+    if CONTROLLER.match(letters):
+        return "controller"
+    if MEASUREMENT.match(letters):
+        return "measurement"
+    if FINAL.match(letters):
+        return "final"
+    return None
+
+
+def safety_of(tag):
+    """confidence.safety_function on the tag's letters: the same rule the twin's safety floor uses."""
+    import confidence
+    lk = loop_key(tag)
+    found = confidence.safety_function(lk[0] if lk else None, None, tag, set())
+    return found[0] if found else ""
+
+
+def slug(text):
+    s = re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+    return s or "unassigned"
+
+
+def inside(root, rel, where):
+    """A path from an input file, kept inside that file's folder (reuses the register's rule)."""
+    if not isinstance(rel, str) or not rel.strip():
+        raise InputError(f"{where}: a path is required")
+    local = (root / rel).resolve()
+    if Path(rel).is_absolute() or re.match(r"^[A-Za-z]:", rel) or not local.is_relative_to(root):
+        raise InputError(f"{where}: path {rel!r} must stay inside {root.name}/")
+    return local
+
+
+def read_json(path, what):
+    try:
+        return cr.read_json(path, what)
+    except cr.InputError as exc:
+        raise InputError(str(exc)) from None
+
+
+def read_csv(path, what, required):
+    try:
+        text = Path(path).read_text(encoding="utf-8-sig")
+    except (OSError, UnicodeDecodeError) as exc:
+        raise InputError(f"{what} {path}: can't read as UTF-8 ({exc})") from None
+    text = "".join(ln for ln in text.splitlines(keepends=True) if not ln.lstrip().startswith("#"))
+    reader = csv.DictReader(io.StringIO(text))
+    rows = list(reader)
+    header = [h.strip() for h in (reader.fieldnames or [])]
+    missing = [c for c in required if c not in header]
+    if missing:
+        raise InputError(f"{what} {path}: missing column(s) {', '.join(missing)}")
+    if any(None in r for r in rows):
+        raise InputError(f"{what} {path}: a row has more fields than the header")
+    return [{(k or "").strip(): (v or "").strip() for k, v in r.items()} for r in rows]
+
+
+def claim(name, value, source, status="unverified"):
+    return {"name": name, "value": value, "status": status, "source": source}
+
+
+def mk_node(id_, kind, tag, name, source, *, aliases=(), attributes=(), status="unverified", **extra):
+    return {"id": id_, "kind": kind, "tag": tag, "name": name, "aliases": list(aliases), "status": status,
+            "attributes": list(attributes), "source": source, **extra}
+
+
+def mk_edge(type_, a, b, source, *, status="unverified", attributes=(), **extra):
+    return {"id": f"{type_}:{a}->{b}", "type": type_, "from": a, "to": b, "status": status, "direction": None,
+            "source": source, "attributes": list(attributes), **extra}
+
+
+# ---------------------------------------------------------------- inputs
+
+def load_site(path):
+    path = Path(path).resolve()
+    site = read_json(path, "site file")
+    if not isinstance(site, dict) or site.get("schema") != SITE_SCHEMA:
+        raise InputError(f"{path.name}: needs schema {SITE_SCHEMA}")
+    root = path.parent
+    sid = part((site.get("site") or {}).get("id"), "site.id")
+    plants = {}
+    for p in site.get("plants") or []:
+        pid = part(p.get("id"), "plant id")
+        if pid in plants:
+            raise InputError(f"plant {pid} listed twice")
+        units = {}
+        for u in p.get("units") or []:
+            uid = part(u.get("id"), f"plant {pid} unit id")
+            if uid in units:
+                raise InputError(f"unit {pid}/{uid} listed twice")
+            units[uid] = u
+        plants[pid] = {"name": p.get("name"), "units": units, "owner": p.get("owner")}
+    scopes = {}
+    for s in site.get("scopes") or []:
+        scid = part(s.get("id"), "scope id")
+        if scid in plants or scid in scopes:
+            raise InputError(f"scope {scid} reuses a plant or scope id")
+        if not s.get("owner"):
+            raise InputError(f"scope {scid} needs an owner")
+        scopes[scid] = s
+    shared = {}
+    for s in site.get("shared_systems") or []:
+        sys_id = part(s.get("id"), "shared system id")
+        owner = s.get("owner_scope")
+        valid = {qid(sid, x) for x in list(plants) + list(scopes)}
+        if owner not in valid:
+            raise InputError(f"shared system {sys_id}: owner_scope {owner!r} must be exactly one plant or scope "
+                             f"({', '.join(sorted(valid))})")
+        if sys_id in shared:
+            raise InputError(f"shared system {sys_id} listed twice (a shared system has exactly one owner)")
+        shared[sys_id] = s
+    owners = site.get("record_owners") or {}
+    routing = site.get("routing") or {}
+    unknown = sorted(set(routing) - set(CONFLICT_TYPES))
+    if unknown:
+        raise InputError(f"routing names unknown conflict type(s): {', '.join(unknown)}")
+    for t, rec in routing.items():
+        if rec not in owners and rec not in ("document", "shared_system_owner"):
+            raise InputError(f"routing {t} -> {rec!r}: not a record type in record_owners")
+    return {"path": path, "root": root, "raw": site, "site": sid, "site_name": site["site"].get("name"),
+            "plants": plants, "scopes": scopes, "shared": shared, "owners": owners, "routing": routing,
+            "sample_every": int(site.get("spot_check_every", 10))}
+
+
+def load_register(cfg):
+    rel = cfg["raw"].get("drawing_register")
+    path = inside(cfg["root"], rel, "drawing_register")
+    rows = read_csv(path, "drawing register", ("sheet", "rev", "plant", "unit", "owner", "path"))
+    out, seen = [], set()
+    for n, r in enumerate(rows, 2):
+        where = f"drawing register line {n}"
+        sheet = part(r["sheet"], f"{where} sheet")
+        plant = part(r["plant"], f"{where} plant")
+        if plant not in cfg["plants"] and plant not in cfg["scopes"]:
+            raise InputError(f"{where}: plant/scope {plant!r} is not in the site file")
+        unit = r["unit"]
+        if plant in cfg["plants"]:
+            part(unit, f"{where} unit")
+            if unit not in cfg["plants"][plant]["units"]:
+                raise InputError(f"{where}: unit {plant}/{unit} is not in the site file")
+        elif unit:
+            raise InputError(f"{where}: a scope sheet ({plant}) has no unit")
+        doc = f"PID-{plant}-{sheet}"
+        if doc in seen:
+            raise InputError(f"{where}: sheet {plant}/{sheet} listed twice")
+        seen.add(doc)
+        if not r["rev"] or not r["owner"]:
+            raise InputError(f"{where}: rev and owner are required")
+        out.append({"doc": doc, "sheet": sheet, "rev": r["rev"], "plant": plant, "unit": unit, "owner": r["owner"],
+                    "path": inside(cfg["root"], r["path"], where), "rel": r["path"],
+                    "status": r.get("status") or "released"})
+    return out
+
+
+# ---------------------------------------------------------------- primary records: the skeleton comes from lists
+
+def kind_for(tag, declared=None):
+    if declared:
+        if declared not in gx.NODE_KINDS:
+            raise InputError(f"{tag}: kind {declared!r} is not a graph node kind")
+        return declared
+    lk = loop_key(tag)
+    role = role_of(lk[0]) if lk else None
+    if safety_of(tag) == "relief device":
+        return "relief_device"
+    return {"final": "final_element", "controller": "controller", "measurement": "instrument"}.get(role, "instrument")
+
+
+def within(scope, scopes):
+    return any(scope == s or scope.startswith(s + "/") for s in scopes)
+
+
+def list_specs(cfg):
+    """(record, default kind, spec) for every primary list; a record may be one list or several scoped lists."""
+    out = []
+    for record, default_kind in (("maintenance_export", "equipment"), ("instrument_index", None)):
+        specs = cfg["raw"].get(record) or []
+        for spec in ([specs] if isinstance(specs, dict) else specs):
+            for sc in spec.get("scopes") or []:
+                if sc != cfg["site"] and not sc.startswith(cfg["site"] + "/"):
+                    raise InputError(f"{record} {spec.get('id')}: scope {sc!r} is not in site {cfg['site']}")
+            out.append((record, default_kind, spec))
+    return out
+
+
+def covering(lists, record, scope):
+    """The list of this record type whose declared scopes cover scope, or None (path B: no list yet)."""
+    return next((x for x in lists.get(record, []) if within(scope, x["scopes"])), None)
+
+
+def load_lists(m):
+    """Maintenance equipment export and instrument index: one node per row, site/plant/unit(/system) qualified.
+    These are the skeleton; drawings only locate and connect what they hold. A row repeated in one list refuses."""
+    cfg, sid = m.cfg, m.cfg["site"]
+    lists = {}
+    for record, default_kind, spec in list_specs(cfg):
+        path = inside(cfg["root"], spec.get("path"), f"{record}.path")
+        rows = read_csv(path, record, ("tag", "plant", "unit"))
+        lid = part(spec.get("id"), f"{record}.id")
+        base = {"kind": "document", "document": lid, "revision": spec.get("revision"),
+                "sha256": sha_bytes(path.read_bytes()), "path": spec.get("path")}
+        owner = cfg["owners"].get(record) or "needs owner"
+        spec_scopes = spec.get("scopes") or [sid]
+        seen = {}
+        for n, r in enumerate(rows, 2):
+            tag = part(r["tag"], f"{record} row {n} tag")
+            plant = part(r["plant"], f"{record} row {n} plant")
+            if plant not in cfg["plants"] and plant not in cfg["scopes"]:
+                raise InputError(f"{record} row {n}: plant/scope {plant!r} is not in the site file")
+            if r["unit"] and (plant not in cfg["plants"] or r["unit"] not in cfg["plants"][plant]["units"]):
+                raise InputError(f"{record} row {n}: unit {plant}/{r['unit']} is not in the site file")
+            scope = qid(sid, plant, r["unit"]) if r["unit"] else qid(sid, plant)
+            if not within(scope, spec_scopes):
+                raise InputError(f"{record} {lid} row {n}: {scope} is outside the list's declared scopes "
+                                 f"({', '.join(spec_scopes)})")
+            nid = qid(scope, tag)
+            if nid in seen:
+                raise InputError(f"{record} row {n}: {nid} already listed on row {seen[nid]}")
+            seen[nid] = n
+            src = dict(base, locator=f"row {n}")
+            status = r.get("status") if r.get("status") in gx.STATUSES else "unverified"
+            skip = {"tag", "plant", "unit", "kind", "status", "system", "former_tag", "description"} | DRAFT_COLS
+            attrs = [claim(k, v, src, status) for k, v in sorted(r.items()) if k not in skip and v]
+            aliases = [r["former_tag"]] if r.get("former_tag") else []
+            existing = m.nodes.get(nid)
+            if existing is None:
+                kind = kind_for(tag, r.get("kind"))
+                if kind == "instrument" and default_kind and not r.get("kind"):
+                    kind = default_kind  # a maintenance row with no instrument letters is equipment
+                n_ = mk_node(nid, kind, tag, r.get("description") or None,
+                             src, aliases=aliases, attributes=attrs, status=status, scope=scope, owner=owner,
+                             listed_in=[lid], appearances=[])
+                if safety_of(tag):
+                    n_["safety"] = safety_of(tag)
+                m.nodes[nid] = n_
+            else:  # the same tag in both lists: one item, two records
+                existing["listed_in"].append(lid)
+                have = {c["name"]: c for c in existing["attributes"]}
+                for c in attrs:
+                    if c["name"] in have and have[c["name"]]["value"] != c["value"]:
+                        m.conflict("value_disagreement", nid, c["name"], have[c["name"]]["source"],
+                                   have[c["name"]]["value"], src, c["value"], record=record)
+                    elif c["name"] not in have:
+                        existing["attributes"].append(c)
+            parent = scope
+            if r.get("system"):
+                system = r["system"]
+                if system in cfg["shared"]:
+                    parent = qid(cfg["shared"][system]["owner_scope"], system)
+                else:
+                    parent = qid(scope, part(system, f"{record} row {n} system"))
+                    if parent not in m.nodes:
+                        m.node(mk_node(parent, "system", system, None, src))
+                        m.edge(mk_edge("contains", scope, parent, src))
+            m.edge(mk_edge("contains", parent, nid, src))
+        lists.setdefault(record, []).append({"id": lid, "source": base, "owner": owner, "rows": seen,
+                                             "scopes": spec_scopes})
+    # the same tag listed in two units: legitimate under qualified ids, but a bare tag is then ambiguous
+    by_tag = defaultdict(list)
+    for nid, n in m.nodes.items():
+        if n.get("listed_in"):
+            by_tag[n["tag"]].append(nid)
+    for tag, ids in sorted(by_tag.items()):
+        if len(ids) > 1:
+            m.review.append({"item": ids[0], "kind": "tag in two scopes", "owner": m.nodes[ids[0]]["owner"],
+                             "why": f"tag {tag} is listed as {', '.join(sorted(ids))}; a bare '{tag}' in a document "
+                                    "or loop list is ambiguous unless its scope says which"})
+    return lists
+
+
+# ---------------------------------------------------------------- one sheet -> a fragment (what the drawing shows)
+
+def sheet_fragment(cfg, row):
+    """Parse one sheet model: the tags it shows (with zone/box), piping lines, signal lines and off-page connectors.
+    Nothing here decides identity; place_fragments locates each tag against the lists."""
+    data = row["path"].read_bytes()
+    model = json.loads(data.decode("utf-8-sig"))
+    if not isinstance(model, dict) or model.get("schema") != SHEET_SCHEMA:
+        raise InputError(f"{row['rel']}: needs schema {SHEET_SCHEMA}")
+    sid = cfg["site"]
+    scope = qid(sid, row["plant"], row["unit"]) if row["unit"] else qid(sid, row["plant"])
+    items, review = [], []
+    seen = set()
+    for section in ("equipment", "instruments"):
+        for it in model.get(section) or []:
+            tag = part(it.get("tag"), f"{row['rel']} {section} tag")
+            if tag in seen:
+                review.append({"item": qid(scope, tag), "kind": "duplicate tag", "owner": row["owner"],
+                               "why": f"tag {tag} appears twice on sheet {row['sheet']}; confirm both are real"})
+                continue
+            seen.add(tag)
+            items.append({"tag": tag, "section": section, "zone": it.get("zone"), "box_0_1000": it.get("box_0_1000"),
+                          "on": it.get("on"), "name": it.get("name"), "former_tag": it.get("former_tag"),
+                          "attributes": {k: v for k, v in sorted((it.get("attributes") or {}).items()) if gx.plain(v)}})
+    offpage = []
+    for op in model.get("offpage") or []:
+        offpage.append({"id": part(op.get("id"), f"{row['rel']} offpage id"), "name": op.get("name"),
+                        "to": op.get("to") or {}, "system": op.get("system"), "zone": op.get("zone"),
+                        "attrs": {k: v for k, v in sorted((op.get("attributes") or {}).items()) if gx.plain(v)}})
+    return {"doc": row["doc"], "sha256": sha_bytes(data), "rev": row["rev"], "scope": scope, "sheet": row["sheet"],
+            "plant": row["plant"], "owner": row["owner"], "items": items, "offpage": offpage,
+            "signals": [list(x) for x in model.get("signal_lines") or []],
+            "lines": [dict(x) for x in model.get("lines") or []],
+            "systems": [dict(x) for x in model.get("systems") or []], "review": review}
+
+
+# ---------------------------------------------------------------- assembling the map
+
+class Map:
+    def __init__(self, cfg):
+        self.cfg = cfg
+        self.nodes, self.edges, self.conflicts, self.review = {}, {}, {}, []
+        self.loops = []
+
+    def node(self, n):
+        if n["id"] not in self.nodes:
+            self.nodes[n["id"]] = n
+        return self.nodes[n["id"]]
+
+    def edge(self, e):
+        if e["id"] not in self.edges:
+            self.edges[e["id"]] = e
+
+    def owner_for(self, ctype, record=None, document_owner=None, system_owner=None):
+        rec = self.cfg["routing"].get(ctype) or record
+        if rec == "document" or (rec is None and document_owner):
+            return document_owner or "needs owner"
+        if rec == "shared_system_owner" or (rec is None and system_owner):
+            return system_owner or "needs owner"
+        return self.cfg["owners"].get(rec) or "needs owner"
+
+    def conflict(self, ctype, subject, attribute, src_a, says_a, src_b, says_b, *, record=None, what=None,
+                 document_owner=None, system_owner=None, parties=()):
+        key = {"type": ctype, "subject": subject, "attribute": attribute,
+               "a": [src_a.get("document"), says_a], "b": [src_b.get("document"), says_b]}
+        cid = f"C-{short(key)}"
+        if cid in self.conflicts:
+            return cid
+        owner = self.owner_for(ctype, record, document_owner, system_owner)
+        self.conflicts[cid] = {
+            "id": cid, "type": ctype, "what": what or f"{CONFLICT_TYPES[ctype]}: {subject} {attribute}", "subject": subject,
+            "attribute": attribute, "source_a": {"source": src_a, "says": says_a},
+            "source_b": {"source": src_b, "says": says_b}, "record_owner": owner,
+            "parties": sorted({p for p in parties if p} | {owner}), "status": "open", "detected": True,
+            "history": []}
+        return cid
+
+
+def scope_of(node_id, cfg):
+    """(plant, unit) of a qualified id, '' where it has none."""
+    parts = node_id.split("/")
+    plant = parts[1] if len(parts) > 1 and parts[1] not in ("DOC", "CONFLICT") else ""
+    unit = parts[2] if len(parts) > 2 and plant in cfg["plants"] and parts[2] in cfg["plants"][plant]["units"] else ""
+    return plant, unit
+
+
+def hierarchy(m):
+    cfg, sid = m.cfg, m.cfg["site"]
+    site_src = {"kind": "document", "document": cfg["path"].name, "note": "site file"}
+    m.node(mk_node(sid, "site", sid, cfg["site_name"], site_src, status="confirmed"))
+    for pid, p in sorted(cfg["plants"].items()):
+        m.node(mk_node(qid(sid, pid), "plant", pid, p["name"], site_src, status="confirmed"))
+        m.edge(mk_edge("contains", sid, qid(sid, pid), site_src, status="confirmed"))
+        for uid, u in sorted(p["units"].items()):
+            m.node(mk_node(qid(sid, pid, uid), "unit", uid, u.get("name"), site_src, status="confirmed"))
+            m.edge(mk_edge("contains", qid(sid, pid), qid(sid, pid, uid), site_src, status="confirmed"))
+    for scid, s in sorted(cfg["scopes"].items()):
+        m.node(mk_node(qid(sid, scid), "scope", scid, s.get("name"), site_src, owner=s["owner"], status="confirmed"))
+        m.edge(mk_edge("contains", sid, qid(sid, scid), site_src, status="confirmed"))
+    for sys_id, s in sorted(cfg["shared"].items()):
+        nid = qid(s["owner_scope"], sys_id)
+        m.node(mk_node(nid, "system", sys_id, s.get("name"), site_src, shared=True, owner_scope=s["owner_scope"],
+                       status="confirmed"))
+        m.edge(mk_edge("contains", s["owner_scope"], nid, site_src, status="confirmed"))
+
+
+def scope_owner(cfg, scope_id):
+    parts = scope_id.split("/")
+    if len(parts) >= 2 and parts[1] in cfg["scopes"]:
+        return cfg["scopes"][parts[1]]["owner"]
+    if len(parts) >= 2 and parts[1] in cfg["plants"]:
+        return cfg["plants"][parts[1]].get("owner")
+    return None
+
+
+def list_for(kind):
+    """Which primary list should hold an item of this kind: equipment, valves and relief devices are maintained
+    assets (maintenance export); transmitters and controllers are instruments (instrument index)."""
+    return "maintenance_export" if kind in EQUIPMENT_KINDS else "instrument_index"
+
+
+def place_fragments(m, register, fragments, lists):
+    """Drawings locate listed tags (sheet, zone) and supply piping/signal topology. Mismatches become conflicts."""
+    cfg, sid = m.cfg, m.cfg["site"]
+    listed_by_tag = defaultdict(list)
+    for nid, n in m.nodes.items():
+        if n.get("listed_in"):
+            listed_by_tag[n["tag"]].append(nid)
+    covered_scopes = set()
+    for row in register:
+        f = fragments[row["doc"]]
+        covered_scopes.add(f["scope"])
+        doc_id = qid(sid, "DOC", row["doc"])
+        src = {"kind": "drawing", "document": doc_id, "sheet": row["sheet"], "revision": row["rev"], "path": row["rel"]}
+        m.node(mk_node(doc_id, "document", row["doc"], f"P&ID {row['sheet']}",
+                       {"kind": "document", "document": doc_id, "revision": row["rev"], "path": row["rel"]},
+                       status="confirmed",
+                       document={"id": row["doc"], "revision": row["rev"], "status": row["status"],
+                                 "owner": row["owner"], "department": row["owner"], "doc_type": "pid",
+                                 "sha256": f["sha256"], "path": row["rel"]}))
+        m.edge(mk_edge("covers", doc_id, f["scope"], {"kind": "document", "document": doc_id}, status="confirmed"))
+        for r in f["review"]:
+            m.review.append(dict(r))
+        for it in f["items"]:
+            nid = qid(f["scope"], it["tag"])
+            at = dict(src, zone=it["zone"]) if it.get("zone") else dict(src)
+            if it.get("box_0_1000"):
+                at["box_0_1000"] = it["box_0_1000"]
+            node = m.nodes.get(nid)
+            if node is None:  # not in any list: a drawing-only item (first appearance decides what to raise)
+                kind = "equipment" if it["section"] == "equipment" else kind_for(it["tag"])
+                record = list_for(kind)
+                spec = covering(lists, record, f["scope"])
+                elsewhere = [x for x in listed_by_tag.get(it["tag"], []) if x != nid]
+                node = mk_node(nid, kind, it["tag"], it.get("name"), at,
+                               aliases=[it["former_tag"]] if it.get("former_tag") else [], scope=f["scope"],
+                               owner=row["owner"], listed_in=[], appearances=[])
+                if safety_of(it["tag"]):
+                    node["safety"] = safety_of(it["tag"])
+                m.nodes[nid] = node
+                m.edge(mk_edge("contains", f["scope"], nid, at))
+                if spec is None:  # path B: no list covers this scope yet; the drawing read is the draft
+                    m.review.append({"item": nid, "kind": "drawn, not yet listed",
+                                     "owner": cfg["owners"].get(record) or row["owner"],
+                                     "why": f"{it['tag']} read from sheet {row['sheet']}"
+                                            + (f" zone {it['zone']}" if it.get("zone") else "")
+                                            + f"; no {record.replace('_', ' ')} covers {f['scope']} yet: review the "
+                                              "draft list from `one_map.py draft-lists`"})
+                else:
+                    m.conflict("asset_presence", nid, "listed", at, f"drawn on {row['sheet']} rev {row['rev']}",
+                               spec["source"], "no row for this tag in this unit" + (
+                                   f" (listed as {', '.join(elsewhere)}; not matched across scopes)" if elsewhere
+                                   else ""), record=record, parties=(row["owner"],),
+                               what=f"{it['tag']} is drawn on sheet {row['sheet']} but not in the "
+                                    f"{record.replace('_', ' ')} for {f['scope']}")
+            if at not in node["appearances"]:
+                node["appearances"].append(at)
+            if it.get("former_tag") and it["former_tag"] not in node["aliases"]:
+                node["aliases"].append(it["former_tag"])
+            have = {c["name"]: c for c in node["attributes"]}
+            for k, v in it["attributes"].items():
+                c = claim(k, v, at)
+                if k not in have:
+                    node["attributes"].append(c)
+                elif have[k]["value"] != v:
+                    owner_rec = next((rec for rec, specs in lists.items() for x in specs
+                                      if x["id"] == have[k]["source"].get("document")), "pid")
+                    m.conflict("value_disagreement", nid, k, have[k]["source"], have[k]["value"], at, v,
+                               record=owner_rec, parties=(row["owner"],))
+        local = {it["tag"]: qid(f["scope"], it["tag"]) for it in f["items"]}
+        for it in f["items"]:
+            if it.get("on"):
+                target = local.get(it["on"]) or qid(f["scope"], it["on"])
+                if target not in m.nodes:
+                    raise InputError(f"{row['rel']}: {it['tag']} is drawn on {it['on']}, which is not on the sheet")
+                t = {"relief_device": "protects", "final_element": "acts_on",
+                     "instrument": "measures"}.get(m.nodes[local[it["tag"]]]["kind"])
+                if t:
+                    m.edge(mk_edge(t, local[it["tag"]], target, src))
+        for a, b in f["signals"]:
+            if a not in local or b not in local:
+                raise InputError(f"{row['rel']}: signal line {a}-{b} names a tag not on the sheet")
+            m.edge(mk_edge("signal_line", local[a], local[b], src, how_found="drawn signal line"))
+        ops = {op["id"]: qid(f["scope"], f"@{row['sheet']}", op["id"]) for op in f["offpage"]}
+        for op in f["offpage"]:
+            m.node(mk_node(ops[op["id"]], "offpage_connector", op["id"], op.get("name"), src,
+                           attributes=[claim(k, v, src) for k, v in op["attrs"].items()], scope=f["scope"],
+                           owner=row["owner"]))
+        for ln in f["lines"]:
+            lid = part(ln.get("id"), f"{row['rel']} line id")
+            ends = [ops.get(x) or local.get(x) for x in (ln.get("from"), ln.get("to"))]
+            if None in ends:
+                raise InputError(f"{row['rel']}: line {lid} ends at a tag or connector not on the sheet")
+            e = mk_edge("connects", ends[0], ends[1], src, layer="stream",
+                        attributes=[claim(k, v, src) for k, v in sorted((ln.get("attributes") or {}).items())])
+            e["id"], e["direction"] = qid(f["scope"], f"@{row['sheet']}", lid), "known"
+            m.edge(e)
+        for s in f["systems"]:
+            sys_id = part(s.get("id"), f"{row['rel']} system id")
+            if sys_id in cfg["shared"]:
+                owner = cfg["shared"][sys_id]["owner_scope"]
+                if not (f["scope"] == owner or f["scope"].startswith(owner + "/")):
+                    m.conflict("boundary", qid(owner, sys_id), "owner_scope", src, f["scope"],
+                               {"kind": "document", "document": cfg["path"].name}, owner,
+                               what=f"sheet {row['sheet']} claims to own shared system {sys_id}, which the site "
+                                    f"file gives to {owner}; it stays with one owner",
+                               system_owner=scope_owner(cfg, owner), parties=(row["owner"],))
+                continue
+            nid = qid(f["scope"], sys_id)
+            m.node(mk_node(nid, "system", sys_id, s.get("name"), src))
+            m.edge(mk_edge("contains", f["scope"], nid, src))
+    # listed but not on any drawing of a covered unit: the drawings' owner checks (an uncovered unit is reported)
+    uncovered = defaultdict(int)
+    for nid, n in sorted(m.nodes.items()):
+        if n.get("listed_in") and not n["appearances"]:
+            if n["scope"] in covered_scopes:
+                m.conflict("asset_presence", nid, "drawn", n["source"], f"listed in {', '.join(n['listed_in'])}",
+                           {"kind": "drawing_register", "document": "drawing register"},
+                           "not on any registered sheet of " + n["scope"], record="pid", parties=(n["owner"],),
+                           what=f"{n['tag']} is listed for {n['scope']} but no registered sheet of that unit shows it")
+            else:
+                uncovered[n["scope"]] += 1
+    return dict(sorted(uncovered.items()))
+
+
+def pair_offpage(m, fragments):
+    """Pair off-page connectors across sheets and plants; a connector to a shared system crosses a boundary node."""
+    cfg, sid = m.cfg, m.cfg["site"]
+    by_ref = {}
+    for f in fragments.values():
+        for op in f["offpage"]:
+            by_ref[(f["plant"], f["sheet"], op["id"])] = dict(op, node=qid(f["scope"], f"@{f['sheet']}", op["id"]),
+                                                             owner=f["owner"], plant=f["plant"], sheet=f["sheet"])
+    for key in sorted(by_ref):
+        op = by_ref[key]
+        src = m.nodes[op["node"]]["source"]
+        sys_owner = None
+        if op.get("system"):
+            sysd = cfg["shared"].get(op["system"])
+            if sysd is None:
+                m.review.append({"item": op["node"], "kind": "boundary", "owner": op["owner"],
+                                 "why": f"names system {op['system']}, which the site file does not list as shared"})
+            else:
+                sys_owner = scope_owner(cfg, sysd["owner_scope"])
+                target = qid(sysd["owner_scope"], op["system"])
+                if op["plant"] != sysd["owner_scope"].split("/")[1]:
+                    bnd = qid(sid, op["plant"], f"BND-{op['system']}")
+                    if bnd not in m.nodes:
+                        bsrc = {"kind": "document", "document": cfg["path"].name, "note": "shared system reference"}
+                        m.node(mk_node(bnd, "boundary", None, f"{op['plant']} boundary to {op['system']}", bsrc,
+                                       status="confirmed"))
+                        m.edge(mk_edge("contains", qid(sid, op["plant"]), bnd, bsrc, status="confirmed"))
+                        m.edge(mk_edge("references", bnd, target, bsrc, status="confirmed"))
+                    m.edge(mk_edge("references", op["node"], bnd, src))
+                else:
+                    m.edge(mk_edge("references", op["node"], target, src))
+        to = op["to"]
+        if not to:
+            continue
+        ref = (to.get("plant"), to.get("sheet"), to.get("connector"))
+        other = by_ref.get(ref)
+        if other is None:
+            m.conflict("boundary", op["node"], "pairs_with", src, "/".join(map(str, ref)),
+                       {"kind": "drawing_register", "document": "drawing register"},
+                       "no such connector in the register",
+                       what="an off-page connector points to a sheet/connector the register does not hold",
+                       system_owner=sys_owner or op["owner"], parties=(op["owner"],))
+            continue
+        back = other["to"] or {}
+        if (back.get("plant"), back.get("sheet"), back.get("connector")) != key:
+            m.conflict("boundary", op["node"], "pairs_with", src, other["node"], m.nodes[other["node"]]["source"],
+                       "/".join(map(str, (back.get("plant"), back.get("sheet"), back.get("connector")))),
+                       what="two off-page connectors do not point back at each other",
+                       system_owner=sys_owner or op["owner"], parties=(op["owner"], other["owner"]))
+            continue
+        if key > ref:
+            continue  # each pair once, from its lower end
+        e = mk_edge("connects", op["node"], other["node"], src, layer="offpage_pair")
+        e["direction"] = "unknown"
+        m.edge(e)
+        for name in sorted(set(op["attrs"]) & set(other["attrs"])):
+            if op["attrs"][name] != other["attrs"][name]:
+                m.conflict("boundary", op["node"], name, src, op["attrs"][name],
+                           m.nodes[other["node"]]["source"], other["attrs"][name],
+                           what=f"the two ends of an off-page pair ({op['plant']} {op['sheet']} and {other['plant']} "
+                                f"{other['sheet']}) disagree on {name}",
+                           system_owner=sys_owner or op["owner"], parties=(op["owner"], other["owner"]))
+
+
+# ---------------------------------------------------------------- loops: the loop list leads, drawings locate
+
+def loop_candidates(members, signals):
+    """Loop-number groups and drawn signal pairings inside ONE unit scope (callers never pass two units).
+    members: {node_id: tag}; signals: set of frozenset pairs -> ({controller: {"in": set, "out": set, how}}, report).
+    These are candidates for comparison with a loop list, never asserted loops."""
+    groups = defaultdict(list)
+    roles = {}
+    for nid, tag in sorted(members.items()):
+        lk = loop_key(tag)
+        roles[nid] = role_of(lk[0]) if lk else None
+        if lk and roles[nid]:
+            groups[lk[1]].append(nid)
+    cands, report = {}, []
+    for number, ids in sorted(groups.items()):
+        ctl = [i for i in ids if roles[i] == "controller"]
+        note = ("more than one controller shares this loop number; not paired" if len(ctl) > 1 else
+                "no controller with this loop number; not paired" if not ctl else "")
+        report.append({"loop": number, "members": [members[i] for i in ids], "note": note})
+        if len(ctl) == 1:
+            c = cands.setdefault(ctl[0], {"in": {}, "out": {}})
+            for i in ids:
+                if roles[i] == "measurement":
+                    c["in"].setdefault(i, set()).add("loop_number")
+                elif roles[i] == "final":
+                    c["out"].setdefault(i, set()).add("loop_number")
+    for pair in sorted(signals, key=sorted):
+        a, b = sorted(pair)
+        for x, y in ((a, b), (b, a)):
+            if roles.get(x) == "measurement" and roles.get(y) == "controller":
+                cands.setdefault(y, {"in": {}, "out": {}})["in"].setdefault(x, set()).add("signal_line")
+            if roles.get(x) == "controller" and roles.get(y) == "final":
+                cands.setdefault(x, {"in": {}, "out": {}})["out"].setdefault(y, set()).add("signal_line")
+    return dict(sorted(cands.items())), report
+
+
+def loops(m, lists):
+    """Each listed loop becomes edges sourced to the loop list (its status), then is located on the drawings:
+    located and consistent / partly located / not found. Drawing-only loop candidates are flagged, not asserted."""
+    cfg = m.cfg
+    owner = cfg["owners"].get("loop_list") or "needs owner"
+    pid_owner = cfg["owners"].get("pid") or "needs owner"
+    signals = defaultdict(set)
+    for e in m.edges.values():
+        if e["type"] == "signal_line":
+            signals[m.nodes[e["from"]]["scope"]].add(frozenset((e["from"], e["to"])))
+    listed_ctl = defaultdict(set)
+    results = []
+    in_scope = defaultdict(dict)  # one pass over the map: O(items), however many loop lists
+    for n in m.nodes.values():
+        if n.get("scope") and n.get("tag") and n["kind"] != "offpage_connector":
+            in_scope[n["scope"]][norm(n["tag"])] = n["id"]
+    for spec in cfg["raw"].get("loop_lists") or []:
+        path = inside(cfg["root"], spec.get("path"), "loop_lists[].path")
+        scope = spec.get("scope")
+        if scope not in m.nodes or m.nodes[scope]["kind"] != "unit":
+            raise InputError(f"loop list {spec.get('id')}: scope {scope!r} is not a unit in the site file")
+        try:
+            rows, _ = loop_audit.read_loops(path)
+        except loop_audit.InputError as exc:
+            raise InputError(str(exc)) from None
+        # optional status column: the loop list's own status for each loop (read_loops validates the rest)
+        status_col = {norm(r.get("controller")): r.get("status", "") for r in read_csv(path, "loop list", ())}
+        lid = part(spec.get("id"), "loop list id")
+        raw = path.read_bytes()
+        by_norm = in_scope[scope]
+        ctl_norms = {norm(r["controller"]) for r in rows}
+        drawn_cands, _ = loop_candidates({k: m.nodes[k]["tag"] for k in by_norm.values()
+                                          if m.nodes[k]["kind"] in ("instrument", "controller", "final_element")
+                                          and m.nodes[k].get("appearances")}, signals[scope])
+        for lp in rows:
+            src = {"kind": "document", "document": lid, "revision": spec.get("revision"), "sha256": sha_bytes(raw),
+                   "locator": f"{spec.get('path')} line {lp['line']}"}
+            st = status_col.get(norm(lp["controller"]))
+            st = st if st in gx.STATUSES else "unverified"
+            ids = {k: by_norm.get(norm(lp[k])) for k in ("controller", "measurement", "output")}
+            located = {k: bool(v and m.nodes[v].get("appearances")) for k, v in ids.items()}
+            if ids["controller"]:
+                listed_ctl[scope].add(ids["controller"])
+            sig = signals[scope]
+            sig_in = bool(ids["controller"] and ids["measurement"] and (
+                ids["measurement"] == ids["controller"] or frozenset((ids["measurement"], ids["controller"])) in sig))
+            sig_out = bool(ids["controller"] and ids["output"] and
+                           frozenset((ids["controller"], ids["output"])) in sig)
+            edges = []
+            if ids["controller"] and ids["measurement"] and ids["measurement"] != ids["controller"]:
+                edges.append(("controls", ids["measurement"], ids["controller"], sig_in))
+            if ids["controller"] and ids["output"]:
+                t = "sets_point_of" if norm(lp["output"]) in ctl_norms else "controls"
+                edges.append((t, ids["controller"], ids["output"], sig_out))
+            for t, a, b, drawn in edges:
+                e = mk_edge(t, a, b, src, status=st, how_found=["loop_list"] + (["drawing:signal_line"] if drawn else []),
+                            attributes=[claim("loop_list", lid, src, st),
+                                        claim("signal_drawn", drawn, src if not drawn else
+                                              m.nodes[a]["appearances"][0] if m.nodes[a]["appearances"] else src)])
+                m.edge(e)
+            n_located = sum(located.values())
+            outcome = ("located and consistent" if n_located == 3 and sig_in and sig_out else
+                       "not found on any sheet" if n_located == 0 else "partly located")
+            missing = [f"{lp[k]} ({k}) " + ("not in the lists or drawings of this unit" if not ids[k]
+                                             else "not on any registered sheet") for k in ("controller", "measurement",
+                                                                                          "output") if not located[k]]
+            if n_located and not sig_in:
+                missing.append(f"no drawn signal line {lp['measurement']} -> {lp['controller']}")
+            if n_located and not sig_out:
+                missing.append(f"no drawn signal line {lp['controller']} -> {lp['output']}")
+            sheets = sorted({a["sheet"] for v in ids.values() if v for a in m.nodes[v].get("appearances", [])})
+            zones = sorted({f"{a['sheet']}:{a['zone']}" for v in ids.values() if v
+                            for a in m.nodes[v].get("appearances", []) if a.get("zone")})
+            # a tag nobody holds is the loop list's to explain; a held tag missing from the drawings is doc control's
+            route = owner if any(not ids[k] for k in ids) else pid_owner
+            res = {"scope": scope, "loop_list": lid, "line": lp["line"], "controller": lp["controller"],
+                   "measurement": lp["measurement"], "output": lp["output"], "outcome": outcome,
+                   "sheets": sheets, "zones": zones, "missing": missing, "route": route,
+                   "item": ids["controller"] or qid(scope, lp["controller"])}
+            results.append(res)
+            # drawing pairs the controller differently from the list
+            if ids["controller"]:
+                c = drawn_cands.get(ids["controller"], {"in": {}, "out": {}})
+                for role, got in (("measurement", c["in"]), ("output", c["out"])):
+                    for other, how in sorted(got.items()):
+                        if norm(m.nodes[other]["tag"]) != norm(lp[role]) and "signal_line" in how:
+                            m.conflict("loop_pairing", ids["controller"], role, m.nodes[other]["appearances"][0],
+                                       m.nodes[other]["tag"], src, lp[role], record="loop_list",
+                                       what=f"a drawn signal line pairs {m.nodes[other]['tag']} with {lp['controller']}; "
+                                            f"the loop list says {lp[role]}", parties=(pid_owner,))
+    # drawing-only loop candidates (secondary): flagged to the loop list owner, never asserted
+    by_scope = defaultdict(dict)
+    for n in m.nodes.values():
+        if n.get("scope") and n["kind"] in ("instrument", "controller", "final_element") and n.get("appearances"):
+            by_scope[n["scope"]][n["id"]] = n["tag"]
+    groups = {}
+    lists_by_scope = {spec.get("scope"): spec.get("id") for spec in cfg["raw"].get("loop_lists") or []}
+    for scope in sorted(by_scope):
+        cands, report = loop_candidates(by_scope[scope], signals[scope])
+        groups[scope] = report
+        for ctl, c in cands.items():
+            if ctl in listed_ctl[scope] or not (c["in"] or c["out"]):
+                continue
+            how = sorted(set().union(*c["in"].values(), *c["out"].values()))
+            members = sorted(m.nodes[x]["tag"] for x in list(c["in"]) + list(c["out"]))
+            ll = lists_by_scope.get(scope)
+            if not ll:  # path B: no loop list for this unit yet; the candidate goes into the draft loop list
+                m.review.append({"item": ctl, "kind": "drawn loop, no loop list yet", "owner": owner,
+                                 "why": f"possible loop {m.nodes[ctl]['tag']} with {', '.join(members)} "
+                                        f"({' + '.join(how)}); no loop list covers {scope} yet: review the draft "
+                                        "loop list from `one_map.py draft-lists`"})
+                continue
+            m.conflict("unlisted_loop", ctl, "loop", m.nodes[ctl]["appearances"][0],
+                       f"{m.nodes[ctl]['tag']} with {', '.join(members)} ({' + '.join(how)})",
+                       {"kind": "document", "document": ll or "no loop list for " + scope},
+                       "not listed" if ll else "no loop list supplied for this unit", record="loop_list",
+                       what=f"the drawings show a possible loop around {m.nodes[ctl]['tag']} ({' + '.join(how)}) "
+                            "that the loop list does not hold; not asserted", parties=(pid_owner,))
+    m.loops = results
+    return groups
+
+
+# ---------------------------------------------------------------- documents: covers, mentions, based_on
+
+def tag_index(m):
+    exact, by_norm = defaultdict(set), defaultdict(set)
+    for n in m.nodes.values():
+        if not n.get("scope") or not n.get("tag") or n["kind"] in ("document", "conflict", "offpage_connector"):
+            continue
+        for t, how in [(n["tag"], "tag")] + [(a, "alias (former tag)") for a in n["aliases"]]:
+            exact[t].add((n["id"], how))
+            by_norm[norm(t)].add(n["id"])
+    by_base = defaultdict(set)
+    for key, ids in by_norm.items():
+        base = re.sub(r"(?<=\d)[A-Z]{1,2}$", "", key)
+        if base != key:
+            by_base[base] |= ids
+    return exact, by_norm, by_base
+
+
+def match_mentions(text, exact, by_norm, by_base, covers, nodes):
+    """Every tag-like token in text -> (asserted mentions, not-asserted findings). Deterministic; O(tokens)."""
+    asserted, findings = [], []
+    for ln, line in enumerate(text.splitlines(), 1):
+        for mt in TAG_TEXT.finditer(line):
+            prefix, letters, sep, digits, suffix = mt.groups()
+            token = f"{letters}{sep}{digits}{suffix}"
+            where = {"line": ln, "column": mt.start() + 1, "matched_text": mt.group(0)}
+            if prefix:
+                target = prefix + token
+                if target in nodes:
+                    asserted.append(dict(where, node=target, confidence="site-qualified exact"))
+                else:
+                    findings.append(dict(where, kind="qualified tag not on the map", candidates=[]))
+                continue
+            hits = sorted(exact.get(token, ()))
+            if hits:
+                ids = sorted({h[0] for h in hits})
+                how = {h[0]: h[1] for h in hits}
+                if len(ids) > 1:
+                    inside_cover = [i for i in ids if any(i == c or i.startswith(c + "/") for c in covers)]
+                    if len(inside_cover) != 1:
+                        findings.append(dict(where, kind="ambiguous", candidates=ids))
+                        continue
+                    ids, conf = inside_cover, "exact in covered scope"
+                else:
+                    conf = "exact, unique on the map"
+                if how[ids[0]] != "tag":
+                    conf += f"; via {how[ids[0]]}"
+                asserted.append(dict(where, node=ids[0], confidence=conf))
+                continue
+            key = norm(token)
+            base = re.sub(r"(?<=\d)[A-Z]{1,2}$", "", key)
+            if key in by_norm:
+                findings.append(dict(where, kind="near miss (spelling differs from the map)",
+                                     candidates=sorted(by_norm[key])))
+            elif key in by_base:
+                findings.append(dict(where, kind="near miss (the map has only suffixed tags)",
+                                     candidates=sorted(by_base[key])))
+            elif base != key and base in by_norm:
+                findings.append(dict(where, kind="near miss (suffix not on the map)", candidates=sorted(by_norm[base])))
+            else:
+                findings.append(dict(where, kind="tag-like text not on the map", candidates=[]))
+    return asserted, findings
+
+
+def documents(m, cfg, lists):
+    spec = cfg["raw"].get("documents")
+    if not spec:
+        return {}
+    path = inside(cfg["root"], spec, "documents")
+    try:
+        sources, _, _ = cr.load_sources(path, {})
+    except cr.InputError as exc:
+        raise InputError(str(exc)) from None
+    manifest = read_json(path, "document manifest")
+    sid = cfg["site"]
+    docs = {}
+    revisions = {n["document"]["id"]: n["document"]["revision"] for n in m.nodes.values() if n["kind"] == "document"}
+    for d in manifest["documents"]:
+        did = d["id"]
+        if did in revisions:
+            raise InputError(f"document {did}: id already used by a drawing in the register")
+        if d.get("status") not in DOC_STATUSES:
+            raise InputError(f"document {did}: status must be draft or released")
+        if not d.get("owner"):
+            raise InputError(f"document {did}: owner is required")
+        revisions[did] = d["revision"]
+        docs[did] = d
+    exact, by_norm, by_base = tag_index(m)
+    for did in sorted(docs):
+        d, s = docs[did], sources[did]
+        doc_node = qid(sid, "DOC", did)
+        local = (path.parent / d["path"]).resolve()
+        dsrc = {"kind": "document", "document": doc_node, "revision": s["revision"], "sha256": s["sha256"],
+                "path": d["path"]}
+        m.node(mk_node(doc_node, "document", did, d.get("title"), dsrc, status="confirmed",
+                       document={"id": did, "revision": s["revision"], "status": d["status"], "owner": d["owner"],
+                                 "department": d.get("department") or d["owner"], "doc_type": d.get("doc_type"),
+                                 "sha256": s["sha256"], "path": d["path"]}))
+        covers = []
+        for c in d.get("covers") or []:
+            if c not in m.nodes:
+                raise InputError(f"document {did}: covers {c!r}, which is not a node on the map (use an exact "
+                                 "site-qualified id; tags are never guessed)")
+            covers.append(c)
+            m.edge(mk_edge("covers", doc_node, c, dsrc, status="confirmed"))
+        for b in d.get("based_on") or []:
+            target = b.get("id")
+            if target not in revisions:
+                raise InputError(f"document {did}: based_on {target!r} is not a document in the register/manifest")
+            tnode = qid(sid, "DOC", target)
+            m.edge(mk_edge("based_on", doc_node, tnode, dsrc, status="confirmed",
+                           attributes=[claim("revision", b.get("revision"), dsrc, status="confirmed")]))
+            if b.get("revision") != revisions[target]:
+                m.conflict("superseded_basis", doc_node, f"based_on {target}", dsrc, f"rev {b.get('revision')}",
+                           m.nodes[tnode]["source"], f"current rev {revisions[target]}", record="document",
+                           what=f"{did} rev {s['revision']} is based on {target} rev {b.get('revision')}; the "
+                                f"current revision is {revisions[target]}",
+                           document_owner=d["owner"], parties=(m.nodes[tnode]["document"]["owner"],))
+        if local.suffix.lower() not in TEXT_SUFFIXES:
+            continue
+        text = local.read_bytes().decode("utf-8-sig")
+        asserted, findings = match_mentions(text, exact, by_norm, by_base, covers, m.nodes)
+        for a in asserted:
+            lsrc = dict(dsrc, locator=f"line {a['line']}, column {a['column']}")
+            eid = f"mentions:{doc_node}->{a['node']}"
+            if eid in m.edges:
+                m.edges[eid].setdefault("more_locators", []).append(lsrc["locator"])
+            else:
+                m.edge(mk_edge("mentions", doc_node, a["node"], lsrc, attributes=[
+                    claim("file", d["path"], lsrc), claim("locator", lsrc["locator"], lsrc),
+                    claim("matched_text", a["matched_text"], lsrc), claim("confidence", a["confidence"], lsrc)]))
+            tgt = m.nodes[a["node"]]
+            rec = list_for(tgt["kind"])
+            if "listed_in" in tgt and not tgt["listed_in"] and covering(lists, rec, tgt["scope"]):
+                m.conflict("mention_not_in_register", a["node"], "listed", lsrc,
+                           f"{did} mentions {a['matched_text']}", {"kind": "document", "document": rec},
+                           "no row for this tag", record=rec, parties=(d["owner"],),
+                           what=f"{did} mentions {a['matched_text']} ({lsrc['locator']}); the "
+                                f"{rec.replace('_', ' ')} has no row for it")
+        for f in findings:
+            lsrc = dict(dsrc, locator=f"line {f['line']}, column {f['column']}")
+            if f["kind"] == "ambiguous":
+                m.conflict("ambiguous_reference", doc_node, f"mention {f['matched_text']}", lsrc,
+                           f["matched_text"], {"kind": "map", "document": "one map"},
+                           "exists as " + ", ".join(f["candidates"]), record="document",
+                           what=f"{did} names {f['matched_text']} ({lsrc['locator']}); the map has it in more than "
+                                "one scope and the document's covers do not choose; not asserted",
+                           document_owner=d["owner"])
+            else:
+                m.review.append({"item": doc_node, "kind": "mention", "owner": d["owner"],
+                                 "why": f"{f['kind']}: '{f['matched_text']}' at {lsrc['locator']}"
+                                        + (f" (map has {', '.join(f['candidates'])})" if f["candidates"] else "")
+                                        + "; not asserted"})
+    return {did: {"revision": sources[did]["revision"], "sha256": sources[did]["sha256"]} for did in docs}
+
+
+# ---------------------------------------------------------------- conflicts as graph nodes, human decisions
+
+def apply_decisions(conflicts, previous, decisions_path):
+    """Carry earlier human statuses forward; apply new decisions. Nothing is auto-resolved."""
+    for cid, old in (previous or {}).items():
+        if cid in conflicts:
+            conflicts[cid]["status"], conflicts[cid]["history"] = old["status"], old["history"]
+        else:
+            kept = copy.deepcopy(old)
+            kept["detected"] = False
+            conflicts[cid] = kept
+    if decisions_path:
+        for n, r in enumerate(read_csv(decisions_path, "decisions", ("conflict_id", "status", "by", "on", "note")), 2):
+            cid = r["conflict_id"]
+            if cid not in conflicts:
+                raise InputError(f"decisions line {n}: unknown conflict {cid}")
+            if r["status"] not in CONFLICT_STATUSES or not r["by"] or not r["on"]:
+                raise InputError(f"decisions line {n}: status open/disputed/resolved with by and on is required")
+            rec = {k: r[k] for k in ("status", "by", "on", "note")}
+            if rec not in conflicts[cid]["history"]:
+                conflicts[cid]["history"].append(rec)
+                conflicts[cid]["status"] = r["status"]
+    return conflicts
+
+
+def conflict_nodes(m):
+    for cid, c in sorted(m.conflicts.items()):
+        nid = qid(m.cfg["site"], "CONFLICT", cid)
+        n = mk_node(nid, "conflict", cid, c["what"], c["source_a"]["source"], conflict=c)
+        m.nodes[nid] = n
+        if c["subject"] in m.nodes:
+            m.edges[f"concerns:{nid}"] = mk_edge("concerns", nid, c["subject"], c["source_a"]["source"])
+        else:
+            n["subject_not_on_map"] = c["subject"]
+
+
+# ---------------------------------------------------------------- review queues: people review disagreements
+
+def spot_check(item, every):
+    return "sample" if every and int(hashlib.sha256(item.encode("utf-8")).hexdigest()[:8], 16) % every == 0 else ""
+
+
+def queue_rows(m):
+    """Red: open/disputed conflicts. Amber: review items, partly located / not found loops and safety-relevant
+    matches (the floor). Green: list items located on a drawing with nothing disagreeing, and loops located and
+    consistent; a deterministic sample of them is flagged for spot-check instead of full review."""
+    cfg = m.cfg
+    rows = []
+    for cid, c in sorted(m.conflicts.items()):
+        if c["status"] == "resolved":
+            continue
+        plant, unit = scope_of(c["subject"], cfg)
+        subj = m.nodes.get(c["subject"]) or {}
+        rows.append({"tier": "red", "owner": c["record_owner"], "plant": plant, "unit": unit,
+                     "item": qid(cfg["site"], "CONFLICT", cid), "kind": "conflict: " + c["type"],
+                     "why": f"{c['what']} ({c['status']}{'' if c['detected'] else ', no longer detected'})",
+                     "safety": safety_of(subj["tag"]) if subj.get("tag") else ""})
+    for r in m.review:
+        plant, unit = scope_of(r["item"], cfg)
+        rows.append({"tier": "amber", "owner": r["owner"], "plant": plant, "unit": unit, "item": r["item"],
+                     "kind": r["kind"], "why": r["why"], "safety": ""})
+    conflicted = {c["subject"] for c in m.conflicts.values() if c["status"] != "resolved"}
+    for lp in m.loops:
+        plant, unit = scope_of(lp["item"], cfg)
+        safety = safety_of(lp["output"])
+        ok = lp["outcome"] == "located and consistent" and lp["item"] not in conflicted
+        rows.append({"tier": "green" if ok and not safety else "amber", "owner": lp["route"] if not ok else
+                     cfg["owners"].get("loop_list") or "needs owner", "plant": plant, "unit": unit,
+                     "item": f"loop {lp['controller']} ({lp['loop_list']} line {lp['line']})", "kind": "listed loop",
+                     "why": (f"safety-relevant ({safety}): always checked; " if safety else "") + lp["outcome"]
+                     + (f" on {', '.join(lp['zones'] or lp['sheets'])}" if lp["sheets"] else "")
+                     + (": " + "; ".join(lp["missing"]) if lp["missing"] else ""), "safety": safety})
+    for nid, n in sorted(m.nodes.items()):
+        if not n.get("listed_in") or not n.get("appearances") or nid in conflicted:
+            continue
+        plant, unit = scope_of(nid, cfg)
+        safety = n.get("safety", "")
+        where = ", ".join(f"{a['sheet']}" + (f":{a['zone']}" if a.get("zone") else "") for a in n["appearances"])
+        rows.append({"tier": "amber" if safety else "green", "owner": n.get("owner") or "needs owner",
+                     "plant": plant, "unit": unit, "item": nid, "kind": n["kind"],
+                     "why": (f"safety-relevant ({safety}): always checked; " if safety else "")
+                     + f"listed in {', '.join(n['listed_in'])}; located on {where}", "safety": safety})
+    rows.sort(key=lambda r: (TIER_ORDER[r["tier"]], 0 if r["safety"] else 1, r["kind"], r["item"]))
+    for i, r in enumerate(rows, 1):
+        r["rank"] = i
+        r["spot_check"] = spot_check(r["item"], cfg["sample_every"]) if r["tier"] == "green" else ""
+    return rows
+
+
+def floor_problems(rows, safety_col="safety", tier_col="tier", why_cols=()):
+    """The safety floor survives the split: no safety-relevant row is green."""
+    bad = []
+    for r in rows:
+        marked = r.get(safety_col) or any("safety-relevant" in (r.get(c) or "") for c in why_cols)
+        if marked and r.get(tier_col) == "green":
+            bad.append(r.get("item") or r.get("item_id"))
+    return bad
+
+
+def split(rows, key):
+    """Order-preserving split: each part keeps the global risk order (and its safety floor)."""
+    out = defaultdict(list)
+    for r in rows:
+        out[r.get(key) or "unassigned"].append(r)
+    slugs = defaultdict(set)
+    for k in out:
+        slugs[slug(k)].add(k)
+    clash = {s: sorted(ks) for s, ks in slugs.items() if len(ks) > 1}
+    if clash:
+        raise InputError(f"split values collide as file names: {clash}")
+    return dict(sorted(out.items()))
+
+
+def csv_text(cols, rows):
+    buf = io.StringIO(newline="")
+    w = csv.writer(buf, lineterminator="\n")
+    w.writerow(cols)
+    for r in rows:
+        w.writerow([r.get(c, "") for c in cols])
+    return buf.getvalue()
+
+
+# ---------------------------------------------------------------- checks and reports
+
+ONE_MAP_KINDS = ("site", "unit", "scope", "document", "conflict")
+ONE_MAP_EDGES = ("covers", "mentions", "based_on", "references", "signal_line", "concerns")
+
+
+def problems(g):
+    """twin-graph-2 = every twin-graph-1 rule (graph_export.problems, unchanged) plus the one-map rules. The one-map
+    kinds and edge types are mapped onto twin-graph-1 vocabulary with no special rules for that check only, so
+    graph_export.py itself (whose bytes other reports pin) stays untouched and keeps refusing twin-graph-2."""
+    if g.get("schema") != SCHEMA:
+        return gx.problems(g)
+    base = dict(g, schema=gx.SCHEMA,
+                nodes=[dict(n, kind="plant") if n.get("kind") in ONE_MAP_KINDS else n for n in g.get("nodes", [])],
+                edges=[dict(e, type="acts_on") if e.get("type") in ONE_MAP_EDGES else e for e in g.get("edges", [])])
+    out = gx.problems(base)
+    nodes = {n["id"]: n for n in g.get("nodes", [])}
+    site = [n for n in nodes.values() if n["kind"] == "site"]
+    if len(site) != 1:
+        out.append(f"a one-map graph has exactly one site node (found {len(site)})")
+    parents = defaultdict(list)
+    for e in g.get("edges", []):
+        if e["type"] == "contains":
+            parents[e["to"]].append(e["from"])
+        if e["type"] == "mentions":
+            miss = {"file", "locator", "matched_text", "confidence"} - {c["name"] for c in e.get("attributes", [])}
+            if miss:
+                out.append(f"edge {e['id']}: a mention needs {', '.join(sorted(miss))}")
+        if e["type"] == "based_on" and not any(c["name"] == "revision" for c in e.get("attributes", [])):
+            out.append(f"edge {e['id']}: based_on needs the revision it is based on")
+        if e["type"] in ("covers", "mentions", "based_on") and nodes.get(e["from"], {}).get("kind") != "document":
+            out.append(f"edge {e['id']}: {e['type']} must start at a document")
+    for nid, n in nodes.items():
+        if site and n["kind"] != "site" and not nid.startswith(site[0]["id"] + "/"):
+            out.append(f"node {nid}: id is not qualified by the site ({site[0]['id']}/...)")
+        if n["kind"] == "system" and len(parents[nid]) != 1:
+            out.append(f"node {nid}: a system has exactly one owning scope (found {len(parents[nid])})")
+        if n["kind"] == "document":
+            d = n.get("document") or {}
+            if d.get("status") not in DOC_STATUSES or not d.get("owner") or not d.get("revision"):
+                out.append(f"node {nid}: a document needs revision, owner and status draft|released")
+        if n["kind"] == "conflict":
+            c = n.get("conflict") or {}
+            if (c.get("status") not in CONFLICT_STATUSES or not c.get("record_owner")
+                    or c.get("type") not in CONFLICT_TYPES):
+                out.append(f"node {nid}: a conflict needs a known type, a record owner and status open|disputed|resolved")
+            for side in ("source_a", "source_b"):
+                if not isinstance((c.get(side) or {}).get("source"), dict):
+                    out.append(f"node {nid}: {side} needs its source")
+    return out
+
+
+def report_md(g, run, groups, reopened, loops_, uncovered):
+    nodes, edges = g["nodes"], g["edges"]
+    kinds, types = defaultdict(int), defaultdict(int)
+    for n in nodes:
+        kinds[n["kind"]] += 1
+    for e in edges:
+        types[e["type"]] += 1
+    conf = [n["conflict"] for n in nodes if n["kind"] == "conflict"]
+    by_owner = defaultdict(lambda: defaultdict(int))
+    for c in conf:
+        by_owner[c["record_owner"]][c["type"]] += 1
+    listed = [n for n in nodes if n.get("listed_in")]
+    lines = ["# One map: run report", "",
+             f"Generated by `scripts/one_map.py build`. Schema `{SCHEMA}`. Structured lists come first, drawings "
+             "locate and connect, people review disagreements. Fictional example data only; no item is verified by "
+             "this run.", "",
+             f"Sheets rebuilt: {len(run['rebuilt'])} ({', '.join(run['rebuilt']) or 'none'}); reused unchanged: "
+             f"{len(run['reused'])}; removed from the register: {len(run['removed'])}.", "",
+             f"Listed items: {len(listed)}; located on a drawing: {sum(1 for n in listed if n['appearances'])}; "
+             f"drawn but not listed: {sum(1 for n in nodes if n.get('listed_in') == [])}.", ""]
+    if uncovered:
+        lines += ["Units with listed items but no registered sheet yet (not reported as missing): "
+                  + ", ".join(f"{k} ({v})" for k, v in uncovered.items()) + ".", ""]
+    lines += ["## Nodes and edges", "", "| Node kind | Count |", "|---|---|"]
+    lines += [f"| {k} | {v} |" for k, v in sorted(kinds.items())]
+    lines += ["", "| Edge type | Count |", "|---|---|"] + [f"| {k} | {v} |" for k, v in sorted(types.items())]
+    lines += ["", "## Conflicts by record owner", "", "| Owner | Type | Count |", "|---|---|---|"]
+    for o in sorted(by_owner):
+        for t in sorted(by_owner[o]):
+            lines.append(f"| {o} | {t} | {by_owner[o][t]} |")
+    lines += ["", "## Listed loops located on the drawings", "",
+              "| Loop list | Controller | Measurement | Output | Outcome | Where | Routed to | Missing |",
+              "|---|---|---|---|---|---|---|---|"]
+    for lp in loops_:
+        lines.append(f"| {lp['loop_list']} line {lp['line']} | {lp['controller']} | {lp['measurement']} | "
+                     f"{lp['output']} | {lp['outcome']} | {', '.join(lp['zones'] or lp['sheets']) or '-'} | "
+                     f"{lp['route'] if lp['outcome'] != 'located and consistent' else 'spot-check'} | "
+                     f"{'; '.join(lp['missing']) or '-'} |")
+    lines += ["", "## Loop-number groups on the drawings (secondary; compared with the list, never asserted)", ""]
+    for scope, rep in sorted(groups.items()):
+        for gr in rep:
+            lines.append(f"- {scope} loop {gr['loop']}: {', '.join(gr['members'])}"
+                         + (f" ({gr['note']})" if gr["note"] else ""))
+    lines += ["", "## Reopened by a basis change", ""]
+    lines += [f"- {r}" for r in reopened] or ["- none on this run"]
+    return "\n".join(lines) + "\n"
+
+
+def conflicts_md(conf):
+    lines = ["# Conflicts, routed to the owner of the record", "",
+             "Each conflict keeps what both sources say. None is resolved by software; a person records a decision "
+             "(`--decisions`).", ""]
+    by_owner = defaultdict(list)
+    for c in conf:
+        by_owner[c["record_owner"]].append(c)
+
+    def cell(s):
+        src = s["source"]
+        where = src.get("document") or src.get("kind")
+        loc = src.get("locator") or (f"sheet {src['sheet']}" + (f" zone {src['zone']}" if src.get("zone") else "")
+                                     if src.get("sheet") else "")
+        return f"{s['says']} ({where}{', ' + loc if loc else ''})".replace("|", "/")
+    for o in sorted(by_owner):
+        lines += [f"## {o}", "", "| Id | Type | Status | About | Source A says | Source B says |",
+                  "|---|---|---|---|---|---|"]
+        for c in sorted(by_owner[o], key=lambda c: (c["type"], c["id"])):
+            lines.append(f"| {c['id']} | {c['type']} | {c['status']}{'' if c['detected'] else ' (not detected now)'} "
+                         f"| {c['subject']} {c['attribute']} | {cell(c['source_a'])} | {cell(c['source_b'])} |")
+        lines.append("")
+    return "\n".join(lines)
+
+
+# ---------------------------------------------------------------- build (incremental)
+
+def assemble(cfg, register, fragments):
+    """The one assembly both starts share: path A (lists first) and path B (drawings only) differ only in which
+    lists exist; the map, conflicts and queues come from the same steps."""
+    m = Map(cfg)
+    hierarchy(m)
+    lists = load_lists(m)
+    uncovered = place_fragments(m, register, fragments, lists)
+    pair_offpage(m, fragments)
+    groups = loops(m, lists)
+    docs = documents(m, cfg, lists)
+    return m, lists, uncovered, groups, docs
+
+
+# ---------------------------------------------------------------- path B: draft lists generated from drawings
+
+LIST_COLS = ("tag", "plant", "unit", "system", "kind", "description", "status", "review_tier", "how_found",
+             "located_on")
+LOOP_COLS = ("controller", "measurement", "output", "description", "status", "review_tier", "how_found",
+             "confidence", "located_on")
+
+
+def where(n):
+    return " ".join(f"{a['sheet']}" + (f":{a['zone']}" if a.get("zone") else "") for a in n.get("appearances", []))
+
+
+def draft_lists(site_path, out_dir, scopes=None):
+    """Start from drawings: write draft equipment list, instrument index and loop list per scope in the same formats
+    the import path reads (loop lists keep loop_audit.py's contract). Only scopes no list covers are drafted unless
+    --scope names them. Every row is status unverified, tiered for review with the safety floor (never green)."""
+    cfg = load_site(site_path)
+    register = load_register(cfg)
+    fragments = {r["doc"]: sheet_fragment(cfg, r) for r in register}
+    m, lists, _, _, _ = assemble(cfg, register, fragments)
+    sheet_scopes = sorted({f["scope"] for f in fragments.values()})
+    dup = {r["item"] for r in m.review if r["kind"] == "duplicate tag"}
+    loop_scopes = {spec.get("scope") for spec in cfg["raw"].get("loop_lists") or []}
+    head = ("# DRAFT generated from drawings by one_map.py draft-lists. Status stays unverified until a person "
+            "reviews each row;\n# once reviewed it is an ordinary list: set status and add it to the site file.\n")
+    files, counts = {}, {}
+    for scope in sheet_scopes:
+        if scopes and scope not in scopes:
+            continue
+        plant, unit = scope_of(scope, cfg) if scope.count("/") > 1 else (scope.split("/")[1], "")
+        folder = slug(f"{plant}-{unit}" if unit else plant)
+        for record, name in (("maintenance_export", "equipment.csv"), ("instrument_index", "instrument_index.csv")):
+            if not scopes and covering(lists, record, scope):
+                continue
+            rows = []
+            for nid, n in sorted(m.nodes.items()):
+                if n.get("scope") != scope or n.get("listed_in") != [] or list_for(n["kind"]) != record:
+                    continue
+                tier = "amber" if n.get("safety") or nid in dup else "green"
+                rows.append({"tag": n["tag"], "plant": plant, "unit": unit, "system": "", "kind": n["kind"],
+                             "description": n.get("name") or "", "status": "unverified", "review_tier": tier,
+                             "how_found": "drawing" + (", safety-relevant (" + n["safety"] + "): always checked"
+                                                       if n.get("safety") else ""), "located_on": where(n)})
+            if rows:
+                rows.sort(key=lambda r: (TIER_ORDER[r["review_tier"]], r["tag"]))
+                files[f"{folder}/{name}"] = head + csv_text(LIST_COLS, rows)
+                counts[f"{folder}/{name}"] = len(rows)
+        if not unit or (not scopes and scope in loop_scopes):
+            continue
+        members = {nid: n["tag"] for nid, n in m.nodes.items() if n.get("scope") == scope and n.get("appearances")
+                   and n["kind"] in ("instrument", "controller", "final_element")}
+        sig = {frozenset((e["from"], e["to"])) for e in m.edges.values() if e["type"] == "signal_line"
+               and e["from"] in members and e["to"] in members}
+        cands, _ = loop_candidates(members, sig)
+        rows, notes = [], []
+        for ctl, c in cands.items():
+            tag = m.nodes[ctl]["tag"]
+            if len(c["in"]) != 1 or len(c["out"]) != 1:
+                notes.append(f"# not written as a loop, needs review: {tag} measurement candidates "
+                             f"[{', '.join(sorted(m.nodes[x]['tag'] for x in c['in']))}], output candidates "
+                             f"[{', '.join(sorted(m.nodes[x]['tag'] for x in c['out']))}]\n")
+                continue
+            (mi, h_in), (out, h_out) = next(iter(c["in"].items())), next(iter(c["out"].items()))
+            both = h_in == h_out == {"loop_number", "signal_line"}
+            safety = safety_of(m.nodes[out]["tag"])
+            how = "+".join(sorted(h_in | h_out))
+            rows.append({"controller": tag, "measurement": m.nodes[mi]["tag"], "output": m.nodes[out]["tag"],
+                         "description": "", "status": "unverified",
+                         "review_tier": "green" if both and not safety else "amber", "how_found": how,
+                         "confidence": ("loop number and drawn signal lines agree" if both else
+                                        f"measurement: {'+'.join(sorted(h_in))}; output: {'+'.join(sorted(h_out))}"),
+                         "located_on": where(m.nodes[ctl])})
+        if rows or notes:
+            rows.sort(key=lambda r: (TIER_ORDER[r["review_tier"]], r["controller"]))
+            files[f"{folder}/loops.csv"] = head + "".join(notes) + csv_text(LOOP_COLS, rows)
+            counts[f"{folder}/loops.csv"] = len(rows)
+    out_dir = Path(out_dir)
+    for rel, text in files.items():
+        path = out_dir / rel
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(text, encoding="utf-8", newline="\n")
+    return counts
+
+
+def build(site_path, out_dir, *, full=False, decisions=None, register_path=None):
+    cfg = load_site(site_path)
+    out_dir = Path(out_dir)
+    state_path = out_dir / "state.json"
+    prev = read_json(state_path, "state") if state_path.exists() and not full else {}
+    if prev and prev.get("schema") != STATE_SCHEMA:
+        raise InputError(f"{state_path}: not a {STATE_SCHEMA} file")
+    code = sha_bytes(Path(__file__).read_bytes().replace(bytes([13, 10]), bytes([10])))
+    cached = (prev.get("sheets") or {}) if prev.get("code") == code else {}  # new parsing code: re-read every sheet
+    register = load_register(cfg)
+    fragments, run = {}, {"rebuilt": [], "reused": [], "removed": []}
+    for row in register:
+        old = cached.get(row["doc"])
+        sha = sha_bytes(row["path"].read_bytes())
+        if (old and old["rev"] == row["rev"] and old["sha256"] == sha and old.get("plant") == row["plant"]
+                and old.get("unit") == row["unit"] and old.get("owner") == row["owner"]):
+            fragments[row["doc"]] = old["fragment"]
+            run["reused"].append(row["doc"])
+        else:
+            fragments[row["doc"]] = sheet_fragment(cfg, row)
+            run["rebuilt"].append(row["doc"])
+    run["removed"] = sorted(set(prev.get("sheets") or {}) - set(fragments))
+    m, lists, uncovered, groups, docs = assemble(cfg, register, fragments)
+    # reopen: a document whose own revision/bytes changed reopens everything based on it, transitively
+    reopened = []
+    old_docs = prev.get("documents") or {}
+    current = dict(docs, **{r["doc"]: {"revision": r["rev"], "sha256": fragments[r["doc"]]["sha256"]}
+                            for r in register})
+    changed = sorted(d for d in current if d in old_docs and old_docs[d] != current[d])
+    dependents = defaultdict(set)
+    for e in m.edges.values():
+        if e["type"] == "based_on":
+            dependents[e["to"].rsplit("/", 1)[1]].add(e["from"].rsplit("/", 1)[1])
+    seen, todo = set(), list(changed)
+    while todo:
+        d = todo.pop(0)
+        for dep in sorted(dependents[d]):
+            if dep not in seen:
+                seen.add(dep)
+                todo.append(dep)
+                why = (f"rev {old_docs[d]['revision']} -> {current[d]['revision']}" if d in old_docs
+                       else "it changed upstream")
+                reopened.append(f"document {dep}: its basis {d} changed ({why})")
+    if register_path:
+        reg = read_json(register_path, "context register")
+        try:
+            cr.validate_register(reg)
+        except cr.InputError as exc:
+            raise InputError(str(exc)) from None
+        hit = set(changed) | seen
+        by_id = {r["id"]: r for r in reg["decisions"]}
+        for q, cur in sorted((reg.get("current") or {}).items()):
+            for a in cur.get("answers", []):
+                rec = by_id.get(a["decision_id"])
+                if rec and rec["evidence"]["source"]["id"] in hit:
+                    reopened.append(f"answer {q}/{a['answer_id']}: cites {rec['evidence']['source']['id']}, whose "
+                                    "content or basis changed; reopen it with context_register.py apply")
+    reopened = sorted(set(reopened))
+    m.conflicts = apply_decisions(m.conflicts, prev.get("conflicts"), decisions)
+    conflict_nodes(m)
+    nodes = [m.nodes[k] for k in sorted(m.nodes)]
+    edges = [m.edges[k] for k in sorted(m.edges)]
+    g = {"schema": SCHEMA, "model_kind": "one_map", "title": cfg["site_name"], "site": cfg["site"],
+         "source_model": cfg["path"].name, "nodes": nodes, "edges": edges, "questions": [], "events": [],
+         "not_exported": [], "loops": m.loops,
+         "counts": {"nodes": len(nodes), "edges": len(edges),
+                    "claims": sum(len(n["attributes"]) for n in nodes) + sum(len(e.get("attributes", [])) for e in edges),
+                    "conflicts": len(m.conflicts), "questions": 0, "events": 0}}
+    bad = problems(g)
+    if bad:
+        raise InputError("the assembled map fails its own check: " + "; ".join(bad[:10]))
+    rows = queue_rows(m)
+    floor = floor_problems(rows)
+    if floor:
+        raise InputError(f"safety floor broken for {floor}")
+    files = {"graph.json": json.dumps(g, indent=1, ensure_ascii=False) + "\n",
+             "conflicts.md": conflicts_md(list(m.conflicts.values())),
+             "report.md": report_md(g, run, groups, reopened, m.loops, uncovered),
+             "queues/review_queue.csv": csv_text(QUEUE_COLS, rows)}
+    unit_rows = [dict(r, unit_scope=f"{r['plant']}-{r['unit']}" if r["unit"] else (r["plant"] or "site")) for r in rows]
+    for folder, rs_, key in (("by-owner", rows, "owner"), ("by-plant", [dict(r, plant=r["plant"] or "site")
+                                                                         for r in rows], "plant"),
+                             ("by-unit", unit_rows, "unit_scope")):
+        for k, rs in split(rs_, key).items():
+            files[f"queues/{folder}/{slug(k)}.csv"] = csv_text(QUEUE_COLS, rs)
+    state = {"schema": STATE_SCHEMA, "code": code,
+             "sheets": {r["doc"]: {"rev": r["rev"], "sha256": fragments[r["doc"]]["sha256"], "plant": r["plant"],
+                                   "unit": r["unit"], "owner": r["owner"], "fragment": fragments[r["doc"]]}
+                        for r in register},
+             "documents": current, "conflicts": m.conflicts}
+    files["state.json"] = json.dumps(state, indent=1, ensure_ascii=False, sort_keys=True) + "\n"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    if (out_dir / "queues").exists():
+        for p in (out_dir / "queues").rglob("*.csv"):
+            if p.relative_to(out_dir).as_posix() not in files:
+                p.unlink()
+    for rel, text in files.items():
+        p = out_dir / rel
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(text, encoding="utf-8", newline="\n")
+    return g, run, rows, reopened
+
+
+# ---------------------------------------------------------------- loop candidates on an existing twin-graph-1 graph
+
+def loops_from_graph(graph_path):
+    g = read_json(graph_path, "graph")
+    kind = {n["id"]: n for n in g.get("nodes", [])}
+    parent = {}
+    for e in g.get("edges", []):
+        if e["type"] == "contains":
+            parent[e["to"]] = e["from"]
+    def scope(nid):  # climb item parents (an instrument contained by its valve) to the sheet's system/unit/plant
+        seen = set()
+        while nid in parent and nid not in seen and kind.get(nid, {}).get("kind") not in SCOPE_KINDS:
+            seen.add(nid)
+            nid = parent[nid]
+        return nid if kind.get(nid, {}).get("kind") in SCOPE_KINDS else "unplaced"
+    by_scope = defaultdict(dict)
+    for n in g.get("nodes", []):
+        if n["kind"] in ("instrument", "controller", "final_element") and n.get("tag"):
+            by_scope[scope(n["id"])][n["id"]] = n["tag"]
+    adj = defaultdict(set)
+    for e in g.get("edges", []):
+        if e["type"] in ("instrument_connection", "signal_line"):
+            adj[e["from"]].add(e["to"])
+            adj[e["to"]].add(e["from"])
+    signals = defaultdict(set)
+    for scope, members in by_scope.items():
+        for a in members:
+            seen, todo = {a}, [a]
+            while todo:  # through junctions only, never through another item
+                x = todo.pop()
+                for y in adj[x]:
+                    if y in seen:
+                        continue
+                    seen.add(y)
+                    if y in members and y != a:
+                        signals[scope].add(frozenset((a, y)))
+                    elif kind.get(y, {}).get("kind") == "junction":
+                        todo.append(y)
+    lines = [f"# Loop candidates from `{Path(graph_path).name}`", "",
+             "Generated by `scripts/one_map.py loops-from-graph`. Instruments are grouped by loop number only inside "
+             "their containing scope; letters decide the role (controller, measurement, final element). A candidate "
+             "needs a controller. Nothing here is a verified loop. Tags are read as printed; a duplicate printed "
+             "tag is listed twice.", ""]
+    total = 0
+    for scope in sorted(by_scope):
+        cands, report = loop_candidates(by_scope[scope], signals[scope])
+        roles = defaultdict(int)
+        for t in by_scope[scope].values():
+            lk = loop_key(t)
+            roles[(role_of(lk[0]) if lk else None) or "unclassified"] += 1
+        lines += [f"## Scope {scope}", "",
+                  f"{len(by_scope[scope])} instrument-like items: "
+                  + ", ".join(f"{k} {v}" for k, v in sorted(roles.items()))
+                  + f"; {sum(len(s) for s in [signals[scope]])} instrument-to-instrument signal paths.", "",
+                  "| Loop number | Members | Result |", "|---|---|---|"]
+        for gr in report:
+            lines.append(f"| {gr['loop']} | {', '.join(gr['members'])} | {gr['note'] or 'paired'} |")
+        flat = [(x, ctl, sorted(h)) for ctl, c in cands.items() for x, h in c["in"].items()]
+        flat += [(ctl, x, sorted(h)) for ctl, c in cands.items() for x, h in c["out"].items()]
+        total += len(flat)
+        lines += ["", f"Candidate pairings (to compare with a loop list, never asserted): {len(flat)}."]
+        lines += [f"- {kind[a]['tag']} -> {kind[b]['tag']} ({', '.join(h)})" for a, b, h in flat]
+        lines.append("")
+    return "\n".join(lines), total
+
+
+def split_existing(csv_path, by, out_dir):
+    text = Path(csv_path).read_text(encoding="utf-8-sig")
+    reader = csv.DictReader(io.StringIO(text))
+    cols, rows = reader.fieldnames, list(reader)
+    if by not in cols:
+        raise InputError(f"{csv_path}: no column {by!r} (columns: {', '.join(cols)})")
+    bad = floor_problems(rows, safety_col="__none__", why_cols=("why", "why_check_this"))
+    if bad:
+        raise InputError(f"safety floor broken in the input queue for {bad[:5]}")
+    parts = split(rows, by)
+    Path(out_dir).mkdir(parents=True, exist_ok=True)
+    for k, rs in parts.items():
+        (Path(out_dir) / f"{slug(k)}.csv").write_text(csv_text(cols, rs), encoding="utf-8", newline="\n")
+    return {k: len(v) for k, v in parts.items()}
+
+
+def main(argv=None):
+    ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    b = sub.add_parser("build", help="build or refresh the one map from a site file (incremental by sheet)")
+    b.add_argument("site")
+    b.add_argument("--out", required=True)
+    b.add_argument("--full", action="store_true", help="ignore the previous state and rebuild every sheet")
+    b.add_argument("--decisions", help="CSV of human conflict decisions: conflict_id,status,by,on,note")
+    b.add_argument("--register", help="a context_register.py context.json whose answers may reopen")
+    c = sub.add_parser("check", help="validate a one-map (twin-graph-2) graph")
+    c.add_argument("graph")
+    lg = sub.add_parser("loops-from-graph", help="loop candidates on an existing graph export")
+    lg.add_argument("graph")
+    lg.add_argument("--out")
+    d = sub.add_parser("draft-lists", help="start from drawings: write draft equipment/instrument/loop lists")
+    d.add_argument("site")
+    d.add_argument("--out", required=True)
+    d.add_argument("--scope", action="append", help="draft this scope even if a list covers it (repeatable)")
+    s = sub.add_parser("split-queue", help="split an existing review_queue.csv by a column, keeping its order")
+    s.add_argument("queue")
+    s.add_argument("--by", required=True)
+    s.add_argument("--out", required=True)
+    a = ap.parse_args(argv)
+    try:
+        if a.cmd == "build":
+            g, run, rows, reopened = build(a.site, a.out, full=a.full, decisions=a.decisions, register_path=a.register)
+            print(json.dumps(g["counts"]) + f" rebuilt {len(run['rebuilt'])} reused {len(run['reused'])} sheet(s); "
+                  f"{len(rows)} queue rows; {len(reopened)} reopened -> {a.out}")
+        elif a.cmd == "check":
+            g = read_json(a.graph, "graph")
+            bad = problems(g)
+            for x in bad:
+                print("FAIL:", x)
+            print(f"{a.graph}: {len(bad)} problem(s)")
+            return 1 if bad else 0
+        elif a.cmd == "draft-lists":
+            print(json.dumps(draft_lists(a.site, a.out, a.scope)) + f" -> {a.out}")
+        elif a.cmd == "loops-from-graph":
+            text, total = loops_from_graph(a.graph)
+            if a.out:
+                Path(a.out).write_text(text, encoding="utf-8", newline="\n")
+            print(f"{total} candidate edge(s)" + (f" -> {a.out}" if a.out else ""))
+        else:
+            counts = split_existing(a.queue, a.by, a.out)
+            print(json.dumps(counts))
+    except (InputError, OSError, json.JSONDecodeError, UnicodeDecodeError) as exc:
+        print(f"refused: {exc}", file=sys.stderr)
+        return 2
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

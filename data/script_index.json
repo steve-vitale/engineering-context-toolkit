@@ -91,6 +91,10 @@
       "kind": "tool",
       "guide": "examples/source-handoff/README.md"
     },
+    "scripts/one_map.py": {
+      "kind": "tool",
+      "guide": "docs/ONE_MAP.md"
+    },
     "scripts/loop_audit.py": {
       "kind": "tool",
       "guide": "examples/loop-audit/README.md"

@@ -1,0 +1,4 @@
+# DRAFT generated from drawings by one_map.py draft-lists. Status stays unverified until a person reviews each row;
+# once reviewed it is an ordinary list: set status and add it to the site file.
+controller,measurement,output,description,status,review_tier,how_found,confidence,located_on
+FIC-3101,FT-3101,FV-3101,,unverified,green,loop_number+signal_line,loop number and drawn signal lines agree,300-01:D2

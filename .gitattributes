@@ -167,3 +167,6 @@ data/te_pid_layout.json text eol=lf
 # Authored engineering-change sources and byte-bound selected text outputs use LF.
 /examples/engineering-change/** text eol=lf
 /examples/engineering-change/**/*.png -text
+
+# One-map example inputs are fingerprinted and its expected outputs compared byte for byte.
+/examples/one-map/** text eol=lf

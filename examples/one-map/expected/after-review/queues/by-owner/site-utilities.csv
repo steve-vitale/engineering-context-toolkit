@@ -1,0 +1,4 @@
+rank,tier,owner,plant,unit,item,kind,why,safety,spot_check
+1,red,Site utilities,,,S1/CONFLICT/C-faf476ece2,conflict: ambiguous_reference,"CW-N-01 names P-101 (line 5, column 27); the map has it in more than one scope and the document's covers do not choose; not asserted (open)",,
+8,red,Site utilities,P2,300,S1/CONFLICT/C-328949de42,conflict: boundary,the two ends of an off-page pair (P2 300-01 and UTIL CW-01) disagree on size (open),,
+9,red,Site utilities,UTIL,,S1/CONFLICT/C-993384f654,conflict: boundary,"sheet 300-01 claims to own shared system CW, which the site file gives to S1/UTIL; it stays with one owner (open)",,

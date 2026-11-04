@@ -1,0 +1,84 @@
+{
+ "schema": "one-map-site-1",
+ "note": "Fictional. Every site, plant, person, tag and document here is invented. Plant 1 and the site utilities start from lists (path A); Plant 2 starts from its drawings only (path B).",
+ "site": {
+  "id": "S1",
+  "name": "Riverbend site (fictional)"
+ },
+ "plants": [
+  {
+   "id": "P1",
+   "name": "Plant 1",
+   "owner": "Plant 1 operations",
+   "units": [
+    {
+     "id": "200",
+     "name": "Unit 200 feed"
+    }
+   ]
+  },
+  {
+   "id": "P2",
+   "name": "Plant 2",
+   "owner": "Plant 2 operations",
+   "units": [
+    {
+     "id": "300",
+     "name": "Unit 300 product"
+    }
+   ]
+  }
+ ],
+ "scopes": [
+  {
+   "id": "UTIL",
+   "name": "Site utilities",
+   "owner": "Site utilities"
+  }
+ ],
+ "shared_systems": [
+  {
+   "id": "CW",
+   "name": "Cooling water",
+   "owner_scope": "S1/UTIL"
+  }
+ ],
+ "record_owners": {
+  "pid": "Doc control",
+  "maintenance_export": "Maintenance",
+  "instrument_index": "I&C",
+  "loop_list": "I&C"
+ },
+ "routing": {
+  "superseded_basis": "document",
+  "ambiguous_reference": "document"
+ },
+ "drawing_register": "drawing_register.csv",
+ "maintenance_export": {
+  "id": "CMMS-EQUIPMENT",
+  "path": "lists/maintenance_equipment.csv",
+  "revision": "2026-10-01",
+  "scopes": [
+   "S1/P1",
+   "S1/UTIL"
+  ]
+ },
+ "instrument_index": {
+  "id": "INSTRUMENT-INDEX",
+  "path": "lists/instrument_index.csv",
+  "revision": "7",
+  "scopes": [
+   "S1/P1"
+  ]
+ },
+ "loop_lists": [
+  {
+   "id": "DCS-LOOPS-200",
+   "path": "lists/dcs_loops_unit200.csv",
+   "scope": "S1/P1/200",
+   "revision": "2026-09-30"
+  }
+ ],
+ "documents": "documents.json",
+ "spot_check_every": 4
+}

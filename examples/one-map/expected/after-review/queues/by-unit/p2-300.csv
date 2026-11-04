@@ -1,0 +1,8 @@
+rank,tier,owner,plant,unit,item,kind,why,safety,spot_check
+8,red,Site utilities,P2,300,S1/CONFLICT/C-328949de42,conflict: boundary,the two ends of an off-page pair (P2 300-01 and UTIL CW-01) disagree on size (open),,
+23,green,I&C,P2,300,S1/P2/300/FIC-3101,controller,listed in P2-INSTRUMENT-INDEX; located on 300-01:D2,,
+26,green,Maintenance,P2,300,S1/P2/300/P-101,equipment,listed in P2-EQUIPMENT-LIST; located on 300-01:B3,,
+27,green,Maintenance,P2,300,S1/P2/300/V-301,equipment,listed in P2-EQUIPMENT-LIST; located on 300-01:C2,,sample
+31,green,Maintenance,P2,300,S1/P2/300/FV-3101,final_element,listed in P2-EQUIPMENT-LIST; located on 300-01:D3,,
+37,green,I&C,P2,300,S1/P2/300/FT-3101,instrument,listed in P2-INSTRUMENT-INDEX; located on 300-01:D3,,
+39,green,I&C,P2,300,loop FIC-3101 (P2-LOOPS-300 line 4),listed loop,"located and consistent on 300-01:D2, 300-01:D3",,
