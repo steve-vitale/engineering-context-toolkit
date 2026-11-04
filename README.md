@@ -2,21 +2,24 @@
 
 [![tests](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml/badge.svg)](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml)
 
-**Turn your plant's existing records into engineering knowledge your team can build on.**
+**Open source tools for turning a plant's drawings and records into engineering context your team can check
+and build on, the start of a context graph for your plant.** Every item keeps a pointer back to the document,
+revision and location it came from.
 
-Start with selected records and one engineering question. Return a cited draft that separates what the records
-support from interpretations and missing evidence, then identifies the next reviewer and source-change trigger.
-That is a useful first contribution another engineer can continue.
+**Start here, no install.** Pick one engineering question and the few records that answer it, then follow the
+[first-question guide](examples/first-pilot/README.md) by hand or with company-approved Copilot. You end up with a
+short note that says what the records support, what's still unknown, and who should look next.
 
-**Try it without installing anything:** the [first-question guide](examples/first-pilot/README.md) gives a small
-fictional worked result, its original records and a prompt for manual review or company-approved Copilot.
-Substitute your permitted records when you understand the pattern. No model or process-data connection is needed.
+**When you need the plant's structure.** Turn a [P&ID image](examples/own-drawing/README.md), a
+[written process description](examples/from-description/README.md) or a [DEXPI export](examples/from-dexpi-xml/README.md)
+into a sourced draft asset model: the equipment, instruments and connections, each traced to its drawing, ready for
+an engineer to review.
 
-For work that needs plant structure, use your own P&IDs, process descriptions or supported DEXPI exports to build
-a sourced, reviewable draft model: the structural foundation of your plant's digital twin. Generate supported
-engineering outputs, investigate missing information, analyze selected process data, and retain the evidence and
-decisions behind the work. The [demo series](docs/DEMO_SERIES.md) connects these jobs without making every piece
-a prerequisite. Public tutorials teach what to substitute at your plant; case studies retain their own evidence.
+**Keep it current.** The [context register](docs/CONTEXT_REGISTER.md) keeps each answer tied to the documents it
+relied on. When one of them is revised, refreshing reopens the answers that depended on it.
+
+These are prototypes tested on public and fictional drawings. Outputs are drafts for engineering review, not plant
+truth. The [demo series](docs/DEMO_SERIES.md) shows how the pieces connect.
 
 For a team assignment, the [organization starting guide](docs/ORGANIZATION_START.md) distinguishes ready-to-run
 steps, source preparation and continuing ownership. [Dependencies](docs/DEPENDENCIES.md) vary by route.
