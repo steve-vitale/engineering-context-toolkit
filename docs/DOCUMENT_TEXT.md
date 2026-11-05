@@ -6,7 +6,8 @@ cannot see. `scripts/extract_text.py` reads the text inside those files and puts
 so a tag found in a document can be traced back to the exact page, table row, cell or slide.
 
 It is a reading step only. It does not decide what a tag means, match tags to the map, or change any source.
-The [one map](ONE_MAP.md) is the intended consumer: today it reads mentions from UTF-8 text documents only.
+The [one map](ONE_MAP.md) reads every document in its manifest through `extract_text.extract()` and matches tags
+piece by piece ([matching rules and statuses](ONE_MAP.md#the-two-halves)).
 
 ## Run it
 

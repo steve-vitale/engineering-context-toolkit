@@ -96,13 +96,48 @@ fingerprint. The registered P&ID sheets are documents too (`PID-P1-200-01` rev D
 | Edge | From | To | Means |
 |---|---|---|---|
 | `covers` | document | the smallest scope it is about (equipment, system, unit, plant or site) | declared in the document manifest by exact id; never guessed |
-| `mentions` | document | an item on the map | an exact tag, alias or site-qualified id found in the text; keeps file, locator (line, column), matched text and confidence |
+| `mentions` | document | an item on the map | a tag, former tag (alias) or site-qualified id found in the text; keeps file, locator, matched text, confidence and, for a format-only match, `matched: format-insensitive` |
 | `based_on` | document | another document | with the revision it was based on |
 
-A mention is asserted only when it is unambiguous: a tag unique on the map, a tag unique inside the document's
-`covers` scope, or a site-qualified id. A tag that exists in two scopes the document does not choose between becomes
-an `ambiguous_reference` conflict. Near misses (`P101` or `PSV 204` for `P-101`/`PSV-204`; `P-101` when the map has
-only `P-101A`; `P-101A` when the map has only `P-101`) become review items. Nothing is fuzzily matched.
+**Reading the documents.** Each document file is read by [`extract_text.py`](DOCUMENT_TEXT.md): PDF (text layer),
+Word, Excel, PowerPoint, HTML and plain text, as ordered pieces with a locator (`paragraph 2`, `table 1 row 2`,
+`sheet 'PM plan' cell A3`, `page 3`, `slide 4`, `line 7`). Tags are matched within each piece, and a mention's
+locator is the piece's locator plus the column, with the line inside the piece when the piece has more than one
+line: `paragraph 2, column 41`, `page 3, line 4, column 2`, `line 7, column 12` for a text file. The document node
+records what the reader returned (`document.text`: status, format, piece count, reader version).
+
+A document that was not fully read never stops the run. Its status becomes a low-priority **document text note**
+to the document's owner (amber, after every other amber row, beside the P&ID value notes):
+
+| Text status | What happened | The note asks for |
+|---|---|---|
+| `ok` with no text | the file holds no text | a check that this is the right file |
+| `partial` | some PDF pages have no text layer, or the text was cut at the character limit (the note says which) | an OCR copy of those pages or the rest of the document; mentions there are not on the map |
+| `needs OCR` | no page has a text layer (a scan) | an OCR copy; mentions on those pages are not on the map |
+| `needs dependency` | PDF text needs the optional `pypdf` package or a `pdftotext` program | installing one |
+| `unsupported` | legacy `.doc`/`.xls`/`.ppt`, RTF, password-protected or an unknown type | a conversion (the note names it) |
+| `error` | missing, corrupt, hostile or over a size limit | a readable copy |
+
+**Matching rules.** A mention is linked only when it names exactly one item:
+
+| What the text says | Example | Result |
+|---|---|---|
+| The tag or a former tag (`former_tag`) exactly, unique on the map | `P-102`, `FP-01` | `mentions`, confidence `exact, unique on the map` (or `via alias (former tag)`) |
+| An exact tag that exists in two scopes, one inside the document's `covers` | `P-101` in the Unit 300 check sheet | `mentions`, `exact in covered scope` |
+| A site-qualified id | `S1/P2/300/P-101` | `mentions`, `site-qualified exact` |
+| The same tag or former tag with other separators, spacing or case, matching exactly one item on the map | `PSV 204`, `TT2205`, `ft-2203`, `FP01` | `mentions` with `matched: format-insensitive` |
+| An exact tag in two scopes the `covers` do not choose between | a bare `P-101` in the site cooling water note | `ambiguous_reference` conflict to the document owner |
+| The same tag in another format, in more than one scope (even when the `covers` point to one) | `P101`, `P 101` in a Unit 200 procedure | review row `possible mention, confirm`, naming the candidates and the one the covers point to |
+| A suffix the map does not have, or a base tag when the map has only suffixed tags | `P-101A` (map: `P-101`); `TE2207` (map: `TE-2207A/B`) | review row `possible mention, confirm` |
+| A format-only match to one item outside the plant/unit of every `covers` scope | `P102` in a Unit 300 check sheet when only Unit 200 has P-102 | review row `possible mention, confirm` |
+| Lower-case letters followed by a space | `at 2207` | review row `possible mention, confirm` (it may be ordinary words) |
+| Upper-case tag-like text not on the map | `ISO 9001` | review row `mention` |
+| Lower-case text that is no map tag | `page 12`, `unit 200` | nothing |
+
+Format-insensitive means only hyphens, spaces, underscores and letter case are ignored. Digits and suffix letters
+must agree exactly, so `P101` never reaches `P-1010` or `P-101A`, and `TT2205` never reaches `TE-2205`. When one
+document names the same item both ways, its edge keeps the exact mention's locator and lists the others under
+`more_locators`. The matching is deterministic: the same files give the same links in the same order.
 
 ## Inputs
 
@@ -114,7 +149,7 @@ only `P-101A`; `P-101A` when the map has only `P-101`) become review items. Noth
 | Datasheets | CSV `tag,plant,unit` plus value columns | ratings, sizes, materials (see the authority map) |
 | Sheet index | CSV `sheet,rev,plant,unit,owner,path[,status]` | which P&ID sheets exist, their revisions, units and owners |
 | Sheet reads | `one-map-sheet-1` JSON per sheet: tags with zone/box, lines, signal lines, off-page connectors, `untagged` | what each P&ID sheet shows; written by `sheet-from-prediction` or by hand |
-| Documents | a [context register](CONTEXT_REGISTER.md) `context-sources-1` manifest plus `owner`, `status`, `covers`, `based_on` | the document half |
+| Documents | a [context register](CONTEXT_REGISTER.md) `context-sources-1` manifest plus `owner`, `status`, `covers`, `based_on`; the files may be PDF, Word, Excel, PowerPoint, HTML or plain text ([DOCUMENT_TEXT.md](DOCUMENT_TEXT.md)) | the document half |
 
 ### Converting a reader's prediction (step 1)
 
@@ -290,8 +325,12 @@ document are listed to reopen; the register's own refresh then marks them stale.
   from the site file, needs an explicit mapping first; the tool does not guess one.
 - The graph is `twin-graph-2`; tools that read only `twin-graph-1` (`graph_export.py --check`, context register,
   snapshot) do not read it yet.
-- Mentions match upper-case tags with two or more digits; lower-case or differently punctuated tags are review
-  items or are missed. Paths in the register and site file are relative to that file's folder.
+- Mentions need one to five letters and two to five digits. Format-insensitive matching ignores only hyphens,
+  spaces, underscores and case: a leading zero (`P-0101`), a unit-qualified form (`200-P-101`, `P1-P-101`), a
+  letter inside the number or a tag split across two pieces of a document is missed, and a former tag reused for a
+  different item makes both a review row. Columns count from the first non-blank character of the piece the reader
+  returned. Scanned PDFs are not read (a document text note asks for OCR). Paths in the register and site file are
+  relative to that file's folder.
 
 ## For agents
 
@@ -304,6 +343,11 @@ inputs: site.json (one-map-site-1) -> sheet index (drawing_register), sheet read
         (context-sources-1 + owner/status/covers/based_on); optional authority and fact_kinds maps
 path:   read P&IDs (sheet-from-prediction) -> line up against the records -> drafts where none exist (draft-lists)
         -> values: datasheet vs records under the authority map -> review queue, safety first -> re-read changed sheets
+docs:   documents are read by extract_text.py (PDF, Word, Excel, PowerPoint, HTML, text); mention locator =
+        "<piece locator>[, line N], column C"; non-ok text status -> "document text note" to the document owner
+match:  exact tag/alias/site id -> link; format-only (separators/case) and unique on the map -> link with
+        matched=format-insensitive; same normalized tag in 2+ scopes, suffix near miss, lower-case + space ->
+        "possible mention, confirm" review row
 never:  asserts an ambiguous or near-miss mention; asserts a loop from P&IDs; groups across units; treats a P&ID
         value as a value conflict; resolves a conflict; renumbers a tag; gives a shared system two owners
 zones:  scripts/sheet_zone.py: ROW-COL, default 8x12, A at the bottom, 1 at the right, box centre, over --zone-frame

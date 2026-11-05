@@ -1,3 +1,2 @@
 rank,tier,owner,plant,unit,item,kind,why,safety,spot_check
-19,amber,Operations,,,S1/DOC/OP-200-07,mention,"near miss (spelling differs from the map): 'P101' at line 6, column 10 (map has S1/P1/200/P-101, S1/P2/300/P-101); not asserted",,
-20,amber,Operations,,,S1/DOC/OP-200-07,mention,"near miss (spelling differs from the map): 'PSV 204' at line 7, column 12 (map has S1/P1/200/PSV-204); not asserted",,
+19,amber,Operations,,,S1/DOC/OP-200-07,"possible mention, confirm","same tag in another format, in more than one scope: 'P101' at line 6, column 10 (map has S1/P1/200/P-101, S1/P2/300/P-101); the document's covers point to S1/P1/200/P-101; not asserted",,

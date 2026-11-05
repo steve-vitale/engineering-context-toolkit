@@ -6,6 +6,7 @@ Usage:  python -m unittest scripts/test_one_map.py      (or python scripts/test_
 """
 import contextlib
 import csv
+import importlib.util
 import io
 import json
 import shutil
@@ -55,7 +56,7 @@ class OneMapExample(unittest.TestCase):
         quiet(om.draft_lists, EX / "inputs" / "site.json", self.dir / "drafts")
         text, _ = om.loops_from_graph(ROOT / "examples" / "graph-export" / "sheet0_graph.json")
         (self.dir / "open100-sheet0-loops.md").write_text(text, encoding="utf-8", newline="\n")
-        for exp in sorted(p for p in EXPECTED.rglob("*") if p.is_file()):
+        for exp in sorted(p for p in EXPECTED.rglob("*") if p.is_file() and "office" not in p.parts):
             rel = exp.relative_to(EXPECTED)
             got = self.dir / rel
             self.assertTrue(got.exists(), rel)
@@ -195,9 +196,12 @@ class OneMapExample(unittest.TestCase):
         self.assertEqual([c["record_owner"] for c in self.conflicts("ambiguous_reference")], ["Site utilities"])
         for key in m.values():
             self.assertTrue({"file", "locator", "matched_text", "confidence"} <= set(key))
-        whys = " ".join(r["why"] for r in self.rows if r["kind"] == "mention")
-        for near in ("'P101'", "'PSV 204'", "'P-101A'"):
+        whys = " ".join(r["why"] for r in self.rows if r["kind"] == om.CONFIRM)
+        for near in ("'P101'", "'P-101A'"):  # P101: Unit 200 and Unit 300 both have P-101; P-101A: suffix nowhere
             self.assertIn(near, whys)
+        psv = m[("S1/DOC/OP-200-07", "S1/P1/200/PSV-204")]  # 'PSV 204' is one map tag in another style
+        self.assertEqual((psv["matched_text"], psv["matched"]), ("PSV 204", "format-insensitive"))
+        self.assertNotIn("matched", m[("S1/DOC/OP-200-07", "S1/P1/200/P-102")])  # exact links carry no flag
 
     def test_match_mentions_false_positive_guards(self):
         exact = {"P-101": {("S1/A/1/P-101", "tag")}, "P-101A": {("S1/A/1/P-101A", "tag")}}
@@ -209,6 +213,47 @@ class OneMapExample(unittest.TestCase):
         kinds = {f["matched_text"]: f["kind"] for f in findings}
         self.assertEqual(kinds["P-101B"], "near miss (suffix not on the map)")
         self.assertNotIn("ID 200", kinds)
+
+    def test_format_insensitive_links_only_one_map_tag(self):
+        exact = {"P-101": {("S1/A/1/P-101", "tag")}, "P-1010": {("S1/A/1/P-1010", "tag")},
+                 "TT-2207": {("S1/A/1/TT-2207", "tag")}, "FP-01": {("S1/A/1/P-101", "alias (former tag)")},
+                 "AT-2207": {("S1/A/1/AT-2207", "tag")}}
+        by_norm = {"P101": {"S1/A/1/P-101"}, "P1010": {"S1/A/1/P-1010"}, "TT2207": {"S1/A/1/TT-2207"},
+                   "FP01": {"S1/A/1/P-101"}, "AT2207": {"S1/A/1/AT-2207"}}
+        nodes = {i: {"tag": i.rsplit("/", 1)[1]} for ids in by_norm.values() for i in ids}
+        text = "Start P101, P 101 and p-101; TT2207 high; old tag FP01; P-1010 is another pump; at 2207 hours; P1010."
+        asserted, findings = om.match_mentions(text, exact, by_norm, {}, [], nodes)
+        got = [(a["matched_text"], a["node"], a.get("matched")) for a in asserted]
+        self.assertEqual(got, [
+            ("P101", "S1/A/1/P-101", "format-insensitive"), ("P 101", "S1/A/1/P-101", "format-insensitive"),
+            ("p-101", "S1/A/1/P-101", "format-insensitive"), ("TT2207", "S1/A/1/TT-2207", "format-insensitive"),
+            ("FP01", "S1/A/1/P-101", "format-insensitive"), ("P-1010", "S1/A/1/P-1010", None),
+            ("P1010", "S1/A/1/P-1010", "format-insensitive")])  # P-101 and P-1010 never cross
+        self.assertIn("via alias (former tag)", asserted[4]["confidence"])
+        # 'at 2207' (lower-case letters and a space) could be prose: confirm, never link
+        self.assertEqual([(f["matched_text"], f["kind"], f.get("confirm")) for f in findings],
+                         [("at 2207", "lower-case letters and a space; could be ordinary words", True)])
+        # ordinary lower-case words that are no map tag are not findings at all
+        self.assertEqual(om.match_mentions("see page 12, step 30, unit 200", exact, by_norm, {}, [], nodes), ([], []))
+
+    def test_format_insensitive_ambiguity_and_near_misses_go_to_review(self):
+        exact = {"P-101": {("S1/A/1/P-101", "tag"), ("S1/B/2/P-101", "tag")}, "P-102A": {("S1/A/1/P-102A", "tag")}}
+        by_norm = {"P101": {"S1/A/1/P-101", "S1/B/2/P-101"}, "P102A": {"S1/A/1/P-102A"}}
+        by_base = {"P102": {"S1/A/1/P-102A"}}
+        text = "P101 in Unit 1; p102 seal; P-101A spare"
+        asserted, findings = om.match_mentions(text, exact, by_norm, by_base, ["S1/A/1"], {})
+        self.assertEqual(asserted, [])  # covers do not turn a format-only match in two units into a link
+        self.assertEqual([(f["matched_text"], f["kind"], f["confirm"]) for f in findings], [
+            ("P101", "same tag in another format, in more than one scope", True),
+            ("p102", "near miss (the map has only suffixed tags)", True),
+            ("P-101A", "near miss (suffix not on the map)", True)])
+        self.assertEqual(findings[0]["covered"], ["S1/A/1/P-101"])
+        # a unique format-only match in another unit than the document covers is confirmed, not linked
+        asserted, findings = om.match_mentions("P102A", exact, by_norm, by_base, ["S1/B/2"], {})
+        self.assertEqual((asserted, findings[0]["kind"]),
+                         ([], "same tag in another format, outside the units the document covers"))
+        asserted, _ = om.match_mentions("P102A", exact, by_norm, by_base, ["S1/A/1/P-101"], {})
+        self.assertEqual([a["node"] for a in asserted], ["S1/A/1/P-102A"])  # equipment cover counts as its unit
 
     def test_superseded_basis_and_routing_to_document_owner(self):
         c = self.conflicts("superseded_basis")
@@ -409,6 +454,86 @@ class Units(unittest.TestCase):
             (Path(d) / "in" / "site.json").write_text(json.dumps(site), encoding="utf-8")
             with self.assertRaises(om.InputError):
                 om.build(Path(d) / "in" / "site.json", Path(d) / "out")
+
+
+def load_office_maker():
+    spec = importlib.util.spec_from_file_location("make_office_docs", EX / "make_office_docs.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+class OneMapDocumentText(unittest.TestCase):
+    """Documents are read by extract_text.py: Office mentions with locators, and statuses that become notes."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.inputs = Path(self.tmp.name) / "in"
+        shutil.copytree(EX / "inputs", self.inputs, ignore=shutil.ignore_patterns("office"))
+        load_office_maker().build(self.inputs / "docs" / "office")
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def mentions(self, g):
+        return {(e["from"], e["to"]): dict({c["name"]: c["value"] for c in e["attributes"]},
+                                           more=e.get("more_locators", []))
+                for e in g["edges"] if e["type"] == "mentions"}
+
+    def test_office_example_regenerates_and_mentions_carry_locators(self):
+        out = Path(self.tmp.name) / "office"
+        g, _, rows, _ = quiet(om.build, self.inputs / "site-office.json", out)
+        for exp in sorted(p for p in (EXPECTED / "office").rglob("*") if p.is_file()):
+            rel = exp.relative_to(EXPECTED / "office")
+            self.assertEqual((out / rel).read_bytes().replace(b"\r\n", b"\n"),
+                             exp.read_bytes().replace(b"\r\n", b"\n"), rel)
+        m = self.mentions(g)
+        su, pm = "S1/DOC/SU-200-03", "S1/DOC/PM-200"
+        self.assertEqual(m[(su, "S1/P1/200/TT-2205")]["locator"], "paragraph 2, column 41")
+        self.assertEqual(m[(su, "S1/P1/200/FT-2203")]["locator"], "table 1 row 2, column 1")
+        self.assertNotIn("matched", m[(su, "S1/P1/200/PSV-204")])  # written exactly
+        self.assertEqual(m[(pm, "S1/P1/200/FV-2203")]["locator"], "sheet 'PM plan' cell A3, column 1")
+        former = m[(su, "S1/P1/200/P-101")]
+        self.assertEqual((former["matched_text"], former["matched"]), ("FP01", "format-insensitive"))
+        self.assertIn("via alias (former tag)", former["confidence"])
+        confirm = [r for r in rows if r["kind"] == om.CONFIRM and r["item"] in (su, pm)]
+        self.assertEqual(len(confirm), 1)
+        self.assertIn("'P 101' at paragraph 1, column 26", confirm[0]["why"])
+        self.assertEqual(confirm[0]["owner"], "Operations")
+        docs = {n["id"]: n["document"] for n in g["nodes"] if n["kind"] == "document"}
+        self.assertEqual((docs[pm]["text"]["format"], docs[pm]["text"]["status"]), ("xlsx", "ok"))
+        self.assertEqual(om.problems(g), [])
+
+    def test_unread_documents_become_low_priority_notes_to_their_owner(self):
+        docs = self.inputs / "docs"
+        (docs / "haccp-2019.doc").write_bytes(b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1" + b"\x00" * 56)
+        (docs / "broken.docx").write_bytes(b"PK this is not a real archive")
+        (docs / "blank.txt").write_bytes(b"")
+        (docs / "both.txt").write_text("FT2203 first, then FT-2203.\n", encoding="utf-8")
+        man = json.loads((self.inputs / "documents.json").read_text(encoding="utf-8"))
+        for did, path, owner in (("HACCP-2019", "docs/haccp-2019.doc", "Quality"),
+                                 ("BROKEN", "docs/broken.docx", "Maintenance"),
+                                 ("BLANK", "docs/blank.txt", "Operations"), ("BOTH", "docs/both.txt", "I&C")):
+            man["documents"].append({"id": did, "revision": "1", "path": path, "owner": owner, "status": "draft",
+                                     "locators": [{"id": "whole", "locator": "whole document"}]})
+        (self.inputs / "documents.json").write_text(json.dumps(man), encoding="utf-8")
+        g, _, rows, _ = quiet(om.build, self.inputs / "site.json", Path(self.tmp.name) / "out")
+        notes = {r["item"]: r for r in rows if r["kind"] == om.DOC_TEXT_NOTE}
+        self.assertEqual(sorted(notes), ["S1/DOC/BLANK", "S1/DOC/BROKEN", "S1/DOC/HACCP-2019"])
+        self.assertEqual(notes["S1/DOC/HACCP-2019"]["owner"], "Quality")
+        self.assertIn("text unsupported (legacy Word .doc is not read; convert it to .docx",
+                      notes["S1/DOC/HACCP-2019"]["why"])
+        self.assertIn("text error", notes["S1/DOC/BROKEN"]["why"])
+        self.assertIn("no text found", notes["S1/DOC/BLANK"]["why"])
+        amber = [r["kind"] for r in rows if r["tier"] == "amber" and not r["safety"]]
+        low = [i for i, k in enumerate(amber) if k in om.LOW_PRIORITY_KINDS]
+        self.assertEqual(low, list(range(len(amber) - len(low), len(amber))))  # last of the amber rows
+        both = self.mentions(g)[("S1/DOC/BOTH", "S1/P1/200/FT-2203")]
+        self.assertEqual((both["locator"], both.get("matched"), both["more"]),
+                         ("line 1, column 20", None, ["line 1, column 1"]))  # the exact mention leads
+        statuses = {n["id"]: n["document"]["text"]["status"] for n in g["nodes"]
+                    if n["kind"] == "document" and "text" in n["document"]}
+        self.assertEqual((statuses["S1/DOC/HACCP-2019"], statuses["S1/DOC/BROKEN"]), ("unsupported", "error"))
 
 
 if __name__ == "__main__":

@@ -752,7 +752,13 @@
     "department": "Maintenance",
     "doc_type": "check sheet",
     "sha256": "c5083e1061f5246f0a22f0f4c275ab13a11a34cae8c65d3c11335ce691986faf",
-    "path": "docs/ck-300-01-rev1.txt"
+    "path": "docs/ck-300-01-rev1.txt",
+    "text": {
+     "status": "ok",
+     "format": "text",
+     "segments": 4,
+     "extractor": "extract_text 1"
+    }
    }
   },
   {
@@ -778,7 +784,13 @@
     "department": "Site utilities",
     "doc_type": "note",
     "sha256": "38f116f4f4857351182bd0873a1b28b0bd19f08045bafd416252a266bdab0b3b",
-    "path": "docs/cw-note-01-revA.txt"
+    "path": "docs/cw-note-01-revA.txt",
+    "text": {
+     "status": "ok",
+     "format": "text",
+     "segments": 5,
+     "extractor": "extract_text 1"
+    }
    }
   },
   {
@@ -804,7 +816,13 @@
     "department": "Process",
     "doc_type": "design basis",
     "sha256": "87c83af007f0be31571cc6647fe99086932db927b3bcba587ab83464c3ca1b82",
-    "path": "docs/p101-design-basis-rev3.txt"
+    "path": "docs/p101-design-basis-rev3.txt",
+    "text": {
+     "status": "ok",
+     "format": "text",
+     "segments": 5,
+     "extractor": "extract_text 1"
+    }
    }
   },
   {
@@ -830,7 +848,13 @@
     "department": "Operations",
     "doc_type": "procedure",
     "sha256": "a16f050f4c959e0799dddec621c248566d32dc3644be05361676ca10e06280cc",
-    "path": "docs/op-200-07-revB.txt"
+    "path": "docs/op-200-07-revB.txt",
+    "text": {
+     "status": "ok",
+     "format": "text",
+     "segments": 6,
+     "extractor": "extract_text 1"
+    }
    }
   },
   {
@@ -4648,6 +4672,89 @@
    ]
   },
   {
+   "id": "mentions:S1/DOC/OP-200-07->S1/P1/200/PSV-204",
+   "type": "mentions",
+   "from": "S1/DOC/OP-200-07",
+   "to": "S1/P1/200/PSV-204",
+   "status": "unverified",
+   "direction": null,
+   "source": {
+    "kind": "document",
+    "document": "S1/DOC/OP-200-07",
+    "revision": "B",
+    "sha256": "a16f050f4c959e0799dddec621c248566d32dc3644be05361676ca10e06280cc",
+    "path": "docs/op-200-07-revB.txt",
+    "locator": "line 7, column 12"
+   },
+   "attributes": [
+    {
+     "name": "file",
+     "value": "docs/op-200-07-revB.txt",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "S1/DOC/OP-200-07",
+      "revision": "B",
+      "sha256": "a16f050f4c959e0799dddec621c248566d32dc3644be05361676ca10e06280cc",
+      "path": "docs/op-200-07-revB.txt",
+      "locator": "line 7, column 12"
+     }
+    },
+    {
+     "name": "locator",
+     "value": "line 7, column 12",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "S1/DOC/OP-200-07",
+      "revision": "B",
+      "sha256": "a16f050f4c959e0799dddec621c248566d32dc3644be05361676ca10e06280cc",
+      "path": "docs/op-200-07-revB.txt",
+      "locator": "line 7, column 12"
+     }
+    },
+    {
+     "name": "matched_text",
+     "value": "PSV 204",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "S1/DOC/OP-200-07",
+      "revision": "B",
+      "sha256": "a16f050f4c959e0799dddec621c248566d32dc3644be05361676ca10e06280cc",
+      "path": "docs/op-200-07-revB.txt",
+      "locator": "line 7, column 12"
+     }
+    },
+    {
+     "name": "confidence",
+     "value": "format-insensitive, unique on the map",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "S1/DOC/OP-200-07",
+      "revision": "B",
+      "sha256": "a16f050f4c959e0799dddec621c248566d32dc3644be05361676ca10e06280cc",
+      "path": "docs/op-200-07-revB.txt",
+      "locator": "line 7, column 12"
+     }
+    },
+    {
+     "name": "matched",
+     "value": "format-insensitive",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "S1/DOC/OP-200-07",
+      "revision": "B",
+      "sha256": "a16f050f4c959e0799dddec621c248566d32dc3644be05361676ca10e06280cc",
+      "path": "docs/op-200-07-revB.txt",
+      "locator": "line 7, column 12"
+     }
+    }
+   ]
+  },
+  {
    "id": "protects:S1/P1/200/PSV-204->S1/P1/200/V-204",
    "type": "protects",
    "from": "S1/P1/200/PSV-204",
@@ -4977,8 +5084,8 @@
  ],
  "counts": {
   "nodes": 63,
-  "edges": 115,
-  "claims": 78,
+  "edges": 116,
+  "claims": 83,
   "conflicts": 14,
   "questions": 0,
   "events": 0

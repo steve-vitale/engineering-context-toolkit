@@ -357,6 +357,8 @@ SOURCE_FILES = (
     "data/te_pid_layout.json", "data/te_pid/key.json", "data/te_pid/rev-a/key.json", "data/te_pid/rev-c/key.json",
     "data/te_control_loops.json", "examples/loop-audit/te_loops.csv", "data/script_index.json",
     "examples/one-map/inputs/site.json", "examples/graph-export/sheet0_graph.json",
+    "examples/one-map/inputs/site-office.json", "examples/one-map/inputs/documents-office.json",
+    "examples/one-map/make_office_docs.py", "examples/one-map/expected/office/report.md",
     "data/bayer_rt/process_model.json", "data/bayer_rt/fig11_calibration.json", "data/bayer_rt/fig11_digitized.csv",
     "out/bayer_rt/fig11_check.md", "scripts/digitize_bayer_fig11.py",
     "data/bayer_rt/fig10_inventory.json", "data/bayer_rt/pid/key.json", "out/bayer_rt/fig10_compare.md",

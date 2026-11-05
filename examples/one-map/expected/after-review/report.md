@@ -35,7 +35,7 @@ Items in an equipment or instrument record: 24; located on a P&ID: 20; on a P&ID
 | controls | 7 |
 | covers | 8 |
 | measures | 6 |
-| mentions | 13 |
+| mentions | 14 |
 | protects | 1 |
 | references | 6 |
 | signal_line | 8 |

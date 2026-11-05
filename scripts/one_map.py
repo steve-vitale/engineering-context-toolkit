@@ -38,6 +38,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import graph_export as gx  # noqa: E402
 import loop_audit  # noqa: E402
 import context_register as cr  # noqa: E402
+import extract_text  # noqa: E402
 
 SCHEMA = "twin-graph-2"
 SITE_SCHEMA = "one-map-site-1"
@@ -63,7 +64,9 @@ TAG_TEXT = re.compile(r"(?<![A-Za-z0-9/_.-])((?:[A-Z0-9]+/){1,3})?([A-Z]{1,5})([
 CONTROLLER = re.compile(r"^[A-Z]D?I?C$")           # FIC, TIC, PC, PDIC; not FCV (ends in V)
 MEASUREMENT = re.compile(r"^[A-Z]D?[TE]$|^[A-Z]IT$")  # FT, TE, PT, PDT, RE, FIT
 FINAL = re.compile(r"^[A-Z]C?V$|^XV$|^[A-Z]Y$")      # FV, TCV, PV, LCV, XV; a transducer FY drives one
-TEXT_SUFFIXES = (".txt", ".md", ".csv")
+# Mentions written in another case or another style (P101, p-101, PSV 204) of exactly one map tag; letters only.
+TAG_TEXT_ANY_CASE = re.compile(r"(?<![A-Za-z0-9/_.-])([A-Za-z]{1,5})([- ]?)(\d{2,5})([A-Za-z]{0,2})(?![A-Za-z0-9_-])")
+CONFIRM = "possible mention, confirm"
 EQUIPMENT_KINDS = ("equipment", "final_element", "relief_device")
 # Columns a generated draft list adds for its reviewer; the import path reads them as review notes, not claims.
 DRAFT_COLS = {"review_tier", "how_found", "confidence", "located_on", "reviewed_by", "reviewed_on"}
@@ -75,6 +78,8 @@ DEFAULT_AUTHORITY = {"connectivity": "pid", "tags": "pid", "control_scheme": "pi
                      "instrument_model": "instrument_index", "installed": "maintenance_export"}
 RECORD_TYPES = ("pid", "datasheet", "maintenance_export", "instrument_index", "loop_list")
 PID_NOTE = "P&ID value note"
+DOC_TEXT_NOTE = "document text note"
+LOW_PRIORITY_KINDS = (PID_NOTE, DOC_TEXT_NOTE)  # amber, after every other amber row
 RECORD_NAMES = {"maintenance_export": "maintenance equipment export", "instrument_index": "instrument index",
                 "loop_list": "loop list", "datasheet": "datasheet", "pid": "P&ID"}
 
@@ -1361,10 +1366,50 @@ def tag_index(m):
 
 
 def match_mentions(text, exact, by_norm, by_base, covers, nodes):
-    """Every tag-like token in text -> (asserted mentions, not-asserted findings). Deterministic; O(tokens)."""
+    """Every tag-like token in text -> (asserted mentions, not-asserted findings). Deterministic; O(tokens).
+
+    An exact tag (or former tag) links as before. A token that equals exactly one map tag or former tag once
+    separators, spaces and case are ignored (P101, p-101, PSV 204, TT2205) links with matched="format-insensitive".
+    Anything else that resembles a map tag (the same normalized tag in more than one scope, a suffix the map does not
+    have, lower-case letters followed by a space) is a finding marked `confirm`, never a link."""
     asserted, findings = [], []
+
+    def covered(ids):
+        return [i for i in ids if any(i == c or i.startswith(c + "/") for c in covers)]
+
+    def near_covers(i):  # inside the site/plant/unit of a covers scope (an equipment cover counts as its unit)
+        return any(i == p or i.startswith(p + "/") for p in ("/".join(c.split("/")[:3]) for c in covers))
+
+    def loose(where, token, sep):
+        key = norm(token)
+        base = re.sub(r"(?<=\d)[A-Z]{1,2}$", "", key)
+        lower = token != token.upper()
+        ids = sorted(by_norm.get(key, ()))
+        if len(ids) == 1 and covers and not near_covers(ids[0]):
+            findings.append(dict(where, kind="same tag in another format, outside the units the document covers",
+                                 candidates=ids, confirm=True))
+        elif len(ids) == 1 and not (lower and sep == " "):
+            n = nodes.get(ids[0]) or {}
+            via = "; via alias (former tag)" if n.get("tag") and norm(n["tag"]) != key else ""
+            asserted.append(dict(where, node=ids[0], confidence="format-insensitive, unique on the map" + via,
+                                 matched="format-insensitive"))
+        elif ids:
+            kind = ("same tag in another format, in more than one scope" if len(ids) > 1 else
+                    "lower-case letters and a space; could be ordinary words")
+            findings.append(dict(where, kind=kind, candidates=ids, covered=covered(ids), confirm=True))
+        elif key in by_base:
+            findings.append(dict(where, kind="near miss (the map has only suffixed tags)",
+                                 candidates=sorted(by_base[key]), confirm=True))
+        elif base != key and base in by_norm:
+            findings.append(dict(where, kind="near miss (suffix not on the map)", candidates=sorted(by_norm[base]),
+                                 confirm=True))
+        elif not lower:
+            findings.append(dict(where, kind="tag-like text not on the map", candidates=[]))
+
     for ln, line in enumerate(text.splitlines(), 1):
+        spans = []
         for mt in TAG_TEXT.finditer(line):
+            spans.append(mt.span())
             prefix, letters, sep, digits, suffix = mt.groups()
             token = f"{letters}{sep}{digits}{suffix}"
             where = {"line": ln, "column": mt.start() + 1, "matched_text": mt.group(0)}
@@ -1380,7 +1425,7 @@ def match_mentions(text, exact, by_norm, by_base, covers, nodes):
                 ids = sorted({h[0] for h in hits})
                 how = {h[0]: h[1] for h in hits}
                 if len(ids) > 1:
-                    inside_cover = [i for i in ids if any(i == c or i.startswith(c + "/") for c in covers)]
+                    inside_cover = covered(ids)
                     if len(inside_cover) != 1:
                         findings.append(dict(where, kind="ambiguous", candidates=ids))
                         continue
@@ -1391,19 +1436,36 @@ def match_mentions(text, exact, by_norm, by_base, covers, nodes):
                     conf += f"; via {how[ids[0]]}"
                 asserted.append(dict(where, node=ids[0], confidence=conf))
                 continue
-            key = norm(token)
-            base = re.sub(r"(?<=\d)[A-Z]{1,2}$", "", key)
-            if key in by_norm:
-                findings.append(dict(where, kind="near miss (spelling differs from the map)",
-                                     candidates=sorted(by_norm[key])))
-            elif key in by_base:
-                findings.append(dict(where, kind="near miss (the map has only suffixed tags)",
-                                     candidates=sorted(by_base[key])))
-            elif base != key and base in by_norm:
-                findings.append(dict(where, kind="near miss (suffix not on the map)", candidates=sorted(by_norm[base])))
-            else:
-                findings.append(dict(where, kind="tag-like text not on the map", candidates=[]))
+            loose(where, token, sep)
+        for mt in TAG_TEXT_ANY_CASE.finditer(line):
+            letters, sep, digits, suffix = mt.groups()
+            token = f"{letters}{sep}{digits}{suffix}"
+            if token == token.upper() or any(s < mt.end() and mt.start() < e for s, e in spans):
+                continue  # upper-case tokens were handled above
+            loose({"line": ln, "column": mt.start() + 1, "matched_text": mt.group(0)}, token, sep)
+    asserted.sort(key=lambda x: (x["line"], x["column"]))
+    findings.sort(key=lambda x: (x["line"], x["column"]))
     return asserted, findings
+
+
+def segment_locator(locator, text, line, column):
+    """'page 3, line 4, column 2'; a one-line piece (a text-file line, a cell, a paragraph) needs no inner line."""
+    return f"{locator}, column {column}" if "\n" not in text else f"{locator}, line {line}, column {column}"
+
+
+def document_text_note(m, doc_node, d, res):
+    """A document whose text was not (fully) read is a low-priority note to its owner, never a crash."""
+    if res.status == extract_text.OK and len(res.segments):
+        return
+    if res.status == extract_text.OK:
+        why = f"no text found in {d['path']}"
+    else:
+        why = f"{d['path']}: text {res.status}"
+    if res.warnings:
+        why += " (" + "; ".join(res.warnings) + ")"
+    why += ("; nothing in it is on the map" if res.status == extract_text.OK or not len(res.segments) else
+            "; mentions in what was not read are not on the map")
+    m.review.append({"item": doc_node, "kind": DOC_TEXT_NOTE, "owner": d["owner"], "why": why})
 
 
 def documents(m, cfg, lists):
@@ -1460,19 +1522,34 @@ def documents(m, cfg, lists):
                            what=f"{did} rev {s['revision']} is based on {target} rev {b.get('revision')}; the "
                                 f"current revision is {revisions[target]}",
                            document_owner=d["owner"], parties=(m.nodes[tnode]["document"]["owner"],))
-        if local.suffix.lower() not in TEXT_SUFFIXES:
-            continue
-        text = local.read_bytes().decode("utf-8-sig")
-        asserted, findings = match_mentions(text, exact, by_norm, by_base, covers, m.nodes)
+        res = extract_text.extract(local)
+        m.nodes[doc_node]["document"]["text"] = {"status": res.status, "format": res.format,
+                                                  "segments": len(res.segments),
+                                                  "extractor": f"{extract_text.EXTRACTOR} {extract_text.VERSION}"}
+        document_text_note(m, doc_node, d, res)
+        asserted, findings = [], []
+        for locator, text in res.segments:
+            got, missed = match_mentions(text, exact, by_norm, by_base, covers, m.nodes)
+            for x in got + missed:
+                x["locator"] = segment_locator(locator, text, x["line"], x["column"])
+            asserted += got
+            findings += missed
+        # one edge per (document, item); its locator is the first exact mention, else the first mention
+        first = {}
         for a in asserted:
-            lsrc = dict(dsrc, locator=f"line {a['line']}, column {a['column']}")
+            if a["node"] not in first or ("matched" in first[a["node"]] and "matched" not in a):
+                first[a["node"]] = a
+        for a in sorted(asserted, key=lambda x: x is not first[x["node"]]):
+            lsrc = dict(dsrc, locator=a["locator"])
             eid = f"mentions:{doc_node}->{a['node']}"
             if eid in m.edges:
                 m.edges[eid].setdefault("more_locators", []).append(lsrc["locator"])
             else:
-                m.edge(mk_edge("mentions", doc_node, a["node"], lsrc, attributes=[
-                    claim("file", d["path"], lsrc), claim("locator", lsrc["locator"], lsrc),
-                    claim("matched_text", a["matched_text"], lsrc), claim("confidence", a["confidence"], lsrc)]))
+                attrs = [claim("file", d["path"], lsrc), claim("locator", lsrc["locator"], lsrc),
+                         claim("matched_text", a["matched_text"], lsrc), claim("confidence", a["confidence"], lsrc)]
+                if "matched" in a:
+                    attrs.append(claim("matched", a["matched"], lsrc))
+                m.edge(mk_edge("mentions", doc_node, a["node"], lsrc, attributes=attrs))
             tgt = m.nodes[a["node"]]
             rec = list_for(tgt["kind"])
             if "listed_in" in tgt and not tgt["listed_in"] and covering(lists, rec, tgt["scope"]):
@@ -1482,7 +1559,7 @@ def documents(m, cfg, lists):
                            what=f"{did} mentions {a['matched_text']} ({lsrc['locator']}); the "
                                 f"{rec.replace('_', ' ')} has no row for it")
         for f in findings:
-            lsrc = dict(dsrc, locator=f"line {f['line']}, column {f['column']}")
+            lsrc = dict(dsrc, locator=f["locator"])
             if f["kind"] == "ambiguous":
                 m.conflict("ambiguous_reference", doc_node, f"mention {f['matched_text']}", lsrc,
                            f["matched_text"], {"kind": "map", "document": "one map"},
@@ -1491,10 +1568,13 @@ def documents(m, cfg, lists):
                                 "one scope and the document's covers do not choose; not asserted",
                            document_owner=d["owner"])
             else:
-                m.review.append({"item": doc_node, "kind": "mention", "owner": d["owner"],
+                hint = (f"; the document's covers point to {f['covered'][0]}"
+                        if len(f.get("covered") or ()) == 1 else "")
+                m.review.append({"item": doc_node, "kind": CONFIRM if f.get("confirm") else "mention",
+                                 "owner": d["owner"],
                                  "why": f"{f['kind']}: '{f['matched_text']}' at {lsrc['locator']}"
                                         + (f" (map has {', '.join(f['candidates'])})" if f["candidates"] else "")
-                                        + "; not asserted"})
+                                        + hint + "; not asserted"})
     return {did: {"revision": sources[did]["revision"], "sha256": sources[did]["sha256"]} for did in docs}
 
 
@@ -1580,7 +1660,7 @@ def queue_rows(m):
                      "plant": plant, "unit": unit, "item": nid, "kind": n["kind"],
                      "why": (f"safety-relevant ({safety}): always checked; " if safety else "")
                      + f"listed in {', '.join(n['listed_in'])}; located on {where}", "safety": safety})
-    rows.sort(key=lambda r: (TIER_ORDER[r["tier"]], 0 if r["safety"] else 1, r["kind"] == PID_NOTE, r["kind"],
+    rows.sort(key=lambda r: (TIER_ORDER[r["tier"]], 0 if r["safety"] else 1, r["kind"] in LOW_PRIORITY_KINDS, r["kind"],
                              r["item"]))
     for i, r in enumerate(rows, 1):
         r["rank"] = i

@@ -28,6 +28,19 @@ Run `build` again with the same `--out`: all four sheets are reused. Edit one sh
 The committed results are in [expected/](expected/): [start](expected/start/report.md),
 [Plant 2 drafts](expected/drafts/p2-300/) and [after review](expected/after-review/report.md).
 
+### With Office documents
+
+The same site with two more documents, a Word start-up procedure and an Excel PM plan. They are generated, not
+committed (the repository holds no binary documents); the bytes are the same on every run:
+
+```sh
+python examples/one-map/make_office_docs.py examples/one-map/inputs/docs/office
+python scripts/one_map.py build examples/one-map/inputs/site-office.json --out out/one-map-office
+```
+
+Committed results: [report](expected/office/report.md), [review queue](expected/office/queues/review_queue.csv),
+[graph](expected/office/graph.json), [conflicts](expected/office/conflicts.md).
+
 ## Inputs
 
 | File | What it stands for |
@@ -37,15 +50,16 @@ The committed results are in [expected/](expected/): [start](expected/start/repo
 | [sheets/](inputs/sheets/) | Hand-written sheet reads: tags with zones, lines, signal lines, off-page connectors, two printed values |
 | [lists/](inputs/lists/) | Plant 1/utilities maintenance equipment export, Plant 1 instrument index, Unit 200 loop list, Plant 1 equipment datasheets; `plant2-reviewed/` holds Plant 2's reviewed drafts |
 | [documents.json](inputs/documents.json), [docs/](inputs/docs/) | Four short documents in a `context-sources-1` manifest with owner, status, covers and based_on |
+| [site-office.json](inputs/site-office.json), [documents-office.json](inputs/documents-office.json), [make_office_docs.py](make_office_docs.py) | The Office variant: the same site and the four documents plus SU-200-03 (`.docx`) and PM-200 (`.xlsx`), written into `inputs/docs/office/` |
 
 The documents: the *P-101 design basis rev 3* (Process, released) is based on P&ID 200-01 **rev C**; procedure
-OP-200-07 (Operations) mentions P-102, which the maintenance equipment export lacks, plus `P101` and `PSV 204`; the
-cooling water note (Site utilities, draft) mentions a bare `P-101`, which exists in both plants; a Unit 300 check
+OP-200-07 (Operations) mentions P-102, which the maintenance equipment export lacks, plus `P101` and `PSV 204`
+(other styles of `P-101` and `PSV-204`); the cooling water note (Site utilities, draft) mentions a bare `P-101`, which exists in both plants; a Unit 300 check
 sheet (Maintenance, draft) mentions `P-101` inside its own unit and `P-101A`, which is in no record and on no P&ID.
 
 ## What it produces (start)
 
-63 nodes and 113 edges, 14 of the nodes conflicts. Items in an equipment or instrument record: 19, of which 15 are
+63 nodes and 114 edges, 14 of the nodes conflicts. Items in an equipment or instrument record: 19, of which 15 are
 located on a P&ID sheet; 7 items are on a P&ID and in no record (5 of them in Plant 2, which has no records yet).
 
 | Record owner | Conflicts |
@@ -66,17 +80,44 @@ spot-check; PIC-2210 is **partly located** (routed to I&C: PV-2211 is in no reco
 sheet** (routed to Doc control: its tags are recorded but not drawn). Plant 2's FIC-3101 loop is a review item for
 its draft loop list, not a conflict, because no loop list covers Unit 300 yet.
 
-Review queue: 39 rows, split by owner (Maintenance 14, I&C 13, Doc control 6, Site utilities 3, Operations 2,
+Mentions: `PSV 204` in OP-200-07 is `PSV-204` written another way and is the only PSV-204 on the map, so it links
+with `matched: format-insensitive`. `P101` in the same procedure is P-101 written another way, but both plants have a
+P-101: it is a review row `possible mention, confirm` for Operations, naming both candidates and the Unit 200 one
+the procedure's covers point to; it is not linked. `P-101A` in the Unit 300 check sheet is a `possible mention,
+confirm` row for Maintenance (no record and no P&ID has that suffix).
+
+Review queue: 38 rows, split by owner (Maintenance 14, I&C 13, Doc control 6, Site utilities 3, Operations 1,
 Process 1), by plant and by unit. PSV-204 stays amber under the safety floor; matches are green with a 1-in-4
 deterministic spot-check sample.
 
 After review, Plant 2's reviewed records cover Unit 300: its five items are located matches (green), its loop is
 located and consistent, and the conflict set is unchanged.
 
+## What the Office documents add
+
+Both documents are read by [extract_text.py](../../docs/DOCUMENT_TEXT.md); each mention keeps the place it was found.
+
+| Document | Text | Linked to | Locator | How matched |
+|---|---|---|---|---|
+| SU-200-03 start-up procedure (`.docx`, Operations) | `TT2205` | S1/P1/200/TT-2205 | paragraph 2, column 41 | format-insensitive |
+| | `FP01` | S1/P1/200/P-101 | paragraph 3, column 37 | format-insensitive, via its former tag FP-01 in the maintenance equipment export |
+| | `ft-2203` | S1/P1/200/FT-2203 | table 1 row 2, column 1 | format-insensitive |
+| | `PSV-204` | S1/P1/200/PSV-204 | table 1 row 3, column 1 | exact |
+| PM-200 PM plan (`.xlsx`, Maintenance) | `e-205` | S1/P1/200/E-205 | sheet 'PM plan' cell A2, column 1 | format-insensitive |
+| | `FV 2203` | S1/P1/200/FV-2203 | sheet 'PM plan' cell A3, column 1 | format-insensitive |
+| | `LV2204` | S1/P1/200/LV-2204 | sheet 'PM plan' cell A4, column 1 | format-insensitive |
+
+One new review row: `P 101` in SU-200-03 (paragraph 1, column 26) is `possible mention, confirm` for Operations,
+because both plants have a P-101; the row names the Unit 200 candidate the procedure covers. The run has 65 nodes,
+123 edges (21 mentions), 39 review rows and the same 14 conflicts. Both documents read with status `ok`; a document
+that is not fully read (a scan, a legacy `.doc`, a corrupt file) would instead be a low-priority `document text note`
+to its owner ([statuses](../../docs/ONE_MAP.md#the-two-halves)).
+
 ## Limits
 
 The sheet reads are written by hand, not read from images; the example measures the bookkeeping, not reading
 accuracy. The zones here (`B2`, `C1`) are hand-written labels, not the `sheet_zone.py` convention a converted read
-uses. Mentions are exact tag matches; a document that writes a tag in another style is a review item, not a link.
+uses. A tag written in another style links only when it names exactly one item on the map; otherwise it is a review
+row. The Office documents are small generated files, not real procedures or PM plans exported from Word or Excel.
 Values compare as text. Conflicts are records for a person to settle; nothing here confirms any value or plant
 condition.

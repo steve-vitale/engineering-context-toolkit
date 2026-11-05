@@ -1,0 +1,26 @@
+{
+ "schema": "context-sources-1",
+ "note": "documents.json plus two Office documents written by examples/one-map/make_office_docs.py into docs/office/ (run it first).",
+ "documents": [
+  {"id": "DB-P101", "title": "P-101 design basis", "revision": "3", "path": "docs/p101-design-basis-rev3.txt",
+   "owner": "Process", "status": "released", "doc_type": "design basis",
+   "covers": ["S1/P1/200/P-101"], "based_on": [{"id": "PID-P1-200-01", "revision": "C"}],
+   "locators": [{"id": "whole", "locator": "whole document"}]},
+  {"id": "OP-200-07", "title": "Unit 200 start-up procedure", "revision": "B", "path": "docs/op-200-07-revB.txt",
+   "owner": "Operations", "status": "released", "doc_type": "procedure",
+   "covers": ["S1/P1/200"], "based_on": [{"id": "DB-P101", "revision": "3"}],
+   "locators": [{"id": "whole", "locator": "whole document"}]},
+  {"id": "CW-N-01", "title": "Cooling water note", "revision": "A", "path": "docs/cw-note-01-revA.txt",
+   "owner": "Site utilities", "status": "draft", "doc_type": "note",
+   "covers": ["S1"], "locators": [{"id": "whole", "locator": "whole document"}]},
+  {"id": "CK-300-01", "title": "Unit 300 pump check sheet", "revision": "1", "path": "docs/ck-300-01-rev1.txt",
+   "owner": "Maintenance", "status": "draft", "doc_type": "check sheet",
+   "covers": ["S1/P2/300"], "locators": [{"id": "whole", "locator": "whole document"}]},
+  {"id": "SU-200-03", "title": "Unit 200 feed pump start-up", "revision": "A", "path": "docs/office/su-200-03-revA.docx",
+   "owner": "Operations", "status": "released", "doc_type": "procedure",
+   "covers": ["S1/P1/200"], "locators": [{"id": "whole", "locator": "whole document"}]},
+  {"id": "PM-200", "title": "Unit 200 PM plan", "revision": "2026-11", "path": "docs/office/pm-200-plan.xlsx",
+   "owner": "Maintenance", "status": "draft", "doc_type": "PM plan",
+   "covers": ["S1/P1/200"], "locators": [{"id": "whole", "locator": "whole document"}]}
+ ]
+}
