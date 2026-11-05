@@ -5026,28 +5026,32 @@
     "register": "pid",
     "scopes": [
      "S1/P1/200"
-    ]
+    ],
+    "owner": "Doc control"
    },
    {
     "id": "PID-P1-200-02",
     "register": "pid",
     "scopes": [
      "S1/P1/200"
-    ]
+    ],
+    "owner": "Doc control"
    },
    {
     "id": "PID-P2-300-01",
     "register": "pid",
     "scopes": [
      "S1/P2/300"
-    ]
+    ],
+    "owner": "Doc control"
    },
    {
     "id": "PID-UTIL-CW-01",
     "register": "pid",
     "scopes": [
      "S1/UTIL"
-    ]
+    ],
+    "owner": "Doc control"
    },
    {
     "id": "CMMS-EQUIPMENT",
@@ -5055,28 +5059,32 @@
     "scopes": [
      "S1/P1",
      "S1/UTIL"
-    ]
+    ],
+    "owner": "Maintenance"
    },
    {
     "id": "INSTRUMENT-INDEX",
     "register": "instrument_index",
     "scopes": [
      "S1/P1"
-    ]
+    ],
+    "owner": "I&C"
    },
    {
     "id": "EQUIPMENT-DATASHEETS",
     "register": "datasheet",
     "scopes": [
      "S1/P1"
-    ]
+    ],
+    "owner": "Process"
    },
    {
     "id": "DCS-LOOPS-200",
     "register": "loop_list",
     "scopes": [
      "S1/P1/200"
-    ]
+    ],
+    "owner": "I&C"
    },
    {
     "id": "documents.json",

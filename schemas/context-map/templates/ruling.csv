@@ -1,2 +1,3 @@
-ruling_id,concerns,attribute,ruling,chosen_source,chosen_value,reason,by,on
-R-0007,S1/P1/PAST1/P-101,rated_flow,accept_source,DS-P101@2,12000 L/h,Datasheet rev 2 reflects the 2021 pump; CMMS text predates it.,Process engineer,2026-10-30
+ruling_id,concerns,attribute,ruling,chosen_source,chosen_value,reason,by,on,authority,evidence
+R-0007,S1/P1/PAST1/P-101,rated_flow,accept_source,DS-P101@2,12000 L/h,Datasheet rev 2 reflects the 2021 pump; CMMS text predates it.,Process engineer,2026-10-30,person,
+R-0008,S1/P1/PAST1/FDV-2210,size,accept_value,,DN65,Walkdown: nameplate on the installed valve body reads DN65.,Maintenance planner,2026-11-03,field,photo walkdown-2026-11-03/FDV-2210-nameplate.jpg

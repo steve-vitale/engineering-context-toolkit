@@ -169,7 +169,7 @@ The full field definitions (type, required, fact kind, description, allowed valu
 | `io_list` IO list | tag, plant, unit*, point | controller_system, io_type, historian_tag | I&C | io_assignment | ISA-95 level 1-2 boundary (informative) |
 | `alarm_list` alarm list | tag, plant, unit*, alarm_type | setpoint, uom, priority, operator_action, rationalized_on | I&C | alarm_setting | ISA-18.2 (named, not adopted) |
 | `interlock_list` interlock list (cause and effect) | interlock_id, plant, unit*, cause_tag, effect_tag | cause_condition, effect_action, is_sif, sil, bypass_allowed | I&C | trip_logic | DEXPI ProcessSafetyFunction; IEC 61511 (named, not adopted) |
-| `work_order` work order history | work_order, tag, plant, unit* | work_type, opened_on, closed_on, failure_mode, failure_mechanism, failure_cause, detection_method, maintenance_activity, description | Maintenance | maintenance_history | ISO 14224 failure and maintenance data |
+| `work_order` work order history | work_order, tag, plant, unit* | work_type, opened_on, closed_on, failure_mode, failure_mechanism, failure_cause, detection_method, maintenance_activity, description, installed_manufacturer, installed_model, installed_serial_number, installed_size | Maintenance | maintenance_history | ISO 14224 failure and maintenance data |
 | `pm_plan` PM plan | pm_id, tag, plant, unit* | task, interval, interval_unit, last_done, next_due, job_plan | Maintenance | pm_schedule | ISO 14224 maintenance data |
 | `calibration_record` calibration record | tag, plant, unit*, calibrated_on | as_found, as_left, tolerance, result, reference_standard, work_order, next_due, performed_by | Maintenance | calibration_status | ISO 14224 maintenance data |
 | `mro_item` stores item master (MRO items) | item_number | description, manufacturer, part_number, uom, min_qty, max_qty, critical_spare, lead_time_days | Stores | - | ISO 14224 maintainable item (informative) |
@@ -185,7 +185,7 @@ The full field definitions (type, required, fact kind, description, allowed valu
 | `inspection_record` inspection records (vessels, piping, RBI) | tag, plant, unit*, inspected_on | inspection_type, component, finding, result, measured_value, minimum_allowed, uom, remaining_life_years, rbi_risk, interval_months, next_due, inspector, certification, work_order, report_document | Maintenance | inspection_status | API 510, 570, 580, 581 (named, not adopted); ISO 14224 maintenance data (informative) |
 | `document_register` document register | document, revision | title, doc_type, cfihos_document_type, vdi2770_class, doc_status, owner, path, covers, based_on, manufacturer | Doc control | document_revision | CFIHOS document type; VDI 2770; AAS Handover Documentation |
 | `glossary` glossary (plant terms and nicknames), since 1.1 | term, plant, unit* | synonyms, definition, maps_to_class, maps_to_item, owner, certification, certified_by, certified_on | Doc control | - | none adopted |
-| `ruling` local rulings | ruling_id, concerns, ruling, reason, by, on | attribute, chosen_source, chosen_value | the person ruling | - | none adopted |
+| `ruling` local rulings | ruling_id, concerns, ruling, reason, by, on | attribute, chosen_source, chosen_value, authority, evidence | the person ruling | - | none adopted |
 
 Department grouping: engineering (`tag_register`, `drawing_register`, `datasheet`, `line_list`,
 `document_register`), I&C (`instrument_index`, `loop_list`, `io_list`, `alarm_list`, `interlock_list`),
@@ -333,8 +333,12 @@ revision, locator and what it says), the `record_owner` it is routed to by defau
 
 **Rulings.** A ruling records a local decision and its reason: what it concerns (a conflict or an item), the
 attribute, the kind of ruling (`accept_source`, `accept_value`, `no_conflict`, `authority_override`, `defer`), the
-chosen source or value, the reason, who and when. It extends one map's `decisions.csv` and is filled in through the
-`ruling` template. Software never makes a ruling.
+chosen source or value, the reason, who and when, and what it rests on (`authority`: `field`, `record` or `person`,
+default `person`). A **field verification ruling** is a walkdown result settling a disputed conflict: `authority`
+`field` with `evidence` (the photo file, nameplate reading or locator). It extends one map's `decisions.csv` and is
+filled in through the `ruling` template; `one_map.py build --decisions` reads either file, keeps every ruling as a
+history line on the conflict, and, when the ruling chose a value a record still contradicts, asks that record's
+owner to update the record. Software never makes a ruling.
 
 **Outside the format:** who a conflict is routed to beyond its default owner, approvals, sign-off chains,
 notifications and the history of a ruling's discussion. Those belong to an external governed service. A ruling may

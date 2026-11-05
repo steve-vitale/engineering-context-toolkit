@@ -352,6 +352,8 @@
     "reason": {"type": "string", "minLength": 1},
     "by": {"type": "string", "minLength": 1},
     "on": {"$ref": "#/$defs/Date"},
+    "authority": {"enum": ["field", "record", "person"], "description": "What the ruling rests on; field = a walkdown or field verification (needs evidence). Default person."},
+    "evidence": {"type": "string", "description": "Photo file, nameplate reading or locator behind a field verification ruling."},
     "external_ref": {"type": "string", "description": "Id of the matching record in an external governed service, if one exists."}
    }
   },

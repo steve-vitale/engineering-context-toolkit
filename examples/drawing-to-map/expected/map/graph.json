@@ -6344,7 +6344,8 @@
     "register": "pid",
     "scopes": [
      "O100/NPP/MSS"
-    ]
+    ],
+    "owner": "Doc control"
    }
   ],
   "relations_checked": {

@@ -58,6 +58,7 @@ SOURCE_TESTS = (
     "scripts/test_loop_audit.py",
     "scripts/test_one_map.py",
     "scripts/test_ontology.py",
+    "scripts/test_plant_workflows.py",
     "scripts/test_context_map_format.py",
     "scripts/test_sheet_from_prediction.py",
     "scripts/test_extract_text.py",

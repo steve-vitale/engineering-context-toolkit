@@ -2815,42 +2815,48 @@
     "register": "pid",
     "scopes": [
      "S1/P1/PAST1"
-    ]
+    ],
+    "owner": "Doc control"
    },
    {
     "id": "PID-P1-CIP1-01",
     "register": "pid",
     "scopes": [
      "S1/P1/CIP1"
-    ]
+    ],
+    "owner": "Doc control"
    },
    {
     "id": "CMMS-2026-10",
     "register": "maintenance_export",
     "scopes": [
      "S1/P1"
-    ]
+    ],
+    "owner": "Maintenance"
    },
    {
     "id": "INSTRUMENT-INDEX",
     "register": "instrument_index",
     "scopes": [
      "S1/P1"
-    ]
+    ],
+    "owner": "I&C"
    },
    {
     "id": "PUMP-DATASHEETS",
     "register": "datasheet",
     "scopes": [
      "S1/P1"
-    ]
+    ],
+    "owner": "Engineering"
    },
    {
     "id": "LOOPS-PAST1",
     "register": "loop_list",
     "scopes": [
      "S1/P1/PAST1"
-    ]
+    ],
+    "owner": "I&C"
    },
    {
     "id": "documents.json",
@@ -2864,42 +2870,48 @@
     "register": "ccp",
     "scopes": [
      "S1/P1"
-    ]
+    ],
+    "owner": "Quality"
    },
    {
     "id": "CAL-PAST1",
     "register": "calibration_record",
     "scopes": [
      "S1/P1/PAST1"
-    ]
+    ],
+    "owner": "Maintenance"
    },
    {
     "id": "RELIEF-PAST1",
     "register": "relief_device_register",
     "scopes": [
      "S1/P1/PAST1"
-    ]
+    ],
+    "owner": "Process safety"
    },
    {
     "id": "CRIT-P1",
     "register": "criticality_ranking",
     "scopes": [
      "S1/P1"
-    ]
+    ],
+    "owner": "Maintenance"
    },
    {
     "id": "PM-P1",
     "register": "pm_plan",
     "scopes": [
      "S1/P1"
-    ]
+    ],
+    "owner": "Maintenance"
    },
    {
     "id": "GLOSSARY-P1",
     "register": "glossary",
     "scopes": [
      "S1/P1"
-    ]
+    ],
+    "owner": "Quality"
    }
   ],
   "relations_checked": {

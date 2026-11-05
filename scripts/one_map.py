@@ -417,7 +417,9 @@ def load_datasheets(m, lists):
             status = r.get("status") if r.get("status") in gx.STATUSES else "unverified"
             for k, v in sorted(r.items()):
                 if k not in ("tag", "plant", "unit", "status", "description") and v:
-                    m.add_value(nid, claim(k, v, src, status), "datasheet")
+                    c = claim(k, v, src, status)
+                    m.held[nid].setdefault(lid, {})[k] = c
+                    m.add_value(nid, c, "datasheet")
         lists.setdefault("datasheet", []).append({"id": lid, "source": base, "owner": owner, "rows": seen,
                                                   "scopes": spec_scopes})
 
@@ -448,6 +450,7 @@ def load_lists(m):
             skip = {"tag", "plant", "unit", "kind", "status", "system", "former_tag", "description",
                     "class"} | DRAFT_COLS
             attrs = [claim(k, v, src, status) for k, v in sorted(r.items()) if k not in skip and v]
+            m.held[nid][lid] = {c["name"]: c for c in attrs}
             aliases = [r["former_tag"]] if r.get("former_tag") else []
             if r.get("class"):
                 m.explicit_class.setdefault(nid, []).append((r["class"], lid))
@@ -839,6 +842,7 @@ class Map:
         self.sources = []  # {"id", "register", "scopes"}: which record is the record for which scopes (coverage)
         self.expectations = None
         self.link_counts = None
+        self.held = defaultdict(dict)  # node id -> {record id: {attribute: claim}}: each record's own values
 
     def record_type(self, source):
         return "pid" if source.get("kind") == "drawing" else self.record_of.get(source.get("document"), "unknown")
@@ -1815,7 +1819,7 @@ def load_records(m):
                 m.review.append({"item": qid(scope, tag), "kind": "record row, item not on the map", "owner": owner,
                                  "why": f"{reg['name']} {lid} row {n} is about {tag}, which no equipment or "
                                         f"instrument record and no P&ID of {scope} holds"})
-        m.sources.append({"id": lid, "register": reg_id, "scopes": list(scopes)})
+        m.sources.append({"id": lid, "register": reg_id, "scopes": list(scopes), "owner": owner})
     if "glossary" in m.records:
         m.glossary = onto_mod.load_glossary(m.records["glossary"], cfg["onto"], resolve)
         for t in m.glossary:
@@ -1825,16 +1829,81 @@ def load_records(m):
                                  "why": f"glossary term '{t['term']}': {t['problem']}; it links nothing until fixed"})
 
 
+LIKE_FOR_LIKE = "replacement may not be like-for-like"
+WO_NOTE = "work order closeout note"
+INSTALLED_FIELDS = ("manufacturer", "model", "serial_number", "size")  # work_order installed_<name> columns
+
+
+def same_value(a, b):
+    """Installed values are compared ignoring case and repeated spaces ('DN 65' and 'dn 65' agree; 'DN65' does not)."""
+    return " ".join(str(a).split()).casefold() == " ".join(str(b).split()).casefold()
+
+
+def work_order_closeout(m, lists):
+    """Closed work orders that record what was installed (`installed_manufacturer`, `installed_model`,
+    `installed_serial_number`, `installed_size` in the work_order register), compared with the records. An installed
+    value that differs from the item's maintenance equipment export or instrument index row is a value_disagreement
+    for that record's owner (the work order is the newer word from the field). One that differs from a datasheet
+    value is a "replacement may not be like-for-like" review row for the datasheet's owner: a possible management
+    of change trigger, never decided here. Manufacturer, model or serial number that no maintenance equipment export
+    or instrument index row holds is a closeout note (the record should hold what is installed). A work order with
+    no closed_on, or with no installed_ values, is not a closeout and is not compared."""
+    owners = {s["id"]: s.get("owner") for s in m.sources}
+    for rec in ("maintenance_export", "instrument_index", "datasheet"):
+        owners.update({x["id"]: x["owner"] for x in lists.get(rec, [])})
+    for row in m.records.get("work_order") or []:
+        v = row["values"]
+        installed = {k: v[f"installed_{k}"] for k in INSTALLED_FIELDS if v.get(f"installed_{k}")}
+        if not installed or not v.get("closed_on"):
+            continue
+        wo, src = v.get("work_order"), row["source"]
+        wo_owner = owners.get(src["document"]) or "needs owner"
+        nid = row["item"]
+        if nid is None:
+            m.review.append({"item": qid(row["scope"], v.get("tag", "")), "kind": WO_NOTE, "owner": wo_owner,
+                             "why": f"work order {wo} ({src['document']} {src['locator']}) records what was installed "
+                                    f"on {v.get('tag')}, which no record or P&ID of {row['scope']} holds"})
+            continue
+        tag, held = m.nodes[nid]["tag"], m.held.get(nid, {})
+        for name, value in installed.items():
+            said = f"work order {wo} (closed {v['closed_on']}) records {name} {value} installed"
+            in_records = False
+            for lid in sorted(held):
+                rec, have = m.record_of.get(lid), held[lid].get(name)
+                if rec not in ("maintenance_export", "instrument_index", "datasheet") or have is None:
+                    continue
+                in_records = in_records or rec != "datasheet"
+                if same_value(have["value"], value):
+                    continue
+                if rec == "datasheet":
+                    m.review.append({"item": nid, "kind": LIKE_FOR_LIKE, "owner": owners.get(lid) or "needs owner",
+                                     "why": f"{tag}: {said}; datasheet {lid} ({have['source'].get('locator')}) says "
+                                            f"{have['value']}. A replacement that differs from its datasheet may need "
+                                            "a management of change review; this is a flag, not a decision"})
+                else:
+                    m.conflict("value_disagreement", nid, name, src, value, have["source"], have["value"],
+                               record=rec, parties=(wo_owner,),
+                               what=f"{tag} {name}: {said}; the {RECORD_NAMES[rec]} {lid} "
+                                    f"({have['source'].get('locator')}) says {have['value']}")
+            if not in_records and name != "size":
+                m.review.append({"item": nid, "kind": WO_NOTE, "owner": m.nodes[nid].get("owner") or wo_owner,
+                                 "why": f"{tag}: {said}; no maintenance equipment export or instrument index row "
+                                        f"for it holds {name}, so nothing was compared"})
+
+
 def coverage_sources(m, register, lists):
     """Which record is the record for which scopes: P&ID sheets cover their unit; lists, datasheets, loop lists and
     `records` their declared scopes; a document manifest the whole site."""
     cfg = m.cfg
     out = [{"id": r["doc"], "register": "pid",
-            "scopes": [qid(cfg["site"], r["plant"], r["unit"]) if r["unit"] else qid(cfg["site"], r["plant"])]}
+            "scopes": [qid(cfg["site"], r["plant"], r["unit"]) if r["unit"] else qid(cfg["site"], r["plant"])],
+            "owner": r["owner"]}
            for r in register]
     for rec in ("maintenance_export", "instrument_index", "datasheet"):
-        out += [{"id": x["id"], "register": rec, "scopes": list(x["scopes"])} for x in lists.get(rec, [])]
-    out += [{"id": s.get("id"), "register": "loop_list", "scopes": [s.get("scope")]}
+        out += [{"id": x["id"], "register": rec, "scopes": list(x["scopes"]), "owner": x["owner"]}
+                for x in lists.get(rec, [])]
+    out += [{"id": s.get("id"), "register": "loop_list", "scopes": [s.get("scope")],
+             "owner": cfg["owners"].get("loop_list") or "needs owner"}
             for s in cfg["raw"].get("loop_lists") or []]
     if cfg["raw"].get("documents"):
         out.append({"id": cfg["raw"]["documents"], "register": "documents", "scopes": [cfg["site"]]})
@@ -1934,8 +2003,63 @@ def draft_override_rows(m):
 
 # ---------------------------------------------------------------- conflicts as graph nodes, human decisions
 
-def apply_decisions(conflicts, previous, decisions_path):
-    """Carry earlier human statuses forward; apply new decisions. Nothing is auto-resolved."""
+RULING_STATUS = {"accept_source": "resolved", "accept_value": "resolved", "no_conflict": "resolved",
+                 "authority_override": "resolved", "defer": "disputed"}
+RULING_AUTHORITIES = ("field", "record", "person")
+RULED = "record differs from a ruling"
+
+
+def read_decisions(path, site):
+    """One decisions file -> [(conflict id, history entry, line)]. Two forms: one map's decisions.csv
+    (conflict_id,status,by,on,note) and the context map's `ruling` template (ruling_id,concerns,attribute,ruling,
+    chosen_source,chosen_value,reason,by,on,authority,evidence). A field verification (walkdown) ruling is a ruling
+    row with authority `field` and, under `evidence`, the photo, nameplate reading or locator that shows it."""
+    try:
+        first = Path(path).read_text(encoding="utf-8-sig").lstrip().split("\n", 1)[0]
+    except (OSError, UnicodeDecodeError) as exc:
+        raise InputError(f"decisions {path}: can't read as UTF-8 ({exc})") from None
+    if "ruling_id" not in [h.strip() for h in first.split(",")]:
+        out = []
+        for n, r in enumerate(read_csv(path, "decisions", ("conflict_id", "status", "by", "on", "note")), 2):
+            if r["status"] not in CONFLICT_STATUSES or not r["by"] or not r["on"]:
+                raise InputError(f"decisions line {n}: status open/disputed/resolved with by and on is required")
+            out.append((r["conflict_id"], {k: r[k] for k in ("status", "by", "on", "note")}, n))
+        return out
+    out = []
+    rows = read_csv(path, "rulings", ("ruling_id", "concerns", "ruling", "reason", "by", "on"))
+    for n, r in enumerate(rows, 2):
+        where = f"{Path(path).name} line {n}"
+        if r["ruling"] not in RULING_STATUS:
+            raise InputError(f"{where}: ruling must be one of {', '.join(RULING_STATUS)}")
+        if not (r["ruling_id"] and r["reason"] and r["by"] and onto_mod.DATE.match(r["on"] or "")):
+            raise InputError(f"{where}: ruling_id, reason, by and on (YYYY-MM-DD) are required")
+        authority = r.get("authority") or "person"
+        if authority not in RULING_AUTHORITIES:
+            raise InputError(f"{where}: authority must be one of {', '.join(RULING_AUTHORITIES)}")
+        if authority == "field" and not r.get("evidence"):
+            raise InputError(f"{where}: a field verification ruling needs evidence (photo file, nameplate reading "
+                             "or locator)")
+        concerns = r["concerns"]
+        if concerns.startswith(f"{site}/CONFLICT/"):
+            cid = concerns.rsplit("/", 1)[-1]
+        elif "/" in concerns:  # an item: the one detected conflict on that item and attribute (apply_decisions)
+            if not r.get("attribute"):
+                raise InputError(f"{where}: a ruling that concerns an item ({concerns}) names the attribute")
+            cid = ("item", concerns, r["attribute"])
+        else:
+            cid = concerns
+        rec = {"status": RULING_STATUS[r["ruling"]], "by": r["by"], "on": r["on"], "note": r["reason"],
+               "ruling_id": r["ruling_id"], "ruling": r["ruling"], "authority": authority}
+        for k in ("attribute", "chosen_source", "chosen_value", "evidence"):
+            if r.get(k):
+                rec[k] = r[k]
+        out.append((cid, rec, n))
+    return out
+
+
+def apply_decisions(conflicts, previous, decisions_paths, site=""):
+    """Carry earlier human statuses forward; apply new decisions and rulings (each file in order, each row once).
+    Nothing is auto-resolved."""
     for cid, old in (previous or {}).items():
         if cid in conflicts:
             conflicts[cid]["status"], conflicts[cid]["history"] = old["status"], old["history"]
@@ -1943,18 +2067,50 @@ def apply_decisions(conflicts, previous, decisions_path):
             kept = copy.deepcopy(old)
             kept["detected"] = False
             conflicts[cid] = kept
-    if decisions_path:
-        for n, r in enumerate(read_csv(decisions_path, "decisions", ("conflict_id", "status", "by", "on", "note")), 2):
-            cid = r["conflict_id"]
+    if isinstance(decisions_paths, (str, Path)):
+        decisions_paths = [decisions_paths]
+    for path in decisions_paths or ():
+        for cid, rec, n in read_decisions(path, site):
+            if isinstance(cid, tuple):
+                _, item, attr = cid
+                hits = sorted(k for k, c in conflicts.items()
+                              if c["subject"] == item and c["attribute"] == attr and c.get("detected", True))
+                if len(hits) != 1:
+                    raise InputError(f"{Path(path).name} line {n}: {item} {attr} has "
+                                     f"{'no' if not hits else len(hits)} detected conflict(s)"
+                                     + (f" ({', '.join(hits)}); name one conflict id" if hits else ""))
+                cid = hits[0]
             if cid not in conflicts:
-                raise InputError(f"decisions line {n}: unknown conflict {cid}")
-            if r["status"] not in CONFLICT_STATUSES or not r["by"] or not r["on"]:
-                raise InputError(f"decisions line {n}: status open/disputed/resolved with by and on is required")
-            rec = {k: r[k] for k in ("status", "by", "on", "note")}
+                raise InputError(f"{Path(path).name} line {n}: unknown conflict {cid}")
             if rec not in conflicts[cid]["history"]:
                 conflicts[cid]["history"].append(rec)
-                conflicts[cid]["status"] = r["status"]
+                conflicts[cid]["status"] = rec["status"]
     return conflicts
+
+
+def ruling_rows(m):
+    """A resolved conflict whose last ruling chose a value while a record still says another: a review row asking
+    that record's owner to update it. The ruling settles the dispute; the record stays its owner's to change."""
+    for cid, c in sorted(m.conflicts.items()):
+        last = c["history"][-1] if c["history"] else {}
+        chosen = last.get("chosen_value") or next(
+            (c[x]["says"] for x in ("source_a", "source_b")
+             if last.get("chosen_source") and c[x]["source"].get("document") == last["chosen_source"]), None)
+        if c["status"] != "resolved" or not c["detected"] or chosen is None:
+            continue
+        for side in ("source_a", "source_b"):
+            src, says = c[side]["source"], c[side]["says"]
+            rec = m.record_of.get(src.get("document"))
+            if same_value(says, chosen) or rec in (None, "work_order"):
+                continue
+            subj = (m.nodes.get(c["subject"]) or {}).get("tag") or c["subject"]
+            m.review.append({"item": c["subject"], "kind": RULED, "owner": m.cfg["owners"].get(rec) or "needs owner",
+                             "why": f"{subj} {c['attribute']}: {last['by']} ruled {chosen} on "
+                                    f"{last['on']} ({last.get('authority', 'person')}"
+                                    + (f": {last['evidence']}" if last.get("evidence") else "")
+                                    + f"; {last.get('ruling_id') or 'decision'} on {cid}); the "
+                                      f"{RECORD_NAMES.get(rec, rec.replace('_', ' '))} {src.get('document')} "
+                                      f"({src.get('locator') or 'no locator'}) still says {says}: update it"})
 
 
 def conflict_nodes(m):
@@ -2208,6 +2364,19 @@ def conflicts_md(conf):
             lines.append(f"| {c['id']} | {c['type']} | {c['status']}{'' if c['detected'] else ' (not detected now)'} "
                          f"| {c['subject']} {c['attribute']} | {cell(c['source_a'])} | {cell(c['source_b'])} |")
         lines.append("")
+    decided = sorted((c for c in conf if c["history"]), key=lambda c: c["id"])
+    if decided:
+        lines += ["## Decision history", "",
+                  "Every decision and ruling recorded with `--decisions`, oldest first. A field verification ruling "
+                  "(authority `field`) names its evidence.", ""]
+        for c in decided:
+            lines.append(f"- **{c['id']}** ({c['subject']} {c['attribute']}), now {c['status']}:")
+            for h in c["history"]:
+                extra = [f"{k} {h[k]}" for k in ("ruling_id", "ruling", "authority", "chosen_value", "evidence")
+                         if h.get(k)]
+                lines.append(f"  - {h['on']} {h['by']}: {h['status']}" + (f" ({'; '.join(extra)})" if extra else "")
+                             + (f". {h['note']}" if h.get("note") else ""))
+        lines.append("")
     return "\n".join(lines)
 
 
@@ -2225,6 +2394,7 @@ def assemble(cfg, register, fragments):
         m.add_value(nid, c, "pid")
     classify(m)
     load_records(m)
+    work_order_closeout(m, lists)
     pair_offpage(m, fragments)
     groups = loops(m, lists)
     docs = documents(m, cfg, lists)
@@ -2384,7 +2554,8 @@ def build(site_path, out_dir, *, full=False, decisions=None, register_path=None)
                     reopened.append(f"answer {q}/{a['answer_id']}: cites {rec['evidence']['source']['id']}, whose "
                                     "content or basis changed; reopen it with context_register.py apply")
     reopened = sorted(set(reopened))
-    m.conflicts = apply_decisions(m.conflicts, prev.get("conflicts"), decisions)
+    m.conflicts = apply_decisions(m.conflicts, prev.get("conflicts"), decisions, cfg["site"])
+    ruling_rows(m)
     conflict_nodes(m)
     nodes = [m.nodes[k] for k in sorted(m.nodes)]
     edges = [m.edges[k] for k in sorted(m.edges)]
@@ -2522,7 +2693,9 @@ def main(argv=None):
     b.add_argument("site")
     b.add_argument("--out", required=True)
     b.add_argument("--full", action="store_true", help="ignore the previous state and rebuild every sheet")
-    b.add_argument("--decisions", help="CSV of human conflict decisions: conflict_id,status,by,on,note")
+    b.add_argument("--decisions", action="append",
+                   help="CSV of human conflict decisions (conflict_id,status,by,on,note) or rulings in the ruling "
+                        "template (a field verification ruling has authority field and evidence); repeatable")
     b.add_argument("--register", help="a context_register.py context.json whose answers may reopen")
     c = sub.add_parser("check", help="validate a one-map (twin-graph-2) graph")
     c.add_argument("graph")

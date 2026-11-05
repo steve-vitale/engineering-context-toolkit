@@ -362,7 +362,7 @@ Example review: not yet: needs review
 <summary>Example files, tests and independent review</summary>
 
 - **Registered example files:** [`report.md`](../examples/one-map/expected/start/report.md), [`conflicts.md`](../examples/one-map/expected/start/conflicts.md), [`graph.json`](../examples/one-map/expected/start/graph.json), [`review_queue.csv`](../examples/one-map/expected/start/queues/review_queue.csv), [`loops.csv`](../examples/one-map/expected/drafts/p2-300/loops.csv), [`report.md`](../examples/one-map/expected/after-review/report.md), [`open100-sheet0-loops.md`](../examples/one-map/expected/open100-sheet0-loops.md), [`open100-0.json`](../examples/drawing-to-map/inputs/sheets/open100-0.json), [`review_queue.csv`](../examples/drawing-to-map/expected/map/queues/review_queue.csv), [`instrument_index.csv`](../examples/drawing-to-map/expected/drafts/npp-mss/instrument_index.csv), [`review_queue.csv`](../examples/one-map/expected/office/queues/review_queue.csv), [`graph.json`](../examples/one-map/expected/office/graph.json), [`report.md`](../examples/one-map/expected/pasteurizer/report.md), [`review_queue.csv`](../examples/one-map/expected/pasteurizer/queues/review_queue.csv), [`answers.md`](../examples/one-map/expected/pasteurizer/answers.md), [`map.jsonld`](../examples/one-map/expected/pasteurizer/map.jsonld)
-- **Tests:** `test_one_map.py`, `test_sheet_from_prediction.py`, `test_ontology.py`
+- **Tests:** `test_one_map.py`, `test_sheet_from_prediction.py`, `test_ontology.py`, `test_plant_workflows.py`
 - **Independent review:** none yet
 
 </details>

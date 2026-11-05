@@ -1610,6 +1610,30 @@
      "description": "Work description."
     },
     {
+     "name": "installed_manufacturer",
+     "type": "text",
+     "required": false,
+     "description": "At closeout: manufacturer of what was installed (compared with the maintenance equipment export and datasheet; empty when nothing was replaced)."
+    },
+    {
+     "name": "installed_model",
+     "type": "text",
+     "required": false,
+     "description": "At closeout: model of what was installed."
+    },
+    {
+     "name": "installed_serial_number",
+     "type": "text",
+     "required": false,
+     "description": "At closeout: serial number of what was installed."
+    },
+    {
+     "name": "installed_size",
+     "type": "text",
+     "required": false,
+     "description": "At closeout: size of what was installed, as the datasheet writes it."
+    },
+    {
      "name": "locator",
      "type": "text",
      "required": false,
@@ -3483,7 +3507,7 @@
    "standards": [
     "none adopted"
    ],
-   "notes": "Extends one_map.py's decisions.csv (conflict_id,status,by,on,note). Routing, approval and history of a ruling belong to an external governed service.",
+   "notes": "Extends one_map.py's decisions.csv (conflict_id,status,by,on,note); one_map.py build --decisions reads both. A field verification (walkdown) ruling has authority field and evidence. Routing, approval and history of a ruling belong to an external governed service.",
    "fields": [
     {
      "name": "ruling_id",
@@ -3545,6 +3569,23 @@
      "type": "date",
      "required": true,
      "description": "Date."
+    },
+    {
+     "name": "authority",
+     "type": "enum",
+     "required": false,
+     "description": "What the ruling rests on: field (a walkdown or field verification saw it), record (a record was checked) or person (a judgement; the default).",
+     "values": [
+      "field",
+      "record",
+      "person"
+     ]
+    },
+    {
+     "name": "evidence",
+     "type": "text",
+     "required": false,
+     "description": "For a field verification ruling (required): the photo file, nameplate reading or locator that shows what is installed."
     }
    ]
   }

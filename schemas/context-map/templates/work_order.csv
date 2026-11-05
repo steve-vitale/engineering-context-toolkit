@@ -1,2 +1,3 @@
-work_order,tag,plant,unit,work_type,opened_on,closed_on,failure_mode,failure_mechanism,failure_cause,detection_method,maintenance_activity,description,locator,status,note
-WO-55120,P-101,P1,PAST1,corrective,2026-08-04,2026-08-04,ELP,,,operator observation,replace,Replaced shaft seal,,unverified,
+work_order,tag,plant,unit,work_type,opened_on,closed_on,failure_mode,failure_mechanism,failure_cause,detection_method,maintenance_activity,description,installed_manufacturer,installed_model,installed_serial_number,installed_size,locator,status,note
+WO-55120,P-101,P1,PAST1,corrective,2026-08-04,2026-08-04,ELP,,,operator observation,replace,Replaced shaft seal,,,,,,unverified,
+WO-55187,FDV-2210,P1,PAST1,corrective,2026-10-20,2026-10-22,FTC,,,operator observation,replace,Replaced divert valve actuator and body,Alfa Valve,SRC-3,AV-88412,DN65,closeout sheet,unverified,

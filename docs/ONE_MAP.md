@@ -301,6 +301,26 @@ Software never resolves a conflict. `--decisions decisions.csv` (`conflict_id,st
 person's decision; it persists across runs. A conflict that is no longer detected keeps its last status with
 `detected: false` until a person resolves it.
 
+`--decisions` also reads rulings in the context map's [`ruling` template](../schemas/context-map/templates/ruling.csv)
+(`ruling_id,concerns,attribute,ruling,chosen_source,chosen_value,reason,by,on,authority,evidence`) and may be given
+more than once. `concerns` is a conflict id (`S1/CONFLICT/C-...` or `C-...`) or an item id with the `attribute`
+(the one detected conflict on that item and attribute). `accept_source`, `accept_value`, `no_conflict` and
+`authority_override` resolve the conflict; `defer` marks it disputed. A **field verification ruling** records a
+walkdown that settles a disputed conflict: `authority` `field`, the date and who, the reason and, required,
+`evidence` (photo file, nameplate reading or locator). Every decision and ruling becomes a history line on the
+conflict (`conflicts.md`, "Decision history"). When a ruling chose a value (or a source) and a record still says
+something else, the record's owner gets a review row `record differs from a ruling` asking them to update it: the
+ruling settles the dispute, the record stays its owner's to change.
+
+**Work order closeout.** A `records` entry with register `work_order` whose rows have `closed_on` and any of
+`installed_manufacturer`, `installed_model`, `installed_serial_number`, `installed_size` is compared with the item's
+records. An installed value that differs from the maintenance equipment export or instrument index is a
+`value_disagreement` to that record's owner (the work order is source A). One that differs from a datasheet is a
+review row `replacement may not be like-for-like` to the datasheet's owner: a possible management of change trigger,
+flagged and never decided. Manufacturer, model or serial number that no maintenance equipment export or instrument
+index row holds is a `work order closeout note`. Values compare ignoring case and repeated spaces; an open work order
+(no `closed_on`) is not compared.
+
 ## Review queue
 
 `queues/review_queue.csv` (`rank,tier,owner,plant,unit,item,kind,why,safety,spot_check`) holds every row,
