@@ -1,7 +1,8 @@
 """Write the two fictional Office documents of the one-map Office variant (inputs/documents-office.json): a Word
 start-up procedure and an Excel PM plan for Unit 200 that write tags in other styles (P 101, TT2205, FP01, ft-2203,
 e-205, FV 2203, LV2204). Generated rather than committed, so the repository holds no binary documents; the bytes are
-identical on every run and every OS (the same stored-zip writer as examples/document-text/make_samples.py).
+identical on every run and every OS (the same stored-zip writer as examples/document-text/make_samples.py, which
+makes them complete packages Office programs open).
 Stdlib only.
 
     python examples/one-map/make_office_docs.py examples/one-map/inputs/docs/office
@@ -24,8 +25,10 @@ def startup_procedure(path):
             + samples.row("ft-2203", "flow reading at zero")
             + samples.row("PSV-204", "inlet valve car-sealed open") + "</w:tbl>")
     samples.zip_parts(path, {
-        "[Content_Types].xml": "<Types/>",
-        "word/document.xml": f'<?xml version="1.0"?><w:document {samples.W}><w:body>{body}</w:body></w:document>',
+        "word/document.xml": f'<?xml version="1.0"?><w:document {samples.W} {samples.RR}><w:body>{body}'
+                             '<w:sectPr><w:headerReference w:type="default" r:id="rIdH1"/></w:sectPr>'
+                             "</w:body></w:document>",
+        "word/_rels/document.xml.rels": samples.rels(("rIdH1", "header", "header1.xml")),
         "word/header1.xml": f'<?xml version="1.0"?><w:hdr {samples.W}>'
                             + samples.para("SU-200-03 rev A, Unit 200 feed pump start-up (fictional)") + "</w:hdr>",
     })
@@ -44,7 +47,8 @@ def pm_plan(path):
     samples.zip_parts(path, {
         "xl/workbook.xml": f'<workbook {samples.SS} {samples.RR}><sheets><sheet name="PM plan" sheetId="1" '
                            'r:id="rId1"/></sheets></workbook>',
-        "xl/_rels/workbook.xml.rels": samples.rels(("rId1", "worksheet", "worksheets/sheet1.xml")),
+        "xl/_rels/workbook.xml.rels": samples.rels(("rId1", "worksheet", "worksheets/sheet1.xml"),
+                                                   ("rIdS", "sharedStrings", "sharedStrings.xml")),
         "xl/sharedStrings.xml": sst,
         "xl/worksheets/sheet1.xml": f"<worksheet {samples.SS}><sheetData>{data}</sheetData></worksheet>",
     })
