@@ -1,0 +1,2 @@
+tag,plant,unit,document,revision,measured_variable,sensor_type,range_low[degC],range_high[degC],output_signal,accuracy,process_connection,wetted_material,manufacturer,model,locator,status,note
+TT-2207,P1,PAST1,IS-TT2207,1,temperature,RTD Pt100,0,100,4-20 mA,0.1 degC,hygienic clamp 1.5 in,AISI 316L,,,box 22,unverified,Hold-tube outlet CCP sensor.

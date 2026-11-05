@@ -2,7 +2,8 @@
 
 **Status: design draft, 2026-11-04. No tool reads or writes this format yet.** The machine-readable drafts are in
 [`schemas/context-map/`](../schemas/context-map/): the JSON Schema, the register catalogue, a CSV template per
-register, the standards-mapping table and a small fictional example map.
+register, wide-form datasheet templates, the standards-mapping table and a small fictional example map. The owner's
+answers to the draft's open questions are applied; see [Decided (2026-11-04)](#decided-2026-11-04).
 `python scripts/test_context_map_format.py` checks that they parse and agree with each other.
 
 ## In plain words
@@ -13,8 +14,9 @@ right about some things and out of date about others. The context map puts them 
 the plant's own tags, so a person can ask "what do we know about P-101, and who says so?" and get an answer with a
 source for every value.
 
-The format is our own, assembled from standard parts. Each part names the standard it follows (ISA-95 for the
-hierarchy, DEXPI for P&ID content, ISA-5.1 for tag letters, CFIHOS for registers and classes, ISO 14224 for
+The format is our own, assembled from standard parts. The hierarchy uses plant words (plant, unit, system), with
+their ISA-95 and ISA-88 equivalents kept in the mapping table. Each other part names the standard it follows (DEXPI
+for P&ID content, ISA-5.1 for tag letters, CFIHOS for registers and classes, ISO 14224 for
 maintenance data, VDI 2770 for vendor documents) so a contractor handover or another tool can load in without a
 custom translation for every site.
 
@@ -37,9 +39,10 @@ belong to an external governed service; the map keeps only the disagreement, the
 ## What the plant supplies, and in what shape
 
 People fill in registers as CSV files, one per record type, from the templates in
-[`schemas/context-map/templates/`](../schemas/context-map/templates/). Each template is a header row and one or two
-fictional example rows from a food plant (an HTST pasteurizer unit `PAST1` with the P-101 timing pump, the TT-2207
-hold-tube temperature CCP and the FDV-2210 flow diversion valve). Delete the example rows and paste your own.
+[`schemas/context-map/templates/`](../schemas/context-map/templates/). Each template is a header row and one to four
+fictional example rows from a food plant (an HTST pasteurizer unit `PAST1` with the P-101 timing pump, the HT-100
+hold tube, the TT-2207 hold-tube temperature CCP and the FDV-2210 flow diversion valve). Delete the example rows and
+paste your own. The hierarchy columns use plant words: `plant`, `unit` and, where a register has one, `system`.
 Column rules:
 
 - **Identity columns come first** (`tag`, `plant`, `unit` for tag-keyed registers). `plant` is a plant id or a site
@@ -87,32 +90,48 @@ Identity is the part a plant must get right, so the rules are strict and few.
 
 ## The PLANT layer
 
-**Hierarchy.** Levels are `site`, `plant`, `unit` (a site may call it area) and an optional `system`, with items
-below. Each scope may record its ISA-95 level (`Site`, `Area`, a work center type such as `Production unit` or
-`Process cell`) and, for batch plants, its ISA-88 level. ISA-95 is the chosen standard for hierarchy names; DEXPI
-`PlantStructure` and the ISO 14224 taxonomy levels are crosswalks used when loading those sources.
+**Hierarchy.** Levels are `site`, `plant`, `unit` and an optional `system`, with items below. These plant words are
+what the templates, the schema and this spec use. Their equivalents in other standards are kept in one place only,
+the mapping table [`standards-mapping.csv`](../schemas/context-map/standards-mapping.csv); no scope records them:
+
+| Plant word | ISA-95 equivalent | ISA-88 equivalent (batch plants) | DEXPI 2.0.1 crosswalk | ISO 14224 |
+|---|---|---|---|---|
+| site | Site | none | `PlantStructure/Site` | taxonomy level 3 (installation) |
+| plant | Area | none | `PlantStructure/ProcessPlant` | taxonomy level 4 (plant/unit) |
+| unit | a work center (production unit, process cell, production line, storage zone) | Process cell or Unit | `PlantArea` or `PlantSection` (the loader asks) | taxonomy level 4 |
+| system | none | Equipment module | `PlantStructure/PlantSystem` | taxonomy level 5 (section/system) |
 
 **Items.** Required: `id`, `tag`, `scope`. Optional: `kind` (one of `equipment`, `instrument`, `controller`,
 `final_element`, `manual_valve`, `relief_device`, `line`, `offpage_connector`, `boundary`, `junction`, `other`),
 `name`, `parent`, `aliases`, `class_refs` (pointers into DEXPI, CFIHOS or ISO 14224 classes), `isa_letters`,
 `safety_relevant`, `status`, `lifecycle`, `appearances` (each P&ID sheet, revision and zone it is drawn on),
-`listed_in` (the sources that hold it; empty means drawn but in no register) and `attributes`.
+`listed_in` (the sources that hold it; empty means on a P&ID but in no register) and `attributes`.
 
 **Relations.** Each relation has a `type`, `from`, `to` and a `source`, and may carry `revision`, `locator`,
-`status` and, for lines, `line_type` and `signal_type`:
+`status` and, for lines, `line_type` and `signal_type`.
 
-| Type | From → to | Means | DEXPI 2.0.1 reference |
-|---|---|---|---|
-| `contains` | scope → scope or item | hierarchy | `PlantStructure` |
-| `piped_to` | item → item | consecutive process items on a pipe run; `directed` when the source shows flow | `PipingNetworkSegment`, `PipingConnection` |
-| `measures` | instrument → item or line | what an instrument senses | `SensingLocation`, `ProcessSignalGeneratingFunction` |
-| `controls` | controller → final element | the controller's output | `ProcessControlFunction` |
-| `sets_point_of` | controller → controller | cascade | `ProcessControlFunction` |
-| `acts_on` | final element → item or line | what a valve or actuator changes | `ActuatingFunction`, `ActuatingSystem` |
-| `protects` | relief or safety device → item | what it protects | none single; our own |
-| `signal_to` | instrument → instrument | a drawn signal line | `SignalLineFunction`, `SignalConveyingFunction` |
-| `actuated_by`, `nozzle_of` | item → item | not pipe (kept from twin-graph-1) | `ActuatingSystem`, nozzle classes |
-| `member_of` | item → loop | loop membership | `InstrumentationLoopFunction` |
+**The relation names are frozen.** The names and directions below are stable from `context-map-1` on, so other
+systems can map to them. Adding a name is a minor version; renaming or removing one, or reversing its direction,
+needs a new major format version (`context-map-2`). The containment relation is `contains` (parent → child); there
+is no `has_part`.
+
+| Type | From → to | Means | Status | DEXPI 2.0.1 reference |
+|---|---|---|---|---|
+| `contains` | scope → scope or item | hierarchy | stable | `PlantStructure` |
+| `piped_to` | item → item | consecutive process items on a pipe run; `directed` when the source shows flow | stable | `PipingNetworkSegment`, `PipingConnection` |
+| `measures` | instrument → item or line | what an instrument senses | stable | `SensingLocation`, `ProcessSignalGeneratingFunction` |
+| `controls` | controller → final element | the controller's output | stable | `ProcessControlFunction` |
+| `sets_point_of` | controller → controller | cascade | stable | `ProcessControlFunction` |
+| `acts_on` | final element → item or line | what a valve or actuator changes | stable | `ActuatingFunction`, `ActuatingSystem` |
+| `protects` | relief or safety device → item | what it protects | stable | none single; our own |
+| `signal_to` | instrument → instrument | a signal line on the P&ID | stable | `SignalLineFunction`, `SignalConveyingFunction` |
+| `actuated_by` | item → item | an actuator link, not pipe (kept from twin-graph-1) | stable | `ActuatingSystem` |
+| `nozzle_of` | item → item | a nozzle on its equipment, not pipe (kept from twin-graph-1) | stable | nozzle classes |
+| `references` | off-page connector or boundary item → item | where a connector or boundary leads (one map) | stable | `PipeOffPageConnector`, `SignalOffPageConnector` |
+| `member_of` | item → loop | loop membership | stable | `InstrumentationLoopFunction` |
+| `covers` | document → scope or item | what a document is about (DOCUMENTS layer) | stable | none; our own |
+| `mentions` | document → item | a tag found in a document's text (DOCUMENTS layer) | stable | none; our own |
+| `based_on` | document → document at a revision | the basis a document was written from (DOCUMENTS layer) | stable | none; our own |
 
 Line types: `process_pipe`, `utility_pipe`, `measuring_line` (impulse line, DEXPI `MeasuringLineFunction`),
 `signal_line`, `mechanical_link`, `unknown`. Signal types follow DEXPI's `SignalConveyingTypeClassification`
@@ -135,12 +154,12 @@ The full field definitions (type, required, fact kind, description, allowed valu
 |---|---|---|---|---|---|
 | `tag_register` tag register | tag, plant, unit* | system, kind, description, dexpi_class, cfihos_tag_class, parent_tag, former_tag, safety_relevant | Engineering | (tags come from the P&ID) | ISA-95 level of the scope; DEXPI class; CFIHOS tag class; ISA-5.1 letters |
 | `tag_alias` tag lookup table | alias, alias_kind, tag, plant, unit* | valid_from, valid_to | Doc control | - | CFIHOS tag number; ISO 14224 taxonomy |
-| `drawing_register` drawing register (P&ID sheet index) | sheet, rev, plant, unit*, owner, path | doc_status | Doc control | - (the P&ID part of the document register) | DEXPI Diagram; CFIHOS document type |
+| `drawing_register` P&ID sheet register | sheet, rev, plant, unit*, owner, path | doc_status | Doc control | - (the P&ID part of the document register) | DEXPI Diagram; CFIHOS document type |
 | `maintenance_export` maintenance equipment export (equipment register) | tag, plant, unit* | functional_location, equipment_number, description, manufacturer, model, serial_number, installed_on, iso14224_class, criticality, system, former_tag, cmms_status | Maintenance | installed | ISO 14224 equipment data; CFIHOS equipment register; AAS Digital Nameplate |
-| `datasheet` datasheet values (equipment datasheets and instrument specification sheets) | tag, plant, unit*, property, value, document, revision | uom, fact_kind, sheet_type, cfihos_property | Engineering | rating, size, material | CFIHOS tag property value; CFIHOS property; DEXPI attributes |
+| `datasheet` datasheet values (equipment datasheets and instrument specification sheets) | tag, plant, unit*, property, value, document, revision | uom, fact_kind, sheet_type, cfihos_property | Engineering | rating, size, material; instrument range and model where the rows are an instrument spec sheet | CFIHOS tag property value; CFIHOS property; DEXPI attributes |
 | `line_list` line list | line_number, plant, unit* | from_tag, to_tag, nominal_size, piping_class, fluid, design_pressure, design_temperature, material, insulation, hygienic | Engineering | line_design | DEXPI PipingNetworkSegment; CFIHOS tag class (line) |
 | `relief_device_register` relief device register | tag, plant, unit* | protects, device_type, set_pressure, capacity, sizing_basis, last_tested, test_interval_months, next_due | Process safety | relief_setting | DEXPI SafetyValveOrFitting; CFIHOS tag class |
-| `instrument_index` instrument index | tag, plant, unit* | loop, service, instrument_type, range_low, range_high, range_uom, signal_type, manufacturer, model, description | I&C | instrument_range, instrument_model | ISA-5.1 letters; DEXPI ProcessInstrumentationFunction; CFIHOS tag class |
+| `instrument_index` instrument index | tag, plant, unit* | loop, service, instrument_type, range_low, range_high, range_uom, signal_type, manufacturer, model, description | I&C | instrument_range, instrument_model (where no instrument spec sheet is supplied for the scope) | ISA-5.1 letters; DEXPI ProcessInstrumentationFunction; CFIHOS tag class |
 | `loop_list` loop list | controller, plant, unit* | measurement, output, loop_type, description | I&C | - (the control scheme comes from the P&ID) | DEXPI InstrumentationLoopFunction; ISA-5.1 loop number |
 | `io_list` IO list | tag, plant, unit*, point | controller_system, io_type, historian_tag | I&C | io_assignment | ISA-95 level 1-2 boundary (informative) |
 | `alarm_list` alarm list | tag, plant, unit*, alarm_type | setpoint, uom, priority, operator_action, rationalized_on | I&C | alarm_setting | ISA-18.2 (named, not adopted) |
@@ -150,32 +169,65 @@ The full field definitions (type, required, fact kind, description, allowed valu
 | `calibration_record` calibration record | tag, plant, unit*, calibrated_on | as_found, as_left, tolerance, result, reference_standard, work_order, next_due, performed_by | Maintenance | calibration_status | ISO 14224 maintenance data |
 | `mro_item` stores item master (MRO items) | item_number | description, manufacturer, part_number, uom, min_qty, max_qty, critical_spare, lead_time_days | Stores | - | ISO 14224 maintainable item (informative) |
 | `spares_bom` spare parts BOM | item_number, tag, plant, unit* | qty_installed | Maintenance | - | ISO 14224 maintainable item (informative) |
-| `purchase_order` purchase order lines | po_number, line | vendor_id, item_number, tag, plant, unit, description, spec_document, ordered_on, received_on, like_for_like | Procurement | - | CFIHOS purchase order (informative) |
+| `purchase_order` purchase order lines (read-only copy) | po_number, line | vendor_id, item_number, tag, plant, unit, description, spec_document, ordered_on, received_on, like_for_like | Procurement | - | CFIHOS purchase order (informative) |
 | `approved_vendor` approved vendor register | vendor_id, approval_scope | name, food_contact, approval_status, approved_by, approved_on, review_due | Procurement | vendor_approval | none adopted |
 | `operating_limit` operating limits (operating envelope) | tag, plant, unit*, parameter, limit_type | low, high, uom, basis | Production | operating_limit | none adopted |
 | `ccp` critical control points (HACCP plan) | ccp_id, plant, unit*, haccp_plan | process_step, hazard, monitored_tag, parameter, critical_limit_low, critical_limit_high, uom, monitoring_frequency, corrective_action, verification | Quality | ccp_limit | Codex HACCP principles (named, not adopted) |
 | `isolation_point` isolation points (lockout procedures) | isolates_tag, plant, unit*, point_tag, procedure | energy_type, isolated_position, verification, sequence | Safety/EHS | isolation | OSHA 29 CFR 1910.147 (context, not adopted) |
-| `permit` work permits (record copies) | permit_id, plant, unit* | permit_type, tag, valid_from, valid_to, permit_status | Safety/EHS | - | none adopted |
+| `permit` work permits (read-only copy) | permit_id, plant, unit* | permit_type, tag, valid_from, valid_to, permit_status | Safety/EHS | - | none adopted |
+| `capa` CAPA register (corrective and preventive actions) | capa_id, plant, unit* | capa_type, tag, document, document_revision, raised_from, raised_from_ref, opened_on, problem, root_cause, action, action_owner, due_on, closed_on, effectiveness_check, effectiveness_verified_on, capa_status | Quality | corrective_action | ISO 9001 clause 10.2, ISO 22000 clause 10.1, 21 CFR 117.150 (named, not adopted) |
+| `criticality_ranking` equipment criticality ranking | tag, plant, unit*, criticality | method, method_document, safety_consequence, food_safety_consequence, production_consequence, environmental_consequence, likelihood, risk_score, ranked_on, ranked_by, next_review | Maintenance | criticality | none adopted (the site's own method) |
+| `inspection_record` inspection records (vessels, piping, RBI) | tag, plant, unit*, inspected_on | inspection_type, component, finding, result, measured_value, minimum_allowed, uom, remaining_life_years, rbi_risk, interval_months, next_due, inspector, certification, work_order, report_document | Maintenance | inspection_status | API 510, 570, 580, 581 (named, not adopted); ISO 14224 maintenance data (informative) |
 | `document_register` document register | document, revision | title, doc_type, cfihos_document_type, vdi2770_class, doc_status, owner, path, covers, based_on, manufacturer | Doc control | document_revision | CFIHOS document type; VDI 2770; AAS Handover Documentation |
 | `ruling` local rulings | ruling_id, concerns, ruling, reason, by, on | attribute, chosen_source, chosen_value | the person ruling | - | none adopted |
 
 Department grouping: engineering (`tag_register`, `drawing_register`, `datasheet`, `line_list`,
 `document_register`), I&C (`instrument_index`, `loop_list`, `io_list`, `alarm_list`, `interlock_list`),
-maintenance (`maintenance_export`, `work_order`, `pm_plan`, `calibration_record`, `spares_bom`), procurement and
-supply chain (`mro_item`, `purchase_order`, `approved_vendor`), production (`operating_limit`), quality and food
-safety (`ccp`), safety and EHS (`relief_device_register`, `isolation_point`, `permit`).
+maintenance (`maintenance_export`, `work_order`, `pm_plan`, `calibration_record`, `spares_bom`,
+`criticality_ranking`, `inspection_record`), procurement and supply chain (`mro_item`, `purchase_order`,
+`approved_vendor`), production (`operating_limit`), quality and food safety (`ccp`, `capa`), safety and EHS
+(`relief_device_register`, `isolation_point`, `permit`).
 
 Notes on particular registers:
 
 - **`datasheet` is long form** (one row per tag, property and value) because every equipment class has different
   properties. This is also the shape of CFIHOS property-value deliverables. Each row names the datasheet document
-  and its revision.
+  and its revision. Long form is what the map stores.
+- **Wide-form datasheet templates** are offered for filling in by hand, one row per item and one column per
+  property, in [`templates/datasheet-wide/`](../schemas/context-map/templates/datasheet-wide/): pump, heat exchanger
+  (plate or shell and tube), vessel and tank, control valve, transmitter and relief valve. Their columns and fact
+  kinds are in `registers.json` (`datasheet_wide_forms`). They convert to long rows by a fixed rule:
+  1. `tag`, `plant`, `unit`, `document`, `revision` are identity columns and `locator`, `status`, `note` are
+     trailing columns. Every other column is a property column; its header is the property name, optionally
+     followed by the unit in square brackets (`rated_flow[L/h]`).
+  2. Rows are read top to bottom, property columns left to right. Each non-empty property cell gives one long row;
+     an empty cell gives none.
+  3. The long row copies the identity columns; `property` is the header without the bracket, `value` is the cell
+     exactly as written, `uom` is the bracket text.
+  4. `fact_kind` is the one the form defines for that property (a column the form does not define gets none, and
+     the default guess applies); `sheet_type` is the form's (`equipment_datasheet` or `instrument_spec_sheet`).
+  5. `locator` is the wide row's locator, or `row N` when it is empty, followed by `; column <header>`; `status`
+     and `note` are copied.
+
+  So the TT-2207 transmitter row gives, among others, the long row `TT-2207, P1, PAST1, range_low, 0, degC,
+  instrument_range, instrument_spec_sheet, IS-TT2207, 1, , box 22; column range_low[degC], unverified, ...`.
 - **`ccp`** rows are read from the HACCP plan, and each row names it (`haccp_plan`). TT-2207's critical limit is a
   `ccp_limit` fact: if the instrument index or an operating-limit row gives a different number, the HACCP plan
   wins by default and the disagreement is raised to Quality.
 - **`isolation_point`** rows are read from the lockout procedure for the isolated equipment (`procedure`).
-- **`permit`** and **`purchase_order`** are record copies for context. Issuing a permit or approving a purchase stays
-  in the permit system, the purchasing system or a governed service.
+- **`permit`** and **`purchase_order`** stay in version 1 as **read-only copies** for context, linked to the plant
+  by tag (`record_copy: true` in `registers.json`). They are authoritative for nothing. Issuing, approving and
+  closing a permit, and requisitioning, approving and receiving a purchase, are workflows that belong to the permit
+  system, the purchasing system and an external governed service; the map never writes back.
+- **`capa`** holds corrective and preventive actions (and corrections), one row per CAPA and linked tag or
+  document: a CAPA links to the plant by `tag` and to the record it changes by `document` (the HACCP plan, a
+  procedure, a P&ID), repeating the CAPA id for each further link. It also covers deviations, through
+  `raised_from` (`deviation`, `ccp_deviation`, ...). Raising and closing a CAPA stays in the quality system.
+- **`criticality_ranking`** is the equipment criticality ranking as the site's own method writes it. The
+  `criticality` column of the maintenance equipment export is a copy: where they differ, the ranking register wins
+  and Maintenance gets the conflict.
+- **`inspection_record`** holds inspections of vessels, tanks and piping, including risk-based inspection (RBI)
+  results (`rbi_risk`, `remaining_life_years`). The inspection report itself is a document (`report_document`).
 - **`loop_list`** keeps loop_audit.py's contract (`controller`, `measurement`, `output`).
 - The loop list, interlock list and alarm list are separate registers because different people own them and they
   disagree in different ways.
@@ -185,23 +237,40 @@ The difference matters: an empty instrument index for a unit says "we hold no in
 says nothing. Each source declares the `scopes` it is the record for, so only an item missing from a covered scope
 raises `asset_presence`.
 
+**Next planned registers** (listed in `registers.json` as `planned_registers`; not defined yet, so a map may not
+contain them): PFDs and heat and material balances; electrical single-line diagrams and motor schedules; training
+records; safety data sheets (SDS) and chemical inventory.
+
 ## Which record wins: authority per fact
 
 Every field that can disagree with another record has a **fact kind**. The site's authority map names, for each
-fact kind, the record type that is authoritative. Defaults (in `registers.json`, overridable per site in
-`settings.authority`, with the reason in `settings.authority_reasons`):
+fact kind, an **ordered list** of record types. For a given scope, the **first record type in the list that is
+present for that scope wins**; later entries apply only where the earlier ones are absent. A record type is present
+for a scope when a source of that type is the record for it (its `scopes` list the scope or an enclosing one; a
+source that lists no scopes is the record for the scopes of the items its rows resolve to). When no listed record
+type is present, nothing is authoritative there and a disagreement is an `authority_gap`.
 
-| Fact kind | Authoritative record | Fact kind | Authoritative record |
+Defaults are in `registers.json` (`default_authority`, rule text in `authority_rule`). A site overrides one in
+`settings.authority` with its own list (or a single record type), with the reason in `settings.authority_reasons`.
+
+| Fact kind | Authority, in order | Fact kind | Authority, in order |
 |---|---|---|---|
 | connectivity, tags, control scheme | P&ID | installed (manufacturer, model, serial, install date) | maintenance equipment export |
 | rating, size, material (equipment) | datasheet | line design (size, class, design conditions) | line list |
-| instrument range, instrument model | instrument index (or the spec sheet, if the site says so) | relief setting | relief device register |
+| instrument range, instrument model | 1. instrument spec sheet, 2. instrument index | relief setting | relief device register |
 | CCP critical limit | HACCP plan (`ccp`) | isolation points | lockout procedure (`isolation_point`) |
 | alarm setting | alarm list | trip logic | interlock list |
 | IO assignment | IO list | calibration status | calibration record |
 | maintenance history | work order history | PM schedule | PM plan |
 | vendor approval | approved vendor register | operating limit | operating limits |
-| document revision | document register | | |
+| corrective action | CAPA register | criticality | equipment criticality ranking |
+| inspection status | inspection records | document revision | document register |
+
+**Instrument range and model.** The instrument spec sheet is the authority where the site supplies one for that
+scope; otherwise the instrument index is. "Instrument spec sheet" (`instrument_spec_sheet`) is a pseudo record
+type: rows of the datasheet register with `sheet_type` `instrument_spec_sheet` from a datasheet source that is the
+record for the scope. In the example map, the TT-2207 spec sheet covers unit `PAST1`, so on `PAST1` it wins; on a
+unit with no spec sheet supplied, the instrument index does.
 
 When two records disagree on a fact, the authoritative one's value is shown as current and the other record's
 owner gets the conflict (a value printed on a P&ID is reference only for non-connectivity facts, as one map does
@@ -210,7 +279,8 @@ An authority choice never deletes the other value; both stay, with their sources
 
 ## Provenance on every value
 
-Every value carries **source, revision and locator**, and a **standard reference** where one exists.
+Every value carries **source, revision and locator**. It does not carry a standard reference: that lives on the
+field definition.
 
 - A `source` is one supplied file or export, declared once: id, record type, revision, path or address, SHA-256 of
   its bytes, owner, the scopes it is the record for, and (for handovers) where it came from.
@@ -218,10 +288,10 @@ Every value carries **source, revision and locator**, and a **standard reference
   transcribed from a document). A plain value in a row inherits the row's source, revision and locator.
 - A value that came from somewhere else is written as a **fact**:
   `{"value": "0 to 100", "uom": "degC", "source": "IS-TT2207", "revision": "1", "locator": "box 22"}`.
-- **Standard references live at two levels.** The field's meaning is mapped once, in
-  [`standards-mapping.csv`](../schemas/context-map/standards-mapping.csv), so it is not repeated on every value.
-  A value that is itself a class or code (an item's DEXPI class, a CFIHOS tag class, an ISO 14224 equipment class,
-  a VDI 2770 document class) is stored as a `StandardRef`: standard, version, identifier and link.
+- **The standard reference lives on the field definition,** in the mapping table
+  [`standards-mapping.csv`](../schemas/context-map/standards-mapping.csv), once per field. A fact, relation or scope
+  has no `std` of its own. The only `StandardRef`s in a map are values that are themselves a class or code (an
+  item's `class_refs`, a document's `type_refs`) and a source's handover standard.
 - Status vocabulary: `unverified`, `confirmed`, `corrected`, `rejected` (from twin-graph-1) plus `stale` for a value
   whose source has since been revised.
 
@@ -240,7 +310,7 @@ documents, and whether its text could be read (`text_extracted`). Three relation
 - **`based_on`**: another document at a stated revision. When that document is revised, this one is flagged
   `superseded_basis` and everything based on it reopens, transitively.
 
-P&ID sheets are documents too; the drawing register is their part of the document register.
+P&ID sheets are documents too; the P&ID sheet register (`drawing_register`) is their part of the document register.
 
 ## The DECISIONS layer
 
@@ -288,7 +358,7 @@ Where standards overlap, one is chosen per layer and the others become crosswalk
 
 | Layer or part | Chosen standard | Also mapped | Why this choice |
 |---|---|---|---|
-| Hierarchy names | ISA-95 (ANSI/ISA-95.00.01-2025, IEC 62264-1 Mod) | ISA-88 below the unit for batch plants; DEXPI `PlantStructure`; ISO 14224 taxonomy levels | the levels operations, MES and ERP people already use |
+| Hierarchy names | plant words (site, plant, unit, system); our own | ISA-95 (ANSI/ISA-95.00.01-2025, IEC 62264-1 Mod) and ISA-88 equivalents, DEXPI `PlantStructure`, ISO 14224 taxonomy levels, all in the mapping table only | the words plant people use; the equivalents let MES, ERP and DEXPI sources load |
 | P&ID content: items, connections, line and signal types, loops | DEXPI 2.0.1 | ISA-5.1 for line symbols DEXPI lacks | open, machine-readable, CC BY 4.0, and the toolkit already reads DEXPI XML |
 | Tag letters | ISA-5.1-2024 | none | the letters plants actually use; parsed as a hint only |
 | Registers, classes, properties, document types | CFIHOS 2.0 | DEXPI class names on PLANT items; ISO 14224 equipment class on maintenance rows | the handover format contractors deliver; free to download and use |
@@ -326,7 +396,13 @@ instrumented functions), Codex HACCP principles, OSHA 29 CFR 1910.147 (lockout),
 
 Only one CFIHOS code was opened and checked (`CFIHOS-10000395`, drawing position number). Every other CFIHOS
 reference in the mapping table is marked `to_confirm`, including the exact table and column names of CFIHOS
-deliverables; they must be checked against the C-DM-002 data dictionary of the version a contract names.
+deliverables; they must be checked against the C-DM-002 data dictionary of the version a contract names, and they
+stay `to_confirm` until someone does.
+
+**CFIHOS reference data is not redistributed.** This project ships no CFIHOS RDL, data dictionary or definition
+text. A CFIHOS code in this format is a link only: the code and a URI pointing at the published reference data. That
+stays the rule pending confirmation of the terms of use with IOGP (JIP36) and POSC Caesar, including whether the
+CFIHOS RDL falls under POSC Caesar's CC BY-ND default.
 
 ## How today's toolkit formats fit in
 
@@ -344,7 +420,7 @@ deliverables; they must be checked against the C-DM-002 data dictionary of the v
 | `context-register-1`, `engineering-onboarding-1` | questions, answers, onboarding packets | not part of the map; they reference map ids | **unchanged** |
 
 The CSV registers one map reads today (maintenance equipment export, instrument index, loop list, datasheets,
-drawing register) keep their columns; the templates add only optional columns.
+P&ID sheet register) keep their columns; the templates add only optional columns.
 
 ## Loading a contractor handover
 
@@ -377,6 +453,8 @@ under the authority map, and contractor tags that differ from site tags go throu
   makes an old file invalid or changes a meaning is `context-map-2`.
 - `registers.json` carries the same version and is the one catalogue of registers; the schema's register names must
   match it (the test checks this).
+- **Relation names are stable** (see the PLANT layer). Renaming or removing a relation name, or reversing its
+  direction, is a breaking change and needs `context-map-2`; the test pins the frozen set.
 - Every `StandardRef` records the standard version it points into, and `standards-mapping.csv` pins the version each
   mapping was made against. Moving to a new standard version is a mapping change, reviewed like any other.
 - This draft is `1.0.0-draft`. Nothing reads it yet, so it may still change without a version bump.
@@ -396,26 +474,34 @@ under the authority map, and contractor tags that differ from site tags go throu
   what is correct.
 - **No access control.** The map file holds what it is given; who may see it is the company's decision.
 
-## Open questions for the owner
+## Decided (2026-11-04)
 
-1. **Scope names.** Is `site > plant > unit (area) > system` right for the food plants in view, or do most of them
-   use `site > area > line`? The format allows both labels; the question is which one the templates should say.
-2. **Datasheet shape.** Long form (one row per value, as drafted) is CFIHOS-like and handles every class, but is
-   tedious to fill by hand. Should the template also offer a wide form per equipment class?
-3. **Instrument range authority.** Default is the instrument index; many sites treat the spec sheet as the
-   authority. Which default should ship?
-4. **Field-level standard references.** Drafted at the field-definition level (the mapping table), not on every
-   value. Is that enough, or should each value repeat it?
-5. **Permits and purchase orders.** Drafted as read-only record copies. Keep them, or leave them out of version 1?
-6. **Relation names.** Drafted with the toolkit's current names (`piped_to`, `measures`, `signal_to`, `contains`)
-   and stated directions. A rename to an external vocabulary should happen once, before the first release that
-   writes this format.
-7. **CFIHOS identifiers.** Before any code ships, someone should confirm the CFIHOS 2.0 codes for the tag, equipment,
-   property and document-type references marked `to_confirm`, and whether the CFIHOS RDL is under PCA's
-   CC BY-ND default.
-8. **Registers not yet drafted:** PFDs and heat and material balances, electrical single-lines and motor schedules,
-   inspection records, criticality rankings, CAPAs and deviations, training records, SDS and chemical inventory.
-   Which come next?
+The owner answered the eight open questions of the first draft on 2026-11-04. Each is applied above and checked by
+`scripts/test_context_map_format.py`.
+
+1. **Hierarchy words.** Templates, schema and spec use plant words: plant, unit, system. ISA-95 and ISA-88
+   equivalents live only in the mapping table (`standards-mapping.csv`, mirrored in the hierarchy table above); the
+   per-scope `isa95_level` and `isa88_level` fields were removed.
+2. **Datasheets.** Long form stays canonical. Wide-form templates (one row per item) were added for pump, heat
+   exchanger, vessel and tank, control valve, transmitter and relief valve, with a fixed wide-to-long conversion
+   (column = property, unit in square brackets). The test converts every wide template and validates the long rows.
+3. **Instrument range and model authority.** Ordered authority: the instrument spec sheet where the site supplies
+   one for that scope, otherwise the instrument index. Every default authority is now an ordered list (first
+   present record type wins); the test exercises the rule on the example map.
+4. **Standard references.** On the field definition (the mapping table) only. The per-value `std` was removed from
+   facts, relations and scopes.
+5. **Permits and purchase orders.** Kept in version 1 as read-only copies linked by tag; their workflow belongs to an
+   external governed service. Marked `record_copy` in `registers.json`.
+6. **Relation names.** Frozen now as listed in the PLANT layer, including `contains` (no `has_part`) and the
+   document relations `covers`, `mentions` and `based_on`. Renames need `context-map-2`.
+7. **CFIHOS codes.** All but the one checked code stay `to_confirm`. CFIHOS reference data is not redistributed;
+   codes are links only, pending confirmation of terms with IOGP and POSC Caesar.
+8. **Next registers.** Added now: CAPA register, equipment criticality ranking, inspection records (vessels, piping,
+   RBI). Planned next: PFDs and heat and material balances; electrical single-line diagrams and motor schedules;
+   training records; safety data sheets (SDS) and chemical inventory.
+
+Still open, outside these decisions: confirming the CFIHOS 2.0 codes and terms (item 7) before any code ships, and
+choosing a site override example once a real site's authority choices are known.
 
 ## For agents
 
@@ -424,11 +510,14 @@ format:   context-map-1 (draft 1.0.0-draft); schema schemas/context-map/context-
 layers:   plant {scopes, items, relations, loops} | records {<register_id>: [rows]} | documents [] | decisions {conflicts, rulings}
 also:     map {site,...}, settings {owners, authority, authority_reasons, fact_kinds, routing, letter_overrides}, sources [], coverage {}
 required: format, map.site, plant.scopes, plant.items; item = {id: SITE/PLANT/UNIT/TAG, tag, scope}
+hierarchy: plant words site > plant > unit > system; ISA-95/88 equivalents only in standards-mapping.csv
 registers: schemas/context-map/registers.json (fields, required, fact_kind, owner, authority_for); templates/<id>.csv match it
+datasheet: long form stored; templates/datasheet-wide/*.csv convert by registers.json datasheet_wide_forms.conversion
 absent register = not supplied; [] = supplied, no rows
-value:    scalar (inherits row source/revision/locator) or {value, uom, source, revision, locator, std, status, fact_kind}
-authority: registers.json default_authority, overridden by settings.authority; P&ID = connectivity, tags, control scheme
-standards: schemas/context-map/standards-mapping.csv; identifiers and links only, never definitions
+value:    scalar (inherits row source/revision/locator) or {value, uom, source, revision, locator, status, fact_kind}; no per-value std
+authority: ordered lists, registers.json default_authority + authority_rule (first present for the scope wins), overridden by settings.authority
+relations: frozen names ($defs.RelationType + covers, mentions, based_on); a rename needs context-map-2
+standards: schemas/context-map/standards-mapping.csv; identifiers and links only, never definitions; CFIHOS codes to_confirm except CFIHOS-10000395
 never:    renumber or trim a tag; join on a normalized tag; resolve a conflict; ship standards text or RDL files
 check:    python scripts/test_context_map_format.py
 ```

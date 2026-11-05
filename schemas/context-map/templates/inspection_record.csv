@@ -1,0 +1,3 @@
+tag,plant,unit,inspected_on,inspection_type,component,finding,result,measured_value,minimum_allowed,uom,remaining_life_years,rbi_risk,interval_months,next_due,inspector,certification,work_order,report_document,locator,status,note
+HT-100,P1,PAST1,2026-06-18,ultrasonic thickness,section 3,No wall loss beyond tolerance,acceptable,1.62,1.30,mm,25,low,24,2028-06-18,Example Inspection Ltd (fictional),,WO-551870,INSP-HT100-2026,,unverified,
+HT-100,P1,PAST1,2026-06-18,borescope,welds W-1 to W-14,Light discoloration at W-12; no pitting or crevices,acceptable_with_monitoring,,,,,low,12,2027-06-18,Example Inspection Ltd (fictional),,WO-551870,INSP-HT100-2026,,unverified,

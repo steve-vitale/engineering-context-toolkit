@@ -1,0 +1,2 @@
+tag,plant,unit,document,revision,exchanger_type,sections,duty[kW],heat_transfer_area[m2],plate_count,design_pressure[barg],design_temperature[degC],plate_material,gasket_material,hygienic_design,locator,status,note
+PHE-100,P1,PAST1,DS-PHE100,1,plate,regeneration; heating; cooling,410,38.5,187,10,110,AISI 316,EPDM,3-A,,unverified,

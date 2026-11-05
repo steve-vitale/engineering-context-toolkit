@@ -6,7 +6,7 @@
   "name": "Lakeside dairy (fictional)",
   "created": "2026-11-04",
   "generator": "hand-authored example for docs/CONTEXT_MAP_FORMAT.md",
-  "note": "Fictional. Shows a partly filled map: four registers supplied, the rest absent and still valid."
+  "note": "Fictional. Shows a partly filled map: five registers supplied, the rest absent and still valid."
  },
  "settings": {
   "owners": {
@@ -14,12 +14,6 @@
    "maintenance_export": "Maintenance",
    "instrument_index": "I&C",
    "ccp": "Quality"
-  },
-  "authority": {
-   "instrument_range": "datasheet"
-  },
-  "authority_reasons": {
-   "instrument_range": "This site keeps instrument ranges on spec sheets; the instrument index copies them."
   }
  },
  "sources": [
@@ -50,7 +44,10 @@
    "title": "TT-2207 instrument specification sheet",
    "revision": "1",
    "path": "docs/is-tt2207-rev1.pdf",
-   "owner": "I&C"
+   "owner": "I&C",
+   "scopes": [
+    "S1/P1/PAST1"
+   ]
   },
   {
    "id": "HACCP-P1-01",
@@ -69,23 +66,20 @@
    {
     "id": "S1",
     "level": "site",
-    "name": "Lakeside dairy (fictional)",
-    "isa95_level": "Site"
+    "name": "Lakeside dairy (fictional)"
    },
    {
     "id": "S1/P1",
     "level": "plant",
     "parent": "S1",
     "name": "Fluid milk plant",
-    "owner": "Plant 1 operations",
-    "isa95_level": "Area"
+    "owner": "Plant 1 operations"
    },
    {
     "id": "S1/P1/PAST1",
     "level": "unit",
     "parent": "S1/P1",
-    "name": "HTST pasteurizer 1",
-    "isa95_level": "Production unit"
+    "name": "HTST pasteurizer 1"
    }
   ],
   "items": [
@@ -307,6 +301,44 @@
     }
    }
   ],
+  "datasheet": [
+   {
+    "item": "S1/P1/PAST1/TT-2207",
+    "source": "IS-TT2207",
+    "revision": "1",
+    "locator": "box 22",
+    "values": {
+     "tag": "TT-2207",
+     "plant": "P1",
+     "unit": "PAST1",
+     "property": "range_low",
+     "value": "0",
+     "uom": "degC",
+     "fact_kind": "instrument_range",
+     "sheet_type": "instrument_spec_sheet",
+     "document": "IS-TT2207",
+     "revision": "1"
+    }
+   },
+   {
+    "item": "S1/P1/PAST1/TT-2207",
+    "source": "IS-TT2207",
+    "revision": "1",
+    "locator": "box 22",
+    "values": {
+     "tag": "TT-2207",
+     "plant": "P1",
+     "unit": "PAST1",
+     "property": "range_high",
+     "value": "100",
+     "uom": "degC",
+     "fact_kind": "instrument_range",
+     "sheet_type": "instrument_spec_sheet",
+     "document": "IS-TT2207",
+     "revision": "1"
+    }
+   }
+  ],
   "instrument_index": [],
   "isolation_point": []
  },
@@ -410,8 +442,8 @@
     "loops": 1
    },
    "records": {
-    "registers_supplied": 4,
-    "registers_defined": 25
+    "registers_supplied": 5,
+    "registers_defined": 28
    },
    "documents": {
     "documents": 2,
@@ -440,6 +472,7 @@
     "safety_items_with_protective_record": 1,
     "registers_supplied": [
      "maintenance_export",
+     "datasheet",
      "ccp",
      "instrument_index",
      "isolation_point"

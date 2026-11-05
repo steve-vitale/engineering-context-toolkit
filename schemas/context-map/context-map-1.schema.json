@@ -49,14 +49,13 @@
   },
   "Fact": {
    "type": "object", "required": ["value"], "additionalProperties": false,
-   "description": "One value with its own provenance. A bare scalar in a row inherits the row's source, revision and locator.",
+   "description": "One value with its own provenance. A bare scalar in a row inherits the row's source, revision and locator. No per-value standard reference: a field's standard lives on its definition in standards-mapping.csv.",
    "properties": {
     "value": {"$ref": "#/$defs/Scalar"},
     "uom": {"type": "string"},
     "source": {"$ref": "#/$defs/Id"},
     "revision": {"type": "string"},
     "locator": {"$ref": "#/$defs/Locator"},
-    "std": {"$ref": "#/$defs/StandardRef"},
     "status": {"$ref": "#/$defs/Status"},
     "fact_kind": {"type": "string"}
    }
@@ -84,7 +83,7 @@
    "type": "object", "additionalProperties": false,
    "properties": {
     "owners": {"type": "object", "additionalProperties": {"type": "string"}, "description": "Record type (register id or 'pid') to owning department. Overrides each register's default owner."},
-    "authority": {"type": "object", "additionalProperties": {"type": "string"}, "description": "Fact kind to the record type that is authoritative for it. Overrides the defaults in registers.json."},
+    "authority": {"type": "object", "additionalProperties": {"oneOf": [{"type": "string", "minLength": 1}, {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}]}, "description": "Fact kind to the record type that is authoritative for it, or an ordered list of record types (the first one present for a scope wins; see authority_rule in registers.json). Overrides the defaults in registers.json."},
     "authority_reasons": {"type": "object", "additionalProperties": {"type": "string"}, "description": "Why the site overrode a default, per fact kind."},
     "fact_kinds": {"type": "object", "additionalProperties": {"type": "string"}, "description": "Field or property name to fact kind, when the default guess is wrong."},
     "routing": {"type": "object", "additionalProperties": {"type": "string"}},
@@ -97,7 +96,7 @@
    "description": "One supplied file or export, pinned to a revision and its bytes.",
    "properties": {
     "id": {"$ref": "#/$defs/Id"},
-    "record_type": {"type": "string", "description": "A register id from registers.json, or 'pid'."},
+    "record_type": {"type": "string", "description": "A register id from registers.json, or 'pid'. Instrument specification sheets are record_type datasheet."},
     "title": {"type": "string"},
     "revision": {"type": "string"},
     "revision_date": {"$ref": "#/$defs/Date"},
@@ -124,14 +123,11 @@
    "type": "object", "required": ["id", "level"], "additionalProperties": false,
    "properties": {
     "id": {"$ref": "#/$defs/QualifiedId"},
-    "level": {"enum": ["site", "plant", "unit", "system", "site_scope"], "description": "site_scope = a part of the site that is not a plant (site utilities)."},
+    "level": {"enum": ["site", "plant", "unit", "system", "site_scope"], "description": "Plant words. site_scope = a part of the site that is not a plant (site utilities). ISA-95 and ISA-88 equivalents are in standards-mapping.csv only, not on each scope."},
     "name": {"type": "string"},
     "parent": {"$ref": "#/$defs/QualifiedId"},
     "owner": {"type": "string"},
-    "isa95_level": {"enum": ["Site", "Area", "Work center", "Process cell", "Production unit", "Production line", "Storage zone", "Work unit"]},
-    "isa88_level": {"enum": ["Process cell", "Unit", "Equipment module", "Control module"]},
-    "shared": {"type": "boolean", "description": "A shared system (utilities) owned by exactly one scope and reached by others through boundary references."},
-    "std": {"type": "array", "items": {"$ref": "#/$defs/StandardRef"}}
+    "shared": {"type": "boolean", "description": "A shared system (utilities) owned by exactly one scope and reached by others through boundary references."}
    }
   },
   "Item": {
@@ -182,7 +178,7 @@
    "type": "object", "required": ["type", "from", "to", "source"], "additionalProperties": false,
    "properties": {
     "id": {"type": "string"},
-    "type": {"enum": ["contains", "piped_to", "measures", "controls", "sets_point_of", "acts_on", "protects", "signal_to", "actuated_by", "nozzle_of", "references", "member_of"]},
+    "type": {"$ref": "#/$defs/RelationType"},
     "from": {"$ref": "#/$defs/QualifiedId"},
     "to": {"$ref": "#/$defs/QualifiedId"},
     "line_type": {"enum": ["process_pipe", "utility_pipe", "measuring_line", "signal_line", "mechanical_link", "unknown"]},
@@ -192,9 +188,12 @@
     "source": {"$ref": "#/$defs/Id"},
     "revision": {"type": "string"},
     "locator": {"$ref": "#/$defs/Locator"},
-    "status": {"$ref": "#/$defs/Status"},
-    "std": {"$ref": "#/$defs/StandardRef"}
+    "status": {"$ref": "#/$defs/Status"}
    }
+  },
+  "RelationType": {
+   "description": "STABLE relation names, frozen in context-map-1. Other systems map to these names. Renaming or removing one, or changing its direction, needs a new major format (context-map-2); adding a name is a minor version. The document relations covers, mentions and based_on are Document properties and frozen the same way.",
+   "enum": ["contains", "piped_to", "measures", "controls", "sets_point_of", "acts_on", "protects", "signal_to", "actuated_by", "nozzle_of", "references", "member_of"]
   },
   "Loop": {
    "type": "object", "required": ["id", "scope"], "additionalProperties": false,
@@ -214,7 +213,7 @@
   "RecordsLayer": {
    "type": "object",
    "description": "One array per register id. A register that is absent was not supplied; an empty array was supplied with no rows. Both are valid.",
-   "propertyNames": {"enum": ["tag_register", "tag_alias", "drawing_register", "maintenance_export", "datasheet", "line_list", "relief_device_register", "instrument_index", "loop_list", "io_list", "alarm_list", "interlock_list", "work_order", "pm_plan", "calibration_record", "mro_item", "spares_bom", "purchase_order", "approved_vendor", "operating_limit", "ccp", "isolation_point", "permit", "document_register", "ruling"]},
+   "propertyNames": {"enum": ["tag_register", "tag_alias", "drawing_register", "maintenance_export", "datasheet", "line_list", "relief_device_register", "instrument_index", "loop_list", "io_list", "alarm_list", "interlock_list", "work_order", "pm_plan", "calibration_record", "mro_item", "spares_bom", "purchase_order", "approved_vendor", "operating_limit", "ccp", "isolation_point", "permit", "capa", "criticality_ranking", "inspection_record", "document_register", "ruling"]},
    "additionalProperties": {"type": "array", "items": {"$ref": "#/$defs/RecordRow"}}
   },
   "RecordRow": {

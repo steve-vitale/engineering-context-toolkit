@@ -1,0 +1,2 @@
+tag,plant,unit,document,revision,valve_type,set_pressure[barg],required_capacity[kg/h],rated_capacity[kg/h],orifice,inlet_size[DN],outlet_size[DN],body_material,manufacturer,model,locator,status,note
+PSV-2215,P1,PAST1,IS-PSV2215,1,spring-loaded safety valve,6,410,450,E,25,40,carbon steel,,,,unverified,Hot water set; protects E-2215.
