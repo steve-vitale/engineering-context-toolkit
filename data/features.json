@@ -1585,6 +1585,31 @@
       "time": "Seconds",
       "you_get": "A twin-graph-2 graph (site/plant/unit hierarchy, P&ID locations by sheet zone, documents with covers/mentions/based_on), conflict records routed to the owner of the non-authoritative record, low-priority P&ID value notes, located-loop outcomes, a risk-sorted review queue split by owner/plant/unit, and a draft maintenance equipment export, instrument index and loop list where none exists. Prototype on fictional records and one public development P&ID sheet; no plant acceptance",
       "why": "Departments keep their own records and documents; disagreements between them stay invisible until someone compares by hand. One graph keeps each record's source and owner, takes each value from the record that owns it, and sends each disagreement to the person who owns the record."
+    },
+    {
+      "id": "document-text",
+      "category": "extract",
+      "title": "Read the text inside PDF, Word, Excel, PowerPoint and HTML documents, with a locator for every piece",
+      "tools": [
+        "scripts/extract_text.py"
+      ],
+      "guide": "docs/DOCUMENT_TEXT.md",
+      "example_outputs": [
+        "examples/document-text/expected/manifest.json",
+        "examples/document-text/expected/SOP-104-feed-pump-isolation.docx.txt",
+        "examples/document-text/expected/PM-plan-area-2.xlsx.txt",
+        "examples/document-text/expected/PHA-node-review.pptx.txt",
+        "examples/document-text/expected/CAPA-0042.html.txt",
+        "examples/document-text/expected/HACCP-plan-2019.doc.txt"
+      ],
+      "tests": [
+        "scripts/test_extract_text.py"
+      ],
+      "job": "Read procedures, HACCP plans, PHAs, CAPAs, work orders and purchase orders so the tags they mention can be found",
+      "you_need": "The documents (.pdf, .docx/.docm, .xlsx/.xlsm, .pptx/.pptm, .html, .txt, .md, .csv); for PDF text, the optional pypdf package or a pdftotext program",
+      "time": "Seconds per document",
+      "you_get": "One text file per document with a locator before each piece (page 3, paragraph 12, table 2 row 4, sheet 'PM plan' cell B7, slide 4, line 9) and a manifest with each file's SHA-256, status and warnings. Scanned pages are reported as needing OCR, not read; legacy .doc/.xls are reported with a conversion step. Prototype on fictional and public files; no plant acceptance",
+      "why": "Procedures, PHAs, CAPAs and work orders name the same equipment as the P&ID and the instrument index, but they live in Office files and PDFs that a text search cannot see. A locator on every piece lets a reviewer open the document at the place a tag was found."
     }
   ]
 }

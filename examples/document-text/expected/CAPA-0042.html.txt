@@ -1,0 +1,16 @@
+# extract_text 1 | file: CAPA-0042.html | sha256: f2a613b0af5a89db25d0c976b08610ef9f8c8f5fdcf03451d43ee1c7445ab42e | format: html | status: ok | engine: stdlib
+
+## line 1
+CAPA-0042
+
+## line 2
+CAPA-0042: seal leak on P-101
+
+## line 3
+Root cause: seal flush blocked; TT-2207 read high for two shifts.
+
+## table 1 row 1
+Action | Tag
+
+## table 1 row 2
+Add flush flow check | FI-2215

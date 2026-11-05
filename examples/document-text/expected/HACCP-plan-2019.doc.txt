@@ -1,0 +1,2 @@
+# extract_text 1 | file: HACCP-plan-2019.doc | sha256: 0549aa1cd7a699eb4cfafd3c34f322efcfdb0805f894b07113d505a65a0bea6f | format: doc | status: unsupported | engine: stdlib
+# warning: legacy Word .doc is not read; convert it to .docx (Word: Save As .docx, or `soffice --headless --convert-to docx FILE`) and run again

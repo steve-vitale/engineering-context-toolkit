@@ -1,0 +1,13 @@
+# extract_text 1 | file: PHA-node-review.pptx | sha256: cff2269527d1fe7273e18a732cb5ee5442b124645db47807625f457be25ec1ac | format: pptx | status: ok | engine: stdlib
+
+## slide 1
+PHA revalidation, Area 2 feed system
+Fictional example
+
+## slide 2
+Node 3: feed pump P-101 discharge
+Deviation: high temperature (TT-2207)
+Safeguard: FDV-2210 trip
+
+## slide 2 notes
+Action: confirm PSV-3301 set pressure

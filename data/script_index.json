@@ -99,6 +99,10 @@
       "kind": "support",
       "guide": "docs/ONE_MAP.md"
     },
+    "scripts/extract_text.py": {
+      "kind": "tool",
+      "guide": "docs/DOCUMENT_TEXT.md"
+    },
     "scripts/loop_audit.py": {
       "kind": "tool",
       "guide": "examples/loop-audit/README.md"

@@ -58,6 +58,7 @@ SOURCE_TESTS = (
     "scripts/test_loop_audit.py",
     "scripts/test_one_map.py",
     "scripts/test_sheet_from_prediction.py",
+    "scripts/test_extract_text.py",
     "scripts/test_evaluate_vendor.py",
     "scripts/test_drawing_case.py",
     "scripts/test_reader_template.py",
@@ -359,6 +360,10 @@ SOURCE_FILES = (
     "data/bayer_rt/process_model.json", "data/bayer_rt/fig11_calibration.json", "data/bayer_rt/fig11_digitized.csv",
     "out/bayer_rt/fig11_check.md", "scripts/digitize_bayer_fig11.py",
     "data/bayer_rt/fig10_inventory.json", "data/bayer_rt/pid/key.json", "out/bayer_rt/fig10_compare.md",
+    *(f"examples/document-text/{name}" for name in
+      ("make_samples.py", "expected/manifest.json", "expected/CAPA-0042.html.txt", "expected/HACCP-plan-2019.doc.txt",
+       "expected/PHA-node-review.pptx.txt", "expected/PM-plan-area-2.xlsx.txt",
+       "expected/SOP-104-feed-pump-isolation.docx.txt", "expected/work-order-export.csv.txt")),
     "scripts/compare_bayer_fig10.py",
     "data/bayer_rt/replay_rules.json", "data/bayer_rt/replay.csv", "out/bayer_rt/replay_states.md",
     "scripts/bayer_replay.py",
