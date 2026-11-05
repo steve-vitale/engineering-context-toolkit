@@ -8,6 +8,9 @@ kept as a conflict record routed to the owner of the record, and review queues s
     python scripts/one_map.py split-queue my-bundle/review_queue.csv --by belongs_to --out out/queues
     python scripts/one_map.py ask --map out/one-map/graph.json --question-kind measured-by --item HT-100
     python scripts/one_map.py jsonld --map out/one-map/graph.json --out out/one-map/map.jsonld
+    python scripts/one_map.py changes old/graph.json new/graph.json --out out/changes  # what a new build changed
+    python scripts/one_map.py affected --map out/one-map/graph.json --tags FDV-2210 --out out/moc  # MOC open
+    python scripts/one_map.py affected --tags FDV-2210 --closeout open/graph.json close/graph.json --out out/moc
     python scripts/one_map.py sheet-from-prediction predictions/r2-tiles-trace/codex/0.json --sheet 140 --rev A \
         --plant P1 --unit MSS --out sheet.json   # a drawing reader's prediction -> a sheet read for build
 
@@ -86,6 +89,7 @@ DOC_TEXT_NOTE = "document text note"
 # extract_text.py add-ons a site file may switch on for its documents (`document_text`); all off by default
 DOC_TEXT_OPTIONS = ("ocr", "ocr_lang", "ocr_dpi", "convert_legacy", "pdf_layout", "excel_display")
 LOW_PRIORITY_KINDS = (PID_NOTE, DOC_TEXT_NOTE)  # amber, after every other amber row
+MAP_CRITICAL = ("A", "1", "critical", "high", "very high")  # criticality_ranking values flagged by changes/affected
 RECORD_NAMES = {"maintenance_export": "maintenance equipment export", "instrument_index": "instrument index",
                 "loop_list": "loop list", "datasheet": "datasheet", "pid": "P&ID"}
 
@@ -1022,8 +1026,9 @@ def place_fragments(m, register, fragments, lists):
                                    else ""), record=record, parties=(row["owner"],),
                                what=f"{it['tag']} is drawn on sheet {row['sheet']} but not in the "
                                     f"{record.replace('_', ' ')} for {f['scope']}")
-            if at not in node["appearances"]:
-                node["appearances"].append(at)
+            shown = dict(at, printed=dict(it["attributes"])) if it["attributes"] else at  # values printed there
+            if shown not in node["appearances"]:
+                node["appearances"].append(shown)
             if it.get("former_tag") and it["former_tag"] not in node["aliases"]:
                 node["aliases"].append(it["former_tag"])
             for k, v in it["attributes"].items():  # reference values, compared once every record is in
@@ -2726,6 +2731,23 @@ def main(argv=None):
     jl = sub.add_parser("jsonld", help="write an optional JSON-LD view of a built graph")
     jl.add_argument("--map", required=True)
     jl.add_argument("--out", required=True)
+    ch = sub.add_parser("changes", help="what changed between two builds (P&ID revision release, MOC or "
+                                        "turnaround before/after pack); read-only")
+    ch.add_argument("old", help="graph.json of the earlier build")
+    ch.add_argument("new", help="graph.json of the later build")
+    af = sub.add_parser("affected", help="records and documents holding or naming some tags, by owner (MOC open); "
+                                         "--closeout: which of them changed by MOC close; read-only")
+    af.add_argument("--map", help="graph.json written by build (not needed with --closeout)")
+    af.add_argument("--closeout", nargs=2, metavar=("OPEN", "CLOSE"),
+                    help="graph.json at MOC open and at MOC close: affected records changed or still unchanged")
+    for x in (ch, af):
+        x.add_argument("--tags", action="extend", nargs="+", default=[],
+                       help="tags or qualified ids (a tag must name one item)")
+        x.add_argument("--scope", action="extend", nargs="+", default=[], help="qualified scope ids, e.g. S1/P1/PAST1")
+        x.add_argument("--critical", default=",".join(MAP_CRITICAL),
+                       help="criticality_ranking values that raise the criticality review flag "
+                            f"(default {','.join(MAP_CRITICAL)})")
+        x.add_argument("--out", help="folder for the .md and .json reports (default: print the Markdown)")
     s = sub.add_parser("split-queue", help="split an existing review_queue.csv by a column, keeping its order")
     s.add_argument("queue")
     s.add_argument("--by", required=True)
@@ -2773,6 +2795,30 @@ def main(argv=None):
             Path(a.out).write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n", encoding="utf-8",
                                    newline="\n")
             print(f"{len(doc['@graph'])} JSON-LD nodes -> {a.out}")
+        elif a.cmd in ("changes", "affected"):
+            import map_changes as mc
+            crit = tuple(x.strip() for x in a.critical.split(",") if x.strip())
+            try:
+                if a.cmd == "changes":
+                    rep = mc.changes(read_json(a.old, "graph"), read_json(a.new, "graph"), a.tags, a.scope, crit,
+                                     labels=(a.old, a.new))
+                    stem, md = "changes", mc.changes_md(rep)
+                elif a.closeout:
+                    rep = mc.closeout(read_json(a.closeout[0], "graph"), read_json(a.closeout[1], "graph"), a.tags,
+                                      a.scope, crit, labels=tuple(a.closeout))
+                    stem, md = "closeout", mc.closeout_md(rep)
+                else:
+                    if not a.map:
+                        raise InputError("affected needs --map (or --closeout OPEN CLOSE)")
+                    rep = mc.affected(read_json(a.map, "graph"), a.tags, a.scope, crit, label=a.map)
+                    stem, md = "affected", mc.affected_md(rep)
+            except mc.ReportError as exc:
+                raise InputError(str(exc)) from None
+            if a.out:
+                paths = mc.write(a.out, stem, rep, md)
+                print(json.dumps(rep["counts"]) + " -> " + ", ".join(p.as_posix() for p in paths))
+            else:
+                sys.stdout.write(md)
         elif a.cmd == "loops-from-graph":
             text, total = loops_from_graph(a.graph)
             if a.out:

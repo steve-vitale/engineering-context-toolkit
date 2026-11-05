@@ -210,7 +210,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 12"
    },
@@ -244,7 +244,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 13"
    },
@@ -279,7 +279,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 11"
    },
@@ -327,7 +327,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 14"
    },
@@ -364,7 +364,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 6"
    },
@@ -393,12 +393,78 @@
    "name": "Flow diversion valve",
    "aliases": [],
    "status": "unverified",
-   "attributes": [],
+   "attributes": [
+    {
+     "name": "manufacturer",
+     "value": "Alfa Valve",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "CMMS-2026-10",
+      "revision": "2026-10-01",
+      "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
+      "path": "lists/maintenance_equipment.csv",
+      "locator": "row 7"
+     }
+    },
+    {
+     "name": "model",
+     "value": "SRC-2",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "CMMS-2026-10",
+      "revision": "2026-10-01",
+      "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
+      "path": "lists/maintenance_equipment.csv",
+      "locator": "row 7"
+     }
+    },
+    {
+     "name": "serial_number",
+     "value": "AV-51007",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "CMMS-2026-10",
+      "revision": "2026-10-01",
+      "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
+      "path": "lists/maintenance_equipment.csv",
+      "locator": "row 7"
+     }
+    },
+    {
+     "name": "body_material",
+     "value": "316L",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "VALVE-DATASHEETS",
+      "revision": "2",
+      "sha256": "18418615e4a8c286b7651a3b8538b15481721f19c8039240b28d75116dfed937",
+      "path": "lists/valve_datasheets.csv",
+      "locator": "row 2"
+     }
+    },
+    {
+     "name": "size",
+     "value": "DN50",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "VALVE-DATASHEETS",
+      "revision": "2",
+      "sha256": "18418615e4a8c286b7651a3b8538b15481721f19c8039240b28d75116dfed937",
+      "path": "lists/valve_datasheets.csv",
+      "locator": "row 2"
+     }
+    }
+   ],
    "source": {
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 7"
    },
@@ -501,7 +567,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 4"
    },
@@ -531,6 +597,45 @@
    "aliases": [],
    "status": "unverified",
    "attributes": [
+    {
+     "name": "manufacturer",
+     "value": "Lobeco",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "CMMS-2026-10",
+      "revision": "2026-10-01",
+      "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
+      "path": "lists/maintenance_equipment.csv",
+      "locator": "row 2"
+     }
+    },
+    {
+     "name": "model",
+     "value": "LX-300",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "CMMS-2026-10",
+      "revision": "2026-10-01",
+      "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
+      "path": "lists/maintenance_equipment.csv",
+      "locator": "row 2"
+     }
+    },
+    {
+     "name": "serial_number",
+     "value": "LB-20391",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "CMMS-2026-10",
+      "revision": "2026-10-01",
+      "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
+      "path": "lists/maintenance_equipment.csv",
+      "locator": "row 2"
+     }
+    },
     {
      "name": "pump_type",
      "value": "rotary lobe",
@@ -562,7 +667,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 2"
    },
@@ -623,7 +728,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 3"
    },
@@ -657,7 +762,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 8"
    },
@@ -691,7 +796,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 5"
    },
@@ -793,7 +898,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 9"
    },
@@ -828,7 +933,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 10"
    },
@@ -1136,7 +1241,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 12"
    },
@@ -1153,7 +1258,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 13"
    },
@@ -1170,7 +1275,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 11"
    },
@@ -1187,7 +1292,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 14"
    },
@@ -1204,7 +1309,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 6"
    },
@@ -1221,7 +1326,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 7"
    },
@@ -1272,7 +1377,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 4"
    },
@@ -1289,7 +1394,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 2"
    },
@@ -1306,7 +1411,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 3"
    },
@@ -1323,7 +1428,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 8"
    },
@@ -1340,7 +1445,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 5"
    },
@@ -1391,7 +1496,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 9"
    },
@@ -1408,7 +1513,7 @@
     "kind": "document",
     "document": "CMMS-2026-10",
     "revision": "2026-10-01",
-    "sha256": "9c081c1254280d86f6d0fd77e29245eea67d1038faac227cf0c389f3bdde1390",
+    "sha256": "b38c2e7fd5885103b11998963d18bad3bb5fc892de222023baa1f3a42f542de2",
     "path": "lists/maintenance_equipment.csv",
     "locator": "row 10"
    },
@@ -2851,6 +2956,14 @@
     "owner": "Engineering"
    },
    {
+    "id": "VALVE-DATASHEETS",
+    "register": "datasheet",
+    "scopes": [
+     "S1/P1"
+    ],
+    "owner": "Engineering"
+   },
+   {
     "id": "LOOPS-PAST1",
     "register": "loop_list",
     "scopes": [
@@ -2864,6 +2977,14 @@
     "scopes": [
      "S1"
     ]
+   },
+   {
+    "id": "WO-HISTORY",
+    "register": "work_order",
+    "scopes": [
+     "S1/P1"
+    ],
+    "owner": "Maintenance"
    },
    {
     "id": "HACCP-P1-01",
@@ -2922,6 +3043,36 @@
   }
  },
  "records": {
+  "work_order": [
+   {
+    "register": "work_order",
+    "id": "WO-55120",
+    "item": "S1/P1/PAST1/P-101",
+    "scope": "S1/P1/PAST1",
+    "values": {
+     "work_order": "WO-55120",
+     "tag": "P-101",
+     "plant": "P1",
+     "unit": "PAST1",
+     "work_type": "corrective",
+     "opened_on": "2026-08-04",
+     "closed_on": "2026-08-04",
+     "failure_mode": "ELP",
+     "detection_method": "operator observation",
+     "maintenance_activity": "replace",
+     "description": "Replaced shaft seal"
+    },
+    "source": {
+     "kind": "document",
+     "document": "WO-HISTORY",
+     "revision": "2026-10-01",
+     "sha256": "55b0e8e39903d17b80d2247af90f2e9c7a75f03cc5ce5342501b5ccdf1e002ab",
+     "path": "records/work_orders.csv",
+     "locator": "row 2"
+    },
+    "status": "unverified"
+   }
+  ],
   "ccp": [
    {
     "register": "ccp",
@@ -3697,7 +3848,7 @@
  "counts": {
   "nodes": 29,
   "edges": 62,
-  "claims": 63,
+  "claims": 71,
   "conflicts": 0,
   "questions": 0,
   "events": 0

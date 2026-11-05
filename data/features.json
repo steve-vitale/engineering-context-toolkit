@@ -1561,7 +1561,8 @@
       "category": "export",
       "title": "One map of P&IDs, equipment and instrument records, datasheets and documents, with owner-routed conflicts",
       "tools": [
-        "scripts/one_map.py"
+        "scripts/one_map.py",
+        "scripts/map_changes.py"
       ],
       "guide": "docs/ONE_MAP.md",
       "example_outputs": [

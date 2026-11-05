@@ -37,7 +37,8 @@
   "relief_device_register": "Process safety",
   "criticality_ranking": "Maintenance",
   "pm_plan": "Maintenance",
-  "glossary": "Quality"
+  "glossary": "Quality",
+  "work_order": "Maintenance"
  },
  "as_of": "2026-11-04",
  "drawing_register": "drawing_register.csv",
@@ -73,9 +74,26 @@
    "scopes": [
     "S1/P1"
    ]
+  },
+  {
+   "id": "VALVE-DATASHEETS",
+   "path": "lists/valve_datasheets.csv",
+   "revision": "2",
+   "scopes": [
+    "S1/P1"
+   ]
   }
  ],
  "records": [
+  {
+   "id": "WO-HISTORY",
+   "register": "work_order",
+   "path": "records/work_orders.csv",
+   "revision": "2026-10-01",
+   "scopes": [
+    "S1/P1"
+   ]
+  },
   {
    "id": "HACCP-P1-01",
    "register": "ccp",

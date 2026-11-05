@@ -15,6 +15,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import map_changes as mc  # noqa: E402
 import one_map as om  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -41,28 +42,22 @@ WO_HEADER = ["work_order", "tag", "plant", "unit", "work_type", "opened_on", "cl
 
 
 class Site:
-    """A temporary copy of the pasteurizer inputs with a valve datasheet, installed-equipment columns on the
-    maintenance equipment export and a work order history."""
+    """A temporary copy of the pasteurizer inputs (which hold a valve datasheet, installed-equipment columns on the
+    maintenance equipment export and a work order history) with the given work orders and FDV-2210 export row."""
 
     def __init__(self, tmp, work_orders, export_fdv=("Alfa Valve", "SRC-2", "AV-51007")):
         self.dir = Path(tmp) / "in"
         shutil.copytree(PAST, self.dir)
-        site = json.loads((self.dir / "site.json").read_text(encoding="utf-8"))
-        rows = list(csv.DictReader(io.StringIO((self.dir / "lists" / "maintenance_equipment.csv")
-                                               .read_text(encoding="utf-8"))))
-        header = list(rows[0]) + ["manufacturer", "model", "serial_number"]
-        write_csv(self.dir / "lists" / "maintenance_equipment.csv", header,
-                  [[r[k] for k in rows[0]] + (list(export_fdv) if r["tag"] == "FDV-2210" else ["", "", ""])
-                   for r in rows])
-        write_csv(self.dir / "lists" / "valve_datasheets.csv", ["tag", "plant", "unit", "size", "body_material"],
-                  [["FDV-2210", "P1", "PAST1", "DN50", "316L"]])
-        site["datasheets"].append({"id": "VALVE-DATASHEETS", "path": "lists/valve_datasheets.csv", "revision": "2",
-                                   "scopes": ["S1/P1"]})
-        write_csv(self.dir / "records" / "work_orders.csv", WO_HEADER, work_orders)
-        site["records"].append({"id": "WO-HISTORY", "register": "work_order", "path": "records/work_orders.csv",
-                                "revision": "2026-11-01", "scopes": ["S1/P1"]})
-        site["record_owners"]["work_order"] = "Maintenance"
-        (self.dir / "site.json").write_text(json.dumps(site, indent=1), encoding="utf-8")
+        p = self.dir / "lists" / "maintenance_equipment.csv"
+        rows = list(csv.DictReader(io.StringIO(p.read_text(encoding="utf-8"))))
+        for r in rows:
+            if r["tag"] == "FDV-2210":
+                r["manufacturer"], r["model"], r["serial_number"] = export_fdv
+        write_csv(p, list(rows[0]), [list(r.values()) for r in rows])
+        wo = list(csv.DictReader(io.StringIO((self.dir / "records" / "work_orders.csv").read_text(encoding="utf-8"))))
+        header = list(wo[0])
+        write_csv(self.dir / "records" / "work_orders.csv", header,
+                  [[dict(zip(WO_HEADER, r)).get(k, "") for k in header] for r in work_orders])
 
     def build(self, out, **kw):
         g, _, rows, _ = quiet(om.build, self.dir / "site.json", Path(out), full=True, **kw)
@@ -200,6 +195,156 @@ class FieldVerificationRulings(unittest.TestCase):
             with self.assertRaises(om.InputError) as cm:
                 self.site.build(self.out, decisions=[str(self.rulings(row))])
             self.assertIn(words, str(cm.exception), row)
+
+
+class MocBuilds:
+    """The pasteurizer at MOC-0412 open (P&ID rev C), after P&ID rev D is released, and at close (records updated,
+    work order WO-60311 closed, the walkdown ruling recorded). Built once per test class."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = tempfile.TemporaryDirectory()
+        t = Path(cls.tmp.name)
+        cls.open, cls.revd, cls.close = (
+            quiet(om.build, PAST / name, t / out, full=True, **kw)[0]
+            for name, out, kw in (("site.json", "open", {}), ("site-revD.json", "revd", {}),
+                                  ("site-moc-close.json", "close",
+                                   {"decisions": [str(PAST / "walkdown_rulings.csv")]})))
+        cls.dir = t
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.tmp.cleanup()
+
+
+class ChangeReport(MocBuilds, unittest.TestCase):
+    def test_pid_revision_release_report(self):
+        rep = mc.changes(self.open, self.revd)
+        self.assertEqual([x["id"] for x in rep["items"]["added"]], ["S1/P1/PAST1/TT-2208"])
+        fdv = next(x for x in rep["items"]["changed"] if x["id"] == FDV)
+        self.assertEqual(fdv["changes"], [{"what": "on P&ID", "old": ["PAST1-01:D3"],
+                                           "new": ["PAST1-01:D3 (size DN65 printed)"]}])
+        self.assertEqual(sorted(f["flag"] for f in fdv["flags"]), [mc.FLAG_HACCP, mc.FLAG_CRIT])
+        self.assertIn({"type": "measures", "from": "S1/P1/PAST1/TT-2208", "to": "S1/P1/PAST1/HT-100"},
+                      rep["links"]["added"])
+        doc = rep["documents"]["changed"]
+        self.assertEqual([d["id"] for d in doc], ["S1/DOC/PID-P1-PAST1-01"])
+        self.assertIn({"what": "revision", "old": "C", "new": "D"}, doc[0]["changes"])
+        self.assertEqual(sorted(c["type"] for c in rep["conflicts"]["added"]), ["asset_presence", "superseded_basis"])
+        self.assertEqual(rep["records"], {"added": [], "removed": [], "changed": []})
+        md = mc.changes_md(rep)
+        for words in ("| Items | 1 | 0 | 1 |", "FDV-2210 | changed | HACCP reassessment",
+                      "S1/DOC/PID-P1-PAST1-01 | changed | Doc control | content changed; revision: C -> D"):
+            self.assertIn(words, md)
+
+    def test_same_build_has_no_changes_and_is_deterministic(self):
+        rep = mc.changes(self.open, self.open)
+        self.assertTrue(all(v == 0 for sec in rep["counts"].values() for v in sec.values()))
+        self.assertIn("No changes.", mc.changes_md(rep))
+        a = json.dumps(mc.changes(self.open, self.close, ["FDV-2210"]), sort_keys=True)
+        self.assertEqual(a, json.dumps(mc.changes(self.open, self.close, ["FDV-2210"]), sort_keys=True))
+
+    def test_moc_pack_filter_by_tags_and_scope(self):
+        rep = mc.changes(self.open, self.close, ["FDV-2210", "TT-2208"])
+        self.assertEqual(sorted(x["id"] for x in rep["items"]["changed"] + rep["items"]["added"]),
+                         [FDV, "S1/P1/PAST1/TT-2208"])
+        model = next(d for d in rep["items"]["changed"][0]["changes"] if d["what"] == "attribute model")
+        self.assertEqual((model["old"], model["new"]), ("SRC-2 (CMMS-2026-10)", "SRC-3 (CMMS-2026-10)"))
+        self.assertEqual([(r["record"], r["row"]) for r in rep["records"]["added"]], [("WO-HISTORY", "WO-60311")])
+        self.assertEqual(sorted(d["id"] for d in rep["documents"]["changed"]),
+                         ["S1/DOC/HACCP-PLAN-P1", "S1/DOC/PID-P1-PAST1-01"])
+        self.assertNotIn("S1/P1/PAST1/P-101", json.dumps(rep), "other items stay out of a tag-filtered pack")
+        cip = mc.changes(self.open, self.close, scopes=["S1/P1/CIP1"])
+        self.assertTrue(all(sum(v.values()) == 0 for v in cip["counts"].values()), cip["counts"])
+        new = mc.changes(self.open, self.close, ["XV-0001"])
+        self.assertEqual(new["filter"]["not_on_either_map"], ["XV-0001"])
+        with self.assertRaises(mc.ReportError):
+            mc.changes(self.open, self.close, scopes=["S1/P9"])
+
+    def test_cli_writes_markdown_and_json(self):
+        g1, g2 = self.dir / "open" / "graph.json", self.dir / "revd" / "graph.json"
+        out = self.dir / "cli"
+        self.assertEqual(quiet(om.main, ["changes", str(g1), str(g2), "--out", str(out)]), 0)
+        self.assertEqual(json.loads((out / "changes.json").read_text(encoding="utf-8"))["schema"], mc.CHANGES_SCHEMA)
+        self.assertTrue((out / "changes.md").read_text(encoding="utf-8").startswith("# Changes:"))
+        self.assertEqual(quiet(om.main, ["changes", str(g1), str(g2), "--scope", "S1/X"]), 2)
+        self.assertEqual(quiet(om.main, ["affected", "--tags", "FDV-2210"]), 2, "needs --map or --closeout")
+
+
+class AffectedRecords(MocBuilds, unittest.TestCase):
+    def test_moc_open_list_by_owner(self):
+        rep = mc.affected(self.open, ["FDV-2210", "TT-2208"])
+        self.assertEqual(rep["selection"]["not_on_the_map"], ["TT-2208"])
+        own = {o: {r["record"]: r for r in rows} for o, rows in rep["by_owner"].items()}
+        self.assertEqual(sorted(own), ["Doc control", "Engineering", "I&C", "Maintenance", "Production", "Quality"])
+        self.assertIn("rev C shows FDV-2210 at D3", own["Doc control"]["S1/DOC/PID-P1-PAST1-01"]["check"])
+        self.assertIn("size", own["Engineering"]["VALVE-DATASHEETS"]["check"])
+        self.assertIn("FDV-2210 is its output", own["I&C"]["LOOPS-PAST1"]["check"])
+        self.assertEqual(set(own["Maintenance"]), {"CMMS-2026-10", "CRIT-P1", "rule R-CRITICAL-PM",
+                                                   "flag: criticality review"})
+        self.assertIn("mentions FDV-2210", own["Production"]["S1/DOC/SOP-PAST1-02"]["check"])
+        haccp = own["Quality"]["S1/DOC/HACCP-PLAN-P1"]["check"]
+        for words in ("based on PID-P1-PAST1-01 rev C", "mentions FDV-2210"):
+            self.assertIn(words, haccp)
+        self.assertIn("corrective_action names FDV-2210", own["Quality"]["HACCP-P1-01"]["check"])
+        self.assertIn("flag: HACCP reassessment", own["Quality"])
+        linked = {(x["link"], x["item"]) for x in rep["items"][0]["linked"]}
+        self.assertEqual(linked, {("connects", "S1/P1/PAST1/HT-100"), ("connects", "S1/P1/PAST1/PHE-2201"),
+                                  ("controls", "S1/P1/PAST1/TIC-2207"), ("signal_line", "S1/P1/PAST1/TIC-2207")})
+        md = mc.affected_md(rep)
+        for words in ("Not on the map yet: TT-2208", "### Engineering", "TIC-2207 controls FDV-2210"):
+            self.assertIn(words, md)
+
+    def test_open_conflicts_and_scope_selection(self):
+        rep = mc.affected(self.revd, scopes=["S1/P1/PAST1"])
+        rows = [r for rs in rep["by_owner"].values() for r in rs]
+        self.assertTrue(any(r["entry"] == "conflict" and r["tag"] == "TT-2208" for r in rows))
+        self.assertIn("S1/P1/PAST1/P-101", rep["selection"]["items"])
+        with self.assertRaises(mc.ReportError):
+            mc.affected(self.revd)
+        twin = dict(next(n for n in self.open["nodes"] if n["id"] == FDV), id="S1/P1/CIP1/FDV-2210",
+                    scope="S1/P1/CIP1")
+        with self.assertRaises(mc.ReportError) as cm:  # a tag on two items refuses
+            mc.select((mc.View(dict(self.open, nodes=self.open["nodes"] + [twin]), "x"),), ["FDV-2210"])
+        self.assertIn("give the qualified id", str(cm.exception))
+
+    def test_closeout_changed_and_still_unchanged_per_owner(self):
+        rep = mc.closeout(self.open, self.close, ["FDV-2210", "TT-2208"])
+        status = {(r["record"], r["tag"]): r["status"] for rs in rep["by_owner"].values() for r in rs}
+        for key, want in ((("S1/DOC/PID-P1-PAST1-01", "FDV-2210"), "changed"),
+                          (("CMMS-2026-10", "FDV-2210"), "changed"),
+                          (("INSTRUMENT-INDEX", "TT-2208"), "changed"),
+                          (("S1/DOC/HACCP-PLAN-P1", "FDV-2210"), "changed"),
+                          (("WO-HISTORY", "FDV-2210"), "changed"),
+                          (("VALVE-DATASHEETS", "FDV-2210"), "unchanged"),
+                          (("S1/DOC/SOP-PAST1-02", "TT-2208"), "unchanged"),
+                          (("rule R-CRITICAL-PM", "FDV-2210"), "still open"),
+                          (("flag: HACCP reassessment", "FDV-2210"), "not checked here: confirm the review was done")):
+            self.assertEqual(status[key], want, key)
+        self.assertEqual([r["record"] for r in rep["still_unchanged"]["Engineering"]], ["VALVE-DATASHEETS"])
+        md = mc.closeout_md(rep)
+        self.assertIn("## Still unchanged, by owner", md)
+        self.assertIn("### Engineering", md)
+
+
+class ChangeFlags(MocBuilds, unittest.TestCase):
+    def test_flags_for_ccp_relief_interlock_and_criticality(self):
+        v = mc.View(self.open, "open")
+        self.assertEqual([f[0] for f in mc.flags(v, "S1/P1/PAST1/TT-2207")], [mc.FLAG_HACCP, mc.FLAG_CRIT])
+        self.assertIn("monitoring instrument of CCP-1", mc.flags(v, "S1/P1/PAST1/TT-2207")[0][1])
+        self.assertEqual([f[0] for f in mc.flags(v, "S1/P1/PAST1/PSV-2215")], [mc.FLAG_PHA])
+        self.assertEqual([f[0] for f in mc.flags(v, "S1/P1/PAST1/PSV-2216")], [mc.FLAG_PHA], "a relief device kind")
+        self.assertEqual(mc.flags(v, "S1/P1/PAST1/PHE-2201"), [])
+        self.assertEqual(mc.flags(v, "S1/P1/CIP1/P-301", critical=("B",)), [], "the critical values are a choice")
+        g = json.loads(json.dumps(self.open))
+        g["records"]["interlock_list"] = [{"register": "interlock_list", "id": "IL-7", "item": "S1/P1/PAST1/TT-2207",
+                                           "scope": "S1/P1/PAST1",
+                                           "values": {"interlock_id": "IL-7", "cause_tag": "TT-2207",
+                                                      "effect_tag": "FDV-2210"},
+                                           "source": {"document": "IL-P1", "locator": "row 2"}}]
+        v2 = mc.View(g, "g")
+        self.assertIn((mc.FLAG_PHA, "effect of interlock IL-7 (IL-P1)", "IL-P1"), mc.flags(v2, FDV))
+        self.assertIn((mc.FLAG_PHA, "cause of interlock IL-7 (IL-P1)", "IL-P1"), mc.flags(v2, "S1/P1/PAST1/TT-2207"))
 
 
 if __name__ == "__main__":

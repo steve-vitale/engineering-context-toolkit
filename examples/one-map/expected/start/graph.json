@@ -1341,7 +1341,10 @@
      "sheet": "200-01",
      "revision": "D",
      "path": "sheets/P1-200-01.json",
-     "zone": "B2"
+     "zone": "B2",
+     "printed": {
+      "rated_flow": "45 m3/h"
+     }
     }
    ],
    "class": "pump",
@@ -1751,7 +1754,10 @@
      "sheet": "200-01",
      "revision": "D",
      "path": "sheets/P1-200-01.json",
-     "zone": "D3"
+     "zone": "D3",
+     "printed": {
+      "design_pressure": "12 barg"
+     }
     }
    ],
    "class": "vessel",

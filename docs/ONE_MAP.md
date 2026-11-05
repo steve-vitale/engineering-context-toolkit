@@ -321,6 +321,39 @@ flagged and never decided. Manufacturer, model or serial number that no maintena
 index row holds is a `work order closeout note`. Values compare ignoring case and repeated spaces; an open work order
 (no `closed_on`) is not compared.
 
+## Changes, affected records and change flags
+
+Three read-only reports on built graphs (`scripts/map_changes.py`, run through `one_map.py`); each writes Markdown and
+JSON with `--out DIR`, or prints the Markdown. How plant teams use them: [RUNNING_THE_MAP.md](RUNNING_THE_MAP.md).
+
+```sh
+python scripts/one_map.py changes OLD/graph.json NEW/graph.json [--tags T ...] [--scope S ...] --out out/changes
+python scripts/one_map.py affected --map graph.json --tags FDV-2210 TT-2208 --out out/moc-open
+python scripts/one_map.py affected --tags FDV-2210 TT-2208 --closeout OPEN/graph.json CLOSE/graph.json --out out/moc-close
+```
+
+- **`changes`** compares two builds of one site: items (name, kind, class, owner, listed in, P&ID sheet:zone and
+  values printed there, attribute values with their record), links, record rows (`records` registers), documents
+  and P&ID sheets (revision, status, owner, content hash, text status), conflicts (added, removed, status) and
+  expectation results. `--tags`/`--scope` keep only those items, their links, rows, the documents that cover their
+  unit, mention them, show them (P&ID sheets) or are based on one of those, and their conflicts and expectation
+  results. A tag on neither map is listed, not refused (a new item). Written as `changes.md` and `changes.json`.
+- **`affected`** lists, for the tags or scopes, every record and document that holds or names them, one row per
+  owner, record and item: equipment/instrument record rows, datasheet values, `records` rows that hold the item or
+  name its tag in any field (a CCP's corrective action naming FDV-2210), loop list loops, P&ID sheets showing it,
+  documents covering its unit, mentioning it or based on a P&ID sheet that shows it, open conflicts, expectation
+  gaps (missing, not evaluable, draft rule) and change flags. Linked items (connects, controls, measures, protects,
+  signal lines) are listed separately with their owners. A tag not on the map is reported as "not on the map yet".
+- **`affected --closeout OPEN CLOSE`** takes the affected rows at both ends and compares what each record says
+  about the item: `changed`, `unchanged`, `new since open`, `gone at close`; conflicts and expectation gaps
+  `still open` or `closed`; change flags `not checked here`. `closeout.md` lists the unchanged rows per owner first.
+  `changed` is not proof the change is right, and `unchanged` may be correct: the owner confirms.
+- **Change flags** (flags only, never decisions): an item that is a CCP's monitoring instrument or is named in a CCP
+  row -> `HACCP reassessment`; a relief device (kind, or a row in the relief device register) or a cause/effect tag
+  of an `interlock_list` row -> `PHA revalidation`; a `criticality_ranking` value in `--critical` (default
+  `A,1,critical,high,very high`) -> `criticality review`. Each flag names the record that raised it and goes to
+  that record's owner in `affected`.
+
 ## Review queue
 
 `queues/review_queue.csv` (`rank,tier,owner,plant,unit,item,kind,why,safety,spot_check`) holds every row,
@@ -429,10 +462,17 @@ ontology: node.class/class_how (classes.json); "link doesn't fit what it connect
         OCR text (locator in extract_text result.ocr, or result.ocr_engine with no per-piece map; else engine
         tesseract*, status "ok (ocr)", ocr_pages) never links: "possible mention (OCR), confirm"; site
         document_text {ocr, ocr_lang, ocr_dpi, convert_legacy, pdf_layout, excel_display} -> extract_text options; graph["coverage"]["sources"] says which record covers which scope
+reports: one_map.py changes OLD NEW [--tags|--scope] (one-map-changes-1); affected --map G --tags|--scope
+        (one-map-affected-1, rows by owner); affected --closeout OPEN CLOSE (one-map-closeout-1); change flags
+        HACCP reassessment / PHA revalidation / criticality review are flags, never decisions (map_changes.py)
+closeout: work_order rows with closed_on + installed_* -> value_disagreement vs maintenance export/instrument index,
+        "replacement may not be like-for-like" vs datasheet; --decisions reads decisions.csv or ruling CSVs
+        (authority field + evidence = field verification ruling), history kept, "record differs from a ruling"
 ask:    python scripts/one_map.py ask --map graph.json --question-kind KIND --item X   (read-only, with sources)
 check:  python scripts/one_map.py check graph.json   (every twin-graph-1 rule plus the one-map rules;
         graph_export.py --check still accepts only twin-graph-1)
-graph:  graph["loops"] lists each listed loop's outcome; node.appearances lists sheet/zone locations (plus
-        reader_symbol, reader_class, reader_confidence, printed_tag for converted reads); node.listed_in names the
+graph:  graph["loops"] lists each listed loop's outcome; node.appearances lists sheet/zone locations (values
+        printed there under printed; reader_symbol, reader_class, reader_confidence, printed_tag for
+        converted reads); coverage.sources carry each record's owner; node.listed_in names the
         records holding an item ([] = P&ID only); node.tag_status = placeholder for a placeholder tag
 ```
