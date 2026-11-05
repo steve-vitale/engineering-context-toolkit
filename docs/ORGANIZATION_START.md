@@ -87,7 +87,7 @@ for continuing shared reliance. See [scaling](SCALING_ENGINEERING_CONTEXT.md) fo
 Replace brackets with the actual assignment. This is a work brief, not a permission mechanism.
 
 ```text
-Use the Engineering Context Toolkit to prepare one reviewable contribution.
+Use the Industrial Context Toolkit to prepare one reviewable contribution.
 Job/recipient: [question, intended use and receiving role].
 Permitted records/location: [selected files, source IDs/revisions and boundaries].
 Permitted tools/environment: [approved tools and allowed actions].

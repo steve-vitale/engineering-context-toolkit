@@ -498,7 +498,7 @@ Since 1.1, optional. `one_map.py jsonld --map graph.json --out map.jsonld` write
 `rdfs:Class` with `rdfs:subClassOf`, DEXPI class-page URLs as `rdfs:seeAlso` where `classes.json` verified them
 (DEXPI publishes HTML class pages, not an RDF namespace), CFIHOS as `to_confirm`; items typed with their class; each
 relation as a property and as a statement node with its provenance. Our terms live under
-`https://github.com/steve-vitale/engineering-context-toolkit/schemas/context-map/vocab#`; item ids are
+`https://github.com/steve-vitale/industrial-context-toolkit/schemas/context-map/vocab#`; item ids are
 `urn:context-map:<qualified id>`. It is a view for interoperability; nothing reads it back and there is no reasoning
 over it.
 

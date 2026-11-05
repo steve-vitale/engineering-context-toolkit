@@ -1,10 +1,10 @@
 cff-version: 1.2.0
 message: "If you use this toolkit, cite the commit or release tag you used."
-title: "Engineering Context Toolkit"
+title: "Industrial Context Toolkit"
 authors:
   - family-names: Vitale
     given-names: Steven
-repository-code: "https://github.com/steve-vitale/engineering-context-toolkit"
+repository-code: "https://github.com/steve-vitale/industrial-context-toolkit"
 license: MIT
 keywords:
   - engineering context

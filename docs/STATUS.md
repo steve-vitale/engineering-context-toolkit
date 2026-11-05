@@ -1,6 +1,6 @@
 # State of the toolkit
 
-Implementation snapshot: **2026-11-03, UTC**. The public package is **Engineering Context Toolkit**.
+Implementation snapshot: **2026-11-03, UTC**. The public package is **Industrial Context Toolkit** (renamed from Engineering Context Toolkit on 2026-11-05; old links redirect).
 Use the [job selector](../README.md#start-wherever-you-are) to choose a tool or the
 [first-question guide](../examples/first-pilot/README.md) for a no-install contribution.
 The [workflow map](WORKFLOWS.md) owns supported inputs and outputs; this page owns current readiness and gaps.

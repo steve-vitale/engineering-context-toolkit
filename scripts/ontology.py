@@ -747,7 +747,7 @@ def ask_text(ans):
 
 # ---------------------------------------------------------------- JSON-LD view
 
-VOCAB = "https://github.com/steve-vitale/engineering-context-toolkit/schemas/context-map/vocab#"
+VOCAB = "https://github.com/steve-vitale/industrial-context-toolkit/schemas/context-map/vocab#"
 
 
 def to_jsonld(g, onto):

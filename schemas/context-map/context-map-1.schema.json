@@ -1,6 +1,6 @@
 {
  "$schema": "https://json-schema.org/draft/2020-12/schema",
- "$id": "https://github.com/steve-vitale/engineering-context-toolkit/schemas/context-map/context-map-1.schema.json",
+ "$id": "https://github.com/steve-vitale/industrial-context-toolkit/schemas/context-map/context-map-1.schema.json",
  "title": "context-map-1 (DRAFT, 1.1)",
  "description": "One plant context map: PLANT, RECORDS, DOCUMENTS and DECISIONS layers plus sources and a coverage report. Draft for owner review; see docs/CONTEXT_MAP_FORMAT.md. Only identity is required: everything a plant has not supplied stays empty and the file stays valid.",
  "type": "object",

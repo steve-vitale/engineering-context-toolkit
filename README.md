@@ -1,6 +1,6 @@
-# Engineering Context Toolkit
+# Industrial Context Toolkit
 
-[![tests](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml/badge.svg)](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml)
+[![tests](https://github.com/steve-vitale/industrial-context-toolkit/actions/workflows/tests.yml/badge.svg)](https://github.com/steve-vitale/industrial-context-toolkit/actions/workflows/tests.yml)
 
 **Open source tools for starting a context map of your plant: the plant itself (site, plant, unit, system,
 equipment, and what's piped to, measures and controls what) with each team's records tied to it.** Every item keeps
