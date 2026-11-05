@@ -2,6 +2,8 @@
 with a locator a person can use to find it again ("page 3", "table 2 row 4", "sheet 'PM plan' cell B7", "slide 4").
 
     python scripts/extract_text.py FILE... --out DIR [--pdf-engine auto|pypdf|pdftotext] [--max-mb N]
+        [--ocr auto|off] [--ocr-lang eng] [--ocr-dpi 300] [--convert-legacy] [--pdf-layout] [--excel-display]
+        [--embedded on|off]
 
 Writes one UTF-8 .txt per input (a "## <locator>" header before each segment) and DIR/manifest.json (file, sha256,
 format, status, engine, segment count, warnings). Exit 0 when every file was read or its limit was reported
@@ -15,25 +17,38 @@ Library use (the call a tag matcher makes):
         ...
     result.sha256, result.status, result.warnings, result.engine, result.engine_version
 
-Office files are read with the standard library (zipfile + ElementTree) from their XML parts only: macros,
-embedded objects and external links are never run, opened or followed. PDF text comes from the file's text layer
-through the optional pypdf package, else a `pdftotext` program on PATH; scanned pages without a text layer are
-reported as needing OCR, which this tool does not do. Files are treated as untrusted: size, archive-member,
-member-count, compression-ratio and DTD checks refuse hostile inputs with a clear message. See
-docs/DOCUMENT_TEXT.md.
+Office files are read with the standard library (zipfile + ElementTree) from their XML parts only: macros and
+external links are never run, opened or followed. Embedded Word/Excel/PowerPoint/PDF files inside an Office file are
+read the same way (two levels deep, same limits); other embedded objects are only counted. PDF text comes from the
+file's text layer through the optional pypdf package, else a `pdftotext` program on PATH; scanned pages without a
+text layer are reported as needing OCR. Files are treated as untrusted: size, archive-member, member-count,
+compression-ratio and DTD checks refuse hostile inputs with a clear message.
+
+Optional add-ons, each off unless asked for and each used only when its program is installed (the default output
+does not change): --ocr auto runs Tesseract on scanned PDF pages (rendered by Poppler's pdftoppm) and on .png/.jpg/
+.tif images; --convert-legacy converts .doc/.xls/.ppt/.rtf with LibreOffice (soffice) in a temporary folder and
+reads the result; --pdf-layout keeps PDF columns apart (pdftotext -layout, else pypdf layout mode); --excel-display
+shows Excel numbers and dates as their number format displays them. See docs/DOCUMENT_TEXT.md.
 """
 import argparse
+import datetime
+import functools
 import hashlib
 import html.parser
+import io
 import json
 import logging
+import os
 import posixpath
 import re
 import shutil
+import signal
 import subprocess
 import sys
+import tempfile
 import zipfile
 from dataclasses import dataclass, field
+from decimal import ROUND_HALF_UP, Decimal, InvalidOperation, localcontext
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
@@ -49,10 +64,19 @@ MAX_RATIO = 200                           # uncompressed/compressed above this (
 MAX_CHARS = 20_000_000                    # total extracted characters per file; beyond it the result is partial
 MAX_PDF_PAGES = 5000
 PDFTOTEXT_TIMEOUT = 120
+OCR_TIMEOUT = 300                         # one Tesseract run (one image, or one PDF page)
+RENDER_TIMEOUT = 120                      # one pdftoppm page render
+CONVERT_TIMEOUT = 300                     # one LibreOffice conversion
+MAX_OCR_PAGES = 500                       # scanned PDF pages OCRed per file; the rest stay "needs OCR"
+MAX_OCR_SIDE = 14000                      # rendered page width/height cap in pixels (cropped beyond)
+MAX_OCR_PIXELS = 150_000_000              # image size cap for OCR (an E-size sheet at 300 dpi is ~135 MP)
+MAX_EMBED_DEPTH = 2                       # a file embedded in a file embedded in the input is the deepest read
+MAX_OLE_ENTRIES = 10000                   # directory entries in one embedded OLE container
 
 # status values, in the order a reader should care about
 OK, PARTIAL, NEEDS_OCR, NEEDS_DEPENDENCY, UNSUPPORTED, ERROR = (
     "ok", "partial", "needs OCR", "needs dependency", "unsupported", "error")
+OK_OCR = "ok (ocr)"   # every page has text and some of it came from OCR (only with --ocr auto)
 
 TEXT_SUFFIXES = {".txt": "text", ".md": "markdown", ".csv": "csv"}
 HTML_SUFFIXES = {".html": "html", ".htm": "html"}
@@ -68,6 +92,10 @@ LEGACY = {
     ".rtf": "RTF is not read; convert it to .docx or .txt and run again",
 }
 OLE_MAGIC = b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1"
+IMAGE_SUFFIXES = {".png": "png", ".jpg": "jpeg", ".jpeg": "jpeg", ".tif": "tiff", ".tiff": "tiff"}
+CONVERT_TO = {".doc": "docx", ".rtf": "docx", ".xls": "xlsx", ".ppt": "pptx"}
+OCR_LANG = re.compile(r"[A-Za-z0-9_]{1,32}(\+[A-Za-z0-9_]{1,32}){0,7}")
+ZIP_FORMATS = (("word/document.xml", "docx"), ("xl/workbook.xml", "xlsx"), ("ppt/presentation.xml", "pptx"))
 
 W = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
 S = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
@@ -86,6 +114,24 @@ class Unsupported(Refused):
     """The file is valid but cannot be read as it is (password protection); the message says what to do."""
 
 
+@dataclass(frozen=True)
+class Options:
+    """Optional add-ons. The defaults reproduce the plain reader exactly; see docs/DOCUMENT_TEXT.md."""
+    pdf_engine: str = "auto"
+    ocr: str = "off"                # "auto": OCR scanned PDF pages and image files when Tesseract is installed
+    ocr_lang: str = "eng"
+    ocr_dpi: int = 300
+    convert_legacy: bool = False    # .doc/.xls/.ppt/.rtf through LibreOffice when it is installed
+    pdf_layout: bool = False
+    excel_display: bool = False
+    embedded: bool = True           # read Office/PDF files embedded in Office files (only files that have them)
+
+    def non_default(self):
+        default = Options()
+        return {k: getattr(self, k) for k in self.__dataclass_fields__
+                if k != "pdf_engine" and getattr(self, k) != getattr(default, k)}
+
+
 @dataclass
 class Extraction:
     """What was read from one file. Iterating yields (locator, text) segments in document order."""
@@ -94,10 +140,15 @@ class Extraction:
     bytes: int = 0
     format: str = ""
     status: str = OK
-    engine: str = "stdlib"          # "pypdf" or "pdftotext" for PDF text
-    engine_version: str = ""        # the PDF engine version; the extractor version is VERSION
+    engine: str = "stdlib"          # "pypdf" or "pdftotext" for PDF text, "tesseract" for an OCRed image
+    engine_version: str = ""        # the PDF/OCR engine version; the extractor version is VERSION
     segments: list = field(default_factory=list)
     warnings: list = field(default_factory=list)
+    ocr: dict = field(default_factory=dict)         # locator -> mean word confidence (0-100) or None
+    ocr_engine: str = ""            # "tesseract 5.3.0 (eng, 300 dpi)" when any segment came from OCR
+    converted: str = ""             # "docx by LibreOffice 7.6.4.1" when --convert-legacy converted the file
+    applied: list = field(default_factory=list)     # add-ons that changed how this file was read
+    embedded: list = field(default_factory=list)    # one entry per embedded file read
 
     def __iter__(self):
         return iter(self.segments)
@@ -106,10 +157,38 @@ class Extraction:
         return len(self.segments)
 
     def manifest_entry(self):
-        return {"file": self.path, "sha256": self.sha256, "bytes": self.bytes, "format": self.format,
-                "status": self.status, "extractor": f"{EXTRACTOR} {VERSION}", "engine": self.engine,
-                "engine_version": self.engine_version, "segments": len(self.segments),
-                "characters": sum(len(t) for _, t in self.segments), "warnings": list(self.warnings)}
+        entry = {"file": self.path, "sha256": self.sha256, "bytes": self.bytes, "format": self.format,
+                 "status": self.status, "extractor": f"{EXTRACTOR} {VERSION}", "engine": self.engine,
+                 "engine_version": self.engine_version, "segments": len(self.segments),
+                 "characters": sum(len(t) for _, t in self.segments), "warnings": list(self.warnings)}
+        # add-on keys appear only when an add-on acted, so the default output is unchanged
+        if self.converted:
+            entry["converted"] = self.converted
+        if self.ocr_engine:
+            entry["ocr"] = {"engine": self.ocr_engine, "mean_word_confidence": dict(self.ocr)}
+        if self.applied:
+            entry["applied"] = list(self.applied)
+        if self.embedded:
+            entry["embedded"] = list(self.embedded)
+        return entry
+
+    def mark(self, addon):
+        if addon not in self.applied:
+            self.applied.append(addon)
+
+
+class _Prefixed:
+    """A collector view that puts the embedded file's locator in front of every segment it adds."""
+
+    def __init__(self, out, prefix):
+        self.out, self.prefix = out, prefix
+
+    @property
+    def full(self):
+        return self.out.full
+
+    def add(self, locator, text):
+        self.out.add(self.prefix + locator, text)
 
 
 class _Collector:
@@ -295,10 +374,14 @@ class _Package:
         self.read_total += n
         if self.read_total > MAX_TOTAL_UNCOMPRESSED:
             raise Refused(f"archive parts total more than {MAX_TOTAL_UNCOMPRESSED} bytes uncompressed")
+        if self.parent is not None:  # an embedded package counts against the file that contains it
+            self.parent.count(n)
 
-    def __init__(self, path):
+    def __init__(self, path, parent=None):
+        """`path` is a file path or, for an embedded package, a bytes buffer already read under the caps."""
+        self.parent = parent
         try:
-            self.zip = zipfile.ZipFile(path)
+            self.zip = zipfile.ZipFile(io.BytesIO(path) if isinstance(path, bytes) else path)
         except (zipfile.BadZipFile, OSError, ValueError) as exc:
             raise Refused(f"not a readable Office file (bad zip container: {exc})") from None
         infos = self.zip.infolist()
@@ -390,13 +473,18 @@ class _Package:
             out[rel.get("Id")] = ((rel.get("Type") or "").rsplit("/", 1)[-1], norm)
         return out
 
-    def inspect(self, result, macro_part, embed_prefixes):
+    def inspect(self, result, macro_part, embed_prefixes, opts):
+        """Warn about macros and embedded objects. Returns the embedded part names when they are to be read (the
+        warning about any that cannot be is then inserted here, after reading, at the same position)."""
         names = self.names()
         if any(n.lower().endswith(macro_part) for n in names):
             result.warnings.append("contains macros (vbaProject.bin); not run and not read")
         embedded = [n for n in names if n.startswith(embed_prefixes) and not n.endswith("/")]
+        if embedded and opts.embedded:
+            return embedded, len(result.warnings)
         if embedded:
             result.warnings.append(f"{len(embedded)} embedded object(s) not read (e.g. {embedded[0]})")
+        return [], len(result.warnings)
 
 
 _NOT_TEXT = {MC + "Fallback", W + "pPr", W + "rPr", W + "sectPr", W + "tblPr", W + "trPr", W + "tcPr"}
@@ -430,7 +518,17 @@ def _word_text(element):
     return "".join(parts)
 
 
-def _word_blocks(container, out, prefix, counters):
+def _anchor(element, where, anchors):
+    """Remember the first block that refers to each relationship id (an embedded object's place in the body)."""
+    if anchors is None:
+        return
+    for node in element.iter():
+        rid = node.get(R + "id")
+        if rid and rid not in anchors:
+            anchors[rid] = where
+
+
+def _word_blocks(container, out, prefix, counters, anchors=None):
     """Walk a body/header/footer in order: paragraphs and tables, each with its own locator."""
     for child in container:
         if child.tag == W + "p":
@@ -438,9 +536,14 @@ def _word_blocks(container, out, prefix, counters):
             if text.strip():
                 counters["paragraph"] += 1
                 out.add(f"{prefix}paragraph {counters['paragraph']}", text)
+                _anchor(child, f"in paragraph {counters['paragraph']}", anchors)
+            else:
+                n = counters["paragraph"]
+                _anchor(child, f"after paragraph {n}" if n else "before paragraph 1", anchors)
         elif child.tag == W + "tbl":
             counters["table"] += 1
             table = counters["table"]
+            _anchor(child, f"in table {table}", anchors)
             row = 0
             for tr in child.findall(W + "tr"):  # nested tables are read inside their parent cell
                 row += 1
@@ -450,11 +553,11 @@ def _word_blocks(container, out, prefix, counters):
         elif child.tag == W + "sdt":
             content = child.find(W + "sdtContent")
             if content is not None:
-                _word_blocks(content, out, prefix, counters)
+                _word_blocks(content, out, prefix, counters, anchors)
         elif child.tag in (MC + "AlternateContent",):
             choice = child.find(MC + "Choice")
             if choice is not None:
-                _word_blocks(choice, out, prefix, counters)
+                _word_blocks(choice, out, prefix, counters, anchors)
 
 
 def _numbered(names, pattern):
@@ -466,19 +569,20 @@ def _numbered(names, pattern):
     return sorted(found)
 
 
-def read_docx(path, out, result):
+def read_docx(path, out, result, opts=None, depth=0):
     with _Package(path) as pkg:
-        _read_docx(pkg, out, result)
+        _read_docx(pkg, out, result, opts or Options(), depth)
 
 
-def _read_docx(pkg, out, result):
-    pkg.inspect(result, "vbaproject.bin", ("word/embeddings/",))
+def _read_docx(pkg, out, result, opts, depth):
+    embeds, at = pkg.inspect(result, "vbaproject.bin", ("word/embeddings/",), opts)
     doc = pkg.xml("word/document.xml")
     if doc is None:
         raise Refused("no word/document.xml; not a Word document")
     body = doc.find(W + "body")
+    anchors = {} if embeds else None
     if body is not None:
-        _word_blocks(body, out, "", {"paragraph": 0, "table": 0})
+        _word_blocks(body, out, "", {"paragraph": 0, "table": 0}, anchors)
     names = pkg.names()
     for kind in ("header", "footer"):
         for n, name in _numbered(names, rf"word/{kind}(\d+)\.xml"):
@@ -497,6 +601,10 @@ def _read_docx(pkg, out, result):
             out.add(f"{kind} {number}", _word_text(note))
     if any(True for _ in doc.iter(W + "delText")):
         result.warnings.append("tracked deletions present; deleted text is not read")
+    if embeds:
+        rels = pkg.rels("word/document.xml")
+        places = {rels[rid][1]: where for rid, where in (anchors or {}).items() if rid in rels}
+        _read_embedded(pkg, embeds, at, places, out, result, opts, depth)
 
 
 def column_letters(index):
@@ -524,13 +632,13 @@ def _si_text(si):
     return "".join(t.text or "" for t in si.iter(S + "t") if id(t) not in phonetic)
 
 
-def read_xlsx(path, out, result):
+def read_xlsx(path, out, result, opts=None, depth=0):
     with _Package(path) as pkg:
-        _read_xlsx(pkg, out, result)
+        _read_xlsx(pkg, out, result, opts or Options(), depth)
 
 
-def _read_xlsx(pkg, out, result):
-    pkg.inspect(result, "vbaproject.bin", ("xl/embeddings/",))
+def _read_xlsx(pkg, out, result, opts, depth):
+    embeds, at = pkg.inspect(result, "vbaproject.bin", ("xl/embeddings/",), opts)
     book = pkg.xml("xl/workbook.xml")
     if book is None:
         raise Refused("no xl/workbook.xml; not an Excel workbook")
@@ -538,6 +646,8 @@ def _read_xlsx(pkg, out, result):
     strings = next((part for kind, part in sorted(rels.values()) if kind == "sharedStrings"),
                    "xl/sharedStrings.xml")
     shared = [_si_text(si) for si in pkg.stream(strings, S + "si")]
+    display = _ExcelDisplay(pkg, book, rels) if opts.excel_display else None
+    places = {}
     sheets = book.find(S + "sheets")
     for sheet in (sheets if sheets is not None else []):
         name = sheet.get("name") or "?"
@@ -553,6 +663,9 @@ def _read_xlsx(pkg, out, result):
         if target[1] not in pkg.info:
             result.warnings.append(f"{label}: worksheet part {target[1]} missing; skipped")
             continue
+        if embeds:
+            for _, part in sorted(pkg.rels(target[1]).values()):
+                places.setdefault(part, f"on {label}")
         row_number = 0
         for row in pkg.stream(target[1], S + "row"):
             if out.full:
@@ -578,16 +691,23 @@ def _read_xlsx(pkg, out, result):
                             value = ""
                     elif kind == "b":
                         value = {"1": "TRUE", "0": "FALSE"}.get(value, value)
+                    elif kind == "n" and display is not None and value:
+                        value = display.show(value, cell.get("s"))
                 out.add(f"{label} cell {ref}", value)
+    if display is not None:
+        display.report(result)
+    if embeds:
+        _read_embedded(pkg, embeds, at, places, out, result, opts, depth)
 
 
-def read_pptx(path, out, result):
+def read_pptx(path, out, result, opts=None, depth=0):
     with _Package(path) as pkg:
-        _read_pptx(pkg, out, result)
+        _read_pptx(pkg, out, result, opts or Options(), depth)
 
 
-def _read_pptx(pkg, out, result):
-    pkg.inspect(result, "vbaproject.bin", ("ppt/embeddings/",))
+def _read_pptx(pkg, out, result, opts, depth):
+    embeds, at = pkg.inspect(result, "vbaproject.bin", ("ppt/embeddings/",), opts)
+    places = {}
     pres = pkg.xml("ppt/presentation.xml")
     if pres is None:
         raise Refused("no ppt/presentation.xml; not a PowerPoint file")
@@ -611,6 +731,10 @@ def _read_pptx(pkg, out, result):
                 notes = pkg.xml(part)
                 if notes is not None:
                     out.add(f"slide {number} notes", _drawing_text(notes))
+            elif embeds:
+                places.setdefault(part, f"on slide {number}")
+    if embeds:
+        _read_embedded(pkg, embeds, at, places, out, result, opts, depth)
 
 
 def _drawing_text(root):
@@ -627,7 +751,905 @@ def _drawing_text(root):
     return "\n".join(ln for ln in lines if ln.strip())
 
 
-# ---------------------------------------------------------------- PDF (text layer only)
+# ---------------------------------------------------------------- Excel displayed values (--excel-display)
+
+# Built-in number formats (ECMA-376 Part 1, 18.8.30). 14 and 22 follow the reader's locale in Excel; they are
+# written here as ISO dates so the output does not depend on the machine that runs this.
+BUILTIN_NUMFMT = {1: "0", 2: "0.00", 3: "#,##0", 4: "#,##0.00", 9: "0%", 10: "0.00%", 11: "0.00E+00",
+                  14: "yyyy-mm-dd", 15: "d-mmm-yy", 16: "d-mmm", 17: "mmm-yy", 18: "h:mm AM/PM",
+                  19: "h:mm:ss AM/PM", 20: "h:mm", 21: "h:mm:ss", 22: "yyyy-mm-dd hh:mm",
+                  37: "#,##0 ;(#,##0)", 38: "#,##0 ;(#,##0)", 39: "#,##0.00;(#,##0.00)",
+                  40: "#,##0.00;(#,##0.00)", 45: "mm:ss", 46: "[h]:mm:ss", 47: "mm:ss.0", 49: "@"}
+MONTHS = ("January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+          "November", "December")
+WEEKDAYS = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+_COLORS = re.compile(r"(black|blue|cyan|green|magenta|red|white|yellow|color\s*\d{1,2})", re.I)
+
+
+class _ExcelDisplay:
+    """Applies a workbook's number formats (xl/styles.xml) to stored numbers: dates, times, percentages, fixed
+    decimals, thousands separators, scientific notation and literal text. Anything else keeps its stored value
+    and is counted in one warning."""
+
+    def __init__(self, pkg, book, rels):
+        pr = book.find(S + "workbookPr")
+        self.date1904 = pr is not None and (pr.get("date1904") or "").lower() in ("1", "true")
+        part = next((part for kind, part in sorted(rels.values()) if kind == "styles"), "xl/styles.xml")
+        root = pkg.xml(part)
+        self.codes, self.xf, self.kept, self.example = dict(BUILTIN_NUMFMT), [], 0, None
+        if root is not None:
+            fmts = root.find(S + "numFmts")
+            for fmt in (fmts if fmts is not None else []):
+                try:
+                    self.codes[int(fmt.get("numFmtId"))] = fmt.get("formatCode") or ""
+                except (TypeError, ValueError):
+                    continue
+            xfs = root.find(S + "cellXfs")
+            for xf in (xfs if xfs is not None else []):
+                try:
+                    self.xf.append(int(xf.get("numFmtId") or 0))
+                except ValueError:
+                    self.xf.append(-1)
+
+    def show(self, value, style):
+        try:
+            fmt_id = self.xf[int(style)] if style is not None else 0
+        except (ValueError, IndexError):
+            fmt_id = 0
+        if fmt_id == 0:
+            return value  # General: the stored value is what Excel shows (up to its 11-digit rounding)
+        code = self.codes.get(fmt_id)
+        try:
+            shown = format_excel(value, code, self.date1904) if code is not None else None
+        except (ArithmeticError, ValueError):  # e.g. 1E+300 with two decimals: more digits than are kept
+            shown = None
+        if shown is None:
+            self.kept += 1
+            if self.example is None:
+                self.example = code if code is not None else f"numFmtId {fmt_id}"
+            return value
+        return shown
+
+    def report(self, result):
+        result.mark("excel display")
+        if self.kept:
+            result.warnings.append(f"{self.kept} number cell(s) kept their stored value: number format not applied "
+                                   f"(e.g. {self.example!r})")
+
+
+def _format_sections(code):
+    """Split a format code into its ;-separated sections, ignoring ; inside quotes, brackets or after a backslash."""
+    sections, buf, quoted, bracket, i = [], [], False, False, 0
+    while i < len(code):
+        ch = code[i]
+        if ch == "\\" and not quoted and i + 1 < len(code):
+            buf.append(code[i:i + 2])
+            i += 2
+            continue
+        if ch == '"':
+            quoted = not quoted
+        elif ch == "[" and not quoted:
+            bracket = True
+        elif ch == "]" and not quoted:
+            bracket = False
+        elif ch == ";" and not quoted and not bracket:
+            sections.append("".join(buf))
+            buf = []
+            i += 1
+            continue
+        buf.append(ch)
+        i += 1
+    sections.append("".join(buf))
+    return sections
+
+
+def _format_tokens(section):
+    """-> list of ("lit", text) and ("code", char) items; brackets give ("elapsed", "h"|"m"|"s") or literals.
+    Returns None for what is not applied here (conditions, fractions handled later, unknown brackets)."""
+    items, i = [], 0
+    while i < len(section):
+        ch = section[i]
+        if ch == '"':
+            end = section.find('"', i + 1)
+            if end < 0:
+                return None
+            items.append(("lit", section[i + 1:end]))
+            i = end + 1
+        elif ch == "\\" and i + 1 < len(section):
+            items.append(("lit", section[i + 1]))
+            i += 2
+        elif ch == "_" and i + 1 < len(section):
+            items.append(("lit", " "))
+            i += 2
+        elif ch == "*" and i + 1 < len(section):
+            i += 2  # fill character: no fixed width here
+        elif ch == "[":
+            end = section.find("]", i)
+            if end < 0:
+                return None
+            inner = section[i + 1:end]
+            low = inner.lower()
+            if low and len(set(low)) == 1 and low[0] in "hms":
+                items.append(("elapsed", low[0]))
+            elif inner.startswith("$"):
+                symbol = inner[1:].split("-", 1)[0]
+                if symbol:
+                    items.append(("lit", symbol))
+            elif _COLORS.fullmatch(inner):
+                pass
+            else:
+                return None  # conditions such as [>=100] and other locale codes
+            i = end + 1
+        else:
+            items.append(("code", ch))
+            i += 1
+    return items
+
+
+def format_excel(value, code, date1904=False):
+    """The text Excel displays for stored number `value` under format `code`, or None if not supported here."""
+    try:
+        number = Decimal(value)
+    except (InvalidOperation, ValueError):
+        return None
+    if not number.is_finite():
+        return None
+    sections = _format_sections(code)
+    sign = ""
+    if number < 0 and len(sections) >= 2:
+        section, number = sections[1], -number  # the section's own text (e.g. parentheses) shows the sign
+    elif number == 0 and len(sections) >= 3:
+        section = sections[2]
+    else:
+        section = sections[0]
+        sign = "-" if number < 0 else ""
+        number = abs(number)
+    if not section.strip():
+        return None  # a hidden section: keep the value rather than lose it
+    items = _format_tokens(section)
+    if items is None:
+        return None
+    codes = "".join(c for kind, c in items if kind == "code").lower()
+    if codes.strip() in ("general", "@"):
+        return sign + value.lstrip("-")
+    if any(kind == "elapsed" for kind, _ in items) or re.search(r"[ydhs]|am/pm|a/p", codes) \
+            or ("m" in codes and not re.search(r"[0#?]", codes)):
+        if sign:
+            return None  # Excel shows ##### for a negative date
+        return _format_date(number, items, date1904)
+    return _format_number(number, items, sign)
+
+
+def _format_number(number, items, sign):
+    pattern = set("0#?.,")
+    kinds = []  # ("lit", text) | ("pat", char) | ("exp", "E+"/"E-")
+    i = 0
+    while i < len(items):
+        kind, ch = items[i]
+        if kind == "code" and ch in "Ee" and i + 1 < len(items) and items[i + 1][1] in "+-":
+            kinds.append(("exp", "E" + items[i + 1][1]))
+            i += 2
+            continue
+        if kind == "code" and ch in pattern:
+            kinds.append(("pat", ch))
+        elif kind == "code" and ch == "/":
+            return None  # fractions are not applied
+        elif kind == "code" and ch.isalpha():
+            return None  # letters that are not a number placeholder
+        else:
+            kinds.append(("lit", ch))
+        i += 1
+    places = [n for n, (kind, _) in enumerate(kinds) if kind in ("pat", "exp")]
+    if not places:
+        return None
+    first, last = places[0], places[-1]
+    if any(kind == "lit" for kind, _ in kinds[first:last + 1]):
+        return None  # text inside the number pattern (e.g. phone or part-number masks)
+    prefix = "".join(t for _, t in kinds[:first])
+    suffix = "".join(t for _, t in kinds[last + 1:])
+    core = "".join(t for _, t in kinds[first:last + 1])
+    percent = (prefix + suffix).count("%")
+    mantissa, _, exponent = core.partition("E+") if "E+" in core else core.partition("E-")
+    exp_sign = "+" if "E+" in core else "-"
+    scale = len(mantissa) - len(mantissa.rstrip(","))
+    mantissa = mantissa.rstrip(",")
+    int_part, _, frac = mantissa.partition(".")
+    if "." in frac or "," in frac:
+        return None
+    int_min = int_part.count("0")
+    frac_min, frac_max = frac.count("0"), sum(frac.count(c) for c in "0#?")
+    grouping = "," in int_part
+    with localcontext() as ctx:
+        ctx.prec = 80
+        number = number * (Decimal(100) ** percent) / (Decimal(1000) ** scale)
+        exp_text = ""
+        if exponent:
+            if sum(int_part.count(c) for c in "0#?") != 1:
+                return None  # engineering notation is not applied
+            power = number.adjusted() if number else 0
+            mant = (number.scaleb(-power)).quantize(Decimal(1).scaleb(-frac_max), ROUND_HALF_UP)
+            if mant >= 10:
+                power += 1
+                mant = (number.scaleb(-power)).quantize(Decimal(1).scaleb(-frac_max), ROUND_HALF_UP)
+            number = mant
+            digits = str(abs(power)).rjust(exponent.count("0"), "0")
+            exp_text = "E" + ("-" if power < 0 else ("+" if exp_sign == "+" else "")) + digits
+        rounded = number.quantize(Decimal(1).scaleb(-frac_max), ROUND_HALF_UP)
+    text = f"{rounded:f}"
+    whole, _, decimals = text.partition(".")
+    decimals = decimals.rstrip("0").ljust(frac_min, "0") if frac_max else ""
+    if whole == "0" and int_min == 0:
+        whole = ""
+    whole = whole.rjust(int_min, "0")
+    if grouping and whole:
+        whole = f"{int(whole):,}".rjust(int_min, "0")
+    body = whole + ("." + decimals if "." in mantissa else "")  # "0.##" shows "5." for 5, as Excel does
+    if rounded == 0:
+        sign = ""
+    return sign + prefix + body + exp_text + suffix
+
+
+def _excel_datetime(number, date1904, digits):
+    """Serial number -> (datetime, fraction-of-second digits string) or None outside Excel's date range."""
+    if number < 0 or number >= 2958466:
+        return None
+    days = int(number)
+    unit = Decimal(10) ** digits
+    ticks = ((number - days) * 86400 * unit).quantize(Decimal(1), ROUND_HALF_UP)
+    if ticks >= 86400 * unit:
+        days, ticks = days + 1, ticks - 86400 * unit
+    seconds, fraction = divmod(int(ticks), int(unit))
+    if date1904:
+        base = datetime.datetime(1904, 1, 1)
+    elif days == 60:
+        return None  # 29 February 1900, a day Excel counts but the calendar does not have
+    else:
+        base = datetime.datetime(1899, 12, 31) if days < 60 else datetime.datetime(1899, 12, 30)
+    return base + datetime.timedelta(days=days, seconds=seconds), str(fraction).rjust(digits, "0") if digits else ""
+
+
+def _format_date(number, items, date1904):
+    tokens, i = [], 0  # ("y"|"m"|"d"|"h"|"s"|"ampm"|"ap"|"frac"|"elapsed"|"lit", text)
+    while i < len(items):
+        kind, ch = items[i]
+        if kind == "lit":
+            tokens.append(("lit", ch))
+            i += 1
+            continue
+        if kind == "elapsed":
+            tokens.append(("elapsed", ch))
+            i += 1
+            continue
+        low = ch.lower()
+        rest = "".join(c for _, c in items[i:i + 5]).lower()
+        if rest.startswith("am/pm"):
+            tokens.append(("ampm", "".join(c for _, c in items[i:i + 5])))
+            i += 5
+        elif rest.startswith("a/p"):
+            tokens.append(("ap", "".join(c for _, c in items[i:i + 3])))
+            i += 3
+        elif low in "ymdhs":
+            j = i
+            while j < len(items) and items[j][0] == "code" and items[j][1].lower() == low:
+                j += 1
+            tokens.append((low, low * (j - i)))
+            i = j
+        elif ch == "." and tokens and tokens[-1][0] in ("s", "elapsed") and i + 1 < len(items) \
+                and items[i + 1][1] == "0":
+            j = i + 1
+            while j < len(items) and items[j][1] == "0":
+                j += 1
+            tokens.append(("frac", "0" * (j - i - 1)))
+            i = j
+        elif ch.isalpha():
+            return None  # e.g. Buddhist-calendar or era codes
+        else:
+            tokens.append(("lit", ch))
+            i += 1
+    digits = max((len(t) for k, t in tokens if k == "frac"), default=0)
+    found = _excel_datetime(number, date1904, digits)
+    if found is None:
+        return None
+    moment, fraction = found
+    if any(k in ("y", "d") or (k == "m" and len(t) > 2) for k, t in tokens) and number < 1 and not date1904:
+        return None  # a date before 1 January 1900 (Excel shows a "day 0" date)
+    twelve = any(k in ("ampm", "ap") for k, _ in tokens)
+    whole_seconds = int(((number * 86400 * Decimal(10) ** digits).quantize(Decimal(1), ROUND_HALF_UP))
+                        // (Decimal(10) ** digits))
+    out = []
+    timed = [n for n, (k, _) in enumerate(tokens) if k not in ("lit",)]
+    for pos, (kind, text) in enumerate(tokens):
+        if kind == "lit":
+            out.append(text)
+        elif kind == "y":
+            out.append(f"{moment.year % 100:02d}" if len(text) <= 2 else f"{moment.year:04d}")
+        elif kind == "m":
+            before = [tokens[n][0] for n in timed if n < pos]
+            after = [tokens[n][0] for n in timed if n > pos]
+            minute = len(text) <= 2 and ((before and before[-1] in ("h", "elapsed")) or (after and after[0] == "s"))
+            if minute:
+                out.append(f"{moment.minute:02d}" if len(text) == 2 else str(moment.minute))
+            elif len(text) <= 2:
+                out.append(f"{moment.month:02d}" if len(text) == 2 else str(moment.month))
+            elif len(text) == 3:
+                out.append(MONTHS[moment.month - 1][:3])
+            elif len(text) == 4:
+                out.append(MONTHS[moment.month - 1])
+            else:
+                out.append(MONTHS[moment.month - 1][0])
+        elif kind == "d":
+            if len(text) <= 2:
+                out.append(f"{moment.day:02d}" if len(text) == 2 else str(moment.day))
+            else:
+                name = WEEKDAYS[moment.weekday()]
+                out.append(name[:3] if len(text) == 3 else name)
+        elif kind == "h":
+            hour = moment.hour % 12 or 12 if twelve else moment.hour
+            out.append(f"{hour:02d}" if len(text) >= 2 else str(hour))
+        elif kind == "s":
+            out.append(f"{moment.second:02d}" if len(text) >= 2 else str(moment.second))
+        elif kind == "frac":
+            out.append("." + fraction[:len(text)])
+        elif kind == "elapsed":
+            total = {"h": whole_seconds // 3600, "m": whole_seconds // 60, "s": whole_seconds}[text]
+            out.append(str(total).rjust(2, "0") if text != "h" else str(total))
+        elif kind == "ampm":
+            pm = moment.hour >= 12
+            out.append(("PM" if pm else "AM") if text[:1].isupper() else ("pm" if pm else "am"))
+        elif kind == "ap":
+            pm = moment.hour >= 12
+            out.append(("P" if pm else "A") if text[:1].isupper() else ("p" if pm else "a"))
+    # after an elapsed hour/minute, the following minutes/seconds are of the remainder, which moment already gives
+    return "".join(out)
+
+
+# ---------------------------------------------------------------- embedded files (Office/PDF inside Office)
+
+class _Cfb:
+    """Bounded, read-only reader for the OLE compound files Office wraps embedded objects in (MS-CFB). Only named
+    streams are read; every sector chain is checked against the file size and for loops."""
+    END, FREE = 0xFFFFFFFE, 0xFFFFFFFF
+
+    def __init__(self, data):
+        if len(data) < 512 or not data.startswith(OLE_MAGIC):
+            raise Refused("not an OLE compound file")
+        shift = int.from_bytes(data[30:32], "little")
+        if shift not in (9, 12) or int.from_bytes(data[32:34], "little") != 6:
+            raise Refused("OLE compound file has an invalid sector size")
+        self.data, self.size = data, 1 << shift
+        self.sectors = max(0, (len(data) - self.size) // self.size)
+        u32 = lambda off: int.from_bytes(data[off:off + 4], "little")  # noqa: E731
+        fat_count, dir_start, self.cutoff = u32(44), u32(48), u32(56)
+        mini_start, mini_count, difat_start, difat_count = u32(60), u32(64), u32(68), u32(72)
+        if fat_count > self.sectors or difat_count > self.sectors or mini_count > self.sectors:
+            raise Refused("OLE compound file header declares more sectors than the file has")
+        fat_sectors = [u32(76 + 4 * k) for k in range(109)]
+        sector, seen = difat_start, set()
+        for _ in range(difat_count):
+            if sector >= self.sectors or sector in seen:
+                raise Refused("OLE compound file has a broken sector list")
+            seen.add(sector)
+            block = self._sector(sector)
+            fat_sectors += [int.from_bytes(block[k:k + 4], "little") for k in range(0, self.size - 4, 4)]
+            sector = int.from_bytes(block[-4:], "little")
+        self.fat = []
+        for sector in fat_sectors[:fat_count]:
+            if sector >= self.sectors:
+                raise Refused("OLE compound file has a broken sector list")
+            block = self._sector(sector)
+            self.fat += [int.from_bytes(block[k:k + 4], "little") for k in range(0, self.size, 4)]
+        directory = self._chain_bytes(self.fat, dir_start, self.size, self._sector, None)
+        self.entries = []
+        for off in range(0, min(len(directory), 128 * MAX_OLE_ENTRIES), 128):
+            entry = directory[off:off + 128]
+            name_len = min(int.from_bytes(entry[64:66], "little"), 64)
+            name = entry[:max(0, name_len - 2)].decode("utf-16-le", "replace")
+            kind, start = entry[66], int.from_bytes(entry[116:120], "little")
+            length = int.from_bytes(entry[120:128], "little")
+            if self.size == 512:
+                length &= 0xFFFFFFFF
+            self.entries.append((name, kind, start, length))
+        root = next((e for e in self.entries if e[1] == 5), None)
+        self.mini = b""
+        self.minifat = []
+        if root is not None and root[3]:
+            self.mini = self._chain_bytes(self.fat, root[2], self.size, self._sector, root[3])
+            raw = self._chain_bytes(self.fat, mini_start, self.size, self._sector, mini_count * self.size)
+            self.minifat = [int.from_bytes(raw[k:k + 4], "little") for k in range(0, len(raw), 4)]
+
+    def _sector(self, n):
+        return self.data[(n + 1) * self.size:(n + 2) * self.size]
+
+    def _mini_sector(self, n):
+        return self.mini[n * 64:(n + 1) * 64]
+
+    def _chain_bytes(self, table, start, size, read, length):
+        limit = len(self.data) // size + 1 if read == self._sector else len(self.mini) // 64 + 1
+        parts, sector, seen = [], start, set()
+        while sector not in (self.END, self.FREE):
+            if sector >= len(table) or sector in seen or len(seen) > limit:
+                raise Refused("OLE compound file has a broken or looping sector chain")
+            seen.add(sector)
+            parts.append(read(sector))
+            if length is not None and len(parts) * size >= length:
+                break
+            sector = table[sector]
+        data = b"".join(parts)
+        if length is not None:
+            if len(data) < length:
+                raise Refused("OLE compound file stream is shorter than declared")
+            data = data[:length]
+        return data
+
+    def stream(self, name):
+        for entry_name, kind, start, length in self.entries:
+            if kind == 2 and entry_name.lower() == name.lower():
+                if length > MAX_MEMBER_BYTES:
+                    raise Refused(f"embedded stream {name!r} is larger than the {MAX_MEMBER_BYTES} byte limit")
+                if length < self.cutoff:
+                    return self._chain_bytes(self.minifat, start, 64, self._mini_sector, length)
+                return self._chain_bytes(self.fat, start, self.size, self._sector, length)
+        return None
+
+
+def _ole10native(buf):
+    """(file name, bytes) from an OLE Packager stream (how Office embeds an arbitrary file such as a PDF)."""
+    try:
+        pos = 6
+        ends = []
+        for _ in range(2):  # label, then original path: NUL-terminated ANSI strings
+            end = buf.index(b"\x00", pos)
+            ends.append(buf[pos:end])
+            pos = end + 1
+        pos += 4
+        temp_len = int.from_bytes(buf[pos:pos + 4], "little")
+        pos += 4 + temp_len
+        size = int.from_bytes(buf[pos:pos + 4], "little")
+        pos += 4
+        if size > len(buf) - pos or pos > len(buf):
+            return None
+        name = (ends[0] or ends[1]).decode("cp1252", "replace")
+        return name, buf[pos:pos + size]
+    except ValueError:
+        return None
+
+
+def _display_name(name, fallback):
+    name = re.split(r"[\\/]", name or "")[-1]
+    name = "".join(ch for ch in name if ch.isprintable()).strip()[:120]
+    return name or fallback
+
+
+def _embedded_payload(data, part):
+    """-> (display name, "zip"|"pdf", bytes) for an embedded Office/PDF file, else None (not readable here)."""
+    name = posixpath.basename(part)
+    if data.startswith(b"PK"):
+        return name, "zip", data
+    if b"%PDF-" in data[:1024]:
+        return name, "pdf", data
+    if not data.startswith(OLE_MAGIC):
+        return None
+    cfb = _Cfb(data)
+    native = cfb.stream("\x01Ole10Native")
+    if native is not None:
+        found = _ole10native(native)
+        if found is not None:
+            inner = _embedded_payload(found[1], found[0] or part)
+            if inner is not None:
+                return _display_name(found[0], name), inner[1], inner[2]
+    for stream in ("Package", "CONTENTS"):
+        payload = cfb.stream(stream)
+        if payload is not None and (payload.startswith(b"PK") or b"%PDF-" in payload[:1024]):
+            return name, "zip" if payload.startswith(b"PK") else "pdf", payload
+    return None
+
+
+def _root_collector(out):
+    while isinstance(out, _Prefixed):
+        out = out.out
+    return out
+
+
+def _merge_status(result, sub_status):
+    if sub_status == OK_OCR and result.status == OK:
+        result.status = OK_OCR
+    elif sub_status not in (OK, OK_OCR) and result.status in (OK, OK_OCR):
+        result.status = PARTIAL
+
+
+def _read_embedded(pkg, parts, at, places, out, result, opts, depth):
+    """Read the Office/PDF files embedded in `pkg` with the same readers and limits, each segment's locator
+    prefixed with the file and its place: "embedded 'spec.pdf' (in table 3) page 2". Objects that are not
+    Office/PDF files (or are nested too deep) are counted in one warning at position `at`, as before."""
+    order = {part: n for n, part in enumerate(places)}
+    unread, too_deep = [], []
+    for part in sorted(parts, key=lambda n: (order.get(n, len(order)), n)):
+        if depth + 1 > MAX_EMBED_DEPTH:
+            too_deep.append(part)
+            continue
+        where = places.get(part)
+        fallback = posixpath.basename(part)
+        label = f"embedded '{fallback}'" + (f" ({where})" if where else "")
+        try:
+            found = _embedded_payload(pkg.read(part), part)
+            if found is None:
+                unread.append(part)
+                continue
+            name, kind, payload = found
+            label = f"embedded '{name.replace(chr(39), chr(39) * 2)}'" + (f" ({where})" if where else "")
+            sub = Extraction(path=name, sha256=hashlib.sha256(payload).hexdigest(), bytes=len(payload))
+            root = _root_collector(out)
+            mark = (len(root.result.segments), root.left, root.full, len(root.result.warnings))
+            sub_out = _Prefixed(out, label + " ")
+            try:
+                if kind == "pdf":
+                    sub.format = "pdf"
+                    with _temp_dir() as tmp:
+                        copy = Path(tmp) / "embedded.pdf"
+                        copy.write_bytes(payload)
+                        read_pdf(copy, sub_out, sub, opts.pdf_engine, opts)
+                else:
+                    with _Package(payload, parent=pkg) as inner:
+                        sub.format = next((fmt for marker, fmt in ZIP_FORMATS if marker in inner.info), "")
+                        if not sub.format:
+                            unread.append(part)
+                            continue
+                        {"docx": _read_docx, "xlsx": _read_xlsx, "pptx": _read_pptx}[sub.format](
+                            inner, sub_out, sub, opts, depth + 1)
+            except (Refused, RecursionError) as exc:
+                # like a top-level file: nothing from a refused embedded file is kept
+                del root.result.segments[mark[0]:]
+                del root.result.warnings[mark[3]:]
+                root.left, root.full = mark[1], mark[2]
+                sub.status = UNSUPPORTED if isinstance(exc, Unsupported) else ERROR
+                sub.warnings = [str(exc) if isinstance(exc, Refused) else "document structure nested too deeply"]
+        except Refused as exc:
+            result.warnings.append(f"{label}: not read: {exc}")
+            _merge_status(result, ERROR)
+            continue
+        result.warnings += [f"{label}: {w}" for w in sub.warnings]
+        _merge_status(result, sub.status)
+        for loc, conf in sub.ocr.items():
+            result.ocr[f"{label} {loc}"] = conf
+        result.ocr_engine = result.ocr_engine or sub.ocr_engine
+        for addon in sub.applied:
+            result.mark(addon)
+        result.embedded.append({"locator": label, "name": name, "format": sub.format, "sha256": sub.sha256,
+                                "bytes": sub.bytes, "status": sub.status,
+                                "engine": " ".join(x for x in (sub.engine, sub.engine_version) if x)})
+        result.embedded += [dict(e, locator=f"{label} {e['locator']}") for e in sub.embedded]
+    notes = []
+    if unread:
+        notes.append(f"{len(unread)} embedded object(s) not read (e.g. {unread[0]})")
+    if too_deep:
+        notes.append(f"{len(too_deep)} embedded object(s) not read: more than {MAX_EMBED_DEPTH} levels deep "
+                     f"(e.g. {too_deep[0]})")
+    result.warnings[at:at] = notes
+
+
+# ---------------------------------------------------------------- external programs (optional add-ons)
+
+def _temp_dir():
+    """A private temporary folder removed afterwards, even after an error or a killed program."""
+    return tempfile.TemporaryDirectory(prefix="extract_text_", ignore_cleanup_errors=True)
+
+
+def _kill_tree(proc):
+    """End a program and everything it started (LibreOffice starts a second process; a timeout must end both)."""
+    try:
+        if os.name == "nt":
+            taskkill = Path(os.environ.get("SystemRoot", r"C:\Windows")) / "System32" / "taskkill.exe"
+            subprocess.run([str(taskkill), "/F", "/T", "/PID", str(proc.pid)], capture_output=True, timeout=30)
+        else:
+            os.killpg(proc.pid, signal.SIGKILL)
+    except (OSError, subprocess.SubprocessError):
+        pass
+    try:
+        proc.kill()
+    except OSError:
+        pass
+
+
+def _run(cmd, timeout, env=None):
+    """Run a program from an argument list (never through a shell) with no input, in its own process group, and
+    end the whole group if it runs longer than `timeout` seconds (raises subprocess.TimeoutExpired)."""
+    kwargs = {"stdin": subprocess.DEVNULL, "stdout": subprocess.PIPE, "stderr": subprocess.PIPE, "env": env}
+    if os.name == "nt":
+        kwargs["creationflags"] = subprocess.CREATE_NEW_PROCESS_GROUP | getattr(subprocess, "CREATE_NO_WINDOW", 0)
+    else:
+        kwargs["start_new_session"] = True
+    proc = subprocess.Popen(cmd, **kwargs)
+    try:
+        out, err = proc.communicate(timeout=timeout)
+    except BaseException:
+        _kill_tree(proc)
+        try:
+            proc.communicate(timeout=30)
+        except (subprocess.SubprocessError, OSError, ValueError):
+            pass
+        raise
+    return subprocess.CompletedProcess(cmd, proc.returncode, out, err)
+
+
+@functools.lru_cache(maxsize=None)
+def _tool_version(binary, flag, pattern):
+    try:
+        run = _run([binary, flag], 60)
+    except (OSError, subprocess.SubprocessError):
+        return "?"
+    m = re.search(pattern.encode(), run.stdout + run.stderr)
+    return m.group(1).decode("ascii", "replace") if m else "?"
+
+
+def _last_line(run):
+    lines = (run.stderr or b"").decode("utf-8", "replace").strip().splitlines()
+    return lines[-1] if lines else f"exit {run.returncode}"
+
+
+def _tesseract():
+    """The tesseract program: on PATH, else the one pytesseract is configured to use (pytesseract runs it too)."""
+    found = shutil.which("tesseract")
+    if found:
+        return found
+    try:
+        import pytesseract  # optional; only to find a configured tesseract program
+    except ImportError:
+        return None
+    cmd = getattr(getattr(pytesseract, "pytesseract", None), "tesseract_cmd", None)
+    return shutil.which(cmd) if isinstance(cmd, str) and cmd else None
+
+
+def _ocr_file(tess, image, opts, dpi=None):
+    """OCR one image file -> {page number: (text, mean word confidence or None)}."""
+    cmd = [tess, str(Path(image).resolve()), "stdout", "-l", opts.ocr_lang, "--psm", "3"]
+    if dpi:
+        cmd += ["--dpi", str(dpi)]
+    env = dict(os.environ, OMP_THREAD_LIMIT="1")  # one thread: the same image gives the same text
+    try:
+        run = _run(cmd + ["tsv"], OCR_TIMEOUT, env)
+    except subprocess.TimeoutExpired:
+        raise Refused(f"tesseract did not finish within {OCR_TIMEOUT} s") from None
+    except OSError as exc:
+        raise Refused(f"tesseract could not run: {exc}") from None
+    if run.returncode != 0:
+        raise Refused("tesseract could not read the image: " + _last_line(run))
+    return parse_tesseract_tsv(run.stdout.decode("utf-8", "replace"))
+
+
+def parse_tesseract_tsv(tsv):
+    """Tesseract TSV output -> {page: (text, mean word confidence)}; lines, paragraphs and blocks keep their breaks."""
+    pages = {}
+    for row in tsv.splitlines()[1:]:
+        cols = row.split("\t")
+        if len(cols) < 12 or cols[0] != "5" or not cols[11].strip():
+            continue
+        try:
+            page, key, conf = int(cols[1]), tuple(int(c) for c in cols[2:5]), float(cols[10])
+        except ValueError:
+            continue
+        pages.setdefault(page, []).append((key, cols[11].strip(), conf))
+    out = {}
+    for page, words in sorted(pages.items()):
+        parts, previous = [], None
+        for key, word, _ in words:
+            if previous is not None:
+                parts.append(" " if key == previous else ("\n\n" if key[0] != previous[0] else "\n"))
+            parts.append(word)
+            previous = key
+        confs = [c for _, _, c in words if c >= 0]
+        out[page] = ("".join(parts), round(sum(confs) / len(confs), 1) if confs else None)
+    return out
+
+
+def image_size(data, fmt):
+    """[(width, height), ...] per page from a PNG, JPEG or TIFF header, without decoding the image."""
+    import struct
+    if fmt == "png":
+        if not data.startswith(b"\x89PNG\r\n\x1a\n") or data[12:16] != b"IHDR":
+            raise Refused("not a PNG file")
+        return [struct.unpack(">II", data[16:24])]
+    if fmt == "jpeg":
+        if not data.startswith(b"\xff\xd8"):
+            raise Refused("not a JPEG file")
+        i = 2
+        while i + 9 <= len(data):
+            if data[i] != 0xFF:
+                raise Refused("JPEG file structure is broken")
+            marker = data[i + 1]
+            if marker == 0xFF:
+                i += 1
+                continue
+            if marker in (0x01, 0xD8) or 0xD0 <= marker <= 0xD7:
+                i += 2
+                continue
+            if marker in (0xC0, 0xC1, 0xC2, 0xC3, 0xC5, 0xC6, 0xC7, 0xC9, 0xCA, 0xCB, 0xCD, 0xCE, 0xCF):
+                height, width = struct.unpack(">HH", data[i + 5:i + 9])
+                return [(width, height)]
+            i += 2 + int.from_bytes(data[i + 2:i + 4], "big")
+        raise Refused("JPEG file has no image size")
+    order = {b"II": "<", b"MM": ">"}.get(data[:2])
+    if order is None or struct.unpack(order + "H", data[2:4])[0] != 42:
+        raise Refused("not a TIFF file (or a BigTIFF, which is not read)")
+    sizes, offset, seen = [], struct.unpack(order + "I", data[4:8])[0], set()
+    while offset and offset not in seen and len(sizes) <= MAX_OCR_PAGES:
+        seen.add(offset)
+        if offset + 2 > len(data):
+            raise Refused("TIFF file structure is broken")
+        count = struct.unpack(order + "H", data[offset:offset + 2])[0]
+        width = height = 0
+        for k in range(count):
+            entry = data[offset + 2 + 12 * k:offset + 14 + 12 * k]
+            if len(entry) < 12:
+                raise Refused("TIFF file structure is broken")
+            tag, kind = struct.unpack(order + "HH", entry[:4])
+            value = struct.unpack(order + ("H" if kind == 3 else "I"), entry[8:10] if kind == 3 else entry[8:12])[0]
+            if tag == 256:
+                width = value
+            elif tag == 257:
+                height = value
+        sizes.append((width, height))
+        end = offset + 2 + 12 * count
+        offset = struct.unpack(order + "I", data[end:end + 4])[0] if end + 4 <= len(data) else 0
+    return sizes
+
+
+def read_image(data, suffix, out, result, opts):
+    """OCR an image file (only with --ocr auto). Each page of a multi-page TIFF is "page N"; a PNG/JPEG is page 1."""
+    sizes = image_size(data, IMAGE_SUFFIXES[suffix])
+    if len(sizes) > MAX_OCR_PAGES:
+        raise Refused(f"image has more than {MAX_OCR_PAGES} pages")
+    for n, (width, height) in enumerate(sizes, 1):
+        if not width or not height or width * height > MAX_OCR_PIXELS:
+            raise Refused(f"image page {n} is {width} x {height} pixels; OCR is limited to {MAX_OCR_PIXELS} pixels")
+    tess = _tesseract()
+    if tess is None:
+        result.status = NEEDS_DEPENDENCY
+        result.warnings.append("image text needs OCR: no tesseract program on PATH (install Tesseract OCR)")
+        return
+    version = _tool_version(tess, "--version", r"tesseract v?([\w.\-]+)")
+    result.engine, result.engine_version = "tesseract", version
+    result.ocr_engine = f"tesseract {version} ({opts.ocr_lang})"
+    with _temp_dir() as tmp:
+        copy = Path(tmp) / ("image" + suffix)  # the bytes that were hashed, under a name no program can misread
+        copy.write_bytes(data)
+        pages = _ocr_file(tess, copy, opts)
+    empty = []
+    for n in range(1, len(sizes) + 1):
+        text, conf = pages.get(n, ("", None))
+        if text.strip():
+            out.add(f"page {n}", text)
+            result.ocr[f"page {n}"] = conf
+        else:
+            empty.append(n)
+    result.mark("ocr")
+    if empty:
+        result.warnings.append(f"OCR found no text: page{'s' if len(empty) > 1 else ''} {_ranges(empty)} of "
+                               f"{len(sizes)} (a blank page, or an image OCR could not read)")
+    result.status = OK_OCR if not empty else (NEEDS_OCR if len(empty) == len(sizes) else PARTIAL)
+
+
+def _ocr_pdf(path, pages, result, opts):
+    """Render each listed page with pdftoppm and OCR it. -> ({page: (text, conf)}, [pages OCR found empty],
+    [pages not OCRed]) or None when a program is missing (a warning says which)."""
+    tess, ppm = _tesseract(), shutil.which("pdftoppm")
+    missing = ([] if tess else ["no tesseract program on PATH (install Tesseract OCR)"]) + \
+              ([] if ppm else ["no pdftoppm program on PATH to render PDF pages (install Poppler)"])
+    if missing:
+        result.warnings.append("OCR not run: " + "; ".join(missing))
+        return None
+    todo, skipped = pages[:MAX_OCR_PAGES], pages[MAX_OCR_PAGES:]
+    if skipped:
+        result.warnings.append(f"OCR stopped after {MAX_OCR_PAGES} pages")
+    texts, empty, failed = {}, [], list(skipped)
+    with _temp_dir() as tmp:
+        # the programs only ever see fixed names in a private folder: no option-like or shell-special file names
+        source = str(Path(tmp) / "source.pdf")
+        try:
+            shutil.copyfile(path, source)
+        except OSError as exc:
+            result.warnings.append(f"OCR not run: the PDF could not be copied to a temporary folder ({exc})")
+            return None
+        version = _tool_version(tess, "--version", r"tesseract v?([\w.\-]+)")
+        ppm_version = _tool_version(ppm, "-v", r"version ([\w.\-]+)")
+        result.ocr_engine = (f"tesseract {version} ({opts.ocr_lang}, {opts.ocr_dpi} dpi; pages rendered by "
+                             f"pdftoppm {ppm_version})")
+        for n in todo:
+            base = Path(tmp) / f"page{n}"
+            image = base.with_name(base.name + ".png")
+            try:
+                run = _run([ppm, "-r", str(opts.ocr_dpi), "-gray", "-png", "-singlefile", "-f", str(n), "-l", str(n),
+                            "-W", str(MAX_OCR_SIDE), "-H", str(MAX_OCR_SIDE), source, str(base)], RENDER_TIMEOUT)
+                if run.returncode != 0 or not image.is_file():
+                    raise Refused("pdftoppm could not render it: " + _last_line(run))
+                with open(image, "rb") as stream:
+                    width, height = image_size(stream.read(32), "png")[0]
+                if max(width, height) >= MAX_OCR_SIDE:
+                    result.warnings.append(f"page {n}: rendered image cropped at {MAX_OCR_SIDE} pixels; lower "
+                                           "--ocr-dpi to OCR the whole page")
+                got = _ocr_file(tess, image, opts, opts.ocr_dpi).get(1, ("", None))
+            except subprocess.TimeoutExpired:
+                result.warnings.append(f"page {n}: pdftoppm did not finish within {RENDER_TIMEOUT} s; not OCRed")
+                failed.append(n)
+                continue
+            except (Refused, OSError) as exc:
+                result.warnings.append(f"page {n}: not OCRed: {exc}")
+                failed.append(n)
+                continue
+            finally:
+                try:
+                    image.unlink(missing_ok=True)  # one page image at a time; the folder goes afterwards
+                except OSError:
+                    pass
+            if got[0].strip():
+                texts[n] = got
+            else:
+                empty.append(n)
+    return texts, empty, failed
+
+
+def _soffice():
+    for name in ("soffice", "libreoffice"):
+        found = shutil.which(name)
+        if found:
+            return found
+    if os.name == "nt":  # the installer does not put LibreOffice on PATH
+        for root in (os.environ.get("ProgramFiles"), os.environ.get("ProgramFiles(x86)")):
+            for exe in ("soffice.com", "soffice.exe"):
+                candidate = Path(root or "") / "LibreOffice" / "program" / exe
+                if root and candidate.is_file():
+                    return str(candidate)
+    return None
+
+
+@functools.lru_cache(maxsize=None)
+def _soffice_version(soffice):
+    with _temp_dir() as tmp:
+        try:
+            run = _run([soffice, f"-env:UserInstallation={(Path(tmp) / 'profile').as_uri()}", "--version"], 120)
+        except (OSError, subprocess.SubprocessError):
+            return "?"
+    m = re.search(rb"LibreOffice ([\d.]+)", run.stdout + run.stderr)
+    return m.group(1).decode("ascii") if m else "?"
+
+
+def read_converted(data, suffix, out, result, opts, max_bytes):
+    """--convert-legacy: convert a .doc/.xls/.ppt/.rtf copy with LibreOffice in a private temporary folder (its own
+    profile, no window), then read the converted file with the normal reader."""
+    soffice = _soffice()
+    if soffice is None:
+        result.status = UNSUPPORTED
+        result.warnings += [LEGACY[suffix], "--convert-legacy: no LibreOffice (soffice) program found on PATH"]
+        return
+    target = CONVERT_TO[suffix]
+    version = _soffice_version(soffice)
+    with _temp_dir() as tmp:
+        tmp = Path(tmp)
+        source, folder, profile = tmp / ("source" + suffix), tmp / "out", tmp / "profile"
+        source.write_bytes(data)  # the bytes that were hashed, under a fixed name
+        folder.mkdir()
+        cmd = [soffice, f"-env:UserInstallation={profile.as_uri()}", "--headless", "--invisible", "--nologo",
+               "--norestore", "--nolockcheck", "--nodefault", "--convert-to", target, "--outdir", str(folder),
+               str(source)]
+        try:
+            run = _run(cmd, CONVERT_TIMEOUT)
+        except subprocess.TimeoutExpired:
+            raise Refused(f"LibreOffice did not finish converting within {CONVERT_TIMEOUT} s") from None
+        except OSError as exc:
+            raise Refused(f"LibreOffice could not run: {exc}") from None
+        produced = folder / f"source.{target}"
+        if not produced.is_file():
+            raise Unsupported(f"LibreOffice did not convert the file ({_last_line(run)}); "
+                              + LEGACY[suffix].split("; ", 1)[-1])
+        if produced.stat().st_size > max_bytes:
+            raise Refused(f"converted file is larger than the {max_bytes} byte limit")
+        result.converted = f"{target} by LibreOffice {version}"
+        result.mark("convert legacy")
+        result.warnings.append(f"converted from {suffix} to .{target} by LibreOffice {version}; locators refer to "
+                               "the converted file (paragraph and table numbers can differ from the original)")
+        {"docx": read_docx, "xlsx": read_xlsx, "pptx": read_pptx}[target](produced, out, result, opts, 0)
+
+
+# ---------------------------------------------------------------- PDF (text layer, optional OCR)
 
 def _pypdf():
     try:
@@ -637,31 +1659,50 @@ def _pypdf():
     return pypdf
 
 
-def read_pdf(path, out, result, engine="auto"):
+def read_pdf(path, out, result, engine="auto", opts=None):
+    opts = opts or Options()
     pypdf = _pypdf() if engine in ("auto", "pypdf") else None
     binary = shutil.which("pdftotext") if engine in ("auto", "pdftotext") else None
+    if opts.pdf_layout and engine == "auto" and binary:
+        pypdf = None  # layout mode prefers pdftotext -layout, which keeps columns apart best
     if pypdf is not None:
-        pages = _pdf_pypdf(pypdf, path, result)
+        pages = _pdf_pypdf(pypdf, path, result, opts.pdf_layout)
     elif binary:
-        pages = _pdf_pdftotext(binary, path, result)
+        pages = _pdf_pdftotext(binary, path, result, opts.pdf_layout)
     else:
         result.status = NEEDS_DEPENDENCY
         need = {"pypdf": "pypdf is not installed", "pdftotext": "no pdftotext program on PATH"}.get(engine)
         result.warnings.append("PDF text needs pypdf (pip install pypdf)"
                                + (f"; {need}" if need else " or a pdftotext program on PATH"))
         return
+    if opts.pdf_layout:
+        result.mark("pdf layout")
     if not pages:
         result.warnings.append("PDF has no pages")
-    blank = []
+    blank = [n for n, text in enumerate(pages, 1) if not text.strip()]
+    ocr, empty, not_ocred = {}, [], blank
+    if blank and opts.ocr == "auto":
+        got = _ocr_pdf(path, blank, result, opts)
+        if got is not None:
+            ocr, empty, not_ocred = got
+            result.mark("ocr")
     for n, text in enumerate(pages, 1):
-        if text.strip():
+        if n in ocr:
+            out.add(f"page {n}", ocr[n][0])
+            result.ocr[f"page {n}"] = ocr[n][1]
+        elif text.strip():
             out.add(f"page {n}", text)
-        else:
-            blank.append(n)
-    if blank:
-        result.warnings.append(f"no text layer, needs OCR: page{'s' if len(blank) > 1 else ''} "
-                               + _ranges(blank) + f" of {len(pages)}")
-        result.status = NEEDS_OCR if len(blank) == len(pages) else PARTIAL
+    if not_ocred:
+        result.warnings.append(f"no text layer, needs OCR: page{'s' if len(not_ocred) > 1 else ''} "
+                               + _ranges(not_ocred) + f" of {len(pages)}")
+    if empty:
+        result.warnings.append(f"OCR found no text: page{'s' if len(empty) > 1 else ''} {_ranges(empty)} of "
+                               f"{len(pages)} (a blank page, or an image OCR could not read)")
+    unresolved = len(not_ocred) + len(empty)
+    if unresolved:
+        result.status = NEEDS_OCR if unresolved == len(pages) else PARTIAL
+    elif ocr:
+        result.status = OK_OCR
 
 
 def _ranges(numbers):
@@ -673,7 +1714,7 @@ def _ranges(numbers):
     return ", ".join(spans)
 
 
-def _pdf_pypdf(pypdf, path, result):
+def _pdf_pypdf(pypdf, path, result, layout=False):
     logging.getLogger("pypdf").setLevel(logging.ERROR)  # recoverable-file chatter; real failures are caught below
     result.engine, result.engine_version = "pypdf", getattr(pypdf, "__version__", "?")
     try:
@@ -693,25 +1734,30 @@ def _pdf_pypdf(pypdf, path, result):
         raise Refused(f"not a readable PDF: {type(exc).__name__}: {exc}") from None
     if count > MAX_PDF_PAGES:
         raise Refused(f"PDF has {count} pages; more than the {MAX_PDF_PAGES} page limit")
+    if layout and "extraction_mode" not in __import__("inspect").signature(pypdf.PageObject.extract_text).parameters:
+        result.warnings.append(f"pypdf {result.engine_version} has no layout mode (pypdf 3.17 or later has); "
+                               "plain text order used")
+        layout = False
     pages = []
     for i in range(count):
         try:
-            pages.append(reader.pages[i].extract_text() or "")
+            page = reader.pages[i]
+            pages.append((page.extract_text(extraction_mode="layout") if layout else page.extract_text()) or "")
         except Exception as exc:
             result.warnings.append(f"page {i + 1}: text could not be read ({type(exc).__name__}: {exc})")
             pages.append("")
     return pages
 
 
-def _pdf_pdftotext(binary, path, result):
+def _pdf_pdftotext(binary, path, result, layout=False):
     result.engine = "pdftotext"
     try:
         ver = subprocess.run([binary, "-v"], capture_output=True, timeout=30)
         m = re.search(rb"version ([\w.\-]+)", ver.stdout + ver.stderr)
         result.engine_version = m.group(1).decode() if m else "?"
         # an absolute path, so a file named like an option ("-foo.pdf") is never read as one
-        run = subprocess.run([binary, "-enc", "UTF-8", "-eol", "unix", str(Path(path).resolve()), "-"],
-                             capture_output=True, timeout=PDFTOTEXT_TIMEOUT)
+        run = subprocess.run([binary, "-enc", "UTF-8", "-eol", "unix"] + (["-layout"] if layout else [])
+                             + [str(Path(path).resolve()), "-"], capture_output=True, timeout=PDFTOTEXT_TIMEOUT)
     except subprocess.TimeoutExpired:
         raise Refused(f"pdftotext did not finish within {PDFTOTEXT_TIMEOUT} s") from None
     except OSError as exc:
@@ -741,12 +1787,32 @@ def detect_format(path):
     return None
 
 
-def extract(path, *, pdf_engine="auto", max_bytes=MAX_FILE_BYTES, max_chars=MAX_CHARS):
+def _refused(result, status, message):
+    """Nothing read from a refused file is kept: no text, no OCR confidences, no embedded-file entries."""
+    result.status = status
+    result.warnings.append(message)
+    result.segments, result.ocr, result.embedded = [], {}, []
+    return result
+
+
+def extract(path, *, pdf_engine="auto", max_bytes=MAX_FILE_BYTES, max_chars=MAX_CHARS, ocr="off", ocr_lang="eng",
+            ocr_dpi=300, convert_legacy=False, pdf_layout=False, excel_display=False, embedded=True):
     """Read one file -> Extraction (iterate it for ordered (locator, text) segments).
 
     Never raises for a missing, corrupt, hostile, unsupported or image-only file: the result's status says what
-    happened ("ok", "partial", "needs OCR", "needs dependency", "unsupported", "error") and warnings say why.
+    happened ("ok", "ok (ocr)", "partial", "needs OCR", "needs dependency", "unsupported", "error") and warnings
+    say why. The keyword add-ons (all off except `embedded`) are described in docs/DOCUMENT_TEXT.md; a bad add-on
+    value raises ValueError.
     """
+    opts = Options(pdf_engine=pdf_engine, ocr=ocr, ocr_lang=ocr_lang, ocr_dpi=ocr_dpi,
+                   convert_legacy=convert_legacy, pdf_layout=pdf_layout, excel_display=excel_display,
+                   embedded=embedded)
+    if opts.ocr not in ("off", "auto"):
+        raise ValueError("ocr must be 'auto' or 'off'")
+    if not OCR_LANG.fullmatch(opts.ocr_lang or ""):
+        raise ValueError("ocr_lang must be Tesseract language names such as 'eng' or 'eng+deu'")
+    if not isinstance(opts.ocr_dpi, int) or not 70 <= opts.ocr_dpi <= 1200:
+        raise ValueError("ocr_dpi must be a whole number from 70 to 1200")
     path = Path(path)
     result = Extraction(path=path.as_posix())
     result.format = detect_format(path) or path.suffix.lower().lstrip(".") or "unknown"
@@ -777,9 +1843,13 @@ def extract(path, *, pdf_engine="auto", max_bytes=MAX_FILE_BYTES, max_chars=MAX_
     suffix = path.suffix.lower()
     out = _Collector(result, max_chars)
     try:
-        if suffix in LEGACY:
+        if suffix in LEGACY and opts.convert_legacy:
+            read_converted(data, suffix, out, result, opts, max_bytes)
+        elif suffix in LEGACY:
             result.status = UNSUPPORTED
             result.warnings.append(LEGACY[suffix])
+        elif fmt is None and suffix in IMAGE_SUFFIXES and opts.ocr == "auto":
+            read_image(data, suffix, out, result, opts)
         elif fmt is None:
             result.status = UNSUPPORTED
             result.warnings.append(f"no text reader for '{suffix or path.name}' files; supported: "
@@ -792,26 +1862,22 @@ def extract(path, *, pdf_engine="auto", max_bytes=MAX_FILE_BYTES, max_chars=MAX_
             elif not data.startswith(b"PK"):
                 raise Refused(f"not a {suffix} file (no zip container)")
             else:
-                {"docx": read_docx, "xlsx": read_xlsx, "pptx": read_pptx}[fmt](path, out, result)
+                {"docx": read_docx, "xlsx": read_xlsx, "pptx": read_pptx}[fmt](path, out, result, opts)
         elif fmt == "pdf":
             if b"%PDF-" not in data[:1024]:
                 raise Refused("not a PDF (no %PDF- header)")
-            read_pdf(path, out, result, pdf_engine)
+            read_pdf(path, out, result, opts.pdf_engine, opts)
         elif fmt == "html":
             read_html(data, out, result)
         else:
             read_text(data, out, result)
     except Refused as exc:
-        result.status = UNSUPPORTED if isinstance(exc, Unsupported) else ERROR
-        result.warnings.append(str(exc))
-        result.segments = []
-        return result
+        return _refused(result, UNSUPPORTED if isinstance(exc, Unsupported) else ERROR, str(exc))
     except RecursionError:
-        result.status = ERROR
-        result.warnings.append("document structure nested too deeply; refused")
-        result.segments = []
-        return result
-    if out.full and result.status == OK:
+        return _refused(result, ERROR, "document structure nested too deeply; refused")
+    except OSError as exc:  # only the add-ons write files (to a private temporary folder)
+        return _refused(result, ERROR, f"an add-on step failed (temporary folder or program): {exc}")
+    if out.full and result.status in (OK, OK_OCR):
         result.status = PARTIAL
     return result
 
@@ -822,6 +1888,11 @@ def render_text(result):
     engine = " ".join(x for x in (result.engine, result.engine_version) if x)
     lines = [f"# {EXTRACTOR} {VERSION} | file: {Path(result.path).name} | sha256: {result.sha256 or '-'} | "
              f"format: {result.format} | status: {result.status} | engine: {engine}"]
+    if result.converted:
+        lines.append(f"# converted: {result.converted}")
+    if result.ocr_engine:
+        confidence = "; ".join(f"{loc} {'n/a' if c is None else c}" for loc, c in result.ocr.items())
+        lines.append(f"# ocr: engine: {result.ocr_engine} | mean word confidence: {confidence or '-'}")
     lines += [f"# warning: {w}" for w in result.warnings]
     for locator, text in result.segments:
         lines += ["", f"## {locator}", text]
@@ -872,9 +1943,29 @@ def main(argv=None):
                     help="auto: pypdf if installed, else pdftotext on PATH")
     ap.add_argument("--max-mb", type=float, default=MAX_FILE_BYTES / (1024 * 1024),
                     help=f"refuse inputs larger than this (default {MAX_FILE_BYTES // (1024 * 1024)})")
+    ap.add_argument("--ocr", choices=("auto", "off"), default="off",
+                    help="auto: OCR scanned PDF pages (Tesseract + pdftoppm) and .png/.jpg/.tif images when the "
+                         "programs are installed (default off)")
+    ap.add_argument("--ocr-lang", default="eng", help="Tesseract language(s), e.g. eng or eng+deu (default eng)")
+    ap.add_argument("--ocr-dpi", type=int, default=300, help="PDF page render resolution for OCR (default 300)")
+    ap.add_argument("--convert-legacy", action="store_true",
+                    help="convert .doc/.xls/.ppt/.rtf with LibreOffice (soffice) when installed, then read them")
+    ap.add_argument("--pdf-layout", action="store_true",
+                    help="keep PDF columns apart: pdftotext -layout, else pypdf layout mode")
+    ap.add_argument("--excel-display", action="store_true",
+                    help="show Excel numbers and dates as their number format displays them, not stored values")
+    ap.add_argument("--embedded", choices=("on", "off"), default="on",
+                    help="read Word/Excel/PowerPoint/PDF files embedded in Office files (default on)")
     args = ap.parse_args(argv)
     if args.max_mb <= 0:
         ap.error("--max-mb must be positive")
+    if not OCR_LANG.fullmatch(args.ocr_lang):
+        ap.error("--ocr-lang must be Tesseract language names such as eng or eng+deu")
+    if not 70 <= args.ocr_dpi <= 1200:
+        ap.error("--ocr-dpi must be from 70 to 1200")
+    addons = {"ocr": args.ocr, "ocr_lang": args.ocr_lang, "ocr_dpi": args.ocr_dpi,
+              "convert_legacy": args.convert_legacy, "pdf_layout": args.pdf_layout,
+              "excel_display": args.excel_display, "embedded": args.embedded == "on"}
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(errors="backslashreplace")  # file names the console cannot show must not crash
     out = Path(args.out)
@@ -882,7 +1973,8 @@ def main(argv=None):
     files = [f for f in expand_inputs(args.files)  # never re-read our own earlier output
              if not (f.exists() and out_resolved in f.resolve().parents)]
     out.mkdir(parents=True, exist_ok=True)
-    results = [extract(f, pdf_engine=args.pdf_engine, max_bytes=int(args.max_mb * 1024 * 1024)) for f in files]
+    results = [extract(f, pdf_engine=args.pdf_engine, max_bytes=int(args.max_mb * 1024 * 1024), **addons)
+               for f in files]
     entries = []
     for result, name in zip(results, out_names(results)):
         entry = result.manifest_entry()
@@ -894,7 +1986,11 @@ def main(argv=None):
         entries.append(entry)
         print(f"{result.status:16} {len(result.segments):6} segments  {result.path}"
               + (f"  ({'; '.join(result.warnings)})" if result.warnings else ""))
-    manifest = {"extractor": EXTRACTOR, "version": VERSION, "files": entries}
+    manifest = {"extractor": EXTRACTOR, "version": VERSION}
+    chosen = Options(**addons).non_default()
+    if chosen:
+        manifest["options"] = chosen  # only when an add-on was asked for, so the default manifest is unchanged
+    manifest["files"] = entries
     (out / "manifest.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n",
                                        encoding="utf-8", newline="\n")
     errors = sum(r.status == ERROR for r in results)

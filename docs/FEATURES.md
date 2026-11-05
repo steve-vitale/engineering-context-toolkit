@@ -120,9 +120,9 @@ Example review: not yet: needs review
 
 **Why it matters:** Procedures, PHAs, CAPAs and work orders name the same equipment as the P&ID and the instrument index, but they live in Office files and PDFs that a text search cannot see. A locator on every piece lets a reviewer open the document at the place a tag was found.
 
-**Inputs:** The documents (.pdf, .docx/.docm, .xlsx/.xlsm, .pptx/.pptm, .html, .txt, .md, .csv); for PDF text, the optional pypdf package or a pdftotext program
+**Inputs:** The documents (.pdf, .docx/.docm, .xlsx/.xlsm, .pptx/.pptm, .html, .txt, .md, .csv); for PDF text, the optional pypdf package or a pdftotext program. Optional, only when asked for: Tesseract (and Poppler pdftoppm) for OCR of scanned pages and images, LibreOffice for legacy .doc/.xls/.ppt/.rtf
 
-**Outputs:** One text file per document with a locator before each piece (page 3, paragraph 12, table 2 row 4, sheet 'PM plan' cell B7, slide 4, line 9) and a manifest with each file's SHA-256, status and warnings. Scanned pages are reported as needing OCR, not read; legacy .doc/.xls are reported with a conversion step. Prototype on fictional and public files; no plant acceptance
+**Outputs:** One text file per document with a locator before each piece (page 3, paragraph 12, table 2 row 4, sheet 'PM plan' cell B7, slide 4, line 9) and a manifest with each file's SHA-256, status and warnings. Embedded Office/PDF files are read with their place (embedded 'spec.pdf' (in table 3) page 2). Scanned pages are reported as needing OCR and legacy .doc/.xls with a conversion step, unless the optional --ocr auto or --convert-legacy add-ons and their programs are used; --pdf-layout and --excel-display are further opt-ins. Prototype on fictional and public files; OCR and conversion tested with stand-in programs only; no plant acceptance
 
 **Time:** Seconds per document
 
