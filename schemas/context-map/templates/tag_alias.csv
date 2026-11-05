@@ -1,0 +1,3 @@
+alias,alias_kind,tag,plant,unit,valid_from,valid_to,locator,status,note
+TP-1,former_tag,P-101,P1,PAST1,,2019-06-30,,confirmed,Renumbered at the 2019 rebuild.
+10004711,cmms_number,P-101,P1,PAST1,2019-07-01,,,unverified,

@@ -1,0 +1,3 @@
+tag,plant,unit,system,kind,description,dexpi_class,cfihos_tag_class,parent_tag,former_tag,safety_relevant,locator,status,note
+P-101,P1,PAST1,,equipment,"Timing pump, positive displacement",RotaryPump,,,TP-1,yes,,confirmed,Timing pump sets hold time; regulatory seal on speed.
+TT-2207,P1,PAST1,,instrument,Hold tube outlet temperature,Transmitter,,,,yes,PID-PAST1-01 rev C zone D4,unverified,

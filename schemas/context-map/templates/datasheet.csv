@@ -1,0 +1,3 @@
+tag,plant,unit,property,value,uom,fact_kind,sheet_type,document,revision,cfihos_property,locator,status,note
+P-101,P1,PAST1,rated_flow,12000,L/h,rating,equipment_datasheet,DS-P101,2,,page 1 line 14,unverified,
+TT-2207,P1,PAST1,range,0 to 100,degC,instrument_range,instrument_spec_sheet,IS-TT2207,1,,box 22,unverified,
