@@ -248,7 +248,7 @@ class TwoStarts(unittest.TestCase):
         g, _, rows, _ = om.build(self.inputs / "site.json", self.dir / "out")
         conf = [n["conflict"] for n in g["nodes"] if n["kind"] == "conflict"]
         self.assertFalse([c for c in conf if c["type"] == "asset_presence" and "/P2/" in c["subject"]])
-        drafts = {r["item"] for r in rows if r["kind"] == "drawn, not yet listed"}
+        drafts = {r["item"] for r in rows if r["kind"].startswith("on the P&ID, not in the ")}
         self.assertEqual(drafts, {"S1/P2/300/FIC-3101", "S1/P2/300/FT-3101", "S1/P2/300/FV-3101",
                                   "S1/P2/300/P-101", "S1/P2/300/V-301"})
 
@@ -282,7 +282,7 @@ class TwoStarts(unittest.TestCase):
         self.assertEqual(edge["status"], "confirmed")
         lp = next(x for x in g["loops"] if x["controller"] == "FIC-3101")
         self.assertEqual(lp["outcome"], "located and consistent")
-        self.assertFalse([r for r in rows if r["kind"] == "drawn, not yet listed"])
+        self.assertFalse([r for r in rows if r["kind"].startswith("on the P&ID, not in the ")])
 
     def test_incremental_batch_rebuilds_only_changed_sheets_and_reopens_dependents(self):
         out = self.dir / "out"

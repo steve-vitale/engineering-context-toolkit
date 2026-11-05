@@ -1,17 +1,17 @@
-# DRAFT generated from drawings by one_map.py draft-lists. Status stays unverified until a person reviews each row;
-# once reviewed it is an ordinary list: set status and add it to the site file.
+# DRAFT maintenance equipment export generated from P&ID sheets by one_map.py draft-lists. Status stays unverified until a person reviews each row;
+# once reviewed it is an ordinary maintenance equipment export: set status and add it to the site file.
 tag,plant,unit,system,kind,description,status,review_tier,how_found,located_on
-MSV-1404,NPP,MSS,,relief_device,,unverified,amber,"drawing, safety-relevant (relief device): always checked",140:G-3
-MSV-1405,NPP,MSS,,relief_device,,unverified,amber,"drawing, safety-relevant (relief device): always checked",140:G-3
-PSV-1404,NPP,MSS,,relief_device,,unverified,amber,"drawing, safety-relevant (relief device): always checked",140:G-6
-PSV-1405,NPP,MSS,,relief_device,,unverified,amber,"drawing, safety-relevant (relief device): always checked",140:G-6
-PSV-1406,NPP,MSS,,relief_device,,unverified,amber,"drawing, safety-relevant (relief device): always checked",140:G-6
-PSV-1407,NPP,MSS,,relief_device,,unverified,amber,"drawing, safety-relevant (relief device): always checked",140:G-5
-MSS-XSS-140,NPP,MSS,,equipment,,unverified,green,drawing,140:D-9
-RCS-SG-100,NPP,MSS,,equipment,,unverified,green,drawing,140:C-11
-TCV-1401,NPP,MSS,,final_element,,unverified,green,drawing,140:E-10
-TCV-1402,NPP,MSS,,final_element,,unverified,green,drawing,140:F-7
-TCV-1403,NPP,MSS,,final_element,,unverified,green,drawing,140:F-6
-TCV-1406,NPP,MSS,,final_element,,unverified,green,drawing,140:F-4
-TCV-1408,NPP,MSS,,final_element,,unverified,green,drawing,140:D-4
-TCV-1409,NPP,MSS,,final_element,,unverified,green,drawing,140:D-4
+MSV-1404,NPP,MSS,,relief_device,,unverified,amber,"P&ID, safety-relevant (relief device): always checked",140:G-3
+MSV-1405,NPP,MSS,,relief_device,,unverified,amber,"P&ID, safety-relevant (relief device): always checked",140:G-3
+PSV-1404,NPP,MSS,,relief_device,,unverified,amber,"P&ID, safety-relevant (relief device): always checked",140:G-6
+PSV-1405,NPP,MSS,,relief_device,,unverified,amber,"P&ID, safety-relevant (relief device): always checked",140:G-6
+PSV-1406,NPP,MSS,,relief_device,,unverified,amber,"P&ID, safety-relevant (relief device): always checked",140:G-6
+PSV-1407,NPP,MSS,,relief_device,,unverified,amber,"P&ID, safety-relevant (relief device): always checked",140:G-5
+MSS-XSS-140,NPP,MSS,,equipment,,unverified,green,P&ID,140:D-9
+RCS-SG-100,NPP,MSS,,equipment,,unverified,green,P&ID,140:C-11
+TCV-1401,NPP,MSS,,final_element,,unverified,green,P&ID,140:E-10
+TCV-1402,NPP,MSS,,final_element,,unverified,green,P&ID,140:F-7
+TCV-1403,NPP,MSS,,final_element,,unverified,green,P&ID,140:F-6
+TCV-1406,NPP,MSS,,final_element,,unverified,green,P&ID,140:F-4
+TCV-1408,NPP,MSS,,final_element,,unverified,green,P&ID,140:D-4
+TCV-1409,NPP,MSS,,final_element,,unverified,green,P&ID,140:D-4

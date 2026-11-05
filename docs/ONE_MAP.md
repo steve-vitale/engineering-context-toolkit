@@ -17,8 +17,9 @@ There is one path. What a site starts with changes which steps have work in them
 1. **Read every P&ID sheet of the unit.** The drawing reader writes a prediction per sheet in the documented format
    ([PLUG_IN_A_READER.md](PLUG_IN_A_READER.md); the [own-drawing runbook](../examples/own-drawing/README.md) makes
    one from a PNG). `one_map.py sheet-from-prediction` converts it into a sheet read (`one-map-sheet-1`): tags with
-   sheet zone and box, piping lines between tagged items, off-page connectors, and every symbol it could not place
-   carried under `untagged`. A sheet read can also be written by hand. Add each sheet to the sheet index.
+   sheet zone and box, piping runs between tagged items traced through untagged valves and fittings, instrument
+   placements where the reader's connections make them unique, off-page connectors, and every symbol it could not
+   place carried under `untagged`. A sheet read can also be written by hand. Add each sheet to the sheet index.
 2. **Line the P&ID read up against the equipment and instrument records that exist.** A tag on both gets its sheet
    and zone and a green review queue row with a deterministic spot-check sample; a tag in only one of them is an
    `asset_presence` conflict for the owner of the record that should hold it.
@@ -132,16 +133,52 @@ its stored `predictions/<label>/<tool>/<sheet>.json` form, and validates it with
   columns numbered **1 at the right** to 12 at the left; `top-left` (ISO 5457 style) puts A at the top and 1 at the
   left. Zones are written `ROW-COL` (`G-6`). Pass the sheet's frame: computed over the whole image they can be off by
   a row or column near the edges.
-- **Lines** join tagged tanks, pumps, valves and fittings and off-page connectors through untagged valves and
-  fittings that have exactly two piping connections. An untagged symbol with three or more is a branch point the
-  format cannot name; items that meet only through one get no line and are listed under
-  `conversion.networks_not_written_as_lines`.
-- **Not inferred:** signal lines (the prediction format has no line type), what an instrument measures (an
-  instrument bubble is placed `on` a vessel or pump only when the reader joined it directly to exactly one), and
-  where an off-page connector leads (`to` stays empty; the printed reference is kept as `drawing_reference`).
+- **Piping runs** (`lines`): see [connectivity from a reader prediction](#connectivity-from-a-reader-prediction).
+- **Instrument placement**: `on` a vessel or pump, `on_line` a run, or `placement_candidates` for review (same
+  section).
+- **Off-page connectors** keep their printed reference as `drawing_reference`; `to` stays empty and the map pairs
+  them by reference (same section).
+- **Not inferred:** signal lines. The prediction format has no line type and the reader has no field that tells a
+  signal or instrument line from a pipe, so `signal_lines` stays empty and no loop is proposed from connectivity.
+  Loops come from the loop list or a format that carries line types (e.g. DEXPI).
 - Every symbol ends up in exactly one of `equipment`, `instruments`, `offpage` or `untagged`; `conversion` counts
   them and lists everything not converted. Untagged tanks, pumps and instrument bubbles each become a review item;
   untagged valves and fittings one summary row per sheet.
+
+### Connectivity from a reader prediction
+
+The reader's connections join symbols, not lines: an untagged valve or fitting is a node like any other, and on
+OPEN100 sheet 0 the code line tracer joins every symbol touching one drawn header to every other. The conversion
+turns them into runs between tagged ends with these rules (`scripts/one_map.py`, constants `MAX_RUN_ENDS`,
+`PLACE_HOPS`):
+
+- **Run ends and in-line items.** Tagged tanks, pumps, valves and fittings and off-page connectors end a run.
+  Untagged valves and fittings (class `valve`/`general`, no usable tag: reducers, tees, junctions, nozzles, traps)
+  are in-line items a run passes through, whatever their number of connections. Instrument bubbles never carry a
+  run: a bubble's link is its leader or signal line, not pipe.
+- **Tees and branches.** Each connected group of untagged in-line items is a network. A network touching N run ends
+  yields one run per pair of ends (a tee joining three ends gives three runs), so a run is a statement that two
+  tagged ends are connected through untagged items, not a line number. A network with more than `MAX_RUN_ENDS` = 12
+  ends (66 runs) writes no runs and is listed under `conversion.branched_networks` with `runs_written: false`.
+- **What a run carries.** `through` counts the in-line items (`2 valves and 1 other in-line symbol`);
+  `via_symbols` lists them in path order; `prediction_connections` lists the reader's connections along the path
+  (`c12` is index 12 of the prediction's `connections` list), so every run traces back to the prediction. The path
+  is one shortest path (fewest symbols, ties by symbol id); in a network with three or more ends,
+  `branched_network` says so and other paths may exist. Direction is `unknown`: the ends are ordered by symbol id,
+  not by flow.
+- **Instrument placement.** From a tagged instrument bubble the conversion walks out through untagged in-line items
+  one hop at a time, up to `PLACE_HOPS` = 2. At the first hop that reaches anything, the candidates are the tagged
+  vessels or pumps reached, the runs with a shortest path through each in-line item reached, and the runs ending at
+  each tagged valve or connector reached. Exactly one candidate places it: `on` a vessel or pump (a `measures`,
+  `acts_on` or `protects` edge) or `on_line` a run (the run's `instruments_on` claim and the appearance's
+  `on_line`). Two or more go to the review queue as `placement unclear` with the candidates, never guessed; a bubble
+  that reaches nothing within the limit is counted, not placed.
+- **Off-page pairing.** A connector with no `to` pairs with a connector on another registered sheet of the site when
+  each one's printed reference names the other's sheet (`PID 180-1` names sheet `180-1`, `180-01`, or `180` for a
+  drawing registered without sheet numbers). Several matches narrow on the printed name with the reference removed;
+  a pair is written only when each side has exactly one candidate. Otherwise the connector is a review row:
+  `off-page connector unpaired` (no reference read, or the named sheet is not in the sheet index) or `off-page
+  pairing unclear`. A connector with an explicit `to` pairs as before.
 
 ### Lining up and locating (step 2)
 
@@ -172,8 +209,8 @@ draft instrument index and draft loop list in the formats above. Loops come from
 with `how_found` (`loop_number`, `signal_line`) and a confidence; a controller with more than one candidate
 measurement or output is written as a comment for review, not as a loop. Every row is `unverified`, tiered
 green/amber for review; safety-relevant tags (the [twin's safety floor](TWIN_OUTPUTS.md)), placeholder tags and
-duplicate tags are never green. In the map, items from a scope with no record are review items (`drawn, not yet
-listed`), not conflicts. After a person reviews a draft and sets each row's status, add it to the site file with
+duplicate tags are never green. In the map, items from a scope with no record are review items (`on the P&ID, not in
+the instrument index` or `on the P&ID, not in the maintenance equipment export`), not conflicts. After a person reviews a draft and sets each row's status, add it to the site file with
 `scopes`.
 
 ## Conflicts and their owners
@@ -220,7 +257,7 @@ refuses to write a safety-relevant row as green. `split-queue` applies the same 
 `build --out DIR` keeps `DIR/state.json`. On the next run, only sheets whose revision, raw bytes, plant, unit or
 owner changed are re-read (a change to the tool's code re-reads all); assembly, pairing and checks are rerun over
 the whole map with dictionary lookups, linear in items. Off-page connectors pair across sheets and plants by
-`(plant, sheet, connector)`.
+`(plant, sheet, connector)`, or by printed reference when they have no `to`.
 
 When a document's revision or bytes change, every document `based_on` it reopens, transitively. With `--register
 context.json`, answers in a [context register](CONTEXT_REGISTER.md) whose evidence cites a changed or reopened
@@ -233,9 +270,12 @@ document are listed to reopen; the register's own refresh then marks them stale.
   0). No plant's records, P&IDs or documents have been run through it, and no one has timed a review with these
   queues.
 - P&ID images are read by the drawing reader, converted by `sheet-from-prediction`, and reviewed in the same queue.
-  The conversion is only as good as the reading: on OPEN100 sheet 0 the reader's connections meet mostly at branch
-  points, so the converted read has one piping line, no signal lines and no instrument placements, and the 9
-  off-page connectors do not name a registered sheet ([worked example](../examples/drawing-to-map/README.md)).
+  The conversion is only as good as the reading: on OPEN100 sheet 0 it fills in 38 piping runs between the two
+  vessels, MSCV-XXX and the off-page connectors, but places no instrument (20 bubbles reach a header the tracer
+  joined to everything, so they are `placement unclear`; 16 have no connection), writes no signal lines, and pairs
+  no off-page connector because the sheets they name are not in the sheet index
+  ([worked example](../examples/drawing-to-map/README.md)). Runs are connections, not line numbers: the printed
+  line numbers (`SIZE-MSS-140076-...`) are not read.
   `loops-from-graph` on the same sheet's graph export finds loop-number groups (`TE 14089A/B`; `TCV 1401` with
   `FT 1401`) but no controller bubbles, so it proposes no loop
   ([result](../examples/one-map/expected/open100-sheet0-loops.md)).

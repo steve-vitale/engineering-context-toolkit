@@ -482,9 +482,27 @@ def sheet_fragment(cfg, row):
                                "why": f"{tag} on {at} is a placeholder as printed ({it.get('printed_tag') or tag}); "
                                       "a person supplies the real tag"})
             items.append({"tag": tag, "section": section, "zone": it.get("zone"), "box_0_1000": it.get("box_0_1000"),
-                          "on": it.get("on"), "name": it.get("name"), "former_tag": it.get("former_tag"),
+                          "on": it.get("on"), "on_line": it.get("on_line"), "name": it.get("name"),
+                          "former_tag": it.get("former_tag"),
                           "attributes": {k: v for k, v in sorted((it.get("attributes") or {}).items()) if gx.plain(v)},
                           **{k: it[k] for k in READER_FIELDS if it.get(k) is not None}})
+    runs = {ln.get("id"): ln for ln in model.get("lines") or []}
+    names = {op.get("id"): f"{op.get('id')} ({op['name']})" if op.get("name") else op.get("id")
+             for op in model.get("offpage") or []}
+    run = lambda c: f"run {runs[c]['from']} to {runs[c]['to']}" if c in runs else c  # noqa: E731
+    for it in model.get("instruments") or []:  # placement unclear (sheet-from-prediction): a person decides
+        cands = it.get("placement_candidates") or []
+        if len(cands) < 2:
+            continue
+        at = f"sheet {row['sheet']}" + (f" zone {it['zone']}" if it.get("zone") else "")
+        common = sorted(names.get(x, x) for x in set.intersection(
+            *({runs[c]["from"], runs[c]["to"]} if c in runs else {c} for c in cands)))
+        shown = ", ".join(run(c) for c in cands[:4]) + (", ..." if len(cands) > 4 else "")
+        review.append({"item": qid(scope, part(it.get("tag"), f"{row['rel']} instruments tag")),
+                       "kind": "placement unclear", "owner": row["owner"],
+                       "why": f"{it['tag']} on {at} reaches {len(cands)} candidates within {PLACE_HOPS} hops of the "
+                              f"reader's connections ({shown}); a person says what it is on"
+                              + (f" (every candidate run ends at {', '.join(common)})" if common else "")})
     inline = []
     for u in model.get("untagged") or []:  # read by a drawing reader without a usable tag (sheet-from-prediction)
         sym = part(u.get("symbol"), f"{row['rel']} untagged symbol")
@@ -520,6 +538,8 @@ READER_TAG = re.compile(r"([A-Z]{1,6})[\s-]+([0-9][0-9A-Z]*|X{2,}|\?+|TBD|TBA)")
 PLAIN_TAG = re.compile(r"[A-Z0-9]+(?:-[A-Z0-9]+)*")
 PIPING = ("tank", "pump", "valve", "general")  # tagged symbols of these classes end piping lines
 PASS_THROUGH = ("valve", "general")             # untagged in-line symbols a piping line runs through
+MAX_RUN_ENDS = 12  # a network of in-line symbols touching more run ends than this writes no runs (12 ends = 66 runs)
+PLACE_HOPS = 2     # an instrument bubble is placed from what it reaches within this many hops
 
 
 def reader_tag(text):
@@ -610,96 +630,143 @@ def sheet_from_prediction(pred_path, *, sheet, revision, plant, unit="", rows=No
         tagged[s["id"]] = tag
         if s["class"] in PIPING:
             anchor[s["id"]] = tag
-    # a line runs only through untagged in-line symbols with exactly two piping connections (in, out; instrument links
-    # are not piping); one with three or more is a branch point the format cannot name, so anchors meeting only through it get no line (reported below)
-    pipe_deg = {sid: sum(1 for n in adj[sid] if by_id[n]["class"] != "instrumentation") for sid in by_id}
-    through = {sid for sid, s in by_id.items() if s["class"] in PASS_THROUGH and sid not in tagged
-               and pipe_deg[sid] == 2}
-    branching = sorted(sid for sid, s in by_id.items() if s["class"] in PASS_THROUGH and sid not in tagged
-                       and pipe_deg[sid] > 2)
-    # piping lines: from every anchor, walk through untagged in-line symbols to the next anchors (shortest path)
-    lines, self_loops = {}, 0
-    for start in sorted(anchor):
-        prev, todo = {start: None}, [start]
+    # Piping runs (rules in docs/ONE_MAP.md, "Connectivity from a reader prediction"). Untagged valves and fittings
+    # (class valve/general, no usable tag) are in-line items a run passes through, however many connections they
+    # have; tagged equipment, tagged valves/fittings and off-page connectors end a run; instrument bubbles never carry
+    # a run (a bubble's link is its leader or signal line, not pipe). Each connected group of untagged in-line items
+    # is a network; a network touching N run ends yields one run per pair of ends (a tee joining three ends gives
+    # three runs), written along one shortest path, unless N > MAX_RUN_ENDS (then no run goes through it; listed).
+    conn_id = {frozenset((c["from"], c["to"])): f"c{i}" for i, c in enumerate(valid["connections"])}
+    inline = {sid for sid, s in by_id.items() if s["class"] in PASS_THROUGH and sid not in tagged}
+    nets, net_of = [], {}
+    for sid in sorted(inline):
+        if sid in net_of:
+            continue
+        members, todo = {sid}, [sid]
+        while todo:
+            cur = todo.pop()
+            for nb in adj[cur]:
+                if nb in inline and nb not in members:
+                    members.add(nb)
+                    todo.append(nb)
+        for x in members:
+            net_of[x] = len(nets)
+        ends = sorted({n for x in members for n in adj[x] if n in anchor})
+        nets.append({"members": members, "ends": ends, "expanded": len(ends) <= MAX_RUN_ENDS})
+    walk = {x for x in inline if nets[net_of[x]]["expanded"]}
+    dist, lines, self_loops = {}, {}, 0
+    for start in sorted(anchor):  # breadth first: fewest symbols, ties broken by symbol id, so the output is stable
+        prev, d, todo = {start: None}, {start: 0}, [start]
         while todo:
             nxt = []
             for cur in todo:
                 for nb in sorted(adj[cur]):
-                    if nb in prev:
+                    if nb in prev or (nb not in anchor and nb not in walk):
                         continue
-                    prev[nb] = cur
-                    if nb in anchor:
-                        a, b = sorted((start, nb))
-                        if anchor[a] == anchor[b]:
-                            self_loops += 1
-                        elif (a, b) not in lines:
-                            via, p = [], prev[nb]
-                            while p != start:
-                                via.append(p)
-                                p = prev[p]
-                            lines[(a, b)] = {"id": f"L-{a}-{b}", "from": anchor[a], "to": anchor[b],
-                                             "attributes": {"via_symbols": " ".join(sorted(via)),
-                                                            "how_found": "reader connections"
-                                                            + (f" through {len(via)} untagged in-line symbol(s)"
-                                                               if via else "")}}
-                    elif nb in through:
+                    prev[nb], d[nb] = cur, d[cur] + 1
+                    if nb in walk:
                         nxt.append(nb)
             todo = nxt
-    # networks: tagged items and connectors that meet through untagged in-line symbols including branch points.
-    # Reported for the reviewer, never written as lines (the format cannot say which branch joins which pair).
-    networks, done = [], set()
-    inline = {sid for sid, s in by_id.items() if s["class"] in PASS_THROUGH and sid not in tagged}
-    for b in branching:  # each connected run of untagged in-line symbols that holds a branch point
-        if b in done:
-            continue
-        run, todo = {b}, [b]
-        while todo:
-            cur = todo.pop()
-            for nb in adj[cur]:
-                if nb in inline and nb not in run:
-                    run.add(nb)
-                    todo.append(nb)
-        done |= run
-        group = sorted({anchor[n] for x in run for n in adj[x] if n in anchor})
-        if len(group) > 1 and group not in networks:
-            networks.append(group)
-    networks.sort()
+        dist[start] = d
+        for end in sorted(n for n in d if n in anchor and n > start):
+            if anchor[start] == anchor[end]:
+                self_loops += 1
+                continue
+            path, p = [end], prev[end]
+            while p is not None:
+                path.append(p)
+                p = prev[p]
+            path.reverse()
+            via = path[1:-1]
+            nv = sum(1 for v in via if by_id[v]["class"] == "valve")
+            no = len(via) - nv
+            parts = ([f"{nv} valve{'s' if nv != 1 else ''}"] if nv else []) + (
+                [f"{no} other in-line symbol{'s' if no != 1 else ''}"] if no else [])
+            attrs = {"via_symbols": " ".join(via), "through": " and ".join(parts) or "direct",
+                     "prediction_connections": " ".join(conn_id[frozenset(x)] for x in zip(path, path[1:])),
+                     "how_found": "reader connections" + (" collapsed through untagged in-line symbols along one "
+                                                          "shortest path" if via else "")}
+            net = nets[net_of[via[0]]] if via else None
+            if net and len(net["ends"]) > 2:
+                attrs["branched_network"] = (f"{len(net['ends'])} run ends meet through {len(net['members'])} "
+                                             "untagged in-line symbols; other paths may exist")
+            lines[(start, end)] = {"id": f"L-{start}-{end}", "from": anchor[start], "to": anchor[end],
+                                   "direction": "unknown", "attributes": attrs}
     on_line = {v for ln in lines.values() for v in ln["attributes"]["via_symbols"].split()}
     for u in untagged:
         u["on_a_line"] = u["symbol"] in on_line
-    # placement: a tagged instrument bubble joined directly to exactly one tagged vessel/pump sits on it. A bubble's
-    # link to a valve or fitting only says which symbol its line meets next, not what it measures, so it places nothing
-    placed = 0
+    runs_at = defaultdict(set)
+    for (a, b), ln in lines.items():
+        runs_at[a].add(ln["id"])
+        runs_at[b].add(ln["id"])
+
+    def runs_through(x):  # every run with a shortest path through in-line symbol x
+        return {ln["id"] for (a, b), ln in lines.items()
+                if x in dist[a] and x in dist[b] and dist[a][x] + dist[b][x] == dist[a][b]}
+
+    # Placement: walk out from a tagged instrument bubble through untagged in-line symbols, one hop at a time, up to
+    # PLACE_HOPS. At the first hop that reaches anything the candidates are the tagged equipment reached, the runs
+    # through each in-line symbol reached and the runs ending at each tagged valve or connector reached. Exactly one
+    # candidate places it (`on` a vessel or pump, `on_line` a run); two or more are "placement unclear" for review.
+    equip_ids = {t["reader_symbol"] for t in equipment}
+    placed = on_runs = 0
+    unclear = []
     for item in instruments:
         sid = item["reader_symbol"]
         if by_id[sid]["class"] != "instrumentation":
             continue
-        targets = sorted({tagged[n] for n in adj[sid] if n in tagged and by_id[n]["class"] in ("tank", "pump")}
-                         - {item["tag"]})
-        if len(targets) == 1:
-            item["on"] = targets[0]
+        seen, frontier, found = {sid}, [sid], set()
+        for _ in range(PLACE_HOPS):
+            nxt = []
+            for cur in frontier:
+                for nb in sorted(adj[cur]):
+                    if nb in seen:
+                        continue
+                    seen.add(nb)
+                    if nb in equip_ids:
+                        found.add(("equipment", tagged[nb]))
+                    elif nb in anchor:
+                        found |= {("run", r) for r in runs_at[nb]}
+                    elif nb in inline:
+                        found |= {("run", r) for r in runs_through(nb)}
+                        nxt.append(nb)
+            if found:
+                break
+            frontier = nxt
+        if len(found) == 1:
+            what, target = next(iter(found))
+            item["on" if what == "equipment" else "on_line"] = target
             placed += 1
+            on_runs += what == "run"
+        elif found:
+            item["placement_candidates"] = sorted(t for _, t in found)
+            unclear.append(item["tag"])
     counts = Counter(t["tag"] for t in equipment + instruments)
     dup = sorted(t for t, n in counts.items() if n > 1)
+    branched = [{"run_ends": [anchor[e] for e in n["ends"]], "untagged_in_line_symbols": len(n["members"]),
+                 "runs_written": n["expanded"]} for n in nets if len(n["ends"]) > 2]
+    capped = [n for n in nets if not n["expanded"]]
     if self_loops:
         not_converted.append(f"{self_loops} connection path(s) joining two symbols with the same tag (no line drawn)")
-    if branching:
-        not_converted.append(f"{len(branching)} untagged in-line symbol(s) with three or more connections (branch "
-                             f"points: {', '.join(branching)}); tagged items that meet only through one get no line (they are listed "
-                             "under conversion.networks_not_written_as_lines)")
+    if capped:
+        not_converted.append(f"{len(capped)} network(s) of untagged in-line symbols touch more than {MAX_RUN_ENDS} "
+                             "run ends; no runs are written through them (conversion.branched_networks, "
+                             "runs_written false)")
     lone = sorted(sid for sid in by_id if not adj[sid])
     if lone:
         not_converted.append(f"{len(lone)} symbol(s) with no connection: {', '.join(lone)}")
     instr = [i for i in instruments if by_id[i["reader_symbol"]]["class"] == "instrumentation"]
     not_converted += [
-        "signal lines: the documented prediction format has no line type, so no signal lines are written "
-        "(loops cannot be confirmed from this read; loop-number grouping still runs)",
-        f"placement: {len(instr) - placed} of {len(instr)} tagged instrument bubble(s) are not joined directly to "
-        "exactly one tagged vessel or pump, so no measures/acts_on/protects edge is written for them",
+        "signal lines: the documented prediction format has no line type, so no signal lines are written and no "
+        "loop is proposed from connectivity (loops come from the loop list or a format that carries line types, "
+        "e.g. DEXPI; loop-number grouping still runs)",
+        f"placement: {placed} of {len(instr)} tagged instrument bubble(s) placed ({on_runs} on a run); "
+        f"{len(unclear)} reach more than one candidate within {PLACE_HOPS} hops (placement unclear, for review); "
+        f"{len(instr) - placed - len(unclear)} reach no tagged item or run within {PLACE_HOPS} hops",
         f"untagged: {len(untagged)} symbol(s) without a usable tag are carried under `untagged` "
-        f"({sum(1 for u in untagged if u['on_a_line'])} of them on a written line), not placed on the map",
-        "off-page connectors: their target sheet/connector is not in the reading, so `to` is empty "
-        "(no cross-sheet pairing until a person or a register supplies it)"]
+        f"({sum(1 for u in untagged if u['on_a_line'])} of them on a written run), not placed on the map",
+        "off-page connectors: the reading has no target connector, so `to` is empty; the map pairs a connector with "
+        "one on another registered sheet when their printed references name each other's sheets"]
     meta = {k: doc.get(k) for k in ("label", "tool", "model", "drawing", "prompt_sha256", "image_sha256")
             if stored and doc.get(k) is not None}
     read = {
@@ -717,8 +784,8 @@ def sheet_from_prediction(pred_path, *, sheet, revision, plant, unit="", rows=No
                        "untagged": len(untagged), "lines": len(lines), "signal_lines": 0,
                        "placeholder_tags": sorted(t["tag"] for t in equipment + instruments
                                                   if t["tag_status"] == "placeholder"),
-                       "duplicate_tags": dup, "instruments_placed_on": placed,
-                       "branch_points": branching, "networks_not_written_as_lines": networks,
+                       "duplicate_tags": dup, "instruments_placed": placed, "instruments_placed_on_runs": on_runs,
+                       "placement_unclear": unclear, "branched_networks": branched,
                        "not_converted": not_converted}}
     return read
 
@@ -895,7 +962,7 @@ def place_fragments(m, register, fragments, lists):
                 m.nodes[nid] = node
                 m.edge(mk_edge("contains", f["scope"], nid, at))
                 if spec is None:  # path B: no list covers this scope yet; the drawing read is the draft
-                    m.review.append({"item": nid, "kind": "drawn, not yet listed",
+                    m.review.append({"item": nid, "kind": f"on the P&ID, not in the {RECORD_NAMES[record]}",
                                      "owner": cfg["owners"].get(record) or row["owner"],
                                      "why": f"{it['tag']} read from sheet {row['sheet']}"
                                             + (f" zone {it['zone']}" if it.get("zone") else "")
@@ -933,14 +1000,30 @@ def place_fragments(m, register, fragments, lists):
             m.node(mk_node(ops[op["id"]], "offpage_connector", op["id"], op.get("name"), src,
                            attributes=[claim(k, v, src) for k, v in op["attrs"].items()], scope=f["scope"],
                            owner=row["owner"]))
+        on_run = defaultdict(list)  # a run an instrument is placed on (sheet-from-prediction): kept on both sides
+        for it in f["items"]:
+            if it.get("on_line"):
+                on_run[it["on_line"]].append(it["tag"])
+        known = {ln.get("id") for ln in f["lines"]}
+        for lid, tags in sorted(on_run.items()):
+            if lid not in known:
+                raise InputError(f"{row['rel']}: {', '.join(tags)} placed on run {lid}, which is not on the sheet")
+            for tag in tags:
+                for at in m.nodes[local[tag]]["appearances"]:
+                    if at.get("document") == doc_id:
+                        at["on_line"] = qid(f["scope"], f"@{row['sheet']}", lid)
         for ln in f["lines"]:
             lid = part(ln.get("id"), f"{row['rel']} line id")
             ends = [ops.get(x) or local.get(x) for x in (ln.get("from"), ln.get("to"))]
             if None in ends:
                 raise InputError(f"{row['rel']}: line {lid} ends at a tag or connector not on the sheet")
+            attrs = dict(ln.get("attributes") or {})
+            if on_run.get(lid):
+                attrs["instruments_on"] = " ".join(sorted(set(on_run[lid])))
             e = mk_edge("connects", ends[0], ends[1], src, layer="stream",
-                        attributes=[claim(k, v, src) for k, v in sorted((ln.get("attributes") or {}).items())])
-            e["id"], e["direction"] = qid(f["scope"], f"@{row['sheet']}", lid), "known"
+                        attributes=[claim(k, v, src) for k, v in sorted(attrs.items())])
+            # a reader's run is a connection, not a flow direction: its ends are ordered by symbol id
+            e["id"], e["direction"] = qid(f["scope"], f"@{row['sheet']}", lid), ln.get("direction") or "known"
             m.edge(e)
         for s in f["systems"]:
             sys_id = part(s.get("id"), f"{row['rel']} system id")
@@ -1003,7 +1086,7 @@ def pair_offpage(m, fragments):
                     m.edge(mk_edge("references", op["node"], target, src))
         to = op["to"]
         if not to:
-            continue
+            continue  # paired by printed reference below, or a review row
         ref = (to.get("plant"), to.get("sheet"), to.get("connector"))
         other = by_ref.get(ref)
         if other is None:
@@ -1032,6 +1115,73 @@ def pair_offpage(m, fragments):
                            what=f"the two ends of an off-page pair ({op['plant']} {op['sheet']} and {other['plant']} "
                                 f"{other['sheet']}) disagree on {name}",
                            system_owner=sys_owner or op["owner"], parties=(op["owner"], other["owner"]))
+    pair_by_reference(m, by_ref)
+
+
+def printed_ref(op):
+    """(drawing, sheet) printed on an off-page connector ('ES PID 180-1' -> ('180', '1')), and its name without it."""
+    import build_twin as bt
+    text = " ".join(str(x) for x in (op["attrs"].get("drawing_reference"), op.get("name")) if x).upper()
+    hit = bt.DWG_REF.search(text)
+    rest = " ".join(bt.DWG_REF.sub(" ", (op.get("name") or "").upper()).split())
+    return ((hit.group(2).lstrip("0") or "0", hit.group(3).lstrip("0") or "0") if hit else None), rest
+
+
+def names_sheet(ref, sheet):
+    """A printed reference (drawing, sheet) names a registered sheet id '180-1', '180-01' or, for a drawing registered
+    without sheet numbers, '180'."""
+    parts = [p.lstrip("0") or "0" for p in str(sheet).upper().split("-")]
+    return parts == list(ref) or parts == [ref[0]]
+
+
+def pair_by_reference(m, by_ref):
+    """Connectors with no `to` (a reader prediction never has one) pair across registered sheets of the site when
+    each one's printed reference names the other's sheet. Several matches narrow on the printed name with the
+    reference removed; a connector pairs only when it and its match each have exactly one candidate. Everything else
+    stays a review row: unpaired (no reference, or the named sheet is not registered) or pairing unclear."""
+    loose = {k: op for k, op in by_ref.items() if not op["to"]}
+    refs = {k: printed_ref(op) for k, op in loose.items()}
+
+    def candidates(key):
+        ref, name = refs[key]
+        if ref is None:
+            return []
+        found = [k for k in sorted(loose) if k[:2] != key[:2] and names_sheet(ref, k[1])
+                 and refs[k][0] is not None and names_sheet(refs[k][0], key[1])]
+        same = [k for k in found if refs[k][1] == name]
+        return same if len(found) > 1 and len(same) == 1 else found
+
+    sheets = {k[:2] for k in by_ref}
+    for key in sorted(loose):
+        op = loose[key]
+        ref, _ = refs[key]
+        src = m.nodes[op["node"]]["source"]
+        mine = candidates(key)
+        label = f"off-page connector {op['id']}" + (f" ({op['name']})" if op.get("name") else "") + \
+            f" on sheet {op['sheet']}"
+        if len(mine) == 1 and candidates(mine[0]) == [key]:
+            if key < mine[0]:
+                other = loose[mine[0]]
+                e = mk_edge("connects", op["node"], other["node"], src, layer="offpage_pair",
+                            attributes=[claim("how_found", "printed references name each other's sheets", src)])
+                e["direction"] = "unknown"
+                m.edge(e)
+            continue
+        if mine:
+            kind, why = "off-page pairing unclear", (
+                f"{label} names P&ID {'-'.join(ref)}, where {len(mine)} connector(s) point back "
+                f"({', '.join(loose[k]['node'] for k in mine[:4])}{', ...' if len(mine) > 4 else ''}) but they do "
+                "not pair one to one; a person says which pairs with which")
+        elif ref is None:
+            kind, why = "off-page connector unpaired", f"{label}: no sheet reference was read from it; a person " \
+                                                       "supplies the sheet it continues on"
+        else:
+            named = sorted(s for p, s in sheets if names_sheet(ref, s))
+            kind, why = "off-page connector unpaired", (
+                f"{label} names P&ID {'-'.join(ref)}, " + (
+                    f"registered as sheet {', '.join(named)}, but no connector there points back to sheet {op['sheet']}"
+                    if named else "which is not in the sheet index; it pairs once that sheet is registered and read"))
+        m.review.append({"item": op["node"], "kind": kind, "owner": op["owner"], "why": why})
 
 
 # ---------------------------------------------------------------- loops: the loop list leads, drawings locate
@@ -1541,8 +1691,10 @@ def report_md(g, run, groups, reopened, loops_, uncovered):
              "people work the review queue. No item is verified by this run.", "",
              f"Sheets rebuilt: {len(run['rebuilt'])} ({', '.join(run['rebuilt']) or 'none'}); reused unchanged: "
              f"{len(run['reused'])}; removed from the register: {len(run['removed'])}.", "",
-             f"Listed items: {len(listed)}; located on a drawing: {sum(1 for n in listed if n['appearances'])}; "
-             f"drawn but not listed: {sum(1 for n in nodes if n.get('listed_in') == [])}.", ""]
+             f"Items in an equipment or instrument record: {len(listed)}; located on a P&ID: "
+             f"{sum(1 for n in listed if n['appearances'])}; "
+             "on a P&ID but in no equipment or instrument record: "
+             f"{sum(1 for n in nodes if n.get('listed_in') == [])}.", ""]
     if uncovered:
         lines += ["Units with listed items but no registered sheet yet (not reported as missing): "
                   + ", ".join(f"{k} ({v})" for k, v in uncovered.items()) + ".", ""]
@@ -1636,8 +1788,10 @@ def draft_lists(site_path, out_dir, scopes=None):
     sheet_scopes = sorted({f["scope"] for f in fragments.values()})
     dup = {r["item"] for r in m.review if r["kind"] == "duplicate tag"}
     loop_scopes = {spec.get("scope") for spec in cfg["raw"].get("loop_lists") or []}
-    head = ("# DRAFT generated from drawings by one_map.py draft-lists. Status stays unverified until a person "
-            "reviews each row;\n# once reviewed it is an ordinary list: set status and add it to the site file.\n")
+    def head(record):
+        return (f"# DRAFT {RECORD_NAMES[record]} generated from P&ID sheets by one_map.py draft-lists. Status stays "
+                f"unverified until a person reviews each row;\n# once reviewed it is an ordinary "
+                f"{RECORD_NAMES[record]}: set status and add it to the site file.\n")
     files, counts = {}, {}
     for scope in sheet_scopes:
         if scopes and scope not in scopes:
@@ -1655,14 +1809,14 @@ def draft_lists(site_path, out_dir, scopes=None):
                 tier = "amber" if n.get("safety") or nid in dup or placeholder else "green"
                 rows.append({"tag": n["tag"], "plant": plant, "unit": unit, "system": "", "kind": n["kind"],
                              "description": n.get("name") or "", "status": "unverified", "review_tier": tier,
-                             "how_found": "drawing" + (", safety-relevant (" + n["safety"] + "): always checked"
+                             "how_found": "P&ID" + (", safety-relevant (" + n["safety"] + "): always checked"
                                                        if n.get("safety") else "")
                                           + (", placeholder tag: a person supplies the real tag" if placeholder
                                              else "") + (", duplicate tag on a sheet" if nid in dup else ""),
                              "located_on": where(n)})
             if rows:
                 rows.sort(key=lambda r: (TIER_ORDER[r["review_tier"]], r["tag"]))
-                files[f"{folder}/{name}"] = head + csv_text(LIST_COLS, rows)
+                files[f"{folder}/{name}"] = head(record) + csv_text(LIST_COLS, rows)
                 counts[f"{folder}/{name}"] = len(rows)
         if not unit or (not scopes and scope in loop_scopes):
             continue
@@ -1691,7 +1845,7 @@ def draft_lists(site_path, out_dir, scopes=None):
                          "located_on": where(m.nodes[ctl])})
         if rows or notes:
             rows.sort(key=lambda r: (TIER_ORDER[r["review_tier"]], r["controller"]))
-            files[f"{folder}/loops.csv"] = head + "".join(notes) + csv_text(LOOP_COLS, rows)
+            files[f"{folder}/loops.csv"] = head("loop_list") + "".join(notes) + csv_text(LOOP_COLS, rows)
             counts[f"{folder}/loops.csv"] = len(rows)
     out_dir = Path(out_dir)
     for rel, text in files.items():

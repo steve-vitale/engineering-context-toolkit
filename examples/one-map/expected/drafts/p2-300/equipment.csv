@@ -1,6 +1,6 @@
-# DRAFT generated from drawings by one_map.py draft-lists. Status stays unverified until a person reviews each row;
-# once reviewed it is an ordinary list: set status and add it to the site file.
+# DRAFT maintenance equipment export generated from P&ID sheets by one_map.py draft-lists. Status stays unverified until a person reviews each row;
+# once reviewed it is an ordinary maintenance equipment export: set status and add it to the site file.
 tag,plant,unit,system,kind,description,status,review_tier,how_found,located_on
-FV-3101,P2,300,,final_element,,unverified,green,drawing,300-01:D3
-P-101,P2,300,,equipment,Product pump,unverified,green,drawing,300-01:B3
-V-301,P2,300,,equipment,Product drum,unverified,green,drawing,300-01:C2
+FV-3101,P2,300,,final_element,,unverified,green,P&ID,300-01:D3
+P-101,P2,300,,equipment,Product pump,unverified,green,P&ID,300-01:B3
+V-301,P2,300,,equipment,Product drum,unverified,green,P&ID,300-01:C2

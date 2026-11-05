@@ -1,5 +1,5 @@
-# DRAFT generated from drawings by one_map.py draft-lists. Status stays unverified until a person reviews each row;
-# once reviewed it is an ordinary list: set status and add it to the site file.
+# DRAFT instrument index generated from P&ID sheets by one_map.py draft-lists. Status stays unverified until a person reviews each row;
+# once reviewed it is an ordinary instrument index: set status and add it to the site file.
 tag,plant,unit,system,kind,description,status,review_tier,how_found,located_on
-FIC-3101,P2,300,,controller,,unverified,green,drawing,300-01:D2
-FT-3101,P2,300,,instrument,,unverified,green,drawing,300-01:D3
+FIC-3101,P2,300,,controller,,unverified,green,P&ID,300-01:D2
+FT-3101,P2,300,,instrument,,unverified,green,P&ID,300-01:D3

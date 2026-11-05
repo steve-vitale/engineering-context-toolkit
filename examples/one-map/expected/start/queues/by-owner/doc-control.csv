@@ -3,5 +3,5 @@ rank,tier,owner,plant,unit,item,kind,why,safety,spot_check
 3,red,Doc control,P1,200,S1/CONFLICT/C-730af068af,conflict: asset_presence,LV-2204 is listed for S1/P1/200 but no registered sheet of that unit shows it (open),,
 4,red,Doc control,P1,200,S1/CONFLICT/C-7bc05b6a56,conflict: asset_presence,P-103 is listed for S1/P1/200 but no registered sheet of that unit shows it (open),,
 5,red,Doc control,P1,200,S1/CONFLICT/C-b0fa510a9a,conflict: asset_presence,LIC-2204 is listed for S1/P1/200 but no registered sheet of that unit shows it (open),,
-22,amber,Doc control,P1,200,loop LIC-2204 (DCS-LOOPS-200 line 5),listed loop,not found on any sheet: LIC-2204 (controller) not on any registered sheet; LT-2204 (measurement) not on any registered sheet; LV-2204 (output) not on any registered sheet,,
+17,amber,Doc control,P1,200,loop LIC-2204 (DCS-LOOPS-200 line 5),listed loop,not found on any sheet: LIC-2204 (controller) not on any registered sheet; LT-2204 (measurement) not on any registered sheet; LV-2204 (output) not on any registered sheet,,
 27,amber,Doc control,P1,200,S1/P1/200/V-204,P&ID value note,"V-204 design_pressure: 12 barg printed on sheet 200-01, 10 barg in the datasheet EQUIPMENT-DATASHEETS. P&ID values are reference only; correct the P&ID at its next revision if it is wrong",,
