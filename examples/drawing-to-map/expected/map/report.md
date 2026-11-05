@@ -26,6 +26,19 @@ Items in an equipment or instrument record: 0; located on a P&ID: 0; on a P&ID b
 | contains | 40 |
 | covers | 1 |
 
+## Item classes (classes.json)
+
+| Class | Items |
+|---|---|
+| (unset: not deterministic from the records or tag letters) | 6 |
+| control_valve | 6 |
+| primary_element | 14 |
+| relief_device | 6 |
+| switch | 1 |
+| transmitter | 5 |
+
+Links checked against relations.json: 57 of 79 (22 with an end of no class, not checked); 0 do not fit what they connect (review rows, kept on the map).
+
 ## Conflicts by record owner
 
 | Owner | Type | Count |

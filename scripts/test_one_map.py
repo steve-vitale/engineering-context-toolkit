@@ -56,7 +56,8 @@ class OneMapExample(unittest.TestCase):
         quiet(om.draft_lists, EX / "inputs" / "site.json", self.dir / "drafts")
         text, _ = om.loops_from_graph(ROOT / "examples" / "graph-export" / "sheet0_graph.json")
         (self.dir / "open100-sheet0-loops.md").write_text(text, encoding="utf-8", newline="\n")
-        for exp in sorted(p for p in EXPECTED.rglob("*") if p.is_file() and "office" not in p.parts):
+        for exp in sorted(p for p in EXPECTED.rglob("*") if p.is_file() and "office" not in p.parts
+                         and "pasteurizer" not in p.parts):  # test_ontology.py regenerates the pasteurizer
             rel = exp.relative_to(EXPECTED)
             got = self.dir / rel
             self.assertTrue(got.exists(), rel)

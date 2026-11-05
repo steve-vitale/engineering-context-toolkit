@@ -1,9 +1,13 @@
 # The context map format (`context-map-1`), draft for review
 
-**Status: design draft, 2026-11-04. No tool reads or writes this format yet.** The machine-readable drafts are in
-[`schemas/context-map/`](../schemas/context-map/): the JSON Schema, the register catalogue, a CSV template per
-register, wide-form datasheet templates, the standards-mapping table and a small fictional example map. The owner's
-answers to the draft's open questions are applied; see [Decided (2026-11-04)](#decided-2026-11-04).
+**Status: design draft `1.1.0-draft`, 2026-11-04. No tool reads or writes a context-map-1 file yet;**
+[`one_map.py`](ONE_MAP.md) already uses its registers, class tree, relation semantics, expectation rules and
+glossary on its own graph. The machine-readable drafts are in [`schemas/context-map/`](../schemas/context-map/): the
+JSON Schema, the register catalogue, a CSV template per register, wide-form datasheet templates, the standards-mapping
+table, the class tree (`classes.json`), relation semantics (`relations.json`), the expectation rules template
+(`templates/expectations.json`) and a small fictional example map. The owner's answers to the draft's open questions
+are applied; see [Decided (2026-11-04)](#decided-2026-11-04). Version 1.1 adds a small, pragmatic ontology
+([Classes](#classes) to [JSON-LD view](#json-ld-view)); every 1.0 file stays valid.
 `python scripts/test_context_map_format.py` checks that they parse and agree with each other.
 
 ## In plain words
@@ -103,6 +107,7 @@ the mapping table [`standards-mapping.csv`](../schemas/context-map/standards-map
 
 **Items.** Required: `id`, `tag`, `scope`. Optional: `kind` (one of `equipment`, `instrument`, `controller`,
 `final_element`, `manual_valve`, `relief_device`, `line`, `offpage_connector`, `boundary`, `junction`, `other`),
+`class` and `class_how` (since 1.1: a class id from `classes.json` and where it came from, see [Classes](#classes)),
 `name`, `parent`, `aliases`, `class_refs` (pointers into DEXPI, CFIHOS or ISO 14224 classes), `isa_letters`,
 `safety_relevant`, `status`, `lifecycle`, `appearances` (each P&ID sheet, revision and zone it is drawn on),
 `listed_in` (the sources that hold it; empty means on a P&ID but in no register) and `attributes`.
@@ -179,6 +184,7 @@ The full field definitions (type, required, fact kind, description, allowed valu
 | `criticality_ranking` equipment criticality ranking | tag, plant, unit*, criticality | method, method_document, safety_consequence, food_safety_consequence, production_consequence, environmental_consequence, likelihood, risk_score, ranked_on, ranked_by, next_review | Maintenance | criticality | none adopted (the site's own method) |
 | `inspection_record` inspection records (vessels, piping, RBI) | tag, plant, unit*, inspected_on | inspection_type, component, finding, result, measured_value, minimum_allowed, uom, remaining_life_years, rbi_risk, interval_months, next_due, inspector, certification, work_order, report_document | Maintenance | inspection_status | API 510, 570, 580, 581 (named, not adopted); ISO 14224 maintenance data (informative) |
 | `document_register` document register | document, revision | title, doc_type, cfihos_document_type, vdi2770_class, doc_status, owner, path, covers, based_on, manufacturer | Doc control | document_revision | CFIHOS document type; VDI 2770; AAS Handover Documentation |
+| `glossary` glossary (plant terms and nicknames), since 1.1 | term, plant, unit* | synonyms, definition, maps_to_class, maps_to_item, owner, certification, certified_by, certified_on | Doc control | - | none adopted |
 | `ruling` local rulings | ruling_id, concerns, ruling, reason, by, on | attribute, chosen_source, chosen_value | the person ruling | - | none adopted |
 
 Department grouping: engineering (`tag_register`, `drawing_register`, `datasheet`, `line_list`,
@@ -186,7 +192,8 @@ Department grouping: engineering (`tag_register`, `drawing_register`, `datasheet
 maintenance (`maintenance_export`, `work_order`, `pm_plan`, `calibration_record`, `spares_bom`,
 `criticality_ranking`, `inspection_record`), procurement and supply chain (`mro_item`, `purchase_order`,
 `approved_vendor`), production (`operating_limit`), quality and food safety (`ccp`, `capa`), safety and EHS
-(`relief_device_register`, `isolation_point`, `permit`).
+(`relief_device_register`, `isolation_point`, `permit`), cross-cutting (`glossary`). The `tag_register` also takes an
+optional `class` column (since 1.1).
 
 Notes on particular registers:
 
@@ -304,7 +311,8 @@ documents, and whether its text could be read (`text_extracted`). Three relation
 
 - **`covers`**: the smallest scopes or items it is about, declared by exact id. Never guessed.
 - **`mentions`**: a tag, alias or qualified id found in the document's text, with the locator (page and line, sheet
-  and cell), the matched text and how it matched (`exact`, `alias`, `qualified_id`). Asserted only when it is
+  and cell), the matched text and how it matched (`exact`, `alias`, `qualified_id`, or since 1.1 `glossary` with the
+  `term`; see [Glossary](#glossary)). Text read by OCR never asserts a mention. Asserted only when it is
   unambiguous; otherwise an `ambiguous_reference` conflict or a near-miss review item. Mentions need readable text;
   a document whose text was not extracted has covers but no mentions, and coverage says so.
 - **`based_on`**: another document at a stated revision. When that document is revised, this one is flagged
@@ -332,6 +340,164 @@ chosen source or value, the reason, who and when. It extends one map's `decision
 notifications and the history of a ruling's discussion. Those belong to an external governed service. A ruling may
 carry `external_ref`, the id of the matching record there.
 
+## Classes
+
+Since 1.1. [`classes.json`](../schemas/context-map/classes.json) is a small class tree (39 classes), each with a
+definition in our own words, the DEXPI 2.0.1 classes it maps to (class names and class-page URLs, opened on
+2026-11-04, with `match` exact, close, broader or narrower), a CFIHOS reference left `to_confirm`, its expected
+properties (the datasheet property names) and its certification.
+
+| Root | Tree |
+|---|---|
+| equipment | rotating equipment > pump > centrifugal pump, positive displacement pump; static equipment > vessel or tank (vessel, tank), heat exchanger (plate, shell and tube), hold tube |
+| valve | control valve, on/off valve, divert valve, relief device, manual valve |
+| instrument | by ISA-5.1 succeeding letters: transmitter (T), primary element (E), indicator (I), switch (S), controller (C), relay or compute (Y) |
+| line | line-list line numbers |
+| document | P&ID, procedure, HACCP plan, verification document, calibration certificate, inspection report, design basis, datasheet, check sheet, maintenance plan, note (matched from the document's own `doc_type`) |
+
+An item's `class` is optional. It is set only where it is deterministic, in this order, and stays unset otherwise:
+
+1. a record says so (the `class` column of the tag register or of a supplied list);
+2. the tag letters: the site's `letter_overrides`, then the letter rules in `classes.json` (`FDV` divert valve,
+   `PSV` relief device, `TCV` control valve, `TIC` controller, `TT` transmitter); a class outside the roots allowed for
+   the item's `kind` is not assigned;
+3. for equipment only, the site's equipment tag prefixes (`P` pump, `HT` hold tube, `PHE` plate heat exchanger). The
+   shipped prefixes are common conventions, not a standard; a site replaces them;
+4. a datasheet value refines down the tree, never sideways (`pump_type` `rotary lobe` makes a pump a positive
+   displacement pump; `type` `tank` never makes a pump a tank).
+
+Two records naming different classes, or a class not in the tree, is a review row for the record's owner. A class
+assigned this way is still `unverified`: certifying a class certifies the word, never that an item belongs to it.
+
+## Relation semantics
+
+Since 1.1. [`relations.json`](../schemas/context-map/relations.json) gives every frozen relation its domain and range
+(classes, which admit their subclasses, or the pseudo-classes `@scope`, `@connector`, `@loop`, `@any`), an inverse
+name for reading backwards, whether it is transitive, and the expected cardinality per end.
+
+| Relation | Domain -> range | Inverse | Transitive | Per from / per to |
+|---|---|---|---|---|
+| `contains` | scope, equipment -> anything | `contained_in` | yes | 0..* / 1 |
+| `piped_to` | equipment, valve, line, in-line transmitter or element, connector (both ends) | `piped_from` | no | 0..* / 0..* |
+| `measures` | transmitter, primary element, indicator, switch -> equipment, valve, line | `measured_by` | no | 0..1 / 0..* |
+| `controls` | controller -> valve, rotating equipment (a drive) | `controlled_by` | no | 1..* / 0..* |
+| `sets_point_of` | controller -> controller | `setpoint_from` | no | 0..* / 0..1 |
+| `acts_on` | valve, relay -> equipment, line, valve | `acted_on_by` | no | 0..* / 0..* |
+| `protects` | relief device, switch -> equipment, line, valve | `protected_by` | no | 1..* / 0..* |
+| `signal_to` | instrument -> instrument, valve, rotating equipment | `signal_from` | no | 0..* / 0..* |
+| `actuated_by` | valve, equipment -> anything | `actuates` | no | 0..1 / 0..* |
+| `nozzle_of` | anything -> equipment | `has_nozzle` | no | 1 / 0..* |
+| `references` | connector -> anything | `referenced_by` | no | 0..* / 0..* |
+| `member_of` | instrument, valve, rotating equipment -> loop | `has_member` | no | 0..* / 1..* |
+| `covers` | document -> anything | `covered_by` | no | 0..* / 0..* |
+| `mentions` | document -> anything | `mentioned_in` | no | 0..* / 0..* |
+| `based_on` | document -> document | `basis_of` | yes | 0..* / 0..* |
+
+A link is checked only when both ends have a certified class (or are scopes, connectors or documents); a link with an
+end of no class is counted, not checked. **A link outside its domain or range is never dropped:** it stays on the
+map and becomes a review row, "link doesn't fit what it connects", for the owner of the record that asserted it (a
+reader's `PI-2240 measures TIC-2207` goes to the P&IDs' owner). An upper bound of 1 exceeded (an instrument that
+measures two items) is the same kind of row; lower bounds are the expectation rules' job. `relations.json` also maps
+one-map's twin-graph-2 edge names (`connects` reads as `piped_to`, `signal_line` as `signal_to`, and twin-graph-1's
+measurement-to-controller `controls` as `signal_to`).
+
+## Expectations
+
+Since 1.1. Completeness rules: what must exist for a kind of item or record row. They are declarative JSON
+(`context-map-expectations-1`); the template is [`templates/expectations.json`](../schemas/context-map/templates/expectations.json),
+which a site copies next to its site file and edits. A rule has an `id`, a `title`, what it `applies_to` (a `class`,
+a `register` with an optional row filter, or `loops`), its `checks`, the `owner` of the gap, a `severity`, a
+`certification`, and optionally `rollout` and `limit_per_scope`. Checks are `field` (a row value is filled in),
+`resolves` (a row's tag is an item on the map, optionally of a class), `record` (a row of a register exists for the
+item, optionally filtered, with `$as_of` for dates), `relation` (a link exists), `document` (a document of a class
+covers or mentions the item), `loop_role` (a loop's measurement, controller and output resolve to the right classes)
+and `any_of`.
+
+| Rule | Applies to | Expects | Owner |
+|---|---|---|---|
+| `R-CCP-COMPLETE` | each `ccp` row | a critical limit, a monitoring instrument on the map, an in-date calibration record for it (`next_due` on or after `as_of`) and a verification document that covers or mentions it | Quality |
+| `R-RELIEF-PROTECTS` | relief devices | a `protects` link or a relief device register `protects` value, and a test or inspection date | Process safety |
+| `R-LOOP-COMPLETE` | listed loops | a measurement, a controller and a final element of the right classes | I&C |
+| `R-CRITICAL-PM` | criticality ranking rows ranked A, 1, high or critical | a PM plan row | Maintenance |
+| `R-PID-IN-CMMS` | equipment | in the maintenance equipment export; already the `asset_presence` conflict, so this rule only counts it and raises no second row | Maintenance |
+
+**Absent is not empty.** A check names the registers it `needs`; where none of them is present for the subject's
+scope (no source of that register is the record for the scope), the check is not evaluated: counted as "not
+evaluable: no calibration_record covers S1/P1/CIP1", never a missing row. A supplied register with no row for the
+item is a real gap. A date check without an `as_of` date (rules file or site file) is not evaluated either.
+
+**Output.** Each subject gets a result (`complete`, `missing`, `not_evaluable`, `draft_rule`, `not_rolled_out`) with
+what is missing and what could not be evaluated; a missing subject of a certified, rolled-out rule is an "expected
+but missing" review row routed to the rule's owner; the coverage report gets per-rule counts (`by_rule`: subjects,
+complete, missing, not evaluable, not rolled out, rows raised).
+
+**Rolling rules out without flooding a queue.** A plant's first build would otherwise put every gap of every rule in
+the queue at once. So:
+
+1. every rule in the template ships as **draft**, and a draft rule raises **one summary row per unit** ("would raise
+   N rows in S1/P1/PAST1, for example ...") to its owner, never one per item;
+2. a person **certifies** a rule (status certified, by, on) to let it act;
+3. `rollout.scopes` (per rule or for the whole file) limits a certified rule to some units first, and
+   `rollout.owners` to the rules some owners are ready for; outside its rollout a rule only counts (`not_rolled_out`);
+4. `limit_per_scope` caps a rule's rows per unit, with one row saying how many more there are.
+
+The usual path: certify the CCP rule for one pasteurizer, read its rows, fix the rule or the records, widen the
+rollout, then certify the next rule.
+
+## Glossary
+
+Since 1.1. The `glossary` register holds the words people write instead of tags: a `term`, its `synonyms` (separated
+by `|`), a `definition`, what it names (`maps_to_class`, `maps_to_item`, or both), the `plant` and `unit` it is used
+in, its `owner` and its certification. Document matching uses it beside tag matching:
+
+- terms match case-insensitively as whole words; a term followed by digits (`FDV-2210`, `FDV 2210`) is a tag, not
+  a term;
+- a hit **links** (`mentions`, match `glossary`) only when the term is **certified** and maps to **exactly one item
+  in the document's covered scope** (the plant and unit of each `covers` entry, inside the term's own scope);
+- otherwise it is a `possible mention, confirm` review row to the term's owner, one per document and term: a draft
+  term, a class-only term with two candidates (`product pump` with P-101 and P-102), a term outside the covered scope;
+- a term that maps to nothing is a definition only and raises nothing.
+
+Pasteurizer examples: `HTST` -> unit PAST1, `hold tube` -> HT-100, `divert valve` / `FDV` -> FDV-2210 (certified,
+link); `timing pump` -> P-101 (draft: review row).
+
+## Certification
+
+Since 1.1. Classes, glossary terms, expectation rules and authority overrides carry a certification: `status`
+`draft` or `certified`, with `by` and `on`. Only certified ones act on their own; `certified` without who and when
+counts as draft.
+
+| Piece | Certified | Draft |
+|---|---|---|
+| class | assigned by inference, used to check links | never assigned |
+| glossary term | may link a mention | review row |
+| expectation rule | per-item rows (within its rollout) | one summary row per unit |
+| authority override (`settings.authority_certification`) | the override acts | the default stays; review row to the overridden record's owner |
+
+An authority override with no certification entry keeps the 1.0 behaviour (it acts). The shipped classes are
+certified as format vocabulary by its maintainers; the shipped rules are all draft.
+
+## Answerability
+
+Since 1.1. `one_map.py ask --map graph.json --question-kind KIND --item ITEM` answers one question, read-only, with
+the source of every fact: `connects` (what X connects to), `measured-by` (what measures or protects X), `documents`
+(which documents cover or mention X), `disagreements` (which records disagree about X), `complete` (is X
+expected-complete). The item may be a qualified id, a tag unique on the map or a certified glossary term. When the
+record a question needs is absent for X's scope the answer is **"can't answer from this map: no P&ID covers
+S1/P1/FILL1"**, from the same coverage the rules use; "disagreements" with fewer than two records holding X says no
+disagreement could be detected, rather than "none". Worked answers:
+[`expected/pasteurizer/answers.md`](../examples/one-map/expected/pasteurizer/answers.md).
+
+## JSON-LD view
+
+Since 1.1, optional. `one_map.py jsonld --map graph.json --out map.jsonld` writes a JSON-LD view: classes as
+`rdfs:Class` with `rdfs:subClassOf`, DEXPI class-page URLs as `rdfs:seeAlso` where `classes.json` verified them
+(DEXPI publishes HTML class pages, not an RDF namespace), CFIHOS as `to_confirm`; items typed with their class; each
+relation as a property and as a statement node with its provenance. Our terms live under
+`https://github.com/steve-vitale/engineering-context-toolkit/schemas/context-map/vocab#`; item ids are
+`urn:context-map:<qualified id>`. It is a view for interoperability; nothing reads it back and there is no reasoning
+over it.
+
 ## Coverage report
 
 Coverage is part of the file, recomputed on every build and never hand-edited. It answers "how much of this unit
@@ -348,6 +514,9 @@ not supplied; open conflicts.
 
 **Per layer:** PLANT (items, relations, loops), RECORDS (registers supplied out of registers defined), DOCUMENTS
 (documents, how many had readable text), DECISIONS (open conflicts, rulings).
+
+**Since 1.1:** `by_rule` (per expectation rule: subjects, complete, missing, not evaluable, not rolled out, rows
+raised) and `relations_checked` (links checked, links with an end of no class, links that do not fit).
 
 A plant that has only a maintenance equipment export gets a valid map with one register supplied, items with no P&ID
 appearance, and a coverage report that shows exactly that.
@@ -457,13 +626,17 @@ under the authority map, and contractor tags that differ from site tags go throu
   direction, is a breaking change and needs `context-map-2`; the test pins the frozen set.
 - Every `StandardRef` records the standard version it points into, and `standards-mapping.csv` pins the version each
   mapping was made against. Moving to a new standard version is a mapping change, reviewed like any other.
-- This draft is `1.0.0-draft`. Nothing reads it yet, so it may still change without a version bump.
+- This draft is `1.1.0-draft` (1.1 added `class`, the glossary register, `Certification`, `expectations`,
+  `settings.as_of`, `settings.authority_certification`, the `glossary` mention match and two coverage parts, all
+  optional). `registers.json`, `classes.json`, `relations.json` and the rules template carry the same version.
+  Nothing reads a context-map-1 file yet, so it may still change without a version bump.
 
 ## Non-goals
 
 - **Not a workflow or approval system.** No routing beyond the default owner, no sign-off, no notifications, no
   ruling history. Those belong to an external governed service.
-- **Not an ontology.** No ISO 15926 upper ontology, no OWL or RDF requirement, no inference.
+- **Not a reasoning ontology.** A small class tree, relation semantics and completeness rules (1.1), checked by
+  plain code; no ISO 15926 upper ontology, no OWL, no inference engine. The JSON-LD view is optional.
 - **Not a replacement or sync for the CMMS, document system, historian or permit system.** The map reads exports;
   it never writes back.
 - **Not a redistribution of standards.** Identifiers and links only; no definitions, code tables, RDL files or
@@ -506,7 +679,7 @@ choosing a site override example once a real site's authority choices are known.
 ## For agents
 
 ```text
-format:   context-map-1 (draft 1.0.0-draft); schema schemas/context-map/context-map-1.schema.json (JSON Schema 2020-12)
+format:   context-map-1 (draft 1.1.0-draft); schema schemas/context-map/context-map-1.schema.json (JSON Schema 2020-12)
 layers:   plant {scopes, items, relations, loops} | records {<register_id>: [rows]} | documents [] | decisions {conflicts, rulings}
 also:     map {site,...}, settings {owners, authority, authority_reasons, fact_kinds, routing, letter_overrides}, sources [], coverage {}
 required: format, map.site, plant.scopes, plant.items; item = {id: SITE/PLANT/UNIT/TAG, tag, scope}
@@ -517,7 +690,16 @@ absent register = not supplied; [] = supplied, no rows
 value:    scalar (inherits row source/revision/locator) or {value, uom, source, revision, locator, status, fact_kind}; no per-value std
 authority: ordered lists, registers.json default_authority + authority_rule (first present for the scope wins), overridden by settings.authority
 relations: frozen names ($defs.RelationType + covers, mentions, based_on); a rename needs context-map-2
+semantics: relations.json domain/range (classes or @scope/@connector/@loop/@any), inverse, transitive, cardinality;
+          a link that does not fit -> review row "link doesn't fit what it connects", never dropped
+classes:  classes.json tree; item.class only from a record column, tag letters, equipment prefix, datasheet refine
+rules:    templates/expectations.json (all draft); certified + rolled out -> "expected but missing" rows to the
+          rule owner; draft -> one summary row per unit; absent register -> not evaluable, never a gap
+glossary: glossary register; certified term naming one item in the covered scope -> mentions (match glossary);
+          anything else -> "possible mention, confirm"; OCR text never links
+ask:      one_map.py ask --map graph.json --question-kind connects|measured-by|documents|disagreements|complete
+          --item X -> facts with sources, or "can't answer from this map: no <register> covers <scope>"
 standards: schemas/context-map/standards-mapping.csv; identifiers and links only, never definitions; CFIHOS codes to_confirm except CFIHOS-10000395
 never:    renumber or trim a tag; join on a normalized tag; resolve a conflict; ship standards text or RDL files
-check:    python scripts/test_context_map_format.py
+check:    python scripts/test_context_map_format.py; python scripts/test_ontology.py
 ```

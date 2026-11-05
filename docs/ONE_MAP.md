@@ -4,8 +4,10 @@
 and its documents into one graph (`twin-graph-2`, an additive extension of [twin-graph-1](GRAPH_EXPORT.md)). Each
 department keeps its own records. The tool connects them, keeps every disagreement as a conflict record, and sends
 that record to the person who owns it. It is deterministic, runs offline on the Python standard library and calls no
-model. Two worked examples: a fictional two-plant site ([examples/one-map](../examples/one-map/README.md)) and one
-public P&ID sheet read by the drawing reader ([examples/drawing-to-map](../examples/drawing-to-map/README.md)).
+model. Three worked examples: a fictional two-plant site ([examples/one-map](../examples/one-map/README.md)), a
+fictional dairy pasteurizer that shows classes, link checks, expectation rules and the plant glossary
+([pasteurizer](../examples/one-map/README.md#the-pasteurizer-classes-expectations-glossary)) and one public P&ID sheet
+read by the drawing reader ([examples/drawing-to-map](../examples/drawing-to-map/README.md)).
 
 "Equipment and instrument records" below means the **maintenance equipment export**, the **instrument index** and
 the **loop list**. The **sheet index** says which unit each P&ID sheet covers (`drawing_register` in the site file).
@@ -41,6 +43,8 @@ python scripts/one_map.py sheet-from-prediction predictions/r2-tiles-trace/codex
 python scripts/one_map.py build my-site/site.json --out out/my-map                               # steps 2, 4, 5, 6
 python scripts/one_map.py draft-lists my-site/site.json --out out/my-drafts                      # step 3
 python scripts/one_map.py check out/my-map/graph.json
+python scripts/one_map.py ask --map out/my-map/graph.json --question-kind complete --item TT-2207  # read-only
+python scripts/one_map.py jsonld --map out/my-map/graph.json --out out/my-map/map.jsonld          # optional view
 ```
 
 ### Bonus steps by goal
@@ -132,7 +136,15 @@ to the document's owner (amber, after every other amber row, beside the P&ID val
 | A format-only match to one item outside the plant/unit of every `covers` scope | `P102` in a Unit 300 check sheet when only Unit 200 has P-102 | review row `possible mention, confirm` |
 | Lower-case letters followed by a space | `at 2207` | review row `possible mention, confirm` (it may be ordinary words) |
 | Upper-case tag-like text not on the map | `ISO 9001` | review row `mention` |
+| A certified glossary term naming exactly one item in the document's covered scope | `hold tube`, `FDV` (synonym of `divert valve`) | `mentions`, `matched: glossary`, with the term |
+| A draft glossary term, or a term naming several items or none in the covered scope | `timing pump` (draft), `product pump` (two pumps) | review row `possible mention, confirm`, to the term's owner, one per document and term |
+| Anything in text read by OCR, exact, format-insensitive or glossary | `EDV-0756` read for `FDV-0756` | review row `possible mention (OCR), confirm`, one per document and text, naming what the map has |
 | Lower-case text that is no map tag | `page 12`, `unit 200` | nothing |
+
+**OCR text never links.** OCR turns tags into other tag-shaped strings (`ZSO-8170` read as `7S0-8170`, `FDV-0756`
+as `EDV-0756`, `TI-110` as `T-110`), so an exact match in OCR text proves nothing. Text counts as OCR when the
+`extract_text` result says so for the file (engine starting `tesseract`, or status `ok (ocr)`) or for the page (an
+`ocr_pages` list); a result without those fields is read as not OCR.
 
 Format-insensitive means only hyphens, spaces, underscores and letter case are ignored. Digits and suffix letters
 must agree exactly, so `P101` never reaches `P-1010` or `P-101A`, and `TT2205` never reaches `TE-2205`. When one
@@ -149,6 +161,9 @@ document names the same item both ways, its edge keeps the exact mention's locat
 | Datasheets | CSV `tag,plant,unit` plus value columns | ratings, sizes, materials (see the authority map) |
 | Sheet index | CSV `sheet,rev,plant,unit,owner,path[,status]` | which P&ID sheets exist, their revisions, units and owners |
 | Sheet reads | `one-map-sheet-1` JSON per sheet: tags with zone/box, lines, signal lines, off-page connectors, `untagged` | what each P&ID sheet shows; written by `sheet-from-prediction` or by hand |
+| Records (`records`) | any register of [`registers.json`](../schemas/context-map/registers.json) as CSV in its template's columns, each with `id`, `register`, `path`, `revision`, `scopes` | HACCP plan CCPs, calibration records, relief device register, criticality ranking, PM plan, glossary, ...: read by the expectation rules, the glossary and `ask`; they never create items |
+| Expectation rules (`expectations`) | a copy of [`templates/expectations.json`](../schemas/context-map/templates/expectations.json) | completeness rules, certified and rolled out per unit or owner ([Expectations](CONTEXT_MAP_FORMAT.md#expectations)) |
+| `as_of`, `letter_overrides`, `equipment_prefixes`, `authority_certification` | site file keys | the date rules compare dates against; the site's own tag letters and equipment prefixes for classes; who certified an authority override (a draft one does not act) |
 | Documents | a [context register](CONTEXT_REGISTER.md) `context-sources-1` manifest plus `owner`, `status`, `covers`, `based_on`; the files may be PDF, Word, Excel, PowerPoint, HTML or plain text ([DOCUMENT_TEXT.md](DOCUMENT_TEXT.md)) | the document half |
 
 ### Converting a reader's prediction (step 1)
@@ -287,6 +302,28 @@ the sheet read's `zone_grid`). `queues/by-owner/`, `by-plant/` and `by-unit/` sp
 refuses to write a safety-relevant row as green. `split-queue` applies the same order-preserving split to an existing
 `generate.py` `review_queue.csv` by any column, refusing an input whose safety floor is broken.
 
+## Classes, link checks, expectations and the glossary
+
+These follow the context map format's 1.1 ontology ([Classes](CONTEXT_MAP_FORMAT.md#classes) to
+[JSON-LD view](CONTEXT_MAP_FORMAT.md#json-ld-view)); one map applies them to its own graph.
+
+- **Classes.** Every item gets a `class` (and `class_how`) where it is deterministic: a `class` column in a list,
+  the tag letters, the site's equipment prefixes, refined by a datasheet value (`pump_type`). Documents get one from
+  their `doc_type`. Otherwise the class stays unset and the report counts it.
+- **Link checks.** Every edge is read as a context-map relation and checked against its domain and range. A link
+  that does not fit (`PI-2240 measures TIC-2207`: a gauge cannot measure a controller) is an amber review row "link
+  doesn't fit what it connects" for the owner of the record that asserted it; the link stays on the map.
+- **Expectations.** With `expectations` in the site file, each certified, rolled-out rule raises an "expected but
+  missing" row per subject that lacks something, routed to the rule's owner; a draft rule raises one summary row per
+  unit; a check whose register is absent for the unit is counted as not evaluable. The report has a per-rule table
+  and the graph keeps every result under `expectations`. A CCP's monitoring instrument is safety relevant, so it is
+  never green.
+- **Glossary.** A `glossary` record feeds document matching (rules above); `ask` also resolves an item by a
+  certified term.
+- **Answers.** `ask` reads `graph.json` only: `connects`, `measured-by`, `documents`, `disagreements`, `complete`, each
+  fact with its source, or "can't answer from this map: no P&ID covers S1/P1/FILL1" from the graph's
+  `coverage.sources` (which record is the record for which scope).
+
 ## Incremental runs and reopening
 
 `build --out DIR` keeps `DIR/state.json`. On the next run, only sheets whose revision, raw bytes, plant, unit or
@@ -318,6 +355,11 @@ document are listed to reopen; the register's own refresh then marks them stale.
   plant-coded or unusual letters are left unclassified, and the safety rule reads letters too (on OPEN100 sheet 0 the
   plant's own main steam valves `MSV-1404/1405` are flagged as relief devices: kept amber, a false alarm a person
   clears). Tags need two or more digits.
+- Classes come from a short letter rule and site-convention equipment prefixes; on a reader's sheet they are only
+  as right as the tags read. Expectation rules see only the registers supplied; they say nothing about whether a
+  record is right, only whether it exists. The shipped rules and the pasteurizer's certifications are fictional
+  examples; no plant has certified or rolled out a rule. Glossary matching is whole-word text only (no stemming, no
+  plural forms).
 - Values compare as exact text; units and synonyms are not normalized. Fact kinds come from attribute names (or the
   site file's `fact_kinds`); an unrecognized attribute has no authority and two records disagreeing on it go to the
   owner of the record read later.
@@ -351,6 +393,12 @@ match:  exact tag/alias/site id -> link; format-only (separators/case) and uniqu
 never:  asserts an ambiguous or near-miss mention; asserts a loop from P&IDs; groups across units; treats a P&ID
         value as a value conflict; resolves a conflict; renumbers a tag; gives a shared system two owners
 zones:  scripts/sheet_zone.py: ROW-COL, default 8x12, A at the bottom, 1 at the right, box centre, over --zone-frame
+ontology: node.class/class_how (classes.json); "link doesn't fit what it connects" rows (relations.json);
+        site file records/expectations/as_of -> "expected but missing" and "draft expectation rule" rows,
+        graph["expectations"] {results, by_rule}; glossary register -> mentions matched=glossary or confirm rows;
+        OCR text (extract_text engine tesseract*, status "ok (ocr)", ocr_pages) never links: "possible mention (OCR),
+        confirm"; graph["coverage"]["sources"] says which record covers which scope
+ask:    python scripts/one_map.py ask --map graph.json --question-kind KIND --item X   (read-only, with sources)
 check:  python scripts/one_map.py check graph.json   (every twin-graph-1 rule plus the one-map rules;
         graph_export.py --check still accepts only twin-graph-1)
 graph:  graph["loops"] lists each listed loop's outcome; node.appearances lists sheet/zone locations (plus

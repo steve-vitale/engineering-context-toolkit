@@ -6,6 +6,8 @@ kept as a conflict record routed to the owner of the record, and review queues s
     python scripts/one_map.py check out/one-map/graph.json                                  # validate a one-map graph
     python scripts/one_map.py loops-from-graph examples/graph-export/sheet0_graph.json --out out/sheet0-loops.md
     python scripts/one_map.py split-queue my-bundle/review_queue.csv --by belongs_to --out out/queues
+    python scripts/one_map.py ask --map out/one-map/graph.json --question-kind measured-by --item HT-100
+    python scripts/one_map.py jsonld --map out/one-map/graph.json --out out/one-map/map.jsonld
     python scripts/one_map.py sheet-from-prediction predictions/r2-tiles-trace/codex/0.json --sheet 140 --rev A \
         --plant P1 --unit MSS --out sheet.json   # a drawing reader's prediction -> a sheet read for build
 
@@ -39,6 +41,7 @@ import graph_export as gx  # noqa: E402
 import loop_audit  # noqa: E402
 import context_register as cr  # noqa: E402
 import extract_text  # noqa: E402
+import ontology as onto_mod  # noqa: E402
 
 SCHEMA = "twin-graph-2"
 SITE_SCHEMA = "one-map-site-1"
@@ -67,6 +70,7 @@ FINAL = re.compile(r"^[A-Z]C?V$|^XV$|^[A-Z]Y$")      # FV, TCV, PV, LCV, XV; a t
 # Mentions written in another case or another style (P101, p-101, PSV 204) of exactly one map tag; letters only.
 TAG_TEXT_ANY_CASE = re.compile(r"(?<![A-Za-z0-9/_.-])([A-Za-z]{1,5})([- ]?)(\d{2,5})([A-Za-z]{0,2})(?![A-Za-z0-9_-])")
 CONFIRM = "possible mention, confirm"
+OCR_CONFIRM = "possible mention (OCR), confirm"  # OCR text never links (it turns tags into other tags)
 EQUIPMENT_KINDS = ("equipment", "final_element", "relief_device")
 # Columns a generated draft list adds for its reviewer; the import path reads them as review notes, not claims.
 DRAFT_COLS = {"review_tier", "how_found", "confidence", "located_on", "reviewed_by", "reviewed_on"}
@@ -262,17 +266,36 @@ def load_site(path):
     for t, rec in routing.items():
         if rec not in owners and rec not in ("document", "shared_system_owner"):
             raise InputError(f"routing {t} -> {rec!r}: not a record type in record_owners")
-    authority = dict(DEFAULT_AUTHORITY, **(site.get("authority") or {}))
-    for kind, rec in authority.items():
+    for kind, rec in (site.get("authority") or {}).items():
         if rec not in RECORD_TYPES:
             raise InputError(f"authority {kind} -> {rec!r}: not a record type ({', '.join(RECORD_TYPES)})")
+    # an override acts only when it has no certification entry (1.0 behaviour) or a certified one; a draft override
+    # leaves the default in place and becomes a review row for the overridden record's owner
+    certs = site.get("authority_certification") or {}
+    overrides, draft_overrides = {}, []
+    for kind, rec in (site.get("authority") or {}).items():
+        c = certs.get(kind)
+        if c is not None and not onto_mod.certified(c):
+            draft_overrides.append((kind, rec, c))
+        else:
+            overrides[kind] = rec
+    authority = dict(DEFAULT_AUTHORITY, **overrides)
     fact_kinds = site.get("fact_kinds") or {}
     for name, kind in fact_kinds.items():
         if kind not in authority:
             raise InputError(f"fact_kinds {name} -> {kind!r}: not a fact kind in the authority map")
+    as_of = site.get("as_of")
+    if as_of is not None and not onto_mod.DATE.match(str(as_of)):
+        raise InputError("as_of must be a date YYYY-MM-DD")
+    try:
+        onto = onto_mod.Ontology.load(letter_overrides=site.get("letter_overrides"),
+                                      equipment_prefixes=site.get("equipment_prefixes"))
+    except onto_mod.OntologyError as exc:
+        raise InputError(str(exc)) from None
     return {"path": path, "root": root, "raw": site, "site": sid, "site_name": site["site"].get("name"),
             "plants": plants, "scopes": scopes, "shared": shared, "owners": owners, "routing": routing,
-            "authority": authority, "fact_kinds": fact_kinds, "sample_every": int(site.get("spot_check_every", 10))}
+            "authority": authority, "fact_kinds": fact_kinds, "sample_every": int(site.get("spot_check_every", 10)),
+            "draft_overrides": draft_overrides, "as_of": as_of, "onto": onto}
 
 
 def load_register(cfg):
@@ -416,9 +439,12 @@ def load_lists(m):
             seen[nid] = n
             src = dict(base, locator=f"row {n}")
             status = r.get("status") if r.get("status") in gx.STATUSES else "unverified"
-            skip = {"tag", "plant", "unit", "kind", "status", "system", "former_tag", "description"} | DRAFT_COLS
+            skip = {"tag", "plant", "unit", "kind", "status", "system", "former_tag", "description",
+                    "class"} | DRAFT_COLS
             attrs = [claim(k, v, src, status) for k, v in sorted(r.items()) if k not in skip and v]
             aliases = [r["former_tag"]] if r.get("former_tag") else []
+            if r.get("class"):
+                m.explicit_class.setdefault(nid, []).append((r["class"], lid))
             existing = m.nodes.get(nid)
             if existing is None:
                 kind = kind_for(tag, r.get("kind"))
@@ -801,6 +827,12 @@ class Map:
         self.loops = []
         self.pid_values = []  # (item, claim) printed on a P&ID: reference values
         self.record_of = {}  # record id (an equipment/instrument record or datasheet id) -> record type
+        self.explicit_class = {}  # node id -> [(class named by a record row, record id)]
+        self.records = {}  # register id -> rows of the generic `records` registers (ccp, calibration_record, ...)
+        self.glossary = []
+        self.sources = []  # {"id", "register", "scopes"}: which record is the record for which scopes (coverage)
+        self.expectations = None
+        self.link_counts = None
 
     def record_type(self, source):
         return "pid" if source.get("kind") == "drawing" else self.record_of.get(source.get("document"), "unknown")
@@ -938,7 +970,7 @@ def place_fragments(m, register, fragments, lists):
         src = {"kind": "drawing", "document": doc_id, "sheet": row["sheet"], "revision": row["rev"], "path": row["rel"]}
         m.node(mk_node(doc_id, "document", row["doc"], f"P&ID {row['sheet']}",
                        {"kind": "document", "document": doc_id, "revision": row["rev"], "path": row["rel"]},
-                       status="confirmed",
+                       status="confirmed", **{"class": cfg["onto"].doc_class("pid")},
                        document={"id": row["doc"], "revision": row["rev"], "status": row["status"],
                                  "owner": row["owner"], "department": row["owner"], "doc_type": "pid",
                                  "sha256": f["sha256"], "path": row["rel"]}))
@@ -1253,6 +1285,7 @@ def loops(m, lists):
         # optional status column: the loop list's own status for each loop (read_loops validates the rest)
         status_col = {norm(r.get("controller")): r.get("status", "") for r in read_csv(path, "loop list", ())}
         lid = part(spec.get("id"), "loop list id")
+        m.record_of[lid] = "loop_list"
         raw = path.read_bytes()
         by_norm = in_scope[scope]
         ctl_norms = {norm(r["controller"]) for r in rows}
@@ -1448,6 +1481,23 @@ def match_mentions(text, exact, by_norm, by_base, covers, nodes):
     return asserted, findings
 
 
+def ocr_of(res, locator):
+    """Why a piece of a document's text came from OCR ('' when it did not). The extract_text result says so for the
+    whole file (engine starting 'tesseract', or status 'ok (ocr)') or per page (an `ocr_pages` list of page numbers
+    or locators); an extract_text without those fields is read as not OCR."""
+    engine = str(getattr(res, "engine", "") or "")
+    status = str(getattr(res, "status", "") or "")
+    if engine.lower().startswith("tesseract") or status.lower() == "ok (ocr)":
+        return engine if engine.lower().startswith("tesseract") else status
+    pages = getattr(res, "ocr_pages", None) or ()
+    if pages:
+        m_ = re.match(r"page (\d+)", locator or "")
+        wanted = {str(p) for p in pages}
+        if (locator in wanted) or (m_ and (m_.group(1) in wanted or f"page {m_.group(1)}" in wanted)):
+            return f"OCR page ({engine or 'ocr'})"
+    return ""
+
+
 def segment_locator(locator, text, line, column):
     """'page 3, line 4, column 2'; a one-line piece (a text-file line, a cell, a paragraph) needs no inner line."""
     return f"{locator}, column {column}" if "\n" not in text else f"{locator}, line {line}, column {column}"
@@ -1492,14 +1542,20 @@ def documents(m, cfg, lists):
         revisions[did] = d["revision"]
         docs[did] = d
     exact, by_norm, by_base = tag_index(m)
+    term_pat, by_phrase = onto_mod.term_matcher(m.glossary)
+    items_by_class = defaultdict(list)
+    for n in m.nodes.values():
+        if n.get("class") and n.get("scope") and n["kind"] not in ("document", "conflict"):
+            items_by_class[n["class"]].append(n["id"])
     for did in sorted(docs):
         d, s = docs[did], sources[did]
         doc_node = qid(sid, "DOC", did)
         local = (path.parent / d["path"]).resolve()
         dsrc = {"kind": "document", "document": doc_node, "revision": s["revision"], "sha256": s["sha256"],
                 "path": d["path"]}
+        doc_cls = cfg["onto"].doc_class(d.get("doc_type"))
         m.node(mk_node(doc_node, "document", did, d.get("title"), dsrc, status="confirmed",
-                       document={"id": did, "revision": s["revision"], "status": d["status"], "owner": d["owner"],
+                       **({"class": doc_cls} if doc_cls else {}), document={"id": did, "revision": s["revision"], "status": d["status"], "owner": d["owner"],
                                  "department": d.get("department") or d["owner"], "doc_type": d.get("doc_type"),
                                  "sha256": s["sha256"], "path": d["path"]}))
         covers = []
@@ -1528,12 +1584,49 @@ def documents(m, cfg, lists):
                                                   "extractor": f"{extract_text.EXTRACTOR} {extract_text.VERSION}"}
         document_text_note(m, doc_node, d, res)
         asserted, findings = [], []
+        term_rows = {}  # (term, why) -> [locators]: one review row per document and term, never one per hit
+        ocr_rows = {}  # matched text -> [(locator, what the map has)]: OCR text never links (ocr_of)
         for locator, text in res.segments:
             got, missed = match_mentions(text, exact, by_norm, by_base, covers, m.nodes)
             for x in got + missed:
                 x["locator"] = segment_locator(locator, text, x["line"], x["column"])
+            hits = onto_mod.find_terms(text, term_pat, by_phrase)
+            ocr = ocr_of(res, locator)
+            if ocr:
+                for x in got + missed + hits:
+                    loc = x.get("locator") or segment_locator(locator, text, x["line"], x["column"])
+                    has = ([x["node"]] if x.get("node") else x.get("candidates") or
+                           ([f"glossary term '{x['terms'][0]['term']}'"] if x.get("terms") else []))
+                    ocr_rows.setdefault(x["matched_text"], []).append((loc, has, ocr))
+                continue
             asserted += got
             findings += missed
+            for hit in hits:
+                hit["locator"] = segment_locator(locator, text, hit["line"], hit["column"])
+                target, term, why = onto_mod.resolve_term_hit(hit, covers, items_by_class, cfg["onto"])
+                if target:
+                    asserted.append({"line": hit["line"], "column": hit["column"], "locator": hit["locator"],
+                                     "matched_text": hit["matched_text"], "node": target, "matched": "glossary",
+                                     "term": term["term"],
+                                     "confidence": f"glossary term '{term['term']}' "
+                                                   f"({onto_mod.cert_text(term['certification'])}), one item in "
+                                                   "the covered scope"})
+                elif why:
+                    term_rows.setdefault((term["term"] if term else hit["matched_text"], why), []).append(hit)
+        for text_, places in sorted(ocr_rows.items()):
+            has = sorted({h for _, hs, _ in places for h in hs})
+            m.review.append({"item": doc_node, "kind": OCR_CONFIRM, "owner": d["owner"],
+                             "why": f"'{text_}' at {places[0][0]}" + (f" and {len(places) - 1} more place(s)"
+                                                                     if len(places) > 1 else "")
+                                    + f" in {did} was read by OCR ({places[0][2]}); OCR can turn one tag into "
+                                      "another (FDV-0756 read as EDV-0756), so nothing read by OCR links"
+                                    + (f" (the map has {', '.join(has)})" if has else "") + "; not asserted"})
+        for (tname, why), hits in sorted(term_rows.items()):
+            owner = next((t["owner"] for t in m.glossary if t["term"] == tname and t["owner"]), None) or d["owner"]
+            m.review.append({"item": doc_node, "kind": CONFIRM, "owner": owner,
+                             "why": f"{why}: '{hits[0]['matched_text']}' at {hits[0]['locator']}"
+                                    + (f" and {len(hits) - 1} more place(s)" if len(hits) > 1 else "")
+                                    + f" in {did}; not asserted"})
         # one edge per (document, item); its locator is the first exact mention, else the first mention
         first = {}
         for a in asserted:
@@ -1549,6 +1642,8 @@ def documents(m, cfg, lists):
                          claim("matched_text", a["matched_text"], lsrc), claim("confidence", a["confidence"], lsrc)]
                 if "matched" in a:
                     attrs.append(claim("matched", a["matched"], lsrc))
+                if "term" in a:
+                    attrs.append(claim("glossary_term", a["term"], lsrc))
                 m.edge(mk_edge("mentions", doc_node, a["node"], lsrc, attributes=attrs))
             tgt = m.nodes[a["node"]]
             rec = list_for(tgt["kind"])
@@ -1576,6 +1671,238 @@ def documents(m, cfg, lists):
                                         + (f" (map has {', '.join(f['candidates'])})" if f["candidates"] else "")
                                         + hint + "; not asserted"})
     return {did: {"revision": sources[did]["revision"], "sha256": sources[did]["sha256"]} for did in docs}
+
+
+# ---------------------------------------------------------------- ontology: classes, records, links, expectations
+
+ITEM_KINDS = ("equipment", "instrument", "controller", "final_element", "manual_valve", "relief_device", "line")
+# The field that names the item a row is about, where it is not `tag` (registers.json tag_ref fields).
+TAG_FIELD = {"ccp": "monitored_tag", "isolation_point": "isolates_tag", "interlock_list": "cause_tag"}
+_REGISTERS = None
+
+
+def registers():
+    global _REGISTERS
+    if _REGISTERS is None:
+        doc = json.loads((onto_mod.DIR / "registers.json").read_text(encoding="utf-8"))
+        _REGISTERS = {r["id"]: r for r in doc["registers"]}
+    return _REGISTERS
+
+
+def classify(m):
+    """A class for every item where it is deterministic (classes.json): a record's `class` column, else the tag
+    letters (or the site's equipment prefixes), refined by a datasheet value. Two records naming different classes,
+    or an unknown class, is a review row for the record's owner; nothing is guessed."""
+    onto = m.cfg["onto"]
+    for nid in sorted(m.nodes):
+        n = m.nodes[nid]
+        if n["kind"] not in ITEM_KINDS or not n.get("tag"):
+            continue
+        named = m.explicit_class.get(nid, [])
+        explicit = named[0][0] if named else None
+        if len({c for c, _ in named}) > 1:
+            m.review.append({"item": nid, "kind": "class disagreement", "owner": n.get("owner") or "needs owner",
+                             "why": f"{n['tag']}: records name different classes "
+                                    f"({', '.join(f'{c} in {lid}' for c, lid in named)}); the first is used"})
+        attrs = {a["name"]: a["value"] for a in n["attributes"]}
+        cid, how = onto.infer(n["tag"], n["kind"], attrs, explicit=explicit)
+        if explicit and cid is None:
+            m.review.append({"item": nid, "kind": "class not recognized", "owner": n.get("owner") or "needs owner",
+                             "why": f"{n['tag']}: {how} ({named[0][1]}); add it to classes.json or fix the record"})
+            cid, how = onto.infer(n["tag"], n["kind"], attrs)
+        if cid:
+            n["class"], n["class_how"] = cid, how
+
+
+def resolver(m):
+    """resolve(tag or qualified id, scope) -> a node id: the id itself, SCOPE/TAG, or the one item with that tag
+    inside the scope (a plant-level row). None when it is absent or not unique."""
+    by_tag = defaultdict(list)
+    for n in m.nodes.values():
+        if n.get("tag") and n.get("scope") and n["kind"] not in ("document", "conflict", "offpage_connector"):
+            by_tag[n["tag"]].append(n["id"])
+
+    def resolve(text, scope):
+        if not text:
+            return None
+        if "/" in text:
+            return text if text in m.nodes else None
+        if qid(scope, text) in m.nodes:
+            return qid(scope, text)
+        hits = [x for x in by_tag.get(text, ()) if x.startswith(scope + "/")]
+        return hits[0] if len(hits) == 1 else None
+    return resolve
+
+
+def load_records(m):
+    """The site file's `records`: any register of schemas/context-map/registers.json (HACCP plan CCPs, calibration
+    records, relief device register, criticality ranking, PM plan, glossary, ...) as CSV in its template's columns.
+    Rows resolve to items by their tag field; they carry their source and row locator. They feed expectations, the
+    glossary and answers; they never create items."""
+    cfg, regs = m.cfg, registers()
+    resolve = resolver(m)
+    for spec in cfg["raw"].get("records") or []:
+        reg_id = spec.get("register")
+        if reg_id not in regs:
+            raise InputError(f"records {spec.get('id')}: register {reg_id!r} is not in registers.json")
+        reg = regs[reg_id]
+        lid = part(spec.get("id"), "records.id")
+        path = inside(cfg["root"], spec.get("path"), f"records {lid} path")
+        required = [f["name"] for f in reg["fields"] if f["required"] is True]
+        rows = read_csv(path, f"{reg['name']} {lid}", required)
+        scopes = spec.get("scopes") or [cfg["site"]]
+        for sc in scopes:
+            if sc != cfg["site"] and not sc.startswith(cfg["site"] + "/"):
+                raise InputError(f"records {lid}: scope {sc!r} is not in site {cfg['site']}")
+        m.record_of[lid] = reg_id
+        owner = spec.get("owner") or cfg["owners"].get(reg_id) or reg["default_owner"]
+        base = {"kind": "document", "document": lid, "revision": spec.get("revision"),
+                "sha256": sha_bytes(path.read_bytes()), "path": spec.get("path")}
+        tag_field = TAG_FIELD.get(reg_id) or ("tag" if any(f["name"] == "tag" for f in reg["fields"]) else None)
+        tag_required = tag_field == "tag" and next(f for f in reg["fields"] if f["name"] == "tag")["type"] == "tag"
+        key = next((k for k in reg["key"] if k not in ("plant", "unit", "tag")), None)
+        out = m.records.setdefault(reg_id, [])
+        for n, r in enumerate(rows, 2):
+            plant = part(r.get("plant"), f"{lid} row {n} plant") if "plant" in r else None
+            if plant is not None:
+                if plant not in cfg["plants"] and plant not in cfg["scopes"]:
+                    raise InputError(f"{lid} row {n}: plant/scope {plant!r} is not in the site file")
+                if r.get("unit") and (plant not in cfg["plants"] or r["unit"] not in cfg["plants"][plant]["units"]):
+                    raise InputError(f"{lid} row {n}: unit {plant}/{r['unit']} is not in the site file")
+                scope = qid(cfg["site"], plant, r["unit"]) if r.get("unit") else qid(cfg["site"], plant)
+            else:
+                scope = cfg["site"]
+            if not any(onto_mod.within(scope, s) or onto_mod.within(s, scope) for s in scopes):
+                raise InputError(f"{lid} row {n}: {scope} is outside the record's declared scopes ({', '.join(scopes)})")
+            tag = r.get(tag_field) if tag_field else None
+            item = resolve(tag, scope) if tag else None
+            row = {"register": reg_id, "id": r.get(key) if key else None, "item": item, "scope": scope,
+                   "values": {k: v for k, v in r.items() if v},
+                   "source": dict(base, locator=f"row {n}" + (f"; {r['locator']}" if r.get("locator") else "")),
+                   "status": r.get("status") or "unverified"}
+            out.append(row)
+            if reg_id == "ccp" and item and not m.nodes[item].get("safety"):
+                # a CCP's monitoring instrument is food-safety relevant: the review queue's safety floor holds it
+                m.nodes[item]["safety"] = f"CCP monitoring instrument ({r.get('ccp_id')})"
+            if tag and item is None and tag_required:
+                m.review.append({"item": qid(scope, tag), "kind": "record row, item not on the map", "owner": owner,
+                                 "why": f"{reg['name']} {lid} row {n} is about {tag}, which no equipment or "
+                                        f"instrument record and no P&ID of {scope} holds"})
+        m.sources.append({"id": lid, "register": reg_id, "scopes": list(scopes)})
+    if "glossary" in m.records:
+        m.glossary = onto_mod.load_glossary(m.records["glossary"], cfg["onto"], resolve)
+        for t in m.glossary:
+            if t["problem"]:
+                m.review.append({"item": t["scope"], "kind": "glossary term problem", "owner": t["owner"] or
+                                 cfg["owners"].get("glossary") or "Doc control",
+                                 "why": f"glossary term '{t['term']}': {t['problem']}; it links nothing until fixed"})
+
+
+def coverage_sources(m, register, lists):
+    """Which record is the record for which scopes: P&ID sheets cover their unit; lists, datasheets, loop lists and
+    `records` their declared scopes; a document manifest the whole site."""
+    cfg = m.cfg
+    out = [{"id": r["doc"], "register": "pid",
+            "scopes": [qid(cfg["site"], r["plant"], r["unit"]) if r["unit"] else qid(cfg["site"], r["plant"])]}
+           for r in register]
+    for rec in ("maintenance_export", "instrument_index", "datasheet"):
+        out += [{"id": x["id"], "register": rec, "scopes": list(x["scopes"])} for x in lists.get(rec, [])]
+    out += [{"id": s.get("id"), "register": "loop_list", "scopes": [s.get("scope")]}
+            for s in cfg["raw"].get("loop_lists") or []]
+    if cfg["raw"].get("documents"):
+        out.append({"id": cfg["raw"]["documents"], "register": "documents", "scopes": [cfg["site"]]})
+    return out + m.sources
+
+
+def check_relations(m):
+    """Every link against relations.json domain and range: a link that does not fit what it connects is a review row
+    for the owner of the record that asserted it. It is kept on the map, never dropped."""
+    onto = m.cfg["onto"]
+    edges = [m.edges[k] for k in sorted(m.edges)]
+    findings, counts = onto_mod.check_links(m.nodes, edges, onto)
+    for f in findings:
+        e = m.edges.get(f["edge"]) if f["edge"] else None
+        src = (e or {}).get("source") or {}
+        rec = m.record_type(src)
+        doc = m.nodes.get(src.get("document") or "")
+        owner = ((doc or {}).get("document") or {}).get("owner") if doc and rec == "unknown" else None
+        owner = owner or m.cfg["owners"].get(rec) or "needs owner"
+        t = lambda x: (m.nodes.get(x) or {}).get("tag") or x  # noqa: E731
+        cls = lambda x: (m.nodes.get(x) or {}).get("class") or (m.nodes.get(x) or {}).get("kind")  # noqa: E731
+        said = (f" ({e['type']} from {src.get('document') or src.get('kind')}"
+                + (f" sheet {src['sheet']}" if src.get("sheet") else "") + ")") if e else ""
+        m.review.append({"item": f["from"], "kind": onto_mod.LINK_ROW, "owner": owner,
+                         "why": f"{t(f['from'])} ({cls(f['from'])}) {f['relation']} {t(f['to'])} ({cls(f['to'])})"
+                                f"{said}: {f['why']}; the link is kept for a person to check"})
+    m.link_counts = counts
+
+
+class ExpectationView:
+    """What the expectation rules read, built from the assembled map."""
+
+    def __init__(self, m, sources):
+        onto = m.cfg["onto"]
+        self.as_of = m.cfg["as_of"]
+        self.items = {nid: {"class": n.get("class"), "kind": n["kind"], "scope": n["scope"], "tag": n["tag"]}
+                      for nid, n in m.nodes.items()
+                      if n.get("scope") and n.get("tag") and n["kind"] not in ("document", "conflict",
+                                                                               "offpage_connector")}
+        self.records = m.records
+        self.edges = [{"rel": onto.relation_for_edge(e["type"], (m.nodes.get(e["from"]) or {}).get("class")),
+                       "from": e["from"], "to": e["to"]} for e in m.edges.values()]
+        self.documents = {}
+        for n in m.nodes.values():
+            if n["kind"] == "document":
+                self.documents[n["id"]] = {"class": n.get("class"), "covers": set(), "mentions": set()}
+        for e in m.edges.values():
+            if e["type"] in ("covers", "mentions") and e["from"] in self.documents:
+                self.documents[e["from"]][e["type"]].add(e["to"])
+        self.conflicts = list(m.conflicts.values())
+        self.sources = sources
+        self._resolve = resolver(m)
+        by_norm = defaultdict(dict)
+        for nid, it in self.items.items():
+            by_norm[it["scope"]][norm(it["tag"])] = nid
+        self.loops = []
+        for lp in m.loops:
+            ids = {k: by_norm[lp["scope"]].get(norm(lp[k])) if lp[k] else None
+                   for k in ("controller", "measurement", "output")}
+            self.loops.append(dict(lp, ids=ids, item=ids["controller"] or lp["item"]))
+
+    def present(self, register, scope):
+        return any(s["register"] == register and any(onto_mod.within(scope, x) for x in s["scopes"])
+                   for s in self.sources)
+
+    def resolve(self, text, scope):
+        return self._resolve(text, scope)
+
+
+def expectations(m, sources):
+    """The site's expectation rules (its own copy of templates/expectations.json): results, review rows routed to
+    each rule's owner, per-rule coverage."""
+    cfg = m.cfg
+    rel = cfg["raw"].get("expectations")
+    if not rel:
+        return
+    path = inside(cfg["root"], rel, "expectations")
+    try:
+        doc = onto_mod.load_rules(read_json(path, "expectations"), cfg["onto"])
+        results, rows, cov = onto_mod.evaluate(doc, ExpectationView(m, sources), cfg["onto"])
+    except onto_mod.OntologyError as exc:
+        raise InputError(f"{rel}: {exc}") from None
+    for r in rows:
+        m.review.append({k: r[k] for k in ("item", "kind", "owner", "why")})
+    m.expectations = {"rules_source": rel, "rules_version": doc.get("format_version"),
+                      "as_of": doc.get("as_of") or cfg["as_of"], "results": results, "by_rule": cov}
+
+
+def draft_override_rows(m):
+    for kind, rec, c in m.cfg["draft_overrides"]:
+        m.review.append({"item": m.cfg["site"], "kind": "draft authority override",
+                         "owner": m.cfg["owners"].get(rec) or "needs owner",
+                         "why": f"the site file overrides the authority for {kind} to {rec}, but the override is "
+                                f"{onto_mod.cert_text(c)}; the default ({DEFAULT_AUTHORITY.get(kind, 'none')}) "
+                                "stays in force until it is certified"})
 
 
 # ---------------------------------------------------------------- conflicts as graph nodes, human decisions
@@ -1781,6 +2108,36 @@ def report_md(g, run, groups, reopened, loops_, uncovered):
     lines += ["## Nodes and edges", "", "| Node kind | Count |", "|---|---|"]
     lines += [f"| {k} | {v} |" for k, v in sorted(kinds.items())]
     lines += ["", "| Edge type | Count |", "|---|---|"] + [f"| {k} | {v} |" for k, v in sorted(types.items())]
+    classes = defaultdict(int)
+    for n in nodes:
+        if n["kind"] in ITEM_KINDS and n.get("tag"):
+            classes[n.get("class") or "(unset: not deterministic from the records or tag letters)"] += 1
+    lines += ["", "## Item classes (classes.json)", "", "| Class | Items |", "|---|---|"]
+    lines += [f"| {k} | {v} |" for k, v in sorted(classes.items())]
+    lc = (g.get("coverage") or {}).get("relations_checked") or {}
+    if lc:
+        lines += ["", f"Links checked against relations.json: {lc['checked']} of {lc['links']} "
+                      f"({lc['unchecked_no_class']} with an end of no class, not checked); "
+                      f"{lc['do_not_fit']} do not fit what they connect (review rows, kept on the map)."]
+    exp = g.get("expectations")
+    if exp:
+        lines += ["", "## Expectations (completeness rules)", "",
+                  f"Rules from `{exp['rules_source']}`, as of {exp['as_of'] or 'no date (date checks not evaluated)'}. "
+                  "A check whose register is absent for the subject's scope is not evaluated; a draft rule raises one "
+                  "summary row per scope; a rule not rolled out to a scope raises nothing there.", "",
+                  "| Rule | Certification | Subjects | Complete | Missing | Not evaluable | Not rolled out | Rows raised |",
+                  "|---|---|---|---|---|---|---|---|"]
+        for c in exp["by_rule"]:
+            lines.append(f"| {c['rule']} | {c['certification']} | {c['subjects']} | {c['complete']} | {c['missing']} | "
+                         f"{c['not_evaluable']} | {c['not_rolled_out']} | {c['rows_raised']} |")
+    if g.get("glossary"):
+        lines += ["", "## Glossary", "", "| Term | Scope | Maps to | Certification |", "|---|---|---|---|"]
+        for tm in g["glossary"]:
+            lines.append(f"| {tm['term']} | {tm['scope']} | {tm['maps_to_item'] or tm['maps_to_class'] or '-'} | "
+                         f"{onto_mod.cert_text(tm['certification'])} |")
+        links = sum(1 for e in edges if e["type"] == "mentions"
+                    and any(c["name"] == "matched" and c["value"] == "glossary" for c in e.get("attributes", [])))
+        lines += ["", f"Document mentions linked through a certified glossary term: {links}."]
     lines += ["", "## Conflicts by record owner", "", "| Owner | Type | Count |", "|---|---|---|"]
     for o in sorted(by_owner):
         for t in sorted(by_owner[o]):
@@ -1839,9 +2196,16 @@ def assemble(cfg, register, fragments):
     load_datasheets(m, lists)
     for nid, c in m.pid_values:  # a P&ID value differing from the records is a note, never a value conflict
         m.add_value(nid, c, "pid")
+    classify(m)
+    load_records(m)
     pair_offpage(m, fragments)
     groups = loops(m, lists)
     docs = documents(m, cfg, lists)
+    sources = coverage_sources(m, register, lists)
+    m.sources = sources
+    check_relations(m)
+    expectations(m, sources)
+    draft_override_rows(m)
     return m, lists, uncovered, groups, docs
 
 
@@ -2000,6 +2364,10 @@ def build(site_path, out_dir, *, full=False, decisions=None, register_path=None)
     g = {"schema": SCHEMA, "model_kind": "one_map", "title": cfg["site_name"], "site": cfg["site"],
          "source_model": cfg["path"].name, "nodes": nodes, "edges": edges, "questions": [], "events": [],
          "not_exported": [], "loops": m.loops,
+         "coverage": {"sources": m.sources, "relations_checked": m.link_counts},
+         **({"records": m.records} if m.records else {}),
+         **({"glossary": m.glossary} if m.glossary else {}),
+         **({"expectations": m.expectations} if m.expectations else {}),
          "counts": {"nodes": len(nodes), "edges": len(edges),
                     "claims": sum(len(n["attributes"]) for n in nodes) + sum(len(e.get("attributes", [])) for e in edges),
                     "conflicts": len(m.conflicts), "questions": 0, "events": 0}}
@@ -2150,6 +2518,14 @@ def main(argv=None):
     sp.add_argument("--zone-origin", default="bottom-right", choices=("bottom-right", "top-left"),
                     help="where zone A-1 is: bottom-right (ASME style, default) or top-left (ISO style)")
     sp.add_argument("--out", required=True, help="the sheet read to write (JSON)")
+    q = sub.add_parser("ask", help="answer one question about an item from a built graph, with provenance (read-only)")
+    q.add_argument("--map", required=True, help="graph.json written by build")
+    q.add_argument("--question-kind", required=True, choices=sorted(onto_mod.QUESTION_KINDS))
+    q.add_argument("--item", required=True, help="qualified id, a tag unique on the map, or a certified glossary term")
+    q.add_argument("--json", action="store_true", help="print the answer as JSON")
+    jl = sub.add_parser("jsonld", help="write an optional JSON-LD view of a built graph")
+    jl.add_argument("--map", required=True)
+    jl.add_argument("--out", required=True)
     s = sub.add_parser("split-queue", help="split an existing review_queue.csv by a column, keeping its order")
     s.add_argument("queue")
     s.add_argument("--by", required=True)
@@ -2187,6 +2563,16 @@ def main(argv=None):
                   f"{c['lines']} lines, {c['signal_lines']} signal lines -> {a.out}")
             for x in c["not_converted"]:
                 print("not converted:", x)
+        elif a.cmd == "ask":
+            ans = onto_mod.ask(read_json(a.map, "graph"), a.question_kind, a.item)
+            sys.stdout.write(json.dumps(ans, indent=1, ensure_ascii=False) + "\n" if a.json
+                             else onto_mod.ask_text(ans))
+        elif a.cmd == "jsonld":
+            doc = onto_mod.to_jsonld(read_json(a.map, "graph"), onto_mod.Ontology.load())
+            Path(a.out).parent.mkdir(parents=True, exist_ok=True)
+            Path(a.out).write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n", encoding="utf-8",
+                                   newline="\n")
+            print(f"{len(doc['@graph'])} JSON-LD nodes -> {a.out}")
         elif a.cmd == "loops-from-graph":
             text, total = loops_from_graph(a.graph)
             if a.out:
@@ -2195,7 +2581,7 @@ def main(argv=None):
         else:
             counts = split_existing(a.queue, a.by, a.out)
             print(json.dumps(counts))
-    except (InputError, OSError, json.JSONDecodeError, UnicodeDecodeError) as exc:
+    except (InputError, onto_mod.OntologyError, OSError, json.JSONDecodeError, UnicodeDecodeError) as exc:
         print(f"refused: {exc}", file=sys.stderr)
         return 2
     return 0

@@ -41,6 +41,37 @@ python scripts/one_map.py build examples/one-map/inputs/site-office.json --out o
 Committed results: [report](expected/office/report.md), [review queue](expected/office/queues/review_queue.csv),
 [graph](expected/office/graph.json), [conflicts](expected/office/conflicts.md).
 
+## The pasteurizer: classes, expectations, glossary
+
+A second fictional site, *Lakeside dairy*: one plant with an HTST pasteurizer (unit PAST1), a CIP skid (CIP1) and a
+filler (FILL1, no P&ID registered yet). Beside the P&IDs, the maintenance equipment export, the instrument index, a
+loop list and pump datasheets, it supplies `records` (the HACCP plan's CCPs, calibration records and the relief device
+register for PAST1, the criticality ranking, the PM plan, the glossary) and its own copy of the expectation rules,
+four of them certified by fictional people, one left draft, one rolled out to PAST1 only. See
+[Expectations](../../docs/CONTEXT_MAP_FORMAT.md#expectations) and [Glossary](../../docs/CONTEXT_MAP_FORMAT.md#glossary).
+
+```sh
+python scripts/one_map.py build examples/one-map/inputs/pasteurizer/site.json --out out/pasteurizer
+python scripts/one_map.py ask --map out/pasteurizer/graph.json --question-kind complete --item FT-2203
+python scripts/one_map.py ask --map out/pasteurizer/graph.json --question-kind measured-by --item "hold tube"
+python scripts/one_map.py jsonld --map out/pasteurizer/graph.json --out out/pasteurizer/map.jsonld
+```
+
+Committed results: [report](expected/pasteurizer/report.md), [review queue](expected/pasteurizer/queues/review_queue.csv),
+[graph](expected/pasteurizer/graph.json), [answers](expected/pasteurizer/answers.md),
+[JSON-LD view](expected/pasteurizer/map.jsonld). What it shows:
+
+| Piece | Result |
+|---|---|
+| Classes | P-101 positive displacement pump (prefix P, datasheet `rotary lobe`), P-102 centrifugal pump, HT-100 hold tube, PHE-2201 plate heat exchanger, E-2215 shell and tube (the export's `class` column), FDV-2210 divert valve; FL-401 left unset |
+| Link check | `PI-2240 measures TIC-2207` (a misread placement): "link doesn't fit what it connects" to Doc control; the link stays |
+| R-CCP-COMPLETE | CCP-1 (TT-2207) complete; CCP-2 (FT-2203) expected but missing: no critical limit, calibration overdue (next due 2026-08-01), no verification document; to Quality |
+| R-RELIEF-PROTECTS | PSV-2216 drawn on nothing and in no relief device register: one row to Process safety; PSV-3101 on CIP1 not evaluable (no relief device register covers CIP1) |
+| R-CRITICAL-PM | P-101 and FDV-2210 ranked A with no PM plan: two rows to Maintenance; P-301 on CIP1 ranked A, not rolled out there, counted only |
+| R-LOOP-COMPLETE (draft) | one summary row: it would raise one row in PAST1 (PIC-2240's measurement is an indicator) |
+| Glossary | `HTST`, `hold tube`, `divert valve` and `FDV` link in the HACCP plan and the start-up SOP; `timing pump` (draft) and `product pump` (two pumps) are review rows to Production |
+| Answers | `connects FL-401`: can't answer from this map, no P&ID covers S1/P1/FILL1 |
+
 ## Inputs
 
 | File | What it stands for |

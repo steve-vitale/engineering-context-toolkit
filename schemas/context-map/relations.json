@@ -1,0 +1,324 @@
+{
+ "format": "context-map-relations-1",
+ "format_version": "1.1.0-draft",
+ "note": "Semantics for every frozen relation name of context-map-1 (since 1.1). Domain and range are class ids from classes.json (a class admits its subclasses) or pseudo-classes: @scope (site, plant, unit, system), @connector (off-page connector, boundary), @loop, @any. A link is checked only when both ends have a certified class; an end with no class is not checked and is counted. A link outside its domain or range is never dropped: it becomes a review row ('link doesn't fit what it connects'). Cardinality is the expected count per from-end and per to-end (0..1, 1, 0..*, 1..*); an upper bound of 1 exceeded is a review row, a lower bound is an expectation rule's job.",
+ "pseudo_classes": {
+  "@scope": "a site, plant, unit or system scope",
+  "@connector": "an off-page connector or boundary item",
+  "@loop": "a loop",
+  "@any": "anything on the map"
+ },
+ "relations": [
+  {
+   "name": "contains",
+   "from_to": "scope -> scope or item",
+   "means": "hierarchy",
+   "domain": [
+    "@scope",
+    "equipment"
+   ],
+   "range": [
+    "@any"
+   ],
+   "inverse": "contained_in",
+   "transitive": true,
+   "cardinality": {
+    "per_from": "0..*",
+    "per_to": "1"
+   },
+   "note": "Each item or scope has exactly one parent (per_to 1)."
+  },
+  {
+   "name": "piped_to",
+   "from_to": "item -> item",
+   "means": "consecutive process items on a pipe run",
+   "domain": [
+    "equipment",
+    "valve",
+    "line",
+    "transmitter",
+    "primary_element",
+    "@connector"
+   ],
+   "range": [
+    "equipment",
+    "valve",
+    "line",
+    "transmitter",
+    "primary_element",
+    "@connector"
+   ],
+   "inverse": "piped_from",
+   "transitive": false,
+   "cardinality": {
+    "per_from": "0..*",
+    "per_to": "0..*"
+   },
+   "note": "Not transitive: a path of piped_to links is a route, not one pipe run. In-line meters (transmitters and primary elements) may sit on the pipe."
+  },
+  {
+   "name": "measures",
+   "from_to": "instrument -> item or line",
+   "means": "what an instrument senses",
+   "domain": [
+    "transmitter",
+    "primary_element",
+    "indicator",
+    "switch"
+   ],
+   "range": [
+    "equipment",
+    "valve",
+    "line"
+   ],
+   "inverse": "measured_by",
+   "transitive": false,
+   "cardinality": {
+    "per_from": "0..1",
+    "per_to": "0..*"
+   },
+   "note": "An instrument senses one item; an item may have many instruments."
+  },
+  {
+   "name": "controls",
+   "from_to": "controller -> final element",
+   "means": "the controller's output",
+   "domain": [
+    "controller"
+   ],
+   "range": [
+    "valve",
+    "rotating_equipment"
+   ],
+   "inverse": "controlled_by",
+   "transitive": false,
+   "cardinality": {
+    "per_from": "1..*",
+    "per_to": "0..*"
+   },
+   "note": "A pump or other drive is a final element when a controller sets its speed."
+  },
+  {
+   "name": "sets_point_of",
+   "from_to": "controller -> controller",
+   "means": "cascade",
+   "domain": [
+    "controller"
+   ],
+   "range": [
+    "controller"
+   ],
+   "inverse": "setpoint_from",
+   "transitive": false,
+   "cardinality": {
+    "per_from": "0..*",
+    "per_to": "0..1"
+   },
+   "note": "An inner controller takes its set point from one master."
+  },
+  {
+   "name": "acts_on",
+   "from_to": "final element -> item or line",
+   "means": "what a valve or actuator changes",
+   "domain": [
+    "valve",
+    "relay_compute"
+   ],
+   "range": [
+    "equipment",
+    "line",
+    "valve"
+   ],
+   "inverse": "acted_on_by",
+   "transitive": false,
+   "cardinality": {
+    "per_from": "0..*",
+    "per_to": "0..*"
+   }
+  },
+  {
+   "name": "protects",
+   "from_to": "relief or safety device -> item",
+   "means": "what it protects",
+   "domain": [
+    "relief_device",
+    "switch"
+   ],
+   "range": [
+    "equipment",
+    "line",
+    "valve"
+   ],
+   "inverse": "protected_by",
+   "transitive": false,
+   "cardinality": {
+    "per_from": "1..*",
+    "per_to": "0..*"
+   },
+   "note": "A relief device protects at least one item (the expectation rule R-RELIEF-PROTECTS checks it)."
+  },
+  {
+   "name": "signal_to",
+   "from_to": "instrument -> instrument",
+   "means": "a signal line on the P&ID",
+   "domain": [
+    "instrument"
+   ],
+   "range": [
+    "instrument",
+    "valve",
+    "rotating_equipment"
+   ],
+   "inverse": "signal_from",
+   "transitive": false,
+   "cardinality": {
+    "per_from": "0..*",
+    "per_to": "0..*"
+   },
+   "note": "A signal ends at an instrument function, a valve actuator or a drive (a pump speed)."
+  },
+  {
+   "name": "actuated_by",
+   "from_to": "item -> item",
+   "means": "an actuator link, not pipe",
+   "domain": [
+    "valve",
+    "equipment"
+   ],
+   "range": [
+    "@any"
+   ],
+   "inverse": "actuates",
+   "transitive": false,
+   "cardinality": {
+    "per_from": "0..1",
+    "per_to": "0..*"
+   }
+  },
+  {
+   "name": "nozzle_of",
+   "from_to": "item -> item",
+   "means": "a nozzle on its equipment",
+   "domain": [
+    "@any"
+   ],
+   "range": [
+    "equipment"
+   ],
+   "inverse": "has_nozzle",
+   "transitive": false,
+   "cardinality": {
+    "per_from": "1",
+    "per_to": "0..*"
+   }
+  },
+  {
+   "name": "references",
+   "from_to": "off-page connector or boundary -> item",
+   "means": "where a connector or boundary leads",
+   "domain": [
+    "@connector"
+   ],
+   "range": [
+    "@any"
+   ],
+   "inverse": "referenced_by",
+   "transitive": false,
+   "cardinality": {
+    "per_from": "0..*",
+    "per_to": "0..*"
+   }
+  },
+  {
+   "name": "member_of",
+   "from_to": "item -> loop",
+   "means": "loop membership",
+   "domain": [
+    "instrument",
+    "valve",
+    "rotating_equipment"
+   ],
+   "range": [
+    "@loop"
+   ],
+   "inverse": "has_member",
+   "transitive": false,
+   "cardinality": {
+    "per_from": "0..*",
+    "per_to": "1..*"
+   }
+  },
+  {
+   "name": "covers",
+   "from_to": "document -> scope or item",
+   "means": "what a document is about",
+   "domain": [
+    "document"
+   ],
+   "range": [
+    "@any"
+   ],
+   "inverse": "covered_by",
+   "transitive": false,
+   "cardinality": {
+    "per_from": "0..*",
+    "per_to": "0..*"
+   }
+  },
+  {
+   "name": "mentions",
+   "from_to": "document -> item",
+   "means": "a tag or glossary term found in a document's text",
+   "domain": [
+    "document"
+   ],
+   "range": [
+    "@any"
+   ],
+   "inverse": "mentioned_in",
+   "transitive": false,
+   "cardinality": {
+    "per_from": "0..*",
+    "per_to": "0..*"
+   }
+  },
+  {
+   "name": "based_on",
+   "from_to": "document -> document at a revision",
+   "means": "the basis a document was written from",
+   "domain": [
+    "document"
+   ],
+   "range": [
+    "document"
+   ],
+   "inverse": "basis_of",
+   "transitive": true,
+   "cardinality": {
+    "per_from": "0..*",
+    "per_to": "0..*"
+   },
+   "note": "Transitive: a revision reopens everything based on it, directly or not."
+  }
+ ],
+ "twin_graph_2_edges_note": "How one_map.py's twin-graph-2 edge types read as context-map relations, for the same checks. twin-graph-1 uses `controls` for both measurement -> controller and controller -> final element; the first is read as signal_to.",
+ "twin_graph_2_edges": {
+  "contains": "contains",
+  "connects": "piped_to",
+  "signal_line": "signal_to",
+  "measures": "measures",
+  "controls": "controls",
+  "sets_point_of": "sets_point_of",
+  "acts_on": "acts_on",
+  "protects": "protects",
+  "references": "references",
+  "covers": "covers",
+  "mentions": "mentions",
+  "based_on": "based_on",
+  "piped_to": "piped_to",
+  "actuated_by": "actuated_by",
+  "nozzle_of": "nozzle_of",
+  "concerns": null
+ },
+ "controls_from_measurement_reads_as": "signal_to"
+}

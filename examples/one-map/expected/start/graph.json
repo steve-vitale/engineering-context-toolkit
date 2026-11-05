@@ -744,6 +744,7 @@
     "sha256": "c5083e1061f5246f0a22f0f4c275ab13a11a34cae8c65d3c11335ce691986faf",
     "path": "docs/ck-300-01-rev1.txt"
    },
+   "class": "check_sheet",
    "document": {
     "id": "CK-300-01",
     "revision": "1",
@@ -776,6 +777,7 @@
     "sha256": "38f116f4f4857351182bd0873a1b28b0bd19f08045bafd416252a266bdab0b3b",
     "path": "docs/cw-note-01-revA.txt"
    },
+   "class": "note",
    "document": {
     "id": "CW-N-01",
     "revision": "A",
@@ -808,6 +810,7 @@
     "sha256": "87c83af007f0be31571cc6647fe99086932db927b3bcba587ab83464c3ca1b82",
     "path": "docs/p101-design-basis-rev3.txt"
    },
+   "class": "design_basis",
    "document": {
     "id": "DB-P101",
     "revision": "3",
@@ -840,6 +843,7 @@
     "sha256": "a16f050f4c959e0799dddec621c248566d32dc3644be05361676ca10e06280cc",
     "path": "docs/op-200-07-revB.txt"
    },
+   "class": "procedure",
    "document": {
     "id": "OP-200-07",
     "revision": "B",
@@ -871,6 +875,7 @@
     "revision": "D",
     "path": "sheets/P1-200-01.json"
    },
+   "class": "pid",
    "document": {
     "id": "PID-P1-200-01",
     "revision": "D",
@@ -896,6 +901,7 @@
     "revision": "B",
     "path": "sheets/P1-200-02.json"
    },
+   "class": "pid",
    "document": {
     "id": "PID-P1-200-02",
     "revision": "B",
@@ -921,6 +927,7 @@
     "revision": "A",
     "path": "sheets/P2-300-01.json"
    },
+   "class": "pid",
    "document": {
     "id": "PID-P2-300-01",
     "revision": "A",
@@ -946,6 +953,7 @@
     "revision": "C",
     "path": "sheets/UTIL-CW-01.json"
    },
+   "class": "pid",
    "document": {
     "id": "PID-UTIL-CW-01",
     "revision": "C",
@@ -1108,7 +1116,9 @@
      "path": "sheets/P1-200-02.json",
      "zone": "C2"
     }
-   ]
+   ],
+   "class": "heat_exchanger",
+   "class_how": "equipment prefix E (site convention)"
   },
   {
    "id": "S1/P1/200/FIC-2203",
@@ -1140,7 +1150,9 @@
      "path": "sheets/P1-200-01.json",
      "zone": "C1"
     }
-   ]
+   ],
+   "class": "controller",
+   "class_how": "tag letters FIC (classes.json letter rule)"
   },
   {
    "id": "S1/P1/200/FT-2203",
@@ -1172,7 +1184,9 @@
      "path": "sheets/P1-200-01.json",
      "zone": "C2"
     }
-   ]
+   ],
+   "class": "transmitter",
+   "class_how": "tag letters FT (classes.json letter rule)"
   },
   {
    "id": "S1/P1/200/FV-2203",
@@ -1204,7 +1218,9 @@
      "path": "sheets/P1-200-01.json",
      "zone": "C2"
     }
-   ]
+   ],
+   "class": "control_valve",
+   "class_how": "tag letters FV (classes.json letter rule)"
   },
   {
    "id": "S1/P1/200/LIC-2204",
@@ -1227,7 +1243,9 @@
    "listed_in": [
     "INSTRUMENT-INDEX"
    ],
-   "appearances": []
+   "appearances": [],
+   "class": "controller",
+   "class_how": "tag letters LIC (classes.json letter rule)"
   },
   {
    "id": "S1/P1/200/LT-2204",
@@ -1250,7 +1268,9 @@
    "listed_in": [
     "INSTRUMENT-INDEX"
    ],
-   "appearances": []
+   "appearances": [],
+   "class": "transmitter",
+   "class_how": "tag letters LT (classes.json letter rule)"
   },
   {
    "id": "S1/P1/200/LV-2204",
@@ -1273,7 +1293,9 @@
    "listed_in": [
     "CMMS-EQUIPMENT"
    ],
-   "appearances": []
+   "appearances": [],
+   "class": "control_valve",
+   "class_how": "tag letters LV (classes.json letter rule)"
   },
   {
    "id": "S1/P1/200/P-101",
@@ -1321,7 +1343,9 @@
      "path": "sheets/P1-200-01.json",
      "zone": "B2"
     }
-   ]
+   ],
+   "class": "pump",
+   "class_how": "equipment prefix P (site convention)"
   },
   {
    "id": "S1/P1/200/P-102",
@@ -1351,7 +1375,9 @@
      "path": "sheets/P1-200-02.json",
      "zone": "E2"
     }
-   ]
+   ],
+   "class": "pump",
+   "class_how": "equipment prefix P (site convention)"
   },
   {
    "id": "S1/P1/200/P-103",
@@ -1374,7 +1400,9 @@
    "listed_in": [
     "CMMS-EQUIPMENT"
    ],
-   "appearances": []
+   "appearances": [],
+   "class": "pump",
+   "class_how": "equipment prefix P (site convention)"
   },
   {
    "id": "S1/P1/200/PIC-2210",
@@ -1406,7 +1434,9 @@
      "path": "sheets/P1-200-01.json",
      "zone": "E2"
     }
-   ]
+   ],
+   "class": "controller",
+   "class_how": "tag letters PIC (classes.json letter rule)"
   },
   {
    "id": "S1/P1/200/PSV-204",
@@ -1439,7 +1469,9 @@
      "zone": "D2"
     }
    ],
-   "safety": "relief device"
+   "safety": "relief device",
+   "class": "relief_device",
+   "class_how": "tag letters PSV (classes.json letter rule)"
   },
   {
    "id": "S1/P1/200/PT-2210",
@@ -1471,7 +1503,9 @@
      "path": "sheets/P1-200-01.json",
      "zone": "E3"
     }
-   ]
+   ],
+   "class": "transmitter",
+   "class_how": "tag letters PT (classes.json letter rule)"
   },
   {
    "id": "S1/P1/200/PV-2210",
@@ -1501,7 +1535,9 @@
      "path": "sheets/P1-200-01.json",
      "zone": "E3"
     }
-   ]
+   ],
+   "class": "control_valve",
+   "class_how": "tag letters PV (classes.json letter rule)"
   },
   {
    "id": "S1/P1/200/TE-2207A",
@@ -1533,7 +1569,9 @@
      "path": "sheets/P1-200-01.json",
      "zone": "D4"
     }
-   ]
+   ],
+   "class": "primary_element",
+   "class_how": "tag letters TE (classes.json letter rule)"
   },
   {
    "id": "S1/P1/200/TE-2207B",
@@ -1565,7 +1603,9 @@
      "path": "sheets/P1-200-01.json",
      "zone": "D4"
     }
-   ]
+   ],
+   "class": "primary_element",
+   "class_how": "tag letters TE (classes.json letter rule)"
   },
   {
    "id": "S1/P1/200/TIC-2205",
@@ -1597,7 +1637,9 @@
      "path": "sheets/P1-200-02.json",
      "zone": "D1"
     }
-   ]
+   ],
+   "class": "controller",
+   "class_how": "tag letters TIC (classes.json letter rule)"
   },
   {
    "id": "S1/P1/200/TT-2205",
@@ -1629,7 +1671,9 @@
      "path": "sheets/P1-200-02.json",
      "zone": "D1"
     }
-   ]
+   ],
+   "class": "transmitter",
+   "class_how": "tag letters TT (classes.json letter rule)"
   },
   {
    "id": "S1/P1/200/TV-2205",
@@ -1661,7 +1705,9 @@
      "path": "sheets/P1-200-02.json",
      "zone": "B1"
     }
-   ]
+   ],
+   "class": "control_valve",
+   "class_how": "tag letters TV (classes.json letter rule)"
   },
   {
    "id": "S1/P1/200/V-204",
@@ -1707,7 +1753,9 @@
      "path": "sheets/P1-200-01.json",
      "zone": "D3"
     }
-   ]
+   ],
+   "class": "vessel",
+   "class_how": "equipment prefix V (site convention)"
   },
   {
    "id": "S1/P1/BND-CW",
@@ -1810,7 +1858,9 @@
      "path": "sheets/P2-300-01.json",
      "zone": "D2"
     }
-   ]
+   ],
+   "class": "controller",
+   "class_how": "tag letters FIC (classes.json letter rule)"
   },
   {
    "id": "S1/P2/300/FT-3101",
@@ -1840,7 +1890,9 @@
      "path": "sheets/P2-300-01.json",
      "zone": "D3"
     }
-   ]
+   ],
+   "class": "transmitter",
+   "class_how": "tag letters FT (classes.json letter rule)"
   },
   {
    "id": "S1/P2/300/FV-3101",
@@ -1870,7 +1922,9 @@
      "path": "sheets/P2-300-01.json",
      "zone": "D3"
     }
-   ]
+   ],
+   "class": "control_valve",
+   "class_how": "tag letters FV (classes.json letter rule)"
   },
   {
    "id": "S1/P2/300/P-101",
@@ -1900,7 +1954,9 @@
      "path": "sheets/P2-300-01.json",
      "zone": "B3"
     }
-   ]
+   ],
+   "class": "pump",
+   "class_how": "equipment prefix P (site convention)"
   },
   {
    "id": "S1/P2/300/V-301",
@@ -1930,7 +1986,9 @@
      "path": "sheets/P2-300-01.json",
      "zone": "C2"
     }
-   ]
+   ],
+   "class": "vessel",
+   "class_how": "equipment prefix V (site convention)"
   },
   {
    "id": "S1/P2/BND-CW",
@@ -4961,6 +5019,80 @@
    "item": "S1/P1/200/LIC-2204"
   }
  ],
+ "coverage": {
+  "sources": [
+   {
+    "id": "PID-P1-200-01",
+    "register": "pid",
+    "scopes": [
+     "S1/P1/200"
+    ]
+   },
+   {
+    "id": "PID-P1-200-02",
+    "register": "pid",
+    "scopes": [
+     "S1/P1/200"
+    ]
+   },
+   {
+    "id": "PID-P2-300-01",
+    "register": "pid",
+    "scopes": [
+     "S1/P2/300"
+    ]
+   },
+   {
+    "id": "PID-UTIL-CW-01",
+    "register": "pid",
+    "scopes": [
+     "S1/UTIL"
+    ]
+   },
+   {
+    "id": "CMMS-EQUIPMENT",
+    "register": "maintenance_export",
+    "scopes": [
+     "S1/P1",
+     "S1/UTIL"
+    ]
+   },
+   {
+    "id": "INSTRUMENT-INDEX",
+    "register": "instrument_index",
+    "scopes": [
+     "S1/P1"
+    ]
+   },
+   {
+    "id": "EQUIPMENT-DATASHEETS",
+    "register": "datasheet",
+    "scopes": [
+     "S1/P1"
+    ]
+   },
+   {
+    "id": "DCS-LOOPS-200",
+    "register": "loop_list",
+    "scopes": [
+     "S1/P1/200"
+    ]
+   },
+   {
+    "id": "documents.json",
+    "register": "documents",
+    "scopes": [
+     "S1"
+    ]
+   }
+  ],
+  "relations_checked": {
+   "links": 100,
+   "checked": 96,
+   "unchecked_no_class": 4,
+   "do_not_fit": 0
+  }
+ },
  "counts": {
   "nodes": 63,
   "edges": 114,

@@ -1,7 +1,7 @@
 {
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "https://github.com/steve-vitale/engineering-context-toolkit/schemas/context-map/context-map-1.schema.json",
- "title": "context-map-1 (DRAFT)",
+ "title": "context-map-1 (DRAFT, 1.1)",
  "description": "One plant context map: PLANT, RECORDS, DOCUMENTS and DECISIONS layers plus sources and a coverage report. Draft for owner review; see docs/CONTEXT_MAP_FORMAT.md. Only identity is required: everything a plant has not supplied stays empty and the file stays valid.",
  "type": "object",
  "required": ["format", "map", "plant"],
@@ -17,6 +17,7 @@
   "documents": {"type": "array", "items": {"$ref": "#/$defs/Document"}},
   "decisions": {"$ref": "#/$defs/DecisionsLayer"},
   "coverage": {"$ref": "#/$defs/Coverage"},
+  "expectations": {"$ref": "#/$defs/Expectations"},
   "extensions": {"type": "object", "description": "Site-specific additions. Namespaced keys (x-<org>-...). Never read by the core checks."}
  },
  "$defs": {
@@ -87,8 +88,10 @@
     "authority_reasons": {"type": "object", "additionalProperties": {"type": "string"}, "description": "Why the site overrode a default, per fact kind."},
     "fact_kinds": {"type": "object", "additionalProperties": {"type": "string"}, "description": "Field or property name to fact kind, when the default guess is wrong."},
     "routing": {"type": "object", "additionalProperties": {"type": "string"}},
-    "letter_overrides": {"type": "object", "additionalProperties": {"type": "string"}, "description": "Plant-coded tag letters to the map's item kind."},
-    "spot_check_every": {"type": "integer", "minimum": 1}
+    "letter_overrides": {"type": "object", "additionalProperties": {"type": "string"}, "description": "Plant-coded tag letters to the map's item kind, or to a class id from classes.json (since 1.1)."},
+    "spot_check_every": {"type": "integer", "minimum": 1},
+    "authority_certification": {"type": "object", "additionalProperties": {"$ref": "#/$defs/Certification"}, "description": "Since 1.1. Per fact kind: who certified the site's authority override. A draft override does not act (the default stays) and is a review row. No entry keeps the 1.0 behaviour (the override acts)."},
+    "as_of": {"$ref": "#/$defs/Date", "description": "Since 1.1. The date expectation rules compare dates against (an in-date calibration). Without it, date checks are not evaluated."}
    }
   },
   "Source": {
@@ -138,6 +141,8 @@
     "tag": {"$ref": "#/$defs/Segment"},
     "scope": {"$ref": "#/$defs/QualifiedId"},
     "kind": {"enum": ["equipment", "instrument", "controller", "final_element", "manual_valve", "relief_device", "line", "offpage_connector", "boundary", "junction", "other"]},
+    "class": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$", "description": "Since 1.1. Class id from classes.json. Optional; set only where a record says so or the tag letters or a datasheet value give it deterministically."},
+    "class_how": {"type": "string", "description": "Since 1.1. Where the class came from (a record column, tag letters, a datasheet value)."},
     "name": {"$ref": "#/$defs/Value"},
     "parent": {"$ref": "#/$defs/QualifiedId"},
     "aliases": {"type": "array", "items": {"$ref": "#/$defs/Alias"}},
@@ -213,7 +218,7 @@
   "RecordsLayer": {
    "type": "object",
    "description": "One array per register id. A register that is absent was not supplied; an empty array was supplied with no rows. Both are valid.",
-   "propertyNames": {"enum": ["tag_register", "tag_alias", "drawing_register", "maintenance_export", "datasheet", "line_list", "relief_device_register", "instrument_index", "loop_list", "io_list", "alarm_list", "interlock_list", "work_order", "pm_plan", "calibration_record", "mro_item", "spares_bom", "purchase_order", "approved_vendor", "operating_limit", "ccp", "isolation_point", "permit", "capa", "criticality_ranking", "inspection_record", "document_register", "ruling"]},
+   "propertyNames": {"enum": ["tag_register", "tag_alias", "drawing_register", "maintenance_export", "datasheet", "line_list", "relief_device_register", "instrument_index", "loop_list", "io_list", "alarm_list", "interlock_list", "work_order", "pm_plan", "calibration_record", "mro_item", "spares_bom", "purchase_order", "approved_vendor", "operating_limit", "ccp", "isolation_point", "permit", "capa", "criticality_ranking", "inspection_record", "document_register", "glossary", "ruling"]},
    "additionalProperties": {"type": "array", "items": {"$ref": "#/$defs/RecordRow"}}
   },
   "RecordRow": {
@@ -256,7 +261,8 @@
     "target": {"$ref": "#/$defs/QualifiedId"},
     "locator": {"$ref": "#/$defs/Locator"},
     "matched_text": {"type": "string"},
-    "match": {"enum": ["exact", "alias", "qualified_id"]},
+    "match": {"enum": ["exact", "alias", "qualified_id", "glossary"]},
+    "term": {"type": "string", "description": "Since 1.1. The glossary term that matched (match glossary)."},
     "confidence": {"type": ["number", "null"]}
    }
   },
@@ -298,6 +304,42 @@
     "ruling": {"type": "string", "description": "Id of the ruling that resolved it."}
    }
   },
+  "Certification": {
+   "type": "object", "required": ["status"], "additionalProperties": false,
+   "description": "Since 1.1. Who stands behind a class, glossary term, expectation rule or authority override. Only certified ones act on their own; a draft produces review rows.",
+   "properties": {"status": {"enum": ["draft", "certified"]}, "by": {"type": "string"}, "on": {"$ref": "#/$defs/Date"}, "note": {"type": "string"}}
+  },
+  "Expectations": {
+   "type": "object", "additionalProperties": false,
+   "description": "Since 1.1. Completeness rules evaluated on this map. The rules live in their own file (context-map-expectations-1); results are generated, never hand-edited.",
+   "properties": {
+    "rules_source": {"type": "string"},
+    "rules_version": {"type": "string"},
+    "as_of": {"$ref": "#/$defs/Date"},
+    "results": {"type": "array", "items": {"$ref": "#/$defs/ExpectationResult"}}
+   }
+  },
+  "ExpectationResult": {
+   "type": "object", "required": ["rule", "subject", "status"], "additionalProperties": false,
+   "properties": {
+    "rule": {"type": "string"},
+    "subject": {"type": "string"},
+    "scope": {"$ref": "#/$defs/QualifiedId"},
+    "status": {"enum": ["complete", "missing", "not_evaluable", "draft_rule", "not_rolled_out"]},
+    "missing": {"type": "array", "items": {"type": "string"}},
+    "not_evaluable": {"type": "array", "items": {"type": "string"}},
+    "owner": {"type": "string"}
+   }
+  },
+  "RuleCoverage": {
+   "type": "object", "required": ["rule"], "additionalProperties": false,
+   "properties": {
+    "rule": {"type": "string"},
+    "certification": {"enum": ["draft", "certified"]},
+    "subjects": {"type": "integer"}, "complete": {"type": "integer"}, "missing": {"type": "integer"},
+    "not_evaluable": {"type": "integer"}, "not_rolled_out": {"type": "integer"}, "rows_raised": {"type": "integer"}
+   }
+  },
   "Ruling": {
    "type": "object", "required": ["id", "concerns", "ruling", "reason", "by", "on"], "additionalProperties": false,
    "properties": {
@@ -322,7 +364,9 @@
      "plant": {"$ref": "#/$defs/LayerCoverage"}, "records": {"$ref": "#/$defs/LayerCoverage"},
      "documents": {"$ref": "#/$defs/LayerCoverage"}, "decisions": {"$ref": "#/$defs/LayerCoverage"}}},
     "by_unit": {"type": "array", "items": {"$ref": "#/$defs/UnitCoverage"}},
-    "registers": {"type": "array", "items": {"$ref": "#/$defs/RegisterCoverage"}}
+    "registers": {"type": "array", "items": {"$ref": "#/$defs/RegisterCoverage"}},
+    "by_rule": {"type": "array", "items": {"$ref": "#/$defs/RuleCoverage"}, "description": "Since 1.1. Per expectation rule counts."},
+    "relations_checked": {"$ref": "#/$defs/LayerCoverage", "description": "Since 1.1. Links checked against relations.json domain and range, links with an end of no class, and links that do not fit."}
    }
   },
   "LayerCoverage": {

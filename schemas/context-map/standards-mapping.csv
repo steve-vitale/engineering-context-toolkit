@@ -82,4 +82,5 @@ documents,drawing_register,(register),DEXPI,2.0.1,Diagram package,concept,broade
 documents,(documents),based_on,none,,,,none,ours,n/a,,
 documents,(documents),mentions,none,,,,none,ours,n/a,,
 decisions,(conflicts),(all),none,,,,none,ours,n/a,No standard covers source disagreements; our own format.,
+records,glossary,(register),none,,,,none,ours,n/a,"Plant terms and nicknames; maps to classes.json class ids and to items. Certification (draft or certified, by, on) is ours.",
 decisions,ruling,(all),none,,,,none,ours,n/a,"Routing, approval and history belong to an external governed service.",

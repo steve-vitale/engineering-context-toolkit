@@ -1,0 +1,1471 @@
+{
+ "format": "context-map-classes-1",
+ "format_version": "1.1.0-draft",
+ "note": "The small class tree of context-map-1 (since 1.1). Definitions are this project's own words. DEXPI class names and their class-page URLs were opened on 2026-11-04 (DEXPI 2.0.1); DEXPI publishes HTML class pages, not an RDF namespace, so the URLs are documentation links used as IRIs. CFIHOS tag class codes are not looked up (to_confirm). A class asserts nothing on its own: the inference rules below say when a tag or a datasheet value deterministically gives a class; anything else stays unset.",
+ "attribution": "DEXPI Specification 2.0.1, DEXPI Initiative, CC BY 4.0; class names and page URLs only.",
+ "certification_rule": "Only a certified class is assigned by inference or used to check relations. The shipped classes are certified as format vocabulary by its maintainers; that certifies the word, never that a given item belongs to it (an inferred class stays unverified). A site's own added classes start as draft.",
+ "kind_roots": {
+  "equipment": [
+   "equipment",
+   "valve"
+  ],
+  "final_element": [
+   "valve"
+  ],
+  "manual_valve": [
+   "valve"
+  ],
+  "relief_device": [
+   "valve"
+  ],
+  "instrument": [
+   "instrument"
+  ],
+  "controller": [
+   "instrument"
+  ],
+  "line": [
+   "line"
+  ]
+ },
+ "letter_rules_note": "ISA-5.1 succeeding letters by a short rule of our own (the standard's letter tables are not reproduced). Letters are the tag's leading letters (FIT-2203 -> FIT). The first matching rule wins; a class outside the roots allowed for the item's kind is not assigned. Plant-coded letters belong in the site's letter overrides.",
+ "letter_rules": [
+  {
+   "pattern": "^[A-Z]S[VE]$|^[A-Z]RV$",
+   "class": "relief_device",
+   "note": "PSV, TSV, PRV, PSE (rupture disc)"
+  },
+  {
+   "pattern": "^FDV$",
+   "class": "divert_valve",
+   "plant_coded": true,
+   "note": "flow diversion valve; plant-coded but near universal on dairy pasteurizers"
+  },
+  {
+   "pattern": "^[A-Z]?XV$",
+   "class": "on_off_valve",
+   "note": "XV, FXV"
+  },
+  {
+   "pattern": "^HV$",
+   "class": "manual_valve"
+  },
+  {
+   "pattern": "^[A-Z]C?V$",
+   "class": "control_valve",
+   "note": "FV, TV, PV, LV, FCV, TCV, PCV, LCV"
+  },
+  {
+   "pattern": "^[A-Z]D?I?C$",
+   "class": "controller",
+   "note": "FC, TIC, PDIC"
+  },
+  {
+   "pattern": "^[A-Z]D?I?T$",
+   "class": "transmitter",
+   "note": "TT, PT, FIT, PDT"
+  },
+  {
+   "pattern": "^[A-Z]D?E$",
+   "class": "primary_element",
+   "note": "TE, FE"
+  },
+  {
+   "pattern": "^[A-Z]D?S[HL]{0,2}$",
+   "class": "switch",
+   "note": "PS, LSL, PSH"
+  },
+  {
+   "pattern": "^[A-Z]D?I$",
+   "class": "indicator",
+   "note": "TI, PI, PDI"
+  },
+  {
+   "pattern": "^[A-Z]D?Y$",
+   "class": "relay_compute",
+   "note": "FY, TY"
+  }
+ ],
+ "equipment_prefixes_note": "Equipment tag prefixes are site conventions, not a standard. These common ones apply only to items whose kind is equipment and whose letters no letter rule matched; a site replaces them with its own (equipment_prefixes in the site file).",
+ "equipment_prefixes": {
+  "P": "pump",
+  "HT": "hold_tube",
+  "PHE": "plate_heat_exchanger",
+  "E": "heat_exchanger",
+  "HX": "heat_exchanger",
+  "TK": "tank",
+  "T": "tank",
+  "V": "vessel"
+ },
+ "classes": [
+  {
+   "id": "equipment",
+   "parent": null,
+   "label": "Equipment",
+   "definition": "A tagged process equipment position: something that holds, moves or changes the process fluid.",
+   "kinds": [
+    "equipment"
+   ],
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "ProcessEquipment"
+    ],
+    "match": "broader",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/ProcessEquipment.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "design_pressure",
+    "design_temperature"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "rotating_equipment",
+   "parent": "equipment",
+   "label": "Rotating equipment",
+   "definition": "Equipment with a driven moving element (pumps, agitators, compressors).",
+   "dexpi": null,
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "speed",
+    "driver_power"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "pump",
+   "parent": "rotating_equipment",
+   "label": "Pump",
+   "definition": "Equipment that moves liquid by adding energy to it.",
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "Pump"
+    ],
+    "match": "exact",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/Pump.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "pump_type",
+    "rated_flow",
+    "differential_head",
+    "speed",
+    "driver_power",
+    "design_pressure",
+    "design_temperature",
+    "casing_material",
+    "seal_type",
+    "hygienic_design"
+   ],
+   "refine": {
+    "attributes": [
+     "pump_type",
+     "type"
+    ],
+    "values": {
+     "centrifugal": "centrifugal_pump",
+     "positive displacement": "positive_displacement_pump",
+     "rotary lobe": "positive_displacement_pump",
+     "lobe": "positive_displacement_pump",
+     "gear": "positive_displacement_pump",
+     "piston": "positive_displacement_pump",
+     "diaphragm": "positive_displacement_pump",
+     "screw": "positive_displacement_pump",
+     "progressive cavity": "positive_displacement_pump"
+    }
+   },
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "centrifugal_pump",
+   "parent": "pump",
+   "label": "Centrifugal pump",
+   "definition": "A pump that moves liquid with a rotating impeller.",
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "CentrifugalPump"
+    ],
+    "match": "exact",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/CentrifugalPump.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "pump_type",
+    "rated_flow",
+    "differential_head",
+    "speed",
+    "driver_power",
+    "design_pressure",
+    "design_temperature",
+    "casing_material",
+    "seal_type",
+    "hygienic_design"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "positive_displacement_pump",
+   "parent": "pump",
+   "label": "Positive displacement pump",
+   "definition": "A pump that moves a fixed volume per cycle (rotary lobe, gear, piston, diaphragm, screw).",
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "RotaryPump",
+     "ReciprocatingPump"
+    ],
+    "match": "narrower",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/RotaryPump.html",
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/ReciprocatingPump.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "pump_type",
+    "rated_flow",
+    "differential_head",
+    "speed",
+    "driver_power",
+    "design_pressure",
+    "design_temperature",
+    "casing_material",
+    "seal_type",
+    "hygienic_design"
+   ],
+   "note": "DEXPI splits positive displacement pumps into rotary and reciprocating; each is narrower than this class.",
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "static_equipment",
+   "parent": "equipment",
+   "label": "Static equipment",
+   "definition": "Equipment without a driven moving element.",
+   "dexpi": null,
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "design_pressure",
+    "design_temperature"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "vessel_tank",
+   "parent": "static_equipment",
+   "label": "Vessel or tank",
+   "definition": "Equipment that holds process fluid.",
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "Vessel",
+     "Tank"
+    ],
+    "match": "close",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/Vessel.html",
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/Tank.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "vessel_type",
+    "capacity",
+    "design_pressure",
+    "design_temperature",
+    "shell_material",
+    "design_code"
+   ],
+   "refine": {
+    "attributes": [
+     "vessel_type",
+     "type"
+    ],
+    "values": {
+     "tank": "tank",
+     "vessel": "vessel",
+     "pressure vessel": "vessel"
+    }
+   },
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "vessel",
+   "parent": "vessel_tank",
+   "label": "Vessel",
+   "definition": "A closed holding vessel, usually designed for pressure.",
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "Vessel",
+     "PressureVessel"
+    ],
+    "match": "close",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/Vessel.html",
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/PressureVessel.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "vessel_type",
+    "capacity",
+    "design_pressure",
+    "design_temperature",
+    "shell_material",
+    "design_code"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "tank",
+   "parent": "vessel_tank",
+   "label": "Tank",
+   "definition": "A storage or balance tank, usually atmospheric.",
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "Tank"
+    ],
+    "match": "exact",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/Tank.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "vessel_type",
+    "capacity",
+    "design_pressure",
+    "design_temperature",
+    "shell_material",
+    "design_code"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "heat_exchanger",
+   "parent": "static_equipment",
+   "label": "Heat exchanger",
+   "definition": "Equipment that transfers heat between two fluids.",
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "HeatExchanger"
+    ],
+    "match": "exact",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/HeatExchanger.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "exchanger_type",
+    "duty",
+    "heat_transfer_area",
+    "design_pressure",
+    "design_temperature",
+    "hygienic_design"
+   ],
+   "refine": {
+    "attributes": [
+     "exchanger_type",
+     "type"
+    ],
+    "values": {
+     "plate": "plate_heat_exchanger",
+     "plate and frame": "plate_heat_exchanger",
+     "shell and tube": "shell_tube_heat_exchanger",
+     "shell-and-tube": "shell_tube_heat_exchanger",
+     "tubular": "shell_tube_heat_exchanger"
+    }
+   },
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "plate_heat_exchanger",
+   "parent": "heat_exchanger",
+   "label": "Plate heat exchanger",
+   "definition": "A heat exchanger built from a pack of gasketed or brazed plates.",
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "PlateHeatExchanger"
+    ],
+    "match": "exact",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/PlateHeatExchanger.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "exchanger_type",
+    "duty",
+    "heat_transfer_area",
+    "design_pressure",
+    "design_temperature",
+    "hygienic_design",
+    "plate_count",
+    "plate_material",
+    "gasket_material"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "shell_tube_heat_exchanger",
+   "parent": "heat_exchanger",
+   "label": "Shell and tube heat exchanger",
+   "definition": "A heat exchanger with a tube bundle inside a shell.",
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "TubularHeatExchanger"
+    ],
+    "match": "close",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/ProcessEquipment/TubularHeatExchanger.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "exchanger_type",
+    "duty",
+    "heat_transfer_area",
+    "design_pressure",
+    "design_temperature",
+    "hygienic_design"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "hold_tube",
+   "parent": "static_equipment",
+   "label": "Hold tube",
+   "definition": "A length of pipe sized so product stays at temperature for a minimum time (pasteurizers).",
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "Pipe"
+    ],
+    "match": "broader",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/Piping/Pipe.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "length",
+    "nominal_size",
+    "slope",
+    "hold_time"
+   ],
+   "note": "DEXPI has no hold tube class; a hold tube is drawn as pipe.",
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "valve",
+   "parent": null,
+   "label": "Valve",
+   "definition": "A tagged valve position: something that stops, starts, diverts or throttles flow.",
+   "kinds": [
+    "final_element",
+    "manual_valve",
+    "relief_device"
+   ],
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "OperatedValve",
+     "SafetyValveOrFitting"
+    ],
+    "match": "broader",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/Piping/OperatedValve.html",
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/Piping/SafetyValveOrFitting.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "valve_type",
+    "body_size",
+    "body_material"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "control_valve",
+   "parent": "valve",
+   "label": "Control valve",
+   "definition": "A valve a controller positions to throttle flow.",
+   "kinds": [
+    "final_element"
+   ],
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "OperatedValve"
+    ],
+    "match": "broader",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/Piping/OperatedValve.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "valve_type",
+    "body_size",
+    "cv",
+    "actuator",
+    "fail_position",
+    "body_material"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "on_off_valve",
+   "parent": "valve",
+   "label": "On/off valve",
+   "definition": "An actuated valve that is either open or closed.",
+   "kinds": [
+    "final_element"
+   ],
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "OperatedValve"
+    ],
+    "match": "broader",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/Piping/OperatedValve.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "valve_type",
+    "body_size",
+    "actuator",
+    "fail_position"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "divert_valve",
+   "parent": "valve",
+   "label": "Divert valve",
+   "definition": "An actuated valve that sends flow one way or another (a pasteurizer flow diversion valve).",
+   "kinds": [
+    "final_element"
+   ],
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "OperatedValve"
+    ],
+    "match": "broader",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/Piping/OperatedValve.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "valve_type",
+    "body_size",
+    "actuator",
+    "fail_position"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "relief_device",
+   "parent": "valve",
+   "label": "Relief device",
+   "definition": "A device that opens to protect equipment from overpressure (safety or relief valve, rupture disc).",
+   "kinds": [
+    "relief_device"
+   ],
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "SafetyValveOrFitting",
+     "RuptureDisc"
+    ],
+    "match": "close",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/Piping/SafetyValveOrFitting.html",
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/Piping/RuptureDisc.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "set_pressure",
+    "required_capacity",
+    "rated_capacity",
+    "inlet_size",
+    "outlet_size"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "manual_valve",
+   "parent": "valve",
+   "label": "Manual valve",
+   "definition": "A hand-operated valve.",
+   "kinds": [
+    "manual_valve"
+   ],
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "GlobeValve",
+     "BallValve",
+     "ButterflyValve",
+     "GateValve",
+     "PlugValve"
+    ],
+    "match": "narrower",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/Piping/GlobeValve.html",
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/Piping/BallValve.html",
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/Piping/ButterflyValve.html",
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/Piping/GateValve.html",
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/Piping/PlugValve.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "valve_type",
+    "body_size"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "instrument",
+   "parent": null,
+   "label": "Instrument",
+   "definition": "A tagged instrument function; its class follows the ISA-5.1 succeeding letters.",
+   "kinds": [
+    "instrument",
+    "controller"
+   ],
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "ProcessInstrumentationFunction"
+    ],
+    "match": "close",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/Instrumentation/ProcessInstrumentationFunction.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "measured_variable",
+    "range_low",
+    "range_high",
+    "manufacturer",
+    "model"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "transmitter",
+   "parent": "instrument",
+   "label": "Transmitter",
+   "definition": "An instrument that senses a process variable and sends a signal (succeeding letter T).",
+   "kinds": [
+    "instrument"
+   ],
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "Transmitter"
+    ],
+    "match": "exact",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/Instrumentation/Transmitter.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "measured_variable",
+    "sensor_type",
+    "range_low",
+    "range_high",
+    "output_signal",
+    "accuracy"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "primary_element",
+   "parent": "instrument",
+   "label": "Primary element",
+   "definition": "A sensing element (succeeding letter E).",
+   "kinds": [
+    "instrument"
+   ],
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "MeasuringElement"
+    ],
+    "match": "close",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/Instrumentation/MeasuringElement.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "measured_variable",
+    "sensor_type"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "indicator",
+   "parent": "instrument",
+   "label": "Indicator",
+   "definition": "A local or remote indicator (succeeding letter I).",
+   "kinds": [
+    "instrument"
+   ],
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "ProcessInstrumentationFunction"
+    ],
+    "match": "broader",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/Instrumentation/ProcessInstrumentationFunction.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "measured_variable",
+    "range_low",
+    "range_high"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "switch",
+   "parent": "instrument",
+   "label": "Switch",
+   "definition": "An instrument that changes state at a set point (succeeding letter S).",
+   "kinds": [
+    "instrument"
+   ],
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "ProcessSignalGeneratingFunction"
+    ],
+    "match": "broader",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/Instrumentation/ProcessSignalGeneratingFunction.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "measured_variable",
+    "set_point"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "controller",
+   "parent": "instrument",
+   "label": "Controller",
+   "definition": "A control function (succeeding letter C, with or without I).",
+   "kinds": [
+    "controller"
+   ],
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "ProcessControlFunction"
+    ],
+    "match": "close",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/Instrumentation/ProcessControlFunction.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "relay_compute",
+   "parent": "instrument",
+   "label": "Relay or compute function",
+   "definition": "A relay, converter or compute function (succeeding letter Y).",
+   "kinds": [
+    "instrument"
+   ],
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "ProcessInstrumentationFunction"
+    ],
+    "match": "broader",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/Instrumentation/ProcessInstrumentationFunction.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "line",
+   "parent": null,
+   "label": "Line",
+   "definition": "A line-list line number: one or more pipe segments.",
+   "kinds": [
+    "line"
+   ],
+   "dexpi": {
+    "standard": "DEXPI",
+    "version": "2.0.1",
+    "classes": [
+     "PipingNetworkSegment"
+    ],
+    "match": "close",
+    "uris": [
+     "https://dexpi.org/specification/2.0.1/html/models/Plant/Piping/PipingNetworkSegment.html"
+    ],
+    "id_status": "verified"
+   },
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "nominal_size",
+    "piping_class",
+    "fluid",
+    "design_pressure",
+    "design_temperature",
+    "material"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "document",
+   "parent": null,
+   "label": "Document",
+   "definition": "A controlled document (DOCUMENTS layer).",
+   "dexpi": null,
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [
+    "revision",
+    "owner"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "pid",
+   "parent": "document",
+   "label": "P&ID",
+   "definition": "A piping and instrumentation diagram sheet.",
+   "dexpi": null,
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [],
+   "doc_types": [
+    "pid",
+    "P&ID",
+    "piping and instrumentation diagram"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "procedure",
+   "parent": "document",
+   "label": "Procedure",
+   "definition": "An operating, maintenance or lockout procedure.",
+   "dexpi": null,
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [],
+   "doc_types": [
+    "procedure",
+    "SOP",
+    "standard operating procedure",
+    "operating procedure",
+    "start-up procedure",
+    "lockout procedure"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "haccp_plan",
+   "parent": "document",
+   "label": "HACCP plan",
+   "definition": "A food safety plan with its critical control points.",
+   "dexpi": null,
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [],
+   "doc_types": [
+    "HACCP plan",
+    "food safety plan"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "verification_record",
+   "parent": "document",
+   "label": "Verification document",
+   "definition": "A procedure or record that verifies a control point works (CCP verification, record review).",
+   "dexpi": null,
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [],
+   "doc_types": [
+    "verification procedure",
+    "verification record",
+    "CCP verification"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "calibration_certificate",
+   "parent": "document",
+   "label": "Calibration certificate",
+   "definition": "A calibration certificate or report.",
+   "dexpi": null,
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [],
+   "doc_types": [
+    "calibration certificate",
+    "calibration report"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "inspection_report",
+   "parent": "document",
+   "label": "Inspection report",
+   "definition": "A vessel, piping or relief device inspection report.",
+   "dexpi": null,
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [],
+   "doc_types": [
+    "inspection report",
+    "test report"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "design_basis",
+   "parent": "document",
+   "label": "Design basis",
+   "definition": "A design basis or calculation.",
+   "dexpi": null,
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [],
+   "doc_types": [
+    "design basis",
+    "calculation"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "datasheet_document",
+   "parent": "document",
+   "label": "Datasheet",
+   "definition": "An equipment datasheet or instrument specification sheet.",
+   "dexpi": null,
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [],
+   "doc_types": [
+    "datasheet",
+    "instrument specification sheet",
+    "equipment datasheet"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "check_sheet",
+   "parent": "document",
+   "label": "Check sheet",
+   "definition": "A check sheet or inspection round sheet.",
+   "dexpi": null,
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [],
+   "doc_types": [
+    "check sheet"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "maintenance_plan",
+   "parent": "document",
+   "label": "Maintenance plan",
+   "definition": "A PM plan or maintenance strategy document.",
+   "dexpi": null,
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [],
+   "doc_types": [
+    "PM plan",
+    "maintenance plan"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  },
+  {
+   "id": "note",
+   "parent": "document",
+   "label": "Note",
+   "definition": "A technical note or memo.",
+   "dexpi": null,
+   "cfihos": {
+    "standard": "CFIHOS",
+    "version": "2.0",
+    "ref": null,
+    "id_status": "to_confirm",
+    "note": "CFIHOS tag class code not looked up; confirm against the C-DM-002 data dictionary of the contract's version."
+   },
+   "expected_properties": [],
+   "doc_types": [
+    "note",
+    "memo"
+   ],
+   "certification": {
+    "status": "certified",
+    "by": "context-map format maintainers",
+    "on": "2026-11-04"
+   }
+  }
+ ]
+}

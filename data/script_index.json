@@ -95,6 +95,10 @@
       "kind": "tool",
       "guide": "docs/ONE_MAP.md"
     },
+    "scripts/ontology.py": {
+      "kind": "support",
+      "guide": "docs/CONTEXT_MAP_FORMAT.md"
+    },
     "scripts/sheet_zone.py": {
       "kind": "support",
       "guide": "docs/ONE_MAP.md"

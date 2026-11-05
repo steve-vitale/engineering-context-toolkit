@@ -1,20 +1,22 @@
 {
  "format": "context-map-1",
- "format_version": "1.0.0-draft",
+ "format_version": "1.1.0-draft",
  "map": {
   "site": "S1",
   "name": "Lakeside dairy (fictional)",
   "created": "2026-11-04",
   "generator": "hand-authored example for docs/CONTEXT_MAP_FORMAT.md",
-  "note": "Fictional. Shows a partly filled map: five registers supplied, the rest absent and still valid."
+  "note": "Fictional. Shows a partly filled map: six registers supplied, the rest absent and still valid. Since 1.1: item classes, a glossary with a certified and a draft term, and one expectation rule result."
  },
  "settings": {
   "owners": {
    "pid": "Doc control",
    "maintenance_export": "Maintenance",
    "instrument_index": "I&C",
-   "ccp": "Quality"
-  }
+   "ccp": "Quality",
+   "glossary": "Quality"
+  },
+  "as_of": "2026-11-04"
  },
  "sources": [
   {
@@ -59,6 +61,16 @@
    "scopes": [
     "S1/P1"
    ]
+  },
+  {
+   "id": "GLOSSARY-P1",
+   "record_type": "glossary",
+   "revision": "2",
+   "path": "registers/glossary.csv",
+   "owner": "Quality",
+   "scopes": [
+    "S1/P1"
+   ]
   }
  ],
  "plant": {
@@ -88,6 +100,8 @@
     "tag": "P-101",
     "scope": "S1/P1/PAST1",
     "kind": "equipment",
+    "class": "positive_displacement_pump",
+    "class_how": "record column class (tag register)",
     "name": "Timing pump",
     "aliases": [
      {
@@ -126,6 +140,8 @@
     "tag": "HT-100",
     "scope": "S1/P1/PAST1",
     "kind": "equipment",
+    "class": "hold_tube",
+    "class_how": "equipment prefix HT (site convention)",
     "name": "Hold tube",
     "status": "unverified",
     "source": "PID-P1-PAST1-01",
@@ -136,6 +152,8 @@
     "tag": "TT-2207",
     "scope": "S1/P1/PAST1",
     "kind": "instrument",
+    "class": "transmitter",
+    "class_how": "tag letters TT (classes.json letter rule)",
     "name": "Hold tube outlet temperature",
     "isa_letters": "TT",
     "safety_relevant": true,
@@ -168,6 +186,8 @@
     "tag": "TIC-2207",
     "scope": "S1/P1/PAST1",
     "kind": "controller",
+    "class": "controller",
+    "class_how": "tag letters TIC (classes.json letter rule)",
     "status": "unverified",
     "source": "PID-P1-PAST1-01"
    },
@@ -176,6 +196,8 @@
     "tag": "FDV-2210",
     "scope": "S1/P1/PAST1",
     "kind": "final_element",
+    "class": "divert_valve",
+    "class_how": "tag letters FDV (classes.json letter rule)",
     "name": "Flow diversion valve",
     "class_refs": [
      {
@@ -340,7 +362,46 @@
    }
   ],
   "instrument_index": [],
-  "isolation_point": []
+  "isolation_point": [],
+  "glossary": [
+   {
+    "id": "hold tube",
+    "source": "GLOSSARY-P1",
+    "locator": {
+     "row": 3
+    },
+    "values": {
+     "term": "hold tube",
+     "plant": "P1",
+     "unit": "PAST1",
+     "synonyms": "holding tube",
+     "definition": "The tube that holds product at pasteurizing temperature.",
+     "maps_to_class": "hold_tube",
+     "maps_to_item": "HT-100",
+     "owner": "Quality",
+     "certification": "certified",
+     "certified_by": "Quality lead",
+     "certified_on": "2026-10-20"
+    }
+   },
+   {
+    "id": "timing pump",
+    "source": "GLOSSARY-P1",
+    "locator": {
+     "row": 5
+    },
+    "values": {
+     "term": "timing pump",
+     "plant": "P1",
+     "unit": "PAST1",
+     "maps_to_class": "positive_displacement_pump",
+     "maps_to_item": "P-101",
+     "owner": "Production",
+     "certification": "draft",
+     "note": "Not certified yet: a mention of it is a review row, never a link."
+    }
+   }
+  ]
  },
  "documents": [
   {
@@ -364,6 +425,16 @@
      },
      "matched_text": "TT-2207",
      "match": "exact"
+    },
+    {
+     "target": "S1/P1/PAST1/HT-100",
+     "locator": {
+      "page": 9,
+      "line": 12
+     },
+     "matched_text": "hold tube",
+     "match": "glossary",
+     "term": "hold tube"
     }
    ],
    "based_on": [
@@ -433,6 +504,26 @@
   ],
   "rulings": []
  },
+ "expectations": {
+  "rules_source": "site copy of schemas/context-map/templates/expectations.json, R-CCP-COMPLETE certified",
+  "rules_version": "1.1.0-draft",
+  "as_of": "2026-11-04",
+  "results": [
+   {
+    "rule": "R-CCP-COMPLETE",
+    "subject": "S1/P1/PAST1/TT-2207",
+    "scope": "S1/P1/PAST1",
+    "status": "missing",
+    "missing": [
+     "verification_document: no verification_record document covers or mentions TT-2207"
+    ],
+    "not_evaluable": [
+     "calibration_in_date: no calibration_record covers S1/P1/PAST1"
+    ],
+    "owner": "Quality"
+   }
+  ]
+ },
  "coverage": {
   "generated_on": "2026-11-04",
   "by_layer": {
@@ -442,8 +533,8 @@
     "loops": 1
    },
    "records": {
-    "registers_supplied": 5,
-    "registers_defined": 28
+    "registers_supplied": 6,
+    "registers_defined": 29
    },
    "documents": {
     "documents": 2,
@@ -475,7 +566,8 @@
      "datasheet",
      "ccp",
      "instrument_index",
-     "isolation_point"
+     "isolation_point",
+     "glossary"
     ],
     "registers_not_supplied": [
      "loop_list",
@@ -505,6 +597,24 @@
     "register": "loop_list",
     "supplied": false
    }
-  ]
+  ],
+  "by_rule": [
+   {
+    "rule": "R-CCP-COMPLETE",
+    "certification": "certified",
+    "subjects": 1,
+    "complete": 0,
+    "missing": 1,
+    "not_evaluable": 0,
+    "not_rolled_out": 0,
+    "rows_raised": 1
+   }
+  ],
+  "relations_checked": {
+   "links": 6,
+   "checked": 6,
+   "unchecked_no_class": 0,
+   "do_not_fit": 0
+  }
  }
 }

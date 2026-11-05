@@ -40,6 +40,22 @@ Items in an equipment or instrument record: 24; located on a P&ID: 20; on a P&ID
 | references | 6 |
 | signal_line | 8 |
 
+## Item classes (classes.json)
+
+| Class | Items |
+|---|---|
+| (unset: not deterministic from the records or tag letters) | 1 |
+| control_valve | 5 |
+| controller | 5 |
+| heat_exchanger | 1 |
+| primary_element | 2 |
+| pump | 4 |
+| relief_device | 1 |
+| transmitter | 5 |
+| vessel | 2 |
+
+Links checked against relations.json: 98 of 102 (4 with an end of no class, not checked); 0 do not fit what they connect (review rows, kept on the map).
+
 ## Conflicts by record owner
 
 | Owner | Type | Count |

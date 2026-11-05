@@ -1,0 +1,251 @@
+{
+ "format": "context-map-expectations-1",
+ "format_version": "1.1.0-draft",
+ "note": "Fictional pasteurizer example. Copied from schemas/context-map/templates/expectations.json, then certified and rolled out by fictional people.",
+ "as_of": "2026-11-04",
+ "rollout": {
+  "scopes": null,
+  "owners": null
+ },
+ "rules": [
+  {
+   "id": "R-CCP-COMPLETE",
+   "title": "A CCP has a critical limit, a monitoring instrument, an in-date calibration record and a verification document",
+   "applies_to": {
+    "register": "ccp",
+    "subject_field": "monitored_tag"
+   },
+   "checks": [
+    {
+     "id": "critical_limit",
+     "what": "a critical limit",
+     "check": "field",
+     "any_of": [
+      "critical_limit_low",
+      "critical_limit_high"
+     ]
+    },
+    {
+     "id": "monitoring_instrument",
+     "what": "a monitoring instrument on the map",
+     "check": "resolves",
+     "field": "monitored_tag",
+     "class": "instrument"
+    },
+    {
+     "id": "calibration_in_date",
+     "what": "an in-date calibration record for the monitoring instrument",
+     "check": "record",
+     "register": "calibration_record",
+     "where": {
+      "next_due": {
+       ">=": "$as_of"
+      }
+     },
+     "needs": [
+      "calibration_record"
+     ]
+    },
+    {
+     "id": "verification_document",
+     "what": "a verification document that covers or mentions the monitoring instrument",
+     "check": "document",
+     "class": "verification_record",
+     "link": [
+      "covers",
+      "mentions"
+     ],
+     "needs": [
+      "documents"
+     ]
+    }
+   ],
+   "owner": "Quality",
+   "severity": "high",
+   "certification": {
+    "status": "certified",
+    "by": "Quality lead",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "id": "R-RELIEF-PROTECTS",
+   "title": "A relief device protects an item and has a test or inspection date",
+   "applies_to": {
+    "class": "relief_device"
+   },
+   "checks": [
+    {
+     "id": "protects",
+     "what": "an item it protects",
+     "check": "any_of",
+     "needs": [
+      "pid",
+      "relief_device_register"
+     ],
+     "of": [
+      {
+       "check": "relation",
+       "type": "protects",
+       "direction": "out"
+      },
+      {
+       "check": "record",
+       "register": "relief_device_register",
+       "where": {
+        "protects": {
+         "not_empty": true
+        }
+       }
+      }
+     ]
+    },
+    {
+     "id": "tested",
+     "what": "a test or inspection date",
+     "check": "any_of",
+     "needs": [
+      "relief_device_register",
+      "inspection_record"
+     ],
+     "of": [
+      {
+       "check": "record",
+       "register": "relief_device_register",
+       "where": {
+        "last_tested": {
+         "not_empty": true
+        }
+       }
+      },
+      {
+       "check": "record",
+       "register": "inspection_record",
+       "where": {
+        "inspected_on": {
+         "not_empty": true
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "owner": "Process safety",
+   "severity": "high",
+   "certification": {
+    "status": "certified",
+    "by": "Process safety lead",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "id": "R-LOOP-COMPLETE",
+   "title": "A control loop has a measurement, a controller and a final element",
+   "applies_to": {
+    "loops": true
+   },
+   "checks": [
+    {
+     "id": "measurement",
+     "what": "a measurement (transmitter, primary element or switch)",
+     "check": "loop_role",
+     "role": "measurement",
+     "classes": [
+      "transmitter",
+      "primary_element",
+      "switch"
+     ]
+    },
+    {
+     "id": "controller",
+     "what": "a controller",
+     "check": "loop_role",
+     "role": "controller",
+     "classes": [
+      "controller"
+     ]
+    },
+    {
+     "id": "final_element",
+     "what": "a final element (valve, drive) or, in a cascade, a controller",
+     "check": "loop_role",
+     "role": "output",
+     "classes": [
+      "valve",
+      "rotating_equipment",
+      "controller"
+     ]
+    }
+   ],
+   "owner": "I&C",
+   "severity": "medium",
+   "certification": {
+    "status": "draft"
+   }
+  },
+  {
+   "id": "R-CRITICAL-PM",
+   "title": "Critical equipment in the equipment criticality ranking has a PM plan",
+   "applies_to": {
+    "register": "criticality_ranking",
+    "subject_field": "tag",
+    "where": {
+     "criticality": {
+      "in": [
+       "A",
+       "1",
+       "high",
+       "High",
+       "critical",
+       "Critical"
+      ]
+     }
+    }
+   },
+   "checks": [
+    {
+     "id": "pm_plan",
+     "what": "a PM plan row",
+     "check": "record",
+     "register": "pm_plan",
+     "needs": [
+      "pm_plan"
+     ]
+    }
+   ],
+   "owner": "Maintenance",
+   "severity": "medium",
+   "certification": {
+    "status": "certified",
+    "by": "Reliability lead",
+    "on": "2026-10-20"
+   },
+   "rollout": {
+    "scopes": [
+     "S1/P1/PAST1"
+    ]
+   }
+  },
+  {
+   "id": "R-PID-IN-CMMS",
+   "title": "Equipment drawn on a P&ID is in the maintenance equipment export",
+   "applies_to": {
+    "class": "equipment"
+   },
+   "implemented_by": {
+    "conflict": "asset_presence",
+    "attribute": "listed",
+    "record": "maintenance_export"
+   },
+   "checks": [],
+   "owner": "Maintenance",
+   "severity": "medium",
+   "certification": {
+    "status": "certified",
+    "by": "Reliability lead",
+    "on": "2026-10-20"
+   },
+   "note": "Already raised as an asset_presence conflict to the maintenance equipment export's owner; this rule only counts those conflicts in the coverage report so the rule list is complete. It raises no row of its own."
+  }
+ ]
+}

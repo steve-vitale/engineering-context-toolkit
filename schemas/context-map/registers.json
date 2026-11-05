@@ -1,6 +1,6 @@
 {
  "format": "context-map-registers-1",
- "format_version": "1.0.0-draft",
+ "format_version": "1.1.0-draft",
  "note": "Field catalogue for every register in context-map-1. Templates under templates/ follow it column for column. Draft for owner review; descriptions are this project's own wording.",
  "pseudo_record_types": {
   "pid": "P&ID sheets read into the PLANT layer (P&ID sheet register + sheet reads)",
@@ -164,6 +164,12 @@
      "type": "text",
      "required": false,
      "description": "Service description."
+    },
+    {
+     "name": "class",
+     "type": "class_ref",
+     "required": false,
+     "description": "The item's class id from classes.json (pump, divert_valve, transmitter). Leave empty to let the tag letters or datasheet suggest one where that is deterministic."
     },
     {
      "name": "dexpi_class",
@@ -3320,6 +3326,121 @@
      "type": "text",
      "required": false,
      "description": "Manufacturer, for vendor documents."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "glossary",
+   "name": "glossary (plant terms and nicknames)",
+   "layer": "records",
+   "department": "cross",
+   "default_owner": "Doc control",
+   "authority_for": [],
+   "key": [
+    "term",
+    "plant",
+    "unit"
+   ],
+   "template": "templates/glossary.csv",
+   "standards": [
+    "none adopted (CFIHOS and DEXPI class names are reached through maps_to_class)"
+   ],
+   "notes": "Plant words people write instead of tags (HTST, hold tube, divert valve, timing pump). Only a certified term links a document mention, and only when it maps to exactly one item in the document's covered scope; anything else is a 'possible mention, confirm' review row.",
+   "fields": [
+    {
+     "name": "term",
+     "type": "text",
+     "required": true,
+     "description": "The word or phrase as people write it. Matched case-insensitively as whole words."
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant or site scope the term is used in."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit the term is used in, when it means something only there."
+    },
+    {
+     "name": "synonyms",
+     "type": "text",
+     "required": false,
+     "description": "Other spellings and nicknames, separated by |."
+    },
+    {
+     "name": "definition",
+     "type": "text",
+     "required": false,
+     "description": "What the plant means by it."
+    },
+    {
+     "name": "maps_to_class",
+     "type": "class_ref",
+     "required": false,
+     "description": "Class id from classes.json the term names (any item of that class)."
+    },
+    {
+     "name": "maps_to_item",
+     "type": "tag_ref",
+     "required": false,
+     "description": "The one tag (in this plant and unit) or qualified id the term names."
+    },
+    {
+     "name": "owner",
+     "type": "text",
+     "required": false,
+     "description": "Who answers for the term."
+    },
+    {
+     "name": "certification",
+     "type": "enum",
+     "required": false,
+     "description": "draft (default) or certified. Only a certified term acts.",
+     "values": [
+      "draft",
+      "certified"
+     ]
+    },
+    {
+     "name": "certified_by",
+     "type": "text",
+     "required": false,
+     "description": "Who certified it."
+    },
+    {
+     "name": "certified_on",
+     "type": "date",
+     "required": false,
+     "description": "When."
     },
     {
      "name": "locator",

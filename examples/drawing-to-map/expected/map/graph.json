@@ -33,6 +33,7 @@
     "revision": "A",
     "path": "sheets/open100-0.json"
    },
+   "class": "pid",
    "document": {
     "id": "PID-NPP-140",
     "revision": "A",
@@ -40,7 +41,7 @@
     "owner": "Doc control",
     "department": "Doc control",
     "doc_type": "pid",
-    "sha256": "c5830aa20943cb311d2fd43bc8fdea1891612390e3b695b0d9bcfbad162e4901",
+    "sha256": "a23a1786e6f1dc709680d558015807645abf9e43f9ee52196681ba95c9a8b424",
     "path": "sheets/open100-0.json"
    }
   },
@@ -437,7 +438,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "FT 1401"
     }
-   ]
+   ],
+   "class": "transmitter",
+   "class_how": "tag letters FT (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/MS-4010",
@@ -487,7 +490,9 @@
      "reader_confidence": 0.98,
      "printed_tag": "MS 4010"
     }
-   ]
+   ],
+   "class": "switch",
+   "class_how": "tag letters MS (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/MSBV-1407",
@@ -739,7 +744,9 @@
      "printed_tag": "MSV 1404"
     }
    ],
-   "safety": "relief device"
+   "safety": "relief device",
+   "class": "relief_device",
+   "class_how": "tag letters MSV (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/MSV-1405",
@@ -790,7 +797,9 @@
      "printed_tag": "MSV 1405"
     }
    ],
-   "safety": "relief device"
+   "safety": "relief device",
+   "class": "relief_device",
+   "class_how": "tag letters MSV (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/PSV-1404",
@@ -841,7 +850,9 @@
      "printed_tag": "PSV 1404"
     }
    ],
-   "safety": "relief device"
+   "safety": "relief device",
+   "class": "relief_device",
+   "class_how": "tag letters PSV (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/PSV-1405",
@@ -892,7 +903,9 @@
      "printed_tag": "PSV 1405"
     }
    ],
-   "safety": "relief device"
+   "safety": "relief device",
+   "class": "relief_device",
+   "class_how": "tag letters PSV (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/PSV-1406",
@@ -943,7 +956,9 @@
      "printed_tag": "PSV 1406"
     }
    ],
-   "safety": "relief device"
+   "safety": "relief device",
+   "class": "relief_device",
+   "class_how": "tag letters PSV (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/PSV-1407",
@@ -994,7 +1009,9 @@
      "printed_tag": "PSV 1407"
     }
    ],
-   "safety": "relief device"
+   "safety": "relief device",
+   "class": "relief_device",
+   "class_how": "tag letters PSV (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/PT-14085",
@@ -1044,7 +1061,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "PT 14085"
     }
-   ]
+   ],
+   "class": "transmitter",
+   "class_how": "tag letters PT (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/PT-14086",
@@ -1094,7 +1113,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "PT 14086"
     }
-   ]
+   ],
+   "class": "transmitter",
+   "class_how": "tag letters PT (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/PT-14087",
@@ -1144,7 +1165,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "PT 14087"
     }
-   ]
+   ],
+   "class": "transmitter",
+   "class_how": "tag letters PT (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/PT-14088",
@@ -1194,7 +1217,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "PT 14088"
     }
-   ]
+   ],
+   "class": "transmitter",
+   "class_how": "tag letters PT (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/RCS-SG-100",
@@ -1294,7 +1319,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "RE 1402"
     }
-   ]
+   ],
+   "class": "primary_element",
+   "class_how": "tag letters RE (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/RE-1403",
@@ -1344,7 +1371,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "RE 1403"
     }
-   ]
+   ],
+   "class": "primary_element",
+   "class_how": "tag letters RE (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/TCV-1401",
@@ -1394,7 +1423,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "TCV 1401"
     }
-   ]
+   ],
+   "class": "control_valve",
+   "class_how": "tag letters TCV (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/TCV-1402",
@@ -1444,7 +1475,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "TCV 1402"
     }
-   ]
+   ],
+   "class": "control_valve",
+   "class_how": "tag letters TCV (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/TCV-1403",
@@ -1494,7 +1527,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "TCV 1403"
     }
-   ]
+   ],
+   "class": "control_valve",
+   "class_how": "tag letters TCV (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/TCV-1406",
@@ -1544,7 +1579,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "TCV 1406"
     }
-   ]
+   ],
+   "class": "control_valve",
+   "class_how": "tag letters TCV (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/TCV-1408",
@@ -1594,7 +1631,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "TCV 1408"
     }
-   ]
+   ],
+   "class": "control_valve",
+   "class_how": "tag letters TCV (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/TCV-1409",
@@ -1644,7 +1683,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "TCV 1409"
     }
-   ]
+   ],
+   "class": "control_valve",
+   "class_how": "tag letters TCV (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/TE-14084A",
@@ -1694,7 +1735,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "TE 14084A"
     }
-   ]
+   ],
+   "class": "primary_element",
+   "class_how": "tag letters TE (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/TE-14084B",
@@ -1744,7 +1787,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "TE 14084B"
     }
-   ]
+   ],
+   "class": "primary_element",
+   "class_how": "tag letters TE (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/TE-14089A",
@@ -1794,7 +1839,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "TE 14089A"
     }
-   ]
+   ],
+   "class": "primary_element",
+   "class_how": "tag letters TE (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/TE-14089B",
@@ -1844,7 +1891,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "TE 14089B"
     }
-   ]
+   ],
+   "class": "primary_element",
+   "class_how": "tag letters TE (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/TE-14090A",
@@ -1894,7 +1943,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "TE 14090A"
     }
-   ]
+   ],
+   "class": "primary_element",
+   "class_how": "tag letters TE (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/TE-14090B",
@@ -1944,7 +1995,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "TE 14090B"
     }
-   ]
+   ],
+   "class": "primary_element",
+   "class_how": "tag letters TE (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/TE-14091A",
@@ -1994,7 +2047,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "TE 14091A"
     }
-   ]
+   ],
+   "class": "primary_element",
+   "class_how": "tag letters TE (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/TE-14091B",
@@ -2044,7 +2099,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "TE 14091B"
     }
-   ]
+   ],
+   "class": "primary_element",
+   "class_how": "tag letters TE (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/TE-14092A",
@@ -2094,7 +2151,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "TE 14092A"
     }
-   ]
+   ],
+   "class": "primary_element",
+   "class_how": "tag letters TE (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/TE-14092B",
@@ -2144,7 +2203,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "TE 14092B"
     }
-   ]
+   ],
+   "class": "primary_element",
+   "class_how": "tag letters TE (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/TE-14093A",
@@ -2194,7 +2255,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "TE 14093A"
     }
-   ]
+   ],
+   "class": "primary_element",
+   "class_how": "tag letters TE (classes.json letter rule)"
   },
   {
    "id": "O100/NPP/MSS/TE-14093B",
@@ -2244,7 +2307,9 @@
      "reader_confidence": 0.99,
      "printed_tag": "TE 14093B"
     }
-   ]
+   ],
+   "class": "primary_element",
+   "class_how": "tag letters TE (classes.json letter rule)"
   }
  ],
  "edges": [
@@ -6272,6 +6337,23 @@
  "events": [],
  "not_exported": [],
  "loops": [],
+ "coverage": {
+  "sources": [
+   {
+    "id": "PID-NPP-140",
+    "register": "pid",
+    "scopes": [
+     "O100/NPP/MSS"
+    ]
+   }
+  ],
+  "relations_checked": {
+   "links": 79,
+   "checked": 57,
+   "unchecked_no_class": 22,
+   "do_not_fit": 0
+  }
+ },
  "counts": {
   "nodes": 51,
   "edges": 79,

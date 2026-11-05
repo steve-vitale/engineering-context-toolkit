@@ -19,6 +19,9 @@ REGISTERS = DIR / "registers.json"
 MAPPING = DIR / "standards-mapping.csv"
 EXAMPLE = DIR / "example-map.json"
 DOC = ROOT / "docs" / "CONTEXT_MAP_FORMAT.md"
+CLASSES = DIR / "classes.json"
+RELATIONS = DIR / "relations.json"
+RULES = DIR / "templates" / "expectations.json"
 
 TYPES = {"object": dict, "array": list, "string": str, "boolean": bool, "null": type(None)}
 DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
@@ -587,9 +590,89 @@ class ContextMapFormat(unittest.TestCase):
         jsonschema.Draft202012Validator.check_schema(self.schema)
         jsonschema.Draft202012Validator(self.schema).validate(self.example)
 
+    # ---------------------------------------------------------------- the ontology pieces (1.1)
+    def test_ontology_files_share_the_minor_version(self):
+        versions = {p.name: load(p)["format_version"] for p in (REGISTERS, CLASSES, RELATIONS, RULES, EXAMPLE)}
+        self.assertEqual(set(versions.values()), {"1.1.0-draft"}, versions)
+        self.assertIn("1.1", self.schema["title"])
+        self.assertIn("1.1.0-draft", DOC.read_text(encoding="utf-8"))
+
+    def test_relation_semantics_cover_exactly_the_frozen_names(self):
+        rel = load(RELATIONS)
+        self.assertEqual({r["name"] for r in rel["relations"]}, FROZEN_RELATIONS | FROZEN_DOCUMENT_RELATIONS)
+        classes = {c["id"] for c in load(CLASSES)["classes"]}
+        for r in rel["relations"]:
+            for key in ("domain", "range", "inverse", "transitive", "cardinality"):
+                self.assertIn(key, r, r["name"])
+            for c in r["domain"] + r["range"]:
+                self.assertTrue(c in classes or c in rel["pseudo_classes"], (r["name"], c))
+
+    def test_class_refs_are_dexpi_verified_and_cfihos_to_confirm(self):
+        doc = load(CLASSES)
+        ids = [c["id"] for c in doc["classes"]]
+        self.assertEqual(len(ids), len(set(ids)))
+        for c in doc["classes"]:
+            self.assertTrue(c["parent"] is None or c["parent"] in ids, c["id"])
+            self.assertEqual(c["cfihos"]["id_status"], "to_confirm", c["id"])
+            self.assertIn(c["certification"]["status"], ("draft", "certified"))
+            if c["dexpi"]:
+                self.assertEqual(len(c["dexpi"]["classes"]), len(c["dexpi"]["uris"]))
+                for name, uri in zip(c["dexpi"]["classes"], c["dexpi"]["uris"]):
+                    self.assertTrue(uri.endswith(f"/{name}.html"), uri)
+        for rule in doc["letter_rules"]:
+            self.assertIn(rule["class"], ids)
+        for cid in doc["equipment_prefixes"].values():
+            self.assertIn(cid, ids)
+
+    def test_example_map_uses_classes_glossary_and_expectations(self):
+        classes = {c["id"] for c in load(CLASSES)["classes"]}
+        for it in self.example["plant"]["items"]:
+            self.assertIn(it["class"], classes, it["id"])
+        gl = self.registers["glossary"]
+        terms = {}
+        for row in self.example["records"]["glossary"]:
+            vals = dict(row["values"])
+            self.assertEqual(row_errors(gl, vals, f"glossary {row['id']}"), [])
+            terms[vals["term"]] = vals
+        self.assertEqual({t["certification"] for t in terms.values()}, {"certified", "draft"})
+        glossary_mentions = [mt for d in self.example["documents"] for mt in d.get("mentions", [])
+                             if mt.get("match") == "glossary"]
+        self.assertTrue(glossary_mentions)
+        for mt in glossary_mentions:
+            self.assertEqual(terms[mt["term"]]["certification"], "certified", "only a certified term links")
+        rules = {r["id"] for r in load(RULES)["rules"]}
+        for res in self.example["expectations"]["results"]:
+            self.assertIn(res["rule"], rules)
+        for c in self.example["coverage"]["by_rule"]:
+            self.assertIn(c["rule"], rules)
+        site = copy.deepcopy(self.example)
+        site["settings"]["authority"] = {"rating": "maintenance_export"}
+        site["settings"]["authority_certification"] = {"rating": {"status": "draft"}}
+        self.assertEqual(validate(site, self.schema, self.schema), [])
+        site["settings"]["authority_certification"] = {"rating": {"status": "maybe"}}
+        self.assertTrue(validate(site, self.schema, self.schema))
+        bad = copy.deepcopy(self.example)
+        bad["plant"]["items"][0]["class"] = "Pump"
+        self.assertTrue(validate(bad, self.schema, self.schema), "class ids are lower-case ids from classes.json")
+
+    def test_rules_template_ships_every_rule_as_draft(self):
+        doc = load(RULES)
+        self.assertEqual(doc["format"], "context-map-expectations-1")
+        for r in doc["rules"]:
+            self.assertEqual(r["certification"]["status"], "draft", r["id"])
+            for key in ("id", "title", "applies_to", "owner", "severity", "checks"):
+                self.assertIn(key, r, r["id"])
+
+    def test_spec_documents_the_ontology_sections(self):
+        doc = DOC.read_text(encoding="utf-8")
+        for heading in ("## Classes", "## Relation semantics", "## Expectations", "## Glossary", "## Certification",
+                        "## Answerability", "## JSON-LD view"):
+            self.assertIn(heading, doc)
+
     # ---------------------------------------------------------------- public wording
     def test_public_files_name_no_private_product(self):
-        paths = [SCHEMA, REGISTERS, MAPPING, EXAMPLE, DOC, *sorted((DIR / "templates").rglob("*.csv"))]
+        paths = [SCHEMA, REGISTERS, MAPPING, EXAMPLE, DOC, CLASSES, RELATIONS, RULES,
+                 *sorted((DIR / "templates").rglob("*.csv"))]
         for p in paths:
             self.assertNotIn("changepilot", p.read_text(encoding="utf-8").lower(), p.name)
 
