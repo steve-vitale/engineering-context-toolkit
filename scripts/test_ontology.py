@@ -451,6 +451,74 @@ class OcrNeverLinks(unittest.TestCase):
         self.assertFalse(om.ocr_of(res, "page 4"))
         self.assertFalse(om.ocr_of(StubExtraction(path="x"), "page 3"), "absent fields: not OCR")
 
+    def build_mixed_pdf(self, ocr_map):
+        """Every document read as the real extract_text Extraction of a two-page PDF: page 1 has a text layer, page 2
+        was scanned and OCR'd (engine stays 'pypdf', status 'partial', `ocr` names page 2 when ocr_map is true)."""
+        real = extract_text.extract
+
+        def fake(path, **kw):
+            res = real(path, **kw)
+            texts = [t for _, t in res.segments]
+            half = (len(texts) + 1) // 2
+            return extract_text.Extraction(
+                path=res.path, sha256=res.sha256, bytes=res.bytes, format="pdf", status="partial", engine="pypdf",
+                segments=[("page 1", "\n".join(texts[:half])), ("page 2", "\n".join(texts[half:]))],
+                ocr={"page 2": 71.5} if ocr_map else {},
+                ocr_engine="tesseract 5.4.0 (eng, 300 dpi; pages rendered by pdftoppm)")
+        with tempfile.TemporaryDirectory() as t:
+            extract_text.extract = fake
+            try:
+                g, _, rows, _ = quiet(om.build, PAST / "site.json", Path(t) / "out", full=True)
+            finally:
+                extract_text.extract = real
+        return g, [r for r in rows if r["kind"] == om.OCR_CONFIRM]
+
+    def test_mixed_text_and_ocr_pdf_links_only_the_text_layer(self):
+        g, ocr_rows = self.build_mixed_pdf(ocr_map=True)
+        links = self.mentions(g)
+        self.assertTrue(links, "page 1 (text layer) still links")
+        for e in links:
+            locs = [a["value"] for a in e["attributes"] if a["name"] == "locator"] + e.get("more_locators", [])
+            self.assertTrue(all(x.startswith("page 1") for x in locs), locs)
+        self.assertTrue(ocr_rows, "page 2 mentions become OCR review rows")
+        for r in ocr_rows:
+            self.assertIn("at page 2", r["why"])
+            self.assertIn("mean word confidence 71.5", r["why"])
+        self.assertTrue(any(om.ocr_of(extract_text.Extraction(path="x", ocr={"page 2": None}, ocr_engine="t"), loc)
+                            for loc in ("page 2", "page 2, line 3, column 1")))
+        self.assertFalse(om.ocr_of(extract_text.Extraction(path="x", ocr={"page 2": None}, ocr_engine="t"),
+                                   "page 20"))
+
+    def test_site_document_text_options_reach_extract_text_and_are_checked(self):
+        seen = []
+        real = extract_text.extract
+
+        def spy(path, **kw):
+            seen.append(kw)
+            return real(path, **kw)
+        with tempfile.TemporaryDirectory() as t:
+            site = json.loads((PAST / "site.json").read_text(encoding="utf-8"))
+            shutil.copytree(PAST, Path(t) / "in")
+            for opts, ok in (({"ocr": "auto", "ocr_lang": "eng+deu", "ocr_dpi": 200}, True), ({"bogus": 1}, False),
+                             ({"ocr": "maybe"}, False), (["ocr"], False)):
+                site["document_text"] = opts
+                (Path(t) / "in" / "site.json").write_text(json.dumps(site), encoding="utf-8")
+                extract_text.extract, seen[:] = spy, []
+                try:
+                    if ok:
+                        quiet(om.build, Path(t) / "in" / "site.json", Path(t) / "out", full=True)
+                        self.assertTrue(seen and all(k == opts for k in seen), seen)
+                    else:
+                        with self.assertRaises(om.InputError):
+                            quiet(om.build, Path(t) / "in" / "site.json", Path(t) / "out", full=True)
+                finally:
+                    extract_text.extract = real
+
+    def test_ocr_engine_without_per_page_map_counts_the_whole_file(self):
+        g, ocr_rows = self.build_mixed_pdf(ocr_map=False)
+        self.assertEqual(self.mentions(g), [])
+        self.assertTrue(any("whole file counts as OCR" in r["why"] for r in ocr_rows))
+
 
 class FormatFiles(unittest.TestCase):
     def test_rules_template_and_example_rules_load(self):

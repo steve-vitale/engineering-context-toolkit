@@ -142,9 +142,19 @@ to the document's owner (amber, after every other amber row, beside the P&ID val
 | Lower-case text that is no map tag | `page 12`, `unit 200` | nothing |
 
 **OCR text never links.** OCR turns tags into other tag-shaped strings (`ZSO-8170` read as `7S0-8170`, `FDV-0756`
-as `EDV-0756`, `TI-110` as `T-110`), so an exact match in OCR text proves nothing. Text counts as OCR when the
-`extract_text` result says so for the file (engine starting `tesseract`, or status `ok (ocr)`) or for the page (an
-`ocr_pages` list); a result without those fields is read as not OCR.
+as `EDV-0756`, `TI-110` as `T-110`), so an exact match in OCR text proves nothing. `extract_text` records OCR per
+piece: `ocr` maps each OCR'd piece's locator (`page 2`) to its mean word confidence, and `ocr_engine` is set when
+any piece came from OCR. A PDF with some scanned pages keeps engine `pypdf` and status `partial` or `ok (ocr)`, so
+the locator decides: a piece named in `ocr` is OCR (the review row gives the confidence), the other pages are a
+text layer and link as usual. When `ocr_engine` is set but no piece is named, the whole file counts as OCR. Older
+signals still apply when `ocr_engine` is absent (engine starting `tesseract`, status `ok (ocr)`, an `ocr_pages`
+list); a result with none of these is read as not OCR.
+
+**Reading options.** The site file may switch on `extract_text` add-ons for every document with a
+`document_text` object: `ocr` (`auto` or `off`), `ocr_lang`, `ocr_dpi`, `convert_legacy`, `pdf_layout`,
+`excel_display` ([DOCUMENT_TEXT.md](DOCUMENT_TEXT.md) describes each). All are off by default; an unknown option or
+a bad value stops the build with a message. With `"ocr": "auto"`, scanned pages are read but their mentions still
+only become `possible mention (OCR), confirm` rows.
 
 Format-insensitive means only hyphens, spaces, underscores and letter case are ignored. Digits and suffix letters
 must agree exactly, so `P101` never reaches `P-1010` or `P-101A`, and `TT2205` never reaches `TE-2205`. When one
@@ -371,7 +381,7 @@ document are listed to reopen; the register's own refresh then marks them stale.
   spaces, underscores and case: a leading zero (`P-0101`), a unit-qualified form (`200-P-101`, `P1-P-101`), a
   letter inside the number or a tag split across two pieces of a document is missed, and a former tag reused for a
   different item makes both a review row. Columns count from the first non-blank character of the piece the reader
-  returned. Scanned PDFs are not read (a document text note asks for OCR). Paths in the register and site file are
+  returned. Scanned PDFs are not read unless the site file sets `document_text.ocr` to `auto` (otherwise a document text note asks for OCR). Paths in the register and site file are
   relative to that file's folder.
 
 ## For agents
@@ -396,8 +406,9 @@ zones:  scripts/sheet_zone.py: ROW-COL, default 8x12, A at the bottom, 1 at the 
 ontology: node.class/class_how (classes.json); "link doesn't fit what it connects" rows (relations.json);
         site file records/expectations/as_of -> "expected but missing" and "draft expectation rule" rows,
         graph["expectations"] {results, by_rule}; glossary register -> mentions matched=glossary or confirm rows;
-        OCR text (extract_text engine tesseract*, status "ok (ocr)", ocr_pages) never links: "possible mention (OCR),
-        confirm"; graph["coverage"]["sources"] says which record covers which scope
+        OCR text (locator in extract_text result.ocr, or result.ocr_engine with no per-piece map; else engine
+        tesseract*, status "ok (ocr)", ocr_pages) never links: "possible mention (OCR), confirm"; site
+        document_text {ocr, ocr_lang, ocr_dpi, convert_legacy, pdf_layout, excel_display} -> extract_text options; graph["coverage"]["sources"] says which record covers which scope
 ask:    python scripts/one_map.py ask --map graph.json --question-kind KIND --item X   (read-only, with sources)
 check:  python scripts/one_map.py check graph.json   (every twin-graph-1 rule plus the one-map rules;
         graph_export.py --check still accepts only twin-graph-1)

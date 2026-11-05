@@ -83,6 +83,8 @@ DEFAULT_AUTHORITY = {"connectivity": "pid", "tags": "pid", "control_scheme": "pi
 RECORD_TYPES = ("pid", "datasheet", "maintenance_export", "instrument_index", "loop_list")
 PID_NOTE = "P&ID value note"
 DOC_TEXT_NOTE = "document text note"
+# extract_text.py add-ons a site file may switch on for its documents (`document_text`); all off by default
+DOC_TEXT_OPTIONS = ("ocr", "ocr_lang", "ocr_dpi", "convert_legacy", "pdf_layout", "excel_display")
 LOW_PRIORITY_KINDS = (PID_NOTE, DOC_TEXT_NOTE)  # amber, after every other amber row
 RECORD_NAMES = {"maintenance_export": "maintenance equipment export", "instrument_index": "instrument index",
                 "loop_list": "loop list", "datasheet": "datasheet", "pid": "P&ID"}
@@ -292,10 +294,14 @@ def load_site(path):
                                       equipment_prefixes=site.get("equipment_prefixes"))
     except onto_mod.OntologyError as exc:
         raise InputError(str(exc)) from None
+    doc_text = site.get("document_text") or {}
+    bad = sorted(set(doc_text) - set(DOC_TEXT_OPTIONS)) if isinstance(doc_text, dict) else ["(not an object)"]
+    if bad:
+        raise InputError(f"document_text: unknown option(s) {', '.join(bad)} (allowed: {', '.join(DOC_TEXT_OPTIONS)})")
     return {"path": path, "root": root, "raw": site, "site": sid, "site_name": site["site"].get("name"),
             "plants": plants, "scopes": scopes, "shared": shared, "owners": owners, "routing": routing,
             "authority": authority, "fact_kinds": fact_kinds, "sample_every": int(site.get("spot_check_every", 10)),
-            "draft_overrides": draft_overrides, "as_of": as_of, "onto": onto}
+            "draft_overrides": draft_overrides, "as_of": as_of, "onto": onto, "document_text": doc_text}
 
 
 def load_register(cfg):
@@ -1482,11 +1488,29 @@ def match_mentions(text, exact, by_norm, by_base, covers, nodes):
 
 
 def ocr_of(res, locator):
-    """Why a piece of a document's text came from OCR ('' when it did not). The extract_text result says so for the
-    whole file (engine starting 'tesseract', or status 'ok (ocr)') or per page (an `ocr_pages` list of page numbers
-    or locators); an extract_text without those fields is read as not OCR."""
+    """Why a piece of a document's text came from OCR ('' when it did not).
+
+    extract_text records OCR per piece: `result.ocr` maps each OCR'd piece's locator ("page 2", or "embedded
+    'spec.pdf' (in table 3) page 2") to its mean word confidence, and `result.ocr_engine` is set whenever any piece
+    came from OCR. A PDF with some scanned pages keeps engine 'pypdf' and status 'partial' or 'ok (ocr)', so the
+    locator decides: in `result.ocr` (or beginning with a locator in it) -> OCR; not in it -> a text layer. With `ocr_engine` set and an empty `ocr`
+    map (nothing to compare the locator against) the whole file counts as OCR. Without `ocr_engine` the older
+    signals still apply: engine starting 'tesseract', status 'ok (ocr)', or an `ocr_pages` list of page numbers or
+    locators. A result with none of these is not OCR."""
     engine = str(getattr(res, "engine", "") or "")
     status = str(getattr(res, "status", "") or "")
+    per_piece = getattr(res, "ocr", None)
+    per_piece = per_piece if isinstance(per_piece, dict) else {}
+    ocr_engine = str(getattr(res, "ocr_engine", "") or "")
+    loc = str(locator or "")
+    # the segment's locator is an OCR'd piece's locator, or (a finer piece of it) begins with one ("page 2, ...")
+    key = loc if loc in per_piece else next((k for k in sorted(per_piece, key=len, reverse=True)
+                                             if loc.startswith(f"{k},") or loc.startswith(f"{k} ")), None)
+    if key is not None:
+        conf = per_piece[key]
+        return (ocr_engine or "OCR") + (f", mean word confidence {conf}" if conf is not None else "")
+    if ocr_engine:
+        return "" if per_piece else f"{ocr_engine}; which pieces is not recorded, so the whole file counts as OCR"
     if engine.lower().startswith("tesseract") or status.lower() == "ok (ocr)":
         return engine if engine.lower().startswith("tesseract") else status
     pages = getattr(res, "ocr_pages", None) or ()
@@ -1578,7 +1602,10 @@ def documents(m, cfg, lists):
                            what=f"{did} rev {s['revision']} is based on {target} rev {b.get('revision')}; the "
                                 f"current revision is {revisions[target]}",
                            document_owner=d["owner"], parties=(m.nodes[tnode]["document"]["owner"],))
-        res = extract_text.extract(local)
+        try:
+            res = extract_text.extract(local, **cfg["document_text"])
+        except ValueError as exc:
+            raise InputError(f"document_text: {exc}") from None
         m.nodes[doc_node]["document"]["text"] = {"status": res.status, "format": res.format,
                                                   "segments": len(res.segments),
                                                   "extractor": f"{extract_text.EXTRACTOR} {extract_text.VERSION}"}
