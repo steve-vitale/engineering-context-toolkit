@@ -14,13 +14,15 @@ dependency.** DEXPI is an interchange standard used by one input route; the curr
 | Detailed description check/build and raster drawing/report paths | Pillow for the selected rendering path. | Authored model/geometry; plant meaning and approval. |
 | New image tracing, cleanup and research image workflows | NumPy, Pillow and OpenCV as used by the selected scripts. | Approved image interpretation and site-specific validation. |
 | Optional PDF/SVG source preparation | PyMuPDF for documented preparation/adaptation paths. | Source/revision and checked text/page preparation; no generic document-folder importer. |
+| Document text (procedures, PHAs, work orders) | Standard library for Word, Excel, PowerPoint, HTML and text files. PDF text needs optional pypdf, or a `pdftotext` program on PATH; without either, PDFs are reported, not read. No OCR. | Scanned-page OCR, legacy `.doc`/`.xls` conversion and review of what a found tag means ([document text](DOCUMENT_TEXT.md)). |
 | Actual MCP server/client checks | Optional MCP Python SDK environment; server code also imports Pydantic. Pure selected-file reads need no SDK. | Client approval, identity/access, tenant configuration and service operations. |
 | OPC UA replay/client and lab verification | asyncua; cryptography for selected certificate/security paths. | Endpoints, source identity, approved network route and native acceptance. |
 | Optional TE interactive-tour case study | Browser for the committed standalone HTML; Node.js 20.10+ to rebuild; Chrome or Chromium for the verifier. The MIT-licensed Anatomy presentation kit is vendored, with no separate installation. | TE-specific presentation, placeholder geometry and case checks; engineering review and operator usefulness remain separate. |
 
 Direct pins in [requirements.txt](../requirements.txt) are NumPy 2.4.6, Pillow 12.2.0,
 opencv-python-headless 5.0.0.93, asyncua 2.1.0 and cryptography 49.0.0. Optional manifests pin
-[mcp 2.3.0](../requirements-mcp.txt) and [PyMuPDF 1.27.2.3](../requirements-render.txt).
+[mcp 2.3.0](../requirements-mcp.txt), [PyMuPDF 1.27.2.3](../requirements-render.txt) and
+[pypdf 6.14.2](../requirements-documents.txt) (BSD-3-Clause; PDF text for `extract_text.py`).
 These are not a complete lock of transitive dependencies. The SDK path needs its resolved environment,
 including the Pydantic API imported here. Validate interpreter, packages, platform and approved package source
 together; the core Python minimum does not establish every optional package/interpreter combination.

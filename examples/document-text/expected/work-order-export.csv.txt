@@ -1,0 +1,10 @@
+# extract_text 1 | file: work-order-export.csv | sha256: 890172e3af5b14f0f4e563ee51e29911744c4ef27f9e5b5b10429c4087de9f38 | format: csv | status: ok | engine: stdlib
+
+## line 1
+order,tag,description
+
+## line 2
+WO-5512,P-101,Replace seal
+
+## line 3
+WO-5513,FDV-2210,Function test

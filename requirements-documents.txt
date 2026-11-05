@@ -1,0 +1,4 @@
+# Optional PDF text for scripts/extract_text.py (docs/DOCUMENT_TEXT.md). Office, HTML and text files need only the
+# standard library; without this, PDFs use a pdftotext program on PATH or are reported as needing pypdf.
+# Tested 2026-11-04 with this version. BSD-3-Clause.
+pypdf==6.14.2

@@ -175,3 +175,6 @@ data/te_pid_layout.json text eol=lf
 
 # One-map example inputs are fingerprinted and its expected outputs compared byte for byte.
 /examples/one-map/** text eol=lf
+
+# Document-text example: generated samples are hashed into expected outputs compared byte for byte.
+/examples/document-text/** text eol=lf

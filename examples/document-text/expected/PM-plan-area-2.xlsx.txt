@@ -1,0 +1,31 @@
+# extract_text 1 | file: PM-plan-area-2.xlsx | sha256: e21c696539345be8d1cae3189dd58e0bf999798ea276ae7acb9a2636f5cfecd8 | format: xlsx | status: ok | engine: stdlib
+
+## sheet 'PM plan' cell A1
+Equipment
+
+## sheet 'PM plan' cell B1
+Task
+
+## sheet 'PM plan' cell C1
+Interval
+
+## sheet 'PM plan' cell A5
+P-101
+
+## sheet 'PM plan' cell B5
+Replace mechanical seal
+
+## sheet 'PM plan' cell D5
+12
+
+## sheet 'PM plan' cell B7
+TT-2207
+
+## sheet 'PM plan' cell C7
+Calibrate transmitter
+
+## sheet 'PM plan' cell B9
+FDV-2210
+
+## sheet 'PM plan' cell C9
+Function test

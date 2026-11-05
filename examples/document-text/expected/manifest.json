@@ -1,0 +1,92 @@
+{
+  "extractor": "extract_text",
+  "version": "1",
+  "files": [
+    {
+      "file": "samples/CAPA-0042.html",
+      "sha256": "f2a613b0af5a89db25d0c976b08610ef9f8c8f5fdcf03451d43ee1c7445ab42e",
+      "bytes": 284,
+      "format": "html",
+      "status": "ok",
+      "extractor": "extract_text 1",
+      "engine": "stdlib",
+      "engine_version": "",
+      "segments": 5,
+      "characters": 145,
+      "warnings": [],
+      "out": "CAPA-0042.html.txt"
+    },
+    {
+      "file": "samples/HACCP-plan-2019.doc",
+      "sha256": "0549aa1cd7a699eb4cfafd3c34f322efcfdb0805f894b07113d505a65a0bea6f",
+      "bytes": 64,
+      "format": "doc",
+      "status": "unsupported",
+      "extractor": "extract_text 1",
+      "engine": "stdlib",
+      "engine_version": "",
+      "segments": 0,
+      "characters": 0,
+      "warnings": [
+        "legacy Word .doc is not read; convert it to .docx (Word: Save As .docx, or `soffice --headless --convert-to docx FILE`) and run again"
+      ],
+      "out": "HACCP-plan-2019.doc.txt"
+    },
+    {
+      "file": "samples/PHA-node-review.pptx",
+      "sha256": "cff2269527d1fe7273e18a732cb5ee5442b124645db47807625f457be25ec1ac",
+      "bytes": 2796,
+      "format": "pptx",
+      "status": "ok",
+      "extractor": "extract_text 1",
+      "engine": "stdlib",
+      "engine_version": "",
+      "segments": 3,
+      "characters": 187,
+      "warnings": [],
+      "out": "PHA-node-review.pptx.txt"
+    },
+    {
+      "file": "samples/PM-plan-area-2.xlsx",
+      "sha256": "e21c696539345be8d1cae3189dd58e0bf999798ea276ae7acb9a2636f5cfecd8",
+      "bytes": 1778,
+      "format": "xlsx",
+      "status": "ok",
+      "extractor": "extract_text 1",
+      "engine": "stdlib",
+      "engine_version": "",
+      "segments": 10,
+      "characters": 100,
+      "warnings": [],
+      "out": "PM-plan-area-2.xlsx.txt"
+    },
+    {
+      "file": "samples/SOP-104-feed-pump-isolation.docx",
+      "sha256": "c0e518df81325296c89d97bc084e22e1e982c9b3085b240f62a578622b3585a0",
+      "bytes": 1918,
+      "format": "docx",
+      "status": "ok",
+      "extractor": "extract_text 1",
+      "engine": "stdlib",
+      "engine_version": "",
+      "segments": 8,
+      "characters": 406,
+      "warnings": [],
+      "out": "SOP-104-feed-pump-isolation.docx.txt"
+    },
+    {
+      "file": "samples/work-order-export.csv",
+      "sha256": "890172e3af5b14f0f4e563ee51e29911744c4ef27f9e5b5b10429c4087de9f38",
+      "bytes": 80,
+      "format": "csv",
+      "status": "ok",
+      "extractor": "extract_text 1",
+      "engine": "stdlib",
+      "engine_version": "",
+      "segments": 3,
+      "characters": 77,
+      "warnings": [],
+      "out": "work-order-export.csv.txt"
+    }
+  ]
+}

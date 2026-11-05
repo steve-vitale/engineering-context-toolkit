@@ -1,0 +1,25 @@
+# extract_text 1 | file: SOP-104-feed-pump-isolation.docx | sha256: c0e518df81325296c89d97bc084e22e1e982c9b3085b240f62a578622b3585a0 | format: docx | status: ok | engine: stdlib
+
+## paragraph 1
+Purpose: isolate feed pump P-101 for seal replacement.
+
+## paragraph 2
+1. Confirm the work order and the permit are signed.
+
+## paragraph 3
+2. Stop P-101 from the control room and close suction valve HV-101A.
+
+## table 1 row 1
+Tag | Check before work | Expected
+
+## table 1 row 2
+TT-2207 | Feed temperature | below 40 C
+
+## table 1 row 3
+FDV-2210 | Flame detector vent closed | closed
+
+## paragraph 4
+3. Apply locks at MCC bucket 4B and record them on the permit.
+
+## page header 1 paragraph 1
+SOP-104 rev C | Area 2 feed system (P-101, TT-2207)
