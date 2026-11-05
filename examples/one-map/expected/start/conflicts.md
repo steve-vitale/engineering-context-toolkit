@@ -25,7 +25,7 @@ Each conflict keeps what both sources say. None is resolved by software; a perso
 | C-ce7c3162b0 | asset_presence | open | S1/P1/200/P-102 listed | drawn on 200-02 rev B (S1/DOC/PID-P1-200-02, sheet 200-02 zone E2) | no row for this tag in this unit (CMMS-EQUIPMENT) |
 | C-eee8a6a0d3 | asset_presence | open | S1/P1/200/PV-2210 listed | drawn on 200-01 rev D (S1/DOC/PID-P1-200-01, sheet 200-01 zone E3) | no row for this tag in this unit (CMMS-EQUIPMENT) |
 | C-2b9e55fceb | mention_not_in_register | open | S1/P1/200/P-102 listed | OP-200-07 mentions P-102 (S1/DOC/OP-200-07, line 5, column 10) | no row for this tag (maintenance_export) |
-| C-c3a645abfe | value_disagreement | open | S1/P1/200/P-101 rated_flow | 40 m3/h (CMMS-EQUIPMENT, row 2) | 45 m3/h (S1/DOC/PID-P1-200-01, sheet 200-01 zone B2) |
+| C-72b8f2dcce | value_disagreement | open | S1/P1/200/P-101 rated_flow | 45 m3/h (EQUIPMENT-DATASHEETS, row 2) | 40 m3/h (CMMS-EQUIPMENT, row 2) |
 
 ## Process
 

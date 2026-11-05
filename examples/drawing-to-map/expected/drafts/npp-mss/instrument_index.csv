@@ -1,0 +1,27 @@
+# DRAFT generated from drawings by one_map.py draft-lists. Status stays unverified until a person reviews each row;
+# once reviewed it is an ordinary list: set status and add it to the site file.
+tag,plant,unit,system,kind,description,status,review_tier,how_found,located_on
+AORV-XXX,NPP,MSS,,instrument,,unverified,amber,"drawing, placeholder tag: a person supplies the real tag",140:G-7
+FT-1401,NPP,MSS,,instrument,,unverified,amber,"drawing, duplicate tag on a sheet",140:F-8
+MSCV-XXX,NPP,MSS,,instrument,,unverified,amber,"drawing, placeholder tag: a person supplies the real tag",140:F-5
+MS-4010,NPP,MSS,,instrument,,unverified,green,drawing,140:G-5
+MSBV-1407,NPP,MSS,,instrument,,unverified,green,drawing,140:D-3
+MSIV-1402,NPP,MSS,,instrument,,unverified,green,drawing,140:G-6
+PT-14085,NPP,MSS,,instrument,,unverified,green,drawing,140:G-8
+PT-14086,NPP,MSS,,instrument,,unverified,green,drawing,140:G-7
+PT-14087,NPP,MSS,,instrument,,unverified,green,drawing,140:G-7
+PT-14088,NPP,MSS,,instrument,,unverified,green,drawing,140:G-7
+RE-1402,NPP,MSS,,instrument,,unverified,green,drawing,140:G-8
+RE-1403,NPP,MSS,,instrument,,unverified,green,drawing,140:G-5
+TE-14084A,NPP,MSS,,instrument,,unverified,green,drawing,140:F-9
+TE-14084B,NPP,MSS,,instrument,,unverified,green,drawing,140:F-9
+TE-14089A,NPP,MSS,,instrument,,unverified,green,drawing,140:F-8
+TE-14089B,NPP,MSS,,instrument,,unverified,green,drawing,140:F-7
+TE-14090A,NPP,MSS,,instrument,,unverified,green,drawing,140:F-6
+TE-14090B,NPP,MSS,,instrument,,unverified,green,drawing,140:F-6
+TE-14091A,NPP,MSS,,instrument,,unverified,green,drawing,140:G-4
+TE-14091B,NPP,MSS,,instrument,,unverified,green,drawing,140:G-4
+TE-14092A,NPP,MSS,,instrument,,unverified,green,drawing,140:F-4
+TE-14092B,NPP,MSS,,instrument,,unverified,green,drawing,140:F-4
+TE-14093A,NPP,MSS,,instrument,,unverified,green,drawing,140:D-4
+TE-14093B,NPP,MSS,,instrument,,unverified,green,drawing,140:D-4

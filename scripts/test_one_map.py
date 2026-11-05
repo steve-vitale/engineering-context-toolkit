@@ -124,9 +124,60 @@ class OneMapExample(unittest.TestCase):
         self.assertIn(("S1/P1/200/P-103", "drawn", "Doc control"), presence)    # listed, on no sheet
         self.assertIn(("S1/P1/200/P-102", "listed", "Maintenance"), presence)   # drawn, in no list
         self.assertIn(("S1/P1/200/PV-2210", "listed", "Maintenance"), presence)
+
+    def test_values_follow_the_authority_map_and_pid_values_are_reference(self):
+        # rated flow: the datasheet (authoritative for ratings) against the maintenance equipment export, routed to
+        # the export's owner; the P&ID prints the datasheet's 45 m3/h and raises nothing
         value = self.conflicts("value_disagreement")
-        self.assertEqual([(c["subject"], c["source_a"]["says"], c["source_b"]["says"]) for c in value],
-                         [("S1/P1/200/P-101", "40 m3/h", "45 m3/h")])
+        self.assertEqual([(c["subject"], c["attribute"], c["source_a"]["source"]["document"], c["source_a"]["says"],
+                           c["source_b"]["source"]["document"], c["source_b"]["says"], c["record_owner"])
+                          for c in value],
+                         [("S1/P1/200/P-101", "rated_flow", "EQUIPMENT-DATASHEETS", "45 m3/h", "CMMS-EQUIPMENT",
+                           "40 m3/h", "Maintenance")])
+        rated = [a for a in self.nodes["S1/P1/200/P-101"]["attributes"] if a["name"] == "rated_flow"]
+        self.assertEqual([(a["value"], a["source"]["document"]) for a in rated], [("45 m3/h", "EQUIPMENT-DATASHEETS")])
+        # a P&ID value that differs from the datasheet is a low-priority note to the P&ID owner, never a conflict
+        notes = [r for r in self.rows if r["kind"] == om.PID_NOTE]
+        self.assertEqual([(r["item"], r["tier"], r["owner"]) for r in notes],
+                         [("S1/P1/200/V-204", "amber", "Doc control")])
+        self.assertIn("12 barg printed on sheet 200-01, 10 barg in the datasheet", notes[0]["why"])
+        amber = [r["kind"] for r in self.rows if r["tier"] == "amber"]
+        self.assertEqual(amber[-1], om.PID_NOTE)  # notes sort after every other amber row
+        self.assertFalse([c for c in self.conf if c["subject"] == "S1/P1/200/V-204"])
+
+    def test_authority_defaults_overrides_and_refusals(self):
+        self.assertEqual(om.default_fact_kind("rated_flow"), "rating")
+        self.assertEqual(om.default_fact_kind("line_size"), "size")
+        self.assertEqual(om.default_fact_kind("body_material"), "material")
+        self.assertEqual(om.default_fact_kind("calibrated_range"), "instrument_range")
+        self.assertIsNone(om.default_fact_kind("colour"))
+        tmp = Path(self.tmp.name) / "authority"
+        shutil.copytree(EX / "inputs", tmp)
+        site = json.loads((tmp / "site.json").read_text(encoding="utf-8"))
+        site["authority"] = {"rating": "maintenance_export"}  # this site trusts its maintenance records for ratings
+        (tmp / "site.json").write_text(json.dumps(site), encoding="utf-8")
+        g, _, _, _ = quiet(om.build, tmp / "site.json", tmp / "out")
+        c = [n["conflict"] for n in g["nodes"] if n["kind"] == "conflict" and n["conflict"]["type"] == "value_disagreement"]
+        self.assertEqual([(x["source_a"]["says"], x["record_owner"]) for x in c], [("40 m3/h", "Process")])
+        site["authority"] = {"rating": "spreadsheet"}
+        (tmp / "site.json").write_text(json.dumps(site), encoding="utf-8")
+        with self.assertRaisesRegex(om.InputError, "not a record type"):
+            om.load_site(tmp / "site.json")
+        site["authority"], site["fact_kinds"] = {}, {"rated_flow": "colour"}
+        (tmp / "site.json").write_text(json.dumps(site), encoding="utf-8")
+        with self.assertRaisesRegex(om.InputError, "not a fact kind"):
+            om.load_site(tmp / "site.json")
+
+    def test_datasheet_for_an_item_nobody_holds_is_a_review_item(self):
+        tmp = Path(self.tmp.name) / "orphan-datasheet"
+        shutil.copytree(EX / "inputs", tmp)
+        ds = tmp / "lists" / "equipment_datasheets.csv"
+        ds.write_text(ds.read_text(encoding="utf-8") + "P-999,P1,200,Unknown pump datasheet,10 m3/h,\n",
+                      encoding="utf-8")
+        _, _, rows, _ = quiet(om.build, tmp / "site.json", tmp / "out")
+        hit = [r for r in rows if r["item"] == "S1/P1/200/P-999"]
+        self.assertEqual([(r["kind"], r["owner"], r["tier"]) for r in hit],
+                         [("datasheet without an item", "Process", "amber")])
 
     def test_matches_go_to_spot_check_not_full_review(self):
         green = [r for r in self.rows if r["tier"] == "green"]

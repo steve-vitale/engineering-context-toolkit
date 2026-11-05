@@ -6,6 +6,8 @@ kept as a conflict record routed to the owner of the record, and review queues s
     python scripts/one_map.py check out/one-map/graph.json                                  # validate a one-map graph
     python scripts/one_map.py loops-from-graph examples/graph-export/sheet0_graph.json --out out/sheet0-loops.md
     python scripts/one_map.py split-queue my-bundle/review_queue.csv --by belongs_to --out out/queues
+    python scripts/one_map.py sheet-from-prediction predictions/r2-tiles-trace/codex/0.json --sheet 140 --rev A \
+        --plant P1 --unit MSS --out sheet.json   # a drawing reader's prediction -> a sheet read for build
 
 Two starts, one map. (A) From lists: a maintenance equipment export, an instrument index and a control-system loop
 list (loop_audit.py's input contract) form the skeleton; drawings listed in a drawing register locate each tag
@@ -29,7 +31,7 @@ import io
 import json
 import re
 import sys
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -66,6 +68,37 @@ EQUIPMENT_KINDS = ("equipment", "final_element", "relief_device")
 # Columns a generated draft list adds for its reviewer; the import path reads them as review notes, not claims.
 DRAFT_COLS = {"review_tier", "how_found", "confidence", "located_on", "reviewed_by", "reviewed_on"}
 SCOPE_KINDS = ("system", "unit", "plant", "site", "scope")
+# Which record is authoritative for each kind of fact (site file `authority` overrides any entry). The P&ID is the
+# authority for connectivity, tags and the control scheme; values printed on it are reference only.
+DEFAULT_AUTHORITY = {"connectivity": "pid", "tags": "pid", "control_scheme": "pid", "rating": "datasheet",
+                     "size": "datasheet", "material": "datasheet", "instrument_range": "instrument_index",
+                     "instrument_model": "instrument_index", "installed": "maintenance_export"}
+RECORD_TYPES = ("pid", "datasheet", "maintenance_export", "instrument_index", "loop_list")
+PID_NOTE = "P&ID value note"
+RECORD_NAMES = {"maintenance_export": "maintenance equipment export", "instrument_index": "instrument index",
+                "loop_list": "loop list", "datasheet": "datasheet", "pid": "P&ID"}
+
+
+def default_fact_kind(name):
+    """The fact kind of an attribute name when the site file's `fact_kinds` does not name it; None = no authority."""
+    n = name.lower()
+    if n.startswith(("rated_", "design_", "max_", "min_")) or n in ("rating", "duty", "capacity", "set_pressure"):
+        return "rating"
+    if n in ("size", "line_size", "nominal_size") or n.endswith("_size"):
+        return "size"
+    if "material" in n:
+        return "material"
+    if "range" in n:
+        return "instrument_range"
+    if n in ("model", "manufacturer", "make", "vendor"):
+        return "instrument_model"
+    if n.startswith("installed") or n in ("serial", "serial_number", "asset_number"):
+        return "installed"
+    return None
+
+
+# Optional per-item fields a converted reader prediction carries (sheet-from-prediction); copied onto the appearance.
+READER_FIELDS = ("reader_symbol", "reader_class", "reader_confidence", "printed_tag", "tag_status")
 
 
 class InputError(ValueError):
@@ -224,9 +257,17 @@ def load_site(path):
     for t, rec in routing.items():
         if rec not in owners and rec not in ("document", "shared_system_owner"):
             raise InputError(f"routing {t} -> {rec!r}: not a record type in record_owners")
+    authority = dict(DEFAULT_AUTHORITY, **(site.get("authority") or {}))
+    for kind, rec in authority.items():
+        if rec not in RECORD_TYPES:
+            raise InputError(f"authority {kind} -> {rec!r}: not a record type ({', '.join(RECORD_TYPES)})")
+    fact_kinds = site.get("fact_kinds") or {}
+    for name, kind in fact_kinds.items():
+        if kind not in authority:
+            raise InputError(f"fact_kinds {name} -> {kind!r}: not a fact kind in the authority map")
     return {"path": path, "root": root, "raw": site, "site": sid, "site_name": site["site"].get("name"),
             "plants": plants, "scopes": scopes, "shared": shared, "owners": owners, "routing": routing,
-            "sample_every": int(site.get("spot_check_every", 10))}
+            "authority": authority, "fact_kinds": fact_kinds, "sample_every": int(site.get("spot_check_every", 10))}
 
 
 def load_register(cfg):
@@ -295,6 +336,58 @@ def covering(lists, record, scope):
     return next((x for x in lists.get(record, []) if within(scope, x["scopes"])), None)
 
 
+def row_scope(cfg, record, lid, n, r, spec_scopes):
+    """(tag, scope id) of one record row, refusing a plant, unit or scope the site file or the record does not hold."""
+    tag = part(r["tag"], f"{record} row {n} tag")
+    plant = part(r["plant"], f"{record} row {n} plant")
+    if plant not in cfg["plants"] and plant not in cfg["scopes"]:
+        raise InputError(f"{record} row {n}: plant/scope {plant!r} is not in the site file")
+    if r["unit"] and (plant not in cfg["plants"] or r["unit"] not in cfg["plants"][plant]["units"]):
+        raise InputError(f"{record} row {n}: unit {plant}/{r['unit']} is not in the site file")
+    scope = qid(cfg["site"], plant, r["unit"]) if r["unit"] else qid(cfg["site"], plant)
+    if not within(scope, spec_scopes):
+        raise InputError(f"{record} {lid} row {n}: {scope} is outside the list's declared scopes "
+                         f"({', '.join(spec_scopes)})")
+    return tag, scope
+
+
+def load_datasheets(m, lists):
+    """Equipment datasheets and instrument spec sheets (CSV tag,plant,unit + value columns): the authority for
+    ratings, sizes and materials (site file `authority`). A datasheet adds values to an item an equipment or
+    instrument record or a P&ID already holds; it never creates one. A row for an item nobody else holds is a review
+    item for the datasheet's owner."""
+    cfg = m.cfg
+    specs = cfg["raw"].get("datasheets") or []
+    for spec in ([specs] if isinstance(specs, dict) else specs):
+        path = inside(cfg["root"], spec.get("path"), "datasheets.path")
+        rows = read_csv(path, "datasheet", ("tag", "plant", "unit"))
+        lid = part(spec.get("id"), "datasheets.id")
+        m.record_of[lid] = "datasheet"
+        base = {"kind": "document", "document": lid, "revision": spec.get("revision"),
+                "sha256": sha_bytes(path.read_bytes()), "path": spec.get("path")}
+        owner = cfg["owners"].get("datasheet") or "needs owner"
+        spec_scopes = spec.get("scopes") or [cfg["site"]]
+        seen = {}
+        for n, r in enumerate(rows, 2):
+            tag, scope = row_scope(cfg, "datasheet", lid, n, r, spec_scopes)
+            nid = qid(scope, tag)
+            if nid in seen:
+                raise InputError(f"datasheet {lid} row {n}: {nid} already on row {seen[nid]}")
+            seen[nid] = n
+            if nid not in m.nodes:
+                m.review.append({"item": nid, "kind": "datasheet without an item", "owner": owner,
+                                 "why": f"datasheet {lid} row {n} describes {tag}, which no equipment or instrument "
+                                        f"record and no P&ID of {scope} holds"})
+                continue
+            src = dict(base, locator=f"row {n}")
+            status = r.get("status") if r.get("status") in gx.STATUSES else "unverified"
+            for k, v in sorted(r.items()):
+                if k not in ("tag", "plant", "unit", "status", "description") and v:
+                    m.add_value(nid, claim(k, v, src, status), "datasheet")
+        lists.setdefault("datasheet", []).append({"id": lid, "source": base, "owner": owner, "rows": seen,
+                                                  "scopes": spec_scopes})
+
+
 def load_lists(m):
     """Maintenance equipment export and instrument index: one node per row, site/plant/unit(/system) qualified.
     These are the skeleton; drawings only locate and connect what they hold. A row repeated in one list refuses."""
@@ -304,22 +397,14 @@ def load_lists(m):
         path = inside(cfg["root"], spec.get("path"), f"{record}.path")
         rows = read_csv(path, record, ("tag", "plant", "unit"))
         lid = part(spec.get("id"), f"{record}.id")
+        m.record_of[lid] = record
         base = {"kind": "document", "document": lid, "revision": spec.get("revision"),
                 "sha256": sha_bytes(path.read_bytes()), "path": spec.get("path")}
         owner = cfg["owners"].get(record) or "needs owner"
         spec_scopes = spec.get("scopes") or [sid]
         seen = {}
         for n, r in enumerate(rows, 2):
-            tag = part(r["tag"], f"{record} row {n} tag")
-            plant = part(r["plant"], f"{record} row {n} plant")
-            if plant not in cfg["plants"] and plant not in cfg["scopes"]:
-                raise InputError(f"{record} row {n}: plant/scope {plant!r} is not in the site file")
-            if r["unit"] and (plant not in cfg["plants"] or r["unit"] not in cfg["plants"][plant]["units"]):
-                raise InputError(f"{record} row {n}: unit {plant}/{r['unit']} is not in the site file")
-            scope = qid(sid, plant, r["unit"]) if r["unit"] else qid(sid, plant)
-            if not within(scope, spec_scopes):
-                raise InputError(f"{record} {lid} row {n}: {scope} is outside the list's declared scopes "
-                                 f"({', '.join(spec_scopes)})")
+            tag, scope = row_scope(cfg, record, lid, n, r, spec_scopes)
             nid = qid(scope, tag)
             if nid in seen:
                 raise InputError(f"{record} row {n}: {nid} already listed on row {seen[nid]}")
@@ -340,15 +425,10 @@ def load_lists(m):
                 if safety_of(tag):
                     n_["safety"] = safety_of(tag)
                 m.nodes[nid] = n_
-            else:  # the same tag in both lists: one item, two records
+            else:  # the same tag in both records: one item, two records
                 existing["listed_in"].append(lid)
-                have = {c["name"]: c for c in existing["attributes"]}
                 for c in attrs:
-                    if c["name"] in have and have[c["name"]]["value"] != c["value"]:
-                        m.conflict("value_disagreement", nid, c["name"], have[c["name"]]["source"],
-                                   have[c["name"]]["value"], src, c["value"], record=record)
-                    elif c["name"] not in have:
-                        existing["attributes"].append(c)
+                    m.add_value(nid, c, record)
             parent = scope
             if r.get("system"):
                 system = r["system"]
@@ -396,9 +476,32 @@ def sheet_fragment(cfg, row):
                                "why": f"tag {tag} appears twice on sheet {row['sheet']}; confirm both are real"})
                 continue
             seen.add(tag)
+            at = f"sheet {row['sheet']}" + (f" zone {it['zone']}" if it.get("zone") else "")
+            if it.get("tag_status") == "placeholder":  # carried, never dropped: a person supplies the real tag
+                review.append({"item": qid(scope, tag), "kind": "placeholder tag", "owner": row["owner"],
+                               "why": f"{tag} on {at} is a placeholder as printed ({it.get('printed_tag') or tag}); "
+                                      "a person supplies the real tag"})
             items.append({"tag": tag, "section": section, "zone": it.get("zone"), "box_0_1000": it.get("box_0_1000"),
                           "on": it.get("on"), "name": it.get("name"), "former_tag": it.get("former_tag"),
-                          "attributes": {k: v for k, v in sorted((it.get("attributes") or {}).items()) if gx.plain(v)}})
+                          "attributes": {k: v for k, v in sorted((it.get("attributes") or {}).items()) if gx.plain(v)},
+                          **{k: it[k] for k in READER_FIELDS if it.get(k) is not None}})
+    inline = []
+    for u in model.get("untagged") or []:  # read by a drawing reader without a usable tag (sheet-from-prediction)
+        sym = part(u.get("symbol"), f"{row['rel']} untagged symbol")
+        at = f"sheet {row['sheet']}" + (f" zone {u['zone']}" if u.get("zone") else "")
+        if u.get("class") in ("tank", "pump", "instrumentation"):
+            review.append({"item": qid(scope, f"@{row['sheet']}", f"untagged-{sym}"), "kind": "untagged symbol",
+                           "owner": row["owner"],
+                           "why": f"a {u['class']} symbol ({sym}) on {at} has no readable tag"
+                                  + (f" (printed text {u['printed_text']!r})" if u.get("printed_text") else "")
+                                  + "; it is not on the map until a person supplies its tag"})
+        else:
+            inline.append(sym)
+    if inline:
+        review.append({"item": qid(scope, f"@{row['sheet']}", "untagged-inline"), "kind": "untagged in-line symbols",
+                       "owner": row["owner"],
+                       "why": f"{len(inline)} untagged valve/fitting symbol(s) read on sheet {row['sheet']} are kept "
+                              "in the sheet read (`untagged`, with zone and box), not placed on the map as items"})
     offpage = []
     for op in model.get("offpage") or []:
         offpage.append({"id": part(op.get("id"), f"{row['rel']} offpage id"), "name": op.get("name"),
@@ -411,13 +514,265 @@ def sheet_fragment(cfg, row):
             "systems": [dict(x) for x in model.get("systems") or []], "review": review}
 
 
-# ---------------------------------------------------------------- assembling the map
+# ---------------------------------------------------------------- a drawing reader's prediction -> a sheet read
+
+READER_TAG = re.compile(r"([A-Z]{1,6})[\s-]+([0-9][0-9A-Z]*|X{2,}|\?+|TBD|TBA)")  # stacked bubble "TCV 1401"
+PLAIN_TAG = re.compile(r"[A-Z0-9]+(?:-[A-Z0-9]+)*")
+PIPING = ("tank", "pump", "valve", "general")  # tagged symbols of these classes end piping lines
+PASS_THROUGH = ("valve", "general")             # untagged in-line symbols a piping line runs through
+
+
+def reader_tag(text):
+    """(tag, printed, placeholder) for a reader's tag text. A stacked bubble ('TCV\\n1401') is joined as 'TCV-1401';
+    text that is not tag-shaped (a name, a nozzle 'N1', an operator letter 'H') or has fewer than two digits and no
+    placeholder gives tag None. The printed text is kept as read (whitespace collapsed)."""
+    import build_twin as bt
+    printed = bt.clean(text)
+    if printed is None:
+        return None, None, False
+    up = printed.upper()
+    placeholder = bool(bt.PLACEHOLDER.search(up))
+    m = READER_TAG.fullmatch(up)
+    tag = f"{m.group(1)}-{m.group(2)}" if m else up if PLAIN_TAG.fullmatch(up) else None
+    if tag is None or (sum(ch.isdigit() for ch in tag) < 2 and not placeholder):
+        return None, printed, False
+    return tag, printed, placeholder
+
+
+def sheet_from_prediction(pred_path, *, sheet, revision, plant, unit="", rows=None, cols=None, frame=None,
+                          origin="bottom-right"):
+    """One reader prediction (the documented format, bare or in its stored predictions/ form) -> a one-map-sheet-1
+    read, plus a list of what could not be converted. Validated with the intake's own validator first. Tags are
+    zoned with scripts/sheet_zone.py; untagged symbols are carried, not dropped; nothing is inferred beyond the
+    reader's own symbols and connections."""
+    import build_twin as bt
+    import import_site_drawing as intake
+    import sheet_zone as sz
+    for value, what in ((sheet, "sheet"), (revision, "revision"), (plant, "plant")):
+        part(value, what)
+    if unit:
+        part(unit, "unit")
+    raw = Path(pred_path).read_bytes()
+    try:
+        doc = json.loads(raw.decode("utf-8-sig"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise InputError(f"{pred_path}: not JSON ({exc})") from None
+    stored = isinstance(doc, dict) and "prediction" in doc and "symbols" not in doc
+    pred = doc.get("prediction") if stored else doc
+    if pred is None:
+        raise InputError(f"{pred_path}: the stored run failed (prediction null); there is no reading to convert")
+    try:
+        valid = intake.validate_prediction(pred)
+    except ValueError as exc:
+        raise InputError(f"{pred_path}: not in the documented prediction format: {exc}") from None
+    grid = {"rows": sz.DEFAULT_ROWS if rows is None else rows, "cols": sz.DEFAULT_COLS if cols is None else cols,
+            "frame": tuple(frame or sz.WHOLE_SHEET),
+            "origin": origin}
+    try:
+        sz.zone_at(0, 0, **grid)
+    except ValueError as exc:
+        raise InputError(str(exc)) from None
+    zone = lambda box: sz.zone_of_box(box, **grid)  # noqa: E731
+    box_of = lambda box: [round(v, 1) for v in box]  # noqa: E731
+    equipment, instruments, offpage, untagged, not_converted = [], [], [], [], []
+    anchor = {}  # symbol id -> the line endpoint name in the sheet read (a tag, or an off-page connector id)
+    by_id = {s["id"]: s for s in valid["symbols"]}
+    tagged = {}
+    adj = defaultdict(set)
+    for c in valid["connections"]:
+        adj[c["from"]].add(c["to"])
+        adj[c["to"]].add(c["from"])
+    for s in valid["symbols"]:
+        tag, printed, placeholder = reader_tag(s["tag"])
+        base = {"zone": zone(s["box"]), "box_0_1000": box_of(s["box"]), "reader_symbol": s["id"],
+                "reader_class": s["class"]}
+        if s["confidence"] is not None:
+            base["reader_confidence"] = s["confidence"]
+        if s["class"] == "inlet/outlet":
+            op = {"id": s["id"], "name": printed, "zone": base["zone"]}
+            ref = bt.DWG_REF.search((printed or "").upper())
+            if ref:
+                op["attributes"] = {"drawing_reference": f"{ref.group(1) + ' ' if ref.group(1) else ''}PID "
+                                                         f"{ref.group(2)}-{ref.group(3)}"}
+            offpage.append(op)
+            anchor[s["id"]] = s["id"]
+            continue
+        if tag is None:
+            untagged.append({"symbol": s["id"], "class": s["class"], "zone": base["zone"],
+                             "box_0_1000": base["box_0_1000"], "printed_text": printed,
+                             "reader_confidence": s["confidence"]})
+            continue
+        item = dict({"tag": tag}, **base, printed_tag=printed,
+                    tag_status="placeholder" if placeholder else "as_extracted")
+        equip = s["class"] in ("tank", "pump") or (s["class"] == "general"
+                                                   and bt.EQUIP_TAG.fullmatch(tag))
+        (equipment if equip else instruments).append(item)
+        tagged[s["id"]] = tag
+        if s["class"] in PIPING:
+            anchor[s["id"]] = tag
+    # a line runs only through untagged in-line symbols with exactly two piping connections (in, out; instrument links
+    # are not piping); one with three or more is a branch point the format cannot name, so anchors meeting only through it get no line (reported below)
+    pipe_deg = {sid: sum(1 for n in adj[sid] if by_id[n]["class"] != "instrumentation") for sid in by_id}
+    through = {sid for sid, s in by_id.items() if s["class"] in PASS_THROUGH and sid not in tagged
+               and pipe_deg[sid] == 2}
+    branching = sorted(sid for sid, s in by_id.items() if s["class"] in PASS_THROUGH and sid not in tagged
+                       and pipe_deg[sid] > 2)
+    # piping lines: from every anchor, walk through untagged in-line symbols to the next anchors (shortest path)
+    lines, self_loops = {}, 0
+    for start in sorted(anchor):
+        prev, todo = {start: None}, [start]
+        while todo:
+            nxt = []
+            for cur in todo:
+                for nb in sorted(adj[cur]):
+                    if nb in prev:
+                        continue
+                    prev[nb] = cur
+                    if nb in anchor:
+                        a, b = sorted((start, nb))
+                        if anchor[a] == anchor[b]:
+                            self_loops += 1
+                        elif (a, b) not in lines:
+                            via, p = [], prev[nb]
+                            while p != start:
+                                via.append(p)
+                                p = prev[p]
+                            lines[(a, b)] = {"id": f"L-{a}-{b}", "from": anchor[a], "to": anchor[b],
+                                             "attributes": {"via_symbols": " ".join(sorted(via)),
+                                                            "how_found": "reader connections"
+                                                            + (f" through {len(via)} untagged in-line symbol(s)"
+                                                               if via else "")}}
+                    elif nb in through:
+                        nxt.append(nb)
+            todo = nxt
+    # networks: tagged items and connectors that meet through untagged in-line symbols including branch points.
+    # Reported for the reviewer, never written as lines (the format cannot say which branch joins which pair).
+    networks, done = [], set()
+    inline = {sid for sid, s in by_id.items() if s["class"] in PASS_THROUGH and sid not in tagged}
+    for b in branching:  # each connected run of untagged in-line symbols that holds a branch point
+        if b in done:
+            continue
+        run, todo = {b}, [b]
+        while todo:
+            cur = todo.pop()
+            for nb in adj[cur]:
+                if nb in inline and nb not in run:
+                    run.add(nb)
+                    todo.append(nb)
+        done |= run
+        group = sorted({anchor[n] for x in run for n in adj[x] if n in anchor})
+        if len(group) > 1 and group not in networks:
+            networks.append(group)
+    networks.sort()
+    on_line = {v for ln in lines.values() for v in ln["attributes"]["via_symbols"].split()}
+    for u in untagged:
+        u["on_a_line"] = u["symbol"] in on_line
+    # placement: a tagged instrument bubble joined directly to exactly one tagged vessel/pump sits on it. A bubble's
+    # link to a valve or fitting only says which symbol its line meets next, not what it measures, so it places nothing
+    placed = 0
+    for item in instruments:
+        sid = item["reader_symbol"]
+        if by_id[sid]["class"] != "instrumentation":
+            continue
+        targets = sorted({tagged[n] for n in adj[sid] if n in tagged and by_id[n]["class"] in ("tank", "pump")}
+                         - {item["tag"]})
+        if len(targets) == 1:
+            item["on"] = targets[0]
+            placed += 1
+    counts = Counter(t["tag"] for t in equipment + instruments)
+    dup = sorted(t for t, n in counts.items() if n > 1)
+    if self_loops:
+        not_converted.append(f"{self_loops} connection path(s) joining two symbols with the same tag (no line drawn)")
+    if branching:
+        not_converted.append(f"{len(branching)} untagged in-line symbol(s) with three or more connections (branch "
+                             f"points: {', '.join(branching)}); tagged items that meet only through one get no line (they are listed "
+                             "under conversion.networks_not_written_as_lines)")
+    lone = sorted(sid for sid in by_id if not adj[sid])
+    if lone:
+        not_converted.append(f"{len(lone)} symbol(s) with no connection: {', '.join(lone)}")
+    instr = [i for i in instruments if by_id[i["reader_symbol"]]["class"] == "instrumentation"]
+    not_converted += [
+        "signal lines: the documented prediction format has no line type, so no signal lines are written "
+        "(loops cannot be confirmed from this read; loop-number grouping still runs)",
+        f"placement: {len(instr) - placed} of {len(instr)} tagged instrument bubble(s) are not joined directly to "
+        "exactly one tagged vessel or pump, so no measures/acts_on/protects edge is written for them",
+        f"untagged: {len(untagged)} symbol(s) without a usable tag are carried under `untagged` "
+        f"({sum(1 for u in untagged if u['on_a_line'])} of them on a written line), not placed on the map",
+        "off-page connectors: their target sheet/connector is not in the reading, so `to` is empty "
+        "(no cross-sheet pairing until a person or a register supplies it)"]
+    meta = {k: doc.get(k) for k in ("label", "tool", "model", "drawing", "prompt_sha256", "image_sha256")
+            if stored and doc.get(k) is not None}
+    read = {
+        "schema": SHEET_SCHEMA,
+        "note": "Converted from a drawing reader's prediction by one_map.py sheet-from-prediction. Every item is the "
+                "reader's draft (unverified); zones are computed from the reader's boxes.",
+        "source": dict({"kind": "reader_prediction", "path": Path(pred_path).as_posix(), "sha256": sha_bytes(raw),
+                        "stored_form": stored, "sheet": sheet, "revision": revision, "plant": plant, "unit": unit},
+                       **meta),
+        "zone_grid": sz.grid_record(grid["rows"], grid["cols"], grid["frame"], origin),
+        "equipment": equipment, "instruments": instruments,
+        "lines": [lines[k] for k in sorted(lines)], "signal_lines": [], "offpage": offpage, "untagged": untagged,
+        "conversion": {"symbols_in": len(valid["symbols"]), "connections_in": len(valid["connections"]),
+                       "equipment": len(equipment), "instruments": len(instruments), "offpage": len(offpage),
+                       "untagged": len(untagged), "lines": len(lines), "signal_lines": 0,
+                       "placeholder_tags": sorted(t["tag"] for t in equipment + instruments
+                                                  if t["tag_status"] == "placeholder"),
+                       "duplicate_tags": dup, "instruments_placed_on": placed,
+                       "branch_points": branching, "networks_not_written_as_lines": networks,
+                       "not_converted": not_converted}}
+    return read
 
 class Map:
     def __init__(self, cfg):
         self.cfg = cfg
         self.nodes, self.edges, self.conflicts, self.review = {}, {}, {}, []
         self.loops = []
+        self.pid_values = []  # (item, claim) printed on a P&ID: reference values
+        self.record_of = {}  # record id (an equipment/instrument record or datasheet id) -> record type
+
+    def record_type(self, source):
+        return "pid" if source.get("kind") == "drawing" else self.record_of.get(source.get("document"), "unknown")
+
+    def add_value(self, nid, c, record):
+        """One attribute value from one record, compared under the site's authority map. A P&ID value is reference:
+        a difference becomes a low-priority note to the P&ID owner, never a value conflict, and a record's value
+        replaces it. Between records, the authoritative one (for the attribute's fact kind) is source A and the
+        conflict goes to the owner of the other record; with no authority among them, to the newer record's owner."""
+        node = self.nodes[nid]
+        have = next((x for x in node["attributes"] if x["name"] == c["name"]), None)
+        if have is None:
+            node["attributes"].append(c)
+            return
+        if have["value"] == c["value"]:
+            return
+        have_rec, name = self.record_type(have["source"]), c["name"]
+        if "pid" in (record, have_rec):
+            pid_c, other = (c, have) if record == "pid" else (have, c)
+            if record != "pid":
+                node["attributes"][node["attributes"].index(have)] = c
+            other_rec = self.record_type(other["source"])
+            said = (f"sheet {other['source'].get('sheet')}" if other_rec == "pid" else
+                    f"the {RECORD_NAMES.get(other_rec, other_rec)} {other['source'].get('document')}")
+            self.review.append({"item": nid, "kind": PID_NOTE, "owner": self.cfg["owners"].get("pid") or "needs owner",
+                                "why": f"{node['tag']} {name}: {pid_c['value']} printed on sheet "
+                                       f"{pid_c['source'].get('sheet')}, {other['value']} in {said}. P&ID values are "
+                                       "reference only; correct the P&ID at its next revision if it is wrong"})
+            return
+        kind = self.cfg["fact_kinds"].get(name) or default_fact_kind(name)
+        auth = self.cfg["authority"].get(kind) if kind else None
+        if auth in (record, have_rec) and record != have_rec:
+            (a, a_rec), (b, b_rec) = (((have, have_rec), (c, record)) if have_rec == auth
+                                      else ((c, record), (have, have_rec)))
+            if a is c:
+                node["attributes"][node["attributes"].index(have)] = c
+            self.conflict("value_disagreement", nid, name, a["source"], a["value"], b["source"], b["value"],
+                          record=b_rec, what=f"{node['tag']} {name}: {a['value']} in the {RECORD_NAMES.get(a_rec, a_rec)} "
+                                             f"{a['source'].get('document')} (authoritative for {kind}), "
+                                             f"{b['value']} in the {RECORD_NAMES.get(b_rec, b_rec)} "
+                                             f"{b['source'].get('document')}")
+        else:
+            self.conflict("value_disagreement", nid, name, have["source"], have["value"], c["source"], c["value"],
+                          record=record)
 
     def node(self, n):
         if n["id"] not in self.nodes:
@@ -523,6 +878,7 @@ def place_fragments(m, register, fragments, lists):
             at = dict(src, zone=it["zone"]) if it.get("zone") else dict(src)
             if it.get("box_0_1000"):
                 at["box_0_1000"] = it["box_0_1000"]
+            at.update({k: it[k] for k in READER_FIELDS if k in it and k != "tag_status"})
             node = m.nodes.get(nid)
             if node is None:  # not in any list: a drawing-only item (first appearance decides what to raise)
                 kind = "equipment" if it["section"] == "equipment" else kind_for(it["tag"])
@@ -534,6 +890,8 @@ def place_fragments(m, register, fragments, lists):
                                owner=row["owner"], listed_in=[], appearances=[])
                 if safety_of(it["tag"]):
                     node["safety"] = safety_of(it["tag"])
+                if it.get("tag_status") == "placeholder":
+                    node["tag_status"] = "placeholder"
                 m.nodes[nid] = node
                 m.edge(mk_edge("contains", f["scope"], nid, at))
                 if spec is None:  # path B: no list covers this scope yet; the drawing read is the draft
@@ -541,8 +899,8 @@ def place_fragments(m, register, fragments, lists):
                                      "owner": cfg["owners"].get(record) or row["owner"],
                                      "why": f"{it['tag']} read from sheet {row['sheet']}"
                                             + (f" zone {it['zone']}" if it.get("zone") else "")
-                                            + f"; no {record.replace('_', ' ')} covers {f['scope']} yet: review the "
-                                              "draft list from `one_map.py draft-lists`"})
+                                            + f"; no {RECORD_NAMES[record]} covers {f['scope']} yet: review the "
+                                              f"draft {RECORD_NAMES[record]} from `one_map.py draft-lists`"})
                 else:
                     m.conflict("asset_presence", nid, "listed", at, f"drawn on {row['sheet']} rev {row['rev']}",
                                spec["source"], "no row for this tag in this unit" + (
@@ -554,16 +912,8 @@ def place_fragments(m, register, fragments, lists):
                 node["appearances"].append(at)
             if it.get("former_tag") and it["former_tag"] not in node["aliases"]:
                 node["aliases"].append(it["former_tag"])
-            have = {c["name"]: c for c in node["attributes"]}
-            for k, v in it["attributes"].items():
-                c = claim(k, v, at)
-                if k not in have:
-                    node["attributes"].append(c)
-                elif have[k]["value"] != v:
-                    owner_rec = next((rec for rec, specs in lists.items() for x in specs
-                                      if x["id"] == have[k]["source"].get("document")), "pid")
-                    m.conflict("value_disagreement", nid, k, have[k]["source"], have[k]["value"], at, v,
-                               record=owner_rec, parties=(row["owner"],))
+            for k, v in it["attributes"].items():  # reference values, compared once every record is in
+                m.pid_values.append((nid, claim(k, v, at)))
         local = {it["tag"]: qid(f["scope"], it["tag"]) for it in f["items"]}
         for it in f["items"]:
             if it.get("on"):
@@ -1058,7 +1408,7 @@ def queue_rows(m):
     for r in m.review:
         plant, unit = scope_of(r["item"], cfg)
         rows.append({"tier": "amber", "owner": r["owner"], "plant": plant, "unit": unit, "item": r["item"],
-                     "kind": r["kind"], "why": r["why"], "safety": ""})
+                     "kind": r["kind"], "why": r["why"], "safety": (m.nodes.get(r["item"]) or {}).get("safety", "")})
     conflicted = {c["subject"] for c in m.conflicts.values() if c["status"] != "resolved"}
     for lp in m.loops:
         plant, unit = scope_of(lp["item"], cfg)
@@ -1080,7 +1430,8 @@ def queue_rows(m):
                      "plant": plant, "unit": unit, "item": nid, "kind": n["kind"],
                      "why": (f"safety-relevant ({safety}): always checked; " if safety else "")
                      + f"listed in {', '.join(n['listed_in'])}; located on {where}", "safety": safety})
-    rows.sort(key=lambda r: (TIER_ORDER[r["tier"]], 0 if r["safety"] else 1, r["kind"], r["item"]))
+    rows.sort(key=lambda r: (TIER_ORDER[r["tier"]], 0 if r["safety"] else 1, r["kind"] == PID_NOTE, r["kind"],
+                             r["item"]))
     for i, r in enumerate(rows, 1):
         r["rank"] = i
         r["spot_check"] = spot_check(r["item"], cfg["sample_every"]) if r["tier"] == "green" else ""
@@ -1185,9 +1536,9 @@ def report_md(g, run, groups, reopened, loops_, uncovered):
         by_owner[c["record_owner"]][c["type"]] += 1
     listed = [n for n in nodes if n.get("listed_in")]
     lines = ["# One map: run report", "",
-             f"Generated by `scripts/one_map.py build`. Schema `{SCHEMA}`. Structured lists come first, drawings "
-             "locate and connect, people review disagreements. Fictional example data only; no item is verified by "
-             "this run.", "",
+             f"Generated by `scripts/one_map.py build` from `{g['source_model']}` ({g['title']}). Schema `{SCHEMA}`. "
+             "The P&IDs are lined up against the equipment and instrument records, datasheets hold the values, and "
+             "people work the review queue. No item is verified by this run.", "",
              f"Sheets rebuilt: {len(run['rebuilt'])} ({', '.join(run['rebuilt']) or 'none'}); reused unchanged: "
              f"{len(run['reused'])}; removed from the register: {len(run['removed'])}.", "",
              f"Listed items: {len(listed)}; located on a drawing: {sum(1 for n in listed if n['appearances'])}; "
@@ -1253,6 +1604,9 @@ def assemble(cfg, register, fragments):
     hierarchy(m)
     lists = load_lists(m)
     uncovered = place_fragments(m, register, fragments, lists)
+    load_datasheets(m, lists)
+    for nid, c in m.pid_values:  # a P&ID value differing from the records is a note, never a value conflict
+        m.add_value(nid, c, "pid")
     pair_offpage(m, fragments)
     groups = loops(m, lists)
     docs = documents(m, cfg, lists)
@@ -1297,11 +1651,15 @@ def draft_lists(site_path, out_dir, scopes=None):
             for nid, n in sorted(m.nodes.items()):
                 if n.get("scope") != scope or n.get("listed_in") != [] or list_for(n["kind"]) != record:
                     continue
-                tier = "amber" if n.get("safety") or nid in dup else "green"
+                placeholder = n.get("tag_status") == "placeholder"
+                tier = "amber" if n.get("safety") or nid in dup or placeholder else "green"
                 rows.append({"tag": n["tag"], "plant": plant, "unit": unit, "system": "", "kind": n["kind"],
                              "description": n.get("name") or "", "status": "unverified", "review_tier": tier,
                              "how_found": "drawing" + (", safety-relevant (" + n["safety"] + "): always checked"
-                                                       if n.get("safety") else ""), "located_on": where(n)})
+                                                       if n.get("safety") else "")
+                                          + (", placeholder tag: a person supplies the real tag" if placeholder
+                                             else "") + (", duplicate tag on a sheet" if nid in dup else ""),
+                             "located_on": where(n)})
             if rows:
                 rows.sort(key=lambda r: (TIER_ORDER[r["review_tier"]], r["tag"]))
                 files[f"{folder}/{name}"] = head + csv_text(LIST_COLS, rows)
@@ -1546,6 +1904,18 @@ def main(argv=None):
     d.add_argument("site")
     d.add_argument("--out", required=True)
     d.add_argument("--scope", action="append", help="draft this scope even if a list covers it (repeatable)")
+    sp = sub.add_parser("sheet-from-prediction",
+                        help="convert a drawing reader's prediction file into a one-map-sheet-1 sheet read")
+    sp.add_argument("prediction", help="predictions/<label>/<tool>/<sheet>.json, or a bare prediction file")
+    sp.add_argument("--sheet", required=True, help="sheet id as in the drawing register")
+    sp.add_argument("--rev", required=True, help="sheet revision as in the drawing register")
+    sp.add_argument("--plant", required=True, help="plant or site scope id from the site file")
+    sp.add_argument("--unit", default="", help="unit id (omit for a site-scope sheet)")
+    sp.add_argument("--zones", default="8x12", help="zone grid ROWSxCOLS (default 8x12; see scripts/sheet_zone.py)")
+    sp.add_argument("--zone-frame", help="x0,y0,x1,y1 of the drawing frame in 0-1000 units (default whole sheet)")
+    sp.add_argument("--zone-origin", default="bottom-right", choices=("bottom-right", "top-left"),
+                    help="where zone A-1 is: bottom-right (ASME style, default) or top-left (ISO style)")
+    sp.add_argument("--out", required=True, help="the sheet read to write (JSON)")
     s = sub.add_parser("split-queue", help="split an existing review_queue.csv by a column, keeping its order")
     s.add_argument("queue")
     s.add_argument("--by", required=True)
@@ -1565,6 +1935,24 @@ def main(argv=None):
             return 1 if bad else 0
         elif a.cmd == "draft-lists":
             print(json.dumps(draft_lists(a.site, a.out, a.scope)) + f" -> {a.out}")
+        elif a.cmd == "sheet-from-prediction":
+            import sheet_zone as sz
+            try:
+                rows_, cols_ = sz.parse_grid(a.zones)
+                frame = sz.parse_frame(a.zone_frame) if a.zone_frame else None
+            except ValueError as exc:
+                raise InputError(str(exc)) from None
+            read = sheet_from_prediction(a.prediction, sheet=a.sheet, revision=a.rev, plant=a.plant, unit=a.unit,
+                                         rows=rows_, cols=cols_, frame=frame, origin=a.zone_origin)
+            Path(a.out).parent.mkdir(parents=True, exist_ok=True)
+            Path(a.out).write_text(json.dumps(read, indent=1, ensure_ascii=False) + "\n", encoding="utf-8",
+                                   newline="\n")
+            c = read["conversion"]
+            print(f"{c['symbols_in']} symbols, {c['connections_in']} connections -> {c['equipment']} equipment, "
+                  f"{c['instruments']} instruments, {c['offpage']} off-page, {c['untagged']} untagged, "
+                  f"{c['lines']} lines, {c['signal_lines']} signal lines -> {a.out}")
+            for x in c["not_converted"]:
+                print("not converted:", x)
         elif a.cmd == "loops-from-graph":
             text, total = loops_from_graph(a.graph)
             if a.out:

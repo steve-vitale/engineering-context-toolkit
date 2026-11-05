@@ -1,0 +1,5 @@
+rank,tier,owner,plant,unit,item,kind,why,safety,spot_check
+39,amber,Doc control,NPP,MSS,O100/NPP/MSS/FT-1401,duplicate tag,tag FT-1401 appears twice on sheet 140; confirm both are real,,
+40,amber,Doc control,NPP,MSS,O100/NPP/MSS/AORV-XXX,placeholder tag,AORV-XXX on sheet 140 zone G-7 is a placeholder as printed (AORV XXX); a person supplies the real tag,,
+41,amber,Doc control,NPP,MSS,O100/NPP/MSS/MSCV-XXX,placeholder tag,MSCV-XXX on sheet 140 zone F-5 is a placeholder as printed (MSCV-XXX); a person supplies the real tag,,
+42,amber,Doc control,NPP,MSS,O100/NPP/MSS/@140/untagged-inline,untagged in-line symbols,"52 untagged valve/fitting symbol(s) read on sheet 140 are kept in the sheet read (`untagged`, with zone and box), not placed on the map as items",,

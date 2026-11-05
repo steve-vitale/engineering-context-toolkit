@@ -32,7 +32,9 @@ Use `examples/own-drawing/README.md` for the image route. Its public-sheet tutor
 the own-input steps replace the image, extraction and manifest. Use the README job selector for descriptions,
 DEXPI, loop lists, historian CSVs, document-only questions and model evaluation. `docs/WORKFLOWS.md` owns the
 specific supported format connections; `docs/SCRIPTS.md` distinguishes reusable tools from case/research runners.
-`docs/ONE_MAP.md` describes the site-wide graph of lists, drawings and documents and its conflict records.
+`docs/ONE_MAP.md` describes the one path from P&ID sheets read by the drawing reader (`one_map.py
+sheet-from-prediction`) and the equipment and instrument records to one site-wide graph, its conflict records and
+review queue.
 
 Keep three roles distinct when explaining the repository: **tools** work on supplied inputs; **tutorials** teach
 their use on public or fictional fixtures and show what to substitute; **case studies/evaluation** retain what

@@ -224,6 +224,59 @@
    }
   },
   {
+   "id": "S1/CONFLICT/C-72b8f2dcce",
+   "kind": "conflict",
+   "tag": "C-72b8f2dcce",
+   "name": "P-101 rated_flow: 45 m3/h in the datasheet EQUIPMENT-DATASHEETS (authoritative for rating), 40 m3/h in the maintenance equipment export CMMS-EQUIPMENT",
+   "aliases": [],
+   "status": "unverified",
+   "attributes": [],
+   "source": {
+    "kind": "document",
+    "document": "EQUIPMENT-DATASHEETS",
+    "revision": "2",
+    "sha256": "e1bd5079565db504de7adeca3e483d17d7e4064d1192a7699f20b207b1326839",
+    "path": "lists/equipment_datasheets.csv",
+    "locator": "row 2"
+   },
+   "conflict": {
+    "id": "C-72b8f2dcce",
+    "type": "value_disagreement",
+    "what": "P-101 rated_flow: 45 m3/h in the datasheet EQUIPMENT-DATASHEETS (authoritative for rating), 40 m3/h in the maintenance equipment export CMMS-EQUIPMENT",
+    "subject": "S1/P1/200/P-101",
+    "attribute": "rated_flow",
+    "source_a": {
+     "source": {
+      "kind": "document",
+      "document": "EQUIPMENT-DATASHEETS",
+      "revision": "2",
+      "sha256": "e1bd5079565db504de7adeca3e483d17d7e4064d1192a7699f20b207b1326839",
+      "path": "lists/equipment_datasheets.csv",
+      "locator": "row 2"
+     },
+     "says": "45 m3/h"
+    },
+    "source_b": {
+     "source": {
+      "kind": "document",
+      "document": "CMMS-EQUIPMENT",
+      "revision": "2026-10-01",
+      "sha256": "ef2acb8acafdb3199433ba041f4714b5ef576a61cd25b07e3efb252966a13425",
+      "path": "lists/maintenance_equipment.csv",
+      "locator": "row 2"
+     },
+     "says": "40 m3/h"
+    },
+    "record_owner": "Maintenance",
+    "parties": [
+     "Maintenance"
+    ],
+    "status": "open",
+    "detected": true,
+    "history": []
+   }
+  },
+  {
    "id": "S1/CONFLICT/C-730af068af",
    "kind": "conflict",
    "tag": "C-730af068af",
@@ -522,60 +575,6 @@
    }
   },
   {
-   "id": "S1/CONFLICT/C-c3a645abfe",
-   "kind": "conflict",
-   "tag": "C-c3a645abfe",
-   "name": "two sources give different values for the same attribute: S1/P1/200/P-101 rated_flow",
-   "aliases": [],
-   "status": "unverified",
-   "attributes": [],
-   "source": {
-    "kind": "document",
-    "document": "CMMS-EQUIPMENT",
-    "revision": "2026-10-01",
-    "sha256": "ef2acb8acafdb3199433ba041f4714b5ef576a61cd25b07e3efb252966a13425",
-    "path": "lists/maintenance_equipment.csv",
-    "locator": "row 2"
-   },
-   "conflict": {
-    "id": "C-c3a645abfe",
-    "type": "value_disagreement",
-    "what": "two sources give different values for the same attribute: S1/P1/200/P-101 rated_flow",
-    "subject": "S1/P1/200/P-101",
-    "attribute": "rated_flow",
-    "source_a": {
-     "source": {
-      "kind": "document",
-      "document": "CMMS-EQUIPMENT",
-      "revision": "2026-10-01",
-      "sha256": "ef2acb8acafdb3199433ba041f4714b5ef576a61cd25b07e3efb252966a13425",
-      "path": "lists/maintenance_equipment.csv",
-      "locator": "row 2"
-     },
-     "says": "40 m3/h"
-    },
-    "source_b": {
-     "source": {
-      "kind": "drawing",
-      "document": "S1/DOC/PID-P1-200-01",
-      "sheet": "200-01",
-      "revision": "D",
-      "path": "sheets/P1-200-01.json",
-      "zone": "B2"
-     },
-     "says": "45 m3/h"
-    },
-    "record_owner": "Maintenance",
-    "parties": [
-     "Doc control",
-     "Maintenance"
-    ],
-    "status": "open",
-    "detected": true,
-    "history": []
-   }
-  },
-  {
    "id": "S1/CONFLICT/C-ce7c3162b0",
    "kind": "conflict",
    "tag": "C-ce7c3162b0",
@@ -855,7 +854,7 @@
     "owner": "Doc control",
     "department": "Doc control",
     "doc_type": "pid",
-    "sha256": "b0815535c4566abc1e7bbfc1dddafc7e9f8cebc73a1e60c87412945c9b46fe93",
+    "sha256": "f268958e22e4c223aff5a0c97f16efbf930b4e864df34a81e3564ee27d7c01d7",
     "path": "sheets/P1-200-01.json"
    }
   },
@@ -1264,14 +1263,14 @@
    "attributes": [
     {
      "name": "rated_flow",
-     "value": "40 m3/h",
+     "value": "45 m3/h",
      "status": "unverified",
      "source": {
       "kind": "document",
-      "document": "CMMS-EQUIPMENT",
-      "revision": "2026-10-01",
-      "sha256": "ef2acb8acafdb3199433ba041f4714b5ef576a61cd25b07e3efb252966a13425",
-      "path": "lists/maintenance_equipment.csv",
+      "document": "EQUIPMENT-DATASHEETS",
+      "revision": "2",
+      "sha256": "e1bd5079565db504de7adeca3e483d17d7e4064d1192a7699f20b207b1326839",
+      "path": "lists/equipment_datasheets.csv",
       "locator": "row 2"
      }
     }
@@ -1647,7 +1646,21 @@
    "name": "Feed surge drum",
    "aliases": [],
    "status": "unverified",
-   "attributes": [],
+   "attributes": [
+    {
+     "name": "design_pressure",
+     "value": "10 barg",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "EQUIPMENT-DATASHEETS",
+      "revision": "2",
+      "sha256": "e1bd5079565db504de7adeca3e483d17d7e4064d1192a7699f20b207b1326839",
+      "path": "lists/equipment_datasheets.csv",
+      "locator": "row 3"
+     }
+    }
+   ],
    "source": {
     "kind": "document",
     "document": "CMMS-EQUIPMENT",
@@ -2415,6 +2428,23 @@
    "attributes": []
   },
   {
+   "id": "concerns:S1/CONFLICT/C-72b8f2dcce->S1/P1/200/P-101",
+   "type": "concerns",
+   "from": "S1/CONFLICT/C-72b8f2dcce",
+   "to": "S1/P1/200/P-101",
+   "status": "unverified",
+   "direction": null,
+   "source": {
+    "kind": "document",
+    "document": "EQUIPMENT-DATASHEETS",
+    "revision": "2",
+    "sha256": "e1bd5079565db504de7adeca3e483d17d7e4064d1192a7699f20b207b1326839",
+    "path": "lists/equipment_datasheets.csv",
+    "locator": "row 2"
+   },
+   "attributes": []
+  },
+  {
    "id": "concerns:S1/CONFLICT/C-730af068af->S1/P1/200/LV-2204",
    "type": "concerns",
    "from": "S1/CONFLICT/C-730af068af",
@@ -2511,23 +2541,6 @@
     "revision": "3",
     "sha256": "87c83af007f0be31571cc6647fe99086932db927b3bcba587ab83464c3ca1b82",
     "path": "docs/p101-design-basis-rev3.txt"
-   },
-   "attributes": []
-  },
-  {
-   "id": "concerns:S1/CONFLICT/C-c3a645abfe->S1/P1/200/P-101",
-   "type": "concerns",
-   "from": "S1/CONFLICT/C-c3a645abfe",
-   "to": "S1/P1/200/P-101",
-   "status": "unverified",
-   "direction": null,
-   "source": {
-    "kind": "document",
-    "document": "CMMS-EQUIPMENT",
-    "revision": "2026-10-01",
-    "sha256": "ef2acb8acafdb3199433ba041f4714b5ef576a61cd25b07e3efb252966a13425",
-    "path": "lists/maintenance_equipment.csv",
-    "locator": "row 2"
    },
    "attributes": []
   },
@@ -4965,7 +4978,7 @@
  "counts": {
   "nodes": 63,
   "edges": 115,
-  "claims": 77,
+  "claims": 78,
   "conflicts": 14,
   "questions": 0,
   "events": 0

@@ -1,0 +1,9 @@
+{
+ "schema": "one-map-site-1",
+ "note": "A one-sheet site around the public PID2Graph OPEN100 sheet 0 (Energy Impact Center OPEN100 reference design, P&ID 140 Main Steam System). Plant and unit ids are labels chosen here, not the design's own. No lists exist yet, so every drawn tag is a review item and draft-lists writes the draft lists. Development sheet: no answer-key claim is made here.",
+ "site": {"id": "O100", "name": "Public OPEN100 sheet 0 read by the drawing reader (development sheet)"},
+ "plants": [{"id": "NPP", "name": "OPEN100 reference plant", "owner": "Plant operations", "units": [{"id": "MSS", "name": "Main steam system"}]}],
+ "record_owners": {"pid": "Doc control", "maintenance_export": "Maintenance", "instrument_index": "I&C", "loop_list": "I&C"},
+ "drawing_register": "drawing_register.csv",
+ "spot_check_every": 4
+}

@@ -11,17 +11,21 @@ whoever owns that record instead of being quietly fixed.
 [first-question guide](examples/first-pilot/README.md) by hand or with company-approved Copilot. You end up with a
 short note that says what the records support, what's still unknown, and who should look next.
 
-**Two ways in, equally supported.** Already have a maintenance equipment export, an instrument index and a loop
-list? Build from them and let the drawings confirm and place each tag (sheet and zone) and fill in the piping. Only
-have drawings? Draft those lists from the drawings in the same formats, then review the draft. Either way people
-review only what disagrees, safety items first. See [one map](docs/ONE_MAP.md) and its
-[two-plant example](examples/one-map/README.md), where one plant starts from lists and the other from a drawing.
-Drawings come in as a [P&ID image](examples/own-drawing/README.md), a [DEXPI export](examples/from-dexpi-xml/README.md)
-or a [written process description](examples/from-description/README.md).
+**One path.** Read every P&ID sheet of the unit (the [drawing reader](examples/own-drawing/README.md), converted
+into a sheet read by `one_map.py sheet-from-prediction`); line the read up against whatever maintenance equipment
+export, instrument index and loop list exist, so matches get spot checks and anything in one but not the other goes
+to review; where none exist yet, the P&ID read becomes their unverified draft; compare values between datasheets and
+those records (the P&ID owns tags, connectivity and the control scheme, not ratings); people work one review queue,
+safety items first; a P&ID revision re-reads only that sheet. Optional steps depend on your goal. See
+[one map](docs/ONE_MAP.md#the-path), a [two-plant example](examples/one-map/README.md) where Plant 2 has no records
+yet, and [one public P&ID sheet read end to end](examples/drawing-to-map/README.md). A
+[DEXPI export](examples/from-dexpi-xml/README.md) or a [written process description](examples/from-description/README.md)
+builds the draft asset model without reading an image.
 
-**Scope today.** Engineering-first. Equipment, instrument and loop lists come in as structured lists; production,
-quality and safety records (procedures, HACCP plans and CAPAs, lockout procedures, hazard reviews) come in as
-documents that cover or mention tags. There is no special handling yet for critical control points or isolation
+**Scope today.** Engineering-first. Equipment and instrument records (maintenance equipment export, instrument
+index, loop list) and datasheets come in as structured CSV files; production, quality and safety records
+(procedures, HACCP plans and CAPAs, lockout procedures, hazard reviews) come in as documents that cover or mention
+tags. There is no special handling yet for critical control points or isolation
 points.
 
 **Keep it current.** The [context register](docs/CONTEXT_REGISTER.md) keeps each answer tied to the documents it
@@ -59,7 +63,7 @@ These tools accept your own records in their documented formats. Choose the work
 | Investigate controls or performance | [Loop list audit](examples/loop-audit/README.md) · [question engine](docs/OPPORTUNITY_SCREEN.md) · [process data and analytics](docs/PROCESS_ANALYTICS.md) | Explicit discrepancies, evidence requests, recorded-data bands and phase calculations beside the twin. |
 | Estimate a measured change | [Impact calculation](examples/impact-estimate/README.md) | First-draft energy, cost and CO2e calculations with measurements, assumptions and constants visible. |
 | Keep and exchange engineering context | [Context register](docs/CONTEXT_REGISTER.md) · [read-only MCP](examples/internal-mcp/README.md) · [owned team packets](examples/team-context/README.md) | Source dependencies, retained answers and selected snapshots to hand to the next team or company system. |
-| Connect plant records and documents site-wide | [One map](docs/ONE_MAP.md) · [two-plant example](examples/one-map/README.md) | One graph of lists, drawings and documents; disagreements as conflicts routed to each record's owner. |
+| Connect plant records and documents site-wide | [One map](docs/ONE_MAP.md) · [two-plant example](examples/one-map/README.md) · [a read P&ID on the map](examples/drawing-to-map/README.md) | One graph of P&IDs, equipment and instrument records, datasheets and documents; disagreements as conflicts routed to each record's owner. |
 | Evaluate or improve a method | [Drawing comparison](examples/vendor-evaluation/README.md) · [task/model benchmarks](benchmarks/README.md) · [review a frozen model](benchmarks/source-support/artifact-values/README.md) | Compare saved answers against reviewed source/key cases, with missing answers, mistakes and evidence limits visible. |
 
 ## What connects today: the hub and spokes

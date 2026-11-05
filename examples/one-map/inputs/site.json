@@ -47,7 +47,8 @@
   "pid": "Doc control",
   "maintenance_export": "Maintenance",
   "instrument_index": "I&C",
-  "loop_list": "I&C"
+  "loop_list": "I&C",
+  "datasheet": "Process"
  },
  "routing": {
   "superseded_basis": "document",
@@ -77,6 +78,16 @@
    "path": "lists/dcs_loops_unit200.csv",
    "scope": "S1/P1/200",
    "revision": "2026-09-30"
+  }
+ ],
+ "datasheets": [
+  {
+   "id": "EQUIPMENT-DATASHEETS",
+   "path": "lists/equipment_datasheets.csv",
+   "revision": "2",
+   "scopes": [
+    "S1/P1"
+   ]
   }
  ],
  "documents": "documents.json",

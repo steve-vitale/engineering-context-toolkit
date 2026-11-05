@@ -57,6 +57,7 @@ SOURCE_TESTS = (
     "scripts/test_own_drawing_example.py",
     "scripts/test_loop_audit.py",
     "scripts/test_one_map.py",
+    "scripts/test_sheet_from_prediction.py",
     "scripts/test_evaluate_vendor.py",
     "scripts/test_drawing_case.py",
     "scripts/test_reader_template.py",
