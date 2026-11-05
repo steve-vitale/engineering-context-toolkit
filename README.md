@@ -2,18 +2,27 @@
 
 [![tests](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml/badge.svg)](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml)
 
-**Open source tools for turning a plant's drawings and records into engineering context your team can check
-and build on, the start of a context graph for your plant.** Every item keeps a pointer back to the document,
-revision and location it came from.
+**Open source tools for starting a context map of your plant: the plant itself (site, plant, unit, system,
+equipment, and what's piped to, measures and controls what) with each team's records tied to it.** Every item keeps
+a pointer back to the document, revision and location it came from, and where two records disagree it goes to
+whoever owns that record instead of being quietly fixed.
 
 **Start here, no install.** Pick one engineering question and the few records that answer it, then follow the
 [first-question guide](examples/first-pilot/README.md) by hand or with company-approved Copilot. You end up with a
 short note that says what the records support, what's still unknown, and who should look next.
 
-**When you need the plant's structure.** Turn a [P&ID image](examples/own-drawing/README.md), a
-[written process description](examples/from-description/README.md) or a [DEXPI export](examples/from-dexpi-xml/README.md)
-into a sourced draft asset model: the equipment, instruments and connections, each traced to its drawing, ready for
-an engineer to review.
+**Two ways in, equally supported.** Already have a maintenance equipment export, an instrument index and a loop
+list? Build from them and let the drawings confirm and place each tag (sheet and zone) and fill in the piping. Only
+have drawings? Draft those lists from the drawings in the same formats, then review the draft. Either way people
+review only what disagrees, safety items first. See [one map](docs/ONE_MAP.md) and its
+[two-plant example](examples/one-map/README.md), where one plant starts from lists and the other from a drawing.
+Drawings come in as a [P&ID image](examples/own-drawing/README.md), a [DEXPI export](examples/from-dexpi-xml/README.md)
+or a [written process description](examples/from-description/README.md).
+
+**Scope today.** Engineering-first. Equipment, instrument and loop lists come in as structured lists; production,
+quality and safety records (procedures, HACCP plans and CAPAs, lockout procedures, hazard reviews) come in as
+documents that cover or mention tags. There is no special handling yet for critical control points or isolation
+points.
 
 **Keep it current.** The [context register](docs/CONTEXT_REGISTER.md) keeps each answer tied to the documents it
 relied on. When one of them is revised, refreshing reopens the answers that depended on it.
