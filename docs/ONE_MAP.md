@@ -404,6 +404,15 @@ document are listed to reopen; the register's own refresh then marks them stale.
 - A prototype tested on the fictional example, synthetic cases and one public development P&ID sheet (OPEN100 sheet
   0). No plant's records, P&IDs or documents have been run through it, and no one has timed a review with these
   queues.
+- `changes`, `affected` and the closeout compare what two graphs hold. They see a record only through the map: a
+  document that names an item in words the map cannot match, a record not exported, or a row whose tag does not
+  resolve is not in them. `changed` in a closeout means the record says something different about the item, not
+  that the change is right; review rows (like-for-like, record differs from a ruling) are in the review queue, not in
+  the graphs these reports read. Change flags are never tracked to completion. Tested only on the fictional
+  pasteurizer MOC; the "15 minutes a week" in RUNNING_THE_MAP.md is a planning figure, not a measurement.
+- The work order closeout compares only `installed_manufacturer`, `installed_model`, `installed_serial_number` and
+  `installed_size`, as text (case and repeated spaces ignored): `DN65` and `65 mm` differ. Part numbers, spares and
+  purchase orders are not compared.
 - P&ID images are read by the drawing reader, converted by `sheet-from-prediction`, and reviewed in the same queue.
   The conversion is only as good as the reading: on OPEN100 sheet 0 it fills in 38 piping runs between the two
   vessels, MSCV-XXX and the off-page connectors, but places no instrument (20 bubbles reach a header the tracer

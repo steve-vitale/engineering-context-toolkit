@@ -21,6 +21,7 @@ import one_map as om  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 PAST = ROOT / "examples" / "one-map" / "inputs" / "pasteurizer"
 FDV = "S1/P1/PAST1/FDV-2210"
+PRIVATE_NAMES = ("tolipegnahc"[::-1], "kramatled"[::-1])  # product and company names kept out of this repo
 
 
 def quiet(fn, *a, **k):
@@ -237,8 +238,41 @@ class MocExample(unittest.TestCase):
     def test_public_files_name_no_private_product(self):
         for p in sorted(MOC_EXPECTED.rglob("*.*")) + sorted(PAST.rglob("*.*")) + [Path(mc.__file__)]:
             text = p.read_text(encoding="utf-8").lower()
-            for word in ("changepilot", "deltamark"):
+            for word in PRIVATE_NAMES:
                 self.assertNotIn(word, text, p.name)
+
+
+class RunningTheMapGuide(unittest.TestCase):
+    """docs/RUNNING_THE_MAP.md: every routine has a row, the commands it names exist, nothing private is named."""
+
+    def test_routines_commands_and_links(self):
+        doc = (ROOT / "docs" / "RUNNING_THE_MAP.md").read_text(encoding="utf-8")
+        for routine in ("P&ID revision", "MOC open", "MOC close", "Work order closeout", "PM and calibration",
+                        "Turnaround", "Walkdown / field verification", "HACCP verification and reassessment",
+                        "CAPA", "PHA / HAZOP revalidation", "Incident investigation", "Procurement and receiving",
+                        "New or revised document", "Onboarding", "Audit preparation"):
+            self.assertIn(f"| **{routine}", doc)
+        for words in ("Two numbers to watch", "15 minutes a week", "Monthly export refresh", "rollout.scopes",
+                      "limit_per_scope", "your company's existing systems or a governed service"):
+            self.assertIn(words, doc)
+        lowered = doc.lower()
+        for word in PRIVATE_NAMES:
+            self.assertNotIn(word, lowered)
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf), self.assertRaises(SystemExit):
+            om.main(["--help"])
+        for cmd in ("build", "changes", "affected", "ask"):
+            self.assertIn(f"`{cmd}", doc)
+            self.assertIn(cmd, buf.getvalue())
+        for readme, link in ((ROOT / "README.md", "docs/RUNNING_THE_MAP.md"),
+                             (ROOT / "docs" / "README.md", "(RUNNING_THE_MAP.md)")):
+            self.assertIn(link, readme.read_text(encoding="utf-8"))
+        anchor = "#the-pasteurizer-through-an-moc-pid-revision-moc-open-and-close-work-order-walkdown"
+        self.assertIn(anchor, doc)
+        self.assertIn("## The pasteurizer through an MOC: P&ID revision, MOC open and close, work order, walkdown",
+                      (ROOT / "examples" / "one-map" / "README.md").read_text(encoding="utf-8"))
+        for flag in (mc.FLAG_HACCP, mc.FLAG_PHA, mc.FLAG_CRIT):
+            self.assertIn(flag, doc)
 
 
 class MocBuilds:
