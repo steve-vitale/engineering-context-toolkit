@@ -1,0 +1,2 @@
+permit_id,permit_type,tag,plant,unit,valid_from,valid_to,permit_status,locator,status,note
+PTW-2026-1180,line break,FDV-2210,P1,PAST1,2026-08-04,2026-08-04,closed,,unverified,

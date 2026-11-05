@@ -1,0 +1,3 @@
+document,title,doc_type,cfihos_document_type,vdi2770_class,revision,doc_status,owner,path,covers,based_on,manufacturer,locator,status,note
+HACCP-P1-01,Plant 1 HACCP plan,HACCP plan,,,7,released,Quality,docs/haccp-p1-rev7.pdf,S1/P1,PID-P1-PAST1-01@C,,,confirmed,
+LOTO-PAST1-P101,P-101 lockout procedure,lockout procedure,,,B,released,Safety/EHS,docs/loto-p101-revB.pdf,S1/P1/PAST1/P-101,,,,unverified,

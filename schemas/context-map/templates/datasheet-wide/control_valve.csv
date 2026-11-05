@@ -1,0 +1,2 @@
+tag,plant,unit,document,revision,valve_type,body_size[DN],cv,actuator,fail_position,design_pressure[barg],body_material,seal_material,manufacturer,model,locator,status,note
+FDV-2210,P1,PAST1,IS-FDV2210,1,"flow diversion valve, 3-way",65,,"pneumatic, spring return",divert,10,AISI 316L,EPDM,,,,unverified,Manufacturer and model not on the sheet.

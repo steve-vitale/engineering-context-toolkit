@@ -1,0 +1,3795 @@
+{
+ "format": "context-map-registers-1",
+ "format_version": "1.0.0-draft",
+ "note": "Field catalogue for every register in context-map-1. Templates under templates/ follow it column for column. Draft for owner review; descriptions are this project's own wording.",
+ "pseudo_record_types": {
+  "pid": "P&ID sheets read into the PLANT layer (P&ID sheet register + sheet reads)",
+  "instrument_spec_sheet": "Rows of the datasheet register whose sheet_type is instrument_spec_sheet. Sources still declare record_type datasheet."
+ },
+ "default_authority": {
+  "connectivity": [
+   "pid"
+  ],
+  "tags": [
+   "pid"
+  ],
+  "control_scheme": [
+   "pid"
+  ],
+  "rating": [
+   "datasheet"
+  ],
+  "size": [
+   "datasheet"
+  ],
+  "material": [
+   "datasheet"
+  ],
+  "instrument_range": [
+   "instrument_spec_sheet",
+   "instrument_index"
+  ],
+  "instrument_model": [
+   "instrument_spec_sheet",
+   "instrument_index"
+  ],
+  "installed": [
+   "maintenance_export"
+  ],
+  "line_design": [
+   "line_list"
+  ],
+  "relief_setting": [
+   "relief_device_register"
+  ],
+  "alarm_setting": [
+   "alarm_list"
+  ],
+  "trip_logic": [
+   "interlock_list"
+  ],
+  "io_assignment": [
+   "io_list"
+  ],
+  "ccp_limit": [
+   "ccp"
+  ],
+  "isolation": [
+   "isolation_point"
+  ],
+  "calibration_status": [
+   "calibration_record"
+  ],
+  "maintenance_history": [
+   "work_order"
+  ],
+  "pm_schedule": [
+   "pm_plan"
+  ],
+  "vendor_approval": [
+   "approved_vendor"
+  ],
+  "operating_limit": [
+   "operating_limit"
+  ],
+  "document_revision": [
+   "document_register"
+  ],
+  "corrective_action": [
+   "capa"
+  ],
+  "criticality": [
+   "criticality_ranking"
+  ],
+  "inspection_status": [
+   "inspection_record"
+  ]
+ },
+ "authority_rule": "Each fact kind maps to an ordered list of record types. For a given scope, the first record type in the list that is present for that scope is the authority; later entries apply only where the earlier ones are absent. A record type is present for a scope when a source of that record type is the record for the scope (its scopes list the scope or an enclosing scope; a source that lists no scopes is the record for the scopes of the items its rows resolve to). instrument_spec_sheet is present when such a datasheet source has at least one row with sheet_type instrument_spec_sheet. When no listed record type is present, no record is authoritative there and a disagreement is an authority_gap. settings.authority overrides a default with its own list (or one record type).",
+ "departments": {
+  "engineering": "Engineering",
+  "ic": "I&C / controls",
+  "maintenance": "Maintenance / reliability",
+  "procurement": "Procurement / stores / supply chain",
+  "production": "Production / operations",
+  "quality": "Quality / food safety",
+  "safety": "Safety / EHS / process safety",
+  "cross": "Cross-cutting"
+ },
+ "registers": [
+  {
+   "id": "tag_register",
+   "name": "tag register",
+   "layer": "plant",
+   "department": "engineering",
+   "default_owner": "Engineering",
+   "authority_for": [],
+   "key": [
+    "tag",
+    "plant",
+    "unit"
+   ],
+   "template": "templates/tag_register.csv",
+   "standards": [
+    "ISA-95 and ISA-88 equivalents of the plant words (standards-mapping.csv)",
+    "DEXPI class",
+    "CFIHOS tag class",
+    "ISA-5.1 letters"
+   ],
+   "fields": [
+    {
+     "name": "tag",
+     "type": "tag",
+     "required": true,
+     "description": "The tag exactly as the plant writes it (P-101, TT-2207). Never renumbered.",
+     "fact_kind": "tags"
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant id, or a site scope id such as UTIL for site utilities, as declared in the map's scopes."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit id inside the plant. Required when the plant declares units."
+    },
+    {
+     "name": "system",
+     "type": "text",
+     "required": false,
+     "description": "System inside the unit (heating medium, CIP supply). Optional level."
+    },
+    {
+     "name": "kind",
+     "type": "enum",
+     "required": false,
+     "description": "The map's own small item kind. Leave empty to let the tag letters suggest one for review.",
+     "values": [
+      "equipment",
+      "instrument",
+      "controller",
+      "final_element",
+      "manual_valve",
+      "relief_device",
+      "line",
+      "offpage_connector",
+      "other"
+     ]
+    },
+    {
+     "name": "description",
+     "type": "text",
+     "required": false,
+     "description": "Service description."
+    },
+    {
+     "name": "dexpi_class",
+     "type": "class_ref",
+     "required": false,
+     "description": "DEXPI 2.0.1 class name, for example CentrifugalPump, Transmitter."
+    },
+    {
+     "name": "cfihos_tag_class",
+     "type": "class_ref",
+     "required": false,
+     "description": "CFIHOS tag class code (CFIHOS-...) from the RDL version the site uses."
+    },
+    {
+     "name": "parent_tag",
+     "type": "tag_ref",
+     "required": false,
+     "description": "Tag this item is part of (a motor's pump, an instrument's valve)."
+    },
+    {
+     "name": "former_tag",
+     "type": "text",
+     "required": false,
+     "description": "Earlier tag(s) for the same position, separated by ';'. Kept as aliases."
+    },
+    {
+     "name": "safety_relevant",
+     "type": "bool",
+     "required": false,
+     "description": "yes when the item is in a protective function (relief, interlock, CCP). Never reviewed as green."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "tag_alias",
+   "name": "tag lookup table",
+   "layer": "plant",
+   "department": "engineering",
+   "default_owner": "Doc control",
+   "authority_for": [],
+   "key": [
+    "alias",
+    "alias_kind"
+   ],
+   "template": "templates/tag_alias.csv",
+   "standards": [
+    "CFIHOS tag number",
+    "ISO 14224 taxonomy"
+   ],
+   "notes": "An alias must resolve to exactly one current item on any date; otherwise the map raises an ambiguous_reference conflict.",
+   "fields": [
+    {
+     "name": "alias",
+     "type": "text",
+     "required": true,
+     "description": "Another name the item is known by in some record."
+    },
+    {
+     "name": "alias_kind",
+     "type": "enum",
+     "required": true,
+     "description": "Which record system uses this name.",
+     "values": [
+      "former_tag",
+      "cmms_number",
+      "functional_location",
+      "dcs_point",
+      "historian_tag",
+      "vendor_tag",
+      "handover_tag",
+      "other"
+     ]
+    },
+    {
+     "name": "tag",
+     "type": "tag",
+     "required": true,
+     "description": "Current tag the alias resolves to.",
+     "fact_kind": "tags"
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant or site scope of the current tag."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit of the current tag."
+    },
+    {
+     "name": "valid_from",
+     "type": "date",
+     "required": false,
+     "description": "First date the alias meant this item."
+    },
+    {
+     "name": "valid_to",
+     "type": "date",
+     "required": false,
+     "description": "Last date the alias meant this item (empty = still valid)."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "drawing_register",
+   "name": "P&ID sheet register",
+   "layer": "documents",
+   "department": "engineering",
+   "default_owner": "Doc control",
+   "authority_for": [],
+   "key": [
+    "sheet",
+    "plant"
+   ],
+   "template": "templates/drawing_register.csv",
+   "standards": [
+    "DEXPI Diagram",
+    "CFIHOS document type"
+   ],
+   "notes": "Same columns as the P&ID sheet register CSV one_map.py reads (its drawing_register), plus the optional review tail. It is the P&ID part of the document register: when both give a P&ID revision they must agree, otherwise a value_disagreement routed to Doc control.",
+   "fields": [
+    {
+     "name": "sheet",
+     "type": "text",
+     "required": true,
+     "description": "P&ID sheet number as the P&ID sheet register writes it."
+    },
+    {
+     "name": "rev",
+     "type": "text",
+     "required": true,
+     "description": "Current revision.",
+     "fact_kind": "document_revision"
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant or site scope the sheet belongs to."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit the sheet covers (empty for a site-scope sheet)."
+    },
+    {
+     "name": "owner",
+     "type": "text",
+     "required": true,
+     "description": "Department that owns the P&ID sheet."
+    },
+    {
+     "name": "path",
+     "type": "text",
+     "required": true,
+     "description": "File path relative to the map file, or a document-system address."
+    },
+    {
+     "name": "doc_status",
+     "type": "enum",
+     "required": false,
+     "description": "Default released.",
+     "values": [
+      "draft",
+      "released"
+     ]
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "maintenance_export",
+   "name": "maintenance equipment export (equipment register)",
+   "layer": "records",
+   "department": "maintenance",
+   "default_owner": "Maintenance",
+   "authority_for": [
+    "installed"
+   ],
+   "key": [
+    "tag",
+    "plant",
+    "unit"
+   ],
+   "template": "templates/maintenance_export.csv",
+   "standards": [
+    "ISO 14224 equipment data",
+    "CFIHOS equipment register",
+    "AAS Digital Nameplate"
+   ],
+   "notes": "Tag = the position (CFIHOS tag); equipment_number/serial = the physical item installed there (CFIHOS equipment, ISO 14224 equipment unit).",
+   "fields": [
+    {
+     "name": "tag",
+     "type": "tag",
+     "required": true,
+     "description": "The tag exactly as the plant writes it (P-101, TT-2207). Never renumbered.",
+     "fact_kind": "tags"
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant id, or a site scope id such as UTIL for site utilities, as declared in the map's scopes."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit id inside the plant. Required when the plant declares units."
+    },
+    {
+     "name": "functional_location",
+     "type": "text",
+     "required": false,
+     "description": "CMMS functional location for the tag position."
+    },
+    {
+     "name": "equipment_number",
+     "type": "text",
+     "required": false,
+     "description": "CMMS number of the physical item currently installed.",
+     "fact_kind": "installed"
+    },
+    {
+     "name": "description",
+     "type": "text",
+     "required": false,
+     "description": "CMMS description."
+    },
+    {
+     "name": "manufacturer",
+     "type": "text",
+     "required": false,
+     "description": "Manufacturer of the installed item.",
+     "fact_kind": "installed"
+    },
+    {
+     "name": "model",
+     "type": "text",
+     "required": false,
+     "description": "Model of the installed item.",
+     "fact_kind": "installed"
+    },
+    {
+     "name": "serial_number",
+     "type": "text",
+     "required": false,
+     "description": "Serial number of the installed item.",
+     "fact_kind": "installed"
+    },
+    {
+     "name": "installed_on",
+     "type": "date",
+     "required": false,
+     "description": "Date the item was installed in this position.",
+     "fact_kind": "installed"
+    },
+    {
+     "name": "iso14224_class",
+     "type": "class_ref",
+     "required": false,
+     "description": "ISO 14224 equipment class code from the plant's licensed copy."
+    },
+    {
+     "name": "criticality",
+     "type": "text",
+     "required": false,
+     "description": "Site criticality ranking as the CMMS holds it. The equipment criticality ranking register is the authority.",
+     "fact_kind": "criticality"
+    },
+    {
+     "name": "system",
+     "type": "text",
+     "required": false,
+     "description": "System inside the unit."
+    },
+    {
+     "name": "former_tag",
+     "type": "text",
+     "required": false,
+     "description": "Earlier tag(s), separated by ';'."
+    },
+    {
+     "name": "cmms_status",
+     "type": "text",
+     "required": false,
+     "description": "Status in the CMMS (operating, spare, retired)."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "datasheet",
+   "name": "datasheet values (equipment datasheets and instrument specification sheets)",
+   "layer": "records",
+   "department": "engineering",
+   "default_owner": "Engineering",
+   "authority_for": [
+    "rating",
+    "size",
+    "material"
+   ],
+   "key": [
+    "tag",
+    "plant",
+    "unit",
+    "property"
+   ],
+   "template": "templates/datasheet.csv",
+   "standards": [
+    "CFIHOS tag property value",
+    "CFIHOS property",
+    "DEXPI attributes"
+   ],
+   "notes": "Long form (one row per value) because every equipment class has different properties. A site may also add property columns to any register; those columns are values from that register's source, under the authority map.",
+   "fields": [
+    {
+     "name": "tag",
+     "type": "tag",
+     "required": true,
+     "description": "The tag exactly as the plant writes it (P-101, TT-2207). Never renumbered.",
+     "fact_kind": "tags"
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant id, or a site scope id such as UTIL for site utilities, as declared in the map's scopes."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit id inside the plant. Required when the plant declares units."
+    },
+    {
+     "name": "property",
+     "type": "text",
+     "required": true,
+     "description": "Property name as the site writes it (design_pressure, rated_flow, wetted_material)."
+    },
+    {
+     "name": "value",
+     "type": "text",
+     "required": true,
+     "description": "Value as printed. Compared as text unless a unit is given."
+    },
+    {
+     "name": "uom",
+     "type": "text",
+     "required": false,
+     "description": "Unit of measure as printed (barg, m3/h, degC)."
+    },
+    {
+     "name": "fact_kind",
+     "type": "enum",
+     "required": false,
+     "description": "Overrides the default guess from the property name.",
+     "values": [
+      "rating",
+      "size",
+      "material",
+      "instrument_range",
+      "instrument_model",
+      "relief_setting",
+      "other"
+     ]
+    },
+    {
+     "name": "sheet_type",
+     "type": "enum",
+     "required": false,
+     "description": "Which kind of sheet.",
+     "values": [
+      "equipment_datasheet",
+      "instrument_spec_sheet"
+     ]
+    },
+    {
+     "name": "document",
+     "type": "doc_ref",
+     "required": true,
+     "description": "Document id of the datasheet in the document register."
+    },
+    {
+     "name": "revision",
+     "type": "text",
+     "required": true,
+     "description": "Datasheet revision this value was read from.",
+     "fact_kind": "document_revision"
+    },
+    {
+     "name": "cfihos_property",
+     "type": "class_ref",
+     "required": false,
+     "description": "CFIHOS property code (CFIHOS-...) when known."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "line_list",
+   "name": "line list",
+   "layer": "records",
+   "department": "engineering",
+   "default_owner": "Engineering",
+   "authority_for": [
+    "line_design"
+   ],
+   "key": [
+    "line_number",
+    "plant"
+   ],
+   "template": "templates/line_list.csv",
+   "standards": [
+    "DEXPI PipingNetworkSegment",
+    "CFIHOS tag class (line)"
+   ],
+   "fields": [
+    {
+     "name": "line_number",
+     "type": "tag",
+     "required": true,
+     "description": "Line number as on the P&ID and line list.",
+     "fact_kind": "tags"
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant or site scope."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit."
+    },
+    {
+     "name": "from_tag",
+     "type": "tag_ref",
+     "required": false,
+     "description": "Where the line starts."
+    },
+    {
+     "name": "to_tag",
+     "type": "tag_ref",
+     "required": false,
+     "description": "Where the line ends."
+    },
+    {
+     "name": "nominal_size",
+     "type": "text",
+     "required": false,
+     "description": "Nominal size as written (2 in, DN50).",
+     "fact_kind": "line_design"
+    },
+    {
+     "name": "piping_class",
+     "type": "text",
+     "required": false,
+     "description": "Piping class / spec code.",
+     "fact_kind": "line_design"
+    },
+    {
+     "name": "fluid",
+     "type": "text",
+     "required": false,
+     "description": "Fluid service code or name."
+    },
+    {
+     "name": "design_pressure",
+     "type": "text",
+     "required": false,
+     "description": "Design pressure with unit.",
+     "fact_kind": "line_design"
+    },
+    {
+     "name": "design_temperature",
+     "type": "text",
+     "required": false,
+     "description": "Design temperature with unit.",
+     "fact_kind": "line_design"
+    },
+    {
+     "name": "material",
+     "type": "text",
+     "required": false,
+     "description": "Pipe material.",
+     "fact_kind": "line_design"
+    },
+    {
+     "name": "insulation",
+     "type": "text",
+     "required": false,
+     "description": "Insulation or jacketing code."
+    },
+    {
+     "name": "hygienic",
+     "type": "bool",
+     "required": false,
+     "description": "yes for product-contact sanitary piping."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "relief_device_register",
+   "name": "relief device register",
+   "layer": "records",
+   "department": "safety",
+   "default_owner": "Process safety",
+   "authority_for": [
+    "relief_setting"
+   ],
+   "key": [
+    "tag",
+    "plant",
+    "unit"
+   ],
+   "template": "templates/relief_device_register.csv",
+   "standards": [
+    "DEXPI SafetyValveOrFitting",
+    "CFIHOS tag class"
+   ],
+   "fields": [
+    {
+     "name": "tag",
+     "type": "tag",
+     "required": true,
+     "description": "The tag exactly as the plant writes it (P-101, TT-2207). Never renumbered.",
+     "fact_kind": "tags"
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant id, or a site scope id such as UTIL for site utilities, as declared in the map's scopes."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit id inside the plant. Required when the plant declares units."
+    },
+    {
+     "name": "protects",
+     "type": "tag_ref",
+     "required": false,
+     "description": "Item the device protects, as the register states it.",
+     "fact_kind": "connectivity"
+    },
+    {
+     "name": "device_type",
+     "type": "text",
+     "required": false,
+     "description": "Safety valve, rupture disc, vacuum breaker."
+    },
+    {
+     "name": "set_pressure",
+     "type": "text",
+     "required": false,
+     "description": "Set pressure with unit.",
+     "fact_kind": "relief_setting"
+    },
+    {
+     "name": "capacity",
+     "type": "text",
+     "required": false,
+     "description": "Rated relieving capacity with unit.",
+     "fact_kind": "relief_setting"
+    },
+    {
+     "name": "sizing_basis",
+     "type": "doc_ref",
+     "required": false,
+     "description": "Document id of the sizing calculation."
+    },
+    {
+     "name": "last_tested",
+     "type": "date",
+     "required": false,
+     "description": "Date of the last bench test.",
+     "fact_kind": "calibration_status"
+    },
+    {
+     "name": "test_interval_months",
+     "type": "number",
+     "required": false,
+     "description": "Test interval."
+    },
+    {
+     "name": "next_due",
+     "type": "date",
+     "required": false,
+     "description": "Next test due."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "instrument_index",
+   "name": "instrument index",
+   "layer": "records",
+   "department": "ic",
+   "default_owner": "I&C",
+   "authority_for": [
+    "instrument_range",
+    "instrument_model"
+   ],
+   "key": [
+    "tag",
+    "plant",
+    "unit"
+   ],
+   "template": "templates/instrument_index.csv",
+   "standards": [
+    "ISA-5.1 letters",
+    "DEXPI ProcessInstrumentationFunction",
+    "CFIHOS tag class"
+   ],
+   "fields": [
+    {
+     "name": "tag",
+     "type": "tag",
+     "required": true,
+     "description": "The tag exactly as the plant writes it (P-101, TT-2207). Never renumbered.",
+     "fact_kind": "tags"
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant id, or a site scope id such as UTIL for site utilities, as declared in the map's scopes."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit id inside the plant. Required when the plant declares units."
+    },
+    {
+     "name": "loop",
+     "type": "text",
+     "required": false,
+     "description": "Loop id the instrument belongs to."
+    },
+    {
+     "name": "service",
+     "type": "text",
+     "required": false,
+     "description": "Service description."
+    },
+    {
+     "name": "instrument_type",
+     "type": "text",
+     "required": false,
+     "description": "Transmitter, RTD, switch, positioner."
+    },
+    {
+     "name": "range_low",
+     "type": "text",
+     "required": false,
+     "description": "Calibrated range low.",
+     "fact_kind": "instrument_range"
+    },
+    {
+     "name": "range_high",
+     "type": "text",
+     "required": false,
+     "description": "Calibrated range high.",
+     "fact_kind": "instrument_range"
+    },
+    {
+     "name": "range_uom",
+     "type": "text",
+     "required": false,
+     "description": "Range unit.",
+     "fact_kind": "instrument_range"
+    },
+    {
+     "name": "signal_type",
+     "type": "enum",
+     "required": false,
+     "description": "How its signal travels (DEXPI signal conveying type, plus data link and wireless).",
+     "values": [
+      "electrical",
+      "pneumatic",
+      "hydraulic",
+      "capillary",
+      "conducted_radiation",
+      "data_link",
+      "wireless",
+      "other"
+     ]
+    },
+    {
+     "name": "manufacturer",
+     "type": "text",
+     "required": false,
+     "description": "Manufacturer.",
+     "fact_kind": "instrument_model"
+    },
+    {
+     "name": "model",
+     "type": "text",
+     "required": false,
+     "description": "Model.",
+     "fact_kind": "instrument_model"
+    },
+    {
+     "name": "description",
+     "type": "text",
+     "required": false,
+     "description": "Free description."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "loop_list",
+   "name": "loop list",
+   "layer": "records",
+   "department": "ic",
+   "default_owner": "I&C",
+   "authority_for": [],
+   "key": [
+    "controller",
+    "plant",
+    "unit"
+   ],
+   "template": "templates/loop_list.csv",
+   "standards": [
+    "DEXPI InstrumentationLoopFunction",
+    "ISA-5.1 loop number"
+   ],
+   "notes": "loop_audit.py's contract (controller, measurement, output) plus the identity columns.",
+   "fields": [
+    {
+     "name": "controller",
+     "type": "tag",
+     "required": true,
+     "description": "Controller tag.",
+     "fact_kind": "control_scheme"
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant or site scope."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit. Loops never span units."
+    },
+    {
+     "name": "measurement",
+     "type": "tag_ref",
+     "required": false,
+     "description": "Measurement tag(s), ';' separated.",
+     "fact_kind": "control_scheme"
+    },
+    {
+     "name": "output",
+     "type": "tag_ref",
+     "required": false,
+     "description": "Final element tag(s), ';' separated.",
+     "fact_kind": "control_scheme"
+    },
+    {
+     "name": "loop_type",
+     "type": "enum",
+     "required": false,
+     "description": "What kind of loop.",
+     "values": [
+      "control",
+      "indication",
+      "safety",
+      "cascade",
+      "other"
+     ]
+    },
+    {
+     "name": "description",
+     "type": "text",
+     "required": false,
+     "description": "Loop description."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "io_list",
+   "name": "IO list",
+   "layer": "records",
+   "department": "ic",
+   "default_owner": "I&C",
+   "authority_for": [
+    "io_assignment"
+   ],
+   "key": [
+    "tag",
+    "plant",
+    "unit",
+    "point"
+   ],
+   "template": "templates/io_list.csv",
+   "standards": [
+    "IEC 62264 / ISA-95 level 1-2 boundary (informative)"
+   ],
+   "fields": [
+    {
+     "name": "tag",
+     "type": "tag",
+     "required": true,
+     "description": "The tag exactly as the plant writes it (P-101, TT-2207). Never renumbered.",
+     "fact_kind": "tags"
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant id, or a site scope id such as UTIL for site utilities, as declared in the map's scopes."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit id inside the plant. Required when the plant declares units."
+    },
+    {
+     "name": "point",
+     "type": "text",
+     "required": true,
+     "description": "Control-system point or address.",
+     "fact_kind": "io_assignment"
+    },
+    {
+     "name": "controller_system",
+     "type": "text",
+     "required": false,
+     "description": "PLC/DCS name."
+    },
+    {
+     "name": "io_type",
+     "type": "enum",
+     "required": false,
+     "description": "Channel type.",
+     "values": [
+      "AI",
+      "AO",
+      "DI",
+      "DO",
+      "other"
+     ]
+    },
+    {
+     "name": "historian_tag",
+     "type": "text",
+     "required": false,
+     "description": "Historian point name, also added to the tag lookup table."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "alarm_list",
+   "name": "alarm list",
+   "layer": "records",
+   "department": "ic",
+   "default_owner": "I&C",
+   "authority_for": [
+    "alarm_setting"
+   ],
+   "key": [
+    "tag",
+    "plant",
+    "unit",
+    "alarm_type"
+   ],
+   "template": "templates/alarm_list.csv",
+   "standards": [
+    "ISA-18.2 / IEC 62682 (named, not adopted)"
+   ],
+   "fields": [
+    {
+     "name": "tag",
+     "type": "tag",
+     "required": true,
+     "description": "The tag exactly as the plant writes it (P-101, TT-2207). Never renumbered.",
+     "fact_kind": "tags"
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant id, or a site scope id such as UTIL for site utilities, as declared in the map's scopes."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit id inside the plant. Required when the plant declares units."
+    },
+    {
+     "name": "alarm_type",
+     "type": "text",
+     "required": true,
+     "description": "LL, L, H, HH, deviation, rate, discrepancy."
+    },
+    {
+     "name": "setpoint",
+     "type": "text",
+     "required": false,
+     "description": "Alarm setpoint.",
+     "fact_kind": "alarm_setting"
+    },
+    {
+     "name": "uom",
+     "type": "text",
+     "required": false,
+     "description": "Unit."
+    },
+    {
+     "name": "priority",
+     "type": "text",
+     "required": false,
+     "description": "Priority as the site defines it.",
+     "fact_kind": "alarm_setting"
+    },
+    {
+     "name": "operator_action",
+     "type": "text",
+     "required": false,
+     "description": "Expected operator response."
+    },
+    {
+     "name": "rationalized_on",
+     "type": "date",
+     "required": false,
+     "description": "Date of the last rationalization review."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "interlock_list",
+   "name": "interlock list (cause and effect)",
+   "layer": "records",
+   "department": "ic",
+   "default_owner": "I&C",
+   "authority_for": [
+    "trip_logic"
+   ],
+   "key": [
+    "interlock_id",
+    "plant",
+    "unit",
+    "cause_tag",
+    "effect_tag"
+   ],
+   "template": "templates/interlock_list.csv",
+   "standards": [
+    "DEXPI ProcessSafetyFunction",
+    "IEC 61511 (named, not adopted)"
+   ],
+   "fields": [
+    {
+     "name": "interlock_id",
+     "type": "text",
+     "required": true,
+     "description": "Interlock or SIF id."
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant or site scope."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit."
+    },
+    {
+     "name": "cause_tag",
+     "type": "tag_ref",
+     "required": true,
+     "description": "Initiating tag.",
+     "fact_kind": "trip_logic"
+    },
+    {
+     "name": "cause_condition",
+     "type": "text",
+     "required": false,
+     "description": "Condition (below 72.0 degC, high level).",
+     "fact_kind": "trip_logic"
+    },
+    {
+     "name": "effect_tag",
+     "type": "tag_ref",
+     "required": true,
+     "description": "Tag acted on.",
+     "fact_kind": "trip_logic"
+    },
+    {
+     "name": "effect_action",
+     "type": "text",
+     "required": false,
+     "description": "Action (divert, stop, close).",
+     "fact_kind": "trip_logic"
+    },
+    {
+     "name": "is_sif",
+     "type": "bool",
+     "required": false,
+     "description": "yes for a safety instrumented function."
+    },
+    {
+     "name": "sil",
+     "type": "text",
+     "required": false,
+     "description": "SIL target, if a SIF."
+    },
+    {
+     "name": "bypass_allowed",
+     "type": "bool",
+     "required": false,
+     "description": "Whether a bypass is permitted."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "work_order",
+   "name": "work order history",
+   "layer": "records",
+   "department": "maintenance",
+   "default_owner": "Maintenance",
+   "authority_for": [
+    "maintenance_history"
+   ],
+   "key": [
+    "work_order"
+   ],
+   "template": "templates/work_order.csv",
+   "standards": [
+    "ISO 14224 failure and maintenance data"
+   ],
+   "fields": [
+    {
+     "name": "work_order",
+     "type": "text",
+     "required": true,
+     "description": "Work order number."
+    },
+    {
+     "name": "tag",
+     "type": "tag_ref",
+     "required": true,
+     "description": "Tag worked on."
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant or site scope."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit."
+    },
+    {
+     "name": "work_type",
+     "type": "enum",
+     "required": false,
+     "description": "Kind of work.",
+     "values": [
+      "corrective",
+      "preventive",
+      "predictive",
+      "calibration",
+      "inspection",
+      "modification",
+      "other"
+     ]
+    },
+    {
+     "name": "opened_on",
+     "type": "date",
+     "required": false,
+     "description": "Date opened."
+    },
+    {
+     "name": "closed_on",
+     "type": "date",
+     "required": false,
+     "description": "Date closed."
+    },
+    {
+     "name": "failure_mode",
+     "type": "text",
+     "required": false,
+     "description": "Failure mode (ISO 14224 code where used).",
+     "fact_kind": "maintenance_history"
+    },
+    {
+     "name": "failure_mechanism",
+     "type": "text",
+     "required": false,
+     "description": "Failure mechanism.",
+     "fact_kind": "maintenance_history"
+    },
+    {
+     "name": "failure_cause",
+     "type": "text",
+     "required": false,
+     "description": "Failure cause.",
+     "fact_kind": "maintenance_history"
+    },
+    {
+     "name": "detection_method",
+     "type": "text",
+     "required": false,
+     "description": "How the failure was detected."
+    },
+    {
+     "name": "maintenance_activity",
+     "type": "text",
+     "required": false,
+     "description": "Activity performed (replace, repair, adjust).",
+     "fact_kind": "maintenance_history"
+    },
+    {
+     "name": "description",
+     "type": "text",
+     "required": false,
+     "description": "Work description."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "pm_plan",
+   "name": "PM plan",
+   "layer": "records",
+   "department": "maintenance",
+   "default_owner": "Maintenance",
+   "authority_for": [
+    "pm_schedule"
+   ],
+   "key": [
+    "pm_id"
+   ],
+   "template": "templates/pm_plan.csv",
+   "standards": [
+    "ISO 14224 maintenance data"
+   ],
+   "fields": [
+    {
+     "name": "pm_id",
+     "type": "text",
+     "required": true,
+     "description": "PM or job plan id."
+    },
+    {
+     "name": "tag",
+     "type": "tag_ref",
+     "required": true,
+     "description": "Tag the PM applies to."
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant or site scope."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit."
+    },
+    {
+     "name": "task",
+     "type": "text",
+     "required": false,
+     "description": "Task summary."
+    },
+    {
+     "name": "interval",
+     "type": "number",
+     "required": false,
+     "description": "Interval value.",
+     "fact_kind": "pm_schedule"
+    },
+    {
+     "name": "interval_unit",
+     "type": "enum",
+     "required": false,
+     "description": "Interval unit.",
+     "values": [
+      "days",
+      "weeks",
+      "months",
+      "years",
+      "run_hours",
+      "cycles"
+     ],
+     "fact_kind": "pm_schedule"
+    },
+    {
+     "name": "last_done",
+     "type": "date",
+     "required": false,
+     "description": "Last completion."
+    },
+    {
+     "name": "next_due",
+     "type": "date",
+     "required": false,
+     "description": "Next due.",
+     "fact_kind": "pm_schedule"
+    },
+    {
+     "name": "job_plan",
+     "type": "doc_ref",
+     "required": false,
+     "description": "Document id of the job plan."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "calibration_record",
+   "name": "calibration record",
+   "layer": "records",
+   "department": "maintenance",
+   "default_owner": "Maintenance",
+   "authority_for": [
+    "calibration_status"
+   ],
+   "key": [
+    "tag",
+    "plant",
+    "unit",
+    "calibrated_on"
+   ],
+   "template": "templates/calibration_record.csv",
+   "standards": [
+    "ISO 14224 maintenance data (calibration as preventive activity)"
+   ],
+   "fields": [
+    {
+     "name": "tag",
+     "type": "tag",
+     "required": true,
+     "description": "The tag exactly as the plant writes it (P-101, TT-2207). Never renumbered.",
+     "fact_kind": "tags"
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant id, or a site scope id such as UTIL for site utilities, as declared in the map's scopes."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit id inside the plant. Required when the plant declares units."
+    },
+    {
+     "name": "calibrated_on",
+     "type": "date",
+     "required": true,
+     "description": "Date of the calibration.",
+     "fact_kind": "calibration_status"
+    },
+    {
+     "name": "as_found",
+     "type": "text",
+     "required": false,
+     "description": "As-found reading(s).",
+     "fact_kind": "calibration_status"
+    },
+    {
+     "name": "as_left",
+     "type": "text",
+     "required": false,
+     "description": "As-left reading(s).",
+     "fact_kind": "calibration_status"
+    },
+    {
+     "name": "tolerance",
+     "type": "text",
+     "required": false,
+     "description": "Acceptance tolerance."
+    },
+    {
+     "name": "result",
+     "type": "enum",
+     "required": false,
+     "description": "Outcome.",
+     "values": [
+      "pass",
+      "fail",
+      "adjusted"
+     ],
+     "fact_kind": "calibration_status"
+    },
+    {
+     "name": "reference_standard",
+     "type": "text",
+     "required": false,
+     "description": "Reference instrument used, with its certificate id."
+    },
+    {
+     "name": "work_order",
+     "type": "text",
+     "required": false,
+     "description": "Work order number."
+    },
+    {
+     "name": "next_due",
+     "type": "date",
+     "required": false,
+     "description": "Next calibration due."
+    },
+    {
+     "name": "performed_by",
+     "type": "text",
+     "required": false,
+     "description": "Role or name as recorded."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "mro_item",
+   "name": "stores item master (MRO items)",
+   "layer": "records",
+   "department": "procurement",
+   "default_owner": "Stores",
+   "authority_for": [],
+   "key": [
+    "item_number"
+   ],
+   "template": "templates/mro_item.csv",
+   "standards": [
+    "ISO 14224 maintainable item (informative)",
+    "ISO 8000 (named, not adopted)"
+   ],
+   "fields": [
+    {
+     "name": "item_number",
+     "type": "text",
+     "required": true,
+     "description": "Stores item number."
+    },
+    {
+     "name": "description",
+     "type": "text",
+     "required": false,
+     "description": "Item description."
+    },
+    {
+     "name": "manufacturer",
+     "type": "text",
+     "required": false,
+     "description": "Manufacturer."
+    },
+    {
+     "name": "part_number",
+     "type": "text",
+     "required": false,
+     "description": "Manufacturer part number."
+    },
+    {
+     "name": "uom",
+     "type": "text",
+     "required": false,
+     "description": "Stock unit."
+    },
+    {
+     "name": "min_qty",
+     "type": "number",
+     "required": false,
+     "description": "Reorder point."
+    },
+    {
+     "name": "max_qty",
+     "type": "number",
+     "required": false,
+     "description": "Maximum stock."
+    },
+    {
+     "name": "critical_spare",
+     "type": "bool",
+     "required": false,
+     "description": "yes for a critical spare."
+    },
+    {
+     "name": "lead_time_days",
+     "type": "number",
+     "required": false,
+     "description": "Typical lead time."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "spares_bom",
+   "name": "spare parts BOM",
+   "layer": "records",
+   "department": "maintenance",
+   "default_owner": "Maintenance",
+   "authority_for": [],
+   "key": [
+    "item_number",
+    "tag",
+    "plant",
+    "unit"
+   ],
+   "template": "templates/spares_bom.csv",
+   "standards": [
+    "ISO 14224 maintainable item (informative)"
+   ],
+   "fields": [
+    {
+     "name": "item_number",
+     "type": "text",
+     "required": true,
+     "description": "Stores item number."
+    },
+    {
+     "name": "tag",
+     "type": "tag",
+     "required": true,
+     "description": "Tag the part fits."
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant or site scope."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit."
+    },
+    {
+     "name": "qty_installed",
+     "type": "number",
+     "required": false,
+     "description": "Quantity installed on the tag."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "purchase_order",
+   "name": "purchase order lines",
+   "layer": "records",
+   "department": "procurement",
+   "default_owner": "Procurement",
+   "authority_for": [],
+   "key": [
+    "po_number",
+    "line"
+   ],
+   "template": "templates/purchase_order.csv",
+   "standards": [
+    "CFIHOS purchase order (informative)"
+   ],
+   "fields": [
+    {
+     "name": "po_number",
+     "type": "text",
+     "required": true,
+     "description": "PO number."
+    },
+    {
+     "name": "line",
+     "type": "text",
+     "required": true,
+     "description": "PO line."
+    },
+    {
+     "name": "vendor_id",
+     "type": "text",
+     "required": false,
+     "description": "Vendor id in the approved vendor register."
+    },
+    {
+     "name": "item_number",
+     "type": "text",
+     "required": false,
+     "description": "Stores item number, if a stock item."
+    },
+    {
+     "name": "tag",
+     "type": "tag_ref",
+     "required": false,
+     "description": "Tag the purchase is for, if any."
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": false,
+     "description": "Plant or site scope of the tag."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": false,
+     "description": "Unit of the tag."
+    },
+    {
+     "name": "description",
+     "type": "text",
+     "required": false,
+     "description": "Line description."
+    },
+    {
+     "name": "spec_document",
+     "type": "doc_ref",
+     "required": false,
+     "description": "Specification the purchase was made against."
+    },
+    {
+     "name": "ordered_on",
+     "type": "date",
+     "required": false,
+     "description": "Order date."
+    },
+    {
+     "name": "received_on",
+     "type": "date",
+     "required": false,
+     "description": "Receipt date."
+    },
+    {
+     "name": "like_for_like",
+     "type": "enum",
+     "required": false,
+     "description": "Whether the purchase claims replacement in kind.",
+     "values": [
+      "yes",
+      "no",
+      "unknown"
+     ]
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ],
+   "record_copy": true,
+   "notes": "Kept in version 1 as a read-only copy for context, linked to the plant by tag (and to stores by item number). Requisitioning, approving and receiving purchases is a workflow that belongs to the purchasing system and an external governed service; the map never writes back."
+  },
+  {
+   "id": "approved_vendor",
+   "name": "approved vendor register",
+   "layer": "records",
+   "department": "procurement",
+   "default_owner": "Procurement",
+   "authority_for": [
+    "vendor_approval"
+   ],
+   "key": [
+    "vendor_id",
+    "approval_scope"
+   ],
+   "template": "templates/approved_vendor.csv",
+   "standards": [
+    "CFIHOS organization (informative)"
+   ],
+   "fields": [
+    {
+     "name": "vendor_id",
+     "type": "text",
+     "required": true,
+     "description": "Vendor id."
+    },
+    {
+     "name": "name",
+     "type": "text",
+     "required": false,
+     "description": "Vendor name."
+    },
+    {
+     "name": "approval_scope",
+     "type": "text",
+     "required": true,
+     "description": "What the vendor is approved to supply."
+    },
+    {
+     "name": "food_contact",
+     "type": "bool",
+     "required": false,
+     "description": "yes when the approval covers food-contact items (quality approves)."
+    },
+    {
+     "name": "approval_status",
+     "type": "enum",
+     "required": false,
+     "description": "Approval status.",
+     "values": [
+      "approved",
+      "conditional",
+      "suspended",
+      "withdrawn"
+     ],
+     "fact_kind": "vendor_approval"
+    },
+    {
+     "name": "approved_by",
+     "type": "text",
+     "required": false,
+     "description": "Approving department."
+    },
+    {
+     "name": "approved_on",
+     "type": "date",
+     "required": false,
+     "description": "Approval date."
+    },
+    {
+     "name": "review_due",
+     "type": "date",
+     "required": false,
+     "description": "Next review."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "operating_limit",
+   "name": "operating limits (operating envelope)",
+   "layer": "records",
+   "department": "production",
+   "default_owner": "Production",
+   "authority_for": [
+    "operating_limit"
+   ],
+   "key": [
+    "tag",
+    "plant",
+    "unit",
+    "parameter",
+    "limit_type"
+   ],
+   "template": "templates/operating_limit.csv",
+   "standards": [
+    "ISA-95 operations definition (informative)"
+   ],
+   "fields": [
+    {
+     "name": "tag",
+     "type": "tag",
+     "required": true,
+     "description": "The tag exactly as the plant writes it (P-101, TT-2207). Never renumbered.",
+     "fact_kind": "tags"
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant id, or a site scope id such as UTIL for site utilities, as declared in the map's scopes."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit id inside the plant. Required when the plant declares units."
+    },
+    {
+     "name": "parameter",
+     "type": "text",
+     "required": true,
+     "description": "Parameter (temperature, flow)."
+    },
+    {
+     "name": "limit_type",
+     "type": "enum",
+     "required": true,
+     "description": "What kind of limit.",
+     "values": [
+      "normal",
+      "alarm",
+      "safe",
+      "quality",
+      "equipment"
+     ]
+    },
+    {
+     "name": "low",
+     "type": "text",
+     "required": false,
+     "description": "Low limit.",
+     "fact_kind": "operating_limit"
+    },
+    {
+     "name": "high",
+     "type": "text",
+     "required": false,
+     "description": "High limit.",
+     "fact_kind": "operating_limit"
+    },
+    {
+     "name": "uom",
+     "type": "text",
+     "required": false,
+     "description": "Unit."
+    },
+    {
+     "name": "basis",
+     "type": "doc_ref",
+     "required": false,
+     "description": "Document that sets the limit."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "ccp",
+   "name": "critical control points (HACCP plan)",
+   "layer": "records",
+   "department": "quality",
+   "default_owner": "Quality",
+   "authority_for": [
+    "ccp_limit"
+   ],
+   "key": [
+    "ccp_id",
+    "plant",
+    "unit"
+   ],
+   "template": "templates/ccp.csv",
+   "standards": [
+    "Codex HACCP principles (named, not adopted)"
+   ],
+   "fields": [
+    {
+     "name": "ccp_id",
+     "type": "text",
+     "required": true,
+     "description": "CCP number in the HACCP plan."
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant or site scope."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit."
+    },
+    {
+     "name": "process_step",
+     "type": "text",
+     "required": false,
+     "description": "Process step the CCP sits at."
+    },
+    {
+     "name": "hazard",
+     "type": "text",
+     "required": false,
+     "description": "Hazard controlled."
+    },
+    {
+     "name": "monitored_tag",
+     "type": "tag_ref",
+     "required": false,
+     "description": "Tag that monitors the critical limit.",
+     "fact_kind": "ccp_limit"
+    },
+    {
+     "name": "parameter",
+     "type": "text",
+     "required": false,
+     "description": "Monitored parameter."
+    },
+    {
+     "name": "critical_limit_low",
+     "type": "text",
+     "required": false,
+     "description": "Low critical limit.",
+     "fact_kind": "ccp_limit"
+    },
+    {
+     "name": "critical_limit_high",
+     "type": "text",
+     "required": false,
+     "description": "High critical limit.",
+     "fact_kind": "ccp_limit"
+    },
+    {
+     "name": "uom",
+     "type": "text",
+     "required": false,
+     "description": "Unit."
+    },
+    {
+     "name": "monitoring_frequency",
+     "type": "text",
+     "required": false,
+     "description": "How often it is monitored."
+    },
+    {
+     "name": "corrective_action",
+     "type": "text",
+     "required": false,
+     "description": "What happens on deviation (or the procedure's document id)."
+    },
+    {
+     "name": "verification",
+     "type": "text",
+     "required": false,
+     "description": "Verification activity (calibration, record review)."
+    },
+    {
+     "name": "haccp_plan",
+     "type": "doc_ref",
+     "required": true,
+     "description": "Document id of the HACCP plan this row was read from."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "isolation_point",
+   "name": "isolation points (lockout procedures)",
+   "layer": "records",
+   "department": "safety",
+   "default_owner": "Safety/EHS",
+   "authority_for": [
+    "isolation"
+   ],
+   "key": [
+    "isolates_tag",
+    "plant",
+    "unit",
+    "point_tag"
+   ],
+   "template": "templates/isolation_point.csv",
+   "standards": [
+    "OSHA 29 CFR 1910.147 (regulatory context, not adopted)"
+   ],
+   "fields": [
+    {
+     "name": "isolates_tag",
+     "type": "tag_ref",
+     "required": true,
+     "description": "Equipment the procedure isolates."
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant or site scope."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit."
+    },
+    {
+     "name": "point_tag",
+     "type": "tag_ref",
+     "required": true,
+     "description": "Isolation device (valve, breaker, disconnect).",
+     "fact_kind": "isolation"
+    },
+    {
+     "name": "energy_type",
+     "type": "enum",
+     "required": false,
+     "description": "Energy isolated.",
+     "values": [
+      "electrical",
+      "pneumatic",
+      "hydraulic",
+      "mechanical",
+      "thermal",
+      "chemical",
+      "gravity",
+      "steam",
+      "other"
+     ],
+     "fact_kind": "isolation"
+    },
+    {
+     "name": "isolated_position",
+     "type": "text",
+     "required": false,
+     "description": "Position when isolated (open, closed, racked out).",
+     "fact_kind": "isolation"
+    },
+    {
+     "name": "verification",
+     "type": "text",
+     "required": false,
+     "description": "How zero energy is verified."
+    },
+    {
+     "name": "sequence",
+     "type": "number",
+     "required": false,
+     "description": "Order in the procedure."
+    },
+    {
+     "name": "procedure",
+     "type": "doc_ref",
+     "required": true,
+     "description": "Document id of the lockout procedure."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "permit",
+   "name": "work permits (record copies)",
+   "layer": "records",
+   "department": "safety",
+   "default_owner": "Safety/EHS",
+   "authority_for": [],
+   "key": [
+    "permit_id"
+   ],
+   "template": "templates/permit.csv",
+   "standards": [
+    "none adopted"
+   ],
+   "notes": "Kept in version 1 as a read-only copy for context, linked to the plant by tag. Issuing, approving, suspending and closing permits is a workflow that belongs to the permit system and an external governed service; the map never writes back.",
+   "fields": [
+    {
+     "name": "permit_id",
+     "type": "text",
+     "required": true,
+     "description": "Permit number."
+    },
+    {
+     "name": "permit_type",
+     "type": "text",
+     "required": false,
+     "description": "Hot work, confined space, line break."
+    },
+    {
+     "name": "tag",
+     "type": "tag_ref",
+     "required": false,
+     "description": "Tag the permit covers."
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant or site scope."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit."
+    },
+    {
+     "name": "valid_from",
+     "type": "date",
+     "required": false,
+     "description": "Start."
+    },
+    {
+     "name": "valid_to",
+     "type": "date",
+     "required": false,
+     "description": "End."
+    },
+    {
+     "name": "permit_status",
+     "type": "text",
+     "required": false,
+     "description": "Status as exported from the permit system."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ],
+   "record_copy": true
+  },
+  {
+   "id": "capa",
+   "name": "CAPA register (corrective and preventive actions)",
+   "layer": "records",
+   "department": "quality",
+   "default_owner": "Quality",
+   "authority_for": [
+    "corrective_action"
+   ],
+   "key": [
+    "capa_id",
+    "tag",
+    "document"
+   ],
+   "template": "templates/capa.csv",
+   "standards": [
+    "ISO 9001:2015 clause 10.2 (named, not adopted)",
+    "ISO 22000:2018 clause 10.1 (named, not adopted)",
+    "21 CFR 117.150 (US regulatory context, not adopted)"
+   ],
+   "notes": "One row per CAPA and linked tag or document; repeat the CAPA id for each further tag or document it touches. A CAPA links to the plant by tag and to the record it changes by document. Raising, approving and closing a CAPA stays in the quality system.",
+   "fields": [
+    {
+     "name": "capa_id",
+     "type": "text",
+     "required": true,
+     "description": "CAPA number as the quality system writes it."
+    },
+    {
+     "name": "capa_type",
+     "type": "enum",
+     "required": false,
+     "description": "Corrective (an event happened), preventive (it could happen) or a correction only.",
+     "values": [
+      "corrective",
+      "preventive",
+      "correction"
+     ]
+    },
+    {
+     "name": "tag",
+     "type": "tag_ref",
+     "required": false,
+     "description": "Tag the CAPA concerns, if any."
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant id, or a site scope id such as UTIL for site utilities, as declared in the map's scopes."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit id inside the plant. Required when the plant declares units."
+    },
+    {
+     "name": "document",
+     "type": "doc_ref",
+     "required": false,
+     "description": "Document the CAPA concerns or changes (HACCP plan, SOP, P&ID), as its id in the document register."
+    },
+    {
+     "name": "document_revision",
+     "type": "text",
+     "required": false,
+     "description": "Revision of that document the CAPA was raised against."
+    },
+    {
+     "name": "raised_from",
+     "type": "enum",
+     "required": false,
+     "description": "What raised the CAPA.",
+     "values": [
+      "deviation",
+      "ccp_deviation",
+      "audit_finding",
+      "incident",
+      "complaint",
+      "work_order",
+      "management_review",
+      "other"
+     ]
+    },
+    {
+     "name": "raised_from_ref",
+     "type": "text",
+     "required": false,
+     "description": "Id of the deviation, audit finding, incident, complaint or work order."
+    },
+    {
+     "name": "opened_on",
+     "type": "date",
+     "required": false,
+     "description": "Date the CAPA was opened."
+    },
+    {
+     "name": "problem",
+     "type": "text",
+     "required": false,
+     "description": "What happened or could happen, as the CAPA states it."
+    },
+    {
+     "name": "root_cause",
+     "type": "text",
+     "required": false,
+     "description": "Root cause as the CAPA states it."
+    },
+    {
+     "name": "action",
+     "type": "text",
+     "required": false,
+     "description": "The action taken or planned.",
+     "fact_kind": "corrective_action"
+    },
+    {
+     "name": "action_owner",
+     "type": "text",
+     "required": false,
+     "description": "Person or role responsible for the action."
+    },
+    {
+     "name": "due_on",
+     "type": "date",
+     "required": false,
+     "description": "Action due date.",
+     "fact_kind": "corrective_action"
+    },
+    {
+     "name": "closed_on",
+     "type": "date",
+     "required": false,
+     "description": "Date the CAPA was closed.",
+     "fact_kind": "corrective_action"
+    },
+    {
+     "name": "effectiveness_check",
+     "type": "text",
+     "required": false,
+     "description": "How the action's effect is checked."
+    },
+    {
+     "name": "effectiveness_verified_on",
+     "type": "date",
+     "required": false,
+     "description": "Date the effectiveness check was done."
+    },
+    {
+     "name": "capa_status",
+     "type": "enum",
+     "required": false,
+     "description": "Status as exported from the quality system.",
+     "values": [
+      "open",
+      "in_progress",
+      "closed",
+      "cancelled"
+     ],
+     "fact_kind": "corrective_action"
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "criticality_ranking",
+   "name": "equipment criticality ranking",
+   "layer": "records",
+   "department": "maintenance",
+   "default_owner": "Maintenance",
+   "authority_for": [
+    "criticality"
+   ],
+   "key": [
+    "tag",
+    "plant",
+    "unit"
+   ],
+   "template": "templates/criticality_ranking.csv",
+   "standards": [
+    "none adopted; the site's own ranking method, named in method_document"
+   ],
+   "notes": "The ranking as the site's method writes it (A/B/C, 1 to 5). The criticality column of the maintenance equipment export is a copy; where they differ, this register wins and Maintenance gets the conflict.",
+   "fields": [
+    {
+     "name": "tag",
+     "type": "tag",
+     "required": true,
+     "description": "The tag exactly as the plant writes it (P-101, TT-2207). Never renumbered.",
+     "fact_kind": "tags"
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant id, or a site scope id such as UTIL for site utilities, as declared in the map's scopes."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit id inside the plant. Required when the plant declares units."
+    },
+    {
+     "name": "criticality",
+     "type": "text",
+     "required": true,
+     "description": "The ranking as the site's method writes it (A, B, C or 1 to 5).",
+     "fact_kind": "criticality"
+    },
+    {
+     "name": "method",
+     "type": "text",
+     "required": false,
+     "description": "Name of the ranking method or matrix used."
+    },
+    {
+     "name": "method_document",
+     "type": "doc_ref",
+     "required": false,
+     "description": "Document that defines the method, as its id in the document register."
+    },
+    {
+     "name": "safety_consequence",
+     "type": "text",
+     "required": false,
+     "description": "Personnel safety consequence score as the method writes it."
+    },
+    {
+     "name": "food_safety_consequence",
+     "type": "text",
+     "required": false,
+     "description": "Food safety or product safety consequence score."
+    },
+    {
+     "name": "production_consequence",
+     "type": "text",
+     "required": false,
+     "description": "Production loss consequence score."
+    },
+    {
+     "name": "environmental_consequence",
+     "type": "text",
+     "required": false,
+     "description": "Environmental consequence score."
+    },
+    {
+     "name": "likelihood",
+     "type": "text",
+     "required": false,
+     "description": "Likelihood score as the method writes it."
+    },
+    {
+     "name": "risk_score",
+     "type": "number",
+     "required": false,
+     "description": "Combined score, when the method computes one.",
+     "fact_kind": "criticality"
+    },
+    {
+     "name": "ranked_on",
+     "type": "date",
+     "required": false,
+     "description": "Date of the ranking."
+    },
+    {
+     "name": "ranked_by",
+     "type": "text",
+     "required": false,
+     "description": "Person or team that ranked it."
+    },
+    {
+     "name": "next_review",
+     "type": "date",
+     "required": false,
+     "description": "Date the ranking is due for review."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "inspection_record",
+   "name": "inspection records (vessels, piping, RBI)",
+   "layer": "records",
+   "department": "maintenance",
+   "default_owner": "Maintenance",
+   "authority_for": [
+    "inspection_status"
+   ],
+   "key": [
+    "tag",
+    "plant",
+    "unit",
+    "inspected_on",
+    "inspection_type",
+    "component"
+   ],
+   "template": "templates/inspection_record.csv",
+   "standards": [
+    "API 510, API 570, API 580 and API 581 (named, not adopted)",
+    "ISO 14224 maintenance data (inspection as an activity, informative)"
+   ],
+   "notes": "One row per inspection of a vessel, tank, pipe run or other pressure-retaining or hygienic item, including risk-based inspection (RBI) results. Inspection reports themselves are documents in the document register (report_document).",
+   "fields": [
+    {
+     "name": "tag",
+     "type": "tag",
+     "required": true,
+     "description": "The tag exactly as the plant writes it (P-101, TT-2207). Never renumbered.",
+     "fact_kind": "tags"
+    },
+    {
+     "name": "plant",
+     "type": "scope",
+     "required": true,
+     "description": "Plant id, or a site scope id such as UTIL for site utilities, as declared in the map's scopes."
+    },
+    {
+     "name": "unit",
+     "type": "scope",
+     "required": "if_plant_has_units",
+     "description": "Unit id inside the plant. Required when the plant declares units."
+    },
+    {
+     "name": "inspected_on",
+     "type": "date",
+     "required": true,
+     "description": "Date of the inspection."
+    },
+    {
+     "name": "inspection_type",
+     "type": "text",
+     "required": false,
+     "description": "Method as the site writes it (external visual, internal visual, borescope, ultrasonic thickness, dye penetrant, pressure test)."
+    },
+    {
+     "name": "component",
+     "type": "text",
+     "required": false,
+     "description": "Part inspected (shell, weld W-12, section 3)."
+    },
+    {
+     "name": "finding",
+     "type": "text",
+     "required": false,
+     "description": "What was found."
+    },
+    {
+     "name": "result",
+     "type": "enum",
+     "required": false,
+     "description": "Outcome.",
+     "values": [
+      "acceptable",
+      "acceptable_with_monitoring",
+      "repair_required",
+      "out_of_service"
+     ],
+     "fact_kind": "inspection_status"
+    },
+    {
+     "name": "measured_value",
+     "type": "text",
+     "required": false,
+     "description": "Measured value, such as wall thickness."
+    },
+    {
+     "name": "minimum_allowed",
+     "type": "text",
+     "required": false,
+     "description": "Minimum allowed value, such as retirement thickness."
+    },
+    {
+     "name": "uom",
+     "type": "text",
+     "required": false,
+     "description": "Unit of measure of the measured and minimum values."
+    },
+    {
+     "name": "remaining_life_years",
+     "type": "number",
+     "required": false,
+     "description": "Remaining life, when calculated."
+    },
+    {
+     "name": "rbi_risk",
+     "type": "text",
+     "required": false,
+     "description": "Risk-based inspection risk category as the site's RBI study writes it."
+    },
+    {
+     "name": "interval_months",
+     "type": "number",
+     "required": false,
+     "description": "Inspection interval.",
+     "fact_kind": "inspection_status"
+    },
+    {
+     "name": "next_due",
+     "type": "date",
+     "required": false,
+     "description": "Next inspection due.",
+     "fact_kind": "inspection_status"
+    },
+    {
+     "name": "inspector",
+     "type": "text",
+     "required": false,
+     "description": "Inspector or company."
+    },
+    {
+     "name": "certification",
+     "type": "text",
+     "required": false,
+     "description": "Inspector certification as written."
+    },
+    {
+     "name": "work_order",
+     "type": "text",
+     "required": false,
+     "description": "Work order the inspection was done under."
+    },
+    {
+     "name": "report_document",
+     "type": "doc_ref",
+     "required": false,
+     "description": "Inspection report, as its id in the document register."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "document_register",
+   "name": "document register",
+   "layer": "documents",
+   "department": "engineering",
+   "default_owner": "Doc control",
+   "authority_for": [
+    "document_revision"
+   ],
+   "key": [
+    "document"
+   ],
+   "template": "templates/document_register.csv",
+   "standards": [
+    "CFIHOS document type",
+    "VDI 2770 classification",
+    "AAS Handover Documentation"
+   ],
+   "fields": [
+    {
+     "name": "document",
+     "type": "text",
+     "required": true,
+     "description": "Document id."
+    },
+    {
+     "name": "title",
+     "type": "text",
+     "required": false,
+     "description": "Title."
+    },
+    {
+     "name": "doc_type",
+     "type": "text",
+     "required": false,
+     "description": "Site document type (HACCP plan, lockout procedure, datasheet, SOP)."
+    },
+    {
+     "name": "cfihos_document_type",
+     "type": "class_ref",
+     "required": false,
+     "description": "CFIHOS document type code, when known."
+    },
+    {
+     "name": "vdi2770_class",
+     "type": "class_ref",
+     "required": false,
+     "description": "VDI 2770 class for manufacturer documents, when known."
+    },
+    {
+     "name": "revision",
+     "type": "text",
+     "required": true,
+     "description": "Current revision.",
+     "fact_kind": "document_revision"
+    },
+    {
+     "name": "doc_status",
+     "type": "enum",
+     "required": false,
+     "description": "Default released.",
+     "values": [
+      "draft",
+      "released",
+      "superseded",
+      "withdrawn"
+     ]
+    },
+    {
+     "name": "owner",
+     "type": "text",
+     "required": false,
+     "description": "Owning department. Empty falls back to the record owner map."
+    },
+    {
+     "name": "path",
+     "type": "text",
+     "required": false,
+     "description": "File path relative to the map file, or document-system address."
+    },
+    {
+     "name": "covers",
+     "type": "scope_ref",
+     "required": false,
+     "description": "Qualified ids of the scopes or items it is about, ';' separated."
+    },
+    {
+     "name": "based_on",
+     "type": "text",
+     "required": false,
+     "description": "Documents it was based on as id@revision, ';' separated."
+    },
+    {
+     "name": "manufacturer",
+     "type": "text",
+     "required": false,
+     "description": "Manufacturer, for vendor documents."
+    },
+    {
+     "name": "locator",
+     "type": "text",
+     "required": false,
+     "description": "Where in the source this row's values are, when it is not simply this file and row (page, sheet and cell, clause, screen)."
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "required": false,
+     "description": "Review status of the row. Empty means unverified.",
+     "values": [
+      "unverified",
+      "confirmed",
+      "corrected",
+      "rejected",
+      "stale"
+     ]
+    },
+    {
+     "name": "note",
+     "type": "text",
+     "required": false,
+     "description": "Free text for the person who fills the row in. Never parsed into a value."
+    }
+   ]
+  },
+  {
+   "id": "ruling",
+   "name": "local rulings",
+   "layer": "decisions",
+   "department": "cross",
+   "default_owner": "the person ruling",
+   "authority_for": [],
+   "key": [
+    "ruling_id"
+   ],
+   "template": "templates/ruling.csv",
+   "standards": [
+    "none adopted"
+   ],
+   "notes": "Extends one_map.py's decisions.csv (conflict_id,status,by,on,note). Routing, approval and history of a ruling belong to an external governed service.",
+   "fields": [
+    {
+     "name": "ruling_id",
+     "type": "text",
+     "required": true,
+     "description": "Ruling id."
+    },
+    {
+     "name": "concerns",
+     "type": "text",
+     "required": true,
+     "description": "Conflict id (SITE/CONFLICT/C-...) or qualified item id."
+    },
+    {
+     "name": "attribute",
+     "type": "text",
+     "required": false,
+     "description": "Attribute the ruling is about."
+    },
+    {
+     "name": "ruling",
+     "type": "enum",
+     "required": true,
+     "description": "What was decided.",
+     "values": [
+      "accept_source",
+      "accept_value",
+      "no_conflict",
+      "authority_override",
+      "defer"
+     ]
+    },
+    {
+     "name": "chosen_source",
+     "type": "text",
+     "required": false,
+     "description": "Source id accepted, if any."
+    },
+    {
+     "name": "chosen_value",
+     "type": "text",
+     "required": false,
+     "description": "Value accepted, if any."
+    },
+    {
+     "name": "reason",
+     "type": "text",
+     "required": true,
+     "description": "Why, in the person's words."
+    },
+    {
+     "name": "by",
+     "type": "text",
+     "required": true,
+     "description": "Who ruled (name or role)."
+    },
+    {
+     "name": "on",
+     "type": "date",
+     "required": true,
+     "description": "Date."
+    }
+   ]
+  }
+ ],
+ "planned_registers": [
+  {
+   "id": "pfd_hmb",
+   "name": "PFDs and heat and material balances",
+   "department": "engineering"
+  },
+  {
+   "id": "electrical_single_line",
+   "name": "electrical single-line diagrams and motor schedules",
+   "department": "engineering"
+  },
+  {
+   "id": "training_record",
+   "name": "training records",
+   "department": "safety"
+  },
+  {
+   "id": "sds",
+   "name": "safety data sheets (SDS) and chemical inventory",
+   "department": "safety"
+  }
+ ],
+ "datasheet_wide_forms": {
+  "note": "Wide-form templates: one row per item, one column per property. They are an input shape only; the map stores the long datasheet register. Conversion is deterministic: see conversion.",
+  "identity_columns": [
+   "tag",
+   "plant",
+   "unit",
+   "document",
+   "revision"
+  ],
+  "trailing_columns": [
+   "locator",
+   "status",
+   "note"
+  ],
+  "conversion": [
+   "Every column that is not an identity or trailing column is a property column. Its header is the property name, optionally followed by the unit of measure in square brackets: rated_flow[L/h].",
+   "Rows are read top to bottom and property columns left to right. Each non-empty property cell gives one datasheet row; an empty cell gives none.",
+   "tag, plant, unit, document and revision are copied from the wide row; property is the header without the bracket; value is the cell exactly as written; uom is the bracket text (empty when there is none).",
+   "fact_kind is the one this catalogue gives the property for this form; a column the form does not define gets an empty fact_kind (the default guess applies). sheet_type is the form's sheet_type. cfihos_property is left empty.",
+   "locator is the wide row's locator, or 'row N' (N = the line number in the wide file, header = 1) when it is empty, followed by '; column <header>'. status and note are copied to every row made from the wide row."
+  ],
+  "forms": [
+   {
+    "id": "pump",
+    "name": "pump datasheet",
+    "sheet_type": "equipment_datasheet",
+    "template": "templates/datasheet-wide/pump.csv",
+    "properties": [
+     {
+      "name": "pump_type",
+      "fact_kind": "other"
+     },
+     {
+      "name": "rated_flow",
+      "fact_kind": "rating",
+      "uom": "L/h"
+     },
+     {
+      "name": "differential_head",
+      "fact_kind": "rating",
+      "uom": "m"
+     },
+     {
+      "name": "speed",
+      "fact_kind": "rating",
+      "uom": "rpm"
+     },
+     {
+      "name": "driver_power",
+      "fact_kind": "rating",
+      "uom": "kW"
+     },
+     {
+      "name": "design_pressure",
+      "fact_kind": "rating",
+      "uom": "barg"
+     },
+     {
+      "name": "design_temperature",
+      "fact_kind": "rating",
+      "uom": "degC"
+     },
+     {
+      "name": "suction_size",
+      "fact_kind": "size",
+      "uom": "DN"
+     },
+     {
+      "name": "discharge_size",
+      "fact_kind": "size",
+      "uom": "DN"
+     },
+     {
+      "name": "casing_material",
+      "fact_kind": "material"
+     },
+     {
+      "name": "seal_type",
+      "fact_kind": "other"
+     },
+     {
+      "name": "hygienic_design",
+      "fact_kind": "other"
+     }
+    ]
+   },
+   {
+    "id": "heat_exchanger",
+    "name": "heat exchanger datasheet (plate or shell and tube)",
+    "sheet_type": "equipment_datasheet",
+    "template": "templates/datasheet-wide/heat_exchanger.csv",
+    "properties": [
+     {
+      "name": "exchanger_type",
+      "fact_kind": "other"
+     },
+     {
+      "name": "sections",
+      "fact_kind": "other"
+     },
+     {
+      "name": "duty",
+      "fact_kind": "rating",
+      "uom": "kW"
+     },
+     {
+      "name": "heat_transfer_area",
+      "fact_kind": "size",
+      "uom": "m2"
+     },
+     {
+      "name": "plate_count",
+      "fact_kind": "size"
+     },
+     {
+      "name": "design_pressure",
+      "fact_kind": "rating",
+      "uom": "barg"
+     },
+     {
+      "name": "design_temperature",
+      "fact_kind": "rating",
+      "uom": "degC"
+     },
+     {
+      "name": "plate_material",
+      "fact_kind": "material"
+     },
+     {
+      "name": "gasket_material",
+      "fact_kind": "material"
+     },
+     {
+      "name": "hygienic_design",
+      "fact_kind": "other"
+     }
+    ]
+   },
+   {
+    "id": "vessel_tank",
+    "name": "vessel and tank datasheet",
+    "sheet_type": "equipment_datasheet",
+    "template": "templates/datasheet-wide/vessel_tank.csv",
+    "properties": [
+     {
+      "name": "vessel_type",
+      "fact_kind": "other"
+     },
+     {
+      "name": "capacity",
+      "fact_kind": "size",
+      "uom": "L"
+     },
+     {
+      "name": "diameter",
+      "fact_kind": "size",
+      "uom": "mm"
+     },
+     {
+      "name": "height",
+      "fact_kind": "size",
+      "uom": "mm"
+     },
+     {
+      "name": "design_pressure",
+      "fact_kind": "rating",
+      "uom": "barg"
+     },
+     {
+      "name": "design_temperature",
+      "fact_kind": "rating",
+      "uom": "degC"
+     },
+     {
+      "name": "shell_material",
+      "fact_kind": "material"
+     },
+     {
+      "name": "design_code",
+      "fact_kind": "other"
+     },
+     {
+      "name": "hygienic_design",
+      "fact_kind": "other"
+     }
+    ]
+   },
+   {
+    "id": "control_valve",
+    "name": "control valve specification sheet",
+    "sheet_type": "instrument_spec_sheet",
+    "template": "templates/datasheet-wide/control_valve.csv",
+    "properties": [
+     {
+      "name": "valve_type",
+      "fact_kind": "other"
+     },
+     {
+      "name": "body_size",
+      "fact_kind": "size",
+      "uom": "DN"
+     },
+     {
+      "name": "cv",
+      "fact_kind": "rating"
+     },
+     {
+      "name": "actuator",
+      "fact_kind": "other"
+     },
+     {
+      "name": "fail_position",
+      "fact_kind": "other"
+     },
+     {
+      "name": "design_pressure",
+      "fact_kind": "rating",
+      "uom": "barg"
+     },
+     {
+      "name": "body_material",
+      "fact_kind": "material"
+     },
+     {
+      "name": "seal_material",
+      "fact_kind": "material"
+     },
+     {
+      "name": "manufacturer",
+      "fact_kind": "instrument_model"
+     },
+     {
+      "name": "model",
+      "fact_kind": "instrument_model"
+     }
+    ]
+   },
+   {
+    "id": "transmitter",
+    "name": "transmitter specification sheet",
+    "sheet_type": "instrument_spec_sheet",
+    "template": "templates/datasheet-wide/transmitter.csv",
+    "properties": [
+     {
+      "name": "measured_variable",
+      "fact_kind": "other"
+     },
+     {
+      "name": "sensor_type",
+      "fact_kind": "other"
+     },
+     {
+      "name": "range_low",
+      "fact_kind": "instrument_range",
+      "uom": "degC"
+     },
+     {
+      "name": "range_high",
+      "fact_kind": "instrument_range",
+      "uom": "degC"
+     },
+     {
+      "name": "output_signal",
+      "fact_kind": "other"
+     },
+     {
+      "name": "accuracy",
+      "fact_kind": "instrument_range"
+     },
+     {
+      "name": "process_connection",
+      "fact_kind": "size"
+     },
+     {
+      "name": "wetted_material",
+      "fact_kind": "material"
+     },
+     {
+      "name": "manufacturer",
+      "fact_kind": "instrument_model"
+     },
+     {
+      "name": "model",
+      "fact_kind": "instrument_model"
+     }
+    ]
+   },
+   {
+    "id": "relief_valve",
+    "name": "relief valve specification sheet",
+    "sheet_type": "instrument_spec_sheet",
+    "template": "templates/datasheet-wide/relief_valve.csv",
+    "properties": [
+     {
+      "name": "valve_type",
+      "fact_kind": "other"
+     },
+     {
+      "name": "set_pressure",
+      "fact_kind": "relief_setting",
+      "uom": "barg"
+     },
+     {
+      "name": "required_capacity",
+      "fact_kind": "rating",
+      "uom": "kg/h"
+     },
+     {
+      "name": "rated_capacity",
+      "fact_kind": "rating",
+      "uom": "kg/h"
+     },
+     {
+      "name": "orifice",
+      "fact_kind": "size"
+     },
+     {
+      "name": "inlet_size",
+      "fact_kind": "size",
+      "uom": "DN"
+     },
+     {
+      "name": "outlet_size",
+      "fact_kind": "size",
+      "uom": "DN"
+     },
+     {
+      "name": "body_material",
+      "fact_kind": "material"
+     },
+     {
+      "name": "manufacturer",
+      "fact_kind": "instrument_model"
+     },
+     {
+      "name": "model",
+      "fact_kind": "instrument_model"
+     }
+    ]
+   }
+  ]
+ }
+}

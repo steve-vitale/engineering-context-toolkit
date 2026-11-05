@@ -1,0 +1,365 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://github.com/steve-vitale/engineering-context-toolkit/schemas/context-map/context-map-1.schema.json",
+ "title": "context-map-1 (DRAFT)",
+ "description": "One plant context map: PLANT, RECORDS, DOCUMENTS and DECISIONS layers plus sources and a coverage report. Draft for owner review; see docs/CONTEXT_MAP_FORMAT.md. Only identity is required: everything a plant has not supplied stays empty and the file stays valid.",
+ "type": "object",
+ "required": ["format", "map", "plant"],
+ "additionalProperties": false,
+ "properties": {
+  "format": {"const": "context-map-1"},
+  "format_version": {"type": "string", "pattern": "^1\\.[0-9]+\\.[0-9]+(-[a-z0-9.]+)?$"},
+  "map": {"$ref": "#/$defs/MapHeader"},
+  "settings": {"$ref": "#/$defs/Settings"},
+  "sources": {"type": "array", "items": {"$ref": "#/$defs/Source"}},
+  "plant": {"$ref": "#/$defs/PlantLayer"},
+  "records": {"$ref": "#/$defs/RecordsLayer"},
+  "documents": {"type": "array", "items": {"$ref": "#/$defs/Document"}},
+  "decisions": {"$ref": "#/$defs/DecisionsLayer"},
+  "coverage": {"$ref": "#/$defs/Coverage"},
+  "extensions": {"type": "object", "description": "Site-specific additions. Namespaced keys (x-<org>-...). Never read by the core checks."}
+ },
+ "$defs": {
+  "Id": {"type": "string", "minLength": 1, "pattern": "^\\S(.*\\S)?$"},
+  "Segment": {"type": "string", "minLength": 1, "pattern": "^[^/\\s](?:[^/]*[^/\\s])?$", "description": "One identity segment: no '/', no leading or trailing space."},
+  "QualifiedId": {"type": "string", "pattern": "^[^/\\s]([^/]*[^/\\s])?(/[^/\\s]([^/]*[^/\\s])?)*$", "description": "SITE/PLANT/UNIT/TAG and the shorter scope ids SITE, SITE/PLANT, SITE/PLANT/UNIT."},
+  "Date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+  "Status": {"enum": ["unverified", "confirmed", "corrected", "rejected", "stale"]},
+  "Scalar": {"type": ["string", "number", "boolean", "null"]},
+  "Locator": {
+   "description": "Where in a source a value is. Text for people, plus optional machine parts.",
+   "oneOf": [
+    {"type": "string"},
+    {"type": "object", "additionalProperties": true, "properties": {
+     "text": {"type": "string"}, "page": {"type": ["integer", "string"]}, "sheet": {"type": "string"},
+     "zone": {"type": "string"}, "row": {"type": "integer"}, "column": {"type": ["integer", "string"]},
+     "cell": {"type": "string"}, "line": {"type": "integer"},
+     "box": {"type": "array", "items": {"type": "number"}, "minItems": 4, "maxItems": 4}}}
+   ]
+  },
+  "StandardRef": {
+   "type": "object", "required": ["standard", "ref"], "additionalProperties": false,
+   "description": "A pointer into a standard. We store the identifier and a link, never the standard's own definition text.",
+   "properties": {
+    "standard": {"enum": ["ISA-95", "ISA-88", "DEXPI", "ISA-5.1", "CFIHOS", "ISO 14224", "VDI 2770", "AAS", "ISO 15926", "other"]},
+    "version": {"type": "string"},
+    "ref": {"type": "string", "description": "Class name, code (CFIHOS-...), level name or clause."},
+    "uri": {"type": "string"}
+   }
+  },
+  "Fact": {
+   "type": "object", "required": ["value"], "additionalProperties": false,
+   "description": "One value with its own provenance. A bare scalar in a row inherits the row's source, revision and locator. No per-value standard reference: a field's standard lives on its definition in standards-mapping.csv.",
+   "properties": {
+    "value": {"$ref": "#/$defs/Scalar"},
+    "uom": {"type": "string"},
+    "source": {"$ref": "#/$defs/Id"},
+    "revision": {"type": "string"},
+    "locator": {"$ref": "#/$defs/Locator"},
+    "status": {"$ref": "#/$defs/Status"},
+    "fact_kind": {"type": "string"}
+   }
+  },
+  "Value": {"oneOf": [{"$ref": "#/$defs/Scalar"}, {"$ref": "#/$defs/Fact"}]},
+  "Provenance": {
+   "type": "object", "required": ["source"],
+   "properties": {
+    "source": {"$ref": "#/$defs/Id"},
+    "revision": {"type": "string"},
+    "locator": {"$ref": "#/$defs/Locator"}
+   }
+  },
+  "MapHeader": {
+   "type": "object", "required": ["site"], "additionalProperties": false,
+   "properties": {
+    "site": {"$ref": "#/$defs/Segment"},
+    "name": {"type": "string"},
+    "created": {"type": "string"},
+    "generator": {"type": "string"},
+    "note": {"type": "string"}
+   }
+  },
+  "Settings": {
+   "type": "object", "additionalProperties": false,
+   "properties": {
+    "owners": {"type": "object", "additionalProperties": {"type": "string"}, "description": "Record type (register id or 'pid') to owning department. Overrides each register's default owner."},
+    "authority": {"type": "object", "additionalProperties": {"oneOf": [{"type": "string", "minLength": 1}, {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}]}, "description": "Fact kind to the record type that is authoritative for it, or an ordered list of record types (the first one present for a scope wins; see authority_rule in registers.json). Overrides the defaults in registers.json."},
+    "authority_reasons": {"type": "object", "additionalProperties": {"type": "string"}, "description": "Why the site overrode a default, per fact kind."},
+    "fact_kinds": {"type": "object", "additionalProperties": {"type": "string"}, "description": "Field or property name to fact kind, when the default guess is wrong."},
+    "routing": {"type": "object", "additionalProperties": {"type": "string"}},
+    "letter_overrides": {"type": "object", "additionalProperties": {"type": "string"}, "description": "Plant-coded tag letters to the map's item kind."},
+    "spot_check_every": {"type": "integer", "minimum": 1}
+   }
+  },
+  "Source": {
+   "type": "object", "required": ["id", "record_type"], "additionalProperties": false,
+   "description": "One supplied file or export, pinned to a revision and its bytes.",
+   "properties": {
+    "id": {"$ref": "#/$defs/Id"},
+    "record_type": {"type": "string", "description": "A register id from registers.json, or 'pid'. Instrument specification sheets are record_type datasheet."},
+    "title": {"type": "string"},
+    "revision": {"type": "string"},
+    "revision_date": {"$ref": "#/$defs/Date"},
+    "path": {"type": "string"},
+    "uri": {"type": "string"},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "owner": {"type": "string"},
+    "scopes": {"type": "array", "items": {"$ref": "#/$defs/QualifiedId"}, "description": "Scopes this source is the record for. Absence of an item from a covered scope is meaningful; from an uncovered scope it is not."},
+    "handover": {"type": "string", "description": "Origin when loaded from a contractor handover (CFIHOS, DEXPI, AAS)."},
+    "standard": {"$ref": "#/$defs/StandardRef"},
+    "loaded_on": {"type": "string"}
+   }
+  },
+  "PlantLayer": {
+   "type": "object", "required": ["scopes", "items"], "additionalProperties": false,
+   "properties": {
+    "scopes": {"type": "array", "items": {"$ref": "#/$defs/Scope"}},
+    "items": {"type": "array", "items": {"$ref": "#/$defs/Item"}},
+    "relations": {"type": "array", "items": {"$ref": "#/$defs/Relation"}},
+    "loops": {"type": "array", "items": {"$ref": "#/$defs/Loop"}}
+   }
+  },
+  "Scope": {
+   "type": "object", "required": ["id", "level"], "additionalProperties": false,
+   "properties": {
+    "id": {"$ref": "#/$defs/QualifiedId"},
+    "level": {"enum": ["site", "plant", "unit", "system", "site_scope"], "description": "Plant words. site_scope = a part of the site that is not a plant (site utilities). ISA-95 and ISA-88 equivalents are in standards-mapping.csv only, not on each scope."},
+    "name": {"type": "string"},
+    "parent": {"$ref": "#/$defs/QualifiedId"},
+    "owner": {"type": "string"},
+    "shared": {"type": "boolean", "description": "A shared system (utilities) owned by exactly one scope and reached by others through boundary references."}
+   }
+  },
+  "Item": {
+   "type": "object", "required": ["id", "tag", "scope"], "additionalProperties": false,
+   "description": "A tagged position in the plant. The physical item installed there is a maintenance_export row.",
+   "properties": {
+    "id": {"$ref": "#/$defs/QualifiedId"},
+    "tag": {"$ref": "#/$defs/Segment"},
+    "scope": {"$ref": "#/$defs/QualifiedId"},
+    "kind": {"enum": ["equipment", "instrument", "controller", "final_element", "manual_valve", "relief_device", "line", "offpage_connector", "boundary", "junction", "other"]},
+    "name": {"$ref": "#/$defs/Value"},
+    "parent": {"$ref": "#/$defs/QualifiedId"},
+    "aliases": {"type": "array", "items": {"$ref": "#/$defs/Alias"}},
+    "class_refs": {"type": "array", "items": {"$ref": "#/$defs/StandardRef"}},
+    "isa_letters": {"type": "string", "description": "Letters parsed from the tag. A hint for review; never authoritative on its own."},
+    "safety_relevant": {"type": "boolean"},
+    "status": {"$ref": "#/$defs/Status"},
+    "lifecycle": {"enum": ["planned", "active", "retired"]},
+    "succeeded_by": {"$ref": "#/$defs/QualifiedId"},
+    "source": {"$ref": "#/$defs/Id"},
+    "listed_in": {"type": "array", "items": {"$ref": "#/$defs/Id"}},
+    "appearances": {"type": "array", "items": {"$ref": "#/$defs/Appearance"}},
+    "attributes": {"type": "object", "additionalProperties": {"$ref": "#/$defs/Value"}}
+   }
+  },
+  "Alias": {
+   "type": "object", "required": ["alias", "kind"], "additionalProperties": false,
+   "properties": {
+    "alias": {"type": "string", "minLength": 1},
+    "kind": {"enum": ["former_tag", "cmms_number", "functional_location", "dcs_point", "historian_tag", "vendor_tag", "handover_tag", "other"]},
+    "valid_from": {"$ref": "#/$defs/Date"},
+    "valid_to": {"$ref": "#/$defs/Date"},
+    "source": {"$ref": "#/$defs/Id"}
+   }
+  },
+  "Appearance": {
+   "type": "object", "required": ["source"], "additionalProperties": true,
+   "properties": {
+    "source": {"$ref": "#/$defs/Id"},
+    "sheet": {"type": "string"},
+    "revision": {"type": "string"},
+    "locator": {"$ref": "#/$defs/Locator"},
+    "reader": {"type": "string"},
+    "confidence": {"type": ["number", "null"]}
+   }
+  },
+  "Relation": {
+   "type": "object", "required": ["type", "from", "to", "source"], "additionalProperties": false,
+   "properties": {
+    "id": {"type": "string"},
+    "type": {"$ref": "#/$defs/RelationType"},
+    "from": {"$ref": "#/$defs/QualifiedId"},
+    "to": {"$ref": "#/$defs/QualifiedId"},
+    "line_type": {"enum": ["process_pipe", "utility_pipe", "measuring_line", "signal_line", "mechanical_link", "unknown"]},
+    "signal_type": {"enum": ["electrical", "pneumatic", "hydraulic", "capillary", "conducted_radiation", "data_link", "wireless", "unknown"]},
+    "line": {"$ref": "#/$defs/QualifiedId", "description": "Line number item the pipe run belongs to."},
+    "directed": {"type": "boolean", "description": "true when the source states the direction (flow arrow, DEXPI flow direction)."},
+    "source": {"$ref": "#/$defs/Id"},
+    "revision": {"type": "string"},
+    "locator": {"$ref": "#/$defs/Locator"},
+    "status": {"$ref": "#/$defs/Status"}
+   }
+  },
+  "RelationType": {
+   "description": "STABLE relation names, frozen in context-map-1. Other systems map to these names. Renaming or removing one, or changing its direction, needs a new major format (context-map-2); adding a name is a minor version. The document relations covers, mentions and based_on are Document properties and frozen the same way.",
+   "enum": ["contains", "piped_to", "measures", "controls", "sets_point_of", "acts_on", "protects", "signal_to", "actuated_by", "nozzle_of", "references", "member_of"]
+  },
+  "Loop": {
+   "type": "object", "required": ["id", "scope"], "additionalProperties": false,
+   "properties": {
+    "id": {"$ref": "#/$defs/QualifiedId"},
+    "scope": {"$ref": "#/$defs/QualifiedId"},
+    "loop_type": {"enum": ["control", "indication", "safety", "cascade", "other"]},
+    "controller": {"$ref": "#/$defs/QualifiedId"},
+    "measurements": {"type": "array", "items": {"$ref": "#/$defs/QualifiedId"}},
+    "outputs": {"type": "array", "items": {"$ref": "#/$defs/QualifiedId"}},
+    "outcome": {"enum": ["located_and_consistent", "partly_located", "not_found_on_any_sheet", "not_checked"]},
+    "source": {"$ref": "#/$defs/Id"},
+    "locator": {"$ref": "#/$defs/Locator"},
+    "status": {"$ref": "#/$defs/Status"}
+   }
+  },
+  "RecordsLayer": {
+   "type": "object",
+   "description": "One array per register id. A register that is absent was not supplied; an empty array was supplied with no rows. Both are valid.",
+   "propertyNames": {"enum": ["tag_register", "tag_alias", "drawing_register", "maintenance_export", "datasheet", "line_list", "relief_device_register", "instrument_index", "loop_list", "io_list", "alarm_list", "interlock_list", "work_order", "pm_plan", "calibration_record", "mro_item", "spares_bom", "purchase_order", "approved_vendor", "operating_limit", "ccp", "isolation_point", "permit", "capa", "criticality_ranking", "inspection_record", "document_register", "ruling"]},
+   "additionalProperties": {"type": "array", "items": {"$ref": "#/$defs/RecordRow"}}
+  },
+  "RecordRow": {
+   "type": "object", "required": ["source", "values"], "additionalProperties": false,
+   "description": "One register row. Field names and requiredness per register are in registers.json.",
+   "properties": {
+    "id": {"type": "string"},
+    "item": {"$ref": "#/$defs/QualifiedId", "description": "Qualified id the row resolved to, when it names a tag."},
+    "source": {"$ref": "#/$defs/Id"},
+    "revision": {"type": "string"},
+    "locator": {"$ref": "#/$defs/Locator"},
+    "status": {"$ref": "#/$defs/Status"},
+    "values": {"type": "object", "additionalProperties": {"$ref": "#/$defs/Value"}}
+   }
+  },
+  "Document": {
+   "type": "object", "required": ["id", "revision"], "additionalProperties": false,
+   "properties": {
+    "id": {"$ref": "#/$defs/QualifiedId"},
+    "title": {"type": "string"},
+    "doc_type": {"type": "string"},
+    "type_refs": {"type": "array", "items": {"$ref": "#/$defs/StandardRef"}},
+    "revision": {"type": "string"},
+    "status": {"enum": ["draft", "released", "superseded", "withdrawn"]},
+    "owner": {"type": "string"},
+    "path": {"type": "string"},
+    "uri": {"type": "string"},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "source": {"$ref": "#/$defs/Id"},
+    "manufacturer": {"type": "string"},
+    "covers": {"type": "array", "items": {"$ref": "#/$defs/QualifiedId"}},
+    "mentions": {"type": "array", "items": {"$ref": "#/$defs/Mention"}},
+    "based_on": {"type": "array", "items": {"$ref": "#/$defs/BasedOn"}},
+    "text_extracted": {"enum": ["yes", "no", "partial"], "description": "Whether the document's text was readable for mentions."}
+   }
+  },
+  "Mention": {
+   "type": "object", "required": ["target", "locator", "matched_text"], "additionalProperties": false,
+   "properties": {
+    "target": {"$ref": "#/$defs/QualifiedId"},
+    "locator": {"$ref": "#/$defs/Locator"},
+    "matched_text": {"type": "string"},
+    "match": {"enum": ["exact", "alias", "qualified_id"]},
+    "confidence": {"type": ["number", "null"]}
+   }
+  },
+  "BasedOn": {
+   "type": "object", "required": ["id", "revision"], "additionalProperties": false,
+   "properties": {"id": {"$ref": "#/$defs/QualifiedId"}, "revision": {"type": "string"}}
+  },
+  "DecisionsLayer": {
+   "type": "object", "additionalProperties": false,
+   "properties": {
+    "conflicts": {"type": "array", "items": {"$ref": "#/$defs/Conflict"}},
+    "rulings": {"type": "array", "items": {"$ref": "#/$defs/Ruling"}}
+   }
+  },
+  "Side": {
+   "type": "object", "required": ["source", "says"], "additionalProperties": false,
+   "properties": {
+    "source": {"$ref": "#/$defs/Id"},
+    "record_type": {"type": "string"},
+    "revision": {"type": "string"},
+    "locator": {"$ref": "#/$defs/Locator"},
+    "says": {"$ref": "#/$defs/Scalar"}
+   }
+  },
+  "Conflict": {
+   "type": "object", "required": ["id", "type", "subject", "sides", "status"], "additionalProperties": false,
+   "properties": {
+    "id": {"$ref": "#/$defs/QualifiedId"},
+    "type": {"enum": ["asset_presence", "value_disagreement", "mention_not_in_register", "ambiguous_reference", "superseded_basis", "loop_pairing", "loop_reference", "unlisted_loop", "boundary", "authority_gap"]},
+    "subject": {"$ref": "#/$defs/QualifiedId"},
+    "attribute": {"type": "string"},
+    "fact_kind": {"type": "string"},
+    "authority": {"type": "string", "description": "Record type authoritative for this fact kind at detection time, or empty."},
+    "sides": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/Side"}},
+    "record_owner": {"type": "string"},
+    "other_parties": {"type": "array", "items": {"type": "string"}},
+    "status": {"enum": ["open", "disputed", "resolved"]},
+    "detected": {"type": "boolean"},
+    "ruling": {"type": "string", "description": "Id of the ruling that resolved it."}
+   }
+  },
+  "Ruling": {
+   "type": "object", "required": ["id", "concerns", "ruling", "reason", "by", "on"], "additionalProperties": false,
+   "properties": {
+    "id": {"$ref": "#/$defs/Id"},
+    "concerns": {"$ref": "#/$defs/QualifiedId"},
+    "attribute": {"type": "string"},
+    "ruling": {"enum": ["accept_source", "accept_value", "no_conflict", "authority_override", "defer"]},
+    "chosen_source": {"type": "string"},
+    "chosen_value": {"$ref": "#/$defs/Scalar"},
+    "reason": {"type": "string", "minLength": 1},
+    "by": {"type": "string", "minLength": 1},
+    "on": {"$ref": "#/$defs/Date"},
+    "external_ref": {"type": "string", "description": "Id of the matching record in an external governed service, if one exists."}
+   }
+  },
+  "Coverage": {
+   "type": "object", "additionalProperties": false,
+   "description": "Generated, never hand-edited. Recomputed from the layers on every build.",
+   "properties": {
+    "generated_on": {"type": "string"},
+    "by_layer": {"type": "object", "additionalProperties": false, "properties": {
+     "plant": {"$ref": "#/$defs/LayerCoverage"}, "records": {"$ref": "#/$defs/LayerCoverage"},
+     "documents": {"$ref": "#/$defs/LayerCoverage"}, "decisions": {"$ref": "#/$defs/LayerCoverage"}}},
+    "by_unit": {"type": "array", "items": {"$ref": "#/$defs/UnitCoverage"}},
+    "registers": {"type": "array", "items": {"$ref": "#/$defs/RegisterCoverage"}}
+   }
+  },
+  "LayerCoverage": {
+   "type": "object", "additionalProperties": {"type": ["number", "integer", "string", "null"]}
+  },
+  "UnitCoverage": {
+   "type": "object", "required": ["scope"], "additionalProperties": false,
+   "properties": {
+    "scope": {"$ref": "#/$defs/QualifiedId"},
+    "items": {"type": "integer"},
+    "items_on_a_pid": {"type": "integer"},
+    "items_in_tag_register": {"type": "integer"},
+    "equipment_in_maintenance_export": {"type": "integer"},
+    "equipment_total": {"type": "integer"},
+    "instruments_in_instrument_index": {"type": "integer"},
+    "instruments_total": {"type": "integer"},
+    "items_with_datasheet_values": {"type": "integer"},
+    "loops_listed": {"type": "integer"},
+    "loops_located": {"type": "integer"},
+    "documents_covering": {"type": "integer"},
+    "safety_items": {"type": "integer"},
+    "safety_items_with_protective_record": {"type": "integer"},
+    "registers_supplied": {"type": "array", "items": {"type": "string"}},
+    "registers_not_supplied": {"type": "array", "items": {"type": "string"}},
+    "open_conflicts": {"type": "integer"}
+   }
+  },
+  "RegisterCoverage": {
+   "type": "object", "required": ["register", "supplied"], "additionalProperties": false,
+   "properties": {
+    "register": {"type": "string"},
+    "supplied": {"type": "boolean"},
+    "rows": {"type": "integer"},
+    "rows_resolved_to_items": {"type": "integer"},
+    "field_fill": {"type": "object", "additionalProperties": {"type": "number", "minimum": 0, "maximum": 1}},
+    "scopes": {"type": "array", "items": {"type": "string"}}
+   }
+  }
+ }
+}

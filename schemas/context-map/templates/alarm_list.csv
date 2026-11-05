@@ -1,0 +1,2 @@
+tag,plant,unit,alarm_type,setpoint,uom,priority,operator_action,rationalized_on,locator,status,note
+TT-2207,P1,PAST1,L,72.5,degC,High,Check heating medium; confirm divert,2026-01-12,,unverified,Pre-alarm above the critical limit.

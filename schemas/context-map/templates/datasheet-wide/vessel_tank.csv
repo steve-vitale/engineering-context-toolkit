@@ -1,0 +1,2 @@
+tag,plant,unit,document,revision,vessel_type,capacity[L],diameter[mm],height[mm],design_pressure[barg],design_temperature[degC],shell_material,design_code,hygienic_design,locator,status,note
+BT-100,P1,PAST1,DS-BT100,1,balance tank (atmospheric),150,600,900,0,95,AISI 304,,3-A,,unverified,

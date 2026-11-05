@@ -1,0 +1,2 @@
+ruling_id,concerns,attribute,ruling,chosen_source,chosen_value,reason,by,on
+R-0007,S1/P1/PAST1/P-101,rated_flow,accept_source,DS-P101@2,12000 L/h,Datasheet rev 2 reflects the 2021 pump; CMMS text predates it.,Process engineer,2026-10-30

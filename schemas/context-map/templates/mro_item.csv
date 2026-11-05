@@ -1,0 +1,2 @@
+item_number,description,manufacturer,part_number,uom,min_qty,max_qty,critical_spare,lead_time_days,locator,status,note
+MRO-778120,"Shaft seal kit, timing pump",,SK-030,EA,1,2,yes,42,,unverified,

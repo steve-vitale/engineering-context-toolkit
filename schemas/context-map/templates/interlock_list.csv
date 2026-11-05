@@ -1,0 +1,3 @@
+interlock_id,plant,unit,cause_tag,cause_condition,effect_tag,effect_action,is_sif,sil,bypass_allowed,locator,status,note
+IL-2207,P1,PAST1,TT-2207,below 72.0 degC,FDV-2210,move to divert,no,,no,,unverified,"Public-health control, not a SIF."
+IL-2207,P1,PAST1,TT-2207,below 72.0 degC,P-101,no forward flow until reset,no,,no,,unverified,

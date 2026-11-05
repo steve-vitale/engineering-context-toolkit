@@ -1,0 +1,3 @@
+tag,plant,unit,functional_location,equipment_number,description,manufacturer,model,serial_number,installed_on,iso14224_class,criticality,system,former_tag,cmms_status,locator,status,note
+P-101,P1,PAST1,P1-PAST1-PMP-101,10004711,Timing pump,Example Pumps Co (fictional),U2-030,SN-48812,2021-03-14,PU,A,,TP-1,operating,,unverified,
+FDV-2210,P1,PAST1,P1-PAST1-VLV-2210,10004790,Flow diversion valve,,,,2020-11-02,VA,A,,,operating,,unverified,Manufacturer field empty in the export.

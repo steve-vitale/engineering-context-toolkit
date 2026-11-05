@@ -1,0 +1,2 @@
+line_number,plant,unit,from_tag,to_tag,nominal_size,piping_class,fluid,design_pressure,design_temperature,material,insulation,hygienic,locator,status,note
+PAST1-2201-2IN-SS,P1,PAST1,PHE-100,FDV-2210,2 in,S3A,Milk,10 barg,95 degC,316L,,yes,,unverified,

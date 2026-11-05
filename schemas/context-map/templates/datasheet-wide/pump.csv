@@ -1,0 +1,2 @@
+tag,plant,unit,document,revision,pump_type,rated_flow[L/h],differential_head[m],speed[rpm],driver_power[kW],design_pressure[barg],design_temperature[degC],suction_size[DN],discharge_size[DN],casing_material,seal_type,hygienic_design,locator,status,note
+P-101,P1,PAST1,DS-P101,2,rotary lobe (positive displacement),12000,35,420,7.5,10,95,65,65,AISI 316L,"single mechanical, flushed",3-A,,unverified,Timing pump; regulatory seal on speed.

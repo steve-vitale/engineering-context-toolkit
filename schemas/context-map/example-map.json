@@ -1,0 +1,510 @@
+{
+ "format": "context-map-1",
+ "format_version": "1.0.0-draft",
+ "map": {
+  "site": "S1",
+  "name": "Lakeside dairy (fictional)",
+  "created": "2026-11-04",
+  "generator": "hand-authored example for docs/CONTEXT_MAP_FORMAT.md",
+  "note": "Fictional. Shows a partly filled map: five registers supplied, the rest absent and still valid."
+ },
+ "settings": {
+  "owners": {
+   "pid": "Doc control",
+   "maintenance_export": "Maintenance",
+   "instrument_index": "I&C",
+   "ccp": "Quality"
+  }
+ },
+ "sources": [
+  {
+   "id": "PID-P1-PAST1-01",
+   "record_type": "pid",
+   "title": "HTST pasteurizer 1 P&ID",
+   "revision": "C",
+   "path": "pids/PAST1-01-revC.pdf",
+   "owner": "Doc control",
+   "scopes": [
+    "S1/P1/PAST1"
+   ]
+  },
+  {
+   "id": "CMMS-2026-10",
+   "record_type": "maintenance_export",
+   "revision": "2026-10-01",
+   "path": "exports/cmms-equipment.csv",
+   "owner": "Maintenance",
+   "scopes": [
+    "S1/P1"
+   ]
+  },
+  {
+   "id": "IS-TT2207",
+   "record_type": "datasheet",
+   "title": "TT-2207 instrument specification sheet",
+   "revision": "1",
+   "path": "docs/is-tt2207-rev1.pdf",
+   "owner": "I&C",
+   "scopes": [
+    "S1/P1/PAST1"
+   ]
+  },
+  {
+   "id": "HACCP-P1-01",
+   "record_type": "ccp",
+   "title": "Plant 1 HACCP plan",
+   "revision": "7",
+   "path": "docs/haccp-p1-rev7.pdf",
+   "owner": "Quality",
+   "scopes": [
+    "S1/P1"
+   ]
+  }
+ ],
+ "plant": {
+  "scopes": [
+   {
+    "id": "S1",
+    "level": "site",
+    "name": "Lakeside dairy (fictional)"
+   },
+   {
+    "id": "S1/P1",
+    "level": "plant",
+    "parent": "S1",
+    "name": "Fluid milk plant",
+    "owner": "Plant 1 operations"
+   },
+   {
+    "id": "S1/P1/PAST1",
+    "level": "unit",
+    "parent": "S1/P1",
+    "name": "HTST pasteurizer 1"
+   }
+  ],
+  "items": [
+   {
+    "id": "S1/P1/PAST1/P-101",
+    "tag": "P-101",
+    "scope": "S1/P1/PAST1",
+    "kind": "equipment",
+    "name": "Timing pump",
+    "aliases": [
+     {
+      "alias": "TP-1",
+      "kind": "former_tag",
+      "valid_to": "2019-06-30",
+      "source": "CMMS-2026-10"
+     }
+    ],
+    "class_refs": [
+     {
+      "standard": "DEXPI",
+      "version": "2.0.1",
+      "ref": "RotaryPump"
+     }
+    ],
+    "safety_relevant": true,
+    "status": "unverified",
+    "source": "PID-P1-PAST1-01",
+    "listed_in": [
+     "CMMS-2026-10"
+    ],
+    "appearances": [
+     {
+      "source": "PID-P1-PAST1-01",
+      "sheet": "PAST1-01",
+      "revision": "C",
+      "locator": {
+       "zone": "B2"
+      }
+     }
+    ]
+   },
+   {
+    "id": "S1/P1/PAST1/HT-100",
+    "tag": "HT-100",
+    "scope": "S1/P1/PAST1",
+    "kind": "equipment",
+    "name": "Hold tube",
+    "status": "unverified",
+    "source": "PID-P1-PAST1-01",
+    "listed_in": []
+   },
+   {
+    "id": "S1/P1/PAST1/TT-2207",
+    "tag": "TT-2207",
+    "scope": "S1/P1/PAST1",
+    "kind": "instrument",
+    "name": "Hold tube outlet temperature",
+    "isa_letters": "TT",
+    "safety_relevant": true,
+    "status": "unverified",
+    "source": "PID-P1-PAST1-01",
+    "listed_in": [],
+    "appearances": [
+     {
+      "source": "PID-P1-PAST1-01",
+      "sheet": "PAST1-01",
+      "revision": "C",
+      "locator": {
+       "zone": "D4"
+      }
+     }
+    ],
+    "attributes": {
+     "range": {
+      "value": "0 to 100",
+      "uom": "degC",
+      "source": "IS-TT2207",
+      "revision": "1",
+      "locator": "box 22",
+      "fact_kind": "instrument_range"
+     }
+    }
+   },
+   {
+    "id": "S1/P1/PAST1/TIC-2207",
+    "tag": "TIC-2207",
+    "scope": "S1/P1/PAST1",
+    "kind": "controller",
+    "status": "unverified",
+    "source": "PID-P1-PAST1-01"
+   },
+   {
+    "id": "S1/P1/PAST1/FDV-2210",
+    "tag": "FDV-2210",
+    "scope": "S1/P1/PAST1",
+    "kind": "final_element",
+    "name": "Flow diversion valve",
+    "class_refs": [
+     {
+      "standard": "DEXPI",
+      "version": "2.0.1",
+      "ref": "OperatedValve"
+     }
+    ],
+    "safety_relevant": true,
+    "status": "unverified",
+    "source": "PID-P1-PAST1-01",
+    "listed_in": []
+   }
+  ],
+  "relations": [
+   {
+    "type": "contains",
+    "from": "S1/P1/PAST1",
+    "to": "S1/P1/PAST1/P-101",
+    "source": "PID-P1-PAST1-01"
+   },
+   {
+    "type": "piped_to",
+    "from": "S1/P1/PAST1/P-101",
+    "to": "S1/P1/PAST1/HT-100",
+    "line_type": "process_pipe",
+    "directed": true,
+    "source": "PID-P1-PAST1-01",
+    "revision": "C",
+    "locator": {
+     "zone": "C3"
+    },
+    "status": "unverified"
+   },
+   {
+    "type": "piped_to",
+    "from": "S1/P1/PAST1/HT-100",
+    "to": "S1/P1/PAST1/FDV-2210",
+    "line_type": "process_pipe",
+    "directed": true,
+    "source": "PID-P1-PAST1-01",
+    "revision": "C",
+    "locator": {
+     "zone": "D3"
+    },
+    "status": "unverified"
+   },
+   {
+    "type": "measures",
+    "from": "S1/P1/PAST1/TT-2207",
+    "to": "S1/P1/PAST1/HT-100",
+    "source": "PID-P1-PAST1-01",
+    "status": "unverified"
+   },
+   {
+    "type": "signal_to",
+    "from": "S1/P1/PAST1/TT-2207",
+    "to": "S1/P1/PAST1/TIC-2207",
+    "line_type": "signal_line",
+    "signal_type": "electrical",
+    "source": "PID-P1-PAST1-01"
+   },
+   {
+    "type": "controls",
+    "from": "S1/P1/PAST1/TIC-2207",
+    "to": "S1/P1/PAST1/FDV-2210",
+    "source": "PID-P1-PAST1-01"
+   }
+  ],
+  "loops": [
+   {
+    "id": "S1/P1/PAST1/LOOP-2207",
+    "scope": "S1/P1/PAST1",
+    "loop_type": "safety",
+    "controller": "S1/P1/PAST1/TIC-2207",
+    "measurements": [
+     "S1/P1/PAST1/TT-2207"
+    ],
+    "outputs": [
+     "S1/P1/PAST1/FDV-2210"
+    ],
+    "outcome": "not_checked",
+    "source": "PID-P1-PAST1-01"
+   }
+  ]
+ },
+ "records": {
+  "maintenance_export": [
+   {
+    "item": "S1/P1/PAST1/P-101",
+    "source": "CMMS-2026-10",
+    "locator": {
+     "row": 2
+    },
+    "values": {
+     "tag": "P-101",
+     "plant": "P1",
+     "unit": "PAST1",
+     "equipment_number": "10004711",
+     "serial_number": "SN-48812",
+     "installed_on": "2021-03-14",
+     "former_tag": "TP-1"
+    }
+   }
+  ],
+  "ccp": [
+   {
+    "id": "CCP-1",
+    "item": "S1/P1/PAST1/TT-2207",
+    "source": "HACCP-P1-01",
+    "locator": "section 4, CCP table row 1",
+    "values": {
+     "ccp_id": "CCP-1",
+     "plant": "P1",
+     "unit": "PAST1",
+     "monitored_tag": "TT-2207",
+     "critical_limit_low": {
+      "value": "72.0",
+      "uom": "degC",
+      "fact_kind": "ccp_limit"
+     },
+     "haccp_plan": "HACCP-P1-01"
+    }
+   }
+  ],
+  "datasheet": [
+   {
+    "item": "S1/P1/PAST1/TT-2207",
+    "source": "IS-TT2207",
+    "revision": "1",
+    "locator": "box 22",
+    "values": {
+     "tag": "TT-2207",
+     "plant": "P1",
+     "unit": "PAST1",
+     "property": "range_low",
+     "value": "0",
+     "uom": "degC",
+     "fact_kind": "instrument_range",
+     "sheet_type": "instrument_spec_sheet",
+     "document": "IS-TT2207",
+     "revision": "1"
+    }
+   },
+   {
+    "item": "S1/P1/PAST1/TT-2207",
+    "source": "IS-TT2207",
+    "revision": "1",
+    "locator": "box 22",
+    "values": {
+     "tag": "TT-2207",
+     "plant": "P1",
+     "unit": "PAST1",
+     "property": "range_high",
+     "value": "100",
+     "uom": "degC",
+     "fact_kind": "instrument_range",
+     "sheet_type": "instrument_spec_sheet",
+     "document": "IS-TT2207",
+     "revision": "1"
+    }
+   }
+  ],
+  "instrument_index": [],
+  "isolation_point": []
+ },
+ "documents": [
+  {
+   "id": "S1/DOC/HACCP-P1-01",
+   "title": "Plant 1 HACCP plan",
+   "doc_type": "HACCP plan",
+   "revision": "7",
+   "status": "released",
+   "owner": "Quality",
+   "source": "HACCP-P1-01",
+   "covers": [
+    "S1/P1"
+   ],
+   "text_extracted": "yes",
+   "mentions": [
+    {
+     "target": "S1/P1/PAST1/TT-2207",
+     "locator": {
+      "page": 9,
+      "line": 12
+     },
+     "matched_text": "TT-2207",
+     "match": "exact"
+    }
+   ],
+   "based_on": [
+    {
+     "id": "S1/DOC/PID-P1-PAST1-01",
+     "revision": "B"
+    }
+   ]
+  },
+  {
+   "id": "S1/DOC/PID-P1-PAST1-01",
+   "title": "HTST pasteurizer 1 P&ID",
+   "doc_type": "P&ID",
+   "revision": "C",
+   "status": "released",
+   "owner": "Doc control",
+   "source": "PID-P1-PAST1-01",
+   "covers": [
+    "S1/P1/PAST1"
+   ]
+  }
+ ],
+ "decisions": {
+  "conflicts": [
+   {
+    "id": "S1/CONFLICT/C-0001",
+    "type": "asset_presence",
+    "subject": "S1/P1/PAST1/TT-2207",
+    "sides": [
+     {
+      "source": "PID-P1-PAST1-01",
+      "record_type": "pid",
+      "revision": "C",
+      "locator": {
+       "zone": "D4"
+      },
+      "says": "present"
+     },
+     {
+      "source": "CMMS-2026-10",
+      "record_type": "maintenance_export",
+      "says": "absent"
+     }
+    ],
+    "record_owner": "I&C",
+    "status": "open",
+    "detected": true
+   },
+   {
+    "id": "S1/CONFLICT/C-0002",
+    "type": "superseded_basis",
+    "subject": "S1/DOC/HACCP-P1-01",
+    "sides": [
+     {
+      "source": "HACCP-P1-01",
+      "says": "based on PID-P1-PAST1-01 rev B"
+     },
+     {
+      "source": "PID-P1-PAST1-01",
+      "says": "current rev C"
+     }
+    ],
+    "record_owner": "Quality",
+    "status": "open",
+    "detected": true
+   }
+  ],
+  "rulings": []
+ },
+ "coverage": {
+  "generated_on": "2026-11-04",
+  "by_layer": {
+   "plant": {
+    "items": 5,
+    "relations": 6,
+    "loops": 1
+   },
+   "records": {
+    "registers_supplied": 5,
+    "registers_defined": 28
+   },
+   "documents": {
+    "documents": 2,
+    "text_extracted": 1
+   },
+   "decisions": {
+    "open_conflicts": 2,
+    "rulings": 0
+   }
+  },
+  "by_unit": [
+   {
+    "scope": "S1/P1/PAST1",
+    "items": 5,
+    "items_on_a_pid": 4,
+    "items_in_tag_register": 0,
+    "equipment_in_maintenance_export": 1,
+    "equipment_total": 3,
+    "instruments_in_instrument_index": 0,
+    "instruments_total": 2,
+    "items_with_datasheet_values": 1,
+    "loops_listed": 0,
+    "loops_located": 0,
+    "documents_covering": 2,
+    "safety_items": 3,
+    "safety_items_with_protective_record": 1,
+    "registers_supplied": [
+     "maintenance_export",
+     "datasheet",
+     "ccp",
+     "instrument_index",
+     "isolation_point"
+    ],
+    "registers_not_supplied": [
+     "loop_list",
+     "relief_device_register",
+     "interlock_list"
+    ],
+    "open_conflicts": 2
+   }
+  ],
+  "registers": [
+   {
+    "register": "maintenance_export",
+    "supplied": true,
+    "rows": 1,
+    "rows_resolved_to_items": 1,
+    "field_fill": {
+     "serial_number": 1.0,
+     "manufacturer": 0.0
+    }
+   },
+   {
+    "register": "instrument_index",
+    "supplied": true,
+    "rows": 0
+   },
+   {
+    "register": "loop_list",
+    "supplied": false
+   }
+  ]
+ }
+}

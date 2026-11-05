@@ -1,0 +1,2 @@
+ccp_id,plant,unit,process_step,hazard,monitored_tag,parameter,critical_limit_low,critical_limit_high,uom,monitoring_frequency,corrective_action,verification,haccp_plan,locator,status,note
+CCP-1,P1,PAST1,Pasteurization (HTST),Vegetative pathogens surviving heat treatment,TT-2207,hold tube outlet temperature,72.0,,degC,"continuous, recorded",FDV-2210 diverts; product held and evaluated,Daily record review; TT-2207 calibration every 3 months,HACCP-P1-01,section 4 CCP table row 1,unverified,Fictional example; 15 s hold time is a second critical limit on P-101 speed.

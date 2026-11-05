@@ -1,0 +1,2 @@
+controller,plant,unit,measurement,output,loop_type,description,locator,status,note
+TIC-2207,P1,PAST1,TT-2207,FDV-2210,safety,"Hold tube temperature, divert on low",,unverified,
