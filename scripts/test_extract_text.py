@@ -11,6 +11,7 @@ import io
 import json
 import re
 import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -146,7 +147,8 @@ def make_pdf(path, pages):
     objects = ["<< /Type /Catalog /Pages 2 0 R >>", None, "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>"]
     kids = []
     for lines in pages:
-        ops = "".join(f"BT /F1 12 Tf 72 {720 - 20 * i} Td ({ln}) Tj ET\n" for i, ln in enumerate(lines))
+        ops = "".join(f"BT /F1 12 Tf {ln[1]} {ln[2]} Td ({ln[0]}) Tj ET\n" if isinstance(ln, tuple)  # (text, x, y)
+                      else f"BT /F1 12 Tf 72 {720 - 20 * i} Td ({ln}) Tj ET\n" for i, ln in enumerate(lines))
         objects.append(f"<< /Length {len(ops)} >>\nstream\n{ops}endstream")
         content = len(objects)
         objects.append(f"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents {content} 0 R "
@@ -284,7 +286,7 @@ class PdfWithPypdf(Base):
         writer.encrypt("secret", algorithm="RC4-128")
         with open(self.dir / "locked.pdf", "wb") as stream:
             writer.write(stream)
-        engines = ["pypdf"] + (["pdftotext"] if shutil.which("pdftotext") else [])
+        engines = ["pypdf"] + (["pdftotext"] if et._find_tool("pdftotext") else [])
         for engine in engines:
             r = et.extract(self.dir / "locked.pdf", pdf_engine=engine)
             self.assertEqual(r.status, et.UNSUPPORTED, (engine, r.warnings))
@@ -298,7 +300,7 @@ class PdfWithPypdf(Base):
         self.assertEqual((r.engine, r.segments), ("pypdf", []))
 
 
-@unittest.skipUnless(shutil.which("pdftotext"), "SKIP pdftotext not on PATH: fallback PDF test")
+@unittest.skipUnless(et._find_tool("pdftotext"), "SKIP pdftotext not found: fallback PDF test")
 class PdfWithPdftotext(Base):
     def test_fallback_program_gives_the_same_pages(self):
         path = make_pdf(self.dir / "pha.pdf", [["Pump P-101"], ["FDV-2210 trip"], []])
@@ -311,8 +313,7 @@ class PdfWithPdftotext(Base):
 class Limits(Base):
     def test_pdf_without_pypdf_or_pdftotext_says_how_to_get_text(self):
         path = make_pdf(self.dir / "a.pdf", [["P-101"]])
-        with mock.patch.object(et, "_pypdf", return_value=None), mock.patch.object(et.shutil, "which",
-                                                                                   return_value=None):
+        with mock.patch.object(et, "_pypdf", return_value=None), no_installed_tools(self.dir / "empty-bin"):
             r = et.extract(path)
         self.assertEqual(r.status, et.NEEDS_DEPENDENCY)
         self.assertEqual(r.segments, [])
@@ -482,6 +483,680 @@ class WorkedExample(Base):
         self.assertEqual(found["TT-2207"], ["page header 1 paragraph 1", "table 1 row 2"])
         self.assertEqual(found["FDV-2210"], ["table 1 row 3"])
 
+
+
+# ---------------------------------------------------------------- optional add-ons
+
+FAKE_TOOL = r'''
+import os, sys, time, zipfile
+log = os.environ.get("FAKE_TOOL_LOG")
+tool, args = sys.argv[1], sys.argv[2:]
+if log:
+    with open(log, "a", encoding="utf-8") as f:
+        f.write(repr([tool, args, os.environ.get("OMP_THREAD_LIMIT")]) + "\n")
+if tool == "tesseract":
+    if args == ["--version"]:
+        print("tesseract 5.9.9-fake")
+        sys.exit(0)
+    data = open(args[0], "rb").read()
+    if b"SLEEP" in data:
+        hold = open(args[0], "rb")  # keeps the image open: the folder cannot be removed until this is killed
+        time.sleep(60)
+    words = data.split(b"TEXT:", 1)[1].decode() if b"TEXT:" in data else ""
+    print("level\tpage_num\tblock_num\tpar_num\tline_num\tword_num\tleft\ttop\twidth\theight\tconf\ttext")
+    for page, line in enumerate(words.split("|"), 1):
+        for n, word in enumerate(line.split(), 1):
+            print(f"5\t{page}\t1\t1\t1\t{n}\t0\t0\t1\t1\t{90 + n}\t{word}")
+elif tool == "pdftoppm":
+    if args == ["-v"]:
+        sys.stderr.write("pdftoppm version 99.1.0\n")
+        sys.exit(0)
+    page = args[args.index("-f") + 1]
+    import struct
+    png = b"\x89PNG\r\n\x1a\n" + struct.pack(">I", 13) + b"IHDR" + struct.pack(">II", 2550, 3300)
+    png += b"\x08\x00\x00\x00\x00"
+    with open(args[-1] + ".png", "wb") as f:
+        f.write(png + (b"" if page == "4" else f"TEXT:Scanned page {page} pump P-10{page}".encode()))
+elif tool == "soffice":
+    if "--version" in args:
+        print("LibreOffice 9.9.9.9 fake")
+        sys.exit(0)
+    out, src = args[args.index("--outdir") + 1], args[-1]
+    target = args[args.index("--convert-to") + 1]
+    text = open(src, "rb").read().decode("latin-1").split("TEXT:", 1)[-1]
+    if target == "docx":
+        with zipfile.ZipFile(os.path.join(out, "source.docx"), "w") as z:
+            z.writestr("word/document.xml", '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/'
+                       f'2006/main"><w:body><w:p><w:r><w:t>{text}</w:t></w:r></w:p></w:body></w:document>')
+'''
+
+
+def fake_tools(folder, *tools):
+    """Stand-in programs on a private PATH folder, so the real subprocess path (argument lists, timeouts, process
+    trees, temporary folders) runs in tests without Tesseract, Poppler or LibreOffice installed."""
+    folder.mkdir(parents=True, exist_ok=True)
+    script = folder / "fake_tool.py"
+    script.write_text(FAKE_TOOL, encoding="utf-8")
+    for tool in tools:
+        if os.name == "nt":
+            (folder / f"{tool}.cmd").write_text(f'@"{sys.executable}" "{script}" {tool} %*\n', encoding="utf-8")
+        else:
+            launcher = folder / tool
+            launcher.write_text(f'#!/bin/sh\nexec "{sys.executable}" "{script}" {tool} "$@"\n', encoding="utf-8")
+            launcher.chmod(0o755)
+    return folder
+
+
+def png_bytes(width=400, height=100, text=""):
+    import struct
+    return (b"\x89PNG\r\n\x1a\n" + struct.pack(">I", 13) + b"IHDR" + struct.pack(">II", width, height)
+            + b"\x08\x00\x00\x00\x00" + (b"TEXT:" + text.encode() if text else b""))
+
+
+@contextlib.contextmanager
+def no_installed_tools(path_folder=None):
+    """Hide the machine's real add-on programs: no TOOL_ENV overrides, no standard install folders and, when a
+    folder is given, a PATH holding only that folder."""
+    env = {"PATH": str(path_folder)} if path_folder is not None else {}
+    with mock.patch.dict(os.environ, env), mock.patch.object(et, "_standard_locations", return_value=[]):
+        for var in set(et.TOOL_ENV.values()):
+            os.environ.pop(var, None)
+        yield
+
+
+class AddonBase(Base):
+    def setUp(self):
+        super().setUp()
+        et._tool_version.cache_clear()
+        et._soffice_version.cache_clear()
+        self.log = self.dir / "tool-log.txt"
+        self.scratch = self.dir / "scratch"  # where the extractor's temporary folders go during the test
+        self.scratch.mkdir()
+        patches = [mock.patch.object(tempfile, "tempdir", str(self.scratch)),
+                   mock.patch.dict(os.environ, {"FAKE_TOOL_LOG": str(self.log)})]
+        for p in patches:
+            p.start()
+            self.addCleanup(p.stop)
+
+    def only_path(self, *tools):
+        """PATH holding only the named fake programs (no real pdftotext/tesseract/soffice)."""
+        folder = fake_tools(self.dir / "bin", *tools) if tools else self.dir / "empty-bin"
+        folder.mkdir(exist_ok=True)
+        return no_installed_tools(folder)
+
+    def calls(self, tool):
+        if not self.log.exists():
+            return []
+        rows = [eval(line) for line in self.log.read_text(encoding="utf-8").splitlines()]  # noqa: S307 (own log)
+        return [(args, threads) for name, args, threads in rows if name == tool]
+
+    def assert_scratch_clean(self):
+        self.assertEqual(sorted(p.name for p in self.scratch.iterdir()), [])
+
+
+@unittest.skipUnless(has_pypdf(), "SKIP pypdf not installed: OCR-of-scanned-PDF tests read the text layer with pypdf")
+class OcrScannedPdf(AddonBase):
+    def scan(self):
+        return make_pdf(self.dir / "packet.pdf", [["Cover sheet P-100"], [], [], []])
+
+    def test_default_is_unchanged_and_never_runs_ocr(self):
+        with self.only_path("tesseract", "pdftoppm"):
+            r = et.extract(self.scan(), pdf_engine="pypdf")
+        self.assertEqual(r.status, et.PARTIAL)
+        self.assertIn("no text layer, needs OCR: pages 2-4 of 4", r.warnings)
+        self.assertEqual(self.calls("tesseract") + self.calls("pdftoppm"), [])
+        self.assertNotIn("ocr", r.manifest_entry())
+
+    def test_ocr_auto_reads_scanned_pages_with_engine_and_confidence(self):
+        with self.only_path("tesseract", "pdftoppm"):
+            r = et.extract(self.scan(), pdf_engine="pypdf", ocr="auto", ocr_dpi=200)
+        self.assertEqual([loc for loc, _ in r], ["page 1", "page 2", "page 3"])
+        self.assertEqual(dict(r.segments)["page 2"], "Scanned page 2 pump P-102")
+        # page 4 rendered but OCR found nothing: still a page a person must look at
+        self.assertEqual(r.status, et.PARTIAL)
+        self.assertIn("OCR found no text: page 4 of 4 (a blank page, or an image OCR could not read)", r.warnings)
+        self.assertFalse(any("no text layer" in w for w in r.warnings))
+        self.assertEqual(r.ocr, {"page 2": 93.0, "page 3": 93.0})
+        self.assertEqual(r.ocr_engine, "tesseract 5.9.9-fake (eng, 200 dpi; pages rendered by pdftoppm 99.1.0)")
+        entry = r.manifest_entry()
+        self.assertEqual(entry["ocr"]["mean_word_confidence"], {"page 2": 93.0, "page 3": 93.0})
+        self.assertEqual(entry["applied"], ["ocr"])
+        self.assertIn("# ocr: engine: tesseract 5.9.9-fake (eng, 200 dpi; pages rendered by pdftoppm 99.1.0) | "
+                      "mean word confidence: page 2 93.0; page 3 93.0", et.render_text(r))
+        renders = self.calls("pdftoppm")[1:]  # after the version query
+        self.assertEqual([args[args.index("-f") + 1] for args, _ in renders], ["2", "3", "4"])
+        for args, _ in renders:  # fixed names in the private folder, never the user's file name
+            self.assertEqual(Path(args[-2]).name, "source.pdf")
+            self.assertTrue(Path(args[-2]).is_absolute())
+            self.assertEqual(args[args.index("-r") + 1], "200")
+        for args, threads in self.calls("tesseract")[1:]:
+            self.assertEqual((args[1], args[args.index("-l") + 1], args[-1], threads), ("stdout", "eng", "tsv", "1"))
+        self.assert_scratch_clean()
+
+    def test_every_page_ocred_is_ok_ocr(self):
+        with self.only_path("tesseract", "pdftoppm"):
+            r = et.extract(make_pdf(self.dir / "s.pdf", [["P-100"], []]), pdf_engine="pypdf", ocr="auto")
+        self.assertEqual(r.status, et.OK_OCR)
+        self.assertEqual(r.warnings, [])
+
+    def test_missing_programs_keep_the_needs_ocr_report_and_say_what_is_missing(self):
+        with self.only_path("tesseract"):
+            r = et.extract(self.scan(), pdf_engine="pypdf", ocr="auto")
+        self.assertEqual(r.status, et.PARTIAL)
+        self.assertIn("no text layer, needs OCR: pages 2-4 of 4", r.warnings)
+        self.assertIn("OCR not run: no pdftoppm program found (on PATH, in POPPLER_BIN or the standard install folder; "
+                      "install Poppler) to render PDF pages", r.warnings)
+        with self.only_path():
+            r = et.extract(make_pdf(self.dir / "all.pdf", [[]]), pdf_engine="pypdf", ocr="auto")
+        self.assertEqual(r.status, et.NEEDS_OCR)
+        self.assertTrue(any(w.startswith("OCR not run: no tesseract program found (on PATH, in TESSERACT_CMD")
+                            for w in r.warnings))
+
+
+class OcrImages(AddonBase):
+    def test_default_off_keeps_todays_unsupported_report(self):
+        (self.dir / "nameplate.png").write_bytes(png_bytes(text="P-101"))
+        with self.only_path("tesseract"):
+            r = et.extract(self.dir / "nameplate.png")
+        self.assertEqual(r.status, et.UNSUPPORTED)
+        self.assertIn("no text reader for '.png' files", r.warnings[0])
+        self.assertEqual(self.calls("tesseract"), [])
+
+    def test_png_and_multipage_tiff_with_fake_tesseract(self):
+        (self.dir / "nameplate.png").write_bytes(png_bytes(text="Pump P-101 tag"))
+        with self.only_path("tesseract"):
+            r = et.extract(self.dir / "nameplate.png", ocr="auto", ocr_lang="eng+deu")
+        self.assertEqual((r.status, r.engine, r.engine_version), (et.OK_OCR, "tesseract", "5.9.9-fake"))
+        self.assertEqual(r.segments, [("page 1", "Pump P-101 tag")])
+        self.assertEqual(r.ocr, {"page 1": 92.0})
+        args = self.calls("tesseract")[-1][0]
+        self.assertEqual((Path(args[0]).name, args[args.index("-l") + 1]), ("image.png", "eng+deu"))
+        self.assert_scratch_clean()
+
+    def test_ocr_timeout_ends_the_program_and_removes_the_temporary_folder(self):
+        fake_tools(self.dir / "bin", "tesseract")
+        (self.dir / "photo.png").write_bytes(png_bytes(text="SLEEP"))
+        start = __import__("time").monotonic()
+        with self.only_path("tesseract"), mock.patch.object(et, "OCR_TIMEOUT", 3):
+            r = et.extract(self.dir / "photo.png", ocr="auto")
+        self.assertLess(__import__("time").monotonic() - start, 45)
+        self.assertEqual(r.status, et.ERROR)
+        self.assertIn("tesseract did not finish within 3 s", r.warnings[0])
+        # on Windows the folder cannot be deleted while the sleeping program still holds the image open
+        self.assert_scratch_clean()
+
+    def test_temporary_folder_failure_is_reported_not_raised(self):
+        (self.dir / "nameplate.png").write_bytes(png_bytes(text="P-101"))
+        with self.only_path("tesseract"), mock.patch.object(et, "_temp_dir", side_effect=OSError("disk full")):
+            r = et.extract(self.dir / "nameplate.png", ocr="auto")
+        self.assertEqual(r.status, et.ERROR)
+        self.assertIn("disk full", r.warnings[0])
+
+    def test_image_without_tesseract_needs_a_dependency(self):
+        (self.dir / "scan.jpg").write_bytes(b"\xff\xd8\xff\xc0\x00\x11\x08\x00\x64\x01\x90" + b"\x00" * 16)
+        with self.only_path():
+            r = et.extract(self.dir / "scan.jpg", ocr="auto")
+        self.assertEqual(r.status, et.NEEDS_DEPENDENCY)
+        self.assertIn("no tesseract program found (on PATH, in TESSERACT_CMD", r.warnings[0])
+
+    def test_image_size_limits_and_disguised_files(self):
+        self.assertEqual(et.image_size(png_bytes(640, 480), "png"), [(640, 480)])
+        self.assertEqual(et.image_size(b"\xff\xd8\xff\xe0\x00\x04ab\xff\xc0\x00\x11\x08\x01\xe0\x02\x80" + b"\x00" * 9,
+                                       "jpeg"), [(640, 480)])
+        tiff = (b"II*\x00\x08\x00\x00\x00" + b"\x02\x00" + b"\x00\x01\x03\x00\x01\x00\x00\x00\x80\x02\x00\x00"
+                + b"\x01\x01\x04\x00\x01\x00\x00\x00\xe0\x01\x00\x00" + b"\x26\x00\x00\x00"
+                + b"\x01\x00" + b"\x00\x01\x03\x00\x01\x00\x00\x00\x10\x00\x00\x00" + b"\x00\x00\x00\x00")
+        self.assertEqual(et.image_size(tiff, "tiff"), [(640, 480), (16, 0)])
+        (self.dir / "bomb.png").write_bytes(png_bytes(60000, 60000))
+        (self.dir / "fake.png").write_bytes(b"GIF89a")
+        with self.only_path("tesseract"):
+            bomb = et.extract(self.dir / "bomb.png", ocr="auto")
+            fake = et.extract(self.dir / "fake.png", ocr="auto")
+        self.assertEqual(bomb.status, et.ERROR)
+        self.assertIn("OCR is limited to", bomb.warnings[0])
+        self.assertEqual((fake.status, fake.warnings), (et.ERROR, ["not a PNG file"]))
+        self.assertEqual(self.calls("tesseract"), [])
+
+    def test_bad_ocr_arguments_are_refused_before_anything_runs(self):
+        for kwargs in ({"ocr": "on"}, {"ocr_lang": "-l"}, {"ocr_lang": "eng;rm"}, {"ocr_dpi": 5}):
+            with self.assertRaises(ValueError):
+                et.extract(self.dir / "x.png", **kwargs)
+
+    def test_tesseract_tsv_keeps_lines_and_blocks(self):
+        tsv = ("level\tpage_num\tblock_num\tpar_num\tline_num\tword_num\tleft\ttop\twidth\theight\tconf\ttext\n"
+               "5\t1\t1\t1\t1\t1\t0\t0\t0\t0\t96\tFeed\n5\t1\t1\t1\t1\t2\t0\t0\t0\t0\t90\tpump\n"
+               "5\t1\t1\t1\t2\t1\t0\t0\t0\t0\t80\tP-101\n4\t1\t2\t1\t1\t0\t0\t0\t0\t0\t-1\t\n"
+               "5\t1\t2\t1\t1\t1\t0\t0\t0\t0\t-1\t \n5\t1\t2\t1\t1\t2\t0\t0\t0\t0\t70\tTT-2207\n")
+        self.assertEqual(et.parse_tesseract_tsv(tsv), {1: ("Feed pump\nP-101\n\nTT-2207", 84.0)})
+
+
+@unittest.skipUnless(et._tesseract(), "SKIP tesseract not found: real OCR test (install Tesseract OCR)")
+class OcrRealTesseract(Base):
+    def test_rendered_tag_is_read(self):
+        try:
+            from PIL import Image, ImageDraw, ImageFont
+        except ImportError:
+            self.skipTest("SKIP Pillow not installed: cannot draw the OCR test image")
+        image = Image.new("L", (900, 200), 255)
+        try:
+            font = ImageFont.load_default(size=72)
+        except TypeError:
+            self.skipTest("SKIP Pillow too old to draw a large default font")
+        ImageDraw.Draw(image).text((30, 50), "PUMP P-101", fill=0, font=font)
+        image.save(self.dir / "tag.png")
+        r = et.extract(self.dir / "tag.png", ocr="auto")
+        self.assertEqual(r.status, et.OK_OCR, r.warnings)
+        self.assertIn("P-101", r.segments[0][1].replace(" ", ""))
+        self.assertTrue(r.engine_version and r.engine_version != "?")
+
+    @unittest.skipUnless(et._find_tool("pdftoppm") and has_pypdf(), "SKIP pdftoppm or pypdf missing: scanned-PDF OCR")
+    def test_scanned_pdf_pages_are_rendered_and_read(self):
+        try:
+            from PIL import Image, ImageDraw, ImageFont
+            font = ImageFont.load_default(size=60)
+        except (ImportError, TypeError):
+            self.skipTest("SKIP Pillow missing or too old to draw the scanned pages")
+        pages = []
+        for words in ("Isolate pump P-101", "Close valve FDV-2210"):
+            page = Image.new("L", (1275, 1650), 255)  # letter size at 150 dpi, no text layer
+            ImageDraw.Draw(page).text((100, 200), words, fill=0, font=font)
+            pages.append(page)
+        Image.init()  # registers the JPEG writer the PDF plugin uses for grey pages
+        pages[0].save(self.dir / "scan.pdf", save_all=True, append_images=pages[1:], resolution=150)
+        plain = et.extract(self.dir / "scan.pdf", pdf_engine="pypdf")
+        r = et.extract(self.dir / "scan.pdf", pdf_engine="pypdf", ocr="auto", ocr_dpi=150)
+        self.assertEqual(plain.status, et.NEEDS_OCR)
+        self.assertEqual(r.status, et.OK_OCR, r.warnings)
+        self.assertEqual(tags_at(r), {"P-101": ["page 1"], "FDV-2210": ["page 2"]})
+        self.assertRegex(r.ocr_engine, r"^tesseract [\d.]+ \(eng, 150 dpi; pages rendered by pdftoppm [\d.]+\)$")
+
+
+class ToolLookup(AddonBase):
+    """Where add-on programs are found: an operator's environment override, PATH, then fixed install folders."""
+    def test_override_wins_over_path_and_must_name_the_program(self):
+        other = fake_tools(self.dir / "elsewhere", "tesseract", "soffice")
+        exe = ".cmd" if os.name == "nt" else ""
+        with self.only_path("tesseract", "soffice"):
+            on_path = et._find_tool("tesseract")
+            with mock.patch.dict(os.environ, {"TESSERACT_CMD": str(other / f"tesseract{exe}"),
+                                              "SOFFICE_CMD": f'"{other / f"soffice{exe}"}"'}):
+                self.assertEqual(Path(et._find_tool("tesseract")).parent, other)
+                self.assertEqual(Path(et._find_tool("soffice")).parent, other)  # quotes from a copied path are fine
+            with mock.patch.dict(os.environ, {"TESSERACT_CMD": str(other / "fake_tool.py")}):
+                self.assertIsNone(et._find_tool("tesseract"))  # not a tesseract program: refused, no PATH fallback
+            with mock.patch.dict(os.environ, {"TESSERACT_CMD": str(other / "missing" / "tesseract.exe")}):
+                self.assertIsNone(et._tesseract())  # a set override that does not exist is not silently replaced
+        self.assertEqual(Path(on_path).parent, self.dir / "bin")
+
+    def test_poppler_bin_names_the_folder(self):
+        folder = fake_tools(self.dir / "poppler" / "Library" / "bin", "pdftoppm", "pdftotext")
+        with self.only_path(), mock.patch.dict(os.environ, {"POPPLER_BIN": str(folder)}):
+            self.assertEqual(Path(et._find_tool("pdftoppm")).parent, folder)
+            self.assertEqual(Path(et._find_tool("pdftotext")).parent, folder)
+            self.assertIsNone(et._find_tool("tesseract"))
+
+    @unittest.skipUnless(os.name == "nt", "SKIP standard install folders are a Windows lookup")
+    def test_windows_standard_folders_newest_poppler_first(self):
+        local, programs = self.dir / "LocalAppData", self.dir / "Program Files"
+        packages = local / "Microsoft" / "WinGet" / "Packages" / "oschwartz10612.Poppler_Microsoft.Winget.Source_x"
+        for version in ("24.02.0", "25.07.0", "9.0.0"):
+            (packages / f"poppler-{version}" / "Library" / "bin").mkdir(parents=True)
+            (packages / f"poppler-{version}" / "Library" / "bin" / "pdftoppm.exe").write_bytes(b"")
+        (programs / "Tesseract-OCR").mkdir(parents=True)
+        (programs / "Tesseract-OCR" / "tesseract.exe").write_bytes(b"")
+        env = {"LOCALAPPDATA": str(local), "ProgramFiles": str(programs), "ProgramFiles(x86)": "",
+               "ProgramW6432": ""}
+        with mock.patch.dict(os.environ, env):
+            places = et._standard_locations("pdftoppm")
+            self.assertEqual(places[0], str(local / "Microsoft" / "WinGet" / "Links" / "pdftoppm.exe"))
+            self.assertIn("poppler-25.07.0", places[1])
+            self.assertIn("poppler-24.02.0", places[2])
+            with mock.patch.dict(os.environ, {"PATH": str(self.dir / "empty")}):
+                for var in set(et.TOOL_ENV.values()):
+                    os.environ.pop(var, None)
+                self.assertIn("poppler-25.07.0", et._find_tool("pdftoppm"))
+                self.assertEqual(et._find_tool("tesseract"), str(programs / "Tesseract-OCR" / "tesseract.exe"))
+                self.assertIsNone(et._find_tool("pdftotext"))
+
+
+class ConvertLegacy(AddonBase):
+    def test_default_and_missing_libreoffice_keep_the_conversion_hint(self):
+        (self.dir / "old.doc").write_bytes(et.OLE_MAGIC + b"TEXT:Isolate P-101")
+        default = et.extract(self.dir / "old.doc")
+        with mock.patch.object(et, "_soffice", return_value=None):
+            r = et.extract(self.dir / "old.doc", convert_legacy=True)
+        self.assertEqual(default.status, et.UNSUPPORTED)
+        self.assertEqual(r.status, et.UNSUPPORTED)
+        self.assertEqual(r.warnings[0], default.warnings[0])
+        self.assertIn("no LibreOffice (soffice) program found", r.warnings[1])
+
+    def test_conversion_in_a_private_folder_with_its_own_profile(self):
+        (self.dir / "-rf old.doc").write_bytes(et.OLE_MAGIC + b"TEXT:Isolate P-101 before work")
+        with self.only_path("soffice"):
+            r = et.extract(self.dir / "-rf old.doc", convert_legacy=True)
+        self.assertEqual(r.status, et.OK, r.warnings)
+        self.assertEqual(r.segments, [("paragraph 1", "Isolate P-101 before work")])
+        self.assertEqual(r.converted, "docx by LibreOffice 9.9.9.9")
+        self.assertEqual(r.format, "doc")
+        self.assertIn("converted from .doc to .docx by LibreOffice 9.9.9.9", r.warnings[0])
+        args = self.calls("soffice")[-1][0]
+        self.assertTrue(args[0].startswith("-env:UserInstallation=file:"))
+        self.assertEqual(Path(args[-1]).name, "source.doc")  # never the user's (option-like) file name
+        self.assertIn("--headless", args)
+        self.assertEqual(r.manifest_entry()["converted"], "docx by LibreOffice 9.9.9.9")
+        self.assert_scratch_clean()
+
+    def test_no_output_is_unsupported_with_the_manual_step(self):
+        (self.dir / "sheet.xls").write_bytes(et.OLE_MAGIC)
+        with self.only_path("soffice"):
+            r = et.extract(self.dir / "sheet.xls", convert_legacy=True)  # the fake makes only .docx
+        self.assertEqual(r.status, et.UNSUPPORTED)
+        self.assertIn("LibreOffice did not convert the file", r.warnings[0])
+        self.assertIn("convert it to .xlsx", r.warnings[0])
+        self.assert_scratch_clean()
+
+
+@unittest.skipUnless(et._soffice(), "SKIP LibreOffice (soffice) not installed: real legacy-conversion test")
+class ConvertLegacyReal(Base):
+    def test_rtf_is_converted_and_read(self):
+        (self.dir / "proc.rtf").write_text(r"{\rtf1\ansi Stop pump P-101.\par}", encoding="ascii")
+        r = et.extract(self.dir / "proc.rtf", convert_legacy=True)
+        self.assertEqual(r.status, et.OK, r.warnings)
+        self.assertIn("P-101", tags_at(r))
+        self.assertTrue(r.converted.startswith("docx by LibreOffice"))
+
+    def test_word_and_excel_saved_by_libreoffice_keep_tags_and_locators(self):
+        """Round trip: the worked example's .docx/.xlsx saved as .doc/.xls by LibreOffice, read back converted."""
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "examples" / "document-text"))
+        import make_samples
+        from measure_addons import complete_package  # the samples are minimal packages LibreOffice refuses
+        make_samples.build(self.dir / "samples")
+        for name, target in (("SOP-104-feed-pump-isolation.docx", "doc"), ("PM-plan-area-2.xlsx", "xls")):
+            original = complete_package(self.dir / "samples" / name, self.dir / name)
+            subprocess.run([et._soffice(), f"-env:UserInstallation={(self.dir / 'profile').as_uri()}", "--headless",
+                            "--norestore", "--convert-to", target, "--outdir", str(self.dir / "legacy"),
+                            str(original)], capture_output=True, timeout=300, check=False)
+            legacy = self.dir / "legacy" / f"{original.stem}.{target}"
+            r = et.extract(legacy, convert_legacy=True)
+            self.assertEqual(r.status, et.OK, (name, r.warnings))
+            self.assertEqual(tags_at(r), tags_at(et.extract(original)), name)
+
+
+def pdf_two_columns(path):
+    """A page with two text columns side by side, the case plain extraction interleaves."""
+    return make_pdf(path, [[("Left column line one", 72, 700), ("Left column line two", 72, 680),
+                            ("Right column P-101", 330, 700), ("Right column TT-2207", 330, 680)]])
+
+
+class PdfLayout(Base):
+    def check(self, engine):
+        path = pdf_two_columns(self.dir / "cols.pdf")
+        plain = et.extract(path, pdf_engine=engine)
+        laid = et.extract(path, pdf_engine=engine, pdf_layout=True)
+        self.assertEqual(laid.status, et.OK, laid.warnings)
+        self.assertNotIn("applied", plain.manifest_entry())
+        self.assertEqual(laid.manifest_entry()["applied"], ["pdf layout"])
+        rows = [ln for ln in laid.segments[0][1].splitlines() if "Left column line one" in ln]
+        self.assertEqual(len(rows), 1)
+        self.assertRegex(rows[0], r"Left column line one {2,}Right column P-101")
+        return laid
+
+    @unittest.skipUnless(has_pypdf(), "SKIP pypdf not installed: pypdf layout-mode test")
+    def test_pypdf_layout_mode(self):
+        self.check("pypdf")
+
+    @unittest.skipUnless(et._find_tool("pdftotext"), "SKIP pdftotext not found: pdftotext -layout test")
+    def test_pdftotext_layout_and_auto_prefers_it(self):
+        self.check("pdftotext")
+        auto = et.extract(pdf_two_columns(self.dir / "c2.pdf"), pdf_layout=True)
+        self.assertEqual(auto.engine, "pdftotext")
+
+
+def make_cfb(streams):
+    """A minimal OLE compound file (MS-CFB v3) holding named streams; small ones go in the mini stream."""
+    import struct
+    sector, end, free = 512, 0xFFFFFFFE, 0xFFFFFFFF
+    big = [(n, d) for n, d in streams if len(d) >= 4096]
+    small = [(n, d) for n, d in streams if len(d) < 4096]
+    mini, minifat, starts = b"", [], {}
+    for name, data in small:
+        starts[name] = len(mini) // 64
+        count = max(1, -(-len(data) // 64))
+        minifat += [starts[name] + k + 1 for k in range(count - 1)] + [end]
+        mini += data.ljust(count * 64, b"\x00")
+    blobs = [("minifat", struct.pack(f"<{len(minifat)}I", *minifat) if minifat else b""),
+             ("ministream", mini)] + big
+    entries = [("Root Entry", 5)] + [(n, 2) for n, _ in streams]
+    directory_size = -(-len(entries) * 128 // sector) * sector
+    layout, nxt = {}, 2  # sector 0 = FAT, sector 1.. = directory
+    dir_sectors = directory_size // sector
+    nxt = 1 + dir_sectors
+    for name, data in blobs:
+        count = -(-len(data) // sector)
+        layout[name] = (nxt if count else end, count)
+        nxt += count
+    fat = [0xFFFFFFFD] + [k + 2 if k + 1 < dir_sectors else end for k in range(dir_sectors)]
+    for name, data in blobs:
+        start, count = layout[name]
+        fat += [start + k + 1 if k + 1 < count else end for k in range(count)]
+    fat += [free] * (128 - len(fat))
+    body = b""
+    for name, data in blobs:
+        body += data.ljust(layout[name][1] * sector, b"\x00")
+    directory = b""
+    for name, kind in entries:
+        raw = name.encode("utf-16-le") + b"\x00\x00"
+        if kind == 5:
+            start, size = layout["ministream"][0], len(mini)
+        elif name in starts:
+            start, size = starts[name], len(dict(streams)[name])
+        else:
+            start, size = layout[name][0], len(dict(streams)[name])
+        child = 1 if kind == 5 and len(entries) > 1 else free
+        index = entries.index((name, kind)) + 1
+        right = index if kind == 2 and index < len(entries) else free
+        directory += (raw.ljust(64, b"\x00") + struct.pack("<HBB", len(raw), kind, 1)
+                      + struct.pack("<III", free, right, child) + b"\x00" * 36 + struct.pack("<IIi", start, size, 0))
+    directory = directory.ljust(directory_size, b"\x00")
+    header = (et.OLE_MAGIC + b"\x00" * 16 + struct.pack("<HHHH", 0x3E, 3, 0xFFFE, 9) + struct.pack("<H", 6)
+              + b"\x00" * 6 + struct.pack("<I", 0) + struct.pack("<I", 1) + struct.pack("<I", 1)
+              + struct.pack("<I", 0) + struct.pack("<I", 4096)
+              + struct.pack("<II", layout["minifat"][0], layout["minifat"][1])
+              + struct.pack("<II", end, 0) + struct.pack("<I", 0) + struct.pack("<I", free) * 108)
+    assert len(header) == 512, len(header)
+    return header + struct.pack("<128I", *fat) + directory + body
+
+
+def ole_package(name, data):
+    """An Ole10Native stream: how Office's Packager embeds an arbitrary file (here a PDF) under its file name."""
+    import struct
+    label = name.encode("cp1252") + b"\x00"
+    inner = (struct.pack("<H", 2) + label + b"C:\\tmp\\" + label + struct.pack("<I", 0x00030000)
+             + struct.pack("<I", len(label)) + label + struct.pack("<I", len(data)) + data)
+    return struct.pack("<I", len(inner)) + inner
+
+
+ONS = 'xmlns:o="urn:schemas-microsoft-com:office:office"'
+
+
+def make_embedding_docx(path, embeds, body_extra=""):
+    """A Word file whose body anchors each embedded part: table 1 holds the first, paragraph 2 the second."""
+    obj = '<w:r><w:object><o:OLEObject r:id="{}"/></w:object></w:r>'
+    body = (w_p("Spec sheet for P-101 follows.")
+            + "<w:tbl><w:tr><w:tc><w:p>" + obj.format("rId11") + "</w:p></w:tc></w:tr></w:tbl>"
+            + '<w:p><w:r><w:t>See attached datasheet</w:t></w:r>' + obj.format("rId12") + "</w:p>" + body_extra)
+    parts = {"word/document.xml": f'<?xml version="1.0"?><w:document {WNS} {RNS} {ONS}><w:body>{body}'
+                                  '</w:body></w:document>',
+             "word/_rels/document.xml.rels": rels(*[(f"rId{11 + n}", "oleObject", f"embeddings/{name}")
+                                                    for n, name in enumerate(embeds)])}
+    parts.update({f"word/embeddings/{name}": data for name, data in embeds.items()})
+    return write_zip(path, parts)
+
+
+class Embedded(Base):
+    def inner_xlsx(self):
+        return make_xlsx(self.dir / "inner.xlsx").read_bytes()
+
+    def test_embedded_workbook_is_read_with_its_place(self):
+        path = make_embedding_docx(self.dir / "spec.docx", {"Microsoft_Excel_Worksheet.xlsx": self.inner_xlsx(),
+                                                             "oleObject2.bin": et.OLE_MAGIC + b"\x00" * 600})
+        r = et.extract(path)
+        tags = tags_at(r)
+        self.assertEqual(tags["TT-2207"], ["embedded 'Microsoft_Excel_Worksheet.xlsx' (in table 1) sheet 'PM plan' "
+                                           "cell B7"])
+        self.assertEqual(tags["P-101"][0], "embedded 'Microsoft_Excel_Worksheet.xlsx' (in table 1) sheet 'PM plan' "
+                                           "cell A8")
+        self.assertIn("paragraph 1", tags["P-101"])
+        # a broken OLE object is reported, the rest is kept
+        self.assertEqual(r.status, et.PARTIAL)
+        self.assertTrue(any(w.startswith("embedded 'oleObject2.bin' (in paragraph 2): not read") for w in r.warnings))
+        entry = r.manifest_entry()["embedded"][0]
+        self.assertEqual((entry["name"], entry["format"], entry["status"]), ("Microsoft_Excel_Worksheet.xlsx", "xlsx",
+                                                                             "ok"))
+        self.assertEqual(entry["sha256"], __import__("hashlib").sha256(self.inner_xlsx()).hexdigest())
+
+    @unittest.skipUnless(has_pypdf() or et._find_tool("pdftotext"), "SKIP no PDF engine: embedded PDF test")
+    def test_pdf_packaged_in_an_ole_object_is_read_under_its_own_name(self):
+        pdf = make_pdf(self.dir / "spec.pdf", [["Datasheet cover"], ["Pump P-101 curve"]]).read_bytes()
+        small = make_cfb([("\x01Ole10Native", ole_package("spec.pdf", pdf))])          # in the mini stream
+        big_pdf = make_pdf(self.dir / "big.pdf", [["Datasheet cover"] + [f"Curve point {n}" for n in range(30)],
+                                                  ["Pump P-101 curve"] + [f"Note {n}" for n in range(200)]])
+        self.assertGreater(len(big_pdf.read_bytes()), 4096)
+        large = make_cfb([("\x01Ole10Native", ole_package("big spec.pdf", big_pdf.read_bytes()))])  # big sectors
+        for blob, name in ((small, "spec.pdf"), (large, "big spec.pdf")):
+            path = make_embedding_docx(self.dir / "d.docx", {"oleObject1.bin": b"PK-not-used",
+                                                              "oleObject2.bin": blob})
+            r = et.extract(path)
+            self.assertEqual(r.status, et.PARTIAL)  # oleObject1.bin is a broken package
+            self.assertIn(f"embedded '{name}' (in paragraph 2) page 2", [loc for loc, _ in r])
+            self.assertIn("P-101", dict(r.segments)[f"embedded '{name}' (in paragraph 2) page 2"])
+
+    def test_off_switch_and_files_without_embeds_are_unchanged(self):
+        path = make_embedding_docx(self.dir / "spec.docx", {"Microsoft_Excel_Worksheet.xlsx": self.inner_xlsx()})
+        off = et.extract(path, embedded=False)
+        self.assertIn("1 embedded object(s) not read (e.g. word/embeddings/Microsoft_Excel_Worksheet.xlsx)",
+                      off.warnings)
+        self.assertFalse(any(loc.startswith("embedded") for loc, _ in off))
+        plain = make_docx(self.dir / "plain.docx")
+        self.assertEqual(et.extract(plain).manifest_entry(), et.extract(plain, embedded=False).manifest_entry())
+
+    def test_unreadable_objects_keep_the_old_warning_in_its_place(self):
+        path = make_xlsx(self.dir / "visio.xlsx", extra={"xl/embeddings/oleObject1.bin": make_cfb(
+            [("VisioDocument", b"\x00" * 100)])})
+        on, off = et.extract(path), et.extract(path, embedded=False)
+        self.assertEqual(on.warnings, off.warnings)
+        self.assertEqual(on.segments, off.segments)
+
+    def test_depth_limit(self):
+        level3 = make_docx(self.dir / "l3.docx").read_bytes()
+        level2 = make_embedding_docx(self.dir / "l2.docx", {"deep.docx": level3}).read_bytes()
+        level1 = make_embedding_docx(self.dir / "l1.docx", {"middle.docx": level2}).read_bytes()
+        top = make_embedding_docx(self.dir / "top.docx", {"outer.docx": level1})
+        r = et.extract(top)
+        locs = [loc for loc, _ in r]
+        self.assertIn("embedded 'outer.docx' (in table 1) embedded 'middle.docx' (in table 1) paragraph 1", locs)
+        self.assertFalse(any("deep.docx" in loc for loc in locs))
+        self.assertTrue(any("more than 2 levels deep (e.g. word/embeddings/deep.docx)" in w for w in r.warnings))
+
+    def test_embedded_zip_bomb_and_dtd_are_refused_like_top_level_files(self):
+        bomb = write_zip(self.dir / "bomb.docx", {"word/document.xml": b"<" + b"\x00" * (3 * 1024 * 1024)})
+        dtd = write_zip(self.dir / "dtd.docx", {"word/document.xml": '<?xml version="1.0"?><!DOCTYPE x []>'
+                                                                     f'<w:document {WNS}/>'})
+        r = et.extract(make_embedding_docx(self.dir / "t.docx", {"a.docx": bomb.read_bytes(),
+                                                                  "b.docx": dtd.read_bytes()}))
+        self.assertEqual(r.status, et.PARTIAL)
+        self.assertTrue(any("zip bomb" in w for w in r.warnings))
+        self.assertTrue(any("DTD" in w for w in r.warnings))
+        self.assertFalse(any(loc.startswith("embedded") for loc, _ in r))
+
+    def test_looping_ole_sector_chain_is_refused(self):
+        blob = bytearray(make_cfb([("Package", b"PK" + b"\x00" * 5000)]))
+        fat_at = 512
+        blob[fat_at + 4 * 3:fat_at + 4 * 4] = (3).to_bytes(4, "little")  # a sector that points at itself
+        r = et.extract(make_embedding_docx(self.dir / "loop.docx", {"oleObject1.bin": bytes(blob)}))
+        self.assertTrue(any("not read" in w for w in r.warnings))
+
+
+def make_styled_xlsx(path, date1904=False):
+    styles = (f'<styleSheet {SNS}><numFmts count="3"><numFmt numFmtId="164" formatCode="0.0%"/>'
+              '<numFmt numFmtId="165" formatCode="[&gt;=100]0"/>'
+              '<numFmt numFmtId="166" formatCode="#,##0.00\\ &quot;m3/h&quot;"/></numFmts>'
+              '<cellXfs count="7"><xf numFmtId="0"/><xf numFmtId="14"/><xf numFmtId="164"/><xf numFmtId="4"/>'
+              '<xf numFmtId="165"/><xf numFmtId="166"/><xf numFmtId="22"/></cellXfs></styleSheet>')
+    sheet = (f'<worksheet {SNS}><sheetData><row r="1">'
+             '<c r="A1" s="1"><v>46330</v></c><c r="B1" s="2"><v>0.256</v></c><c r="C1" s="3"><v>1234567.891</v></c>'
+             '<c r="D1" s="4"><v>150</v></c><c r="E1" s="5"><v>12.5</v></c><c r="F1" s="6"><v>46330.75</v></c>'
+             '<c r="G1"><v>42.5</v></c><c r="H1" s="1" t="inlineStr"><is><t>P-101</t></is></c></row>'
+             '</sheetData></worksheet>')
+    pr = '<workbookPr date1904="1"/>' if date1904 else ""
+    return write_zip(path, {
+        "xl/workbook.xml": f'<workbook {SNS} {RNS}>{pr}<sheets><sheet name="Log" sheetId="1" r:id="rId1"/></sheets>'
+                           '</workbook>',
+        "xl/_rels/workbook.xml.rels": rels(("rId1", "worksheet", "worksheets/sheet1.xml"),
+                                           ("rId2", "styles", "styles.xml")),
+        "xl/styles.xml": styles, "xl/worksheets/sheet1.xml": sheet})
+
+
+class ExcelDisplay(Base):
+    def test_default_keeps_stored_values(self):
+        cells = dict(et.extract(make_styled_xlsx(self.dir / "log.xlsx")).segments)
+        self.assertEqual(cells["sheet 'Log' cell A1"], "46330")
+        self.assertEqual(cells["sheet 'Log' cell B1"], "0.256")
+
+    def test_display_applies_the_workbook_number_formats(self):
+        r = et.extract(make_styled_xlsx(self.dir / "log.xlsx"), excel_display=True)
+        cells = {loc.split()[-1]: text for loc, text in r}
+        self.assertEqual(cells, {"A1": "2026-11-04", "B1": "25.6%", "C1": "1,234,567.89", "D1": "150",
+                                 "E1": "12.50 m3/h", "F1": "2026-11-04 18:00", "G1": "42.5", "H1": "P-101"})
+        self.assertIn("1 number cell(s) kept their stored value: number format not applied (e.g. '[>=100]0')",
+                      r.warnings)
+        self.assertEqual(r.manifest_entry()["applied"], ["excel display"])
+        r1904 = et.extract(make_styled_xlsx(self.dir / "mac.xlsx", date1904=True), excel_display=True)
+        self.assertEqual(dict(r1904.segments)["sheet 'Log' cell A1"], "2030-11-05")
+
+    def test_format_rules(self):
+        cases = [("46330", "d-mmm-yy h:mm AM/PM", "4-Nov-26 12:00 AM"), ("46330.75", "dddd d mmmm yyyy",
+                                                                         "Wednesday 4 November 2026"),
+                 ("-1234.5", "#,##0.00;(#,##0.00)", "(1,234.50)"), ("-1234.5", "#,##0.00", "-1,234.50"),
+                 ("12345", "0.00E+00", "1.23E+04"), ("0.000123", "0.00E+00", "1.23E-04"),
+                 ("1.5", "[h]:mm", "36:00"), ("0.0001", "mm:ss.0", "00:08.6"), ("7", "00000", "00007"),
+                 ("1500000", '#,##0,"k"', "1,500k"), ("2.5", "0", "3"), ("0.125", "0.00", "0.13"),
+                 ("1234", "[$€-407] #,##0.00", "€ 1,234.00"), ("46330", "[$-409]mmm-yy", "Nov-26"),
+                 ("61", "yyyy-mm-dd", "1900-03-01"), ("59", "yyyy-mm-dd", "1900-02-28"),
+                 ("12", "# ?/?", None), ("60", "yyyy-mm-dd", None), ("-1", "yyyy-mm-dd", None),
+                 ("5", "0;;", "5"), ("0", "0;-0;", None), ("x", "0.00", None), ("3", "General", "3")]
+        for value, code, want in cases:
+            self.assertEqual(et.format_excel(value, code), want, (value, code))
+
+    def test_a_number_too_long_to_format_keeps_its_stored_value(self):
+        display = et._ExcelDisplay.__new__(et._ExcelDisplay)
+        display.codes, display.xf, display.date1904 = {4: "#,##0.00"}, [4], False
+        display.kept, display.example = 0, None
+        self.assertEqual(display.show("1E+300", "0"), "1E+300")
+        self.assertEqual(display.kept, 1)
+
+
+class CliAddons(Base):
+    def run_cli(self, *args):
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            return et.main([str(a) for a in args])
+
+    def test_options_recorded_only_when_asked_for(self):
+        (self.dir / "in").mkdir()
+        make_docx(self.dir / "in" / "a.docx")
+        self.run_cli(self.dir / "in", "--out", self.dir / "plain")
+        self.run_cli(self.dir / "in", "--out", self.dir / "opts", "--excel-display", "--ocr", "auto")
+        plain = json.loads((self.dir / "plain" / "manifest.json").read_text(encoding="utf-8"))
+        opts = json.loads((self.dir / "opts" / "manifest.json").read_text(encoding="utf-8"))
+        self.assertNotIn("options", plain)
+        self.assertEqual(opts["options"], {"ocr": "auto", "excel_display": True})
+        self.assertEqual(plain["files"], opts["files"])  # nothing in a .docx without embeds changes
+
+    def test_bad_addon_arguments_exit_2(self):
+        for bad in (["--ocr", "yes"], ["--ocr-lang", "eng;x"], ["--ocr-dpi", "5"], ["--embedded", "maybe"]):
+            with self.assertRaises(SystemExit) as ctx:
+                self.run_cli(self.dir, "--out", self.dir / "o", *bad)
+            self.assertEqual(ctx.exception.code, 2)
 
 if __name__ == "__main__":
     unittest.main()
