@@ -34,8 +34,8 @@
     },
     {
       "file": "samples/PHA-node-review.pptx",
-      "sha256": "cff2269527d1fe7273e18a732cb5ee5442b124645db47807625f457be25ec1ac",
-      "bytes": 2796,
+      "sha256": "e02e24129e9a70ac79ca8b156e81cdc252c698859b5177d0d01e977c9c777be9",
+      "bytes": 4964,
       "format": "pptx",
       "status": "ok",
       "extractor": "extract_text 1",
@@ -48,8 +48,8 @@
     },
     {
       "file": "samples/PM-plan-area-2.xlsx",
-      "sha256": "e21c696539345be8d1cae3189dd58e0bf999798ea276ae7acb9a2636f5cfecd8",
-      "bytes": 1778,
+      "sha256": "6112dda10bb5f7b90f0cedc935d7d75bb72a14e9ab71c0e7dbd907022e91acda",
+      "bytes": 3102,
       "format": "xlsx",
       "status": "ok",
       "extractor": "extract_text 1",
@@ -62,8 +62,8 @@
     },
     {
       "file": "samples/SOP-104-feed-pump-isolation.docx",
-      "sha256": "c0e518df81325296c89d97bc084e22e1e982c9b3085b240f62a578622b3585a0",
-      "bytes": 1918,
+      "sha256": "feef015e581837779eecc26e9578102c74fd76c6a600c06264075529cae61336",
+      "bytes": 3393,
       "format": "docx",
       "status": "ok",
       "extractor": "extract_text 1",

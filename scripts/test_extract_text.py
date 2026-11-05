@@ -868,11 +868,10 @@ class ConvertLegacyReal(Base):
     def test_word_and_excel_saved_by_libreoffice_keep_tags_and_locators(self):
         """Round trip: the worked example's .docx/.xlsx saved as .doc/.xls by LibreOffice, read back converted."""
         sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "examples" / "document-text"))
-        import make_samples
-        from measure_addons import complete_package  # the samples are minimal packages LibreOffice refuses
+        import make_samples  # complete packages, which LibreOffice opens
         make_samples.build(self.dir / "samples")
         for name, target in (("SOP-104-feed-pump-isolation.docx", "doc"), ("PM-plan-area-2.xlsx", "xls")):
-            original = complete_package(self.dir / "samples" / name, self.dir / name)
+            original = self.dir / "samples" / name
             subprocess.run([et._soffice(), f"-env:UserInstallation={(self.dir / 'profile').as_uri()}", "--headless",
                             "--norestore", "--convert-to", target, "--outdir", str(self.dir / "legacy"),
                             str(original)], capture_output=True, timeout=300, check=False)

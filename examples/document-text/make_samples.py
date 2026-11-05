@@ -1,7 +1,8 @@
 """Build the fictional sample documents read in docs/DOCUMENT_TEXT.md: a Word procedure, an Excel PM plan, a
 PowerPoint PHA review, an HTML CAPA, a work-order export (CSV) and a legacy .doc placeholder. Generated rather than
 committed, so the repository holds no binary documents; the files are byte-identical on every run (stored zip
-entries with a fixed timestamp). Stdlib only.
+entries with a fixed timestamp). The Office files are small but complete packages (content types, package and part
+relationships, shape properties), so Word, Excel, PowerPoint and LibreOffice open them too. Stdlib only.
 
     python examples/document-text/make_samples.py samples      # writes samples/ (relative to the current folder)
 """
@@ -18,9 +19,32 @@ AA = 'xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"'
 REL = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/"
 
 
+CT = "application/vnd.openxmlformats-officedocument."
+MAIN = {".docx": ("word/document.xml", "wordprocessingml.document.main+xml"),
+        ".xlsx": ("xl/workbook.xml", "spreadsheetml.sheet.main+xml"),
+        ".pptx": ("ppt/presentation.xml", "presentationml.presentation.main+xml")}
+PART_TYPES = {"word/header": "wordprocessingml.header+xml", "xl/worksheets/": "spreadsheetml.worksheet+xml",
+              "xl/sharedStrings": "spreadsheetml.sharedStrings+xml", "ppt/slides/slide": "presentationml.slide+xml",
+              "ppt/notesSlides/": "presentationml.notesSlide+xml"}
+
+
+def package(path, parts):
+    """The parts of an Office file plus what makes it a package Office programs open: [Content_Types].xml (the
+    main part and each XML part's type) and _rels/.rels (which part is the document). Text parts are unchanged."""
+    main, main_type = MAIN[Path(path).suffix]
+    overrides = [(main, main_type)] + [(n, t) for n in parts for prefix, t in PART_TYPES.items()
+                                       if n.startswith(prefix) and n.endswith(".xml")]
+    types = ('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types '
+             'xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'
+             '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'
+             '<Default Extension="xml" ContentType="application/xml"/>'
+             + "".join(f'<Override PartName="/{n}" ContentType="{CT}{t}"/>' for n, t in overrides) + "</Types>")
+    return {"[Content_Types].xml": types, "_rels/.rels": rels(("rId1", "officeDocument", main)), **parts}
+
+
 def zip_parts(path, parts):
     with zipfile.ZipFile(path, "w", zipfile.ZIP_STORED) as z:
-        for name, text in parts.items():
+        for name, text in package(path, parts).items():
             info = zipfile.ZipInfo(name, STAMP)
             info.create_system = 0  # the default depends on the OS; pin it so the bytes match everywhere
             z.writestr(info, text.encode("utf-8"))
@@ -49,8 +73,10 @@ def procedure(path):
             + row("FDV-2210", "Flame detector vent closed", "closed") + "</w:tbl>"
             + para("3. Apply locks at MCC bucket 4B and record them on the permit."))
     zip_parts(path, {
-        "[Content_Types].xml": "<Types/>",
-        "word/document.xml": f'<?xml version="1.0"?><w:document {W}><w:body>{body}</w:body></w:document>',
+        "word/document.xml": f'<?xml version="1.0"?><w:document {W} {RR}><w:body>{body}'
+                             '<w:sectPr><w:headerReference w:type="default" r:id="rIdH1"/></w:sectPr>'
+                             "</w:body></w:document>",
+        "word/_rels/document.xml.rels": rels(("rIdH1", "header", "header1.xml")),
         "word/header1.xml": f'<?xml version="1.0"?><w:hdr {W}>'
                             + para("SOP-104 rev C | Area 2 feed system (P-101, TT-2207)") + "</w:hdr>",
     })
@@ -70,17 +96,23 @@ def pm_plan(path):
     zip_parts(path, {
         "xl/workbook.xml": f'<workbook {SS} {RR}><sheets><sheet name="PM plan" sheetId="1" r:id="rId1"/>'
                            "</sheets></workbook>",
-        "xl/_rels/workbook.xml.rels": rels(("rId1", "worksheet", "worksheets/sheet1.xml")),
+        "xl/_rels/workbook.xml.rels": rels(("rId1", "worksheet", "worksheets/sheet1.xml"),
+                                           ("rIdS", "sharedStrings", "sharedStrings.xml")),
         "xl/sharedStrings.xml": sst,
         "xl/worksheets/sheet1.xml": f"<worksheet {SS}><sheetData>{data}</sheetData></worksheet>",
     })
 
 
 def pha_review(path):
+    def tree(body):  # one text box; the group and shape properties are what PowerPoint and LibreOffice need
+        return ('<p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr/>'
+                '<p:sp><p:nvSpPr><p:cNvPr id="2" name="Text"/><p:cNvSpPr txBox="1"/><p:nvPr/></p:nvSpPr>'
+                '<p:spPr><a:xfrm><a:off x="457200" y="457200"/><a:ext cx="8229600" cy="4572000"/></a:xfrm></p:spPr>'
+                f"<p:txBody><a:bodyPr/>{body}</p:txBody></p:sp></p:spTree>")
+
     def slide(*paras):
         body = "".join(f"<a:p><a:r><a:t>{p}</a:t></a:r></a:p>" for p in paras)
-        return (f"<p:sld {PP} {AA}><p:cSld><p:spTree><p:sp><p:txBody>{body}</p:txBody></p:sp></p:spTree>"
-                "</p:cSld></p:sld>")
+        return f"<p:sld {PP} {AA}><p:cSld>{tree(body)}</p:cSld></p:sld>"
     zip_parts(path, {
         "ppt/presentation.xml": f'<p:presentation {PP} {RR}><p:sldIdLst><p:sldId id="256" r:id="rId1"/>'
                                 '<p:sldId id="257" r:id="rId2"/></p:sldIdLst></p:presentation>',
@@ -91,9 +123,9 @@ def pha_review(path):
                                        "Deviation: high temperature (TT-2207)",
                                        "Safeguard: FDV-2210 trip"),
         "ppt/slides/_rels/slide2.xml.rels": rels(("rId1", "notesSlide", "../notesSlides/notesSlide2.xml")),
-        "ppt/notesSlides/notesSlide2.xml": f"<p:notes {PP} {AA}><p:cSld><p:spTree><p:sp><p:txBody>"
-                                           "<a:p><a:r><a:t>Action: confirm PSV-3301 set pressure</a:t></a:r></a:p>"
-                                           "</p:txBody></p:sp></p:spTree></p:cSld></p:notes>",
+        "ppt/notesSlides/notesSlide2.xml": f"<p:notes {PP} {AA}><p:cSld>"
+                                           + tree("<a:p><a:r><a:t>Action: confirm PSV-3301 set pressure</a:t></a:r>"
+                                                  "</a:p>") + "</p:cSld></p:notes>",
     })
 
 

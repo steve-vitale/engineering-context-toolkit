@@ -93,68 +93,6 @@ def soffice_convert(source, target, folder):
     return produced
 
 
-# The worked example's Office files are minimal packages (no content types or package relationships): enough for
-# extract_text, but LibreOffice refuses them ("source file could not be loaded"). complete_package() adds the
-# standard package parts and links the Word header, without changing any text, so LibreOffice can save them.
-CT = "application/vnd.openxmlformats-officedocument."
-PKG_REL = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/"
-MAIN = {".docx": ("word/document.xml", "wordprocessingml.document.main+xml"),
-        ".xlsx": ("xl/workbook.xml", "spreadsheetml.sheet.main+xml"),
-        ".pptx": ("ppt/presentation.xml", "presentationml.presentation.main+xml")}
-PART_TYPES = {"word/header": "wordprocessingml.header+xml", "xl/worksheets/": "spreadsheetml.worksheet+xml",
-              "xl/sharedStrings": "spreadsheetml.sharedStrings+xml", "ppt/slides/slide": "presentationml.slide+xml",
-              "ppt/notesSlides/": "presentationml.notesSlide+xml"}
-
-
-def _rels_xml(items):
-    body = "".join(f'<Relationship Id="{i}" Type="{PKG_REL}{t}" Target="{target}"/>' for i, t, target in items)
-    return ('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships '
-            f'xmlns="http://schemas.openxmlformats.org/package/2006/relationships">{body}</Relationships>')
-
-
-def complete_package(src, dst):
-    import zipfile
-    suffix = Path(src).suffix
-    main, main_type = MAIN[suffix]
-    with zipfile.ZipFile(src) as z:
-        parts = {n: z.read(n) for n in z.namelist() if n != "[Content_Types].xml"}
-    overrides = [(main, main_type)] + [(n, t) for n in parts for prefix, t in PART_TYPES.items()
-                                       if n.startswith(prefix) and n.endswith(".xml")]
-    parts["[Content_Types].xml"] = (
-        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types '
-        'xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'
-        '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'
-        '<Default Extension="xml" ContentType="application/xml"/>'
-        + "".join(f'<Override PartName="/{n}" ContentType="{CT}{t}"/>' for n, t in overrides)
-        + "</Types>").encode()
-    parts["_rels/.rels"] = _rels_xml([("rId1", "officeDocument", main)]).encode()
-    if suffix == ".docx" and "word/header1.xml" in parts:
-        doc = parts[main].decode("utf-8")
-        doc = doc.replace("<w:document ", f'<w:document xmlns:r="{PKG_REL[:-1]}" ', 1).replace(
-            "</w:body>", '<w:sectPr><w:headerReference w:type="default" r:id="rIdH1"/></w:sectPr></w:body>', 1)
-        parts[main] = doc.encode("utf-8")
-        parts["word/_rels/document.xml.rels"] = _rels_xml([("rIdH1", "header", "header1.xml")]).encode()
-    if suffix == ".pptx":  # shapes need their (empty) properties, or LibreOffice drops their text
-        for name in [n for n in parts if n.startswith(("ppt/slides/slide", "ppt/notesSlides/"))
-                     and n.endswith(".xml")]:
-            xml = parts[name].decode("utf-8").replace(
-                "<p:spTree>", '<p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/>'
-                '</p:nvGrpSpPr><p:grpSpPr/>').replace(
-                "<p:sp><p:txBody>", '<p:sp><p:nvSpPr><p:cNvPr id="2" name="Text"/><p:cNvSpPr txBox="1"/><p:nvPr/>'
-                '</p:nvSpPr><p:spPr><a:xfrm><a:off x="457200" y="457200"/><a:ext cx="8229600" cy="4572000"/>'
-                '</a:xfrm></p:spPr><p:txBody><a:bodyPr/>')
-            parts[name] = xml.encode("utf-8")
-    if suffix == ".xlsx" and "xl/sharedStrings.xml" in parts:
-        rels = parts["xl/_rels/workbook.xml.rels"].decode("utf-8")
-        parts["xl/_rels/workbook.xml.rels"] = rels.replace(
-            "</Relationships>", f'<Relationship Id="rIdS" Type="{PKG_REL}sharedStrings" '
-            'Target="sharedStrings.xml"/></Relationships>').encode()
-    with zipfile.ZipFile(dst, "w", zipfile.ZIP_DEFLATED) as z:
-        for name in ["[Content_Types].xml"] + sorted(n for n in parts if n != "[Content_Types].xml"):
-            z.writestr(name, parts[name])
-    return Path(dst)
-
-
 # ---------------------------------------------------------------- metrics
 
 def distance(a, b):
@@ -313,9 +251,8 @@ def measure_legacy(work):
     for sample in sorted(samples.iterdir()):
         if sample.suffix not in LEGACY_TARGETS:
             continue
-        original = complete_package(sample, Path(work) / sample.name)
+        original = sample  # make_samples writes complete packages LibreOffice opens
         before = et.extract(original)
-        assert before.segments == et.extract(sample).segments  # completing the package changed no text
         tags_before = {(t, loc) for loc, text in before for t in TAG.findall(text)}
         for target in LEGACY_TARGETS[original.suffix]:
             folder = Path(work) / f"legacy-{original.stem}-{target}"

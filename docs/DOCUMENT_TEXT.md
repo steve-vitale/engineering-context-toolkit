@@ -232,10 +232,11 @@ sideways came back as junk (`LSSMHLNOS ONINOOT` for a rotated caption): Tesserac
 detection, so look at low-confidence pages before trusting them.
 
 **Legacy conversion round trip.** The worked example's `.docx`/`.xlsx`/`.pptx` were saved as `.doc`/`.xls`/`.ppt`
-(and the `.docx` also as `.rtf`) by LibreOffice, then read back with `--convert-legacy`. The example files are
-minimal packages that LibreOffice refuses to open, so the harness first adds the standard package parts (content
-types, relationships, shape properties) without changing any text; the completed files read exactly as the
-originals.
+(and the `.docx` also as `.rtf`) by LibreOffice, then read back with `--convert-legacy`. When this was measured the
+example files were minimal packages LibreOffice refused to open, so the harness added the standard package parts
+(content types, relationships, shape properties) first, without changing any text. `make_samples.py` now writes
+those parts itself (the extracted text is unchanged; only the files' hashes and sizes in `expected/` changed), so
+the samples open in LibreOffice and Office as they are.
 
 | Saved as | Save s | Read s (`--convert-legacy`) | Tags kept | Same locator | Text |
 |---|---|---|---|---|---|
