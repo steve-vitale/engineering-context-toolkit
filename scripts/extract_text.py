@@ -20,7 +20,7 @@ Library use (the call a tag matcher makes):
 Office files are read with the standard library (zipfile + ElementTree) from their XML parts only: macros and
 external links are never run, opened or followed. Embedded Word/Excel/PowerPoint/PDF files inside an Office file are
 read the same way (two levels deep, same limits); other embedded objects are only counted. PDF text comes from the
-file's text layer through the optional pypdf package, else a `pdftotext` program on PATH; scanned pages without a
+file's text layer through the optional pypdf package, else a `pdftotext` program; scanned pages without a
 text layer are reported as needing OCR. Files are treated as untrusted: size, archive-member, member-count,
 compression-ratio and DTD checks refuse hostile inputs with a clear message.
 
@@ -28,7 +28,9 @@ Optional add-ons, each off unless asked for and each used only when its program 
 does not change): --ocr auto runs Tesseract on scanned PDF pages (rendered by Poppler's pdftoppm) and on .png/.jpg/
 .tif images; --convert-legacy converts .doc/.xls/.ppt/.rtf with LibreOffice (soffice) in a temporary folder and
 reads the result; --pdf-layout keeps PDF columns apart (pdftotext -layout, else pypdf layout mode); --excel-display
-shows Excel numbers and dates as their number format displays them. See docs/DOCUMENT_TEXT.md.
+shows Excel numbers and dates as their number format displays them. Programs are found through TESSERACT_CMD /
+SOFFICE_CMD (the program) or POPPLER_BIN (Poppler's folder) when set, else PATH, else on Windows their standard
+install folders (Program Files, the per-user Tesseract folder, winget's Poppler package). See docs/DOCUMENT_TEXT.md.
 """
 import argparse
 import datetime
@@ -1386,10 +1388,72 @@ def _last_line(run):
     return lines[-1] if lines else f"exit {run.returncode}"
 
 
-def _tesseract():
-    """The tesseract program: on PATH, else the one pytesseract is configured to use (pytesseract runs it too)."""
-    found = shutil.which("tesseract")
+# Where an add-on program is looked for, in order: an environment override set by the operator, PATH, then a fixed
+# list of standard install folders (Windows installers for Tesseract, Poppler and LibreOffice do not add themselves
+# to PATH). Paths are never taken from a document.
+TOOL_ENV = {"tesseract": "TESSERACT_CMD", "soffice": "SOFFICE_CMD",   # the program file
+            "pdftoppm": "POPPLER_BIN", "pdftotext": "POPPLER_BIN"}    # the folder holding Poppler's programs
+
+
+def _version_key(path):
+    return tuple(int(n) for n in re.findall(r"\d+", Path(path).name)[:4])
+
+
+def _standard_locations(name):
+    """Fixed install locations for an add-on program on Windows, newest Poppler first; nothing elsewhere."""
+    if os.name != "nt":
+        return []
+    roots = [os.environ.get(v) for v in ("ProgramFiles", "ProgramFiles(x86)", "ProgramW6432")]
+    roots = [Path(r) for r in dict.fromkeys(roots) if r]
+    local = Path(os.environ["LOCALAPPDATA"]) if os.environ.get("LOCALAPPDATA") else None
+    found = []
+    if name == "tesseract":  # UB Mannheim installer: all users, or just me
+        found += [r / "Tesseract-OCR" / "tesseract.exe" for r in roots]
+        found += [local / "Programs" / "Tesseract-OCR" / "tesseract.exe"] if local else []
+    elif name == "soffice":
+        found += [r / "LibreOffice" / "program" / exe for r in roots for exe in ("soffice.com", "soffice.exe")]
+    elif name in ("pdftoppm", "pdftotext"):
+        folders = []
+        if local:  # winget installs Poppler as a package folder; its Links folder may or may not hold a shim
+            folders.append(local / "Microsoft" / "WinGet" / "Links")
+            packages = local / "Microsoft" / "WinGet" / "Packages"
+            folders += sorted(packages.glob("oschwartz10612.Poppler_*/poppler-*/Library/bin"),
+                              key=lambda b: _version_key(b.parent.parent), reverse=True)
+        for r in roots:  # an unzipped release (poppler-25.07.0/Library/bin) under Program Files
+            folders += sorted(r.glob("poppler*/Library/bin"), key=lambda b: _version_key(b.parent.parent),
+                              reverse=True)
+        found += [f / f"{name}.exe" for f in folders]
+    return [str(p) for p in found]
+
+
+def _find_tool(name):
+    """The add-on program to run, or None: the TOOL_ENV override if set (and only it), else PATH, else a standard
+    install folder."""
+    var = TOOL_ENV.get(name)
+    override = os.environ.get(var, "").strip().strip('"') if var else ""
+    if override:
+        if var == "POPPLER_BIN":
+            return shutil.which(name, path=override)
+        allowed = (name, "libreoffice") if name == "soffice" else (name,)  # the variable names a program, nothing else
+        return shutil.which(override) if Path(override).name.lower().split(".")[0] in allowed else None
+    found = shutil.which(name) or (shutil.which("libreoffice") if name == "soffice" else None)
     if found:
+        return found
+    for candidate in _standard_locations(name):
+        if Path(candidate).is_file():
+            return candidate
+    return None
+
+
+def _not_found(name, install):
+    var = TOOL_ENV[name]
+    return f"no {name} program found (on PATH, in {var} or the standard install folder; install {install})"
+
+
+def _tesseract():
+    """The tesseract program (_find_tool), else the one pytesseract is configured to use (pytesseract runs it too)."""
+    found = _find_tool("tesseract")
+    if found or os.environ.get("TESSERACT_CMD", "").strip():
         return found
     try:
         import pytesseract  # optional; only to find a configured tesseract program
@@ -1504,7 +1568,7 @@ def read_image(data, suffix, out, result, opts):
     tess = _tesseract()
     if tess is None:
         result.status = NEEDS_DEPENDENCY
-        result.warnings.append("image text needs OCR: no tesseract program on PATH (install Tesseract OCR)")
+        result.warnings.append("image text needs OCR: " + _not_found("tesseract", "Tesseract OCR"))
         return
     version = _tool_version(tess, "--version", r"tesseract v?([\w.\-]+)")
     result.engine, result.engine_version = "tesseract", version
@@ -1531,9 +1595,9 @@ def read_image(data, suffix, out, result, opts):
 def _ocr_pdf(path, pages, result, opts):
     """Render each listed page with pdftoppm and OCR it. -> ({page: (text, conf)}, [pages OCR found empty],
     [pages not OCRed]) or None when a program is missing (a warning says which)."""
-    tess, ppm = _tesseract(), shutil.which("pdftoppm")
-    missing = ([] if tess else ["no tesseract program on PATH (install Tesseract OCR)"]) + \
-              ([] if ppm else ["no pdftoppm program on PATH to render PDF pages (install Poppler)"])
+    tess, ppm = _tesseract(), _find_tool("pdftoppm")
+    missing = ([] if tess else [_not_found("tesseract", "Tesseract OCR")]) + \
+              ([] if ppm else [_not_found("pdftoppm", "Poppler") + " to render PDF pages"])
     if missing:
         result.warnings.append("OCR not run: " + "; ".join(missing))
         return None
@@ -1588,17 +1652,7 @@ def _ocr_pdf(path, pages, result, opts):
 
 
 def _soffice():
-    for name in ("soffice", "libreoffice"):
-        found = shutil.which(name)
-        if found:
-            return found
-    if os.name == "nt":  # the installer does not put LibreOffice on PATH
-        for root in (os.environ.get("ProgramFiles"), os.environ.get("ProgramFiles(x86)")):
-            for exe in ("soffice.com", "soffice.exe"):
-                candidate = Path(root or "") / "LibreOffice" / "program" / exe
-                if root and candidate.is_file():
-                    return str(candidate)
-    return None
+    return _find_tool("soffice")
 
 
 @functools.lru_cache(maxsize=None)
@@ -1618,7 +1672,8 @@ def read_converted(data, suffix, out, result, opts, max_bytes):
     soffice = _soffice()
     if soffice is None:
         result.status = UNSUPPORTED
-        result.warnings += [LEGACY[suffix], "--convert-legacy: no LibreOffice (soffice) program found on PATH"]
+        result.warnings += [LEGACY[suffix], "--convert-legacy: no LibreOffice (soffice) program found (on PATH, in "
+                                            "SOFFICE_CMD or the standard install folder)"]
         return
     target = CONVERT_TO[suffix]
     version = _soffice_version(soffice)
@@ -1662,7 +1717,7 @@ def _pypdf():
 def read_pdf(path, out, result, engine="auto", opts=None):
     opts = opts or Options()
     pypdf = _pypdf() if engine in ("auto", "pypdf") else None
-    binary = shutil.which("pdftotext") if engine in ("auto", "pdftotext") else None
+    binary = _find_tool("pdftotext") if engine in ("auto", "pdftotext") else None
     if opts.pdf_layout and engine == "auto" and binary:
         pypdf = None  # layout mode prefers pdftotext -layout, which keeps columns apart best
     if pypdf is not None:
@@ -1671,9 +1726,9 @@ def read_pdf(path, out, result, engine="auto", opts=None):
         pages = _pdf_pdftotext(binary, path, result, opts.pdf_layout)
     else:
         result.status = NEEDS_DEPENDENCY
-        need = {"pypdf": "pypdf is not installed", "pdftotext": "no pdftotext program on PATH"}.get(engine)
+        need = {"pypdf": "pypdf is not installed", "pdftotext": _not_found("pdftotext", "Poppler")}.get(engine)
         result.warnings.append("PDF text needs pypdf (pip install pypdf)"
-                               + (f"; {need}" if need else " or a pdftotext program on PATH"))
+                               + (f"; {need}" if need else " or a pdftotext program (Poppler)"))
         return
     if opts.pdf_layout:
         result.mark("pdf layout")
@@ -1940,7 +1995,7 @@ def main(argv=None):
     ap.add_argument("files", nargs="+", help="documents to read")
     ap.add_argument("--out", required=True, help="folder for one .txt per input and manifest.json")
     ap.add_argument("--pdf-engine", choices=("auto", "pypdf", "pdftotext"), default="auto",
-                    help="auto: pypdf if installed, else pdftotext on PATH")
+                    help="auto: pypdf if installed, else a pdftotext program (PATH, POPPLER_BIN or standard folder)")
     ap.add_argument("--max-mb", type=float, default=MAX_FILE_BYTES / (1024 * 1024),
                     help=f"refuse inputs larger than this (default {MAX_FILE_BYTES // (1024 * 1024)})")
     ap.add_argument("--ocr", choices=("auto", "off"), default="off",

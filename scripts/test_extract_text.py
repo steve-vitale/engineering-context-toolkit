@@ -11,6 +11,7 @@ import io
 import json
 import re
 import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -285,7 +286,7 @@ class PdfWithPypdf(Base):
         writer.encrypt("secret", algorithm="RC4-128")
         with open(self.dir / "locked.pdf", "wb") as stream:
             writer.write(stream)
-        engines = ["pypdf"] + (["pdftotext"] if shutil.which("pdftotext") else [])
+        engines = ["pypdf"] + (["pdftotext"] if et._find_tool("pdftotext") else [])
         for engine in engines:
             r = et.extract(self.dir / "locked.pdf", pdf_engine=engine)
             self.assertEqual(r.status, et.UNSUPPORTED, (engine, r.warnings))
@@ -299,7 +300,7 @@ class PdfWithPypdf(Base):
         self.assertEqual((r.engine, r.segments), ("pypdf", []))
 
 
-@unittest.skipUnless(shutil.which("pdftotext"), "SKIP pdftotext not on PATH: fallback PDF test")
+@unittest.skipUnless(et._find_tool("pdftotext"), "SKIP pdftotext not found: fallback PDF test")
 class PdfWithPdftotext(Base):
     def test_fallback_program_gives_the_same_pages(self):
         path = make_pdf(self.dir / "pha.pdf", [["Pump P-101"], ["FDV-2210 trip"], []])
@@ -312,8 +313,7 @@ class PdfWithPdftotext(Base):
 class Limits(Base):
     def test_pdf_without_pypdf_or_pdftotext_says_how_to_get_text(self):
         path = make_pdf(self.dir / "a.pdf", [["P-101"]])
-        with mock.patch.object(et, "_pypdf", return_value=None), mock.patch.object(et.shutil, "which",
-                                                                                   return_value=None):
+        with mock.patch.object(et, "_pypdf", return_value=None), no_installed_tools(self.dir / "empty-bin"):
             r = et.extract(path)
         self.assertEqual(r.status, et.NEEDS_DEPENDENCY)
         self.assertEqual(r.segments, [])
@@ -553,6 +553,17 @@ def png_bytes(width=400, height=100, text=""):
             + b"\x08\x00\x00\x00\x00" + (b"TEXT:" + text.encode() if text else b""))
 
 
+@contextlib.contextmanager
+def no_installed_tools(path_folder=None):
+    """Hide the machine's real add-on programs: no TOOL_ENV overrides, no standard install folders and, when a
+    folder is given, a PATH holding only that folder."""
+    env = {"PATH": str(path_folder)} if path_folder is not None else {}
+    with mock.patch.dict(os.environ, env), mock.patch.object(et, "_standard_locations", return_value=[]):
+        for var in set(et.TOOL_ENV.values()):
+            os.environ.pop(var, None)
+        yield
+
+
 class AddonBase(Base):
     def setUp(self):
         super().setUp()
@@ -571,7 +582,7 @@ class AddonBase(Base):
         """PATH holding only the named fake programs (no real pdftotext/tesseract/soffice)."""
         folder = fake_tools(self.dir / "bin", *tools) if tools else self.dir / "empty-bin"
         folder.mkdir(exist_ok=True)
-        return mock.patch.dict(os.environ, {"PATH": str(folder)})
+        return no_installed_tools(folder)
 
     def calls(self, tool):
         if not self.log.exists():
@@ -633,11 +644,13 @@ class OcrScannedPdf(AddonBase):
             r = et.extract(self.scan(), pdf_engine="pypdf", ocr="auto")
         self.assertEqual(r.status, et.PARTIAL)
         self.assertIn("no text layer, needs OCR: pages 2-4 of 4", r.warnings)
-        self.assertIn("OCR not run: no pdftoppm program on PATH to render PDF pages (install Poppler)", r.warnings)
+        self.assertIn("OCR not run: no pdftoppm program found (on PATH, in POPPLER_BIN or the standard install folder; "
+                      "install Poppler) to render PDF pages", r.warnings)
         with self.only_path():
             r = et.extract(make_pdf(self.dir / "all.pdf", [[]]), pdf_engine="pypdf", ocr="auto")
         self.assertEqual(r.status, et.NEEDS_OCR)
-        self.assertTrue(any(w.startswith("OCR not run: no tesseract program on PATH") for w in r.warnings))
+        self.assertTrue(any(w.startswith("OCR not run: no tesseract program found (on PATH, in TESSERACT_CMD")
+                            for w in r.warnings))
 
 
 class OcrImages(AddonBase):
@@ -684,7 +697,7 @@ class OcrImages(AddonBase):
         with self.only_path():
             r = et.extract(self.dir / "scan.jpg", ocr="auto")
         self.assertEqual(r.status, et.NEEDS_DEPENDENCY)
-        self.assertIn("no tesseract program on PATH", r.warnings[0])
+        self.assertIn("no tesseract program found (on PATH, in TESSERACT_CMD", r.warnings[0])
 
     def test_image_size_limits_and_disguised_files(self):
         self.assertEqual(et.image_size(png_bytes(640, 480), "png"), [(640, 480)])
@@ -717,7 +730,7 @@ class OcrImages(AddonBase):
         self.assertEqual(et.parse_tesseract_tsv(tsv), {1: ("Feed pump\nP-101\n\nTT-2207", 84.0)})
 
 
-@unittest.skipUnless(et._tesseract(), "SKIP tesseract not on PATH: real OCR test (install Tesseract OCR)")
+@unittest.skipUnless(et._tesseract(), "SKIP tesseract not found: real OCR test (install Tesseract OCR)")
 class OcrRealTesseract(Base):
     def test_rendered_tag_is_read(self):
         try:
@@ -735,6 +748,75 @@ class OcrRealTesseract(Base):
         self.assertEqual(r.status, et.OK_OCR, r.warnings)
         self.assertIn("P-101", r.segments[0][1].replace(" ", ""))
         self.assertTrue(r.engine_version and r.engine_version != "?")
+
+    @unittest.skipUnless(et._find_tool("pdftoppm") and has_pypdf(), "SKIP pdftoppm or pypdf missing: scanned-PDF OCR")
+    def test_scanned_pdf_pages_are_rendered_and_read(self):
+        try:
+            from PIL import Image, ImageDraw, ImageFont
+            font = ImageFont.load_default(size=60)
+        except (ImportError, TypeError):
+            self.skipTest("SKIP Pillow missing or too old to draw the scanned pages")
+        pages = []
+        for words in ("Isolate pump P-101", "Close valve FDV-2210"):
+            page = Image.new("L", (1275, 1650), 255)  # letter size at 150 dpi, no text layer
+            ImageDraw.Draw(page).text((100, 200), words, fill=0, font=font)
+            pages.append(page)
+        Image.init()  # registers the JPEG writer the PDF plugin uses for grey pages
+        pages[0].save(self.dir / "scan.pdf", save_all=True, append_images=pages[1:], resolution=150)
+        plain = et.extract(self.dir / "scan.pdf", pdf_engine="pypdf")
+        r = et.extract(self.dir / "scan.pdf", pdf_engine="pypdf", ocr="auto", ocr_dpi=150)
+        self.assertEqual(plain.status, et.NEEDS_OCR)
+        self.assertEqual(r.status, et.OK_OCR, r.warnings)
+        self.assertEqual(tags_at(r), {"P-101": ["page 1"], "FDV-2210": ["page 2"]})
+        self.assertRegex(r.ocr_engine, r"^tesseract [\d.]+ \(eng, 150 dpi; pages rendered by pdftoppm [\d.]+\)$")
+
+
+class ToolLookup(AddonBase):
+    """Where add-on programs are found: an operator's environment override, PATH, then fixed install folders."""
+    def test_override_wins_over_path_and_must_name_the_program(self):
+        other = fake_tools(self.dir / "elsewhere", "tesseract", "soffice")
+        exe = ".cmd" if os.name == "nt" else ""
+        with self.only_path("tesseract", "soffice"):
+            on_path = et._find_tool("tesseract")
+            with mock.patch.dict(os.environ, {"TESSERACT_CMD": str(other / f"tesseract{exe}"),
+                                              "SOFFICE_CMD": f'"{other / f"soffice{exe}"}"'}):
+                self.assertEqual(Path(et._find_tool("tesseract")).parent, other)
+                self.assertEqual(Path(et._find_tool("soffice")).parent, other)  # quotes from a copied path are fine
+            with mock.patch.dict(os.environ, {"TESSERACT_CMD": str(other / "fake_tool.py")}):
+                self.assertIsNone(et._find_tool("tesseract"))  # not a tesseract program: refused, no PATH fallback
+            with mock.patch.dict(os.environ, {"TESSERACT_CMD": str(other / "missing" / "tesseract.exe")}):
+                self.assertIsNone(et._tesseract())  # a set override that does not exist is not silently replaced
+        self.assertEqual(Path(on_path).parent, self.dir / "bin")
+
+    def test_poppler_bin_names_the_folder(self):
+        folder = fake_tools(self.dir / "poppler" / "Library" / "bin", "pdftoppm", "pdftotext")
+        with self.only_path(), mock.patch.dict(os.environ, {"POPPLER_BIN": str(folder)}):
+            self.assertEqual(Path(et._find_tool("pdftoppm")).parent, folder)
+            self.assertEqual(Path(et._find_tool("pdftotext")).parent, folder)
+            self.assertIsNone(et._find_tool("tesseract"))
+
+    @unittest.skipUnless(os.name == "nt", "SKIP standard install folders are a Windows lookup")
+    def test_windows_standard_folders_newest_poppler_first(self):
+        local, programs = self.dir / "LocalAppData", self.dir / "Program Files"
+        packages = local / "Microsoft" / "WinGet" / "Packages" / "oschwartz10612.Poppler_Microsoft.Winget.Source_x"
+        for version in ("24.02.0", "25.07.0", "9.0.0"):
+            (packages / f"poppler-{version}" / "Library" / "bin").mkdir(parents=True)
+            (packages / f"poppler-{version}" / "Library" / "bin" / "pdftoppm.exe").write_bytes(b"")
+        (programs / "Tesseract-OCR").mkdir(parents=True)
+        (programs / "Tesseract-OCR" / "tesseract.exe").write_bytes(b"")
+        env = {"LOCALAPPDATA": str(local), "ProgramFiles": str(programs), "ProgramFiles(x86)": "",
+               "ProgramW6432": ""}
+        with mock.patch.dict(os.environ, env):
+            places = et._standard_locations("pdftoppm")
+            self.assertEqual(places[0], str(local / "Microsoft" / "WinGet" / "Links" / "pdftoppm.exe"))
+            self.assertIn("poppler-25.07.0", places[1])
+            self.assertIn("poppler-24.02.0", places[2])
+            with mock.patch.dict(os.environ, {"PATH": str(self.dir / "empty")}):
+                for var in set(et.TOOL_ENV.values()):
+                    os.environ.pop(var, None)
+                self.assertIn("poppler-25.07.0", et._find_tool("pdftoppm"))
+                self.assertEqual(et._find_tool("tesseract"), str(programs / "Tesseract-OCR" / "tesseract.exe"))
+                self.assertIsNone(et._find_tool("pdftotext"))
 
 
 class ConvertLegacy(AddonBase):
@@ -783,6 +865,22 @@ class ConvertLegacyReal(Base):
         self.assertIn("P-101", tags_at(r))
         self.assertTrue(r.converted.startswith("docx by LibreOffice"))
 
+    def test_word_and_excel_saved_by_libreoffice_keep_tags_and_locators(self):
+        """Round trip: the worked example's .docx/.xlsx saved as .doc/.xls by LibreOffice, read back converted."""
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "examples" / "document-text"))
+        import make_samples
+        from measure_addons import complete_package  # the samples are minimal packages LibreOffice refuses
+        make_samples.build(self.dir / "samples")
+        for name, target in (("SOP-104-feed-pump-isolation.docx", "doc"), ("PM-plan-area-2.xlsx", "xls")):
+            original = complete_package(self.dir / "samples" / name, self.dir / name)
+            subprocess.run([et._soffice(), f"-env:UserInstallation={(self.dir / 'profile').as_uri()}", "--headless",
+                            "--norestore", "--convert-to", target, "--outdir", str(self.dir / "legacy"),
+                            str(original)], capture_output=True, timeout=300, check=False)
+            legacy = self.dir / "legacy" / f"{original.stem}.{target}"
+            r = et.extract(legacy, convert_legacy=True)
+            self.assertEqual(r.status, et.OK, (name, r.warnings))
+            self.assertEqual(tags_at(r), tags_at(et.extract(original)), name)
+
 
 def pdf_two_columns(path):
     """A page with two text columns side by side, the case plain extraction interleaves."""
@@ -807,7 +905,7 @@ class PdfLayout(Base):
     def test_pypdf_layout_mode(self):
         self.check("pypdf")
 
-    @unittest.skipUnless(shutil.which("pdftotext"), "SKIP pdftotext not on PATH: pdftotext -layout test")
+    @unittest.skipUnless(et._find_tool("pdftotext"), "SKIP pdftotext not found: pdftotext -layout test")
     def test_pdftotext_layout_and_auto_prefers_it(self):
         self.check("pdftotext")
         auto = et.extract(pdf_two_columns(self.dir / "c2.pdf"), pdf_layout=True)
@@ -917,7 +1015,7 @@ class Embedded(Base):
                                                                              "ok"))
         self.assertEqual(entry["sha256"], __import__("hashlib").sha256(self.inner_xlsx()).hexdigest())
 
-    @unittest.skipUnless(has_pypdf() or shutil.which("pdftotext"), "SKIP no PDF engine: embedded PDF test")
+    @unittest.skipUnless(has_pypdf() or et._find_tool("pdftotext"), "SKIP no PDF engine: embedded PDF test")
     def test_pdf_packaged_in_an_ole_object_is_read_under_its_own_name(self):
         pdf = make_pdf(self.dir / "spec.pdf", [["Datasheet cover"], ["Pump P-101 curve"]]).read_bytes()
         small = make_cfb([("\x01Ole10Native", ole_package("spec.pdf", pdf))])          # in the mini stream

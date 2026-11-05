@@ -109,10 +109,21 @@ Pages with no text layer, and image files (`.png`, `.jpg`/`.jpeg`, `.tif`/`.tiff
 [Tesseract](https://github.com/tesseract-ocr/tesseract) (Apache-2.0). PDF pages are first rendered to images with
 `pdftoppm` from [Poppler](https://poppler.freedesktop.org/) (GPL; a separate program, not linked).
 
-- Install: Tesseract (Windows: the UB Mannheim installer, then add its folder to PATH; macOS: `brew install
-  tesseract`; Debian/Ubuntu: `apt install tesseract-ocr`) and, for PDFs, Poppler (`brew install poppler`, `apt install
-  poppler-utils`; on Windows a Poppler build on PATH). `pip install pytesseract` is not needed; if it is installed and
-  configured with a `tesseract_cmd`, that program is used when none is on PATH.
+- Install: Tesseract (Windows: the UB Mannheim installer; macOS: `brew install tesseract`; Debian/Ubuntu: `apt
+  install tesseract-ocr`) and, for PDFs, Poppler (`brew install poppler`, `apt install poppler-utils`; Windows:
+  `winget install oschwartz10612.Poppler`). `pip install pytesseract` is not needed; if it is installed and
+  configured with a `tesseract_cmd`, that program is used when none is found otherwise.
+- Finding the programs (the same for LibreOffice below), in this order: an environment variable you set
+  (`TESSERACT_CMD` and `SOFFICE_CMD` name the program file, which must be called `tesseract` or `soffice`;
+  `POPPLER_BIN` names the folder holding `pdftoppm` and `pdftotext`); if it is set, only it is used, so a wrong value
+  is reported as not found rather than silently replaced. Otherwise PATH. Otherwise, on Windows only, the standard
+  install folders, because these installers do not add themselves to PATH: `Program Files\Tesseract-OCR` and the
+  per-user `%LOCALAPPDATA%\Programs\Tesseract-OCR`; winget's Poppler package
+  (`%LOCALAPPDATA%\Microsoft\WinGet\Packages\oschwartz10612.Poppler_*\poppler-<version>\Library\bin`, newest
+  version first, and its `Links` folder) or an unzipped `Program Files\poppler-*\Library\bin`; `Program
+  Files\LibreOffice\program`. The list is fixed in the code; no path is ever taken from a document. On PATH, a
+  `pdftotext` from another package (Git for Windows ships xpdf's) is used before winget's Poppler; set `POPPLER_BIN`
+  to choose.
 - What it changes: only pages that had no text (and image files) are OCRed; pages with a text layer are read as
   before. OCR text gets the same `page N` locator. The status is `ok (ocr)` when every page has text and some came
   from OCR. A page OCR finds nothing on stays a page to look at (`OCR found no text: page 7 of 12`, status
@@ -135,8 +146,8 @@ Pages with no text layer, and image files (`.png`, `.jpg`/`.jpeg`, `.tif`/`.tiff
 `.doc`, `.xls`, `.ppt` and `.rtf` files are converted to `.docx`/`.xlsx`/`.pptx` by
 [LibreOffice](https://www.libreoffice.org/) (MPL-2.0) and the converted file is read with the normal reader.
 
-- Install: LibreOffice; `soffice` (or `libreoffice`) on PATH, or on Windows the default
-  `C:\Program Files\LibreOffice\program` folder, which is found without PATH.
+- Install: LibreOffice; found through `SOFFICE_CMD`, else `soffice` (or `libreoffice`) on PATH, else on Windows
+  the default `C:\Program Files\LibreOffice\program` folder (see "Finding the programs" above).
 - How it runs: a copy of the file's bytes (the ones hashed in the manifest) is written under a fixed name into a new
   private temporary folder, converted there with `soffice --headless --convert-to ... --outdir` and a throwaway
   LibreOffice profile in that folder (so a running LibreOffice and your own settings are not touched), then the folder
@@ -169,6 +180,86 @@ separators, scientific notation, currency symbols, literal text (`12.50 m3/h`), 
 - Formats not applied here (conditions such as `[>=100]`, fractions, engineering notation, East Asian calendars)
   keep the stored value and are counted in one warning: `3 number cell(s) kept their stored value: number format not
   applied (e.g. '# ?/?')`. Cell text, booleans and formula results that are text are not changed.
+
+## Measured on this machine
+
+Measured 2026-11-04 with the real programs on one Windows 10 desktop (AMD Ryzen 9 5900X; Tesseract 5.4.0.20240606
+with the stock `eng` data, Poppler `pdftoppm` 25.07.0, LibreOffice 26.8.2.2, Pillow 12.2.0, Python 3.14). Rerun with
+`examples/document-text/measure_addons.py` (its docstring names the public inputs; they are not stored here). These
+are small samples: they say what the add-ons do on this kind of page, not what they will do on your documents.
+
+**OCR on rendered pages (synthetic scans).** Pages of two text PDFs were rendered to images at each resolution,
+clean and as a mild "photocopy" (1 degree skew plus `degrade_scans.py` level 1: faded ink, blur, speckle), OCRed
+through `--ocr auto`'s image path and compared with the PDF's own text (Poppler `pdftotext`). Accuracy is
+1 - edit distance / reference length after collapsing whitespace; word recall ignores order. Seconds are Tesseract
+per page (one thread), not counting rendering.
+
+| Source | dpi | Image | Pages | Characters | Words | Word recall | s/page | Tags exact | Tags format-insensitive |
+|---|---|---|---|---|---|---|---|---|---|
+| Fictional procedure (generated, LibreOffice PDF, 11 pt body, a ruled table, an 8 pt list) | 150 | clean | 2 | 96.6% | 92.9% | 94.5% | 0.6 | 48/49 | 49/49 |
+| | 150 | photocopy | 2 | 95.6% | 86.4% | 88.6% | 0.6 | 47/49 | 49/49 |
+| | 200 | clean | 2 | 96.4% | 91.2% | 93.2% | 0.8 | 47/49 | 49/49 |
+| | 200 | photocopy | 2 | 95.1% | 83.1% | 86.0% | 0.7 | 47/49 | 48/49 |
+| | 300 | clean | 2 | 96.8% | 92.9% | 94.8% | 1.1 | 48/49 | 49/49 |
+| | 300 | photocopy | 2 | 97.1% | 94.8% | 98.7% | 0.9 | 46/49 | 46/49 |
+| Public text PDF: CSB Bayer report 2008-08-I-WV, pages 41-46, 48, 52 (body text, no figures) | 150 | clean | 8 | 99.7% | 98.7% | 98.8% | 1.0 | | |
+| | 150 | photocopy | 8 | 98.6% | 90.0% | 90.2% | 0.9 | | |
+| | 200 | clean | 8 | 99.7% | 98.2% | 98.3% | 1.2 | | |
+| | 200 | photocopy | 8 | 99.1% | 93.4% | 93.8% | 1.0 | | |
+| | 300 | clean | 8 | 99.6% | 98.0% | 98.0% | 1.5 | | |
+| | 300 | photocopy | 8 | 99.6% | 98.0% | 98.3% | 1.3 | | |
+
+- Clean renders lose little at any resolution; degraded images need 300 dpi (at 150-200 dpi the photocopy lost
+  5-9 points of word accuracy). Use the default `--ocr-dpi 300` for scans.
+- On the fictional page most of the character loss is the table: ruled cell borders come back as `|` and `_`
+  glued to words (`|Yes`, `FT-4706_`). Scores against a text layer also count reading-order differences and
+  figure labels as errors, so the Bayer pages were chosen without figures. In a first run, two Bayer pages with
+  figures scored 61-64% (OCR also read the labels inside the figure, which the text layer lacks) and two pages
+  scored 75-87% against pypdf's text, which keeps the file's content order; neither was misread words.
+- The 300 dpi photocopy scoring above the clean render on the fictional page is one sample, not a trend.
+- Each row is one render of two or eight pages and one seeded degradation; the fictional page has 49 tag-shaped
+  tokens (48 fictional equipment tags plus the procedure number).
+
+**A genuinely scanned public document.** NTSB pipeline accident report PAR-71-01 (1971; Kodak scanner, 54 pages of
+1-bit 300 dpi images, no fonts and no text layer). Without OCR: `needs OCR`, `no text layer, needs OCR: pages 1-54
+of 54`. With `--ocr auto`: `ok (ocr)`, text on all 54 pages, 189 s in total, **3.5 s per page including rendering**,
+mean word confidence 81 (28-96 per page). Spot-checked by eye against the page image (14 lines of a two-column body
+page): the columns came out in reading order, every number (`795`, `809`, `395`, `3.0`, `2.64`, `M.P. 66`) was right,
+and the errors were in abbreviations and short words (`p.s.i.g.` read as `p.s.ig.`/`ps.ig.`, `set` with an
+unreadable middle letter, `III` as `UI`) plus stray quote marks. Pages that are photographs or figures turned
+sideways came back as junk (`LSSMHLNOS ONINOOT` for a rotated caption): Tesseract is run without page rotation
+detection, so look at low-confidence pages before trusting them.
+
+**Legacy conversion round trip.** The worked example's `.docx`/`.xlsx`/`.pptx` were saved as `.doc`/`.xls`/`.ppt`
+(and the `.docx` also as `.rtf`) by LibreOffice, then read back with `--convert-legacy`. The example files are
+minimal packages that LibreOffice refuses to open, so the harness first adds the standard package parts (content
+types, relationships, shape properties) without changing any text; the completed files read exactly as the
+originals.
+
+| Saved as | Save s | Read s (`--convert-legacy`) | Tags kept | Same locator | Text |
+|---|---|---|---|---|---|
+| `.doc` from the procedure | 5.2 | 5.5 | 5/5 | 8/8 | identical (406 characters, 8 pieces) |
+| `.rtf` from the procedure | 5.4 | 5.6 | 5/5 | 5/8 | the page header comes back twice (first-page and default header) as `page header 2`/`page header 3` instead of `page header 1` |
+| `.xls` from the PM plan | 4.9 | 4.4 | 3/3 | 3/3 | identical (10 cells) |
+| `.ppt` from the PHA slides | 4.7 | 5.2 | 4/4 | 4/4 | identical (2 slides and the notes) |
+
+The time is mostly LibreOffice starting with a fresh profile for each file. `scripts/test_extract_text.py` repeats the
+`.doc` and `.xls` round trip, the `.rtf` read and a scanned two-page PDF with the real programs whenever they are
+installed, and skips those tests where they are not (as in CI).
+
+### Equipment tags in OCR text
+
+OCR changes tags in a few predictable ways: letters and digits that look alike swap (`O`/`0`, `I`/`l`/`1`, `S`/`5`,
+`B`/`8`, `Z`/`7`), a dash can be lost or come back as another dash character, letters split, and table rules or
+underlines get glued on, so an exact tag pattern can miss a tag that was read correctly. Seen in the runs above:
+`ZSO-8170` as `7S0-8170`, `FDV-0756` as `EDV-0756`, `HV-7991A` as `H\/-7991A`, `TI-110` as `'T-110` (which an exact
+pattern then finds as a different, tag-shaped `T-110`) and `FT-4706` as `FT-4706_` next to a table rule. An exact
+match found 46-48 of 49 tags per run; a match that ignores case, `O`/`0`, `I`/`l`/`1`, dashes, spaces and
+punctuation found 46-49; on the degraded images up to three tags per run stayed wrong even then.
+
+So match mentions found in OCR text (locators listed in `result.ocr`) format-insensitively, and send every such
+match to review with its page and the OCR confidence; do not link them automatically to the map. An exact match
+in OCR text is still a reading of an image, not a confirmed reference.
 
 ## Files are treated as untrusted
 
@@ -222,9 +313,10 @@ and column inside it, for example `page 3, line 14, column 9`. A mention found i
   a DEXPI example P&ID exported as PDF). Not tested on a plant's documents. Files written by other producers
   (LibreOffice, Google Docs exports, older Office versions) can arrange the same content differently.
 - The OCR, conversion and PDF-rendering paths are tested with stand-in programs that check the arguments, time
-  limits, process cleanup and temporary folders; tests with the real Tesseract and LibreOffice skip when they are
-  not installed, and were skipped on the machine where this was written (pdftotext and pypdf were present, so both
-  layout modes were exercised). OCR quality on real scans has not been measured here.
+  limits, process cleanup and temporary folders, and with the real Tesseract, Poppler and LibreOffice where they are
+  installed (those tests skip cleanly elsewhere). OCR quality was measured on rendered pages and one scanned public
+  report ([above](#measured-on-this-machine)), not on a plant's scans; handwriting, stamps and poor faxes were not
+  tried.
 - OCR reads printed text; handwriting, stamps, rotated or very small text and drawings are unreliable. OCR text
   is a draft reading with a confidence, not a transcript.
 - No layout beyond `--pdf-layout` (merged cells, reading order of floating shapes). Excel display covers the common
