@@ -1,0 +1,164 @@
+{
+ "schema": "one-map-changes-1",
+ "site": "S1",
+ "title": "Lakeside dairy (fictional)",
+ "old": "out/moc/open/graph.json",
+ "new": "out/moc/revd/graph.json",
+ "filter": null,
+ "items": {
+  "added": [
+   {
+    "id": "S1/P1/PAST1/TT-2208",
+    "tag": "TT-2208",
+    "kind": "instrument",
+    "owner": "Doc control",
+    "flags": []
+   }
+  ],
+  "removed": [],
+  "changed": [
+   {
+    "id": "S1/P1/PAST1/FDV-2210",
+    "tag": "FDV-2210",
+    "kind": "equipment",
+    "owner": "Maintenance",
+    "flags": [
+     {
+      "flag": "HACCP reassessment",
+      "why": "named in CCP-1 corrective_action (HACCP-P1-01)"
+     },
+     {
+      "flag": "criticality review",
+      "why": "ranked A (CRIT-P1)"
+     }
+    ],
+    "changes": [
+     {
+      "what": "on P&ID",
+      "old": [
+       "PAST1-01:D3"
+      ],
+      "new": [
+       "PAST1-01:D3 (size DN65 printed)"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "links": {
+  "added": [
+   {
+    "type": "measures",
+    "from": "S1/P1/PAST1/TT-2208",
+    "to": "S1/P1/PAST1/HT-100"
+   }
+  ],
+  "removed": []
+ },
+ "records": {
+  "added": [],
+  "removed": [],
+  "changed": []
+ },
+ "documents": {
+  "added": [],
+  "removed": [],
+  "changed": [
+   {
+    "id": "S1/DOC/PID-P1-PAST1-01",
+    "title": "P&ID PAST1-01",
+    "kind": "pid",
+    "owner": "Doc control",
+    "changes": [
+     {
+      "what": "content",
+      "old": "a45de9e3c4f551be25db4ddb2ff83205653b36d35166846ca39efa0a349c227e",
+      "new": "3c2061c890d2efb8c02e445e7d68514c4e8cd35c36d4fa6c1d6e4f4ee5d2c655"
+     },
+     {
+      "what": "revision",
+      "old": "C",
+      "new": "D"
+     }
+    ]
+   }
+  ]
+ },
+ "conflicts": {
+  "added": [
+   {
+    "id": "C-b7da94ed85",
+    "type": "asset_presence",
+    "subject": "S1/P1/PAST1/TT-2208",
+    "attribute": "listed",
+    "owner": "I&C",
+    "what": "TT-2208 is drawn on sheet PAST1-01 but not in the instrument index for S1/P1/PAST1",
+    "status": "open"
+   },
+   {
+    "id": "C-da6f1c44ba",
+    "type": "superseded_basis",
+    "subject": "S1/DOC/HACCP-PLAN-P1",
+    "attribute": "based_on PID-P1-PAST1-01",
+    "owner": "Quality",
+    "what": "HACCP-PLAN-P1 rev 7 is based on PID-P1-PAST1-01 rev C; the current revision is D",
+    "status": "open"
+   }
+  ],
+  "removed": [],
+  "changed": []
+ },
+ "expectations": {
+  "added": [],
+  "removed": [],
+  "changed": []
+ },
+ "flags": [
+  {
+   "flag": "HACCP reassessment",
+   "why": "named in CCP-1 corrective_action (HACCP-P1-01)",
+   "item": "S1/P1/PAST1/FDV-2210",
+   "tag": "FDV-2210",
+   "change": "changed"
+  },
+  {
+   "flag": "criticality review",
+   "why": "ranked A (CRIT-P1)",
+   "item": "S1/P1/PAST1/FDV-2210",
+   "tag": "FDV-2210",
+   "change": "changed"
+  }
+ ],
+ "counts": {
+  "items": {
+   "added": 1,
+   "removed": 0,
+   "changed": 1
+  },
+  "links": {
+   "added": 1,
+   "removed": 0
+  },
+  "records": {
+   "added": 0,
+   "removed": 0,
+   "changed": 0
+  },
+  "documents": {
+   "added": 0,
+   "removed": 0,
+   "changed": 1
+  },
+  "conflicts": {
+   "added": 2,
+   "removed": 0,
+   "changed": 0
+  },
+  "expectations": {
+   "added": 0,
+   "removed": 0,
+   "changed": 0
+  }
+ }
+}

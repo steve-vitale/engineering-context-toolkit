@@ -197,6 +197,50 @@ class FieldVerificationRulings(unittest.TestCase):
             self.assertIn(words, str(cm.exception), row)
 
 
+MOC_EXPECTED = ROOT / "examples" / "one-map" / "expected" / "pasteurizer-moc"
+MOC_FILES = ("release/changes.md", "release/changes.json", "moc-open/affected.md", "moc-open/affected.json",
+             "moc-pack/changes.md", "moc-pack/changes.json", "moc-close/closeout.md", "moc-close/closeout.json",
+             "close/conflicts.md", "close/queues/review_queue.csv")
+
+
+def write_moc_example(out):
+    """The MOC-0412 walk-through of examples/one-map/README.md, as its commands would write it under out/moc:
+    three builds, then the release report, the MOC-open list, the before/after pack and the closeout check."""
+    out = Path(out)
+    tags = ["FDV-2210", "TT-2208"]
+    lab = {k: f"out/moc/{k}/graph.json" for k in ("open", "revd", "close")}
+    g = {}
+    for name, key, kw in (("site.json", "open", {}), ("site-revD.json", "revd", {}),
+                          ("site-moc-close.json", "close", {"decisions": [str(PAST / "walkdown_rulings.csv")]})):
+        g[key] = quiet(om.build, PAST / name, out / key, full=True, **kw)[0]
+    rep = mc.changes(g["open"], g["revd"], labels=(lab["open"], lab["revd"]))
+    mc.write(out / "release", "changes", rep, mc.changes_md(rep))
+    rep = mc.affected(g["open"], tags, label=lab["open"])
+    mc.write(out / "moc-open", "affected", rep, mc.affected_md(rep))
+    rep = mc.changes(g["open"], g["close"], tags, labels=(lab["open"], lab["close"]))
+    mc.write(out / "moc-pack", "changes", rep, mc.changes_md(rep))
+    rep = mc.closeout(g["open"], g["close"], tags, labels=(lab["open"], lab["close"]))
+    mc.write(out / "moc-close", "closeout", rep, mc.closeout_md(rep))
+    return g
+
+
+class MocExample(unittest.TestCase):
+    def test_expected_outputs_regenerate_byte_for_byte(self):
+        with tempfile.TemporaryDirectory() as t:
+            write_moc_example(t)
+            self.assertEqual(sorted(p.relative_to(MOC_EXPECTED).as_posix() for p in MOC_EXPECTED.rglob("*")
+                                    if p.is_file()), sorted(MOC_FILES))
+            for rel in MOC_FILES:
+                self.assertEqual((Path(t) / rel).read_bytes().replace(b"\r\n", b"\n"),
+                                 (MOC_EXPECTED / rel).read_bytes().replace(b"\r\n", b"\n"), rel)
+
+    def test_public_files_name_no_private_product(self):
+        for p in sorted(MOC_EXPECTED.rglob("*.*")) + sorted(PAST.rglob("*.*")) + [Path(mc.__file__)]:
+            text = p.read_text(encoding="utf-8").lower()
+            for word in ("changepilot", "deltamark"):
+                self.assertNotIn(word, text, p.name)
+
+
 class MocBuilds:
     """The pasteurizer at MOC-0412 open (P&ID rev C), after P&ID rev D is released, and at close (records updated,
     work order WO-60311 closed, the walkdown ruling recorded). Built once per test class."""

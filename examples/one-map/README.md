@@ -72,6 +72,36 @@ Committed results: [report](expected/pasteurizer/report.md), [review queue](expe
 | Glossary | `HTST`, `hold tube`, `divert valve` and `FDV` link in the HACCP plan and the start-up SOP; `timing pump` (draft) and `product pump` (two pumps) are review rows to Production |
 | Answers | `connects FL-401`: can't answer from this map, no P&ID covers S1/P1/FILL1 |
 
+## The pasteurizer through an MOC: P&ID revision, MOC open and close, work order, walkdown
+
+The same dairy through one fictional management of change, MOC-0412: replace the flow diversion valve FDV-2210 with a
+DN65 valve (model SRC-3) and add TT-2208, an independent hold tube outlet temperature transmitter. Three builds of the
+map stand for three moments; the inputs are files beside the pasteurizer's own (`site-revD.json`,
+`site-moc-close.json` and the files they name). How plant teams run this: [RUNNING_THE_MAP.md](../../docs/RUNNING_THE_MAP.md).
+
+```sh
+python scripts/one_map.py build examples/one-map/inputs/pasteurizer/site.json --out out/moc/open  # MOC open: P&ID rev C
+python scripts/one_map.py build examples/one-map/inputs/pasteurizer/site-revD.json --out out/moc/revd  # P&ID PAST1-01 rev D released
+python scripts/one_map.py build examples/one-map/inputs/pasteurizer/site-moc-close.json --out out/moc/close --decisions examples/one-map/inputs/pasteurizer/walkdown_rulings.csv
+python scripts/one_map.py changes out/moc/open/graph.json out/moc/revd/graph.json --out out/moc/release
+python scripts/one_map.py affected --map out/moc/open/graph.json --tags FDV-2210 TT-2208 --out out/moc/moc-open
+python scripts/one_map.py changes out/moc/open/graph.json out/moc/close/graph.json --tags FDV-2210 TT-2208 --out out/moc/moc-pack
+python scripts/one_map.py affected --tags FDV-2210 TT-2208 --closeout out/moc/open/graph.json out/moc/close/graph.json --out out/moc/moc-close
+```
+
+Committed results in [expected/pasteurizer-moc/](expected/pasteurizer-moc/):
+
+| Moment | Report | What it shows |
+|---|---|---|
+| P&ID rev D released | [release/changes.md](expected/pasteurizer-moc/release/changes.md) | TT-2208 added (measures HT-100); FDV-2210 now has `size DN65` printed; P&ID PAST1-01 rev C -> D; two new conflicts: TT-2208 is not in the instrument index (I&C), the HACCP plan rev 7 is based on rev C (Quality); FDV-2210 flagged `HACCP reassessment` (CCP-1's corrective action names it) and `criticality review` (ranked A) |
+| MOC open | [moc-open/affected.md](expected/pasteurizer-moc/moc-open/affected.md) | 12 rows for 6 owners: the P&ID sheet (Doc control), the valve datasheet (Engineering), loop TIC-2207 in the loop list (I&C), the maintenance equipment export row, criticality ranking and the missing PM plan (Maintenance), the start-up SOP that mentions the FDV (Production), the CCP row, glossary term and HACCP plan (Quality), plus the two flags; TT-2208 "not on the map yet"; linked items HT-100, PHE-2201, TIC-2207 |
+| MOC close | [close/review_queue.csv](expected/pasteurizer-moc/close/queues/review_queue.csv), [close/conflicts.md](expected/pasteurizer-moc/close/conflicts.md) | Work order WO-60311 records SRC-3, serial AV-88412, DN65 installed. The maintenance equipment export has the new model but the old serial: a value_disagreement to Maintenance. The valve datasheet still says DN50: `replacement may not be like-for-like` to Engineering (a possible MOC trigger, not decided). The walkdown ruling R-0101 (authority `field`, nameplate photo) settles the serial conflict, keeps a history line, and asks Maintenance to update the export (`record differs from a ruling`) |
+| MOC close | [moc-pack/changes.md](expected/pasteurizer-moc/moc-pack/changes.md) | Before/after pack for the two tags: FDV-2210 model SRC-2 -> SRC-3, TT-2208 added, WO-60311 added, P&ID rev C -> D, HACCP plan 7 -> 8 (now mentions TT-2208), the serial conflict (resolved) |
+| MOC close | [moc-close/closeout.md](expected/pasteurizer-moc/moc-close/closeout.md) | 7 affected rows changed, 7 unchanged, 1 expectation gap still open (no PM plan for FDV-2210), 2 flags to confirm by hand. Of the unchanged, the valve datasheet is the record not yet updated (its DN50 contradicts the work order); the loop list, criticality ranking, CCP row, glossary and SOP are for their owners to confirm |
+
+The P&ID value note (DN65 printed, DN50 on the datasheet) goes to Doc control because values printed on a P&ID are
+reference only; here the datasheet is the record that is behind, which the like-for-like row and the closeout show.
+
 ## Inputs
 
 | File | What it stands for |
@@ -81,6 +111,8 @@ Committed results: [report](expected/pasteurizer/report.md), [review queue](expe
 | [sheets/](inputs/sheets/) | Hand-written sheet reads: tags with zones, lines, signal lines, off-page connectors, two printed values |
 | [lists/](inputs/lists/) | Plant 1/utilities maintenance equipment export, Plant 1 instrument index, Unit 200 loop list, Plant 1 equipment datasheets; `plant2-reviewed/` holds Plant 2's reviewed drafts |
 | [documents.json](inputs/documents.json), [docs/](inputs/docs/) | Four short documents in a `context-sources-1` manifest with owner, status, covers and based_on |
+| [pasteurizer/](inputs/pasteurizer/) | The dairy: site file, P&IDs PAST1-01 rev C and CIP1-01, maintenance equipment export (with manufacturer, model, serial number), instrument index, loop list, pump and valve datasheets, work order history, `records`, glossary, expectation rules, three documents |
+| [pasteurizer/site-revD.json](inputs/pasteurizer/site-revD.json), [site-moc-close.json](inputs/pasteurizer/site-moc-close.json), [walkdown_rulings.csv](inputs/pasteurizer/walkdown_rulings.csv) | MOC-0412: P&ID rev D (`sheets/PAST1-01-revD.json`), then the close state (`*-moc.*` records, `documents-moc.json` with HACCP plan rev 8) and the walkdown ruling |
 | [site-office.json](inputs/site-office.json), [documents-office.json](inputs/documents-office.json), [make_office_docs.py](make_office_docs.py) | The Office variant: the same site and the four documents plus SU-200-03 (`.docx`) and PM-200 (`.xlsx`), written into `inputs/docs/office/` |
 
 The documents: the *P-101 design basis rev 3* (Process, released) is based on P&ID 200-01 **rev C**; procedure

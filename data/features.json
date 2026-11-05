@@ -1581,7 +1581,11 @@
         "examples/one-map/expected/pasteurizer/report.md",
         "examples/one-map/expected/pasteurizer/queues/review_queue.csv",
         "examples/one-map/expected/pasteurizer/answers.md",
-        "examples/one-map/expected/pasteurizer/map.jsonld"
+        "examples/one-map/expected/pasteurizer/map.jsonld",
+        "examples/one-map/expected/pasteurizer-moc/release/changes.md",
+        "examples/one-map/expected/pasteurizer-moc/moc-open/affected.md",
+        "examples/one-map/expected/pasteurizer-moc/moc-close/closeout.md",
+        "examples/one-map/expected/pasteurizer-moc/close/queues/review_queue.csv"
       ],
       "tests": [
         "scripts/test_one_map.py",

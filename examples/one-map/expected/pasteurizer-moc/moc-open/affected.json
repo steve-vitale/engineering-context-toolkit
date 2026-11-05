@@ -1,0 +1,179 @@
+{
+ "schema": "one-map-affected-1",
+ "site": "S1",
+ "title": "Lakeside dairy (fictional)",
+ "map": "out/moc/open/graph.json",
+ "selection": {
+  "tags": [
+   "FDV-2210",
+   "TT-2208"
+  ],
+  "scopes": [],
+  "items": [
+   "S1/P1/PAST1/FDV-2210"
+  ],
+  "not_on_the_map": [
+   "TT-2208"
+  ]
+ },
+ "items": [
+  {
+   "id": "S1/P1/PAST1/FDV-2210",
+   "tag": "FDV-2210",
+   "kind": "equipment",
+   "owner": "Maintenance",
+   "flags": [
+    {
+     "flag": "HACCP reassessment",
+     "why": "named in CCP-1 corrective_action (HACCP-P1-01)"
+    },
+    {
+     "flag": "criticality review",
+     "why": "ranked A (CRIT-P1)"
+    }
+   ],
+   "linked": [
+    {
+     "link": "connects",
+     "item": "S1/P1/PAST1/HT-100",
+     "direction": "from",
+     "owner": "Maintenance"
+    },
+    {
+     "link": "connects",
+     "item": "S1/P1/PAST1/PHE-2201",
+     "direction": "to",
+     "owner": "Maintenance"
+    },
+    {
+     "link": "controls",
+     "item": "S1/P1/PAST1/TIC-2207",
+     "direction": "from",
+     "owner": "I&C"
+    },
+    {
+     "link": "signal_line",
+     "item": "S1/P1/PAST1/TIC-2207",
+     "direction": "from",
+     "owner": "I&C"
+    }
+   ]
+  }
+ ],
+ "by_owner": {
+  "Doc control": [
+   {
+    "record": "S1/DOC/PID-P1-PAST1-01",
+    "kind": "P&ID",
+    "item": "S1/P1/PAST1/FDV-2210",
+    "tag": "FDV-2210",
+    "check": "sheet PAST1-01 rev C shows FDV-2210 at D3; covers S1/P1/PAST1, which contains FDV-2210",
+    "entry": "document"
+   }
+  ],
+  "Engineering": [
+   {
+    "record": "VALVE-DATASHEETS",
+    "kind": "datasheet",
+    "item": "S1/P1/PAST1/FDV-2210",
+    "tag": "FDV-2210",
+    "check": "FDV-2210 values: body_material, size",
+    "entry": "record"
+   }
+  ],
+  "I&C": [
+   {
+    "record": "LOOPS-PAST1",
+    "kind": "loop list",
+    "item": "S1/P1/PAST1/FDV-2210",
+    "tag": "FDV-2210",
+    "check": "loop TIC-2207 (line 3): FDV-2210 is its output",
+    "entry": "record"
+   }
+  ],
+  "Maintenance": [
+   {
+    "record": "CMMS-2026-10",
+    "kind": "maintenance equipment export",
+    "item": "S1/P1/PAST1/FDV-2210",
+    "tag": "FDV-2210",
+    "check": "FDV-2210 is a row (row 7)",
+    "entry": "record"
+   },
+   {
+    "record": "CRIT-P1",
+    "kind": "criticality ranking",
+    "item": "S1/P1/PAST1/FDV-2210",
+    "tag": "FDV-2210",
+    "check": "FDV-2210 (row 4)",
+    "entry": "record"
+   },
+   {
+    "record": "rule R-CRITICAL-PM",
+    "kind": "expectation gap",
+    "item": "S1/P1/PAST1/FDV-2210",
+    "tag": "FDV-2210",
+    "check": "missing: pm_plan: no pm_plan row for FDV-2210",
+    "entry": "gap"
+   },
+   {
+    "record": "flag: criticality review",
+    "kind": "change flag",
+    "item": "S1/P1/PAST1/FDV-2210",
+    "tag": "FDV-2210",
+    "check": "ranked A (CRIT-P1)",
+    "entry": "flag"
+   }
+  ],
+  "Production": [
+   {
+    "record": "S1/DOC/SOP-PAST1-02",
+    "kind": "SOP",
+    "item": "S1/P1/PAST1/FDV-2210",
+    "tag": "FDV-2210",
+    "check": "covers S1/P1/PAST1, which contains FDV-2210; mentions FDV-2210 (line 3, column 14)",
+    "entry": "document"
+   }
+  ],
+  "Quality": [
+   {
+    "record": "HACCP-P1-01",
+    "kind": "HACCP plan CCPs",
+    "item": "S1/P1/PAST1/FDV-2210",
+    "tag": "FDV-2210",
+    "check": "CCP-1 (row 2; section 4 row 1): corrective_action names FDV-2210",
+    "entry": "record"
+   },
+   {
+    "record": "GLOSSARY-P1",
+    "kind": "glossary",
+    "item": "S1/P1/PAST1/FDV-2210",
+    "tag": "FDV-2210",
+    "check": "divert valve (row 4): maps_to_item names FDV-2210",
+    "entry": "record"
+   },
+   {
+    "record": "S1/DOC/HACCP-PLAN-P1",
+    "kind": "HACCP plan",
+    "item": "S1/P1/PAST1/FDV-2210",
+    "tag": "FDV-2210",
+    "check": "based on PID-P1-PAST1-01 rev C, which shows FDV-2210; covers S1/P1/PAST1, which contains FDV-2210; mentions FDV-2210 (line 3, column 21)",
+    "entry": "document"
+   },
+   {
+    "record": "flag: HACCP reassessment",
+    "kind": "change flag",
+    "item": "S1/P1/PAST1/FDV-2210",
+    "tag": "FDV-2210",
+    "check": "named in CCP-1 corrective_action (HACCP-P1-01)",
+    "entry": "flag"
+   }
+  ]
+ },
+ "counts": {
+  "items": 1,
+  "owners": 6,
+  "entries": 12,
+  "flags": 2
+ }
+}
