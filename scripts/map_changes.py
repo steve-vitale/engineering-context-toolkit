@@ -73,6 +73,13 @@ class View:
         self.records = g.get("records") or {}
         self.results = (g.get("expectations") or {}).get("results", [])
         self.loops = g.get("loops") or []
+        self.edges_at = defaultdict(list)  # node id -> indexes of the edges touching it, in graph order
+        for i, e in enumerate(self.edges):
+            self.edges_at[e["from"]].append(i)
+            if e["to"] != e["from"]:
+                self.edges_at[e["to"]].append(i)
+        self.row_text = [(reg, r, " ".join(str(x) for k, x in r["values"].items() if k not in ("plant", "unit")))
+                         for reg, rows in sorted(self.records.items()) for r in rows]
         self.by_tag = defaultdict(set)
         for k, n in self.items.items():
             for t in [n.get("tag")] + list(n.get("aliases") or []):
@@ -439,8 +446,8 @@ def affected_entries(v, chosen, critical=DEFAULT_CRITICAL):
                 names = sorted(a["name"] for a in n["attributes"] if a["source"].get("document") == src)
                 out.append((v.owner_of_source(src), src, record_name(v.register_of(src)), nid,
                             f"{tag} values: {', '.join(names)}", "record"))
-        for reg, rows in sorted(v.records.items()):
-            for r in rows:
+        for reg, r, text in v.row_text:
+            if r.get("item") == nid or tag in text:
                 src = r["source"]["document"]
                 named = [] if r.get("item") == nid else sorted(
                     k for k, val in r["values"].items() if k not in ("plant", "unit") and token_in(tag, val))
@@ -460,7 +467,9 @@ def affected_entries(v, chosen, critical=DEFAULT_CRITICAL):
                             f"sheet {a.get('sheet')} rev {d['document'].get('revision')} shows {tag}"
                             + (f" at {a['zone']}" if a.get("zone") else ""), "document"))
         sheets = {a.get("document") for a in n.get("appearances") or []}
-        for e in v.edges:
+        near = sorted(set(v.edges_at[nid]) | set(v.edges_at.get(n.get("scope"), ()))
+                      | {i for d in sheets for i in v.edges_at.get(d, ())})
+        for e in (v.edges[i] for i in near):
             if e["type"] == "mentions" and e["to"] == nid and e["from"] in v.docs:
                 loc = e["source"].get("locator")
                 out.append((v.docs[e["from"]]["document"]["owner"], e["from"], doc_kind(v.docs[e["from"]]), nid,

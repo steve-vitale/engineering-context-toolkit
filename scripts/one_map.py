@@ -89,7 +89,6 @@ DOC_TEXT_NOTE = "document text note"
 # extract_text.py add-ons a site file may switch on for its documents (`document_text`); all off by default
 DOC_TEXT_OPTIONS = ("ocr", "ocr_lang", "ocr_dpi", "convert_legacy", "pdf_layout", "excel_display")
 LOW_PRIORITY_KINDS = (PID_NOTE, DOC_TEXT_NOTE)  # amber, after every other amber row
-MAP_CRITICAL = ("A", "1", "critical", "high", "very high")  # criticality_ranking values flagged by changes/affected
 RECORD_NAMES = {"maintenance_export": "maintenance equipment export", "instrument_index": "instrument index",
                 "loop_list": "loop list", "datasheet": "datasheet", "pid": "P&ID"}
 
@@ -1852,13 +1851,25 @@ def work_order_closeout(m, lists):
     value is a "replacement may not be like-for-like" review row for the datasheet's owner: a possible management
     of change trigger, never decided here. Manufacturer, model or serial number that no maintenance equipment export
     or instrument index row holds is a closeout note (the record should hold what is installed). A work order with
-    no closed_on, or with no installed_ values, is not a closeout and is not compared."""
+    no closed_on, or with no installed_ values, is not a closeout and is not compared. A work order history holds
+    every earlier replacement too, so for each item and value only the latest closeout (by closed_on, then work
+    order number) is compared; an earlier one that a later one superseded raises nothing."""
     owners = {s["id"]: s.get("owner") for s in m.sources}
     for rec in ("maintenance_export", "instrument_index", "datasheet"):
         owners.update({x["id"]: x["owner"] for x in lists.get(rec, [])})
+    latest = {}  # (item or tag, value name) -> (closed_on, work order) of the newest closeout that records it
     for row in m.records.get("work_order") or []:
         v = row["values"]
-        installed = {k: v[f"installed_{k}"] for k in INSTALLED_FIELDS if v.get(f"installed_{k}")}
+        if v.get("closed_on"):
+            for k in INSTALLED_FIELDS:
+                if v.get(f"installed_{k}"):
+                    key = (row["item"] or qid(row["scope"], v.get("tag", "")), k)
+                    latest[key] = max(latest.get(key, ("", "")), (v["closed_on"], v.get("work_order") or ""))
+    for row in m.records.get("work_order") or []:
+        v = row["values"]
+        here = row["item"] or qid(row["scope"], v.get("tag", ""))
+        installed = {k: v[f"installed_{k}"] for k in INSTALLED_FIELDS if v.get(f"installed_{k}")
+                     and latest.get((here, k)) == (v.get("closed_on"), v.get("work_order") or "")}
         if not installed or not v.get("closed_on"):
             continue
         wo, src = v.get("work_order"), row["source"]
@@ -2731,6 +2742,7 @@ def main(argv=None):
     jl = sub.add_parser("jsonld", help="write an optional JSON-LD view of a built graph")
     jl.add_argument("--map", required=True)
     jl.add_argument("--out", required=True)
+    import map_changes as mc  # changes/affected reports (read-only); imported here, it imports nothing from here
     ch = sub.add_parser("changes", help="what changed between two builds (P&ID revision release, MOC or "
                                         "turnaround before/after pack); read-only")
     ch.add_argument("old", help="graph.json of the earlier build")
@@ -2744,9 +2756,9 @@ def main(argv=None):
         x.add_argument("--tags", action="extend", nargs="+", default=[],
                        help="tags or qualified ids (a tag must name one item)")
         x.add_argument("--scope", action="extend", nargs="+", default=[], help="qualified scope ids, e.g. S1/P1/PAST1")
-        x.add_argument("--critical", default=",".join(MAP_CRITICAL),
+        x.add_argument("--critical", default=",".join(mc.DEFAULT_CRITICAL),
                        help="criticality_ranking values that raise the criticality review flag "
-                            f"(default {','.join(MAP_CRITICAL)})")
+                            f"(default {','.join(mc.DEFAULT_CRITICAL)})")
         x.add_argument("--out", help="folder for the .md and .json reports (default: print the Markdown)")
     s = sub.add_parser("split-queue", help="split an existing review_queue.csv by a column, keeping its order")
     s.add_argument("queue")
@@ -2796,7 +2808,6 @@ def main(argv=None):
                                    newline="\n")
             print(f"{len(doc['@graph'])} JSON-LD nodes -> {a.out}")
         elif a.cmd in ("changes", "affected"):
-            import map_changes as mc
             crit = tuple(x.strip() for x in a.critical.split(",") if x.strip())
             try:
                 if a.cmd == "changes":

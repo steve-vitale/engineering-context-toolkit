@@ -119,6 +119,19 @@ class WorkOrderCloseout(unittest.TestCase):
         self.assertFalse([c for c in conflicts_of(g) if c["source_a"]["source"]["document"] == "WO-HISTORY"])
         self.assertFalse([r for r in rows if r["kind"] in (om.LIKE_FOR_LIKE, om.WO_NOTE)])
 
+    def test_only_the_latest_closeout_per_item_and_value_is_compared(self):
+        older = ["WO-50001", "FDV-2210", "P1", "PAST1", "corrective", "2024-03-01", "2024-03-02", "Earlier swap",
+                 "Alfa Valve", "SRC-1", "AV-10001", "DN40"]
+        site = Site(self.tmp.name, [older, REPLACED[:8] + ["", "", "", "DN50"]],
+                    export_fdv=("Alfa Valve", "SRC-2", "AV-51007"))
+        g, rows = site.build(Path(self.tmp.name) / "out")
+        # model and serial: only the 2024 work order records them, so it is the latest for those values
+        wo = {c["attribute"]: c["source_a"]["says"] for c in conflicts_of(g) if c["subject"] == FDV
+              and c["source_a"]["source"]["document"] == "WO-HISTORY"}
+        self.assertEqual(wo, {"model": "SRC-1", "serial_number": "AV-10001"})
+        # size: the 2026 closeout (DN50, as the datasheet) supersedes the 2024 DN40
+        self.assertFalse([r for r in rows if r["kind"] == om.LIKE_FOR_LIKE])
+
     def test_installed_value_no_record_holds_is_a_note(self):
         site = Site(self.tmp.name, [["WO-1", "P-102", "P1", "PAST1", "corrective", "2026-10-01", "2026-10-02", "x",
                                      "Pumpco", "", "", ""]])
