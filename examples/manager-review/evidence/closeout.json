@@ -2,8 +2,8 @@
  "schema": "one-map-closeout-1",
  "site": "S1",
  "title": "Lakeside dairy (fictional)",
- "open": "out\\manager-review-publish\\before\\graph.json",
- "close": "out\\manager-review-publish\\after\\graph.json",
+ "open": "out\\manager-review-final\\before\\graph.json",
+ "close": "out\\manager-review-final\\after\\graph.json",
  "selection": {
   "tags": [
    "FDV-2210",

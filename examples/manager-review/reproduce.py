@@ -130,16 +130,22 @@ def reproduce(out):
     shutil.copyfile(HERE / "BRIEF.md", packet / "BRIEF.md")
     shutil.copytree(HERE / "templates", packet / "templates")
     shutil.copytree(ROOT / INPUT, packet / "sources")
+    write(packet / "LICENSE.txt", (ROOT / "LICENSE").read_text(encoding="utf-8"))
+    write(packet / "README.txt", "Open index.html in a browser. No installation, account or network is needed.\n"
+          "This is a fictional manager review, not accepted plant records. sources/ retains the authored inputs.\n"
+          "Copy the blank forms to your approved company location. Keep company documents out of the public repo.\n"
+          "Project: https://github.com/steve-vitale/industrial-context-toolkit\n"
+          "Connect with me and message me: https://www.linkedin.com/in/steve-vitale/\n")
     for markdown in sorted(packet.rglob("*.md")):
         write(markdown.with_suffix(".html"), page(markdown.read_text(encoding="utf-8")))
     (packet / "BRIEF.html").rename(packet / "index.html")
     inputs = sorted((ROOT / INPUT).rglob("*"))
     methods = [ROOT / "scripts" / name for name in
                ("one_map.py", "map_changes.py", "context_register.py", "graph_export.py")]
-    methods += [HERE / "reproduce.py", HERE / "BRIEF.md", *sorted((HERE / "templates").glob("*.md"))]
+    methods += [HERE / "reproduce.py", HERE / "BRIEF.md", ROOT / "LICENSE", *sorted((HERE / "templates").glob("*.md"))]
     receipt = {"schema": "fictional-manager-packet-1", "scope": ["S1/P1/PAST1/FDV-2210", "S1/P1/PAST1/TT-2208"],
                "commands": commands, "checks": facts, "closeout_counts": closeout["counts"],
-               "method_scope": "Selected entrypoints, case renderer and authored forms; not a complete dependency/environment lock.",
+               "method_scope": "Selected entrypoints, case renderer, authored forms and license; not a complete dependency/environment lock.",
                "originals_in_packet": "sources/ retains exact copies of the authored fictional pasteurizer inputs, including selected exports and sheet-read JSON; no original plant CAD or valve photograph.",
                "status": "authored fictional manager handoff; real recipient, company acceptance and benefit unobserved",
                "sources_sha256": {p.relative_to(ROOT).as_posix(): sha(p) for p in inputs if p.is_file()},

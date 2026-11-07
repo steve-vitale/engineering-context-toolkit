@@ -63,3 +63,8 @@ selected source change without losing the history.
 Use the [scope form](templates/scope.md) before a real assignment and
 [effort/outcome form](templates/effort-and-outcome.md) to decide whether the approach earns further work.
 Human usefulness, review time, company readback and a subsequent accepted revision are **not observed** here.
+
+For help scoping your own maintenance or engineering information job,
+[connect with me on LinkedIn and message me there](https://www.linkedin.com/in/steve-vitale/).
+This packet is part of the [Industrial Context Toolkit](https://github.com/steve-vitale/industrial-context-toolkit),
+shared with its [MIT license](LICENSE.txt).
