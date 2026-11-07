@@ -1,0 +1,44 @@
+{
+ "code": "db67f6e1db96f547eebe46a865734fd58f4375c7b98d44a19146822c37d9010e",
+ "conflicts": {
+  "C-9ea4537117": {
+   "attribute": "serial_number",
+   "detected": true,
+   "history": [],
+   "id": "C-9ea4537117",
+   "parties": [
+    "Maintenance"
+   ],
+   "record_owner": "Maintenance",
+   "source_a": {
+    "says": "00042",
+    "source": {
+     "document": "WO",
+     "kind": "document",
+     "locator": "row 2; original work_orders.csv CSV record 2 (ends at physical line 2)",
+     "path": "work_orders.csv",
+     "revision": "R1",
+     "sha256": "a7ab0fcfa8e716c6ae6c079826af97e1dca8e89f87d8269261da375c7b034e09"
+    }
+   },
+   "source_b": {
+    "says": "00041",
+    "source": {
+     "document": "EQ",
+     "kind": "document",
+     "locator": "row 2",
+     "path": "equipment.csv",
+     "revision": "R1",
+     "sha256": "9f4fb3fbea92392e0e2cfb5d333ce578aecb806f1adc7dbee10cd082f5595f1b"
+    }
+   },
+   "status": "open",
+   "subject": "REHEARSAL/P1/NORTH/M-410",
+   "type": "value_disagreement",
+   "what": "M-410 serial_number: work order J-901 (closed 2026-11-02) records serial_number 00042 installed; the maintenance equipment export EQ (row 2) says 00041"
+  }
+ },
+ "documents": {},
+ "schema": "one-map-state-1",
+ "sheets": {}
+}

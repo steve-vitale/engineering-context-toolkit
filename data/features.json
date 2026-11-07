@@ -1674,6 +1674,30 @@
       "time": "Human capture/review effort and field accuracy unmeasured",
       "you_get": "Two attributed public photographs, visual field candidates awaiting independent review, six retained OCR attempts including failures, explicit unknown identity",
       "why": "OCR can return plausible text while missing numeric equipment data. Original evidence, units, unreadable values and unconfirmed identity must survive record preparation."
+    },
+    {
+      "id": "maintenance-intake",
+      "category": "check",
+      "title": "Explicitly mapped maintenance exports to a sourced offline manager packet",
+      "tools": [
+        "scripts/maintenance_intake.py"
+      ],
+      "guide": "docs/MAINTENANCE_INTAKE.md",
+      "example_outputs": [
+        "examples/maintenance-intake/worked/initial/REPORT.md",
+        "examples/maintenance-intake/worked/initial/findings.json",
+        "examples/maintenance-intake/worked/corrected/findings.json",
+        "examples/maintenance-intake/worked/next-replacement/findings.json",
+        "examples/maintenance-intake/worked/replay.json"
+      ],
+      "tests": [
+        "scripts/test_maintenance_intake.py"
+      ],
+      "job": "Reconcile selected equipment records against recorded installed values on closed work orders, retaining a review packet across revisions",
+      "you_need": "Two permitted CSVs, explicit reviewed profile with identities/field meanings/source revisions/coverage/owners, Python 3.10+ standard library",
+      "time": "Human preparation/review/benefit unmeasured; exposed fictional software replay only",
+      "you_get": "Exact originals, normalized records and row origins, one-map graph/queue, readable draft report, proposed actions, inventory and explicit prior-packet comparison",
+      "why": "Ordinary exports need a repeatable self-service path that preserves scope and source history without confusing disappeared disagreements with accepted corrections."
     }
   ]
 }

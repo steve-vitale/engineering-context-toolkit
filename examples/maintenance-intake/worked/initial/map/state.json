@@ -1,0 +1,44 @@
+{
+ "code": "db67f6e1db96f547eebe46a865734fd58f4375c7b98d44a19146822c37d9010e",
+ "conflicts": {
+  "C-a639167a56": {
+   "attribute": "serial_number",
+   "detected": true,
+   "history": [],
+   "id": "C-a639167a56",
+   "parties": [
+    "Maintenance"
+   ],
+   "record_owner": "Maintenance",
+   "source_a": {
+    "says": "NEW-101",
+    "source": {
+     "document": "WO-EXPORT",
+     "kind": "document",
+     "locator": "row 2; original work_orders.csv CSV record 2 (ends at physical line 2)",
+     "path": "work_orders.csv",
+     "revision": "1",
+     "sha256": "f5434eb61da6e82a416bb697e0c55b42fbeaf944af1715bba8cb594cdffae715"
+    }
+   },
+   "source_b": {
+    "says": "OLD-101",
+    "source": {
+     "document": "EQ-EXPORT",
+     "kind": "document",
+     "locator": "row 2",
+     "path": "equipment.csv",
+     "revision": "1",
+     "sha256": "15f10eb4abaa46431047be2e15909e69f7c6e8909a25cad058736211f8a97ae7"
+    }
+   },
+   "status": "open",
+   "subject": "SIM/P1/U1/P-101",
+   "type": "value_disagreement",
+   "what": "P-101 serial_number: work order WO-801 (closed 2026-11-01) records serial_number NEW-101 installed; the maintenance equipment export EQ-EXPORT (row 2) says OLD-101"
+  }
+ },
+ "documents": {},
+ "schema": "one-map-state-1",
+ "sheets": {}
+}

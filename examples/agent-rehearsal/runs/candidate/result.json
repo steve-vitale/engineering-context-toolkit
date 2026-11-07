@@ -1,0 +1,132 @@
+{
+  "question": "Compare supplied equipment records with closed replacement work orders, then treat missing-unit.csv separately without guessing identity.",
+  "scope": {
+    "site": "REHEARSAL",
+    "plant": "P1",
+    "units": [
+      "NORTH",
+      "SOUTH"
+    ],
+    "as_of": "2026-11-06",
+    "equipment_source": "EQ",
+    "equipment_revision": "R1",
+    "equipment_coverage": "Selected two positions",
+    "work_orders_source": "WO",
+    "work_orders_revision": "R1",
+    "work_orders_coverage": "Selected replacement history"
+  },
+  "findings": [
+    {
+      "item": "REHEARSAL/P1/NORTH/M-410",
+      "attribute": "serial_number",
+      "finding_id": "C-9ea4537117",
+      "status": "needs review",
+      "both_values": [
+        "00041",
+        "00042"
+      ],
+      "equipment": {
+        "value": "00041",
+        "original_file": "C:/Users/Steve/industrial-context-toolkit/examples/agent-rehearsal/inputs/equipment.csv",
+        "csv_record": 2,
+        "physical_end_line": 2,
+        "source_id": "EQ",
+        "revision": "R1",
+        "retained_original": "C:/Users/Steve/.cp-scratch/ict-rehearsal-candidate-output/packet/originals/equipment.csv"
+      },
+      "closed_work_order": {
+        "value": "00042",
+        "original_file": "C:/Users/Steve/industrial-context-toolkit/examples/agent-rehearsal/inputs/orders.csv",
+        "csv_record": 2,
+        "physical_end_line": 2,
+        "work_order": "J-901",
+        "closed_on": "2026-11-02",
+        "source_id": "WO",
+        "revision": "R1",
+        "retained_original": "C:/Users/Steve/.cp-scratch/ict-rehearsal-candidate-output/packet/originals/work_orders.csv"
+      },
+      "interpretation": "The supplied records disagree. The closed job records what it says was fitted; neither export proves current physical installation."
+    }
+  ],
+  "excluded_open_order": {
+    "original_file": "C:/Users/Steve/industrial-context-toolkit/examples/agent-rehearsal/inputs/orders.csv",
+    "csv_record": 3,
+    "work_order": "J-902",
+    "value": "00999",
+    "closed_on": "",
+    "action": "Retained as history only; blank closure is not installation evidence."
+  },
+  "separate_unit": {
+    "item": "REHEARSAL/P1/SOUTH/M-410",
+    "original_file": "C:/Users/Steve/industrial-context-toolkit/examples/agent-rehearsal/inputs/equipment.csv",
+    "csv_record": 3,
+    "value": "00099",
+    "interpretation": "Separate functional position. No SOUTH work-order rows were supplied; no SOUTH replacement comparison is established."
+  },
+  "missing_identity_action": {
+    "original_file": "C:/Users/Steve/industrial-context-toolkit/examples/agent-rehearsal/inputs/missing-unit.csv",
+    "csv_record": 2,
+    "physical_end_line": 2,
+    "tag": "M-410",
+    "unit": "",
+    "action": "Stop identity-dependent comparison for this input. Ask Maintenance for an authoritative Zone/unit declaration or corrected, newly revisioned export for record 2. Do not infer NORTH from matching serial 00041 or merge with either position. Retain this original unchanged.",
+    "tool_outcome": "Rejected; no missing-identity-packet was created.",
+    "error": "ERROR: equipment record 2: missing/invalid tag or unknown unit; no identity guessed",
+    "observed_exit_code": 1
+  },
+  "packet_path": "C:/Users/Steve/.cp-scratch/ict-rehearsal-candidate-output/packet",
+  "review_role": "Maintenance; named reviewer and due date still need assignment.",
+  "next_step": "Maintenance should verify J-901's association with NORTH/M-410 and current installed serial using permitted evidence, decide which source record needs correction, and retain accepted company-system readback. Use packet/proposed-actions.csv as the draft action form. For a revised export, retain this packet and run intake with a new output folder and --previous pointing to this packet; changed source bytes require a new source revision.",
+  "limitations": [
+    "Draft comparison only; no physical inspection or installed-state determination.",
+    "No accepted corrections, engineering approval, company-system write/readback, PM validation or measured human benefit.",
+    "Coverage is only the declared selected exports; SOUTH has no work-order rows.",
+    "Only serial numbers were available for comparison; manufacturer, model and size were absent. Comment was ignored as declared.",
+    "Serials remain text with leading zeros; source originals are retained separately from trimmed prepared values.",
+    "Packet hashes detect ordinary modification, not authenticated company approval.",
+    "Repository-relative prompt-interpretation.md was unavailable; repository AGENTS, task guide and actual tool contract were read."
+  ],
+  "command_log": [
+    {
+      "command": "Get-Content AGENTS.md; Get-Content instructions/prompt-interpretation.md; Get-Content examples/agent-rehearsal/PROMPT.txt; Get-Content docs/AGENT_START_HERE.md",
+      "exit_code": 0,
+      "observations": "Read repository AGENTS, task prompt and task guide. Nonterminating Get-Content error: repository instructions/prompt-interpretation.md does not exist; shell continued."
+    },
+    {
+      "command": "Get-Content docs/MAINTENANCE_INTAKE.md; Get-Content examples/agent-rehearsal/inputs/equipment.csv; Get-Content examples/agent-rehearsal/inputs/orders.csv; Get-Content examples/agent-rehearsal/inputs/missing-unit.csv; Get-Content examples/agent-rehearsal/inputs/profile.json; rg --files scripts | rg 'maintenance|intake'; if (Test-Path 'C:/Users/Steve/instructions/prompt-interpretation.md') { Get-Content 'C:/Users/Steve/instructions/prompt-interpretation.md' }",
+      "exit_code": 0,
+      "observations": "Inspected actual approved files, documented contract and intake script names. Parent instruction path was absent."
+    },
+    {
+      "command": "python -S scripts/maintenance_intake.py --help; Get-Content scripts/maintenance_intake.py -TotalCount 160; New-Item -ItemType Directory -Path 'C:/Users/Steve/.cp-scratch/ict-rehearsal-candidate-output' -Force",
+      "exit_code": 0,
+      "observations": "Inspected installed help and profile/CSV validation contract; created assigned output directory."
+    },
+    {
+      "command": "Get-Content scripts/maintenance_intake.py -Tail 150",
+      "exit_code": 0,
+      "observations": "Inspected packet rendering, staging, provenance and CLI exception handling."
+    },
+    {
+      "command": "python -B -S scripts/maintenance_intake.py --profile examples/agent-rehearsal/inputs/profile.json --equipment examples/agent-rehearsal/inputs/equipment.csv --work-orders examples/agent-rehearsal/inputs/orders.csv --out C:/Users/Steve/.cp-scratch/ict-rehearsal-candidate-output/packet",
+      "exit_code": 0,
+      "output": "Draft review packet: C:\\Users\\Steve\\.cp-scratch\\ict-rehearsal-candidate-output\\packet\\REPORT.html; source acceptance remains with record owners\r\n"
+    },
+    {
+      "command": "python -B -S scripts/maintenance_intake.py --profile examples/agent-rehearsal/inputs/profile.json --equipment examples/agent-rehearsal/inputs/missing-unit.csv --work-orders examples/agent-rehearsal/inputs/orders.csv --out C:/Users/Steve/.cp-scratch/ict-rehearsal-candidate-output/missing-identity-packet",
+      "exit_code": 1,
+      "output": "ERROR: equipment record 2: missing/invalid tag or unknown unit; no identity guessed\r\n"
+    },
+    {
+      "command": "Get-Content C:/Users/Steve/.cp-scratch/ict-rehearsal-candidate-output/packet/REPORT.md; Get-Content C:/Users/Steve/.cp-scratch/ict-rehearsal-candidate-output/packet/findings.json; Get-Content C:/Users/Steve/.cp-scratch/ict-rehearsal-candidate-output/packet/map/queues/review_queue.csv; Get-Content C:/Users/Steve/.cp-scratch/ict-rehearsal-candidate-output/packet/proposed-actions.csv; Test-Path C:/Users/Steve/.cp-scratch/ict-rehearsal-candidate-output/missing-identity-packet",
+      "exit_code": 0,
+      "observations": "Read actual generated report, finding provenance, queue and action CSV. Missing identity output path does not exist."
+    },
+    {
+      "command": "python -B -S -c 'import pathlib,json,hashlib; p=pathlib.Path(\"C:/Users/Steve/.cp-scratch/ict-rehearsal-candidate-output\"); q=p/\"packet\"; i=pathlib.Path(\"C:/Users/Steve/industrial-context-toolkit/examples/agent-rehearsal/inputs\"); r=json.loads((p/\"result.json\").read_text(encoding=\"utf-8\")); receipt=json.loads((q/\"receipt.json\").read_text(encoding=\"utf-8\")); actual={f.relative_to(q).as_posix():hashlib.sha256(f.read_bytes()).hexdigest() for f in sorted(q.rglob(\"*\")) if f.is_file() and f!=q/\"receipt.json\"}; assert receipt[\"files\"]==actual; assert (q/\"originals/equipment.csv\").read_bytes()==(i/\"equipment.csv\").read_bytes(); assert (q/\"originals/work_orders.csv\").read_bytes()==(i/\"orders.csv\").read_bytes(); assert (q/\"originals/profile.json\").read_bytes()==(i/\"profile.json\").read_bytes(); assert len(r[\"findings\"])==1; assert r[\"findings\"][0][\"both_values\"]==[\"00041\",\"00042\"]; assert not (p/\"missing-identity-packet\").exists(); assert (p/\"answer.md\").is_file(); print(\"Verified packet inventory, exact retained originals, result JSON and missing-identity stop.\")'",
+      "exit_code": 0,
+      "output": "Verified packet inventory, exact retained originals, result JSON and missing-identity stop.\r\n"
+    }
+  ],
+  "artifact_write_note": "The first attempt to append verification used an invalid apply_patch delete/add operation targeting the same path. It was rejected before applying; retried as an update."
+}

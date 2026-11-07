@@ -128,6 +128,22 @@ class IntakeTests(unittest.TestCase):
         b = self.run_packet("headers", a)
         self.assertEqual(len(mi.load(b / "findings.json")["history"]["still_detected"]), 1)
 
+    def test_malformed_profile_and_removed_history_do_not_claim_acceptance(self):
+        for mutate in (lambda p: [], lambda p: dict(p, units=[["U1"]]),
+                       lambda p: dict(p, equipment=[]),
+                       lambda p: dict(p, equipment=dict(p["equipment"], columns={"X": []}))):
+            with self.subTest(mutate=mutate), self.assertRaises(ValueError):
+                mi.profile_check(mutate(copy.deepcopy(self.p)))
+        a = self.run_packet()
+        # A later export omitted the closed order. This removes the observed disagreement but supplies no correction.
+        self.wo = [self.wo[1]]
+        self.p["work_orders"]["revision"] = "2-partial"
+        b = self.run_packet("omitted-history", a)
+        report = mi.load(b / "findings.json")
+        self.assertEqual(report["findings"], [])
+        self.assertEqual(report["history"]["no_longer_detected"][0]["status"], "open")
+        self.assertIn("not an accepted correction", report["history"]["meaning"])
+
 
 if __name__ == "__main__":
     unittest.main()

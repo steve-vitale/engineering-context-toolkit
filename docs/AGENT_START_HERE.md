@@ -95,6 +95,13 @@ Self-service use is a complete outcome. If the user asks for a larger scope or o
 
 ## What has been simulated
 
+The [actual fresh-agent rehearsals](../examples/agent-rehearsal/README.md) retain one baseline and one candidate
+session on frozen fictional exports, separate from the authored dialogue below. Both found the same substantive
+disagreement and preserved scope. The candidate ran the reusable intake and missing-unit refusal. The rubric is
+author-scored; these development sessions do not establish manager benefit or universal assistant adherence.
+The [three-revision replay](../examples/maintenance-intake/README.md) tests corrected records and another replacement
+with the reusable tool; source-system acceptance remains separate.
+
 The [first-use simulation](../examples/agent-first-use/SIMULATION.md) records an author-run walkthrough of
 discovery, ordinary-export preparation, a missing-identity stop, a simulated returned revision and the public
 drawing route. Commands really run; example dialogue is authored role-play. This is not an independent fresh-agent

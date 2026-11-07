@@ -45,25 +45,27 @@ def date(value, where, pattern="%Y-%m-%d"):
 
 
 def profile_check(p):
-    if p.get("schema") != SCHEMA:
+    if not isinstance(p, dict) or p.get("schema") != SCHEMA:
         raise ValueError(f"profile needs schema {SCHEMA}")
     for key in ("site", "plant"):
         if not re.fullmatch(r"[A-Za-z0-9_.-]+", p.get(key, "")):
             raise ValueError(f"profile {key}: supply one explicit namespace component")
     units = p.get("units")
-    if not isinstance(units, list) or not units or len(set(units)) != len(units) or any(
-            not isinstance(u, str) or not re.fullmatch(r"[A-Za-z0-9_.-]+", u) for u in units):
+    if not isinstance(units, list) or not units or any(
+            not isinstance(u, str) or not re.fullmatch(r"[A-Za-z0-9_.-]+", u) for u in units) or len(set(units)) != len(units):
         raise ValueError("profile units: supply unique, explicit namespace components")
     date(p.get("as_of"), "profile as_of")
     for kind in FIELDS:
         s = p.get(kind, {})
+        if not isinstance(s, dict):
+            raise ValueError(f"{kind}: supply an export specification object")
         for key in ("id", "revision", "owner", "coverage"):
             if not isinstance(s.get(key), str) or not s[key].strip():
                 raise ValueError(f"{kind}.{key}: explicitly describe source, revision, owner and export coverage")
         if "/" in s["id"] or "\\" in s["id"]:
             raise ValueError(f"{kind}.id: use a document ID without path separators")
         mapping = s.get("columns", {})
-        if not isinstance(mapping, dict) or not mapping or any(not isinstance(k, str) or not k for k in mapping):
+        if not isinstance(mapping, dict) or not mapping or any(not isinstance(k, str) or not k or not isinstance(v, str) for k, v in mapping.items()):
             raise ValueError(f"{kind}.columns: supply source header to canonical field mapping")
         if len(set(mapping.values())) != len(mapping) or not REQUIRED[kind] <= set(mapping.values()) or set(mapping.values()) - FIELDS[kind]:
             raise ValueError(f"{kind}.columns: duplicate/unsupported targets or missing {sorted(REQUIRED[kind])}")
@@ -134,7 +136,7 @@ def inventory(root):
 def verify_packet(root):
     root = Path(root).resolve()
     r = load(root / "receipt.json")
-    if r.get("schema") != "maintenance-packet-1" or r.get("files") != inventory(root):
+    if not isinstance(r, dict) or r.get("schema") != "maintenance-packet-1" or r.get("files") != inventory(root):
         raise ValueError("previous packet inventory differs; retain it and investigate before comparing")
     return r
 

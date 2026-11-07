@@ -1,0 +1,94 @@
+{
+  "schema": "maintenance-packet-1",
+  "scope": {
+    "site": "SIM",
+    "plant": "P1",
+    "units": [
+      "U1",
+      "U2"
+    ],
+    "sources": {
+      "equipment": {
+        "id": "EQ-EXPORT",
+        "owner": "Maintenance",
+        "coverage": "Selected U1/U2 fictional equipment positions"
+      },
+      "work_orders": {
+        "id": "WO-EXPORT",
+        "owner": "Maintenance",
+        "coverage": "Selected U1/U2 fictional replacement history; open orders retained"
+      }
+    }
+  },
+  "as_of": "2026-11-06",
+  "python": "3.14.2 (tags/v3.14.2:df79316, Dec  5 2025, 17:18:21) [MSC v.1944 64 bit (AMD64)]",
+  "methods_sha256_lf": {
+    "build_twin.py": "8e9a5e26b9938a8adcca9590e03c3dde8c63af38aba09f6cf1aeafe6c4b0ded7",
+    "confidence.py": "0fc9948199d89edfeb091f4a9c1c961f5361f10bf0f292d7b7ce72740e7e4a10",
+    "context_register.py": "5a902bb2a405599b4d864e9e7ca77162d51488d8920bd24874bb9c426b06f30d",
+    "extract_text.py": "5c886220c3492729f8cf2e5d8ba7ec9788d29047620155ccedad3f84b37c0fb3",
+    "generate.py": "729c3081be3e1ec372d4538175d464eceedc7a6665c82a512728094268914307",
+    "graph_export.py": "bd4854c679193c49b555128b8c4d87225d2c4cfb596459fecdf61393fd697dcb",
+    "loop_audit.py": "ec7837928220abfffa5762650b9ee53c5aa30c048d32b2d591d0fe9dd9c4c4a5",
+    "maintenance_intake.py": "2cdb44f0c7b822711c88913f4e97389fc6ccbef5507fd03e3368945d144f646e",
+    "map_changes.py": "7d199f3b29f6fd7a85382a64f617ff4c0af9916b503c16e5147afdf861763510",
+    "one_map.py": "db67f6e1db96f547eebe46a865734fd58f4375c7b98d44a19146822c37d9010e",
+    "ontology.py": "605b723102a44c420b7aaa0439906cdb2fb61b14fdc7172feb3891d663baf434",
+    "output_paths.py": "16ace3cf89be6baffcac1be804ea4917c9db10caffe2b58c11ee0b9acd4d2939",
+    "pi_mapping.py": "c9007ef93990a5ab69a2addb0d64147d5133217a62cd8bc6fe4229404605d43e",
+    "provenance.py": "69697be53c87ddd0efa92907847f14158512d2dfa2d337e79a6bb19145c98433",
+    "score_pid2graph.py": "decd9b48d8ae85c410aaabda34b99bc2b1caf2f3f5ffcb39e3a57a8329b9c787"
+  },
+  "method_scope": "Loaded local Python modules; Python version recorded; not a complete environment lock or tamper-proof signature",
+  "previous_receipt_sha256": "89c9498343bae1114ba38c277bf5eda4b51050e5d1b6db50ebc332bd9d9b54df",
+  "previous_files": {
+    "changes.json": "9deb28411d196cadcb34ef39c5ed5ff43644f36ab1aa314e0ea5827241970f66",
+    "changes.md": "d864ce2a20b96179c79c7594d1ed350698b4edbfbee48bd7c919ab7aa02509d1",
+    "findings.json": "4505235edc92725738495d71f62fb5013d6e702ad6f75e88220d24aa786061ab",
+    "map/conflicts.md": "9a326f66318421685be0ef1ea13378a24bb28f4a6a3236d3e34ec12d6e34c372",
+    "map/graph.json": "d820c128e9d96b683bc8859bc13d060d740f695b8731b0c7dd183a99b8dc5dbd",
+    "map/queues/by-owner/maintenance.csv": "f8599a28b26464e6ac4b0c1a80736d0163c46323c8b160afb21da54b774d2a3f",
+    "map/queues/by-plant/p1.csv": "f8599a28b26464e6ac4b0c1a80736d0163c46323c8b160afb21da54b774d2a3f",
+    "map/queues/by-unit/p1-u1.csv": "f8599a28b26464e6ac4b0c1a80736d0163c46323c8b160afb21da54b774d2a3f",
+    "map/queues/review_queue.csv": "f8599a28b26464e6ac4b0c1a80736d0163c46323c8b160afb21da54b774d2a3f",
+    "map/report.md": "3182fae698702668c150fd25dc47030fd7224fe266fe5dbfa3aecb57b3ba05ef",
+    "map/state.json": "daa658a9bca1953bd8d6dac1e39d2b9164571096a6cf8200ac8b8ca1a3ebdbe5",
+    "originals/equipment.csv": "293c1124ea3b28c11dcfc38eaeb60129a7894313dfd7578788686a3eab23ee4e",
+    "originals/profile.json": "ca7f021e9a52af62c85bd53e83dbf792d6583845e8d4d3ebb1a4159ff233332c",
+    "originals/work_orders.csv": "809ac10acde62ff0f3435ad72cc06828cbff6ef978d2c8f9bd8218b3445a7574",
+    "prepared/drawings.csv": "742bc7d641b0afe170f226eb8d4c36fbcafe0344c00d083cc6084415d421bf95",
+    "prepared/equipment.csv": "39bd2360d6941e2150dad1323ca6369b798d546a339c1e868bb7a42893458692",
+    "prepared/row-origins.json": "9430e8df0a172bef122b40a8d0268202a1eb745f88a30346e40b576ea5e62fcb",
+    "prepared/site.json": "94285ddaca378fd15ac3a94c137cf1d1183384f4a87814dfee17062ea83049d4",
+    "prepared/work_orders.csv": "f5434eb61da6e82a416bb697e0c55b42fbeaf944af1715bba8cb594cdffae715",
+    "proposed-actions.csv": "695a35f50126bd20ab97fe198aeae7e231ed878d289d6a462251aaab4a1d5eb2",
+    "REPORT.html": "d67a4f3cd6ea7babf7cc795befe8be04e53b1a9280af0a2a9dea335cf4127be7",
+    "REPORT.md": "3f5bd2aeba00836c915cd64362cb163bb9ea66e07d1f0a8527d278a864a82b1f"
+  },
+  "files": {
+    "changes.json": "f39ce1b4ec4af84cc379f61a291fef76adfc714a4c4a06fd62837f17335bde2b",
+    "changes.md": "c819c41cdfc0be08ada5cf8717cf147684e0390e507617cde297327e0be7c54a",
+    "findings.json": "33e4f8d36f017ec36b384a79e48de0886453e513151fd4da57b2fa580884b927",
+    "map/conflicts.md": "9101f7e1ae39883333be321ce6cbcb8d045f9203dcdc38821564cfacb181d479",
+    "map/graph.json": "6629faafc39fa4a5822fd8cf9f0a31df85783dcb9e423233a416cd3e73c51180",
+    "map/queues/by-owner/maintenance.csv": "d061fedb0552dc33605cc1fd58d676e547e3509e528753f410a85b27c7e1eae6",
+    "map/queues/by-plant/p1.csv": "d061fedb0552dc33605cc1fd58d676e547e3509e528753f410a85b27c7e1eae6",
+    "map/queues/by-unit/p1-u1.csv": "d061fedb0552dc33605cc1fd58d676e547e3509e528753f410a85b27c7e1eae6",
+    "map/queues/review_queue.csv": "d061fedb0552dc33605cc1fd58d676e547e3509e528753f410a85b27c7e1eae6",
+    "map/report.md": "9c9d872a4dcb134336c8ebe71a7b16a97c63642ed91aebc841e9875d6a01d47c",
+    "map/state.json": "281bd3e5a17f025368415425b4c9b55631ddb5b739b0c8c73fd6c6a40d6051b2",
+    "originals/equipment.csv": "293c1124ea3b28c11dcfc38eaeb60129a7894313dfd7578788686a3eab23ee4e",
+    "originals/profile.json": "1465b66ba1c3e55ecf1b20a4ad41fecb5e1e447eea5347399892a9b84395e6d5",
+    "originals/work_orders.csv": "2e3e8e0d35ef32f505472a6367ee57fe6b473a417aefecec7b1f196cde61b18f",
+    "prepared/drawings.csv": "742bc7d641b0afe170f226eb8d4c36fbcafe0344c00d083cc6084415d421bf95",
+    "prepared/equipment.csv": "39bd2360d6941e2150dad1323ca6369b798d546a339c1e868bb7a42893458692",
+    "prepared/row-origins.json": "a56b96ebbcb61198e8f90821865df949013d95e9d034d9279f2cfaae04dcd9aa",
+    "prepared/site.json": "948aab5eb60910b9456c5f27851f6a1295ff0576f70f2aef8621800fbcc9ed19",
+    "prepared/work_orders.csv": "3d43ac969563b8030bf974cf12f4d04991702098036978b873e8790f07c56616",
+    "proposed-actions.csv": "517a592845e575d44f8299d6151093daf1032d4e0b4fc85aec9d335886f9b5b0",
+    "REPORT.html": "e53d224cf3076024463a8fc17c80ad5b36c5ca3e9f7dec7a607759102a77c6e2",
+    "REPORT.md": "11e44c46db26e012b2b290d4cfb2323f1afe28df8683ae6a8815d680ade5f06e"
+  },
+  "company_acceptance": "not performed",
+  "human_effort": "not measured"
+}

@@ -1,0 +1,3 @@
+rank,tier,owner,plant,unit,item,kind,why,safety,spot_check
+1,red,Maintenance,P1,NORTH,REHEARSAL/CONFLICT/C-9ea4537117,conflict: value_disagreement,M-410 serial_number: work order J-901 (closed 2026-11-02) records serial_number 00042 installed; the maintenance equipment export EQ (row 2) says 00041 (open),,
+2,amber,Maintenance,P1,NORTH,REHEARSAL/P1/NORTH/M-410,tag in two scopes,"tag M-410 is listed as REHEARSAL/P1/NORTH/M-410, REHEARSAL/P1/SOUTH/M-410; a bare 'M-410' in a document or loop list is ambiguous unless its scope says which",,

@@ -2,6 +2,11 @@
 
 2026-11-06, Windows. **Partial observation; GUI open/edit/save remains not completed.**
 
+The [subsequent diagnostic](native/diagnostic/README.md) separates ordinary TEXT rendering from attributes:
+native PDF shows ordinary text, while attached values remain absent and the pinned parser lacks attribute
+dispatch. LibreCAD 2.2.1.6 remains unqualified for this declared exchange. The repeated UI input attempt also
+failed; no returned DXF or native acceptance is claimed.
+
 LibreCAD 2.2.1.6 installed successfully through Windows Package Manager from the
 [official publisher release](https://github.com/LibreCAD/LibreCAD/releases/tag/v2.2.1.6). The package manager
 verified the installer SHA-256. The earlier installer rejection is no longer an installation blocker.

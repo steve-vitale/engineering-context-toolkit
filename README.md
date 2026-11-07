@@ -29,8 +29,10 @@ maintenance or engineering job using the records I have. Show a concrete example
 if I have not supplied records yet. Ask only what changes the next step.
 ```
 
-The [first-use walkthrough](examples/agent-first-use/README.md) shows ordinary export columns becoming a
-sourced finding, with no P&ID required for that comparison. Self-service use needs no contact with the author.
+The [reusable maintenance intake](docs/MAINTENANCE_INTAKE.md) turns your explicitly mapped equipment and work-order
+exports into a sourced offline packet, with no P&ID required. It retains earlier packets for returned exports and
+later replacements. The [fresh-agent rehearsals](examples/agent-rehearsal/README.md) retain actual sessions and
+their limitations. Self-service use needs no contact with the author.
 
 **Already using Copilot with SharePoint?** Use that access for document questions and comparisons. Toolkit
 reports and tables can stay there too. [MCP is optional](docs/INTERNAL_CONNECTIVITY.md#if-copilot-already-reads-sharepoint-why-add-mcp):

@@ -1,0 +1,17 @@
+[
+  {
+    "command": "C:\\Python314\\python.exe scripts/one_map.py build C:\\Users\\Steve\\.cp-scratch\\ict-rehearsal-baseline-output\\site.json --out C:\\Users\\Steve\\.cp-scratch\\ict-rehearsal-baseline-output\\packet",
+    "exit_code": 0,
+    "output_file": "build.log"
+  },
+  {
+    "command": "C:\\Python314\\python.exe scripts/one_map.py check C:\\Users\\Steve\\.cp-scratch\\ict-rehearsal-baseline-output\\packet\\graph.json",
+    "exit_code": 0,
+    "output_file": "check.log"
+  },
+  {
+    "command": "C:\\Python314\\python.exe scripts/one_map.py ask --map C:\\Users\\Steve\\.cp-scratch\\ict-rehearsal-baseline-output\\packet\\graph.json --question-kind disagreements --item REHEARSAL/P1/NORTH/M-410 --json",
+    "exit_code": 0,
+    "output_file": "ask.json.log"
+  }
+]

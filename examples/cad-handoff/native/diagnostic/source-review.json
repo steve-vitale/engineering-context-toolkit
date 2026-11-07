@@ -1,0 +1,14 @@
+{
+  "tag": "v2.2.1.6",
+  "sources": {
+    "parser": {
+      "url": "https://raw.githubusercontent.com/LibreCAD/LibreCAD/v2.2.1.6/libraries/libdxfrw/src/libdxfrw.cpp",
+      "sha256": "a8010c7df8fe63ff18335215265384e3ca519216f3d9b6abd6b0bde3168e4870"
+    },
+    "png": {
+      "url": "https://raw.githubusercontent.com/LibreCAD/LibreCAD/v2.2.1.6/librecad/src/main/console_dxf2png.cpp",
+      "sha256": "65bd356cf136315088a8ff773f30429707830de5d167008066fd7526fd51aeed"
+    }
+  },
+  "interpretation": "Pinned parser dispatch handles TEXT/MTEXT/INSERT and skips unknown entities; no ATTRIB/ATTDEF dispatch found. Inference: attributed-block preservation is unsupported in this receiving route, independently of the PNG text rendering issue."
+}

@@ -13,6 +13,9 @@ closed order's NEW-101. U2/P-101 remains separate and an open order's FUTURE-101
 The corrected packet no longer detects that disagreement; it retains the old finding without declaring it
 accepted. The next-replacement packet finds NEW-101 versus NEXT-101 at the same functional position.
 
+Read the committed [first report](worked/initial/REPORT.md), [corrected report](worked/corrected/REPORT.md),
+[next replacement](worked/next-replacement/REPORT.md) and [actual replay receipt](worked/replay.json).
+
 The original files and profile are in [inputs](inputs/profile.json); the simulated returned exports are created
 inside the replay output. The tool's regression suite also exercises semicolon exports, explicit date formats,
 leading zeros, multiline rows, changed headers, missing inputs, duplicate identities, tampered previous packets

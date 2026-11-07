@@ -1,0 +1,3 @@
+rank,tier,owner,plant,unit,item,kind,why,safety,spot_check
+1,red,Maintenance,P1,U1,SIM/CONFLICT/C-a639167a56,conflict: value_disagreement,P-101 serial_number: work order WO-801 (closed 2026-11-01) records serial_number NEW-101 installed; the maintenance equipment export EQ-EXPORT (row 2) says OLD-101 (open),,
+2,amber,Maintenance,P1,U1,SIM/P1/U1/P-101,tag in two scopes,"tag P-101 is listed as SIM/P1/U1/P-101, SIM/P1/U2/P-101; a bare 'P-101' in a document or loop list is ambiguous unless its scope says which",,

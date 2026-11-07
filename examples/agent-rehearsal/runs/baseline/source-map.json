@@ -1,0 +1,89 @@
+{
+  "source_sha256": {
+    "equipment.csv": "5567e18a66763447011c32091ccb44648f7600f2c44e7d6f32d886081ef2157a",
+    "orders.csv": "8984561cfbb049c3caa616173626e9d229a7f416d19a6a6e09363afcd9b23714",
+    "missing-unit.csv": "b0c97788b8a02cdf36972f175577ad93319ad1d136ea90aaa8293d20ccb7c67c",
+    "profile.json": "54b75d21927e6c8e669cc89f7ba5a1f152f1ddf24e72e413b886e0703bda194e"
+  },
+  "profile": {
+    "schema": "maintenance-intake-1",
+    "site": "REHEARSAL",
+    "plant": "P1",
+    "units": [
+      "NORTH",
+      "SOUTH"
+    ],
+    "as_of": "2026-11-06",
+    "equipment": {
+      "id": "EQ",
+      "revision": "R1",
+      "owner": "Maintenance",
+      "coverage": "Selected two positions",
+      "delimiter": ";",
+      "columns": {
+        "Position": "tag",
+        "Zone": "unit",
+        "Serial": "serial_number"
+      },
+      "ignored_columns": [
+        "Comment"
+      ]
+    },
+    "work_orders": {
+      "id": "WO",
+      "revision": "R1",
+      "owner": "Maintenance",
+      "coverage": "Selected replacement history",
+      "delimiter": ";",
+      "columns": {
+        "Job": "work_order",
+        "Position": "tag",
+        "Zone": "unit",
+        "Closed": "closed_on",
+        "Fitted": "installed_serial_number"
+      }
+    }
+  },
+  "row_mapping": [
+    {
+      "derived_file": "equipment-prepared.csv",
+      "derived_csv_record": 1,
+      "derived_line": 2,
+      "original_file": "equipment.csv",
+      "original_csv_record": 1,
+      "original_line": 2
+    },
+    {
+      "derived_file": "equipment-prepared.csv",
+      "derived_csv_record": 2,
+      "derived_line": 3,
+      "original_file": "equipment.csv",
+      "original_csv_record": 2,
+      "original_line": 3
+    },
+    {
+      "derived_file": "orders-prepared.csv",
+      "derived_csv_record": 1,
+      "derived_line": 2,
+      "original_file": "orders.csv",
+      "original_csv_record": 1,
+      "original_line": 2
+    },
+    {
+      "derived_file": "orders-prepared.csv",
+      "derived_csv_record": 2,
+      "derived_line": 3,
+      "original_file": "orders.csv",
+      "original_csv_record": 2,
+      "original_line": 3
+    }
+  ],
+  "transformations": [
+    "Semicolon CSV to comma CSV using approved profile column map.",
+    "Plant P1 and site REHEARSAL from profile.json; units from each authored Zone.",
+    "Serial and Fitted retained as strings, including leading zeroes.",
+    "Comment excluded, never interpreted.",
+    "Empty drawing register records that no drawing was supplied.",
+    "missing-unit.csv withheld from comparison; blank unit not resolved by serial or tag."
+  ]
+}
