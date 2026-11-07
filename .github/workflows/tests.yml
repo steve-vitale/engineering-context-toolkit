@@ -27,6 +27,8 @@ jobs:
         run: python scripts/run_tests.py --full
       - name: Re-score registered corpus and model comparisons offline
         run: python scripts/benchmark.py --registry benchmarks/registry.json
+      - name: Reproduce the fictional manager handoff without optional packages
+        run: python -S examples/manager-review/reproduce.py --out "$RUNNER_TEMP/manager-review"
   snapshot-mcp:
     runs-on: ubuntu-latest
     steps:

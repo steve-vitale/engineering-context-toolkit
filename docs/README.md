@@ -28,6 +28,9 @@ identities, relationships, generated files or mapped data.
 
 ## Engineering work examples
 
+[Maintenance and engineering managers start here](MANAGERS_START_HERE.md): choose a bounded job, inspect the
+[manager packet](../examples/manager-review/README.md), assign owners and define the receiving decision.
+
 For a plant starting point, choose [maintenance reconciliation](MAINTENANCE_START.md) or
 [drawing recovery](DRAWING_RECOVERY.md), then inspect the [replacement handoff](../examples/maintenance-handoff/README.md).
 [Working together](WORK_WITH_ME.md) describes a bounded engagement; the [delivery roadmap](DELIVERY_ROADMAP.md)

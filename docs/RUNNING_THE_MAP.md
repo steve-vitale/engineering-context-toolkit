@@ -9,7 +9,8 @@ pasteurizer is in [examples/one-map](../examples/one-map/README.md#the-pasteuriz
 The rule is no new process. The map is updated as a side effect of work the plant already does, by the people who
 already own that work. Each owner keeps their own record (the maintenance equipment export, the instrument index,
 the HACCP plan, the relief device register and so on) where it lives today; the map reads exports of those records,
-compares them and sends each disagreement to the owner of the record that should change. It decides nothing:
+compares them and writes each disagreement to that record owner's review queue. A person runs the refresh and
+hands over those queues; no notification is sent automatically. It decides nothing:
 approvals, sign-off and the history of a discussion stay in your company's existing systems or a governed service.
 
 ## Which routine updates what
@@ -42,19 +43,26 @@ there is something to compare against.
 existing owner, named in the site file's `record_owners`. Each owner works only their own queue: the review queue is
 split by owner (`queues/by-owner/`), and every conflict goes to the owner of the record that should change.
 
-**Event-driven first.** The routines above update the map when they happen. Between them, about 15 minutes a week
-per owner is enough to work their queue: settle or correct the oldest rows first.
+**Attach explicit checks to existing work.** Agree who exports and rebuilds after each relevant event above.
+Choose a review cadence with the owners and measure collection, review, correction and receiving-system effort.
+No per-owner time allowance has been measured. Use the [manager packet](../examples/manager-review/README.md)
+to record unresolved actions and actual effort rather than promising a fixed weekly workload.
 
-**Monthly export refresh.** Once a month, export the maintenance equipment export, the instrument index and the
-other records again and `build`. The map compares them with the P&IDs and with each other; `changes` against last
-month's graph shows what moved.
+**Agree a refresh interval.** Set the interval from the job's consequence, change rate and approved source access;
+a monthly export may suit a trial but is not a universal requirement. Export the selected records and run
+`build`; compare with the retained prior graph. Record export coverage and cut-off dates. A scheduled export or
+background watcher needs a separate maintained integration; the toolkit does not fetch changes itself.
 
 **Two numbers to watch.**
 
-1. Open review rows by owner and age (count the rows in each `queues/by-owner/*.csv`; keep last month's to see the
-   age). The oldest row getting older means the routine is failing, not the people.
-2. Expectation coverage by unit: how many subjects of each certified rule are complete (the expectation results in
-   `report.md` and `graph.json`), for example CCPs complete and relief devices complete.
+1. Unresolved **review actions** by responsible owner, with first-seen/due dates and receiving verification in
+   the team's action log. Queue CSVs also contain green location/consistency rows; their total is not an open
+   maintenance backlog. The toolkit has no persistent action-age or due-date tracker. A changed count can reflect
+   changed source coverage, so retain the denominator and compare like scopes before judging the routine.
+2. Supplied-record coverage by unit and configured rule: how many represented subjects have the required fields
+   or linked records (the expectation results in `report.md` and `graph.json`). A PM row's presence does not
+   establish a suitable PM strategy, completed work or equipment health. Record completeness needs its own
+   denominator and is not operational readiness, compliance or a plant-wide reliability measure.
 
 **Roll out one unit and one rule at a time.** Start with the unit that has work coming (an MOC or a turnaround).
 Expectation rules ship as drafts: a draft rule only raises one summary row per unit. A person certifies a rule
@@ -79,4 +87,4 @@ should plan for:
   words the map cannot match is missed, and some rows will need nothing changed;
 - the map owner keeps the site file (plants, units, record owners) and the drawing register current.
 
-Nothing here is proven at a real plant: the examples are fictional and the time estimates above are not measured.
+Nothing here is proven at a real plant: the examples are fictional and actual effort and benefit remain unmeasured.

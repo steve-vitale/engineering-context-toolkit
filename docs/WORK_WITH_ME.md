@@ -20,6 +20,9 @@ the toolkit without an engagement or a future product subscription.
 
 ## Agree the work before scaling it
 
+The [manager packet](../examples/manager-review/README.md) includes a worked brief and copyable scope, review
+and effort forms. These can support the first conversation without sending company records or installing tools.
+
 1. **Assess one bounded problem.** Identify the recipient, unit/system, existing authoritative records, permitted
    access, intended decision and receiving format. Establish what is missing and whether a walkdown is needed.
 2. **Agree scope and acceptance.** Specify deliverables, exclusions, responsible reviewers, source cut-off,

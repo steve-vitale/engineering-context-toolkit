@@ -409,7 +409,7 @@ document are listed to reopen; the register's own refresh then marks them stale.
   resolve is not in them. `changed` in a closeout means the record says something different about the item, not
   that the change is right; review rows (like-for-like, record differs from a ruling) are in the review queue, not in
   the graphs these reports read. Change flags are never tracked to completion. Tested only on the fictional
-  pasteurizer MOC; the "15 minutes a week" in RUNNING_THE_MAP.md is a planning figure, not a measurement.
+  pasteurizer MOC. No fixed weekly review allowance is established; measure actual effort with the record owners.
 - The work order closeout compares only `installed_manufacturer`, `installed_model`, `installed_serial_number` and
   `installed_size`, as text (case and repeated spaces ignored): `DN65` and `65 mm` differ. Part numbers, spares and
   purchase orders are not compared.

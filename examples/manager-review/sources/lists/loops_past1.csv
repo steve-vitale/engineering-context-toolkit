@@ -1,0 +1,5 @@
+# Fictional control-system loop export for PAST1 (loop_audit.py input contract)
+controller,measurement,output,description
+TIC-2207,TT-2207,FDV-2210,Hold tube temperature / divert
+FIC-2203,FT-2203,P-101,Product flow by timing pump speed
+PIC-2240,PI-2240,PCV-2240,Hot water pressure

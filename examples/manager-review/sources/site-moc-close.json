@@ -1,0 +1,155 @@
+{
+ "schema": "one-map-site-1",
+ "note": "The pasteurizer site at MOC-0412 close: P&ID rev D, the instrument index holds TT-2208, the maintenance equipment export has FDV-2210's new model (its serial number not yet updated), work order WO-60311 records what was installed, the HACCP plan is at revision 8. The valve datasheet still says DN50.",
+ "site": {
+  "id": "S1",
+  "name": "Lakeside dairy (fictional)"
+ },
+ "plants": [
+  {
+   "id": "P1",
+   "name": "Fluid milk plant",
+   "owner": "Plant 1 operations",
+   "units": [
+    {
+     "id": "PAST1",
+     "name": "HTST pasteurizer 1"
+    },
+    {
+     "id": "CIP1",
+     "name": "CIP skid 1"
+    },
+    {
+     "id": "FILL1",
+     "name": "Filler 1 (no P&ID registered yet)"
+    }
+   ]
+  }
+ ],
+ "record_owners": {
+  "pid": "Doc control",
+  "maintenance_export": "Maintenance",
+  "instrument_index": "I&C",
+  "loop_list": "I&C",
+  "datasheet": "Engineering",
+  "ccp": "Quality",
+  "calibration_record": "Maintenance",
+  "relief_device_register": "Process safety",
+  "criticality_ranking": "Maintenance",
+  "pm_plan": "Maintenance",
+  "glossary": "Quality",
+  "work_order": "Maintenance"
+ },
+ "as_of": "2026-11-04",
+ "drawing_register": "drawing_register-revD.csv",
+ "maintenance_export": {
+  "id": "CMMS-2026-10",
+  "path": "lists/maintenance_equipment-moc.csv",
+  "revision": "2026-11-01",
+  "scopes": [
+   "S1/P1"
+  ]
+ },
+ "instrument_index": {
+  "id": "INSTRUMENT-INDEX",
+  "path": "lists/instrument_index-moc.csv",
+  "revision": "5",
+  "scopes": [
+   "S1/P1"
+  ]
+ },
+ "loop_lists": [
+  {
+   "id": "LOOPS-PAST1",
+   "path": "lists/loops_past1.csv",
+   "scope": "S1/P1/PAST1",
+   "revision": "2026-10-15"
+  }
+ ],
+ "datasheets": [
+  {
+   "id": "PUMP-DATASHEETS",
+   "path": "lists/pump_datasheets.csv",
+   "revision": "1",
+   "scopes": [
+    "S1/P1"
+   ]
+  },
+  {
+   "id": "VALVE-DATASHEETS",
+   "path": "lists/valve_datasheets.csv",
+   "revision": "2",
+   "scopes": [
+    "S1/P1"
+   ]
+  }
+ ],
+ "records": [
+  {
+   "id": "WO-HISTORY",
+   "register": "work_order",
+   "path": "records/work_orders-moc.csv",
+   "revision": "2026-11-01",
+   "scopes": [
+    "S1/P1"
+   ]
+  },
+  {
+   "id": "HACCP-P1-01",
+   "register": "ccp",
+   "path": "records/ccp.csv",
+   "revision": "7",
+   "scopes": [
+    "S1/P1"
+   ]
+  },
+  {
+   "id": "CAL-PAST1",
+   "register": "calibration_record",
+   "path": "records/calibration_record.csv",
+   "revision": "2026-10-31",
+   "scopes": [
+    "S1/P1/PAST1"
+   ]
+  },
+  {
+   "id": "RELIEF-PAST1",
+   "register": "relief_device_register",
+   "path": "records/relief_device_register.csv",
+   "revision": "3",
+   "scopes": [
+    "S1/P1/PAST1"
+   ]
+  },
+  {
+   "id": "CRIT-P1",
+   "register": "criticality_ranking",
+   "path": "records/criticality_ranking.csv",
+   "revision": "2026-05",
+   "scopes": [
+    "S1/P1"
+   ]
+  },
+  {
+   "id": "PM-P1",
+   "register": "pm_plan",
+   "path": "records/pm_plan.csv",
+   "revision": "2026-10",
+   "scopes": [
+    "S1/P1"
+   ]
+  },
+  {
+   "id": "GLOSSARY-P1",
+   "register": "glossary",
+   "path": "records/glossary.csv",
+   "revision": "2",
+   "scopes": [
+    "S1/P1"
+   ]
+  }
+ ],
+ "expectations": "expectations.json",
+ "documents": "documents-moc.json",
+ "spot_check_every": 4
+}

@@ -1,0 +1,66 @@
+{
+ "schema": "context-sources-1",
+ "note": "Fictional documents for the pasteurizer example.",
+ "documents": [
+  {
+   "id": "HACCP-PLAN-P1",
+   "title": "Plant 1 HACCP plan",
+   "revision": "7",
+   "path": "docs/haccp-plan-rev7.txt",
+   "owner": "Quality",
+   "status": "released",
+   "doc_type": "HACCP plan",
+   "covers": [
+    "S1/P1/PAST1"
+   ],
+   "based_on": [
+    {
+     "id": "PID-P1-PAST1-01",
+     "revision": "C"
+    }
+   ],
+   "locators": [
+    {
+     "id": "whole",
+     "locator": "whole document"
+    }
+   ]
+  },
+  {
+   "id": "VER-CCP1",
+   "title": "CCP-1 verification procedure",
+   "revision": "2",
+   "path": "docs/ccp1-verification-rev2.txt",
+   "owner": "Quality",
+   "status": "released",
+   "doc_type": "verification procedure",
+   "covers": [
+    "S1/P1/PAST1/TT-2207"
+   ],
+   "locators": [
+    {
+     "id": "whole",
+     "locator": "whole document"
+    }
+   ]
+  },
+  {
+   "id": "SOP-PAST1-02",
+   "title": "Pasteurizer start-up",
+   "revision": "B",
+   "path": "docs/sop-past1-02-revB.txt",
+   "owner": "Production",
+   "status": "released",
+   "doc_type": "SOP",
+   "covers": [
+    "S1/P1/PAST1"
+   ],
+   "locators": [
+    {
+     "id": "whole",
+     "locator": "whole document"
+    }
+   ]
+  }
+ ]
+}

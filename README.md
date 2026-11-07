@@ -2,10 +2,11 @@
 
 [![tests](https://github.com/steve-vitale/industrial-context-toolkit/actions/workflows/tests.yml/badge.svg)](https://github.com/steve-vitale/industrial-context-toolkit/actions/workflows/tests.yml)
 
-**Open source industrial engineering tools for building draft plant models, drawings and shared context from
-P&IDs, process descriptions, supported DEXPI exports and plant records.** Use them to review assets and controls,
-connect records and documents, follow revisions, analyze recorded process data, and prepare Ignition/PI staging
-files. Sources, review states and unresolved disagreements stay visible as the work moves between tools and people.
+**Open source tools for maintenance and engineering teams to organize equipment information, review record
+disagreements and prepare checkable engineering handoffs.** Build draft plant models, drawings and shared context
+from P&IDs, process descriptions, supported DEXPI exports and plant records. Review assets and controls, connect
+records and documents, follow revisions, analyze recorded process data, and prepare Ignition/PI staging files.
+Sources, review states and unresolved disagreements stay visible as the work moves between tools and people.
 
 The repository also contains worked tutorials, assembled screen/replay/3D demonstrations and reproducible
 task/model benchmarks. These support different parts of a maintained digital twin and engineering knowledge base;
@@ -15,6 +16,10 @@ the [supported workflows](docs/WORKFLOWS.md) state which inputs and outputs conn
 live mappings and receiving-platform acceptance need evidence from your environment. The
 [feature reference](docs/FEATURES.md) distinguishes examples with an independent agent/model review from those
 awaiting one; those reviews are not engineering sign-offs.
+
+**Maintenance or engineering manager?** [Start with the decision you need to make](docs/MANAGERS_START_HERE.md).
+The [manager review packet](examples/manager-review/README.md) gives you a no-install brief, owner actions and
+copyable scope/review/effort forms. Use the tools below when you or your team are ready to prepare your own records.
 
 ## Tools, tutorials and case studies
 

@@ -5,6 +5,9 @@ drawing that is out of date, or equipment and field knowledge with no P&ID at al
 
 ## Choose the starting job
 
+Use the [manager scope form](../examples/manager-review/templates/scope.md) to agree the recipient, drawing
+backlog, source cut-off, target CAD acceptance and review capacity before quoting a larger reconstruction.
+
 | Starting point | Runnable starting route | What must be supplied |
 |---|---|---|
 | Existing P&ID image | [Own-drawing tutorial](../examples/own-drawing/README.md) | A supplied/approved extraction, drawing manifest and engineering review. |

@@ -7661,3 +7661,28 @@ returned DXF was obtained. These failures do not establish that LibreCAD cannot 
 [native receipts](../examples/cad-handoff/native/receipt.json), [image and scope](../examples/cad-handoff/NATIVE_ATTEMPT.md)
 separate actual CLI observation from the still-uncompleted native receiving checklist. No company acceptance,
 human benefit or new drawing-reader accuracy is inferred.
+
+## 169. Put the manager's decision and receiving work first
+
+2026-11-06. Steve prioritized maintenance and engineering managers as the audience, matching the stated experience.
+Added a decision-first guide and a no-install fictional manager packet using the existing pasteurizer tools.
+Eight authored department actions retain their source basis and leave named people, dates and actual receiving
+acceptance unfilled. The packet distinguishes a resolved serial dispute from the still-incorrect selected CMMS
+export, a missing PM row from an absent plant PM, and a green drawing-location row from overall asset readiness.
+
+The case runner executes four existing CLI commands with Python's standard library and verifies the five
+declared case facts. Its selected closeout reproduces seven changed/seven unchanged record-item entries, two
+reviews not checked here and one open expectation gap. The complete broader queue retains 33 rows, including
+green rows; neither total is an action-backlog or asset count. The source manifest and selected method hashes
+retain their exact declared scope; they are not a complete environment lock or a claim of original-source truth.
+
+The downloadable ZIP contains an offline browser brief, evidence and manual scope/review/effort forms. Desktop
+and mobile checks find all eight actions, resolve local links and make zero HTTP requests. Mobile tables render
+as readable cards. No spreadsheet engine, action tracker, company import or alert service is introduced.
+The normal CI workflow also runs this stdlib case replay; it is not counted as a real recipient trial.
+
+Removed the unmeasured 15-minutes-per-owner-week estimate from the active operating guide. Refresh cadence,
+named owner capacity, first-seen/due dates, complete comparison effort and receiving verification now require
+actual observations. Raw queue counts and local rule coverage are not PM compliance, equipment health or a
+reliability KPI. The private consulting plan now names the primary audience; no published social material changes.
+Real manager usefulness, company correction/readback and a subsequent accepted revision remain N062/N063, not run.
