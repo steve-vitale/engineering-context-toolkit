@@ -1,0 +1,11 @@
+{
+  "status": "Frozen before first fresh-agent run; developer authored, exposed controls",
+  "files_sha256": {
+    "PROMPT.txt": "0c3f6c81db63a339edf44b4d4740f9f1637589cb25b08032f0a7fc5e2cea1c74",
+    "KEY.json": "a4518b432937ae594c34064f6d5a1ac8b8770018b5936683cad1bee4bdcc536c",
+    "inputs/equipment.csv": "5567e18a66763447011c32091ccb44648f7600f2c44e7d6f32d886081ef2157a",
+    "inputs/missing-unit.csv": "b0c97788b8a02cdf36972f175577ad93319ad1d136ea90aaa8293d20ccb7c67c",
+    "inputs/orders.csv": "8984561cfbb049c3caa616173626e9d229a7f416d19a6a6e09363afcd9b23714",
+    "inputs/profile.json": "54b75d21927e6c8e669cc89f7ba5a1f152f1ddf24e72e413b886e0703bda194e"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "maintenance-intake-1",
+  "site": "REHEARSAL",
+  "plant": "P1",
+  "units": [
+    "NORTH",
+    "SOUTH"
+  ],
+  "as_of": "2026-11-06",
+  "equipment": {
+    "id": "EQ",
+    "revision": "R1",
+    "owner": "Maintenance",
+    "coverage": "Selected two positions",
+    "delimiter": ";",
+    "columns": {
+      "Position": "tag",
+      "Zone": "unit",
+      "Serial": "serial_number"
+    },
+    "ignored_columns": [
+      "Comment"
+    ]
+  },
+  "work_orders": {
+    "id": "WO",
+    "revision": "R1",
+    "owner": "Maintenance",
+    "coverage": "Selected replacement history",
+    "delimiter": ";",
+    "columns": {
+      "Job": "work_order",
+      "Position": "tag",
+      "Zone": "unit",
+      "Closed": "closed_on",
+      "Fitted": "installed_serial_number"
+    }
+  }
+}
