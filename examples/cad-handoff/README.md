@@ -73,6 +73,8 @@ the reviewer's responsibility. The plan's reason is supplied provenance, not an 
 
 The saved passing readback uses the ezdxf writer and reader. **No native CAD editor open/edit/save acceptance is
 claimed.** Use [the receiving checklist](RECEIVING_CHECK.md) in the actual target. Save the returned DXF, then run `compare`.
+The [LibreCAD native-render attempt](NATIVE_ATTEMPT.md) retains its partial result and GUI automation failure;
+it does not supply an editable-attribute or save/readback pass.
 Handle renumbering, added objects, removed attributes and header differences produce differences; inspect them
 explicitly rather than treating a visually similar drawing as a pass.
 

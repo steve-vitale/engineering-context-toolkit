@@ -7640,3 +7640,24 @@ the CAD packet. No actual human usefulness, company acceptance or measured savin
 The new maintenance/drawing starting guides reuse existing tools, and the replacement walkthrough reuses the
 fictional pasteurizer. Public contact goes only to Steve's LinkedIn. Active post copy/campaign planning belongs
 in the separate private writing repository; no post, outreach or schedule is published by this delivery.
+
+## 168. Separate alert detection from delivery and retry the native CAD receiver
+
+2026-11-06. Steve asked to consider alerts as a possible later-product responsibility and clarified installation
+permission. The roadmap now distinguishes explicit toolkit comparisons/staleness/review queues from maintained
+collection, recipient resolution, delivery, deduplication, acknowledgment and escalation. It defines prospective
+end-to-end cases, including missed changes and failed checks, without adding a watcher, event schema or delivery
+implementation. Process alarms remain separate. Public plans name no unannounced product; campaign copy remains
+in the private writing repository.
+
+LibreCAD 2.2.1.6 installed successfully through winget with the publisher installer checksum verified. This
+resolves the earlier installation blocker. Two native dxf2png runs on the retained fictional proposal produce
+the same PNG. The second observed exit is 0; the first exit was not captured. Valve/line geometry appears, but
+expected title and attribute text is not readable. The cause is not isolated, so this is not a CAD acceptance pass.
+
+GUI startup, visible relaunch and the exposed Raise action were attempted. Accessibility text was available,
+but capture timed out and input reported unavailable geometry/an unusable app window. No editor-made edit or
+returned DXF was obtained. These failures do not establish that LibreCAD cannot edit the source. Retained
+[native receipts](../examples/cad-handoff/native/receipt.json), [image and scope](../examples/cad-handoff/NATIVE_ATTEMPT.md)
+separate actual CLI observation from the still-uncompleted native receiving checklist. No company acceptance,
+human benefit or new drawing-reader accuracy is inferred.

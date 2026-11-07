@@ -3,6 +3,10 @@
 Status: **not run in a native editor**. Complete this for the intended CAD product/version and keep its actual
 files and observations. A source-compatible library round trip cannot fill these observations in.
 
+The [2026-11-06 LibreCAD attempt](NATIVE_ATTEMPT.md) installed the application and ran its native command-line
+renderer twice. Geometry appeared, but expected text/attributes were not readable in the retained render.
+GUI automation failed before open/edit/save could be completed. That partial attempt does not complete this checklist.
+
 Before testing, record the application/build, exchange version/settings, project/database, symbol library,
 expected identities/classes/connectivity/attributes, units, layers and acceptable explicit losses.
 

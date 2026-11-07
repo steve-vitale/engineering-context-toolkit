@@ -45,3 +45,39 @@ The assistant interface is replaceable. Portable source-linked information shoul
 search or an approved copilot. Microsoft supports both indexed and federated external-content routes, each with
 its own deployment and authentication requirements ([connector overview](https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/overview-copilot-connector)).
 An MCP protocol pass does not establish company Copilot acceptance.
+
+## Alerts: detection and maintained delivery
+
+An updated drawing, a replacement work order or a revised datasheet can leave an earlier answer unsupported.
+The toolkit already supplies explicit [map comparisons](ONE_MAP.md) and
+[context refresh/staleness checks](CONTEXT_REGISTER.md). Someone must run them on supplied versions; there is
+no background source watcher or notification service. A revised source means **review the affected conclusion**,
+not that the source's new value is approved or the installed asset has changed.
+
+| Responsibility | Toolkit starting point | Maintained service or approved company system |
+|---|---|---|
+| Detect a relevant difference | Compare selected old/new sources, mapped identities, conflicts and dependent answers; retain evidence and unknowns. | Acquire authorized revisions on a schedule or event, track checkpoints and detect gaps in collection. |
+| Decide whether a person needs to act | Supply the affected item, reason and proposed review need. | Resolve the current owner and permissions; separate action-needed items from FYI/digest activity. |
+| Deliver and follow through | Export inspectable results through supported contracts. | Route notifications, deduplicate retries, record delivery failures, acknowledge, reassign and escalate under agreed rules. |
+| Resolve the condition | Retain the old/new basis and later supplied review history. | Verify the accepted correction/readback; acknowledgment alone does not resolve a record disagreement. |
+
+For example, a work order records a valve replacement while the datasheet still shows the old size. A useful
+review item identifies the same position, both revisions, the disagreement, the record owner and the requested
+check. Repeated polling of the same unresolved disagreement should not create another notification each time.
+A new revision or a changed review basis must remain visible rather than being hidden by that deduplication.
+
+Before implementing an integration, agree its minimum event record: stable subject ID, condition and event ID,
+old/new source fingerprints and locators, detection time, collection checkpoint, review reason, responsible
+owner and permissions, action-needed/FYI class, and resolution basis. This is a **proposed interface**, not a
+currently emitted toolkit event schema or an implemented connector.
+
+Test unchanged polling, duplicate delivery, missed/reordered revisions, an unavailable source, permission/owner
+changes, failed delivery, acknowledgment without correction, resolution and recurrence. A failed collection or
+check is unknown/unavailable, not an all-clear. Notification content and links must respect the recipient's
+current access. Keep sustained failures observable even when repeat notifications are grouped or suppressed.
+
+Start with one real stale-source or record-conflict job and measure relevance, false positives, missed changes,
+delivery and useful resolution. A customer-approved scheduled job and existing task system can support an early
+consulting engagement; using the toolkit must not depend on a future product launch. A managed service can add
+ongoing ownership. Process alarms, trips and protection systems remain separate from these information-review
+alerts; this roadmap does not propose replacing them.

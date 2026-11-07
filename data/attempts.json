@@ -5048,6 +5048,23 @@
         "examples/photo-to-record/worked/public-cases/receipt.json",
         "scripts/test_delivery_examples.py"
       ]
+    },
+    {
+      "id": "A322",
+      "function": "intake_and_reuse",
+      "date": "2026-11-06",
+      "change": "Attempt a native LibreCAD receiver after package-manager installation; retain partial native renders and GUI automation failures.",
+      "hypothesis": "A native CAD reader/renderer can provide evidence separate from the ezdxf writer/reader, while an image alone cannot establish editable-data preservation.",
+      "evidence": "LibreCAD 2.2.1.6 installed with publisher checksum verification. Two dxf2png runs produce the same retained PNG; second observed exit is 0, first exit was not captured. Geometry appears, expected text/attributes are not readable; cause not isolated. UI capture/input fail before open/edit/save completes; no returned DXF or native attribute-preservation result.",
+      "runs": "Two native CLI conversion runs on one exposed fictional fixture; GUI startup/capture recovery attempted, not a completed editor workflow.",
+      "verdict": "kept",
+      "why": "Retain a partial receiver observation and actual tooling failures rather than treating installation, process exit or a render as accepted CAD exchange. Alert responsibilities are planned, not implemented.",
+      "source": [
+        "docs/JOURNAL.md#168-separate-alert-detection-from-delivery-and-retry-the-native-cad-receiver",
+        "examples/cad-handoff/NATIVE_ATTEMPT.md",
+        "examples/cad-handoff/native/receipt.json",
+        "docs/DELIVERY_ROADMAP.md"
+      ]
     }
   ],
   "not_tried": [
