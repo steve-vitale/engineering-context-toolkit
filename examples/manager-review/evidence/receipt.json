@@ -10,27 +10,27 @@
       "build",
       "examples/one-map/inputs/pasteurizer/site.json",
       "--out",
-      "out\\manager-review-final\\before"
+      "out\\manager-review-no-site\\before"
     ],
     [
       "scripts/one_map.py",
       "build",
       "examples/one-map/inputs/pasteurizer/site-moc-close.json",
       "--out",
-      "out\\manager-review-final\\after",
+      "out\\manager-review-no-site\\after",
       "--decisions",
       "examples/one-map/inputs/pasteurizer/walkdown_rulings.csv"
     ],
     [
       "scripts/one_map.py",
       "changes",
-      "out\\manager-review-final\\before\\graph.json",
-      "out\\manager-review-final\\after\\graph.json",
+      "out\\manager-review-no-site\\before\\graph.json",
+      "out\\manager-review-no-site\\after\\graph.json",
       "--tags",
       "FDV-2210",
       "TT-2208",
       "--out",
-      "out\\manager-review-final\\changes"
+      "out\\manager-review-no-site\\changes"
     ],
     [
       "scripts/one_map.py",
@@ -39,11 +39,14 @@
       "FDV-2210",
       "TT-2208",
       "--closeout",
-      "out\\manager-review-final\\before\\graph.json",
-      "out\\manager-review-final\\after\\graph.json",
+      "out\\manager-review-no-site\\before\\graph.json",
+      "out\\manager-review-no-site\\after\\graph.json",
       "--out",
-      "out\\manager-review-final\\closeout"
+      "out\\manager-review-no-site\\closeout"
     ]
+  ],
+  "python_flags": [
+    "-S"
   ],
   "checks": {
     "serial_correction_outstanding": true,
@@ -99,7 +102,7 @@
     "scripts/map_changes.py": "7d199f3b29f6fd7a85382a64f617ff4c0af9916b503c16e5147afdf861763510",
     "scripts/context_register.py": "5a902bb2a405599b4d864e9e7ca77162d51488d8920bd24874bb9c426b06f30d",
     "scripts/graph_export.py": "bd4854c679193c49b555128b8c4d87225d2c4cfb596459fecdf61393fd697dcb",
-    "examples/manager-review/reproduce.py": "82257596e2467faf65bf2cf673b0df7d1437df74a807c079b2d98a00c4eef92b",
+    "examples/manager-review/reproduce.py": "6b7e90162032b06d2cc69e2ed1aad420efd31eb744fc1c85bb1eaea2f32a1cfd",
     "examples/manager-review/BRIEF.md": "0b678f5728c1abf2e86910ad5f60df9624855fd79301282cdfcc56d85ea90066",
     "LICENSE": "33bcbe8356dd24334e803c69f45e97d31e841fbb183da9523001fe0b202feb2a",
     "examples/manager-review/templates/effort-and-outcome.md": "99d1649cda7604523380b48e4c4c76a42f816a8b35f503db41a0ae2264f474cd",
@@ -108,12 +111,12 @@
   },
   "packet_files_sha256": {
     "BRIEF.md": "0b678f5728c1abf2e86910ad5f60df9624855fd79301282cdfcc56d85ea90066",
-    "evidence/changes.html": "eac71803f01fd8929a80812f60360a5f806b00d54eb43c2a4422e510da4df363",
-    "evidence/changes.json": "e348ae4e1e90652e8c94bfb6d82a2448f855e097dd235bc0d5a7dc6c8a800afb",
-    "evidence/changes.md": "8e6f64a9575d7920da9559a7b75fe370fa69c22bb464b5787ed5fc1fdee193d8",
-    "evidence/closeout.html": "52e45118da2962342e814fff0f6b392dee540488321d99c0fb0d98ccac22954d",
-    "evidence/closeout.json": "3454a9ec71c8c60cabb492c23a8b1c256f67089bd39706c7d1ad6fed545bc5e2",
-    "evidence/closeout.md": "9c06de186fb1a84bf25197a900474f70a936cc9dbc635e190ff3ddb186ee7fe7",
+    "evidence/changes.html": "2152d0f4e56667bc5a7cefc33e77a203c29edf12038f8063428df018e0136208",
+    "evidence/changes.json": "6693fdedc8e8302b66aaa113d1355926135cf3e3b340954853faa138e145ee29",
+    "evidence/changes.md": "5fe03cbfb70c1551ab6c8f0ba887131d7ce36d5f0fe225ccb8b68be76e41c8a2",
+    "evidence/closeout.html": "9e7b3c49d55adbc703e3f34f2daafb5d75eb8c9059eecb9391d15085c7e9be65",
+    "evidence/closeout.json": "1a1ff11dedf71349636b1cc758e8f5bb4a5b8ec91fa833db157225aa9bdf44b1",
+    "evidence/closeout.md": "e62adbfac8cae1ecc2c421c4a6872f3c0cd732a9e1e0c22fd5b5306f232236d6",
     "evidence/conflicts.html": "78af44d48bb771f8c4ba8bad8f2b2fdbbabf45d68bcbe53946b021d5cb6b4f8b",
     "evidence/conflicts.md": "263d220eb2e6e7cd255970593ad544f5190fc8154d60fe0563a5638e2a1f35b2",
     "evidence/review_queue.csv": "8f2a3539218c7fc2e17e62d2d431e5a710153de12576f523d04cde4ea0c12c50",

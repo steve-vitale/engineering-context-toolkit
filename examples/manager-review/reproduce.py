@@ -95,7 +95,7 @@ def reproduce(out):
          str(before / "graph.json"), str(after / "graph.json"), "--out", str(out / "closeout")],
     ]
     for i, command in enumerate(commands, 1):
-        run = subprocess.run([sys.executable, *command], cwd=ROOT, capture_output=True, text=True, encoding="utf-8")
+        run = subprocess.run([sys.executable, "-S", *command], cwd=ROOT, capture_output=True, text=True, encoding="utf-8")
         write(out / "logs" / f"{i}.stdout.txt", run.stdout)
         write(out / "logs" / f"{i}.stderr.txt", run.stderr)
         if run.returncode:
@@ -144,7 +144,7 @@ def reproduce(out):
                ("one_map.py", "map_changes.py", "context_register.py", "graph_export.py")]
     methods += [HERE / "reproduce.py", HERE / "BRIEF.md", ROOT / "LICENSE", *sorted((HERE / "templates").glob("*.md"))]
     receipt = {"schema": "fictional-manager-packet-1", "scope": ["S1/P1/PAST1/FDV-2210", "S1/P1/PAST1/TT-2208"],
-               "commands": commands, "checks": facts, "closeout_counts": closeout["counts"],
+               "commands": commands, "python_flags": ["-S"], "checks": facts, "closeout_counts": closeout["counts"],
                "method_scope": "Selected entrypoints, case renderer, authored forms and license; not a complete dependency/environment lock.",
                "originals_in_packet": "sources/ retains exact copies of the authored fictional pasteurizer inputs, including selected exports and sheet-read JSON; no original plant CAD or valve photograph.",
                "status": "authored fictional manager handoff; real recipient, company acceptance and benefit unobserved",
