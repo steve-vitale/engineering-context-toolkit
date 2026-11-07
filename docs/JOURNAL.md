@@ -7686,3 +7686,9 @@ named owner capacity, first-seen/due dates, complete comparison effort and recei
 actual observations. Raw queue counts and local rule coverage are not PM compliance, equipment health or a
 reliability KPI. The private consulting plan now names the primary audience; no published social material changes.
 Real manager usefulness, company correction/readback and a subsequent accepted revision remain N062/N063, not run.
+
+The first CI run passed 88/89 programs but failed the operating-guide check because it required the removed
+unmeasured weekly time estimate and universal monthly cadence. Updated that existing documentation check to
+require the measured-effort limitation and explicit no-notification boundary instead. Also removed the remaining
+monthly instruction and assumed labor replacement from the guide's closing section. The packet runner disables
+site packages in its child commands as well as its CI entrypoint; its receipt records that execution flag.

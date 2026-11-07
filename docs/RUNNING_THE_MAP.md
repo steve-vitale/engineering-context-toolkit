@@ -77,12 +77,12 @@ ruling that settled it and the reason.
 
 ## Does this add work?
 
-It should replace work, not add it. The MOC-open report replaces each representative searching their own records for
-the tags; the closeout check replaces asking each owner "did you update it?"; the work order check replaces finding
-out at the next walkdown that the maintenance equipment export is wrong. It adds work in three places, which a site
-should plan for:
+The intended benefit is less repeated searching and earlier discovery of record disagreements. The MOC-open
+report lists represented records for the selected tags; the closeout check shows changed and unchanged records;
+the work order check flags supplied installed values that disagree with another record. Actual effort and benefit
+remain unmeasured. Plan for work in three places:
 
-- someone has to export the records (monthly, and at MOC close) in the documented CSV formats;
+- someone has to export the records at the agreed interval and relevant work milestones in the documented CSV formats;
 - record owners have to settle the rows sent to them, including the false alarms: a record that names a tag in
   words the map cannot match is missed, and some rows will need nothing changed;
 - the map owner keeps the site file (plants, units, record owners) and the drawing register current.

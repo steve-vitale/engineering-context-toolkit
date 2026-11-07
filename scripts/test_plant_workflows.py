@@ -265,7 +265,8 @@ class RunningTheMapGuide(unittest.TestCase):
                         "CAPA", "PHA / HAZOP revalidation", "Incident investigation", "Procurement and receiving",
                         "New or revised document", "Onboarding", "Audit preparation"):
             self.assertIn(f"| **{routine}", doc)
-        for words in ("Two numbers to watch", "15 minutes a week", "Monthly export refresh", "rollout.scopes",
+        for words in ("Two numbers to watch", "No per-owner time allowance has been measured",
+                      "no notification is sent automatically", "rollout.scopes",
                       "limit_per_scope", "your company's existing systems or a governed service"):
             self.assertIn(words, doc)
         lowered = doc.lower()
