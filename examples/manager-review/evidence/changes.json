@@ -1,0 +1,198 @@
+{
+ "schema": "one-map-changes-1",
+ "site": "S1",
+ "title": "Lakeside dairy (fictional)",
+ "old": "out\\manager-review-no-site\\before\\graph.json",
+ "new": "out\\manager-review-no-site\\after\\graph.json",
+ "filter": {
+  "tags": [
+   "FDV-2210",
+   "TT-2208"
+  ],
+  "scopes": [],
+  "not_on_either_map": []
+ },
+ "items": {
+  "added": [
+   {
+    "id": "S1/P1/PAST1/TT-2208",
+    "tag": "TT-2208",
+    "kind": "instrument",
+    "owner": "I&C",
+    "flags": []
+   }
+  ],
+  "removed": [],
+  "changed": [
+   {
+    "id": "S1/P1/PAST1/FDV-2210",
+    "tag": "FDV-2210",
+    "kind": "equipment",
+    "owner": "Maintenance",
+    "flags": [
+     {
+      "flag": "HACCP reassessment",
+      "why": "named in CCP-1 corrective_action (HACCP-P1-01)"
+     },
+     {
+      "flag": "criticality review",
+      "why": "ranked A (CRIT-P1)"
+     }
+    ],
+    "changes": [
+     {
+      "what": "attribute model",
+      "old": "SRC-2 (CMMS-2026-10)",
+      "new": "SRC-3 (CMMS-2026-10)"
+     },
+     {
+      "what": "on P&ID",
+      "old": [
+       "PAST1-01:D3"
+      ],
+      "new": [
+       "PAST1-01:D3 (size DN65 printed)"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "links": {
+  "added": [
+   {
+    "type": "measures",
+    "from": "S1/P1/PAST1/TT-2208",
+    "to": "S1/P1/PAST1/HT-100"
+   },
+   {
+    "type": "mentions",
+    "from": "S1/DOC/HACCP-PLAN-P1",
+    "to": "S1/P1/PAST1/TT-2208"
+   }
+  ],
+  "removed": []
+ },
+ "records": {
+  "added": [
+   {
+    "register": "work_order",
+    "record": "WO-HISTORY",
+    "row": "WO-60311",
+    "item": "S1/P1/PAST1/FDV-2210",
+    "owner": "Maintenance"
+   }
+  ],
+  "removed": [],
+  "changed": []
+ },
+ "documents": {
+  "added": [],
+  "removed": [],
+  "changed": [
+   {
+    "id": "S1/DOC/HACCP-PLAN-P1",
+    "title": "Plant 1 HACCP plan",
+    "kind": "haccp_plan",
+    "owner": "Quality",
+    "changes": [
+     {
+      "what": "content",
+      "old": "90a78f75c2ef043efd5764242a8cc4595419157c730588234be7af227e86e07a",
+      "new": "8e0a0ae996b011728bfcb358f5bc89847809082d155bbc4ac0a4f3fc3e47bd42"
+     },
+     {
+      "what": "revision",
+      "old": "7",
+      "new": "8"
+     }
+    ]
+   },
+   {
+    "id": "S1/DOC/PID-P1-PAST1-01",
+    "title": "P&ID PAST1-01",
+    "kind": "pid",
+    "owner": "Doc control",
+    "changes": [
+     {
+      "what": "content",
+      "old": "a45de9e3c4f551be25db4ddb2ff83205653b36d35166846ca39efa0a349c227e",
+      "new": "3c2061c890d2efb8c02e445e7d68514c4e8cd35c36d4fa6c1d6e4f4ee5d2c655"
+     },
+     {
+      "what": "revision",
+      "old": "C",
+      "new": "D"
+     }
+    ]
+   }
+  ]
+ },
+ "conflicts": {
+  "added": [
+   {
+    "id": "C-3e4451aaab",
+    "type": "value_disagreement",
+    "subject": "S1/P1/PAST1/FDV-2210",
+    "attribute": "serial_number",
+    "owner": "Maintenance",
+    "what": "FDV-2210 serial_number: work order WO-60311 (closed 2026-10-22) records serial_number AV-88412 installed; the maintenance equipment export CMMS-2026-10 (row 7) says AV-51007",
+    "status": "resolved"
+   }
+  ],
+  "removed": [],
+  "changed": []
+ },
+ "expectations": {
+  "added": [],
+  "removed": [],
+  "changed": []
+ },
+ "flags": [
+  {
+   "flag": "HACCP reassessment",
+   "why": "named in CCP-1 corrective_action (HACCP-P1-01)",
+   "item": "S1/P1/PAST1/FDV-2210",
+   "tag": "FDV-2210",
+   "change": "changed"
+  },
+  {
+   "flag": "criticality review",
+   "why": "ranked A (CRIT-P1)",
+   "item": "S1/P1/PAST1/FDV-2210",
+   "tag": "FDV-2210",
+   "change": "changed"
+  }
+ ],
+ "counts": {
+  "items": {
+   "added": 1,
+   "removed": 0,
+   "changed": 1
+  },
+  "links": {
+   "added": 2,
+   "removed": 0
+  },
+  "records": {
+   "added": 1,
+   "removed": 0,
+   "changed": 0
+  },
+  "documents": {
+   "added": 0,
+   "removed": 0,
+   "changed": 2
+  },
+  "conflicts": {
+   "added": 1,
+   "removed": 0,
+   "changed": 0
+  },
+  "expectations": {
+   "added": 0,
+   "removed": 0,
+   "changed": 0
+  }
+ }
+}

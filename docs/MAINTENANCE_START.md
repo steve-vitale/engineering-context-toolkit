@@ -6,6 +6,9 @@ as: **does the equipment register match the replacement recorded on the closed w
 
 ## Try the supplied example
 
+For a manager's review without commands, open the [brief and owner actions](../examples/manager-review/BRIEF.md)
+or [download the offline packet](../examples/manager-review/manager-review.zip?raw=1).
+
 Follow the [replacement handoff](../examples/maintenance-handoff/README.md). It reuses the existing fictional
 pasteurizer and real toolkit commands; no account, model call or company data is required. It shows a closed
 work order, conflicting serial numbers, a size disagreement and a field ruling with a correction still due.

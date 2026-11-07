@@ -5,6 +5,10 @@ Use the [job selector](../README.md#start-wherever-you-are) to choose a tool or 
 [first-question guide](../examples/first-pilot/README.md) for a no-install contribution.
 The [workflow map](WORKFLOWS.md) owns supported inputs and outputs; this page owns current readiness and gaps.
 
+Maintenance and engineering managers can use the [decision-first guide](MANAGERS_START_HERE.md) and
+[offline review packet](../examples/manager-review/README.md) without installing software. The packet is an
+authored fictional handoff with reproduced source findings; human usefulness and company acceptance remain unrun.
+
 **Reusable local tools build draft plant structure and engineering context from your supported records.**
 A P&ID image plus extraction, an authored description/model, or supported DEXPI XML can become a sourced draft
 model and review material. Review and enrich it, then choose graph/context, analysis or platform staging.

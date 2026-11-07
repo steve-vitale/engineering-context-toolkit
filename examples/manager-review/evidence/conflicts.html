@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Conflicts, routed to the owner of the record</title><style>body{margin:0;background:#f2f5f7;color:#172b3a;font:17px/1.55 system-ui,sans-serif}
+main{max-width:1040px;margin:28px auto;background:white;padding:40px;border-top:8px solid #16716d}
+h1{font-size:2rem;line-height:1.2;margin:0 0 18px}h2{font-size:1.35rem;margin:32px 0 12px}
+a{color:#005d85;text-underline-offset:3px}code{font-size:.9em;overflow-wrap:anywhere}
+li{margin-bottom:12px}table{width:100%;border-collapse:collapse;font-size:.92rem;table-layout:fixed}
+th{text-align:left;background:#e7f1f0}th,td{padding:12px;vertical-align:top;border:1px solid #ced8de;overflow-wrap:anywhere}
+.table-wrap{overflow-x:auto}p,li{overflow-wrap:anywhere}main>p:first-of-type{padding:12px 16px;background:#fff0cc}
+@media screen and (max-width:700px){main{margin:0;padding:20px}h1{font-size:1.6rem}
+table,tbody,tr,td{display:block;width:100%;box-sizing:border-box}thead{display:none}tr{margin-bottom:16px}
+td{padding:12px;font-size:1rem;border-top:0}td:first-child{border-top:1px solid #ced8de;background:#e7f1f0;font-weight:bold}
+td:not(:first-child)::before{content:attr(data-label);display:block;font-weight:bold;margin-bottom:5px}}
+@media print{body{background:white;font-size:10pt}main{padding:0;margin:0;border:0;max-width:none}
+h1{font-size:19pt}h2{break-after:avoid;font-size:13pt;margin-top:18px}tr,li{break-inside:avoid}
+th,td{font-size:9pt;padding:6px}a{color:inherit} .table-wrap{overflow:visible}}</style><main><h1>Conflicts, routed to the owner of the record</h1>
+<p>Each conflict keeps what both sources say. None is resolved by software; a person records a decision (<code>--decisions</code>).</p>
+<h2>Maintenance</h2>
+<div class="table-wrap"><table><thead><tr><th scope=col>Id</th><th scope=col>Type</th><th scope=col>Status</th><th scope=col>About</th><th scope=col>Source A says</th><th scope=col>Source B says</th></tr></thead><tbody><tr><td data-label="Id">C-3e4451aaab</td><td data-label="Type">value_disagreement</td><td data-label="Status">resolved</td><td data-label="About">S1/P1/PAST1/FDV-2210 serial_number</td><td data-label="Source A says">AV-88412 (WO-HISTORY, row 3; closeout sheet)</td><td data-label="Source B says">AV-51007 (CMMS-2026-10, row 7)</td></tr></tbody></table></div>
+<h2>Decision history</h2>
+<p>Every decision and ruling recorded with <code>--decisions</code>, oldest first. A field verification ruling (authority <code>field</code>) names its evidence.</p>
+<ul><li><strong>C-3e4451aaab</strong> (S1/P1/PAST1/FDV-2210 serial_number), now resolved:   - 2026-11-03 Maintenance planner (fictional): resolved (ruling_id R-0101; ruling accept_value; authority field; chosen_value AV-88412; evidence photo walkdown-2026-11-03/FDV-2210-nameplate.jpg). Walkdown for MOC-0412 close: the nameplate on the installed valve body reads AV-88412.</li></ul></main></html>

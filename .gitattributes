@@ -190,6 +190,8 @@ data/te_pid_layout.json text eol=lf
 # Captured OCR stdout/stderr are fingerprinted raw bytes, including producer line endings.
 /examples/photo-to-record/worked/**/*.txt -text whitespace=cr-at-eol,-blank-at-eof
 /examples/maintenance-handoff/** text eol=lf
+/examples/manager-review/** text eol=lf
+/examples/manager-review/*.zip -text
 
 # Document-text example: generated samples are hashed into expected outputs compared byte for byte.
 /examples/document-text/** text eol=lf

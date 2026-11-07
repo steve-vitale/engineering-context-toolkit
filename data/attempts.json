@@ -5065,6 +5065,25 @@
         "examples/cad-handoff/native/receipt.json",
         "docs/DELIVERY_ROADMAP.md"
       ]
+    },
+    {
+      "id": "A323",
+      "function": "intake_and_reuse",
+      "date": "2026-11-06",
+      "change": "Add a no-install fictional manager brief, source-backed owner actions and manual scope/review/effort forms; remove unmeasured review-time and misleading queue-count guidance.",
+      "hypothesis": "Maintenance and engineering managers can inspect the decision, unresolved evidence and required receiving work before adopting tooling or expanding scope.",
+      "evidence": "Four actual stdlib CLI commands regenerate the existing fictional replacement/closeout findings; five explicit case predicates hold. The retained closeout has 7 changed,7 unchanged,2 not-checked reviews,1 open expectation gap; the broader queue has33rows including green location rows. Eight follow-ups are authored proposals, not assigned tasks or a reported action count. The offline HTML/ZIP retains source/method pins and manual forms; desktop/mobile checks find all8actions and local links with zero HTTP requests. No actual recipient, human time, company acceptance or benefit observation.",
+      "runs": "One exposed fictional maintenance/engineering case replayed during packet development; no model calls, plant data or held-out/generalization trial.",
+      "verdict": "kept",
+      "why": "Bridge source findings to manager decisions, actual ownership and receiving evidence while keeping readiness, PM strategy, alerting and performance claims separate.",
+      "source": [
+        "docs/JOURNAL.md#169-put-the-managers-decision-and-receiving-work-first",
+        "docs/MANAGERS_START_HERE.md",
+        "docs/RUNNING_THE_MAP.md",
+        "examples/manager-review/README.md",
+        "examples/manager-review/BRIEF.md",
+        "examples/manager-review/evidence/receipt.json"
+      ]
     }
   ],
   "not_tried": [

@@ -17,6 +17,9 @@ data/external/pid2graph/PID2Graph/Complete/*
 # Legacy safeguard only. Current post copy and campaign planning live in the private writing repository.
 # Ignore rules do not protect tracked files.
 /local/linkedin/
+
+# Local reproductions of the fictional manager packet; the reviewed example lives under examples/.
+/out/manager-review*/
 # Browser snapshots and console captures may contain private research/context.
 /.playwright-mcp/
 # The description quickstart's generated local packets are not publication inputs.
