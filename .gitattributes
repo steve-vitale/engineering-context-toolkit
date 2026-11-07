@@ -200,3 +200,6 @@ data/te_pid_layout.json text eol=lf
 
 # Document-text example: generated samples are hashed into expected outputs compared byte for byte.
 /examples/document-text/** text eol=lf
+
+# Override the general CAD text policy for exact retained native diagnostic bytes.
+/examples/cad-handoff/native/diagnostic/** -text
