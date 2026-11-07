@@ -7720,3 +7720,9 @@ The first clean-checkout CI passed 88/89 programs and failed the corpus freshnes
 the own-drawing README's clone URL changed a pinned row-3 input. Re-ran only row 3 / own-drawing-extraction:
 it still passes with 100 items and 345 links. Refreshed its actual run receipt and matrix page; all 95 declared
 cell bindings verify locally. The other 94 cell records were retained rather than assigning them new runs.
+
+That matrix receipt/page change also invalidates the exact-output independent-review badge for the matrix.
+The next CI run caught the stale feature-catalog rendering; regenerated it and updated current status to
+22/29 reviewed examples. The earlier review remains recorded with changed outputs, rather than self-renewed.
+The five-test feature-catalog program passes locally. Moved the two short self-service case replays before
+the long full-suite step so their own failures surface promptly in CI.

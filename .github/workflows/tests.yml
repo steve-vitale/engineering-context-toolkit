@@ -22,15 +22,15 @@ jobs:
       # Rebuild the gateway artifacts from source (the build reproduces the committed project ZIP byte for byte).
       - name: Generate current offline gateway artifacts
         run: python scripts/ignition/build_gateway.py --write-only
+      - name: Reproduce the fictional manager handoff without optional packages
+        run: python -S examples/manager-review/reproduce.py --out "$RUNNER_TEMP/manager-review"
+      - name: Exercise agent self-service preparation and saved public drawing route
+        run: python -S examples/agent-first-use/reproduce.py --out "$RUNNER_TEMP/agent-first-use"
       # All tests run offline after setup; OPEN100 drawings/keys are committed.
       - name: Run full cached-data suite
         run: python scripts/run_tests.py --full
       - name: Re-score registered corpus and model comparisons offline
         run: python scripts/benchmark.py --registry benchmarks/registry.json
-      - name: Reproduce the fictional manager handoff without optional packages
-        run: python -S examples/manager-review/reproduce.py --out "$RUNNER_TEMP/manager-review"
-      - name: Exercise agent self-service preparation and saved public drawing route
-        run: python -S examples/agent-first-use/reproduce.py --out "$RUNNER_TEMP/agent-first-use"
   snapshot-mcp:
     runs-on: ubuntu-latest
     steps:

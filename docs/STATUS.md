@@ -42,7 +42,9 @@ Offline publication checks match
 Pipeline freshness remains **50/52**: manual `te.pid_live` and `te.replay` receipts are stale.
 Saved predictions regenerate 23 matching tables and seven with documented historical formatting adjustments;
 five earlier diagnostic tables still lack predictions. The feature catalog has **29 features**, of which
-**23 have independently reviewed example outputs**; the new CAD and photo examples still need independent review.
+**22 have current independently reviewed example outputs**; the generalization-matrix review is stale after
+the selected intake receipt refresh. Its numerical results are unchanged. The new CAD and photo examples still
+need independent review.
 Neither a passing software test nor a matching source hash establishes an accepted engineering conclusion.
 
 The coherence audit corrected [core graph reduction](GRAPH_EXPORT.md#two-profiles-the-full-record-and-the-part-a-change-system-needs): connections stay
