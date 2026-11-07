@@ -145,3 +145,18 @@ at startup; it does not provide a shared company knowledge service.
 For individual tool evidence use [FEATURES.md](FEATURES.md). For results use [RESULTS.md](RESULTS.md).
 The [demo deliverables](DELIVERABLES.md) compare TE and OPEN100 research outputs; they do not promise those
 screens, tours or isolation mockups for a new plant.
+
+## Bounded editable CAD exchange
+
+[CAD handoff](../examples/cad-handoff/README.md) uses `cad_handoff.py` on a declared DXF block-attribute profile.
+It retains the original, compares a proposed attribute edit on readback and emits unverified attribute context
+(`cad-context-1`) and candidate CSV. These are not native DWG/intelligent-P&ID project exports.
+
+The tutorial's explicit identity mapping projects the packet to a draft `one-map-sheet-1` with drawing-reference
+attributes. Normal `one_map.py build` and `changes` then produce before/proposed `twin-graph-2` snapshots and a
+revision report at the same mapped position. CAD attributes remain prefixed `cad_`, unverified and sourced;
+no pipe/control relationship or installed-state authority is inferred. The original DXF remains alongside the
+projection. This is an explicit one-way publication, not automatic or bidirectional synchronization.
+
+Native editor open/edit/save, opaque-content fidelity, receiving-company approval and subsequent accepted
+revision behavior remain to be qualified using the actual CAD tool/version and [acceptance plan](ACCEPTANCE.md).

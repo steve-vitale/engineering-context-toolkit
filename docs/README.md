@@ -28,6 +28,11 @@ identities, relationships, generated files or mapped data.
 
 ## Engineering work examples
 
+For a plant starting point, choose [maintenance reconciliation](MAINTENANCE_START.md) or
+[drawing recovery](DRAWING_RECOVERY.md), then inspect the [replacement handoff](../examples/maintenance-handoff/README.md).
+[Working together](WORK_WITH_ME.md) describes a bounded engagement; the [delivery roadmap](DELIVERY_ROADMAP.md)
+separates public software work from recipient and company-system acceptance.
+
 | Path | Type and what to learn | Use it on your records |
 |---|---|---|
 | [P&ID to model and review bundle](../examples/own-drawing/README.md) | **Tutorial using reusable tools:** run the supplied public sheet offline, inspect the draft assets, review sheet and exports. | Replace the image, extraction and drawing manifest, then review/enrich the resulting model. |

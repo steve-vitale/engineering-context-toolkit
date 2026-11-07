@@ -532,6 +532,10 @@
     "scripts/drawing_case.py": {
       "kind": "tool",
       "guide": "docs/CONTRIBUTE_A_PID.md"
+    },
+    "scripts/cad_handoff.py": {
+      "kind": "tool",
+      "guide": "examples/cad-handoff/README.md"
     }
   }
 }

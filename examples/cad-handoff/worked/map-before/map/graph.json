@@ -1,0 +1,301 @@
+{
+ "schema": "twin-graph-2",
+ "model_kind": "one_map",
+ "title": "Fictional CAD handoff reference",
+ "site": "S1",
+ "source_model": "site.json",
+ "nodes": [
+  {
+   "id": "S1",
+   "kind": "site",
+   "tag": "S1",
+   "name": "Fictional CAD handoff reference",
+   "aliases": [],
+   "status": "confirmed",
+   "attributes": [],
+   "source": {
+    "kind": "document",
+    "document": "site.json",
+    "note": "site file"
+   }
+  },
+  {
+   "id": "S1/DOC/PID-P1-CAD-FDV",
+   "kind": "document",
+   "tag": "PID-P1-CAD-FDV",
+   "name": "P&ID CAD-FDV",
+   "aliases": [],
+   "status": "confirmed",
+   "attributes": [],
+   "source": {
+    "kind": "document",
+    "document": "S1/DOC/PID-P1-CAD-FDV",
+    "revision": "c64f5ac8f53f",
+    "path": "sheet.json"
+   },
+   "class": "pid",
+   "document": {
+    "id": "PID-P1-CAD-FDV",
+    "revision": "c64f5ac8f53f",
+    "status": "draft",
+    "owner": "Engineering",
+    "department": "Engineering",
+    "doc_type": "pid",
+    "sha256": "9226a9b5c7c1995aeb0d5f96e7945963f184f4b957bc48696309f64d0d931658",
+    "path": "sheet.json"
+   }
+  },
+  {
+   "id": "S1/P1",
+   "kind": "plant",
+   "tag": "P1",
+   "name": "Fictional plant",
+   "aliases": [],
+   "status": "confirmed",
+   "attributes": [],
+   "source": {
+    "kind": "document",
+    "document": "site.json",
+    "note": "site file"
+   }
+  },
+  {
+   "id": "S1/P1/PAST1",
+   "kind": "unit",
+   "tag": "PAST1",
+   "name": "Fictional unit",
+   "aliases": [],
+   "status": "confirmed",
+   "attributes": [],
+   "source": {
+    "kind": "document",
+    "document": "site.json",
+    "note": "site file"
+   }
+  },
+  {
+   "id": "S1/P1/PAST1/FDV-2210",
+   "kind": "instrument",
+   "tag": "FDV-2210",
+   "name": null,
+   "aliases": [],
+   "status": "unverified",
+   "attributes": [
+    {
+     "name": "cad_ict_id",
+     "value": "S1/P1/PAST1/FDV-2210",
+     "status": "unverified",
+     "source": {
+      "kind": "drawing",
+      "document": "S1/DOC/PID-P1-CAD-FDV",
+      "sheet": "CAD-FDV",
+      "revision": "c64f5ac8f53f",
+      "path": "sheet.json"
+     }
+    },
+    {
+     "name": "cad_insert_handle",
+     "value": "3A",
+     "status": "unverified",
+     "source": {
+      "kind": "drawing",
+      "document": "S1/DOC/PID-P1-CAD-FDV",
+      "sheet": "CAD-FDV",
+      "revision": "c64f5ac8f53f",
+      "path": "sheet.json"
+     }
+    },
+    {
+     "name": "cad_model",
+     "value": "SRC-2",
+     "status": "unverified",
+     "source": {
+      "kind": "drawing",
+      "document": "S1/DOC/PID-P1-CAD-FDV",
+      "sheet": "CAD-FDV",
+      "revision": "c64f5ac8f53f",
+      "path": "sheet.json"
+     }
+    },
+    {
+     "name": "cad_serial",
+     "value": "UNKNOWN",
+     "status": "unverified",
+     "source": {
+      "kind": "drawing",
+      "document": "S1/DOC/PID-P1-CAD-FDV",
+      "sheet": "CAD-FDV",
+      "revision": "c64f5ac8f53f",
+      "path": "sheet.json"
+     }
+    },
+    {
+     "name": "cad_size",
+     "value": "DN50",
+     "status": "unverified",
+     "source": {
+      "kind": "drawing",
+      "document": "S1/DOC/PID-P1-CAD-FDV",
+      "sheet": "CAD-FDV",
+      "revision": "c64f5ac8f53f",
+      "path": "sheet.json"
+     }
+    },
+    {
+     "name": "cad_source_sha256",
+     "value": "c64f5ac8f53f7f35ed0f119abdc28c1e11eb5c7cc28011ddaf079940cfee2b7d",
+     "status": "unverified",
+     "source": {
+      "kind": "drawing",
+      "document": "S1/DOC/PID-P1-CAD-FDV",
+      "sheet": "CAD-FDV",
+      "revision": "c64f5ac8f53f",
+      "path": "sheet.json"
+     }
+    },
+    {
+     "name": "cad_tag",
+     "value": "FDV-2210",
+     "status": "unverified",
+     "source": {
+      "kind": "drawing",
+      "document": "S1/DOC/PID-P1-CAD-FDV",
+      "sheet": "CAD-FDV",
+      "revision": "c64f5ac8f53f",
+      "path": "sheet.json"
+     }
+    },
+    {
+     "name": "cad_vendor_note",
+     "value": "retain this unfamiliar attribute",
+     "status": "unverified",
+     "source": {
+      "kind": "drawing",
+      "document": "S1/DOC/PID-P1-CAD-FDV",
+      "sheet": "CAD-FDV",
+      "revision": "c64f5ac8f53f",
+      "path": "sheet.json"
+     }
+    }
+   ],
+   "source": {
+    "kind": "drawing",
+    "document": "S1/DOC/PID-P1-CAD-FDV",
+    "sheet": "CAD-FDV",
+    "revision": "c64f5ac8f53f",
+    "path": "sheet.json"
+   },
+   "scope": "S1/P1/PAST1",
+   "owner": "Engineering",
+   "listed_in": [],
+   "appearances": [
+    {
+     "kind": "drawing",
+     "document": "S1/DOC/PID-P1-CAD-FDV",
+     "sheet": "CAD-FDV",
+     "revision": "c64f5ac8f53f",
+     "path": "sheet.json",
+     "printed": {
+      "cad_ict_id": "S1/P1/PAST1/FDV-2210",
+      "cad_insert_handle": "3A",
+      "cad_model": "SRC-2",
+      "cad_serial": "UNKNOWN",
+      "cad_size": "DN50",
+      "cad_source_sha256": "c64f5ac8f53f7f35ed0f119abdc28c1e11eb5c7cc28011ddaf079940cfee2b7d",
+      "cad_tag": "FDV-2210",
+      "cad_vendor_note": "retain this unfamiliar attribute"
+     }
+    }
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "id": "contains:S1->S1/P1",
+   "type": "contains",
+   "from": "S1",
+   "to": "S1/P1",
+   "status": "confirmed",
+   "direction": null,
+   "source": {
+    "kind": "document",
+    "document": "site.json",
+    "note": "site file"
+   },
+   "attributes": []
+  },
+  {
+   "id": "contains:S1/P1->S1/P1/PAST1",
+   "type": "contains",
+   "from": "S1/P1",
+   "to": "S1/P1/PAST1",
+   "status": "confirmed",
+   "direction": null,
+   "source": {
+    "kind": "document",
+    "document": "site.json",
+    "note": "site file"
+   },
+   "attributes": []
+  },
+  {
+   "id": "contains:S1/P1/PAST1->S1/P1/PAST1/FDV-2210",
+   "type": "contains",
+   "from": "S1/P1/PAST1",
+   "to": "S1/P1/PAST1/FDV-2210",
+   "status": "unverified",
+   "direction": null,
+   "source": {
+    "kind": "drawing",
+    "document": "S1/DOC/PID-P1-CAD-FDV",
+    "sheet": "CAD-FDV",
+    "revision": "c64f5ac8f53f",
+    "path": "sheet.json"
+   },
+   "attributes": []
+  },
+  {
+   "id": "covers:S1/DOC/PID-P1-CAD-FDV->S1/P1/PAST1",
+   "type": "covers",
+   "from": "S1/DOC/PID-P1-CAD-FDV",
+   "to": "S1/P1/PAST1",
+   "status": "confirmed",
+   "direction": null,
+   "source": {
+    "kind": "document",
+    "document": "S1/DOC/PID-P1-CAD-FDV"
+   },
+   "attributes": []
+  }
+ ],
+ "questions": [],
+ "events": [],
+ "not_exported": [],
+ "loops": [],
+ "coverage": {
+  "sources": [
+   {
+    "id": "PID-P1-CAD-FDV",
+    "register": "pid",
+    "scopes": [
+     "S1/P1/PAST1"
+    ],
+    "owner": "Engineering"
+   }
+  ],
+  "relations_checked": {
+   "links": 4,
+   "checked": 3,
+   "unchecked_no_class": 1,
+   "do_not_fit": 0
+  }
+ },
+ "counts": {
+  "nodes": 5,
+  "edges": 4,
+  "claims": 8,
+  "conflicts": 0,
+  "questions": 0,
+  "events": 0
+ }
+}

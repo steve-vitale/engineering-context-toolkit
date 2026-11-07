@@ -1,0 +1,10 @@
+{
+  "kind": "authored fictional fixture",
+  "license": "repository license",
+  "source_sha256": "c64f5ac8f53f7f35ed0f119abdc28c1e11eb5c7cc28011ddaf079940cfee2b7d",
+  "stable_id": "S1/P1/PAST1/FDV-2210",
+  "basis": "existing fictional pasteurizer replacement scenario",
+  "note": "Geometry, baseline CAD model and UNKNOWN serial were authored for this exchange exercise; not extracted from a CAD project, photograph or plant. No connectivity is inferred.",
+  "writer": "ezdxf 1.4.5",
+  "script": "examples/cad-handoff/make_fixture.py"
+}

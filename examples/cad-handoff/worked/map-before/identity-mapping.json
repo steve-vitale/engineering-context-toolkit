@@ -1,0 +1,13 @@
+{
+  "site": "S1",
+  "plant": "P1",
+  "unit": "PAST1",
+  "note": "Authored mapping for this fictional position only; not an inferred physical-equipment match.",
+  "assets": [
+    {
+      "id": "S1/P1/PAST1/FDV-2210",
+      "tag": "FDV-2210",
+      "section": "instruments"
+    }
+  ]
+}

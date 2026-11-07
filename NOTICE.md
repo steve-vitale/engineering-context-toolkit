@@ -111,3 +111,18 @@ all creators and exact archive/member hashes. The originals are copied byte-for-
 columns, derive within-experiment elapsed time and author a calculation plan/key. This is measured laboratory
 data with upstream interpolation and documented anomalies assessed negligible by its authors, not plant or
 fermentation acceptance. No author endorsement is implied. Toolkit helper code remains MIT.
+
+## Public nameplate photographs
+
+`examples/photo-to-record/source/motor-nameplate.jpg` is tony_duell's **Motor Nameplate**, 3 July 2018,
+[via Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Motor_Nameplate.jpg), licensed
+[CC BY 2.0](https://creativecommons.org/licenses/by/2.0/). The original is unchanged; grayscale/contrast crops
+in the worked experiment are adaptations under the same license with the recipe retained.
+
+`examples/photo-to-record/source/industrial-motor.jpg` is Denis Apel's **Typenschild-Drehstrom-Asynchronmaschine
+apel**, [via Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Typenschild-Drehstrom-Asynchronmaschine_apel.jpg),
+licensed [CC BY-SA 2.0 Germany](https://creativecommons.org/licenses/by-sa/2.0/de/deed.en). The original is unchanged.
+Photo-derived transcription/OCR artifacts retain their source attribution and respective photo license;
+industrial derivatives are CC BY-SA 2.0 Germany. Helper software retains the repository license.
+Neither author endorses the toolkit. Manifests pin original bytes and distinguish assistant-authored unreviewed
+candidates from verified installed equipment information.

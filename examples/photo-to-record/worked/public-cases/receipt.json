@@ -1,0 +1,73 @@
+{
+  "source_sha256": "3e1d9520af96ee9a9b7937a12e08e82a25297b8f305715ae708408a5dc108a4c",
+  "industrial_source_sha256": "4ecc369d57a5119cab7dbeb5626e01bdfbf80ec486942c0b8b52a49d6afc6275",
+  "engine": "tesseract v5.4.0.20240606",
+  "preprocessing": {
+    "crop_xyxy": [
+      560,
+      1050,
+      3560,
+      1780
+    ],
+    "grayscale": true,
+    "contrast": 2
+  },
+  "exposure": "source and visual candidate readings exposed during development; not held out",
+  "runs": [
+    {
+      "label": "whole-psm3",
+      "input_name": "motor-nameplate.jpg",
+      "input_sha256": "3e1d9520af96ee9a9b7937a12e08e82a25297b8f305715ae708408a5dc108a4c",
+      "psm": 3,
+      "exit": 0,
+      "bytes_out": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "crop-psm3",
+      "input_name": "nameplate-crop.png",
+      "input_sha256": "309225a7ff53f3abdb5572edb13c24325be8490d5a5558defd06e08f3d354785",
+      "psm": 3,
+      "exit": 0,
+      "bytes_out": 25,
+      "output_sha256": "e30cd9f31f03c124ce52c0e9ef259e2be18ff3a58c75efd6ecf5451e053b6071"
+    },
+    {
+      "label": "crop-psm6",
+      "input_name": "nameplate-crop.png",
+      "input_sha256": "309225a7ff53f3abdb5572edb13c24325be8490d5a5558defd06e08f3d354785",
+      "psm": 6,
+      "exit": 0,
+      "bytes_out": 16,
+      "output_sha256": "4c50f455e38e1777d297235dafddd0bb1f473272a11d5dfb06fe26454836f5b0"
+    },
+    {
+      "label": "crop-psm11",
+      "input_name": "nameplate-crop.png",
+      "input_sha256": "309225a7ff53f3abdb5572edb13c24325be8490d5a5558defd06e08f3d354785",
+      "psm": 11,
+      "exit": 0,
+      "bytes_out": 199,
+      "output_sha256": "b7bfffbe20dbf3eab9ca023b25b6205179a64b244a9502dd9a2cfe26b284e279"
+    },
+    {
+      "label": "industrial-psm3",
+      "input_name": "industrial-motor.jpg",
+      "input_sha256": "4ecc369d57a5119cab7dbeb5626e01bdfbf80ec486942c0b8b52a49d6afc6275",
+      "psm": 3,
+      "exit": 0,
+      "bytes_out": 36,
+      "output_sha256": "81a83ade862c33d5ffeb910972ab409a5ac6b109e77339a9c322f93d3242bdc9"
+    },
+    {
+      "label": "industrial-psm6",
+      "input_name": "industrial-motor.jpg",
+      "input_sha256": "4ecc369d57a5119cab7dbeb5626e01bdfbf80ec486942c0b8b52a49d6afc6275",
+      "psm": 6,
+      "exit": 0,
+      "bytes_out": 182,
+      "output_sha256": "17741a29e8bf19433261613dfcf7f0d44d18fd840b553a641e06d97e75971b6d"
+    }
+  ],
+  "note": "Nonempty OCR and exit 0 do not establish correct fields or installed identity."
+}

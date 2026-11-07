@@ -14,8 +14,8 @@ data/external/pid2graph/PID2Graph/Complete/*
 !data/external/pid2graph/PID2Graph/Complete/PID2Graph OPEN100 scan-L3/
 .env
 .venv/
-# Local LinkedIn copy, post plans and unpublished promotional assets.
-# Prefer a private folder outside the checkout; this rule does not protect tracked files.
+# Legacy safeguard only. Current post copy and campaign planning live in the private writing repository.
+# Ignore rules do not protect tracked files.
 /local/linkedin/
 # Browser snapshots and console captures may contain private research/context.
 /.playwright-mcp/

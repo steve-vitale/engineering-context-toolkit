@@ -1,0 +1,32 @@
+{
+  "extractor": "extract_text",
+  "version": "1",
+  "options": {
+    "ocr": "auto"
+  },
+  "files": [
+    {
+      "file": "examples/photo-to-record/worked/nameplate-crop.png",
+      "sha256": "309225a7ff53f3abdb5572edb13c24325be8490d5a5558defd06e08f3d354785",
+      "bytes": 786750,
+      "format": "png",
+      "status": "ok (ocr)",
+      "extractor": "extract_text 1",
+      "engine": "tesseract",
+      "engine_version": "5.4.0.20240606",
+      "segments": 1,
+      "characters": 13,
+      "warnings": [],
+      "ocr": {
+        "engine": "tesseract 5.4.0.20240606 (eng)",
+        "mean_word_confidence": {
+          "page 1": 38.7
+        }
+      },
+      "applied": [
+        "ocr"
+      ],
+      "out": "nameplate-crop.png.txt"
+    }
+  ]
+}

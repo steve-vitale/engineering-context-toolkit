@@ -1,0 +1,32 @@
+{
+  "extractor": "extract_text",
+  "version": "1",
+  "options": {
+    "ocr": "auto"
+  },
+  "files": [
+    {
+      "file": "examples/photo-to-record/source/industrial-motor.jpg",
+      "sha256": "4ecc369d57a5119cab7dbeb5626e01bdfbf80ec486942c0b8b52a49d6afc6275",
+      "bytes": 818574,
+      "format": "jpg",
+      "status": "ok (ocr)",
+      "extractor": "extract_text 1",
+      "engine": "tesseract",
+      "engine_version": "5.4.0.20240606",
+      "segments": 1,
+      "characters": 31,
+      "warnings": [],
+      "ocr": {
+        "engine": "tesseract 5.4.0.20240606 (eng)",
+        "mean_word_confidence": {
+          "page 1": 75.1
+        }
+      },
+      "applied": [
+        "ocr"
+      ],
+      "out": "industrial-motor.jpg.txt"
+    }
+  ]
+}

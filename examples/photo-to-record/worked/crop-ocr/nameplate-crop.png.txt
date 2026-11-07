@@ -1,0 +1,11 @@
+# extract_text 1 | file: nameplate-crop.png | sha256: 309225a7ff53f3abdb5572edb13c24325be8490d5a5558defd06e08f3d354785 | format: png | status: ok (ocr) | engine: tesseract 5.4.0.20240606
+# ocr: engine: tesseract 5.4.0.20240606 (eng) | mean word confidence: page 1 38.7
+
+## page 1
+|
+\
+’
+
+|
+is
+4

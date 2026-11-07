@@ -1,0 +1,8 @@
+field,candidate,units,status,source,locator,interpretation_limit
+manufacturer,ELECTROLUX,,needs independent review,motor-nameplate.jpg,"pixels x=650..3400 y=1080..1320",Printed brand does not establish current manufacturer support
+type,KER4,,needs independent review,motor-nameplate.jpg,"pixels x=850..2230 y=1280..1500",Printed after TYP; not assumed to identify a unique physical asset
+voltage,110,V,needs independent review,motor-nameplate.jpg,"pixels x=2300..3180 y=1250..1490",Plate marking only; not measured installed voltage
+plate_number,2501202,,needs independent review,motor-nameplate.jpg,"pixels x=1450..2820 y=1490..1680",Printed after N°; serial versus part number meaning unresolved
+plant_tag,,,unknown,motor-nameplate.jpg,whole image,No site tag established
+site_unit,,,unknown,motor-nameplate.jpg,whole image,No plant association established
+capture_to_asset_link,,,unknown,motor-nameplate.jpg,whole image,Photographer description is not a plant identity ruling

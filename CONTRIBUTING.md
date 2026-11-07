@@ -153,7 +153,8 @@ the starting input and prerequisites, the shortest runnable or manual path, expe
 known limits. Label examples, reusable tools and proposed work explicitly. Link the guide from the input selector
 or documentation map; adding another script alone does not make its workflow discoverable.
 
-Keep LinkedIn post copy, campaign plans and unpublished promotional assets in a private folder outside the
-checkout, or in the Git-ignored `local/linkedin/` folder. Ignore rules do not remove already tracked content or
-provide access control. Public diagrams, tutorial screenshots and their verification belong with the example
+Steve's post copy, campaign plans and unpublished promotional assets belong in the dedicated private writing
+repository, outside this checkout. This repository does not own a publishing schedule or post drafts. The legacy
+`local/linkedin/` ignore remains a safeguard, not a publishing workspace or access control. Public diagrams,
+tutorial screenshots and their verification belong with the example
 they explain; `drafts/` contains tracked visualization prototypes, not a private publishing workspace.

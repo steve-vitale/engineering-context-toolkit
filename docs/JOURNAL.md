@@ -7596,3 +7596,47 @@ See [the investigation tutorial](../examples/batch-analysis/investigation/README
 [prospective criteria](../examples/batch-analysis/investigation/ACCEPTANCE.json),
 [actual output manifest](../examples/batch-analysis/investigation/PROVENANCE.json) and
 [retained comparison-basis failure](../examples/batch-analysis/record-joins/history/before-comparison-basis/).
+
+## 165. Make the drawing-to-map fixture portable
+
+2026-11-06. Reproduced issue #7 locally by changing the committed sheet from CRLF to LF. Its exact-byte hash
+changed from `a23a1786...` to `c5830aa2...`, reproducing the Linux graph assertion. Pin the fixture tree to LF and
+regenerate the expected graph; retain exact runtime hashes rather than normalizing every user's source.
+All 15 conversion tests then pass; represented counts and reader output are unchanged. The prior assertion and
+hashes remain in issue #7/history. Exact-head Linux CI is a separate verification recorded with this delivery.
+
+## 166. Qualify a bounded CAD attribute exchange
+
+2026-11-06. Added `cad_handoff.py` for explicit hash/before-value-bound DXF attribute proposals. Original bytes,
+stable IDs and unfamiliar attributes remain; separate before/proposed context snapshots avoid silent graph or
+company-system writes. Six regression methods include planted geometry/layer/foreign-attribute/XDATA losses,
+stale sources and plans, duplicate/identity edits and output overwrite refusal. The declared decoded entity and
+header surface is compared on readback. The writer's two metadata values are reported separately; nested child
+entities are compared in their own rows instead of counting their edit twice in the parent's export.
+
+The fixture is authored from the existing fictional replacement scenario, not extracted from plant CAD. The
+passing exchange uses ezdxf 1.4.5 on both sides; no native CAD editor or intelligent-P&ID database acceptance,
+field truth, opaque-section preservation or automatic synchronization is established. The owning CAD receiver
+must still complete the documented open/edit/save/readback and next-revision exercise.
+
+An explicit tutorial mapping also projects before/proposed CAD attributes into actual one-map graphs at the
+same fictional position. Original DXFs, source hashes and earlier map remain; the changed reference values are
+unverified and prefixed `cad_`, with no inferred pipe/control relationships or installed-record overwrite.
+An unmapped identity or changed tag is refused rather than guessed. Saved map diff retains the proposed revision.
+
+## 167. Retain nameplate evidence and OCR failures
+
+2026-11-06. Retained two openly licensed Commons originals: an ABB industrial-machine plate attributed by its
+uploader to Berlin-Moabit, and an Electrolux recorder motor. Manifests retain attribution, license and exact bytes.
+Six Tesseract 5.4.0.20240606 development attempts include every whole-image/crop/segmentation outcome. Recorder
+whole-image PSM3 found no text; crop variants remained unreliable. Industrial PSM3 omitted the numeric data
+despite mean word confidence 75.1; PSM6 also remains incorrect/incomplete. Nonempty text is not field acceptance.
+
+Visual candidate sheets retain locators, units and unknown asset association; the plate number is not promoted
+to a verified unique installed identity. Sources and candidate readings were exposed during development, with
+no independent human key or field-accuracy claim. Four evidence tests bind originals, all attempt outputs and
+the CAD packet. No actual human usefulness, company acceptance or measured savings closes N052/N062/N063.
+
+The new maintenance/drawing starting guides reuse existing tools, and the replacement walkthrough reuses the
+fictional pasteurizer. Public contact goes only to Steve's LinkedIn. Active post copy/campaign planning belongs
+in the separate private writing repository; no post, outreach or schedule is published by this delivery.

@@ -1623,6 +1623,57 @@
       "time": "Seconds per document",
       "you_get": "One text file per document with a locator before each piece (page 3, paragraph 12, table 2 row 4, sheet 'PM plan' cell B7, slide 4, line 9) and a manifest with each file's SHA-256, status and warnings. Embedded Office/PDF files are read with their place (embedded 'spec.pdf' (in table 3) page 2). Scanned pages are reported as needing OCR and legacy .doc/.xls with a conversion step, unless the optional --ocr auto or --convert-legacy add-ons and their programs are used; --pdf-layout and --excel-display are further opt-ins. Prototype on fictional and public files; OCR and conversion tested with stand-in programs and, where installed, the real Tesseract, Poppler and LibreOffice (OCR accuracy measured on rendered and scanned public pages); no plant acceptance",
       "why": "Procedures, PHAs, CAPAs and work orders name the same equipment as the P&ID and the instrument index, but they live in Office files and PDFs that a text search cannot see. A locator on every piece lets a reviewer open the document at the place a tag was found."
+    },
+    {
+      "id": "cad-handoff",
+      "category": "export",
+      "title": "Source-retaining DXF attribute handoff",
+      "tools": [
+        "scripts/cad_handoff.py"
+      ],
+      "guide": "examples/cad-handoff/README.md",
+      "example_outputs": [
+        "examples/cad-handoff/source/PROVENANCE.json",
+        "examples/cad-handoff/source/edit-plan.json",
+        "examples/cad-handoff/worked/comparison.json",
+        "examples/cad-handoff/worked/cad_context.json",
+        "examples/cad-handoff/worked/candidate-context/cad_context.json",
+        "examples/cad-handoff/worked/map-change/changes.json"
+      ],
+      "tests": [
+        "scripts/test_cad_handoff.py",
+        "scripts/test_delivery_examples.py"
+      ],
+      "job": "Retain a drawing and inspect proposed equipment-attribute edits before a controlled handoff",
+      "you_need": "A DXF in the declared block-attribute profile, stable ICT_ID/TAG values, ezdxf and an explicit hash-bound edit plan",
+      "time": "No human-effort measurement; library operations on one small fictional fixture only",
+      "you_get": "Original bytes, declared decoded-entity/header comparison, proposed DXF and explicitly mapped draft one-map reference revisions; no inferred pipe relationships",
+      "why": "An editable drawing should retain identities and unfamiliar attributes rather than becoming only a picture. Native editor, intelligent-CAD database and company acceptance remain unrun."
+    },
+    {
+      "id": "photo-to-record",
+      "category": "extract",
+      "title": "Public nameplate candidates with retained OCR failures",
+      "tools": [
+        "scripts/extract_text.py"
+      ],
+      "guide": "examples/photo-to-record/README.md",
+      "example_outputs": [
+        "examples/photo-to-record/source/PROVENANCE.json",
+        "examples/photo-to-record/source/industrial-PROVENANCE.json",
+        "examples/photo-to-record/candidate-fields.csv",
+        "examples/photo-to-record/industrial-fields.csv",
+        "examples/photo-to-record/worked/public-cases/receipt.json"
+      ],
+      "tests": [
+        "scripts/test_delivery_examples.py",
+        "scripts/test_extract_text.py"
+      ],
+      "job": "Prepare source-linked field candidates from photos without inventing an installed equipment match",
+      "you_need": "Public originals for the example; permitted source/capture grouping, Tesseract for optional replay, and an independent field/identity reviewer for site use",
+      "time": "Human capture/review effort and field accuracy unmeasured",
+      "you_get": "Two attributed public photographs, visual field candidates awaiting independent review, six retained OCR attempts including failures, explicit unknown identity",
+      "why": "OCR can return plausible text while missing numeric equipment data. Original evidence, units, unreadable values and unconfirmed identity must survive record preparation."
     }
   ]
 }

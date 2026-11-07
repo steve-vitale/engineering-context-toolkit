@@ -1,0 +1,32 @@
+{
+  "extractor": "extract_text",
+  "version": "1",
+  "options": {
+    "ocr": "auto"
+  },
+  "files": [
+    {
+      "file": "examples/photo-to-record/source/motor-nameplate.jpg",
+      "sha256": "3e1d9520af96ee9a9b7937a12e08e82a25297b8f305715ae708408a5dc108a4c",
+      "bytes": 4534787,
+      "format": "jpg",
+      "status": "needs OCR",
+      "extractor": "extract_text 1",
+      "engine": "tesseract",
+      "engine_version": "5.4.0.20240606",
+      "segments": 0,
+      "characters": 0,
+      "warnings": [
+        "OCR found no text: page 1 of 1 (a blank page, or an image OCR could not read)"
+      ],
+      "ocr": {
+        "engine": "tesseract 5.4.0.20240606 (eng)",
+        "mean_word_confidence": {}
+      },
+      "applied": [
+        "ocr"
+      ],
+      "out": "motor-nameplate.jpg.txt"
+    }
+  ]
+}
