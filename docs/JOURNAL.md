@@ -7726,3 +7726,23 @@ The next CI run caught the stale feature-catalog rendering; regenerated it and u
 22/29 reviewed examples. The earlier review remains recorded with changed outputs, rather than self-renewed.
 The five-test feature-catalog program passes locally. Moved the two short self-service case replays before
 the long full-suite step so their own failures surface promptly in CI.
+
+## 171. Explain why SharePoint access does not require MCP
+
+2026-11-06. Steve asked what MCP adds when Copilot already has SharePoint access. Clarified the default in
+the README, agent and manager guides, company connectivity guide and MCP starter: use existing document
+retrieval/comparison first. Prepared toolkit reports and tables can remain in SharePoint. MCP is an optional
+named tool/record interface; the preparation, explicit identities, source links, comparison rules and upkeep
+supply the engineering meaning. Copilot can reason about relationships and compare records without MCP.
+
+The decision table separates document retrieval, prepared-record reuse, repeated typed lookups and separately
+implemented live-system operations. Existing connectors/APIs may already suffice. The current starter serves
+selected startup snapshots; it does not crawl SharePoint, inherit its permissions, fetch referenced originals,
+refresh, run analysis or query/write a CMMS/historian. Freshness/status comes from the prepared packet and
+explicit refresh, not the protocol. Company authorization and deployment remain separate implementation work.
+
+Read Microsoft's current organizational-grounding/SharePoint permission and Copilot Studio MCP documentation.
+Traced the declared starter methods and actually read P-1 and its relations through the application methods:
+the snapshot hash agrees and live=false. No SDK transport, model or tenant was exercised in that check.
+All 19 standard-library snapshot controls pass. No new connector, server behavior, model capability or plant
+acceptance is claimed; this is documentation of the existing choices and limits.

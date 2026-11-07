@@ -24,6 +24,50 @@ For a first pilot, choose a row in each of the next two tables, then follow
 [one question](#start-with-one-area-and-one-question). Service builders can continue to the
 [MCP implementation reference](#mcp-implementation-reference-for-itot).
 
+## If Copilot already reads SharePoint, why add MCP?
+
+**You do not need MCP just to find, summarize or compare documents Copilot can already retrieve.** Start with
+that existing route and a bounded question. “Access to all SharePoint” should mean the content available to
+that user in the enabled Copilot experience: Microsoft documents [permission-scoped organizational grounding](https://learn.microsoft.com/en-us/copilot/plan/microsoft-365-copilot-privacy)
+and [SharePoint agent source permissions](https://learn.microsoft.com/en-us/sharepoint/manage-access-agents-in-sharepoint).
+Access does not mean every relevant file was included in a particular answer; inspect the actual cited records.
+
+The toolkit's preparation and checking can still help: explicit asset identities, source-linked values,
+retained disagreements, change comparisons and dependent-answer status. Those results can be returned as
+readable reports or tables in SharePoint. Their value comes from the records, methods and upkeep, regardless
+of whether an assistant reads a file or calls a service.
+
+| What you need | Simplest starting route | What MCP could add |
+|---|---|---|
+| Find a manual or compare selected equipment/work-order records already in SharePoint | Use existing Copilot retrieval and check the cited revisions and rows. | Often nothing needed for this job. Copilot can compare supplied records without an MCP server. |
+| Reuse a reviewed asset table, conflict report or answer history | Publish the permitted readable results beside the controlled sources; retain exact machine-readable files when needed. | Optional named lookups into the same prepared records, rather than retrieving a report or assembling file excerpts for each request. |
+| Repeatedly request one exact asset, its typed relations or a retained answer's status/history | Use an existing adequate connector/API, or a service when repeated file handling is a demonstrated problem. | A standard tool interface with declared arguments/results, explicit IDs, snapshot identity and paging. The service supplies the behavior; MCP carries the call. |
+| Query current CMMS/historian information or perform a calculation/action in another system | Reuse an approved incumbent integration when available; otherwise scope the needed adapter and operation. | A possible interface to that separately implemented service. This repo's MCP starter supplies none of those live queries, calculations or writes. |
+
+For example, Copilot can compare a SharePoint equipment export with a closed replacement order and find the
+serial disagreement. If that becomes a repeated job, run the toolkit's comparison against selected versions
+and retain the result. Reading its report from SharePoint may remain sufficient. An MCP client can instead
+call `get_asset(asset_id)`, `get_relations(...)` or, with a selected context register, `get_context(question_id)`
+and `list_decisions(...)` to retrieve the already-prepared records. These calls do not run the comparison or
+create the engineering meaning. Copilot can also reason about relationships in documents; MCP's optional
+benefit here is an explicit, repeatable record/tool contract, not an exclusive ability to understand them.
+
+**Current implementation:** the [starter](../examples/internal-mcp/README.md) reads selected files at startup
+and serves bounded, read-only snapshot queries. It does not crawl SharePoint, fetch referenced originals,
+refresh itself, run the toolkit's analyses or connect to a live plant system. A snapshot response's hash identifies
+the loaded version; it does not establish that version is current or correct. Freshness and review information
+come from the prepared packet and its explicit refresh process, not from the MCP protocol.
+
+Microsoft's [Copilot Studio MCP documentation](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agent-extend-action-mcp)
+describes connecting declared tools and resources. That platform capability is separate from a deployed toolkit
+integration. An MCP service needs its own source authorization; this local starter does not inherit SharePoint
+permissions or provide per-user filtering. No company Copilot deployment is supplied here.
+
+**Decision rule:** keep using existing Copilot/SharePoint access until a specific recurring lookup or operation
+justifies a service and its maintenance. MCP is one optional interface alongside existing connectors and APIs;
+neither the first useful job nor the engineering context requires it. This distinction was checked against the
+linked Microsoft documentation and the starter implementation on 2026-11-06; no tenant was accessed.
+
 ## Choose the data path before the assistant
 
 First ask the source owner and IT/OT team: **May this content leave its current zone? May an approved cloud

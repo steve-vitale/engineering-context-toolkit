@@ -32,6 +32,11 @@ if I have not supplied records yet. Ask only what changes the next step.
 The [first-use walkthrough](examples/agent-first-use/README.md) shows ordinary export columns becoming a
 sourced finding, with no P&ID required for that comparison. Self-service use needs no contact with the author.
 
+**Already using Copilot with SharePoint?** Use that access for document questions and comparisons. Toolkit
+reports and tables can stay there too. [MCP is optional](docs/INTERNAL_CONNECTIVITY.md#if-copilot-already-reads-sharepoint-why-add-mcp):
+it exposes named queries into prepared records or separately implemented services. This repo's starter serves
+read-only snapshots; it does not search SharePoint, refresh sources or connect to a live CMMS/historian.
+
 ## Tools, tutorials and case studies
 
 | Choose a destination | What you get |
