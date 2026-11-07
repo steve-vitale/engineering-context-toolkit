@@ -2,54 +2,27 @@
 
 [![tests](https://github.com/steve-vitale/industrial-context-toolkit/actions/workflows/tests.yml/badge.svg)](https://github.com/steve-vitale/industrial-context-toolkit/actions/workflows/tests.yml)
 
-**Open source tools for starting a context map of your plant: the plant itself (site, plant, unit, system,
-equipment, and what's piped to, measures and controls what) with each team's records tied to it.** Every item keeps
-a pointer back to the document, revision and location it came from, and where two records disagree it goes to
-whoever owns that record instead of being quietly fixed.
+**Open source industrial engineering tools for building draft plant models, drawings and shared context from
+P&IDs, process descriptions, supported DEXPI exports and plant records.** Use them to review assets and controls,
+connect records and documents, follow revisions, analyze recorded process data, and prepare Ignition/PI staging
+files. Sources, review states and unresolved disagreements stay visible as the work moves between tools and people.
 
-**Start here, no install.** Pick one engineering question and the few records that answer it, then follow the
-[first-question guide](examples/first-pilot/README.md) by hand or with company-approved Copilot. You end up with a
-short note that says what the records support, what's still unknown, and who should look next.
+The repository also contains worked tutorials, assembled screen/replay/3D demonstrations and reproducible
+task/model benchmarks. These support different parts of a maintained digital twin and engineering knowledge base;
+the [supported workflows](docs/WORKFLOWS.md) state which inputs and outputs connect today.
 
-**One path.** Read every P&ID sheet of the unit (the [drawing reader](examples/own-drawing/README.md), converted
-into a sheet read by `one_map.py sheet-from-prediction`); line the read up against whatever maintenance equipment
-export, instrument index and loop list exist, so matches get spot checks and anything in one but not the other goes
-to review; where none exist yet, the P&ID read becomes their unverified draft; compare values between datasheets and
-those records (the P&ID owns tags, connectivity and the control scheme, not ratings); people work one review queue,
-safety items first; a P&ID revision re-reads only that sheet. Optional steps depend on your goal. See
-[one map](docs/ONE_MAP.md#the-path), a [two-plant example](examples/one-map/README.md) where Plant 2 has no records
-yet, and [one public P&ID sheet read end to end](examples/drawing-to-map/README.md). A
-[DEXPI export](examples/from-dexpi-xml/README.md) or a [written process description](examples/from-description/README.md)
-builds the draft asset model without reading an image.
+**Status:** prototypes tested on public and fictional inputs. Outputs need engineering review; site accuracy,
+live mappings and receiving-platform acceptance need evidence from your environment. The
+[feature reference](docs/FEATURES.md) distinguishes examples with an independent agent/model review from those
+awaiting one; those reviews are not engineering sign-offs.
 
-**Scope today.** Engineering-first. Equipment and instrument records (maintenance equipment export, instrument
-index, loop list) and datasheets come in as structured CSV files; production, quality and safety records
-(procedures, HACCP plans and CAPAs, lockout procedures, hazard reviews) come in as documents that cover or mention
-tags. There is no special handling yet for critical control points or isolation
-points.
-
-**Keep it current.** The [context register](docs/CONTEXT_REGISTER.md) keeps each answer tied to the documents it
-relied on. When one of them is revised, refreshing reopens the answers that depended on it.
-
-**Bring a better reader.** Today's drawing reader drafts; it isn't the best digitizer out there
-([what already exists](docs/PRIOR_ART.md)). Everything around it is built to work with any reader: sources, a
-risk-sorted review queue, disagreements kept visible, sourced exports. A trained model or a vendor tool that outputs
-the documented format gets all of it, and the [vendor-evaluation kit](examples/vendor-evaluation/README.md) scores
-any reader on your own sheets. Improving the reader is the most welcome contribution: to plug one in, see
-[PLUG_IN_A_READER.md](docs/PLUG_IN_A_READER.md); results so far are on the [reader leaderboard](benchmarks/LEADERBOARD.md).
-[Adding a public drawing with a verified key](docs/CONTRIBUTE_A_PID.md) helps too, so every reader is measured on more sheets.
-
-These are prototypes tested on public and fictional drawings. Outputs are drafts for engineering review, not plant
-truth. The [demo series](docs/DEMO_SERIES.md) shows how the pieces connect.
-
-For a team assignment, the [organization starting guide](docs/ORGANIZATION_START.md) distinguishes ready-to-run
-steps, source preparation and continuing ownership. [Dependencies](docs/DEPENDENCIES.md) vary by route.
+## Tools, tutorials and case studies
 
 | Choose a destination | What you get |
 |---|---|
-| **Tools — use your inputs** | [Choose a job below](#start-wherever-you-are); the [format map](docs/WORKFLOWS.md) states accepted inputs and generated outputs. |
+| **Tools — use your inputs** | Draft models/drawings, review and revision tools, graph/context, recorded-data analysis, platform staging and bounded read-only MCP. [Choose a job below](#start-wherever-you-are); the [format map](docs/WORKFLOWS.md) states the file contracts. |
 | **Tutorials — learn, then substitute your records** | [P&ID to review bundle](examples/own-drawing/README.md), [description to draft drawing/model](examples/from-description/README.md), or [DEXPI to model](examples/from-dexpi-xml/README.md). |
-| **Case studies and evaluation — inspect the evidence** | [TE/OPEN100 assembled examples](docs/DELIVERABLES.md), [results](docs/RESULTS.md), and [workflow/model comparisons](docs/README.md#reference-and-research-records). |
+| **Case studies and evaluation — inspect the evidence** | [TE/OPEN100 screens, recorded replay and 3D orientation examples](docs/DELIVERABLES.md), [results and limits](docs/RESULTS.md), and [task/model benchmarks](benchmarks/README.md). The assembled demos retain their case-specific inputs and limits. |
 
 ## Start wherever you are
 
@@ -60,12 +33,69 @@ These tools accept your own records in their documented formats. Choose the work
 | Build your plant's first draft asset model | [P&ID image](examples/own-drawing/README.md) or [DEXPI XML](examples/from-dexpi-xml/README.md) | Sourced assets and represented connections, review material, graph and platform-staging routes. |
 | Build from process knowledge | [Written description](examples/from-description/README.md) | An authored, source-linked model and layout, checked locally and rendered as draft P&ID sheets and exports. |
 | Review and enrich the model | [Sourced statements](docs/STATEMENT_REVIEW.md) · [model correction and mapping](docs/REVIEW_LOOP.md) | Checkable claims, supported local corrections and supplied signal mappings. |
-| Investigate controls or performance | [Loop list audit](examples/loop-audit/README.md) · [question engine](docs/OPPORTUNITY_SCREEN.md) · [process data and analytics](docs/PROCESS_ANALYTICS.md) | Explicit discrepancies, evidence requests, recorded-data bands and phase calculations beside the twin. |
+| Investigate controls or performance | [Loop list audit](examples/loop-audit/README.md) · [question engine](docs/OPPORTUNITY_SCREEN.md) | Explicit discrepancies, investigation questions and evidence requests tied to represented assets. |
+| Analyze or replay recorded process data | [Historian CSV](examples/historian-csv/README.md) · [batch analysis](examples/batch-analysis/README.md) · [analytics guide](docs/PROCESS_ANALYTICS.md) | Normal bands, phase calculations, selected record joins and a read-only OPC UA replay route for local tests. |
 | Estimate a measured change | [Impact calculation](examples/impact-estimate/README.md) | First-draft energy, cost and CO2e calculations with measurements, assumptions and constants visible. |
 | Keep and exchange engineering context | [Context register](docs/CONTEXT_REGISTER.md) · [read-only MCP](examples/internal-mcp/README.md) · [owned team packets](examples/team-context/README.md) | Source dependencies, retained answers and selected snapshots to hand to the next team or company system. |
-| Connect plant records and documents site-wide | [One map](docs/ONE_MAP.md) · [two-plant example](examples/one-map/README.md) · [a read P&ID on the map](examples/drawing-to-map/README.md) | One graph of P&IDs, equipment and instrument records, datasheets and documents; disagreements as conflicts routed to each record's owner. |
+| Connect plant records and documents site-wide | [One map](docs/ONE_MAP.md) · [document text extraction](docs/DOCUMENT_TEXT.md) · [a read P&ID on the map](examples/drawing-to-map/README.md) | One graph of P&IDs, equipment and instrument records, datasheets and documents; conflicts written to owner-specific review queues. |
 | Keep the map current through plant routines | [Running the map](docs/RUNNING_THE_MAP.md) · [an MOC on the map](examples/one-map/README.md#the-pasteurizer-through-an-moc-pid-revision-moc-open-and-close-work-order-walkdown) | P&ID revision change reports, MOC-open affected records by owner and the closeout check, work order closeout, walkdown rulings, HACCP/PHA/criticality change flags. |
+| Prepare platform files and supplied point mappings | [Generation/export contracts](docs/WORKFLOWS.md) · [review and mapping](examples/review-and-mapping/README.md) · [PI mapping](docs/PI_MAPPING.md) | Draft Ignition tag files, PI AF staging and explicit mapping records. Review signal identities and verify acceptance in the receiving system. |
 | Evaluate or improve a method | [Drawing comparison](examples/vendor-evaluation/README.md) · [task/model benchmarks](benchmarks/README.md) · [review a frozen model](benchmarks/source-support/artifact-values/README.md) | Compare saved answers against reviewed source/key cases, with missing answers, mistakes and evidence limits visible. |
+
+**Prefer a first result without installation?** Use the [first-question guide](examples/first-pilot/README.md)
+by hand or with company-approved Copilot. For a team assignment, the [organization starting guide](docs/ORGANIZATION_START.md)
+separates ready-to-run steps, source preparation and continuing ownership. [Dependencies](docs/DEPENDENCIES.md) vary by route.
+
+## Try one concrete result
+
+The [public-sheet tutorial](examples/own-drawing/README.md) uses a committed drawing and saved extraction to
+build a draft asset model and review bundle offline. From a clone's repository root with Python 3.10 or newer,
+choose a new output directory (`my-bundle` must not already exist):
+
+```sh
+python -S scripts/import_site_drawing.py --manifest examples/own-drawing/manifest.json --out my-bundle
+python -S scripts/deliverable_report.py my-bundle
+```
+
+No accounts, model calls or additional packages are needed for this worked example. Open
+`my-bundle/REPORT.html` to inspect the drawing, extracted items, review states and next steps.
+The bundle includes:
+
+```text
+my-bundle/
+  plant_model.json          Draft assets and represented connections
+  review_queue.csv          Items for a reviewer to confirm, correct or reject
+  svg/sheet_0.svg           Logical links over the drawing
+  ignition/tags.json        Draft tags with unmapped placeholder values
+  pi/                      PI AF staging and receiving-system instructions
+  REPORT.html              Readable review report
+```
+
+The [committed sample report](examples/own-drawing/deliverable/REPORT.html) shows the same kind of output.
+This is a public development-sheet demonstration, not a new accuracy result. To use your own drawing, follow
+the tutorial's input and extraction steps, then review the model and supply the mappings your target system needs.
+
+## Build and maintain a context map
+
+The map represents site, plant, unit, system and equipment, including what's piped to, measures and controls what,
+with each team's records tied to those identities. Supply a reading of each P&ID sheet through
+`one_map.py sheet-from-prediction`, then compare it with the maintenance equipment export, instrument index and
+loop list. Matches get spot checks; missing or disagreeing items enter review, with safety items always included.
+Where no records exist, the supplied P&ID reading can start their unverified drafts. Datasheets supply ratings;
+the P&ID supplies represented tags, connectivity and the control scheme.
+
+Conflicts are retained in **owner-specific review queues** for people to distribute and resolve. The tools do
+not send notifications or authenticate assignments. For a P&ID revision, supply the revised sheet reading and
+rerun the build; unchanged sheet fragments are reused when their inputs and parsing code still match. The
+[context register](docs/CONTEXT_REGISTER.md) retains answer dependencies; explicitly refresh it to reopen
+answers affected by revised sources. These steps require explicit local runs; the tools do not monitor sources.
+
+See [one map](docs/ONE_MAP.md#the-path), the [two-plant example](examples/one-map/README.md) where Plant 2 has
+no records yet, and [one public P&ID sheet read end to end](examples/drawing-to-map/README.md).
+
+**Input scope today:** equipment/instrument records and datasheets use structured CSV contracts. Production,
+quality and safety records (procedures, HACCP plans, CAPAs, lockout procedures and hazard reviews) enter as
+documents that cover or mention tags. There is no special handling yet for critical control points or isolation points.
 
 ## What connects today: the hub and spokes
 
@@ -84,6 +114,13 @@ These tools accept your own records in their documented formats. Choose the work
 The reusable generators build from the model you supply. The TE gateway builder and recorded replay assemble
 one particular case study; use its architecture as a reference while following the tool guides for your plant's
 model, mappings and target environment. The [feature reference](docs/FEATURES.md) lists individual tool evidence.
+
+**Bring a better reader.** Today's drawing reader drafts; trained models and commercial digitizers may read
+drawings better ([prior art](docs/PRIOR_ART.md)). The surrounding review, provenance and export tools can use
+another reader's output in the documented format. Use the [reader integration guide](docs/PLUG_IN_A_READER.md),
+[vendor-evaluation kit](examples/vendor-evaluation/README.md) and [reader leaderboard](benchmarks/LEADERBOARD.md)
+to compare results on matched sheets. [Contributing a public drawing with a verified key](docs/CONTRIBUTE_A_PID.md)
+helps evaluate every reader on more sources. The [demo series](docs/DEMO_SERIES.md) shows how selected tools and examples connect.
 
 ## Start with one question
 
