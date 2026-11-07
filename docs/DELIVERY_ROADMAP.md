@@ -3,6 +3,10 @@
 Working priorities, 2026-11-06. The original [PLAN.md](PLAN.md) remains the dated research/showcase plan.
 This roadmap prioritizes useful delivery from the existing tools before more catalog breadth.
 
+The [current self-service gap record](SELF_SERVICE_GAPS.md) now links reusable export intake, real agent sessions
+and repeat-revision evidence. Native CAD acceptance remains open after a documented receiver/automation failure;
+those observations do not satisfy its completion gate.
+
 The primary readers are maintenance and engineering managers. The [manager starting guide](MANAGERS_START_HERE.md)
 and [offline review packet](../examples/manager-review/README.md) put the decision, source preparation, named
 owners, receiving verification and actual effort ahead of choosing a platform. Work planning, asset information,

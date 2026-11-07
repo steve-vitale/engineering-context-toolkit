@@ -67,6 +67,12 @@ The older converted-key DEXPI adapter produces an extracted twin through its sep
 
 ## Tool input and output contracts
 
+[Maintenance export intake](MAINTENANCE_INTAKE.md) accepts two user CSVs plus an explicit `maintenance-intake-1`
+profile, normalizes only mapped fields into one-map contracts, and returns a sourced offline manager packet.
+Its original-row map, source revisions, complete queue and proposed actions accompany the report. A verified
+`--previous` packet enables explicit graph/finding comparisons without overwriting earlier evidence; disappearance
+does not establish accepted correction. No drawings, live connector or MCP service are required.
+
 | Tool or route | Current input | Output and integration boundary |
 |---|---|---|
 | `dexpi_reader.py` | Supported DEXPI XML | A Native process-model-shaped JSON plus an omissions/placement report by default. Explicit `--capture-source` adds the complete policy-filtered structured-source packet and coverage summary. Vendor dialects, mapped classes and downstream eligibility need review; not every source role is used by every generator. |

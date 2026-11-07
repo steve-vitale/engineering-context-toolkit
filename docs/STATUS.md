@@ -9,10 +9,11 @@ Maintenance and engineering managers can use the [decision-first guide](MANAGERS
 [offline review packet](../examples/manager-review/README.md) without installing software. The packet is an
 authored fictional handoff with reproduced source findings; human usefulness and company acceptance remain unrun.
 
-For agent-assisted self-service, use the [task guide](AGENT_START_HERE.md) and
-[first-use simulation](../examples/agent-first-use/README.md). The authored dialogue is supported by actual
-ordinary-export preparation/comparison, missing-unit refusal, a simulated returned revision and the existing
-public drawing intake/report. It is not an independent agent trial or a completed N062/N063 exercise.
+For agent-assisted self-service, use the [task guide](AGENT_START_HERE.md) and [reusable export intake](MAINTENANCE_INTAKE.md).
+It accepts mapped equipment/work-order CSVs and produces an offline manager packet. The [three-revision replay](../examples/maintenance-intake/README.md)
+retains corrected and subsequent replacement evidence. Two [actual fresh-agent sessions](../examples/agent-rehearsal/README.md)
+reached the same substantive answer on a frozen fictional case; their author-scored rubric and exact retained artifacts
+are distinct from the earlier authored dialogue. No human benefit, company acceptance or completed N062/N063 exercise.
 
 **Reusable local tools build draft plant structure and engineering context from your supported records.**
 A P&ID image plus extraction, an authored description/model, or supported DEXPI XML can become a sourced draft
@@ -29,7 +30,7 @@ benchmark suites and the optional MCP/protocol job. This is software evidence, n
 company-client acceptance or plant validation. Check [committed-version CI](https://github.com/steve-vitale/industrial-context-toolkit/actions/workflows/tests.yml)
 for later revisions; the dated development records below apply only to their stated inputs and versions.
 
-The current runner registers **70 source-only and 89 full-suite programs**. The 2026-11-06 local Windows run
+The current runner registers **71 source-only and 90 full-suite programs**. The earlier 2026-11-06 local Windows run
 passed **89/89 programs**, with **seven individual unittest cases skipped** and three platform notices explaining
 skips. It is not a complete run of every optional check. The drawing-to-map fixture now pins LF source bytes to
 fix [Linux CI regression #7](https://github.com/steve-vitale/industrial-context-toolkit/issues/7); use
@@ -41,7 +42,7 @@ Offline publication checks match
 **64 pass / 23 fail / 8 n/a**; its failures are retained research results, not failing unit tests.
 Pipeline freshness remains **50/52**: manual `te.pid_live` and `te.replay` receipts are stale.
 Saved predictions regenerate 23 matching tables and seven with documented historical formatting adjustments;
-five earlier diagnostic tables still lack predictions. The feature catalog has **29 features**, of which
+five earlier diagnostic tables still lack predictions. The feature catalog has **30 features**, of which
 **22 have current independently reviewed example outputs**; the generalization-matrix review is stale after
 the selected intake receipt refresh. Its numerical results are unchanged. The new CAD and photo examples still
 need independent review.
@@ -91,6 +92,10 @@ with browser-only viewing and separate rebuild/verifier requirements. It is no c
 <a id="company-handoff-external-responsibilities-and-missing-adapters"></a>
 
 ## Open work and company handoff
+
+The [self-service gap record](SELF_SERVICE_GAPS.md) states which of the four current improvements have evidence
+and which remain open. In particular, [native CAD diagnosis](../examples/cad-handoff/native/diagnostic/README.md)
+does not establish a successful native edit/save/reopen; this LibreCAD route remains unqualified for the attributed profile.
 
 Use the [acceptance exercise](ACCEPTANCE.md) for concrete tests, records and failure cases. It is prepared;
 actual participant, recipient, native-system and tenant observations remain **not run**.

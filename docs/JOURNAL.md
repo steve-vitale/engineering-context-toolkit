@@ -7746,3 +7746,50 @@ Traced the declared starter methods and actually read P-1 and its relations thro
 the snapshot hash agrees and live=false. No SDK transport, model or tenant was exercised in that check.
 All 19 standard-library snapshot controls pass. No new connector, server behavior, model capability or plant
 acceptance is claimed; this is documentation of the existing choices and limits.
+
+## 172. Make ordinary maintenance exports a reusable self-service job
+
+2026-11-06 local / 2026-11-07 UTC. Steve asked to address the four remaining self-service gaps without waiting
+for employee testers. Added a standard-library intake around the existing one-map comparison. Its explicit
+profile maps source headers, date formats, scope, revisions, owners and coverage. It retains exact originals,
+CSV-record/physical-line origins, full queue, sourced HTML/Markdown report, proposed action form and file/method
+pins. Failed preparation publishes no packet; existing destinations remain intact. No installed truth, company
+write, accepted correction, PM/MOC determination or human saving is inferred.
+
+Eight regression methods exercise mapped unfamiliar headers/semicolon/date formats, leading zeros, multiline
+origins, scoped identities/open orders, refused duplicate/ambiguous inputs, missing files, output collisions,
+tampered previous packets and changed source revisions/authority. The fixed replay makes three real calls to
+the reusable CLI: first disagreement, corrected equipment export, another replacement at the same position.
+The old packets verify unchanged; a disappeared finding is retained without accepting or closing it, including
+a later export that simply omits the closed order. Malformed profile shapes return an input error. The later
+replacement raises a new value conflict. Exact output inventories are not authenticated signatures.
+
+Two actual fresh test-agent sessions ran frozen inputs/prompt/key, without inherited conversation. Baseline
+8c306d6 prepared its own one-map inputs and used build/check/ask. Candidate d5dde29 used the new intake and
+tested missing identity. Both produced the same substantive answer and usable line-2 source references. The
+author-scored literal rubric is 10/12 baseline versus 12/12 candidate solely because the baseline numbered
+data records from one while the frozen key counted the header. No accuracy, timing or manager-benefit gain is
+claimed. Procedural blinding is not filesystem enforcement; exact model/build metadata was unavailable.
+Session answers, command records, actual packets and source-read failures remain in examples/agent-rehearsal.
+The offline recheck verifies retained artifacts; it neither reruns agents nor independently grades prose.
+
+Actual browser rendering at a 390-pixel viewport was inspected, with no horizontal overflow and working local
+source/report links. An initial raw headless screenshot used a wider layout than its captured window and was
+not used to infer a CSS defect; explicit Playwright viewport inspection supplied the mobile check.
+
+## 173. Keep the failed CAD receiver visible instead of declaring an exchange
+
+2026-11-06 local / 2026-11-07 UTC. Retried LibreCAD through the computer-use runtime. It launched and exposed a
+readable Open Drawing tree after capture failed; repeated filename input failed with unavailable cached element.
+No actual edit/save/reopen or returned DXF was obtained. Private directory-picker trees are not published.
+
+A new ordinary-TEXT control renders as boxes through native PNG. Native PDF shows those controls and the
+candidate's ordinary title, but not attached attribute values. All five conversions exited 0; this is not a
+preservation pass. PDF page dimensions were unexpectedly large; an unbounded raster allocation failed before
+bounded Poppler rendering. Inputs, outputs, logs and failure are retained. Published v2.2.1.6 parser source has
+no ATTRIB/ATTDEF dispatch and skips unknown entities. This supports an explicitly labeled inference that this
+receiving route cannot be assumed to preserve the required attributed profile; it is not a saved-return test.
+
+The fourth gap stays open: qualify a usable attribute-capable receiver with the exact edit/save/close/reopen
+and strict returned-DXF comparison. No intelligent-CAD, company acceptance or subsequent accepted revision is
+claimed. SELF_SERVICE_GAPS.md keeps this distinction beside the completed intake/rehearsal/repeat-use software.

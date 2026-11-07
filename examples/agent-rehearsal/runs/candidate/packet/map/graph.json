@@ -1,0 +1,402 @@
+{
+ "schema": "twin-graph-2",
+ "model_kind": "one_map",
+ "title": null,
+ "site": "REHEARSAL",
+ "source_model": "site.json",
+ "nodes": [
+  {
+   "id": "REHEARSAL",
+   "kind": "site",
+   "tag": "REHEARSAL",
+   "name": null,
+   "aliases": [],
+   "status": "confirmed",
+   "attributes": [],
+   "source": {
+    "kind": "document",
+    "document": "site.json",
+    "note": "site file"
+   }
+  },
+  {
+   "id": "REHEARSAL/CONFLICT/C-9ea4537117",
+   "kind": "conflict",
+   "tag": "C-9ea4537117",
+   "name": "M-410 serial_number: work order J-901 (closed 2026-11-02) records serial_number 00042 installed; the maintenance equipment export EQ (row 2) says 00041",
+   "aliases": [],
+   "status": "unverified",
+   "attributes": [],
+   "source": {
+    "kind": "document",
+    "document": "WO",
+    "revision": "R1",
+    "sha256": "a7ab0fcfa8e716c6ae6c079826af97e1dca8e89f87d8269261da375c7b034e09",
+    "path": "work_orders.csv",
+    "locator": "row 2; original work_orders.csv CSV record 2 (ends at physical line 2)"
+   },
+   "conflict": {
+    "id": "C-9ea4537117",
+    "type": "value_disagreement",
+    "what": "M-410 serial_number: work order J-901 (closed 2026-11-02) records serial_number 00042 installed; the maintenance equipment export EQ (row 2) says 00041",
+    "subject": "REHEARSAL/P1/NORTH/M-410",
+    "attribute": "serial_number",
+    "source_a": {
+     "source": {
+      "kind": "document",
+      "document": "WO",
+      "revision": "R1",
+      "sha256": "a7ab0fcfa8e716c6ae6c079826af97e1dca8e89f87d8269261da375c7b034e09",
+      "path": "work_orders.csv",
+      "locator": "row 2; original work_orders.csv CSV record 2 (ends at physical line 2)"
+     },
+     "says": "00042"
+    },
+    "source_b": {
+     "source": {
+      "kind": "document",
+      "document": "EQ",
+      "revision": "R1",
+      "sha256": "9f4fb3fbea92392e0e2cfb5d333ce578aecb806f1adc7dbee10cd082f5595f1b",
+      "path": "equipment.csv",
+      "locator": "row 2"
+     },
+     "says": "00041"
+    },
+    "record_owner": "Maintenance",
+    "parties": [
+     "Maintenance"
+    ],
+    "status": "open",
+    "detected": true,
+    "history": []
+   }
+  },
+  {
+   "id": "REHEARSAL/P1",
+   "kind": "plant",
+   "tag": "P1",
+   "name": null,
+   "aliases": [],
+   "status": "confirmed",
+   "attributes": [],
+   "source": {
+    "kind": "document",
+    "document": "site.json",
+    "note": "site file"
+   }
+  },
+  {
+   "id": "REHEARSAL/P1/NORTH",
+   "kind": "unit",
+   "tag": "NORTH",
+   "name": null,
+   "aliases": [],
+   "status": "confirmed",
+   "attributes": [],
+   "source": {
+    "kind": "document",
+    "document": "site.json",
+    "note": "site file"
+   }
+  },
+  {
+   "id": "REHEARSAL/P1/NORTH/M-410",
+   "kind": "equipment",
+   "tag": "M-410",
+   "name": null,
+   "aliases": [],
+   "status": "unverified",
+   "attributes": [
+    {
+     "name": "locator",
+     "value": "original equipment.csv CSV record 2 (ends at physical line 2)",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "EQ",
+      "revision": "R1",
+      "sha256": "9f4fb3fbea92392e0e2cfb5d333ce578aecb806f1adc7dbee10cd082f5595f1b",
+      "path": "equipment.csv",
+      "locator": "row 2"
+     }
+    },
+    {
+     "name": "serial_number",
+     "value": "00041",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "EQ",
+      "revision": "R1",
+      "sha256": "9f4fb3fbea92392e0e2cfb5d333ce578aecb806f1adc7dbee10cd082f5595f1b",
+      "path": "equipment.csv",
+      "locator": "row 2"
+     }
+    }
+   ],
+   "source": {
+    "kind": "document",
+    "document": "EQ",
+    "revision": "R1",
+    "sha256": "9f4fb3fbea92392e0e2cfb5d333ce578aecb806f1adc7dbee10cd082f5595f1b",
+    "path": "equipment.csv",
+    "locator": "row 2"
+   },
+   "scope": "REHEARSAL/P1/NORTH",
+   "owner": "Maintenance",
+   "listed_in": [
+    "EQ"
+   ],
+   "appearances": []
+  },
+  {
+   "id": "REHEARSAL/P1/SOUTH",
+   "kind": "unit",
+   "tag": "SOUTH",
+   "name": null,
+   "aliases": [],
+   "status": "confirmed",
+   "attributes": [],
+   "source": {
+    "kind": "document",
+    "document": "site.json",
+    "note": "site file"
+   }
+  },
+  {
+   "id": "REHEARSAL/P1/SOUTH/M-410",
+   "kind": "equipment",
+   "tag": "M-410",
+   "name": null,
+   "aliases": [],
+   "status": "unverified",
+   "attributes": [
+    {
+     "name": "locator",
+     "value": "original equipment.csv CSV record 3 (ends at physical line 3)",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "EQ",
+      "revision": "R1",
+      "sha256": "9f4fb3fbea92392e0e2cfb5d333ce578aecb806f1adc7dbee10cd082f5595f1b",
+      "path": "equipment.csv",
+      "locator": "row 3"
+     }
+    },
+    {
+     "name": "serial_number",
+     "value": "00099",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "EQ",
+      "revision": "R1",
+      "sha256": "9f4fb3fbea92392e0e2cfb5d333ce578aecb806f1adc7dbee10cd082f5595f1b",
+      "path": "equipment.csv",
+      "locator": "row 3"
+     }
+    }
+   ],
+   "source": {
+    "kind": "document",
+    "document": "EQ",
+    "revision": "R1",
+    "sha256": "9f4fb3fbea92392e0e2cfb5d333ce578aecb806f1adc7dbee10cd082f5595f1b",
+    "path": "equipment.csv",
+    "locator": "row 3"
+   },
+   "scope": "REHEARSAL/P1/SOUTH",
+   "owner": "Maintenance",
+   "listed_in": [
+    "EQ"
+   ],
+   "appearances": []
+  }
+ ],
+ "edges": [
+  {
+   "id": "concerns:REHEARSAL/CONFLICT/C-9ea4537117->REHEARSAL/P1/NORTH/M-410",
+   "type": "concerns",
+   "from": "REHEARSAL/CONFLICT/C-9ea4537117",
+   "to": "REHEARSAL/P1/NORTH/M-410",
+   "status": "unverified",
+   "direction": null,
+   "source": {
+    "kind": "document",
+    "document": "WO",
+    "revision": "R1",
+    "sha256": "a7ab0fcfa8e716c6ae6c079826af97e1dca8e89f87d8269261da375c7b034e09",
+    "path": "work_orders.csv",
+    "locator": "row 2; original work_orders.csv CSV record 2 (ends at physical line 2)"
+   },
+   "attributes": []
+  },
+  {
+   "id": "contains:REHEARSAL->REHEARSAL/P1",
+   "type": "contains",
+   "from": "REHEARSAL",
+   "to": "REHEARSAL/P1",
+   "status": "confirmed",
+   "direction": null,
+   "source": {
+    "kind": "document",
+    "document": "site.json",
+    "note": "site file"
+   },
+   "attributes": []
+  },
+  {
+   "id": "contains:REHEARSAL/P1->REHEARSAL/P1/NORTH",
+   "type": "contains",
+   "from": "REHEARSAL/P1",
+   "to": "REHEARSAL/P1/NORTH",
+   "status": "confirmed",
+   "direction": null,
+   "source": {
+    "kind": "document",
+    "document": "site.json",
+    "note": "site file"
+   },
+   "attributes": []
+  },
+  {
+   "id": "contains:REHEARSAL/P1->REHEARSAL/P1/SOUTH",
+   "type": "contains",
+   "from": "REHEARSAL/P1",
+   "to": "REHEARSAL/P1/SOUTH",
+   "status": "confirmed",
+   "direction": null,
+   "source": {
+    "kind": "document",
+    "document": "site.json",
+    "note": "site file"
+   },
+   "attributes": []
+  },
+  {
+   "id": "contains:REHEARSAL/P1/NORTH->REHEARSAL/P1/NORTH/M-410",
+   "type": "contains",
+   "from": "REHEARSAL/P1/NORTH",
+   "to": "REHEARSAL/P1/NORTH/M-410",
+   "status": "unverified",
+   "direction": null,
+   "source": {
+    "kind": "document",
+    "document": "EQ",
+    "revision": "R1",
+    "sha256": "9f4fb3fbea92392e0e2cfb5d333ce578aecb806f1adc7dbee10cd082f5595f1b",
+    "path": "equipment.csv",
+    "locator": "row 2"
+   },
+   "attributes": []
+  },
+  {
+   "id": "contains:REHEARSAL/P1/SOUTH->REHEARSAL/P1/SOUTH/M-410",
+   "type": "contains",
+   "from": "REHEARSAL/P1/SOUTH",
+   "to": "REHEARSAL/P1/SOUTH/M-410",
+   "status": "unverified",
+   "direction": null,
+   "source": {
+    "kind": "document",
+    "document": "EQ",
+    "revision": "R1",
+    "sha256": "9f4fb3fbea92392e0e2cfb5d333ce578aecb806f1adc7dbee10cd082f5595f1b",
+    "path": "equipment.csv",
+    "locator": "row 3"
+   },
+   "attributes": []
+  }
+ ],
+ "questions": [],
+ "events": [],
+ "not_exported": [],
+ "loops": [],
+ "coverage": {
+  "sources": [
+   {
+    "id": "EQ",
+    "register": "maintenance_export",
+    "scopes": [
+     "REHEARSAL/P1"
+    ],
+    "owner": "Maintenance"
+   },
+   {
+    "id": "WO",
+    "register": "work_order",
+    "scopes": [
+     "REHEARSAL/P1"
+    ],
+    "owner": "Maintenance"
+   }
+  ],
+  "relations_checked": {
+   "links": 5,
+   "checked": 3,
+   "unchecked_no_class": 2,
+   "do_not_fit": 0
+  }
+ },
+ "records": {
+  "work_order": [
+   {
+    "register": "work_order",
+    "id": "J-901",
+    "item": "REHEARSAL/P1/NORTH/M-410",
+    "scope": "REHEARSAL/P1/NORTH",
+    "values": {
+     "work_order": "J-901",
+     "tag": "M-410",
+     "unit": "NORTH",
+     "closed_on": "2026-11-02",
+     "installed_serial_number": "00042",
+     "plant": "P1",
+     "locator": "original work_orders.csv CSV record 2 (ends at physical line 2)"
+    },
+    "source": {
+     "kind": "document",
+     "document": "WO",
+     "revision": "R1",
+     "sha256": "a7ab0fcfa8e716c6ae6c079826af97e1dca8e89f87d8269261da375c7b034e09",
+     "path": "work_orders.csv",
+     "locator": "row 2; original work_orders.csv CSV record 2 (ends at physical line 2)"
+    },
+    "status": "unverified"
+   },
+   {
+    "register": "work_order",
+    "id": "J-902",
+    "item": "REHEARSAL/P1/NORTH/M-410",
+    "scope": "REHEARSAL/P1/NORTH",
+    "values": {
+     "work_order": "J-902",
+     "tag": "M-410",
+     "unit": "NORTH",
+     "installed_serial_number": "00999",
+     "plant": "P1",
+     "locator": "original work_orders.csv CSV record 3 (ends at physical line 3)"
+    },
+    "source": {
+     "kind": "document",
+     "document": "WO",
+     "revision": "R1",
+     "sha256": "a7ab0fcfa8e716c6ae6c079826af97e1dca8e89f87d8269261da375c7b034e09",
+     "path": "work_orders.csv",
+     "locator": "row 3; original work_orders.csv CSV record 3 (ends at physical line 3)"
+    },
+    "status": "unverified"
+   }
+  ]
+ },
+ "counts": {
+  "nodes": 7,
+  "edges": 6,
+  "claims": 4,
+  "conflicts": 1,
+  "questions": 0,
+  "events": 0
+ }
+}

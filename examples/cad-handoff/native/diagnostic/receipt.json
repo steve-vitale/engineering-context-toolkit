@@ -1,0 +1,105 @@
+{
+  "application_sha256": "2b375dcae17da11f95c207abaf81bee9d571cb535b5b8b18da966859f4681d00",
+  "runs": [
+    {
+      "label": "text-png",
+      "args": [
+        "dxf2png",
+        "-o",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\cad-handoff\\native\\diagnostic\\text-control.png",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\cad-handoff\\native\\diagnostic\\text-control.dxf"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "candidate-pdf",
+      "args": [
+        "dxf2pdf",
+        "-a",
+        "-o",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\cad-handoff\\native\\diagnostic\\candidate.pdf",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\cad-handoff\\worked\\candidate.dxf"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "text-pdf",
+      "args": [
+        "dxf2pdf",
+        "-a",
+        "-o",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\cad-handoff\\native\\diagnostic\\text-control.pdf",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\cad-handoff\\native\\diagnostic\\text-control.dxf"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "fixed-candidate",
+      "args": [
+        "dxf2pdf",
+        "-a",
+        "-m",
+        "-p",
+        "297x210",
+        "-o",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\cad-handoff\\native\\diagnostic\\fixed-candidate.pdf",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\cad-handoff\\worked\\candidate.dxf"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "fixed-text",
+      "args": [
+        "dxf2pdf",
+        "-a",
+        "-m",
+        "-p",
+        "297x210",
+        "-o",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\cad-handoff\\native\\diagnostic\\fixed-text.pdf",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\cad-handoff\\native\\diagnostic\\text-control.dxf"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "files": {
+    "candidate-pdf.png": "9e710c377a759933b11ddf00b96319bc99b8e65d45bf8ddedb80ce5d5453dbb3",
+    "candidate-pdf.stderr.txt": "9efbba62909e15472f20c202403b011cb0e0c80d2ce6097c7af4f5e0b11e94fc",
+    "candidate-pdf.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "candidate.pdf": "85cb031a76a35d6362309792dbf7eaa15c817fb5031a6363420e0ed26dfc6e7f",
+    "fixed-candidate.pdf": "2154fe7292a6a8e0d0f0145ca33143f4b12e651d802afd25681fbba5f5f21134",
+    "fixed-candidate.png": "fe4f6662f23433950d105e0493cff63af4a89e501e033f30258a343cf0683853",
+    "fixed-candidate.stderr.txt": "30c78a5d82cd1556bbd3541f81de8134fa772bc2d9195f5b6aa7a62612b47fba",
+    "fixed-candidate.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fixed-text.pdf": "31e5541abb8df1d87c3876d41830355b7504b008a40d818e9aad0b31da28c2fe",
+    "fixed-text.png": "d91bf4adc563d7002785e8af67a0a0cba8fa9f253ece43d1aeb07024c14437bb",
+    "fixed-text.stderr.txt": "d34db6d4eb977ab8b9bcd61b32bd7eb41c5d62d9dc14bd0edf6d39f7a60f2feb",
+    "fixed-text.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "README.md": "eb3d46930263506deecf46a57a2b330903e4c833aae4056aebfb4c363844d83a",
+    "reproduce.py": "de16a3b72a74d8beacc762e45b50bbd67eabada93245549de9e03e37217bbe84",
+    "source-review.json": "f2f90d0693c6137284c8d6bb4d8ad5a3631347c43b939833a2ce3ac256914562",
+    "text-control.dxf": "2fda05661899bbfa6adacb4b5b059e39cd394ab2140a4c687ea971d41a6b3a60",
+    "text-control.pdf": "9eb2e1b91c9279ebd2953602252fea68f7eb7c800dce59b37ef237651ee3a247",
+    "text-control.png": "3ea13d33767afb18799bda77dc4f768ae8d4a8c611cdff07dc499f0065f50fe0",
+    "text-pdf.png": "8f4ebc23532f86359e2dc87f0132ef1631f7f7e854fd8cd4707c8a1126496372",
+    "text-pdf.stderr.txt": "9168def23ea6b4432cdbc50704887ece09a499403cac11c981bba795f29a03c6",
+    "text-pdf.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "text-png.stderr.txt": "b749a351258e1983ffaffd6165e10e285af732243d0eaada1d27f07ce02b88b0",
+    "text-png.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ui-retry.json": "ea5a6bb46884c7d9b1b2051026b755b50ddf7405e39e5dc2770f102bda58b198"
+  },
+  "scope": "Text-only control separates ordinary TEXT rendering from attributed block support; no edit/save/reopen acceptance",
+  "rasterization": {
+    "tool": "Poppler pdftoppm",
+    "args": [
+      "-f",
+      "1",
+      "-singlefile",
+      "-scale-to",
+      "1800",
+      "-png"
+    ],
+    "initial_attempt": "Unbounded PyMuPDF at 1.5 scale failed allocation: malloc (6765614518635 bytes) failed; no successful raster from that attempt",
+    "page_size_observation": "candidate.pdf 1190550 x 841890 points per pdfinfo"
+  }
+}

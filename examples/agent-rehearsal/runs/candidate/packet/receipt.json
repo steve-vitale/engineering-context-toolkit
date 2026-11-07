@@ -1,0 +1,69 @@
+{
+  "schema": "maintenance-packet-1",
+  "scope": {
+    "site": "REHEARSAL",
+    "plant": "P1",
+    "units": [
+      "NORTH",
+      "SOUTH"
+    ],
+    "sources": {
+      "equipment": {
+        "id": "EQ",
+        "owner": "Maintenance",
+        "coverage": "Selected two positions"
+      },
+      "work_orders": {
+        "id": "WO",
+        "owner": "Maintenance",
+        "coverage": "Selected replacement history"
+      }
+    }
+  },
+  "as_of": "2026-11-06",
+  "python": "3.14.2 (tags/v3.14.2:df79316, Dec  5 2025, 17:18:21) [MSC v.1944 64 bit (AMD64)]",
+  "methods_sha256_lf": {
+    "build_twin.py": "8e9a5e26b9938a8adcca9590e03c3dde8c63af38aba09f6cf1aeafe6c4b0ded7",
+    "confidence.py": "0fc9948199d89edfeb091f4a9c1c961f5361f10bf0f292d7b7ce72740e7e4a10",
+    "context_register.py": "5a902bb2a405599b4d864e9e7ca77162d51488d8920bd24874bb9c426b06f30d",
+    "extract_text.py": "5c886220c3492729f8cf2e5d8ba7ec9788d29047620155ccedad3f84b37c0fb3",
+    "generate.py": "729c3081be3e1ec372d4538175d464eceedc7a6665c82a512728094268914307",
+    "graph_export.py": "bd4854c679193c49b555128b8c4d87225d2c4cfb596459fecdf61393fd697dcb",
+    "loop_audit.py": "ec7837928220abfffa5762650b9ee53c5aa30c048d32b2d591d0fe9dd9c4c4a5",
+    "maintenance_intake.py": "673359020b2b5474664d9d612ccf3cefda1e8e352854bfaa79387bd641ef4f68",
+    "map_changes.py": "7d199f3b29f6fd7a85382a64f617ff4c0af9916b503c16e5147afdf861763510",
+    "one_map.py": "db67f6e1db96f547eebe46a865734fd58f4375c7b98d44a19146822c37d9010e",
+    "ontology.py": "605b723102a44c420b7aaa0439906cdb2fb61b14fdc7172feb3891d663baf434",
+    "output_paths.py": "16ace3cf89be6baffcac1be804ea4917c9db10caffe2b58c11ee0b9acd4d2939",
+    "pi_mapping.py": "c9007ef93990a5ab69a2addb0d64147d5133217a62cd8bc6fe4229404605d43e",
+    "provenance.py": "69697be53c87ddd0efa92907847f14158512d2dfa2d337e79a6bb19145c98433",
+    "score_pid2graph.py": "decd9b48d8ae85c410aaabda34b99bc2b1caf2f3f5ffcb39e3a57a8329b9c787"
+  },
+  "method_scope": "Loaded local Python modules; Python version recorded; not a complete environment lock or tamper-proof signature",
+  "previous_receipt_sha256": null,
+  "previous_files": null,
+  "files": {
+    "findings.json": "d354cd04ef442a0ec2116d5d4984692200f03ff627a47cb140329247fea3769c",
+    "map/conflicts.md": "ad0853d8e3c6442423a8b93383698a58d81bf7097606907241e7d0ad4ecd276d",
+    "map/graph.json": "4a63ae686b4c21134454a12985b7a5c2231460ebac8e65b724626ef63fe6e0ae",
+    "map/queues/by-owner/maintenance.csv": "f6f77233bf640437621ce639a64c069d6e9c4a1c0559351d21f9ec8b07c9eed1",
+    "map/queues/by-plant/p1.csv": "f6f77233bf640437621ce639a64c069d6e9c4a1c0559351d21f9ec8b07c9eed1",
+    "map/queues/by-unit/p1-north.csv": "f6f77233bf640437621ce639a64c069d6e9c4a1c0559351d21f9ec8b07c9eed1",
+    "map/queues/review_queue.csv": "f6f77233bf640437621ce639a64c069d6e9c4a1c0559351d21f9ec8b07c9eed1",
+    "map/report.md": "d74c403b9ef5fbc2df22a224667fbba7a49af7e7741f131962728177bab73244",
+    "map/state.json": "fa4f4d476acf8b90629345d8939f917893eacc636dd323eb5b5038fa6ccddbe3",
+    "originals/equipment.csv": "5567e18a66763447011c32091ccb44648f7600f2c44e7d6f32d886081ef2157a",
+    "originals/profile.json": "54b75d21927e6c8e669cc89f7ba5a1f152f1ddf24e72e413b886e0703bda194e",
+    "originals/work_orders.csv": "8984561cfbb049c3caa616173626e9d229a7f416d19a6a6e09363afcd9b23714",
+    "prepared/drawings.csv": "742bc7d641b0afe170f226eb8d4c36fbcafe0344c00d083cc6084415d421bf95",
+    "prepared/equipment.csv": "9f4fb3fbea92392e0e2cfb5d333ce578aecb806f1adc7dbee10cd082f5595f1b",
+    "prepared/row-origins.json": "2692a8745c8b70d45d9b9cd689a576a4aac7e4134b04daea9671b2faee6c0f68",
+    "prepared/site.json": "1c5a92a04bb46100b11508505c542948e12b2550c652cdf220e892cf4b68a226",
+    "prepared/work_orders.csv": "a7ab0fcfa8e716c6ae6c079826af97e1dca8e89f87d8269261da375c7b034e09",
+    "proposed-actions.csv": "a101b5551e66bf1bdc5827b757837c80ac732969c45371bcf70d80e3efac3d5e",
+    "REPORT.html": "ee418d80cbd3bd1aa61abc6f49839b152a7743e39829eab27f587eae549e677b",
+    "REPORT.md": "b955798f38448c0927720d4fd7a1d612ec8ebb19eccf6d7b64529810b347cf76"
+  },
+  "company_acceptance": "not performed",
+  "human_effort": "not measured"
+}

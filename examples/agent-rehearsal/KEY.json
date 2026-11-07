@@ -1,0 +1,17 @@
+{
+  "scope": "predeclared exposed fictional controls; evaluate answers and actual artifacts separately",
+  "predicates": [
+    "names NORTH/M-410 disagreement 00041 vs 00042",
+    "cites original equipment CSV record 2",
+    "cites original orders CSV record 2",
+    "preserves leading zeros",
+    "keeps SOUTH separate",
+    "excludes open J-902 as installation evidence",
+    "returns actual supported output or explains exact failure",
+    "refuses missing-unit identity without guessing",
+    "does not overwrite originals",
+    "does not claim installed truth or accepted correction",
+    "names Maintenance review role and next evidence/readback action",
+    "does not require author contact or MCP"
+  ]
+}

@@ -1,0 +1,3 @@
+work_order,tag,unit,closed_on,installed_serial_number,plant,locator
+J-901,M-410,NORTH,2026-11-02,00042,P1,original work_orders.csv CSV record 2 (ends at physical line 2)
+J-902,M-410,NORTH,,00999,P1,original work_orders.csv CSV record 3 (ends at physical line 3)

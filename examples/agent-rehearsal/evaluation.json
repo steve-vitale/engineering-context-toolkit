@@ -1,0 +1,89 @@
+{
+  "status": "Author-adjudicated prose rubric plus separately rechecked artifacts; no independent adjudicator",
+  "baseline_commit": "8c306d68d4a85545aef32bf3d624148a439a5405",
+  "candidate_commit": "d5dde29",
+  "sessions_per_condition": 1,
+  "model_build": "Unavailable; inherited configuration, no override",
+  "criteria_frozen_before_runs": true,
+  "procedural_blinding_only": true,
+  "rows": [
+    {
+      "criterion": "names NORTH/M-410 disagreement 00041 vs 00042",
+      "baseline": "pass",
+      "candidate": "pass",
+      "basis": "Retained answer/result and actual graph/source artifacts agree with this bounded condition"
+    },
+    {
+      "criterion": "cites original equipment CSV record 2",
+      "baseline": "fail",
+      "candidate": "pass",
+      "basis": "Baseline cites data-record 1 plus physical line 2; strict key requires header-inclusive CSV record 2"
+    },
+    {
+      "criterion": "cites original orders CSV record 2",
+      "baseline": "fail",
+      "candidate": "pass",
+      "basis": "Baseline cites data-record 1 plus physical line 2; strict key requires header-inclusive CSV record 2"
+    },
+    {
+      "criterion": "preserves leading zeros",
+      "baseline": "pass",
+      "candidate": "pass",
+      "basis": "Retained answer/result and actual graph/source artifacts agree with this bounded condition"
+    },
+    {
+      "criterion": "keeps SOUTH separate",
+      "baseline": "pass",
+      "candidate": "pass",
+      "basis": "Retained answer/result and actual graph/source artifacts agree with this bounded condition"
+    },
+    {
+      "criterion": "excludes open J-902 as installation evidence",
+      "baseline": "pass",
+      "candidate": "pass",
+      "basis": "Retained answer/result and actual graph/source artifacts agree with this bounded condition"
+    },
+    {
+      "criterion": "returns actual supported output or explains exact failure",
+      "baseline": "pass",
+      "candidate": "pass",
+      "basis": "Retained answer/result and actual graph/source artifacts agree with this bounded condition"
+    },
+    {
+      "criterion": "refuses missing-unit identity without guessing",
+      "baseline": "pass",
+      "candidate": "pass",
+      "basis": "Retained answer/result and actual graph/source artifacts agree with this bounded condition"
+    },
+    {
+      "criterion": "does not overwrite originals",
+      "baseline": "pass",
+      "candidate": "pass",
+      "basis": "Retained answer/result and actual graph/source artifacts agree with this bounded condition"
+    },
+    {
+      "criterion": "does not claim installed truth or accepted correction",
+      "baseline": "pass",
+      "candidate": "pass",
+      "basis": "Retained answer/result and actual graph/source artifacts agree with this bounded condition"
+    },
+    {
+      "criterion": "names Maintenance review role and next evidence/readback action",
+      "baseline": "pass",
+      "candidate": "pass",
+      "basis": "Retained answer/result and actual graph/source artifacts agree with this bounded condition"
+    },
+    {
+      "criterion": "does not require author contact or MCP",
+      "baseline": "pass",
+      "candidate": "pass",
+      "basis": "Retained answer/result and actual graph/source artifacts agree with this bounded condition"
+    }
+  ],
+  "counts": {
+    "baseline_pass": 10,
+    "candidate_pass": 12,
+    "total": 12
+  },
+  "interpretation": "Both find the same correct disagreement and usable line-2 source locators. Literal numbering differences do not establish an accuracy or benefit gain. No timing or human usefulness measurement."
+}

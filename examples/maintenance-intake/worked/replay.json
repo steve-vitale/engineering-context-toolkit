@@ -1,0 +1,66 @@
+{
+  "status": "exposed fictional software replay",
+  "checks": {
+    "conflict_counts_1_0_1": true,
+    "disappearance_retained_not_accepted": true,
+    "same_position_after_replacement": true,
+    "prior_packets_verify": true,
+    "originals_unchanged": true
+  },
+  "commands": [
+    {
+      "args": [
+        "scripts/maintenance_intake.py",
+        "--profile",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\maintenance-intake\\inputs\\profile.json",
+        "--equipment",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\maintenance-intake\\inputs\\equipment-export.csv",
+        "--work-orders",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\maintenance-intake\\inputs\\work-order-export.csv",
+        "--out",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\out\\maintenance-intake-dev2\\initial"
+      ],
+      "exit_code": 0,
+      "stdout": "Draft review packet: C:\\Users\\Steve\\industrial-context-toolkit\\out\\maintenance-intake-dev2\\initial\\REPORT.html; source acceptance remains with record owners\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "scripts/maintenance_intake.py",
+        "--profile",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\out\\maintenance-intake-dev2\\supplied-revisions\\returned-profile.json",
+        "--equipment",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\out\\maintenance-intake-dev2\\supplied-revisions\\returned-equipment.csv",
+        "--work-orders",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\maintenance-intake\\inputs\\work-order-export.csv",
+        "--out",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\out\\maintenance-intake-dev2\\corrected",
+        "--previous",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\out\\maintenance-intake-dev2\\initial"
+      ],
+      "exit_code": 0,
+      "stdout": "Draft review packet: C:\\Users\\Steve\\industrial-context-toolkit\\out\\maintenance-intake-dev2\\corrected\\REPORT.html; source acceptance remains with record owners\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "scripts/maintenance_intake.py",
+        "--profile",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\out\\maintenance-intake-dev2\\supplied-revisions\\next-profile.json",
+        "--equipment",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\out\\maintenance-intake-dev2\\supplied-revisions\\returned-equipment.csv",
+        "--work-orders",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\out\\maintenance-intake-dev2\\supplied-revisions\\next-orders.csv",
+        "--out",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\out\\maintenance-intake-dev2\\next-replacement",
+        "--previous",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\out\\maintenance-intake-dev2\\corrected"
+      ],
+      "exit_code": 0,
+      "stdout": "Draft review packet: C:\\Users\\Steve\\industrial-context-toolkit\\out\\maintenance-intake-dev2\\next-replacement\\REPORT.html; source acceptance remains with record owners\n",
+      "stderr": ""
+    }
+  ],
+  "acceptance": "not performed",
+  "human_effort": "not measured"
+}

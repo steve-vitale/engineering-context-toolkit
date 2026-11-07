@@ -5121,6 +5121,59 @@
         "scripts/serve_snapshot.py",
         "scripts/test_snapshot_packet.py"
       ]
+    },
+    {
+      "id": "A326",
+      "function": "intake_and_reuse",
+      "date": "2026-11-06",
+      "change": "Add reusable explicitly mapped equipment/work-order CSV intake and an offline sourced manager packet using existing one-map comparisons.",
+      "hypothesis": "A bounded user-input wrapper can remove one-off preparation while preserving identity, original evidence and revision history.",
+      "evidence": "Eight focused regression methods pass; three real CLI runs retain conflict, corrected export and next replacement at the same position. Missing/ambiguous inputs and stale/tampered previous packets refuse. No source-system acceptance or human benefit measured.",
+      "runs": "3 fictional lifecycle runs plus exposed regression controls",
+      "verdict": "kept",
+      "why": "Provides the documented own-input route and readable review packet without another ontology, service or connector. Coverage/meanings/authority remain supplied.",
+      "source": [
+        "docs/JOURNAL.md#172-make-ordinary-maintenance-exports-a-reusable-self-service-job",
+        "docs/MAINTENANCE_INTAKE.md",
+        "examples/maintenance-intake/worked/replay.json",
+        "scripts/test_maintenance_intake.py"
+      ]
+    },
+    {
+      "id": "A327",
+      "function": "review_loop",
+      "date": "2026-11-06",
+      "change": "Run actual fresh baseline/candidate first-use agents against the same predeclared fictional exports and uncertain identity input.",
+      "hypothesis": "The task guide and reusable intake can yield an immediate sourced answer and packet without contact or MCP prerequisites.",
+      "evidence": "Both sessions return the same correct scoped serial disagreement and preserve originals. Literal author-scored rubric is baseline 10/12 versus candidate 12/12 only due to header-inclusive record numbering; both locate physical line 2. Retained packet/graph/frozen-byte check passes.",
+      "runs": "1 fresh session per condition; same exposed development case",
+      "verdict": "inconclusive",
+      "why": "Actual execution replaces authored role-play for this case, but a single author-scored case and numbering convention do not demonstrate an accuracy gain, time saving or manager benefit. Procedural blinding only; exact model build unavailable.",
+      "source": [
+        "docs/JOURNAL.md#172-make-ordinary-maintenance-exports-a-reusable-self-service-job",
+        "examples/agent-rehearsal/README.md",
+        "examples/agent-rehearsal/PREDECLARED.json",
+        "examples/agent-rehearsal/evaluation.json",
+        "examples/agent-rehearsal/retention.json"
+      ]
+    },
+    {
+      "id": "A328",
+      "function": "intake_and_reuse",
+      "date": "2026-11-06",
+      "change": "Retry native CAD UI and separate ordinary TEXT rendering from attached block attributes using native PNG/PDF controls and pinned release source.",
+      "hypothesis": "A text-only control and alternate renderer can isolate the earlier missing text without mistaking process exit for editable-data acceptance.",
+      "evidence": "Five native conversions exit 0. PNG text controls are boxes; PDF shows ordinary TEXT but no attached values. Pinned parser has no ATTRIB/ATTDEF dispatch. UI capture/input retry fails; no returned DXF. Initial unbounded PDF raster allocation fails; bounded Poppler render retained.",
+      "runs": "5 new native conversion runs plus one bounded UI retry sequence",
+      "verdict": "inconclusive",
+      "why": "This LibreCAD route remains unqualified for the attributed exchange. Source-based inference is not an editor save/readback. Native CAD, engineering and company acceptance remain open.",
+      "source": [
+        "docs/JOURNAL.md#173-keep-the-failed-cad-receiver-visible-instead-of-declaring-an-exchange",
+        "examples/cad-handoff/native/diagnostic/README.md",
+        "examples/cad-handoff/native/diagnostic/receipt.json",
+        "examples/cad-handoff/native/diagnostic/source-review.json",
+        "examples/cad-handoff/native/diagnostic/ui-retry.json"
+      ]
     }
   ],
   "not_tried": [

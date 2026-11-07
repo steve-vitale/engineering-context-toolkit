@@ -1,0 +1,15 @@
+{
+  "date_utc": "2026-11-07",
+  "runtime": "node_repl @oai/sky",
+  "observations": [
+    "LibreCAD launched and reported unnamed document 1",
+    "get_window_state default screenshot failed: FrameArrived timed out: timed out waiting on channel",
+    "activate_window and include_screenshot:false exposed readable main accessibility tree",
+    "Control_L+o exposed Open Drawing dialog",
+    "set_value on freshly observed filename edit failed: element 950 is not available in cached app state for LibreCAD.exe",
+    "Refreshed window and canonical app selection; second set_value returned the same error; stopped UI attempts"
+  ],
+  "returned_dxf": null,
+  "acceptance": "not completed; UI automation failures do not themselves prove editor inability",
+  "privacy": "Only outcome descriptions retained; directory/file-picker trees omitted"
+}

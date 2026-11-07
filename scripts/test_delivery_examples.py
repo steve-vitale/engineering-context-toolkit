@@ -58,6 +58,19 @@ class DeliveryEvidence(unittest.TestCase):
         self.assertTrue(all(r["status"] == "needs independent review" for k, r in fields.items()
                             if k not in {"plant_tag", "site_unit", "capture_to_asset_link"}))
 
+    def test_native_cad_diagnostic_retains_failures_and_exact_bytes(self):
+        folder = ROOT / "examples/cad-handoff/native/diagnostic"
+        receipt = read(folder / "receipt.json")
+        for name, expected in receipt["files"].items():
+            with self.subTest(name=name):
+                self.assertEqual(sha(folder / name), expected)
+        self.assertEqual([r["exit_code"] for r in receipt["runs"]], [0] * 5)
+        self.assertIn("failed", receipt["rasterization"]["initial_attempt"])
+        ui = read(folder / "ui-retry.json")
+        self.assertIsNone(ui["returned_dxf"])
+        self.assertIn("not completed", ui["acceptance"])
+        self.assertIn("remains unqualified", (folder / "README.md").read_text(encoding="utf-8"))
+
     def test_saved_cad_proposal_retains_original_and_separate_context(self):
         folder = ROOT / "examples/cad-handoff"
         plan = read(folder / "source/edit-plan.json")

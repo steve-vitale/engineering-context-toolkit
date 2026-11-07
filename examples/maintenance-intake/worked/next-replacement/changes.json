@@ -1,0 +1,87 @@
+{
+ "schema": "one-map-changes-1",
+ "site": "SIM",
+ "title": null,
+ "old": "old",
+ "new": "new",
+ "filter": null,
+ "items": {
+  "added": [],
+  "removed": [],
+  "changed": []
+ },
+ "links": {
+  "added": [],
+  "removed": []
+ },
+ "records": {
+  "added": [
+   {
+    "register": "work_order",
+    "record": "WO-EXPORT",
+    "row": "WO-803",
+    "item": "SIM/P1/U1/P-101",
+    "owner": "Maintenance"
+   }
+  ],
+  "removed": [],
+  "changed": []
+ },
+ "documents": {
+  "added": [],
+  "removed": [],
+  "changed": []
+ },
+ "conflicts": {
+  "added": [
+   {
+    "id": "C-cde5629da5",
+    "type": "value_disagreement",
+    "subject": "SIM/P1/U1/P-101",
+    "attribute": "serial_number",
+    "owner": "Maintenance",
+    "what": "P-101 serial_number: work order WO-803 (closed 2026-11-05) records serial_number NEXT-101 installed; the maintenance equipment export EQ-EXPORT (row 2) says NEW-101",
+    "status": "open"
+   }
+  ],
+  "removed": [],
+  "changed": []
+ },
+ "expectations": {
+  "added": [],
+  "removed": [],
+  "changed": []
+ },
+ "flags": [],
+ "counts": {
+  "items": {
+   "added": 0,
+   "removed": 0,
+   "changed": 0
+  },
+  "links": {
+   "added": 0,
+   "removed": 0
+  },
+  "records": {
+   "added": 1,
+   "removed": 0,
+   "changed": 0
+  },
+  "documents": {
+   "added": 0,
+   "removed": 0,
+   "changed": 0
+  },
+  "conflicts": {
+   "added": 1,
+   "removed": 0,
+   "changed": 0
+  },
+  "expectations": {
+   "added": 0,
+   "removed": 0,
+   "changed": 0
+  }
+ }
+}

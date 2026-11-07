@@ -1,0 +1,47 @@
+{
+  "schema": "one-map-site-1",
+  "site": {
+    "id": "REHEARSAL"
+  },
+  "plants": [
+    {
+      "id": "P1",
+      "units": [
+        {
+          "id": "NORTH"
+        },
+        {
+          "id": "SOUTH"
+        }
+      ]
+    }
+  ],
+  "as_of": "2026-11-06",
+  "record_owners": {
+    "maintenance_export": "Maintenance",
+    "work_order": "Maintenance"
+  },
+  "drawing_register": "drawing-register.csv",
+  "maintenance_export": {
+    "id": "EQ",
+    "revision": "R1",
+    "path": "equipment-prepared.csv",
+    "scopes": [
+      "REHEARSAL/P1/NORTH",
+      "REHEARSAL/P1/SOUTH"
+    ]
+  },
+  "records": [
+    {
+      "id": "WO",
+      "revision": "R1",
+      "register": "work_order",
+      "path": "orders-prepared.csv",
+      "scopes": [
+        "REHEARSAL/P1/NORTH",
+        "REHEARSAL/P1/SOUTH"
+      ],
+      "owner": "Maintenance"
+    }
+  ]
+}

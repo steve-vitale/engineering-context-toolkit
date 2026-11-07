@@ -1,0 +1,34 @@
+{
+ "question": "which records disagree about REHEARSAL/P1/NORTH/M-410",
+ "kind": "disagreements",
+ "item": "REHEARSAL/P1/NORTH/M-410",
+ "answer": "answered",
+ "facts": [
+  {
+   "says": "M-410 serial_number: work order J-901 (closed 2026-11-02) records serial_number 00042 installed; the maintenance equipment export EQ (row 2) says 00041",
+   "conflict": "C-9ea4537117",
+   "status": "open",
+   "record_owner": "Maintenance",
+   "sides": [
+    {
+     "says": "00042",
+     "source": {
+      "document": "WO",
+      "revision": "R1",
+      "locator": "row 2; original orders.csv CSV record 1 (line 2)"
+     }
+    },
+    {
+     "says": "00041",
+     "source": {
+      "document": "EQ",
+      "revision": "R1",
+      "locator": "row 2"
+     }
+    }
+   ]
+  }
+ ]
+}
+
+STDERR:

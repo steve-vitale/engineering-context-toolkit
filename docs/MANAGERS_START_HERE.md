@@ -4,7 +4,7 @@ Choose one system where finding and reconciling the records repeatedly delays wo
 a checkable answer and a short list of owned corrections. A site-wide model or new software platform can follow
 when the work justifies it.
 
-**Have an agent help:** use the [task-first prompt and ordinary-export example](../examples/agent-first-use/README.md).
+**Have an agent help:** use the [task-first guide](AGENT_START_HERE.md) and [reusable export intake](MAINTENANCE_INTAKE.md).
 The agent can inspect the records and prepare supported inputs for you; ask about meanings or identities that
 are unclear. You can start with a few records and a useful partial answer before completing a larger scope form.
 

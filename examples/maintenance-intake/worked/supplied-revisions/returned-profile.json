@@ -1,0 +1,37 @@
+{
+  "schema": "maintenance-intake-1",
+  "site": "SIM",
+  "plant": "P1",
+  "units": [
+    "U1",
+    "U2"
+  ],
+  "as_of": "2026-11-06",
+  "equipment": {
+    "id": "EQ-EXPORT",
+    "revision": "2",
+    "owner": "Maintenance",
+    "coverage": "Selected U1/U2 fictional equipment positions",
+    "columns": {
+      "Equipment": "tag",
+      "Area": "unit",
+      "Serial": "serial_number",
+      "Model": "model"
+    }
+  },
+  "work_orders": {
+    "id": "WO-EXPORT",
+    "revision": "1",
+    "owner": "Maintenance",
+    "coverage": "Selected U1/U2 fictional replacement history; open orders retained",
+    "columns": {
+      "Order": "work_order",
+      "Equipment": "tag",
+      "Area": "unit",
+      "Closed": "closed_on",
+      "InstalledSerial": "installed_serial_number",
+      "InstalledModel": "installed_model",
+      "Description": "description"
+    }
+  }
+}

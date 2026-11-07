@@ -1,0 +1,4 @@
+LC_CrashHandler installed; on crash, log -> C:/Users/Steve/AppData/Local/crash-20261107-043804-19152.log
+RS_DEBUG::setLevel(0)
+C:/Program Files/LibreCAD/resources/qm
+C:/Program Files/LibreCAD/translations

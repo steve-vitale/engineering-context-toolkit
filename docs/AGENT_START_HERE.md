@@ -29,7 +29,7 @@ Ask about their own job after showing what the result looks like. Example record
 
 | Available material / question | Agent's next work | Return to the user |
 |---|---|---|
-| Equipment and closed replacement work-order exports | Inspect headers, identity/scope, date meanings and coverage. Prepare working copies for [one map](ONE_MAP.md). Follow the [ordinary-column example](../examples/agent-first-use/README.md). A drawing is not required for this bounded comparison. | Which supplied values disagree, both source rows, unresolved identity/authority and proposed correction owner. |
+| Equipment and closed replacement work-order exports | Inspect headers, identity/scope, date meanings and coverage. Use the [reusable maintenance intake](MAINTENANCE_INTAKE.md) with an explicitly reviewed profile to prepare working copies, run one map and produce an offline packet. A drawing is not required. | Which supplied values disagree, both original source rows, unresolved identity/authority, proposed owner actions and a readable packet. |
 | A few manuals, notices, reports or mixed documents | Inspect originals and revisions; use the [first-question method](../examples/first-pilot/README.md). Extract supported text through [document tools](DOCUMENT_TEXT.md) when needed. | A short answer with exact locators, conflicts, missing evidence and one next evidence request. A graph is optional. |
 | P&ID image | Follow [own drawing](../examples/own-drawing/README.md). Use the saved public reading for a demo; a new image needs its own permitted extraction and review. | Draft asset/review bundle and readable report; distinguish visible drawing evidence from interpretation. |
 | Description, PFD notes or no P&ID | Use [description preparation and assisted authoring](../examples/from-description/README.md); start with one described system. | Sourced draft model/layout, explicit unknowns and a review package. Missing connections remain unknown. |
@@ -62,9 +62,13 @@ instructions. Use a new output folder, inspect command help for the installed ve
 If the tool refuses an input, explain the specific missing or unsupported element and return a useful manual
 partial finding when possible. Do not quietly swap in the tutorial data or overwrite the source to obtain a pass.
 
-The [ordinary-export exercise](../examples/agent-first-use/README.md) shows actual preparation and a comparison
-with no drawings. Its runner is fixed to authored fictional inputs; your task is to prepare the user's records
-against the documented contracts, not run that fixture and imply it analyzed their files.
+The [reusable intake](MAINTENANCE_INTAKE.md) accepts the user's mapped exports, preserves exact originals and
+returns a readable report, full review queue and proposed action CSV. Its profile needs explicit column meanings,
+scope, source revisions and coverage; do not guess these from filenames. Use `--previous` with a new destination
+for a returned export or later replacement. It verifies the retained packet and distinguishes a finding no longer
+detected from a correction accepted by a record owner. If the narrow intake does not fit, use the documented
+one-map contracts or return a sourced manual partial finding. The [ordinary-export exercise](../examples/agent-first-use/README.md)
+is still a fixed tutorial; running it does not analyze the user's files.
 
 ## Return a result, not another navigation task
 
@@ -90,6 +94,13 @@ Self-service use is a complete outcome. If the user asks for a larger scope or o
 [connect with me on LinkedIn and message me there](https://www.linkedin.com/in/steve-vitale/).
 
 ## What has been simulated
+
+The [actual fresh-agent rehearsals](../examples/agent-rehearsal/README.md) retain one baseline and one candidate
+session on frozen fictional exports, separate from the authored dialogue below. Both found the same substantive
+disagreement and preserved scope. The candidate ran the reusable intake and missing-unit refusal. The rubric is
+author-scored; these development sessions do not establish manager benefit or universal assistant adherence.
+The [three-revision replay](../examples/maintenance-intake/README.md) tests corrected records and another replacement
+with the reusable tool; source-system acceptance remains separate.
 
 The [first-use simulation](../examples/agent-first-use/SIMULATION.md) records an author-run walkthrough of
 discovery, ordinary-export preparation, a missing-identity stop, a simulated returned revision and the public
