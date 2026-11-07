@@ -1,0 +1,63 @@
+{
+  "date_local": "2026-11-06",
+  "platform": "Windows",
+  "application": "LibreCAD 2.2.1.6",
+  "install": {
+    "method": "winget, exact LibreCAD.LibreCAD 2.2.1.6, official release, installer hash verified",
+    "publisher_release": "https://github.com/LibreCAD/LibreCAD/releases/tag/v2.2.1.6",
+    "installer_sha256": "0cd876d0e3fbfcdcdb85e5019080aca243908f4ad5c3b3c93a55ee9ba154f95b",
+    "executable_sha256": "2b375dcae17da11f95c207abaf81bee9d571cb535b5b8b18da966859f4681d00"
+  },
+  "input": "../worked/candidate.dxf",
+  "input_sha256": "e4e11b117bd90073d2dd3b6269e5662e7719283345048bc3e2e896c711520bd6",
+  "command": "LibreCAD.exe dxf2png --outfile OUTPUT.png proposed-input.dxf",
+  "output": "proposed-render.png",
+  "output_sha256": "2d2970b2a7410ea0f0f3bbdc8ed4438392321f6c9b2a74ebcb2e03bc08d4ecee",
+  "runs": [
+    {
+      "label": "pass1",
+      "observed_exit_code": null,
+      "exit_note": "process ended and PNG was present; exit code was not captured",
+      "output_sha256": "2d2970b2a7410ea0f0f3bbdc8ed4438392321f6c9b2a74ebcb2e03bc08d4ecee",
+      "stdout": "pass1.stdout.txt",
+      "stderr": "pass1.stderr.txt"
+    },
+    {
+      "label": "pass2",
+      "observed_exit_code": 0,
+      "output_sha256": "2d2970b2a7410ea0f0f3bbdc8ed4438392321f6c9b2a74ebcb2e03bc08d4ecee",
+      "stdout": "pass2.stdout.txt",
+      "stderr": "pass2.stderr.txt"
+    }
+  ],
+  "visual_observation": "Valve/line geometry appears; expected tag, attribute and title text is not readable. Cause not isolated.",
+  "gui": {
+    "status": "not completed",
+    "returned_dxf": null,
+    "failures": [
+      "FrameArrived timed out",
+      "window capture timed out",
+      "coordinate input geometry is unavailable",
+      "window is not a usable app window"
+    ]
+  },
+  "acceptance": "No editable-attribute, save/reopen, returned-DXF, intelligent-CAD, company or engineering acceptance.",
+  "logs": {
+    "pass1.stderr.txt": {
+      "sha256": "1a0ad7dd0a806e699dc93c00e62c7fd0b394794e403b1bed0b5e80838c39316d",
+      "bytes": 209
+    },
+    "pass1.stdout.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "pass2.stderr.txt": {
+      "sha256": "9515abca5cc5e6d79234a15c5adc957c6733662b70e57f8b854c34caa075c49d",
+      "bytes": 210
+    },
+    "pass2.stdout.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  }
+}
