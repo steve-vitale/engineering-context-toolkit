@@ -7715,3 +7715,8 @@ changed. The walkthrough also found and corrected the old clone URL in the activ
 and active opportunity/status links. Company record acceptance, new-image reading, human usefulness/time and
 independent agent adherence remain unobserved; N062/N063 stay open. This simulation supports immediate scoped
 self-service use without substituting for those later observations.
+
+The first clean-checkout CI passed 88/89 programs and failed the corpus freshness check because correcting
+the own-drawing README's clone URL changed a pinned row-3 input. Re-ran only row 3 / own-drawing-extraction:
+it still passes with 100 items and 345 links. Refreshed its actual run receipt and matrix page; all 95 declared
+cell bindings verify locally. The other 94 cell records were retained rather than assigning them new runs.
