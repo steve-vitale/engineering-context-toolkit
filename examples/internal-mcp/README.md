@@ -1,5 +1,14 @@
 # Read an approved engineering snapshot through MCP
 
+**Already using Copilot with SharePoint?** Keep using it to find and compare the documents it can retrieve.
+You do not need this server for that job. Prepared toolkit reports/tables can also live in SharePoint. This
+optional starter exposes named queries into the same prepared engineering records: exact assets, typed
+relationships and retained answer/history records, with snapshot identity and paging. The preparation and
+checking supply the meaning; MCP supplies the interface. See [when MCP adds value](../../docs/INTERNAL_CONNECTIVITY.md#if-copilot-already-reads-sharepoint-why-add-mcp).
+
+The starter reads its selected files once at startup. It does not search SharePoint, inherit its permissions,
+refresh records, run analyses or query a CMMS/historian. Existing connectors/APIs may already meet the need.
+
 This starter gives an approved local MCP client read-only access to operator-selected engineering snapshots.
 Use the [knowledge-only onboarding example](../engineering-onboarding/README.md) for a landing map, sourced records
 and workflow templates without an asset model. The graph/context route below reads assets, relationships,

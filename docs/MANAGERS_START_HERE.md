@@ -8,6 +8,10 @@ when the work justifies it.
 The agent can inspect the records and prepare supported inputs for you; ask about meanings or identities that
 are unclear. You can start with a few records and a useful partial answer before completing a larger scope form.
 
+If your Copilot already retrieves the required SharePoint documents, start there. You can use these methods
+and publish the resulting reports there without MCP. [Add a service interface only for a concrete recurring need](INTERNAL_CONNECTIVITY.md#if-copilot-already-reads-sharepoint-why-add-mcp),
+such as repeated exact-record lookups; an MCP connection itself adds no engineering validation.
+
 **No installation needed:** [read the manager example](../examples/manager-review/BRIEF.md) or
 [download its offline packet](../examples/manager-review/manager-review.zip?raw=1). The packet includes a browser
 brief, source snapshots and blank forms. It is fictional; no plant has accepted it or measured a saving.

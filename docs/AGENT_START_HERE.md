@@ -39,6 +39,13 @@ Ask about their own job after showing what the result looks like. Example record
 
 ## Do the preparation for them
 
+If the user's approved Copilot can already read the needed SharePoint records, use that access first. A
+document question or comparison does not require MCP. Prepared reports and tables can remain in SharePoint;
+propose a service only for a specific recurring lookup or operation that the existing route does not serve
+adequately. [MCP is an optional interface](INTERNAL_CONNECTIVITY.md#if-copilot-already-reads-sharepoint-why-add-mcp)
+to prepared records or separately implemented tools. It does not create the graph, supply engineering truth,
+inherit SharePoint permissions or turn this snapshot starter into a live integration.
+
 Inspect the actual tool contract and a small source sample before writing a command. Inspect file contents,
 not just filenames. Make a source inventory only as detailed as the selected question needs. Retain originals,
 their revisions/cut-offs, original row/page locations and transformations. A prepared CSV is a derived source;

@@ -5102,6 +5102,25 @@
         "examples/agent-first-use/SIMULATION.md",
         "examples/agent-first-use/evidence/receipt.json"
       ]
+    },
+    {
+      "id": "A325",
+      "function": "intake_and_reuse",
+      "date": "2026-11-06",
+      "change": "Clarify optional MCP value when approved Copilot already retrieves SharePoint records, including the file/report alternative and current snapshot-only boundary.",
+      "hypothesis": "Maintenance and engineering users can choose the simplest adequate route without mistaking an MCP connection for context preparation, live access or engineering validation.",
+      "evidence": "Microsoft organizational-grounding, SharePoint permissions and Copilot Studio MCP documentation checked; current server methods traced. Actual public P-1 asset/relation application reads retain the same snapshot hash and live=false; all 19 offline snapshot controls pass. No SDK transport, tenant, live connector or user-benefit observation in this documentation check.",
+      "runs": "Documentation/source inspection and bounded public-snapshot application reads; no new model or site trial.",
+      "verdict": "kept",
+      "why": "Keep document self-service and prepared reports useful without MCP; require a concrete recurring query/operation before adding a maintained service interface.",
+      "source": [
+        "docs/JOURNAL.md#171-explain-why-sharepoint-access-does-not-require-mcp",
+        "docs/INTERNAL_CONNECTIVITY.md#if-copilot-already-reads-sharepoint-why-add-mcp",
+        "docs/AGENT_START_HERE.md",
+        "examples/internal-mcp/README.md",
+        "scripts/serve_snapshot.py",
+        "scripts/test_snapshot_packet.py"
+      ]
     }
   ],
   "not_tried": [
