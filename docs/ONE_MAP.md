@@ -3,7 +3,7 @@
 `scripts/one_map.py` is a prototype that puts a site's P&IDs, its equipment and instrument records, its datasheets
 and its documents into one graph (`twin-graph-2`, an additive extension of [twin-graph-1](GRAPH_EXPORT.md)). Each
 department keeps its own records. The tool connects them, keeps every disagreement as a conflict record, and sends
-that record to the person who owns it. It is deterministic, runs offline on the Python standard library and calls no
+that record to its owner's review queue for a person to hand over. It is deterministic, runs offline on the Python standard library and calls no
 model. Three worked examples: a fictional two-plant site ([examples/one-map](../examples/one-map/README.md)), a
 fictional dairy pasteurizer that shows classes, link checks, expectation rules and the plant glossary
 ([pasteurizer](../examples/one-map/README.md#the-pasteurizer-classes-expectations-glossary)) and one public P&ID sheet
@@ -14,7 +14,11 @@ the **loop list**. The **sheet index** says which unit each P&ID sheet covers (`
 
 ## The path
 
-There is one path. What a site starts with changes which steps have work in them, not the steps.
+For a bounded equipment/work-order comparison, you can start without P&ID sheets. The
+[ordinary-export example](../examples/agent-first-use/README.md) prepares equipment and closed-work records with
+an empty drawing register. This compares supplied values; it supplies no drawing geometry or connectivity.
+
+For the drawing-backed site-wide map, follow these steps. What a site starts with changes which steps need preparation.
 
 1. **Read every P&ID sheet of the unit.** The drawing reader writes a prediction per sheet in the documented format
    ([PLUG_IN_A_READER.md](PLUG_IN_A_READER.md); the [own-drawing runbook](../examples/own-drawing/README.md) makes

@@ -192,6 +192,7 @@ data/te_pid_layout.json text eol=lf
 /examples/maintenance-handoff/** text eol=lf
 /examples/manager-review/** text eol=lf
 /examples/manager-review/*.zip -text
+/examples/agent-first-use/** text eol=lf
 
 # Document-text example: generated samples are hashed into expected outputs compared byte for byte.
 /examples/document-text/** text eol=lf

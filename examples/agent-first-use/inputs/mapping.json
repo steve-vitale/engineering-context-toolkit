@@ -1,0 +1,9 @@
+{
+  "status": "Authored fictional mapping, not inferred company identity or authority",
+  "site": "SIM",
+  "plant": "P1",
+  "units": ["U1", "U2"],
+  "cutoff": "2026-11-06",
+  "equipment": {"Equipment": "tag", "Area": "unit", "Serial": "serial_number", "Model": "model"},
+  "work_orders": {"Order": "work_order", "Equipment": "tag", "Area": "unit", "Closed": "closed_on", "InstalledSerial": "installed_serial_number", "InstalledModel": "installed_model", "Description": "description"}
+}

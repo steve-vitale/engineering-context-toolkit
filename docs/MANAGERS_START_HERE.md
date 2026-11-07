@@ -4,6 +4,10 @@ Choose one system where finding and reconciling the records repeatedly delays wo
 a checkable answer and a short list of owned corrections. A site-wide model or new software platform can follow
 when the work justifies it.
 
+**Have an agent help:** use the [task-first prompt and ordinary-export example](../examples/agent-first-use/README.md).
+The agent can inspect the records and prepare supported inputs for you; ask about meanings or identities that
+are unclear. You can start with a few records and a useful partial answer before completing a larger scope form.
+
 **No installation needed:** [read the manager example](../examples/manager-review/BRIEF.md) or
 [download its offline packet](../examples/manager-review/manager-review.zip?raw=1). The packet includes a browser
 brief, source snapshots and blank forms. It is fictional; no plant has accepted it or measured a saving.

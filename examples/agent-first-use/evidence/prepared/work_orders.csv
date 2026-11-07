@@ -1,0 +1,3 @@
+work_order,tag,unit,closed_on,installed_serial_number,installed_model,description,plant,locator
+WO-801,P-101,U1,2026-11-01,NEW-101,PX20,Replacement recorded on closed order,P1,original work-order-export.csv row 2
+WO-802,P-101,U1,,FUTURE-101,PX20,Open order proposal not evidence of installation,P1,original work-order-export.csv row 3

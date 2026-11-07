@@ -9,6 +9,11 @@ Maintenance and engineering managers can use the [decision-first guide](MANAGERS
 [offline review packet](../examples/manager-review/README.md) without installing software. The packet is an
 authored fictional handoff with reproduced source findings; human usefulness and company acceptance remain unrun.
 
+For agent-assisted self-service, use the [task guide](AGENT_START_HERE.md) and
+[first-use simulation](../examples/agent-first-use/README.md). The authored dialogue is supported by actual
+ordinary-export preparation/comparison, missing-unit refusal, a simulated returned revision and the existing
+public drawing intake/report. It is not an independent agent trial or a completed N062/N063 exercise.
+
 **Reusable local tools build draft plant structure and engineering context from your supported records.**
 A P&ID image plus extraction, an authored description/model, or supported DEXPI XML can become a sourced draft
 model and review material. Review and enrich it, then choose graph/context, analysis or platform staging.
@@ -18,10 +23,10 @@ Company review, accepted identities and receiving-system checks determine what c
 ## Current verification
 
 The earlier full-suite release baseline was **`a439f14`**:
-[main CI run 41590240463](https://github.com/steve-vitale/engineering-context-toolkit/actions/runs/41590240463).
+[main CI run 41590240463](https://github.com/steve-vitale/industrial-context-toolkit/actions/runs/41590240463).
 It passed **77/77 test programs**, with **18 individual unittest cases skipped**, plus six saved task/model
 benchmark suites and the optional MCP/protocol job. This is software evidence, not human usefulness,
-company-client acceptance or plant validation. Check [committed-version CI](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml)
+company-client acceptance or plant validation. Check [committed-version CI](https://github.com/steve-vitale/industrial-context-toolkit/actions/workflows/tests.yml)
 for later revisions; the dated development records below apply only to their stated inputs and versions.
 
 The current runner registers **70 source-only and 89 full-suite programs**. The 2026-11-06 local Windows run
@@ -139,9 +144,9 @@ The current runner registers **60 source-only and 78 full-suite programs**. The 
 56 then-registered source-only programs with eight skipped unittest cases and three explanatory platform notices; four focused
 programs also pass 48 methods without skips. The basis-check follow-up's three focused programs pass 56 methods
 without skips, followed by 57/57 source-only programs with eight skipped cases and three platform notices.
-The first-installment review commit `a97e239` also passed [normal review CI](https://github.com/steve-vitale/engineering-context-toolkit/actions/runs/41522983712):
+The first-installment review commit `a97e239` also passed [normal review CI](https://github.com/steve-vitale/industrial-context-toolkit/actions/runs/41522983712):
 75/75 full-suite programs, with 18 individual cases skipped, and the optional MCP/protocol job. These are
-software checks, not company or plant acceptance. Follow [committed-version CI](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml)
+software checks, not company or plant acceptance. Follow [committed-version CI](https://github.com/steve-vitale/industrial-context-toolkit/actions/workflows/tests.yml)
 for the latest revision; earlier counts below retain their bounded development snapshots.
 
 The reader-path follow-up carries that distinction into the generated client reports, manual Bayer tutorial,
@@ -293,7 +298,7 @@ The `037c523` own-plant follow-up local full run executes all 71 programs: **70 
 inside the team example's fixed 97-file packet. The guide now lives [in docs](TEAM_CONTEXT_IMPACT.md); its existing
 two-test module passes after relocation, with the test and 94 evidence files unchanged. Both runs preserve all
 3,025 input files. The original full result remains recorded rather than relabelled 71/71. See
-[committed-version CI](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml)
+[committed-version CI](https://github.com/steve-vitale/industrial-context-toolkit/actions/workflows/tests.yml)
 for the separate complete-suite and optional MCP results; platform and missing-cache skips remain explicit.
 
 The current heating/context follow-up separately checks four new equipment-role test methods, 18 heating
