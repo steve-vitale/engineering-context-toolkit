@@ -176,5 +176,18 @@ data/te_pid_layout.json text eol=lf
 # One-map example inputs are fingerprinted and its expected outputs compared byte for byte.
 /examples/one-map/** text eol=lf
 
+# The drawing-to-map source hashes are exact bytes too (Linux CI regression #7).
+/examples/drawing-to-map/** text eol=lf
+
+# Exact CAD sources are retained as supplied; JSON/CSV review records use portable LF.
+/examples/cad-handoff/** text eol=lf
+/examples/cad-handoff/**/*.dxf -text whitespace=cr-at-eol
+/examples/photo-to-record/** text eol=lf
+/examples/photo-to-record/**/*.jpg -text
+/examples/photo-to-record/**/*.png -text
+# Captured OCR stdout/stderr are fingerprinted raw bytes, including producer line endings.
+/examples/photo-to-record/worked/**/*.txt -text whitespace=cr-at-eol,-blank-at-eof
+/examples/maintenance-handoff/** text eol=lf
+
 # Document-text example: generated samples are hashed into expected outputs compared byte for byte.
 /examples/document-text/** text eol=lf

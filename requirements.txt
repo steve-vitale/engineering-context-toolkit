@@ -6,3 +6,5 @@ opencv-python-headless==5.0.0.93
 # Ignition build and verifier (scripts/ignition/):
 asyncua==2.1.0
 cryptography==49.0.0
+# Bounded editable DXF attribute handoff (no native DWG/project database support):
+ezdxf==1.4.5

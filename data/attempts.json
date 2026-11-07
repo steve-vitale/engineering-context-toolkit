@@ -4994,6 +4994,60 @@
         "scripts/test_investigation_example.py",
         "scripts/test_join_batch_records.py"
       ]
+    },
+    {
+      "id": "A319",
+      "function": "intake_and_reuse",
+      "date": "2026-11-06",
+      "change": "Pin drawing-to-map fixture line endings and regenerate its exact source-byte fingerprint.",
+      "hypothesis": "The Linux graph mismatch comes from a CRLF-bound expected source hash, not a different drawing conversion.",
+      "evidence": "Changing the supplied sheet to LF reproduces the original failing graph assertion: a23a1786.. versus c5830aa2... Pinning examples/drawing-to-map to LF and regenerating expected output restores all 15 conversion tests without normalizing runtime evidence hashes or changing represented counts.",
+      "runs": "One existing public OPEN100 development-sheet fixture; local LF failure and fixed readback. Exact-head Linux CI is recorded separately.",
+      "verdict": "kept",
+      "why": "Keep source hashes exact and make the committed fixture portable. This changes fixture serialization, not drawing-reader accuracy.",
+      "source": [
+        "docs/JOURNAL.md#165-make-the-drawing-to-map-fixture-portable",
+        "scripts/test_sheet_from_prediction.py",
+        ".gitattributes",
+        "examples/drawing-to-map/expected/map/graph.json"
+      ]
+    },
+    {
+      "id": "A320",
+      "function": "intake_and_reuse",
+      "date": "2026-11-06",
+      "change": "Add a bounded DXF block-attribute proposal and readback with stable IDs and retained originals.",
+      "hypothesis": "A controlled attribute exchange can preserve editable drawing information and expose unexpected losses without promising a generic intelligent-CAD round trip.",
+      "evidence": "Six regression methods cover three explicit edits, immutable source bytes, unchanged stable IDs/foreign attributes, stale/duplicate/identity edits, overwrite refusal, planted geometry/layer/foreign-attribute/XDATA changes and refused guessed tag mapping. The saved proposal compares the declared decoded entity/header surface. Explicit before/proposed projections reach the same one-map node as unverified drawing references. Writer timestamps and nested child export duplication are handled explicitly; native-editor acceptance remains unrun.",
+      "runs": "One authored fictional valve fixture and permanent wrong controls; ezdxf 1.4.5 writer/reader, no native editor or company receiver.",
+      "verdict": "kept",
+      "why": "Useful bounded exchange with explicit comparison scope. No opaque-section, native DWG, proprietary database, installed-asset or synchronization guarantee.",
+      "source": [
+        "docs/JOURNAL.md#166-qualify-a-bounded-cad-attribute-exchange",
+        "scripts/cad_handoff.py",
+        "scripts/test_cad_handoff.py",
+        "examples/cad-handoff/README.md",
+        "examples/cad-handoff/worked/comparison.json",
+        "examples/cad-handoff/project_to_map.py",
+        "examples/cad-handoff/worked/map-change/changes.json"
+      ]
+    },
+    {
+      "id": "A321",
+      "function": "intake_and_reuse",
+      "date": "2026-11-06",
+      "change": "Retain public motor-nameplate capture candidates and six OCR attempts with exact source attribution.",
+      "hypothesis": "Readable nameplate fields can be prepared as unverified source-linked candidates while failed OCR and unknown installed identity remain visible.",
+      "evidence": "Two exposed Commons photographs with attribution/licenses and raw SHA-256 pins. Electrolux whole-image PSM3 returns no text; crop PSM3/6/11 remain unreliable. Industrial ABB PSM3 omits numeric data despite mean word confidence 75.1; PSM6 remains incorrect/incomplete. Visual candidate sheets retain field locators/units and unknown plant identities. Four evidence tests bind sources, every attempt, candidacy and the saved CAD packet; no field-accuracy metric or independent human key.",
+      "runs": "One ABB industrial-machine photo plus one Electrolux recorder-motor photo; six development OCR attempts using Tesseract 5.4.0.20240606, source/key exposed; not held out.",
+      "verdict": "kept",
+      "why": "Keep failures and reviewed-identity requirements rather than treating nonempty OCR or confidence as usable asset records. No site/generalization or human-benefit result.",
+      "source": [
+        "docs/JOURNAL.md#167-retain-nameplate-evidence-and-ocr-failures",
+        "examples/photo-to-record/README.md",
+        "examples/photo-to-record/worked/public-cases/receipt.json",
+        "scripts/test_delivery_examples.py"
+      ]
     }
   ],
   "not_tried": [

@@ -1,0 +1,3 @@
+# extract_text 1 | file: motor-nameplate.jpg | sha256: 3e1d9520af96ee9a9b7937a12e08e82a25297b8f305715ae708408a5dc108a4c | format: jpg | status: needs OCR | engine: tesseract 5.4.0.20240606
+# ocr: engine: tesseract 5.4.0.20240606 (eng) | mean word confidence: -
+# warning: OCR found no text: page 1 of 1 (a blank page, or an image OCR could not read)

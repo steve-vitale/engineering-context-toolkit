@@ -1,0 +1,2 @@
+rank,tier,owner,plant,unit,item,kind,why,safety,spot_check
+1,amber,I&C,P1,PAST1,S1/P1/PAST1/FDV-2210,"on the P&ID, not in the instrument index",FDV-2210 read from sheet CAD-FDV; no instrument index covers S1/P1/PAST1 yet: review the draft instrument index from `one_map.py draft-lists`,,

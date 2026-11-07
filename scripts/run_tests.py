@@ -17,6 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_TESTS = (
+    "scripts/test_delivery_examples.py",
     "scripts/test_batch_analysis.py",
     "scripts/test_check_analysis_basis.py",
     "scripts/test_join_batch_records.py",
@@ -89,6 +90,7 @@ SOURCE_TESTS = (
 )
 # These tests need cached data or third-party imports, even though none needs a gateway.
 FULL_ONLY_TESTS = (
+    "scripts/test_cad_handoff.py",
     "scripts/test_generate_any_model.py",
     "scripts/test_description_workflow.py",
     "scripts/test_engineering_change.py",
@@ -110,7 +112,7 @@ FULL_ONLY_TESTS = (
 )
 TESTS = SOURCE_TESTS + FULL_ONLY_TESTS
 DEPENDENCIES = {"numpy": "numpy", "cv2": "opencv-python-headless",
-                "asyncua": "asyncua", "cryptography": "cryptography", "PIL": "Pillow"}
+                "asyncua": "asyncua", "cryptography": "cryptography", "PIL": "Pillow", "ezdxf": "ezdxf"}
 TWIN = "out/twin/r2-tiles-trace/codex"
 DRAWINGS = "data/external/pid2graph/PID2Graph/Complete/PID2Graph OPEN100"
 SOURCE_FILES = (

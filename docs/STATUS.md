@@ -1,6 +1,6 @@
 # State of the toolkit
 
-Implementation snapshot: **2026-11-03, UTC**. The public package is **Industrial Context Toolkit** (renamed from Engineering Context Toolkit on 2026-11-05; old links redirect).
+Implementation snapshot: **2026-11-06**. The public package is **Industrial Context Toolkit** (renamed from Engineering Context Toolkit on 2026-11-05; old links redirect).
 Use the [job selector](../README.md#start-wherever-you-are) to choose a tool or the
 [first-question guide](../examples/first-pilot/README.md) for a no-install contribution.
 The [workflow map](WORKFLOWS.md) owns supported inputs and outputs; this page owns current readiness and gaps.
@@ -13,17 +13,27 @@ Company review, accepted identities and receiving-system checks determine what c
 
 ## Current verification
 
-The recorded full-suite release baseline is **`a439f14`**:
+The earlier full-suite release baseline was **`a439f14`**:
 [main CI run 41590240463](https://github.com/steve-vitale/engineering-context-toolkit/actions/runs/41590240463).
 It passed **77/77 test programs**, with **18 individual unittest cases skipped**, plus six saved task/model
 benchmark suites and the optional MCP/protocol job. This is software evidence, not human usefulness,
 company-client acceptance or plant validation. Check [committed-version CI](https://github.com/steve-vitale/engineering-context-toolkit/actions/workflows/tests.yml)
 for later revisions; the dated development records below apply only to their stated inputs and versions.
 
-The current runner registers 60 source-only and 78 full-suite programs. Offline publication checks match
+The current runner registers **70 source-only and 89 full-suite programs**. The 2026-11-06 local Windows run
+passed **89/89 programs**, with **seven individual unittest cases skipped** and three platform notices explaining
+skips. It is not a complete run of every optional check. The drawing-to-map fixture now pins LF source bytes to
+fix [Linux CI regression #7](https://github.com/steve-vitale/industrial-context-toolkit/issues/7); use
+[committed-version CI](https://github.com/steve-vitale/industrial-context-toolkit/actions/workflows/tests.yml)
+for the result on a particular published revision.
+
+Offline publication checks match
 41 numerical claims and identify one prose-only claim. The 95-cell workflow matrix records
 **64 pass / 23 fail / 8 n/a**; its failures are retained research results, not failing unit tests.
 Pipeline freshness remains **50/52**: manual `te.pid_live` and `te.replay` receipts are stale.
+Saved predictions regenerate 23 matching tables and seven with documented historical formatting adjustments;
+five earlier diagnostic tables still lack predictions. The feature catalog has **29 features**, of which
+**23 have independently reviewed example outputs**; the new CAD and photo examples still need independent review.
 Neither a passing software test nor a matching source hash establishes an accepted engineering conclusion.
 
 The coherence audit corrected [core graph reduction](GRAPH_EXPORT.md#two-profiles-the-full-record-and-the-part-a-change-system-needs): connections stay
@@ -40,6 +50,9 @@ create those controls.
 
 | Piece | Contribution | Boundary |
 |---|---|---|
+| Maintenance record handoff | [One fictional replacement](../examples/maintenance-handoff/README.md) links the existing before/after model, changes and closeout tools into a reproducible job. | Supplied identities and records; no CMMS acceptance, real recipient observation or measured review-time result. |
+| Bounded editable CAD exchange | [Retain DXF originals, propose explicit attribute edits, compare reloaded entity/header content and project mapped IDs into one-map](../examples/cad-handoff/README.md). | Declared block-attribute profile through ezdxf only. Native editor open/edit/save, intelligent-CAD databases and company acceptance remain unrun; no inferred connectivity or automatic synchronization. |
+| Public photo-to-record exercise | [Two attributed nameplate photographs](../examples/photo-to-record/README.md), candidate fields, six retained OCR attempts and explicit unknown asset identities. | Empty and incorrect OCR results remain visible. Candidate readings need independent review and site identity evidence; neither OCR confidence nor a legible plate establishes installed state. |
 | Drawing intake and review report | A supplied extraction becomes a draft model, review queue, staging and readable HTML. | Approved extraction, engineering review and receiving-company acceptance. |
 | DEXPI routes | Read supported XML or the separate adapted-key/sheet contract; report omissions. | Exporter coverage and downstream eligibility vary; supported unplaced roles can feed source-qualified questions while equipment placement remains unknown. This does not extend platform-generator eligibility. |
 | Description/model drawing | Authored model and detailed layout produce draft sheets and platform outputs; the bundle retains the exact question catalog it consumed. | Interpretation and geometry remain authored; matching quotations and catalog hashes cannot establish correct meaning or company approval. |

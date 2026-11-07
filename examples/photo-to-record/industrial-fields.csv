@@ -1,0 +1,10 @@
+field,candidate,units,status,source,locator,interpretation_limit
+manufacturer,ABB,,needs independent review,industrial-motor.jpg,"pixels x=80..400 y=65..225",Printed brand
+plate_number,AW 818174,,needs independent review,industrial-motor.jpg,"pixels x=78..420 y=242..290",Printed after No.; unique installed identity not independently established
+power,5000,kW,needs independent review,industrial-motor.jpg,"pixels x=80..420 y=295..342",Plate rating; not measured operating power
+voltage,10000,V,needs independent review,industrial-motor.jpg,"pixels x=80..420 y=392..440",U1 plate rating; not measured installed voltage
+current,335,A,needs independent review,industrial-motor.jpg,"pixels x=430..778 y=392..440",I1 plate rating; not measured operating current
+speed,1480,1/min,needs independent review,industrial-motor.jpg,"pixels x=80..420 y=345..390",Plate speed; not measured operating speed
+frequency,50,Hz,needs independent review,industrial-motor.jpg,"pixels x=780..976 y=342..386",Plate frequency
+plant_tag,,,unknown,industrial-motor.jpg,whole image,No site equipment tag established
+capture_to_asset_link,,,unknown,industrial-motor.jpg,whole image,Uploader description is not verified current installed-state evidence

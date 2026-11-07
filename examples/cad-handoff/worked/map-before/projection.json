@@ -1,0 +1,8 @@
+{
+  "schema": "cad-map-projection-1",
+  "source_sha256": "c64f5ac8f53f7f35ed0f119abdc28c1e11eb5c7cc28011ddaf079940cfee2b7d",
+  "context_sha256": "ccbe296a6bb8e31dd266963f067df9a097cc7d547fc7d502bcaa37a420b64ef1",
+  "mapping_sha256": "1c5839cb2c10f30c53f59613a479c688f4625365b1a48344d5916d58e6a2f305",
+  "status": "draft drawing reference; not installed-state authority",
+  "relationships_inferred": 0
+}

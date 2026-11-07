@@ -1,0 +1,56 @@
+{
+ "code": "db67f6e1db96f547eebe46a865734fd58f4375c7b98d44a19146822c37d9010e",
+ "conflicts": {},
+ "documents": {
+  "PID-P1-CAD-FDV": {
+   "revision": "e4e11b117bd9",
+   "sha256": "8a203abee82be645377de876581f22a8508703196a664f6b46d4d3f99db0bb68"
+  }
+ },
+ "schema": "one-map-state-1",
+ "sheets": {
+  "PID-P1-CAD-FDV": {
+   "fragment": {
+    "doc": "PID-P1-CAD-FDV",
+    "items": [
+     {
+      "attributes": {
+       "cad_ict_id": "S1/P1/PAST1/FDV-2210",
+       "cad_insert_handle": "3A",
+       "cad_model": "SRC-3",
+       "cad_serial": "AV-88412",
+       "cad_size": "DN65",
+       "cad_source_sha256": "e4e11b117bd90073d2dd3b6269e5662e7719283345048bc3e2e896c711520bd6",
+       "cad_tag": "FDV-2210",
+       "cad_vendor_note": "retain this unfamiliar attribute"
+      },
+      "box_0_1000": null,
+      "former_tag": null,
+      "name": null,
+      "on": null,
+      "on_line": null,
+      "section": "instruments",
+      "tag": "FDV-2210",
+      "zone": null
+     }
+    ],
+    "lines": [],
+    "offpage": [],
+    "owner": "Engineering",
+    "plant": "P1",
+    "rev": "e4e11b117bd9",
+    "review": [],
+    "scope": "S1/P1/PAST1",
+    "sha256": "8a203abee82be645377de876581f22a8508703196a664f6b46d4d3f99db0bb68",
+    "sheet": "CAD-FDV",
+    "signals": [],
+    "systems": []
+   },
+   "owner": "Engineering",
+   "plant": "P1",
+   "rev": "e4e11b117bd9",
+   "sha256": "8a203abee82be645377de876581f22a8508703196a664f6b46d4d3f99db0bb68",
+   "unit": "PAST1"
+  }
+ }
+}

@@ -1,0 +1,6 @@
+# extract_text 1 | file: industrial-motor.jpg | sha256: 4ecc369d57a5119cab7dbeb5626e01bdfbf80ec486942c0b8b52a49d6afc6275 | format: jpg | status: ok (ocr) | engine: tesseract 5.4.0.20240606
+# ocr: engine: tesseract 5.4.0.20240606 (eng) | mean word confidence: page 1 75.1
+
+## page 1
+MACHINE ASYNCHRONE
+sili MACHINE

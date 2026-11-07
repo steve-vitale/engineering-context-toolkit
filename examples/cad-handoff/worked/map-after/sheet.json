@@ -1,0 +1,22 @@
+{
+  "schema": "one-map-sheet-1",
+  "equipment": [],
+  "instruments": [
+    {
+      "tag": "FDV-2210",
+      "attributes": {
+        "cad_ict_id": "S1/P1/PAST1/FDV-2210",
+        "cad_tag": "FDV-2210",
+        "cad_model": "SRC-3",
+        "cad_serial": "AV-88412",
+        "cad_size": "DN65",
+        "cad_vendor_note": "retain this unfamiliar attribute",
+        "cad_source_sha256": "e4e11b117bd90073d2dd3b6269e5662e7719283345048bc3e2e896c711520bd6",
+        "cad_insert_handle": "3A"
+      }
+    }
+  ],
+  "lines": [],
+  "signal_lines": [],
+  "note": "Draft CAD-reference projection. No connectivity or installed-state claim; original DXF retained."
+}

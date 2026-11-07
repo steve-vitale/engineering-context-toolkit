@@ -1,8 +1,8 @@
 # Document text: read what procedures, PHAs and work orders say
 
 Procedures, HACCP plans, PHAs, CAPAs, work orders and purchase orders name the same pumps, transmitters and valves
-as the P&ID and the instrument index. They live in Word, Excel, PowerPoint and PDF files, which a plain text search
-cannot see. `scripts/extract_text.py` reads the text inside those files and puts a locator in front of every piece,
+as the P&ID and the instrument index. They live in Word, Excel, PowerPoint and PDF files, whose contents need
+format-aware extraction to retain useful locators. `scripts/extract_text.py` reads the text and locates every piece,
 so a tag found in a document can be traced back to the exact page, table row, cell or slide.
 
 It is a reading step only. It does not decide what a tag means, match tags to the map, or change any source.
@@ -10,6 +10,10 @@ The [one map](ONE_MAP.md) reads every document in its manifest through `extract_
 piece by piece ([matching rules and statuses](ONE_MAP.md#the-two-halves)).
 
 ## Run it
+
+For photographs, inspect the [public nameplate exercise](../examples/photo-to-record/README.md): two original
+images, unverified field candidates and six retained OCR attempts, including missing/incorrect numeric data.
+Text extraction is separate from structured field review and confirmation of the installed asset's identity.
 
 ```sh
 python scripts/extract_text.py procedures/SOP-104.docx "PM plan.xlsx" PHA/ --out doc-text

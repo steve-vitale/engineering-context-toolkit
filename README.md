@@ -28,6 +28,13 @@ awaiting one; those reviews are not engineering sign-offs.
 
 These tools accept your own records in their documented formats. Choose the work product you need first.
 
+**Working on a plant problem?** Start with [maintenance records that disagree](docs/MAINTENANCE_START.md)
+or [missing or outdated engineering drawings](docs/DRAWING_RECOVERY.md). The
+[replacement walkthrough](examples/maintenance-handoff/README.md) follows one fictional valve through the
+work order, equipment register, datasheet, field evidence and next revision. For help with a larger scope,
+[connect with me on LinkedIn and message me there](https://www.linkedin.com/in/steve-vitale/).
+See [working together](docs/WORK_WITH_ME.md) for inputs, deliverables and how a scoped engagement starts.
+
 | Your engineering job | Starting material and guide | Work product |
 |---|---|---|
 | Build your plant's first draft asset model | [P&ID image](examples/own-drawing/README.md) or [DEXPI XML](examples/from-dexpi-xml/README.md) | Sourced assets and represented connections, review material, graph and platform-staging routes. |
@@ -93,9 +100,10 @@ answers affected by revised sources. These steps require explicit local runs; th
 See [one map](docs/ONE_MAP.md#the-path), the [two-plant example](examples/one-map/README.md) where Plant 2 has
 no records yet, and [one public P&ID sheet read end to end](examples/drawing-to-map/README.md).
 
-**Input scope today:** equipment/instrument records and datasheets use structured CSV contracts. Production,
-quality and safety records (procedures, HACCP plans, CAPAs, lockout procedures and hazard reviews) enter as
-documents that cover or mention tags. There is no special handling yet for critical control points or isolation points.
+**Input scope today:** equipment/instrument records and datasheets use structured CSV contracts. Supported
+registers also cover work orders, PM plans, spares, calibration, critical control points and isolation records;
+documents can cover or mention tags. The [one-map contract](docs/ONE_MAP.md) specifies the bounded checks.
+These checks produce review needs, not operating authorization or an accepted safety assessment.
 
 ## What connects today: the hub and spokes
 
