@@ -144,6 +144,71 @@ class IntakeTests(unittest.TestCase):
         self.assertEqual(report["history"]["no_longer_detected"][0]["status"], "open")
         self.assertIn("not an accepted correction", report["history"]["meaning"])
 
+    def test_changed_interpretation_of_identical_source_is_explicit(self):
+        a = self.run_packet()
+        previous = mi.inventory(a)
+        # Same bytes and source revision, different declared meaning: no serial disagreement is now possible.
+        self.p["equipment"]["columns"]["Serial"] = "model"
+        b = self.run_packet("reinterpreted", a)
+        self.assertEqual(mi.load(b / "findings.json")["findings"], [])
+        basis = mi.load(b / "comparison-basis.json")
+        self.assertEqual(basis["status"], "needs_review")
+        self.assertEqual(basis["interpretation_changes"][0]["source"], "equipment")
+        self.assertFalse(basis["sources"][0]["bytes_changed"])
+        self.assertIn("Comparison basis needs review", (b / "REPORT.html").read_text())
+        self.assertEqual(previous, mi.inventory(a))
+
+    def test_date_format_change_and_removed_source_rows_are_explained(self):
+        self.p["work_orders"]["date_format"] = "%m/%d/%Y"
+        self.wo[0]["Closed"] = "02/01/2026"
+        a = self.run_packet()
+        self.p["work_orders"]["date_format"] = "%d/%m/%Y"
+        b = self.run_packet("date-basis", a)
+        basis = mi.load(b / "comparison-basis.json")
+        self.assertEqual(basis["interpretation_changes"][0]["source"], "work_orders")
+        change = basis["sources"][1]["changed_records"][0]
+        self.assertEqual((change["before"]["closed_on"], change["after"]["closed_on"]), ("2026-02-01", "2026-01-02"))
+        self.wo = [self.wo[1]]
+        self.p["work_orders"]["revision"] = "2"
+        c = self.run_packet("omitted", b)
+        removed = mi.load(c / "comparison-basis.json")["sources"][1]["removed_records"]
+        self.assertEqual(removed[0]["values"]["work_order"], "801")
+        self.assertEqual(removed[0]["origin"]["original_record"], 2)
+
+    def test_method_drift_and_legacy_missing_pins_are_never_silent(self):
+        a = self.run_packet()
+        receipt = mi.load(a / "receipt.json")
+        receipt["methods_sha256_lf"]["one_map.py"] = "0" * 64
+        mi.dump(a / "receipt.json", receipt)  # exposed metadata control, not an actual old engine run
+        b = self.run_packet("method-drift", a)
+        basis = mi.load(b / "comparison-basis.json")
+        self.assertIn("one_map.py", basis["changed_methods"])
+        self.assertEqual(basis["status"], "needs_review")
+        receipt.pop("methods_sha256_lf")
+        mi.dump(a / "receipt.json", receipt)
+        c = self.run_packet("legacy", a)
+        self.assertTrue(mi.load(c / "comparison-basis.json")["unknown_prior_basis"])
+
+    def test_identical_recorded_basis_is_distinct_from_acceptance(self):
+        a = self.run_packet()
+        b = self.run_packet("repeat", a)
+        basis = mi.load(b / "comparison-basis.json")
+        self.assertEqual(basis["status"], "unchanged_recorded_basis")
+        self.assertEqual(basis["changed_methods"], [])
+        self.assertEqual(basis["interpretation_changes"], [])
+        self.assertTrue(all(not s["changed_records"] for s in basis["sources"]))
+        self.assertIn("not acceptance", basis["meaning"])
+
+    def test_row_reordering_is_not_a_changed_normalized_record(self):
+        a = self.run_packet()
+        self.wo.reverse()
+        self.p["work_orders"]["revision"] = "2-reordered"
+        b = self.run_packet("reordered", a)
+        source = mi.load(b / "comparison-basis.json")["sources"][1]
+        self.assertTrue(source["bytes_changed"])
+        for field in ("changed_records", "removed_records", "added_records"):
+            self.assertEqual(source[field], [])
+
 
 if __name__ == "__main__":
     unittest.main()

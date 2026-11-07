@@ -1,0 +1,42 @@
+[
+  {
+    "prepared": "equipment.csv",
+    "prepared_record": 2,
+    "original": "originals/equipment.csv",
+    "original_record": 2,
+    "original_end_line": 2,
+    "source_id": "EQ-EXPORT",
+    "revision": "1",
+    "item": "SIM/P1/U1/P-101"
+  },
+  {
+    "prepared": "equipment.csv",
+    "prepared_record": 3,
+    "original": "originals/equipment.csv",
+    "original_record": 3,
+    "original_end_line": 3,
+    "source_id": "EQ-EXPORT",
+    "revision": "1",
+    "item": "SIM/P1/U2/P-101"
+  },
+  {
+    "prepared": "work_orders.csv",
+    "prepared_record": 2,
+    "original": "originals/work_orders.csv",
+    "original_record": 2,
+    "original_end_line": 2,
+    "source_id": "WO-EXPORT",
+    "revision": "1",
+    "item": "SIM/P1/U1/P-101"
+  },
+  {
+    "prepared": "work_orders.csv",
+    "prepared_record": 3,
+    "original": "originals/work_orders.csv",
+    "original_record": 3,
+    "original_end_line": 3,
+    "source_id": "WO-EXPORT",
+    "revision": "1",
+    "item": "SIM/P1/U1/P-101"
+  }
+]

@@ -66,7 +66,10 @@ The [reusable intake](MAINTENANCE_INTAKE.md) accepts the user's mapped exports, 
 returns a readable report, full review queue and proposed action CSV. Its profile needs explicit column meanings,
 scope, source revisions and coverage; do not guess these from filenames. Use `--previous` with a new destination
 for a returned export or later replacement. It verifies the retained packet and distinguishes a finding no longer
-detected from a correction accepted by a record owner. If the narrow intake does not fit, use the documented
+detected from a correction accepted by a record owner. Inspect its comparison-basis notice before explaining a
+vanished finding: changed software, mapping/date meanings or omitted source rows can account for it. Use the
+exact before/after values and original row origins; unchanged recorded basis still does not mean acceptance.
+If the narrow intake does not fit, use the documented
 one-map contracts or return a sourced manual partial finding. The [ordinary-export exercise](../examples/agent-first-use/README.md)
 is still a fixed tutorial; running it does not analyze the user's files.
 

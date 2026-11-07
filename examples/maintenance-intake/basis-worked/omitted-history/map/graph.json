@@ -1,0 +1,340 @@
+{
+ "schema": "twin-graph-2",
+ "model_kind": "one_map",
+ "title": null,
+ "site": "SIM",
+ "source_model": "site.json",
+ "nodes": [
+  {
+   "id": "SIM",
+   "kind": "site",
+   "tag": "SIM",
+   "name": null,
+   "aliases": [],
+   "status": "confirmed",
+   "attributes": [],
+   "source": {
+    "kind": "document",
+    "document": "site.json",
+    "note": "site file"
+   }
+  },
+  {
+   "id": "SIM/P1",
+   "kind": "plant",
+   "tag": "P1",
+   "name": null,
+   "aliases": [],
+   "status": "confirmed",
+   "attributes": [],
+   "source": {
+    "kind": "document",
+    "document": "site.json",
+    "note": "site file"
+   }
+  },
+  {
+   "id": "SIM/P1/U1",
+   "kind": "unit",
+   "tag": "U1",
+   "name": null,
+   "aliases": [],
+   "status": "confirmed",
+   "attributes": [],
+   "source": {
+    "kind": "document",
+    "document": "site.json",
+    "note": "site file"
+   }
+  },
+  {
+   "id": "SIM/P1/U1/P-101",
+   "kind": "equipment",
+   "tag": "P-101",
+   "name": null,
+   "aliases": [],
+   "status": "unverified",
+   "attributes": [
+    {
+     "name": "locator",
+     "value": "original equipment.csv CSV record 2 (ends at physical line 2)",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "EQ-EXPORT",
+      "revision": "1",
+      "sha256": "15f10eb4abaa46431047be2e15909e69f7c6e8909a25cad058736211f8a97ae7",
+      "path": "equipment.csv",
+      "locator": "row 2"
+     }
+    },
+    {
+     "name": "model",
+     "value": "PX20",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "EQ-EXPORT",
+      "revision": "1",
+      "sha256": "15f10eb4abaa46431047be2e15909e69f7c6e8909a25cad058736211f8a97ae7",
+      "path": "equipment.csv",
+      "locator": "row 2"
+     }
+    },
+    {
+     "name": "serial_number",
+     "value": "OLD-101",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "EQ-EXPORT",
+      "revision": "1",
+      "sha256": "15f10eb4abaa46431047be2e15909e69f7c6e8909a25cad058736211f8a97ae7",
+      "path": "equipment.csv",
+      "locator": "row 2"
+     }
+    }
+   ],
+   "source": {
+    "kind": "document",
+    "document": "EQ-EXPORT",
+    "revision": "1",
+    "sha256": "15f10eb4abaa46431047be2e15909e69f7c6e8909a25cad058736211f8a97ae7",
+    "path": "equipment.csv",
+    "locator": "row 2"
+   },
+   "scope": "SIM/P1/U1",
+   "owner": "Maintenance",
+   "listed_in": [
+    "EQ-EXPORT"
+   ],
+   "appearances": [],
+   "class": "pump",
+   "class_how": "equipment prefix P (site convention)"
+  },
+  {
+   "id": "SIM/P1/U2",
+   "kind": "unit",
+   "tag": "U2",
+   "name": null,
+   "aliases": [],
+   "status": "confirmed",
+   "attributes": [],
+   "source": {
+    "kind": "document",
+    "document": "site.json",
+    "note": "site file"
+   }
+  },
+  {
+   "id": "SIM/P1/U2/P-101",
+   "kind": "equipment",
+   "tag": "P-101",
+   "name": null,
+   "aliases": [],
+   "status": "unverified",
+   "attributes": [
+    {
+     "name": "locator",
+     "value": "original equipment.csv CSV record 3 (ends at physical line 3)",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "EQ-EXPORT",
+      "revision": "1",
+      "sha256": "15f10eb4abaa46431047be2e15909e69f7c6e8909a25cad058736211f8a97ae7",
+      "path": "equipment.csv",
+      "locator": "row 3"
+     }
+    },
+    {
+     "name": "model",
+     "value": "PX20",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "EQ-EXPORT",
+      "revision": "1",
+      "sha256": "15f10eb4abaa46431047be2e15909e69f7c6e8909a25cad058736211f8a97ae7",
+      "path": "equipment.csv",
+      "locator": "row 3"
+     }
+    },
+    {
+     "name": "serial_number",
+     "value": "OTHER-101",
+     "status": "unverified",
+     "source": {
+      "kind": "document",
+      "document": "EQ-EXPORT",
+      "revision": "1",
+      "sha256": "15f10eb4abaa46431047be2e15909e69f7c6e8909a25cad058736211f8a97ae7",
+      "path": "equipment.csv",
+      "locator": "row 3"
+     }
+    }
+   ],
+   "source": {
+    "kind": "document",
+    "document": "EQ-EXPORT",
+    "revision": "1",
+    "sha256": "15f10eb4abaa46431047be2e15909e69f7c6e8909a25cad058736211f8a97ae7",
+    "path": "equipment.csv",
+    "locator": "row 3"
+   },
+   "scope": "SIM/P1/U2",
+   "owner": "Maintenance",
+   "listed_in": [
+    "EQ-EXPORT"
+   ],
+   "appearances": [],
+   "class": "pump",
+   "class_how": "equipment prefix P (site convention)"
+  }
+ ],
+ "edges": [
+  {
+   "id": "contains:SIM->SIM/P1",
+   "type": "contains",
+   "from": "SIM",
+   "to": "SIM/P1",
+   "status": "confirmed",
+   "direction": null,
+   "source": {
+    "kind": "document",
+    "document": "site.json",
+    "note": "site file"
+   },
+   "attributes": []
+  },
+  {
+   "id": "contains:SIM/P1->SIM/P1/U1",
+   "type": "contains",
+   "from": "SIM/P1",
+   "to": "SIM/P1/U1",
+   "status": "confirmed",
+   "direction": null,
+   "source": {
+    "kind": "document",
+    "document": "site.json",
+    "note": "site file"
+   },
+   "attributes": []
+  },
+  {
+   "id": "contains:SIM/P1->SIM/P1/U2",
+   "type": "contains",
+   "from": "SIM/P1",
+   "to": "SIM/P1/U2",
+   "status": "confirmed",
+   "direction": null,
+   "source": {
+    "kind": "document",
+    "document": "site.json",
+    "note": "site file"
+   },
+   "attributes": []
+  },
+  {
+   "id": "contains:SIM/P1/U1->SIM/P1/U1/P-101",
+   "type": "contains",
+   "from": "SIM/P1/U1",
+   "to": "SIM/P1/U1/P-101",
+   "status": "unverified",
+   "direction": null,
+   "source": {
+    "kind": "document",
+    "document": "EQ-EXPORT",
+    "revision": "1",
+    "sha256": "15f10eb4abaa46431047be2e15909e69f7c6e8909a25cad058736211f8a97ae7",
+    "path": "equipment.csv",
+    "locator": "row 2"
+   },
+   "attributes": []
+  },
+  {
+   "id": "contains:SIM/P1/U2->SIM/P1/U2/P-101",
+   "type": "contains",
+   "from": "SIM/P1/U2",
+   "to": "SIM/P1/U2/P-101",
+   "status": "unverified",
+   "direction": null,
+   "source": {
+    "kind": "document",
+    "document": "EQ-EXPORT",
+    "revision": "1",
+    "sha256": "15f10eb4abaa46431047be2e15909e69f7c6e8909a25cad058736211f8a97ae7",
+    "path": "equipment.csv",
+    "locator": "row 3"
+   },
+   "attributes": []
+  }
+ ],
+ "questions": [],
+ "events": [],
+ "not_exported": [],
+ "loops": [],
+ "coverage": {
+  "sources": [
+   {
+    "id": "EQ-EXPORT",
+    "register": "maintenance_export",
+    "scopes": [
+     "SIM/P1"
+    ],
+    "owner": "Maintenance"
+   },
+   {
+    "id": "WO-EXPORT",
+    "register": "work_order",
+    "scopes": [
+     "SIM/P1"
+    ],
+    "owner": "Maintenance"
+   }
+  ],
+  "relations_checked": {
+   "links": 5,
+   "checked": 5,
+   "unchecked_no_class": 0,
+   "do_not_fit": 0
+  }
+ },
+ "records": {
+  "work_order": [
+   {
+    "register": "work_order",
+    "id": "WO-802",
+    "item": "SIM/P1/U1/P-101",
+    "scope": "SIM/P1/U1",
+    "values": {
+     "work_order": "WO-802",
+     "tag": "P-101",
+     "unit": "U1",
+     "installed_serial_number": "FUTURE-101",
+     "installed_model": "PX20",
+     "description": "Open order proposal not evidence of installation",
+     "plant": "P1",
+     "locator": "original work_orders.csv CSV record 2 (ends at physical line 2)"
+    },
+    "source": {
+     "kind": "document",
+     "document": "WO-EXPORT",
+     "revision": "2-omitted-history",
+     "sha256": "49937848a09321dad7c98c7332d928ee3c36f570c06454c7ca9455398ca31b44",
+     "path": "work_orders.csv",
+     "locator": "row 2; original work_orders.csv CSV record 2 (ends at physical line 2)"
+    },
+    "status": "unverified"
+   }
+  ]
+ },
+ "counts": {
+  "nodes": 6,
+  "edges": 5,
+  "claims": 6,
+  "conflicts": 0,
+  "questions": 0,
+  "events": 0
+ }
+}

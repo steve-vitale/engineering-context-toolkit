@@ -7793,3 +7793,46 @@ receiving route cannot be assumed to preserve the required attributed profile; i
 The fourth gap stays open: qualify a usable attribute-capable receiver with the exact edit/save/close/reopen
 and strict returned-DXF comparison. No intelligent-CAD, company acceptance or subsequent accepted revision is
 claimed. SELF_SERVICE_GAPS.md keeps this distinction beside the completed intake/rehearsal/repeat-use software.
+
+## 174. Show why a maintenance finding disappeared
+
+2026-11-06 local / 2026-11-07 UTC. Repeat packets pinned implementation and Python metadata but buried changes
+in receipts. New controls first produced four errors against the old tool because comparison-basis.json was
+absent; the actual failure output is retained. The updated 13-method module passes, including identical-byte
+reinterpretation, date meaning changes, synthetic changed/missing method metadata, omitted history and row reorder.
+
+Returned reports now show changed local methods, recorded Python, cutoff and effective field/date/encoding
+settings before the findings. Exact added/removed/changed normalized records retain before/after original origins.
+Row movement alone does not count as changed content. Unknown older pins report unknown continuity. Hashes are
+not signatures or complete environment locks. A changed basis needs explanation, including ordinary corrections;
+an unchanged basis does not establish coverage, installed truth or acceptance.
+
+Two actual CLI controls compare with the retained historical initial packet: ignoring Serial under identical CSV
+bytes, and a new revision omitting closed WO-801. Both disagreements disappear, both retain the earlier finding
+open, both expose actual code changes, and the latter names prior original record 2. Eight exposed conditions pass.
+The original historical packet and fresh-agent session artifacts remain unchanged. Current three-revision replay
+passes five conditions; frozen session recheck passes. Six delivery-evidence and five feature-catalog methods pass.
+No agent rerun, manager benefit, company readback or authenticated correction is claimed. CI also replays both
+basis controls on its current environment; final integration evidence is reported separately.
+
+## 175. Obtain a native CAD return without waiving its differences
+
+2026-11-06 local / 2026-11-07 UTC. Public QCAD Professional 3.33.1 portable trials were obtained from the publisher
+and used headless with isolated settings. Qt6 exited zero with no scripting handler; the absent Qt6Positioning
+candidate dependency is a diagnosis only. Qt5 loaded the documented scripting engine. A first helper confused the
+insert-with-attributes enum with the attribute enum, produced an identity error and no return; its failure is retained.
+
+The corrected native helper found the scoped ICT_ID, checked the planned before values, changed MODEL, SERIAL
+and SIZE, exported a separate DXF, destroyed the document and imported the returned DXF into a fresh native document.
+All six attribute values survived, including stable ID, TAG and VENDOR_NOTE. The independent-format strict comparator
+still fails: one DXF version change, one whole-header difference and 333 entity-record differences, 335 total.
+These include record/handle rewrites, not 335 demonstrated engineering losses. No comparator rule was relaxed.
+No accepted context revision was promoted. Native GUI/display, preservation classification and company acceptance
+remain open. The exposed one-fixture API experiment is not a qualified adapter or Community Edition claim.
+
+Publisher archive hashes, actual logs including failures, helper, returned drawing, readback and comparison are retained.
+Seven delivery-evidence tests verify bytes, the exact re-comparison and preservation-failure boundary. The optional
+wrapper keeps source hash/output guards and refuses process-zero/script-error false success. Its actual rerun reaches
+native readback and returns the expected preservation exit 1 with 335 differences. CI checks frozen evidence
+without acquiring trial software. No binaries are redistributed. A 390-pixel browser check of the maintenance basis
+report shows no horizontal overflow, the omitted prior original row and all five local report links returning 200.

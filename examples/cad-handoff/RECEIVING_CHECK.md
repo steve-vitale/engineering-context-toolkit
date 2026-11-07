@@ -23,3 +23,5 @@ expected identities/classes/connectivity/attributes, units, layers and acceptabl
 Retain: source/returned hashes, native project when permitted, editor screenshots/import messages, comparison,
 declared losses, reviewer/date, acceptance scope and residual gaps. No first-party company system acceptance,
 installed-state validation or human time saving follows from a DXF parse.
+
+The [QCAD headless experiment](native/qcad/README.md) obtained a native edited/reopened return, but strict preservation failed with 335 decoded differences. It does not complete this interactive checklist.

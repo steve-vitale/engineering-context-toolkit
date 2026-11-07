@@ -1,0 +1,2 @@
+work_order,tag,unit,closed_on,installed_serial_number,installed_model,description,plant,locator
+WO-802,P-101,U1,,FUTURE-101,PX20,Open order proposal not evidence of installation,P1,original work_orders.csv CSV record 2 (ends at physical line 2)

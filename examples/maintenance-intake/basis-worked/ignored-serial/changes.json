@@ -1,0 +1,108 @@
+{
+ "schema": "one-map-changes-1",
+ "site": "SIM",
+ "title": null,
+ "old": "old",
+ "new": "new",
+ "filter": null,
+ "items": {
+  "added": [],
+  "removed": [],
+  "changed": [
+   {
+    "id": "SIM/P1/U1/P-101",
+    "tag": "P-101",
+    "kind": "equipment",
+    "owner": "Maintenance",
+    "flags": [],
+    "changes": [
+     {
+      "what": "attribute serial_number",
+      "old": "OLD-101 (EQ-EXPORT)",
+      "new": null
+     }
+    ]
+   },
+   {
+    "id": "SIM/P1/U2/P-101",
+    "tag": "P-101",
+    "kind": "equipment",
+    "owner": "Maintenance",
+    "flags": [],
+    "changes": [
+     {
+      "what": "attribute serial_number",
+      "old": "OTHER-101 (EQ-EXPORT)",
+      "new": null
+     }
+    ]
+   }
+  ]
+ },
+ "links": {
+  "added": [],
+  "removed": []
+ },
+ "records": {
+  "added": [],
+  "removed": [],
+  "changed": []
+ },
+ "documents": {
+  "added": [],
+  "removed": [],
+  "changed": []
+ },
+ "conflicts": {
+  "added": [],
+  "removed": [
+   {
+    "id": "C-a639167a56",
+    "type": "value_disagreement",
+    "subject": "SIM/P1/U1/P-101",
+    "attribute": "serial_number",
+    "owner": "Maintenance",
+    "what": "P-101 serial_number: work order WO-801 (closed 2026-11-01) records serial_number NEW-101 installed; the maintenance equipment export EQ-EXPORT (row 2) says OLD-101",
+    "status": "open"
+   }
+  ],
+  "changed": []
+ },
+ "expectations": {
+  "added": [],
+  "removed": [],
+  "changed": []
+ },
+ "flags": [],
+ "counts": {
+  "items": {
+   "added": 0,
+   "removed": 0,
+   "changed": 2
+  },
+  "links": {
+   "added": 0,
+   "removed": 0
+  },
+  "records": {
+   "added": 0,
+   "removed": 0,
+   "changed": 0
+  },
+  "documents": {
+   "added": 0,
+   "removed": 0,
+   "changed": 0
+  },
+  "conflicts": {
+   "added": 0,
+   "removed": 1,
+   "changed": 0
+  },
+  "expectations": {
+   "added": 0,
+   "removed": 0,
+   "changed": 0
+  }
+ }
+}

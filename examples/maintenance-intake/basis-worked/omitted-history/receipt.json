@@ -1,0 +1,93 @@
+{
+  "schema": "maintenance-packet-1",
+  "scope": {
+    "site": "SIM",
+    "plant": "P1",
+    "units": [
+      "U1",
+      "U2"
+    ],
+    "sources": {
+      "equipment": {
+        "id": "EQ-EXPORT",
+        "owner": "Maintenance",
+        "coverage": "Selected U1/U2 fictional equipment positions"
+      },
+      "work_orders": {
+        "id": "WO-EXPORT",
+        "owner": "Maintenance",
+        "coverage": "Selected U1/U2 fictional replacement history; open orders retained"
+      }
+    }
+  },
+  "as_of": "2026-11-06",
+  "python": "3.14.2 (tags/v3.14.2:df79316, Dec  5 2025, 17:18:21) [MSC v.1944 64 bit (AMD64)]",
+  "methods_sha256_lf": {
+    "build_twin.py": "8e9a5e26b9938a8adcca9590e03c3dde8c63af38aba09f6cf1aeafe6c4b0ded7",
+    "confidence.py": "0fc9948199d89edfeb091f4a9c1c961f5361f10bf0f292d7b7ce72740e7e4a10",
+    "context_register.py": "5a902bb2a405599b4d864e9e7ca77162d51488d8920bd24874bb9c426b06f30d",
+    "extract_text.py": "5c886220c3492729f8cf2e5d8ba7ec9788d29047620155ccedad3f84b37c0fb3",
+    "generate.py": "729c3081be3e1ec372d4538175d464eceedc7a6665c82a512728094268914307",
+    "graph_export.py": "bd4854c679193c49b555128b8c4d87225d2c4cfb596459fecdf61393fd697dcb",
+    "loop_audit.py": "ec7837928220abfffa5762650b9ee53c5aa30c048d32b2d591d0fe9dd9c4c4a5",
+    "maintenance_intake.py": "a8d158dfe3ca9282b5ab94aebb7d9c0d844168eeecda05f0fbd6827e1cd64832",
+    "map_changes.py": "7d199f3b29f6fd7a85382a64f617ff4c0af9916b503c16e5147afdf861763510",
+    "one_map.py": "db67f6e1db96f547eebe46a865734fd58f4375c7b98d44a19146822c37d9010e",
+    "ontology.py": "605b723102a44c420b7aaa0439906cdb2fb61b14fdc7172feb3891d663baf434",
+    "output_paths.py": "16ace3cf89be6baffcac1be804ea4917c9db10caffe2b58c11ee0b9acd4d2939",
+    "pi_mapping.py": "c9007ef93990a5ab69a2addb0d64147d5133217a62cd8bc6fe4229404605d43e",
+    "provenance.py": "69697be53c87ddd0efa92907847f14158512d2dfa2d337e79a6bb19145c98433",
+    "score_pid2graph.py": "decd9b48d8ae85c410aaabda34b99bc2b1caf2f3f5ffcb39e3a57a8329b9c787"
+  },
+  "method_scope": "Loaded local Python modules; Python version recorded; not a complete environment lock or tamper-proof signature",
+  "previous_receipt_sha256": "c973e4ebab4384803e55cb355285054adf61b066a39ea6efde0ca363598147b3",
+  "previous_files": {
+    "findings.json": "6ecabe343d027a09b862f8a536d3b8667f25cf04ac6e2957bc979216edd163bc",
+    "map/conflicts.md": "574af75561a54a121a606d98f6148bbdd3afdf515d5ad2468f37ee3245e69fea",
+    "map/graph.json": "8bc4d1313e809d16cdc53291b5898f67423989b80b18fb8b634331e8b7c7d4ac",
+    "map/queues/by-owner/maintenance.csv": "e86b48da74a5b49e9fbbd40b9abd4591c4a583d12e8582c953cba5b8b3a4324b",
+    "map/queues/by-plant/p1.csv": "e86b48da74a5b49e9fbbd40b9abd4591c4a583d12e8582c953cba5b8b3a4324b",
+    "map/queues/by-unit/p1-u1.csv": "e86b48da74a5b49e9fbbd40b9abd4591c4a583d12e8582c953cba5b8b3a4324b",
+    "map/queues/review_queue.csv": "e86b48da74a5b49e9fbbd40b9abd4591c4a583d12e8582c953cba5b8b3a4324b",
+    "map/report.md": "9c9d872a4dcb134336c8ebe71a7b16a97c63642ed91aebc841e9875d6a01d47c",
+    "map/state.json": "afb0e34d0b042c3bb79892071a73efa6592ebb23a70c0711c7dfebcdf91e9a69",
+    "originals/equipment.csv": "bf9a08407706278636132edcf89b372dc9f06f96f36ed034d4c96efd7a3098ee",
+    "originals/profile.json": "4fb812e6b42efcc437433cb5a1f25612554ee99bb00e95a17ce5c9d38dc86a59",
+    "originals/work_orders.csv": "809ac10acde62ff0f3435ad72cc06828cbff6ef978d2c8f9bd8218b3445a7574",
+    "prepared/drawings.csv": "742bc7d641b0afe170f226eb8d4c36fbcafe0344c00d083cc6084415d421bf95",
+    "prepared/equipment.csv": "15f10eb4abaa46431047be2e15909e69f7c6e8909a25cad058736211f8a97ae7",
+    "prepared/row-origins.json": "393d94bf0561df9916debda3b98e9902995a4aeecdc17b14080fc5b13fe6a3b9",
+    "prepared/site.json": "b04c62f8c7159f11ff43220b8bc7038a3019099d3391a198d1f8de52723d7d7e",
+    "prepared/work_orders.csv": "f5434eb61da6e82a416bb697e0c55b42fbeaf944af1715bba8cb594cdffae715",
+    "proposed-actions.csv": "795fd260e7e76cec989495e5e22b6671bbc9ea30ab50cfbe7529428d3f39aa24",
+    "REPORT.html": "e3d61df6c47552656a775c2e5c82c1e47a87692d7b09474319628ce523fe8cd0",
+    "REPORT.md": "fe6bef05358bcad75780ec209b38916311909f46b54d13dcab996d13cf9f1ed5"
+  },
+  "files": {
+    "changes.json": "a4949486ed600fe6b5e711acc7edb983faddd1f105955bc262a77a66b490ca96",
+    "changes.md": "edc97a3b86ed886dd94f5516a7b20a079c0d5d0ace1a710a9cdb7e00d5347ade",
+    "comparison-basis.json": "d905c10c7f4a0a3f0884c105b0af4bc552246df29aba8a1ac1761cd3afeb6d4e",
+    "findings.json": "c36ae1d37d4dd3af94ccb8ee55285239cea7724cac96c0c2adecc91fe46a8a42",
+    "map/conflicts.md": "9a326f66318421685be0ef1ea13378a24bb28f4a6a3236d3e34ec12d6e34c372",
+    "map/graph.json": "28e3767b7f8c9f25a9313d008452e3262919797820a4f40469f47effabe295b9",
+    "map/queues/by-owner/maintenance.csv": "f8599a28b26464e6ac4b0c1a80736d0163c46323c8b160afb21da54b774d2a3f",
+    "map/queues/by-plant/p1.csv": "f8599a28b26464e6ac4b0c1a80736d0163c46323c8b160afb21da54b774d2a3f",
+    "map/queues/by-unit/p1-u1.csv": "f8599a28b26464e6ac4b0c1a80736d0163c46323c8b160afb21da54b774d2a3f",
+    "map/queues/review_queue.csv": "f8599a28b26464e6ac4b0c1a80736d0163c46323c8b160afb21da54b774d2a3f",
+    "map/report.md": "3182fae698702668c150fd25dc47030fd7224fe266fe5dbfa3aecb57b3ba05ef",
+    "map/state.json": "daa658a9bca1953bd8d6dac1e39d2b9164571096a6cf8200ac8b8ca1a3ebdbe5",
+    "originals/equipment.csv": "bf9a08407706278636132edcf89b372dc9f06f96f36ed034d4c96efd7a3098ee",
+    "originals/profile.json": "7ecfcb1cac6bcd65d652fc96e30a577445e988ebc7c075838151e455f5114ca8",
+    "originals/work_orders.csv": "b4dad737be43da4379983fa667b483b0c0ab2738f931bbc633824f2387e5f2eb",
+    "prepared/drawings.csv": "742bc7d641b0afe170f226eb8d4c36fbcafe0344c00d083cc6084415d421bf95",
+    "prepared/equipment.csv": "15f10eb4abaa46431047be2e15909e69f7c6e8909a25cad058736211f8a97ae7",
+    "prepared/row-origins.json": "bfb2036ad79c374abc2301d15c1eab5d36fa45f3406e927aafa156bc851446a0",
+    "prepared/site.json": "eb8c2331f210db49de15a8711c95561a402b6ddbedef3e7699e59f957ab396c4",
+    "prepared/work_orders.csv": "49937848a09321dad7c98c7332d928ee3c36f570c06454c7ca9455398ca31b44",
+    "proposed-actions.csv": "695a35f50126bd20ab97fe198aeae7e231ed878d289d6a462251aaab4a1d5eb2",
+    "REPORT.html": "1afbe101da79a4eef9f0193027b9c03c561524e077b80a381b2b7e254617f594",
+    "REPORT.md": "567a1b36ef5f89a4c03aaab262a4d58210ae907ae5ffdba94912fe3e9100fa7d"
+  },
+  "company_acceptance": "not performed",
+  "human_effort": "not measured"
+}

@@ -1,0 +1,32 @@
+
+
+You are using a trial version of QCAD Professional.
+If you would like to use this software productively,
+please purchase the full version for a small license fee from our
+Online Shop at:
+https://qcad.org/shop
+Thank you for trying this add-on!
+
+Your script will start in 15 seconds...
+
+
+IMPORT 0
+DATA ICT_ID 70 S1/P1/PAST1/FDV-2210,RPropertyAttributes(0x6059d740) function undefined function
+ATTRIBUTE 71 14 ICT_ID NO_TEXT function function undefined
+DATA TAG 70 FDV-2210,RPropertyAttributes(0x6059d920) function undefined function
+ATTRIBUTE 72 14 TAG NO_TEXT function function undefined
+DATA MODEL 70 SRC-2,RPropertyAttributes(0x6059d260) function undefined function
+ATTRIBUTE 73 14 MODEL NO_TEXT function function undefined
+DATA SERIAL 70 UNKNOWN,RPropertyAttributes(0x6059d410) function undefined function
+ATTRIBUTE 74 14 SERIAL NO_TEXT function function undefined
+DATA SIZE 70 DN50,RPropertyAttributes(0x6059d2c0) function undefined function
+ATTRIBUTE 75 14 SIZE NO_TEXT function function undefined
+DATA VENDOR_NOTE 70 retain this unfamiliar attribute,RPropertyAttributes(0x6059d530) function undefined function
+ATTRIBUTE 76 14 VENDOR_NOTE NO_TEXT function function undefined
+23:07:54: Debug:    loading plugins...
+23:07:54: Debug:    RPolygonPlugin::init
+23:07:54: Debug:    RProScriptsPlugin::init: trial
+23:08:09: Debug:    RProxiesPlugin::init: trial
+23:08:09: Debug:    RTracePlugin::init: trial
+23:08:09: Debug:    RDwgPlugin::init: trial
+23:08:09: Debug:    loading static plugins...

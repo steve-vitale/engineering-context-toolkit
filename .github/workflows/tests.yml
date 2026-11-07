@@ -28,6 +28,8 @@ jobs:
         run: python -S examples/agent-first-use/reproduce.py --out "$RUNNER_TEMP/agent-first-use"
       - name: Exercise reusable maintenance intake across three revisions
         run: python -S examples/maintenance-intake/reproduce.py --out "$RUNNER_TEMP/maintenance-intake"
+      - name: Exercise disappeared findings with changed comparison basis
+        run: python -S examples/maintenance-intake/reproduce.py --basis-controls --out "$RUNNER_TEMP/maintenance-basis"
       - name: Verify frozen first-use session evidence without model calls
         run: python -S examples/agent-rehearsal/recheck.py
       # All tests run offline after setup; OPEN100 drawings/keys are committed.

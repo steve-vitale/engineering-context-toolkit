@@ -1,0 +1,17 @@
+
+STDERR:
+23:02:36: Debug:    loading plugins...
+23:02:36: Debug:    RCavalierPlugin::init: trial
+23:02:36: Debug:    RHelpPlugin::init
+23:02:36: Debug:    Plugin loader reported error:  "Cannot load library C:\\Users\\Steve\\.cp-scratch\\qcad-3.33.1-native-test\\application\\qcad-3.33.1-trial-win64-qt6\\plugins\\qcadjsapi.dll: The specified module could not be found."
+23:02:36: Debug:    RPolygonPlugin::init
+23:02:36: Debug:    Plugin loader reported error:  "Cannot load library C:\\Users\\Steve\\.cp-scratch\\qcad-3.33.1-native-test\\application\\qcad-3.33.1-trial-win64-qt6\\plugins\\qcadprojsapi.dll: The specified module could not be found."
+23:02:36: Debug:    Plugin loader reported error:  "Cannot load library C:\\Users\\Steve\\.cp-scratch\\qcad-3.33.1-native-test\\application\\qcad-3.33.1-trial-win64-qt6\\plugins\\qcadproscripts.dll: The specified module could not be found."
+23:02:36: Debug:    RProxiesPlugin::init: trial
+23:02:36: Debug:    RTracePlugin::init: trial
+23:02:37: Debug:    RDwgPlugin::init: trial
+23:02:37: Debug:    loading static plugins...
+23:02:37: Debug:    Plugin does not implement RPluginInterface: ""
+Warning:  No script handler found...
+Warning:  QThreadStorage: entry 2 destroyed before end of thread 0x24596b8a0b0
+Warning:  QThreadStorage: entry 1 destroyed before end of thread 0x24596b8a0b0

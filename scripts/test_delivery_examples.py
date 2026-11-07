@@ -71,6 +71,40 @@ class DeliveryEvidence(unittest.TestCase):
         self.assertIn("not completed", ui["acceptance"])
         self.assertIn("remains unqualified", (folder / "README.md").read_text(encoding="utf-8"))
 
+    def test_comparison_basis_examples_keep_disappeared_findings_open(self):
+        import maintenance_intake as mi
+        folder = ROOT / "examples/maintenance-intake/basis-worked"
+        replay = read(folder / "replay.json")
+        self.assertTrue(all(replay["checks"].values()))
+        for name in ("ignored-serial", "omitted-history"):
+            packet = folder / name
+            mi.verify_packet(packet)
+            basis = read(packet / "comparison-basis.json")
+            finding = read(packet / "findings.json")
+            self.assertEqual(basis["status"], "needs_review")
+            self.assertIn("maintenance_intake.py", basis["changed_methods"])
+            self.assertEqual(finding["findings"], [])
+            self.assertEqual(finding["history"]["no_longer_detected"][0]["status"], "open")
+        removed = read(folder / "omitted-history/comparison-basis.json")["sources"][1]["removed_records"]
+        self.assertEqual((removed[0]["values"]["work_order"], removed[0]["origin"]["original_record"]), ("WO-801", 2))
+
+    def test_qcad_native_readback_does_not_override_preservation_failure(self):
+        import cad_handoff as cad
+        folder = ROOT / "examples/cad-handoff/native/qcad"
+        receipt = read(folder / "receipt.json")
+        for name, expected in receipt["files"].items():
+            self.assertEqual(sha(folder / name), expected, name)
+        source = ROOT / "examples/cad-handoff/source/valve.dxf"
+        plan = read(source.with_name("edit-plan.json"))
+        comparison = cad.compare(cad.snapshot(source), cad.snapshot(folder / "returned.dxf"), plan)
+        self.assertEqual(comparison, read(folder / "comparison.json"))
+        self.assertEqual(len(comparison["unexpected"]), 335)
+        actual = read(folder / "readback.json")["after"][0]["attributes"]
+        for c in plan["changes"]:
+            self.assertEqual(actual[c["attribute"]], c["after"])
+        self.assertEqual(actual["VENDOR_NOTE"], "retain this unfamiliar attribute")
+        self.assertEqual(receipt["interactive_acceptance"], "not performed")
+
     def test_saved_cad_proposal_retains_original_and_separate_context(self):
         folder = ROOT / "examples/cad-handoff"
         plan = read(folder / "source/edit-plan.json")
