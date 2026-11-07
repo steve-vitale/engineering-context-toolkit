@@ -15,9 +15,9 @@ work order, conflicting serial numbers, a size disagreement and a field ruling w
 
 ## Use your own records
 
-Your agent can do the preparation with you. The [ordinary-export example](../examples/agent-first-use/README.md)
-shows the header mapping, original-row references and a record-only comparison without drawings. Use its prompt
-with your permitted private files; the fixed fictional runner does not ingest your exports.
+Your agent can do the preparation with you. The [reusable export intake](MAINTENANCE_INTAKE.md) accepts your two
+CSV files and an explicit mapping, retains original-row references and produces a manager packet without drawings.
+Its [three-revision example](../examples/maintenance-intake/README.md) shows a corrected export and another replacement.
 
 1. Agree the site/unit namespace, functional position and physical equipment identity. A tag can survive a
    replacement; retain the old and new serial/model records with dates. Do not merge equipment on similar names.
