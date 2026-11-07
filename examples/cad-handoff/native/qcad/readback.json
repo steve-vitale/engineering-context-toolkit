@@ -1,0 +1,28 @@
+{
+  "before": [
+    {
+      "parent": "70",
+      "attributes": {
+        "SERIAL": "UNKNOWN",
+        "SIZE": "DN50",
+        "TAG": "FDV-2210",
+        "MODEL": "SRC-2",
+        "ICT_ID": "S1/P1/PAST1/FDV-2210",
+        "VENDOR_NOTE": "retain this unfamiliar attribute"
+      }
+    }
+  ],
+  "after": [
+    {
+      "parent": "70",
+      "attributes": {
+        "SERIAL": "AV-88412",
+        "SIZE": "DN65",
+        "TAG": "FDV-2210",
+        "MODEL": "SRC-3",
+        "ICT_ID": "S1/P1/PAST1/FDV-2210",
+        "VENDOR_NOTE": "retain this unfamiliar attribute"
+      }
+    }
+  ]
+}

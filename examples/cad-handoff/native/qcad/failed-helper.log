@@ -1,0 +1,20 @@
+
+
+You are using a trial version of QCAD Professional.
+If you would like to use this software productively,
+please purchase the full version for a small license fee from our
+Online Shop at:
+https://qcad.org/shop
+Thank you for trying this add-on!
+
+Your script will start in 15 seconds...
+
+
+ICT_NATIVE_ERROR Error: Identity not unique
+23:09:07: Debug:    loading plugins...
+23:09:07: Debug:    RPolygonPlugin::init
+23:09:07: Debug:    RProScriptsPlugin::init: trial
+23:09:22: Debug:    RProxiesPlugin::init: trial
+23:09:22: Debug:    RTracePlugin::init: trial
+23:09:22: Debug:    RDwgPlugin::init: trial
+23:09:22: Debug:    loading static plugins...

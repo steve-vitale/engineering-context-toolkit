@@ -641,7 +641,7 @@ Example review: not yet: needs review
 <details>
 <summary>Example files, tests and independent review</summary>
 
-- **Registered example files:** [`REPORT.md`](../examples/maintenance-intake/worked/initial/REPORT.md), [`findings.json`](../examples/maintenance-intake/worked/initial/findings.json), [`findings.json`](../examples/maintenance-intake/worked/corrected/findings.json), [`findings.json`](../examples/maintenance-intake/worked/next-replacement/findings.json), [`replay.json`](../examples/maintenance-intake/worked/replay.json)
+- **Registered example files:** [`REPORT.md`](../examples/maintenance-intake/worked/initial/REPORT.md), [`findings.json`](../examples/maintenance-intake/worked/initial/findings.json), [`findings.json`](../examples/maintenance-intake/worked/corrected/findings.json), [`findings.json`](../examples/maintenance-intake/worked/next-replacement/findings.json), [`replay.json`](../examples/maintenance-intake/worked/replay.json), [`comparison-basis.json`](../examples/maintenance-intake/basis-worked/ignored-serial/comparison-basis.json), [`REPORT.md`](../examples/maintenance-intake/basis-worked/omitted-history/REPORT.md), [`replay.json`](../examples/maintenance-intake/basis-worked/replay.json)
 - **Tests:** `test_maintenance_intake.py`
 - **Independent review:** none yet
 

@@ -5174,6 +5174,44 @@
         "examples/cad-handoff/native/diagnostic/source-review.json",
         "examples/cad-handoff/native/diagnostic/ui-retry.json"
       ]
+    },
+    {
+      "id": "A329",
+      "function": "intake_and_reuse",
+      "date": "2026-11-06",
+      "change": "Expose maintenance comparison method/runtime/mapping/cutoff drift and exact added, removed and changed normalized source rows in returned packets.",
+      "hypothesis": "A disappeared disagreement can be explained before someone mistakes omitted evidence or changed interpretation for an accepted correction.",
+      "evidence": "New controls first record four missing-basis errors against old code. Updated module passes 13 methods. Two actual CLI controls against the retained historical packet pass eight conditions: ignoring Serial and omitting WO-801 both remove a disagreement while retaining the old finding open and exposing changed basis.",
+      "runs": "13 regression methods; two CLI basis controls; three lifecycle calls and retained-session recheck",
+      "verdict": "kept",
+      "why": "Makes repeat-use explanations explicit without accepting corrections or assigning authority. Exposed fictional checks, not independent manager benefit, complete environment lock or authenticated acceptance.",
+      "source": [
+        "docs/JOURNAL.md#174-show-why-a-maintenance-finding-disappeared",
+        "examples/maintenance-intake/BASIS_CONTROLS.md",
+        "examples/maintenance-intake/basis-before.txt",
+        "examples/maintenance-intake/basis-worked/replay.json",
+        "scripts/maintenance_intake.py",
+        "scripts/test_maintenance_intake.py"
+      ]
+    },
+    {
+      "id": "A330",
+      "function": "intake_and_reuse",
+      "date": "2026-11-06",
+      "change": "Try the public QCAD native headless API for actual attribute editing, document destruction/reopen and returned-DXF comparison.",
+      "hypothesis": "An attribute-capable native engine may retain the declared edits and unfamiliar attribute while revealing broader exchange differences.",
+      "evidence": "Qt6 scripting fails despite exit 0; Qt5 loads. First helper enum error retained. Corrected helper returns all six attribute values after three edits and fresh native document import. Strict comparison fails with 335 decoded differences: version, header, 333 entity records.",
+      "runs": "two package startup attempts, two attribute probes, failed and corrected edit helpers; frozen strict comparator",
+      "verdict": "inconclusive",
+      "why": "Native attribute readback is now observed, but interactive acceptance and strict preservation remain unqualified. Record differences are not automatically engineering losses. No rule waivers, company acceptance, live sync or Community Edition claim.",
+      "source": [
+        "docs/JOURNAL.md#175-obtain-a-native-cad-return-without-waiving-its-differences",
+        "examples/cad-handoff/native/qcad/README.md",
+        "examples/cad-handoff/native/qcad/receipt.json",
+        "examples/cad-handoff/native/qcad/comparison.json",
+        "examples/cad-handoff/native/qcad/readback.json",
+        "scripts/test_delivery_examples.py"
+      ]
     }
   ],
   "not_tried": [

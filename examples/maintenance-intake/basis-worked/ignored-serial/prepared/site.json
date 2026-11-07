@@ -1,0 +1,44 @@
+{
+  "schema": "one-map-site-1",
+  "site": {
+    "id": "SIM"
+  },
+  "plants": [
+    {
+      "id": "P1",
+      "units": [
+        {
+          "id": "U1"
+        },
+        {
+          "id": "U2"
+        }
+      ]
+    }
+  ],
+  "as_of": "2026-11-06",
+  "drawing_register": "drawings.csv",
+  "record_owners": {
+    "maintenance_export": "Maintenance",
+    "work_order": "Maintenance"
+  },
+  "maintenance_export": {
+    "id": "EQ-EXPORT",
+    "revision": "1",
+    "path": "equipment.csv",
+    "scopes": [
+      "SIM/P1"
+    ]
+  },
+  "records": [
+    {
+      "id": "WO-EXPORT",
+      "revision": "1",
+      "path": "work_orders.csv",
+      "scopes": [
+        "SIM/P1"
+      ],
+      "register": "work_order"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "status": "exposed fictional comparison-basis controls",
+  "checks": {
+    "both_disagreements_disappear": true,
+    "prior_findings_remain_open": true,
+    "both_bases_need_review": true,
+    "actual_code_change_visible": true,
+    "same_bytes_different_meaning_visible": true,
+    "omitted_order_identified": true,
+    "packets_verify": true,
+    "historical_packet_unchanged": true
+  },
+  "commands": [
+    {
+      "args": [
+        "scripts/maintenance_intake.py",
+        "--profile",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\maintenance-intake\\basis-worked\\ignored-serial-profile.json",
+        "--equipment",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\maintenance-intake\\inputs\\equipment-export.csv",
+        "--work-orders",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\maintenance-intake\\inputs\\work-order-export.csv",
+        "--previous",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\maintenance-intake\\worked\\initial",
+        "--out",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\maintenance-intake\\basis-worked\\ignored-serial"
+      ],
+      "exit_code": 0,
+      "stdout": "Draft review packet: C:\\Users\\Steve\\industrial-context-toolkit\\examples\\maintenance-intake\\basis-worked\\ignored-serial\\REPORT.html; source acceptance remains with record owners\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "scripts/maintenance_intake.py",
+        "--profile",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\maintenance-intake\\basis-worked\\omitted-history-profile.json",
+        "--equipment",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\maintenance-intake\\inputs\\equipment-export.csv",
+        "--work-orders",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\maintenance-intake\\basis-worked\\omitted-history.csv",
+        "--previous",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\maintenance-intake\\worked\\initial",
+        "--out",
+        "C:\\Users\\Steve\\industrial-context-toolkit\\examples\\maintenance-intake\\basis-worked\\omitted-history"
+      ],
+      "exit_code": 0,
+      "stdout": "Draft review packet: C:\\Users\\Steve\\industrial-context-toolkit\\examples\\maintenance-intake\\basis-worked\\omitted-history\\REPORT.html; source acceptance remains with record owners\n",
+      "stderr": ""
+    }
+  ],
+  "previous_receipt_sha256": "c973e4ebab4384803e55cb355285054adf61b066a39ea6efde0ca363598147b3",
+  "acceptance": "not performed"
+}

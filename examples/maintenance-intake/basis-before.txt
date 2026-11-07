@@ -1,0 +1,73 @@
+.EE.E..E....
+======================================================================
+ERROR: test_changed_interpretation_of_identical_source_is_explicit (__main__.IntakeTests.test_changed_interpretation_of_identical_source_is_explicit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Steve\industrial-context-toolkit\scripts\test_maintenance_intake.py", line 154, in test_changed_interpretation_of_identical_source_is_explicit
+    basis = mi.load(b / "comparison-basis.json")
+  File "C:\Users\Steve\industrial-context-toolkit\scripts\maintenance_intake.py", line 34, in load
+    return json.loads(Path(path).read_text(encoding="utf-8-sig"))
+                      ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\pathlib\__init__.py", line 787, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\pathlib\__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Steve\\AppData\\Local\\Temp\\tmpip5ortyv\\reinterpreted\\comparison-basis.json'
+
+======================================================================
+ERROR: test_date_format_change_and_removed_source_rows_are_explained (__main__.IntakeTests.test_date_format_change_and_removed_source_rows_are_explained)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Steve\industrial-context-toolkit\scripts\test_maintenance_intake.py", line 167, in test_date_format_change_and_removed_source_rows_are_explained
+    basis = mi.load(b / "comparison-basis.json")
+  File "C:\Users\Steve\industrial-context-toolkit\scripts\maintenance_intake.py", line 34, in load
+    return json.loads(Path(path).read_text(encoding="utf-8-sig"))
+                      ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\pathlib\__init__.py", line 787, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\pathlib\__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Steve\\AppData\\Local\\Temp\\tmpyxyke6pl\\date-basis\\comparison-basis.json'
+
+======================================================================
+ERROR: test_identical_recorded_basis_is_distinct_from_acceptance (__main__.IntakeTests.test_identical_recorded_basis_is_distinct_from_acceptance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Steve\industrial-context-toolkit\scripts\test_maintenance_intake.py", line 195, in test_identical_recorded_basis_is_distinct_from_acceptance
+    basis = mi.load(b / "comparison-basis.json")
+  File "C:\Users\Steve\industrial-context-toolkit\scripts\maintenance_intake.py", line 34, in load
+    return json.loads(Path(path).read_text(encoding="utf-8-sig"))
+                      ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\pathlib\__init__.py", line 787, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\pathlib\__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Steve\\AppData\\Local\\Temp\\tmpz7qb_2my\\repeat\\comparison-basis.json'
+
+======================================================================
+ERROR: test_method_drift_and_legacy_missing_pins_are_never_silent (__main__.IntakeTests.test_method_drift_and_legacy_missing_pins_are_never_silent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Steve\industrial-context-toolkit\scripts\test_maintenance_intake.py", line 184, in test_method_drift_and_legacy_missing_pins_are_never_silent
+    basis = mi.load(b / "comparison-basis.json")
+  File "C:\Users\Steve\industrial-context-toolkit\scripts\maintenance_intake.py", line 34, in load
+    return json.loads(Path(path).read_text(encoding="utf-8-sig"))
+                      ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\pathlib\__init__.py", line 787, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\pathlib\__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Steve\\AppData\\Local\\Temp\\tmpxzji44pz\\method-drift\\comparison-basis.json'
+
+----------------------------------------------------------------------
+Ran 12 tests in 1.745s
+
+FAILED (errors=4)

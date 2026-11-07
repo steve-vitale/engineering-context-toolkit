@@ -19,7 +19,7 @@ Copy [the fictional profile](../examples/maintenance-intake/inputs/profile.json)
 unit IDs, ISO `as_of`, distinct stable document IDs, source revisions, owner roles and a precise description of
 what each export covers. These declarations need the record owner's confirmation. The source filenames can
 be anything; the packet retains their exact bytes as `originals/equipment.csv` and `originals/work_orders.csv`.
-The profile maps **original header → canonical field**:
+The profile maps **original header â†’ canonical field**:
 
 | Export | Required mapped fields | Optional interpreted fields |
 |---|---|---|
@@ -60,6 +60,18 @@ accepted or closed.** Confirm whether a changed/omitted value, revised history o
 the difference. A later replacement retains the same scoped functional position and its earlier work orders.
 The latest dated closed order **per attribute** supplies the comparison value. An old order can still supply an
 attribute missing from a newer one; that is a review basis, not a claim of physical current state.
+
+Before interpreting a disappearance, read the **comparison basis** section near the top of the returned report.
+`comparison-basis.json` compares loaded local code hashes, recorded Python version, cutoff, effective column/date/
+encoding settings, source revisions and original bytes. It also lists added, removed and changed normalized records,
+with exact before/after values and original row origins. A reordered row is not a changed value. A missing order is
+not evidence that its installation was reversed. Older packets without usable method/runtime pins report unknown
+continuity. Hashes do not authenticate a receipt or fully lock the environment.
+
+A warning means the basis changed and needs explanation; ordinary corrected exports also produce it. An unchanged
+recorded basis does not establish acceptance or completeness. Compare the finding history with the row and mapping
+changes before asking owners to accept a correction. The [two disappearance controls](../examples/maintenance-intake/BASIS_CONTROLS.md)
+show identical bytes with an ignored serial column, and omitted closed history, against a retained older packet.
 
 No earlier authenticated decisions are imported automatically. This tool creates observations and draft action
 rows; record owners accept corrections in their own systems and read them back. Retain their acceptance evidence

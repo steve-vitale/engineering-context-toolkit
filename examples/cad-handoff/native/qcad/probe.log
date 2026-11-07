@@ -1,0 +1,26 @@
+
+
+You are using a trial version of QCAD Professional.
+If you would like to use this software productively,
+please purchase the full version for a small license fee from our
+Online Shop at:
+https://qcad.org/shop
+Thank you for trying this add-on!
+
+Your script will start in 15 seconds...
+
+
+IMPORT 0
+ATTRIBUTE 76 14 VENDOR_NOTE NO_TEXT function function undefined
+ATTRIBUTE 74 14 SERIAL NO_TEXT function function undefined
+ATTRIBUTE 75 14 SIZE NO_TEXT function function undefined
+ATTRIBUTE 72 14 TAG NO_TEXT function function undefined
+ATTRIBUTE 73 14 MODEL NO_TEXT function function undefined
+ATTRIBUTE 71 14 ICT_ID NO_TEXT function function undefined
+23:07:08: Debug:    loading plugins...
+23:07:08: Debug:    RPolygonPlugin::init
+23:07:08: Debug:    RProScriptsPlugin::init: trial
+23:07:23: Debug:    RProxiesPlugin::init: trial
+23:07:23: Debug:    RTracePlugin::init: trial
+23:07:23: Debug:    RDwgPlugin::init: trial
+23:07:23: Debug:    loading static plugins...

@@ -1,0 +1,29 @@
+{
+  "scope": "QCAD Professional 3.33.1 Qt5 Windows trial, one fictional attributed fixture",
+  "source_sha256": "c64f5ac8f53f7f35ed0f119abdc28c1e11eb5c7cc28011ddaf079940cfee2b7d",
+  "native_readback": "three edits and all six attributes retained",
+  "strict_comparison": "failed: 335 unexpected decoded differences",
+  "interactive_acceptance": "not performed",
+  "company_acceptance": "not performed",
+  "files": {
+    "attribute-edit.js": "cd3a37bd76710119424f688ccd34e8950ce5154befe051d55393ede1cdb05269",
+    "command.json": "c886d48baca3c0319ba64cc29f32696cd01b0d677b004dc3d2d4919bfcb72d78",
+    "comparison.json": "51a63faa3900785251f716af3f04af2dff0f767832453d541976949ced4008d7",
+    "failed-helper.log": "2d8b40309cc336264558ad67c0fbcea27b564c6c9620702d681b4c03fa09bda6",
+    "native-edit.log": "7adeef2a5f83c4cbd8e9bd523b29e3a1c089982c74a76ce60ca882bfc880e960",
+    "probe.log": "5d36bb339ebcd0c86e429a6fe4f722a7d021c1bdb93f4b1717e29088c4e10ec7",
+    "probe2.log": "b6ee3ef0995d531e593b5d068a21dcbd889dce562cbbaabe0cb9579912d3858d",
+    "qt5-package.json": "a360142f76233d7560bd06ff8b2edcd68028b7bfdd8b741242a9b121923deb6b",
+    "qt6-failed-help.txt": "61f46c267b1d59f6d9ddfb8a50ef9954fe6bb6c87c5d096cef55939c0b00f4e2",
+    "qt6-package.json": "6c5d6ce62a93df1c35979da67304dbe3f86951391c8e42a19af12bf64b44e96b",
+    "readback.json": "4349116f4b00f6032971aa57da1b42ccafd1dbe1bf3dbfd719473b458fbd3c66",
+    "README.md": "fba2db6858be2518c4b1391de48ff8780ca4f337dd4b32b16fe1e589078ee0b7",
+    "reproduce.py": "577621512335407d9980b2235b9a5eac6cae9c8a945b4ebbe9d24e77a8648bd5",
+    "returned.dxf": "cebdc13aabd4a9049c941d08c03834bd6f9852cef3177489f9ffdbd3067cc36e"
+  },
+  "wrapper_replay": {
+    "exit_code": 1,
+    "unexpected_differences": 335,
+    "meaning": "Expected strict preservation refusal, not native execution failure"
+  }
+}

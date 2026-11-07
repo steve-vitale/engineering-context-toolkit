@@ -48,7 +48,7 @@ def profile_check(p):
     if not isinstance(p, dict) or p.get("schema") != SCHEMA:
         raise ValueError(f"profile needs schema {SCHEMA}")
     for key in ("site", "plant"):
-        if not re.fullmatch(r"[A-Za-z0-9_.-]+", p.get(key, "")):
+        if not isinstance(p.get(key), str) or not re.fullmatch(r"[A-Za-z0-9_.-]+", p[key]):
             raise ValueError(f"profile {key}: supply one explicit namespace component")
     units = p.get("units")
     if not isinstance(units, list) or not units or any(
@@ -151,7 +151,84 @@ def findings(graph):
     return [n["conflict"] for n in graph["nodes"] if n["kind"] == "conflict"]
 
 
-def render(out, p, rows, graph, origins, prior):
+def method_pins():
+    """Inventory the loaded local implementation, as in the original packet receipt."""
+    scripts = Path(__file__).resolve().parent
+    modules = {Path(m.__file__).resolve() for m in list(sys.modules.values()) if getattr(m, "__file__", None)
+               and Path(m.__file__).resolve().parent == scripts and Path(m.__file__).suffix == ".py"}
+    modules.add(Path(__file__).resolve())
+    return {m.name: hashlib.sha256(m.read_bytes().replace(b"\r\n", b"\n")).hexdigest() for m in sorted(modules)}
+
+
+def interpretation(spec):
+    return {"columns": spec["columns"], "ignored_columns": sorted(spec.get("ignored_columns", [])),
+            "delimiter": spec.get("delimiter", ","), "encoding": spec.get("encoding", "utf-8-sig"),
+            "date_format": spec.get("date_format", "%Y-%m-%d")}
+
+
+def row_index(rows, origins, kind):
+    mapped = {o["prepared_record"]: o for o in origins if o["prepared"] == kind + ".csv"}
+    result = {}
+    for n, row in enumerate(rows, 2):
+        identity = [row["plant"], row["unit"], row["tag"]]
+        if kind == "work_orders":
+            identity.append(row["work_order"])
+        key = tuple(identity)
+        if key in result:
+            raise ValueError(f"{kind}: previous/current normalized rows have duplicate identity {identity}")
+        result[key] = {"identity": identity, "values": {k: v for k, v in row.items() if k != "locator"},
+                       "origin": mapped.get(n)}
+    return result
+
+
+def comparison_basis(p, rows, origins, raw, pins, previous=None, previous_receipt=None):
+    basis = {"schema": "maintenance-comparison-basis-1", "status": "initial", "changed_methods": [],
+             "interpretation_changes": [], "python_change": None, "as_of_change": None,
+             "unknown_prior_basis": [], "sources": [],
+             "previous_receipt_sha256": sha(previous / "receipt.json") if previous else None,
+             "meaning": "Recorded basis and export changes, not acceptance, physical change or proof of complete source coverage. Review disappeared findings against this basis."}
+    if not previous:
+        return basis
+    oldp = load(previous / "originals/profile.json")
+    oldpins = previous_receipt.get("methods_sha256_lf")
+    if not isinstance(oldpins, dict) or not oldpins or any(not isinstance(k, str) or not isinstance(v, str)
+                                                        or not re.fullmatch(r"[0-9a-f]{64}", v) for k, v in oldpins.items()):
+        basis["unknown_prior_basis"].append("Previous method pins are missing or invalid; method continuity is unknown")
+    else:
+        basis["changed_methods"] = sorted(k for k in set(oldpins) | set(pins) if oldpins.get(k) != pins.get(k))
+    old_python = previous_receipt.get("python")
+    if not isinstance(old_python, str) or not old_python:
+        basis["unknown_prior_basis"].append("Previous Python version is missing; runtime continuity is unknown")
+    elif old_python != sys.version:
+        basis["python_change"] = {"before": old_python, "after": sys.version}
+    if oldp["as_of"] != p["as_of"]:
+        basis["as_of_change"] = {"before": oldp["as_of"], "after": p["as_of"]}
+    oldorigins = load(previous / "prepared/row-origins.json")
+    for kind in FIELDS:
+        oldmeaning, meaning = interpretation(oldp[kind]), interpretation(p[kind])
+        if oldmeaning != meaning:
+            basis["interpretation_changes"].append({"source": kind, "before": oldmeaning, "after": meaning})
+        with (previous / f"prepared/{kind}.csv").open(encoding="utf-8", newline="") as f:
+            oldrows = list(csv.DictReader(f))
+        before, after = row_index(oldrows, oldorigins, kind), row_index(rows[kind], origins, kind)
+        prior_keys, keys = set(before), set(after)
+        basis["sources"].append({"source": kind, "id": p[kind]["id"],
+            "before_revision": oldp[kind]["revision"], "after_revision": p[kind]["revision"],
+            "bytes_changed": sha(previous / f"originals/{kind}.csv") != hashlib.sha256(raw[kind]).hexdigest(),
+            "before_rows": len(before), "after_rows": len(after),
+            "added_records": [after[k] for k in sorted(keys - prior_keys)],
+            "removed_records": [before[k] for k in sorted(prior_keys - keys)],
+            "changed_records": [{"identity": list(k), "before": before[k]["values"], "after": after[k]["values"],
+                                 "before_origin": before[k]["origin"], "after_origin": after[k]["origin"]}
+                                for k in sorted(keys & prior_keys) if before[k]["values"] != after[k]["values"]]})
+    changed = (basis["changed_methods"] or basis["interpretation_changes"] or basis["unknown_prior_basis"]
+               or basis["python_change"] or basis["as_of_change"]
+               or any(s["bytes_changed"] or s["before_revision"] != s["after_revision"] for s in basis["sources"]))
+    basis["status"] = "needs_review" if changed else "unchanged_recorded_basis"
+    return basis
+
+
+def render(out, p, rows, graph, origins, prior, basis):
     fs = findings(graph)
     origin_index = {(o["source_id"], o["prepared_record"]): o for o in origins}
     sourced = []
@@ -169,7 +246,8 @@ def render(out, p, rows, graph, origins, prior):
     history = {"new": sorted(ids - old_ids), "still_detected": sorted(ids & old_ids),
                "no_longer_detected": [f for f in old if f["id"] not in ids],
                "meaning": "No longer detected is an observation, not an accepted correction or closure. Previous packet remains unchanged."}
-    dump(out / "findings.json", {"schema": "maintenance-findings-1", "findings": sourced, "history": history})
+    dump(out / "findings.json", {"schema": "maintenance-findings-1", "findings": sourced, "history": history,
+                                "comparison_basis": "comparison-basis.json"})
     with (out / "map/queues/review_queue.csv").open(encoding="utf-8", newline="") as stream:
         queue = list(csv.DictReader(stream))
     actions = [{"item": f["subject"], "finding": f["id"], "record_owner_role": f["record_owner"],
@@ -185,6 +263,26 @@ def render(out, p, rows, graph, origins, prior):
              f"{len(fs)} detected disagreements; {len(queue)} total review queue entries. Equipment rows: {len(rows['equipment'])}; work-order rows: {len(rows['work_orders'])}.", "",
              "Draft comparison of the supplied exports. Absence of a finding does not establish complete coverage, installed state or accepted corrections.", ""]
     sections.append("<h1>Maintenance record review</h1>" + "".join(f"<p>{esc(x)}</p>" for x in lines[2:] if x))
+    if prior:
+        title = "Comparison basis needs review" if basis["status"] == "needs_review" else "Recorded comparison basis unchanged"
+        notes = [basis["meaning"]]
+        if basis["changed_methods"]:
+            notes.append("Changed method files: " + ", ".join(basis["changed_methods"]) + ". A changed result can reflect changed software; inspect before treating it as a source correction.")
+        notes.extend(basis["unknown_prior_basis"])
+        if basis["python_change"]:
+            notes.append("Python runtime changed; versions are retained in comparison-basis.json.")
+        if basis["as_of_change"]:
+            notes.append(f"Comparison cutoff changed from {basis['as_of_change']['before']} to {basis['as_of_change']['after']}.")
+        for c in basis["interpretation_changes"]:
+            notes.append(f"{c['source']}: declared column/date/encoding interpretation changed. Identical bytes can produce different prepared values; review both mappings in comparison-basis.json.")
+        for s in basis["sources"]:
+            notes.append(f"{s['source']} ({s['id']}): revision {s['before_revision']} to {s['after_revision']}; {s['before_rows']} to {s['after_rows']} rows; {len(s['added_records'])} added, {len(s['removed_records'])} removed, {len(s['changed_records'])} changed normalized records.")
+            for removed in s["removed_records"]:
+                o = removed["origin"]
+                at = f"prior original CSV record {o['original_record']}" if o else "prior original locator unavailable"
+                notes.append(f"Missing from the supplied export: {'/'.join(removed['identity'])}, {at}. Omission is not physical removal or an accepted correction.")
+        lines += [f"## {title}", ""] + ["- " + n for n in notes] + ["", "See comparison-basis.json for exact before/after values, source rows and mappings.", ""]
+        sections.append(f"<section><h2>{title}</h2><ul>" + "".join(f"<li>{esc(n)}</li>" for n in notes) + "</ul><p><a href='comparison-basis.json'>Exact comparison basis and source-row changes</a></p></section>")
     for f in sourced:
         lines += [f"## {f['subject']} — {f['attribute']} ({f['id']})", "", f"Review role: {f['record_owner']}. Status: {f['status']}.", ""]
         parts = [f"<h2>{esc(f['subject'])} — {esc(f['attribute'])}</h2><p>Review role: {esc(str(f['record_owner']))}; {esc(f['status'])}</p>"]
@@ -269,17 +367,15 @@ def run(profile, equipment, work_orders, out, previous=None):
         dump(prepared / "site.json", site)
         one_map.build(prepared / "site.json", stage / "map")
         graph = load(stage / "map/graph.json")
+        pins = method_pins()
+        basis = comparison_basis(p, rows, origins, raw, pins, previous, previous_receipt)
+        dump(stage / "comparison-basis.json", basis)
         if previous:
             rep = map_changes.changes(load(previous / "map/graph.json"), graph)
             map_changes.write(stage, "changes", rep, map_changes.changes_md(rep))
-        render(stage, p, rows, graph, origins, previous)
-        # Pin every local Python module loaded by this run, not just the wrapper.
-        scripts = Path(__file__).resolve().parent
-        modules = {Path(m.__file__).resolve() for m in list(sys.modules.values()) if getattr(m, "__file__", None)
-                   and Path(m.__file__).resolve().parent == scripts and Path(m.__file__).suffix == ".py"}
-        modules.add(Path(__file__).resolve())
+        render(stage, p, rows, graph, origins, previous, basis)
         receipt = {"schema": "maintenance-packet-1", "scope": binding(p), "as_of": p["as_of"],
-                   "python": sys.version, "methods_sha256_lf": {m.name: hashlib.sha256(m.read_bytes().replace(b"\r\n", b"\n")).hexdigest() for m in sorted(modules)},
+                   "python": sys.version, "methods_sha256_lf": pins,
                    "method_scope": "Loaded local Python modules; Python version recorded; not a complete environment lock or tamper-proof signature",
                    "previous_receipt_sha256": sha(previous / "receipt.json") if previous else None,
                    "previous_files": previous_receipt["files"] if previous else None, "files": inventory(stage),

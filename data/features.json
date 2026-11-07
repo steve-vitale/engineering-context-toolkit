@@ -1688,7 +1688,10 @@
         "examples/maintenance-intake/worked/initial/findings.json",
         "examples/maintenance-intake/worked/corrected/findings.json",
         "examples/maintenance-intake/worked/next-replacement/findings.json",
-        "examples/maintenance-intake/worked/replay.json"
+        "examples/maintenance-intake/worked/replay.json",
+        "examples/maintenance-intake/basis-worked/ignored-serial/comparison-basis.json",
+        "examples/maintenance-intake/basis-worked/omitted-history/REPORT.md",
+        "examples/maintenance-intake/basis-worked/replay.json"
       ],
       "tests": [
         "scripts/test_maintenance_intake.py"

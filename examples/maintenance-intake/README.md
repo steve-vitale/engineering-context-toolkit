@@ -23,3 +23,5 @@ and output collisions. No source-system write, field verification or human effor
 
 For your own records, use `scripts/maintenance_intake.py` with your paths and an explicitly reviewed profile;
 the reproduction script above remains fixed to this fictional case. Keep private files out of this public repo.
+
+See [comparison-basis controls](BASIS_CONTROLS.md) for findings that disappear because a field was ignored or history omitted.

@@ -1,0 +1,102 @@
+{
+ "schema": "one-map-changes-1",
+ "site": "SIM",
+ "title": null,
+ "old": "old",
+ "new": "new",
+ "filter": null,
+ "items": {
+  "added": [],
+  "removed": [],
+  "changed": []
+ },
+ "links": {
+  "added": [],
+  "removed": []
+ },
+ "records": {
+  "added": [],
+  "removed": [
+   {
+    "register": "work_order",
+    "record": "WO-EXPORT",
+    "row": "WO-801",
+    "item": "SIM/P1/U1/P-101",
+    "owner": "Maintenance"
+   }
+  ],
+  "changed": [
+   {
+    "register": "work_order",
+    "record": "WO-EXPORT",
+    "row": "WO-802",
+    "item": "SIM/P1/U1/P-101",
+    "owner": "Maintenance",
+    "changes": [
+     {
+      "what": "locator",
+      "old": "original work_orders.csv CSV record 3 (ends at physical line 3)",
+      "new": "original work_orders.csv CSV record 2 (ends at physical line 2)"
+     }
+    ]
+   }
+  ]
+ },
+ "documents": {
+  "added": [],
+  "removed": [],
+  "changed": []
+ },
+ "conflicts": {
+  "added": [],
+  "removed": [
+   {
+    "id": "C-a639167a56",
+    "type": "value_disagreement",
+    "subject": "SIM/P1/U1/P-101",
+    "attribute": "serial_number",
+    "owner": "Maintenance",
+    "what": "P-101 serial_number: work order WO-801 (closed 2026-11-01) records serial_number NEW-101 installed; the maintenance equipment export EQ-EXPORT (row 2) says OLD-101",
+    "status": "open"
+   }
+  ],
+  "changed": []
+ },
+ "expectations": {
+  "added": [],
+  "removed": [],
+  "changed": []
+ },
+ "flags": [],
+ "counts": {
+  "items": {
+   "added": 0,
+   "removed": 0,
+   "changed": 0
+  },
+  "links": {
+   "added": 0,
+   "removed": 0
+  },
+  "records": {
+   "added": 0,
+   "removed": 1,
+   "changed": 1
+  },
+  "documents": {
+   "added": 0,
+   "removed": 0,
+   "changed": 0
+  },
+  "conflicts": {
+   "added": 0,
+   "removed": 1,
+   "changed": 0
+  },
+  "expectations": {
+   "added": 0,
+   "removed": 0,
+   "changed": 0
+  }
+ }
+}

@@ -1,0 +1,68 @@
+{
+  "schema": "maintenance-comparison-basis-1",
+  "status": "needs_review",
+  "changed_methods": [
+    "maintenance_intake.py"
+  ],
+  "interpretation_changes": [],
+  "python_change": null,
+  "as_of_change": null,
+  "unknown_prior_basis": [],
+  "sources": [
+    {
+      "source": "equipment",
+      "id": "EQ-EXPORT",
+      "before_revision": "1",
+      "after_revision": "1",
+      "bytes_changed": false,
+      "before_rows": 2,
+      "after_rows": 2,
+      "added_records": [],
+      "removed_records": [],
+      "changed_records": []
+    },
+    {
+      "source": "work_orders",
+      "id": "WO-EXPORT",
+      "before_revision": "1",
+      "after_revision": "2-omitted-history",
+      "bytes_changed": true,
+      "before_rows": 2,
+      "after_rows": 1,
+      "added_records": [],
+      "removed_records": [
+        {
+          "identity": [
+            "P1",
+            "U1",
+            "P-101",
+            "WO-801"
+          ],
+          "values": {
+            "work_order": "WO-801",
+            "tag": "P-101",
+            "unit": "U1",
+            "closed_on": "2026-11-01",
+            "installed_serial_number": "NEW-101",
+            "installed_model": "PX20",
+            "description": "Replacement recorded on closed order",
+            "plant": "P1"
+          },
+          "origin": {
+            "prepared": "work_orders.csv",
+            "prepared_record": 2,
+            "original": "originals/work_orders.csv",
+            "original_record": 2,
+            "original_end_line": 2,
+            "source_id": "WO-EXPORT",
+            "revision": "1",
+            "item": "SIM/P1/U1/P-101"
+          }
+        }
+      ],
+      "changed_records": []
+    }
+  ],
+  "previous_receipt_sha256": "c973e4ebab4384803e55cb355285054adf61b066a39ea6efde0ca363598147b3",
+  "meaning": "Recorded basis and export changes, not acceptance, physical change or proof of complete source coverage. Review disappeared findings against this basis."
+}

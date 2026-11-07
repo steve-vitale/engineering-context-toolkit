@@ -1,0 +1,7 @@
+{
+  "publisher_url": "https://www.qcad.org/archives/qcad/qcad-3.33.1-trial-win64-qt6.zip",
+  "archive_sha256": "5ad9e2369537970d955a6ae853affad296cf7a141b18205a0d4078269872de42",
+  "executables": {
+    "application\\qcad-3.33.1-trial-win64-qt6\\qcad.exe": "da34561f25983eea1f996c56dc066fa0ea2ccf0f5e17fd58fbdf62ea178357a5"
+  }
+}
