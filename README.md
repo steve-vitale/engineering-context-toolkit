@@ -21,6 +21,17 @@ awaiting one; those reviews are not engineering sign-offs.
 The [manager review packet](examples/manager-review/README.md) gives you a no-install brief, owner actions and
 copyable scope/review/effort forms. Use the tools below when you or your team are ready to prepare your own records.
 
+**Using an agent?** Point it at this repository and ask:
+
+```text
+Read README.md and docs/AGENT_START_HERE.md. Help me choose and finish one useful
+maintenance or engineering job using the records I have. Show a concrete example
+if I have not supplied records yet. Ask only what changes the next step.
+```
+
+The [first-use walkthrough](examples/agent-first-use/README.md) shows ordinary export columns becoming a
+sourced finding, with no P&ID required for that comparison. Self-service use needs no contact with the author.
+
 ## Tools, tutorials and case studies
 
 | Choose a destination | What you get |

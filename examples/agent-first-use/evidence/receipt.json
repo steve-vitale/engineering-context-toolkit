@@ -1,0 +1,71 @@
+{
+  "status": "authored fictional software simulation, not independent agent or manager validation",
+  "python_flags": [
+    "-S"
+  ],
+  "commands": [
+    [
+      "scripts/one_map.py",
+      "build",
+      "out/agent-first-use-final/prepared/site.json",
+      "--out",
+      "out/agent-first-use-final/before"
+    ],
+    [
+      "scripts/one_map.py",
+      "build",
+      "out/agent-first-use-final/simulated-return/site.json",
+      "--out",
+      "out/agent-first-use-final/after"
+    ],
+    [
+      "scripts/one_map.py",
+      "changes",
+      "out/agent-first-use-final/before/graph.json",
+      "out/agent-first-use-final/after/graph.json",
+      "--tags",
+      "SIM/P1/U1/P-101",
+      "--out",
+      "out/agent-first-use-final/changes"
+    ],
+    [
+      "scripts/import_site_drawing.py",
+      "--manifest",
+      "examples/own-drawing/manifest.json",
+      "--out",
+      "out/agent-first-use-final/drawing-bundle"
+    ],
+    [
+      "scripts/deliverable_report.py",
+      "out/agent-first-use-final/drawing-bundle"
+    ]
+  ],
+  "checks": {
+    "one_serial_disagreement": true,
+    "scoped_to_u1": true,
+    "other_unit_not_compared": true,
+    "open_order_not_installation": true,
+    "old_and_new_retained": true,
+    "simulated_return_clears_serial_disagreement": true,
+    "missing_unit_refused": true,
+    "originals_unchanged": true,
+    "public_drawing_report_created": true,
+    "public_drawing_review_queue_created": true
+  },
+  "originals_sha256": {
+    "equipment-export.csv": "bf9a08407706278636132edcf89b372dc9f06f96f36ed034d4c96efd7a3098ee",
+    "mapping.json": "4964bd6b5360e170a26a16963ac79514bc9840f85fd580d3be972d1498db847a",
+    "work-order-export.csv": "809ac10acde62ff0f3435ad72cc06828cbff6ef978d2c8f9bd8218b3445a7574"
+  },
+  "selected_methods_sha256_lf": {
+    "examples/agent-first-use/reproduce.py": "e73e530238d537e34865df5e78ab57c2c71f708e41e5149aa46a31509b4030e5",
+    "scripts/one_map.py": "db67f6e1db96f547eebe46a865734fd58f4375c7b98d44a19146822c37d9010e",
+    "scripts/map_changes.py": "7d199f3b29f6fd7a85382a64f617ff4c0af9916b503c16e5147afdf861763510",
+    "scripts/import_site_drawing.py": "5a214b340518fa4159db359592b194f656aed12f1fd3013d8414354825b8471d",
+    "scripts/deliverable_report.py": "253e65c119ea6237eb03419dd16764f2381281dc1a518672edc706fe1e81dc88"
+  },
+  "method_scope": "Selected entrypoints only; not a complete dependency/environment lock",
+  "drawing_route": "Existing public development sheet and saved extraction, not this agent reading a new drawing",
+  "company_acceptance": "not run",
+  "human_effort_or_benefit": "not measured"
+}

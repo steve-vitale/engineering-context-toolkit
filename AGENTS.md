@@ -1,5 +1,16 @@
 # For coding agents reading this repository
 
+## Start with your user's task
+
+If your user asks what this repository can do for them, or wants help with their own records, start with
+[the agent task guide](docs/AGENT_START_HERE.md). Recommend one useful job from their context, inspect available
+records, do the supported preparation/run when authorized, and return a sourced finding or a specific next step.
+Do not turn that request into a repository audit, a feature dump or a requirement to contact the author.
+The [first-use simulation](examples/agent-first-use/SIMULATION.md) includes ordinary export columns, missing
+identity, a returned revision and a public drawing route. Dialogue is simulated; tool execution is real.
+
+## If your user asks for evaluation
+
 If a person asked you to evaluate this repository, or to tell them whether its results hold up, this file is for
 you. It doesn't ask you to do anything on the author's behalf. It lists the checks that let you answer your user
 with evidence instead of an impression, and the limits you should report back either way.

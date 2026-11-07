@@ -5084,6 +5084,24 @@
         "examples/manager-review/BRIEF.md",
         "examples/manager-review/evidence/receipt.json"
       ]
+    },
+    {
+      "id": "A324",
+      "function": "intake_and_reuse",
+      "date": "2026-11-06",
+      "change": "Add task-first agent onboarding and simulate discovery, ordinary-export preparation, scoped comparison, missing identity and a supplied return; replay the existing public drawing route.",
+      "hypothesis": "An assistant can help a manager reach a bounded sourced finding without first learning the architecture, supplying drawings or contacting the author.",
+      "evidence": "Authored role-play plus actual five-command offline execution: supplied CSV header/identity mapping, one U1 serial disagreement with same-tag U2 separate and open order excluded, missing-unit preparation refusal, retained originals, a simulated returned export and selected change report, and saved public-sheet intake/report. Ten exposed case conditions pass; source/selected-method receipts and prepared row origins are retained. No independent fresh-agent run, new-image interpretation, human time or company acceptance observation.",
+      "runs": "One exposed fictional case and an existing public development-sheet tutorial, replayed during development; no held-out conversation/model or plant trial.",
+      "verdict": "kept",
+      "why": "Make task selection, agent-led preparation, useful partial results and original evidence explicit while retaining real manager/company acceptance as open work.",
+      "source": [
+        "docs/JOURNAL.md#170-let-an-agent-help-a-manager-use-the-tools-immediately",
+        "docs/AGENT_START_HERE.md",
+        "examples/agent-first-use/README.md",
+        "examples/agent-first-use/SIMULATION.md",
+        "examples/agent-first-use/evidence/receipt.json"
+      ]
     }
   ],
   "not_tried": [

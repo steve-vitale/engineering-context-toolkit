@@ -7692,3 +7692,37 @@ unmeasured weekly time estimate and universal monthly cadence. Updated that exis
 require the measured-effort limitation and explicit no-notification boundary instead. Also removed the remaining
 monthly instruction and assumed labor replacement from the guide's closing section. The packet runner disables
 site packages in its child commands as well as its CI entrypoint; its receipt records that execution flag.
+
+## 170. Let an agent help a manager use the tools immediately
+
+2026-11-06. Steve asked for simulation now and emphasized people pointing their agent at the repository for
+self-service help. Added a task-first entry to AGENTS and a linked agent guide: choose from the user's job and
+available records, ask only questions that change the next step, do the preparation and return a sourced finding.
+No contact, full scope worksheet, repository audit or site-wide model is a prerequisite to a first partial result.
+
+The authored first-use conversation is role-play, not an independent agent session or manager observation.
+Its software actions actually run: ordinary export header mapping with retained original row locations, a
+two-unit same-tag record comparison without a P&ID, a missing-unit preparation refusal, an authored returned
+export and selected change report, plus public-sheet intake/report using a saved reading. Five existing CLI
+commands run with site packages disabled; ten exposed case conditions pass. U1's serial disagreement clears
+only after the supplied simulated return; U2 stays separate and bare-tag ambiguity remains. The open order is
+not used as completed installation evidence, and originals remain unchanged. Source and selected method hashes
+are retained with the case; no complete environment lock, arbitrary importer or new autonomous agent is claimed.
+
+An initial example runner assumed a top-level conflicts array; the real graph stores conflict nodes. That
+local attempt failed and was corrected against the generated graph before recording a pass. No core tool was
+changed. The walkthrough also found and corrected the old clone URL in the active own-drawing instructions
+and active opportunity/status links. Company record acceptance, new-image reading, human usefulness/time and
+independent agent adherence remain unobserved; N062/N063 stay open. This simulation supports immediate scoped
+self-service use without substituting for those later observations.
+
+The first clean-checkout CI passed 88/89 programs and failed the corpus freshness check because correcting
+the own-drawing README's clone URL changed a pinned row-3 input. Re-ran only row 3 / own-drawing-extraction:
+it still passes with 100 items and 345 links. Refreshed its actual run receipt and matrix page; all 95 declared
+cell bindings verify locally. The other 94 cell records were retained rather than assigning them new runs.
+
+That matrix receipt/page change also invalidates the exact-output independent-review badge for the matrix.
+The next CI run caught the stale feature-catalog rendering; regenerated it and updated current status to
+22/29 reviewed examples. The earlier review remains recorded with changed outputs, rather than self-renewed.
+The five-test feature-catalog program passes locally. Moved the two short self-service case replays before
+the long full-suite step so their own failures surface promptly in CI.

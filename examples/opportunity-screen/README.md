@@ -216,7 +216,7 @@ The saved historical cases and current regression expectations remain separate; 
 
 #### Illustrative food plant section (24 findings)
 
-This retained anchor refers to the [original 24-finding screen at 8313a8e](https://github.com/steve-vitale/engineering-context-toolkit/blob/8313a8e948bc99e6af40293e61f0900a44516644/examples/opportunity-screen/food/screen.md).
+This retained anchor refers to the [original 24-finding screen at 8313a8e](https://github.com/steve-vitale/industrial-context-toolkit/blob/8313a8e948bc99e6af40293e61f0900a44516644/examples/opportunity-screen/food/screen.md).
 The current 29-finding screen keeps K-203 and EV-202 in function review and treats AT-302/HX-303 as supplied heating candidates; the source model is unchanged.
 
 </details>

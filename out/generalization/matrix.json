@@ -1,12 +1,12 @@
 {
  "about": "Generalization matrix written by scripts/corpus_matrix.py; rendered as docs/GENERALIZATION.md.",
- "ran_at": "2026-11-01 17:59 UTC",
- "seconds": 1383.8,
+ "ran_at": "2026-11-07 03:55 UTC",
+ "seconds": 1384.1,
  "rows_run_this_time": [
-  5
+  3
  ],
  "inputs_run_this_time": [
-  "bayer-model"
+  "own-drawing-extraction"
  ],
  "tracer_pass_f1": 0.88,
  "pipe_pass_f1": 0.88,
@@ -4968,8 +4968,8 @@
      "agrees": true
     }
    ],
-   "seconds": 0.3,
-   "ran_at": "2026-11-01 17:59 UTC",
+   "seconds": 0.6,
+   "ran_at": "2026-11-07 03:55 UTC",
    "tool_files": {
     "scripts/build_twin.py": "sha256:8e9a5e26b9938a8a",
     "scripts/confidence.py": "sha256:0fc9948199d89edf",
@@ -5007,7 +5007,7 @@
       "exists": true,
       "directory": false,
       "files": {
-       "examples/own-drawing/README.md": "sha256:29a21aa8feee52cccfb986f53daf3131fb7f3fc173f32b58b2698c408763c0ee"
+       "examples/own-drawing/README.md": "sha256:c152248527a24c5d61e5f7cc61358030542ba5effefbbf11ba038236b45f4580"
       }
      },
      {
