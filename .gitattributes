@@ -58,6 +58,9 @@ data/te_pid_layout.json text eol=lf
 /scripts/source_evidence.py text eol=lf
 /scripts/test_source_handoff.py text eol=lf
 /.gitattributes text eol=lf
+# Frozen rehearsal prompts, keys and fictional input originals retain exact bytes on every OS.
+/examples/agent-rehearsal/** text eol=lf
+/examples/maintenance-intake/inputs/** text eol=lf
 
 # Source-review fixtures and their exact report/provenance pins remain stable across checkouts.
 /examples/opportunity-screen/water-valve-records/** text eol=lf

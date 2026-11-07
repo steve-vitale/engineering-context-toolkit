@@ -540,10 +540,6 @@
     "scripts/maintenance_intake.py": {
       "kind": "tool",
       "guide": "docs/MAINTENANCE_INTAKE.md"
-    },
-    "scripts/test_maintenance_intake.py": {
-      "kind": "check",
-      "guide": "docs/MAINTENANCE_INTAKE.md"
     }
   }
 }
